@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from "../components/Nav";
-import Layer1 from "../components/landingPage/layer1";
+import Layer1 from "../components/Layer1";
 import Layer2 from "../components/landingPage/Layer2";
 import Layer3 from "../components/landingPage/Layer3";
 import Layer4 from "../components/landingPage/Layer4";
