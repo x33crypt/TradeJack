@@ -1,5 +1,5 @@
 import React from "react";
-import landingImg4 from "../../assets/landingImg4.jpg";
+import landingImg4 from "../../assets/landingImg4.JPG";
 
 const Layer4 = () => {
   return (
