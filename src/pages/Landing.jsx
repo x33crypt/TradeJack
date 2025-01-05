@@ -17,8 +17,8 @@ const Landing = () => {
         <AboutLayer />
         <Layer2 />
         <Layer1 />
-        {/* <Layer3 />
-        <Layer4 />
+        <Layer3 />
+        {/* <Layer4 />
         <Layer5 />
         <Layer6 />
         <Footer /> */}
