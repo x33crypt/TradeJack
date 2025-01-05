@@ -39,7 +39,7 @@ const Layer2 = () => {
         <p
           className={`${
             isUser ? "bg-white text-black" : "text-neutral-400"
-          } font-[500] px-[25px] py-[7px]  border-tradeAsh border-[1.5px]  rounded-[10px] cursor-pointer transition-all duration-300`}
+          } font-[500] px-[25px] py-[8px]  border-tradeAsh border-[1.5px]  rounded-[10px] cursor-pointer transition-all duration-300`}
           onClick={() => handleIsUser()}
         >
           Sell as User
@@ -47,7 +47,7 @@ const Layer2 = () => {
         <p
           className={`${
             isVendor ? "bg-white text-black" : "text-neutral-400"
-          } font-[500] px-[25px] py-[7px]  border-tradeAsh border-[1.5px]  rounded-[10px] cursor-pointer transition-all duration-300`}
+          } font-[500] px-[25px] py-[8px]  border-tradeAsh border-[1.5px]  rounded-[10px] cursor-pointer transition-all duration-300`}
           onClick={() => handleIsVendor()}
         >
           Buy as Vendor

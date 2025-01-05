@@ -31,7 +31,7 @@ const Nav = () => {
         </p>
       </div>
       <div className="flex items-center gap-[20px]">
-        <div className="flex items-center gap-[10px] bg-tradeGreen lg:px-[20px] px-[15px] py-[10px] rounded-[8px]">
+        <div className="flex items-center gap-[10px] bg-tradeGreen lg:px-[25px] px-[15px] py-[10px] rounded-[8px]">
           <p className="text-black lg:text-[16px] text-[16px] font-[700]">
             Get Started
           </p>
