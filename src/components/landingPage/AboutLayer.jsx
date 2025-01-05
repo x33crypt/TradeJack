@@ -58,7 +58,7 @@ const AboutLayer = () => {
               <MdSecurity className="text-[150px] text-tradeOrange" />
             </div>
           </div>
-          <div className=" flex-1 p-[30px] border border-tradeAsh rounded-[15px]">
+          <div className=" flex-1 bg-tradeAsh p-[30px] border border-tradeAsh rounded-[15px]">
             <p className="text-white text-[18px] font-[500]">
               Guaranteed Trade Reliability
             </p>
@@ -69,13 +69,13 @@ const AboutLayer = () => {
               all parties involved.
             </p>
             <div className="flex justify-center items-center mt-[30px]">
-              <FaAward className="text-[150px] text-tradeAsh" />
+              <FaAward className="text-[150px] text-[rgb(253,53,109)]" />
             </div>
           </div>
         </div>
 
         <div className="flex-1 lg:mt-[100px]">
-          <div className=" flex-1 p-[30px] border border-tradeAsh rounded-[15px]">
+          <div className=" flex-1 bg-tradeAsh p-[30px] border border-tradeAsh rounded-[15px]">
             <p className="text-white text-[18px] font-[500]">
               Comprehensive Asset Selection
             </p>
