@@ -30,16 +30,16 @@ const Nav = () => {
           FAQ
         </p>
       </div>
-      <div>
-        <div className="flex items-center gap-[10px] bg-white lg:px-[20px] px-[15px] py-[10px] rounded-[8px]">
+      <div className="flex items-center gap-[20px]">
+        <div className="flex items-center gap-[10px] bg-tradeGreen lg:px-[20px] px-[15px] py-[10px] rounded-[8px]">
           <p className="text-black lg:text-[16px] text-[16px] font-[700]">
             Get Started
           </p>
           {/* <MdArrowOutward className="text-black text-[17px] font-bold" /> */}
         </div>
-      </div>
-      <div className="lg:hidden flex">
-        <CgMenuRight className="text-neutral-400 text-[25px]" />
+        <div className="lg:hidden flex">
+          <CgMenuRight className="text-neutral-400 text-[25px]" />
+        </div>
       </div>
     </div>
   );

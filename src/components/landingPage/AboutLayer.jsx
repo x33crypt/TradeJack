@@ -8,19 +8,19 @@ import { FaAward } from "react-icons/fa";
 const AboutLayer = () => {
   return (
     <div className=" pt-[100px] pb-[100px] px-[5%] flex flex-col">
-      <div className=" flex flex-col justify-between">
+      <div className=" flex flex-col lg:flex-row justify-between">
         <div className="">
           <div className=" z-10 relative border border-tradeGreen w-[82px] h-[28.5px] pb-[2px] rounded-[8px]">
             <p className=" absolute top-[-2px] left-[-3px] text-[12px] text-white font-[500] px-[20px] py-[4px] rounded-[6px] bg-tradeGreen w-max">
               ABOUT
             </p>
           </div>
-          <p className="mt-[10px] text-[50px] text-white font-[500] w-[700px] leading-[70px]">
+          <p className="mt-[10px] lg:text-[50px] text-[45px] text-white font-[500] lg:w-[700px] lg:leading-[70px] leading-[55px]">
             Your All-in-One Marketplace for Secure and Transparent Trades
           </p>
         </div>
       </div>
-      <div className="mt-[60px] flex  gap-[25px]">
+      <div className=" lg:mt-[60px] mt-[30px] flex flex-col  gap-[25px]">
         <div className="flex-1">
           <div>
             <p className="text-[16px] text-neutral-400">
@@ -28,7 +28,7 @@ const AboutLayer = () => {
               your profits, we are here to make it seamless and rewarding.
             </p>
           </div>
-          <div className=" mt-[100px] bg-tradeAsh p-[30px] border border-tradeAsh rounded-[15px]">
+          <div className=" lg:mt-[100px] mt-[60px] bg-tradeAsh p-[30px] border border-tradeAsh rounded-[15px]">
             <p className="text-white text-[16px] font-[500]">
               Effortless Cross-Border Trading
             </p>
@@ -74,7 +74,7 @@ const AboutLayer = () => {
           </div>
         </div>
 
-        <div className="flex-1 mt-[100px]">
+        <div className="flex-1 lg:mt-[100px]">
           <div className=" flex-1 p-[30px] border border-tradeAsh rounded-[15px]">
             <p className="text-white text-[16px] font-[500]">
               Comprehensive Asset Selection

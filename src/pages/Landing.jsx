@@ -13,16 +13,16 @@ const Landing = () => {
   return (
     <>
       <Nav />
-      {/* <div className=" bg-tradeBlack ">
+      <div className=" bg-tradeBlack ">
         <AboutLayer />
-        <Layer2 />
+        {/* <Layer2 />
         <Layer1 />
         <Layer3 />
         <Layer4 />
         <Layer5 />
         <Layer6 />
-        <Footer />
-      </div> */}
+        <Footer /> */}
+      </div>
     </>
   );
 };
