@@ -15,7 +15,7 @@ const Layer2 = () => {
   };
 
   return (
-    <div className=" lg:pt-[100px] pt-[80px] lg:pb-[100px] pb-[80px] px-[5%] flex flex-col">
+    <div className=" lg:pt-[100px] pt-[50px] lg:pb-[100px] pb-[80px] px-[5%] flex flex-col">
       <div className=" flex flex-col lg:flex-row items-end gap-[20px]">
         <div className="flex-1 ">
           <div className=" z-10 relative border border-tradeGreen w-[128px] h-[28.5px] pb-[2px] rounded-[8px]">
@@ -95,14 +95,14 @@ const Layer2 = () => {
       <div
         className={`${
           isVendor ? "flex" : "hidden"
-        } mt-[50px] lg:flex-row flex-col  gap-[20px] transition-all duration-300`}
+        } mt-[50px] lg:flex-row flex-col gap-[20px] `}
       >
-        <div className="lg:flex-1 h-[280px] rounded-[37px]  bg-tradePurple">
-          <div className=" ml-[12px] px-[35px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
+        <div className="lg:flex-1 lg:h-[280px] h-[260px] rounded-[37px]  bg-tradePurple">
+          <div className="lg:ml-[12px] ml-[8px] lg:px-[35px] px-[25px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradePurple ">
               Step 1
             </p>
-            <p className="text-neutral-400 text-[17px]">
+            <p className="text-neutral-400 lg:text-[17px]">
               Create an offer specifying the asset you want to buy, your rate,
               and trading rules. Ensure a collateral deposit is in place before
               publishing the offer.
@@ -110,22 +110,22 @@ const Layer2 = () => {
           </div>
         </div>
         <div className="lg:flex-1 h-[280px] rounded-[37px] bg-tradeOrange ">
-          <div className=" ml-[10px] px-[35px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
+          <div className="lg:ml-[12px] ml-[8px] lg:px-[35px] px-[25px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradeOrange ">
               Step 2
             </p>
-            <p className="text-neutral-400 text-[17px]">
+            <p className="text-neutral-400 lg:text-[17px]">
               Connect with users who request your offer, carefully finalize the
               agreed trade terms, and initialize the transaction.
             </p>
           </div>
         </div>
         <div className="lg:flex-1 h-[280px] rounded-[37px] bg-tradeGreen ">
-          <div className=" ml-[10px] px-[35px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
+          <div className="lg:ml-[12px] ml-[8px] lg:px-[35px] px-[25px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradeGreen ">
               Step 3
             </p>
-            <p className="text-neutral-400 text-[17px]">
+            <p className="text-neutral-400 lg:text-[17px]">
               Ensure the trade is completed within the agreed timeframe to earn
               positive ratings, which enhance your visibility and attract more
               potential requests.
