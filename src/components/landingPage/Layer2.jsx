@@ -23,7 +23,7 @@ const Layer2 = () => {
               HOW IT WORKS
             </p>
           </div>
-          <p className="mt-[10px] text-[50px] text-white font-[500] lg:w-[500px] lg:leading-[70px] leading-[55px]">
+          <p className="mt-[10px] lg:text-[50px] text-[45px] text-white font-[500] lg:w-[500px] lg:leading-[70px] leading-[55px]">
             Master the Art of Secure Trading
           </p>
         </div>

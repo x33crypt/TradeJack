@@ -10,7 +10,7 @@ const Layer4 = () => {
             TESTIMONIES
           </p>
         </div>
-        <p className="mt-[10px] text-[50px] text-center text-black font-[500] lg:w-[600px] lg:leading-[70px] leading-[55px]">
+        <p className="mt-[10px] lg:text-[50px] text-[45px] text-center text-black font-[500] lg:w-[600px] lg:leading-[70px] leading-[55px]">
           What thay say about us
         </p>
       </div>

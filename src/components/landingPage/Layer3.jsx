@@ -21,7 +21,7 @@ const Layer3 = () => {
               FEATURES
             </p>
           </div>
-          <p className="mt-[10px] text-[50px] font-[500] lg:w-[600px] lg:leading-[70px] leading-[55px]">
+          <p className="mt-[10px] lg:text-[50px] text-[45px] font-[500] lg:w-[600px] lg:leading-[70px] leading-[55px]">
             Trade Your Way, Securely and Transparently
           </p>
         </div>
