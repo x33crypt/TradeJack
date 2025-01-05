@@ -7,7 +7,7 @@ import { FaAward } from "react-icons/fa";
 
 const AboutLayer = () => {
   return (
-    <div className=" pt-[100px] pb-[100px] px-[5%] flex flex-col">
+    <div className=" lg:pt-[100px] pt-[50px] lg:pb-[100px] pb-[50px] px-[5%] flex flex-col">
       <div className=" flex flex-col lg:flex-row justify-between">
         <div className="">
           <div className=" z-10 relative border border-tradeGreen w-[82px] h-[28.5px] pb-[2px] rounded-[8px]">
@@ -20,7 +20,7 @@ const AboutLayer = () => {
           </p>
         </div>
       </div>
-      <div className=" lg:mt-[60px] mt-[30px] flex flex-col  gap-[25px]">
+      <div className=" lg:mt-[60px] mt-[30px] flex lg:flex-row flex-col gap-[25px]">
         <div className="flex-1">
           <div>
             <p className="text-[16px] text-neutral-400">
@@ -29,7 +29,7 @@ const AboutLayer = () => {
             </p>
           </div>
           <div className=" lg:mt-[100px] mt-[60px] bg-tradeAsh p-[30px] border border-tradeAsh rounded-[15px]">
-            <p className="text-white text-[16px] font-[500]">
+            <p className="text-white text-[18px] font-[500]">
               Effortless Cross-Border Trading
             </p>
             <p className="text-[16px] text-neutral-400 mt-[20px]">
@@ -45,7 +45,7 @@ const AboutLayer = () => {
         </div>
         <div className=" flex-1 flex flex-col gap-[20px]">
           <div className=" bg-tradeAsh flex-1 p-[30px] border border-tradeAsh rounded-[15px]">
-            <p className="text-white text-[16px] font-[500]">
+            <p className="text-white text-[18px] font-[500]">
               Unmatched Security Standards
             </p>
             <p className="text-[16px] text-neutral-400 mt-[20px]">
@@ -59,7 +59,7 @@ const AboutLayer = () => {
             </div>
           </div>
           <div className=" flex-1 p-[30px] border border-tradeAsh rounded-[15px]">
-            <p className="text-white text-[16px] font-[500]">
+            <p className="text-white text-[18px] font-[500]">
               Guaranteed Trade Reliability
             </p>
             <p className="text-[16px] text-neutral-400 mt-[20px]">
@@ -76,7 +76,7 @@ const AboutLayer = () => {
 
         <div className="flex-1 lg:mt-[100px]">
           <div className=" flex-1 p-[30px] border border-tradeAsh rounded-[15px]">
-            <p className="text-white text-[16px] font-[500]">
+            <p className="text-white text-[18px] font-[500]">
               Comprehensive Asset Selection
             </p>
             <p className="text-[16px] text-neutral-400 mt-[20px]">

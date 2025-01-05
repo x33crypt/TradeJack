@@ -15,19 +15,19 @@ const Layer2 = () => {
   };
 
   return (
-    <div className="pt-[100px] pb-[100px] px-[5%] flex flex-col">
-      <div className=" flex  items-end gap-[20px]">
+    <div className=" lg:pt-[100px] pt-[50px] lg:pb-[100px] pb-[50px] px-[5%] flex flex-col">
+      <div className=" flex flex-col lg:flex-row items-end gap-[20px]">
         <div className="flex-1 ">
           <div className=" z-10 relative border border-tradeGreen w-[128px] h-[28.5px] pb-[2px] rounded-[8px]">
             <p className=" absolute top-[-2px] left-[-3px] text-[12px] text-white font-[500] px-[20px] py-[4px] rounded-[6px] bg-tradeGreen w-max">
               HOW IT WORKS
             </p>
           </div>
-          <p className="mt-[10px] text-[50px] text-white font-[500] w-[500px] leading-[70px]">
+          <p className="mt-[10px] text-[50px] text-white font-[500] lg:w-[500px] lg:leading-[70px] leading-[55px]">
             Master the Art of Secure Trading
           </p>
         </div>
-        <div className="flex-1 flex  items-end">
+        <div className="flex-1 flex items-end">
           <p className="text-neutral-400 text-[17px] leading-[30px]">
             Gain a clear understanding of how TradeJack simplifies digital asset
             transactions. Our step-by-step process is designed for ease,
@@ -35,7 +35,7 @@ const Layer2 = () => {
           </p>
         </div>
       </div>
-      <div className="mt-[80px] flex gap-[20px]">
+      <div className=" lg:mt-[80px] mt-[40px] flex justify-center lg:justify-normal gap-[20px]">
         <p
           className={`${
             isUser ? "bg-white text-black" : "text-neutral-400"
@@ -56,9 +56,9 @@ const Layer2 = () => {
       <div
         className={`${
           isUser ? "flex" : "hidden"
-        } mt-[50px]  gap-[20px] transition-all duration-300`}
+        } mt-[50px] lg:flex-row flex-col gap-[20px]`}
       >
-        <div className="flex-1 h-[280px] rounded-[37px]  bg-tradePurple">
+        <div className="lg:flex-1 h-[280px] rounded-[37px] bg-tradePurple">
           <div className=" ml-[12px] px-[35px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradePurple ">
               Step 1
@@ -69,7 +69,7 @@ const Layer2 = () => {
             </p>
           </div>
         </div>
-        <div className="flex-1 h-[280px] rounded-[37px] bg-tradeOrange ">
+        <div className="lg:flex-1 h-[280px] rounded-[37px] bg-tradeOrange ">
           <div className=" ml-[10px] px-[35px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradeOrange ">
               Step 2
@@ -80,7 +80,7 @@ const Layer2 = () => {
             </p>
           </div>
         </div>
-        <div className="flex-1 h-[280px] rounded-[37px] bg-tradeGreen ">
+        <div className="lg:flex-1 h-[280px] rounded-[37px] bg-tradeGreen ">
           <div className=" ml-[10px] px-[35px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradeGreen ">
               Step 3
@@ -95,9 +95,9 @@ const Layer2 = () => {
       <div
         className={`${
           isVendor ? "flex" : "hidden"
-        } mt-[50px]  gap-[20px] transition-all duration-300`}
+        } mt-[50px] lg:flex-row flex-col  gap-[20px] transition-all duration-300`}
       >
-        <div className="flex-1 h-[280px] rounded-[37px]  bg-tradePurple">
+        <div className="lg:flex-1 h-[280px] rounded-[37px]  bg-tradePurple">
           <div className=" ml-[12px] px-[35px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradePurple ">
               Step 1
@@ -109,7 +109,7 @@ const Layer2 = () => {
             </p>
           </div>
         </div>
-        <div className="flex-1 h-[280px] rounded-[37px] bg-tradeOrange ">
+        <div className="lg:flex-1 h-[280px] rounded-[37px] bg-tradeOrange ">
           <div className=" ml-[10px] px-[35px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradeOrange ">
               Step 2
@@ -120,7 +120,7 @@ const Layer2 = () => {
             </p>
           </div>
         </div>
-        <div className="flex-1 h-[280px] rounded-[37px] bg-tradeGreen ">
+        <div className="lg:flex-1 h-[280px] rounded-[37px] bg-tradeGreen ">
           <div className=" ml-[10px] px-[35px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradeGreen ">
               Step 3
