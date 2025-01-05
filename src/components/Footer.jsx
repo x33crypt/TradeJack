@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className="px-[5%] flex flex-col ">
       <div className=" flex lg:flex-row flex-col justify-between items-center  pt-[20px] pb-[20px] gap-[25px] border-t  border-neutral-700">
-        <div className="sm:mt-0 lg:w-[150px] w-[300px] flex justify-between">
+        <div className="sm:mt-0 lg:w-[150px] w-[150px] flex justify-between">
           <i class="fa-brands fa-x-twitter text-white hover:text-taskBlue lg:text-[20px] text-[20px] cursor-pointer p-[10px] bg-tradeAsh rounded-[10px]"></i>
           <i class="fa-brands fa-telegram text-white hover:text-taskBlue lg:text-[20px] text-[20px] cursor-pointer  p-[10px] bg-tradeAsh rounded-[10px]"></i>
           <i class="fa-brands fa-instagram text-white hover:text-taskBlue lg:text-[20px] text-[20px] cursor-pointer  p-[10px] bg-tradeAsh rounded-[10px]"></i>
