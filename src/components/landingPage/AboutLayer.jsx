@@ -16,7 +16,7 @@ const AboutLayer = () => {
             </p>
           </div>
           <p className="mt-[10px] lg:text-[50px] text-[45px] text-white font-[500] lg:w-[700px] lg:leading-[70px] leading-[55px]">
-            Your All-in-One Marketplace for Secure and Transparent Trades
+            Your all-in-one marketplace for secure and transparent trades
           </p>
         </div>
       </div>

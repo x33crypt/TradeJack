@@ -95,7 +95,7 @@ const Layer5 = () => {
           </p>
         </div>
         <p className="mt-[10px] text-white font-[500] lg:text-[50px] sm:text-[60px] text-[38px] text-center sm:leading-[70px] leading-[50px] w-[300px] sm:w-full">
-          Frequently Asked Questions
+          Frequently asked questions
         </p>
       </div>
       <div className="mt-[50px] flex flex-col items-center gap-[20px]">

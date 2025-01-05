@@ -22,7 +22,7 @@ const Layer3 = () => {
             </p>
           </div>
           <p className="mt-[10px] lg:text-[50px] text-[45px] font-[500] lg:w-[600px] lg:leading-[70px] leading-[55px]">
-            Trade Your Way, Securely and Transparently
+            Trade your way, securely and transparently
           </p>
         </div>
         <div className="flex items-end mt-[20px]">
@@ -80,7 +80,9 @@ const Layer3 = () => {
       <div className="grid grid-cols-2 lg:flex border-t">
         <div className="flex flex-1 flex-col p-[30px]  border-r">
           <MdOutlineNotificationAdd className="lg:text-[40px] text-[35px] text-tradeGreen" />
-          <p className="mt-[20px] lg:text-[16px] text-[15px] font-semibold">Instant Notifications</p>
+          <p className="mt-[20px] lg:text-[16px] text-[15px] font-semibold">
+            Instant Notifications
+          </p>
           <p className="mt-[5px] lg:text-[16px] text-[15px] text-neutral-500">
             Get real-time updates on your trades with instant payment alerts,
             ensuring you're always in the loop with every transaction.
@@ -88,7 +90,9 @@ const Layer3 = () => {
         </div>
         <div className="flex flex-1 flex-col p-[30px] border-r">
           <SiVfairs className="lg:text-[40px] text-[35px] text-tradeGreen" />
-          <p className="mt-[20px] lg:text-[16px] text-[15px] font-semibold">Transparent Transactions</p>
+          <p className="mt-[20px] lg:text-[16px] text-[15px] font-semibold">
+            Transparent Transactions
+          </p>
           <p className="mt-[5px] lg:text-[16px] text-[15px] text-neutral-500">
             Experience zero hidden fees or unclear terms, with every trade
             carried out with absolute transparency and clarity.
@@ -96,7 +100,10 @@ const Layer3 = () => {
         </div>
         <div className="flex flex-1 flex-col p-[30px] border-r">
           <PiPiggyBankBold className="lg:text-[40px] text-[35px] text-tradeGreen" />
-          <p className="mt-[20px] lg:text-[16px] text-[15px] font-semibold"> Collateral-Backed Offers</p>
+          <p className="mt-[20px] lg:text-[16px] text-[15px] font-semibold">
+            {" "}
+            Collateral-Backed Offers
+          </p>
           <p className="mt-[5px] lg:text-[16px] text-[15px] text-neutral-500">
             Vendors are required to provide collateral deposits for their
             offers, ensuring added security and reliability in trades.
@@ -104,7 +111,9 @@ const Layer3 = () => {
         </div>
         <div className="flex flex-1 flex-col p-[30px]">
           <AiOutlineSolution className="lg:text-[40px] text-[35px] text-tradeGreen" />
-          <p className="mt-[20px] lg:text-[16px] text-[15px] font-semibold">Robust Dispute Resolution</p>
+          <p className="mt-[20px] lg:text-[16px] text-[15px] font-semibold">
+            Robust Dispute Resolution
+          </p>
           <p className="mt-[5px] lg:text-[16px] text-[15px] text-neutral-500">
             Encounter an issue? Submit a dispute, and our dedicated team will
             resolve it promptly and fairly.

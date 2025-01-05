@@ -11,7 +11,7 @@ const Layer4 = () => {
           </p>
         </div>
         <p className="mt-[10px] lg:text-[50px] text-[45px] text-center text-black font-[500] lg:w-[600px] lg:leading-[70px] leading-[55px]">
-          What thay say about us
+          What they say about us
         </p>
       </div>
       <div className="lg:mt-[80px] mt-[40px] flex lg:flex-row flex-col gap-[30px]">

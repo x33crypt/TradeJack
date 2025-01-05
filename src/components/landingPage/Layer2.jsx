@@ -24,7 +24,7 @@ const Layer2 = () => {
             </p>
           </div>
           <p className="mt-[10px] lg:text-[50px] text-[45px] text-white font-[500] lg:w-[500px] lg:leading-[70px] leading-[55px]">
-            Master the Art of Secure Trading
+            Master the art of secure trading
           </p>
         </div>
         <div className="flex-1 flex items-end">
