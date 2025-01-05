@@ -87,7 +87,7 @@ const Layer5 = () => {
     setQuestion8(false);
   };
   return (
-    <div className="px-[5%]  pt-[150px] pb-[100px]">
+    <div className="px-[5%] lg:pt-[100px] pt-[50px] lg:pb-[100px] pb-[80px]">
       <div className="w-full flex flex-col items-center justify-center">
         <div className=" z-10 relative border border-tradeGreen w-[65px] h-[28.5px] pb-[2px] rounded-[8px]">
           <p className=" absolute top-[-2px] left-[-3px] text-[12px] text-white font-[500] px-[20px] py-[4px] rounded-[6px] bg-tradeGreen w-max">
