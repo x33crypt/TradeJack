@@ -106,10 +106,10 @@ const Layer1 = () => {
                 <SiQuantconnect className="lg:text-[160px] text-[150px] text-tradeBlack" />
               </div>
             </div>
-            {/* <p className="mt-[20px] text-[17px] text-white">
+            <p className="lg:hidden mt-[20px] text-[17px] text-white">
               Engage with verified users and vendors, fostering confidence and
               ensuring every transaction is with a trusted partner
-            </p> */}
+            </p>
           </div>
         </div>
         <div className=" lg:h-[450px] gap-[25px] lg:w-[365px] rounded-[20px] lg:p-[30px] p-[20px] bg-tradePurple flex flex-col justify-between">

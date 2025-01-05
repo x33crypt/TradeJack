@@ -109,7 +109,7 @@ const Layer2 = () => {
             </p>
           </div>
         </div>
-        <div className="lg:flex-1 h-[280px] rounded-[37px] bg-tradeOrange ">
+        <div className="lg:flex-1 lg:h-[280px] h-[260px] rounded-[37px] bg-tradeOrange ">
           <div className="lg:ml-[12px] ml-[8px] lg:px-[35px] px-[25px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradeOrange ">
               Step 2
@@ -120,7 +120,7 @@ const Layer2 = () => {
             </p>
           </div>
         </div>
-        <div className="lg:flex-1 h-[280px] rounded-[37px] bg-tradeGreen ">
+        <div className="lg:flex-1 lg:h-[280px] h-[260px] rounded-[37px] bg-tradeGreen ">
           <div className="lg:ml-[12px] ml-[8px] lg:px-[35px] px-[25px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradeGreen ">
               Step 3
