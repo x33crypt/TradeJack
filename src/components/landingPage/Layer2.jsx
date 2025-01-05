@@ -15,7 +15,7 @@ const Layer2 = () => {
   };
 
   return (
-    <div className=" lg:pt-[100px] pt-[100px] lg:pb-[100px] pb-[80px] px-[5%] flex flex-col">
+    <div className=" lg:pt-[100px] pt-[80px] lg:pb-[100px] pb-[80px] px-[5%] flex flex-col">
       <div className=" flex flex-col lg:flex-row items-end gap-[20px]">
         <div className="flex-1 ">
           <div className=" z-10 relative border border-tradeGreen w-[128px] h-[28.5px] pb-[2px] rounded-[8px]">
