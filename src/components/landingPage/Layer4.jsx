@@ -3,18 +3,18 @@ import landingImg4 from "../../assets/landingImg4.JPG";
 
 const Layer4 = () => {
   return (
-    <div className="px-[5%]  pt-[100px] pb-[150px] bg-tradeWhite">
+    <div className="px-[5%]  lg:pt-[100px] pt-[50px] lg:pb-[100px] pb-[80px] bg-tradeWhite">
       <div className="flex flex-col items-center justify-center">
         <div className=" z-10 relative border border-tradeGreen w-[120px] h-[28.5px] pb-[2px] rounded-[8px]">
           <p className=" absolute top-[-2px] left-[-3px] text-[12px] text-white font-[500] px-[20px] py-[4px] rounded-[6px] bg-tradeGreen w-max">
             TESTIMONIES
           </p>
         </div>
-        <p className="mt-[10px] text-[50px] text-black font-[500] w-[600px] leading-[70px]">
+        <p className="mt-[10px] text-[50px] text-center text-black font-[500] lg:w-[600px] lg:leading-[70px] leading-[55px]">
           What thay say about us
         </p>
       </div>
-      <div className="mt-[80px] flex gap-[30px]">
+      <div className="lg:mt-[80px] mt-[40px] flex lg:flex-row flex-col gap-[30px]">
         <div className="flex-1 p-[25px] bg-white flex flex-col gap-[30px] rounded-[20px]">
           <div className="flex justify-between items-center">
             <div className="flex gap-[20px]">
@@ -86,7 +86,7 @@ const Layer4 = () => {
           </div>
         </div>
       </div>
-      <div className="mt-[30px] flex gap-[30px]">
+      <div className="mt-[30px] flex lg:flex-row flex-col gap-[30px]">
         <div className="flex-1 p-[25px] bg-white flex flex-col gap-[30px] rounded-[20px]">
           <div className="flex justify-between items-center">
             <div className="flex gap-[20px]">
