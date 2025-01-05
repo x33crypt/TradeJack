@@ -35,43 +35,43 @@ const Layer3 = () => {
       </div>
       <div className=" grid grid-cols-2 lg:flex lg:mt-[80px] mt-[40px]">
         <div className="flex flex-1 flex-col p-[30px] border-r">
-          <BsGlobe className=" lg:text-[40px] text-[30px] text-tradeGreen" />
-          <p className="mt-[20px] lg:text-[16px] text-[14px]  font-semibold">
+          <BsGlobe className=" lg:text-[40px] text-[35px] text-tradeGreen" />
+          <p className="mt-[20px] lg:text-[16px] text-[15px]  font-semibold">
             Global Accessibility
           </p>
-          <p className="mt-[5px] lg:text-[16px] text-[14px] text-neutral-500">
+          <p className="mt-[5px] lg:text-[16px] text-[15px] text-neutral-500">
             Break geographical barriers by enabling users worldwide to trade
             digital assets seamlessly, ensuring inclusivity and ease of access
             for everyone.
           </p>
         </div>
         <div className="flex flex-1 flex-col p-[30px] border-r">
-          <PiFediverseLogoFill className="lg:text-[40px] text-[30px] text-tradeGreen" />
-          <p className="mt-[20px] lg:text-[16px] text-[14px]  font-semibold">
+          <PiFediverseLogoFill className="lg:text-[40px] text-[35px] text-tradeGreen" />
+          <p className="mt-[20px] lg:text-[16px] text-[15px]  font-semibold">
             Multi-Asset Support
           </p>
-          <p className="mt-[5px] lg:text-[16px] text-[14px]  text-neutral-500">
+          <p className="mt-[5px] lg:text-[16px] text-[15px]  text-neutral-500">
             Diversify your portfolio with our platform’s support for various
             asset types, including cryptocurrencies, fiat currencies, and other
             financial assets.
           </p>
         </div>
         <div className="flex flex-1 flex-col p-[30px] border-r">
-          <MdOutlineVerified className="lg:text-[40px] text-[30px] text-tradeGreen" />
-          <p className="mt-[20px] lg:text-[16px] text-[14px]  font-semibold">
+          <MdOutlineVerified className="lg:text-[40px] text-[35px] text-tradeGreen" />
+          <p className="mt-[20px] lg:text-[16px] text-[15px]  font-semibold">
             Verified Vendor Network
           </p>
-          <p className="mt-[5px] lg:text-[16px] text-[14px]  text-neutral-500">
+          <p className="mt-[5px] lg:text-[16px] text-[15px]  text-neutral-500">
             Trade confidently with a network of thoroughly verified vendors,
             ensuring safety, transparency, and trust in every transaction.
           </p>
         </div>
         <div className="flex flex-1 flex-col p-[30px]">
-          <MdOutlineSecurity className="lg:text-[40px] text-[30px] text-tradeGreen" />
-          <p className="mt-[20px] lg:text-[16px] text-[14px]  font-semibold">
+          <MdOutlineSecurity className="lg:text-[40px] text-[35px] text-tradeGreen" />
+          <p className="mt-[20px] lg:text-[16px] text-[15px]  font-semibold">
             Advanced Security Protocols
           </p>
-          <p className="mt-[5px] lg:text-[16px] text-[14px]  text-neutral-500">
+          <p className="mt-[5px] lg:text-[16px] text-[15px]  text-neutral-500">
             Protect your trades and data with industry-leading security
             measures, giving you peace of mind at every step.
           </p>
@@ -79,33 +79,33 @@ const Layer3 = () => {
       </div>
       <div className="grid grid-cols-2 lg:flex border-t">
         <div className="flex flex-1 flex-col p-[30px]  border-r">
-          <MdOutlineNotificationAdd className="lg:text-[40px] text-[30px] text-tradeGreen" />
-          <p className="mt-[20px] lg:text-[16px] text-[14px] font-semibold">Instant Notifications</p>
-          <p className="mt-[5px] lg:text-[16px] text-[14px] text-neutral-500">
+          <MdOutlineNotificationAdd className="lg:text-[40px] text-[35px] text-tradeGreen" />
+          <p className="mt-[20px] lg:text-[16px] text-[15px] font-semibold">Instant Notifications</p>
+          <p className="mt-[5px] lg:text-[16px] text-[15px] text-neutral-500">
             Get real-time updates on your trades with instant payment alerts,
             ensuring you're always in the loop with every transaction.
           </p>
         </div>
         <div className="flex flex-1 flex-col p-[30px] border-r">
-          <SiVfairs className="lg:text-[40px] text-[30px] text-tradeGreen" />
-          <p className="mt-[20px] lg:text-[16px] text-[14px] font-semibold">Transparent Transactions</p>
-          <p className="mt-[5px] lg:text-[16px] text-[14px] text-neutral-500">
+          <SiVfairs className="lg:text-[40px] text-[35px] text-tradeGreen" />
+          <p className="mt-[20px] lg:text-[16px] text-[15px] font-semibold">Transparent Transactions</p>
+          <p className="mt-[5px] lg:text-[16px] text-[15px] text-neutral-500">
             Experience zero hidden fees or unclear terms, with every trade
             carried out with absolute transparency and clarity.
           </p>
         </div>
         <div className="flex flex-1 flex-col p-[30px] border-r">
-          <PiPiggyBankBold className="lg:text-[40px] text-[30px] text-tradeGreen" />
-          <p className="mt-[20px] lg:text-[16px] text-[14px] font-semibold"> Collateral-Backed Offers</p>
-          <p className="mt-[5px] lg:text-[16px] text-[14px] text-neutral-500">
+          <PiPiggyBankBold className="lg:text-[40px] text-[35px] text-tradeGreen" />
+          <p className="mt-[20px] lg:text-[16px] text-[15px] font-semibold"> Collateral-Backed Offers</p>
+          <p className="mt-[5px] lg:text-[16px] text-[15px] text-neutral-500">
             Vendors are required to provide collateral deposits for their
             offers, ensuring added security and reliability in trades.
           </p>
         </div>
         <div className="flex flex-1 flex-col p-[30px]">
-          <AiOutlineSolution className="lg:text-[40px] text-[30px] text-tradeGreen" />
-          <p className="mt-[20px] lg:text-[16px] text-[14px] font-semibold">Robust Dispute Resolution</p>
-          <p className="mt-[5px] lg:text-[16px] text-[14px] text-neutral-500">
+          <AiOutlineSolution className="lg:text-[40px] text-[35px] text-tradeGreen" />
+          <p className="mt-[20px] lg:text-[16px] text-[15px] font-semibold">Robust Dispute Resolution</p>
+          <p className="mt-[5px] lg:text-[16px] text-[15px] text-neutral-500">
             Encounter an issue? Submit a dispute, and our dedicated team will
             resolve it promptly and fairly.
           </p>
