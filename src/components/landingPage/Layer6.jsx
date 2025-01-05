@@ -2,7 +2,7 @@ import React from "react";
 
 const Layer6 = () => {
   return (
-    <div className="px-[5%]  pt-[150px] pb-[100px]">
+    <div className="px-[5%]  lg:pt-[150px] pt-[60px] lg:pb-[50px] pb-[50px]">
       <div className="bg-tradeGreen rounded-[20px] py-[70px] px-[20px] flex flex-col items-center justify-center">
         <p className="text-black font-[600] lg:text-[50px] text-[35px] leading-[45px] text-center">
           Join a Thriving Network of Traders

@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <div className="px-[5%] flex flex-col ">
-      <div className=" flex lg:flex-row flex-col justify-between items-center  pt-[20px] pb-[20px] gap-[25px] border-t  border-neutral-700">
+      <div className=" flex lg:flex-row flex-col justify-between items-center  pt-[30px] pb-[30px] gap-[25px] border-t  border-neutral-700">
         <div className="sm:mt-0 lg:w-[150px] w-[150px] flex justify-between">
           <i class="fa-brands fa-x-twitter text-white hover:text-taskBlue lg:text-[20px] text-[20px] cursor-pointer p-[10px] bg-tradeAsh rounded-[10px]"></i>
           <i class="fa-brands fa-telegram text-white hover:text-taskBlue lg:text-[20px] text-[20px] cursor-pointer  p-[10px] bg-tradeAsh rounded-[10px]"></i>
@@ -19,12 +19,15 @@ const Footer = () => {
               Copyright © {currentYear} TradeJack
             </p>
           </div>
-          <div className="flex justify-between w-[180px]">
+          <div className="flex justify-between w-[230px]">
             <p className="text-[14px] text-white font-[500] hover:text-taskBlue cursor-pointer">
               Terms
             </p>
             <p className="text-[14px] text-white font-[500] hover:text-taskBlue cursor-pointer">
               Privacy
+            </p>
+            <p className="text-[14px] text-white font-[500] hover:text-taskBlue cursor-pointer">
+              Help
             </p>
             <p className="text-[14px] text-white font-[500] hover:text-taskBlue cursor-pointer">
               Cookies
