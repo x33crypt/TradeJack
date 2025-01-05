@@ -26,7 +26,7 @@ const Layer3 = () => {
           </p>
         </div>
         <div className="flex items-end mt-[20px]">
-          <p className="text-neutral-500 text-[18px] leading-[30px] w-[650px]">
+          <p className="text-neutral-500 text-[17px] leading-[30px] w-[650px]">
             Explore how our platform solves key trading challenges with
             innovative features designed for security, transparency, and global
             accessibility.

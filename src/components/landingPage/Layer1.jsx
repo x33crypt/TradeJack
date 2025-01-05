@@ -3,6 +3,8 @@ import { IoStatsChart } from "react-icons/io5";
 import { GrSecure } from "react-icons/gr";
 import { TbViewfinder } from "react-icons/tb";
 import { FaExchangeAlt } from "react-icons/fa";
+import { SiQuantconnect } from "react-icons/si";
+import { FaNotEqual } from "react-icons/fa6";
 
 const Layer1 = () => {
   return (
@@ -19,7 +21,7 @@ const Layer1 = () => {
           </p>
         </div>
         <div className="flex-1 flex  items-end">
-          <p className="text-neutral-400 text-[18px] leading-[30px]">
+          <p className="text-neutral-400 text-[17px] leading-[30px]">
             Break barriers and unlock opportunities. Our platform connects users
             worldwide, enabling seamless digital asset trading.
             Cryptocurrencies, fiat currencies, and more. With unmatched security
@@ -100,7 +102,7 @@ const Layer1 = () => {
             </div>
             <div className="">
               <div className="flex justify-center">
-                <FaExchangeAlt className="text-[160px] text-black" />
+                <SiQuantconnect className="text-[160px] text-tradeBlack" />
               </div>
             </div>
             {/* <p className="mt-[20px] text-[17px] text-white">
@@ -120,7 +122,7 @@ const Layer1 = () => {
           </div>
           <div className="">
             <div className="flex justify-center">
-              <IoStatsChart className="text-[160px] text-white" />
+              <FaNotEqual className="text-[160px] text-white" />
             </div>
 
             <p className="mt-[20px] text-[17px] text-white">

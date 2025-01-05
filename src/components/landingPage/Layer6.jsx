@@ -7,13 +7,13 @@ const Layer6 = () => {
         <p className="text-black font-[600] text-[50px] text-center">
           Join a Thriving Network of Traders
         </p>
-        <p className="mt-[20px] w-[600px] text-center">
+        <p className="mt-[20px] text-[17px] w-[600px] text-center">
           Be part of a global community transforming the way assets are traded.
           Securely, transparently, and effortlessly.
         </p>
 
-        <p className="mt-[40px] py-[8px] px-[20px] rounded-[10px] font-[600] bg-white">
-          Get Started
+        <p className="mt-[40px] py-[8px] px-[20px] rounded-[8px] font-[600] bg-white">
+          Get Started Now
         </p>
       </div>
     </div>
