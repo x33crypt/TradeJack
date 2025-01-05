@@ -7,7 +7,7 @@ import { FaAward } from "react-icons/fa";
 
 const AboutLayer = () => {
   return (
-    <div className=" lg:pt-[100px] pt-[70px] lg:pb-[100px] pb-[70px] px-[5%] flex flex-col">
+    <div className=" lg:pt-[100px] pt-[100px] lg:pb-[100px] pb-[80px] px-[5%] flex flex-col">
       <div className=" flex flex-col lg:flex-row justify-between">
         <div className="">
           <div className=" z-10 relative border border-tradeGreen w-[82px] h-[28.5px] pb-[2px] rounded-[8px]">
