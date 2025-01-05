@@ -28,7 +28,7 @@ const Layer2 = () => {
           </p>
         </div>
         <div className="flex-1 flex items-end">
-          <p className="text-neutral-400 text-[17px] leading-[30px]">
+          <p className="text-neutral-400 lg:text-[17px] lg:leading-[30px] leading-[25px]">
             Gain a clear understanding of how TradeJack simplifies digital asset
             transactions. Our step-by-step process is designed for ease,
             security, and efficiency.
@@ -58,34 +58,34 @@ const Layer2 = () => {
           isUser ? "flex" : "hidden"
         } mt-[50px] lg:flex-row flex-col gap-[20px]`}
       >
-        <div className="lg:flex-1 h-[280px] rounded-[37px] bg-tradePurple">
-          <div className=" ml-[12px] px-[35px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
+        <div className="lg:flex-1 lg:h-[280px] h-[260px] rounded-[37px] bg-tradePurple">
+          <div className="lg:ml-[12px] ml-[8px] lg:px-[35px] px-[25px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradePurple ">
               Step 1
             </p>
-            <p className="text-neutral-400 text-[17px]">
+            <p className="text-neutral-400 lg:text-[17px]">
               Explore the marketplace to browse verified vendors, compare
               offers, and select the one with the best rates for your assets.
             </p>
           </div>
         </div>
-        <div className="lg:flex-1 h-[280px] rounded-[37px] bg-tradeOrange ">
-          <div className=" ml-[10px] px-[35px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
+        <div className="lg:flex-1 lg:h-[280px] h-[260px] rounded-[37px] bg-tradeOrange ">
+          <div className="lg:ml-[12px] ml-[8px] lg:px-[35px] px-[25px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradeOrange ">
               Step 2
             </p>
-            <p className="text-neutral-400 text-[17px]">
+            <p className="text-neutral-400 lg:text-[17px]">
               Engage with the vendor to initiate contact, discuss their offer,
               and finalize trade details for a smooth and secure transaction.
             </p>
           </div>
         </div>
-        <div className="lg:flex-1 h-[280px] rounded-[37px] bg-tradeGreen ">
-          <div className=" ml-[10px] px-[35px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
+        <div className="lg:flex-1 lg:h-[280px] h-[260px] rounded-[37px] bg-tradeGreen ">
+          <div className="lg:ml-[12px] ml-[8px] lg:px-[35px] px-[25px] flex flex-col justify-center h-full rounded-[35px] bg-tradeAsh gap-[40px]">
             <p className="text-[35px] font-[500] font-[Tiny5] text-tradeGreen ">
               Step 3
             </p>
-            <p className="text-neutral-400 text-[17px]">
+            <p className="text-neutral-400 lg:text-[17px]">
               Once the trade is initiated and successfully completed, receive
               your payment, marking the transaction as finalized.
             </p>

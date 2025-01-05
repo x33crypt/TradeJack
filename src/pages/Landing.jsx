@@ -16,7 +16,7 @@ const Landing = () => {
       <div className=" bg-tradeBlack pt-[80px] lg:pt-[100px] ">
         <AboutLayer />
         <Layer2 />
-        {/* <Layer1 /> */}
+        <Layer1 />
         {/* <Layer3 />
         <Layer4 />
         <Layer5 />

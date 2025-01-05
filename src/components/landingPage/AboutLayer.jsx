@@ -69,7 +69,7 @@ const AboutLayer = () => {
               all parties involved.
             </p>
             <div className="flex justify-center items-center mt-[30px]">
-              <FaAward className="text-[150px] text-[rgb(253,53,109)]" />
+              <FaAward className="text-[150px] text-tradeBlack" />
             </div>
           </div>
         </div>
