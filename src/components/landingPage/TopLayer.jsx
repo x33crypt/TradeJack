@@ -18,10 +18,10 @@ const TopLayer = () => {
             trades and profitable opportunities.
           </p>
           <div className="mt-[30px] flex lg:flex-row flex-col gap-[20px]">
-            <button className=" lg:w-[170px] border border-tradeGreen py-[8px] rounded-[10px] text-white bg-tradeGreen hover:bg-transparent transition-all duration-300 font-[600]">
+            <button className=" lg:w-[170px] border border-tradeGreen py-[8px] rounded-[10px] text-black bg-tradeGreen hover:shadow-tradeGreen hover:shadow-tradeSpread transition-all duration-300 font-[600]">
               Get Started Now
             </button>
-            <button className="lg:w-[230px] border border-tradeGreen py-[8px] rounded-[8px] bg-transparent  text-white active:bg-tradeGreen transition-all duration-300 font-[600]">
+            <button className="lg:w-[230px] border border-white py-[8px] rounded-[8px] bg-transparent hover:shadow-white hover:shadow-tradeSpreadOut text-white active:bg-white t active:text-black ransition-all duration-300 font-[600]">
               Explore our Marketplace
             </button>
           </div>
