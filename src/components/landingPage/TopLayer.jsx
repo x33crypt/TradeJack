@@ -2,10 +2,10 @@ import React from "react";
 
 const TopLayer = () => {
   return (
-    <div className=" lg:pt-[40px] pt-[50px] lg:pb-[100px] pb-[80px] px-[5%] flex ">
+    <div className=" lg:pt-[40px] pt-[30px] lg:pb-[100px] pb-[80px] px-[5%] flex ">
       <div className="flex">
         <div className="flex-1 ">
-          <p className="mt-[10px] lg:text-[70px] text-[45px] text-white font-[500]  lg:leading-[80px] leading-[55px]">
+          <p className="mt-[10px] lg:text-[70px] text-[50px] text-white font-[500]  lg:leading-[80px] leading-[55px]">
             Trade Smarter, Safer, and Faster
           </p>
           <p className="mt-[20px] text-neutral-400 lg:text-[18px] lg:leading-[30px] leading-[25px]">
