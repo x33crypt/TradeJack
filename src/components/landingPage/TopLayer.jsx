@@ -21,7 +21,7 @@ const TopLayer = () => {
             <button className=" lg:w-[170px] border border-tradeGreen py-[8px] rounded-[10px] text-black bg-tradeGreen hover:shadow-tradeGreen hover:shadow-tradeSpread transition-all duration-300 font-[600]">
               Get Started Now
             </button>
-            <button className="lg:w-[230px] border border-white py-[8px] rounded-[8px] bg-transparent hover:shadow-white hover:shadow-tradeSpreadOut text-white active:bg-white t active:text-black ransition-all duration-300 font-[600]">
+            <button className="lg:w-[230px] border border-white py-[8px] rounded-[8px] bg-transparent hover:shadow-white hover:shadow-tradeSpreadOut text-white active:text-black ransition-all duration-300 font-[600]">
               Explore our Marketplace
             </button>
           </div>
