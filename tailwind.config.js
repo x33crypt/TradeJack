@@ -19,8 +19,9 @@ export default {
         tradeOrange: "#ffcb4d",
       },
       boxShadow: {
-        tradeSpread: "0 0 20px 2px rgba(34, 197, 94, -0.20)", // Customize as needed
-        tradeSpreadOut: "inset 0 0 8px 2px rgba(34, 197, 94, 0.20)", // Customize as needed
+        tradeSpreadOut: "0 0 20px 2px rgba(34, 197, 94, -0.20)", // Customize as needed
+        tradeHoverInDefault: "inset 0 0 20px 2px rgba(255, 255, 255, 0.20)",
+        tradeHoverIn: "inset 0 0 5px 2px rgba(255, 255, 255, 0.10)", // Customize as needed
       },
     },
   },
