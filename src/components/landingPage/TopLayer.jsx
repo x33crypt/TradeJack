@@ -1,5 +1,8 @@
 import React from "react";
-import trading from "../../assets/trading.svg";
+
+import { HiGlobe } from "react-icons/hi";
+import { GrConnect } from "react-icons/gr";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const TopLayer = () => {
   return (
@@ -18,13 +21,13 @@ const TopLayer = () => {
             <button className=" lg:w-[170px] border border-tradeGreen py-[8px] rounded-[10px] text-white bg-tradeGreen hover:bg-transparent transition-all duration-300 font-[600]">
               Get Started Now
             </button>
-            <button className="lg:w-[230px] border border-tradeOrange py-[8px] rounded-[8px] bg-tradeOrange hover:bg-transparent text-black hover:text-white transition-all duration-300 font-[600]">
+            <button className="lg:w-[230px] border border-tradeGreen py-[8px] rounded-[8px] bg-transparent  text-white active:bg-tradeGreen transition-all duration-300 font-[600]">
               Explore our Marketplace
             </button>
           </div>
         </div>
-        <div className="flex-1 hidden lg:flex justify-center">
-          <img className="w-[90%]" src={trading} alt="" />
+        <div className="flex-1 hidden lg:flex justify-center items-center">
+          <HiGlobe className="text-[400px] text-tradeAsh " />
         </div>
       </div>
     </div>
