@@ -2,7 +2,7 @@ import React from "react";
 
 const TopLayer = () => {
   return (
-    <div className="lg:pt-[40px] pt-[60px] lg:pb-[100px] pb-[80px] flex flex-col px-[5%]">
+    <div className="lg:pt-[40px] pt-[80px] lg:pb-[100px] pb-[120px] flex flex-col px-[5%]">
       <div className="flex flex-col justify-center items-center">
         <p className="lg:text-[90px]  text-[45px] text-center text-white font-[500] lg:leading-[100px] leading-[55px] lg:w-[800px]">
           Trade smarter, safer, and faster
