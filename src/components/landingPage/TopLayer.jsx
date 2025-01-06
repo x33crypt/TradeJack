@@ -4,7 +4,7 @@ const TopLayer = () => {
   return (
     <div className="lg:pt-[40px] pt-[80px] lg:pb-[100px] pb-[120px] flex flex-col px-[5%]">
       <div className="flex flex-col justify-center items-center">
-        <p className="lg:text-[90px]  text-[45px] text-center text-white font-[500] lg:leading-[100px] leading-[55px] lg:w-[800px]">
+        <p className="lg:text-[90px]  text-[60px] text-center text-white font-[500] lg:leading-[100px] leading-[70px] lg:w-[800px]">
           Trade smarter, safer, and faster
         </p>
         <p className="mt-[25px] lg:w-[700px] font-[500] lg:text-[19px] text-[17px] text-center text-neutral-400">
