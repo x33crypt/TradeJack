@@ -31,8 +31,8 @@ const Nav = () => {
         </p>
       </div>
       <div className="flex items-center gap-[20px]">
-        <div className="flex items-center gap-[10px] text-black hover:text-white border border-tradeGreen bg-tradeGreen hover:bg-transparent lg:px-[25px] px-[15px] py-[10px] rounded-[8px] transition-all duration-300 cursor-pointer">
-          <p className=" lg:text-[16px] text-[16px] font-[700]">Get Started</p>
+        <div className="flex items-center gap-[10px] text-black hover:text-white border border-tradeGreen bg-tradeGreen hover:bg-transparent lg:px-[25px] px-[15px] py-[8px] rounded-[8px] transition-all duration-300 cursor-pointer">
+          <p className=" lg:text-[16px] text-[15px] font-[700]">Get Started</p>
           {/* <MdArrowOutward className="text-black text-[17px] font-bold" /> */}
         </div>
         <div className="lg:hidden flex">
