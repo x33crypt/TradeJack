@@ -1,7 +1,7 @@
 import React from "react";
 import DashSideNav from "../components/dashboard/DashSideNav";
 import DashTopNav from "../components/dashboard/DashTopNav";
-import MarketTopNav from "@/components/marketplace/marketTopNav";
+import MarketTopNav from "@/components/MarketTopNav";
 import MarketMain from "@/components/marketplace/MarketMain";
 import MarketSide from "@/components/marketplace/MarketSide";
 
