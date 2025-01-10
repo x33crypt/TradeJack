@@ -3,8 +3,11 @@ import { MdArrowOutward } from "react-icons/md";
 import { GiCardExchange } from "react-icons/gi";
 import { TbMenu } from "react-icons/tb";
 import { CgMenuRight } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
+  const navigateTo = useNavigate();
+
   return (
     <div className="z-50 px-[5%] bg-[rgb(17,17,22)] lg:h-[100px] h-[90px] flex items-center justify-between fixed top-0 right-0 left-0">
       <div className="flex items-center gap-[5px]">
@@ -20,7 +23,10 @@ const Nav = () => {
         <p className="text-[15px] text-neutral-400 hover:text-white cursor-pointer">
           FEATURES
         </p>
-        <p className="text-[15px] text-neutral-400 hover:text-white cursor-pointer">
+        <p
+          onClick={() => navigateTo("/dashboard")}
+          className="text-[15px] text-neutral-400 hover:text-white cursor-pointer"
+        >
           MARKETPLACE
         </p>
         <p className="text-[15px] text-neutral-400 hover:text-white cursor-pointer">
