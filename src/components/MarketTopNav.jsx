@@ -2,7 +2,7 @@ import React from "react";
 import { GiCardExchange } from "react-icons/gi";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaRegBell } from "react-icons/fa";
-import landingImg4 from "../../assets/landingImg4.JPG";
+import landingImg4 from "./../assets/landingImg4.JPG";
 
 import { BsThreeDotsVertical } from "react-icons/bs";
 
