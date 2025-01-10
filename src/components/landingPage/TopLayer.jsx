@@ -3,12 +3,13 @@ import React from "react";
 import { HiGlobe } from "react-icons/hi";
 import { GrConnect } from "react-icons/gr";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { PiGlobeHemisphereEastLight } from "react-icons/pi";
 
 const TopLayer = () => {
   return (
     <div className=" lg:pt-[40px] pt-[30px] lg:pb-[100px] pb-[80px] px-[5%] flex ">
       <div className="flex">
-        <div className="flex-1 ">
+        <div className="flex-1">
           <p className="mt-[10px] lg:text-[70px] text-[50px] text-white font-[500]  lg:leading-[80px] leading-[55px]">
             Trade Smarter, Safer, and Faster
           </p>
@@ -26,8 +27,8 @@ const TopLayer = () => {
             </button>
           </div>
         </div>
-        <div className="flex-1 hidden lg:flex justify-center items-center">
-          <HiGlobe className="text-[400px] text-tradeAsh " />
+        <div className="flex-1 hidden lg:flex justify-center">
+          <PiGlobeHemisphereEastLight className="text-[400px] text-tradeGreen " />
         </div>
       </div>
     </div>
