@@ -1,0 +1,347 @@
+{
+  "offers": [
+    {
+      "username": "x33crypt",
+      "availability": "online",
+      "verified": true,
+      "service": "Cashapp",
+      "purchaseLimit": 1250,
+      "trustScore": "75%",
+      "reviews": 209,
+      "id": "CA-782134587",
+      "promoted": true,
+      "currency": "USD",
+      "offerRate": [
+        { "range": "100 to 499", "rate": "350" },
+        { "range": "500 to 999", "rate": "400" }
+      ],
+      "offerTerms": [
+        "Confirm the exchange rate before proceeding.",
+        "Make sure to provide accurate details for quick processing."
+      ]
+    },
+    {
+      "username": "ShopMaster",
+      "availability": "offline",
+      "verified": false,
+      "service": "PayPal",
+      "purchaseLimit": 500,
+      "trustScore": "85%",
+      "reviews": 348,
+      "id": "PP-462837512",
+      "promoted": true,
+      "currency": "USD",
+      "offerRate": [
+        { "range": "100 to 1000", "rate": "480" },
+        { "range": "1000 to 2000", "rate": "550" }
+      ],
+      "offerTerms": [
+        "Confirm the exchange rate before proceeding.",
+        "Make sure to provide accurate details for quick processing."
+      ]
+    },
+    {
+      "username": "TradeExpert",
+      "availability": "online",
+      "verified": true,
+      "service": "Venmo",
+      "purchaseLimit": 3000,
+      "trustScore": "90%",
+      "reviews": 431,
+      "id": "VN-918276354",
+      "promoted": true,
+      "currency": "USD",
+      "offerRate": [
+        { "range": "100 to 699", "rate": "400" },
+        { "range": "700 to 1500", "rate": "500" }
+      ],
+      "offerTerms": [
+        "Confirm the exchange rate before proceeding.",
+        "Make sure to provide accurate details for quick processing."
+      ]
+    },
+    {
+      "username": "SecurePay",
+      "availability": "offline",
+      "verified": false,
+      "service": "Bank to Bank",
+      "purchaseLimit": 2500,
+      "trustScore": "88%",
+      "reviews": 289,
+      "id": "CA-364598723",
+      "promoted": true,
+      "currency": "GDP",
+      "offerRate": [
+        { "range": "100 to 800", "rate": "400" },
+        { "range": "801 to 2000", "rate": "450" }
+      ],
+      "offerTerms": [
+        "Confirm the exchange rate before proceeding.",
+        "Make sure to provide accurate details for quick processing."
+      ]
+    },
+    {
+      "username": "SwiftTransactor",
+      "availability": "online",
+      "verified": false,
+      "service": "Cashapp",
+      "purchaseLimit": 2000,
+      "trustScore": "80%",
+      "reviews": 152,
+      "id": "CA-485172938",
+      "promoted": true,
+      "currency": "USD",
+      "offerRate": [
+        { "range": "100 to 500", "rate": "770" },
+        { "range": "501 to 2000", "rate": "800" }
+      ],
+      "offerTerms": [
+        "Confirm the exchange rate before proceeding.",
+        "Make sure to provide accurate details for quick processing."
+      ]
+    },
+    {
+      "username": "FastPayouts",
+      "availability": "offline",
+      "verified": true,
+      "service": "PayPal",
+      "purchaseLimit": 3500,
+      "trustScore": "91%",
+      "reviews": 672,
+      "id": "PP-712938475",
+      "promoted": true,
+      "currency": "USD",
+      "offerRate": [
+        { "range": "50 to 499", "rate": "350" },
+        { "range": "500 to 999", "rate": "450" }
+      ],
+      "offerTerms": [
+        "Confirm the exchange rate before proceeding.",
+        "Make sure to provide accurate details for quick processing."
+      ]
+    },
+    {
+      "username": "SwiftPay",
+      "availability": "offline",
+      "verified": false,
+      "service": "PayPal",
+      "purchaseLimit": 2750,
+      "trustScore": "92%",
+      "reviews": 372,
+      "id": "PP-839104672",
+      "promoted": false,
+      "currency": "USD",
+      "offerRate": [
+        { "range": "100 to 1000", "rate": "470" },
+        { "range": "1000 to 2000", "rate": "550" }
+      ],
+      "offerTerms": [
+        "Confirm the exchange rate before proceeding.",
+        "Make sure to provide accurate details for quick processing."
+      ]
+    },
+    {
+      "username": "VenmoPro",
+      "availability": "online",
+      "verified": true,
+      "service": "Venmo",
+      "purchaseLimit": 2300,
+      "trustScore": "89%",
+      "reviews": 418,
+      "id": "VN-184953702",
+      "promoted": false,
+      "currency": "USD",
+      "offerRate": [
+        { "range": "300 to 999", "rate": "490" },
+        { "range": "1000 to 2000", "rate": "540" }
+      ],
+      "offerTerms": [
+        "Confirm the exchange rate before proceeding.",
+        "Make sure to provide accurate details for quick processing."
+      ]
+    },
+    {
+      "username": "ReliableFunds",
+      "availability": "offline",
+      "verified": false,
+      "service": "Cashapp",
+      "purchaseLimit": 1200,
+      "trustScore": "84%",
+      "reviews": 190,
+      "id": "CA-294875310",
+      "promoted": false,
+      "currency": "USD",
+      "offerRate": [
+        { "range": "100 to 499", "rate": "350" },
+        { "range": "500 to 999", "rate": "400" }
+      ],
+      "offerTerms": [
+        "Confirm the exchange rate before proceeding.",
+        "Make sure to provide accurate details for quick processing."
+      ]
+    },
+    {
+      "username": "CashQuick",
+      "availability": "online",
+      "verified": true,
+      "service": "PayPal",
+      "purchaseLimit": 2500,
+      "trustScore": "87%",
+      "reviews": 348,
+      "id": "PP-394876152",
+      "promoted": false,
+      "currency": "USD",
+      "offerRate": [
+        { "range": "100 to 699", "rate": "400" },
+        { "range": "700 to 1500", "rate": "500" }
+      ],
+      "offerTerms": [
+        "Confirm the exchange rate before proceeding.",
+        "Make sure to provide accurate details for quick processing."
+      ]
+    },
+    {
+      "username": "TrustPay",
+      "availability": "offline",
+      "verified": true,
+      "service": "Bank to Bank",
+      "purchaseLimit": 2100,
+      "trustScore": "91%",
+      "reviews": 297,
+      "id": "VN-194857120",
+      "promoted": false,
+      "currency": "GDP",
+      "offerRate": [
+        { "range": "50 to 499", "rate": "350" },
+        { "range": "500 to 999", "rate": "450" }
+      ],
+      "offerTerms": [
+        "Confirm the exchange rate before proceeding.",
+        "Make sure to provide accurate details for quick processing."
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "username": "x33crypt",
+      "location": "Nigeria",
+      "email": "adeleke21l4l@gmail.com",
+      "phone": "08039921211",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "trustScore": "75%",
+      "feedback": 209,
+      "averageTradeSpeed": "30 minutes"
+    },
+    {
+      "username": "ShopMaster",
+      "location": "USA",
+      "email": "shopmaster@example.com",
+      "phone": "123-456-7890",
+      "emailVerified": false,
+      "phoneVerified": false,
+      "trustScore": "85%",
+      "feedback": 348,
+      "averageTradeSpeed": "45 minutes"
+    },
+    {
+      "username": "TradeExpert",
+      "location": "Canada",
+      "email": "tradeexpert@example.com",
+      "phone": "234-567-8901",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "trustScore": "90%",
+      "feedback": 431,
+      "averageTradeSpeed": "20 minutes"
+    },
+    {
+      "username": "SecurePay",
+      "location": "UK",
+      "email": "securepay@example.com",
+      "phone": "345-678-9012",
+      "emailVerified": false,
+      "phoneVerified": false,
+      "trustScore": "88%",
+      "feedback": 289,
+      "averageTradeSpeed": "40 minutes"
+    },
+    {
+      "username": "SwiftTransactor",
+      "location": "USA",
+      "email": "swifttransactor@example.com",
+      "phone": "456-789-0123",
+      "emailVerified": false,
+      "phoneVerified": false,
+      "trustScore": "80%",
+      "feedback": 152,
+      "averageTradeSpeed": "50 minutes"
+    },
+    {
+      "username": "FastPayouts",
+      "location": "Canada",
+      "email": "fastpayouts@example.com",
+      "phone": "567-890-1234",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "trustScore": "91%",
+      "feedback": 672,
+      "averageTradeSpeed": "15 minutes"
+    },
+    {
+      "username": "SwiftPay",
+      "location": "USA",
+      "email": "swiftpay@example.com",
+      "phone": "678-901-2345",
+      "emailVerified": false,
+      "phoneVerified": false,
+      "trustScore": "92%",
+      "feedback": 372,
+      "averageTradeSpeed": "25 minutes"
+    },
+    {
+      "username": "VenmoPro",
+      "location": "USA",
+      "email": "venmopro@example.com",
+      "phone": "789-012-3456",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "trustScore": "89%",
+      "feedback": 418,
+      "averageTradeSpeed": "20 minutes"
+    },
+    {
+      "username": "ReliableFunds",
+      "location": "Canada",
+      "email": "reliablefunds@example.com",
+      "phone": "890-123-4567",
+      "emailVerified": false,
+      "phoneVerified": false,
+      "trustScore": "84%",
+      "feedback": 190,
+      "averageTradeSpeed": "35 minutes"
+    },
+    {
+      "username": "CashQuick",
+      "location": "USA",
+      "email": "cashquick@example.com",
+      "phone": "901-234-5678",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "trustScore": "87%",
+      "feedback": 348,
+      "averageTradeSpeed": "25 minutes"
+    },
+    {
+      "username": "TrustPay",
+      "location": "UK",
+      "email": "trustpay@example.com",
+      "phone": "012-345-6789",
+      "emailVerified": true,
+      "phoneVerified": true,
+      "trustScore": "91%",
+      "feedback": 297,
+      "averageTradeSpeed": "15 minutes"
+    }
+  ]
+}

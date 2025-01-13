@@ -6,6 +6,32 @@
   font-family: "Manrope", "serif";
 }
 
+.tippy-box[data-theme~="custom1"] {
+  background-color: #333;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.tippy-box[data-theme~="custom2"] {
+  background-color: #333;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 5px;
+  width: 180px;
+}
+
+.tippy-box[data-theme~="custom3"] {
+  background-color: #ffcb4d;
+  color: black;
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 5px;
+  width: 180px;
+}
+
 @layer base {
   :root {
     --radius: 0.5rem;

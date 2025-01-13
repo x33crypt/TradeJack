@@ -4,8 +4,6 @@ import { AiOutlineLike } from "react-icons/ai";
 import { MdReportGmailerrorred } from "react-icons/md";
 import { IoMdThumbsUp } from "react-icons/io";
 import { AiOutlineSafety } from "react-icons/ai";
-import { GoArrowUpRight } from "react-icons/go";
-import { GoArrowDownLeft } from "react-icons/go";
 import { GoPlus } from "react-icons/go";
 
 const DashSide = () => {

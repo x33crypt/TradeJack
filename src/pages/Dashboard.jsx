@@ -3,18 +3,22 @@ import DashSideNav from "../components/dashboard/DashSideNav";
 import DashTopNav from "../components/dashboard/DashTopNav";
 import DashMain from "@/components/dashboard/DashMain";
 import DashSide from "@/components/dashboard/DashSide";
+import Footer from "@/components/Footer";
 
 const Dashboard = () => {
   return (
     <>
       <DashTopNav />
       <div className="pt-[90px] flex bg-tradeBlack">
-        <DashSideNav />
-        <div className="ml-[220px] px-[25px] py-[20px] flex gap-[25px] ">
+        <div>
+          <DashSideNav />
+        </div>
+        <div className="flex flex-1 p-[25px] gap-[25px] ">
           <DashMain />
           <DashSide />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

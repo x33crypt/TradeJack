@@ -8,7 +8,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 
 const MarketTopNav = () => {
   return (
-    <div className="fixed right-0 left-0 bg-tradeBlack h-[90px] px-[3%] flex justify-between items-center border-b border-tradeAsh">
+    <div className="z-50 fixed right-0 left-0 bg-tradeBlack h-[90px] px-[3%] flex justify-between items-center border-b border-tradeAsh">
       <div className="flex items-center">
         <div className="flex items-center justify-start gap-[5px] ">
           <GiCardExchange className="lg:text-[23px] text-[25px] text-tradeGreen" />
@@ -20,14 +20,11 @@ const MarketTopNav = () => {
           </p>
         </div>
         <div className="ml-[65px] flex gap-[20px] items-center">
-          <p className="text-white hover:text-neutral-400 text-[16px] font-[400]  cursor-pointer">
-            Buy Assets
-          </p>
           <p className="text-white hover:text-neutral-400 text-[15px] font-[400]  cursor-pointer">
-            Sell Assets
+            Sell asset
           </p>
           <p className="text-white hover:text-neutral-400 text-[15px] font-[400] cursor-pointer">
-            Create an offer
+            Buy asset
           </p>
           <p className="text-white hover:text-neutral-400 text-[15px] font-[400]  cursor-pointer">
             Favourite offers
