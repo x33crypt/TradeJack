@@ -83,9 +83,9 @@ const ViewOfferSell = () => {
       <MarketTopNav />
       <div className="px-[10%] py-[90px] bg-white flex flex-col">
         <div className="mt-[70px] flex text-black text-[40px] font-[700] justify-center">
-          <p>
+          <p className="text-[45px]">
             Sell your asset with{" "}
-            <small className="text-[40px] text-tradeOrange">
+            <small className="text-[45px] text-tradeOrange">
               {offerDetails.service}
             </small>{" "}
             ({offerDetails.currency})
@@ -129,7 +129,7 @@ const ViewOfferSell = () => {
               <div className="flex flex-col gap-[8px]">
                 <div className="flex items-center gap-[4px] text-neutral-400">
                   <p className="font-[400] text-[14px] text-neutral-400">
-                    Buy Limits
+                    Transaction Limits
                   </p>
                 </div>
                 <div className="flex flex-col gap-[4px]">
@@ -276,8 +276,8 @@ const ViewOfferSell = () => {
 
                   <p className="text-[14px] font-[400] ">
                     {vendorDetails.phoneVerified
-                      ? "Email verified"
-                      : "Email not verified"}
+                      ? "Phone verified"
+                      : "Phone not verified"}
                   </p>
                 </div>
               </div>

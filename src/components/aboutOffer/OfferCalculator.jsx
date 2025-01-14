@@ -34,7 +34,7 @@ const OfferCalculator = ({ offerRate, currency }) => {
     });
 
     if (!applicableRate) {
-      setMessage("Amount is outside the buyer's range.");
+      setMessage("Amount is outside the buyer's rate.");
       setReceiveAmount("");
       return;
     }
