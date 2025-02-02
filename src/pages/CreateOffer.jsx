@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import MarketTopNav from "@/components/MarketTopNav";
 import Footer from "@/components/Footer";
 import { FaRegQuestionCircle } from "react-icons/fa";
@@ -28,15 +28,51 @@ const CreateOffer = () => {
   const [showGiftCard, setShowGiftCard] = useState(false);
   const [showDebitCreditCard, setShowDebitCreditCard] = useState(false);
   const [service, setService] = useState("Online Wallet Transfer");
-  const [creditOrDebitCard, setCreditOrDebitCard] = useState("");
   const [wallet, setWallet] = useState("");
   const [account, setAccount] = useState("");
   const [giftCard, setGiftCard] = useState("");
+  const [creditOrDebitCard, setCreditOrDebitCard] = useState("");
   const [preferredCurrency, setPreferredCurrency] = useState({
     name: "United States Dollar",
     code: "USD",
   });
   const [offerTerms, setOfferTerms] = useState([]);
+  const [purchaseLimitError, setPurchaseLimitError] = useState("");
+  const [rateError, setRateError] = useState("");
+  const [offerTermsError, setOfferTermsError] = useState("");
+  const [serviceError, setServiceError] = useState("");
+
+  const smoothScrollTo = async (targetId) => {
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      // Calculate the target position
+      const headerOffset = 210; // Adjust this to the height of your header
+      const targetPosition = targetElement.offsetTop - headerOffset; // Use offsetTop for better accuracy
+      const startPosition = window.pageYOffset; // Current scroll position
+      const distance = targetPosition - startPosition; // Distance to scroll
+      const duration = 1000; // Duration of the scroll in milliseconds
+      let startTime = null;
+
+      const animation = (currentTime) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1); // Ensure it doesn't exceed 1
+        const easing = easeInOutQuad(progress); // Easing function for smooth effect
+
+        window.scrollTo(0, startPosition + distance * easing);
+
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      };
+
+      const easeInOutQuad = (t) => {
+        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // Easing function
+      };
+
+      requestAnimationFrame(animation);
+    }
+  };
 
   const handleServiceTypeChange = () => {
     if (service === "Online Wallet Transfer") {
@@ -95,6 +131,64 @@ const CreateOffer = () => {
   }, [service]);
 
   const handleToOfferPageTwo = () => {
+    // Ensure all selections are made
+    if (!wallet && !account && !giftCard && !creditOrDebitCard) {
+      smoothScrollTo("selectAsset");
+      setServiceError("Please select a required option.");
+      return;
+    } else {
+      setServiceError(""); // Clear the error if at least one is selected
+    }
+
+    // Ensure both minimum and maximum purchase amounts are selected
+    if (!miniPurchase || !maxPurchase) {
+      smoothScrollTo("purchaseLimit");
+      setPurchaseLimitError(
+        "Please set both minimum and maximum purchase amounts."
+      );
+      return;
+    } else {
+      setPurchaseLimitError("");
+    }
+
+    // Validate minimum purchase
+    if (miniPurchase < userTrasactionLimitMinimum) {
+      smoothScrollTo("purchaseLimit");
+      setPurchaseLimitError(
+        `Your minimum purchase must be at least the transaction limit of $${userTrasactionLimitMinimum}.`
+      );
+      return;
+    } else {
+      setPurchaseLimitError("");
+    }
+
+    // Validate maximum purchase
+    if (
+      maxPurchase <= miniPurchase ||
+      maxPurchase > userTrasactionLimitMaximum
+    ) {
+      smoothScrollTo("purchaseLimit");
+      setPurchaseLimitError(
+        `Your maximum purchase must be between $${miniPurchase} and the maximum transaction limit of $${userTrasactionLimitMaximum}.`
+      );
+      return;
+    } else {
+      setPurchaseLimitError("");
+    }
+
+    if (offerRates.length <= 1) {
+      smoothScrollTo("offerRates");
+      setRateError("Please add at least one rate to continue.");
+      return;
+    }
+
+    if (offerTerms <= 0) {
+      smoothScrollTo("offerTerms");
+      setOfferTermsError("Please add offer terms to proceed.");
+      return;
+    }
+
+    // Proceed to the next page if all conditions are valid
     setOfferPageOne(false);
     setOfferPageTwo(true);
   };
@@ -111,6 +205,9 @@ const CreateOffer = () => {
   console.log(miniPurchase);
   console.log(maxPurchase);
   console.log(offerTerms);
+
+  const userTrasactionLimitMinimum = "10";
+  const userTrasactionLimitMaximum = "500";
 
   return (
     <>
@@ -130,51 +227,79 @@ const CreateOffer = () => {
             </div>
             <div className="flex gap-[40px] ">
               <SelectService service={service} setService={setService} />
-
-              <SelectAccount
-                showAccount={showAccount}
-                account={account}
-                setAccount={setAccount}
-              />
-              <SelectWallet
-                showWallet={showWallet}
-                wallet={wallet}
-                setWallet={setWallet}
-              />
-              <SelectGitfCard
-                showGiftCard={showGiftCard}
-                giftCard={giftCard}
-                setGiftCard={setGiftCard}
-              />
-              <DebitCreditCard
-                showDebitCreditCard={showDebitCreditCard}
-                creditOrDebitCard={creditOrDebitCard}
-                setCreditOrDebitCard={setCreditOrDebitCard}
+              <div id="selectAsset">
+                <SelectAccount
+                  showAccount={showAccount}
+                  account={account}
+                  setAccount={setAccount}
+                  setServiceError={setServiceError}
+                  serviceError={serviceError}
+                />
+                <SelectWallet
+                  showWallet={showWallet}
+                  wallet={wallet}
+                  setWallet={setWallet}
+                  setServiceError={setServiceError}
+                  serviceError={serviceError}
+                />
+                <SelectGitfCard
+                  showGiftCard={showGiftCard}
+                  giftCard={giftCard}
+                  setGiftCard={setGiftCard}
+                  setServiceError={setServiceError}
+                  serviceError={serviceError}
+                />
+                <DebitCreditCard
+                  showDebitCreditCard={showDebitCreditCard}
+                  creditOrDebitCard={creditOrDebitCard}
+                  setCreditOrDebitCard={setCreditOrDebitCard}
+                  setServiceError={setServiceError}
+                  serviceError={serviceError}
+                />
+              </div>
+            </div>
+            <div>
+              <PreferredCurrency
+                preferredCurrency={preferredCurrency}
+                setPreferredCurrency={setPreferredCurrency}
               />
             </div>
-            <PreferredCurrency
-              preferredCurrency={preferredCurrency}
-              setPreferredCurrency={setPreferredCurrency}
-            />
-            <PurchaseLimit
-              miniPurchase={miniPurchase}
-              setMiniPurchase={setMiniPurchase}
-              maxPurchase={maxPurchase}
-              setMaxPurchase={setMaxPurchase}
-              preferredCurrency={preferredCurrency}
-            />
-            <OfferTradeRate
-              rangeFrom={rangeFrom}
-              setRangeFrom={setRangeFrom}
-              rangeTo={rangeTo}
-              setRangeTo={setRangeTo}
-              rate={rate}
-              setRate={setRate}
-              offerRates={offerRates}
-              setOfferRates={setOfferRates}
-              preferredCurrency={preferredCurrency}
-            />
-            <OfferTerms setOfferTerms={setOfferTerms} />
+            <div id="purchaseLimit">
+              <PurchaseLimit
+                miniPurchase={miniPurchase}
+                setMiniPurchase={setMiniPurchase}
+                maxPurchase={maxPurchase}
+                setMaxPurchase={setMaxPurchase}
+                preferredCurrency={preferredCurrency}
+                userTrasactionLimitMinimum={userTrasactionLimitMinimum}
+                userTrasactionLimitMaximum={userTrasactionLimitMaximum}
+                setPurchaseLimitError={setPurchaseLimitError}
+                purchaseLimitError={purchaseLimitError}
+              />
+            </div>
+            <div id="offerRates">
+              <OfferTradeRate
+                miniPurchase={miniPurchase}
+                maxPurchase={maxPurchase}
+                rangeFrom={rangeFrom}
+                setRangeFrom={setRangeFrom}
+                rangeTo={rangeTo}
+                setRangeTo={setRangeTo}
+                rate={rate}
+                setRate={setRate}
+                offerRates={offerRates}
+                setOfferRates={setOfferRates}
+                preferredCurrency={preferredCurrency}
+                setRateError={setRateError}
+                rateError={rateError}
+              />
+            </div>
+            <div id="offerTerms">
+              <OfferTerms
+                setOfferTerms={setOfferTerms}
+                offerTermsError={offerTermsError}
+              />
+            </div>
           </div>
           <div
             className={`${

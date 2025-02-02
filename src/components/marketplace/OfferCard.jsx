@@ -78,7 +78,7 @@ const OfferCard = (props) => {
                 <div className="">
                   <p className="text-[13px]">
                     Trust Score :{" "}
-                    <small className="text-[13px]">{props.trustScore}</small>
+                    <small className="text-[13px]">{`${props.trustScore}%`}</small>
                   </p>
                 </div>
               </div>
@@ -149,7 +149,7 @@ const OfferCard = (props) => {
           </div>
           <div>
             <p className="text-[12px] text-tradeAshLight font-[400]">
-              View offer for more rates.
+              View offer for more rates and details.
             </p>
           </div>
         </div>

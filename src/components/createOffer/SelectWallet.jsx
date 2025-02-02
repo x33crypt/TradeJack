@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import { RiInformation2Line } from "react-icons/ri";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-const SelectWallet = ({ showWallet, wallet, setWallet }) => {
+const SelectWallet = ({
+  showWallet,
+  wallet,
+  setWallet,
+  setServiceError,
+  serviceError,
+}) => {
   const [showWalletOptions, setShowWalletOptions] = useState(false);
   const [walletSearchInput, setWalletSearchInput] = useState("");
 
@@ -172,6 +179,14 @@ const SelectWallet = ({ showWallet, wallet, setWallet }) => {
             </div>
           )}
         </div>
+      </div>
+      <div>
+        {serviceError && (
+          <div className="flex items-center gap-[5px]">
+            <RiInformation2Line className="text-red-500  text-[17px] " />
+            <p className="text-[13px] text-red-500">{serviceError}</p>
+          </div>
+        )}
       </div>
     </div>
   );

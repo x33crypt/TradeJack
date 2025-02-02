@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { FaRegQuestionCircle } from "react-icons/fa";
 import { RiInformation2Line } from "react-icons/ri";
 
 import tippy from "tippy.js";
@@ -10,20 +9,31 @@ const PurchaseLimit = ({
   maxPurchase,
   setMaxPurchase,
   preferredCurrency,
+  userTrasactionLimitMinimum,
+  userTrasactionLimitMaximum,
+  purchaseLimitError,
+  setPurchaseLimitError,
 }) => {
-  const [limitError, setLimitError] = useState("");
-
   const handleMiniPurchaseChange = (e) => {
     const rawValue = e.target.value.replace(/,/g, ""); // Remove commas
 
     // Allow empty input (so users can delete completely)
     if (rawValue === "") {
       setMiniPurchase("");
+      setPurchaseLimitError("");
       return;
     }
 
     // Ensure the value is a number before updating state
     if (!isNaN(rawValue)) {
+      if (Number(rawValue) < userTrasactionLimitMinimum) {
+        setPurchaseLimitError(
+          `Your minimum purchase must meet the transaction limit of $${userTrasactionLimitMinimum}.`
+        );
+      } else {
+        setPurchaseLimitError(""); // Clear error if value is valid
+      }
+
       setMiniPurchase(rawValue);
     }
   };
@@ -34,11 +44,23 @@ const PurchaseLimit = ({
     // Allow empty input (so users can delete completely)
     if (rawValue === "") {
       setMaxPurchase("");
+      setPurchaseLimitError("");
       return;
     }
 
     // Ensure the value is a number before updating state
     if (!isNaN(rawValue)) {
+      if (
+        Number(rawValue) <= miniPurchase ||
+        Number(rawValue) > userTrasactionLimitMaximum
+      ) {
+        setPurchaseLimitError(
+          `Your maximum purchase must be between the minimum purchase limit of $${miniPurchase} and the maximum transaction limit of $${userTrasactionLimitMaximum}.`
+        );
+      } else {
+        setPurchaseLimitError(""); // Clear error if value is valid
+      }
+
       setMaxPurchase(rawValue);
     }
   };
@@ -97,10 +119,10 @@ const PurchaseLimit = ({
         </p>
       </div>
       <div>
-        {limitError && (
+        {purchaseLimitError && (
           <div className="flex items-center gap-[10px]">
             <RiInformation2Line className="text-red-500  text-[17px] " />
-            <p className="text-[13px] text-red-500">{limitError}</p>
+            <p className="text-[13px] text-red-500">{purchaseLimitError}</p>
           </div>
         )}
       </div>

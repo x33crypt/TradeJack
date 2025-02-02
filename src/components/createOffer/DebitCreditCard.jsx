@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import { RiInformation2Line } from "react-icons/ri";
 
 const DebitCreditCard = ({
   showDebitCreditCard,
   setCreditOrDebitCard,
   creditOrDebitCard,
+  setServiceError,
+  serviceError,
 }) => {
   const [showDCCardOptions, setShowDCCardOptions] = useState(false);
   const [cardSearchInput, setCardSearchInput] = useState("");
@@ -125,6 +128,14 @@ const DebitCreditCard = ({
             </div>
           )}
         </div>
+      </div>
+      <div>
+        {serviceError && (
+          <div className="flex items-center gap-[5px]">
+            <RiInformation2Line className="text-red-500  text-[17px] " />
+            <p className="text-[13px] text-red-500">{serviceError}</p>
+          </div>
+        )}
       </div>
     </div>
   );

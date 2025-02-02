@@ -1,9 +1,8 @@
 import React from "react";
-import { FaRegQuestionCircle } from "react-icons/fa";
 import tippy from "tippy.js";
 import { RiInformation2Line } from "react-icons/ri";
 
-const OfferTerms = ({ setOfferTerms }) => {
+const OfferTerms = ({ setOfferTerms, offerTermsError, setOfferTermsError }) => {
   const handleInputChange = (event) => {
     const text = event.target.value;
 
@@ -43,6 +42,14 @@ const OfferTerms = ({ setOfferTerms }) => {
           actions you want buyers to follow to ensure a smooth and successful
           transaction.
         </p>
+      </div>
+      <div>
+        {offerTermsError && (
+          <div className="flex items-center gap-[5px]">
+            <RiInformation2Line className="text-red-500  text-[17px] " />
+            <p className="text-[13px] text-red-500">{offerTermsError}</p>
+          </div>
+        )}
       </div>
     </div>
   );

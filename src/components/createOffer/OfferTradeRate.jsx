@@ -4,6 +4,8 @@ import { RiInformation2Line } from "react-icons/ri";
 import tippy from "tippy.js";
 
 const OfferTradeRate = ({
+  miniPurchase,
+  maxPurchase,
   rangeFrom,
   setRangeFrom,
   rangeTo,
@@ -13,9 +15,9 @@ const OfferTradeRate = ({
   offerRates,
   setOfferRates,
   preferredCurrency,
+  setRateError,
+  rateError,
 }) => {
-  const [rateError, setRateError] = useState("");
-
   const updateOfferRates = () => {
     // Parse input values as numbers
     const fromValue = parseFloat(rangeFrom.replace(/,/g, "").trim());
@@ -37,8 +39,20 @@ const OfferTradeRate = ({
       return;
     }
 
-    // Ensure toValue is greater than fromValue
+    if (
+      fromValue < miniPurchase ||
+      fromValue > maxPurchase ||
+      toValue < miniPurchase ||
+      toValue > maxPurchase
+    ) {
+      setRateError(
+        `The rate range cannot be lower than the minimum purchase amount or exceed the maximum purchase limit.`
+      );
+      return;
+    }
+
     if (toValue <= fromValue) {
+      // Ensure toValue is greater than fromValue
       setRateError("The 'To' value must be greater than the 'From' value.");
       return;
     }
@@ -96,6 +110,7 @@ const OfferTradeRate = ({
 
   const handleFromChange = (e) => {
     const rawValue = e.target.value.replace(/,/g, ""); // Remove existing commas
+
     if (!isNaN(rawValue)) {
       setRangeFrom(rawValue); // Add formatted commas
     }

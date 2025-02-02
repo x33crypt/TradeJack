@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import { RiInformation2Line } from "react-icons/ri";
 
-const SelectGitfCard = ({ showGiftCard, giftCard, setGiftCard }) => {
+const SelectGitfCard = ({
+  showGiftCard,
+  giftCard,
+  setGiftCard,
+  setServiceError,
+  serviceError,
+}) => {
   const [showGiftCardOptions, setShowGiftCardOptions] = useState(false);
   const [giftCardSearchInput, setGiftCardSearchInput] = useState("");
 
@@ -146,6 +153,14 @@ const SelectGitfCard = ({ showGiftCard, giftCard, setGiftCard }) => {
             </div>
           )}
         </div>
+      </div>
+      <div>
+        {serviceError && (
+          <div className="flex items-center gap-[5px]">
+            <RiInformation2Line className="text-red-500  text-[17px] " />
+            <p className="text-[13px] text-red-500">{serviceError}</p>
+          </div>
+        )}
       </div>
     </div>
   );
