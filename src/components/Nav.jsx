@@ -9,7 +9,7 @@ const Nav = () => {
   const navigateTo = useNavigate();
 
   return (
-    <div className="z-50 px-[5%] bg-[rgb(17,17,22)] lg:h-[100px] h-[90px] flex items-center justify-between fixed top-0 right-0 left-0">
+    <div className="z-50 px-[5%] bg-black lg:h-[100px] h-[90px] flex items-center justify-between fixed top-0 right-0 left-0">
       <div className="flex items-center gap-[5px]">
         <GiCardExchange className="lg:text-[25px] text-[25px] text-tradeGreen" />
         <p className=" lg:text-[25px] text-[24px] font-[700] text-tradeGreen">

@@ -1,5 +1,4 @@
 import React from "react";
-import { GiCardExchange } from "react-icons/gi";
 import { MdSpaceDashboard } from "react-icons/md";
 import { RiExchange2Fill } from "react-icons/ri";
 import { RiExchangeFundsLine } from "react-icons/ri";
@@ -14,7 +13,7 @@ import { MdOutlineQueryStats } from "react-icons/md";
 const DashSideNav = () => {
   const navigateTo = useNavigate();
   return (
-    <div className="sticky top-[90px] flex flex-col justify-between p-[25px] w-[220px] border-r border-b border-tradeAsh">
+    <div className="sticky top-[95px] flex flex-col justify-between p-[14px] w-[240px] bg-tradeAsh rounded-[8px]">
       <div className="flex flex-col gap-[15px]">
         <div
           className="px-[15px] py-[6px] flex items-center gap-[10px] rounded-[8px] hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer"

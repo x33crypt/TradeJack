@@ -81,10 +81,10 @@ const ViewOfferSell = () => {
   return (
     <>
       <MarketTopNav />
-      <div className="px-[10%] py-[90px] bg-white flex flex-col">
-        <div className="mt-[70px] flex text-black text-[40px] font-[700] justify-center">
+      <div className="px-[10%] py-[90px] gap-[60px] bg-white flex flex-col">
+        <div className="mt-[50px] flex text-black text-[40px] font-[700] justify-center">
           <p className="text-[45px]">
-            Sell your asset with{" "}
+            Sell your asset using{" "}
             <small className="text-[45px] text-tradeOrange">
               {offerDetails.service}
             </small>{" "}
@@ -93,9 +93,9 @@ const ViewOfferSell = () => {
         </div>
         <OfferCalculator
           offerRate={offerDetails?.offerRate}
-          currency={offerDetails.currency}
+          currency={offerDetails?.currency}
         />
-        <div className="mt-[80px] gap-[50px] flex">
+        <div className="gap-[50px] flex">
           <div className="flex-1 h-max flex flex-col gap-[10px]">
             <p className="text-[18px] font-[800]">About this offer</p>
             <div className="p-[20px] flex flex-col gap-[30px] rounded-[8px] border border-neutral-300">
@@ -295,7 +295,7 @@ const ViewOfferSell = () => {
             </div>
           </div>
         </div>
-        <div className="mt-[60px] flex flex-col gap-[10px]">
+        <div className="flex flex-col gap-[10px]">
           <p className="text-[18px] font-[800]">Offer terms</p>
           <div className="p-[20px] flex flex-col rounded-[8px] border border-neutral-300">
             {offerDetails.offerTerms?.map((terms, index) => (
@@ -305,12 +305,12 @@ const ViewOfferSell = () => {
             ))}
           </div>
         </div>
-        <div className="mt-[60px] p-[30px] flex flex-col gap-[30px] rounded-[8px] border border-neutral-300">
+        <div className="p-[30px] flex flex-col gap-[30px] rounded-[8px] border border-neutral-300">
           <div className="flex">
             <p className="text-[18px] font-[800]">Feedback on this offer</p>
           </div>
         </div>
-        <div className="mt-[70px] flex  justify-center">
+        <div className="flex  justify-center">
           <p className="px-[40px] py-[7px] rounded-[5px] bg-tradePurple text-white hover:text-tradePurple border border-tradePurple hover:bg-white font-[600] cursor-pointer">
             Start Transaction
           </p>

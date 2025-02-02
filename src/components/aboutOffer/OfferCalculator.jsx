@@ -6,6 +6,7 @@ const OfferCalculator = ({ offerRate, currency }) => {
   const [receiveAmount, setReceiveAmount] = useState(""); // Amount user will receive
   const [message, setMessage] = useState(""); // Error messages for validation
   const [comment, setComment] = useState(""); // Error messages for validation
+
   const handleSendAmountChange = (e) => {
     let value = e.target.value;
     setComment("");
@@ -53,7 +54,7 @@ const OfferCalculator = ({ offerRate, currency }) => {
   };
 
   return (
-    <div className="mt-[70px] p-[30px] flex flex-col gap-[30px] rounded-[8px] border border-neutral-300">
+    <div className="p-[30px] flex flex-col gap-[50px] rounded-[8px] border border-neutral-300">
       <div className="flex justify-center">
         <p className="text-[24px] font-[800]">How much do you want to Sell?</p>
       </div>
@@ -63,7 +64,7 @@ const OfferCalculator = ({ offerRate, currency }) => {
           <div className="flex rounded-[4px] border border-neutral-400">
             <div className="w-full px-[15px] py-[10px] border-r border-neutral-400">
               <input
-                className="w-full outline-none border-none text-[14px] font-[600] placeholder:text-neutral-500"
+                className="w-full outline-none border-none text-[14px] font-[600] placeholder:text-neutral-500 active:"
                 type="text"
                 id="sendAmount"
                 value={sendAmount ? parseInt(sendAmount).toLocaleString() : ""}
@@ -115,7 +116,7 @@ const OfferCalculator = ({ offerRate, currency }) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center font-[500] text-[17px] ">
+      <div className="flex justify-center font-[700] text-[17px]">
         {comment}
       </div>
     </div>

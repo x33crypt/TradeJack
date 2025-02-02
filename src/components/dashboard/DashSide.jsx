@@ -8,8 +8,8 @@ import { GoPlus } from "react-icons/go";
 
 const DashSide = () => {
   return (
-    <div className="w-[300px] flex flex-col gap-[30px]">
-      <div className="p-[20px] gap-[10px] flex flex-col items-center rounded-[8px] bg-tradeAsh">
+    <div className="w-[300px] flex flex-col gap-[14px]">
+      <div className=" p-[20px] gap-[10px] flex flex-col items-center rounded-[8px] bg-tradeAsh">
         <div className="w-[100px] border-[2px] border-dashed rounded-full p-[3px]">
           <img className=" rounded-full" src={landingImg4} alt="" />
         </div>
@@ -28,13 +28,13 @@ const DashSide = () => {
             <p className="text-[14px] text-white">75%</p>
           </div>
         </div>
-        <div className="mt-[30px] flex flex-col items-center gap-[5px]">
+        <div className="mt-[30px] w-full flex flex-col items-center gap-[5px]">
           <p className="text-white text-[13px] font-[500]">
             Verification Status
           </p>
-          <p className="px-[60px] py-[7px] text-[12px] border border-neutral-500 hover:border-tradeGreen text-white bg-tradeBlack hover:bg-tradGreen rounded-[5px] cursor-pointer">
-            75% Complete
-          </p>
+          <div className="w-full flex justify-center py-[7px] border border-neutral-500 hover:border-tradeGreen text-white bg-tradeBlack hover:bg-tradGreen rounded-[5px] cursor-pointer">
+            <p className=" text-[12px] ">75% Complete</p>
+          </div>
         </div>
       </div>
       <div className="p-[20px] gap-[20px] flex flex-col rounded-[8px] bg-tradeAsh">
@@ -42,7 +42,7 @@ const DashSide = () => {
           <p className="text-white text-[18px] font-[600]">Action Needed</p>
         </div>
         <div className="flex flex-col gap-[20px]">
-          <div className=" flex flex-col gap-[15px] p-[15px] rounded-[10px] bg-tradeBlack border border-neutral-600">
+          <div className=" flex flex-col gap-[15px] p-[15px] rounded-[10px] bg-tradeAsh border border-neutral-600">
             <p className="text-white text-[14px] font-[600]">Rating</p>
             <div className="flex gap-[15px]">
               <div className="flex items-center">
@@ -60,7 +60,7 @@ const DashSide = () => {
               Rate Now
             </p>
           </div>
-          <div className=" flex flex-col gap-[15px] p-[15px] rounded-[10px] bg-tradeBlack border border-neutral-600">
+          <div className=" flex flex-col gap-[15px] p-[15px] rounded-[10px] bg-tradeAsh border border-neutral-600">
             <p className="text-white text-[14px] font-[600]">Dispute</p>
             <div className="flex gap-[15px]">
               <div className="flex items-center">

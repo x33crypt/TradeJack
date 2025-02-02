@@ -8,7 +8,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 
 const DashTopNav = () => {
   return (
-    <div className="z-50 fixed right-0 left-0 bg-tradeBlack px-[3%] h-[90px] flex justify-between items-center border-b border-tradeAsh ">
+    <div className="z-50 fixed right-0 left-0 bg-black px-[2%] h-[80px] flex justify-between items-center border-b border-tradeAsh ">
       <div className="flex items-center ">
         <div className="flex items-center justify-start gap-[5px] ">
           <GiCardExchange className="lg:text-[23px] text-[25px] text-tradeGreen" />
@@ -19,7 +19,7 @@ const DashTopNav = () => {
             </small>
           </p>
         </div>
-        <div className="ml-[65px]">
+        <div className="ml-[75px]">
           <p className="text-[24px] text-white">
             Welcome Back,{" "}
             <small className="text-[23px] font-[700]">X33crypt</small>

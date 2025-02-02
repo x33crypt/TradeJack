@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Marketplace from "./pages/Marketplace";
 import ViewOfferSell from "./pages/ViewOfferSell";
 import ScrollToTop from "./components/ScrollToTop";
+import CreateOffer from "./pages/CreateOffer";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/marketplace" element={<Marketplace />} />
+        <Route path="/create-offer" element={<CreateOffer />} />
         <Route path="/offer/:id" element={<ViewOfferSell />} />
       </Routes>
     </>

@@ -14,7 +14,7 @@ const Landing = () => {
   return (
     <>
       <Nav />
-      <div className=" bg-tradeBlack pt-[80px] lg:pt-[100px] ">
+      <div className=" bg-black pt-[80px] lg:pt-[100px] ">
         <TopLayer />
         <AboutLayer />
         <Layer2 />

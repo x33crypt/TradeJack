@@ -1,8 +1,4 @@
 import React from "react";
-
-import { HiGlobe } from "react-icons/hi";
-import { GrConnect } from "react-icons/gr";
-import { FaMapMarkerAlt } from "react-icons/fa";
 import { PiGlobeHemisphereEastLight } from "react-icons/pi";
 
 const TopLayer = () => {

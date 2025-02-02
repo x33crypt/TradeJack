@@ -9,11 +9,11 @@ const Dashboard = () => {
   return (
     <>
       <DashTopNav />
-      <div className="pt-[90px] flex bg-tradeBlack">
+      <div className="pt-[95px] flex bg-black gap-[1%] p-[1%]">
         <div>
           <DashSideNav />
         </div>
-        <div className="flex flex-1 p-[25px] gap-[25px] ">
+        <div className="flex flex-1 gap-[14px] ">
           <DashMain />
           <DashSide />
         </div>
