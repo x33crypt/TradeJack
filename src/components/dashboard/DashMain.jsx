@@ -58,11 +58,11 @@ const DashMain = () => {
                 </p>
               </div>
               <div className="flex flex-co w-full gap-[10px]">
-                <div className="flex-1 flex items-center justify-center gap-[5px] py-[10px] rounded-[8px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex-1 flex items-center justify-center gap-[5px] py-[10px] rounded-[8px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer transition-all duration-300">
                   {/* <IoMdArrowRoundDown className="text-white" /> */}
                   <p className="text-white text-[15px] font-[500]">Deposit</p>
                 </div>
-                <div className="flex-1 flex items-center justify-center gap-[5px] py-[10px] rounded-[8px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex-1 flex items-center justify-center gap-[5px] py-[10px] rounded-[8px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer transition-all duration-300">
                   {/* <IoMdArrowRoundUp className="text-white" /> */}
                   <p className="text-white text-[15px] font-[500]">Withdraw</p>
                 </div>
