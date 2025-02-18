@@ -28,7 +28,7 @@ const PurchaseLimit = ({
     if (!isNaN(rawValue)) {
       if (Number(rawValue) < userTrasactionLimitMinimum) {
         setPurchaseLimitError(
-          `Your minimum purchase must meet the transaction limit of $${userTrasactionLimitMinimum}.`
+          `Your minimum purchase cannot be lower than the minimum transaction limit of $${userTrasactionLimitMinimum}.`
         );
       } else {
         setPurchaseLimitError(""); // Clear error if value is valid
@@ -48,21 +48,47 @@ const PurchaseLimit = ({
       return;
     }
 
+    // Convert to number for comparison
+    const miniPurchaseValue = Number(miniPurchase);
+    const transactionLimitMinimum = Number(userTrasactionLimitMinimum);
+
+    // Debug log for values
+    console.log("miniPurchase at start:", miniPurchaseValue);
+    console.log("userTrasactionLimitMinimum:", transactionLimitMinimum);
+
+    if (!miniPurchaseValue) {
+      console.log("No minimum purchase set");
+      setPurchaseLimitError("Please set your minimum purchase limit.");
+      return;
+    } else {
+      setPurchaseLimitError(""); // Clear error if value is valid
+    }
+
+    if (miniPurchaseValue < transactionLimitMinimum) {
+      setPurchaseLimitError(
+        `Your minimum purchase cannot be lower than the minimum transaction limit of $${transactionLimitMinimum}.`
+      );
+      return; // Ensure no further checks happen if this error is triggered
+    } else {
+      setPurchaseLimitError(""); // Clear error if value is valid
+    }
+
     // Ensure the value is a number before updating state
     if (!isNaN(rawValue)) {
-      if (
-        Number(rawValue) <= miniPurchase ||
-        Number(rawValue) > userTrasactionLimitMaximum
-      ) {
+      if (Number(rawValue) <= miniPurchaseValue) {
         setPurchaseLimitError(
-          `Your maximum purchase must be between the minimum purchase limit of $${miniPurchase} and the maximum transaction limit of $${userTrasactionLimitMaximum}.`
+          `Your maximum purchase must exceed the minimum purchase limit of $${miniPurchaseValue}.`
+        );
+      } else if (Number(rawValue) > userTrasactionLimitMaximum) {
+        setPurchaseLimitError(
+          `Your maximum purchase cannot exceed your transaction limit of $${userTrasactionLimitMaximum}.`
         );
       } else {
         setPurchaseLimitError(""); // Clear error if value is valid
       }
-
-      setMaxPurchase(rawValue);
     }
+
+    setMaxPurchase(rawValue);
   };
 
   tippy("#setPurchaseLimit", {

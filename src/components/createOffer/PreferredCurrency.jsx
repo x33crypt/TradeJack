@@ -15,7 +15,7 @@ const PreferredCurrency = ({ preferredCurrency, setPreferredCurrency }) => {
       const response = await axios.get(
         "https://api.exchangerate.host/list?access_key=a5d669ce99aa855e99ab16626cad67b6"
       );
-      console.log(" currency line 18", response); // Logs all currencies
+      // console.log(" currency line 18", response); // Logs all currencies
       setCurrencies(response.data.currencies);
     } catch (error) {
       console.error("Error fetching currencies:", error);
@@ -38,7 +38,7 @@ const PreferredCurrency = ({ preferredCurrency, setPreferredCurrency }) => {
     getCurrencies();
   }, []);
 
-  console.log(currencies);
+  // console.log(currencies);
 
   return (
     <div className="relative flex-1 flex flex-col gap-[15px] ">

@@ -69,7 +69,7 @@ const OfferCard = (props) => {
               </div>
               <div className="flex gap-[10px] ">
                 <div className="">
-                  <p className="text-[13px] flex items-center gap-[3px]">
+                  <p className="text-[13px] flex items-center gap-[3px] font-[600]">
                     {" "}
                     <IoMdThumbsUp className="text-[13px] text-tradeGreen" />{" "}
                     {`${parseInt(props.reviews).toLocaleString()}`}
@@ -78,7 +78,7 @@ const OfferCard = (props) => {
                 <div className="">
                   <p className="text-[13px]">
                     Trust Score :{" "}
-                    <small className="text-[13px]">{`${props.trustScore}%`}</small>
+                    <small className="text-[13px] font-[600]">{`${props.trustScore}%`}</small>
                   </p>
                 </div>
               </div>
@@ -88,30 +88,30 @@ const OfferCard = (props) => {
                 {props.availability == "online" ? (
                   <>
                     <p className="text-[14px] font-[400]">
-                      <small className="text-[14px] font-[600] text-tradeGreen">
-                        Online
+                      <small className="text-[14px] font-[700] flex items-center text-tradeGreen">
+                        &#x2022; Online
                       </small>
                     </p>
                   </>
                 ) : (
                   <>
                     <p className="text-[14px] font-[400]">
-                      <small className="text-[14px] font-[600]  text-neutral-600">
-                        Offline
+                      <small className="text-[14px] font-[700] flex items-center text-tradeFadeWhite">
+                        &#x2022; Offline
                       </small>
                     </p>
                   </>
                 )}
               </div>
               <p className="text-[14px] font-[400]">
-                Service :{" "}
-                <small className="text-[14px] font-[700] text-black">
-                  {props.service}
+                Buying :{" "}
+                <small className="text-[14px] font-[600] text-black">
+                  {props.service} Funds
                 </small>
               </p>
               <p className="text-[14px] font-[400]">
                 Avg. trade speed:{" "}
-                <small className="text-[14px] font-[700] text-black">
+                <small className="text-[14px] font-[600] text-black">
                   60 Minutes
                 </small>
               </p>
@@ -119,13 +119,13 @@ const OfferCard = (props) => {
             <div className="">
               <p className="text-[14px] font-[400]">
                 Min Purchase :{" "}
-                <small className="text-[14px] font-[700] text-black">
+                <small className="text-[14px] font-[600] text-black">
                   {`20`} {props.currency}
                 </small>
               </p>
               <p className="text-[14px] font-[400]">
                 Max Purchase :{" "}
-                <small className="text-[14px] font-[700] text-black">
+                <small className="text-[14px] font-[600] text-black">
                   {`${parseInt(props.purchaseLimit).toLocaleString()}`}{" "}
                   {props.currency}
                 </small>
@@ -140,11 +140,11 @@ const OfferCard = (props) => {
             <p className="text-[14px] font-[400]">Rate(s) </p>
           </div>
           <div className="flex flex-col gap-[2px]">
-            <p className="text-[13px] font-[700] text-black">
-              {`100 - 500 ${props.currency} @ 550 NGN per ${props.currency}`}
+            <p className="text-[13px] font-[600] text-black">
+              {`100 - 500 ${props.currency} @ 1 ${props.currency} = $0.69 of BTC`}
             </p>
-            <p className="text-[13px] font-[700] text-black">
-              {`100 - 500 ${props.currency} @ 550 NGN per ${props.currency}`}
+            <p className="text-[13px] font-[600] text-black">
+              {`501 - 1,000 ${props.currency} @ 1 ${props.currency} = $0.69 of BTC`}
             </p>
           </div>
           <div>
@@ -157,13 +157,13 @@ const OfferCard = (props) => {
         <div className="flex gap-[10px]">
           <div
             id="vendorFavourite"
-            className="px-[8px] py-[4px] border rounded-[4px] hover:bg-neutral-100 cursor-pointer"
+            className="px-[8px] py-[6px] flex items-center border rounded-[5px] hover:bg-neutral-100 cursor-pointer"
           >
             <FaRegStar className="text-[18px] text-neutral-500" />
           </div>
           <p
             onClick={() => handleOfferClick(props.id)}
-            className="px-[15px] py-[4px] rounded-[5px] border border-white hover:border-tradeGreen bg-tradeGreen hover:bg-white text-[14px] font-[600] w-max cursor-pointer"
+            className="px-[20px] py-[6px] rounded-[5px] border border-white hover:border-tradeGreen bg-tradeGreen hover:bg-white text-[14px] font-[600] w-max cursor-pointer"
           >
             View Offer
           </p>

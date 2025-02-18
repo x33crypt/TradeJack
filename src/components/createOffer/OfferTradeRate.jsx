@@ -19,6 +19,13 @@ const OfferTradeRate = ({
   rateError,
 }) => {
   const updateOfferRates = () => {
+    if (!miniPurchase || !maxPurchase) {
+      setRateError(
+        "Please set both your minimum and maximum purchase limits to set your trade rate."
+      );
+      return;
+    }
+
     // Parse input values as numbers
     const fromValue = parseFloat(rangeFrom.replace(/,/g, "").trim());
     const toValue = parseFloat(rangeTo.replace(/,/g, "").trim());
@@ -39,21 +46,39 @@ const OfferTradeRate = ({
       return;
     }
 
-    if (
-      fromValue < miniPurchase ||
-      fromValue > maxPurchase ||
-      toValue < miniPurchase ||
-      toValue > maxPurchase
-    ) {
+    if (fromValue < miniPurchase) {
       setRateError(
-        `The rate range cannot be lower than the minimum purchase amount or exceed the maximum purchase limit.`
+        `The "from" value cannot be lower than the minimum purchase amount of $${miniPurchase}.`
+      );
+      return;
+    }
+
+    if (fromValue > maxPurchase) {
+      setRateError(
+        `The "from" value cannot exceed the maximum purchase limit of $${maxPurchase}.`
+      );
+      return;
+    }
+
+    if (toValue < miniPurchase) {
+      setRateError(
+        `The "to" value cannot be lower than the minimum purchase amount of $${miniPurchase}.`
+      );
+      return;
+    }
+
+    if (toValue > maxPurchase) {
+      setRateError(
+        `The "to" value cannot exceed the maximum purchase limit of $${maxPurchase}.`
       );
       return;
     }
 
     if (toValue <= fromValue) {
       // Ensure toValue is greater than fromValue
-      setRateError("The 'To' value must be greater than the 'From' value.");
+      setRateError(
+        "The 'To' value must be greater than the 'From' value. Please enter a higher 'To' value."
+      );
       return;
     }
 

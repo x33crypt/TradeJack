@@ -13,6 +13,7 @@ export default {
       },
       colors: {
         tradeWhite: "#eeeef1",
+        tradeFadeWhite: "#AAAAAA",
         tradeBlack: "#111116",
         tradeAsh: "#121212",
         tradeAshLight: "#282828",

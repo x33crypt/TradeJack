@@ -28,7 +28,7 @@ const OfferTerms = ({ setOfferTerms, offerTermsError, setOfferTermsError }) => {
           <p className="text-white text-[18px] font-[600]">Offer Terms</p>
         </div>
         <textarea
-          className="w-full p-[15px] bg-transparent text-white outline-none border border-neutral-700 rounded-[8px] h-[180px] resize-none "
+          className="w-full text-[15px] p-[15px] bg-transparent text-white outline-none border border-neutral-700 rounded-[8px] h-[180px] resize-none "
           onChange={handleInputChange}
         ></textarea>
       </div>

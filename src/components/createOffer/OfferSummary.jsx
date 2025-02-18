@@ -16,7 +16,7 @@ const OfferSummary = ({
   offerPageTwo,
 }) => {
   return (
-    <div className="w-[400px] bg-tradeAsh flex flex-col gap-[40px] rounded-[8px] p-[15px]">
+    <div className="w-[400px] bg-tradeAsh flex flex-col gap-[40px] rounded-[8px] p-[10px]">
       <div className="flex flex-col gap-[15px]">
         <p className="text-white text-[28px] font-[900]">Offer Summary</p>
 

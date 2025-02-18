@@ -56,7 +56,7 @@ const OfferFilter = ({
     "Online Wallet Transfer",
     "Bank Transfer",
     "Gift Cards Exchange",
-    "Debit/Credit Cards Spending",
+    "Debit/Credit Cards",
   ];
 
   const wallets = [
@@ -428,9 +428,9 @@ const OfferFilter = ({
   }, []);
 
   return (
-    <div className="sticky h-[475px] overflow-y-auto top-[95px] bottom-[100px] flex flex-col  justify-between gap-[40px] p-[14px] rounded-[8px] bg-tradeAsh">
-      <div className="flex flex-col gap-[20px]">
-        <div className="flex flex-col gap-[15px]">
+    <div className="sticky h-[475px] overflow-y-auto top-[80px] flex flex-col  justify-between gap-[40px] p-[10px] rounded-[8px] bg-tradeAsh">
+      <div className="flex flex-col gap-[14px]">
+        <div className="flex flex-col gap-[14px]">
           <div
             onClick={() => setShowServiceType((prev) => !prev)}
             className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[45px] gap-[20px] border border-neutral-700 rounded-[4px] cursor-pointer"
@@ -463,7 +463,7 @@ const OfferFilter = ({
           </div>
         </div>
         <div
-          className={`${showAccount ? "flex" : "hidden"} flex-col gap-[15px]`}
+          className={`${showAccount ? "flex" : "hidden"} flex-col gap-[14px]`}
         >
           <div
             onClick={() => setShowAccounType((prev) => !prev)}
@@ -532,7 +532,7 @@ const OfferFilter = ({
           </div>
         </div>
         <div
-          className={`${showWallet ? "flex" : "hidden"} flex-col gap-[15px]`}
+          className={`${showWallet ? "flex" : "hidden"} flex-col gap-[10px]`}
         >
           <div
             onClick={() => setShowWalletType((prev) => !prev)}
@@ -552,7 +552,7 @@ const OfferFilter = ({
           <div
             className={` ${
               showWalletType ? "flex" : "hidden"
-            } flex-col gap-[15px] p-[10px] bg-tradeAshLight rounded-[8px] border border-neutral-700`}
+            } flex-col gap-[10px] p-[10px] bg-tradeAshLight rounded-[8px] border border-neutral-700`}
           >
             <div className="flex h-[45px] rounded-[5px] px-[15px] py-[5px] gap-[20px] items-center border border-neutral-700">
               <input
@@ -601,7 +601,7 @@ const OfferFilter = ({
           </div>
         </div>
         <div
-          className={`${showGiftCard ? "flex" : "hidden"} flex-col gap-[15px]`}
+          className={`${showGiftCard ? "flex" : "hidden"} flex-col gap-[10px]`}
         >
           <div
             onClick={() => setShowGiftCardType((prev) => !prev)}
@@ -621,7 +621,7 @@ const OfferFilter = ({
           <div
             className={` ${
               showGiftCardType ? "flex" : "hidden"
-            } flex-col gap-[15px] p-[10px] bg-tradeAshLight rounded-[8px] border border-neutral-700`}
+            } flex-col gap-[10px] p-[10px] bg-tradeAshLight rounded-[8px] border border-neutral-700`}
           >
             <div className="flex h-[45px] rounded-[5px] px-[15px] py-[5px] gap-[20px] items-center border border-neutral-700">
               <input
@@ -672,7 +672,7 @@ const OfferFilter = ({
         <div
           className={`${
             showDebitCreditCard ? "flex" : "hidden"
-          } flex-col gap-[15px]`}
+          } flex-col gap-[10px]`}
         >
           <div
             onClick={() => setShowDebitCreditCardType((prev) => !prev)}
@@ -692,7 +692,7 @@ const OfferFilter = ({
           <div
             className={` ${
               showDebitCreditCardType ? "flex" : "hidden"
-            } flex-col gap-[15px] p-[10px] bg-tradeAshLight rounded-[8px] border border-neutral-700`}
+            } flex-col gap-[10px] p-[10px] bg-tradeAshLight rounded-[8px] border border-neutral-700`}
           >
             <div className="flex h-[45px] rounded-[5px] px-[15px] py-[5px] gap-[20px] items-center border border-neutral-700">
               <input
@@ -748,7 +748,7 @@ const OfferFilter = ({
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-[15px]">
+        <div className="flex flex-col gap-[14px]">
           <div
             // onClick={() => setShowWalletType((prev) => !prev)}
             className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[45px] gap-[20px] border border-neutral-700 rounded-[4px] cursor-pointer"

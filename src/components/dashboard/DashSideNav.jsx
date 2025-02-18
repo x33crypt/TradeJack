@@ -9,56 +9,51 @@ import { useNavigate } from "react-router-dom";
 import { LiaUserFriendsSolid } from "react-icons/lia";
 import { IoLogOutOutline } from "react-icons/io5";
 import { MdOutlineQueryStats } from "react-icons/md";
+import { TbLayoutList } from "react-icons/tb";
 
 const DashSideNav = () => {
   const navigateTo = useNavigate();
   return (
-    <div className="sticky top-[95px] flex flex-col justify-between p-[14px] w-[240px] bg-tradeAsh rounded-[8px]">
+    <div className=" lg:flex hidden flex-col justify-between p-[10px] w-[240px] bg-tradeAsh rounded-[8px]">
       <div className="flex flex-col gap-[15px]">
         <div
-          className="px-[15px] py-[6px] flex items-center gap-[10px] rounded-[8px] hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer"
+          className="px-[15px] py-[7px] flex items-center gap-[10px] rounded-[6px] hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer"
           onClick={() => navigateTo("/dashboard")}
         >
-          <MdSpaceDashboard className="text-[16px]" />
-          <p className="text-[15px] font-[400]"> Dashboard</p>
+          <MdSpaceDashboard className="text-[15px]" />
+          <p className="text-[14px] font-[400]"> Dashboard</p>
         </div>
         <div
-          className="px-[15px] py-[6px] flex items-center gap-[10px] rounded-[8px] hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer"
+          className="px-[15px] py-[7px] flex items-center gap-[10px] rounded-[6px] hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer"
           onClick={() => navigateTo("/marketplace")}
         >
-          <RiExchange2Fill className="text-[16px]" />
-          <p className="text-[15px] font-[400]">Marketplace</p>
+          <RiExchange2Fill className="text-[15px]" />
+          <p className="text-[14px] font-[400]">Marketplace</p>
         </div>
-        <div className="px-[15px] py-[6px] flex items-center gap-[10px] rounded-[8px]  hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer">
-          <RiExchangeFundsLine className="text-[16px]" />
-          <p className="text-[15px] font-[400]">Trade History</p>
+        <div
+          className="px-[15px] py-[7px] flex items-center gap-[10px] rounded-[6px] hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer"
+          onClick={() => navigateTo("/marketplace")}
+        >
+          <TbLayoutList className="text-[15px]" />
+          <p className="text-[14px] font-[400]">My Offers</p>
         </div>
-        <div className="px-[15px] py-[6px] flex items-center gap-[10px] rounded-[8px]  hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer">
-          <MdOutlineQueryStats className="text-[16px]" />
-          <p className="text-[15px] font-[400]">Trade Statistics</p>
+        <div className="px-[15px] py-[7px] flex items-center gap-[10px] rounded-[6px]  hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer">
+          <RiExchangeFundsLine className="text-[15px]" />
+          <p className="text-[14px] font-[400]">Trade History</p>
         </div>
-        <div className="px-[15px] py-[6px] flex items-center gap-[10px] rounded-[8px]  hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer">
-          <FaRegEnvelope className="text-[16px]" />
-          <p className="text-[15px] font-[400]"> Message</p>
+        <div className="px-[15px] py-[7px] flex items-center gap-[10px] rounded-[6px]  hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer">
+          <MdOutlineQueryStats className="text-[15px]" />
+          <p className="text-[14px] font-[400]">Trade Statistics</p>
         </div>
-        <div className="px-[15px] py-[6px] flex items-center gap-[10px] rounded-[8px]  hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer">
-          <LiaUserFriendsSolid className="text-[16px]" />
-          <p className="text-[15px] font-[400]">Invite a friend</p>
+        <div className="px-[15px] py-[7px] flex items-center gap-[10px] rounded-[6px]  hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer">
+          <FaRegEnvelope className="text-[15px]" />
+          <p className="text-[14px] font-[400]"> Messages</p>
         </div>
-        <div className="px-[15px] py-[6px] flex items-center gap-[10px] rounded-[8px]  hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer">
-          <BsChatText className="text-[16px]" />
-          <p className="text-[15px] font-[400]"> Support</p>
-        </div>
-        <div className="px-[15px] py-[6px] flex items-center gap-[10px] rounded-[8px]  hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer">
-          <IoSettingsOutline className="text-[16px]" />
-          <p className="text-[15px] font-[400]"> Setting</p>
-        </div>
-        <div className="px-[15px] py-[6px] flex items-center gap-[10px] rounded-[8px]  hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer">
-          <IoLogOutOutline className="text-[16px]" />
-          <p className="text-[15px] font-[400]">Log Out</p>
+        <div className="px-[15px] py-[7px] flex items-center gap-[10px] rounded-[6px]  hover:bg-white text-white hover:text-black transition-all duration-300 cursor-pointer">
+          <LiaUserFriendsSolid className="text-[15px]" />
+          <p className="text-[14px] font-[400]">Invite a friend</p>
         </div>
       </div>
-      <div className="flex flex-col gap-[15px]"></div>
     </div>
   );
 };

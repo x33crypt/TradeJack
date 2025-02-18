@@ -74,7 +74,7 @@ const Marketplace = () => {
   return (
     <>
       <MarketTopNav />
-      <div className="pt-[95px] flex bg-black gap-[1%] p-[1%]">
+      <div className="pt-[80px] flex bg-black gap-[10px] p-[10px]">
         <div className="w-[300px]">
           <OfferFilter
             serviceType={serviceType}

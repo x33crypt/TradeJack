@@ -1,12 +1,12 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
-import Nav from "./components/Nav";
 import Dashboard from "./pages/Dashboard";
 import Marketplace from "./pages/Marketplace";
 import ViewOfferSell from "./pages/ViewOfferSell";
 import ScrollToTop from "./components/ScrollToTop";
 import CreateOffer from "./pages/CreateOffer";
+import UserProfile from "./pages/userProfile";
 
 const App = () => {
   return (
@@ -18,6 +18,7 @@ const App = () => {
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/create-offer" element={<CreateOffer />} />
         <Route path="/offer/:id" element={<ViewOfferSell />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </>
   );

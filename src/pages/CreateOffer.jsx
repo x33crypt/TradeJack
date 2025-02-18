@@ -134,7 +134,7 @@ const CreateOffer = () => {
     // Ensure all selections are made
     if (!wallet && !account && !giftCard && !creditOrDebitCard) {
       smoothScrollTo("selectAsset");
-      setServiceError("Please select a required option.");
+      setServiceError("Please select at least one option.");
       return;
     } else {
       setServiceError(""); // Clear the error if at least one is selected
@@ -147,45 +147,49 @@ const CreateOffer = () => {
         "Please set both minimum and maximum purchase amounts."
       );
       return;
-    } else {
-      setPurchaseLimitError("");
     }
 
     // Validate minimum purchase
     if (miniPurchase < userTrasactionLimitMinimum) {
-      smoothScrollTo("purchaseLimit");
       setPurchaseLimitError(
-        `Your minimum purchase must be at least the transaction limit of $${userTrasactionLimitMinimum}.`
+        `Your minimum purchase cannot be lower than the minimum transaction limit of $${userTrasactionLimitMinimum}.`
       );
-      return;
-    } else {
-      setPurchaseLimitError("");
+      return; // Ensure no further checks happen if this error is triggered
     }
 
     // Validate maximum purchase
-    if (
-      maxPurchase <= miniPurchase ||
-      maxPurchase > userTrasactionLimitMaximum
-    ) {
+    if (maxPurchase <= miniPurchase) {
       smoothScrollTo("purchaseLimit");
       setPurchaseLimitError(
-        `Your maximum purchase must be between $${miniPurchase} and the maximum transaction limit of $${userTrasactionLimitMaximum}.`
+        `Your maximum purchase must exceed the minimum purchase limit of $${miniPurchase}.`
       );
       return;
-    } else {
-      setPurchaseLimitError("");
     }
 
+    if (maxPurchase > userTrasactionLimitMaximum) {
+      smoothScrollTo("purchaseLimit");
+      setPurchaseLimitError(
+        `Your maximum purchase cannot exceed your transaction limit of $${userTrasactionLimitMaximum}.`
+      );
+      return;
+    }
+
+    // Ensure at least one offer rate is provided
     if (offerRates.length <= 1) {
       smoothScrollTo("offerRates");
       setRateError("Please add at least one rate to continue.");
       return;
+    } else {
+      setRateError("");
     }
 
+    // Ensure offer terms are provided
     if (offerTerms <= 0) {
       smoothScrollTo("offerTerms");
       setOfferTermsError("Please add offer terms to proceed.");
       return;
+    } else {
+      setOfferTermsError("");
     }
 
     // Proceed to the next page if all conditions are valid
@@ -198,27 +202,27 @@ const CreateOffer = () => {
     setOfferPageTwo(false);
   };
 
-  console.log(rangeFrom);
-  console.log(rangeTo);
-  console.log(rate);
-  console.log(offerRates);
-  console.log(miniPurchase);
-  console.log(maxPurchase);
-  console.log(offerTerms);
+  // console.log(rangeFrom);
+  // console.log(rangeTo);
+  // console.log(rate);
+  // console.log(offerRates);
+  // console.log(miniPurchase);
+  // console.log(maxPurchase);
+  // console.log(offerTerms);
 
-  const userTrasactionLimitMinimum = "10";
+  const userTrasactionLimitMinimum = "50";
   const userTrasactionLimitMaximum = "500";
 
   return (
     <>
       <MarketTopNav />
 
-      <div className="pt-[80px] bg-black">
-        <div className={`p-[14px] flex gap-[14px] `}>
+      <div className="pt-[70px] bg-black">
+        <div className="p-[10px] flex gap-[10px] ">
           <div
             className={`${
               offerPageOne ? "flex" : "hidden"
-            }  flex-1 flex-col gap-[50px] bg-tradeAsh p-[15px] rounded-[8px]`}
+            }  flex-1 flex-col gap-[50px] bg-tradeAsh p-[10px] rounded-[8px]`}
           >
             <div>
               <p className="text-white text-[34px] font-[900]">
