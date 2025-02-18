@@ -11,25 +11,25 @@ const DashMain = () => {
       <div className="lg:p-[10px] p-[5px] bg-tradeAsh flex items-center rounded-[6px]">
         <div className="flex items-center gap-[10px]">
           <div>
-            <MdReportGmailerrorred className="lg:text-[25px] md:text-[23px] text-[20px] text-tradeOrange" />
+            <MdReportGmailerrorred className="lg:text-[25px] md:text-[23px] text-[22px] text-tradeOrange" />
           </div>
-          <p className="lg:text-[13.5px] md:text-[12px] text-[11px] text-white font-[400]">
+          <p className="lg:text-[13.5px] md:text-[12px] text-[12px] text-white font-[400]">
             You have an active trade with{" "}
-            <small className="lg:text-[13.5px] md:text-[12px] text-[11px] font-[800]">
+            <small className="lg:text-[13.5px] md:text-[12px] text-[12px] font-[800]">
               Hayjay Exchange
             </small>
             . The transaction is ongoing and requires your attention to proceed
             smoothly.{" "}
-            <small className="lg:text-[13.5px] md:text-[12px] text-[11px] font-[500] underline cursor-pointer">
+            <small className="lg:text-[13.5px] md:text-[12px] text-[12px] font-[500] underline cursor-pointer">
               {" "}
               Return to Chat
             </small>
           </p>
         </div>
       </div>
-      <div className="flex flex-col gap-[10px]  bg- rounded-[8px]">
+      <div className="flex flex-col gap-[15px]  bg- rounded-[8px]">
         <div className="flex gap-[14px] ">
-          <div className="flex-1 flex flex-col justify-between gap-[10px]">
+          <div className="flex-1 flex flex-col justify-between gap-[15px]">
             <div className="flex lg:hidden flex-col items-center  border-tradeAshLight p-[px] gap-[30px] rounded-[8px]">
               <div className="flex flex-col items-center gap-[8px] py-[30px]">
                 <div className="flex items-center flex-col gap-[2px]">
@@ -58,18 +58,18 @@ const DashMain = () => {
                 </p>
               </div>
               <div className="flex flex-co w-full gap-[10px]">
-                <div className="flex-1 flex items-center justify-center gap-[5px] py-[8px] rounded-[8px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex-1 flex items-center justify-center gap-[5px] py-[10px] rounded-[8px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer">
                   {/* <IoMdArrowRoundDown className="text-white" /> */}
-                  <p className="text-white text-[14px] font-[500]">Deposit</p>
+                  <p className="text-white text-[15px] font-[500]">Deposit</p>
                 </div>
-                <div className="flex-1 flex items-center justify-center gap-[5px] py-[8px] rounded-[8px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex-1 flex items-center justify-center gap-[5px] py-[10px] rounded-[8px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer">
                   {/* <IoMdArrowRoundUp className="text-white" /> */}
-                  <p className="text-white text-[14px] font-[500]">Withdraw</p>
+                  <p className="text-white text-[15px] font-[500]">Withdraw</p>
                 </div>
               </div>
             </div>
-            <div className="p-[10px] lg:h-[180px] md:h-[140px] h-[100px] rounded-[8px] bg-tradeGreen">
-              <p className="text-[10px]">Unlock Higher Transaction Limits!</p>
+            <div className="p-[10px] lg:h-[180px] md:h-[140px] h-[110px] rounded-[8px] bg-tradeGreen">
+              <p className="text-[14px]">Unlock Higher Transaction Limits!</p>
             </div>
             <div className=" lg:flex grid grid-cols-2 gap-[10px]">
               <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight border border-neutral-800 transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
