@@ -6,7 +6,7 @@ import Marketplace from "./pages/Marketplace";
 import ViewOfferSell from "./pages/ViewOfferSell";
 import ScrollToTop from "./components/ScrollToTop";
 import CreateOffer from "./pages/CreateOffer";
-import UserProfile from "./pages/userProfile";
+import UserProfile from "./pages/UserProfile";
 
 const App = () => {
   return (
