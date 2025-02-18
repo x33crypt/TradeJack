@@ -4,6 +4,8 @@ import { IoMdArrowRoundDown } from "react-icons/io";
 import { IoMdArrowRoundUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdReportGmailerrorred } from "react-icons/md";
+import { CiFilter } from "react-icons/ci";
+import { FiFilter } from "react-icons/fi";
 
 const DashMain = () => {
   return (
@@ -71,7 +73,7 @@ const DashMain = () => {
             <div className="p-[10px] lg:h-[180px] md:h-[140px] h-[110px] rounded-[8px] bg-tradeGreen">
               <p className="text-[14px]">Unlock Higher Transaction Limits!</p>
             </div>
-            <div className=" lg:flex grid grid-cols-2 gap-[5px] bg-tradeAsh p-[5px] rounded-[8px]">
+            <div className=" lg:flex grid grid-cols-2 gap-[5px] bg-tradeAsh p-[5px] rounded-[8px] borde">
               <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight border border-neutral-800 transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
                 <p className="text-[30px] text-white font-[700]">2,335</p>
                 <p className="text-[12px] text-tradeFadeWhite font-[600]">
@@ -141,9 +143,11 @@ const DashMain = () => {
             <p className="text-[18px] text-white font-[600]">
               Transaction Stats
             </p>
-            <div className="w-[110px] flex justify-between items-center px-[10px] h-[27px] bg-white rounded-[5px] cursor-pointer">
-              <p className="text-[15px] font-[500] text-black">Weekly</p>
-              <MdKeyboardArrowDown className="text-[25px] text-black" />
+            <div className="flex justify-between items-center gap-[10px] px-[10px] py-[3px] border border-tradeFadeWhite rounded-[3px] cursor-pointer">
+              <p className=" md:flex hidden text-[14px] font-[600] text-white">
+                Filters
+              </p>
+              <FiFilter className="text-[17px] text-white" />
             </div>
           </div>
         </div>
