@@ -59,11 +59,11 @@ const DashMain = () => {
               </div>
               <div className="flex flex-co w-full gap-[10px]">
                 <div className="flex-1 flex items-center justify-center gap-[5px] py-[10px] rounded-[8px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer transition-all duration-300">
-                  {/* <IoMdArrowRoundDown className="text-white" /> */}
+                  <IoMdArrowRoundDown className="text-white" />
                   <p className="text-white text-[15px] font-[500]">Deposit</p>
                 </div>
                 <div className="flex-1 flex items-center justify-center gap-[5px] py-[10px] rounded-[8px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer transition-all duration-300">
-                  {/* <IoMdArrowRoundUp className="text-white" /> */}
+                  <IoMdArrowRoundUp className="text-white" />
                   <p className="text-white text-[15px] font-[500]">Withdraw</p>
                 </div>
               </div>
@@ -71,7 +71,7 @@ const DashMain = () => {
             <div className="p-[10px] lg:h-[180px] md:h-[140px] h-[110px] rounded-[8px] bg-tradeGreen">
               <p className="text-[14px]">Unlock Higher Transaction Limits!</p>
             </div>
-            <div className=" lg:flex grid grid-cols-2 gap-[10px]">
+            <div className=" lg:flex grid grid-cols-2 gap-[5px] bg-tradeAsh p-[5px] rounded-[8px]">
               <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight border border-neutral-800 transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
                 <p className="text-[30px] text-white font-[700]">2,335</p>
                 <p className="text-[12px] text-tradeFadeWhite font-[600]">
@@ -136,7 +136,7 @@ const DashMain = () => {
             </div>
           </div>
         </div>
-        <div className=" bg-tradeAsh  border border-tradeAshLight p-[14px] rounded-[8px]">
+        <div className=" bg-tradeAsh  border-tradeAshLight p-[14px] rounded-[8px]">
           <div className="flex  justify-between">
             <p className="text-[18px] text-white font-[600]">
               Transaction Stats
