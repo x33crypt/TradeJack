@@ -56,10 +56,10 @@ const DashTopNav = () => {
   };
 
   return (
-    <div className="z-50 fixed right-0 left-0 bg-black px-[2%] h-[70px] flex justify-between items-center border-b border-tradeAsh ">
+    <div className="z-50 fixed right-0 left-0 bg-black px-[4%] h-[70px] flex justify-between items-center border-b border-tradeAsh ">
       <div className="flex items-center lg:gap-[20px] gap-[15px]">
         <div className="lg:hidden flex">
-          <HiOutlineMenuAlt2 className="text-white text-[22px]" />
+          <HiOutlineMenuAlt2 className="text-white text-[25px]" />
         </div>
         <div className="flex items-center justify-start gap-[5px] ">
           <GiCardExchange className="lg:text-[22px] text-[20px] text-tradeGreen" />
@@ -87,17 +87,17 @@ const DashTopNav = () => {
           />
         </div>
         <div className="cursor-pointer sm:hidden">
-          <FiSearch className="text-white text-[20px]" />
+          <FiSearch className="text-white text-[24px]" />
         </div>
         <div className="cursor-pointer">
-          <FaRegBell className="text-white lg:text-[22px] text-[20px]" />
+          <FaRegBell className="text-white lg:text-[22px] text-[24px]" />
         </div>
         <div
           className="cursor-pointer"
           onClick={() => setIsNavOption((prev) => !prev)}
         >
           <img
-            className="lg:w-[34px] w-[30px] rounded-full"
+            className="lg:w-[34px] w-[35px] rounded-full"
             src={landingImg4}
             alt=""
           />

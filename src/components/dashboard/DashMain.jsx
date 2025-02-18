@@ -7,8 +7,8 @@ import { MdReportGmailerrorred } from "react-icons/md";
 
 const DashMain = () => {
   return (
-    <div className="flex flex-1 flex-col gap-[10px]">
-      {/* <div className="lg:p-[10px] p-[8px] bg-tradeAsh flex items-center rounded-[6px]">
+    <div className="flex flex-1 flex-col lg:gap-[10px] gap-[30px]">
+      <div className="lg:p-[10px] p-[5px] bg-tradeAsh flex items-center rounded-[6px]">
         <div className="flex items-center gap-[10px]">
           <div>
             <MdReportGmailerrorred className="lg:text-[25px] md:text-[23px] text-[20px] text-tradeOrange" />
@@ -26,21 +26,21 @@ const DashMain = () => {
             </small>
           </p>
         </div>
-      </div> */}
-      <div className="flex flex-col gap-[14px] p-[14px] bg-tradeAsh rounded-[8px]">
+      </div>
+      <div className="flex flex-col gap-[14px]  bg- rounded-[8px]">
         <div className="flex gap-[14px] ">
           <div className="flex-1 flex flex-col justify-between gap-[10px]">
-            <div className="flex lg:hidden flex-col items-center border border-tradeAshLight p-[14px] gap-[20px] rounded-[8px]">
+            <div className="flex lg:hidden flex-col items-center  border-tradeAshLight p-[px] gap-[30px] rounded-[8px]">
               <div className="flex flex-col items-center gap-[8px]">
                 <div className="flex items-center flex-col gap-[2px]">
-                  <p className="text-white text-[13px] font-[400]">
+                  <p className="text-tradeFadeWhite text-[13px] font-[600]">
                     Total Balance
                   </p>
-                  <p className="text-white text-[28px] font-[700]">
+                  <p className="text-white lg:text-[28px] text-[35px] font-[700]">
                     $19,280.01
                   </p>
                 </div>
-                <div className="flex  w-max gap-[7px] border border-tradeGreen px-[10px] py-[4px] rounded-[10px]">
+                <div className="flex bg-tradeAsh  w-max gap-[7px] border border-tradeGreen px-[10px] py-[4px] rounded-[10px]">
                   <p className="text-[12px] text-white font-[500]">Escrow</p>
                   <p className="text-[12px] font-[500] text-tradeGreen">
                     $4,990.00
@@ -58,11 +58,11 @@ const DashMain = () => {
                 </p>
               </div>
               <div className="flex flex-col w-full gap-[10px]">
-                <div className="flex-1 flex items-center justify-center gap-[5px] px-[15px] py-[8px] rounded-[5px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex-1 flex items-center justify-center gap-[5px] py-[8px] rounded-[8px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer">
                   {/* <IoMdArrowRoundDown className="text-white" /> */}
                   <p className="text-white text-[14px] font-[500]">Deposit</p>
                 </div>
-                <div className="flex-1 flex items-center justify-center gap-[5px] px-[15px] py-[8px] rounded-[5px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex-1 flex items-center justify-center gap-[5px] py-[8px] rounded-[8px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer">
                   {/* <IoMdArrowRoundUp className="text-white" /> */}
                   <p className="text-white text-[14px] font-[500]">Withdraw</p>
                 </div>
