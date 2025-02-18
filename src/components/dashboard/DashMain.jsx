@@ -38,13 +38,13 @@ const DashMain = () => {
                   <p className="text-tradeFadeWhite text-[13px] font-[600]">
                     Total balance
                   </p>
-                  <p className="text-white lg:text-[28px] text-[35px] font-[700]">
+                  <p className="text-white lg:text-[28px] text-[40px] font-[700]">
                     $19,280.01
                   </p>
                 </div>
-                <div className="flex bg-tradeAsh  w-max gap-[7px] border border-tradeGreen px-[10px] py-[4px] rounded-[10px]">
-                  <p className="text-[12px] text-white font-[500]">Escrow</p>
-                  <p className="text-[12px] font-[500] text-tradeGreen">
+                <div className="flex bg-tradeAsh  w-max gap-[7px] border border-tradeGreen px-[12px] py-[6px] rounded-[8px]">
+                  <p className="text-[13px] text-white font-[500]">Escrow</p>
+                  <p className="text-[13px] font-[500] text-tradeGreen">
                     $4,990.00
                   </p>
                 </div>
