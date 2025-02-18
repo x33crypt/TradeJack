@@ -62,10 +62,10 @@ const DashTopNav = () => {
           <HiOutlineMenuAlt2 className="text-white text-[25px]" />
         </div>
         <div className="flex items-center justify-start gap-[5px] ">
-          <GiCardExchange className="lg:text-[22px] text-[20px] text-tradeGreen" />
-          <p className=" lg:text-[22px] text-[20px] font-[700] text-tradeGreen">
+          <GiCardExchange className="lg:text-[22px] text-[22px] text-tradeGreen" />
+          <p className=" lg:text-[22px] text-[22px] font-[700] text-tradeGreen">
             Trade
-            <small className="lg:text-[22px] text-[20px] font-[700] text-white">
+            <small className="lg:text-[22px] text-[22px] font-[700] text-white">
               Jack
             </small>
           </p>
@@ -77,7 +77,7 @@ const DashTopNav = () => {
           </p>
         </div>
       </div>
-      <div className="flex items-center gap-[20px]">
+      <div className="flex items-center gap-[15px]">
         <div className="sm:flex hidden items-center bg-tradeAsh px-[10px] py-[2px] gap-[10px] rounded-[4px]">
           <FaMagnifyingGlass className="text-neutral-500 lg:text-[16px] text-[15px]" />
           <input
@@ -87,10 +87,10 @@ const DashTopNav = () => {
           />
         </div>
         <div className="cursor-pointer sm:hidden">
-          <FiSearch className="text-white text-[24px]" />
+          <FiSearch className="text-white text-[23px]" />
         </div>
         <div className="cursor-pointer">
-          <FaRegBell className="text-white lg:text-[22px] text-[24px]" />
+          <FaRegBell className="text-white lg:text-[22px] text-[23px]" />
         </div>
         <div
           className="cursor-pointer"
