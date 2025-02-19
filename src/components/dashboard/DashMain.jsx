@@ -32,7 +32,7 @@ const DashMain = () => {
       <div className="flex flex-col gap-[15px]  bg- rounded-[8px]">
         <div className="flex gap-[14px] ">
           <div className="flex-1 flex flex-col justify-between gap-[15px]">
-            <div className="flex lg:hidden flex-col items-center  border-tradeAshLight p-[px] gap-[30px] rounded-[8px]">
+            <div className="flex lg:hidden flex-col items-center   border-tradeAshLight p-[px] gap-[30px] rounded-[8px]">
               <div className="flex flex-col items-center gap-[8px] py-[30px]">
                 <div className="flex items-center flex-col gap-[2px]">
                   <p className="text-tradeFadeWhite text-[13px] font-[600]">
@@ -101,7 +101,7 @@ const DashMain = () => {
               </div>
             </div>
           </div>
-          <div className="w-[300px] lg:flex hidden flex-col border border-tradeAshLight p-[14px] gap-[20px] rounded-[8px]">
+          <div className="w-[300px] lg:flex hidden flex-col bg-tradeAsh  border-tradeAshLight p-[14px] gap-[20px] rounded-[8px]">
             <div className="flex flex-col gap-[8px]">
               <div className="flex flex-col gap-[2px]">
                 <p className="text-white text-[13px] font-[400]">
@@ -127,18 +127,18 @@ const DashMain = () => {
               </p>
             </div>
             <div className="flex flex-col w-full gap-[10px]">
-              <div className="flex-1 flex items-center justify-center gap-[5px] px-[15px] py-[8px] rounded-[5px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer">
+              <div className="flex-1 flex items-center justify-center gap-[5px] px-[15px] py-[8px] rounded-[5px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer transition-all duration-300">
                 {/* <IoMdArrowRoundDown className="text-white" /> */}
                 <p className="text-white text-[14px] font-[500]">Deposit</p>
               </div>
-              <div className="flex-1 flex items-center justify-center gap-[5px] px-[15px] py-[8px] rounded-[5px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer">
+              <div className="flex-1 flex items-center justify-center gap-[5px] px-[15px] py-[8px] rounded-[5px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer transition-all duration-300">
                 {/* <IoMdArrowRoundUp className="text-white" /> */}
                 <p className="text-white text-[14px] font-[500]">Withdraw</p>
               </div>
             </div>
           </div>
         </div>
-        <div className=" bg-tradeAsh  border-tradeAshLight p-[14px] rounded-[8px]">
+        <div className=" bg-tradeAsh  border-tradeAshLight lg:p-[14px] p-[10px] rounded-[8px]">
           <div className="flex  justify-between">
             <p className="text-[20px] text-white font-[700]">
               Transaction Stats
@@ -151,14 +151,14 @@ const DashMain = () => {
             </div>
           </div>
         </div>
-        <div className="bg-tradeAsh border-tradeAshLight p-[14px] rounded-[8px] flex flex-col ">
+        <div className="bg-tradeAsh border-tradeAshLight lg:p-[14px] p-[10px] rounded-[8px] flex flex-col ">
           <div className="flex justify-between items-center ">
             <p className="text-[20px] text-white font-[700]">Recent History</p>
             <p className="text-tradeFadeWhite text-[14px] font-[500] cursor-pointer">
               View all
             </p>
           </div>
-          <div className="mt-[15px] flex py-[8px] lg:px-[10px] px-[8px] text-tradeWhite font-[600] lg:text-[14px] text-[14px]">
+          <div className="mt-[15px] flex py-[8px] lg:px-[10px] px-[8px] text-tradeWhite font-[600] lg:text-[15px] text-[14px]">
             <p className=" flex-1 flex items- gap-[5px] font-[700]">
               Service{" "}
               <IoMdArrowRoundDown className="md:flex hidden text-white lg:text-[14px] text-[12px]" />{" "}
@@ -179,6 +179,15 @@ const DashMain = () => {
               Date{" "}
               <IoMdArrowRoundDown className="md:flex hidden text-white lg:text-[14px] text-[12px]" />{" "}
             </p>
+          </div>
+          <div className=" flex flex-col ">
+            <div className=" flex py-[7px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13px] rounded-[3px] hover:bg-tradeAshLight cursor-pointer">
+              <p className=" flex-1 ">Apple Pay</p>
+              <p className=" flex-1 sm:flex hidden">#3545671</p>
+              <p className=" flex-1 text-tradeOrange">Pending</p>
+              <p className=" flex-1">$1,050.00</p>
+              <p className=" flex-1">15 Feb 2025</p>
+            </div>
           </div>
           <div className=" flex flex-col ">
             <div className=" flex py-[7px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13px] rounded-[3px] hover:bg-tradeAshLight cursor-pointer">
