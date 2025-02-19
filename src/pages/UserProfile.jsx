@@ -37,7 +37,7 @@ const UserProfile = () => {
     <>
       <MarketTopNav />
       <div className="pt-[70px] flex flex-col  bg-black">
-        <div className=" lg:p-[2%] p-[3%] lg:pt-[30px] pt-[20px] flex lg:flex-row flex-col gap-[20px] lg:items-center bg-tradeAshExtraLight">
+        <div className=" lg:p-[2%] p-[3%] lg:pt-[30px] pt-[20px] flex lg:flex-row flex-col gap-[20px] lg:items-center bg-tradeAsh">
           <div className="flex-1 flex items-center gap-[15px] rounded-[8px]">
             <div className="rounded-full border-tradeAshExtraLight">
               <img
@@ -146,7 +146,7 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
-        <div className="lg:py-[40px] md:py-[30px] py-[20px] flex flex-col lg:px-[205px] md:px-[80px] gap-[10px] bg-tradeAsh">
+        <div className="lg:py-[40px] md:py-[30px] py-[20px] flex flex-col lg:px-[205px] md:px-[80px] gap-[10px] ">
           <div className="flex flex-col lg:p-[2%] p-[3%] gap-[50px]">
             <div className="flex flex-col gap-[10px]">
               <div className="flex items-center justify-between">
