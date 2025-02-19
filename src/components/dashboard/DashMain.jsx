@@ -39,9 +39,9 @@ const DashMain = () => {
                     $19,280.01
                   </p>
                 </div>
-                <div className="flex bg-tradeAsh  w-max gap-[7px] border border-tradePurple px-[12px] py-[4px] rounded-[8px]">
+                <div className="flex bg-tradeAsh  w-max gap-[7px] border border-tradeGreen px-[12px] py-[4px] rounded-[8px]">
                   <p className="text-[12px] text-white font-[500]">Escrow</p>
-                  <p className="text-[12px] font-[500] text-tradePurple">
+                  <p className="text-[12px] font-[500] text-tradeGreen">
                     $4,990.00
                   </p>
                 </div>
@@ -107,9 +107,9 @@ const DashMain = () => {
                 </p>
                 <p className="text-white text-[28px] font-[700]">$19,280.01</p>
               </div>
-              <div className="flex w-max gap-[7px] border border-tradePurple px-[10px] py-[4px] rounded-[10px]">
+              <div className="flex w-max gap-[7px] border border-tradeGreen px-[10px] py-[4px] rounded-[10px]">
                 <p className="text-[12px] text-white font-[500]">Escrow</p>
-                <p className="text-[12px] font-[500] text-tradePurple">
+                <p className="text-[12px] font-[500] text-tradeGreen">
                   $4,990.00
                 </p>
               </div>
