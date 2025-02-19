@@ -42,7 +42,7 @@ const DashMain = () => {
                     $19,280.01
                   </p>
                 </div>
-                <div className="flex bg-tradeAsh  w-max gap-[7px] border border-tradeGreen px-[12px] py-[6px] rounded-[8px]">
+                <div className="flex bg-tradeAsh  w-max gap-[7px] border border-tradeGreen px-[12px] py-[4px] rounded-[8px]">
                   <p className="text-[13px] text-white font-[500]">Escrow</p>
                   <p className="text-[13px] font-[500] text-tradeGreen">
                     $4,990.00
@@ -143,7 +143,7 @@ const DashMain = () => {
             <p className="text-[18px] text-white font-[600]">
               Transaction Stats
             </p>
-            <div className="flex justify-between items-center gap-[10px] px-[10px] py-[3px] border border-tradeFadeWhite rounded-[3px] cursor-pointer">
+            <div className="flex justify-between items-center gap-[10px] px-[10px] py-[3px] border border-neutral-800 rounded-[3px] cursor-pointer">
               <p className=" md:flex hidden text-[14px] font-[600] text-white">
                 Filters
               </p>
@@ -151,40 +151,45 @@ const DashMain = () => {
             </div>
           </div>
         </div>
-        {/* <div className="bg-tradeAsh border border-tradeAshLight p-[14px] rounded-[8px] flex flex-col ">
+        <div className="bg-tradeAsh border-tradeAshLight p-[14px] rounded-[8px] flex flex-col ">
           <div className="flex justify-between items-center ">
             <p className="text-[18px] text-white font-[600]">Recent History</p>
             <p className="text-tradeFadeWhite text-[14px] font-[500] cursor-pointer">
               View all
             </p>
           </div>
-          <div className=" mt-[15px] flex py-[8px] px-[15px] text-tradeWhite font-[600] text-[14px]">
+          <div className="mt-[15px] flex py-[8px] lg:px-[10px] px-[5px] text-tradeWhite font-[600] lg:text-[14px] text-[12px]">
             <p className=" flex-1 flex items- gap-[5px] font-[700]">
-              Service <IoMdArrowRoundDown className="text-white text-[16px]" />{" "}
+              Service{" "}
+              <IoMdArrowRoundDown className="md:flex hidden text-white lg:text-[14px] text-[12px]" />{" "}
+            </p>
+            <p className="flex-1 sm:flex hidden items- gap-[5px] font-[700]">
+              Trade ID{" "}
+              <IoMdArrowRoundDown className="md:flex hidden text-white lg:text-[14px] text-[12px]" />{" "}
             </p>
             <p className=" flex-1 flex items- gap-[5px] font-[700]">
-              Trade ID <IoMdArrowRoundDown className="text-white text-[16px]" />{" "}
+              Status{" "}
+              <IoMdArrowRoundDown className="md:flex hidden text-white lg:text-[14px] text-[12px]" />{" "}
+            </p>
+            <p className=" flex-1  flex items- gap-[5px] font-[700]">
+              Amount{" "}
+              <IoMdArrowRoundDown className="md:flex hidden text-white lg:text-[14px] text-[12px]" />{" "}
             </p>
             <p className=" flex-1 flex items- gap-[5px] font-[700]">
-              Status <IoMdArrowRoundDown className="text-white text-[16px]" />{" "}
-            </p>
-            <p className=" flex-1 flex items- gap-[5px] font-[700]">
-              Amount <IoMdArrowRoundDown className="text-white text-[16px]" />{" "}
-            </p>
-            <p className=" flex-1 flex items- gap-[5px] font-[700]">
-              Date <IoMdArrowRoundDown className="text-white text-[16px]" />{" "}
+              Date{" "}
+              <IoMdArrowRoundDown className="md:flex hidden text-white lg:text-[14px] text-[12px]" />{" "}
             </p>
           </div>
           <div className=" flex flex-col ">
-            <div className=" flex py-[8px] px-[15px] font-[500] text-white text-[14px] rounded-[4px] hover:bg-tradeAshLight cursor-pointer">
+            <div className=" flex py-[7px] lg:px-[10px] px-[5px] font-[500] text-white lg:text-[14px] text-[12px] rounded-[8px] hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">Cashapp</p>
-              <p className=" flex-1 ">#3545671</p>
+              <p className=" flex-1 sm:flex hidden">#3545671</p>
               <p className=" flex-1 text-tradeGreen">Completed</p>
-              <p className=" flex-1 ">$650.00</p>
-              <p className=" flex-1 ">8 Jan 2025</p>
+              <p className=" flex-1">$650.00</p>
+              <p className=" flex-1">8 Jan 2025</p>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
