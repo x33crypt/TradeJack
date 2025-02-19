@@ -158,7 +158,7 @@ const DashMain = () => {
               View all
             </p>
           </div>
-          <div className="mt-[15px] flex py-[8px] lg:px-[10px] px-[5px] text-tradeWhite font-[600] lg:text-[14px] text-[14px]">
+          <div className="mt-[15px] flex py-[8px] lg:px-[10px] px-[8px] text-tradeWhite font-[600] lg:text-[14px] text-[14px]">
             <p className=" flex-1 flex items- gap-[5px] font-[700]">
               Service{" "}
               <IoMdArrowRoundDown className="md:flex hidden text-white lg:text-[14px] text-[12px]" />{" "}
@@ -181,11 +181,47 @@ const DashMain = () => {
             </p>
           </div>
           <div className=" flex flex-col ">
-            <div className=" flex py-[7px] lg:px-[10px] px-[5px] font-[500] text-white lg:text-[14px] text-[13px] rounded-[8px] hover:bg-tradeAshLight cursor-pointer">
-              <p className=" flex-1 ">Cashapp</p>
+            <div className=" flex py-[7px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13px] rounded-[3px] hover:bg-tradeAshLight cursor-pointer">
+              <p className=" flex-1 ">Apple Pay</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
               <p className=" flex-1 text-tradeGreen">Completed</p>
               <p className=" flex-1">$650.00</p>
+              <p className=" flex-1">8 Jan 2025</p>
+            </div>
+          </div>
+          <div className=" flex flex-col ">
+            <div className=" flex py-[7px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13px] rounded-[3px] hover:bg-tradeAshLight cursor-pointer">
+              <p className=" flex-1 ">Cash App</p>
+              <p className=" flex-1 sm:flex hidden">#3545671</p>
+              <p className=" flex-1 text-tradeGreen">Completed</p>
+              <p className=" flex-1">$650.00</p>
+              <p className=" flex-1">8 Jan 2025</p>
+            </div>
+          </div>
+          <div className=" flex flex-col ">
+            <div className=" flex py-[7px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13px] rounded-[3px] hover:bg-tradeAshLight cursor-pointer">
+              <p className=" flex-1 ">Paypal</p>
+              <p className=" flex-1 sm:flex hidden">#3545671</p>
+              <p className=" flex-1 text-red-500">Cancelled</p>
+              <p className=" flex-1">$400.00</p>
+              <p className=" flex-1">8 Jan 2025</p>
+            </div>
+          </div>
+          <div className=" flex flex-col ">
+            <div className=" flex py-[7px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13px] rounded-[3px] hover:bg-tradeAshLight cursor-pointer">
+              <p className=" flex-1 ">Zelle</p>
+              <p className=" flex-1 sm:flex hidden">#3545671</p>
+              <p className=" flex-1 text-tradePurple">Disputed</p>
+              <p className=" flex-1">$250.00</p>
+              <p className=" flex-1">8 Jan 2025</p>
+            </div>
+          </div>
+          <div className=" flex flex-col ">
+            <div className=" flex py-[7px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13px] rounded-[3px] hover:bg-tradeAshLight cursor-pointer">
+              <p className=" flex-1 ">E-Transfer</p>
+              <p className=" flex-1 sm:flex hidden">#3545671</p>
+              <p className=" flex-1 text-tradeGreen">Completed</p>
+              <p className=" flex-1">$900.00</p>
               <p className=" flex-1">8 Jan 2025</p>
             </div>
           </div>
