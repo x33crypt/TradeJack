@@ -152,14 +152,14 @@ const DashMain = () => {
             </div>
           </div>
         </div>
-        <div className="bg-tradeAsh border-tradeAshLight lg:p-[14px] p-[10px] rounded-[8px] flex flex-col ">
+        <div className="bg-tradeAsh border-tradeAshLight lg:p-[14px] p-[10px] gap-[2px] rounded-[8px] flex flex-col ">
           <div className="flex justify-between items-center ">
             <p className="text-[20px] text-white font-[700]">Recent History</p>
             <p className="text-tradeFadeWhite text-[14px] font-[700] cursor-pointer">
               View all
             </p>
           </div>
-          <div className="mt-[15px] flex py-[8px] lg:px-[10px] px-[8px] text-tradeWhite font-[600] lg:text-[15px] text-[14.5px]">
+          <div className="mt-[15px] flex lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] text-tradeWhite bg-tradeAshLight rounded-[7px] border border-neutral-800 font-[600] lg:text-[14px] text-[13.5px]">
             <p className=" flex-1 flex  items- gap-[5px] font-[700]">
               Service{" "}
               <IoMdArrowRoundDown className=" md:flex hidden  text-white lg:text-[14px] text-[13.5px]" />{" "}
