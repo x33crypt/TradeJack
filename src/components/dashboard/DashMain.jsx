@@ -251,18 +251,18 @@ const DashMain = () => {
             </p>
           </div>
           <div className="flex flex-col gap-[4px]">
-            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
+            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px] border border-neutral-800 hover:bg-neutral-900 cursor-pointer">
               <div className="p-[10px] rounded-full max-w-max bg-tradeAshLight">
                 <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
               </div>
               <div className="w-full flex flex-col gap-[5px]">
                 <div className="flex justify-between">
                   <div className="flex gap-[5px]">
-                    <p className="text-white text-[16px] font-[600]">
+                    <p className="text-white text-[15px] font-[600]">
                       Cash App
                     </p>
-                    <p className="text-white text-[16px]"> -</p>
-                    <p className="text-tradeFadeWhite text-[16px] font-[600]">
+                    <p className="text-white text-[15px]"> -</p>
+                    <p className="text-tradeFadeWhite text-[15px] font-[600]">
                       Buying
                     </p>
                   </div>
@@ -270,16 +270,11 @@ const DashMain = () => {
                   <p className="text-white text-[16px] font-[600]">$560.00</p>
                 </div>
                 <div className="flex justify-between">
-                  <div className="flex gap-[5px]">
-                    <p className="text-tradeFadeWhite text-[12px] font-[500]">
-                      8 Jan 2025
-                    </p>
-                    <p className="text-white text-[14px]"> -</p>
-                    <p className="text-tradeFadeWhite text-[12px] font-[500]">
-                      12:59 PM
-                    </p>
-                  </div>
-                  <p className="text-tradeGreen text-[11px] font-[600]">
+                  <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
+                    8 Jan 2025, 12:59 PM
+                  </p>
+
+                  <p className="text-tradeGreen text-[11px] font-[600] border border-neutral-800 px-[4px] py-[2px] rounded-[8px]">
                     Successful
                   </p>
                 </div>
