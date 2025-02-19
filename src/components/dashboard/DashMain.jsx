@@ -39,9 +39,9 @@ const DashMain = () => {
                     $19,280.01
                   </p>
                 </div>
-                <div className="flex bg-tradeAsh  w-max gap-[7px] border border-tradeGreen px-[12px] py-[4px] rounded-[8px]">
+                <div className="flex bg-tradeAsh  w-max gap-[7px] border border-tradePurple px-[12px] py-[4px] rounded-[8px]">
                   <p className="text-[12px] text-white font-[500]">Escrow</p>
-                  <p className="text-[12px] font-[500] text-tradeGreen">
+                  <p className="text-[12px] font-[500] text-tradePurple">
                     $4,990.00
                   </p>
                 </div>
@@ -72,26 +72,26 @@ const DashMain = () => {
               <p className="text-[14px]">Unlock Higher Transaction Limits!</p>
             </div>
             <div className=" lg:flex grid grid-cols-2 gap-[5px] bg-tradeAsh p-[5px] rounded-[8px] borde">
-              <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight border border-neutral-800 transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
+              <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeOrange transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
                 <p className="text-[30px] text-white font-[700]">2,335</p>
                 <p className="text-[12px] text-tradeFadeWhite font-[600]">
                   Total Trades
                 </p>
               </div>
-              <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight border border-neutral-800 transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
+              <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeOrange transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
                 <p className="text-[30px] text-white font-[700]">10</p>
                 <p className="text-[12px] text-tradeFadeWhite font-[600]">
                   Active Offers
                 </p>
               </div>
-              <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight border border-neutral-800 transition-all duration-300  flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
+              <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeOrange transition-all duration-300  flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
                 <p className="text-[30px] text-white font-[700]">5</p>
                 <p className="text-[12px] text-tradeFadeWhite font-[600]">
                   Pending Trades
                 </p>
               </div>
 
-              <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight border border-neutral-800 transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
+              <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeOrange transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
                 <p className="text-[30px] text-white font-[700]">1</p>
                 <p className="text-[12px] text-tradeFadeWhite font-[600]">
                   Disputed Trades
@@ -107,9 +107,9 @@ const DashMain = () => {
                 </p>
                 <p className="text-white text-[28px] font-[700]">$19,280.01</p>
               </div>
-              <div className="flex w-max gap-[7px] border border-tradeGreen px-[10px] py-[4px] rounded-[10px]">
+              <div className="flex w-max gap-[7px] border border-tradePurple px-[10px] py-[4px] rounded-[10px]">
                 <p className="text-[12px] text-white font-[500]">Escrow</p>
-                <p className="text-[12px] font-[500] text-tradeGreen">
+                <p className="text-[12px] font-[500] text-tradePurple">
                   $4,990.00
                 </p>
               </div>
