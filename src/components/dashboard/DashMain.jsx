@@ -159,29 +159,29 @@ const DashMain = () => {
             </p>
           </div>
           <div className="mt-[15px] flex py-[8px] lg:px-[10px] px-[8px] text-tradeWhite font-[600] lg:text-[15px] text-[14.5px]">
-            <p className=" flex-1 flex  justify-between items- gap-[5px] font-[700]">
+            <p className=" flex-1 flex  items- gap-[5px] font-[700]">
               Service{" "}
-              <IoMdArrowRoundDown className="flex  text-white lg:text-[14px] text-[13.5px]" />{" "}
+              <IoMdArrowRoundDown className=" md:flex hidden  text-white lg:text-[14px] text-[13.5px]" />{" "}
             </p>
             <p className="flex-1 sm:flex hidden items- gap-[5px] font-[700]">
               Trade ID{" "}
-              <IoMdArrowRoundDown className="flex  text-white lg:text-[14px] text-[13.5px]" />{" "}
+              <IoMdArrowRoundDown className="md:flex hidden  text-white lg:text-[14px] text-[13.5px]" />{" "}
             </p>
-            <p className=" flex-1 flex justify-between items- gap-[5px] font-[700]">
+            <p className=" flex-1 flex  items- gap-[5px] font-[700]">
               Status{" "}
-              <IoMdArrowRoundDown className="flex text-white lg:text-[14px] text-[13.5px]" />{" "}
+              <IoMdArrowRoundDown className="md:flex hidden  text-white lg:text-[14px] text-[13.5px]" />{" "}
             </p>
-            <p className=" flex-1  flex justify-between items- gap-[5px] font-[700]">
+            <p className=" flex-1  flex items- gap-[5px] font-[700]">
               Amount{" "}
-              <IoMdArrowRoundDown className="flex text-white lg:text-[14px] text-[13.5px]" />{" "}
+              <IoMdArrowRoundDown className="md:flex hidden  text-white lg:text-[14px] text-[13.5px]" />{" "}
             </p>
-            <p className=" flex-1 flex justify-between items- gap-[5px] font-[700]">
+            <p className=" flex-1 flex  items- gap-[5px] font-[700]">
               Date{" "}
-              <IoMdArrowRoundDown className="flex text-white lg:text-[14px] text-[13.5px]" />{" "}
+              <IoMdArrowRoundDown className="md:flex hidden text-white lg:text-[14px] text-[13.5px]" />{" "}
             </p>
           </div>
           <div className="flex flex-col gap-[5px]">
-            <div className=" flex gap-[5px] lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer">
+            <div className=" flex lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer">
               <p className=" flex-1 ">Gift Card</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
               <p className=" flex-1 text-tradeOrange">Pending</p>
