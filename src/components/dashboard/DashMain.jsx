@@ -35,8 +35,8 @@ const DashMain = () => {
             <div className="flex lg:hidden flex-col items-center  border-tradeAshLight p-[px] gap-[15px] rounded-[8px]">
               <div className="flex w-full flex-col items-center gap-[8px] py-[30px] bg-tradeAsh border border-neutral-800 rounded-[8px]">
                 <div className="flex items-center flex-col gap-[2px]">
-                  <p className="text-tradeFadeWhite text-[13px] font-[600]">
-                    Total balance
+                  <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                    Available balance
                   </p>
                   <p className="text-white lg:text-[28px] text-[40px] font-[700]">
                     $19,280.01
@@ -106,7 +106,7 @@ const DashMain = () => {
             <div className="flex flex-col gap-[8px]">
               <div className="flex flex-col gap-[2px]">
                 <p className="text-white text-[13px] font-[400]">
-                  Total Balance
+                  Available Balance
                 </p>
                 <p className="text-white text-[28px] font-[700]">$19,280.01</p>
               </div>
@@ -181,8 +181,8 @@ const DashMain = () => {
               <IoMdArrowRoundDown className="md:flex hidden text-white lg:text-[14px] text-[13.5px]" />{" "}
             </p>
           </div>
-          <div className="flex flex-col gap-[5px]">
-            <div className=" flex lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer">
+          <div className="flex flex-col gap-[2px]">
+            <div className=" flex lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">Gift Card</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
               <p className=" flex-1 text-tradeOrange">Pending</p>
@@ -190,7 +190,7 @@ const DashMain = () => {
               <p className=" flex-1">15 Feb 2025</p>
             </div>
 
-            <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer">
+            <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">Apple Pay</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
               <p className=" flex-1 text-tradeGreen">Completed</p>
@@ -198,7 +198,7 @@ const DashMain = () => {
               <p className=" flex-1">8 Jan 2025</p>
             </div>
 
-            <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer">
+            <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">Cash App</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
               <p className=" flex-1 text-tradeGreen">Completed</p>
@@ -206,7 +206,7 @@ const DashMain = () => {
               <p className=" flex-1">8 Jan 2025</p>
             </div>
 
-            <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer">
+            <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">Paypal</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
               <p className=" flex-1 text-red-500">Cancelled</p>
@@ -214,7 +214,7 @@ const DashMain = () => {
               <p className=" flex-1">8 Jan 2025</p>
             </div>
 
-            <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer">
+            <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">Zelle</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
               <p className=" flex-1 text-tradePurple">Disputed</p>
@@ -222,7 +222,7 @@ const DashMain = () => {
               <p className=" flex-1">8 Jan 2025</p>
             </div>
 
-            <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer">
+            <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">E-Transfer</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
               <p className=" flex-1 text-tradeGreen">Completed</p>
