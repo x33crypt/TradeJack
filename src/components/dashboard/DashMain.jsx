@@ -2,9 +2,6 @@ import React from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { IoMdArrowRoundUp } from "react-icons/io";
-import { IoIosArrowDown } from "react-icons/io";
-import { MdReportGmailerrorred } from "react-icons/md";
-import { CiFilter } from "react-icons/ci";
 import { FiFilter } from "react-icons/fi";
 
 const DashMain = () => {
@@ -36,7 +33,7 @@ const DashMain = () => {
               <div className="flex w-full flex-col items-center gap-[8px] py-[30px] bg-tradeAsh border border-neutral-800 rounded-[8px]">
                 <div className="flex items-center flex-col gap-[2px]">
                   <p className="text-tradeFadeWhite text-[14px] font-[600]">
-                    Available balance
+                    Available Balance
                   </p>
                   <p className="text-white lg:text-[28px] text-[40px] font-[700]">
                     $19,280.01
@@ -152,7 +149,7 @@ const DashMain = () => {
             </div>
           </div>
         </div>
-        <div className="bg-tradeAsh border-tradeAshLight lg:p-[14px] p-[10px] gap-[2px] rounded-[8px] flex flex-col ">
+        <div className="bg-tradeAsh border-tradeAshLight lg:p-[14px] p-[10px] gap-[2px] rounded-[8px] sm:flex hidden flex-col ">
           <div className="flex justify-between items-center ">
             <p className="text-[20px] text-white font-[700]">Recent History</p>
             <p className="text-tradeFadeWhite text-[14px] font-[700] cursor-pointer">
@@ -166,6 +163,10 @@ const DashMain = () => {
             </p>
             <p className="flex-1 sm:flex hidden items- gap-[5px] font-[700]">
               Trade ID{" "}
+              <IoMdArrowRoundDown className="md:flex hidden  text-white lg:text-[14px] text-[13.5px]" />{" "}
+            </p>
+            <p className="flex-1 sm:flex hidden items- gap-[5px] font-[700]">
+              Trade Type{" "}
               <IoMdArrowRoundDown className="md:flex hidden  text-white lg:text-[14px] text-[13.5px]" />{" "}
             </p>
             <p className=" flex-1 flex  items- gap-[5px] font-[700]">
@@ -185,6 +186,8 @@ const DashMain = () => {
             <div className=" flex lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">Gift Card</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
+              <p className=" flex-1 sm:flex hidden">Buying</p>
+
               <p className=" flex-1 text-tradeOrange">Pending</p>
               <p className=" flex-1">$1,050.00</p>
               <p className=" flex-1">15 Feb 2025</p>
@@ -193,6 +196,7 @@ const DashMain = () => {
             <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">Apple Pay</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
+              <p className=" flex-1 sm:flex hidden">Selling</p>
               <p className=" flex-1 text-tradeGreen">Completed</p>
               <p className=" flex-1">$650.00</p>
               <p className=" flex-1">8 Jan 2025</p>
@@ -201,6 +205,8 @@ const DashMain = () => {
             <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">Cash App</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
+              <p className=" flex-1 sm:flex hidden">Selling</p>
+
               <p className=" flex-1 text-tradeGreen">Completed</p>
               <p className=" flex-1">$650.00</p>
               <p className=" flex-1">8 Jan 2025</p>
@@ -209,6 +215,8 @@ const DashMain = () => {
             <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">Paypal</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
+              <p className=" flex-1 sm:flex hidden">Buying</p>
+
               <p className=" flex-1 text-red-500">Cancelled</p>
               <p className=" flex-1">$400.00</p>
               <p className=" flex-1">8 Jan 2025</p>
@@ -217,6 +225,8 @@ const DashMain = () => {
             <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">Zelle</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
+              <p className=" flex-1 sm:flex hidden">Buying</p>
+
               <p className=" flex-1 text-tradePurple">Disputed</p>
               <p className=" flex-1">$250.00</p>
               <p className=" flex-1">8 Jan 2025</p>
@@ -225,9 +235,77 @@ const DashMain = () => {
             <div className=" flex  lg:py-[7px] py-[8px] lg:px-[10px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[7px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">E-Transfer</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
+              <p className=" flex-1 sm:flex hidden">Selling</p>
+
               <p className=" flex-1 text-tradeGreen">Completed</p>
               <p className=" flex-1">$900.00</p>
               <p className=" flex-1">8 Jan 2025</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-tradeAsh border-tradeAshLight lg:p-[14px] p-[10px] gap-[10px] rounded-[8px] md:hidden flex flex-col ">
+          <div className="flex justify-between items-center ">
+            <p className="text-[20px] text-white font-[700]">Recent History</p>
+            <p className="text-tradeFadeWhite text-[14px] font-[700] cursor-pointer">
+              View all
+            </p>
+          </div>
+          <div className="flex flex-col gap-[4px]">
+            <div className="flex p-[8px] gap-[10px] items-center rounded-[10px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
+              <div className="p-[10px] rounded-full max-w-max bg-tradeAshLight">
+                <IoMdArrowRoundDown className="text-tradeGreen" />
+              </div>
+              <div className="w-full">
+                <div className="flex justify-between">
+                  <div className="flex gap-[5px]">
+                    <p className="text-white text-[14px] font-[600]">
+                      Cash App
+                    </p>
+                    <p className="text-white text-[14px]"> -</p>
+                    <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                      Buying
+                    </p>
+                  </div>
+
+                  <p className="text-white text-[14px] font-[600]">$560.00</p>
+                </div>
+                <div className="flex justify-between">
+                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
+                    8 Jan 2025
+                  </p>
+                  <p className="text-tradeGreen text-[11px] font-[600]">
+                    Successful
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex p-[8px] gap-[10px] items-center rounded-[10px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
+              <div className="p-[10px] rounded-full max-w-max bg-tradeAshLight">
+                <IoMdArrowRoundDown className="text-tradeGreen" />
+              </div>
+              <div className="w-full">
+                <div className="flex justify-between">
+                  <div className="flex gap-[5px]">
+                    <p className="text-white text-[14px] font-[600]">
+                      Cash App
+                    </p>
+                    <p className="text-white text-[14px]"> -</p>
+                    <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                      Buying
+                    </p>
+                  </div>
+
+                  <p className="text-white text-[14px] font-[600]">$560.00</p>
+                </div>
+                <div className="flex justify-between">
+                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
+                    8 Jan 2025
+                  </p>
+                  <p className="text-tradeGreen text-[11px] font-[600]">
+                    Successful
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
