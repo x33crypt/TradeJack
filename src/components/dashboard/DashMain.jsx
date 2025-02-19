@@ -32,8 +32,8 @@ const DashMain = () => {
       <div className="flex flex-col gap-[15px]  bg- rounded-[8px]">
         <div className="flex gap-[14px] ">
           <div className="flex-1 flex flex-col justify-between gap-[15px]">
-            <div className="flex lg:hidden flex-col items-center  border-tradeAshLight p-[px] gap-[20px] rounded-[8px]">
-              <div className="flex w-full flex-col items-center gap-[8px] py-[30px] border border-neutral-800 rounded-[8px]">
+            <div className="flex lg:hidden flex-col items-center  border-tradeAshLight p-[px] gap-[15px] rounded-[8px]">
+              <div className="flex w-full flex-col items-center gap-[8px] py-[30px] bg-tradeAsh border border-neutral-800 rounded-[8px]">
                 <div className="flex items-center flex-col gap-[2px]">
                   <p className="text-tradeFadeWhite text-[13px] font-[600]">
                     Total balance
@@ -43,8 +43,8 @@ const DashMain = () => {
                   </p>
                 </div>
                 <div className="flex bg-tradeAsh  w-max gap-[7px] border border-tradeGreen px-[12px] py-[4px] rounded-[8px]">
-                  <p className="text-[13px] text-white font-[500]">Escrow</p>
-                  <p className="text-[13px] font-[500] text-tradeGreen">
+                  <p className="text-[12px] text-white font-[500]">Escrow</p>
+                  <p className="text-[12px] font-[500] text-tradeGreen">
                     $4,990.00
                   </p>
                 </div>
