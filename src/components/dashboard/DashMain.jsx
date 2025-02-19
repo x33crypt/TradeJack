@@ -140,7 +140,7 @@ const DashMain = () => {
         </div>
         <div className=" bg-tradeAsh  border-tradeAshLight p-[14px] rounded-[8px]">
           <div className="flex  justify-between">
-            <p className="text-[18px] text-white font-[600]">
+            <p className="text-[20px] text-white font-[700]">
               Transaction Stats
             </p>
             <div className="flex justify-between items-center gap-[10px] px-[10px] py-[3px] border border-neutral-800 rounded-[3px] cursor-pointer">
@@ -153,12 +153,12 @@ const DashMain = () => {
         </div>
         <div className="bg-tradeAsh border-tradeAshLight p-[14px] rounded-[8px] flex flex-col ">
           <div className="flex justify-between items-center ">
-            <p className="text-[18px] text-white font-[600]">Recent History</p>
+            <p className="text-[20px] text-white font-[700]">Recent History</p>
             <p className="text-tradeFadeWhite text-[14px] font-[500] cursor-pointer">
               View all
             </p>
           </div>
-          <div className="mt-[15px] flex py-[8px] lg:px-[10px] px-[5px] text-tradeWhite font-[600] lg:text-[14px] text-[12px]">
+          <div className="mt-[15px] flex py-[8px] lg:px-[10px] px-[5px] text-tradeWhite font-[600] lg:text-[14px] text-[14px]">
             <p className=" flex-1 flex items- gap-[5px] font-[700]">
               Service{" "}
               <IoMdArrowRoundDown className="md:flex hidden text-white lg:text-[14px] text-[12px]" />{" "}
@@ -181,7 +181,7 @@ const DashMain = () => {
             </p>
           </div>
           <div className=" flex flex-col ">
-            <div className=" flex py-[7px] lg:px-[10px] px-[5px] font-[500] text-white lg:text-[14px] text-[12px] rounded-[8px] hover:bg-tradeAshLight cursor-pointer">
+            <div className=" flex py-[7px] lg:px-[10px] px-[5px] font-[500] text-white lg:text-[14px] text-[13px] rounded-[8px] hover:bg-tradeAshLight cursor-pointer">
               <p className=" flex-1 ">Cashapp</p>
               <p className=" flex-1 sm:flex hidden">#3545671</p>
               <p className=" flex-1 text-tradeGreen">Completed</p>
