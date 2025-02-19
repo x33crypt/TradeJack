@@ -251,56 +251,34 @@ const DashMain = () => {
             </p>
           </div>
           <div className="flex flex-col gap-[4px]">
-            <div className="flex p-[8px] gap-[10px] items-center rounded-[10px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
+            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
               <div className="p-[10px] rounded-full max-w-max bg-tradeAshLight">
-                <IoMdArrowRoundDown className="text-tradeGreen" />
+                <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
               </div>
-              <div className="w-full">
+              <div className="w-full flex flex-col gap-[5px]">
                 <div className="flex justify-between">
                   <div className="flex gap-[5px]">
-                    <p className="text-white text-[14px] font-[600]">
+                    <p className="text-white text-[16px] font-[600]">
                       Cash App
                     </p>
-                    <p className="text-white text-[14px]"> -</p>
-                    <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                    <p className="text-white text-[16px]"> -</p>
+                    <p className="text-tradeFadeWhite text-[16px] font-[600]">
                       Buying
                     </p>
                   </div>
 
-                  <p className="text-white text-[14px] font-[600]">$560.00</p>
+                  <p className="text-white text-[16px] font-[600]">$560.00</p>
                 </div>
-                <div className="flex justify-between">
-                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
-                    8 Jan 2025
-                  </p>
-                  <p className="text-tradeGreen text-[11px] font-[600]">
-                    Successful
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="flex p-[8px] gap-[10px] items-center rounded-[10px] border border-neutral-800 hover:bg-tradeAshLight cursor-pointer">
-              <div className="p-[10px] rounded-full max-w-max bg-tradeAshLight">
-                <IoMdArrowRoundDown className="text-tradeGreen" />
-              </div>
-              <div className="w-full">
                 <div className="flex justify-between">
                   <div className="flex gap-[5px]">
-                    <p className="text-white text-[14px] font-[600]">
-                      Cash App
+                    <p className="text-tradeFadeWhite text-[12px] font-[500]">
+                      8 Jan 2025
                     </p>
                     <p className="text-white text-[14px]"> -</p>
-                    <p className="text-tradeFadeWhite text-[14px] font-[600]">
-                      Buying
+                    <p className="text-tradeFadeWhite text-[12px] font-[500]">
+                      12:59 PM
                     </p>
                   </div>
-
-                  <p className="text-white text-[14px] font-[600]">$560.00</p>
-                </div>
-                <div className="flex justify-between">
-                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
-                    8 Jan 2025
-                  </p>
                   <p className="text-tradeGreen text-[11px] font-[600]">
                     Successful
                   </p>
