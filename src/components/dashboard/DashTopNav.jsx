@@ -56,7 +56,7 @@ const DashTopNav = () => {
   };
 
   return (
-    <div className="z-50 fixed right-0 left-0 bg-black px-[4%] h-[70px] flex justify-between items-center border-b border-tradeAsh ">
+    <div className="z-50 fixed right-0 left-0 bg-black lg:px-[1.5%] px-[3%] h-[70px] flex justify-between items-center border-b border-tradeAsh ">
       <div className="flex items-center lg:gap-[20px] gap-[15px]">
         <div className="lg:hidden flex">
           <HiOutlineMenuAlt2 className="text-white text-[25px]" />
@@ -87,17 +87,17 @@ const DashTopNav = () => {
           />
         </div>
         <div className="cursor-pointer sm:hidden">
-          <FiSearch className="text-white text-[23px]" />
+          <FiSearch className="text-white hover:text-tradeGreen  text-[23px] transition-all duration-300" />
         </div>
         <div className="cursor-pointer">
-          <FaRegBell className="text-white lg:text-[22px] text-[23px]" />
+          <FaRegBell className="text-white hover:text-tradeGreen  lg:text-[22px] text-[23px] transition-all duration-300" />
         </div>
         <div
-          className="cursor-pointer"
+          className="cursor-pointer p-[6px] bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-full transition-all duration-300"
           onClick={() => setIsNavOption((prev) => !prev)}
         >
           <img
-            className="lg:w-[34px] w-[35px] rounded-full"
+            className="lg:w-[32px] w-[35px] rounded-full"
             src={landingImg4}
             alt=""
           />

@@ -16,11 +16,11 @@ const OfferSummary = ({
   offerPageTwo,
 }) => {
   return (
-    <div className="w-[400px] bg-tradeAsh flex flex-col gap-[40px] rounded-[8px] p-[10px]">
+    <div className="w-[370px] bg-tradeAsh flex flex-col gap-[40px] rounded-[8px] p-[10px]">
       <div className="flex flex-col gap-[15px]">
         <p className="text-white text-[28px] font-[900]">Offer Summary</p>
 
-        <p className="text-[14.5px] text-white leading-[25px]">
+        <p className="text-[14px] text-white leading-[25px]">
           Set up your offer by selecting a service type, currency, and a rate
           that attracts your target audience. Define clear offer terms for a
           smooth trade.

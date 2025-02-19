@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <>
       <DashTopNav />
-      <div className="lg:pt-[80px] pt-[80px] flex bg-black lg:gap-[10px] p-[3%]">
+      <div className="lg:pt-[87px] pt-[80px] flex bg-black lg:gap-[15px] lg:p-[1.5%] p-[3%]">
         <div className="flex flex-col gap-[10px]">
           <DashSideNav />
         </div>
@@ -18,7 +18,7 @@ const Dashboard = () => {
           <DashMain />
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
