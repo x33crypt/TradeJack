@@ -274,7 +274,7 @@ const DashMain = () => {
                     8 Jan 2025, 12:59 PM
                   </p>
 
-                  <p className="text-tradeOrange text-[11px] font-[600] border border-neutral-800 px-[4px] py-[2px] rounded-[8px]">
+                  <p className="text-tradeOrange text-[11px] font-[600] border border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
                     Pending
                   </p>
                 </div>
@@ -301,7 +301,7 @@ const DashMain = () => {
                     10 Jan 2025, 04:22 AM
                   </p>
 
-                  <p className="text-red-600 text-[11px] font-[600] border border-neutral-800 px-[4px] py-[2px] rounded-[8px]">
+                  <p className="text-red-600 text-[11px] font-[600] border border-red-600 px-[6px] py-[2px] rounded-[5px]">
                     Cancelled
                   </p>
                 </div>
@@ -330,7 +330,7 @@ const DashMain = () => {
                     8 Jan 2025, 12:59 PM
                   </p>
 
-                  <p className="text-tradeGreen text-[11px] font-[600] border border-neutral-800 px-[4px] py-[2px] rounded-[8px]">
+                  <p className="text-tradeGreen text-[11px] font-[600] border border-tradeGreen px-[6px] py-[2px] rounded-[5px]">
                     Successful
                   </p>
                 </div>
@@ -359,7 +359,7 @@ const DashMain = () => {
                     8 Jan 2025, 12:59 PM
                   </p>
 
-                  <p className="text-tradeGreen text-[11px] font-[600] border border-neutral-800 px-[4px] py-[2px] rounded-[8px]">
+                  <p className="text-tradeGreen text-[11px] font-[600] border border-tradeGreen px-[6px] py-[2px] rounded-[5px]">
                     Successful
                   </p>
                 </div>
@@ -373,7 +373,7 @@ const DashMain = () => {
                 <div className="flex justify-between">
                   <div className="flex items-center gap-[5px]">
                     <p className="text-white text-[15px] font-[600]">
-                      Debit/Credit Card
+                      D/C Card
                     </p>
                     <p className="text-white text-[15px]"> -</p>
                     <p className="text-tradeFadeWhite text-[12px] font-[600]">
@@ -388,7 +388,7 @@ const DashMain = () => {
                     8 Jan 2025, 12:59 PM
                   </p>
 
-                  <p className="text-tradePurple text-[11px] font-[600] border border-neutral-800 px-[4px] py-[2px] rounded-[8px]">
+                  <p className="text-tradePurple text-[11px] font-[600] border border-tradePurple px-[6px] py-[2px] rounded-[5px]">
                     Disputed
                   </p>
                 </div>
