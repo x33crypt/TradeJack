@@ -148,24 +148,12 @@ const OfferCard = (props) => {
 
               <div className=" flex flex-col">
                 <p className=" flex sm:hidden text-[14px] font-[400]">
-                  Buying : {""}
+                  Buying : {" "}
                   <small className="text-[14px] font-[600] text-black">
                     {props.service} Funds
                   </small>
                 </p>
-                <p className="text-[14px] font-[400]">
-                  Min Purchase :{" "}
-                  <small className="text-[14px] font-[600] text-black">
-                    {`20`} {props.currency}
-                  </small>
-                </p>
-                <p className="text-[14px] font-[400]">
-                  Max Purchase :{" "}
-                  <small className="text-[14px] font-[600] text-black">
-                    {`${parseInt(props.purchaseLimit).toLocaleString()}`}{" "}
-                    {props.currency}
-                  </small>
-                </p>
+               
               </div>
             </div>
           </div>
