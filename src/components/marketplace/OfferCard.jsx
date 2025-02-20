@@ -87,7 +87,7 @@ const OfferCard = (props) => {
                       <RiRadioButtonLine className="text-[10px] font-[600] flex items-center text-tradeFadeWhite" />
                     )}
                   </div>
-                  <p className=" text-[13.5px] font-[600]">{props.username}</p>
+                  <p className=" text-[14px] font-[700]">{props.username}</p>
                 </div>
                 <div className="flex flex-co gap-[10px] ">
                   <div className="">
@@ -127,7 +127,7 @@ const OfferCard = (props) => {
                 </div>
                 <p className="text-[13px] font-[400]">
                   Buying :{" "}
-                  <small className="text-[13px] font-[600] text-black">
+                  <small className="text-[14px] font-[600] text-black">
                     {props.service} Funds
                   </small>
                 </p>
