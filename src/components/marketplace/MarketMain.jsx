@@ -70,8 +70,8 @@ const MarketMain = () => {
           Seamless & Secure Trading
         </p>
         <p className="text-tradeFadeWhite lg:text-[15px] sm:text-[14px] text-[14px]">
-          Sell a Diverse Range of Digital Assets to Buyers Worldwide with Ease,
-          Ensuring Secure Transactions and a Seamless Trading Experience.
+          Sell a variety of digital assets to buyers worldwide with ease,
+          ensuring secure and hassle-free transactions.
         </p>
       </div>
       <div className="flex flex-col lg:gap-[10px] gap-[4px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[8px]">
