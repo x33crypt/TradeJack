@@ -67,14 +67,15 @@ const MarketMain = () => {
     <div className="flex flex-col gap-[10px] bg-tradeAs rounded-[8px] bg-tradeAsh ">
       <div className="lg:p-[10px] p-[8px] flex flex-col rounded-[8px] bg-tradeAsh  ">
         <p className="text-white lg:text-[28px] md:text-[25px] sm:text-[25px] text-[25px] font-[900]">
-          Asset Market
+          Seamless & Secure Trading
         </p>
         <p className="text-tradeFadeWhite lg:text-[15px] sm:text-[14px] text-[14px]">
-          Sell a Wide Range of Digital Assets to Buyers Worldwide with Ease
+          Sell a Diverse Range of Digital Assets to Buyers Worldwide with Ease,
+          Ensuring Secure Transactions and a Seamless Trading Experience.
         </p>
       </div>
       <div className="flex flex-col lg:gap-[10px] gap-[4px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[8px]">
-        <div className="bg-tradeOrange px-[20px] py-[5px] rounded-[5px]">
+        <div className="bg-tradeOrange lg:px-[20px] px-[5px] py-[5px] rounded-[5px]">
           <p className="font-[600]">Promoted Offers</p>
         </div>
         <div className="grid grid-cols-1 lg:gap-[10px] gap-[4px] items-center">
@@ -96,7 +97,7 @@ const MarketMain = () => {
         </div>
       </div>
       <div className="flex flex-col lg:gap-[10px] gap-[4px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[8px]">
-        <div className="bg-[rgb(231,206,109)] px-[20px] py-[5px] rounded-[5px]">
+        <div className="bg-[rgb(231,206,109)] lg:px-[20px] px-[5px] py-[5px] rounded-[5px]">
           <p className="font-[600]">Other Offers</p>
         </div>
         <div className="grid grid-cols-1 lg:gap-[10px] gap-[4px] items-center">
