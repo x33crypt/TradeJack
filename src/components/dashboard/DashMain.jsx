@@ -274,7 +274,7 @@ const DashMain = () => {
                     8 Jan 2025, 12:59 PM
                   </p>
 
-                  <p className="text-tradeOrange text-[11px] font-[600] border border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
+                  <p className="text-tradeOrange text-[11px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
                     Pending
                   </p>
                 </div>
@@ -301,7 +301,7 @@ const DashMain = () => {
                     10 Jan 2025, 04:22 AM
                   </p>
 
-                  <p className="text-red-600 text-[11px] font-[600] border border-red-600 px-[6px] py-[2px] rounded-[5px]">
+                  <p className="text-red-600 text-[11px] font-[600]  border-red-600 px-[6px] py-[2px] rounded-[5px]">
                     Cancelled
                   </p>
                 </div>
@@ -330,7 +330,7 @@ const DashMain = () => {
                     8 Jan 2025, 12:59 PM
                   </p>
 
-                  <p className="text-tradeGreen text-[11px] font-[600] border border-tradeGreen px-[6px] py-[2px] rounded-[5px]">
+                  <p className="text-tradeGreen text-[11px] font-[600]  border-tradeGreen px-[6px] py-[2px] rounded-[5px]">
                     Successful
                   </p>
                 </div>
@@ -359,7 +359,7 @@ const DashMain = () => {
                     8 Jan 2025, 12:59 PM
                   </p>
 
-                  <p className="text-tradeGreen text-[11px] font-[600] border border-tradeGreen px-[6px] py-[2px] rounded-[5px]">
+                  <p className="text-tradeGreen text-[11px] font-[600]  border-tradeGreen px-[6px] py-[2px] rounded-[5px]">
                     Successful
                   </p>
                 </div>
@@ -388,7 +388,7 @@ const DashMain = () => {
                     8 Jan 2025, 12:59 PM
                   </p>
 
-                  <p className="text-tradePurple text-[11px] font-[600] border border-tradePurple px-[6px] py-[2px] rounded-[5px]">
+                  <p className="text-tradePurple text-[11px] font-[600]  border-tradePurple px-[6px] py-[2px] rounded-[5px]">
                     Disputed
                   </p>
                 </div>
