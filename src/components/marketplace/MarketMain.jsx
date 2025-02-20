@@ -66,14 +66,14 @@ const MarketMain = () => {
   return (
     <div className="flex flex-col gap-[10px] bg-tradeAs rounded-[8px] bg-tradeAsh ">
       <div className="p-[10px] flex flex-col rounded-[8px] bg-tradeAsh  ">
-        <p className="text-white lg:text-[35px] md:text-[32px] sm:text-[28px] text-[20px] font-[900]">
-          Seamless Transactions, Trusted Vendors
+        <p className="text-white lg:text-[28px] md:text-[25px] sm:text-[25px] text-[20px] font-[900]">
+          Trusted Asset Marketplace
         </p>
-        <p className="text-tradeFadeWhite md:text-[15px] sm:text-[14px] text-[12px]">
+        <p className="text-tradeFadeWhite lg:text-[15px] sm:text-[14px] text-[13px]">
           Sell a Wide Range of Digital Assets to Buyers Worldwide with Ease
         </p>
       </div>
-      {/* <div className="flex flex-col gap-[10px] bg-tradeAsh borde border-neutral-800 rounded-[8px] p-[10px]">
+      <div className="flex flex-col gap-[10px] bg-tradeAsh borde border-neutral-800 rounded-[8px] p-[10px]">
         <div className="bg-tradeOrange px-[20px] py-[5px] rounded-[5px]">
           <p className="font-[600]">Promoted Offers</p>
         </div>
@@ -116,7 +116,7 @@ const MarketMain = () => {
             </div>
           ))}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
