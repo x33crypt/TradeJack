@@ -76,11 +76,11 @@ const MarketMain = () => {
         </p>
       </div>
 
-      <div className=" px-[10px] py-[5px] bg-tradeAshLight border border-neutral-700 rounded-[3px] ">
+      <div className=" px-[10px] py-[8px] bg-tradeAshLight border border-neutral-700 rounded-[3px] ">
         <div className="flex justify-between items-center cursor-pointer">
           <p className="text-white font-[700]">Filter Offers</p>
-          <div className="p-[4px] border border-white rounded-[3px]">
-            <IoFilter className="text-tradeFadeWhite text-[15px]" />
+          <div className="p-[6px] border border-white rounded-[3px]">
+            <IoFilter className="text-tradeFadeWhite text-[20px]" />
           </div>
         </div>
       </div>
