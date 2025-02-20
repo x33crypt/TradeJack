@@ -7,6 +7,7 @@ import tippy from "tippy.js";
 import "tippy.js/dist/tippy.css";
 import { useNavigate } from "react-router-dom";
 import { SiTrustpilot } from "react-icons/si";
+import { RiRadioButtonLine } from "react-icons/ri";
 
 const OfferCard = (props) => {
   tippy("[data-tippy-content]");
@@ -47,7 +48,7 @@ const OfferCard = (props) => {
                     <>
                       <div
                         id="vendorVerified"
-                        className="w-max flex items-center gap-[3px] rounded-[3px] cursor-pointer "
+                        className="w-max flex items-center gap-[4px] rounded-[3px] cursor-pointer "
                       >
                         <MdOutlineVerified className="text-neutral-600 text-[13px]" />
                         <p className="text-neutral-600 font-[600] text-[13px]">
@@ -78,34 +79,26 @@ const OfferCard = (props) => {
                     </>
                   )}
                 </div>
-                <div className=" flex items-center gap-[2px]">
-                  <div className="flex sm:hidden ">
+                <div className=" flex items-center gap-[4px]">
+                  <div className="flex sm:hidden">
                     {props.availability == "online" ? (
-                      <p className="text-[13px] font-[400]">
-                        <small className="text-[18px] font-[600] flex items-center text-tradeGreen">
-                          &#x2022;
-                        </small>
-                      </p>
+                      <RiRadioButtonLine className="text-[10px] font-[600] flex items-center text-tradeGreen" />
                     ) : (
-                      <p className="text-[13px] font-[400]">
-                        <small className="text-[18px] font-[600] flex items-center text-tradeFadeWhite">
-                          &#x2022;
-                        </small>
-                      </p>
+                      <RiRadioButtonLine className="text-[10px] font-[600] flex items-center text-tradeFadeWhite" />
                     )}
                   </div>
                   <p className=" text-[13.5px] font-[600]">{props.username}</p>
                 </div>
                 <div className="flex flex-co gap-[10px] ">
                   <div className="">
-                    <p className="text-[13px] flex items-center gap-[3px] font-[600]">
+                    <p className="text-[13px] flex items-center gap-[4px] font-[600]">
                       {" "}
                       <IoMdThumbsUp className="text-[13px] text-tradeGreen" />{" "}
                       {`${parseInt(props.reviews).toLocaleString()}`}
                     </p>
                   </div>
                   <div className="">
-                    <p className="text-[13px] flex items-center gap-[3px] font-[600]">
+                    <p className="text-[13px] flex items-center gap-[4px] font-[600]">
                       {" "}
                       <SiTrustpilot className="text-[13px] text-tradeOrange" />{" "}
                       {`${props.trustScore}%`}
@@ -146,11 +139,14 @@ const OfferCard = (props) => {
                 </p>
               </div>
 
-              <div className=" flex flex-col">
+              <div className=" flex flex-col ">
                 <p className=" flex sm:hidden text-[13.5px] font-[400]">
                   <small className="text-[13px] font-[700] text-black">
                     {props.service}
                   </small>
+                </p>
+                <p className="text-[13px] font-[500] text-black">
+                  1 {props.currency} = 0.93 USD of BTC
                 </p>
               </div>
             </div>
