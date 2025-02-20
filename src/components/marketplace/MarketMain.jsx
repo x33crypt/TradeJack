@@ -69,7 +69,7 @@ const MarketMain = () => {
         <p className="text-white lg:text-[28px] md:text-[25px] sm:text-[25px] text-[25px] font-[900]">
           Trusted Asset Marketplace
         </p>
-        <p className="text-tradeFadeWhite lg:text-[15px] sm:text-[14px] text-[15px]">
+        <p className="text-tradeFadeWhite lg:text-[15px] sm:text-[14px] text-[13.5px]">
           Sell a Wide Range of Digital Assets to Buyers Worldwide with Ease
         </p>
       </div>
