@@ -66,10 +66,10 @@ const MarketMain = () => {
   return (
     <div className="flex flex-col gap-[10px] bg-tradeAs rounded-[8px] bg-tradeAsh ">
       <div className="lg:p-[10px] p-[5px] flex flex-col rounded-[8px] bg-tradeAsh  ">
-        <p className="text-white lg:text-[28px] md:text-[25px] sm:text-[25px] text-[20px] font-[900]">
+        <p className="text-white lg:text-[28px] md:text-[25px] sm:text-[25px] text-[25px] font-[900]">
           Trusted Asset Marketplace
         </p>
-        <p className="text-tradeFadeWhite lg:text-[15px] sm:text-[14px] text-[13px]">
+        <p className="text-tradeFadeWhite lg:text-[15px] sm:text-[14px] text-[15px]">
           Sell a Wide Range of Digital Assets to Buyers Worldwide with Ease
         </p>
       </div>

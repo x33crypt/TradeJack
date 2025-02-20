@@ -40,8 +40,8 @@ const OfferCard = (props) => {
             <img className="w-[40px] rounded-full" src={landingImg4} alt="" />
           </div>
           <div className="flex flex-col w-full ">
-            <div className="flex items- justify-between">
-              <div className="flex flex-col gap-[px]">
+            <div className="flex justify-between">
+              <div className="flex flex-col justify-center">
                 <div className="flex sm:hidden">
                   {props?.verified ? (
                     <>
@@ -79,23 +79,19 @@ const OfferCard = (props) => {
                   )}
                 </div>
                 <div className=" flex items-center gap-[2px]">
-                  <div className="flex sm:hidden">
+                  <div className="flex sm:hidden ">
                     {props.availability == "online" ? (
-                      <>
-                        <p className="text-[13px] font-[400]">
-                          <small className="text-[22px] font-[700] flex items-center text-tradeGreen">
-                            &#x2022;
-                          </small>
-                        </p>
-                      </>
+                      <p className="text-[13px] font-[400]">
+                        <small className="text-[18px] font-[700] flex items-center text-tradeGreen">
+                          &#x2022;
+                        </small>
+                      </p>
                     ) : (
-                      <>
-                        <p className="text-[13px] font-[400]">
-                          <small className="text-[22px] font-[700] flex items-center text-tradeFadeWhite">
-                            &#x2022;
-                          </small>
-                        </p>
-                      </>
+                      <p className="text-[13px] font-[400]">
+                        <small className="text-[18px] font-[700] flex items-center text-tradeFadeWhite">
+                          &#x2022;
+                        </small>
+                      </p>
                     )}
                   </div>
                   <p className=" text-[15px] font-[600]">{props.username}</p>
@@ -118,7 +114,7 @@ const OfferCard = (props) => {
                 </div>
               </div>
 
-              <div className="hidden sm:flex justify-between flex-col">
+              <div className="hidden sm:flex flex-col">
                 <div>
                   {props?.verified ? (
                     <>
@@ -150,7 +146,7 @@ const OfferCard = (props) => {
                 </p>
               </div>
 
-              <div className=" flex flex-col justify-between">
+              <div className=" flex flex-col">
                 <p className=" flex sm:hidden text-[14px] font-[400]">
                   Buying : {""}
                   <small className="text-[14px] font-[600] text-black">
