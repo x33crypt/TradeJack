@@ -65,7 +65,7 @@ const MarketMain = () => {
 
   return (
     <div className="flex flex-col gap-[10px] bg-tradeAs rounded-[8px] bg- ">
-      <div className="lg:p-[px] p-[px] flex flex-col rounded-[8px] bg-  ">
+      <div className="lg:p-[10px] p-[8px] flex flex-col rounded-[8px] bg-  ">
         <p className="text-white lg:text-[28px] md:text-[25px] sm:text-[25px] text-[25px] font-[900]">
           Secure Asset Marketplace
         </p>
