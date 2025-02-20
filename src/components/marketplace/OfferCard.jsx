@@ -49,8 +49,8 @@ const OfferCard = (props) => {
                         id="vendorVerified"
                         className="w-max flex items-center gap-[3px] rounded-[3px] cursor-pointer "
                       >
-                        <MdOutlineVerified className="text-neutral-600 text-[13.5px]" />
-                        <p className="text-neutral-600 font-[700] text-[13.5px]">
+                        <MdOutlineVerified className="text-neutral-600 text-[13px]" />
+                        <p className="text-neutral-600 font-[600] text-[13px]">
                           Verified Offer
                         </p>
                       </div>
@@ -63,7 +63,7 @@ const OfferCard = (props) => {
                   {props.availability == "online" ? (
                     <>
                       <p className="text-[13px] font-[400]">
-                        <small className="text-[13px] font-[700] flex items-center text-tradeGreen">
+                        <small className="text-[13px] font-[600] flex items-center text-tradeGreen">
                           &#x2022; Online
                         </small>
                       </p>
@@ -71,7 +71,7 @@ const OfferCard = (props) => {
                   ) : (
                     <>
                       <p className="text-[13px] font-[400]">
-                        <small className="text-[13px] font-[700] flex items-center text-tradeFadeWhite">
+                        <small className="text-[13px] font-[600] flex items-center text-tradeFadeWhite">
                           &#x2022; Offline
                         </small>
                       </p>
@@ -82,19 +82,19 @@ const OfferCard = (props) => {
                   <div className="flex sm:hidden ">
                     {props.availability == "online" ? (
                       <p className="text-[13px] font-[400]">
-                        <small className="text-[18px] font-[700] flex items-center text-tradeGreen">
+                        <small className="text-[18px] font-[600] flex items-center text-tradeGreen">
                           &#x2022;
                         </small>
                       </p>
                     ) : (
                       <p className="text-[13px] font-[400]">
-                        <small className="text-[18px] font-[700] flex items-center text-tradeFadeWhite">
+                        <small className="text-[18px] font-[600] flex items-center text-tradeFadeWhite">
                           &#x2022;
                         </small>
                       </p>
                     )}
                   </div>
-                  <p className=" text-[15px] font-[600]">{props.username}</p>
+                  <p className=" text-[13.5px] font-[600]">{props.username}</p>
                 </div>
                 <div className="flex flex-co gap-[10px] ">
                   <div className="">
@@ -123,7 +123,7 @@ const OfferCard = (props) => {
                         className="w-max flex items-center gap-[3px] rounded-[3px] cursor-pointer "
                       >
                         <MdOutlineVerified className="text-neutral-600 text-[13.5px]" />
-                        <p className="text-neutral-600 font-[700] text-[13.5px]">
+                        <p className="text-neutral-600 font-[600] text-[13.5px]">
                           Verified Offer
                         </p>
                       </div>
@@ -147,9 +147,8 @@ const OfferCard = (props) => {
               </div>
 
               <div className=" flex flex-col">
-                <p className=" flex sm:hidden text-[13px] font-[400]">
-                
-                  <small className="text-[13px] font-[600] text-black">
+                <p className=" flex sm:hidden text-[13.5px] font-[400]">
+                  <small className="text-[13px] font-[700] text-black">
                     {props.service}
                   </small>
                 </p>
