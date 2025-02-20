@@ -42,7 +42,7 @@ const OfferCard = (props) => {
           </div>
           <div className="flex flex-col w-full ">
             <div className="flex justify-between">
-              <div className="flex flex-col justify-center">
+              <div className="flex flex-col justify-center gap-[3px]">
                 <div className="flex sm:hidden">
                   {props?.verified ? (
                     <>
@@ -50,8 +50,8 @@ const OfferCard = (props) => {
                         id="vendorVerified"
                         className="w-max flex items-center gap-[4px] rounded-[3px] cursor-pointer "
                       >
-                        <MdOutlineVerified className="text-neutral-600 text-[13px]" />
-                        <p className="text-neutral-600 font-[600] text-[13px]">
+                        <MdOutlineVerified className="text-neutral-600 text-[12px]" />
+                        <p className="text-neutral-600 font-[600] text-[12px]">
                           Verified Offer
                         </p>
                       </div>
@@ -107,7 +107,7 @@ const OfferCard = (props) => {
                 </div>
               </div>
 
-              <div className="hidden sm:flex flex-col">
+              <div className="hidden sm:flex flex-col gap-[3px]">
                 <div>
                   {props?.verified ? (
                     <>
@@ -139,9 +139,9 @@ const OfferCard = (props) => {
                 </p>
               </div>
 
-              <div className=" flex flex-col ">
+              <div className=" flex flex-col gap-[3px] ">
                 <p className=" flex sm:hidden text-[13.5px] font-[400]">
-                  <small className="text-[13px] font-[700] text-black">
+                  <small className="text-[14px] font-[700] text-black">
                     {props.service}
                   </small>
                 </p>
@@ -154,7 +154,7 @@ const OfferCard = (props) => {
         </div>
         <div className="my-[10px] border-t"></div>
         <div className="flex items-end  justify-between">
-          <div className="">
+          <div className=" flex flex-col gap-[3px]">
             <p className="text-[13px] font-[400]">
               Min Purchase :{" "}
               <small className="text-[13px] font-[600] text-black">
@@ -170,7 +170,7 @@ const OfferCard = (props) => {
             </p>
           </div>
 
-          <div className="flex flex-co gap-[5px]">
+          <div className="flex flex-co gap-[3px]">
             <p
               onClick={() => handleOfferClick(props.id)}
               className="px-[15px] py-[6px] rounded-[4px] border border-white hover:border-tradeGreen bg-tradeGreen hover:bg-white text-[13px] font-[600] w-max cursor-pointer"
