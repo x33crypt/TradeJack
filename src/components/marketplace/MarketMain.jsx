@@ -65,11 +65,11 @@ const MarketMain = () => {
 
   return (
     <div className="flex flex-col gap-[10px] bg-tradeAs rounded-[8px] bg- ">
-      <div className="lg:py-[10px] py-[8px] flex flex-col rounded-[8px] bg- gap-[8px]  ">
+      <div className="lg:p-[10px] p-[5px] flex flex-col rounded-[8px] bg- gap-[8px]  ">
         <p className="text-white lg:text-[28px] md:text-[25px] sm:text-[25px] text-[25px] font-[900]">
-          Marketplace
+          Secure Marketplace
         </p>
-        <p className="text-tradeFadeWhite lg:text-[15px] sm:text-[14px] text-[14px]">
+        <p className="text-tradeFadeWhite lg:text-[15px] sm:text-[14px] text-[15px]">
           Sell a variety of digital assets to buyers worldwide with ease,
           ensuring secure and hassle-free transactions.
         </p>
