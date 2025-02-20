@@ -41,7 +41,7 @@ const OfferCard = (props) => {
             <img className="w-[40px] rounded-full" src={landingImg4} alt="" />
           </div>
           <div className="flex flex-col w-full ">
-            <div className="flex justify-between">
+            <div className="flex items-center justify-between">
               <div className="flex flex-col justify-center gap-[3px]">
                 <div className="flex sm:hidden">
                   {props?.verified ? (
@@ -52,13 +52,11 @@ const OfferCard = (props) => {
                       >
                         <MdOutlineVerified className="text-neutral-600 text-[12px]" />
                         <p className="text-neutral-600 font-[600] text-[12px]">
-                          Verified Offer
+                          Verified
                         </p>
                       </div>
                     </>
-                  ) : (
-                    ""
-                  )}
+                  ) : null}
                 </div>
                 <div className="hidden sm:flex">
                   {props.availability == "online" ? (
@@ -87,7 +85,9 @@ const OfferCard = (props) => {
                       <RiRadioButtonLine className="text-[10px] font-[600] flex items-center text-tradeFadeWhite" />
                     )}
                   </div>
-                  <p className=" text-[14px] font-[700]">{props.username}</p>
+                  <p className="text-[14px] font-[700] w-[90px] overflow-hidden sm:overflow-visible text-ellipsis whitespace-nowrap">
+                    {props.username}
+                  </p>
                 </div>
                 <div className="flex flex-co gap-[10px] ">
                   <div className="">
@@ -117,7 +117,7 @@ const OfferCard = (props) => {
                       >
                         <MdOutlineVerified className="text-neutral-600 text-[13.5px]" />
                         <p className="text-neutral-600 font-[600] text-[13.5px]">
-                          Verified Offer
+                          Verified
                         </p>
                       </div>
                     </>
@@ -140,11 +140,13 @@ const OfferCard = (props) => {
               </div>
 
               <div className=" flex flex-col gap-[3px] ">
-                <p className=" flex sm:hidden text-[13.5px] font-[400]">
-                  <small className="text-[14px] font-[700] text-black">
-                    {props.service}
-                  </small>
-                </p>
+                <small className="text-[13px] font-[500] text-black">
+                  Online Wallet Trf
+                </small>
+                <small className="text-[14px] font-[700] text-black">
+                  {props.service}
+                </small>
+
                 <p className="text-[13px] font-[500] text-black">
                   1 {props.currency} = 0.93 USD of BTC
                 </p>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { TbReload } from "react-icons/tb";
 import OfferCard from "./OfferCard";
 import axios from "axios";
+import { IoFilter } from "react-icons/io5";
 
 const MarketMain = () => {
   const [offers, setOffers] = useState();
@@ -74,6 +75,16 @@ const MarketMain = () => {
           ensuring secure and hassle-free transactions.
         </p>
       </div>
+
+      <div className=" px-[10px] py-[5px] bg-tradeAshLight border border-neutral-700 rounded-[3px] ">
+        <div className="flex justify-between items-center cursor-pointer">
+          <p className="text-white font-[700]">Filter Offers</p>
+          <div className="p-[4px] border border-white rounded-[3px]">
+            <IoFilter className="text-tradeFadeWhite text-[15px]" />
+          </div>
+        </div>
+      </div>
+
       <div className="flex flex-col lg:gap-[10px] gap-[4px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[8px]">
         <div className="bg-tradeOrange lg:px-[20px] px-[10px] py-[5px] rounded-[5px]">
           <p className="font-[600] text-[14px]">Promoted Offers</p>
