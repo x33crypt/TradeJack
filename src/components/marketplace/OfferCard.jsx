@@ -8,6 +8,7 @@ import "tippy.js/dist/tippy.css";
 import { useNavigate } from "react-router-dom";
 import { SiTrustpilot } from "react-icons/si";
 import { RiRadioButtonLine } from "react-icons/ri";
+import { LuFilter } from "react-icons/lu";
 
 const OfferCard = (props) => {
   tippy("[data-tippy-content]");
@@ -35,7 +36,7 @@ const OfferCard = (props) => {
 
   return (
     <>
-      <div className="bg-white border border-neutral-600 p-[10px] rounded-[8px]">
+      <div className="bg-white  p-[10px] rounded-[8px]">
         <div className="flex gap-[5px] sm:gap-[10px]">
           <div className="hidden sm:flex items-start">
             <img className="w-[40px] rounded-full" src={landingImg4} alt="" />

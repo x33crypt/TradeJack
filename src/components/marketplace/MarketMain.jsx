@@ -3,6 +3,7 @@ import { TbReload } from "react-icons/tb";
 import OfferCard from "./OfferCard";
 import axios from "axios";
 import { IoFilter } from "react-icons/io5";
+import { LuFilter } from "react-icons/lu";
 
 const MarketMain = () => {
   const [offers, setOffers] = useState();
@@ -76,16 +77,16 @@ const MarketMain = () => {
         </p>
       </div>
 
-      <div className=" px-[10px] py-[7px] bg-tradeAshLight border border-neutral-700 rounded-[3px] ">
+      <div className="lg:hidden flex flex-col px-[10px] py-[7px] bg-tradeAshLight border border-neutral-700 rounded-[3px] ">
         <div className="flex justify-between items-center cursor-pointer">
           <p className="text-white font-[700]">Filter Offers</p>
           <div className="p-[6px] border border-white rounded-[3px]">
-            <IoFilter className="text-tradeFadeWhite text-[18px]" />
+            <LuFilter className="text-tradeFadeWhite text-[18px]" />
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col lg:gap-[10px] gap-[4px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[5px]">
+      <div className="flex flex-col lg:gap-[20px] gap-[15px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[5px]">
         <div className="bg-tradeOrange lg:px-[20px] px-[10px] py-[7px] rounded-[5px]">
           <p className="font-[600] text-[15px]">Promoted Offers</p>
         </div>
@@ -106,8 +107,17 @@ const MarketMain = () => {
             </div>
           ))}
         </div>
+        <div className="flex md:flex-row  gap-[10px] flex-col justify-between">
+          <p className=" md:w-[140px] w-full py-[7px] flex justify-center bg-neutral-400 hover:bg-neutral-200 font-[600] text-[15px] text-neutral-900 rounded-[3px] cursor-pointer">
+            Load More Offers
+          </p>
+
+          <p className=" md:w-[130px] w-full py-[7px] flex justify-center bg-transparent hover:bg-tradePurple border border-white text-white font-[600] text-[15px] rounded-[3px] cursor-pointer">
+            Create an Offer
+          </p>
+        </div>
       </div>
-      <div className="flex flex-col lg:gap-[10px] gap-[4px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[5px]">
+      <div className="flex flex-col lg:gap-[20px] gap-[4px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[5px]">
         <div className="bg-[rgb(231,206,109)] lg:px-[20px] px-[10px] py-[7px] rounded-[5px]">
           <p className="font-[600] text-[15px]">Other Offers</p>
         </div>
@@ -127,6 +137,15 @@ const MarketMain = () => {
               />
             </div>
           ))}
+        </div>
+        <div className="flex md:flex-row  gap-[10px] flex-col justify-between">
+          <p className=" md:w-[140px] w-full py-[7px] flex justify-center bg-neutral-400 hover:bg-neutral-200 font-[600] text-[15px] text-neutral-900 rounded-[3px] cursor-pointer">
+            Load More Offers
+          </p>
+
+          <p className=" md:w-[130px] w-full py-[7px] flex justify-center bg-transparent hover:bg-tradePurple border border-white text-white font-[600] text-[15px] rounded-[3px] cursor-pointer">
+            Create an Offer
+          </p>
         </div>
       </div>
     </div>
