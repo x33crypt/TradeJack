@@ -117,7 +117,10 @@ const DashTopNav = () => {
             Account
           </p>
 
-          <p className="text-white text-[12px] font-[700] py-[7px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
+          <p
+            onClick={() => navigateTo("/marketplace")}
+            className="text-white text-[12px] font-[700] py-[7px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer"
+          >
             Support
           </p>
           <p className="text-white text-[12px] font-[700] py-[7px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
