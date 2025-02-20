@@ -136,7 +136,7 @@ const DashMain = () => {
             </div>
           </div>
         </div>
-        <div className=" bg-tradeAsh  border-tradeAshLight lg:p-[14px] p-[10px] rounded-[8px]">
+        <div className=" bg-tradeAsh  border-tradeAshLight lg:p-[10px] p-[7px] rounded-[8px]">
           <div className="flex  justify-between">
             <p className="text-[20px] text-white font-[700]">
               Transaction Stats
@@ -149,7 +149,7 @@ const DashMain = () => {
             </div>
           </div>
         </div>
-        <div className="bg-tradeAsh border-tradeAshLight lg:p-[14px] p-[10px] gap-[2px] rounded-[8px] sm:flex hidden flex-col ">
+        <div className="bg-tradeAsh border-tradeAshLight lg:p-[10px] p-[7px] gap-[2px] rounded-[8px] sm:flex hidden flex-col ">
           <div className="flex justify-between items-center ">
             <p className="text-[20px] text-white font-[700]">Recent History</p>
             <p className="text-tradeFadeWhite text-[14px] font-[700] cursor-pointer">
@@ -243,7 +243,7 @@ const DashMain = () => {
             </div>
           </div>
         </div>
-        <div className="bg-tradeAsh border-tradeAshLight lg:p-[14px] p-[10px] gap-[10px] rounded-[8px] md:hidden flex flex-col ">
+        <div className="bg-tradeAsh border-tradeAshLight lg:p-[10px] p-[7px] gap-[10px] rounded-[8px] md:hidden flex flex-col ">
           <div className="flex justify-between items-center ">
             <p className="text-[20px] text-white font-[700]">Recent History</p>
             <p className="text-tradeFadeWhite text-[14px] font-[700] cursor-pointer">

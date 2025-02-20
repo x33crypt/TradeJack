@@ -34,7 +34,6 @@ const OfferCard = (props) => {
 
   return (
     <>
-     
       <div className="bg-white border border-neutral-600 p-[10px] rounded-[8px]">
         <div className="flex gap-[5px] sm:gap-[10px]">
           <div className="hidden sm:flex items-start">
@@ -50,8 +49,8 @@ const OfferCard = (props) => {
                         id="vendorVerified"
                         className="w-max flex items-center gap-[3px] rounded-[3px] cursor-pointer "
                       >
-                        <MdOutlineVerified className="text-neutral-600 text-[12px]" />
-                        <p className="text-neutral-600 font-[700] text-[12px]">
+                        <MdOutlineVerified className="text-neutral-600 text-[13.5px]" />
+                        <p className="text-neutral-600 font-[700] text-[13.5px]">
                           Verified Offer
                         </p>
                       </div>
@@ -84,7 +83,7 @@ const OfferCard = (props) => {
                     {props.availability == "online" ? (
                       <>
                         <p className="text-[13px] font-[400]">
-                          <small className="text-[18px] font-[700] flex items-center text-tradeGreen">
+                          <small className="text-[22px] font-[700] flex items-center text-tradeGreen">
                             &#x2022;
                           </small>
                         </p>
@@ -92,34 +91,34 @@ const OfferCard = (props) => {
                     ) : (
                       <>
                         <p className="text-[13px] font-[400]">
-                          <small className="text-[18px] font-[700] flex items-center text-tradeFadeWhite">
+                          <small className="text-[22px] font-[700] flex items-center text-tradeFadeWhite">
                             &#x2022;
                           </small>
                         </p>
                       </>
                     )}
                   </div>
-                  <p className=" text-[13px] font-[600]">{props.username}</p>
+                  <p className=" text-[15px] font-[600]">{props.username}</p>
                 </div>
                 <div className="flex flex-co gap-[10px] ">
                   <div className="">
-                    <p className="text-[13px] flex items-center gap-[3px] font-[600]">
+                    <p className="text-[14px] flex items-center gap-[3px] font-[600]">
                       {" "}
-                      <IoMdThumbsUp className="text-[13px] text-tradeGreen" />{" "}
+                      <IoMdThumbsUp className="text-[14px] text-tradeGreen" />{" "}
                       {`${parseInt(props.reviews).toLocaleString()}`}
                     </p>
                   </div>
                   <div className="">
-                    <p className="text-[13px] flex items-center gap-[3px] font-[600]">
+                    <p className="text-[14px] flex items-center gap-[3px] font-[600]">
                       {" "}
-                      <SiTrustpilot className="text-[13px] text-tradeOrange" />{" "}
+                      <SiTrustpilot className="text-[14px] text-tradeOrange" />{" "}
                       {`${props.trustScore}%`}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="hidden sm:flex flex-col">
+              <div className="hidden sm:flex justify-between flex-col">
                 <div>
                   {props?.verified ? (
                     <>
@@ -127,8 +126,8 @@ const OfferCard = (props) => {
                         id="vendorVerified"
                         className="w-max flex items-center gap-[3px] rounded-[3px] cursor-pointer "
                       >
-                        <MdOutlineVerified className="text-neutral-600 text-[12px]" />
-                        <p className="text-neutral-600 font-[700] text-[12px]">
+                        <MdOutlineVerified className="text-neutral-600 text-[13.5px]" />
+                        <p className="text-neutral-600 font-[700] text-[13.5px]">
                           Verified Offer
                         </p>
                       </div>
@@ -137,36 +136,36 @@ const OfferCard = (props) => {
                     ""
                   )}
                 </div>
-                <p className="text-[13px] font-[400]">
+                <p className="text-[14px] font-[400]">
                   Buying :{" "}
-                  <small className="text-[13px] font-[600] text-black">
+                  <small className="text-[14px] font-[600] text-black">
                     {props.service} Funds
                   </small>
                 </p>
-                <p className="text-[13px] font-[400]">
+                <p className="text-[14px] font-[400]">
                   Avg. trade speed:{" "}
-                  <small className="text-[13px] font-[600] text-black">
+                  <small className="text-[14px] font-[600] text-black">
                     60 Minutes
                   </small>
                 </p>
               </div>
 
               <div className=" flex flex-col justify-between">
-                <p className=" flex sm:hidden text-[13px] font-[400]">
+                <p className=" flex sm:hidden text-[14px] font-[400]">
                   Buying : {""}
-                  <small className="text-[13px] font-[600] text-black">
+                  <small className="text-[14px] font-[600] text-black">
                     {props.service} Funds
                   </small>
                 </p>
-                <p className="text-[13px] font-[400]">
+                <p className="text-[14px] font-[400]">
                   Min Purchase :{" "}
-                  <small className="text-[13px] font-[600] text-black">
+                  <small className="text-[14px] font-[600] text-black">
                     {`20`} {props.currency}
                   </small>
                 </p>
-                <p className="text-[13px] font-[400]">
+                <p className="text-[14px] font-[400]">
                   Max Purchase :{" "}
-                  <small className="text-[13px] font-[600] text-black">
+                  <small className="text-[14px] font-[600] text-black">
                     {`${parseInt(props.purchaseLimit).toLocaleString()}`}{" "}
                     {props.currency}
                   </small>
@@ -178,15 +177,15 @@ const OfferCard = (props) => {
         <div className="my-[10px] border-t"></div>
         <div className="flex items-end  justify-between">
           <div className="">
-            <p className="text-[13px] font-[400]">
+            <p className="text-[14px] font-[400]">
               Min Purchase :{" "}
-              <small className="text-[13px] font-[600] text-black">
+              <small className="text-[14px] font-[600] text-black">
                 {`20`} {props.currency}
               </small>
             </p>
-            <p className="text-[13px] font-[400]">
+            <p className="text-[14px] font-[400]">
               Max Purchase :{" "}
-              <small className="text-[13px] font-[600] text-black">
+              <small className="text-[14px] font-[600] text-black">
                 {`${parseInt(props.purchaseLimit).toLocaleString()}`}{" "}
                 {props.currency}
               </small>
@@ -198,7 +197,7 @@ const OfferCard = (props) => {
               onClick={() => handleOfferClick(props.id)}
               className="px-[20px] py-[6px] rounded-[5px] border border-white hover:border-tradeGreen bg-tradeGreen hover:bg-white text-[14px] font-[600] w-max cursor-pointer"
             >
-              Sell
+              View
             </p>
             <div
               id="vendorFavourite"
