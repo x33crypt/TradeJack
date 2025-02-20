@@ -153,7 +153,7 @@ const OfferCard = (props) => {
           </div>
         </div>
         <div className="my-[10px] border-t"></div>
-        <div className="flex items-end  justify-between">
+        <div className="flex items-center justify-between">
           <div className=" flex flex-col gap-[3px]">
             <p className="text-[13px] font-[400]">
               Min Purchase :{" "}
@@ -170,7 +170,7 @@ const OfferCard = (props) => {
             </p>
           </div>
 
-          <div className="flex flex-co gap-[3px]">
+          <div className="flex gap-[3px]">
             <p
               onClick={() => handleOfferClick(props.id)}
               className="px-[15px] py-[6px] rounded-[4px] border border-white hover:border-tradeGreen bg-tradeGreen hover:bg-white text-[13px] font-[600] w-max cursor-pointer"
