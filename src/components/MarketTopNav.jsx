@@ -50,7 +50,7 @@ const MarketTopNav = () => {
   const navigateTo = useNavigate();
 
   return (
-    <div className="z-50 fixed right-0 left-0 bg-black lg:px-[1.5%] px-[3%] h-[70px] flex justify-between items-center border-b border-neutral-800 ">
+    <div className="z-50 fixed right-0 left-0 bg-black lg:px-[1.5%] sm:px-[2%] px-[3%] h-[70px] flex justify-between items-center border-b border-neutral-800 ">
       <div className="flex items-center lg:gap-[20px] gap-[15px]">
         <div className="lg:hidden flex">
           <HiOutlineMenuAlt2 className="text-white text-[26px]" />
