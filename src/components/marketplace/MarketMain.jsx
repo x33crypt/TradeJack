@@ -97,7 +97,7 @@ const MarketMain = ({
         </p>
       </div>
 
-      <div className="lg:hidden flex flex-col gap-[10px] p-[5px] bg-tradeAs rounded-[5px]">
+      <div className="lg:hidden flex flex-col gap-[10px] p-[5px] bg-tradeAsh rounded-[5px]">
         <div
           onClick={() => setIsOfferFilter((prev) => !prev)}
           className="flex px-[10px] py-[6px] bg-tradeAshLight rounded-[5px] justify-between items-center cursor-pointer"

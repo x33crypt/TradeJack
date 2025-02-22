@@ -426,7 +426,7 @@ const OfferFilter = ({
   }, []);
 
   return (
-    <div className="lg:sticky w-full lg:h-[490px] overflow-y-auto top-[87px] flex flex-col gap-[42px] p-[10px] rounded-[8px] bg-tradeAsh">
+    <div className="lg:sticky w-full lg:h-[490px] overflow-y-aut top-[87px] flex flex-col gap-[42px] lg:p-[10px] rounded-[8px] bg-tradeAsh">
       <div className="flex flex-col gap-[14px]">
         <div className="flex flex-col gap-[14px]">
           <div
