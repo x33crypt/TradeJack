@@ -97,12 +97,12 @@ const MarketMain = ({
         </p>
       </div>
 
-      <div className="lg:hidden flex flex-col gap-[10px] p-[5px] bg-tradeAsh rounded-[5px]">
+      <div className="lg:hidden flex flex-col gap-[30px] p-[5px] bg-tradeAsh rounded-[8px]">
         <div
           onClick={() => setIsOfferFilter((prev) => !prev)}
           className="flex px-[10px] py-[6px] bg-tradeAshLight rounded-[5px] justify-between items-center cursor-pointer"
         >
-          <p className="text-white font-[600]">Filter Offers</p>
+          <p className="text-white text-[15px] font-[500]">Filter Offers</p>
           <div className="p-[6px] border-[1.5px] border-tradeFadeWhite rounded-[3px]">
             <IoFilter className="text-tradeFadeWhite text-[18px] " />
           </div>
