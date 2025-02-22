@@ -256,7 +256,7 @@ const DashMain = () => {
             </div>
           </div>
         </div>
-        <div className="bg-tradeAsh border-tradeAshLight p-[10px] gap-[10px] rounded-[8px] md:hidden flex flex-col ">
+        <div className="bg-tradeAsh border-tradeAshLight p-[10px] gap-[10px] rounded-[8px] sm:hidden flex flex-col ">
           <div className="flex justify-between items-center ">
             <p className="text-[20px] text-white font-[700]">Recent History</p>
             <p className="text-tradeFadeWhite text-[14px] font-[600] cursor-pointer">
@@ -264,27 +264,25 @@ const DashMain = () => {
             </p>
           </div>
           <div className="flex flex-col gap-[4px]">
-            <div className="flex p-[6px] gap-[10px] items-center rounded-[10px]  hover:bg-neutral-900 cursor-pointer">
+            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-tradeAshLight cursor-pointer">
               <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                 <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
               </div>
               <div className="w-full flex flex-col gap-[5px]">
                 <div className="flex justify-between">
                   <div className="flex items-center gap-[5px]">
-                    <p className="text-white text-[15px] font-[600]">
-                      Gift Card
-                    </p>
-                    <p className="text-white text-[15px]"> -</p>
+                    <p className="text-white text-[15px] font-[600]">Paypal</p>
+                    <p className="text-white text-[15px]">-</p>
                     <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                      Seller
+                      Buyer
                     </p>
                   </div>
 
-                  <p className="text-white text-[15px] font-[600]">$200.00</p>
+                  <p className="text-white text-[15px] font-[600]">$1,870.00</p>
                 </div>
                 <div className="flex justify-between">
-                  <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
-                    8 Jan 2025, 12:59 PM
+                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
+                    10 Jan 2025, 04:22 AM
                   </p>
 
                   <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
@@ -293,7 +291,7 @@ const DashMain = () => {
                 </div>
               </div>
             </div>
-            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-neutral-900 cursor-pointer">
+            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-tradeAshLight cursor-pointer">
               <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                 <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
               </div>
@@ -310,7 +308,7 @@ const DashMain = () => {
                   <p className="text-white text-[15px] font-[600]">$900.00</p>
                 </div>
                 <div className="flex justify-between">
-                  <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
+                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
                     10 Jan 2025, 04:22 AM
                   </p>
 
@@ -320,7 +318,7 @@ const DashMain = () => {
                 </div>
               </div>
             </div>
-            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-neutral-900 cursor-pointer">
+            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-tradeAshLight cursor-pointer">
               <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                 <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
               </div>
@@ -339,7 +337,7 @@ const DashMain = () => {
                   <p className="text-white text-[15px] font-[600]">$560.00</p>
                 </div>
                 <div className="flex justify-between">
-                  <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
+                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
                     8 Jan 2025, 12:59 PM
                   </p>
 
@@ -349,7 +347,7 @@ const DashMain = () => {
                 </div>
               </div>
             </div>
-            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-neutral-900 cursor-pointer">
+            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-tradeAshLight cursor-pointer">
               <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                 <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
               </div>
@@ -368,7 +366,7 @@ const DashMain = () => {
                   <p className="text-white text-[15px] font-[600]">$1,380.00</p>
                 </div>
                 <div className="flex justify-between">
-                  <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
+                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
                     8 Jan 2025, 12:59 PM
                   </p>
 
@@ -378,7 +376,7 @@ const DashMain = () => {
                 </div>
               </div>
             </div>
-            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-neutral-900 cursor-pointer">
+            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-tradeAshLight cursor-pointer">
               <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                 <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
               </div>
@@ -397,7 +395,7 @@ const DashMain = () => {
                   <p className="text-white text-[15px] font-[600]">$3,020.00</p>
                 </div>
                 <div className="flex justify-between">
-                  <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
+                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
                     8 Jan 2025, 12:59 PM
                   </p>
 
