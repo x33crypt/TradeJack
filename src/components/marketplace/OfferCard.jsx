@@ -62,18 +62,14 @@ const OfferCard = (props) => {
                 <div className="hidden sm:flex">
                   {props.availability == "online" ? (
                     <>
-                      <p className="text-[13px] font-[400]">
-                        <small className="text-[13px] font-[600] flex items-center text-tradeGreen">
-                          &#x2022; Online
-                        </small>
+                      <p className="text-[13px] lg:text-[14px] flex font-[600] text-tradeGreen">
+                        &#x2022; Online
                       </p>
                     </>
                   ) : (
                     <>
-                      <p className="text-[13px] font-[400]">
-                        <small className="text-[13px] font-[600] flex items-center text-tradeFadeWhite">
-                          &#x2022; Offline
-                        </small>
+                      <p className="text-[13px] lg:text-[14px] flex font-[600] text-tradeAshExtraLight">
+                        &#x2022; Offline
                       </p>
                     </>
                   )}
@@ -86,22 +82,22 @@ const OfferCard = (props) => {
                       <RiRadioButtonLine className="text-[10px] font-[600] flex items-center text-tradeFadeWhite" />
                     )}
                   </div>
-                  <p className="text-[14px] font-[700] w-[90px] overflow-hidden sm:overflow-visible text-ellipsis whitespace-nowrap">
+                  <p className=" text-[13px]  sm:text-[14px] font-[600] w-[90px] overflow-hidden sm:overflow-visible text-ellipsis whitespace-nowrap">
                     {props.username}
                   </p>
                 </div>
                 <div className="flex flex-co gap-[10px] ">
                   <div className="">
-                    <p className="text-[13px] flex items-center gap-[4px] font-[600]">
+                    <p className="text-[13px] lg:text-[14px] flex items-center gap-[4px] font-[600]">
                       {" "}
-                      <IoMdThumbsUp className="text-[13px] text-tradeGreen" />{" "}
+                      <IoMdThumbsUp className="text-[13px] lg:text-[14px] text-tradeGreen" />{" "}
                       {`${parseInt(props.reviews).toLocaleString()}`}
                     </p>
                   </div>
                   <div className="">
-                    <p className="text-[13px] flex items-center gap-[4px] font-[600]">
+                    <p className="text-[13px] lg:text-[14px] flex items-center gap-[4px] font-[600]">
                       {" "}
-                      <SiTrustpilot className="text-[13px] text-tradeOrange" />{" "}
+                      <SiTrustpilot className="text-[13px] lg:text-[14px] text-tradeOrange" />{" "}
                       {`${props.trustScore}%`}
                     </p>
                   </div>
@@ -117,7 +113,7 @@ const OfferCard = (props) => {
                         className="w-max flex items-center gap-[3px] rounded-[3px] cursor-pointer "
                       >
                         <MdOutlineVerified className="text-neutral-600 text-[13.5px]" />
-                        <p className="text-neutral-600 font-[600] text-[13.5px]">
+                        <p className="text-neutral-600 font-[600] text-[13.5px] sm:text-[13px]">
                           Verified
                         </p>
                       </div>
@@ -126,30 +122,37 @@ const OfferCard = (props) => {
                     ""
                   )}
                 </div>
-                <p className="text-[13px] font-[400]">
-                  Buying :{" "}
-                  <small className="text-[14px] font-[600] text-black">
-                    {props.service} Funds
+                <p className="hidden sm:flex gap-[2px] text-[13px] lg:text-[14px] font-[400]">
+                  Type :{" "}
+                  <small className=" text-[13px] lg:text-[14px] font-[600] text-black">
+                    Online Wallet Trf
                   </small>
                 </p>
-                <p className="text-[13px] font-[400]">
-                  Avg. trade speed:{" "}
-                  <small className="text-[13px] font-[600] text-black">
-                    60 Minutes
+
+                <p className="text-[13px] lg:text-[14px] font-[400]">
+                  Service :{" "}
+                  <small className="text-[14px] font-[700] text-black">
+                    {props.service}
                   </small>
                 </p>
               </div>
 
               <div className=" flex flex-col gap-[3px] ">
-                <small className="text-[13px] font-[500] text-black">
+                <small className=" flex sm:hidden text-[13px] lg:text-[14px] font-[600] text-black">
                   Online Wallet Trf
                 </small>
-                <small className="text-[14px] font-[700] text-black">
+                <small className="sm:hidden flex text-[14px] font-[700] text-black">
                   {props.service}
                 </small>
 
-                <p className="text-[13px] font-[500] text-black">
+                <p className="text-[13px] lg:text-[14px] font-[600] text-black">
                   1 {props.currency} = 0.93 USD of BTC
+                </p>
+                <p className="hidden sm:flex text-[13px] lg:text-[14px] font-[400] gap-[2px]">
+                  Avg. trade speed :{" "}
+                  <small className="text-[13px] lg:text-[14px] font-[600] text-black">
+                    60 Min
+                  </small>
                 </p>
               </div>
             </div>
@@ -158,31 +161,40 @@ const OfferCard = (props) => {
         <div className="my-[10px] border-t"></div>
         <div className="flex items-center justify-between">
           <div className=" flex flex-col gap-[3px]">
-            <p className="text-[13px] font-[400]">
+            <p className="text-[13px] lg:text-[14px] font-[400]">
               Min Purchase :{" "}
-              <small className="text-[13px] font-[600] text-black">
+              <small className="text-[13px] lg:text-[14px] font-[600] text-black">
                 {`20`} {props.currency}
               </small>
             </p>
-            <p className="text-[13px] font-[400]">
+            <p className="text-[13px] lg:text-[14px] font-[400]">
               Max Purchase :{" "}
-              <small className="text-[13px] font-[600] text-black">
+              <small className="text-[13px] lg:text-[14px] font-[600] text-black">
                 {`${parseInt(props.purchaseLimit).toLocaleString()}`}{" "}
                 {props.currency}
               </small>
             </p>
+            <p className=" sm:hidden flex text-[13px] lg:text-[14px] font-[400] gap-[2px]">
+              Avg. trade speed :{" "}
+              <small className="text-[13px] lg:text-[14px] font-[600] text-black">
+                60 Min
+              </small>
+            </p>
           </div>
 
-          <div className="flex gap-[3px]">
+          <div className="w-[100px] sm:w-[150px] flex flex-col sm:flex-row gap-[3px]">
             <p
               onClick={() => handleOfferClick(props.id)}
-              className="px-[15px] py-[6px] rounded-[4px] border border-white hover:border-tradeGreen bg-tradeGreen hover:bg-white text-[13px] font-[600] w-max cursor-pointer"
+              className="flex items-center gap-[3px] sm:w-[100px] py-[6px] justify-center rounded-[4px] border border-white hover:border-tradeGreen bg-tradeGreen hover:bg-white text-[13px] lg:text-[14px] font-[600] cursor-pointer"
             >
               View
+              <small className="sm:flex hidden sm:text-[13px] lg:text-[14px] font-[600]">
+                Offer
+              </small>
             </p>
             <div
               id="vendorFavourite"
-              className="max-w-max px-[8px] py-[6px] flex items-center border rounded-[5px] hover:bg-neutral-100 cursor-pointer"
+              className="  sm:w-[50px] py-[6px] justify-center flex items-center border rounded-[5px] hover:bg-neutral-100 cursor-pointer"
             >
               <FaRegStar className="text-[18px] text-neutral-600" />
             </div>

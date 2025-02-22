@@ -53,13 +53,13 @@ const MarketTopNav = () => {
     <div className="z-50 fixed right-0 left-0 bg-black lg:px-[1.5%] px-[3%] h-[70px] flex justify-between items-center border-b border-neutral-800 ">
       <div className="flex items-center lg:gap-[20px] gap-[15px]">
         <div className="lg:hidden flex">
-          <HiOutlineMenuAlt2 className="text-white text-[25px]" />
+          <HiOutlineMenuAlt2 className="text-white text-[26px]" />
         </div>
         <div className="flex items-center justify-start gap-[5px] ">
-          <GiCardExchange className="lg:text-[22px] text-[22px] text-tradeGreen" />
-          <p className=" lg:text-[22px] text-[22px] font-[700] text-tradeGreen">
+          <GiCardExchange className="lg:text-[22px] text-[23px] text-tradeGreen" />
+          <p className=" lg:text-[22px] text-[23px] font-[700] text-tradeGreen">
             Trade
-            <small className="lg:text-[22px] text-[22px] font-[700] text-white">
+            <small className="lg:text-[22px] text-[23px] font-[700] text-white">
               Jack
             </small>
           </p>
@@ -100,17 +100,17 @@ const MarketTopNav = () => {
           />
         </div>
         <div className="cursor-pointer sm:hidden">
-          <FiSearch className="text-white hover:text-tradeGreen text-[24px] transition-all duration-300" />
+          <FiSearch className="text-white hover:text-tradeGreen text-[25px] transition-all duration-300" />
         </div>
         <div className="cursor-pointer">
-          <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[24px] transition-all duration-300" />
+          <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[25px] transition-all duration-300" />
         </div>
         <div
           className="cursor-pointer sm:p-[5px] p-[4px] bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-full transition-all duration-300"
           onClick={() => setIsNavOption((prev) => !prev)}
         >
           <img
-            className="lg:w-[32px] sm:w-[30px] w-[30px] rounded-full"
+            className="lg:w-[32px] sm:w-[30px] w-[32px] rounded-full"
             src={landingImg4}
             alt=""
           />
