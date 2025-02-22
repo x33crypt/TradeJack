@@ -67,7 +67,7 @@ const MarketMain = () => {
 
   return (
     <div className="flex flex-col gap-[15px] bg-tradeAs rounded-[8px] bg- ">
-      <div className="flex flex-col rounded-[8px] gap-[8px] md:gap-[5px] lg:px-[10px] px-[5px] ">
+      <div className="flex flex-col rounded-[8px] gap-[8px] md:gap-[5px] lg:p-[10px] p-[5px] bg-tradeAsh ">
         <p className="text-white lg:text-[30px] md:text-[30px] sm:text-[30px] text-[28px] font-extrabold">
           Seamless Asset Trading
         </p>
