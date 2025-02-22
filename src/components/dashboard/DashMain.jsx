@@ -266,12 +266,12 @@ const DashMain = () => {
           <div className="flex flex-col gap-[4px]">
             <div className="flex p-[6px] gap-[10px] items-center rounded-[10px]  hover:bg-neutral-900 cursor-pointer">
               <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
-                <IoMdArrowRoundDown className="text-tradeGreen text-[18px]" />
+                <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
               </div>
               <div className="w-full flex flex-col gap-[5px]">
                 <div className="flex justify-between">
                   <div className="flex items-center gap-[5px]">
-                    <p className="text-white text-[14px] font-[600]">
+                    <p className="text-white text-[15px] font-[600]">
                       Gift Card
                     </p>
                     <p className="text-white text-[15px]"> -</p>
@@ -280,7 +280,7 @@ const DashMain = () => {
                     </p>
                   </div>
 
-                  <p className="text-white text-[14px] font-[600]">$200.00</p>
+                  <p className="text-white text-[15px] font-[600]">$200.00</p>
                 </div>
                 <div className="flex justify-between">
                   <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
@@ -295,7 +295,7 @@ const DashMain = () => {
             </div>
             <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-neutral-900 cursor-pointer">
               <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
-                <IoMdArrowRoundDown className="text-tradeGreen text-[18px]" />
+                <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
               </div>
               <div className="w-full flex flex-col gap-[5px]">
                 <div className="flex justify-between">
@@ -307,7 +307,7 @@ const DashMain = () => {
                     </p>
                   </div>
 
-                  <p className="text-white text-[14px] font-[600]">$900.00</p>
+                  <p className="text-white text-[15px] font-[600]">$900.00</p>
                 </div>
                 <div className="flex justify-between">
                   <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
@@ -321,7 +321,7 @@ const DashMain = () => {
               </div>
             </div>
             <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-neutral-900 cursor-pointer">
-              <div className="p-[10px] rounded-full max-w-max bg-tradeAshLight">
+              <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                 <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
               </div>
               <div className="w-full flex flex-col gap-[5px]">
@@ -336,21 +336,21 @@ const DashMain = () => {
                     </p>
                   </div>
 
-                  <p className="text-white text-[16px] font-[600]">$560.00</p>
+                  <p className="text-white text-[15px] font-[600]">$560.00</p>
                 </div>
                 <div className="flex justify-between">
                   <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
                     8 Jan 2025, 12:59 PM
                   </p>
 
-                  <p className="text-tradeGreen text-[11px] font-[600]  border-tradeGreen px-[6px] py-[2px] rounded-[5px]">
+                  <p className="text-tradeGreen text-[12px] font-[600]  border-tradeGreen px-[6px] py-[2px] rounded-[5px]">
                     Successful
                   </p>
                 </div>
               </div>
             </div>
             <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-neutral-900 cursor-pointer">
-              <div className="p-[10px] rounded-full max-w-max bg-tradeAshLight">
+              <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                 <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
               </div>
               <div className="w-full flex flex-col gap-[5px]">
@@ -365,21 +365,21 @@ const DashMain = () => {
                     </p>
                   </div>
 
-                  <p className="text-white text-[16px] font-[600]">$1,380.00</p>
+                  <p className="text-white text-[15px] font-[600]">$1,380.00</p>
                 </div>
                 <div className="flex justify-between">
                   <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
                     8 Jan 2025, 12:59 PM
                   </p>
 
-                  <p className="text-tradeGreen text-[11px] font-[600]  border-tradeGreen px-[6px] py-[2px] rounded-[5px]">
+                  <p className="text-tradeGreen text-[12px] font-[600]  border-tradeGreen px-[6px] py-[2px] rounded-[5px]">
                     Successful
                   </p>
                 </div>
               </div>
             </div>
             <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-neutral-900 cursor-pointer">
-              <div className="p-[10px] rounded-full max-w-max bg-tradeAshLight">
+              <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                 <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
               </div>
               <div className="w-full flex flex-col gap-[5px]">
@@ -394,14 +394,14 @@ const DashMain = () => {
                     </p>
                   </div>
 
-                  <p className="text-white text-[16px] font-[600]">$3,020.00</p>
+                  <p className="text-white text-[15px] font-[600]">$3,020.00</p>
                 </div>
                 <div className="flex justify-between">
                   <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
                     8 Jan 2025, 12:59 PM
                   </p>
 
-                  <p className="text-tradePurple text-[11px] font-[600]  border-tradePurple px-[6px] py-[2px] rounded-[5px]">
+                  <p className="text-tradePurple text-[12px] font-[600]  border-tradePurple px-[6px] py-[2px] rounded-[5px]">
                     Disputed
                   </p>
                 </div>
