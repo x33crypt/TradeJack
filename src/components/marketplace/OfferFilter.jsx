@@ -53,7 +53,7 @@ const OfferFilter = ({
   const services = [
     "Online Wallet Transfer",
     "Bank Transfer",
-    "Gift Cards Exchange",
+    "Gift Cards",
     "Debit/Credit Cards",
   ];
 
@@ -373,7 +373,7 @@ const OfferFilter = ({
       setGiftCardType("");
       setShowDebitCreditCard(false);
       setDebitCreditCardType("");
-    } else if (serviceType === "Gift Cards Exchange") {
+    } else if (serviceType === "Gift Cards") {
       setShowGiftCard(true);
       setShowAccount(false);
       setAccountType("");
@@ -674,7 +674,7 @@ const OfferFilter = ({
         >
           <div
             onClick={() => setShowDebitCreditCardType((prev) => !prev)}
-            className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[px] cursor-pointer"
+            className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[6px] cursor-pointer"
           >
             <input
               className="w-full h-[30px] -none outline-none bg-transparent text-white text-[14px] placeholder:text-neutral-400 cursor-pointer"
@@ -752,7 +752,7 @@ const OfferFilter = ({
             className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px]  -neutral-700 rounded-[6px] cursor-pointer"
           >
             <input
-              className="w-full h-[30px] -none outline-none bg-transparent text-white text-[14px] placeholder:text-neutral-400"
+              className="w-full h-[30px] outline-none bg-transparent text-white text-[14px] placeholder:text-neutral-400"
               placeholder="Enter amount"
               type="text"
               value={amount ? Number(amount).toLocaleString() : ""}
@@ -779,7 +779,7 @@ const OfferFilter = ({
               showCurrencyOptions ? "flex" : "hidden"
             } flex-col gap-[20px] p-[10px] bg-tradeAshLight rounded-[8px] `}
           >
-            <div className="flex h-[43px] px-[10px] py-[4px] gap-[20px] items-center  border border-neutral-700 rounded-[8px]">
+            <div className="flex h-[44px] px-[10px] py-[4px] gap-[20px] items-center  border border-neutral-700 rounded-[8px]">
               <FaMagnifyingGlass className="text-[20px] text-neutral-400" />
               <input
                 className="outline-none -none h-[30px] text-white text-[14px] placeholder:text-zinc-400 w-full bg-transparent"
@@ -811,7 +811,7 @@ const OfferFilter = ({
                           <p className="text-white text-[14px] cursor-pointer ">
                             {name}
                           </p>
-                          <p className="text-white text-[14px] cursor-pointer  ">
+                          <p className="text-white text-[14px] cursor-pointer border border-neutral-600 px-[6px] py-[3px] max-w-max h-max rounded-[3px]">
                             {code}
                           </p>
                         </div>
@@ -831,7 +831,7 @@ const OfferFilter = ({
                         <p className="text-white text-[14px] cursor-pointer ">
                           {name}
                         </p>
-                        <p className="text-white text-[14px] cursor-pointer  ">
+                        <p className="text-white text-[14px] cursor-pointer  border border-neutral-600 px-[6px] py-[3px] max-w-max h-max rounded-[3px] ">
                           {code}
                         </p>
                       </div>
