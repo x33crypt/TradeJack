@@ -30,13 +30,13 @@ const DashMain = () => {
         <div className="flex gap-[14px] ">
           <div className="flex-1 flex flex-col justify-between gap-[15px]">
             <div className="flex lg:hidden flex-col items-center  border-tradeAshLight p-[px] gap-[15px] rounded-[8px]">
-              <div className="flex w-full flex-col items-center gap-[8px] py-[30px] bg-tradeAsh  rounded-[8px]">
+              <div className="flex w-full flex-col items-center gap-[8px] py-[30px] rounded-[8px]">
                 <div className="flex items-center flex-col gap-[2px]">
-                  <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                  <p className="text-tradeFadeWhite text-[14px] font-[500]">
                     Available Balance
                   </p>
                   <p className="text-white lg:text-[28px] text-[40px] font-[700]">
-                    $19,280.01
+                    $2,280.01
                   </p>
                 </div>
                 <div className="flex bg-tradeAsh  w-max gap-[7px] border border-tradeGreen px-[12px] py-[4px] rounded-[8px]">

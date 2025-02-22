@@ -144,7 +144,7 @@ const MarketMain = ({
       </div>
 
       <div className="flex flex-col lg:gap-[20px] gap-[10px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[5px]">
-        <div className="bg-tradeOrange lg:px-[20px] px-[10px] py-[8px] rounded-[5px]">
+        <div className="bg-tradeOrange lg:px-[10px] px-[10px] py-[8px] rounded-[5px]">
           <p className="font-[600] text-[15px]">Promoted Offers</p>
         </div>
         <div className="grid grid-cols-1 lg:gap-[10px] gap-[4px] items-center">
@@ -175,7 +175,7 @@ const MarketMain = ({
         </div>
       </div>
       <div className="flex flex-col lg:gap-[20px] gap-[10px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[5px]">
-        <div className="bg-[rgb(231,206,109)] lg:px-[20px] px-[10px] py-[8px] rounded-[5px]">
+        <div className="bg-[rgb(231,206,109)] lg:px-[10px] px-[10px] py-[8px] rounded-[5px]">
           <p className="font-[600] text-[15px]">Other Offers</p>
         </div>
         <div className="grid grid-cols-1 lg:gap-[10px] gap-[4px] items-center">
