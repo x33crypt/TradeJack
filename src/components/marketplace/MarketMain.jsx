@@ -4,13 +4,33 @@ import OfferCard from "./OfferCard";
 import axios from "axios";
 import { LuFilter } from "react-icons/lu";
 import { IoFilter } from "react-icons/io5";
+import OfferFilter from "./OfferFilter";
 
-const MarketMain = () => {
+const MarketMain = ({
+  setServiceType,
+  serviceType,
+  accountType,
+  setAccountType,
+  walletType,
+  setWaletType,
+  giftCardType,
+  setGiftCardType,
+  debitCreditCardType,
+  setDebitCreditCardType,
+  amount,
+  setAmount,
+  selectedCurrency,
+  setSelectedCurrency,
+  setVerifiedOffer,
+  setActiveTraders,
+  handleFindOffer,
+}) => {
   const [offers, setOffers] = useState();
   const [defaultOffers, setDefaultOffers] = useState();
   const [promotedOffers, setPromotedOffers] = useState();
   const [unPromotedOffers, setUnPromotedOffers] = useState();
   const [isLoading, setIsLoading] = useState();
+  const [isOfferFilter, setIsOfferFilter] = useState(false);
 
   const baseUrl = import.meta.env.BASE_URL;
 
@@ -77,12 +97,40 @@ const MarketMain = () => {
         </p>
       </div>
 
-      <div className="lg:hidden flex flex-col gap-[20px] p-[5px] bg-tradeAs rounded-[5px]">
-        <div className="flex px-[10px] py-[6px] bg-tradeAshLight rounded-[5px] justify-between items-center cursor-pointer">
+      <div className="lg:hidden flex flex-col gap-[10px] p-[5px] bg-tradeAs rounded-[5px]">
+        <div
+          onClick={() => setIsOfferFilter((prev) => !prev)}
+          className="flex px-[10px] py-[6px] bg-tradeAshLight rounded-[5px] justify-between items-center cursor-pointer"
+        >
           <p className="text-white font-[600]">Filter Offers</p>
           <div className="p-[6px] border-[1.5px] border-tradeFadeWhite rounded-[3px]">
             <IoFilter className="text-tradeFadeWhite text-[18px] " />
           </div>
+        </div>
+        <div
+          className={`${
+            isOfferFilter ? "flex" : "hidden"
+          } transition-all duration-300 w-full `}
+        >
+          <OfferFilter
+            serviceType={serviceType}
+            setServiceType={setServiceType}
+            accountType={accountType}
+            setAccountType={setAccountType}
+            walletType={walletType}
+            setWaletType={setWaletType}
+            giftCardType={giftCardType}
+            setGiftCardType={setGiftCardType}
+            debitCreditCardType={debitCreditCardType}
+            setDebitCreditCardType={setDebitCreditCardType}
+            amount={amount}
+            setAmount={setAmount}
+            selectedCurrency={selectedCurrency}
+            setSelectedCurrency={setSelectedCurrency}
+            setVerifiedOffer={setVerifiedOffer}
+            setActiveTraders={setActiveTraders}
+            handleFindOffer={handleFindOffer}
+          />
         </div>
       </div>
 

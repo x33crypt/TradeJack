@@ -99,7 +99,27 @@ const Marketplace = () => {
           />
         </div>
         <div className="flex-1">
-          <MarketMain />
+          <MarketMain
+            serviceType={serviceType}
+            setServiceType={setServiceType}
+            accountType={accountType}
+            setAccountType={setAccountType}
+            walletType={walletType}
+            setWaletType={setWaletType}
+            giftCardType={giftCardType}
+            setGiftCardType={setGiftCardType}
+            debitCreditCardType={debitCreditCardType}
+            setDebitCreditCardType={setDebitCreditCardType}
+            amount={amount}
+            setAmount={setAmount}
+            selectedCurrency={selectedCurrency}
+            setSelectedCurrency={setSelectedCurrency}
+            verifiedOffer={verifiedOffer}
+            setVerifiedOffer={setVerifiedOffer}
+            activeTraders={activeTraders}
+            setActiveTraders={setActiveTraders}
+            handleFindOffer={handleFindOffer}
+          />
         </div>
       </div>
       <Footer />
