@@ -428,10 +428,10 @@ const OfferFilter = ({
   return (
     <div className="lg:sticky w-full lg:h-[480px] lg:overflow-y-auto justify-between top-[87px] flex flex-col gap-[43px] lg:p-[10px] rounded-[8px] bg-tradeAsh">
       <div className="flex flex-col gap-[14px]">
-        <div className="flex flex-col gap-[14px]">
+        <div className="flex flex-col gap-[10px]">
           <div
             onClick={() => setShowServiceType((prev) => !prev)}
-            className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[43px] gap-[20px]  -neutral-700 rounded-[4px] cursor-pointer"
+            className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[10px]  -neutral-700 rounded-[6px] cursor-pointer"
           >
             <input
               className="w-full h-[30px] -none outline-none bg-transparent text-white text-[14px] placeholder:text-neutral-400 cursor-pointer"
@@ -447,7 +447,7 @@ const OfferFilter = ({
           <div
             className={` ${
               showServiceType ? "flex" : "hidden"
-            } flex-col gap-[14px] p-[10px] bg-tradeAshLight rounded-[8px]  -neutral-700`}
+            } flex-col gap-[5px] p-[10px] bg-tradeAshLight rounded-[8px]  -neutral-700`}
           >
             {services.map((service, index) => (
               <div
@@ -746,25 +746,25 @@ const OfferFilter = ({
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-[14px]">
+        <div className="flex flex-col gap-[10px]">
           <div
             // onClick={() => setShowWalletType((prev) => !prev)}
-            className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[43px] gap-[20px]  -neutral-700 rounded-[4px] cursor-pointer"
+            className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px]  -neutral-700 rounded-[6px] cursor-pointer"
           >
             <input
-              className="w-full  h-[30px] -none outline-none bg-transparent text-white text-[14px] placeholder:text-neutral-400"
+              className="w-full h-[30px] -none outline-none bg-transparent text-white text-[14px] placeholder:text-neutral-400"
               placeholder="Enter amount"
               type="text"
               value={amount ? Number(amount).toLocaleString() : ""}
               onChange={handleAmountChange}
             />
             <div
-              className="w-[px]  -neutral-600 flex justify-between items-center px-[10px] h-[30px] rounded-[3px]"
+              className="w-[px] border  border-neutral-700 flex justify-between items-center px-[10px] h-[30px] rounded-[4px]"
               onClick={() => setShowCurrencyOptions((prev) => !prev)}
             >
               <div>
                 <input
-                  className="w-[43px] text-[14px] text-white placeholder:text-neutral-500 font-[600] bg-transparent outline-none -none cursor-pointer"
+                  className="w-[43px] text-[14px] text-white placeholder:text-neutral-500 font-[600] bg-transparent outline-none cursor-pointer"
                   type="text"
                   value={selectedCurrency?.code}
                   readOnly
@@ -777,9 +777,9 @@ const OfferFilter = ({
           <div
             className={` ${
               showCurrencyOptions ? "flex" : "hidden"
-            } flex-col gap-[20px] p-[10px] bg-tradeAshLight rounded-[5px]  -neutral-700`}
+            } flex-col gap-[20px] p-[10px] bg-tradeAshLight rounded-[8px] `}
           >
-            <div className="flex h-[43px] px-[14px] py-[5px] gap-[20px] items-center  -neutral-700 rounded-[4px]">
+            <div className="flex h-[43px] px-[10px] py-[4px] gap-[20px] items-center  border border-neutral-700 rounded-[8px]">
               <FaMagnifyingGlass className="text-[20px] text-neutral-400" />
               <input
                 className="outline-none -none h-[30px] text-white text-[14px] placeholder:text-zinc-400 w-full bg-transparent"
@@ -791,7 +791,7 @@ const OfferFilter = ({
             </div>
             <div className="overflow-y-auto">
               {currrencySearchInput ? (
-                <div className="flex flex-col max-h-[243px] gap-[10px] mr-[10px]">
+                <div className="flex flex-col max-h-[230px] gap-[5px] mr-[10px]">
                   {Object.entries(currencies)
                     .filter(([code, name]) =>
                       name
@@ -803,18 +803,23 @@ const OfferFilter = ({
                       (
                         [code, name] // Correct map placement
                       ) => (
-                        <p
-                          key={code}
+                        <div
+                          className="flex gap-[5px] justify-between px-[10px] py-[10px] hover:bg-tradeAshExtraLight rounded-[5px]"
                           onClick={() => handleSelectedCurrency(code, name)}
-                          className="text-white text-[14px] cursor-pointer  px-[10px] py-[10px] hover:bg-tradeAshExtraLight rounded-[5px]"
+                          key={code}
                         >
-                          {`${name} (${code})`}
-                        </p>
+                          <p className="text-white text-[14px] cursor-pointer ">
+                            {name}
+                          </p>
+                          <p className="text-white text-[14px] cursor-pointer  ">
+                            {code}
+                          </p>
+                        </div>
                       )
                     )}
                 </div>
               ) : (
-                <div className=" flex flex-col h-[243px] gap-[10px] mr-[10px]">
+                <div className=" flex flex-col h-[230px] gap-[5px] mr-[10px]">
                   {Object.entries(currencies)
                     .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
                     .map(([code, name]) => (

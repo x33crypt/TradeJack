@@ -97,20 +97,29 @@ const MarketMain = ({
         </p>
       </div>
 
-      <div className="lg:hidden flex flex-col gap-[30px] p-[5px] bg-tradeAsh rounded-[8px]">
+      <div className="lg:hidden flex flex-col gap-[30px] p-[px] bg-tradeAsh rounded-[8px]">
         <div
           onClick={() => setIsOfferFilter((prev) => !prev)}
           className="flex px-[10px] py-[6px] bg-tradeAshLight rounded-[5px] justify-between items-center cursor-pointer"
         >
           <p className="text-white text-[15px] font-[500]">Filter Offers</p>
-          <div className="p-[6px] border-[1.5px] border-tradeFadeWhite rounded-[3px]">
-            <IoFilter className="text-tradeFadeWhite text-[18px] " />
+
+          <div>
+            {isOfferFilter ? (
+              <div className="px-[9.5px] py-[3px] border-[1.5px] border-tradeFadeWhite rounded-[3px]">
+                <i className="fa-solid fa-xmark text-[15px] text-tradeFadeWhite"></i>
+              </div>
+            ) : (
+              <div className="p-[6px] border-[1.5px] border-tradeFadeWhite rounded-[3px]">
+                <IoFilter className="text-tradeFadeWhite text-[18px]" />
+              </div>
+            )}
           </div>
         </div>
         <div
           className={`${
             isOfferFilter ? "flex" : "hidden"
-          } transition-all duration-300 w-full `}
+          } transition-all duration-300 w-full p-[8px] `}
         >
           <OfferFilter
             serviceType={serviceType}
