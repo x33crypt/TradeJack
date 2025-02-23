@@ -58,20 +58,20 @@ const DashMain = () => {
               </div>
 
               <div className="flex flex-co w-full gap-[10px]">
-                <div className="flex-1 flex items-center justify-center gap-[5px] py-[10px] rounded-[8px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer transition-all duration-300">
+                <div className="flex-1 flex items-center justify-center gap-[5px] py-[12px] rounded-[8px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer transition-all duration-300">
                   <IoMdArrowRoundDown className="text-white" />
-                  <p className="text-white text-[15px] font-[500]">Deposit</p>
+                  <p className="text-white text-[15px] font-[600]">Deposit</p>
                 </div>
-                <div className="flex-1 flex items-center justify-center gap-[5px] py-[10px] rounded-[8px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer transition-all duration-300">
+                <div className="flex-1 flex items-center justify-center gap-[5px] py-[12px] rounded-[8px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer transition-all duration-300">
                   <IoMdArrowRoundUp className="text-white" />
-                  <p className="text-white text-[15px] font-[500]">Withdraw</p>
+                  <p className="text-white text-[15px] font-[600]">Withdraw</p>
                 </div>
               </div>
             </div>
             <div className="p-[10px] lg:h-[180px] md:h-[140px] h-[110px] rounded-[8px] bg-tradeGreen">
               <p className="text-[14px]">Unlock Higher Transaction Limits!</p>
             </div>
-            <div className=" lg:flex grid grid-cols-2 gap-[5px] bg-tradeAsh p-[5px] rounded-[8px] borde">
+            <div className=" md:flex grid grid-cols-2 gap-[5px] bg-tradeAsh p-[5px] rounded-[8px] borde">
               <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeOrange transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
                 <p className="text-[30px] text-white font-[700]">2,335</p>
                 <p className="text-[12px] text-tradeFadeWhite font-[600]">
@@ -136,8 +136,8 @@ const DashMain = () => {
             </div>
           </div>
         </div>
-        <div className=" bg-tradeAsh  border-tradeAshLight lg:p-[15px] p-[10px] rounded-[8px]">
-          <div className="flex  justify-between">
+        <div className=" bg-tradeAsh  border-tradeAshLight p-[10px] rounded-[10px]">
+          <div className="flex  justify-between p-[10px]">
             <p className="text-[20px] text-white font-[700]">
               Transaction Stats
             </p>
@@ -149,10 +149,10 @@ const DashMain = () => {
             </div>
           </div>
         </div>
-        <div className="bg-tradeAsh border-tradeAshLight lg:p-[15px] p-[10px] gap-[2px] rounded-[8px] sm:flex hidden flex-col ">
-          <div className="flex justify-between items-center ">
+        <div className="bg-tradeAsh border-tradeAshLight p-[10px] gap-[2px] rounded-[10px] sm:flex hidden flex-col ">
+          <div className="flex justify-between items-center p-[10px]">
             <p className="text-[20px] text-white font-[700]">Recent History</p>
-            <p className="text-tradeFadeWhite text-[14px] font-[700] cursor-pointer">
+            <p className="text-tradeFadeWhite text-[14px] font-[600] cursor-pointer">
               View all
             </p>
           </div>
@@ -256,8 +256,8 @@ const DashMain = () => {
             </div>
           </div>
         </div>
-        <div className="bg-tradeAsh border-tradeAshLight p-[10px] gap-[10px] rounded-[8px] sm:hidden flex flex-col ">
-          <div className="flex justify-between items-center ">
+        <div className="bg-tradeAsh border-tradeAshLight p-[10px] gap-[10px] rounded-[10px] sm:hidden flex flex-col ">
+          <div className="flex justify-between items-center  p-[10px]">
             <p className="text-[20px] text-white font-[700]">Recent History</p>
             <p className="text-tradeFadeWhite text-[14px] font-[600] cursor-pointer">
               View all
