@@ -119,7 +119,7 @@ const MarketTopNav = () => {
             />
           </div>
           <div className="cursor-pointer sm:hidden">
-            <FiSearch className="text-white hover:text-tradeGreen text-[23px] transition-all duration-300" />
+            <FiSearch className="text-white hover:text-tradeGreen text-[24px] transition-all duration-300" />
           </div>
           <div className="cursor-pointer">
             <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[23px] transition-all duration-300" />
@@ -172,51 +172,60 @@ const MarketTopNav = () => {
       >
         <div className="w-full h-max flex gap-[10px]">
           <p
-            onClick={() => navigateTo("/marketplace")}
-            className="flex-1 flex items-center justify-center text-black text-[16px] font-[700] bg-white py-[8px] rounded-[6px]"
+            onClick={() => {
+              navigateTo("/marketplace");
+              setIsNavOption(false);
+            }}
+            className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-white py-[8px] rounded-[6px]"
           >
             Sell Asset
           </p>
           <p
-            onClick={() => navigateTo("/create-offer")}
-            className="flex-1 flex items-center justify-center text-black text-[16px] font-[700] bg-tradeGreen py-[8px] rounded-[6px]"
+            onClick={() => {
+              navigateTo("/create-offer");
+              setIsNavOption(false);
+            }}
+            className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-tradeGreen py-[8px] rounded-[6px]"
           >
             Buy Asset
           </p>
         </div>
         <div className="flex flex-col gap-[10px]">
           <div
-            onClick={() => navigateTo("/dashboard")}
+            onClick={() => {
+              navigateTo("/dashboard");
+              setIsNavOption(false);
+            }}
             className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] "
           >
             <MdSpaceDashboard className="text-[16px] text-white" />
             <p className="text-white text-[16px] ">Dashboard</p>
           </div>
-          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+          <div className=" flex gap-[15px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
             <TbLayoutList className="text-[16px] text-white" />
             <p className="text-white text-[16px] ">My Offers</p>
           </div>
-          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+          <div className=" flex gap-[15px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
             <BsLightningCharge className="text-[16px] text-white" />
             <p className="text-white text-[16px] ">Favourite Offers</p>
           </div>
-          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+          <div className=" flex gap-[15px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
             <FaRegEnvelope className="text-[16px] text-white" />
             <p className="text-white text-[16px] "> Messages</p>
           </div>
-          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+          <div className=" flex gap-[15px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
             <RiExchangeFundsLine className="text-[16px] text-white" />
             <p className="text-white text-[16px] ">Trade History</p>
           </div>
-          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+          <div className=" flex gap-[15px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
             <MdOutlineQueryStats className="text-[16px] text-white" />
             <p className="text-white text-[16px] ">Trade Statistics</p>
           </div>
-          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+          <div className=" flex gap-[15px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
             <LiaUserFriendsSolid className="text-[16px] text-white" />
             <p className="text-white text-[16px] ">Invite a friend</p>
           </div>
-          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+          <div className=" flex gap-[15px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
             <TbHelpCircle className="text-[16px] text-white" />
             <p className="text-white text-[16px] "> Help Center</p>
           </div>
