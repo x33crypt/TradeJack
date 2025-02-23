@@ -68,7 +68,11 @@ const MarketTopNav = () => {
             onClick={() => setIsNavOption((prev) => !prev)}
             className="lg:hidden flex"
           >
-            <HiOutlineMenuAlt2 className="text-white text-[26px]" />
+            {isNavOption ? (
+              <i class="fa-regular fa-circle-xmark text-white text-[22px] mr-[4px]"></i>
+            ) : (
+              <HiOutlineMenuAlt2 className="text-white text-[26px]" />
+            )}
           </div>
           <div className="flex items-center justify-start gap-[5px] ">
             <GiCardExchange className="lg:text-[22px] text-[23px] text-tradeGreen" />
@@ -164,14 +168,8 @@ const MarketTopNav = () => {
       <div
         className={`${
           isNavOption ? "flex" : "hidden"
-        } z-50 fixed right-0 left-0 top-[0px] bottom-0 bg-black sm:px-[2%] px-[3%] pt-[0px] pb-[20px] lg:hidden flex flex-col gap-[20px] `}
+        } z-50 fixed right-0 left-0 top-[70px] bottom-0 bg-black sm:px-[2%] px-[3%] pt-[20px] pb-[20px] lg:hidden flex flex-col gap-[20px] `}
       >
-        <div className="flex py-[22px] px-[10px] items-center justify-end">
-          <i
-            onClick={() => setIsNavOption((prev) => !prev)}
-            class="fa-solid fa-xmark text-white text-[26px]"
-          ></i>
-        </div>
         <div className="w-full h-max flex gap-[10px]">
           <p
             onClick={() => navigateTo("/marketplace")}
