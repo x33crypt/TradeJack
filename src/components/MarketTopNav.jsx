@@ -158,36 +158,36 @@ const MarketTopNav = () => {
         } z-50 fixed right-0 left-0 top-[70px] bottom-0 bg-black sm:px-[2%] px-[3%] py-[20px] lg:hidden flex flex-col gap-[20px] `}
       >
         <div className="w-full h-max flex gap-[10px]">
-          <p className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-white py-[8px] rounded-[6px]">
+          <p className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-white py-[9px] rounded-[6px]">
             Sell Asset
           </p>
-          <p className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-white py-[8px] rounded-[6px]">
+          <p className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-white py-[9px] rounded-[6px]">
             Buy Asset
           </p>
         </div>
         <div className="flex flex-col gap-[10px]">
-          <p className="text-white text-[15px] px-[10px] py-[8px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
+          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
             Dashboard
           </p>
-          <p className="text-white text-[15px] px-[10px] py-[8px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
+          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
             My Offers
           </p>
-          <p className="text-white text-[15px] px-[10px] py-[8px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
+          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
             Favourite Offers
           </p>
-          <p className="text-white text-[15px] px-[10px] py-[8px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
+          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
             Messages
           </p>
-          <p className="text-white text-[15px] px-[10px] py-[8px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
+          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
             Trade History
           </p>
-          <p className="text-white text-[15px] px-[10px] py-[8px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
+          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
             Trade Statistics
           </p>
-          <p className="text-white text-[15px] px-[10px] py-[8px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
+          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
             Invite a friend
           </p>
-          <p className="text-white text-[15px] px-[10px] py-[8px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
+          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
             Help Center
           </p>
         </div>
