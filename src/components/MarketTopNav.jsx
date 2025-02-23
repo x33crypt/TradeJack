@@ -14,7 +14,7 @@ import { MdOutlineQueryStats } from "react-icons/md";
 import { TbLayoutList } from "react-icons/tb";
 import { BsLightningCharge } from "react-icons/bs";
 import { TbHelpCircle } from "react-icons/tb";
-import { TbXboxX } from "react-icons/tb";
+
 
 const MarketTopNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);

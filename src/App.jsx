@@ -12,7 +12,6 @@ const App = () => {
   return (
     <>
       <ScrollToTop />
-
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/dashboard" element={<Dashboard />} />
