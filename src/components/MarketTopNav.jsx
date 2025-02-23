@@ -14,6 +14,7 @@ import { MdOutlineQueryStats } from "react-icons/md";
 import { TbLayoutList } from "react-icons/tb";
 import { BsLightningCharge } from "react-icons/bs";
 import { TbHelpCircle } from "react-icons/tb";
+import { TbXboxX } from "react-icons/tb";
 
 const MarketTopNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -163,18 +164,33 @@ const MarketTopNav = () => {
       <div
         className={`${
           isNavOption ? "flex" : "hidden"
-        } z-50 fixed right-0 left-0 top-[70px] bottom-0 bg-black sm:px-[2%] px-[3%] py-[20px] lg:hidden flex flex-col gap-[20px] `}
+        } z-50 fixed right-0 left-0 top-[0px] bottom-0 bg-black sm:px-[2%] px-[3%] pt-[0px] pb-[20px] lg:hidden flex flex-col gap-[20px] `}
       >
+        <div className="flex py-[22px] px-[10px] items-center justify-end">
+          <i
+            onClick={() => setIsNavOption((prev) => !prev)}
+            class="fa-solid fa-xmark text-white text-[26px]"
+          ></i>
+        </div>
         <div className="w-full h-max flex gap-[10px]">
-          <p className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-white py-[9px] rounded-[6px]">
+          <p
+            onClick={() => navigateTo("/marketplace")}
+            className="flex-1 flex items-center justify-center text-black text-[16px] font-[700] bg-white py-[8px] rounded-[6px]"
+          >
             Sell Asset
           </p>
-          <p className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-white py-[9px] rounded-[6px]">
+          <p
+            onClick={() => navigateTo("/create-offer")}
+            className="flex-1 flex items-center justify-center text-black text-[16px] font-[700] bg-tradeGreen py-[8px] rounded-[6px]"
+          >
             Buy Asset
           </p>
         </div>
         <div className="flex flex-col gap-[10px]">
-          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+          <div
+            onClick={() => navigateTo("/dashboard")}
+            className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] "
+          >
             <MdSpaceDashboard className="text-[16px] text-white" />
             <p className="text-white text-[16px] ">Dashboard</p>
           </div>
