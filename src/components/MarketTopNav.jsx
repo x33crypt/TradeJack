@@ -6,6 +6,14 @@ import landingImg4 from "./../assets/landingImg4.JPG";
 import { useNavigate } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
+import { MdSpaceDashboard } from "react-icons/md";
+import { RiExchangeFundsLine } from "react-icons/ri";
+import { FaRegEnvelope } from "react-icons/fa6";
+import { LiaUserFriendsSolid } from "react-icons/lia";
+import { MdOutlineQueryStats } from "react-icons/md";
+import { TbLayoutList } from "react-icons/tb";
+import { BsLightningCharge } from "react-icons/bs";
+import { TbHelpCircle } from "react-icons/tb";
 
 const MarketTopNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -166,30 +174,38 @@ const MarketTopNav = () => {
           </p>
         </div>
         <div className="flex flex-col gap-[10px]">
-          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
-            Dashboard
-          </p>
-          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
-            My Offers
-          </p>
-          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
-            Favourite Offers
-          </p>
-          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
-            Messages
-          </p>
-          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
-            Trade History
-          </p>
-          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
-            Trade Statistics
-          </p>
-          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
-            Invite a friend
-          </p>
-          <p className="text-white text-[16px] px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px]">
-            Help Center
-          </p>
+          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+            <MdSpaceDashboard className="text-[16px] text-white" />
+            <p className="text-white text-[16px] ">Dashboard</p>
+          </div>
+          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+            <TbLayoutList className="text-[16px] text-white" />
+            <p className="text-white text-[16px] ">My Offers</p>
+          </div>
+          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+            <BsLightningCharge className="text-[16px] text-white" />
+            <p className="text-white text-[16px] ">Favourite Offers</p>
+          </div>
+          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+            <FaRegEnvelope className="text-[16px] text-white" />
+            <p className="text-white text-[16px] "> Messages</p>
+          </div>
+          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+            <RiExchangeFundsLine className="text-[16px] text-white" />
+            <p className="text-white text-[16px] ">Trade History</p>
+          </div>
+          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+            <MdOutlineQueryStats className="text-[16px] text-white" />
+            <p className="text-white text-[16px] ">Trade Statistics</p>
+          </div>
+          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+            <LiaUserFriendsSolid className="text-[16px] text-white" />
+            <p className="text-white text-[16px] ">Invite a friend</p>
+          </div>
+          <div className=" flex gap-[10px] items-center px-[10px] py-[10px] bg-tradeAsh hover:bg-tradeAshLight rounded-[6px] ">
+            <TbHelpCircle className="text-[16px] text-white" />
+            <p className="text-white text-[16px] "> Help Center</p>
+          </div>
         </div>
       </div>
     </>
