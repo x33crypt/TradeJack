@@ -119,10 +119,10 @@ const MarketTopNav = () => {
             />
           </div>
           <div className="cursor-pointer sm:hidden">
-            <FiSearch className="text-white hover:text-tradeGreen text-[25px] transition-all duration-300" />
+            <FiSearch className="text-white hover:text-tradeGreen text-[23px] transition-all duration-300" />
           </div>
           <div className="cursor-pointer">
-            <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[25px] transition-all duration-300" />
+            <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[23px] transition-all duration-300" />
           </div>
           <div
             className="cursor-pointer sm:p-[5px] p-[4px] bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-full transition-all duration-300"
