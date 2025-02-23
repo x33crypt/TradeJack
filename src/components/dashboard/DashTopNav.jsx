@@ -70,12 +70,12 @@ const DashTopNav = () => {
         <div className="flex items-center lg:gap-[20px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
-            className="lg:hidden flex"
+            className="lg:hidden flex transition-all duration-300"
           >
             {isNavOption ? (
-              <i class="fa-regular fa-circle-xmark text-white text-[22px] mr-[4px]"></i>
+              <i class="fa-regular fa-circle-xmark text-white text-[22px] mr-[4px] transition-all duration-300"></i>
             ) : (
-              <HiOutlineMenuAlt2 className="text-white text-[26px]" />
+              <HiOutlineMenuAlt2 className="text-white text-[26px] transition-all duration-300" />
             )}
           </div>
           <div className="flex items-center justify-start gap-[5px] ">
@@ -161,7 +161,7 @@ const DashTopNav = () => {
               navigateTo("/marketplace");
               setIsNavOption(false);
             }}
-            className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-white py-[8px] rounded-[6px]"
+            className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-white py-[9px] rounded-[6px]"
           >
             Sell Asset
           </p>
@@ -170,7 +170,7 @@ const DashTopNav = () => {
               navigateTo("/create-offer");
               setIsNavOption(false);
             }}
-            className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-tradeGreen py-[8px] rounded-[6px]"
+            className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-tradeGreen py-[9px] rounded-[6px]"
           >
             Buy Asset
           </p>
