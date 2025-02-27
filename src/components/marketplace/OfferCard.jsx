@@ -37,9 +37,9 @@ const OfferCard = (props) => {
 
   return (
     <>
-      {/* <div
+      <div
         onClick={() => handleOfferClick(props.id)}
-        className=" border-b border-tradeAshLight hover:bg-tradeAshLight p-[10px] flex cursor-pointer transition-all duration-300 "
+        className=" md:flex hidden border-b border-tradeAshLight hover:bg-tradeAshLight p-[10px] cursor-pointer transition-all duration-300 "
       >
         <div className="flex-1 flex gap-[10px]">
           <div className="flex flex-col gap-[10px]">
@@ -131,9 +131,9 @@ const OfferCard = (props) => {
             </p>
           </div>
         </div>
-      </div> */}
+      </div>
 
-      <div className="flex justify-between border-b border-tradeAshLight hover:bg-tradeAshLight p-[10px] cursor-pointer transition-all duration-300">
+      <div className="flex md:hidden justify-between border-b border-tradeAshLight hover:bg-tradeAshLight p-[10px] cursor-pointer transition-all duration-300">
         <div className="flex flex-col gap-[4px]">
           <div className="flex gap-[10px]">
             <p className=" text-[12px] text-white font-[600] w-[90px] overflow-hidden text-ellipsis whitespace-nowrap">
@@ -174,7 +174,7 @@ const OfferCard = (props) => {
           <small className=" text-[11px] font-[500] text-white">
             Online Wallet Transfer
           </small>
-          <p className="text-[12px] font-[600] text-white">
+          <p className="text-[13px] font-[800] text-white">
             1 {props.currency} = 0.93 USD of BTC
           </p>
         </div>
