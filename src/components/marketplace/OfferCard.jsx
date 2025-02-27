@@ -136,7 +136,7 @@ const OfferCard = (props) => {
       <div className="flex md:hidden justify-between border-b border-tradeAshLight hover:bg-tradeAshLight p-[10px] cursor-pointer transition-all duration-300">
         <div className="flex flex-col gap-[4px]">
           <div className="flex gap-[10px]">
-            <p className=" text-[12px] text-white font-[600] w-[90px] overflow-hidden text-ellipsis whitespace-nowrap">
+            <p className=" text-[12px] text-white font-[600] w-[70px] overflow-hidden text-ellipsis whitespace-nowrap">
               {props.username}
             </p>
             <div className="flex">
@@ -167,11 +167,11 @@ const OfferCard = (props) => {
           </div>
 
           <p className="text-[13px] lg:text-[14px] font-[400]">
-            <small className="text-[16px] font-[600] text-white">
+            <small className="text-[16px] font-[600] text-tradeOrange">
               {props.service}
             </small>
           </p>
-          <small className=" text-[11px] font-[500] text-white">
+          <small className=" text-[11px] font-[500] text-tradeFadeWhite">
             Online Wallet Transfer
           </small>
           <p className="text-[13px] font-[800] text-white">
