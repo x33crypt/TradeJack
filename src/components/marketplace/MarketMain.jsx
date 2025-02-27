@@ -97,12 +97,12 @@ const MarketMain = ({
           ensuring secure and hassle-free transactions.
         </p>
       </div> */}
-      <div className="flex flex-col justify-between md:p-[20px] p-[15px] border-b border-neutral-800 ">
+      <div className="flex flex-col justify-between md:p-[20px] p-[20px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[600] cursor-pointer">
           Seamless Asset Trading
         </p>
       </div>
-      <div className="flex flex-col gap-[20px] p-[20px]">
+      <div className="flex flex-col gap-[20px] md:p-[20px] p-[20px]">
         <div className="flex justify-between">
           <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
             <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
@@ -120,7 +120,7 @@ const MarketMain = ({
             <p className="flex  text-[14px] font-[500] text-white">Filters</p>
           </div>
         </div>
-        <div className="flex bg-tradeAshLight px-[12px] py-[4px] rounded-[6.5px]">
+        <div className=" md:flex hidden bg-tradeAshLight px-[12px] py-[4px] rounded-[6.5px]">
           <p className="flex-1 text-neutral-400 text-[14px] ">Vendor</p>
           <p className="flex-1 text-neutral-400 text-[14px]">Details</p>
           <p className="flex-1 text-neutral-400 text-[14px]">
