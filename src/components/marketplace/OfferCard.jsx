@@ -133,29 +133,11 @@ const OfferCard = (props) => {
         </div>
       </div> */}
 
-      <div className="flex justify-between p-[10px]">
+      <div className="flex justify-between border-b border-tradeAshLight hover:bg-tradeAshLight p-[10px] cursor-pointer transition-all duration-300">
         <div className="flex flex-col gap-[4px]">
-          <p className=" text-[12px] text-white font-[600] w-[90px] overflow-hidden text-ellipsis whitespace-nowrap">
-            {props.username}
-          </p>
-          <p className="text-[13px] lg:text-[14px] font-[400]">
-            <small className="text-[16px] font-[600] text-white">
-              {props.service}
-            </small>
-          </p>
-          <small className=" text-[11px] font-[500] text-white">
-            Online Wallet Transfer
-          </small>
-          <p className="text-[12px] font-[600] text-white">
-            1 {props.currency} = 0.93 USD of BTC
-          </p>
-        </div>
-        <div className="flex flex-col justify-between gap-[4px]">
-          <div className="flex gap-[15px] ">
-            <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
-              {" "}
-              <IoMdThumbsUp className="text-[13px] lg:text-[14px] text-tradeGreen" />{" "}
-              {`${parseInt(props.reviews).toLocaleString()}`}
+          <div className="flex gap-[10px]">
+            <p className=" text-[12px] text-white font-[600] w-[90px] overflow-hidden text-ellipsis whitespace-nowrap">
+              {props.username}
             </p>
             <div className="flex">
               {props.availability == "online" ? (
@@ -183,25 +165,55 @@ const OfferCard = (props) => {
               )}
             </div>
           </div>
-          
-          <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
-            Avg. trade speed :{" "}
-            <small className="text-[11px] font-[500] text-white">60 Min</small>
-          </p>
 
-          <p className="text-[11px]  text-tradeFadeWhite font-[400]">
-            Min Purchase :{" "}
-            <small className="text-[11px]  font-[600] text-white">
-              {`20`} {props.currency}
+          <p className="text-[13px] lg:text-[14px] font-[400]">
+            <small className="text-[16px] font-[600] text-white">
+              {props.service}
             </small>
           </p>
-          <p className="text-[11px] text-tradeFadeWhite font-[400]">
-            Max Purchase :{" "}
-            <small className="text-[11px]  font-[600] text-white">
+          <small className=" text-[11px] font-[500] text-white">
+            Online Wallet Transfer
+          </small>
+          <p className="text-[12px] font-[600] text-white">
+            1 {props.currency} = 0.93 USD of BTC
+          </p>
+        </div>
+        <div className="flex flex-col justify-between gap-[4px]">
+          <div className="flex gap-[15px] ">
+            <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
+              {" "}
+              <IoMdThumbsUp className="text-[13px] lg:text-[14px] text-tradeGreen" />{" "}
+              {`${parseInt(props.reviews).toLocaleString()}`}
+            </p>
+          </div>
+          <div className="flex gap-[15px]">
+            <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
+              Avg. trade speed
+            </p>
+
+            <p className="text-[11px] font-[500] text-white">60 Min</p>
+          </div>
+
+          <div className="flex gap-[15px]">
+            <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
+              Min Purchase
+            </p>
+
+            <p className="text-[11px] font-[500] text-white">
+              {`20`} {props.currency}
+            </p>
+          </div>
+
+          <div className="flex gap-[15px]">
+            <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
+              Max Purchase
+            </p>
+
+            <p className="text-[11px] font-[500] text-white">
               {`${parseInt(props.purchaseLimit).toLocaleString()}`}{" "}
               {props.currency}
-            </small>
-          </p>
+            </p>
+          </div>
         </div>
       </div>
 
