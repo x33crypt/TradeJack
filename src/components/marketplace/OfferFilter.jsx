@@ -51,10 +51,11 @@ const OfferFilter = ({
   };
 
   const services = [
+    "Default",
     "Online Wallet Transfer",
     "Bank Transfer",
     "Gift Cards",
-    "Debit/Credit Cards",
+    "Debit & Credit Cards",
   ];
 
   const wallets = [
@@ -381,8 +382,16 @@ const OfferFilter = ({
       setWaletType("");
       setShowDebitCreditCard(false);
       setDebitCreditCardType("");
-    } else if (serviceType === "Debit/Credit Cards") {
+    } else if (serviceType === "Debit & Credit Cards") {
       setShowDebitCreditCard(true);
+      setShowGiftCard(false);
+      setGiftCardType("");
+      setShowAccount(false);
+      setAccountType("");
+      setShowWallet(false);
+      setWaletType("");
+    } else if (serviceType === "Default") {
+      setShowDebitCreditCard(false);
       setShowGiftCard(false);
       setGiftCardType("");
       setShowAccount(false);
@@ -425,455 +434,869 @@ const OfferFilter = ({
     getCurrencies();
   }, []);
 
+  console.log(selectedCurrency);
+
   return (
-    <div className="lg:sticky w-full lg:h-[480px] lg:overflow-y-auto justify-between top-[87px] flex flex-col gap-[43px] lg:p-[10px] rounded-[8px] bg-tradeAsh">
-      <div className="flex flex-col gap-[14px]">
-        <div className="flex flex-col gap-[10px]">
-          <div
-            onClick={() => setShowServiceType((prev) => !prev)}
-            className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[10px]  -neutral-700 rounded-[6px] cursor-pointer"
-          >
-            <input
-              className="w-full h-[30px] -none outline-none bg-transparent text-white text-[14px] placeholder:text-neutral-400 cursor-pointer"
-              placeholder="Service type"
-              type="text"
-              value={serviceType}
-              readOnly
-            />
-            <div className="w-[px] flex justify-between items-center px-[10px] h-[30px] rounded-[3px]">
-              <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
+    <div className="lg:sticky w-full lg:h-[480px] top-[80px] flex flex-col rounded-[12px] border border-neutral-800 bg-tradeAs">
+      <div className="flex justify-between items-center p-[20px] border-b border-neutral-800 ">
+        <p className="text-[18px] text-white font-[600] cursor-pointer">
+          Filter Offer
+        </p>
+
+        <p className="px-[6px] py-[2px] text-[13px] text-tradeFadeWhite hover:text-black font-[500] rounded-[6.5px] bg-tradeAshLight hover:bg-white border border-tradeAshLight hover:border-white cursor-pointer duration-300 transition-all">
+          Clear All Filter
+        </p>
+      </div>
+      <div className="flex flex-col justify-between h-full lg:overflow-y-auto custom-scrollbar text">
+        <div className="flex flex-col">
+          <div className="flex flex-col gap-[20px] p-[20px] border-b border-tradeAshLight">
+            <div>
+              <p className="text-white text-[16px] font-[700]">Service type</p>
             </div>
-          </div>
-          <div
-            className={` ${
-              showServiceType ? "flex" : "hidden"
-            } flex-col gap-[5px] p-[10px] bg-tradeAshLight rounded-[8px]  -neutral-700`}
-          >
-            {services.map((service, index) => (
-              <div
-                key={index}
-                onClick={() => handleServiceTypeChange(service)}
-                className="px-[10px] py-[10px] hover:bg-tradeAshExtraLight rounded-[5px]  cursor-pointer"
-              >
-                <p className="text-white text-[14px] ">{service}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div
-          className={`${showAccount ? "flex" : "hidden"} flex-col gap-[10px]`}
-        >
-          <div
-            onClick={() => setShowAccounType((prev) => !prev)}
-            className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px]  rounded-[6px] cursor-pointer"
-          >
-            <input
-              className="w-full h-[30px] -none outline-none bg-transparent text-white text-[14px] placeholder:text-neutral-400 cursor-pointer"
-              placeholder="Select Account"
-              type="text"
-              value={accountType}
-              readOnly
-            />
-            <div className="w-[px] flex justify-between items-center px-[10px] h-[30px] rounded-[3px]">
-              <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
-            </div>
-          </div>
-          <div
-            className={` ${
-              showAccountType ? "flex" : "hidden"
-            } flex-col gap-[10px] p-[10px] bg-tradeAshLight rounded-[8px]  -neutral-700`}
-          >
-            <div className="flex h-[43px] rounded-[5px] px-[10px] py-[5px] gap-[20px] items-center  border border-neutral-700">
-              <input
-                className="outline-none -none  h-[30px] text-white text-[14px] placeholder:text-zinc-400 w-full bg-transparent"
-                type="text"
-                placeholder="Search account..."
-                value={accountSearchInput}
-                onChange={(e) => setAccountSearchInput(e.target.value)}
-              />
-            </div>
-            <div className="overflow-y-auto ">
-              {accountSearchInput ? (
-                <div className=" max-h-[230px] flex flex-col gap-[5px]">
-                  {globalBanks
-                    .filter((bank) =>
-                      bank
-                        .toLowerCase()
-                        .includes(accountSearchInput.toLowerCase())
-                    )
-                    .map((bank, index) => (
-                      <div
-                        key={index}
-                        onClick={() => handleSeletedAccount(bank)}
-                        className="px-[10px] py-[10px] mr-[10px] hover:bg-tradeAshExtraLight  rounded-[5px] cursor-pointer"
-                      >
-                        <p className="text-white text-[14px]">{bank}</p>
-                      </div>
-                    ))}
-                </div>
-              ) : (
-                <div className="h-[230px] flex flex-col gap-[5px]">
-                  {globalBanks
-                    .sort((a, b) => a.localeCompare(b)) // Correct sorting logic
-                    .map((bank, index) => (
-                      <div
-                        key={index}
-                        onClick={() => handleSeletedAccount(bank)}
-                        className="px-[10px] py-[10px] mr-[10px] hover:bg-tradeAshExtraLight  rounded-[5px] cursor-pointer"
-                      >
-                        <p className="text-white text-[14px]">{bank}</p>
-                      </div>
-                    ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-        <div
-          className={`${showWallet ? "flex" : "hidden"} flex-col gap-[10px]`}
-        >
-          <div
-            onClick={() => setShowWalletType((prev) => !prev)}
-            className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[43px] gap-[20px]  -neutral-700 rounded-[6px] cursor-pointer"
-          >
-            <input
-              className="w-full  h-[30px] -none outline-none bg-transparent text-white text-[14px] placeholder:text-neutral-400 cursor-pointer"
-              placeholder="Select Wallet"
-              type="text"
-              value={walletType}
-              readOnly
-            />
-            <div className="w-[px] flex justify-between items-center px-[10px] h-[30px] rounded-[3px]">
-              <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
-            </div>
-          </div>
-          <div
-            className={` ${
-              showWalletType ? "flex" : "hidden"
-            } flex-col gap-[10px] p-[10px] bg-tradeAshLight rounded-[8px]`}
-          >
-            <div className="flex h-[44px] rounded-[5px] px-[10px] py-[5px] gap-[20px] items-center border border-neutral-700">
-              <input
-                className="outline-none -none  h-[30px] text-white text-[14px] placeholder:text-zinc-400 w-full bg-transparent"
-                type="text"
-                placeholder="Search wallet..."
-                value={walletSearchInput}
-                onChange={(e) => setWalletSearchInput(e.target.value)}
-              />
-            </div>
-            <div className="overflow-y-auto ">
-              {walletSearchInput ? (
-                <div className=" max-h-[230px] flex flex-col gap-[5px]">
-                  {wallets
-                    .filter((wallet) =>
-                      wallet
-                        .toLowerCase()
-                        .includes(walletSearchInput.toLowerCase())
-                    )
-                    .map((wallet, index) => (
-                      <div
-                        key={index}
-                        onClick={() => handleSeletedWallet(wallet)}
-                        className="px-[10px] py-[10px] mr-[10px] hover:bg-tradeAshExtraLight  rounded-[5px] cursor-pointer"
-                      >
-                        <p className="text-white text-[14px]">{wallet}</p>
-                      </div>
-                    ))}
-                </div>
-              ) : (
-                <div className="h-[230px] flex flex-col gap-[5px]">
-                  {wallets
-                    .sort((a, b) => a.localeCompare(b)) // Correct sorting logic
-                    .map((wallet, index) => (
-                      <div
-                        key={index}
-                        onClick={() => handleSeletedWallet(wallet)}
-                        className="px-[10px] py-[10px] mr-[10px] hover:bg-tradeAshExtraLight  rounded-[5px] cursor-pointer"
-                      >
-                        <p className="text-white text-[14px]">{wallet}</p>
-                      </div>
-                    ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-        <div
-          className={`${showGiftCard ? "flex" : "hidden"} flex-col gap-[10px]`}
-        >
-          <div
-            onClick={() => setShowGiftCardType((prev) => !prev)}
-            className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] -neutral-700 rounded-[4px] cursor-pointer"
-          >
-            <input
-              className="w-full h-[30px] -none outline-none bg-transparent text-white text-[14px] placeholder:text-neutral-400 cursor-pointer"
-              placeholder="Select Gift Card"
-              type="text"
-              value={giftCardType}
-              readOnly
-            />
-            <div className="w-[px] flex justify-between items-center px-[10px] h-[30px] rounded-[3px]">
-              <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
-            </div>
-          </div>
-          <div
-            className={` ${
-              showGiftCardType ? "flex" : "hidden"
-            } flex-col gap-[10px] p-[10px] bg-tradeAshLight rounded-[8px]`}
-          >
-            <div className="flex h-[43px] rounded-[5px] px-[10px] py-[5px] gap-[20px] items-center border border-neutral-700">
-              <input
-                className="outline-none h-[30px] text-white text-[14px] placeholder:text-zinc-400 w-full bg-transparent"
-                type="text"
-                placeholder="Search gift card..."
-                value={giftCardSearchInput}
-                onChange={(e) => setGiftCardSearchInput(e.target.value)}
-              />
-            </div>
-            <div className="overflow-y-auto ">
-              {giftCardSearchInput ? (
-                <div className=" max-h-[230px] flex flex-col gap-[5px]">
-                  {globalGiftCards
-                    .filter((giftCard) =>
-                      giftCard
-                        .toLowerCase()
-                        .includes(walletSearchInput.toLowerCase())
-                    )
-                    .map((giftCard, index) => (
-                      <div
-                        key={index}
-                        onClick={() => handleSeletedGiftCard(giftCard)}
-                        className="px-[10px] py-[10px] mr-[10px] hover:bg-tradeAshExtraLight  rounded-[5px] cursor-pointer"
-                      >
-                        <p className="text-white text-[14px]">{giftCard}</p>
-                      </div>
-                    ))}
-                </div>
-              ) : (
-                <div className="h-[230px] flex flex-col gap-[5px]">
-                  {globalGiftCards
-                    .sort((a, b) => a.localeCompare(b)) // Correct sorting logic
-                    .map((giftCard, index) => (
-                      <div
-                        key={index}
-                        onClick={() => handleSeletedGiftCard(giftCard)}
-                        className="px-[10px] py-[10px] mr-[10px] hover:bg-tradeAshExtraLight  rounded-[5px] cursor-pointer"
-                      >
-                        <p className="text-white text-[14px]">{giftCard}</p>
-                      </div>
-                    ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-        <div
-          className={`${
-            showDebitCreditCard ? "flex" : "hidden"
-          } flex-col gap-[10px]`}
-        >
-          <div
-            onClick={() => setShowDebitCreditCardType((prev) => !prev)}
-            className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[6px] cursor-pointer"
-          >
-            <input
-              className="w-full h-[30px] -none outline-none bg-transparent text-white text-[14px] placeholder:text-neutral-400 cursor-pointer"
-              placeholder="Select Credit/Debit Card"
-              type="text"
-              value={debitCreditCardType}
-              readOnly
-            />
-            <div className="w-[px] flex justify-between items-center px-[10px] h-[30px] rounded-[3px]">
-              <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
-            </div>
-          </div>
-          <div
-            className={` ${
-              showDebitCreditCardType ? "flex" : "hidden"
-            } flex-col gap-[10px] p-[10px] bg-tradeAshLight rounded-[8px]  -neutral-700`}
-          >
-            <div className="flex h-[44px] rounded-[5px] px-[14px] py-[5px] gap-[20px] items-center border border-neutral-700">
-              <input
-                className="outline-none h-[30px] text-white text-[14px] placeholder:text-zinc-400 w-full bg-transparent"
-                type="text"
-                placeholder="Search credit/debit card..."
-                value={debitCreditSearchInput}
-                onChange={(e) => setDebitCreditCardSearchInput(e.target.value)}
-              />
-            </div>
-            <div className="overflow-y-auto ">
-              {debitCreditSearchInput ? (
-                <div className=" max-h-[230px] flex flex-col gap-[5px]">
-                  {debitandCreditCards
-                    .filter((debitCreditCard) =>
-                      debitCreditCard
-                        .toLowerCase()
-                        .includes(debitCreditSearchInput.toLowerCase())
-                    )
-                    .map((debitCreditCard, index) => (
-                      <div
-                        key={index}
-                        onClick={() =>
-                          handleSeletedDebitCreditCard(debitCreditCard)
-                        }
-                        className="px-[10px] py-[10px] mr-[10px] hover:bg-tradeAshExtraLight  rounded-[5px] cursor-pointer"
-                      >
-                        <p className="text-white text-[14px]">
-                          {debitCreditCard}
-                        </p>
-                      </div>
-                    ))}
-                </div>
-              ) : (
-                <div className="h-[230px] flex flex-col gap-[5px]">
-                  {debitandCreditCards
-                    .sort((a, b) => a.localeCompare(b)) // Correct sorting logic
-                    .map((debitCreditCard, index) => (
-                      <div
-                        key={index}
-                        onClick={() =>
-                          handleSeletedDebitCreditCard(debitCreditCard)
-                        }
-                        className="px-[10px] py-[10px] mr-[10px] hover:bg-tradeAshExtraLight  rounded-[5px] cursor-pointer"
-                      >
-                        <p className="text-white text-[14px]">
-                          {debitCreditCard}
-                        </p>
-                      </div>
-                    ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col gap-[10px]">
-          <div
-            // onClick={() => setShowWalletType((prev) => !prev)}
-            className="flex bg-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px]  -neutral-700 rounded-[6px] cursor-pointer"
-          >
-            <input
-              className="w-full h-[30px] outline-none bg-transparent text-white text-[14px] placeholder:text-neutral-400"
-              placeholder="Enter amount"
-              type="text"
-              value={amount ? Number(amount).toLocaleString() : ""}
-              onChange={handleAmountChange}
-            />
+
             <div
-              className="w-[px] border  border-neutral-700 flex justify-between items-center px-[10px] h-[30px] rounded-[4px]"
-              onClick={() => setShowCurrencyOptions((prev) => !prev)}
+              className="
+               flex flex-wrap gap-[15px] "
             >
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  onClick={() => handleServiceTypeChange(service)}
+                  className={`px-[12px] py-[5px] text-[14px]  hover:text-black font-[500] rounded-[6.5px] bg-tradeAsh hover:bg-tradeGreen border border-tradeAshLight hover:border-tradeGreen cursor-pointer duration-300 transition-all  ${
+                    serviceType.includes(service)
+                      ? "text-black bg-tradeGreen border-tradeGreen"
+                      : "text-tradeFadeWhite"
+                  }`}
+                >
+                  <p>{service}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div
+            className={`${
+              showAccount ? "flex" : "hidden"
+            } flex-col p-[20px] gap-[30px] border-b border-tradeAshLight`}
+          >
+            <div className="flex flex-col gap-[20px]">
               <div>
+                <p className="text-white text-[16px] font-[700]">
+                  Select Account
+                </p>
+              </div>
+              <div className="flex flex-col gap-[10px]">
+                <div
+                  onClick={() => setShowAccounType((prev) => !prev)}
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                >
+                  <input
+                    className="w-full h-[30px] -none outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    placeholder="All Currency"
+                    type="text"
+                    value={accountType}
+                    readOnly
+                  />
+                  <div className="w-[px] flex justify-between items-center px-[10px] h-[30px] rounded-[3px]">
+                    <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
+                  </div>
+                </div>
+                <div
+                  className={` ${
+                    showAccountType ? "flex" : "hidden"
+                  } flex-col gap-[20px] p-[10px] bg-tradeAsh border border-tradeAshLight rounded-[12px] `}
+                >
+                  <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
+                    <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
+                    <input
+                      className="outline-none -none  h-[30px] text-white text-[14px] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      type="text"
+                      placeholder="Search account"
+                      value={accountSearchInput}
+                      onChange={(e) => setAccountSearchInput(e.target.value)}
+                    />
+                  </div>
+                  <div className="overflow-y-auto custom-scrollbar">
+                    {accountSearchInput ? (
+                      <div className=" max-h-[230px] flex flex-col gap-[5px]">
+                        {globalBanks
+                          .filter((bank) =>
+                            bank
+                              .toLowerCase()
+                              .includes(accountSearchInput.toLowerCase())
+                          )
+                          .map((bank, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleSeletedAccount(bank)}
+                              className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
+                            >
+                              <p className="text-[14px]">{bank}</p>
+                            </div>
+                          ))}
+                      </div>
+                    ) : (
+                      <div className="h-[230px] flex flex-col gap-[5px]">
+                        {globalBanks
+                          .sort((a, b) => a.localeCompare(b)) // Correct sorting logic
+                          .map((bank, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleSeletedAccount(bank)}
+                              className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
+                            >
+                              <p className="text-[14px]">{bank}</p>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-[20px]">
+              <div>
+                <p className="text-white text-[16px] font-[700]">
+                  Select Currency
+                </p>
+              </div>
+              <div className="flex flex-col gap-[10px]">
+                <div
+                  onClick={() => setShowCurrencyOptions((prev) => !prev)}
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                >
+                  <input
+                    className="w-full h-[30px] outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    placeholder="Select"
+                    type="text"
+                    readOnly
+                    value={selectedCurrency?.name}
+                  />
+                  <div className="border  border-tradeAshLight flex justify-between items-center px-[10px] h-[30px] rounded-[6px]">
+                    <div>
+                      <input
+                        className="w-[43px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
+                        type="text"
+                        value={selectedCurrency?.code}
+                        readOnly
+                        placeholder="$€£"
+                      />
+                    </div>
+                    <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
+                  </div>
+                </div>
+                <div
+                  className={` ${
+                    showCurrencyOptions ? "flex" : "hidden"
+                  } flex-col gap-[20px] p-[10px] bg-tradeAsh border border-tradeAshLight rounded-[12px] `}
+                >
+                  <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
+                    <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
+                    <input
+                      className="outline-none -none h-[30px] text-white text-[14px] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      type="text"
+                      placeholder="Search your currency"
+                      value={currrencySearchInput}
+                      onChange={(e) => setCurrrencySearchInput(e.target.value)}
+                    />
+                  </div>
+                  <div className="overflow-y-auto custom-scrollbar">
+                    {currrencySearchInput ? (
+                      <div className="flex flex-col max-h-[230px] gap-[5px] mr-[10px]">
+                        {Object.entries(currencies)
+                          .filter(([code, name]) =>
+                            name
+                              .toLowerCase()
+                              .includes(currrencySearchInput.toLowerCase())
+                          )
+
+                          .map(
+                            (
+                              [code, name] // Correct map placement
+                            ) => (
+                              <div
+                                className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer  transition-all duration-300"
+                                onClick={() =>
+                                  handleSelectedCurrency(code, name)
+                                }
+                                key={code}
+                              >
+                                <p className=" text-[14px] cursor-pointer ">
+                                  {name}
+                                </p>
+                                <p className=" text-[14px] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                  {code}
+                                </p>
+                              </div>
+                            )
+                          )}
+                      </div>
+                    ) : (
+                      <div className=" flex flex-col h-[230px] gap-[5px] mr-[10px]">
+                        {Object.entries(currencies)
+                          .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
+                          .map(([code, name]) => (
+                            <div
+                              className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
+                              onClick={() => handleSelectedCurrency(code, name)}
+                              key={code}
+                            >
+                              <p className=" text-[14px] cursor-pointer ">
+                                {name}
+                              </p>
+                              <p className=" text-[14px] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                {code}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-[20px]">
+              <div>
+                <p className="text-white text-[16px] font-[700]">
+                  Enter Amount
+                </p>
+              </div>
+
+              <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px]">
                 <input
-                  className="w-[43px] text-[14px] text-white placeholder:text-neutral-500 font-[600] bg-transparent outline-none cursor-pointer"
+                  className="w-full h-[30px] outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                  placeholder="00.00"
                   type="text"
-                  value={selectedCurrency?.code}
-                  readOnly
-                  placeholder="$€£"
+                  value={amount ? Number(amount).toLocaleString() : ""}
+                  onChange={handleAmountChange}
                 />
               </div>
-              <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
             </div>
           </div>
           <div
-            className={` ${
-              showCurrencyOptions ? "flex" : "hidden"
-            } flex-col gap-[20px] p-[10px] bg-tradeAshLight rounded-[8px] `}
+            className={`${
+              showWallet ? "flex" : "hidden"
+            } flex-col p-[20px] gap-[30px] border-b border-tradeAshLight`}
           >
-            <div className="flex h-[44px] px-[10px] py-[4px] gap-[20px] items-center  border border-neutral-700 rounded-[8px]">
-              <FaMagnifyingGlass className="text-[20px] text-neutral-400" />
-              <input
-                className="outline-none -none h-[30px] text-white text-[14px] placeholder:text-zinc-400 w-full bg-transparent"
-                type="text"
-                placeholder="Search your currency..."
-                value={currrencySearchInput}
-                onChange={(e) => setCurrrencySearchInput(e.target.value)}
-              />
-            </div>
-            <div className="overflow-y-auto">
-              {currrencySearchInput ? (
-                <div className="flex flex-col max-h-[230px] gap-[5px] mr-[10px]">
-                  {Object.entries(currencies)
-                    .filter(([code, name]) =>
-                      name
-                        .toLowerCase()
-                        .includes(currrencySearchInput.toLowerCase())
-                    )
-
-                    .map(
-                      (
-                        [code, name] // Correct map placement
-                      ) => (
-                        <div
-                          className="flex gap-[5px] justify-between px-[10px] py-[10px] hover:bg-tradeAshExtraLight rounded-[5px]"
-                          onClick={() => handleSelectedCurrency(code, name)}
-                          key={code}
-                        >
-                          <p className="text-white text-[14px] cursor-pointer ">
-                            {name}
-                          </p>
-                          <p className="text-white text-[14px] cursor-pointer border border-neutral-600 px-[6px] py-[3px] max-w-max h-max rounded-[3px]">
-                            {code}
-                          </p>
-                        </div>
-                      )
-                    )}
+            <div className="flex flex-col gap-[20px]">
+              <div>
+                <p className="text-white text-[16px] font-[700]">
+                  Select Wallet
+                </p>
+              </div>
+              <div className="flex flex-col gap-[10px]">
+                <div
+                  onClick={() => setShowWalletType((prev) => !prev)}
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                >
+                  <input
+                    className="w-full h-[30px] -none outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    placeholder="All Currency"
+                    type="text"
+                    value={walletType}
+                    readOnly
+                  />
+                  <div className="w-[px] flex justify-between items-center px-[10px] h-[30px] rounded-[3px]">
+                    <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
+                  </div>
                 </div>
-              ) : (
-                <div className=" flex flex-col h-[230px] gap-[5px] mr-[10px]">
-                  {Object.entries(currencies)
-                    .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
-                    .map(([code, name]) => (
-                      <div
-                        className="flex gap-[5px] justify-between px-[10px] py-[10px] hover:bg-tradeAshExtraLight rounded-[5px]"
-                        onClick={() => handleSelectedCurrency(code, name)}
-                        key={code}
-                      >
-                        <p className="text-white text-[14px] cursor-pointer ">
-                          {name}
-                        </p>
-                        <p className="text-white text-[14px] cursor-pointer  border border-neutral-600 px-[6px] py-[3px] max-w-max h-max rounded-[3px] ">
-                          {code}
-                        </p>
+                <div
+                  className={` ${
+                    showWalletType ? "flex" : "hidden"
+                  } flex-col gap-[20px] p-[10px] bg-tradeAsh border border-tradeAshLight rounded-[12px] `}
+                >
+                  <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
+                    <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
+                    <input
+                      className="outline-none -none  h-[30px] text-white text-[14px] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      type="text"
+                      placeholder="Search wallet"
+                      value={walletSearchInput}
+                      onChange={(e) => setWalletSearchInput(e.target.value)}
+                    />
+                  </div>
+                  <div className="overflow-y-auto custom-scrollbar">
+                    {walletSearchInput ? (
+                      <div className=" max-h-[230px] flex flex-col gap-[5px]">
+                        {wallets
+                          .filter((wallet) =>
+                            wallet
+                              .toLowerCase()
+                              .includes(walletSearchInput.toLowerCase())
+                          )
+                          .map((wallet, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleSeletedWallet(wallet)}
+                              className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
+                            >
+                              <p className="text-[14px]">{wallet}</p>
+                            </div>
+                          ))}
                       </div>
-                    ))}
+                    ) : (
+                      <div className="h-[230px] flex flex-col gap-[5px]">
+                        {wallets
+                          .sort((a, b) => a.localeCompare(b)) // Correct sorting logic
+                          .map((wallet, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleSeletedWallet(wallet)}
+                              className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
+                            >
+                              <p className="text-[14px]">{wallet}</p>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              )}
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-[20px]">
+              <div>
+                <p className="text-white text-[16px] font-[700]">
+                  Select Currency
+                </p>
+              </div>
+              <div className="flex flex-col gap-[10px]">
+                <div
+                  onClick={() => setShowCurrencyOptions((prev) => !prev)}
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                >
+                  <input
+                    className="w-full h-[30px] outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    placeholder="Select"
+                    type="text"
+                    readOnly
+                    value={selectedCurrency?.name}
+                  />
+                  <div className="border  border-tradeAshLight flex justify-between items-center px-[10px] h-[30px] rounded-[6px]">
+                    <div>
+                      <input
+                        className="w-[43px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
+                        type="text"
+                        value={selectedCurrency?.code}
+                        readOnly
+                        placeholder="$€£"
+                      />
+                    </div>
+                    <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
+                  </div>
+                </div>
+                <div
+                  className={` ${
+                    showCurrencyOptions ? "flex" : "hidden"
+                  } flex-col gap-[20px] p-[10px] bg-tradeAsh border border-tradeAshLight rounded-[12px] `}
+                >
+                  <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
+                    <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
+                    <input
+                      className="outline-none -none h-[30px] text-white text-[14px] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      type="text"
+                      placeholder="Search your currency"
+                      value={currrencySearchInput}
+                      onChange={(e) => setCurrrencySearchInput(e.target.value)}
+                    />
+                  </div>
+                  <div className="overflow-y-auto custom-scrollbar">
+                    {currrencySearchInput ? (
+                      <div className="flex flex-col max-h-[230px] gap-[5px] mr-[10px]">
+                        {Object.entries(currencies)
+                          .filter(([code, name]) =>
+                            name
+                              .toLowerCase()
+                              .includes(currrencySearchInput.toLowerCase())
+                          )
+
+                          .map(
+                            (
+                              [code, name] // Correct map placement
+                            ) => (
+                              <div
+                                className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer  transition-all duration-300"
+                                onClick={() =>
+                                  handleSelectedCurrency(code, name)
+                                }
+                                key={code}
+                              >
+                                <p className=" text-[14px] cursor-pointer ">
+                                  {name}
+                                </p>
+                                <p className=" text-[14px] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                  {code}
+                                </p>
+                              </div>
+                            )
+                          )}
+                      </div>
+                    ) : (
+                      <div className=" flex flex-col h-[230px] gap-[5px] mr-[10px]">
+                        {Object.entries(currencies)
+                          .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
+                          .map(([code, name]) => (
+                            <div
+                              className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
+                              onClick={() => handleSelectedCurrency(code, name)}
+                              key={code}
+                            >
+                              <p className=" text-[14px] cursor-pointer ">
+                                {name}
+                              </p>
+                              <p className=" text-[14px] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                {code}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-[20px]">
+              <div>
+                <p className="text-white text-[16px] font-[700]">
+                  Enter Amount
+                </p>
+              </div>
+
+              <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px]">
+                <input
+                  className="w-full h-[30px] outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite"
+                  placeholder="00.00"
+                  type="text"
+                  value={amount ? Number(amount).toLocaleString() : ""}
+                  onChange={handleAmountChange}
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className={`${
+              showGiftCard ? "flex" : "hidden"
+            } flex-col p-[20px] gap-[30px] border-b border-tradeAshLight`}
+          >
+            <div className="flex flex-col gap-[20px]">
+              <div>
+                <p className="text-white text-[16px] font-[700]">
+                  Select Gift Card
+                </p>
+              </div>
+              <div className="flex flex-col gap-[10px]">
+                <div
+                  onClick={() => setShowGiftCardType((prev) => !prev)}
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                >
+                  <input
+                    className="w-full h-[30px] -none outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    placeholder="Select"
+                    type="text"
+                    value={giftCardType}
+                    readOnly
+                  />
+                  <div className="w-[px] flex justify-between items-center px-[10px] h-[30px] rounded-[3px]">
+                    <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
+                  </div>
+                </div>
+                <div
+                  className={` ${
+                    showGiftCardType ? "flex" : "hidden"
+                  } flex-col gap-[20px] p-[10px] bg-tradeAsh border border-tradeAshLight rounded-[12px] `}
+                >
+                  <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
+                    <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
+                    <input
+                      className="outline-none -none  h-[30px] text-white text-[14px] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      type="text"
+                      placeholder="Search gift card"
+                      value={giftCardSearchInput}
+                      onChange={(e) => setGiftCardSearchInput(e.target.value)}
+                    />
+                  </div>
+                  <div className="overflow-y-auto custom-scrollbar">
+                    {giftCardSearchInput ? (
+                      <div className=" max-h-[230px] flex flex-col gap-[5px]">
+                        {globalGiftCards
+                          .filter((giftCard) =>
+                            giftCard
+                              .toLowerCase()
+                              .includes(giftCardSearchInput.toLowerCase())
+                          )
+                          .map((giftCard, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleSeletedGiftCard(giftCard)}
+                              className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
+                            >
+                              <p className="text-[14px]">{giftCard}</p>
+                            </div>
+                          ))}
+                      </div>
+                    ) : (
+                      <div className="h-[230px] flex flex-col gap-[5px]">
+                        {globalGiftCards
+                          .sort((a, b) => a.localeCompare(b)) // Correct sorting logic
+                          .map((giftCard, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleSeletedGiftCard(giftCard)}
+                              className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
+                            >
+                              <p className="text-[14px]">{giftCard}</p>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-[20px]">
+              <div>
+                <p className="text-white text-[16px] font-[700]">
+                  Select Currency
+                </p>
+              </div>
+              <div className="flex flex-col gap-[10px]">
+                <div
+                  onClick={() => setShowCurrencyOptions((prev) => !prev)}
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                >
+                  <input
+                    className="w-full h-[30px] outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    placeholder="Select"
+                    type="text"
+                    readOnly
+                    value={selectedCurrency?.name}
+                  />
+                  <div className="border  border-tradeAshLight flex justify-between items-center px-[10px] h-[30px] rounded-[6px]">
+                    <div>
+                      <input
+                        className="w-[43px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
+                        type="text"
+                        value={selectedCurrency?.code}
+                        readOnly
+                        placeholder="$€£"
+                      />
+                    </div>
+                    <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
+                  </div>
+                </div>
+                <div
+                  className={` ${
+                    showCurrencyOptions ? "flex" : "hidden"
+                  } flex-col gap-[20px] p-[10px] bg-tradeAsh border border-tradeAshLight rounded-[12px] `}
+                >
+                  <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
+                    <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
+                    <input
+                      className="outline-none -none h-[30px] text-white text-[14px] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      type="text"
+                      placeholder="Search your currency"
+                      value={currrencySearchInput}
+                      onChange={(e) => setCurrrencySearchInput(e.target.value)}
+                    />
+                  </div>
+                  <div className="overflow-y-auto custom-scrollbar">
+                    {currrencySearchInput ? (
+                      <div className="flex flex-col max-h-[230px] gap-[5px] mr-[10px]">
+                        {Object.entries(currencies)
+                          .filter(([code, name]) =>
+                            name
+                              .toLowerCase()
+                              .includes(currrencySearchInput.toLowerCase())
+                          )
+
+                          .map(
+                            (
+                              [code, name] // Correct map placement
+                            ) => (
+                              <div
+                                className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer  transition-all duration-300"
+                                onClick={() =>
+                                  handleSelectedCurrency(code, name)
+                                }
+                                key={code}
+                              >
+                                <p className=" text-[14px] cursor-pointer ">
+                                  {name}
+                                </p>
+                                <p className=" text-[14px] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                  {code}
+                                </p>
+                              </div>
+                            )
+                          )}
+                      </div>
+                    ) : (
+                      <div className=" flex flex-col h-[230px] gap-[5px] mr-[10px]">
+                        {Object.entries(currencies)
+                          .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
+                          .map(([code, name]) => (
+                            <div
+                              className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
+                              onClick={() => handleSelectedCurrency(code, name)}
+                              key={code}
+                            >
+                              <p className=" text-[14px] cursor-pointer ">
+                                {name}
+                              </p>
+                              <p className=" text-[14px] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                {code}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-[20px]">
+              <div>
+                <p className="text-white text-[16px] font-[700]">
+                  Enter Amount
+                </p>
+              </div>
+
+              <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px]">
+                <input
+                  className="w-full h-[30px] outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite"
+                  placeholder="00.00"
+                  type="text"
+                  value={amount ? Number(amount).toLocaleString() : ""}
+                  onChange={handleAmountChange}
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className={`${
+              showDebitCreditCard ? "flex" : "hidden"
+            } flex-col p-[20px] gap-[30px] border-b border-tradeAshLight`}
+          >
+            <div className="flex flex-col gap-[20px]">
+              <div>
+                <p className="text-white text-[16px] font-[700]">
+                  Select Credit or Debit Card
+                </p>
+              </div>
+              <div className="flex flex-col gap-[10px]">
+                <div
+                  onClick={() => setShowDebitCreditCardType((prev) => !prev)}
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                >
+                  <input
+                    className="w-full h-[30px] -none outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    placeholder="Select"
+                    type="text"
+                    value={debitCreditCardType}
+                    readOnly
+                  />
+                  <div className="w-[px] flex justify-between items-center px-[10px] h-[30px] rounded-[3px]">
+                    <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
+                  </div>
+                </div>
+                <div
+                  className={` ${
+                    showDebitCreditCardType ? "flex" : "hidden"
+                  } flex-col gap-[20px] p-[10px] bg-tradeAsh border border-tradeAshLight rounded-[12px] `}
+                >
+                  <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
+                    <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
+                    <input
+                      className="outline-none -none  h-[30px] text-white text-[14px] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      type="text"
+                      placeholder="Search Credit or Debit Card"
+                      value={debitCreditSearchInput}
+                      onChange={(e) =>
+                        setDebitCreditCardSearchInput(e.target.value)
+                      }
+                    />
+                  </div>
+                  <div className="overflow-y-auto custom-scrollbar">
+                    {debitCreditSearchInput ? (
+                      <div className=" max-h-[230px] flex flex-col gap-[5px]">
+                        {debitandCreditCards
+                          .filter((debitandCreditCard) =>
+                            debitandCreditCard
+                              .toLowerCase()
+                              .includes(debitCreditSearchInput.toLowerCase())
+                          )
+                          .map((debitandCreditCard, index) => (
+                            <div
+                              key={index}
+                              onClick={() =>
+                                handleSeletedDebitCreditCard(debitandCreditCard)
+                              }
+                              className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
+                            >
+                              <p className="text-[14px]">
+                                {debitandCreditCard}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
+                    ) : (
+                      <div className="h-[230px] flex flex-col gap-[5px]">
+                        {debitandCreditCards
+                          .sort((a, b) => a.localeCompare(b)) // Correct sorting logic
+                          .map((debitandCreditCard, index) => (
+                            <div
+                              key={index}
+                              onClick={() =>
+                                handleSeletedDebitCreditCard(debitandCreditCard)
+                              }
+                              className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
+                            >
+                              <p className="text-[14px]">
+                                {debitandCreditCard}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-[20px]">
+              <div>
+                <p className="text-white text-[16px] font-[700]">
+                  Select Currency
+                </p>
+              </div>
+              <div className="flex flex-col gap-[10px]">
+                <div
+                  onClick={() => setShowCurrencyOptions((prev) => !prev)}
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                >
+                  <input
+                    className="w-full h-[30px] outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    placeholder="Select"
+                    type="text"
+                    readOnly
+                    value={selectedCurrency?.name}
+                  />
+                  <div className="border  border-tradeAshLight flex justify-between items-center px-[10px] h-[30px] rounded-[6px]">
+                    <div>
+                      <input
+                        className="w-[43px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
+                        type="text"
+                        value={selectedCurrency?.code}
+                        readOnly
+                        placeholder="$€£"
+                      />
+                    </div>
+                    <MdKeyboardArrowDown className="text-[25px] text-neutral-400" />
+                  </div>
+                </div>
+                <div
+                  className={` ${
+                    showCurrencyOptions ? "flex" : "hidden"
+                  } flex-col gap-[20px] p-[10px] bg-tradeAsh border border-tradeAshLight rounded-[12px] `}
+                >
+                  <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
+                    <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
+                    <input
+                      className="outline-none -none h-[30px] text-white text-[14px] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      type="text"
+                      placeholder="Search your currency"
+                      value={currrencySearchInput}
+                      onChange={(e) => setCurrrencySearchInput(e.target.value)}
+                    />
+                  </div>
+                  <div className="overflow-y-auto custom-scrollbar">
+                    {currrencySearchInput ? (
+                      <div className="flex flex-col max-h-[230px] gap-[5px] mr-[10px]">
+                        {Object.entries(currencies)
+                          .filter(([code, name]) =>
+                            name
+                              .toLowerCase()
+                              .includes(currrencySearchInput.toLowerCase())
+                          )
+
+                          .map(
+                            (
+                              [code, name] // Correct map placement
+                            ) => (
+                              <div
+                                className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer  transition-all duration-300"
+                                onClick={() =>
+                                  handleSelectedCurrency(code, name)
+                                }
+                                key={code}
+                              >
+                                <p className=" text-[14px] cursor-pointer ">
+                                  {name}
+                                </p>
+                                <p className=" text-[14px] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                  {code}
+                                </p>
+                              </div>
+                            )
+                          )}
+                      </div>
+                    ) : (
+                      <div className=" flex flex-col h-[230px] gap-[5px] mr-[10px]">
+                        {Object.entries(currencies)
+                          .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
+                          .map(([code, name]) => (
+                            <div
+                              className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
+                              onClick={() => handleSelectedCurrency(code, name)}
+                              key={code}
+                            >
+                              <p className=" text-[14px] cursor-pointer ">
+                                {name}
+                              </p>
+                              <p className=" text-[14px] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                {code}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-[20px]">
+              <div>
+                <p className="text-white text-[16px] font-[700]">
+                  Enter Amount
+                </p>
+              </div>
+
+              <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px]">
+                <input
+                  className="w-full h-[30px] outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite"
+                  placeholder="00.00"
+                  type="text"
+                  value={amount ? Number(amount).toLocaleString() : ""}
+                  onChange={handleAmountChange}
+                />
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex justify-between items-center">
-          <div className="flex gap-[10px] items-center">
-            <p className="font-[600] text-white lg:text-[15px] text-[15.5px]">
-              Recently active traders
-            </p>
-            <FaRegQuestionCircle className="text-neutral-500 lg:text-[16px] text-[17px]" />
+        <div className="flex p-[20px]">
+          <div
+            className="flex items-center justify-between w-full h-[43px] bg-tradeGreen p-[10px] rounded-[10px] cursor-pointer"
+            onClick={() => handleFindOffer()}
+          >
+            <p className="font-[600] text-[15px]">Apply Filter</p>
+            <TbReload className="text-[20px]" />
           </div>
-          <input
-            className="lg:w-[20px] w-[24px] lg:h-[14px] h-[16px]"
-            type="checkbox"
-            onChange={handleActiveTraderChange}
-          />
         </div>
-        <div className="flex justify-between items-center">
-          <div className="flex gap-[10px] items-center">
-            <p className="font-[600] text-white lg:text-[15px] text-[15.5px]">
-              Verified offers
-            </p>
-            <FaRegQuestionCircle className="text-neutral-500 lg:text-[16px] text-[17px]" />
-          </div>
-          <input
-            className=" lg:w-[20px] w-[24px] lg:h-[14px] h-[16px]"
-            type="checkbox"
-            onChange={handleVerifiedOffersChange}
-          />
-        </div>
-      </div>
-      <div
-        className="flex items-center justify-between h-[43px] bg-tradeGreen p-[10px] rounded-[6px] cursor-pointer"
-        onClick={() => handleFindOffer()}
-      >
-        <p className="font-[600] text-[15px]">Find Offers</p>
-        <TbReload className="text-[20px]" />
       </div>
     </div>
   );

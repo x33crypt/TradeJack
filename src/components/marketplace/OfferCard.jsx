@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { SiTrustpilot } from "react-icons/si";
 import { RiRadioButtonLine } from "react-icons/ri";
 import { LuFilter } from "react-icons/lu";
+import { GoDotFill } from "react-icons/go";
 
 const OfferCard = (props) => {
   tippy("[data-tippy-content]");
@@ -36,7 +37,143 @@ const OfferCard = (props) => {
 
   return (
     <>
-      <div className="bg-white  p-[10px] rounded-[8px]">
+      <div
+        onClick={() => handleOfferClick(props.id)}
+        className=" border-b border-tradeAshLight hover:bg-tradeAshLight p-[10px] flex cursor-pointer transition-all duration-300 "
+      >
+        <div className="flex-1 flex gap-[10px]">
+          <div className="flex flex-col gap-[10px]">
+            <div className="flex items-center gap-[15px]">
+              <p className=" text-[13px] text-white sm:text-[14px] font-[600] w-[90px] overflow-hidden text-ellipsis whitespace-nowrap">
+                {props.username}
+              </p>
+              {/* <div className="flex ">
+                {props?.verified ? (
+                  <>
+                    <div
+                      id="vendorVerified"
+                      className="w-max flex items-center gap-[4px] rounded-[3px] cursor-pointer "
+                    >
+                      <MdOutlineVerified className="text-neutral-600 text-[12px]" />
+                      <p className="text-neutral-600 font-[600] text-[12px]">
+                        Verified
+                      </p>
+                    </div>
+                  </>
+                ) : null}
+              </div> */}
+              <div className="flex flex-co gap-[10px] ">
+                <div className="">
+                  <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
+                    {" "}
+                    <IoMdThumbsUp className="text-[13px] lg:text-[14px] text-tradeGreen" />{" "}
+                    {`${parseInt(props.reviews).toLocaleString()}`}
+                  </p>
+                </div>
+                {/* <div className="">
+                  <p className="text-[13px] lg:text-[14px] text-white flex items-center gap-[4px] font-[600]">
+                    {" "}
+                    <SiTrustpilot className="text-[13px] lg:text-[14px] text-tradeOrange" />{" "}
+                    {`${props.trustScore}%`}
+                  </p>
+                </div> */}
+              </div>
+              <div className="hidden sm:flex">
+                {props.availability == "online" ? (
+                  <>
+                    <div className="flex items-center gap-[4px] py-[px] px-[8px] border border-tradeAshExtraLight rounded-full">
+                      <p className="text-[13px] lg:text-[13px] text-tradeGreen">
+                        <GoDotFill />
+                      </p>
+                      <p className="text-[13px] text-white lg:text-[12px] flex font-[600] ">
+                        Online
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex items-center gap-[4px] py-[px] px-[8px] border border-tradeAshExtraLight rounded-full">
+                      <p className="text-[13px] lg:text-[13px] text-tradeAshExtraLight">
+                        <GoDotFill />
+                      </p>
+                      <p className="text-[13px] text-white lg:text-[12px] flex font-[600] ">
+                        Offline
+                      </p>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className=" flex flex-col gap-[3px]">
+              <p className="text-[13px] lg:text-[13px] text-tradeFadeWhite font-[400]">
+                Min Purchase :{" "}
+                <small className="text-[13px] lg:text-[13px] font-[600] text-white">
+                  {`20`} {props.currency}
+                </small>
+              </p>
+              <p className="text-[13px] lg:text-[13px] text-tradeFadeWhite font-[400]">
+                Max Purchase :{" "}
+                <small className="text-[13px] lg:text-[13px] font-[600] text-white">
+                  {`${parseInt(props.purchaseLimit).toLocaleString()}`}{" "}
+                  {props.currency}
+                </small>
+              </p>
+              {/* <p className="flex text-[13px] lg:text-[14px] text-white font-[400] gap-[2px]">
+                Avg. trade speed :{" "}
+                <small className="text-[13px] lg:text-[14px] font-[600] text-white">
+                  60 Min
+                </small>
+              </p> */}
+            </div>
+          </div>
+        </div>
+        <div className="flex-1 flex flex-col gap-[10px]">
+          <div>
+            {" "}
+            <p className="text-[13px] lg:text-[14px] font-[400]">
+              <small className="text-[14px] font-[600] text-white">
+                {props.service}
+              </small>
+            </p>
+          </div>
+          <div className="flex flex-col gap-[3px]">
+            <p className="hidden sm:flex gap-[2px] text-[13px] lg:text-[14px] font-[400]">
+              {" "}
+              <small className=" text-[13px] lg:text-[13px] font-[500] text-white">
+                Online Wallet Transfer
+              </small>
+            </p>
+            <p className="flex text-[13px] lg:text-[13px] text-tradeFadeWhite font-[400] gap-[2px]">
+              Avg. trade speed :{" "}
+              <small className="text-[13px] lg:text-[13px] font-[500] text-white">
+                60 Minutes
+              </small>
+            </p>
+          </div>
+        </div>
+        <div className="flex-1 flex flex-col gap-[10px]">
+          <div>
+            <p className="text-[13px] lg:text-[14px] font-[600] text-white">
+              1 {props.currency} = 0.93 USD of BTC
+            </p>
+          </div>
+          <div className="flex flex-col gap-[3px]">
+            {/* <p className="hidden sm:flex gap-[2px] text-[13px] lg:text-[14px] font-[400]">
+              {" "}
+              <small className=" text-[13px] lg:text-[14px] font-[600] text-white">
+                Online Wallet Transfer
+              </small>
+            </p>
+            <p className="flex text-[13px] lg:text-[14px] text-white font-[400] gap-[2px]">
+              Avg. trade speed :{" "}
+              <small className="text-[13px] lg:text-[14px] font-[600] text-white">
+                60 Minutes
+              </small>
+            </p> */}
+          </div>
+        </div>
+      </div>
+      {/* <div className="bg-white  p-[10px] rounded-[8px]">
         <div className="flex gap-[5px] sm:gap-[10px]">
           <div className="hidden sm:flex items-start">
             <img className="w-[40px] rounded-full" src={landingImg4} alt="" />
@@ -200,7 +337,7 @@ const OfferCard = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

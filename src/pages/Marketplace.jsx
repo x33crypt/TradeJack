@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import OfferFilter from "@/components/marketplace/OfferFilter";
 
 const Marketplace = () => {
-  const [serviceType, setServiceType] = useState("");
+  const [serviceType, setServiceType] = useState("Default");
   const [accountType, setAccountType] = useState("");
   const [walletType, setWaletType] = useState("");
   const [giftCardType, setGiftCardType] = useState("");
@@ -36,7 +36,7 @@ const Marketplace = () => {
         return accountType;
       case "Gift Cards Exchange":
         return giftCardType;
-      case "Debit/Credit Cards Spending":
+      case "Debit & Credit Cards Spending":
         return debitCreditCardType;
       default:
         return "";
@@ -74,8 +74,8 @@ const Marketplace = () => {
   return (
     <>
       <MarketTopNav />
-      <div className="lg:pt-[85px] sm:pt-[85px] pt-[80px] flex bg-black lg:gap-[15px] lg:p-[1.5%] sm:p-[2%] p-[3%]">
-        <div className="lg:flex hidden w-[300px]">
+      <div className="md:pt-[80px] pt-[65px] flex bg-black lg:gap-[0.8%] md:p-[1%]">
+        <div className="lg:flex hidden w-[310px]">
           <OfferFilter
             serviceType={serviceType}
             setServiceType={setServiceType}

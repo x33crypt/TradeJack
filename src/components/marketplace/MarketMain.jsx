@@ -5,6 +5,7 @@ import axios from "axios";
 import { LuFilter } from "react-icons/lu";
 import { IoFilter } from "react-icons/io5";
 import OfferFilter from "./OfferFilter";
+import { FiFilter } from "react-icons/fi";
 
 const MarketMain = ({
   setServiceType,
@@ -86,8 +87,8 @@ const MarketMain = ({
   }, [defaultOffers]);
 
   return (
-    <div className="flex flex-col gap-[15px] bg-tradeAs rounded-[8px] bg- ">
-      <div className="flex flex-col rounded-[8px] gap-[8px] md:gap-[5px] lg:px-[10px] px-[5px] bg-tra ">
+    <div className="flex flex-col bg-tradeAsh md:border border-neutral-800 md:rounded-[12px]">
+      {/* <div className="flex flex-col rounded-[8px] gap-[8px] md:gap-[5px] lg:px-[10px] px-[5px] bg-tra ">
         <p className="text-white lg:text-[30px] md:text-[30px] sm:text-[30px] text-[28px] font-extrabold">
           Seamless Asset Trading
         </p>
@@ -95,9 +96,57 @@ const MarketMain = ({
           Sell a variety of digital assets to buyers worldwide with ease,
           ensuring secure and hassle-free transactions.
         </p>
+      </div> */}
+      <div className="flex flex-col justify-between md:p-[20px] p-[15px] border-b border-neutral-800 ">
+        <p className="text-[18px] text-white font-[600] cursor-pointer">
+          Seamless Asset Trading
+        </p>
+      </div>
+      <div className="flex flex-col gap-[20px] p-[20px]">
+        <div className="flex justify-between">
+          <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
+            <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
+              All
+            </p>
+            <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
+              Active
+            </p>
+            <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
+              Verified
+            </p>
+          </div>
+          <div className="flex justify-between items-center gap-[5px] px-[12px] py-[4px] border border-neutral-800  rounded-[6.5px] cursor-pointer">
+            <FiFilter className="text-[17px] text-neutral-500" />
+            <p className="flex  text-[14px] font-[500] text-white">Filters</p>
+          </div>
+        </div>
+        <div className="flex bg-tradeAshLight px-[12px] py-[4px] rounded-[6.5px]">
+          <p className="flex-1 text-neutral-400 text-[14px] ">Vendor</p>
+          <p className="flex-1 text-neutral-400 text-[14px]">Details</p>
+          <p className="flex-1 text-neutral-400 text-[14px]">
+            Rate & Offer Performance
+          </p>
+        </div>
+        <div className="grid grid-cols-1 items-center">
+          {promotedOffers?.map((offer, index) => (
+            <div key={index}>
+              <OfferCard
+                id={offer.id}
+                verified={offer.verified}
+                username={offer.username}
+                availability={offer.availability}
+                service={offer.service}
+                purchaseLimit={offer.purchaseLimit}
+                trustScore={offer.trustScore}
+                reviews={offer.reviews}
+                currency={offer.currency}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="lg:hidden flex flex-col gap-[30px] p-[px] bg-tradeAsh rounded-[8px]">
+      {/* <div className="lg:hidden flex flex-col gap-[30px] p-[px] bg-tradeAsh rounded-[8px]">
         <div
           onClick={() => setIsOfferFilter((prev) => !prev)}
           className="flex px-[10px] py-[6px] bg-tradeAshLight rounded-[5px] justify-between items-center cursor-pointer"
@@ -141,9 +190,9 @@ const MarketMain = ({
             handleFindOffer={handleFindOffer}
           />
         </div>
-      </div>
+      </div> */}
 
-      <div className="flex flex-col lg:gap-[20px] gap-[10px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[5px]">
+      {/* <div className="flex flex-col lg:gap-[20px] gap-[10px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[5px]">
         <div className="bg-tradeOrange lg:px-[10px] px-[10px] py-[8px] rounded-[5px]">
           <p className="font-[600] text-[15px]">Promoted Offers</p>
         </div>
@@ -204,7 +253,7 @@ const MarketMain = ({
             Create an Offer
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

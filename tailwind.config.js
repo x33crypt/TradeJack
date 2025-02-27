@@ -2,8 +2,8 @@
 export default {
   darkMode: ["class"],
   content: [
+    "./index.html",
     "./src/**/*.{html,js,jsx,ts,tsx}", // Include your source files
-    "./public/index.html", // Include public files if needed
   ],
   theme: {
     extend: {
@@ -35,5 +35,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [], // No need to add PostCSS here
 };

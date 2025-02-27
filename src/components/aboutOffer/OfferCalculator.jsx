@@ -83,7 +83,7 @@ const OfferCalculator = ({ offerRate, currency }) => {
           >
             <RiInformation2Line
               className={`${
-                message?.startsWith("A") ? "text-red-600" : "text-tradeOrange"
+                message?.startsWith("A") ? "text-red-600" : "text-tradeOrange "
               } text-[18px]`}
             />
             <p

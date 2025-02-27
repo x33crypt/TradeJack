@@ -14,6 +14,10 @@ import { MdOutlineQueryStats } from "react-icons/md";
 import { TbLayoutList } from "react-icons/tb";
 import { BsLightningCharge } from "react-icons/bs";
 import { TbHelpCircle } from "react-icons/tb";
+import { RiExchangeLine } from "react-icons/ri";
+import { TbBuildingBank } from "react-icons/tb";
+import { FaVenusDouble } from "react-icons/fa";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
 
 const MarketTopNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -39,9 +43,9 @@ const MarketTopNav = () => {
   }, []);
 
   const placeholders = [
-    "Search transaction...",
-    "Search people...",
-    "Search payment...",
+    "Search transaction",
+    "Search people",
+    "Search payment",
   ];
   const [searchplaceholder, setSearchplaceholder] = useState(placeholders[0]);
 
@@ -61,8 +65,8 @@ const MarketTopNav = () => {
 
   return (
     <>
-      <div className="z-50 fixed right-0 left-0 bg-black lg:px-[1.5%] sm:px-[2%] px-[3%] h-[70px] flex justify-between items-center border-b border-neutral-800 ">
-        <div className="flex items-center lg:gap-[20px] gap-[15px]">
+      <div className="z-50 fixed right-0 left-0 bg-black md:p-[1.5%] p-[15px] h-[65px] md:h-[70px] flex justify-between items-center border-b border-neutral-800 ">
+        <div className="flex items-center lg:gap-[30px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
             className="lg:hidden flex"
@@ -82,37 +86,43 @@ const MarketTopNav = () => {
               </small>
             </p>
           </div>
-          <div className="ml-[35px] lg:flex hidden gap-[20px] items-center">
-            <p
-              className="text-white hover:text-tradeGreen text-[14px] font-[400]  cursor-pointer border border-white   px-[20px] py-[4px] rounded-[4px] transition-all duration-300"
+          <div className=" lg:flex hidden gap-[10px] items-center">
+            <div
               onClick={() => navigateTo("/marketplace")}
+              className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
             >
-              Sell asset
-            </p>
-            <p
-              className="text-white hover:text-tradeGreen text-[14px] font-[400]  cursor-pointer border border-white   px-[20px] py-[4px] rounded-[4px] transition-all duration-300"
+              <RiExchangeLine className="text-[17px]" />
+              <p className="text-[14px]">Sell Assets</p>
+            </div>
+            <div
               onClick={() => navigateTo("/create-offer")}
+              className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
             >
-              Buy asset
-            </p>
-
-            <p className="text-white hover:text-tradeGreen text-[14px] font-[400]  cursor-pointer transition-all duration-300">
-              Favourite offers
-            </p>
-            <p
-              className="text-white hover:text-tradeGreen text-[14px] font-[400]  cursor-pointer transition-all duration-300"
+              <TbBuildingBank className="text-[17px]" />
+              <p className="text-[14px]">Buy Assets</p>
+            </div>
+            <div
+              onClick={() => navigateTo("/create-offer")}
+              className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
+            >
+              <FaVenusDouble className="text-[17px]" />
+              <p className="text-[14px]">Favourite Vendors</p>
+            </div>
+            <div
               onClick={() => navigateTo("/dashboard")}
+              className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
             >
-              Dasboard
-            </p>
+              <MdOutlineSpaceDashboard className="text-[17px]" />
+              <p className="text-[14px]">Dashboard</p>
+            </div>
           </div>
         </div>
 
-        <div className="flex items-center lg:gap-[20px] gap-[15px]">
-          <div className="sm:flex hidden items-center bg-tradeAsh px-[10px] py-[2px] gap-[10px] rounded-[4px]">
-            <FaMagnifyingGlass className="text-neutral-500 lg:text-[16px] text-[15px]" />
+        <div className="flex items-center lg:gap-[15px] gap-[15px]">
+          <div className="sm:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[2px] gap-[10px] rounded-[10px]">
+            <FaMagnifyingGlass className="text-neutral-500 lg:text-[15px] text-[15px]" />
             <input
-              className=" bg-transparent outline-none h-[28px] w-[200px] lg:placeholder:text-[14px] placeholder:text-[13px] placeholder:text-neutral-500 lg:text-[14px] text-[13px] text-white"
+              className=" bg-transparent outline-none h-[28px] w-[220px] lg:placeholder:text-[13px] placeholder:text-[13px] placeholder:text-neutral-500 lg:text-[13px] text-[13px] text-white"
               type="text"
               placeholder={searchplaceholder}
             />
@@ -124,11 +134,11 @@ const MarketTopNav = () => {
             <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[23px] transition-all duration-300" />
           </div>
           <div
-            className="cursor-pointer sm:p-[5px] p-[4px] bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-full transition-all duration-300"
+            className="cursor-pointer sm:p-[3px] p-[4px] border border-tradeAshLight hover:border-tradeAshExtraLight rounded-full transition-all duration-300"
             onClick={() => setIsProfileOption((prev) => !prev)}
           >
             <img
-              className="lg:w-[32px] sm:w-[30px] w-[32px] rounded-full"
+              className="lg:w-[34px] sm:w-[30px] w-[32px] rounded-full"
               src={landingImg4}
               alt=""
             />

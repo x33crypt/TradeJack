@@ -38,9 +38,9 @@ const DashTopNav = () => {
   }, []);
 
   const placeholders = [
-    "Search transaction...",
-    "Search people...",
-    "Search payment...",
+    "Search transaction",
+    "Search people",
+    "Search payment",
   ];
 
   const [searchplaceholder, setSearchplaceholder] = useState(placeholders[0]);
@@ -87,7 +87,7 @@ const DashTopNav = () => {
               </small>
             </p>
           </div>
-          <div className="ml-[95px] lg:flex hidden">
+          <div className="ml-[110px] lg:flex hidden">
             <p className="text-[22px] text-white">
               Welcome Back,{" "}
               <small className="text-[22px] font-[700]">X33crypt</small>
@@ -95,10 +95,10 @@ const DashTopNav = () => {
           </div>
         </div>
         <div className="flex items-center gap-[15px]">
-          <div className="sm:flex hidden items-center bg-tradeAsh px-[10px] py-[2px] gap-[10px] rounded-[4px]">
+          <div className="sm:flex hidden items-center bg-tradeAsh px-[10px] py-[2px] gap-[10px] rounded-[10px]">
             <FaMagnifyingGlass className="text-neutral-500 lg:text-[16px] text-[15px]" />
             <input
-              className=" bg-transparent outline-none h-[28px] w-[200px] lg:placeholder:text-[14px] placeholder:text-[13px] placeholder:text-neutral-500 lg:text-[14px] text-[13px] text-white"
+              className=" bg-transparent outline-none h-[28px] w-[220px] lg:placeholder:text-[14px] placeholder:text-[13px] placeholder:text-neutral-500 lg:text-[14px] text-[13px] text-white"
               type="text"
               placeholder={searchplaceholder}
             />
@@ -110,11 +110,11 @@ const DashTopNav = () => {
             <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[23px] transition-all duration-300" />
           </div>
           <div
-            className="cursor-pointer sm:p-[5px] p-[4px] bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-full transition-all duration-300"
+            className="cursor-pointer sm:p-[3px] p-[4px] bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-full transition-all duration-300"
             onClick={() => setIsProfileOption((prev) => !prev)}
           >
             <img
-              className="lg:w-[32px] sm:w-[30px] w-[32px] rounded-full"
+              className="lg:w-[34px] sm:w-[30px] w-[32px] rounded-full"
               src={landingImg4}
               alt=""
             />

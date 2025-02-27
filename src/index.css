@@ -68,3 +68,21 @@
     --chart-5: 340 75% 55%;
   }
 }
+
+/* Custom Scrollbar for .custom-scrollbar class */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  scrollbar-color: auto;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #464646; /* Default color */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: auto; /* Default color */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #282828; /* Default color */
+}
