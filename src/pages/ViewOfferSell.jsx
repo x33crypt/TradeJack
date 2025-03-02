@@ -114,7 +114,7 @@ const ViewOfferSell = () => {
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Service
                   </p>
-                  <p className="text-tradeOrange text-[16px] font-[800]">
+                  <p className="text-tradeOrange text-[16px] font-[600]">
                     {offerDetails.service}
                   </p>
                 </div>
@@ -128,15 +128,15 @@ const ViewOfferSell = () => {
                 </div>
                 <div className="flex flex-col gap-[5px]">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Vendor's Purchase Limit
+                    Purchase Limit
                   </p>
-                  <div className="flex gap-[16px]">
-                    <p className="flex items-center gap-[10px] text-[16px] font-[600] text-tradeFadeWhite">
+                  <div className="flex gap-[10px]">
+                    <p className="flex items-center gap-[5px] text-[16px] font-[600] text-tradeFadeWhite">
                       Min
                       <small className="text-[16px] font-[600] text-white">{`20 ${offerDetails?.currency}`}</small>
                     </p>
                     <p className="text-white text-[20px] font-[800]">-</p>
-                    <p className="flex items-center gap-[10px] text-[16px] font-[600] text-tradeFadeWhite">
+                    <p className="flex items-center gap-[5px] text-[16px] font-[600] text-tradeFadeWhite">
                       Max
                       <small className="text-[16px] font-[600] text-white">{`500 ${offerDetails?.currency}`}</small>
                     </p>
@@ -158,9 +158,10 @@ const ViewOfferSell = () => {
                     Vendor's Rate
                   </p>
                   <div className="flex gap-[50px]">
-                    <p className="flex items-baseline gap-[10px] text-[16px] font-[800] text-white">
-                      1 USD = 0.93 USD of BTC
-                      <small className="text-[15px]  text-tradeGreen font-[600]">
+                    <p className="flex items-baseline gap-[5px] text-[16px] font-[600] text-white">
+                      {`93,087 ${offerDetails?.currency}`}
+                      <small>&#8226;</small>
+                      <small className="text-[14px] text-tradeGreen font-[600]">
                         10% above market
                       </small>
                     </p>
@@ -298,8 +299,8 @@ const ViewOfferSell = () => {
                     <div className="flex justify-between">
                       <p className="text-tradeFadeWhite text-[13px]">Receive</p>
 
-                      <p className="text-tradeGreen text-[13px]">
-                        Net Fee Applied
+                      <p className="text-tradeGreen text-[13px] font-[600]">
+                        Fee Applied
                       </p>
                     </div>
                     <div className="flex justify-between items-center">
@@ -321,7 +322,9 @@ const ViewOfferSell = () => {
                       Rate
                     </p>
                     <p className="text-[14px] font-[600] text-white">
-                      1 USD = 0.93 USD of BTC
+                      {`
+                      1 ${offerDetails?.currency} = 0.93 USD of BTC
+                     `}{" "}
                     </p>
                   </div>
                   <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
@@ -347,7 +350,7 @@ const ViewOfferSell = () => {
         </div>
 
         <div className="flex items-center justify-center py-[20px] px-[15px]">
-          <p className="text-[15px] text-center text-black  font-[600]  bg-tradeGreen p-[10px] rounded-[10px] md:w-[25%] w-[100%] cursor-pointer">
+          <p className="text-[15px] text-center text-black  font-[700]  bg-tradeGreen p-[10px] rounded-[10px] md:w-[25%] w-[100%] cursor-pointer">
             Initiate Trade Now
           </p>
         </div>
