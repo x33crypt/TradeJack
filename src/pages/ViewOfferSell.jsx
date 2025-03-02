@@ -15,6 +15,7 @@ import { GoDotFill } from "react-icons/go";
 import { TiTick } from "react-icons/ti";
 import { MdThumbUpAlt } from "react-icons/md";
 import { MdThumbDownAlt } from "react-icons/md";
+import { FaRegStar } from "react-icons/fa";
 
 const ViewOfferSell = () => {
   const [offerDetails, setOfferDetails] = useState("");
@@ -187,7 +188,7 @@ const ViewOfferSell = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-wrap justify-between p-[20px] lg:gap-[16px] gap-[30px] items-center">
+              <div className="flex flex-wrap md:justify-between p-[20px] lg:gap-[16px] gap-[40px] items-center">
                 <div className=" flex items-center gap-[16px]">
                   <div>
                     <img
@@ -214,7 +215,7 @@ const ViewOfferSell = () => {
                   <p className="text-white text-[16px] font-[600]">Nigeria</p>
                 </div>
 
-                <div className=" flex md:max-w-max w-[100%] items-center gap-[40px]">
+                <div className=" flex md:max-w-max  items-center gap-[40px]">
                   <div className="flex flex-col gap-[5px] ">
                     <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                       Positive Feedback
@@ -239,22 +240,22 @@ const ViewOfferSell = () => {
                     Trust Score
                   </p>
                   <div className="flex items-center gap-[10px]">
-                    <MdThumbDownAlt className="text-[16px] text-red-500" />
-                    <p className="text-white text-[16px] font-[600]">205</p>
+                    <FaRegStar className="text-[16px] text-tradeOrange" />
+                    <p className="text-white text-[16px] font-[600]">85%</p>
                   </div>
                 </div>
-                <div className="flex flex-col gap-[5px] ">
+                {/* <div className="flex flex-col gap-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Avg Trade Speed
                   </p>
                   <p className="text-white text-[16px] font-[600]">
                     20 Minutes
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
-          <div className="p-[1.5%] md:p-0">
+          <div className="px-[20px] md:p-0">
             <div className=" lg:w-[400px] flex flex-col bg-tradeAshLight md:border border-tradeAsh rounded-[12.5px]">
               <div className="flex flex-col justify-between p-[20px] border-b border-tradeAsh">
                 <p className="text-[18px] text-white font-[700] cursor-pointer">
