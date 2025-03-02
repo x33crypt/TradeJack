@@ -86,7 +86,7 @@ const ViewOfferSell = () => {
   return (
     <>
       <MarketTopNav />
-      <div className=" md:pt-[80px] pt-[65px] flex flex-col bg-black gap-[16px] md:p-[1.5%]">
+      <div className=" md:pt-[80px] pt-[67px] flex flex-col bg-black gap-[16px] md:p-[1.5%]">
         {/* <div className="flex flex-col justify-between  py-[20px] md:border-b border-neutral-800 ">
           <p className="text-[18px] text-white font-[800] cursor-pointer">
             {id} / {offerDetails.service}
