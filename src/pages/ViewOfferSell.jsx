@@ -11,6 +11,10 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { RxCross2 } from "react-icons/rx";
 import OfferCalculator from "@/components/aboutOffer/OfferCalculator";
+import { GoDotFill } from "react-icons/go";
+import { TiTick } from "react-icons/ti";
+import { MdThumbUpAlt } from "react-icons/md";
+import { MdThumbDownAlt } from "react-icons/md";
 
 const ViewOfferSell = () => {
   const [offerDetails, setOfferDetails] = useState("");
@@ -75,14 +79,269 @@ const ViewOfferSell = () => {
     getVendor();
   }, [offerDetails]);
 
-  // console.log(offerDetails);
+  console.log(offerDetails);
   console.log(vendorDetails);
 
   return (
     <>
       <MarketTopNav />
-      <div className="px-[10%] py-[90px] gap-[60px] bg-white flex flex-col">
-        <div className="mt-[50px] flex text-black text-[40px] font-[700] justify-center">
+      <div className=" md:pt-[80px] pt-[65px] flex flex-col bg-black gap-[16px] md:p-[1.5%]">
+        {/* <div className="flex flex-col justify-between  py-[20px] md:border-b border-neutral-800 ">
+          <p className="text-[18px] text-white font-[800] cursor-pointer">
+            {id} / {offerDetails.service}
+          </p>
+        </div> */}
+
+        <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-[0.8%]">
+          <div className="flex-1 flex  flex-col bg-tradeAsh border border-neutral-800 md:rounded-[12.5px]">
+            <div className="flex items-center justify-between  p-[20px] border-b border-neutral-800 ">
+              <p className="text-[18px] text-white font-[700] cursor-pointer">
+                Offer Details
+              </p>
+              <div className="flex items-center gap-[4px] py-[2px] px-[8px] bg-tradeGreen  ">
+                <p className="text-[13px] lg:text-[13px] text-black">
+                  <TiTick />
+                </p>
+                <p className="text-[13px] text-black lg:text-[12.5px] flex font-[600] ">
+                  Active
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-[30px] p-[20px]">
+              <div className="flex flex-wrap items-center lg:gap-[50px] gap-[30px]">
+                <div className="flex flex-col gap-[5px] ">
+                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    Service
+                  </p>
+                  <p className="text-tradeOrange text-[16px] font-[800]">
+                    {offerDetails.service}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-[5px]">
+                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    Service Type
+                  </p>
+                  <p className="text-[16px] font-[600] text-white">
+                    {offerDetails.serviceType}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-[5px]">
+                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    Vendor's Purchase Limit
+                  </p>
+                  <div className="flex gap-[16px]">
+                    <p className="flex items-center gap-[10px] text-[16px] font-[600] text-tradeFadeWhite">
+                      Min
+                      <small className="text-[16px] font-[600] text-white">{`20 ${offerDetails?.currency}`}</small>
+                    </p>
+                    <p className="text-white text-[20px] font-[800]">-</p>
+                    <p className="flex items-center gap-[10px] text-[16px] font-[600] text-tradeFadeWhite">
+                      Max
+                      <small className="text-[16px] font-[600] text-white">{`500 ${offerDetails?.currency}`}</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center lg:gap-[50px] gap-[30px]">
+                <div className="flex flex-col gap-[5px] ">
+                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    Trade Time Limit
+                  </p>
+                  <p className="text-white text-[16px] font-[600]">
+                    60 Minutes
+                  </p>
+                </div>
+                <div className="flex flex-col gap-[5px]">
+                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    Vendor's Rate
+                  </p>
+                  <div className="flex gap-[50px]">
+                    <p className="flex items-baseline gap-[10px] text-[16px] font-[800] text-white">
+                      1 USD = 0.93 USD of BTC
+                      <small className="text-[14px]  text-tradeGreen font-[600]">
+                        10% above market
+                      </small>
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-[5px]">
+                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    Network Fee
+                  </p>
+                  <p className="text-[16px] font-[600] text-white">10%</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex  flex-col justify-between gap-[16px] border-t border-neutral-800">
+              <div className="flex items-center justify-between  p-[20px] border-b border-neutral-800 ">
+                <p className="text-[18px] text-white font-[600] cursor-pointer">
+                  About Vendor
+                </p>
+                <div className="flex items-center gap-[4px] py-[2px] px-[8px] border border-tradeAshExtraLight rounded-full">
+                  <p className="text-[13px] lg:text-[13px] text-tradeGreen">
+                    <GoDotFill />
+                  </p>
+                  <p className="text-[13px] text-white lg:text-[12.5px] flex font-[600] ">
+                    Online
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-wrap justify-between p-[20px] lg:gap-[16px] gap-[30px] items-center">
+                <div className=" flex items-center gap-[16px]">
+                  <div>
+                    <img
+                      className="w-[40px] rounded-full"
+                      src={landingImg4}
+                      alt=""
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-[5px] ">
+                    <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                      Username
+                    </p>
+
+                    <p className="text-white text-[16px] font-[600] cursor-pointer">
+                      X33crypt
+                    </p>
+                  </div>
+                </div>
+
+                <div className=" flex md:max-w-max w-[100%] items-center gap-[40px]">
+                  <div className="flex flex-col gap-[5px] ">
+                    <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                      Positive Feedback
+                    </p>
+                    <div className="flex items-center gap-[10px]">
+                      <MdThumbUpAlt className="text-[16px] text-tradeGreen" />
+                      <p className="text-white text-[16px] font-[600]">205</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-[5px] ">
+                    <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                      Negative Feedback
+                    </p>
+                    <div className="flex items-center gap-[10px]">
+                      <MdThumbDownAlt className="text-[16px] text-red-500" />
+                      <p className="text-white text-[16px] font-[600]">205</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-[5px] ">
+                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    Average Trade Speed
+                  </p>
+                  <p className="text-white text-[16px] font-[600]">
+                    20 Minutes
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className=" lg:w-[400px] flex flex-col bg-tradeAshLight md:border border-tradeAsh md:rounded-[12.5px]">
+            <div className="flex flex-col justify-between p-[20px] border-b border-tradeAsh">
+              <p className="text-[18px] text-white font-[700] cursor-pointer">
+                Exchange
+              </p>
+            </div>
+            <div className="flex flex-col h-full justify-between">
+              <div className="flex flex-col gap-[10px] p-[20px]">
+                <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px] rounded-[15px]">
+                  <div className="flex justify-between items-center">
+                    <p className="text-tradeFadeWhite text-[13px]">Send</p>
+                    <div className="flex items-center gap-[10px]">
+                      <p className="text-tradeFadeWhite text-[13px] flex gap-[5px]">
+                        Min
+                        <small className="text-white text-[13px] font-[600]">
+                          20
+                        </small>
+                      </p>
+
+                      <p className="text-tradeFadeWhite text-[13px] flex gap-[5px]">
+                        Max
+                        <small className="text-white text-[13px] font-[600]">
+                          1000
+                        </small>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[600] bg-white">
+                      {offerDetails?.currency}
+                    </p>
+                    <input
+                      className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[22px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[18px] caret-tradeGreen"
+                      type="text"
+                      placeholder="Enter Amount"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px] rounded-[15px]">
+                  <div className="flex justify-between">
+                    <p className="text-tradeFadeWhite text-[13px]">Receive</p>
+
+                    <p className="text-tradeGreen text-[13px]">Fee Applied</p>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[600] bg-white">
+                      BTC
+                    </p>
+                    <input
+                      className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[22px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[18px] cursor-default"
+                      type="text"
+                      readOnly
+                      placeholder="00.00"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex py-[20px] flex-col">
+                <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
+                  <p className="text-[14px] font-[500] text-tradeGreen">Rate</p>
+                  <p className="text-[14px] font-[600] text-white">
+                    1 USD = 0.93 USD of BTC
+                  </p>
+                </div>
+                <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
+                  <p className="text-[14px] font-[500] text-tradeFadeWhite">
+                    Network Fee
+                  </p>
+                  <p className="text-[14px] font-[600] text-white">
+                    0.00234324 BTC
+                  </p>
+                </div>
+                <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
+                  <p className="text-[14px] font-[500] text-tradeFadeWhite">
+                    Your receive in (USD)
+                  </p>
+                  <p className="text-[14px] font-[600] text-white">
+                    499.05 USD
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center py-[20px]">
+          <p className="text-[15px] text-center text-black  font-[600]  bg-tradeGreen p-[10px] md:rounded-[10px] md:w-[20%] w-[100%] cursor-pointer">
+            Initiate Trade Now
+          </p>
+        </div>
+
+        <div className="flex-1 flex flex-col bg-tradeAsh border border-neutral-800 md:rounded-[12.5px]">
+          <div className="flex items-center justify-between  p-[20px] border-b border-neutral-800 ">
+            <p className="text-[18px] text-white font-[700] cursor-pointer">
+              Feedback on this Offer
+            </p>
+          </div>
+          <div className="flex items-center justify-between  p-[20px]  border-neutral-800 "></div>
+        </div>
+      </div>
+      {/* <div className="px-[10%] py-[90px] gap-[60px] bg-white flex flex-col">
+        <div className="mt-[50px] flex text-black text-[40px] font-[600] justify-center">
           <p className="text-[45px]">
             Sell your asset using{" "}
             <small className="text-[45px] text-tradeOrange">
@@ -300,7 +559,7 @@ const ViewOfferSell = () => {
           <div className="p-[20px] flex flex-col rounded-[8px] border border-neutral-300">
             {offerDetails.offerTerms?.map((terms, index) => (
               <div key={index}>
-                <p className="text-[15px]">{terms}</p>
+                <p className="text-[16px]">{terms}</p>
               </div>
             ))}
           </div>
@@ -315,7 +574,8 @@ const ViewOfferSell = () => {
             Start Transaction
           </p>
         </div>
-      </div>
+      </div> */}
+
       <Footer />
     </>
   );

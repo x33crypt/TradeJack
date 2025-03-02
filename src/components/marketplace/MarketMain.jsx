@@ -88,15 +88,6 @@ const MarketMain = ({
 
   return (
     <div className="flex flex-col bg-tradeAsh md:border border-neutral-800 md:rounded-[12px]">
-      {/* <div className="flex flex-col rounded-[8px] gap-[8px] md:gap-[5px] lg:px-[10px] px-[5px] bg-tra ">
-        <p className="text-white lg:text-[30px] md:text-[30px] sm:text-[30px] text-[28px] font-extrabold">
-          Seamless Asset Trading
-        </p>
-        <p className="text-tradeFadeWhite lg:text-[16px] sm:text-[16px] text-[15px]">
-          Sell a variety of digital assets to buyers worldwide with ease,
-          ensuring secure and hassle-free transactions.
-        </p>
-      </div> */}
       <div className="flex flex-col justify-between md:p-[20px] p-[20px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[600] cursor-pointer">
           Seamless Asset Trading
@@ -120,140 +111,72 @@ const MarketMain = ({
             <p className="flex  text-[14px] font-[500] text-white">Filters</p>
           </div>
         </div>
-        <div className=" md:flex hidden bg-tradeAshLight px-[12px] py-[4px] rounded-[6.5px]">
-          <p className="flex-1 text-neutral-400 text-[14px] ">Vendor</p>
-          <p className="flex-1 text-neutral-400 text-[14px]">Details</p>
-          <p className="flex-1 text-neutral-400 text-[14px]">
-            Rate & Offer Performance
-          </p>
-        </div>
-        <div className="grid grid-cols-1 items-center">
-          {promotedOffers?.map((offer, index) => (
-            <div key={index}>
-              <OfferCard
-                id={offer.id}
-                verified={offer.verified}
-                username={offer.username}
-                availability={offer.availability}
-                service={offer.service}
-                purchaseLimit={offer.purchaseLimit}
-                trustScore={offer.trustScore}
-                reviews={offer.reviews}
-                currency={offer.currency}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
 
-      {/* <div className="lg:hidden flex flex-col gap-[30px] p-[px] bg-tradeAsh rounded-[8px]">
-        <div
-          onClick={() => setIsOfferFilter((prev) => !prev)}
-          className="flex px-[10px] py-[6px] bg-tradeAshLight rounded-[5px] justify-between items-center cursor-pointer"
-        >
-          <p className="text-white text-[15px] font-[500]">Filter Offers</p>
-
-          <div>
-            {isOfferFilter ? (
-              <div className="px-[9.5px] py-[3px] border-[1.5px] border-tradeFadeWhite rounded-[3px]">
-                <i className="fa-solid fa-xmark text-[15px] text-tradeFadeWhite"></i>
+        <div className="flex flex-col gap-[20px]">
+          <div className=" flex bg-tradeOrange px-[12px] py-[4px] rounded-[6.5px]">
+            <p className="flex-1 text-black text-[14px] font-[600] ">
+              Promoted Offers
+            </p>
+          </div>
+          <div className=" md:flex hidden bg-tradeAshLight px-[12px] py-[4px] rounded-[6.5px]">
+            <p className="flex-1 text-neutral-400 text-[14px] ">Vendor</p>
+            <p className="flex-1 text-neutral-400 text-[14px]">Details</p>
+            <p className="flex-1 text-neutral-400 text-[14px]">
+              Rate & Offer Performance
+            </p>
+          </div>
+          <div className="grid grid-cols-1 items-center">
+            {promotedOffers?.map((offer, index) => (
+              <div key={index}>
+                <OfferCard
+                  id={offer.id}
+                  verified={offer.verified}
+                  username={offer.username}
+                  availability={offer.availability}
+                  service={offer.service}
+                  serviceType={offer.serviceType}
+                  purchaseLimit={offer.purchaseLimit}
+                  trustScore={offer.trustScore}
+                  reviews={offer.reviews}
+                  currency={offer.currency}
+                />
               </div>
-            ) : (
-              <div className="p-[6px] border-[1.5px] border-tradeFadeWhite rounded-[3px]">
-                <IoFilter className="text-tradeFadeWhite text-[18px]" />
-              </div>
-            )}
+            ))}
           </div>
         </div>
-        <div
-          className={`${
-            isOfferFilter ? "flex" : "hidden"
-          } transition-all duration-300 w-full p-[8px] `}
-        >
-          <OfferFilter
-            serviceType={serviceType}
-            setServiceType={setServiceType}
-            accountType={accountType}
-            setAccountType={setAccountType}
-            walletType={walletType}
-            setWaletType={setWaletType}
-            giftCardType={giftCardType}
-            setGiftCardType={setGiftCardType}
-            debitCreditCardType={debitCreditCardType}
-            setDebitCreditCardType={setDebitCreditCardType}
-            amount={amount}
-            setAmount={setAmount}
-            selectedCurrency={selectedCurrency}
-            setSelectedCurrency={setSelectedCurrency}
-            setVerifiedOffer={setVerifiedOffer}
-            setActiveTraders={setActiveTraders}
-            handleFindOffer={handleFindOffer}
-          />
-        </div>
-      </div> */}
-
-      {/* <div className="flex flex-col lg:gap-[20px] gap-[10px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[5px]">
-        <div className="bg-tradeOrange lg:px-[10px] px-[10px] py-[8px] rounded-[5px]">
-          <p className="font-[600] text-[15px]">Promoted Offers</p>
-        </div>
-        <div className="grid grid-cols-1 lg:gap-[10px] gap-[4px] items-center">
-          {promotedOffers?.map((offer, index) => (
-            <div key={index}>
-              <OfferCard
-                id={offer.id}
-                verified={offer.verified}
-                username={offer.username}
-                availability={offer.availability}
-                service={offer.service}
-                purchaseLimit={offer.purchaseLimit}
-                trustScore={offer.trustScore}
-                reviews={offer.reviews}
-                currency={offer.currency}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="flex md:flex-row  gap-[10px] flex-col justify-between">
-          <p className="md:w-[130px] w-full py-[7px] sm:py-[7px] flex justify-center bg-tradeAshLight hover:bg-white borde border-transparent text-white hover:text-black font-[600] text-[15px] sm:text-[14px] rounded-[5px] cursor-pointer transition-all duration-300">
-            Load More Offers
-          </p>
-
-          <p className="md:w-[130px] w-full py-[7px] sm:py-[7px] flex justify-center bg-tradePurple hover:bg-white border border-tradePurple hover:border-tradePurple  text-white hover:text-tradePurple font-[600] text-[15px]  sm:text-[14px] rounded-[5px] cursor-pointer transition-all duration-300">
-            Create an Offer
-          </p>
+        <div className="flex flex-col gap-[20px]">
+          <div className="flex  bg-white px-[12px] py-[4px] rounded-[6.5px]">
+            <p className="flex-1 text-black text-[14px] font-[600] ">
+              Other Offers
+            </p>
+          </div>
+          <div className=" md:flex hidden bg-tradeAshLight px-[12px] py-[4px] rounded-[6.5px]">
+            <p className="flex-1 text-neutral-400 text-[14px] ">Vendor</p>
+            <p className="flex-1 text-neutral-400 text-[14px]">Details</p>
+            <p className="flex-1 text-neutral-400 text-[14px]">
+              Rate & Offer Performance
+            </p>
+          </div>
+          <div className="grid grid-cols-1 items-center">
+            {unPromotedOffers?.map((offer, index) => (
+              <div key={index}>
+                <OfferCard
+                  id={offer.id}
+                  verified={offer.verified}
+                  username={offer.username}
+                  availability={offer.availability}
+                  service={offer.service}
+                  serviceType={offer.serviceType}
+                  purchaseLimit={offer.purchaseLimit}
+                  trustScore={offer.trustScore}
+                  reviews={offer.reviews}
+                  currency={offer.currency}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <div className="flex flex-col lg:gap-[20px] gap-[10px] bg-tradeAsh borde border-neutral-800 rounded-[8px] lg:p-[10px] p-[5px]">
-        <div className="bg-[rgb(231,206,109)] lg:px-[10px] px-[10px] py-[8px] rounded-[5px]">
-          <p className="font-[600] text-[15px]">Other Offers</p>
-        </div>
-        <div className="grid grid-cols-1 lg:gap-[10px] gap-[4px] items-center">
-          {unPromotedOffers?.map((offer, index) => (
-            <div key={index}>
-              <OfferCard
-                id={offer.id}
-                verified={offer.verified}
-                username={offer.username}
-                availability={offer.availability}
-                service={offer.service}
-                purchaseLimit={offer.purchaseLimit}
-                trustScore={offer.trustScore}
-                reviews={offer.reviews}
-                currency={offer.currency}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="flex md:flex-row  gap-[10px] flex-col justify-between">
-          <p className="md:w-[130px] w-full py-[7px] sm:py-[7px] flex justify-center bg-tradeAshLight hover:bg-white borde border-transparent text-white hover:text-black font-[600] text-[15px] sm:text-[14px] rounded-[5px] cursor-pointer transition-all duration-300">
-            Load More Offers
-          </p>
-
-          <p className="md:w-[130px] w-full py-[7px] sm:py-[7px] flex justify-center bg-tradePurple hover:bg-white border border-tradePurple hover:border-tradePurple  text-white hover:text-tradePurple font-[600] text-[15px]  sm:text-[14px] rounded-[5px] cursor-pointer transition-all duration-300">
-            Create an Offer
-          </p>
-        </div>
-      </div> */}
     </div>
   );
 };

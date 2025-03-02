@@ -74,14 +74,14 @@ const MarketTopNav = () => {
             {isNavOption ? (
               <i class="fa-regular fa-circle-xmark text-white text-[22px] mr-[4px]"></i>
             ) : (
-              <HiOutlineMenuAlt2 className="text-white text-[26px]" />
+              <HiOutlineMenuAlt2 className="text-white text-[24px]" />
             )}
           </div>
           <div className="flex items-center justify-start gap-[5px] ">
-            <GiCardExchange className="lg:text-[22px] text-[23px] text-tradeGreen" />
-            <p className=" lg:text-[22px] text-[23px] font-[700] text-tradeGreen">
+            <GiCardExchange className="lg:text-[20px] text-[20px] text-tradeGreen" />
+            <p className=" lg:text-[20px] text-[20px] font-[700] text-tradeGreen">
               Trade
-              <small className="lg:text-[22px] text-[23px] font-[700] text-white">
+              <small className="lg:text-[20px] text-[20px] font-[700] text-white">
                 Jack
               </small>
             </p>
@@ -127,11 +127,11 @@ const MarketTopNav = () => {
               placeholder={searchplaceholder}
             />
           </div>
-          <div className="cursor-pointer sm:hidden">
+          {/* <div className="cursor-pointer sm:hidden">
             <FiSearch className="text-white hover:text-tradeGreen text-[24px] transition-all duration-300" />
-          </div>
+          </div> */}
           <div className="cursor-pointer">
-            <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[23px] transition-all duration-300" />
+            <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[22px] transition-all duration-300" />
           </div>
           <div
             className="cursor-pointer sm:p-[3px] p-[4px] border border-tradeAshLight hover:border-tradeAshExtraLight rounded-full transition-all duration-300"
