@@ -103,18 +103,18 @@ const DashTopNav = () => {
               placeholder={searchplaceholder}
             />
           </div>
-          {/* <div className="cursor-pointer sm:hidden">
+          <div className="cursor-pointer sm:hidden">
             <FiSearch className="text-white hover:text-tradeGreen text-[24px] transition-all duration-300" />
-          </div> */}
+          </div>
           <div className="cursor-pointer">
             <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[22px] transition-all duration-300" />
           </div>
           <div
-            className="cursor-pointer sm:p-[3px] p-[4px] border border-tradeAshLight hover:border-tradeAshExtraLight rounded-full transition-all duration-300"
+            className="cursor-pointer"
             onClick={() => setIsProfileOption((prev) => !prev)}
           >
             <img
-              className="lg:w-[34px] sm:w-[30px] w-[28px] rounded-full"
+              className="lg:w-[34px] sm:w-[30px] w-[30px] rounded-full"
               src={landingImg4}
               alt=""
             />
