@@ -74,14 +74,14 @@ const ViewOfferSell = () => {
               <p className="text-[18px] text-white font-[700] cursor-pointer">
                 Offer Details
               </p>
-              <div className="flex items-center gap-[4px] py-[3px] px-[12px] bg-tradeGreen rounded-[4px]  ">
+              {/* <div className="flex items-center gap-[4px] py-[3px] px-[12px] bg-tradeGreen rounded-[4px]  ">
                 <p className="text-[13px] lg:text-[13px] text-black">
                   <TiTick />
                 </p>
                 <p className="text-[13px] text-black lg:text-[12px] flex font-[600] ">
                   Active
                 </p>
-              </div>
+              </div> */}
             </div>
             <div className="flex flex-col lg:gap-[30px] gap-[25px] p-[20px]">
               <div className="flex flex-wrap items-center lg:gap-[50px] gap-[25px]">
@@ -165,14 +165,14 @@ const ViewOfferSell = () => {
                 <p className="text-[18px] text-white font-[600] cursor-pointer">
                   About Vendor
                 </p>
-                <div className="flex items-center gap-[4px] py-[2px] px-[8px] border border-tradeAshExtraLight rounded-full">
+                {/* <div className="flex items-center gap-[4px] py-[2px] px-[8px] border border-tradeAshExtraLight rounded-full">
                   <p className="text-[13px] lg:text-[13px] text-tradeGreen">
                     <GoDotFill />
                   </p>
                   <p className="text-[13px] text-white lg:text-[12px] flex font-[600] ">
                     Online
                   </p>
-                </div>
+                </div> */}
               </div>
               <div className="flex flex-wrap md:justify-between p-[20px] lg:gap-[15.5px] lg:gap-y-[30px] gap-y-[25px] gap-x-[25px] items-center">
                 <div className=" flex items-center gap-[15.5px]">
