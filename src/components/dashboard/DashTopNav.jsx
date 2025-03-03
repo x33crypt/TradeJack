@@ -66,7 +66,7 @@ const DashTopNav = () => {
 
   return (
     <>
-      <div className="z-50 fixed right-0 left-0 bg-black lg:px-[1.5%] sm:px-[2%] px-[3%] h-[70px] flex justify-between items-center border-b border-neutral-800 ">
+      <div className="z-50 fixed right-0 left-0 bg-black md:p-[1.5%] p-[15px] h-[67px] md:h-[70px] flex justify-between items-center border-b border-neutral-800 ">
         <div className="flex items-center lg:gap-[20px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
@@ -79,10 +79,10 @@ const DashTopNav = () => {
             )}
           </div>
           <div className="flex items-center justify-start gap-[5px] ">
-            <GiCardExchange className="lg:text-[22px] text-[23px] text-tradeGreen" />
-            <p className=" lg:text-[22px] text-[23px] font-[700] text-tradeGreen">
+            <GiCardExchange className="lg:text-[20px] text-[20px] text-tradeGreen" />
+            <p className=" lg:text-[20px] text-[20px] font-[700] text-tradeGreen">
               Trade
-              <small className="lg:text-[22px] text-[23px] font-[700] text-white">
+              <small className="lg:text-[20px] text-[20px] font-[700] text-white">
                 Jack
               </small>
             </p>
@@ -95,26 +95,26 @@ const DashTopNav = () => {
           </div>
         </div>
         <div className="flex items-center gap-[15px]">
-          <div className="sm:flex hidden items-center bg-tradeAsh px-[10px] py-[2px] gap-[10px] rounded-[10px]">
-            <FaMagnifyingGlass className="text-neutral-500 lg:text-[16px] text-[15px]" />
+          <div className="sm:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[2px] gap-[10px] rounded-[10px]">
+            <FaMagnifyingGlass className="text-neutral-500 lg:text-[15px] text-[15px]" />
             <input
-              className=" bg-transparent outline-none h-[28px] w-[220px] lg:placeholder:text-[14px] placeholder:text-[13px] placeholder:text-neutral-500 lg:text-[14px] text-[13px] text-white"
+              className=" bg-transparent outline-none h-[28px] w-[220px] lg:placeholder:text-[13px] placeholder:text-[13px] placeholder:text-neutral-500 lg:text-[13px] text-[13px] text-white"
               type="text"
               placeholder={searchplaceholder}
             />
           </div>
-          <div className="cursor-pointer sm:hidden">
+          {/* <div className="cursor-pointer sm:hidden">
             <FiSearch className="text-white hover:text-tradeGreen text-[24px] transition-all duration-300" />
-          </div>
+          </div> */}
           <div className="cursor-pointer">
-            <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[23px] transition-all duration-300" />
+            <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[22px] transition-all duration-300" />
           </div>
           <div
-            className="cursor-pointer sm:p-[3px] p-[4px] bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-full transition-all duration-300"
+            className="cursor-pointer sm:p-[3px] p-[4px] border border-tradeAshLight hover:border-tradeAshExtraLight rounded-full transition-all duration-300"
             onClick={() => setIsProfileOption((prev) => !prev)}
           >
             <img
-              className="lg:w-[34px] sm:w-[30px] w-[32px] rounded-full"
+              className="lg:w-[34px] sm:w-[30px] w-[28px] rounded-full"
               src={landingImg4}
               alt=""
             />

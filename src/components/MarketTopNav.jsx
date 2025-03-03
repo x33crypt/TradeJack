@@ -138,7 +138,7 @@ const MarketTopNav = () => {
             onClick={() => setIsProfileOption((prev) => !prev)}
           >
             <img
-              className="lg:w-[34px] sm:w-[30px] w-[32px] rounded-full"
+              className="lg:w-[34px] sm:w-[30px] w-[28px] rounded-full"
               src={landingImg4}
               alt=""
             />

@@ -7,6 +7,7 @@ import { IoFilter } from "react-icons/io5";
 import OfferFilter from "./OfferFilter";
 import { FiFilter } from "react-icons/fi";
 import fakeData from "../../../public/fakeData.json";
+import { LuSettings2 } from "react-icons/lu";
 
 const MarketMain = () => {
   const [offers, setOffers] = useState();
@@ -96,9 +97,9 @@ const MarketMain = () => {
               Verified
             </p>
           </div>
-          <div className="flex justify-between items-center gap-[5px] px-[12px] py-[4px] bg-tradeAshExtraLight  rounded-[6.5px] cursor-pointer">
-            <FiFilter className="text-[17px] text-white" />
-            <p className="flex  text-[14px] font-[500] text-white">Sort by</p>
+          <div className="flex justify-between items-center gap-[5px] px-[12px] py-[4px] bg-transparent rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
+            <LuSettings2 className="text-[17px]" />
+            <p className="flex  text-[14px] font-[500]">Sort by</p>
           </div>
         </div>
 

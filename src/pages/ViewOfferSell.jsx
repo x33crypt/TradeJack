@@ -108,12 +108,16 @@ const ViewOfferSell = () => {
                   <div className="flex gap-[10px]">
                     <p className="flex items-center gap-[5px] text-[15.5px] font-[600] text-tradeFadeWhite">
                       Min
-                      <small className="text-[15.5px] font-[600] text-white">{`20 ${offerDetails?.currency}`}</small>
+                      <small className="text-[15.5px] font-[600] text-white">{`${parseInt(
+                        offerDetails?.miniPurchase
+                      ).toLocaleString()}  ${offerDetails?.currency}`}</small>
                     </p>
                     <p className="text-white text-[20px] font-[800]">-</p>
                     <p className="flex items-center gap-[5px] text-[15.5px] font-[600] text-tradeFadeWhite">
                       Max
-                      <small className="text-[15.5px] font-[600] text-white">{`500 ${offerDetails?.currency}`}</small>
+                      <small className="text-[15.5px] font-[600] text-white">{`${parseInt(
+                        offerDetails?.maxPurchase
+                      ).toLocaleString()}  ${offerDetails?.currency}`}</small>
                     </p>
                   </div>
                 </div>
@@ -211,8 +215,9 @@ const ViewOfferSell = () => {
                     <div className="flex items-center gap-[10px]">
                       <MdThumbUpAlt className="text-[15.5px] text-tradeGreen" />
                       <p className="text-white text-[15.5px] font-[600]">
-                        {" "}
-                        {offerDetails.positiveFeedback}
+                        {`${parseInt(
+                          offerDetails?.positiveFeedback
+                        ).toLocaleString()}`}
                       </p>
                     </div>
                   </div>
@@ -223,8 +228,9 @@ const ViewOfferSell = () => {
                     <div className="flex items-center gap-[10px]">
                       <MdThumbDownAlt className="text-[15.5px] text-red-500" />
                       <p className="text-white text-[15.5px] font-[600]">
-                        {" "}
-                        {offerDetails.negativeFeedback}
+                        {`${parseInt(
+                          offerDetails?.negativeFeedback
+                        ).toLocaleString()}`}
                       </p>
                     </div>
                   </div>
@@ -267,14 +273,18 @@ const ViewOfferSell = () => {
                         <p className="text-tradeFadeWhite text-[13px] flex gap-[5px]">
                           Min
                           <small className="text-white text-[13px] font-[600]">
-                            20
+                            {`${parseInt(
+                              offerDetails?.miniPurchase
+                            ).toLocaleString()}`}
                           </small>
                         </p>
 
                         <p className="text-tradeFadeWhite text-[13px] flex gap-[5px]">
                           Max
                           <small className="text-white text-[13px] font-[600]">
-                            1000
+                            {`${parseInt(
+                              offerDetails?.maxPurchase
+                            ).toLocaleString()}`}
                           </small>
                         </p>
                       </div>

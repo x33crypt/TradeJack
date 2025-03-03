@@ -194,10 +194,12 @@ const OfferCard = (props) => {
           </div>
           <div className="flex gap-[15px]">
             <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
-              Avg. trade speed
+              Avg. trade Time
             </p>
 
-            <p className="text-[11px] font-[500] text-white">60 Min</p>
+            <p className="text-[11px] font-[500] text-white">
+              {props?.avgTradeTime} Min
+            </p>
           </div>
 
           <div className="flex gap-[15px]">
@@ -206,7 +208,8 @@ const OfferCard = (props) => {
             </p>
 
             <p className="text-[11px] font-[500] text-white">
-              {`20`} {props.currency}
+              {`${parseInt(props.miniPurchase).toLocaleString()}`}{" "}
+              {props.currency}
             </p>
           </div>
 
