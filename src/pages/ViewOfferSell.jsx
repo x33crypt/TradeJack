@@ -83,8 +83,8 @@ const ViewOfferSell = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col lg:gap-[30px] gap-[20px] p-[20px]">
-              <div className="flex flex-wrap items-center lg:gap-[50px] gap-[20px]">
+            <div className="flex flex-col lg:gap-[30px] gap-[25px] p-[20px]">
+              <div className="flex flex-wrap items-center lg:gap-[50px] gap-[25px]">
                 <div className="flex flex-col gap-[5px] ">
                   <p className="text-[12px] font-[400] text-tradeFadeWhite">
                     Service
@@ -119,7 +119,7 @@ const ViewOfferSell = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center lg:gap-[50px] gap-[20px]">
+              <div className="flex flex-wrap items-center lg:gap-[50px] gap-[25px]">
                 <div className="flex flex-col gap-[5px] ">
                   <p className="text-[12px] font-[400] text-tradeFadeWhite">
                     Maximum Trade Time
@@ -174,7 +174,7 @@ const ViewOfferSell = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-wrap md:justify-between p-[20px] lg:gap-[15.5px] lg:gap-y-[30px] gap-y-[20px] gap-x-[25px] items-center">
+              <div className="flex flex-wrap md:justify-between p-[20px] lg:gap-[15.5px] lg:gap-y-[30px] gap-y-[25px] gap-x-[25px] items-center">
                 <div className=" flex items-center gap-[15.5px]">
                   <div>
                     <img
