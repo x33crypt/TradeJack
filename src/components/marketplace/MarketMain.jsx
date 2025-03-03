@@ -6,26 +6,9 @@ import { LuFilter } from "react-icons/lu";
 import { IoFilter } from "react-icons/io5";
 import OfferFilter from "./OfferFilter";
 import { FiFilter } from "react-icons/fi";
+import fakeData from "../../../public/fakeData.json";
 
-const MarketMain = ({
-  setServiceType,
-  serviceType,
-  accountType,
-  setAccountType,
-  walletType,
-  setWaletType,
-  giftCardType,
-  setGiftCardType,
-  debitCreditCardType,
-  setDebitCreditCardType,
-  amount,
-  setAmount,
-  selectedCurrency,
-  setSelectedCurrency,
-  setVerifiedOffer,
-  setActiveTraders,
-  handleFindOffer,
-}) => {
+const MarketMain = () => {
   const [offers, setOffers] = useState();
   const [defaultOffers, setDefaultOffers] = useState();
   const [promotedOffers, setPromotedOffers] = useState();
@@ -40,34 +23,41 @@ const MarketMain = ({
       const response = await axios.get(`/fakeData.json`);
       console.log(response.data); // Log the actual data from the response
       setOffers(response.data.offers);
+      await getOfferVendorsInfo();
     } catch (error) {
       console.error("Error fetching the offers:", error);
     }
   };
 
+  console.log(offers);
+
   const getPromotedOffers = async () => {
     try {
       const response = await defaultOffers?.filter(
-        (offer) => offer.promoted === true
+        (offer) => offer.isPromoted === true
       );
-      console.log(response);
+      // console.log(response);
       setPromotedOffers(response);
     } catch (error) {
       console.error("Error fetching promoted offers:", error);
     }
   };
 
+  console.log(promotedOffers);
+
   const getUnPromotedOffers = async () => {
     try {
       const response = await defaultOffers?.filter(
-        (offer) => offer.promoted === false
+        (offer) => offer.isPromoted === false
       );
-      console.log(response);
+      // console.log(response);
       setUnPromotedOffers(response);
     } catch (error) {
       console.error("Error fetching unpromoted offers:", error);
     }
   };
+
+  console.log(unPromotedOffers);
 
   useEffect(() => {
     getOffers();
@@ -89,7 +79,7 @@ const MarketMain = ({
   return (
     <div className="flex flex-col bg-tradeAsh md:border border-neutral-800 md:rounded-[12px]">
       <div className="flex flex-col justify-between md:p-[20px] p-[20px] border-b border-neutral-800 ">
-        <p className="text-[18px] text-white font-[600] cursor-pointer">
+        <p className="text-[18px] text-white font-[700] cursor-pointer">
           Seamless Asset Trading
         </p>
       </div>
@@ -106,9 +96,9 @@ const MarketMain = ({
               Verified
             </p>
           </div>
-          <div className="flex justify-between items-center gap-[5px] px-[12px] py-[4px] border border-neutral-800  rounded-[6.5px] cursor-pointer">
-            <FiFilter className="text-[17px] text-neutral-500" />
-            <p className="flex  text-[14px] font-[500] text-white">Filters</p>
+          <div className="flex justify-between items-center gap-[5px] px-[12px] py-[4px] bg-tradeAshExtraLight  rounded-[6.5px] cursor-pointer">
+            <FiFilter className="text-[17px] text-white" />
+            <p className="flex  text-[14px] font-[500] text-white">Sort by</p>
           </div>
         </div>
 
@@ -129,17 +119,25 @@ const MarketMain = ({
             {promotedOffers?.map((offer, index) => (
               <div key={index}>
                 <OfferCard
-                  id={offer.id}
-                  verified={offer.verified}
+                  offerId={offer.offerId}
+                  isVerified={offer.isVerified}
                   username={offer.username}
-                  availability={offer.availability}
+                  lastSeen={offer.lastSeen}
                   service={offer.service}
                   serviceType={offer.serviceType}
-                  purchaseLimit={offer.purchaseLimit}
+                  miniPurchase={offer.miniPurchase}
+                  maxPurchase={offer.maxPurchase}
+                  positiveFeedback={offer.positiveFeedback}
                   trustScore={offer.trustScore}
-                  reviews={offer.reviews}
                   currency={offer.currency}
                 />
+                <div
+                  className={`${
+                    index < promotedOffers.length - 1
+                      ? "border-tradeAshLight"
+                      : "border-transparent"
+                  } border-b`}
+                ></div>
               </div>
             ))}
           </div>
@@ -161,17 +159,25 @@ const MarketMain = ({
             {unPromotedOffers?.map((offer, index) => (
               <div key={index}>
                 <OfferCard
-                  id={offer.id}
-                  verified={offer.verified}
+                  offerId={offer.offerId}
+                  isVerified={offer.isVerified}
                   username={offer.username}
-                  availability={offer.availability}
+                  lastSeen={offer.lastSeen}
                   service={offer.service}
                   serviceType={offer.serviceType}
-                  purchaseLimit={offer.purchaseLimit}
+                  miniPurchase={offer.miniPurchase}
+                  maxPurchase={offer.maxPurchase}
+                  positiveFeedback={offer.positiveFeedback}
                   trustScore={offer.trustScore}
-                  reviews={offer.reviews}
                   currency={offer.currency}
                 />
+                <div
+                  className={`${
+                    index < promotedOffers.length - 1
+                      ? "border-tradeAshLight"
+                      : "border-transparent"
+                  } border-b`}
+                ></div>
               </div>
             ))}
           </div>

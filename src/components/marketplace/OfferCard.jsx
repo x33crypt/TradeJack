@@ -1,14 +1,10 @@
 import React from "react";
 import landingImg4 from "../../assets/landingImg4.JPG";
-import { MdOutlineVerified } from "react-icons/md";
 import { IoMdThumbsUp } from "react-icons/io";
 import { FaRegStar } from "react-icons/fa";
 import tippy from "tippy.js";
 import "tippy.js/dist/tippy.css";
 import { useNavigate } from "react-router-dom";
-import { SiTrustpilot } from "react-icons/si";
-import { RiRadioButtonLine } from "react-icons/ri";
-import { LuFilter } from "react-icons/lu";
 import { GoDotFill } from "react-icons/go";
 
 const OfferCard = (props) => {
@@ -31,15 +27,15 @@ const OfferCard = (props) => {
 
   const navigateTo = useNavigate();
 
-  const handleOfferClick = (id) => {
-    navigateTo(`/offer/${id}`);
+  const handleOfferClick = (offerId) => {
+    navigateTo(`/offer/${offerId}`);
   };
 
   return (
     <>
       <div
-        onClick={() => handleOfferClick(props.id)}
-        className=" md:flex hidden border-b border-tradeAshLight hover:bg-tradeAshLight p-[10px] cursor-pointer transition-all duration-300 "
+        onClick={() => handleOfferClick(props.offerId)}
+        className=" md:flex hidden hover:bg-tradeAshLight p-[10px] cursor-pointer transition-all duration-300 "
       >
         <div className="flex-1 flex gap-[10px]">
           <div className="flex flex-col gap-[10px]">
@@ -52,12 +48,12 @@ const OfferCard = (props) => {
                   <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
                     {" "}
                     <IoMdThumbsUp className="text-[13px] lg:text-[14px] text-tradeGreen" />{" "}
-                    {`${parseInt(props.reviews).toLocaleString()}`}
+                    {`${parseInt(props.positiveFeedback).toLocaleString()}`}
                   </p>
                 </div>
               </div>
               <div className="hidden sm:flex">
-                {props.availability == "online" ? (
+                {props.lastSeen == "online" ? (
                   <>
                     <div className="flex items-center gap-[4px] py-[px] px-[8px] border border-tradeAshExtraLight rounded-full">
                       <p className="text-[13px] lg:text-[13px] text-tradeGreen">
@@ -89,7 +85,8 @@ const OfferCard = (props) => {
                 </p>
 
                 <p className="text-[13px] font-[500] text-white">
-                  {`20`} {props.currency}
+                  {`${parseInt(props.miniPurchase).toLocaleString()}`}{" "}
+                  {props.currency}
                 </p>
               </div>
 
@@ -99,7 +96,7 @@ const OfferCard = (props) => {
                 </p>
 
                 <p className="text-[13px] font-[500] text-white">
-                  {`${parseInt(props.purchaseLimit).toLocaleString()}`}{" "}
+                  {`${parseInt(props.maxPurchase).toLocaleString()}`}{" "}
                   {props.currency}
                 </p>
               </div>
@@ -123,7 +120,7 @@ const OfferCard = (props) => {
 
             <div className="flex gap-[10px]">
               <p className="flex text-[13px] text-tradeFadeWhite font-[400] gap-[2px]">
-                Avg. trade speed
+                Avg Trade Time
               </p>
 
               <p className="text-[13px] font-[500] text-white">60 Minutes</p>
@@ -131,16 +128,16 @@ const OfferCard = (props) => {
           </div>
         </div>
         <div className="flex-1 flex flex-col gap-[10px]">
-          <div>
-            <p className="text-[15px] lg:text-[14px] font-[700] text-white">
-              1 {props.currency} = 0.93 USD of BTC
-            </p>
+          <div className="flex gap-[8px] items-center text-[15px] lg:text-[14px] font-[800] text-white">
+            <p>{`86,243 ${props.currency}`}</p>
+            <p>&#x2248;</p>
+            <p>1 {props.currency} = 0.93 USD of BTC</p>
           </div>
         </div>
       </div>
 
       <div
-        onClick={() => handleOfferClick(props.id)}
+        onClick={() => handleOfferClick(props.offerId)}
         className="flex md:hidden justify-between border-b border-tradeAshLight hover:bg-tradeAshLight p-[10px] cursor-pointer transition-all duration-300"
       >
         <div className="flex flex-col gap-[4px]">
@@ -149,7 +146,7 @@ const OfferCard = (props) => {
               {props.username}
             </p>
             <div className="flex">
-              {props.availability == "online" ? (
+              {props.lastSeen === "online" ? (
                 <>
                   <div className="flex items-center gap-[4px] py-[px] px-[8px] border border-tradeAshExtraLight rounded-full">
                     <p className="text-[10px] text-tradeGreen">
@@ -192,7 +189,7 @@ const OfferCard = (props) => {
             <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
               {" "}
               <IoMdThumbsUp className="text-[13px] lg:text-[14px] text-tradeGreen" />{" "}
-              {`${parseInt(props.reviews).toLocaleString()}`}
+              {`${parseInt(props.positiveFeedback).toLocaleString()}`}
             </p>
           </div>
           <div className="flex gap-[15px]">

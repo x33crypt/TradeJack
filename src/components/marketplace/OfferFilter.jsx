@@ -439,7 +439,7 @@ const OfferFilter = ({
   return (
     <div className="bg-tradeAsh lg:sticky w-full lg:h-[495px] top-[80px] flex flex-col rounded-[12px] border border-neutral-800 bg-tradeAs">
       <div className="flex justify-between items-center p-[20px] border-b border-neutral-800 ">
-        <p className="text-[18px] text-white font-[600] cursor-pointer">
+        <p className="text-[18px] text-white font-[700] cursor-pointer">
           Filter Offer
         </p>
 

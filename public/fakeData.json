@@ -1,234 +1,243 @@
 {
   "offers": [
     {
-      "username": "x33crypt",
-      "availability": "online",
-      "verified": true,
-      "service": "Cash App",
-      "serviceType": "Online Wallet Transfer",
-      "purchaseLimit": 1250,
+      "username": "CryptoKing1",
+      "location": "Nigeria",
+      "profileImage": "https://randomuser.me/api/portraits/men/1.jpg",
+      "lastSeen": "online",
       "trustScore": "75",
-      "reviews": 209,
-      "id": "CA-782134587",
-      "promoted": true,
-      "currency": "USD",
-      "offerRate": [
-        { "range": "100 to 499", "rate": "350" },
-        { "range": "500 to 999", "rate": "400" }
-      ],
-      "offerTerms": [
-        "Confirm the exchange rate before proceeding.",
-        "Make sure to provide accurate details for quick processing."
-      ]
-    },
-    {
-      "username": "ShopMaster",
-      "availability": "offline",
-      "verified": false,
+      "positiveFeedback": 209,
+      "negativeFeedback": 3,
+      "offerId": "100000001",
+      "isPromoted": true,
+      "isVerified": true,
       "service": "PayPal",
       "serviceType": "Online Wallet Transfer",
-      "purchaseLimit": 500,
-      "trustScore": "85",
-      "reviews": 348,
-      "id": "PP-462837512",
-      "promoted": true,
+      "miniPurchase": 100,
+      "maxPurchase": 1000,
       "currency": "USD",
-      "offerRate": [
-        { "range": "100 to 1000", "rate": "480" },
-        { "range": "1000 to 2000", "rate": "550" }
-      ],
+      "rate": 895008,
+      "maxTradeTime": 60,
+      "avgTradeTime": 20,
       "offerTerms": [
         "Confirm the exchange rate before proceeding.",
         "Make sure to provide accurate details for quick processing."
       ]
     },
     {
-      "username": "TradeExpert",
-      "availability": "online",
-      "verified": true,
-      "service": "Venmo",
+      "username": "TradeMaster",
+      "location": "United Kingdom",
+      "profileImage": "https://randomuser.me/api/portraits/men/2.jpg",
+      "lastSeen": "online",
+      "trustScore": "82",
+      "positiveFeedback": 315,
+      "negativeFeedback": 5,
+      "offerId": "100000002",
+      "isPromoted": false,
+      "isVerified": true,
+      "service": "Skrill",
       "serviceType": "Online Wallet Transfer",
-      "purchaseLimit": 3000,
-      "trustScore": "90",
-      "reviews": 431,
-      "id": "VN-918276354",
-      "promoted": true,
-      "currency": "USD",
-      "offerRate": [
-        { "range": "100 to 699", "rate": "400" },
-        { "range": "700 to 1500", "rate": "500" }
-      ],
+      "miniPurchase": 50,
+      "maxPurchase": 500,
+      "currency": "GBP",
+      "rate": 760900,
+      "maxTradeTime": 45,
+      "avgTradeTime": 15,
       "offerTerms": [
-        "Confirm the exchange rate before proceeding.",
-        "Make sure to provide accurate details for quick processing."
+        "Ensure your account is verified before trading.",
+        "Payments will be processed within10"
       ]
     },
     {
-      "username": "SecurePay",
-      "availability": "offline",
-      "verified": false,
-      "service": "Chase Bank",
+      "username": "FastCashPro",
+      "location": "USA",
+      "profileImage": "https://randomuser.me/api/portraits/men/3.jpg",
+      "lastSeen": "offline",
+      "trustScore": "91",
+      "positiveFeedback": 512,
+      "negativeFeedback": 2,
+      "offerId": "100000003",
+      "isPromoted": true,
+      "isVerified": true,
+      "service": "Bank of America",
       "serviceType": "Bank Transfer",
-      "purchaseLimit": 2500,
-      "trustScore": "88",
-      "reviews": 289,
-      "id": "CA-364598723",
-      "promoted": true,
-      "currency": "GDP",
-      "offerRate": [
-        { "range": "100 to 800", "rate": "400" },
-        { "range": "801 to 2000", "rate": "450" }
-      ],
+      "miniPurchase": 200,
+      "maxPurchase": 2000,
+      "currency": "USD",
+      "rate": 923456,
+      "maxTradeTime": 90,
+      "avgTradeTime": 30,
       "offerTerms": [
-        "Confirm the exchange rate before proceeding.",
-        "Make sure to provide accurate details for quick processing."
+        "Transfers take between 515",
+        "Only verified accounts are accepted."
       ]
     },
     {
-      "username": "SwiftTransactor",
-      "availability": "online",
-      "verified": false,
-      "service": "Cash App",
-      "serviceType": "Online Wallet Transfer",
-      "purchaseLimit": 2000,
-      "trustScore": "80",
-      "reviews": 152,
-      "id": "CA-485172938",
-      "promoted": true,
-      "currency": "USD",
-      "offerRate": [
-        { "range": "100 to 500", "rate": "770" },
-        { "range": "501 to 2000", "rate": "800" }
-      ],
+      "username": "GiftCardTrader",
+      "location": "Canada",
+      "profileImage": "https://randomuser.me/api/portraits/men/4.jpg",
+      "lastSeen": "online",
+      "trustScore": "68",
+      "positiveFeedback": 150,
+      "negativeFeedback": 8,
+      "offerId": "100000004",
+      "isPromoted": false,
+      "isVerified": false,
+      "service": "Amazon Gift Card",
+      "serviceType": "Gift Card",
+      "miniPurchase": 25,
+      "maxPurchase": 300,
+      "currency": "CAD",
+      "rate": 700120,
+      "maxTradeTime": 40,
+      "avgTradeTime": 10,
       "offerTerms": [
-        "Confirm the exchange rate before proceeding.",
-        "Make sure to provide accurate details for quick processing."
+        "Only physical gift cards are accepted.",
+        "Provide a clear image of the card."
+      ]
+    },
+    {
+      "username": "DigitalWalletX",
+      "location": "Germany",
+      "profileImage": "https://randomuser.me/api/portraits/men/5.jpg",
+      "lastSeen": "online",
+      "trustScore": "88",
+      "positiveFeedback": 432,
+      "negativeFeedback": 6,
+      "offerId": "100000005",
+      "isPromoted": true,
+      "isVerified": true,
+      "service": "Revolut",
+      "serviceType": "Online Wallet Transfer",
+      "miniPurchase": 100,
+      "maxPurchase": 1200,
+      "currency": "EUR",
+      "rate": 850678,
+      "maxTradeTime": 50,
+      "avgTradeTime": 20,
+      "offerTerms": [
+        "Ensure your Revolut account is active.",
+        "Transactions are instant."
+      ]
+    },
+    {
+      "username": "SwiftXchange",
+      "location": "France",
+      "profileImage": "https://randomuser.me/api/portraits/men/6.jpg",
+      "lastSeen": "offline",
+      "trustScore": "76",
+      "positiveFeedback": 290,
+      "negativeFeedback": 10,
+      "offerId": "100000006",
+      "isPromoted": false,
+      "isVerified": false,
+      "service": "Western Union",
+      "serviceType": "Bank Transfer",
+      "miniPurchase": 300,
+      "maxPurchase": 2500,
+      "currency": "EUR",
+      "rate": 920456,
+      "maxTradeTime": 80,
+      "avgTradeTime": 35,
+      "offerTerms": [
+        "Ensure you have the correct recipient details.",
+        "Transfers take 1530"
+      ]
+    },
+    {
+      "username": "CryptoGuru",
+      "location": "India",
+      "profileImage": "https://randomuser.me/api/portraits/men/7.jpg",
+      "lastSeen": "online",
+      "trustScore": "94",
+      "positiveFeedback": 600,
+      "negativeFeedback": 3,
+      "offerId": "100000007",
+      "isPromoted": true,
+      "isVerified": true,
+      "service": "Paytm",
+      "serviceType": "Online Wallet Transfer",
+      "miniPurchase": 50,
+      "maxPurchase": 750,
+      "currency": "INR",
+      "rate": 650980,
+      "maxTradeTime": 30,
+      "avgTradeTime": 10,
+      "offerTerms": [
+        "Verify your mobile number before proceeding.",
+        "Instant transactions available."
+      ]
+    },
+    {
+      "username": "EliteCardTrader",
+      "location": "Australia",
+      "profileImage": "https://randomuser.me/api/portraits/men/8.jpg",
+      "lastSeen": "offline",
+      "trustScore": "85",
+      "positiveFeedback": 410,
+      "negativeFeedback": 7,
+      "offerId": "100000008",
+      "isPromoted": false,
+      "isVerified": false,
+      "service": "Visa Gift Card",
+      "serviceType": "Gift Card",
+      "miniPurchase": 50,
+      "maxPurchase": 500,
+      "currency": "AUD",
+      "rate": 810678,
+      "maxTradeTime": 45,
+      "avgTradeTime": 15,
+      "offerTerms": [
+        "Only new and unused cards are accepted.",
+        "Provide proof of purchase if required."
+      ]
+    },
+    {
+      "username": "CashFlowExpert",
+      "location": "South Africa",
+      "profileImage": "https://randomuser.me/api/portraits/men/9.jpg",
+      "lastSeen": "offline",
+      "trustScore": "78",
+      "positiveFeedback": 320,
+      "negativeFeedback": 5,
+      "offerId": "100000009",
+      "isPromoted": true,
+      "isVerified": true,
+      "service": "Standard Bank",
+      "serviceType": "Bank Transfer",
+      "miniPurchase": 100,
+      "maxPurchase": 1500,
+      "currency": "ZAR",
+      "rate": 740123,
+      "maxTradeTime": 55,
+      "avgTradeTime": 25,
+      "offerTerms": [
+        "Ensure your bank account is active.",
+        "Payments processed within30"
       ]
     },
     {
       "username": "FastPayouts",
-      "availability": "offline",
-      "verified": true,
-      "service": "PayPal",
-      "serviceType": "Online Wallet Transfer",
-      "purchaseLimit": 3500,
-      "trustScore": "91",
-      "reviews": 672,
-      "id": "PP-712938475",
-      "promoted": true,
-      "currency": "USD",
-      "offerRate": [
-        { "range": "50 to 499", "rate": "350" },
-        { "range": "500 to 999", "rate": "450" }
-      ],
-      "offerTerms": [
-        "Confirm the exchange rate before proceeding.",
-        "Make sure to provide accurate details for quick processing."
-      ]
-    },
-    {
-      "username": "SwiftPay",
-      "availability": "offline",
-      "verified": false,
-      "service": "PayPal",
-      "serviceType": "Online Wallet Transfer",
-      "purchaseLimit": 2750,
-      "trustScore": "92",
-      "reviews": 372,
-      "id": "PP-839104672",
-      "promoted": false,
-      "currency": "USD",
-      "offerRate": [
-        { "range": "100 to 1000", "rate": "470" },
-        { "range": "1000 to 2000", "rate": "550" }
-      ],
-      "offerTerms": [
-        "Confirm the exchange rate before proceeding.",
-        "Make sure to provide accurate details for quick processing."
-      ]
-    },
-    {
-      "username": "VenmoPro",
-      "availability": "online",
-      "verified": true,
-      "service": "Venmo",
-      "serviceType": "Online Wallet Transfer",
-      "purchaseLimit": 2300,
-      "trustScore": "89",
-      "reviews": 418,
-      "id": "VN-184953702",
-      "promoted": false,
-      "currency": "USD",
-      "offerRate": [
-        { "range": "300 to 999", "rate": "490" },
-        { "range": "1000 to 2000", "rate": "540" }
-      ],
-      "offerTerms": [
-        "Confirm the exchange rate before proceeding.",
-        "Make sure to provide accurate details for quick processing."
-      ]
-    },
-    {
-      "username": "ReliableFunds",
-      "availability": "offline",
-      "verified": false,
-      "service": "Cash App",
-      "serviceType": "Online Wallet Transfer",
-      "purchaseLimit": 1200,
-      "trustScore": "84",
-      "reviews": 190,
-      "id": "CA-294875310",
-      "promoted": false,
-      "currency": "USD",
-      "offerRate": [
-        { "range": "100 to 499", "rate": "350" },
-        { "range": "500 to 999", "rate": "400" }
-      ],
-      "offerTerms": [
-        "Confirm the exchange rate before proceeding.",
-        "Make sure to provide accurate details for quick processing."
-      ]
-    },
-    {
-      "username": "CashQuick",
-      "availability": "online",
-      "verified": true,
-      "service": "PayPal",
-      "serviceType": "Online Wallet Transfer",
-      "purchaseLimit": 2500,
-      "trustScore": "87",
-      "reviews": 348,
-      "id": "PP-394876152",
-      "promoted": false,
-      "currency": "USD",
-      "offerRate": [
-        { "range": "100 to 699", "rate": "400" },
-        { "range": "700 to 1500", "rate": "500" }
-      ],
-      "offerTerms": [
-        "Confirm the exchange rate before proceeding.",
-        "Make sure to provide accurate details for quick processing."
-      ]
-    },
-    {
-      "username": "TrustPay",
-      "availability": "offline",
-      "verified": true,
-      "service": "IC Credit Union Bank",
+      "location": "Mexico",
+      "profileImage": "https://randomuser.me/api/portraits/men/10.jpg",
+      "lastSeen": "online",
+      "trustScore": "81",
+      "positiveFeedback": 340,
+      "negativeFeedback": 4,
+      "offerId": "100000010",
+      "isPromoted": false,
+      "isVerified": false,
+      "service": "BBVA",
       "serviceType": "Bank Transfer",
-      "purchaseLimit": 2100,
-      "trustScore": "91",
-      "reviews": 297,
-      "id": "VN-194857120",
-      "promoted": false,
-      "currency": "GDP",
-      "offerRate": [
-        { "range": "50 to 499", "rate": "350" },
-        { "range": "500 to 999", "rate": "450" }
-      ],
+      "miniPurchase": 150,
+      "maxPurchase": 2000,
+      "currency": "MXN",
+      "rate": 880567,
+      "maxTradeTime": 70,
+      "avgTradeTime": 30,
       "offerTerms": [
-        "Confirm the exchange rate before proceeding.",
-        "Make sure to provide accurate details for quick processing."
+        "Check exchange rates before proceeding.",
+        "Transactions take up to 1 hour."
       ]
     }
   ],
@@ -241,8 +250,11 @@
       "emailVerified": true,
       "phoneVerified": true,
       "trustScore": "75",
-      "feedback": 209,
-      "averageTradeSpeed": "30 minutes"
+      "positiveFeedback": 209,
+      "NegativeFeedback": 3,
+      "averageTradeSpeed": 30,
+      "profileImage": "",
+      "lastSeen": ""
     },
     {
       "username": "ShopMaster",
@@ -253,7 +265,7 @@
       "phoneVerified": false,
       "trustScore": "85",
       "feedback": 348,
-      "averageTradeSpeed": "45 minutes"
+      "averageTradeSpeed": 45
     },
     {
       "username": "TradeExpert",
@@ -264,7 +276,7 @@
       "phoneVerified": true,
       "trustScore": "90",
       "feedback": 431,
-      "averageTradeSpeed": "20 minutes"
+      "averageTradeSpeed": 20
     },
     {
       "username": "SecurePay",
@@ -275,7 +287,7 @@
       "phoneVerified": false,
       "trustScore": "88",
       "feedback": 289,
-      "averageTradeSpeed": "40 minutes"
+      "averageTradeSpeed": 40
     },
     {
       "username": "SwiftTransactor",
@@ -286,7 +298,7 @@
       "phoneVerified": false,
       "trustScore": "80",
       "feedback": 152,
-      "averageTradeSpeed": "50 minutes"
+      "averageTradeSpeed": 50
     },
     {
       "username": "FastPayouts",
@@ -297,7 +309,7 @@
       "phoneVerified": true,
       "trustScore": "91",
       "feedback": 672,
-      "averageTradeSpeed": "15 minutes"
+      "averageTradeSpeed": 15
     },
     {
       "username": "SwiftPay",
@@ -308,7 +320,7 @@
       "phoneVerified": false,
       "trustScore": "92",
       "feedback": 372,
-      "averageTradeSpeed": "25 minutes"
+      "averageTradeSpeed": 25
     },
     {
       "username": "VenmoPro",
@@ -319,7 +331,7 @@
       "phoneVerified": true,
       "trustScore": "89",
       "feedback": 418,
-      "averageTradeSpeed": "20 minutes"
+      "averageTradeSpeed": 20
     },
     {
       "username": "ReliableFunds",
@@ -330,7 +342,7 @@
       "phoneVerified": false,
       "trustScore": "84",
       "feedback": 190,
-      "averageTradeSpeed": "35 minutes"
+      "averageTradeSpeed": 35
     },
     {
       "username": "CashQuick",
@@ -341,7 +353,7 @@
       "phoneVerified": true,
       "trustScore": "87",
       "feedback": 348,
-      "averageTradeSpeed": "25 minutes"
+      "averageTradeSpeed": 25
     },
     {
       "username": "TrustPay",
@@ -352,7 +364,7 @@
       "phoneVerified": true,
       "trustScore": "91",
       "feedback": 297,
-      "averageTradeSpeed": "15 minutes"
+      "averageTradeSpeed": 15
     }
   ]
 }

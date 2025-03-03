@@ -24,9 +24,9 @@ const App = () => {
     }
   };
 
-  setInterval(() => {
+  useEffect(() => {
     getBitcoinPrice();
-  }, 10000);
+  }, []);
 
   console.log(bitcoinPrice);
 
