@@ -18,6 +18,7 @@ import { RiExchangeLine } from "react-icons/ri";
 import { TbBuildingBank } from "react-icons/tb";
 import { FaVenusDouble } from "react-icons/fa";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
+import { MdOutlineCancel } from "react-icons/md";
 
 const MarketTopNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -72,7 +73,7 @@ const MarketTopNav = () => {
             className="lg:hidden flex"
           >
             {isNavOption ? (
-              <i class="fa-regular fa-circle-xmark text-white text-[22px] mr-[4px]"></i>
+              <MdOutlineCancel className="text-white text-[24px]" />
             ) : (
               <HiOutlineMenuAlt2 className="text-white text-[24px]" />
             )}
@@ -177,7 +178,7 @@ const MarketTopNav = () => {
       <div
         className={`${
           isNavOption ? "flex" : "hidden"
-        } z-50 fixed right-0 left-0 top-[70px] bottom-0 bg-black sm:px-[2%] px-[3%] pt-[20px] pb-[20px] lg:hidden flex flex-col gap-[20px] `}
+        } z-50 fixed right-0 left-0 top-[67px] bottom-0 bg-black sm:px-[2%] px-[3%] pt-[20px] pb-[20px] lg:hidden flex flex-col gap-[20px] `}
       >
         <div className="w-full h-max flex gap-[10px]">
           <p

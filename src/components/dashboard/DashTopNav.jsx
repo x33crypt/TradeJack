@@ -14,6 +14,7 @@ import { MdOutlineQueryStats } from "react-icons/md";
 import { TbLayoutList } from "react-icons/tb";
 import { BsLightningCharge } from "react-icons/bs";
 import { TbHelpCircle } from "react-icons/tb";
+import { MdOutlineCancel } from "react-icons/md";
 
 const DashTopNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -70,12 +71,12 @@ const DashTopNav = () => {
         <div className="flex items-center lg:gap-[20px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
-            className="lg:hidden flex transition-all duration-300"
+            className="lg:hidden flex"
           >
             {isNavOption ? (
-              <i class="fa-regular fa-circle-xmark text-white text-[22px] mr-[4px] transition-all duration-300"></i>
+              <MdOutlineCancel className="text-white text-[24px]" />
             ) : (
-              <HiOutlineMenuAlt2 className="text-white text-[26px] transition-all duration-300" />
+              <HiOutlineMenuAlt2 className="text-white text-[24px]" />
             )}
           </div>
           <div className="flex items-center justify-start gap-[5px] ">
@@ -124,7 +125,7 @@ const DashTopNav = () => {
             ref={navOptionRef}
             className={` ${
               isProfileOption ? "flex" : "hidden"
-            } fixed right-[25px] top-[70px] flex-col w-[170px] p-[3px] bg-tradeAshLight rounded-[1px]`}
+            } fixed right-[25px] top-[67px] flex-col w-[170px] p-[3px] bg-tradeAshLight rounded-[1px]`}
             onClick={() => setIsProfileOption((prev) => !prev)}
           >
             <p
