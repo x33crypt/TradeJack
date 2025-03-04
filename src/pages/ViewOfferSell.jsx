@@ -16,6 +16,7 @@ import { TiTick } from "react-icons/ti";
 import { MdThumbUpAlt } from "react-icons/md";
 import { MdThumbDownAlt } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
+import { RiErrorWarningLine } from "react-icons/ri";
 
 const ViewOfferSell = () => {
   const [offerDetails, setOfferDetails] = useState("");
@@ -29,9 +30,11 @@ const ViewOfferSell = () => {
     perUsd: "",
     perBtc: "",
     usdValue: "",
+    btcValue: "",
   });
 
   const [tradeValue, setTradeValue] = useState("");
+  const [exchangeError, setExchangeError] = useState("");
 
   const { id } = useParams();
 
@@ -111,6 +114,20 @@ const ViewOfferSell = () => {
   };
 
   const getCurrencyToBTCAndUSD = () => {
+    if (tradeValue) {
+      if (tradeValue < offerDetails?.miniPurchase) {
+        setExchangeError("Trade value is below the minimum allowed amount");
+        return;
+      }
+
+      if (tradeValue > offerDetails?.maxPurchase) {
+        setExchangeError("Trade value exceeds the maximum allowed amount");
+        return;
+      }
+    }
+
+    setExchangeError("");
+
     // Convert 1 unit of the user's currency to BTC based on user's rate
     const currencyToBTC = 1 / offerDetails.rate; // where offerDetails.rate is the user's price per BTC in their currency
 
@@ -118,13 +135,20 @@ const ViewOfferSell = () => {
     const currencyToUSD = currencyToBTC * bitcoinValueInUsd;
 
     // Now calculate the amount the user will receive in USD
-    const userReceivesUSD = currencyToUSD * tradeValue; // `offerAmount` is the amount in the user's currency
+    const userReceivesUSD = currencyToUSD * tradeValue;
+
+    // Check if tradeValue exists and is greater than 0 before calculating userReceivesBTC
+    const userReceivesBTC =
+      tradeValue && tradeValue > 0
+        ? (currencyToUSD * tradeValue) / bitcoinValueInUsd
+        : null; // set null if tradeValue is not available or zero
 
     // Update state with the calculated values for BTC and USD
     setCurrencyRate({
       perBtc: currencyToBTC.toFixed(8),
       perUsd: currencyToUSD.toFixed(2),
       usdValue: userReceivesUSD.toFixed(2),
+      btcValue: userReceivesBTC !== null ? userReceivesBTC.toFixed(8) : "N/A", // Show N/A or a default value instead of 0.000000
     });
 
     // Log the values for debugging
@@ -253,7 +277,7 @@ const ViewOfferSell = () => {
                 </div>
                 <div className="flex flex-col gap-[5px]">
                   <p className="text-[12px] font-[400] text-tradeFadeWhite">
-                    Rate
+                    Price Cap
                   </p>
                   <div className="flex gap-[50px]">
                     <p className="flex items-baseline gap-[5px] text-[15.5px] font-[700] text-white">
@@ -384,12 +408,13 @@ const ViewOfferSell = () => {
             <div className=" h-full lg:w-[400px] flex flex-col bg-tradeAshLight md:border border-tradeAsh rounded-[12px]">
               <div className="flex flex-col justify-between p-[20px] border-b border-tradeAsh">
                 <p className="text-[18px] text-white font-[700] cursor-pointer">
-                  Exchange
+                  Exchange Calculator
                 </p>
               </div>
+
               <div className="flex flex-col h-full ">
                 <div className="flex flex-col gap-[10px] p-[20px]">
-                  <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15.5px] rounded-[15.5px]">
+                  <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px] rounded-[15.5px]">
                     <div className="flex justify-between items-center">
                       <p className="text-tradeFadeWhite text-[13px]">Send</p>
                       <div className="flex items-center gap-[10px]">
@@ -417,7 +442,7 @@ const ViewOfferSell = () => {
                         {offerDetails?.currency}
                       </p>
                       <input
-                        className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[20px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[15.5px] caret-tradeGreen"
+                        className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[20px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[20px] caret-tradeGreen"
                         type="text"
                         placeholder="Enter Amount"
                         value={
@@ -429,7 +454,7 @@ const ViewOfferSell = () => {
                       />
                     </div>
                   </div>
-                  <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15.5px] rounded-[15.5px]">
+                  <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px] rounded-[15.5px]">
                     <div className="flex justify-between">
                       <p className="text-tradeFadeWhite text-[13px]">Receive</p>
 
@@ -442,21 +467,34 @@ const ViewOfferSell = () => {
                         BTC
                       </p>
                       <input
-                        className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[20px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[15.5px] cursor-default"
+                        className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[20px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[20px] cursor-default"
                         type="text"
                         value={
-                          isNaN(currencyRate?.perBtc) ||
-                          currencyRate?.perBtc === null ||
-                          currencyRate?.perBtc === undefined
-                            ? "00.00"
-                            : currencyRate.perBtc
+                          isNaN(currencyRate?.btcValue) ||
+                          currencyRate?.btcValue === null ||
+                          currencyRate?.btcValue === undefined
+                            ? ""
+                            : currencyRate.btcValue
                         }
                         readOnly
                         placeholder="00.00"
                       />
                     </div>
                   </div>
+                  {/* <div className="flex flex-col items-center ">
+                    {exchangeError ? (
+                      <div className="flex items-center gap-[5px]">
+                        <RiErrorWarningLine className="text-red-500  text-[17px] " />
+                        <p className="text-[12px] text-red-500">
+                          {exchangeError}
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-[5px]"></div>
+                    )}
+                  </div> */}
                 </div>
+
                 <div className="flex lg:py-[0px] py-[15.5px] flex-col">
                   <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
                     <p className="text-[14px] font-[500] text-tradeGreen">
