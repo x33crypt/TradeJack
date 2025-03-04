@@ -79,10 +79,10 @@ const DashTopNav = () => {
             )}
           </div>
           <div className="flex items-center justify-start gap-[5px] ">
-            <GiCardExchange className="lg:text-[20px] text-[20px] text-tradeGreen" />
-            <p className=" lg:text-[20px] text-[20px] font-[700] text-tradeGreen">
+            <GiCardExchange className="lg:text-[20px] text-[22px] text-tradeGreen" />
+            <p className=" lg:text-[20px] text-[22px] font-[700] text-tradeGreen">
               Trade
-              <small className="lg:text-[20px] text-[20px] font-[700] text-white">
+              <small className="lg:text-[20px] text-[22px] font-[700] text-white">
                 Jack
               </small>
             </p>
@@ -114,7 +114,7 @@ const DashTopNav = () => {
             onClick={() => setIsProfileOption((prev) => !prev)}
           >
             <img
-              className="lg:w-[34px] sm:w-[30px] w-[30px] rounded-full"
+              className="lg:w-[34px] sm:w-[30px] w-[34px] rounded-full"
               src={landingImg4}
               alt=""
             />
