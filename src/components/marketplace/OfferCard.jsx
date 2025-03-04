@@ -10,18 +10,18 @@ import { GoDotFill } from "react-icons/go";
 const OfferCard = (props) => {
   tippy("[data-tippy-content]");
 
-  tippy("#vendorFavourite", {
+  tippy("#-a justify-endorFavourite", {
     content: "Add to favourite offers!",
     theme: "custom1", // Use the custom theme defined in CSS
   });
 
-  tippy("#vendorVerified", {
-    content: "This offer is from a verified, trusted vendor.",
+  tippy("#-a justify-endorVerified", {
+    content: "This offer is from a verified, trusted -a justify-endor.",
     theme: "custom2", // Use the custom theme defined in CSS
   });
 
-  tippy("#vendorNotVerified", {
-    content: "Trade with caution, this vendor is not verified.",
+  tippy("#-a justify-endorNotVerified", {
+    content: "Trade with caution, this -a justify-endor is not verified.",
     theme: "custom3", // Use the custom theme defined in CSS
   });
 
@@ -185,14 +185,14 @@ const OfferCard = (props) => {
           </p>
         </div>
         <div className="flex flex-col justify-between gap-[4px]">
-          <div className="flex gap-[15px] ">
+          <div className="flex w-[140px] justify-between">
             <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
               {" "}
               <IoMdThumbsUp className="text-[13px] lg:text-[14px] text-tradeGreen" />{" "}
               {`${parseInt(props.positiveFeedback).toLocaleString()}`}
             </p>
           </div>
-          <div className="flex gap-[15px]">
+          <div className="flex w-[140px] justify-between">
             <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
               Avg. trade Time
             </p>
@@ -202,7 +202,7 @@ const OfferCard = (props) => {
             </p>
           </div>
 
-          <div className="flex gap-[15px]">
+          <div className="flex w-[140px] justify-between">
             <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
               Min Purchase
             </p>
@@ -213,13 +213,13 @@ const OfferCard = (props) => {
             </p>
           </div>
 
-          <div className="flex gap-[15px]">
+          <div className="flex w-[140px] justify-between">
             <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
               Max Purchase
             </p>
 
             <p className="text-[11px] font-[500] text-white">
-              {`${parseInt(props.purchaseLimit).toLocaleString()}`}{" "}
+              {`${parseInt(props.maxPurchase).toLocaleString()}`}{" "}
               {props.currency}
             </p>
           </div>

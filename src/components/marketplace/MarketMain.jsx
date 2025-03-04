@@ -131,6 +131,7 @@ const MarketMain = () => {
                   positiveFeedback={offer.positiveFeedback}
                   trustScore={offer.trustScore}
                   currency={offer.currency}
+                  avgTradeTime={offer.avgTradeTime}
                 />
                 <div
                   className={`${
@@ -171,6 +172,7 @@ const MarketMain = () => {
                   positiveFeedback={offer.positiveFeedback}
                   trustScore={offer.trustScore}
                   currency={offer.currency}
+                  avgTradeTime={offer.avgTradeTime}
                 />
                 <div
                   className={`${

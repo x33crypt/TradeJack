@@ -19,7 +19,20 @@ import { FaRegStar } from "react-icons/fa";
 
 const ViewOfferSell = () => {
   const [offerDetails, setOfferDetails] = useState("");
-  const [vendorDetails, setVendorDetails] = useState("");
+  const [offerRateValue, setOfferRateValue] = useState("");
+  const [bitcoinValueInUsd, setBitcoinValueInUsd] = useState("");
+  const [offeRateMargin, setOffeRateMargin] = useState({
+    status: "",
+    percentage: "",
+  });
+  const [currencyRate, setCurrencyRate] = useState({
+    perUsd: "",
+    perBtc: "",
+    usdValue: "",
+  });
+
+  const [tradeValue, setTradeValue] = useState("");
+
   const { id } = useParams();
 
   const getOffer = async () => {
@@ -36,7 +49,7 @@ const ViewOfferSell = () => {
 
       if (offer) {
         setOfferDetails(offer); // Set the offer details if found
-        console.log("Offer details set successfully:", offer);
+        // console.log("Offer details set successfully:", offer);
       } else {
         console.warn(`Offer with ID ${id} not found.`);
       }
@@ -45,18 +58,116 @@ const ViewOfferSell = () => {
     }
   };
 
-  console.log(offerDetails);
+  // Fetching the Bitcoin Current Price in the Specified Currency (e.g., CAD, AUD)
+  const getBitcoinValueInOfferCurrency = async () => {
+    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${offerDetails?.currency.toLowerCase()}&ids=bitcoin`;
+
+    try {
+      const response = await axios.get(url, { timeout: 10000 }); // 10 sec timeout
+      setOfferRateValue(response.data[0].current_price);
+    } catch (err) {
+      console.error("Error fetching Bitcoin value:", err.message);
+    }
+  };
+
+  // Fetching the Bitcoin Current Price in USD
+  const getBitcoinValueInUsd = async () => {
+    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin`;
+
+    try {
+      const response = await axios.get(url, { timeout: 10000 }); // 10 sec timeout
+
+      setBitcoinValueInUsd(response.data[0].current_price);
+    } catch (err) {
+      console.error("Error fetching Bitcoin value:", err.message);
+    }
+  };
+
+  console.log(` Bitcoin price in ${offerDetails?.currency}: ${offerRateValue}`);
+  console.log(` Bitcoin price in USD: ${bitcoinValueInUsd}`);
+
+  const calculateRateMargin = () => {
+    if (!offerDetails || !offerRateValue) return; // Prevent errors if values are missing
+
+    const percentageChange =
+      ((offerDetails.rate - offerRateValue) / offerRateValue) * 100;
+
+    // Round up and keep two decimal places
+    const formattedPercentage = Math.ceil(Math.abs(percentageChange));
+
+    let newStatus = "equal"; // Default status
+
+    if (percentageChange > 0) {
+      newStatus = "above";
+    } else if (percentageChange < 0) {
+      newStatus = "below";
+    }
+
+    // Update state correctly
+    setOffeRateMargin({
+      status: newStatus,
+      percentage: formattedPercentage,
+    });
+  };
+
+  const getCurrencyToBTCAndUSD = () => {
+    // Convert 1 unit of the user's currency to BTC based on user's rate
+    const currencyToBTC = 1 / offerDetails.rate; // where offerDetails.rate is the user's price per BTC in their currency
+
+    // Convert 1 unit of the user's currency to USD using the BTC value in USD
+    const currencyToUSD = currencyToBTC * bitcoinValueInUsd;
+
+    // Now calculate the amount the user will receive in USD
+    const userReceivesUSD = currencyToUSD * tradeValue; // `offerAmount` is the amount in the user's currency
+
+    // Update state with the calculated values for BTC and USD
+    setCurrencyRate({
+      perBtc: currencyToBTC.toFixed(8),
+      perUsd: currencyToUSD.toFixed(2),
+      usdValue: userReceivesUSD.toFixed(2),
+    });
+
+    // Log the values for debugging
+    console.log(
+      `1 ${offerDetails?.currency} = ${currencyToBTC.toFixed(8)} BTC`
+    ); // How much 1 unit of the user's currency is in BTC
+    console.log(
+      `1 ${offerDetails?.currency} = ${currencyToUSD.toFixed(2)} USD`
+    ); // How much 1 unit of the user's currency is in USD
+  };
+
+  const handleTradeValueChange = (e) => {
+    const rawValue = e.target.value.replace(/,/g, ""); // Remove commas
+    if (!isNaN(rawValue) || rawValue === "") {
+      // Ensure it's a number or empty string
+      setTradeValue(rawValue); // Update the state with raw number
+    }
+  };
 
   useEffect(() => {
     getOffer();
+    getBitcoinValueInUsd();
   }, [id]);
 
-  // useEffect(() => {
-  //   getVendor();
-  // }, [offerDetails]);
+  useEffect(() => {
+    getBitcoinValueInOfferCurrency();
+  }, [offerDetails]);
 
-  console.log(offerDetails);
-  console.log(vendorDetails);
+  useEffect(() => {
+    calculateRateMargin();
+  }, [offerRateValue]);
+
+  useEffect(() => {
+    getCurrencyToBTCAndUSD();
+  }, [offeRateMargin?.status]);
+
+  useEffect(() => {
+    getCurrencyToBTCAndUSD();
+  }, [tradeValue]);
+
+  // console.log(offerDetails);
+  // console.log(offerRateValue);
+  // console.log(offeRateMargin);
 
   return (
     <>
@@ -150,9 +261,21 @@ const ViewOfferSell = () => {
                         offerDetails?.currency
                       }`}
                       <small>&#8226;</small>
-                      <small className="text-[14px] text-tradeGreen font-[600]">
-                        10% above market
-                      </small>
+                      {offeRateMargin.status && offeRateMargin.percentage ? (
+                        offeRateMargin.status === "above" ? (
+                          <small className="text-[13px] text-tradeGreen font-[600]">
+                            {`${offeRateMargin.percentage}% ${offeRateMargin.status} market`}
+                          </small>
+                        ) : (
+                          <small className="text-[13px] text-red-500 font-[600]">
+                            {`${offeRateMargin.percentage}% ${offeRateMargin.status} market`}
+                          </small>
+                        )
+                      ) : (
+                        <small className="text-[13px] text-tradeAshExtraLight font-[600]">
+                          Loading margin...
+                        </small>
+                      )}
                     </p>
                   </div>
                 </div>
@@ -297,6 +420,12 @@ const ViewOfferSell = () => {
                         className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[20px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[15.5px] caret-tradeGreen"
                         type="text"
                         placeholder="Enter Amount"
+                        value={
+                          tradeValue
+                            ? parseInt(tradeValue).toLocaleString()
+                            : ""
+                        }
+                        onChange={handleTradeValueChange}
                       />
                     </div>
                   </div>
@@ -315,6 +444,13 @@ const ViewOfferSell = () => {
                       <input
                         className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[20px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[15.5px] cursor-default"
                         type="text"
+                        value={
+                          isNaN(currencyRate?.perBtc) ||
+                          currencyRate?.perBtc === null ||
+                          currencyRate?.perBtc === undefined
+                            ? "00.00"
+                            : currencyRate.perBtc
+                        }
                         readOnly
                         placeholder="00.00"
                       />
@@ -328,8 +464,16 @@ const ViewOfferSell = () => {
                     </p>
                     <p className="text-[14px] font-[600] text-white">
                       {`
-                      1 ${offerDetails?.currency} = 0.93 USD of BTC
-                     `}{" "}
+    1 ${offerDetails?.currency ? offerDetails.currency : "USD"} =  
+    ${
+      isNaN(currencyRate?.perUsd) ||
+      currencyRate?.perUsd === null ||
+      currencyRate?.perUsd === undefined
+        ? "00.00"
+        : currencyRate.perUsd
+    }
+  `}{" "}
+                      USD of BTC
                     </p>
                   </div>
                   <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
@@ -345,7 +489,14 @@ const ViewOfferSell = () => {
                       Your receive in (USD)
                     </p>
                     <p className="text-[14px] font-[600] text-white">
-                      499.05 USD
+                      <p className="text-[14px] font-[600] text-white">
+                        {isNaN(currencyRate?.usdValue) ||
+                        currencyRate?.usdValue === null ||
+                        currencyRate?.usdValue === undefined
+                          ? "00.00"
+                          : currencyRate.usdValue}{" "}
+                        USD
+                      </p>
                     </p>
                   </div>
                 </div>

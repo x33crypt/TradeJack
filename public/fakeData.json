@@ -16,7 +16,7 @@
       "miniPurchase": 100,
       "maxPurchase": 1000,
       "currency": "USD",
-      "rate": 895008,
+      "rate": 99678,
       "maxTradeTime": 60,
       "avgTradeTime": 20,
       "offerTerms": [
@@ -40,7 +40,7 @@
       "miniPurchase": 50,
       "maxPurchase": 500,
       "currency": "GBP",
-      "rate": 760900,
+      "rate": 99900,
       "maxTradeTime": 45,
       "avgTradeTime": 15,
       "offerTerms": [
@@ -112,7 +112,7 @@
       "miniPurchase": 100,
       "maxPurchase": 1200,
       "currency": "EUR",
-      "rate": 850678,
+      "rate": 79554,
       "maxTradeTime": 50,
       "avgTradeTime": 20,
       "offerTerms": [
@@ -184,7 +184,7 @@
       "miniPurchase": 50,
       "maxPurchase": 500,
       "currency": "AUD",
-      "rate": 810678,
+      "rate": 169058,
       "maxTradeTime": 45,
       "avgTradeTime": 15,
       "offerTerms": [

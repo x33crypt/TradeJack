@@ -412,7 +412,7 @@ const OfferFilter = ({
       const response = await axios.get(
         "https://api.exchangerate.host/list?access_key=a5d669ce99aa855e99ab16626cad67b6"
       );
-      console.log(" currency line 18", response); // Logs all currencies
+      // console.log(" currency line 18", response);
       setCurrencies(response.data.currencies);
     } catch (error) {
       console.error("Error fetching currencies:", error);
@@ -434,7 +434,7 @@ const OfferFilter = ({
     getCurrencies();
   }, []);
 
-  console.log(selectedCurrency);
+  // console.log(selectedCurrency);
 
   return (
     <div className="bg-tradeAsh lg:sticky w-full lg:h-[495px] top-[80px] flex flex-col rounded-[12px] border border-neutral-800 bg-tradeAs">
