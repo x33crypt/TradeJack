@@ -1278,7 +1278,7 @@ const OfferFilter = ({
             </div>
           </div>
         </div>
-        {/* <div className="flex p-[20px]">
+        <div className="flex p-[20px]">
           <div
             className="flex items-center justify-between w-full h-[43px] bg-tradeGreen p-[10px] rounded-[10px] cursor-pointer"
             onClick={() => handleFindOffer()}
@@ -1286,7 +1286,7 @@ const OfferFilter = ({
             <p className="font-[600] text-[15px]">Apply Filter</p>
             <TbReload className="text-[20px]" />
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
