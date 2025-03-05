@@ -428,7 +428,7 @@ const OfferFilter = ({
 
   return (
     <div className="bg-tradeAsh lg:sticky w-full lg:h-[495px] h-full lg:top-[80px] flex flex-col md:rounded-[12px] md:border border-neutral-800 ">
-      <div className="flex justify-between items-center lg:p-[20px] py-[20px] border-b border-neutral-800 ">
+      <div className="flex justify-between items-center lg:p-[20px] lg:py-[20px] py-[16px] px-[20px] md:p-[20px]   border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700] cursor-pointer">
           Filter Offer
         </p>
@@ -439,20 +439,20 @@ const OfferFilter = ({
       </div>
       <div className="flex flex-col justify-between h-full lg:overflow-y-auto custom-scrollbar text">
         <div className="flex flex-col">
-          <div className="flex flex-col gap-[20px] lg:p-[20px] py-[20px] border-b border-tradeAshLight">
+          <div className="flex flex-col gap-[20px] lg:p-[20px] px-[20px] py-[20px] border-b border-tradeAshLight">
             <div>
               <p className="text-white text-[16px] font-[700]">Service type</p>
             </div>
 
             <div
               className="
-               flex flex-wrap gap-[15px] "
+               flex flex-wrap lg:gap-[15px] gap-[20px] "
             >
               {services.map((service, index) => (
                 <div
                   key={index}
                   onClick={() => handleServiceTypeChange(service)}
-                  className={`px-[12px] py-[5px] text-[14px]  hover:text-black font-[500] rounded-[6.5px] bg-tradeAsh hover:bg-tradeGreen border border-tradeAshLight hover:border-tradeGreen cursor-pointer duration-300 transition-all  ${
+                  className={`lg:px-[12px] px-[14px] lg:py-[5px] py-[6px] text-[14px]  hover:text-black font-[500] rounded-[6.5px] bg-tradeAsh hover:bg-tradeGreen border border-tradeAshLight hover:border-tradeGreen cursor-pointer duration-300 transition-all  ${
                     serviceType.includes(service)
                       ? "text-black bg-tradeGreen border-tradeGreen"
                       : "text-tradeFadeWhite"
@@ -466,7 +466,7 @@ const OfferFilter = ({
           <div
             className={`${
               showAccount ? "flex" : "hidden"
-            } flex-col lg:p-[20px] py-[20px] gap-[30px] border-b border-tradeAshLight`}
+            } flex-col p-[20px] gap-[30px] border-b border-tradeAshLight`}
           >
             <div className="flex flex-col gap-[20px]">
               <div>
@@ -667,7 +667,7 @@ const OfferFilter = ({
           <div
             className={`${
               showWallet ? "flex" : "hidden"
-            } flex-col lg:p-[20px] py-[20px] gap-[30px] border-b border-tradeAshLight`}
+            } flex-col p-[20px] gap-[30px] border-b border-tradeAshLight`}
           >
             <div className="flex flex-col gap-[20px]">
               <div>
@@ -868,7 +868,7 @@ const OfferFilter = ({
           <div
             className={`${
               showGiftCard ? "flex" : "hidden"
-            } flex-col lg:p-[20px] py-[20px] gap-[30px] border-b border-tradeAshLight`}
+            } flex-col p-[20px] gap-[30px] border-b border-tradeAshLight`}
           >
             <div className="flex flex-col gap-[20px]">
               <div>
@@ -1069,7 +1069,7 @@ const OfferFilter = ({
           <div
             className={`${
               showDebitCreditCard ? "flex" : "hidden"
-            } flex-col lg:p-[20px] py-[20px] gap-[30px] border-b border-tradeAshLight`}
+            } flex-col p-[20px] gap-[30px] border-b border-tradeAshLight`}
           >
             <div className="flex flex-col gap-[20px]">
               <div>
@@ -1278,7 +1278,7 @@ const OfferFilter = ({
             </div>
           </div>
         </div>
-        <div className="flex lg:p-[20px] py-[20px]">
+        <div className="flex p-[20px]">
           <div
             className="flex items-center justify-between w-full h-[43px] bg-tradeGreen p-[10px] rounded-[10px] cursor-pointer"
             onClick={() => handleFindOffer()}

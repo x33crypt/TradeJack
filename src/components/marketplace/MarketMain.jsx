@@ -135,7 +135,9 @@ const MarketMain = ({
           </div>
 
           <div
-            className={` ${isOfferFilter ? "flex" : "hidden"} lg:hidden h-full`}
+            className={` ${
+              isOfferFilter ? "flex" : "hidden"
+            } fixed top-[65px] left-0 right-0 lg:hidden h-full`}
           >
             <OfferFilter
               serviceType={serviceType}
