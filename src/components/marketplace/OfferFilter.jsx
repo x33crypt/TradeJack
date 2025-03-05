@@ -477,7 +477,7 @@ const OfferFilter = ({
               <div className="flex flex-col gap-[10px]">
                 <div
                   onClick={() => setShowAccounType((prev) => !prev)}
-                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] lg:h-[44px] h-[46px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
                     className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
@@ -520,9 +520,7 @@ const OfferFilter = ({
                               onClick={() => handleSeletedAccount(bank)}
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="text-[14px] ">
-                                {bank}
-                              </p>
+                              <p className="text-[14px] ">{bank}</p>
                             </div>
                           ))}
                       </div>
@@ -536,9 +534,7 @@ const OfferFilter = ({
                               onClick={() => handleSeletedAccount(bank)}
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="text-[14px] ">
-                                {bank}
-                              </p>
+                              <p className="text-[14px] ">{bank}</p>
                             </div>
                           ))}
                       </div>
@@ -557,7 +553,7 @@ const OfferFilter = ({
               <div className="flex flex-col gap-[10px]">
                 <div
                   onClick={() => setShowCurrencyOptions((prev) => !prev)}
-                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] lg:h-[44px] h-[46px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
                     className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
@@ -657,7 +653,7 @@ const OfferFilter = ({
                 </p>
               </div>
 
-              <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px]">
+              <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] lg:h-[44px] h-[46px] gap-[20px] rounded-[10px]">
                 <input
                   className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                   placeholder="00.00"
@@ -682,7 +678,7 @@ const OfferFilter = ({
               <div className="flex flex-col gap-[10px]">
                 <div
                   onClick={() => setShowWalletType((prev) => !prev)}
-                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] lg:h-[44px] h-[46px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
                     className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
@@ -725,9 +721,7 @@ const OfferFilter = ({
                               onClick={() => handleSeletedWallet(wallet)}
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="text-[14px] ">
-                                {wallet}
-                              </p>
+                              <p className="text-[14px] ">{wallet}</p>
                             </div>
                           ))}
                       </div>
@@ -741,9 +735,7 @@ const OfferFilter = ({
                               onClick={() => handleSeletedWallet(wallet)}
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="text-[14px] ">
-                                {wallet}
-                              </p>
+                              <p className="text-[14px] ">{wallet}</p>
                             </div>
                           ))}
                       </div>
@@ -762,7 +754,7 @@ const OfferFilter = ({
               <div className="flex flex-col gap-[10px]">
                 <div
                   onClick={() => setShowCurrencyOptions((prev) => !prev)}
-                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] lg:h-[44px] h-[46px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
                     className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
@@ -862,7 +854,7 @@ const OfferFilter = ({
                 </p>
               </div>
 
-              <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px]">
+              <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] lg:h-[44px] h-[46px] gap-[20px] rounded-[10px]">
                 <input
                   className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite"
                   placeholder="00.00"
@@ -887,7 +879,7 @@ const OfferFilter = ({
               <div className="flex flex-col gap-[10px]">
                 <div
                   onClick={() => setShowGiftCardType((prev) => !prev)}
-                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] lg:h-[44px] h-[46px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
                     className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
@@ -930,9 +922,7 @@ const OfferFilter = ({
                               onClick={() => handleSeletedGiftCard(giftCard)}
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="text-[14px] ">
-                                {giftCard}
-                              </p>
+                              <p className="text-[14px] ">{giftCard}</p>
                             </div>
                           ))}
                       </div>
@@ -946,9 +936,7 @@ const OfferFilter = ({
                               onClick={() => handleSeletedGiftCard(giftCard)}
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="text-[14px] ">
-                                {giftCard}
-                              </p>
+                              <p className="text-[14px] ">{giftCard}</p>
                             </div>
                           ))}
                       </div>
@@ -967,7 +955,7 @@ const OfferFilter = ({
               <div className="flex flex-col gap-[10px]">
                 <div
                   onClick={() => setShowCurrencyOptions((prev) => !prev)}
-                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] lg:h-[44px] h-[46px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
                     className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
@@ -1067,7 +1055,7 @@ const OfferFilter = ({
                 </p>
               </div>
 
-              <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px]">
+              <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] lg:h-[44px] h-[46px] gap-[20px] rounded-[10px]">
                 <input
                   className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite"
                   placeholder="00.00"
@@ -1092,7 +1080,7 @@ const OfferFilter = ({
               <div className="flex flex-col gap-[10px]">
                 <div
                   onClick={() => setShowDebitCreditCardType((prev) => !prev)}
-                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] lg:h-[44px] h-[46px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
                     className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
@@ -1178,7 +1166,7 @@ const OfferFilter = ({
               <div className="flex flex-col gap-[10px]">
                 <div
                   onClick={() => setShowCurrencyOptions((prev) => !prev)}
-                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
+                  className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] lg:h-[44px] h-[46px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
                     className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
@@ -1278,7 +1266,7 @@ const OfferFilter = ({
                 </p>
               </div>
 
-              <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px]">
+              <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] lg:h-[44px] h-[46px] gap-[20px] rounded-[10px]">
                 <input
                   className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite"
                   placeholder="00.00"
