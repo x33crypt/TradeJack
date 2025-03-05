@@ -133,30 +133,30 @@ const MarketMain = ({
               </p>
             </div>
           </div>
+        </div>
 
-          <div
-            className={` ${
-              isOfferFilter ? "flex" : "hidden"
-            } fixed top-[65px] left-0 right-0 lg:hidden h-full overflow-auto bg-tradeAsh`}
-          >
-            <OfferFilter
-              serviceType={serviceType}
-              setServiceType={setServiceType}
-              accountType={accountType}
-              setAccountType={setAccountType}
-              walletType={walletType}
-              setWaletType={setWaletType}
-              giftCardType={giftCardType}
-              setGiftCardType={setGiftCardType}
-              debitCreditCardType={debitCreditCardType}
-              setDebitCreditCardType={setDebitCreditCardType}
-              amount={amount}
-              setAmount={setAmount}
-              selectedCurrency={selectedCurrency}
-              setSelectedCurrency={setSelectedCurrency}
-              handleFindOffer={handleFindOffer}
-            />
-          </div>
+        <div
+          className={` ${
+            isOfferFilter ? "flex" : "hidden"
+          } z-10 fixed top-[65px] left-0 right-0 lg:hidden h-full overflow-auto bg-tradeAsh`}
+        >
+          <OfferFilter
+            serviceType={serviceType}
+            setServiceType={setServiceType}
+            accountType={accountType}
+            setAccountType={setAccountType}
+            walletType={walletType}
+            setWaletType={setWaletType}
+            giftCardType={giftCardType}
+            setGiftCardType={setGiftCardType}
+            debitCreditCardType={debitCreditCardType}
+            setDebitCreditCardType={setDebitCreditCardType}
+            amount={amount}
+            setAmount={setAmount}
+            selectedCurrency={selectedCurrency}
+            setSelectedCurrency={setSelectedCurrency}
+            handleFindOffer={handleFindOffer}
+          />
         </div>
 
         <div className="flex flex-col gap-[20px]">

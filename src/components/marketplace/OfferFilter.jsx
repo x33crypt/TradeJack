@@ -428,7 +428,7 @@ const OfferFilter = ({
 
   return (
     <div className="bg-tradeAsh lg:sticky  w-full lg:h-[495px] h-full lg:top-[80px] flex flex-col md:rounded-[12px] md:border border-neutral-800 ">
-      <div className="flex justify-between items-center lg:p-[20px] lg:py-[20px] py-[16px] px-[20px] md:p-[20px]   border-b border-neutral-800 ">
+      <div className="flex justify-between items-center lg:p-[20px] lg:py-[20px] py-[16px] px-[20px] md:p-[20px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700] cursor-pointer">
           Filter Offer
         </p>
@@ -437,7 +437,7 @@ const OfferFilter = ({
           Clear All Filter
         </p>
       </div>
-      <div className="flex flex-col justify-between h-full overflow-auto custom-scrollbar text">
+      <div className="flex flex-col justify-between h-full lg:overflow-auto custom-scrollbar text">
         <div className="flex flex-col">
           <div className="flex flex-col gap-[20px] lg:p-[20px] px-[20px] py-[20px] border-b border-tradeAshLight">
             <div>
