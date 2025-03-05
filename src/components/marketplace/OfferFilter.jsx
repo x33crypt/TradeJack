@@ -21,8 +21,6 @@ const OfferFilter = ({
   setAmount,
   selectedCurrency,
   setSelectedCurrency,
-  setVerifiedOffer,
-  setActiveTraders,
   handleFindOffer,
 }) => {
   const [showServiceType, setShowServiceType] = useState(false);
@@ -41,14 +39,6 @@ const OfferFilter = ({
   const [currencies, setCurrencies] = useState([]);
   const [currrencySearchInput, setCurrrencySearchInput] = useState("");
   const [showCurrencyOptions, setShowCurrencyOptions] = useState(false);
-
-  const handleVerifiedOffersChange = (event) => {
-    setVerifiedOffer(event.target.checked);
-  };
-
-  const handleActiveTraderChange = (event) => {
-    setActiveTraders(event.target.checked);
-  };
 
   const services = [
     "Default",
@@ -437,8 +427,8 @@ const OfferFilter = ({
   // console.log(selectedCurrency);
 
   return (
-    <div className="bg-tradeAsh lg:sticky w-full lg:h-[495px] top-[80px] flex flex-col rounded-[12px] border border-neutral-800 bg-tradeAs">
-      <div className="flex justify-between items-center p-[20px] border-b border-neutral-800 ">
+    <div className="bg-tradeAsh lg:sticky w-full lg:h-[495px] h-full lg:top-[80px] flex flex-col md:rounded-[12px] md:border border-neutral-800 ">
+      <div className="flex justify-between items-center lg:p-[20px] py-[20px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700] cursor-pointer">
           Filter Offer
         </p>
@@ -449,7 +439,7 @@ const OfferFilter = ({
       </div>
       <div className="flex flex-col justify-between h-full lg:overflow-y-auto custom-scrollbar text">
         <div className="flex flex-col">
-          <div className="flex flex-col gap-[20px] p-[20px] border-b border-tradeAshLight">
+          <div className="flex flex-col gap-[20px] lg:p-[20px] py-[20px] border-b border-tradeAshLight">
             <div>
               <p className="text-white text-[16px] font-[700]">Service type</p>
             </div>
@@ -476,7 +466,7 @@ const OfferFilter = ({
           <div
             className={`${
               showAccount ? "flex" : "hidden"
-            } flex-col p-[20px] gap-[30px] border-b border-tradeAshLight`}
+            } flex-col lg:p-[20px] py-[20px] gap-[30px] border-b border-tradeAshLight`}
           >
             <div className="flex flex-col gap-[20px]">
               <div>
@@ -677,7 +667,7 @@ const OfferFilter = ({
           <div
             className={`${
               showWallet ? "flex" : "hidden"
-            } flex-col p-[20px] gap-[30px] border-b border-tradeAshLight`}
+            } flex-col lg:p-[20px] py-[20px] gap-[30px] border-b border-tradeAshLight`}
           >
             <div className="flex flex-col gap-[20px]">
               <div>
@@ -878,7 +868,7 @@ const OfferFilter = ({
           <div
             className={`${
               showGiftCard ? "flex" : "hidden"
-            } flex-col p-[20px] gap-[30px] border-b border-tradeAshLight`}
+            } flex-col lg:p-[20px] py-[20px] gap-[30px] border-b border-tradeAshLight`}
           >
             <div className="flex flex-col gap-[20px]">
               <div>
@@ -1079,7 +1069,7 @@ const OfferFilter = ({
           <div
             className={`${
               showDebitCreditCard ? "flex" : "hidden"
-            } flex-col p-[20px] gap-[30px] border-b border-tradeAshLight`}
+            } flex-col lg:p-[20px] py-[20px] gap-[30px] border-b border-tradeAshLight`}
           >
             <div className="flex flex-col gap-[20px]">
               <div>
@@ -1288,7 +1278,7 @@ const OfferFilter = ({
             </div>
           </div>
         </div>
-        <div className="flex p-[20px]">
+        <div className="flex lg:p-[20px] py-[20px]">
           <div
             className="flex items-center justify-between w-full h-[43px] bg-tradeGreen p-[10px] rounded-[10px] cursor-pointer"
             onClick={() => handleFindOffer()}

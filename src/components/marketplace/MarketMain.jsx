@@ -9,13 +9,30 @@ import { FiFilter } from "react-icons/fi";
 import fakeData from "../../../public/fakeData.json";
 import { LuSettings2 } from "react-icons/lu";
 
-const MarketMain = () => {
+const MarketMain = ({
+  setServiceType,
+  serviceType,
+  accountType,
+  setAccountType,
+  walletType,
+  setWaletType,
+  giftCardType,
+  setGiftCardType,
+  debitCreditCardType,
+  setDebitCreditCardType,
+  amount,
+  setAmount,
+  selectedCurrency,
+  setSelectedCurrency,
+  handleFindOffer,
+  setIsOfferFilter,
+  isOfferFilter,
+}) => {
   const [offers, setOffers] = useState();
   const [defaultOffers, setDefaultOffers] = useState();
   const [promotedOffers, setPromotedOffers] = useState();
   const [unPromotedOffers, setUnPromotedOffers] = useState();
   const [isLoading, setIsLoading] = useState();
-  const [isOfferFilter, setIsOfferFilter] = useState(false);
 
   const baseUrl = import.meta.env.BASE_URL;
 
@@ -31,6 +48,7 @@ const MarketMain = () => {
   };
 
   console.log(offers);
+  console.log(isOfferFilter);
 
   const getPromotedOffers = async () => {
     try {
@@ -85,21 +103,57 @@ const MarketMain = () => {
         </p>
       </div>
       <div className="flex flex-col md:gap-[10px] gap-[10px] px-[20px]">
-        <div className="z-10 sticky top-[65px] md:py-[20px] py-[16px] bg-tradeAsh flex justify-between">
-          <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
-            <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
-              All
-            </p>
-            <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
-              Active
-            </p>
-            <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
-              Verified
-            </p>
+        <div className="z-10 gap-[10px] sticky top-[65px] md:py-[20px] py-[16px] bg-tradeAsh  flex flex-col ">
+          <div className="flex justify-between w-full">
+            <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
+              <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
+                All
+              </p>
+              <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
+                Active
+              </p>
+              <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
+                Verified
+              </p>
+            </div>
+            <div
+              className={`${
+                isOfferFilter
+                  ? "text-white bg-tradeAshExtraLight border-tradeAshExtraLight"
+                  : "text-neutral-500 bg-transparent border-neutral-800"
+              } flex justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border cursor-pointer duration-300 transition-all`}
+            >
+              <LuSettings2 className="text-[17px]" />
+              <p className="md:flex hidden text-[14px] font-[500]">Sort by</p>
+              <p
+                onClick={() => setIsOfferFilter((prev) => !prev)}
+                className="md:hidden flex text-[14px] font-[500]"
+              >
+                Filter
+              </p>
+            </div>
           </div>
-          <div className="flex justify-between items-center gap-[5px] px-[12px] py-[4px] bg-transparent rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
-            <LuSettings2 className="text-[17px]" />
-            <p className="flex  text-[14px] font-[500]">Sort by</p>
+
+          <div
+            className={` ${isOfferFilter ? "flex" : "hidden"} lg:hidden h-full`}
+          >
+            <OfferFilter
+              serviceType={serviceType}
+              setServiceType={setServiceType}
+              accountType={accountType}
+              setAccountType={setAccountType}
+              walletType={walletType}
+              setWaletType={setWaletType}
+              giftCardType={giftCardType}
+              setGiftCardType={setGiftCardType}
+              debitCreditCardType={debitCreditCardType}
+              setDebitCreditCardType={setDebitCreditCardType}
+              amount={amount}
+              setAmount={setAmount}
+              selectedCurrency={selectedCurrency}
+              setSelectedCurrency={setSelectedCurrency}
+              handleFindOffer={handleFindOffer}
+            />
           </div>
         </div>
 

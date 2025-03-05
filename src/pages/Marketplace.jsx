@@ -17,6 +17,7 @@ const Marketplace = () => {
   });
   const [verifiedOffer, setVerifiedOffer] = useState(false);
   const [activeTraders, setActiveTraders] = useState(false);
+  const [isOfferFilter, setIsOfferFilter] = useState(false);
 
   console.log(serviceType);
   console.log(accountType);
@@ -91,11 +92,9 @@ const Marketplace = () => {
             setAmount={setAmount}
             selectedCurrency={selectedCurrency}
             setSelectedCurrency={setSelectedCurrency}
-            verifiedOffer={verifiedOffer}
-            setVerifiedOffer={setVerifiedOffer}
-            activeTraders={activeTraders}
-            setActiveTraders={setActiveTraders}
             handleFindOffer={handleFindOffer}
+            setIsOfferFilter={setIsOfferFilter}
+            isOfferFilter={isOfferFilter}
           />
         </div>
         <div className="flex-1">
@@ -114,11 +113,9 @@ const Marketplace = () => {
             setAmount={setAmount}
             selectedCurrency={selectedCurrency}
             setSelectedCurrency={setSelectedCurrency}
-            verifiedOffer={verifiedOffer}
-            setVerifiedOffer={setVerifiedOffer}
-            activeTraders={activeTraders}
-            setActiveTraders={setActiveTraders}
             handleFindOffer={handleFindOffer}
+            setIsOfferFilter={setIsOfferFilter}
+            isOfferFilter={isOfferFilter}
           />
         </div>
       </div>
