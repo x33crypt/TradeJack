@@ -427,7 +427,7 @@ const OfferFilter = ({
   // console.log(selectedCurrency);
 
   return (
-    <div className="bg-tradeAsh lg:sticky w-full lg:h-[495px] h-full lg:top-[80px] flex flex-col md:rounded-[12px] md:border border-neutral-800 ">
+    <div className="bg-tradeAsh lg:sticky  w-full lg:h-[495px] h-full lg:top-[80px] flex flex-col md:rounded-[12px] md:border border-neutral-800 ">
       <div className="flex justify-between items-center lg:p-[20px] lg:py-[20px] py-[16px] px-[20px] md:p-[20px]   border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700] cursor-pointer">
           Filter Offer
