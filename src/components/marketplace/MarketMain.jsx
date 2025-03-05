@@ -79,7 +79,7 @@ const MarketMain = () => {
 
   return (
     <div className="flex flex-col bg-tradeAsh md:border border-neutral-800 md:rounded-[12px]">
-      <div className="flex flex-col justify-between md:p-[20px] p-[20px] border-b border-neutral-800 ">
+      <div className="flex flex-col justify-between md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700] cursor-pointer">
           Seamless Asset Trading
         </p>
@@ -104,7 +104,7 @@ const MarketMain = () => {
         </div>
 
         <div className="flex flex-col gap-[20px]">
-          <div className=" flex bg-tradeOrange px-[12px] py-[4px] rounded-[6.5px]">
+          <div className=" flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[6.5px] rounded-[5px]">
             <p className="flex-1 text-black text-[14px] font-[600] ">
               Promoted Offers
             </p>
@@ -135,7 +135,7 @@ const MarketMain = () => {
                 />
                 <div
                   className={`${
-                    index < promotedOffers.length - 1
+                    index < promotedOffers.length
                       ? "border-tradeAshLight"
                       : "border-transparent"
                   } border-b`}
@@ -145,7 +145,7 @@ const MarketMain = () => {
           </div>
         </div>
         <div className="flex flex-col gap-[20px]">
-          <div className="flex  bg-white px-[12px] py-[4px] rounded-[6.5px]">
+          <div className="flex  bg-white px-[12px] py-[4px] lg:rounded-[6.5px] rounded-[5px]">
             <p className="flex-1 text-black text-[14px] font-[600] ">
               Other Offers
             </p>
@@ -176,7 +176,7 @@ const MarketMain = () => {
                 />
                 <div
                   className={`${
-                    index < promotedOffers.length - 1
+                    index < promotedOffers.length
                       ? "border-tradeAshLight"
                       : "border-transparent"
                   } border-b`}

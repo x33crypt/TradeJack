@@ -17,6 +17,10 @@ import { MdThumbUpAlt } from "react-icons/md";
 import { MdThumbDownAlt } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
 import { RiErrorWarningLine } from "react-icons/ri";
+import { MdOutlineInfo } from "react-icons/md";
+import { FaArrowUpLong } from "react-icons/fa6";
+import { HiArrowNarrowUp } from "react-icons/hi";
+import { IoMdArrowRoundUp } from "react-icons/io";
 
 const ViewOfferSell = () => {
   const [offerDetails, setOfferDetails] = useState("");
@@ -115,13 +119,11 @@ const ViewOfferSell = () => {
 
   const getCurrencyToBTCAndUSD = () => {
     if (tradeValue) {
-      if (tradeValue < offerDetails?.miniPurchase) {
-        setExchangeError("Trade value is below the minimum allowed amount");
-        return;
-      }
-
-      if (tradeValue > offerDetails?.maxPurchase) {
-        setExchangeError("Trade value exceeds the maximum allowed amount");
+      if (
+        tradeValue < offerDetails?.miniPurchase ||
+        tradeValue > offerDetails?.maxPurchase
+      ) {
+        setExchangeError("Enter a valid amount within offer purchase limit");
         return;
       }
     }
@@ -205,7 +207,7 @@ const ViewOfferSell = () => {
 
         <div className="flex lg:flex-row flex-col w-full gap-[15.5px] lg:gap-[0.8%]">
           <div className="flex-1 flex  flex-col bg-tradeAsh md:border border-neutral-800 md:rounded-[12px]">
-            <div className="flex items-center justify-between  p-[20px] border-b border-neutral-800 ">
+            <div className="flex items-center justify-between  md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
               <p className="text-[18px] text-white font-[700] cursor-pointer">
                 Offer Details
               </p>
@@ -263,6 +265,7 @@ const ViewOfferSell = () => {
                   <p className="text-[12px] font-[400] text-tradeFadeWhite">
                     Maximum Trade Time
                   </p>
+
                   <p className="text-white text-[15.5px] font-[600]">
                     {offerDetails?.maxTradeTime} Minutes
                   </p>
@@ -279,7 +282,7 @@ const ViewOfferSell = () => {
                   <p className="text-[12px] font-[400] text-tradeFadeWhite">
                     Rate Cap
                   </p>
-                  <div className="flex gap-[50px]">
+                  <div className="flex items-center gap-[10px]">
                     <p className="flex items-baseline gap-[5px] text-[15.5px] font-[700] text-white">
                       {`${parseInt(offerDetails?.rate).toLocaleString()}  ${
                         offerDetails?.currency
@@ -287,8 +290,8 @@ const ViewOfferSell = () => {
                       <small>&#8226;</small>
                       {offeRateMargin.status && offeRateMargin.percentage ? (
                         offeRateMargin.status === "above" ? (
-                          <small className="text-[13px] text-tradeGreen font-[600]">
-                            {`${offeRateMargin.percentage}% ${offeRateMargin.status} market`}
+                          <small className="text-[13px]  text-tradeGreen font-[600]">
+                            {`${offeRateMargin.percentage}% ${offeRateMargin.status} bitcoin's market price`}
                           </small>
                         ) : (
                           <small className="text-[13px] text-red-500 font-[600]">
@@ -312,7 +315,7 @@ const ViewOfferSell = () => {
               </div>
             </div>
             <div className="flex  flex-col justify-between border-t border-neutral-800">
-              <div className="flex items-center justify-between  p-[20px] border-b border-neutral-800 ">
+              <div className="flex items-center justify-between  md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
                 <p className="text-[18px] text-white font-[600] cursor-pointer">
                   About Vendor
                 </p>
@@ -481,24 +484,24 @@ const ViewOfferSell = () => {
                       />
                     </div>
                   </div>
-                  {/* <div className="flex flex-col items-center ">
-                    {exchangeError ? (
-                      <div className="flex items-center gap-[5px]">
-                        <RiErrorWarningLine className="text-red-500  text-[17px] " />
-                        <p className="text-[12px] text-red-500">
-                          {exchangeError}
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-[5px]"></div>
-                    )}
-                  </div> */}
                 </div>
 
-                <div className="flex lg:py-[0px] py-[15.5px] flex-col">
+                <div className=" flex flex-col items-center ">
+                  {exchangeError ? (
+                    <div className="flex h-[10px] items-center gap-[5px]">
+                      <p className="text-[12px] text-red-600">
+                        {exchangeError}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="flex h-[10px] items-center gap-[5px]"></div>
+                  )}
+                </div>
+
+                <div className=" flex lg:pb-[px] py-[15.5px] flex-col">
                   <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
                     <p className="text-[14px] font-[500] text-tradeGreen">
-                      Rate
+                      Rate Breakdown
                     </p>
                     <p className="text-[14px] font-[600] text-white">
                       {`
@@ -514,14 +517,7 @@ const ViewOfferSell = () => {
                       USD of BTC
                     </p>
                   </div>
-                  <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
-                    <p className="text-[14px] font-[500] text-tradeFadeWhite">
-                      Network Fee
-                    </p>
-                    <p className="text-[14px] font-[600] text-white">
-                      0.00234324 BTC
-                    </p>
-                  </div>
+
                   <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
                     <p className="text-[14px] font-[500] text-tradeFadeWhite">
                       Your receive in (USD)
