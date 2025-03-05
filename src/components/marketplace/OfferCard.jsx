@@ -191,6 +191,11 @@ const OfferCard = (props) => {
               <IoMdThumbsUp className="text-[13px] lg:text-[14px] text-tradeGreen" />{" "}
               {`${parseInt(props.positiveFeedback).toLocaleString()}`}
             </p>
+            <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
+              {" "}
+              <FaRegStar className="text-[13px] lg:text-[14px] text-tradeOrange" />{" "}
+              {props.trustScore}%
+            </p>
           </div>
           <div className="flex w-[140px] justify-between">
             <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
