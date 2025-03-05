@@ -452,7 +452,7 @@ const OfferFilter = ({
                 <div
                   key={index}
                   onClick={() => handleServiceTypeChange(service)}
-                  className={`lg:px-[12px] px-[14px] lg:py-[5px] py-[6px] lg:text-[14px] text-[14.5]  hover:text-black font-[500] rounded-[6.5px] bg-tradeAsh hover:bg-tradeGreen border border-tradeAshLight hover:border-tradeGreen cursor-pointer duration-300 transition-all  ${
+                  className={`lg:px-[12px] px-[14px] lg:py-[5px] py-[6px] text-[14px]   hover:text-black font-[500] rounded-[6.5px] bg-tradeAsh hover:bg-tradeGreen border border-tradeAshLight hover:border-tradeGreen cursor-pointer duration-300 transition-all  ${
                     serviceType.includes(service)
                       ? "text-black bg-tradeGreen border-tradeGreen"
                       : "text-tradeFadeWhite"
@@ -480,7 +480,7 @@ const OfferFilter = ({
                   className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
-                    className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white lg:text-[14px] text-[14.5] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                     placeholder="All Currency"
                     type="text"
                     value={accountType}
@@ -498,7 +498,7 @@ const OfferFilter = ({
                   <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
                     <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
                     <input
-                      className="outline-none -none  lg:h-[30px] h-[35px] text-white lg:text-[14px] text-[14.5] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      className="outline-none -none  lg:h-[30px] h-[35px] text-white text-[14px]  placeholder:text-tradeFadeWhite w-full bg-transparent"
                       type="text"
                       placeholder="Search account"
                       value={accountSearchInput}
@@ -520,7 +520,7 @@ const OfferFilter = ({
                               onClick={() => handleSeletedAccount(bank)}
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="lg:text-[14px] text-[14.5]">
+                              <p className="text-[14px] ">
                                 {bank}
                               </p>
                             </div>
@@ -536,7 +536,7 @@ const OfferFilter = ({
                               onClick={() => handleSeletedAccount(bank)}
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="lg:text-[14px] text-[14.5]">
+                              <p className="text-[14px] ">
                                 {bank}
                               </p>
                             </div>
@@ -560,7 +560,7 @@ const OfferFilter = ({
                   className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
-                    className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white lg:text-[14px] text-[14.5] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                     placeholder="Select"
                     type="text"
                     readOnly
@@ -569,7 +569,7 @@ const OfferFilter = ({
                   <div className="border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
                     <div>
                       <input
-                        className="w-[43px] lg:text-[14px] text-[14.5] text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
+                        className="w-[43px] text-[14px]  text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
                         type="text"
                         value={selectedCurrency?.code}
                         readOnly
@@ -587,7 +587,7 @@ const OfferFilter = ({
                   <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
                     <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
                     <input
-                      className="outline-none -none lg:h-[30px] h-[35px] text-white lg:text-[14px] text-[14.5] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      className="outline-none -none lg:h-[30px] h-[35px] text-white text-[14px]  placeholder:text-tradeFadeWhite w-full bg-transparent"
                       type="text"
                       placeholder="Search your currency"
                       value={currrencySearchInput}
@@ -615,10 +615,10 @@ const OfferFilter = ({
                                 }
                                 key={code}
                               >
-                                <p className=" lg:text-[14px] text-[14.5] cursor-pointer ">
+                                <p className=" text-[14px]  cursor-pointer ">
                                   {name}
                                 </p>
-                                <p className=" lg:text-[14px] text-[14.5] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
                                   {code}
                                 </p>
                               </div>
@@ -635,10 +635,10 @@ const OfferFilter = ({
                               onClick={() => handleSelectedCurrency(code, name)}
                               key={code}
                             >
-                              <p className=" lg:text-[14px] text-[14.5] cursor-pointer ">
+                              <p className=" text-[14px]  cursor-pointer ">
                                 {name}
                               </p>
-                              <p className=" lg:text-[14px] text-[14.5] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                              <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
                                 {code}
                               </p>
                             </div>
@@ -659,7 +659,7 @@ const OfferFilter = ({
 
               <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px]">
                 <input
-                  className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white lg:text-[14px] text-[14.5] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                  className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                   placeholder="00.00"
                   type="text"
                   value={amount ? Number(amount).toLocaleString() : ""}
@@ -685,7 +685,7 @@ const OfferFilter = ({
                   className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
-                    className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white lg:text-[14px] text-[14.5] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                     placeholder=" Select"
                     type="text"
                     value={walletType}
@@ -703,7 +703,7 @@ const OfferFilter = ({
                   <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
                     <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
                     <input
-                      className="outline-none -none  lg:h-[30px] h-[35px] text-white lg:text-[14px] text-[14.5] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      className="outline-none -none  lg:h-[30px] h-[35px] text-white text-[14px]  placeholder:text-tradeFadeWhite w-full bg-transparent"
                       type="text"
                       placeholder="Search wallet"
                       value={walletSearchInput}
@@ -725,7 +725,7 @@ const OfferFilter = ({
                               onClick={() => handleSeletedWallet(wallet)}
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="lg:text-[14px] text-[14.5]">
+                              <p className="text-[14px] ">
                                 {wallet}
                               </p>
                             </div>
@@ -741,7 +741,7 @@ const OfferFilter = ({
                               onClick={() => handleSeletedWallet(wallet)}
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="lg:text-[14px] text-[14.5]">
+                              <p className="text-[14px] ">
                                 {wallet}
                               </p>
                             </div>
@@ -765,7 +765,7 @@ const OfferFilter = ({
                   className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
-                    className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white lg:text-[14px] text-[14.5] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                     placeholder="Select"
                     type="text"
                     readOnly
@@ -774,7 +774,7 @@ const OfferFilter = ({
                   <div className="border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
                     <div>
                       <input
-                        className="w-[43px] lg:text-[14px] text-[14.5] text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
+                        className="w-[43px] text-[14px]  text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
                         type="text"
                         value={selectedCurrency?.code}
                         readOnly
@@ -792,7 +792,7 @@ const OfferFilter = ({
                   <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
                     <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
                     <input
-                      className="outline-none -none lg:h-[30px] h-[35px] text-white lg:text-[14px] text-[14.5] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      className="outline-none -none lg:h-[30px] h-[35px] text-white text-[14px]  placeholder:text-tradeFadeWhite w-full bg-transparent"
                       type="text"
                       placeholder="Search your currency"
                       value={currrencySearchInput}
@@ -820,10 +820,10 @@ const OfferFilter = ({
                                 }
                                 key={code}
                               >
-                                <p className=" lg:text-[14px] text-[14.5] cursor-pointer ">
+                                <p className=" text-[14px]  cursor-pointer ">
                                   {name}
                                 </p>
-                                <p className=" lg:text-[14px] text-[14.5] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
                                   {code}
                                 </p>
                               </div>
@@ -840,10 +840,10 @@ const OfferFilter = ({
                               onClick={() => handleSelectedCurrency(code, name)}
                               key={code}
                             >
-                              <p className=" lg:text-[14px] text-[14.5] cursor-pointer ">
+                              <p className=" text-[14px]  cursor-pointer ">
                                 {name}
                               </p>
-                              <p className=" lg:text-[14px] text-[14.5] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                              <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
                                 {code}
                               </p>
                             </div>
@@ -864,7 +864,7 @@ const OfferFilter = ({
 
               <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px]">
                 <input
-                  className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white lg:text-[14px] text-[14.5] font-[500] placeholder:text-tradeFadeWhite"
+                  className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite"
                   placeholder="00.00"
                   type="text"
                   value={amount ? Number(amount).toLocaleString() : ""}
@@ -890,7 +890,7 @@ const OfferFilter = ({
                   className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
-                    className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white lg:text-[14px] text-[14.5] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                     placeholder="Select"
                     type="text"
                     value={giftCardType}
@@ -908,7 +908,7 @@ const OfferFilter = ({
                   <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
                     <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
                     <input
-                      className="outline-none -none  lg:h-[30px] h-[35px] text-white lg:text-[14px] text-[14.5] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      className="outline-none -none  lg:h-[30px] h-[35px] text-white text-[14px]  placeholder:text-tradeFadeWhite w-full bg-transparent"
                       type="text"
                       placeholder="Search gift card"
                       value={giftCardSearchInput}
@@ -930,7 +930,7 @@ const OfferFilter = ({
                               onClick={() => handleSeletedGiftCard(giftCard)}
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="lg:text-[14px] text-[14.5]">
+                              <p className="text-[14px] ">
                                 {giftCard}
                               </p>
                             </div>
@@ -946,7 +946,7 @@ const OfferFilter = ({
                               onClick={() => handleSeletedGiftCard(giftCard)}
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="lg:text-[14px] text-[14.5]">
+                              <p className="text-[14px] ">
                                 {giftCard}
                               </p>
                             </div>
@@ -970,7 +970,7 @@ const OfferFilter = ({
                   className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
-                    className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white lg:text-[14px] text-[14.5] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                     placeholder="Select"
                     type="text"
                     readOnly
@@ -979,7 +979,7 @@ const OfferFilter = ({
                   <div className="border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
                     <div>
                       <input
-                        className="w-[43px] lg:text-[14px] text-[14.5] text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
+                        className="w-[43px] text-[14px]  text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
                         type="text"
                         value={selectedCurrency?.code}
                         readOnly
@@ -997,7 +997,7 @@ const OfferFilter = ({
                   <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
                     <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
                     <input
-                      className="outline-none -none lg:h-[30px] h-[35px] text-white lg:text-[14px] text-[14.5] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      className="outline-none -none lg:h-[30px] h-[35px] text-white text-[14px]  placeholder:text-tradeFadeWhite w-full bg-transparent"
                       type="text"
                       placeholder="Search your currency"
                       value={currrencySearchInput}
@@ -1025,10 +1025,10 @@ const OfferFilter = ({
                                 }
                                 key={code}
                               >
-                                <p className=" lg:text-[14px] text-[14.5] cursor-pointer ">
+                                <p className=" text-[14px]  cursor-pointer ">
                                   {name}
                                 </p>
-                                <p className=" lg:text-[14px] text-[14.5] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
                                   {code}
                                 </p>
                               </div>
@@ -1045,10 +1045,10 @@ const OfferFilter = ({
                               onClick={() => handleSelectedCurrency(code, name)}
                               key={code}
                             >
-                              <p className=" lg:text-[14px] text-[14.5] cursor-pointer ">
+                              <p className=" text-[14px]  cursor-pointer ">
                                 {name}
                               </p>
-                              <p className=" lg:text-[14px] text-[14.5] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                              <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
                                 {code}
                               </p>
                             </div>
@@ -1069,7 +1069,7 @@ const OfferFilter = ({
 
               <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px]">
                 <input
-                  className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white lg:text-[14px] text-[14.5] font-[500] placeholder:text-tradeFadeWhite"
+                  className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite"
                   placeholder="00.00"
                   type="text"
                   value={amount ? Number(amount).toLocaleString() : ""}
@@ -1095,7 +1095,7 @@ const OfferFilter = ({
                   className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
-                    className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white lg:text-[14px] text-[14.5] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                     placeholder="Select"
                     type="text"
                     value={debitCreditCardType}
@@ -1113,7 +1113,7 @@ const OfferFilter = ({
                   <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
                     <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
                     <input
-                      className="outline-none -none  lg:h-[30px] h-[35px] text-white lg:text-[14px] text-[14.5] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      className="outline-none -none  lg:h-[30px] h-[35px] text-white text-[14px]  placeholder:text-tradeFadeWhite w-full bg-transparent"
                       type="text"
                       placeholder="Search Credit or Debit Card"
                       value={debitCreditSearchInput}
@@ -1139,7 +1139,7 @@ const OfferFilter = ({
                               }
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="lg:text-[14px] text-[14.5]">
+                              <p className="text-[14px] ">
                                 {debitandCreditCard}
                               </p>
                             </div>
@@ -1157,7 +1157,7 @@ const OfferFilter = ({
                               }
                               className="px-[10px] py-[10px] mr-[10px]  hover:bg-tradeGreen text-white hover:text-black  border border-tradeAshLight hover:border-tradeGreen rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="lg:text-[14px] text-[14.5]">
+                              <p className="text-[14px] ">
                                 {debitandCreditCard}
                               </p>
                             </div>
@@ -1181,7 +1181,7 @@ const OfferFilter = ({
                   className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px] cursor-pointer"
                 >
                   <input
-                    className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white lg:text-[14px] text-[14.5] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                    className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                     placeholder="Select"
                     type="text"
                     readOnly
@@ -1190,7 +1190,7 @@ const OfferFilter = ({
                   <div className="border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
                     <div>
                       <input
-                        className="w-[43px] lg:text-[14px] text-[14.5] text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
+                        className="w-[43px] text-[14px]  text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
                         type="text"
                         value={selectedCurrency?.code}
                         readOnly
@@ -1208,7 +1208,7 @@ const OfferFilter = ({
                   <div className="flex h-[43px] rounded-[10px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
                     <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
                     <input
-                      className="outline-none -none lg:h-[30px] h-[35px] text-white lg:text-[14px] text-[14.5] placeholder:text-tradeFadeWhite w-full bg-transparent"
+                      className="outline-none -none lg:h-[30px] h-[35px] text-white text-[14px]  placeholder:text-tradeFadeWhite w-full bg-transparent"
                       type="text"
                       placeholder="Search your currency"
                       value={currrencySearchInput}
@@ -1236,10 +1236,10 @@ const OfferFilter = ({
                                 }
                                 key={code}
                               >
-                                <p className=" lg:text-[14px] text-[14.5] cursor-pointer ">
+                                <p className=" text-[14px]  cursor-pointer ">
                                   {name}
                                 </p>
-                                <p className=" lg:text-[14px] text-[14.5] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
                                   {code}
                                 </p>
                               </div>
@@ -1256,10 +1256,10 @@ const OfferFilter = ({
                               onClick={() => handleSelectedCurrency(code, name)}
                               key={code}
                             >
-                              <p className=" lg:text-[14px] text-[14.5] cursor-pointer ">
+                              <p className=" text-[14px]  cursor-pointer ">
                                 {name}
                               </p>
-                              <p className=" lg:text-[14px] text-[14.5] cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                              <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
                                 {code}
                               </p>
                             </div>
@@ -1280,7 +1280,7 @@ const OfferFilter = ({
 
               <div className="flex bg-tradeAsh border border-tradeAshLight items-center pl-[10px] pr-[7px] h-[44px] gap-[20px] rounded-[10px]">
                 <input
-                  className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white lg:text-[14px] text-[14.5] font-[500] placeholder:text-tradeFadeWhite"
+                  className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite"
                   placeholder="00.00"
                   type="text"
                   value={amount ? Number(amount).toLocaleString() : ""}
