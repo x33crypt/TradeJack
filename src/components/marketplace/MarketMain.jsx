@@ -84,7 +84,7 @@ const MarketMain = () => {
           Seamless Asset Trading
         </p>
       </div>
-      <div className="flex flex-col md:gap-[10px] gap-[0px] px-[20px]">
+      <div className="flex flex-col md:gap-[10px] gap-[10px] px-[20px]">
         <div className="z-10 sticky top-[65px] md:py-[20px] py-[16px] bg-tradeAsh flex justify-between">
           <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
             <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
