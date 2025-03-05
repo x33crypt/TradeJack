@@ -40,7 +40,7 @@
       "miniPurchase": 50,
       "maxPurchase": 500,
       "currency": "GBP",
-      "rate": 99900,
+      "rate": 74914,
       "maxTradeTime": 45,
       "avgTradeTime": 15,
       "offerTerms": [
@@ -64,12 +64,36 @@
       "miniPurchase": 200,
       "maxPurchase": 2000,
       "currency": "USD",
-      "rate": 923456,
+      "rate": 95764,
       "maxTradeTime": 90,
       "avgTradeTime": 30,
       "offerTerms": [
         "Transfers take between 515",
         "Only verified accounts are accepted."
+      ]
+    },
+    {
+      "username": "0xSanityy",
+      "location": "Nigeria",
+      "profileImage": "https://randomuser.me/api/portraits/men/1.jpg",
+      "lastSeen": "online",
+      "trustScore": "75",
+      "positiveFeedback": 209,
+      "negativeFeedback": 3,
+      "offerId": "1000000011",
+      "isPromoted": false,
+      "isVerified": true,
+      "service": "Cash App",
+      "serviceType": "Online Wallet Transfer",
+      "miniPurchase": 100,
+      "maxPurchase": 2000,
+      "currency": "USD",
+      "rate": 107003,
+      "maxTradeTime": 60,
+      "avgTradeTime": 15,
+      "offerTerms": [
+        "Confirm the exchange rate before proceeding.",
+        "Make sure to provide accurate details for quick processing."
       ]
     },
     {
@@ -88,7 +112,7 @@
       "miniPurchase": 25,
       "maxPurchase": 300,
       "currency": "CAD",
-      "rate": 700120,
+      "rate": 157145,
       "maxTradeTime": 40,
       "avgTradeTime": 10,
       "offerTerms": [
@@ -112,7 +136,7 @@
       "miniPurchase": 100,
       "maxPurchase": 1200,
       "currency": "EUR",
-      "rate": 79554,
+      "rate": 93325,
       "maxTradeTime": 50,
       "avgTradeTime": 20,
       "offerTerms": [
@@ -136,7 +160,7 @@
       "miniPurchase": 300,
       "maxPurchase": 2500,
       "currency": "EUR",
-      "rate": 920456,
+      "rate": 94321,
       "maxTradeTime": 80,
       "avgTradeTime": 35,
       "offerTerms": [
@@ -160,7 +184,7 @@
       "miniPurchase": 50,
       "maxPurchase": 750,
       "currency": "INR",
-      "rate": 650980,
+      "rate": 7952557,
       "maxTradeTime": 30,
       "avgTradeTime": 10,
       "offerTerms": [
@@ -208,7 +232,7 @@
       "miniPurchase": 100,
       "maxPurchase": 1500,
       "currency": "ZAR",
-      "rate": 740123,
+      "rate": 1897055,
       "maxTradeTime": 55,
       "avgTradeTime": 25,
       "offerTerms": [
@@ -232,7 +256,7 @@
       "miniPurchase": 150,
       "maxPurchase": 2000,
       "currency": "MXN",
-      "rate": 880567,
+      "rate": 2030333,
       "maxTradeTime": 70,
       "avgTradeTime": 30,
       "offerTerms": [

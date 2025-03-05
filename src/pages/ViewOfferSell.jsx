@@ -277,7 +277,7 @@ const ViewOfferSell = () => {
                 </div>
                 <div className="flex flex-col gap-[5px]">
                   <p className="text-[12px] font-[400] text-tradeFadeWhite">
-                    Price Cap
+                    Rate Cap
                   </p>
                   <div className="flex gap-[50px]">
                     <p className="flex items-baseline gap-[5px] text-[15.5px] font-[700] text-white">
