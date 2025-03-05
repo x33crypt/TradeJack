@@ -420,7 +420,7 @@ const ViewOfferSell = () => {
                   <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px] rounded-[15.5px]">
                     <div className="flex justify-between items-center">
                       <p className="text-tradeFadeWhite text-[13px]">Send</p>
-                      <div className="flex items-center gap-[10px]">
+                      <div className="flex items-center gap-[5px]">
                         <p className="text-tradeFadeWhite text-[13px] flex gap-[5px]">
                           Min
                           <small className="text-white text-[13px] font-[600]">
@@ -458,12 +458,8 @@ const ViewOfferSell = () => {
                     </div>
                   </div>
                   <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px] rounded-[15.5px]">
-                    <div className="flex justify-between">
+                    <div className="flex">
                       <p className="text-tradeFadeWhite text-[13px]">Receive</p>
-
-                      <p className="text-tradeGreen text-[13px] font-[600]">
-                        Fee Applied
-                      </p>
                     </div>
                     <div className="flex justify-between items-center">
                       <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[600] bg-white">
@@ -501,7 +497,7 @@ const ViewOfferSell = () => {
                 <div className=" flex lg:pb-[px] py-[15.5px] flex-col">
                   <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
                     <p className="text-[14px] font-[500] text-tradeGreen">
-                      Rate Breakdown
+                      Rate breakdown
                     </p>
                     <p className="text-[14px] font-[600] text-white">
                       {`
