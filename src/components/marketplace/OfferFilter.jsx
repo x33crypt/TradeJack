@@ -437,7 +437,7 @@ const OfferFilter = ({
           Clear All Filter
         </p>
       </div>
-      <div className="flex flex-col justify-between lg:overflow-auto custom-scrollbar text">
+      <div className="flex flex-col h-full justify-between lg:overflow-auto custom-scrollbar text">
         <div className="flex flex-col">
           <div className="flex flex-col gap-[20px] lg:p-[20px] px-[20px] py-[20px] border-b border-tradeAshLight">
             <div>
