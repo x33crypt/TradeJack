@@ -445,7 +445,7 @@ const ViewOfferSell = () => {
                         {offerDetails?.currency}
                       </p>
                       <input
-                        className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[20px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[20px] caret-tradeGreen"
+                        className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[19px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[18px] caret-tradeGreen"
                         type="text"
                         placeholder="Enter Amount"
                         value={
@@ -470,7 +470,7 @@ const ViewOfferSell = () => {
                         BTC
                       </p>
                       <input
-                        className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[20px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[20px] cursor-default"
+                        className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[19px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[18px] cursor-default"
                         type="text"
                         value={
                           isNaN(currencyRate?.btcValue) ||
@@ -488,8 +488,8 @@ const ViewOfferSell = () => {
 
                 <div className=" flex flex-col items-center ">
                   {exchangeError ? (
-                    <div className="flex h-[10px] items-center gap-[5px]">
-                      <p className="text-[12px] text-red-600">
+                    <div className="flex md:h-[10px] h-[25px] w-full justify-center items-center gap-[5px]">
+                      <p className="text-[12px] font-[600] text-red-600">
                         {exchangeError}
                       </p>
                     </div>
@@ -539,8 +539,8 @@ const ViewOfferSell = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-center lg:py-[20px]  py-[5px] px-[15.5px]">
-          <p className="text-[15.5px] text-center text-black  font-[700]  bg-tradeGreen p-[10px] rounded-[10px] md:w-[25%] w-[100%] cursor-pointer">
+        <div className="flex items-center justify-center lg:py-[18px]  py-[5px] px-[15.5px]">
+          <p className="text-[15.5px] text-center text-black  font-[700]  bg-tradeGreen p-[10px] rounded-[8px] md:rounded-[6px] md:w-[25%] w-[100%] cursor-pointer">
             Initiate Trade Now
           </p>
         </div>
