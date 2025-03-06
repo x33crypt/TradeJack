@@ -66,7 +66,7 @@ const MarketTopNav = () => {
 
   return (
     <>
-      <div className="z-50 fixed right-0 left-0 bg-black md:p-[1.5%] p-[15px] h-[67px] md:h-[70px] flex justify-between items-center border-b border-neutral-800 ">
+      <div className="z-30 fixed right-0 left-0 bg-black md:p-[1.5%] p-[15px] h-[67px] md:h-[70px] flex justify-between items-center border-b border-neutral-800 ">
         <div className="flex items-center lg:gap-[30px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
