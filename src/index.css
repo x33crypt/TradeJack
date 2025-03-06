@@ -76,7 +76,7 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #464646; /* Default color */
+  background-color: #121212; /* Default color */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
