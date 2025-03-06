@@ -28,6 +28,8 @@ const MarketMain = ({
   setIsOfferFilter,
   isOfferFilter,
   isFilterLoading,
+  setIsPriceSort,
+  setIsTimeSort,
 }) => {
   const [offers, setOffers] = useState();
   const [defaultOffers, setDefaultOffers] = useState();
@@ -139,7 +141,7 @@ const MarketMain = ({
         <div
           className={` ${
             isOfferFilter ? "flex" : "hidden"
-          } z-50 fixed top-0 left-0 right-0 bottom-0 py-[20%] px-[10px] lg:hidden h-full overflow-auto bg-white/20 backdrop-blur-[2px]
+          } z-50 fixed top-0 left-0 right-0 bottom-0 py-[22%] px-[10px] lg:hidden h-full overflow-auto bg-white/20 backdrop-blur-[2px]
  `}
         >
           <OfferFilter
@@ -159,6 +161,8 @@ const MarketMain = ({
             setSelectedCurrency={setSelectedCurrency}
             handleFilterOffer={handleFilterOffer}
             isFilterLoading={isFilterLoading}
+            setIsPriceSort={setIsPriceSort}
+            setIsTimeSort={setIsTimeSort}
           />
         </div>
 

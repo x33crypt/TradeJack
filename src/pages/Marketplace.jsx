@@ -15,8 +15,8 @@ const Marketplace = () => {
     name: "",
     code: "",
   });
-  const [verifiedOffer, setVerifiedOffer] = useState(false);
-  const [activeTraders, setActiveTraders] = useState(false);
+  const [isPriceSort, setIsPriceSort] = useState("");
+  const [isTimeSort, setIsTimeSort] = useState("");
   const [isOfferFilter, setIsOfferFilter] = useState(false);
   const [isFilterLoading, setIsFilterLoading] = useState(false);
 
@@ -27,8 +27,8 @@ const Marketplace = () => {
   console.log(debitCreditCardType);
   console.log(amount);
   console.log(selectedCurrency);
-  console.log("Active Traders:", activeTraders);
-  console.log("Verified Offers:", verifiedOffer);
+  console.log("Price Sort:", isPriceSort);
+  console.log("Time Sort:", isTimeSort);
 
   const getSelectedAccountType = () => {
     switch (serviceType) {
@@ -104,6 +104,8 @@ const Marketplace = () => {
             setIsOfferFilter={setIsOfferFilter}
             isOfferFilter={isOfferFilter}
             isFilterLoading={isFilterLoading}
+            setIsPriceSort={setIsPriceSort}
+            setIsTimeSort={setIsTimeSort}
           />
         </div>
         <div className="flex-1 bg-black">
@@ -126,6 +128,8 @@ const Marketplace = () => {
             setIsOfferFilter={setIsOfferFilter}
             isOfferFilter={isOfferFilter}
             isFilterLoading={isFilterLoading}
+            setIsPriceSort={setIsPriceSort}
+            setIsTimeSort={setIsTimeSort}
           />
         </div>
       </div>
