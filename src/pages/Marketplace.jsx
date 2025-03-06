@@ -101,6 +101,11 @@ const Marketplace = () => {
       const response = await axios.get(`/fakeData.json`);
       let filteredOffers = response.data.offers;
 
+      if (serviceType === "Default") {
+        setOffers(filteredOffers);
+        return;
+      }
+
       // Apply filters individually
       if (serviceType) {
         filteredOffers = filteredOffers.filter(
