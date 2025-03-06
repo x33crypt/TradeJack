@@ -65,10 +65,8 @@ const Marketplace = () => {
   }, []);
 
   useEffect(() => {
-    if (offers?.length > 0) {
-      getPromotedOffers();
-      getUnPromotedOffers();
-    }
+    getPromotedOffers();
+    getUnPromotedOffers();
   }, [offers]);
 
   const getSelectedService = () => {
@@ -106,10 +104,9 @@ const Marketplace = () => {
         return;
       }
 
-      // Apply filters individually
       if (serviceType) {
         filteredOffers = filteredOffers.filter(
-          (offer) => offer.serviceType === serviceType
+          (offer) => offer?.serviceType === serviceType
         );
       }
 
@@ -127,13 +124,14 @@ const Marketplace = () => {
         );
       }
 
-      if (selectedCurrency) {
+      if (selectedCurrency?.code) {
         filteredOffers = filteredOffers.filter(
           (offer) => offer.currency === selectedCurrency?.code
         );
       }
 
       console.log("Filtered Offers:", filteredOffers);
+
       setOffers(filteredOffers);
     } catch (error) {
       console.error("Error fetching or filtering offers:", error);

@@ -54,21 +54,28 @@ const MarketMain = ({
                 Verified
               </p>
             </div>
-            <div
-              className={`${
-                isOfferFilter
-                  ? "text-white bg-tradeAshExtraLight border-tradeAshExtraLight"
-                  : "text-neutral-500 bg-transparent border-neutral-800"
-              } flex justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border cursor-pointer duration-300 transition-all`}
-            >
-              <LuSettings2 className="text-[17px]" />
-              <p className="md:flex hidden text-[14px] font-[500]">Sort by</p>
-              <p
-                onClick={() => setIsOfferFilter((prev) => !prev)}
-                className="md:hidden flex text-[14px] font-[500]"
+            <div>
+              <div
+                className={`${
+                  isOfferFilter
+                    ? "text-white bg-tradeAshExtraLight border-tradeAshExtraLight"
+                    : "text-neutral-500 bg-transparent border-neutral-800"
+                } md:flex hidden justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border cursor-pointer duration-300 transition-all`}
               >
-                Filter
-              </p>
+                <LuSettings2 className="text-[17px]" />
+                <p className=" text-[14px] font-[500]">Sort by</p>
+              </div>
+              <div
+                onClick={() => setIsOfferFilter((prev) => !prev)}
+                className={`${
+                  isOfferFilter
+                    ? "text-white bg-tradeAshExtraLight border-tradeAshExtraLight"
+                    : "text-neutral-500 bg-transparent border-neutral-800"
+                } md:hidden flex  justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border cursor-pointer duration-300 transition-all`}
+              >
+                <LuSettings2 className="text-[17px]" />
+                <p className="text-[14px] font-[500]">Filter</p>
+              </div>
             </div>
           </div>
         </div>
@@ -76,7 +83,7 @@ const MarketMain = ({
         <div
           className={` ${
             isOfferFilter ? "flex" : "hidden"
-          } z-50 fixed top-0 left-0 right-0 bottom-0 py-[22%] px-[10px] lg:hidden h-full overflow-auto bg-white/20 backdrop-blur-[2px]
+          } z-50 fixed top-0 left-0 right-0 bottom-0 py-[20%] px-[18px] lg:hidden h-full overflow-auto bg-white/20 backdrop-blur-[2px]
  `}
         >
           <OfferFilter
@@ -178,7 +185,7 @@ const MarketMain = ({
                     />
                     <div
                       className={`${
-                        index < promotedOffers.length
+                        index < unPromotedOffers.length - 1
                           ? "border-tradeAshLight"
                           : "border-transparent"
                       } border-b`}

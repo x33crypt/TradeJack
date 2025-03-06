@@ -1339,7 +1339,7 @@ const OfferFilter = ({
 
       <div className="flex lg:p-[20px] lg:py-[20px] py-[16px] px-[20px]">
         <div
-          className="flex items-center justify-between w-full lg:h-[43px] h-[48px] bg-tradeGreen p-[10px] rounded-[10px] cursor-pointer"
+          className="flex items-center justify-between w-full lg:h-[43px] h-[45px] bg-tradeGreen p-[10px] rounded-[10px] cursor-pointer"
           onClick={handleFilterOffer}
         >
           <p className="font-[600] lg:text-[15px] text-[15.5px]">
