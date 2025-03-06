@@ -10,6 +10,8 @@ import fakeData from "../../../public/fakeData.json";
 import { LuSettings2 } from "react-icons/lu";
 
 const MarketMain = ({
+  promotedOffers,
+  unPromotedOffers,
   setServiceType,
   serviceType,
   accountType,
@@ -31,73 +33,6 @@ const MarketMain = ({
   setIsPriceSort,
   setIsTimeSort,
 }) => {
-  const [offers, setOffers] = useState();
-  const [defaultOffers, setDefaultOffers] = useState();
-  const [promotedOffers, setPromotedOffers] = useState();
-  const [unPromotedOffers, setUnPromotedOffers] = useState();
-  const [isLoading, setIsLoading] = useState();
-
-  const baseUrl = import.meta.env.BASE_URL;
-
-  const getOffers = async () => {
-    try {
-      const response = await axios.get(`/fakeData.json`);
-      console.log(response.data); // Log the actual data from the response
-      setOffers(response.data.offers);
-      await getOfferVendorsInfo();
-    } catch (error) {
-      console.error("Error fetching the offers:", error);
-    }
-  };
-
-  console.log(offers);
-  console.log(isOfferFilter);
-
-  const getPromotedOffers = async () => {
-    try {
-      const response = await defaultOffers?.filter(
-        (offer) => offer.isPromoted === true
-      );
-      // console.log(response);
-      setPromotedOffers(response);
-    } catch (error) {
-      console.error("Error fetching promoted offers:", error);
-    }
-  };
-
-  console.log(promotedOffers);
-
-  const getUnPromotedOffers = async () => {
-    try {
-      const response = await defaultOffers?.filter(
-        (offer) => offer.isPromoted === false
-      );
-      // console.log(response);
-      setUnPromotedOffers(response);
-    } catch (error) {
-      console.error("Error fetching unpromoted offers:", error);
-    }
-  };
-
-  console.log(unPromotedOffers);
-
-  useEffect(() => {
-    getOffers();
-  }, []);
-
-  useEffect(() => {
-    if (offers?.length > 0) {
-      setDefaultOffers(offers);
-    }
-  }, [offers]);
-
-  useEffect(() => {
-    if (defaultOffers?.length > 0) {
-      getPromotedOffers();
-      getUnPromotedOffers();
-    }
-  }, [defaultOffers]);
-
   return (
     <div className="flex flex-col bg-tradeAsh md:border border-neutral-800 md:rounded-[12px]">
       <div className="flex flex-col justify-between md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">

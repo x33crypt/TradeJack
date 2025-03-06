@@ -3,8 +3,12 @@ import MarketTopNav from "@/components/MarketTopNav";
 import MarketMain from "@/components/marketplace/MarketMain";
 import Footer from "@/components/Footer";
 import OfferFilter from "@/components/marketplace/OfferFilter";
+import axios from "axios";
 
 const Marketplace = () => {
+  const [offers, setOffers] = useState();
+  const [promotedOffers, setPromotedOffers] = useState();
+  const [unPromotedOffers, setUnPromotedOffers] = useState();
   const [serviceType, setServiceType] = useState("Default");
   const [accountType, setAccountType] = useState("");
   const [walletType, setWaletType] = useState("");
@@ -20,19 +24,54 @@ const Marketplace = () => {
   const [isOfferFilter, setIsOfferFilter] = useState(false);
   const [isFilterLoading, setIsFilterLoading] = useState(false);
 
-  console.log(serviceType);
-  console.log(accountType);
-  console.log(walletType);
-  console.log(giftCardType);
-  console.log(debitCreditCardType);
-  console.log(amount);
-  console.log(selectedCurrency);
-  console.log("Offer Filter:", isOfferFilter);
-  console.log("Is Offer Filter Loading:", isFilterLoading);
-  console.log("Price Sort:", isPriceSort);
-  console.log("Time Sort:", isTimeSort);
+  const baseUrl = import.meta.env.BASE_URL;
 
-  const getSelectedAccountType = () => {
+  const getOffers = async () => {
+    try {
+      const response = await axios.get(`/fakeData.json`);
+      // console.log(response.data); // Log the actual data from the response
+      setOffers(response.data.offers);
+    } catch (error) {
+      console.error("Error fetching the offers:", error);
+    }
+  };
+
+  const getPromotedOffers = async () => {
+    try {
+      const response = await offers?.filter(
+        (offer) => offer.isPromoted === true
+      );
+      // console.log(response);
+      setPromotedOffers(response);
+    } catch (error) {
+      console.error("Error fetching promoted offers:", error);
+    }
+  };
+
+  const getUnPromotedOffers = async () => {
+    try {
+      const response = await offers?.filter(
+        (offer) => offer.isPromoted === false
+      );
+      // console.log(response);
+      setUnPromotedOffers(response);
+    } catch (error) {
+      console.error("Error fetching unpromoted offers:", error);
+    }
+  };
+
+  useEffect(() => {
+    getOffers();
+  }, []);
+
+  useEffect(() => {
+    if (offers?.length > 0) {
+      getPromotedOffers();
+      getUnPromotedOffers();
+    }
+  }, [offers]);
+
+  const getSelectedService = () => {
     switch (serviceType) {
       case "Online Wallet Transfer":
         return walletType;
@@ -47,38 +86,69 @@ const Marketplace = () => {
     }
   };
 
-  const handleFilterOffer = () => {
-    setIsFilterLoading(true); // Ensure loading state is set first
+  const handleFilterOffer = async () => {
+    setIsFilterLoading(true);
 
-    setTimeout(() => {
-      const selectedKey = () => {
-        switch (serviceType) {
-          case "Online Wallet Transfer":
-            return "wallet";
-          case "Bank Transfer":
-            return "bank";
-          case "Gift Cards Exchange":
-            return "giftCard";
-          case "Debit/Credit Cards Spending":
-            return "cardType";
-          default:
-            return "service"; // Fallback key
-        }
-      };
+    console.log(`Service Type: ${serviceType} `);
+    console.log(`Service: ${getSelectedService()} `);
+    console.log(`Amount: ${amount} `);
+    console.log(`Currency: ${selectedCurrency.code} `);
 
-      const filters = {
-        serviceType,
-        [selectedKey()]: getSelectedAccountType(), // Dynamic key assignment
-        amount,
-        selectedCurrency,
-      };
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate loading delay
 
-      console.log("Applying filters:", filters);
+      // Fetch offers
+      const response = await axios.get(`/fakeData.json`);
+      let filteredOffers = response.data.offers;
 
+      // Apply filters individually
+      if (serviceType) {
+        filteredOffers = filteredOffers.filter(
+          (offer) => offer.serviceType === serviceType
+        );
+      }
+
+      const service = getSelectedService();
+
+      if (service) {
+        filteredOffers = filteredOffers.filter(
+          (offer) => offer.service === service
+        );
+      }
+
+      if (amount) {
+        filteredOffers = filteredOffers.filter(
+          (offer) => amount >= offer.miniPurchase && amount <= offer.maxPurchase
+        );
+      }
+
+      if (selectedCurrency) {
+        filteredOffers = filteredOffers.filter(
+          (offer) => offer.currency === selectedCurrency?.code
+        );
+      }
+
+      console.log("Filtered Offers:", filteredOffers);
+      setOffers(filteredOffers);
+    } catch (error) {
+      console.error("Error fetching or filtering offers:", error);
+    } finally {
       setIsFilterLoading(false);
       setIsOfferFilter(false);
-    }, 1000); // Short delay ensures loading state updates before running logic
+    }
   };
+
+  // console.log(offers);
+  // console.log(promotedOffers);
+  // console.log(unPromotedOffers);
+  // console.log(serviceType);
+  // console.log(`selected Service: ${getSelectedService()} `);
+  // console.log(amount);
+  // console.log(selectedCurrency);
+  // console.log("Offer Filter:", isOfferFilter);
+  // console.log("Is Offer Filter Loading:", isFilterLoading);
+  // console.log("Price Sort:", isPriceSort);
+  // console.log("Time Sort:", isTimeSort);
 
   return (
     <>
@@ -110,6 +180,8 @@ const Marketplace = () => {
         </div>
         <div className="flex-1 bg-black">
           <MarketMain
+            promotedOffers={promotedOffers}
+            unPromotedOffers={unPromotedOffers}
             serviceType={serviceType}
             setServiceType={setServiceType}
             accountType={accountType}

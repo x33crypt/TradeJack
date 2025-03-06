@@ -483,7 +483,7 @@ const OfferFilter = ({
                 >
                   <input
                     className="w-full lg:h-[30px] h-[35px] -none outline-none bg-transparent text-white text-[14px]  font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
-                    placeholder="All Currency"
+                    placeholder="Select"
                     type="text"
                     value={accountType}
                     readOnly
