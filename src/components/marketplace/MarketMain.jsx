@@ -24,9 +24,10 @@ const MarketMain = ({
   setAmount,
   selectedCurrency,
   setSelectedCurrency,
-  handleFindOffer,
+  handleFilterOffer,
   setIsOfferFilter,
   isOfferFilter,
+  isFilterLoading,
 }) => {
   const [offers, setOffers] = useState();
   const [defaultOffers, setDefaultOffers] = useState();
@@ -156,7 +157,8 @@ const MarketMain = ({
             setAmount={setAmount}
             selectedCurrency={selectedCurrency}
             setSelectedCurrency={setSelectedCurrency}
-            handleFindOffer={handleFindOffer}
+            handleFilterOffer={handleFilterOffer}
+            isFilterLoading={isFilterLoading}
           />
         </div>
 

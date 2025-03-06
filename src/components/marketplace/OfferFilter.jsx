@@ -21,7 +21,8 @@ const OfferFilter = ({
   setAmount,
   selectedCurrency,
   setSelectedCurrency,
-  handleFindOffer,
+  handleFilterOffer,
+  isFilterLoading,
 }) => {
   const [showServiceType, setShowServiceType] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
@@ -44,8 +45,8 @@ const OfferFilter = ({
     "Default",
     "Online Wallet Transfer",
     "Bank Transfer",
-    "Gift Cards",
-    "Debit & Credit Cards",
+    "Gift Card Trade",
+    "Debit & Credit Card Spending",
   ];
 
   const wallets = [
@@ -364,7 +365,7 @@ const OfferFilter = ({
       setGiftCardType("");
       setShowDebitCreditCard(false);
       setDebitCreditCardType("");
-    } else if (serviceType === "Gift Cards") {
+    } else if (serviceType === "Gift Card Trade") {
       setShowGiftCard(true);
       setShowAccount(false);
       setAccountType("");
@@ -372,7 +373,7 @@ const OfferFilter = ({
       setWaletType("");
       setShowDebitCreditCard(false);
       setDebitCreditCardType("");
-    } else if (serviceType === "Debit & Credit Cards") {
+    } else if (serviceType === "Debit & Credit Card Spending") {
       setShowDebitCreditCard(true);
       setShowGiftCard(false);
       setGiftCardType("");
@@ -433,8 +434,8 @@ const OfferFilter = ({
           Filter Offer
         </p>
 
-        <p className="px-[6px] py-[2px] text-[13px] text-tradeFadeWhite hover:text-black font-[500] rounded-[6.5px] bg-tradeAshLight hover:bg-white border border-tradeAshLight hover:border-white cursor-pointer duration-300 transition-all">
-          Clear All Filter
+        <p className="px-[6px] py-[2px] text-[13px] text-red-700 hover:text-black font-[500] rounded-[6.5px] bg-black hover:bg-white border border-tradeAshLight hover:border-white cursor-pointer duration-300 transition-all">
+          Reset Filter
         </p>
       </div>
 
@@ -1256,14 +1257,20 @@ const OfferFilter = ({
           </div>
         </div>
       </div>
-      
+
       <div className="flex p-[20px]">
         <div
           className="flex items-center justify-between w-full lg:h-[43px] h-[48px] bg-tradeGreen p-[10px] rounded-[10px] cursor-pointer"
-          onClick={() => handleFindOffer()}
+          onClick={handleFilterOffer}
         >
-          <p className="font-[600] text-[15px]">Apply Filter</p>
-          <TbReload className="text-[20px]" />
+          <p className="font-[600] lg:text-[15px] text-[15.5px]">
+            Apply Filter
+          </p>
+          <TbReload
+            className={`text-[20px] transition-transform ${
+              isFilterLoading ? "animate-spin" : ""
+            }`}
+          />
         </div>
       </div>
     </div>

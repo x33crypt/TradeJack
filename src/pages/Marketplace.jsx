@@ -18,6 +18,7 @@ const Marketplace = () => {
   const [verifiedOffer, setVerifiedOffer] = useState(false);
   const [activeTraders, setActiveTraders] = useState(false);
   const [isOfferFilter, setIsOfferFilter] = useState(false);
+  const [isFilterLoading, setIsFilterLoading] = useState(false);
 
   console.log(serviceType);
   console.log(accountType);
@@ -35,41 +36,48 @@ const Marketplace = () => {
         return walletType;
       case "Bank Transfer":
         return accountType;
-      case "Gift Cards Exchange":
+      case "Gift Card Trade":
         return giftCardType;
-      case "Debit & Credit Cards Spending":
+      case "Debit & Credit Card Spending":
         return debitCreditCardType;
       default:
         return "";
     }
   };
 
-  const handleFindOffer = () => {
-    const selectedKey = () => {
-      switch (serviceType) {
-        case "Online Wallet Transfer":
-          return "wallet";
-        case "Bank Transfer":
-          return "bank";
-        case "Gift Cards Exchange":
-          return "giftCard";
-        case "Debit/Credit Cards Spending":
-          return "cardType";
-        default:
-          return "service"; // Fallback key
-      }
-    };
+  const handleFilterOffer = () => {
+    setIsFilterLoading(true); // Ensure loading state is set first
 
-    const filters = {
-      serviceType,
-      [selectedKey()]: getSelectedAccountType(), // Dynamic key assignment
-      amount,
-      selectedCurrency,
-      verifiedOffer,
-      activeTraders,
-    };
+    setTimeout(() => {
+      const selectedKey = () => {
+        switch (serviceType) {
+          case "Online Wallet Transfer":
+            return "wallet";
+          case "Bank Transfer":
+            return "bank";
+          case "Gift Cards Exchange":
+            return "giftCard";
+          case "Debit/Credit Cards Spending":
+            return "cardType";
+          default:
+            return "service"; // Fallback key
+        }
+      };
 
-    console.log("Applying filters:", filters);
+      const filters = {
+        serviceType,
+        [selectedKey()]: getSelectedAccountType(), // Dynamic key assignment
+        amount,
+        selectedCurrency,
+        verifiedOffer,
+        activeTraders,
+      };
+
+      console.log("Applying filters:", filters);
+
+      setIsFilterLoading(false);
+      setIsOfferFilter(false);
+    }, 1000); // Short delay ensures loading state updates before running logic
   };
 
   return (
@@ -92,9 +100,10 @@ const Marketplace = () => {
             setAmount={setAmount}
             selectedCurrency={selectedCurrency}
             setSelectedCurrency={setSelectedCurrency}
-            handleFindOffer={handleFindOffer}
+            handleFilterOffer={handleFilterOffer}
             setIsOfferFilter={setIsOfferFilter}
             isOfferFilter={isOfferFilter}
+            isFilterLoading={isFilterLoading}
           />
         </div>
         <div className="flex-1 bg-black">
@@ -113,9 +122,10 @@ const Marketplace = () => {
             setAmount={setAmount}
             selectedCurrency={selectedCurrency}
             setSelectedCurrency={setSelectedCurrency}
-            handleFindOffer={handleFindOffer}
+            handleFilterOffer={handleFilterOffer}
             setIsOfferFilter={setIsOfferFilter}
             isOfferFilter={isOfferFilter}
+            isFilterLoading={isFilterLoading}
           />
         </div>
       </div>
