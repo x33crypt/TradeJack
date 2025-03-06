@@ -27,6 +27,8 @@ const Marketplace = () => {
   console.log(debitCreditCardType);
   console.log(amount);
   console.log(selectedCurrency);
+  console.log("Offer Filter:", isOfferFilter);
+  console.log("Is Offer Filter Loading:", isFilterLoading);
   console.log("Price Sort:", isPriceSort);
   console.log("Time Sort:", isTimeSort);
 
@@ -69,8 +71,6 @@ const Marketplace = () => {
         [selectedKey()]: getSelectedAccountType(), // Dynamic key assignment
         amount,
         selectedCurrency,
-        verifiedOffer,
-        activeTraders,
       };
 
       console.log("Applying filters:", filters);
