@@ -437,6 +437,7 @@ const OfferFilter = ({
           Clear All Filter
         </p>
       </div>
+
       <div className="flex flex-col h-full justify-between overflow-auto custom-scrollbar text">
         <div className="flex flex-col">
           <div className="flex flex-col gap-[20px] lg:p-[20px] px-[20px] py-[20px] border-b border-tradeAshLight">
@@ -1278,14 +1279,14 @@ const OfferFilter = ({
             </div>
           </div>
         </div>
-        <div className="flex p-[20px]">
-          <div
-            className="flex items-center justify-between w-full lg:h-[43px] h-[48px] bg-tradeGreen p-[10px] rounded-[10px] cursor-pointer"
-            onClick={() => handleFindOffer()}
-          >
-            <p className="font-[600] text-[15px]">Apply Filter</p>
-            <TbReload className="text-[20px]" />
-          </div>
+      </div>
+      <div className="flex p-[20px]">
+        <div
+          className="flex items-center justify-between w-full lg:h-[43px] h-[48px] bg-tradeGreen p-[10px] rounded-[10px] cursor-pointer"
+          onClick={() => handleFindOffer()}
+        >
+          <p className="font-[600] text-[15px]">Apply Filter</p>
+          <TbReload className="text-[20px]" />
         </div>
       </div>
     </div>
