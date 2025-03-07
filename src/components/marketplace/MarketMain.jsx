@@ -32,6 +32,12 @@ const MarketMain = ({
   isFilterLoading,
   setIsPriceSort,
   setIsTimeSort,
+  isOfferSortBy,
+  setIsOfferSortBy,
+  isAllOffer,
+  setIsAllOffer,
+  isOnlineOffer,
+  setIsOnlineOffer,
 }) => {
   return (
     <div className="flex flex-col bg-tradeAsh md:border border-neutral-800 md:rounded-[12px]">
@@ -44,23 +50,48 @@ const MarketMain = ({
         <div className="z-10 gap-[10px] sticky top-[65px] md:py-[20px] py-[16px] bg-tradeAsh  flex flex-col ">
           <div className="flex justify-between w-full">
             <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
-              <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
+              <p
+                onClick={() => (
+                  setIsAllOffer((prev) => !prev), setIsOnlineOffer(false)
+                )}
+                className={` ${
+                  isAllOffer
+                    ? "text-white bg-tradeAshExtraLight border-tradeAshExtraLight"
+                    : "text-neutral-500 bg-transparent border-neutral-800"
+                } px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] border  hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
+              >
                 All
               </p>
-              <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
-                Active
+              <p
+                onClick={() => (
+                  setIsOnlineOffer((prev) => !prev), setIsAllOffer(false)
+                )}
+                className={` ${
+                  isOnlineOffer
+                    ? "text-white bg-tradeAshExtraLight border-tradeAshExtraLight"
+                    : "text-neutral-500 bg-transparent border-neutral-800"
+                } px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] border  hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
+              >
+                Online
               </p>
-              <p className="px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] text-neutral-500 hover:text-white hover:bg-tradeAshExtraLight border border-neutral-800 hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all">
-                Verified
-              </p>
-            </div>
-            <div>
-              <div
-                className={`${
+              {/* <p
+                className={` ${
                   isOfferFilter
                     ? "text-white bg-tradeAshExtraLight border-tradeAshExtraLight"
                     : "text-neutral-500 bg-transparent border-neutral-800"
-                } md:flex hidden justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border cursor-pointer duration-300 transition-all`}
+                } px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] border  hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
+              >
+                Verified
+              </p> */}
+            </div>
+            <div>
+              <div
+                onClick={() => setIsOfferSortBy((prev) => !prev)}
+                className={`${
+                  isOfferSortBy
+                    ? "text-white bg-tradeAshExtraLight border-tradeAshExtraLight"
+                    : "text-neutral-500 bg-transparent border-neutral-800"
+                } md:flex hidden justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
               >
                 <LuSettings2 className="text-[17px]" />
                 <p className=" text-[14px] font-[500]">Sort by</p>
@@ -105,6 +136,10 @@ const MarketMain = ({
             isFilterLoading={isFilterLoading}
             setIsPriceSort={setIsPriceSort}
             setIsTimeSort={setIsTimeSort}
+            isAllOffer={isAllOffer}
+            setIsAllOffer={setIsAllOffer}
+            isOnlineOffer={isOnlineOffer}
+            setIsOnlineOffer={setIsOnlineOffer}
           />
         </div>
 

@@ -22,6 +22,10 @@ const Marketplace = () => {
   const [isPriceSort, setIsPriceSort] = useState("");
   const [isTimeSort, setIsTimeSort] = useState("");
   const [isOfferFilter, setIsOfferFilter] = useState(false);
+  const [isOfferSortBy, setIsOfferSortBy] = useState(false);
+  const [isAllOffer, setIsAllOffer] = useState(true);
+  const [isOnlineOffer, setIsOnlineOffer] = useState(false);
+
   const [isFilterLoading, setIsFilterLoading] = useState(false);
 
   const baseUrl = import.meta.env.BASE_URL;
@@ -99,18 +103,20 @@ const Marketplace = () => {
       const response = await axios.get(`/fakeData.json`);
       let filteredOffers = response.data.offers;
 
-      if (serviceType === "Default") {
-        setOffers(filteredOffers);
+      // Reset to full list if 'Default' is selected and 'isAllOffer' is true
+      if (serviceType === "Default" && isAllOffer) {
+        setOffers(response.data.offers);
         return;
       }
 
-      if (serviceType) {
+      // Apply filters individually
+      if (serviceType && serviceType !== "Default") {
         filteredOffers = filteredOffers.filter(
           (offer) => offer?.serviceType === serviceType
         );
       }
 
-      const service = getSelectedService();
+      const service = await getSelectedService(); // Ensure it's awaited if async
 
       if (service) {
         filteredOffers = filteredOffers.filter(
@@ -130,6 +136,12 @@ const Marketplace = () => {
         );
       }
 
+      if (isOnlineOffer) {
+        filteredOffers = filteredOffers.filter(
+          (offer) => offer.lastSeen === "online"
+        );
+      }
+
       console.log("Filtered Offers:", filteredOffers);
 
       setOffers(filteredOffers);
@@ -141,6 +153,10 @@ const Marketplace = () => {
     }
   };
 
+  useEffect(() => {
+    handleFilterOffer();
+  }, [isAllOffer]);
+
   // console.log(offers);
   // console.log(promotedOffers);
   // console.log(unPromotedOffers);
@@ -150,8 +166,10 @@ const Marketplace = () => {
   // console.log(selectedCurrency);
   // console.log("Offer Filter:", isOfferFilter);
   // console.log("Is Offer Filter Loading:", isFilterLoading);
-  // console.log("Price Sort:", isPriceSort);
-  // console.log("Time Sort:", isTimeSort);
+  console.log("Price Sort:", isPriceSort);
+  console.log("Time Sort:", isTimeSort);
+  console.log("Display all Offer:", isAllOffer);
+  console.log("Display Online Vendor:", isOnlineOffer);
 
   return (
     <>
@@ -179,6 +197,10 @@ const Marketplace = () => {
             isFilterLoading={isFilterLoading}
             setIsPriceSort={setIsPriceSort}
             setIsTimeSort={setIsTimeSort}
+            isAllOffer={isAllOffer}
+            setIsAllOffer={setIsAllOffer}
+            isOnlineOffer={isOnlineOffer}
+            setIsOnlineOffer={setIsOnlineOffer}
           />
         </div>
         <div className="flex-1 bg-black">
@@ -205,6 +227,12 @@ const Marketplace = () => {
             isFilterLoading={isFilterLoading}
             setIsPriceSort={setIsPriceSort}
             setIsTimeSort={setIsTimeSort}
+            isOfferSortBy={isOfferSortBy}
+            setIsOfferSortBy={setIsOfferSortBy}
+            isAllOffer={isAllOffer}
+            setIsAllOffer={setIsAllOffer}
+            isOnlineOffer={isOnlineOffer}
+            setIsOnlineOffer={setIsOnlineOffer}
           />
         </div>
       </div>

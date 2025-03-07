@@ -24,6 +24,10 @@ const OfferFilter = ({
   isFilterLoading,
   setIsPriceSort,
   setIsTimeSort,
+  isAllOffer,
+  setIsAllOffer,
+  isOnlineOffer,
+  setIsOnlineOffer,
 }) => {
   const [showServiceType, setShowServiceType] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
@@ -425,8 +429,6 @@ const OfferFilter = ({
   useEffect(() => {
     getCurrencies();
   }, []);
-
-  // console.log(selectedCurrency);
 
   return (
     <div className="bg-tradeAsh lg:sticky  w-full lg:h-[495px] h-full lg:top-[80px] flex flex-col lg:rounded-[12px] rounded-[15px] md:border border-neutral-800 ">
@@ -1343,7 +1345,7 @@ const OfferFilter = ({
           onClick={handleFilterOffer}
         >
           <p className="font-[600] lg:text-[15px] text-[15.5px]">
-            Apply Filter
+            {isFilterLoading ? "Applying Filter..." : "Apply Filter"}
           </p>
           <TbReload
             className={`text-[20px] transition-transform ${
