@@ -25,8 +25,8 @@ const Marketplace = () => {
   const [isOfferSortBy, setIsOfferSortBy] = useState(false);
   const [isAllOffer, setIsAllOffer] = useState(true);
   const [isOnlineOffer, setIsOnlineOffer] = useState(false);
-
   const [isFilterLoading, setIsFilterLoading] = useState(false);
+  const [clearFilter, setClearFilter] = useState(false);
 
   const baseUrl = import.meta.env.BASE_URL;
 
@@ -64,15 +64,6 @@ const Marketplace = () => {
     }
   };
 
-  useEffect(() => {
-    getOffers();
-  }, []);
-
-  useEffect(() => {
-    getPromotedOffers();
-    getUnPromotedOffers();
-  }, [offers]);
-
   const getSelectedService = () => {
     switch (serviceType) {
       case "Online Wallet Transfer":
@@ -91,10 +82,10 @@ const Marketplace = () => {
   const handleFilterOffer = async () => {
     setIsFilterLoading(true);
 
-    console.log(`Service Type: ${serviceType} `);
-    console.log(`Service: ${getSelectedService()} `);
-    console.log(`Amount: ${amount} `);
-    console.log(`Currency: ${selectedCurrency.code} `);
+    // console.log(`Service Type: ${serviceType} `);
+    // console.log(`Service: ${getSelectedService()} `);
+    // console.log(`Amount: ${amount} `);
+    // console.log(`Currency: ${selectedCurrency.code} `);
 
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate loading delay
@@ -103,13 +94,33 @@ const Marketplace = () => {
       const response = await axios.get(`/fakeData.json`);
       let filteredOffers = response.data.offers;
 
+      if (isTimeSort === "fastToSlow") {
+        filteredOffers = [...filteredOffers].sort(
+          (a, b) => a.avgTradeTime - b.avgTradeTime
+        );
+      }
+
+      if (isTimeSort === "slowToFast") {
+        filteredOffers = [...filteredOffers].sort(
+          (a, b) => b.avgTradeTime - a.avgTradeTime
+        );
+      }
+
+      if (isPriceSort === "highToLow") {
+        filteredOffers = filteredOffers.sort((a, b) => a.price - b.price);
+      }
+
+      if (isPriceSort === "lowToHigh") {
+        filteredOffers = filteredOffers.sort((a, b) => b.price - a.price);
+      }
+
       // Reset to full list if 'Default' is selected and 'isAllOffer' is true
       if (serviceType === "Default" && isAllOffer) {
-        setOffers(response.data.offers);
+        setOffers(filteredOffers);
         return;
       }
 
-      // Apply filters individually
+      // Apply other filters
       if (serviceType && serviceType !== "Default") {
         filteredOffers = filteredOffers.filter(
           (offer) => offer?.serviceType === serviceType
@@ -142,7 +153,11 @@ const Marketplace = () => {
         );
       }
 
-      console.log("Filtered Offers:", filteredOffers);
+      if (isOnlineOffer) {
+        filteredOffers = filteredOffers.filter(
+          (offer) => offer.lastSeen === "online"
+        );
+      }
 
       setOffers(filteredOffers);
     } catch (error) {
@@ -153,9 +168,33 @@ const Marketplace = () => {
     }
   };
 
+  const handleResetFilter = () => {
+    setIsPriceSort("");
+    setIsTimeSort("");
+    setIsOnlineOffer(false);
+    setIsAllOffer(true);
+    setServiceType("Default");
+    handleFilterOffer();
+    setClearFilter(false);
+    setIsOfferFilter(false);
+  };
+
+  useEffect(() => {
+    getOffers();
+  }, []);
+
+  useEffect(() => {
+    getPromotedOffers();
+    getUnPromotedOffers();
+  }, [offers]);
+
+  useEffect(() => {
+    handleResetFilter();
+  }, [clearFilter === true]);
+
   useEffect(() => {
     handleFilterOffer();
-  }, [isAllOffer]);
+  }, [isAllOffer, isOnlineOffer]);
 
   // console.log(offers);
   // console.log(promotedOffers);
@@ -166,10 +205,10 @@ const Marketplace = () => {
   // console.log(selectedCurrency);
   // console.log("Offer Filter:", isOfferFilter);
   // console.log("Is Offer Filter Loading:", isFilterLoading);
-  console.log("Price Sort:", isPriceSort);
-  console.log("Time Sort:", isTimeSort);
-  console.log("Display all Offer:", isAllOffer);
-  console.log("Display Online Vendor:", isOnlineOffer);
+  // console.log("Price Sort:", isPriceSort);
+  // console.log("Time Sort:", isTimeSort);
+  // console.log("Display all Offer:", isAllOffer);
+  // console.log("Display Online Vendor:", isOnlineOffer);
 
   return (
     <>
@@ -196,11 +235,15 @@ const Marketplace = () => {
             isOfferFilter={isOfferFilter}
             isFilterLoading={isFilterLoading}
             setIsPriceSort={setIsPriceSort}
+            isPriceSort={isPriceSort}
             setIsTimeSort={setIsTimeSort}
+            isTimeSort={isTimeSort}
             isAllOffer={isAllOffer}
             setIsAllOffer={setIsAllOffer}
             isOnlineOffer={isOnlineOffer}
             setIsOnlineOffer={setIsOnlineOffer}
+            handleResetFilter={handleResetFilter}
+            setClearFilter={setClearFilter}
           />
         </div>
         <div className="flex-1 bg-black">
@@ -226,13 +269,17 @@ const Marketplace = () => {
             isOfferFilter={isOfferFilter}
             isFilterLoading={isFilterLoading}
             setIsPriceSort={setIsPriceSort}
+            isPriceSort={isPriceSort}
             setIsTimeSort={setIsTimeSort}
+            isTimeSort={isTimeSort}
             isOfferSortBy={isOfferSortBy}
             setIsOfferSortBy={setIsOfferSortBy}
             isAllOffer={isAllOffer}
             setIsAllOffer={setIsAllOffer}
             isOnlineOffer={isOnlineOffer}
             setIsOnlineOffer={setIsOnlineOffer}
+            handleResetFilter={handleResetFilter}
+            setClearFilter={setClearFilter}
           />
         </div>
       </div>

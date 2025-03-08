@@ -218,7 +218,7 @@ const CreateOffer = () => {
       <MarketTopNav />
 
       <div className="lg:pt-[70px] pt-[80px] bg-black">
-        <div className="lg:p-[1.5%] p-[3%] flex gap-[15px] ">
+        <div className="lg:p-[1.5%] p-[3%] flex gap-[15px]">
           <div
             className={`${
               offerPageOne ? "flex" : "hidden"

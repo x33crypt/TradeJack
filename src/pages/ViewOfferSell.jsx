@@ -198,14 +198,14 @@ const ViewOfferSell = () => {
   return (
     <>
       <MarketTopNav />
-      <div className=" md:pt-[80px] pt-[67px] flex flex-col bg-black gap-[15.5px] md:p-[1.5%]">
+      <div className=" md:pt-[80px] pt-[67px] flex flex-col bg-black gap-[15px] md:p-[1.5%]">
         {/* <div className="flex flex-col justify-between  py-[20px] md:border-b border-neutral-800 ">
           <p className="text-[18px] text-white font-[800] cursor-pointer">
             {id} / {offerDetails.service}
           </p>
         </div> */}
 
-        <div className="flex lg:flex-row flex-col w-full gap-[15.5px] lg:gap-[0.8%]">
+        <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-[0.8%]">
           <div className="flex-1 flex  flex-col bg-tradeAsh md:border border-neutral-800 md:rounded-[12px]">
             <div className="flex items-center justify-between  md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
               <p className="text-[18px] text-white font-[700] cursor-pointer">
@@ -220,13 +220,108 @@ const ViewOfferSell = () => {
                 </p>
               </div> */}
             </div>
-            <div className="flex flex-col lg:gap-[30px] gap-[25px] p-[20px]">
-              <div className="flex flex-wrap items-center lg:gap-[50px] gap-[25px]">
+            <div className="flex flex-col md:flex-row md:gap-[30px] p-[20px]">
+              <div className="flex-1 flex flex-col gap-[3px] ">
+                <div className="flex py-[5px] rounded-[5px] justify-between">
+                  <p className="text-[14px] font-[400] text-tradeFadeWhite">
+                    Service
+                  </p>
+                  <p className="text-tradeOrange text-[15px] font-[600]">
+                    {offerDetails.service}
+                  </p>
+                </div>
+                <div className="flex py-[5px] rounded-[5px] justify-between ">
+                  <p className="text-[14px] font-[400] text-tradeFadeWhite">
+                    Service Type
+                  </p>
+                  <p className="text-[15px] font-[600] text-white">
+                    {offerDetails.serviceType}
+                  </p>
+                </div>
+
+                <div className="flex py-[5px] rounded-[5px] justify-between">
+                  <p className="text-[14px] font-[400] text-tradeFadeWhite">
+                    Purchase Limit
+                  </p>
+                  <div className="flex items-center gap-[8px]">
+                    <div className="flex items-center gap-[5px] ">
+                      {/* <p className="text-[15px] font-[600] text-tradeFadeWhite">
+                        Min
+                      </p> */}
+                      <small className="text-[15px] font-[600] text-white">{`${parseInt(
+                        offerDetails?.miniPurchase
+                      ).toLocaleString()} ${offerDetails?.currency} `}</small>
+                    </div>
+
+                    <p className="text-[15px] font-[600] text-tradeFadeWhite">
+                      to
+                    </p>
+                    <div className="flex items-center gap-[5px] ">
+                      {/* <p className="text-[15px] font-[600] text-tradeFadeWhite">
+                        Max
+                      </p> */}
+                      <small className="text-[15px] font-[600] text-white">{`${parseInt(
+                        offerDetails?.maxPurchase
+                      ).toLocaleString()}  ${offerDetails?.currency}`}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-1 flex flex-col gap-[3px]">
+                <div className="flex py-[5px] justify-between  ">
+                  <p className="text-[14px] font-[400] text-tradeFadeWhite">
+                    Maximum Trade Time
+                  </p>
+
+                  <p className="text-white text-[15px] font-[600]">
+                    {offerDetails?.maxTradeTime} Minutes
+                  </p>
+                </div>
+                <div className="flex py-[5px] justify-between  ">
+                  <p className="text-[14px] font-[400] text-tradeFadeWhite">
+                    Average Trade Time
+                  </p>
+
+                  <p className="text-white text-[15px] font-[600]">
+                    {offerDetails?.avgTradeTime} Minutes
+                  </p>
+                </div>
+                <div className="flex py-[5px] justify-between  ">
+                  <p className="text-[14px] font-[400] text-tradeFadeWhite">
+                    Offer Rate Cap
+                  </p>
+                  <div className="flex items-center gap-[10px]">
+                    <p className="flex items-baseline gap-[5px] text-[15px] font-[700] text-white">
+                      {`${parseInt(offerDetails?.rate).toLocaleString()}  ${
+                        offerDetails?.currency
+                      }`}
+                      <small>&#8226;</small>
+                      {offeRateMargin.status && offeRateMargin.percentage ? (
+                        offeRateMargin.status === "above" ? (
+                          <small className="text-[13px]  text-tradeGreen font-[600]">
+                            {`${offeRateMargin.percentage}% ${offeRateMargin.status}`}
+                          </small>
+                        ) : (
+                          <small className="text-[13px] text-red-500 font-[600]">
+                            {`${offeRateMargin.percentage}% ${offeRateMargin.status} market`}
+                          </small>
+                        )
+                      ) : (
+                        <small className="text-[13px] text-tradeAshExtraLight font-[600]">
+                          Calculating margin...
+                        </small>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* <div className="flex flex-wrap items-center lg:gap-[50px] gap-[25px]">
                 <div className="flex flex-col gap-[5px] ">
                   <p className="text-[12px] font-[400] text-tradeFadeWhite">
                     Service
                   </p>
-                  <p className="text-tradeOrange text-[15.5px] font-[600]">
+                  <p className="text-tradeOrange text-[15px] font-[600]">
                     {offerDetails.service}
                   </p>
                 </div>
@@ -234,7 +329,7 @@ const ViewOfferSell = () => {
                   <p className="text-[12px] font-[400] text-tradeFadeWhite">
                     Service Type
                   </p>
-                  <p className="text-[15.5px] font-[600] text-white">
+                  <p className="text-[15px] font-[600] text-white">
                     {offerDetails.serviceType}
                   </p>
                 </div>
@@ -243,16 +338,16 @@ const ViewOfferSell = () => {
                     Purchase Limit
                   </p>
                   <div className="flex gap-[10px]">
-                    <p className="flex items-center gap-[5px] text-[15.5px] font-[600] text-tradeFadeWhite">
+                    <p className="flex items-center gap-[5px] text-[15px] font-[600] text-tradeFadeWhite">
                       Min
-                      <small className="text-[15.5px] font-[600] text-white">{`${parseInt(
+                      <small className="text-[15px] font-[600] text-white">{`${parseInt(
                         offerDetails?.miniPurchase
                       ).toLocaleString()}  ${offerDetails?.currency}`}</small>
                     </p>
                     <p className="text-white text-[20px] font-[800]">-</p>
-                    <p className="flex items-center gap-[5px] text-[15.5px] font-[600] text-tradeFadeWhite">
+                    <p className="flex items-center gap-[5px] text-[15px] font-[600] text-tradeFadeWhite">
                       Max
-                      <small className="text-[15.5px] font-[600] text-white">{`${parseInt(
+                      <small className="text-[15px] font-[600] text-white">{`${parseInt(
                         offerDetails?.maxPurchase
                       ).toLocaleString()}  ${offerDetails?.currency}`}</small>
                     </p>
@@ -266,7 +361,7 @@ const ViewOfferSell = () => {
                     Maximum Trade Time
                   </p>
 
-                  <p className="text-white text-[15.5px] font-[600]">
+                  <p className="text-white text-[15px] font-[600]">
                     {offerDetails?.maxTradeTime} Minutes
                   </p>
                 </div>
@@ -274,7 +369,7 @@ const ViewOfferSell = () => {
                   <p className="text-[12px] font-[400] text-tradeFadeWhite">
                     Average Trade Time
                   </p>
-                  <p className="text-white text-[15.5px] font-[600]">
+                  <p className="text-white text-[15px] font-[600]">
                     {offerDetails?.avgTradeTime} Minutes
                   </p>
                 </div>
@@ -283,7 +378,7 @@ const ViewOfferSell = () => {
                     Rate Cap
                   </p>
                   <div className="flex items-center gap-[10px]">
-                    <p className="flex items-baseline gap-[5px] text-[15.5px] font-[700] text-white">
+                    <p className="flex items-baseline gap-[5px] text-[15px] font-[700] text-white">
                       {`${parseInt(offerDetails?.rate).toLocaleString()}  ${
                         offerDetails?.currency
                       }`}
@@ -310,12 +405,12 @@ const ViewOfferSell = () => {
                   <p className="text-[12px] font-[400] text-tradeFadeWhite">
                     Network Fee
                   </p>
-                  <p className="text-[15.5px] font-[600] text-white">10%</p>
+                  <p className="text-[15px] font-[600] text-white">10%</p>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="flex  flex-col justify-between border-t border-neutral-800">
-              <div className="flex items-center justify-between  md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
+              <div className="flex md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
                 <p className="text-[18px] text-white font-[600] cursor-pointer">
                   About Vendor
                 </p>
@@ -328,8 +423,8 @@ const ViewOfferSell = () => {
                   </p>
                 </div> */}
               </div>
-              <div className="flex flex-wrap md:justify-between p-[20px] lg:gap-[15.5px] lg:gap-y-[30px] gap-y-[25px] gap-x-[25px] items-center">
-                <div className=" flex items-center gap-[15.5px]">
+              <div className="flex flex-wrap md:justify-between p-[20px] lg:gap-[15px] lg:gap-y-[30px] gap-y-[25px] gap-x-[25px] items-center">
+                <div className=" flex items-center gap-[15px]">
                   <div>
                     <img
                       className="w-[40px] rounded-full"
@@ -343,7 +438,7 @@ const ViewOfferSell = () => {
                       Username
                     </p>
 
-                    <p className="text-white text-[15.5px] font-[600] cursor-pointer">
+                    <p className="text-white text-[15px] font-[600] cursor-pointer">
                       {offerDetails.username}
                     </p>
                   </div>
@@ -352,7 +447,7 @@ const ViewOfferSell = () => {
                   <p className="text-[12px] font-[400] text-tradeFadeWhite">
                     Location
                   </p>
-                  <p className="text-white text-[15.5px] font-[600]">
+                  <p className="text-white text-[15px] font-[600]">
                     {offerDetails.location}
                   </p>
                 </div>
@@ -363,8 +458,8 @@ const ViewOfferSell = () => {
                       Positive Feedback
                     </p>
                     <div className="flex items-center gap-[10px]">
-                      <MdThumbUpAlt className="text-[15.5px] text-tradeGreen" />
-                      <p className="text-white text-[15.5px] font-[600]">
+                      <MdThumbUpAlt className="text-[15px] text-tradeGreen" />
+                      <p className="text-white text-[15px] font-[600]">
                         {`${parseInt(
                           offerDetails?.positiveFeedback
                         ).toLocaleString()}`}
@@ -376,8 +471,8 @@ const ViewOfferSell = () => {
                       Negative Feedback
                     </p>
                     <div className="flex items-center gap-[10px]">
-                      <MdThumbDownAlt className="text-[15.5px] text-red-500" />
-                      <p className="text-white text-[15.5px] font-[600]">
+                      <MdThumbDownAlt className="text-[15px] text-red-500" />
+                      <p className="text-white text-[15px] font-[600]">
                         {`${parseInt(
                           offerDetails?.negativeFeedback
                         ).toLocaleString()}`}
@@ -390,8 +485,8 @@ const ViewOfferSell = () => {
                     Trust Score
                   </p>
                   <div className="flex items-center gap-[10px]">
-                    <FaRegStar className="text-[15.5px] text-tradeOrange" />
-                    <p className="text-white text-[15.5px] font-[600]">
+                    <FaRegStar className="text-[15px] text-tradeOrange" />
+                    <p className="text-white text-[15px] font-[600]">
                       {offerDetails.trustScore}%
                     </p>
                   </div>
@@ -400,14 +495,14 @@ const ViewOfferSell = () => {
                   <p className="text-[12px] font-[400] text-tradeFadeWhite">
                     Avg Trade Speed
                   </p>
-                  <p className="text-white text-[15.5px] font-[600]">
+                  <p className="text-white text-[15px] font-[600]">
                     20 Minutes
                   </p>
                 </div> */}
               </div>
             </div>
           </div>
-          <div className="px-[15.5px] md:p-0">
+          <div className="px-[15px] md:p-0">
             <div className=" h-full lg:w-[400px] flex flex-col bg-tradeAshLight md:border border-tradeAsh rounded-[12px]">
               <div className="flex flex-col justify-between p-[20px] border-b border-tradeAsh">
                 <p className="text-[18px] text-white font-[700] cursor-pointer">
@@ -417,7 +512,7 @@ const ViewOfferSell = () => {
 
               <div className="flex flex-col h-full ">
                 <div className="flex flex-col gap-[10px] p-[20px]">
-                  <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px] rounded-[15.5px]">
+                  <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px] rounded-[15px]">
                     <div className="flex justify-between items-center">
                       <p className="text-tradeFadeWhite text-[13px]">Send</p>
                       <div className="flex items-center gap-[5px]">
@@ -457,7 +552,7 @@ const ViewOfferSell = () => {
                       />
                     </div>
                   </div>
-                  <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px] rounded-[15.5px]">
+                  <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px] rounded-[15px]">
                     <div className="flex">
                       <p className="text-tradeFadeWhite text-[13px]">Receive</p>
                     </div>
@@ -494,7 +589,7 @@ const ViewOfferSell = () => {
                   )}
                 </div>
 
-                <div className=" flex lg:pb-[px] py-[15.5px] flex-col">
+                <div className=" flex lg:pb-[px] py-[15px] flex-col">
                   <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
                     <p className="text-[14px] font-[500] text-tradeGreen">
                       Rate breakdown
@@ -535,8 +630,8 @@ const ViewOfferSell = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-center lg:py-[18px]  py-[5px] px-[15.5px]">
-          <p className="text-[15.5px] text-center text-black  font-[700]  bg-tradeGreen p-[10px] rounded-[8px] md:rounded-[6px] md:w-[25%] w-[100%] cursor-pointer">
+        <div className="flex items-center justify-center lg:py-[18px]  py-[5px] px-[15px]">
+          <p className="text-[15px] text-center text-black  font-[700]  bg-tradeGreen p-[10px] rounded-[8px] md:rounded-[6px] md:w-[25%] w-[100%] cursor-pointer">
             Initiate Trade Now
           </p>
         </div>
@@ -584,17 +679,17 @@ currency
                 <div className="flex flex-col gap-[5px]">
                   {offerDetails?.offerRate?.map((details, index) => (
                     <div id={index}>
-                      <p className="text-[15.5px] font-[800] ">
+                      <p className="text-[15px] font-[800] ">
                         {details.range}{" "}
-                        <small className="text-[15.5px] font-[800] text-neutral-500">
+                        <small className="text-[15px] font-[800] text-neutral-500">
                           {offerDetails.
 currency
 }
                         </small>{" "}
                         -{" "}
-                        <small className="text-[15.5px] text-black font-[800]">
+                        <small className="text-[15px] text-black font-[800]">
                           {details.rate}{" "}
-                          <small className="text-[15.5px] font-[800] text-neutral-500">
+                          <small className="text-[15px] font-[800] text-neutral-500">
                             NGN / {offerDetails.
 currency
 }
@@ -612,14 +707,14 @@ currency
                   </p>
                 </div>
                 <div className="flex flex-col gap-[4px]">
-                  <p className="font-[800] text-[15.5px] ">
-                    <small className="text-[15.5px]  text-neutral-500 ">
+                  <p className="font-[800] text-[15px] ">
+                    <small className="text-[15px]  text-neutral-500 ">
                       Min
                     </small>{" "}
                     20 {offerDetails.
 currency
 } -{" "}
-                    <small className="text-[15.5px] text-neutral-500">Max</small>{" "}
+                    <small className="text-[15px] text-neutral-500">Max</small>{" "}
                     {offerDetails?.purchaseLimit} {offerDetails.
 currency
 }
@@ -635,7 +730,7 @@ currency
                     <FaRegQuestionCircle className="text-tradeOrange" />
                   </div>
                   <div>
-                    <p className="text-[15.5px] font-[800] ">30 min</p>
+                    <p className="text-[15px] font-[800] ">30 min</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-[8px]">
@@ -645,7 +740,7 @@ currency
                     </p>
                   </div>
                   <div>
-                    <p className="text-[15.5px] font-[800] ">1&#37;</p>
+                    <p className="text-[15px] font-[800] ">1&#37;</p>
                   </div>
                 </div>
               </div>
@@ -678,7 +773,7 @@ currency
                   </p>
                   <div className="flex items-center gap-[8px]">
                     <IoMdThumbsUp className="text-[25px] text-tradeGreen" />
-                    <p className="font-[800] text-[15.5px]">
+                    <p className="font-[800] text-[15px]">
                       {vendorDetails.feedback}
                     </p>
                   </div>
@@ -689,7 +784,7 @@ currency
                   </p>
                   <div className="flex items-center gap-[8px]">
                     <AiOutlineSafety className="text-[25px] text-tradePurple" />
-                    <p className="font-[800] text-[15.5px]">
+                    <p className="font-[800] text-[15px]">
                       {vendorDetails.trustScore}
                     </p>
                   </div>
@@ -772,7 +867,7 @@ currency
                   <FaRegQuestionCircle className="text-tradeOrange" />
                 </div>
                 <div>
-                  <p className="text-[15.5px] font-[800] ">30 min</p>
+                  <p className="text-[15px] font-[800] ">30 min</p>
                 </div>
               </div>
             </div>
@@ -783,7 +878,7 @@ currency
           <div className="p-[20px] flex flex-col rounded-[8px] border border-neutral-300">
             {offerDetails.offerTerms?.map((terms, index) => (
               <div key={index}>
-                <p className="text-[15.5px]">{terms}</p>
+                <p className="text-[15px]">{terms}</p>
               </div>
             ))}
           </div>

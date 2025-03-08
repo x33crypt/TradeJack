@@ -23,11 +23,15 @@ const OfferFilter = ({
   handleFilterOffer,
   isFilterLoading,
   setIsPriceSort,
+  isPriceSort,
   setIsTimeSort,
+  isTimeSort,
   isAllOffer,
   setIsAllOffer,
   isOnlineOffer,
   setIsOnlineOffer,
+  handleResetFilter,
+  setClearFilter,
 }) => {
   const [showServiceType, setShowServiceType] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
@@ -431,13 +435,18 @@ const OfferFilter = ({
   }, []);
 
   return (
-    <div className="bg-tradeAsh lg:sticky  w-full lg:h-[495px] h-full lg:top-[80px] flex flex-col lg:rounded-[12px] rounded-[15px] md:border border-neutral-800 ">
+    <div className="bg-tradeAsh lg:sticky  w-full lg:h-[495px] h-full lg:top-[80px] flex flex-col lg:rounded-[12px] rounded-[18px] md:border border-neutral-800 ">
       <div className="flex justify-between items-center lg:p-[20px] lg:py-[20px] py-[20px] px-[20px] md:p-[20px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700] cursor-pointer">
           Filter Offer
         </p>
 
-        <p className="px-[6px] py-[2px] text-[13px] text-red-700 hover:text-black font-[500] rounded-[6.5px] bg-black hover:bg-white border border-tradeAshLight hover:border-white cursor-pointer duration-300 transition-all">
+        <p
+          onClick={() => {
+            setClearFilter(true);
+          }}
+          className="px-[6px] py-[2px] text-[13px] text-red-700 hover:text-black font-[500] rounded-[6.5px] bg-black hover:bg-white border border-tradeAshLight hover:border-white cursor-pointer duration-300 transition-all"
+        >
           Reset Filter
         </p>
       </div>
@@ -1282,57 +1291,73 @@ const OfferFilter = ({
             </div>
           </div>
         </div>
-        <div className=" flex lg:hidden flex-col gap-[20px] lg:p-[20px] px-[20px] py-[20px]">
+        <div className=" flex  flex-col gap-[20px] lg:p-[20px] px-[20px] py-[20px]">
           <div>
             <p className="text-white text-[16px] font-[700]">Sort by</p>
           </div>
           <div className="flex flex-col gap-[15px]">
             <div className="flex items-center justify-between">
-              <p className="text-[14.5px] text-tradeFadeWhite font-[500]">
-                Price : Low to High
+              <p className="text-[14.5px] text-white font-[600]">
+                Price : {""}
+                <small className="text-[14.5px] text-tradeFadeWhite font-[500]">
+                  Low to High
+                </small>
               </p>
               <input
-                className="h-[14px] w-[16px]"
+                className="h-[16px] w-[18px]  cursor-pointer"
                 type="radio"
                 name="priceSort"
                 value="lowToHigh"
+                checked={isPriceSort === "lowToHigh"}
                 onChange={(e) => setIsPriceSort(e.target.value)}
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-[14.5px] text-tradeFadeWhite font-[500]">
-                Price : High to Low
+              <p className="text-[14.5px] text-white font-[600]">
+                Price : {""}
+                <small className="text-[14.5px] text-tradeFadeWhite font-[500]">
+                  High to Low
+                </small>
               </p>
               <input
-                className="h-[14px] w-[16px]"
+                className="h-[16px] w-[18px]  cursor-pointer"
                 type="radio"
                 name="priceSort"
                 value="highToLow"
+                // checked={isPriceSort === "highToLow"}
                 onChange={(e) => setIsPriceSort(e.target.value)}
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-[14.5px] text-tradeFadeWhite font-[500]">
-                Avg. Trade Time : Slow to Fast
+              <p className="text-[14.5px] text-white font-[600]">
+                Avg. Trade Time : {""}
+                <small className="text-[14.5px] text-tradeFadeWhite font-[500]">
+                  Slow to Fast
+                </small>
               </p>
               <input
-                className="h-[14px] w-[16px]"
+                className="h-[16px] w-[18px]  cursor-pointer"
                 type="radio"
                 name="timeSort"
                 value="slowToFast"
+                // checked={isTimeSort === "slowToFast"}
                 onChange={(e) => setIsTimeSort(e.target.value)}
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-[14.5px] text-tradeFadeWhite font-[500]">
-                Avg. Trade Time : Fast to Slow
+              <p className="text-[14.5px] text-white font-[600]">
+                Avg. Trade Time : {""}
+                <small className="text-[14.5px] text-tradeFadeWhite font-[500]">
+                  Fast to Slow
+                </small>
               </p>
               <input
-                className="h-[14px] w-[16px]"
+                className="h-[16px] w-[18px]  cursor-pointer"
                 type="radio"
                 name="timeSort"
                 value="fastToSlow"
                 onChange={(e) => setIsTimeSort(e.target.value)}
+                // checked={isTimeSort === "fastToSlow"}
               />
             </div>
           </div>
@@ -1345,7 +1370,7 @@ const OfferFilter = ({
           onClick={handleFilterOffer}
         >
           <p className="font-[600] lg:text-[15px] text-[15.5px]">
-            {isFilterLoading ? "Applying Filter..." : "Apply Filter"}
+            {isFilterLoading ? "Filtering..." : "Apply Filter"}
           </p>
           <TbReload
             className={`text-[20px] transition-transform ${

@@ -123,7 +123,9 @@ const OfferCard = (props) => {
                 Avg Trade Time
               </p>
 
-              <p className="text-[13px] font-[500] text-white">60 Minutes</p>
+              <p className="text-[13px] font-[500] text-white">
+                {props.avgTradeTime} Minutes
+              </p>
             </div>
           </div>
         </div>

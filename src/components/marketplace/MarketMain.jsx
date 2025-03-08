@@ -26,23 +26,27 @@ const MarketMain = ({
   setAmount,
   selectedCurrency,
   setSelectedCurrency,
-  handleFilterOffer,
   setIsOfferFilter,
   isOfferFilter,
   isFilterLoading,
   setIsPriceSort,
+  isPriceSort,
   setIsTimeSort,
+  isTimeSort,
   isOfferSortBy,
   setIsOfferSortBy,
   isAllOffer,
   setIsAllOffer,
   isOnlineOffer,
   setIsOnlineOffer,
+  handleFilterOffer,
+  handleResetFilter,
+  setClearFilter,
 }) => {
   return (
     <div className="flex flex-col bg-tradeAsh md:border border-neutral-800 md:rounded-[12px]">
       <div className="flex flex-col justify-between md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
-        <p className="text-[18px] text-white font-[700] cursor-pointer">
+        <p className="text-[18px] text-white font-[700]">
           Seamless Asset Trading
         </p>
       </div>
@@ -52,7 +56,9 @@ const MarketMain = ({
             <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
               <p
                 onClick={() => (
-                  setIsAllOffer((prev) => !prev), setIsOnlineOffer(false)
+                  setIsAllOffer(true),
+                  setIsOnlineOffer(false),
+                  handleFilterOffer()
                 )}
                 className={` ${
                   isAllOffer
@@ -64,25 +70,18 @@ const MarketMain = ({
               </p>
               <p
                 onClick={() => (
-                  setIsOnlineOffer((prev) => !prev), setIsAllOffer(false)
+                  setIsOnlineOffer(true),
+                  setIsAllOffer(false),
+                  handleFilterOffer()
                 )}
                 className={` ${
                   isOnlineOffer
                     ? "text-white bg-tradeAshExtraLight border-tradeAshExtraLight"
                     : "text-neutral-500 bg-transparent border-neutral-800"
-                } px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] border  hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
+                } px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] border hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
               >
                 Online
               </p>
-              {/* <p
-                className={` ${
-                  isOfferFilter
-                    ? "text-white bg-tradeAshExtraLight border-tradeAshExtraLight"
-                    : "text-neutral-500 bg-transparent border-neutral-800"
-                } px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] border  hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
-              >
-                Verified
-              </p> */}
             </div>
             <div>
               <div
@@ -135,11 +134,15 @@ const MarketMain = ({
             handleFilterOffer={handleFilterOffer}
             isFilterLoading={isFilterLoading}
             setIsPriceSort={setIsPriceSort}
+            isPriceSort={isPriceSort}
             setIsTimeSort={setIsTimeSort}
+            isTimeSort={isTimeSort}
             isAllOffer={isAllOffer}
             setIsAllOffer={setIsAllOffer}
             isOnlineOffer={isOnlineOffer}
             setIsOnlineOffer={setIsOnlineOffer}
+            handleResetFilter={handleResetFilter}
+            setClearFilter={setClearFilter}
           />
         </div>
 
