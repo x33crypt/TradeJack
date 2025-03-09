@@ -79,7 +79,7 @@ const MarketTopNav = () => {
             )}
           </div>
           <div className="flex items-center justify-start gap-[5px] ">
-            <GiCardExchange className="lg:text-[20px] text-[22px] text-tradeGreen" />
+            {/* <GiCardExchange className=" hidden sm:flex lg:text-[20px] text-[22px] text-tradeGreen" /> */}
             <p className=" lg:text-[20px] text-[22px] font-[700] text-tradeGreen">
               Trade
               <small className="lg:text-[20px] text-[22px] font-[700] text-white">
@@ -120,18 +120,18 @@ const MarketTopNav = () => {
         </div>
 
         <div className="flex items-center lg:gap-[15px] gap-[15px]">
-          <div className="sm:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[2px] gap-[10px] rounded-[10px]">
+          {/* <div className="sm:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[2px] gap-[10px] rounded-[10px]">
             <FaMagnifyingGlass className="text-neutral-500 lg:text-[15px] text-[15px]" />
             <input
               className=" bg-transparent outline-none h-[28px] w-[220px] lg:placeholder:text-[13px] placeholder:text-[13px] placeholder:text-neutral-500 lg:text-[13px] text-[13px] text-white"
               type="text"
               placeholder={searchplaceholder}
             />
-          </div>
-          <div className="cursor-pointer sm:hidden">
+          </div> */}
+          {/* <div className="cursor-pointer flex sm:hidden">
             <FiSearch className="text-white hover:text-tradeGreen text-[24px] transition-all duration-300" />
-          </div>
-          <div className="cursor-pointer">
+          </div> */}
+          <div className="cursor-pointer sm:flex hidden">
             <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[22px] transition-all duration-300" />
           </div>
           <div

@@ -22,8 +22,9 @@ import { FaArrowUpLong } from "react-icons/fa6";
 import { HiArrowNarrowUp } from "react-icons/hi";
 import { IoMdArrowRoundUp } from "react-icons/io";
 import { MdOutlineShowChart } from "react-icons/md";
+import ExchangeCalculator from "@/components/ExchangeCalculator";
 
-const ViewOfferSell = () => {
+const AboutOffer = () => {
   const [offerDetails, setOfferDetails] = useState("");
   const [offerCurrencyCurrentMarketRate, setOfferCurrencyCurrentMarketRate] =
     useState("");
@@ -92,12 +93,6 @@ const ViewOfferSell = () => {
       console.error("Error fetching Bitcoin value:", err.message);
     }
   };
-
-  console.log(
-    `Current BTC price in ${offerDetails?.currency}: ${offerCurrencyCurrentMarketRate}`
-  );
-
-  console.log(`Current BTC price in USD: ${bitcoinValueInUsd}`);
 
   const calculateRateMargin = () => {
     if (!offerDetails || !offerCurrencyCurrentMarketRate) return; // Prevent errors if values are missing
@@ -210,10 +205,6 @@ const ViewOfferSell = () => {
     getofferRateCapPerUnitAndUSD();
   }, [tradeValue]);
 
-  // console.log(offerDetails);
-  // console.log(offerCurrencyCurrentMarketRate);
-  // console.log(offeRateMargin);
-
   return (
     <>
       <MarketTopNav />
@@ -224,15 +215,8 @@ const ViewOfferSell = () => {
               <p className="text-[18px] text-white font-[700] cursor-pointer">
                 Offer Details
               </p>
-              {/* <div className="flex items-center gap-[4px] py-[3px] px-[12.5px] bg-tradeGreen rounded-[4px]  ">
-                <p className="text-[13px] lg:text-[13px] text-black">
-                  <TiTick />
-                </p>
-                <p className="text-[13px] text-black lg:text-[12.5px] flex font-[600] ">
-                  Active
-                </p>
-              </div> */}
             </div>
+
             <div className="flex flex-col md:gap-[40px] gap-[35px] p-[20px]">
               <div className="flex flex-wrap items-center lg:gap-[40px] gap-[30px]">
                 <div className="flex flex-col gap-[5px] ">
@@ -326,6 +310,7 @@ const ViewOfferSell = () => {
                 </div>
               </div>
             </div>
+
             <div className="flex  flex-col justify-between border-t border-neutral-800">
               <div className="flex md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
                 <p className="text-[18px] text-white font-[600] cursor-pointer">
@@ -403,147 +388,13 @@ const ViewOfferSell = () => {
               </div>
             </div>
           </div>
-          <div className="px-[15.5px] md:p-0">
-            <div className=" h-full lg:w-[400px] flex flex-col bg-tradeAshLight md:border border-tradeAsh rounded-[12.5px]">
-              <div className="flex flex-col justify-between p-[20px] border-b border-tradeAsh">
-                <p className="text-[18px] text-white font-[700] cursor-pointer">
-                  Exchange Calculator
-                </p>
-              </div>
-
-              <div className="flex flex-col h-full ">
-                <div className="flex flex-col gap-[10px] p-[20px]">
-                  <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15.5px] rounded-[15.5px]">
-                    <div className="flex justify-between items-center">
-                      <p className="text-tradeFadeWhite text-[13px]">Send</p>
-                      <div className="flex items-center gap-[5px]">
-                        <p className="text-tradeFadeWhite text-[13px] flex gap-[5px]">
-                          Min
-                          <small className="text-white text-[13px] font-[600]">
-                            {`${parseInt(
-                              offerDetails?.miniPurchase
-                            ).toLocaleString()}`}
-                          </small>
-                        </p>
-
-                        <p className="text-tradeFadeWhite text-[13px] flex gap-[5px]">
-                          Max
-                          <small className="text-white text-[13px] font-[600]">
-                            {`${parseInt(
-                              offerDetails?.maxPurchase
-                            ).toLocaleString()}`}
-                          </small>
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex gap-[20px] justify-between items-center">
-                      <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[600] bg-white">
-                        {offerDetails?.currency}
-                      </p>
-                      <input
-                        className="h-[20px] w-full outline-none border-none bg-transparent text-right text-[19px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[18px] caret-tradeGreen"
-                        type="text"
-                        placeholder="Enter Amount"
-                        value={
-                          tradeValue
-                            ? parseInt(tradeValue).toLocaleString()
-                            : ""
-                        }
-                        onChange={handleTradeValueChange}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15.5px] rounded-[15.5px]">
-                    <div className="flex">
-                      <p className="text-tradeFadeWhite text-[13px]">Receive</p>
-                    </div>
-                    <div className="flex gap-[20px] justify-between items-center">
-                      <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[600] bg-white">
-                        BTC
-                      </p>
-                      <input
-                        className="h-[20px] w-full outline-none border-none bg-transparent text-right text-[19px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[18px] cursor-default"
-                        type="text"
-                        value={
-                          calculatorResult?.btcValue &&
-                          calculatorResult?.btcValue > 0
-                            ? calculatorResult?.btcValue
-                            : ""
-                        }
-                        readOnly
-                        placeholder="00.00"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className=" flex flex-col items-center ">
-                  {exchangeError ? (
-                    <div className="flex md:h-[10px] h-[25px] w-full justify-center items-center gap-[5px]">
-                      <p className="text-[12.5px] font-[600] text-red-600">
-                        {exchangeError}
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="flex h-[10px] items-center gap-[5px]"></div>
-                  )}
-                </div>
-
-                <div className=" flex lg:pb-[px] py-[15.5px] flex-col">
-                  <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
-                    <p className="text-[14px] font-[500] text-tradeGreen">
-                      Rate breakdown
-                    </p>
-                    <p className="text-[14px] font-[600] text-white">
-                      {`
-    1 ${offerDetails?.currency ? offerDetails.currency : "USD"} =  
-    ${
-      isNaN(calculatorResult?.perUsd) ||
-      calculatorResult?.perUsd === null ||
-      calculatorResult?.perUsd === undefined
-        ? "00.00"
-        : calculatorResult.perUsd
-    }
-  `}{" "}
-                      {offerDetails.currency} of BTC
-                    </p>
-                  </div>
-
-                  <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
-                    <p className="text-[14px] font-[500] text-tradeFadeWhite">
-                      Your receive value in ({offerDetails.currency})
-                    </p>
-                    <p className="text-[14px] font-[600] text-white">
-                      <p className="text-[14px] font-[600] text-white">
-                        {isNaN(calculatorResult?.currencyValue) ||
-                        calculatorResult?.currencyValue === null ||
-                        calculatorResult?.currencyValue === undefined
-                          ? "00.00"
-                          : calculatorResult.currencyValue}{" "}
-                        {offerDetails.currency}
-                      </p>
-                    </p>
-                  </div>
-
-                  <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
-                    <p className="text-[14px] font-[500] text-tradeFadeWhite">
-                      Your receive value in (USD)
-                    </p>
-                    <p className="text-[14px] font-[600] text-white">
-                      <p className="text-[14px] font-[600] text-white">
-                        {isNaN(calculatorResult?.usdValue) ||
-                        calculatorResult?.usdValue === null ||
-                        calculatorResult?.usdValue === undefined
-                          ? "00.00"
-                          : calculatorResult.usdValue}{" "}
-                        USD
-                      </p>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ExchangeCalculator
+            offerDetails={offerDetails}
+            handleTradeValueChange={handleTradeValueChange}
+            calculatorResult={calculatorResult}
+            exchangeError={exchangeError}
+            tradeValue={tradeValue}
+          />
         </div>
 
         <div className="flex items-center justify-center px-[15.5px] md:px-0  py-[5px] ">
@@ -567,4 +418,4 @@ const ViewOfferSell = () => {
   );
 };
 
-export default ViewOfferSell;
+export default AboutOffer;
