@@ -362,14 +362,6 @@ const ViewOfferSell = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-col gap-[5px] ">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Location
-                  </p>
-                  <p className="text-white text-[15.5px] font-[600]">
-                    {offerDetails.location}
-                  </p>
-                </div>
 
                 <div className=" flex md:max-w-max  items-center md:gap-[40px] gap-[25px]">
                   <div className="flex flex-col gap-[5px] ">
