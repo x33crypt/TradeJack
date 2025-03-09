@@ -15,6 +15,7 @@ import { TbLayoutList } from "react-icons/tb";
 import { BsLightningCharge } from "react-icons/bs";
 import { TbHelpCircle } from "react-icons/tb";
 import { MdOutlineCancel } from "react-icons/md";
+import { IoCloseSharp } from "react-icons/io5";
 
 const DashTopNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -71,16 +72,16 @@ const DashTopNav = () => {
         <div className="flex items-center lg:gap-[20px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
-            className="lg:hidden flex"
+            className="lg:hidden flex border border-tradeAshLight p-[5px] rounded-[6px]"
           >
             {isNavOption ? (
-              <MdOutlineCancel className="text-white text-[24px]" />
+              <IoCloseSharp className="text-white text-[24px]" />
             ) : (
               <HiOutlineMenuAlt2 className="text-white text-[24px]" />
             )}
           </div>
           <div className="flex items-center justify-start gap-[5px] ">
-            <GiCardExchange className="lg:text-[20px] text-[22px] text-tradeGreen" />
+            {/* <GiCardExchange className="lg:text-[20px] text-[22px] text-tradeGreen" /> */}
             <p className=" lg:text-[20px] text-[22px] font-[700] text-tradeGreen">
               Trade
               <small className="lg:text-[20px] text-[22px] font-[700] text-white">
@@ -104,11 +105,11 @@ const DashTopNav = () => {
               placeholder={searchplaceholder}
             />
           </div>
-          <div className="cursor-pointer sm:hidden">
-            <FiSearch className="text-white hover:text-tradeGreen text-[24px] transition-all duration-300" />
+          <div className="cursor-pointer flex sm:hidden">
+            <FiSearch className="text-white hover:text-tradeGreen text-[23px] transition-all duration-300" />
           </div>
-          <div className="cursor-pointer">
-            <FaRegBell className="text-white hover:text-tradeGreen sm:text-[24px] text-[22px] transition-all duration-300" />
+          <div className="cursor-pointer flex">
+            <FaRegBell className="text-white hover:text-tradeGreen sm:text-[23px] text-[22px] transition-all duration-300" />
           </div>
           <div
             className="cursor-pointer"

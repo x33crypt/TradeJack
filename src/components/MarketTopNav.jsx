@@ -19,6 +19,7 @@ import { TbBuildingBank } from "react-icons/tb";
 import { FaVenusDouble } from "react-icons/fa";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { MdOutlineCancel } from "react-icons/md";
+import { IoCloseSharp } from "react-icons/io5";
 
 const MarketTopNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -73,7 +74,7 @@ const MarketTopNav = () => {
             className="lg:hidden flex border border-tradeAshLight p-[5px] rounded-[6px]"
           >
             {isNavOption ? (
-              <MdOutlineCancel className="text-white text-[24px]" />
+              <IoCloseSharp className="text-white text-[24px]" />
             ) : (
               <HiOutlineMenuAlt2 className="text-white text-[24px]" />
             )}
