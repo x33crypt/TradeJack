@@ -234,7 +234,7 @@ const ViewOfferSell = () => {
               </div> */}
             </div>
             <div className="flex flex-col md:gap-[40px] gap-[35px] p-[20px]">
-              <div className="flex flex-wrap items-center lg:gap-[40px] gap-[35px]">
+              <div className="flex flex-wrap items-center lg:gap-[40px] gap-[30px]">
                 <div className="flex flex-col gap-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Service
@@ -273,7 +273,7 @@ const ViewOfferSell = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center lg:gap-[40px] gap-[35px]">
+              <div className="flex flex-wrap items-center lg:gap-[40px] gap-[30px]">
                 <div className="flex flex-col gap-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Maximum Trade Time
@@ -303,12 +303,10 @@ const ViewOfferSell = () => {
                       {offeRateMargin.status && offeRateMargin.percentage ? (
                         offeRateMargin.status === "above" ? (
                           <small className="flex items-center gap-[3px] text-[13px]  text-tradeGreen font-[600]">
-                            <MdOutlineShowChart className="text-[15px]" />{" "}
                             {`${offeRateMargin.percentage}% ${offeRateMargin.status} market`}
                           </small>
                         ) : (
                           <small className="flex items-center gap-[3px] text-[13px] text-red-500 font-[600]">
-                            <MdOutlineShowChart className="text-[15px]" />{" "}
                             {`${offeRateMargin.percentage}% ${offeRateMargin.status} market`}
                           </small>
                         )
@@ -342,7 +340,7 @@ const ViewOfferSell = () => {
                   </p>
                 </div> */}
               </div>
-              <div className="flex flex-wrap md:justify-between p-[20px] lg:gap-[15.5px] lg:gap-y-[30px] gap-[35px]  items-center">
+              <div className="flex flex-wrap md:justify-between p-[20px] lg:gap-[15.5px] lg:gap-y-[30px] gap-[30px]  items-center">
                 <div className=" flex items-center gap-[15.5px]">
                   <div>
                     <img
@@ -402,14 +400,6 @@ const ViewOfferSell = () => {
                     </p>
                   </div>
                 </div>
-                {/* <div className="flex flex-col gap-[5px] ">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Avg Trade Speed
-                  </p>
-                  <p className="text-white text-[15.5px] font-[600]">
-                    20 Minutes
-                  </p>
-                </div> */}
               </div>
             </div>
           </div>
