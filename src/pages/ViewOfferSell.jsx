@@ -233,8 +233,8 @@ const ViewOfferSell = () => {
                 </p>
               </div> */}
             </div>
-            <div className="flex flex-col md:gap-[40px] gap-[25px] p-[20px]">
-              <div className="flex flex-wrap items-center lg:gap-[40px] gap-[25px]">
+            <div className="flex flex-col md:gap-[40px] gap-[35px] p-[20px]">
+              <div className="flex flex-wrap items-center lg:gap-[40px] gap-[35px]">
                 <div className="flex flex-col gap-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Service
@@ -273,7 +273,7 @@ const ViewOfferSell = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center lg:gap-[40px] gap-[25px]">
+              <div className="flex flex-wrap items-center lg:gap-[40px] gap-[35px]">
                 <div className="flex flex-col gap-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Maximum Trade Time
@@ -342,7 +342,7 @@ const ViewOfferSell = () => {
                   </p>
                 </div> */}
               </div>
-              <div className="flex flex-wrap md:justify-between p-[20px] lg:gap-[15.5px] lg:gap-y-[30px] gap-y-[25px] gap-x-[25px] items-center">
+              <div className="flex flex-wrap md:justify-between p-[20px] lg:gap-[15.5px] lg:gap-y-[30px] gap-[35px]  items-center">
                 <div className=" flex items-center gap-[15.5px]">
                   <div>
                     <img
@@ -446,12 +446,12 @@ const ViewOfferSell = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="flex justify-between items-center">
+                    <div className="flex gap-[20px] justify-between items-center">
                       <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[600] bg-white">
                         {offerDetails?.currency}
                       </p>
                       <input
-                        className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[19px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[18px] caret-tradeGreen"
+                        className="h-[20px] w-full outline-none border-none bg-transparent text-right text-[19px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[18px] caret-tradeGreen"
                         type="text"
                         placeholder="Enter Amount"
                         value={
@@ -467,12 +467,12 @@ const ViewOfferSell = () => {
                     <div className="flex">
                       <p className="text-tradeFadeWhite text-[13px]">Receive</p>
                     </div>
-                    <div className="flex justify-between items-center">
+                    <div className="flex gap-[20px] justify-between items-center">
                       <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[600] bg-white">
                         BTC
                       </p>
                       <input
-                        className="h-[20px] max-w-[200px] outline-none border-none bg-transparent text-right text-[19px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[18px] cursor-default"
+                        className="h-[20px] w-full outline-none border-none bg-transparent text-right text-[19px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[18px] cursor-default"
                         type="text"
                         value={
                           calculatorResult?.btcValue &&
