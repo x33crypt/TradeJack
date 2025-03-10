@@ -433,14 +433,46 @@ const DashMain = () => {
         </div>
       </div>
 
-      <div className="flex sm:hidden h-screen">
-        <div className="flex flex-col justify-between px-[20px] py-[16px] ">
-          <p className="text-[18px] text-white ">
+      <div className="flex flex-col gap-[10px] sm:hidden h-screen">
+        <div className="flex flex-col px-[20px] py-[16px] ">
+          <p className="text-[20px] text-white ">
             Welcome back,{" "}
-            <small className="text-[18px] text-white font-[700]">
+            <small className="text-[20px] text-white font-[700]">
               x33crypt
             </small>
           </p>
+        </div>
+        <div className="flex flex-col gap-[10px] px-[20px] ">
+          <div className="flex gap-[10px]">
+            <div className="flex-1 flex flex-col bg-tradeGreen p-[20px] gap-[5px] rounded-[16px] border border-tradeGreen">
+              <p className="text-black text-[13.5px] font-[500]">
+                Wallet Balance
+              </p>
+              <div className="flex items-baseline">
+                <p className="flex items-baseline text-[24px] font-[700]">
+                  &#36;2,000
+                  <small className="text-[24px] font-[700]">&#8228;</small>
+                  <small className="text-[18px] font-[700]">00</small>
+                </p>
+              </div>
+            </div>
+            <div className="flex-1 flex flex-col bg-tradeAshLight p-[20px] gap-[5px] rounded-[16px] border border-tradeAshExtraLight">
+              <p className="text-white text-[13.5px] font-[500]">
+                Escrow Balance
+              </p>
+              <div className="flex items-baseline">
+                <p className="flex items-baseline text-[24px] text-white font-[700]">
+                  &#36;2,000
+                  <small className="text-[24px] font-[700] text-white">
+                    &#8228;
+                  </small>
+                  <small className="text-[18px] font-[700] text-white">
+                    00
+                  </small>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
