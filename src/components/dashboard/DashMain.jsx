@@ -5,6 +5,9 @@ import { IoMdArrowRoundUp } from "react-icons/io";
 import { FiFilter } from "react-icons/fi";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
+import { LuPlus } from "react-icons/lu";
+import { HiArrowNarrowUp } from "react-icons/hi";
+import { CgArrowsExchangeAltV } from "react-icons/cg";
 
 const DashMain = () => {
   return (
@@ -435,15 +438,15 @@ const DashMain = () => {
 
       <div className="flex flex-col gap-[10px] sm:hidden h-screen">
         <div className="flex flex-col px-[20px] py-[16px] ">
-          <p className="text-[20px] text-white ">
+          <p className="text-[18px] text-white ">
             Welcome back,{" "}
-            <small className="text-[20px] text-white font-[700]">
+            <small className="text-[18px] text-white font-[700]">
               x33crypt
             </small>
           </p>
         </div>
         <div className="flex flex-col gap-[10px] px-[20px] ">
-          <div className="flex gap-[10px]">
+          <div className="flex flex-col gap-[10px]">
             <div className="flex-1 flex flex-col bg-tradeGreen p-[20px] gap-[5px] rounded-[16px] border border-tradeGreen">
               <p className="text-black text-[13.5px] font-[500]">
                 Wallet Balance
@@ -470,6 +473,50 @@ const DashMain = () => {
                     00
                   </small>
                 </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-[5px]  border-tradeAshExtraLight bg-tradeAshLight p-[5px] rounded-[16px]">
+            <div className="flex w-full gap-[5px]">
+              <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[16px]">
+                <div className="text-[25px] text-white p-[10px] rounded-[16px] bg-tradeAshLight">
+                  <LuPlus />
+                </div>
+
+                <p className="text-[15px] text-white font-[500]">Deposit</p>
+              </div>
+              <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[16px]">
+                <div className="text-[25px] text-white p-[10px] rounded-[16px] bg-tradeAshLight">
+                  <HiArrowNarrowUp />
+                </div>
+
+                <p className="text-[15px] text-white font-[500]">Withdraw</p>
+              </div>
+            </div>
+            <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[16px]">
+              <div className="text-[25px] text-white p-[10px] rounded-[16px] bg-tradeOrange">
+                <CgArrowsExchangeAltV />
+              </div>
+              <div className="flex flex-col justify-between">
+                <p className="text-[12px] text-tradeFadeWhite font-[500]">
+                  Account Purchase Limit
+                </p>
+                <div className="flex gap-[20px]">
+                  <p className="text-[14px] text-white font-[500]">
+                    {" "}
+                    <small className="text-[14px] text-tradeFadeWhite font-[500]">
+                      Min :{" "}
+                    </small>
+                    $50
+                  </p>
+                  <p className="text-[14px] text-white font-[500]">
+                    {" "}
+                    <small className="text-[14px] text-tradeFadeWhite font-[500]">
+                      Max:{" "}
+                    </small>
+                    $1,000
+                  </p>
+                </div>
               </div>
             </div>
           </div>
