@@ -28,7 +28,7 @@ const DashMain = () => {
           </p>
         </div>
       </div> */}
-      <div className="flex flex-col gap-[15px] rounded-[8px]">
+      <div className="hidden sm:flex flex-col gap-[15px] rounded-[8px] p-[15px]">
         <div className="flex gap-[14px] ">
           <div className="flex-1 flex flex-col justify-between gap-[15px]">
             <div className="flex lg:hidden flex-col items-center  border-tradeAshLight p-[px] gap-[15px] rounded-[8px]">
@@ -430,6 +430,17 @@ const DashMain = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="flex sm:hidden h-screen">
+        <div className="flex flex-col justify-between px-[20px] py-[16px] ">
+          <p className="text-[18px] text-white ">
+            Welcome back,{" "}
+            <small className="text-[18px] text-white font-[700]">
+              x33crypt
+            </small>
+          </p>
         </div>
       </div>
     </div>

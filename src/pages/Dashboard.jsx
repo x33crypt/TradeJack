@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <>
       <DashTopNav />
-      <div className="lg:pt-[85px] sm:pt-[85px] pt-[80px] flex bg-black lg:gap-[15px] lg:p-[1.5%] sm:p-[2%] p-[3%]">
+      <div className="md:pt-[80px] pt-[67px] flex bg-black lg:gap-[0.8%] md:p-[1.5%]">
         <div className="flex flex-col gap-[10px]">
           <DashSideNav />
         </div>

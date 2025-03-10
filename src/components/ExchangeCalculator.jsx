@@ -9,6 +9,7 @@ const ExchangeCalculator = (prop) => {
             Exchange Calculator
           </p>
         </div>
+       
 
         <div className="flex flex-col h-full ">
           <div className="flex flex-col gap-[10px] p-[20px]">
@@ -24,7 +25,6 @@ const ExchangeCalculator = (prop) => {
                       ).toLocaleString()}`}
                     </small>
                   </p>
-
                   <p className="text-tradeFadeWhite text-[13px] flex gap-[5px]">
                     Max
                     <small className="text-white text-[13px] font-[600]">
