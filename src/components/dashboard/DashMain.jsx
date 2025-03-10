@@ -446,115 +446,120 @@ const DashMain = () => {
             </small>
           </p>
         </div>
-        <div className="flex flex-col gap-[10px] px-[20px] ">
+        <div className="flex flex-col gap-[20px] px-[20px] ">
           <div className="flex flex-col gap-[10px]">
-            <div className="flex-1 flex flex-col bg-tradeGreen p-[10px] gap-[5px] rounded-[16px] border border-tradeGreen">
-              <div className="flex justify-between">
-                <p className="text-black text-[13.5px] font-[600]">
-                  Wallet Balance
-                </p>
-                <FaEye />
-              </div>
-
-              <div className="flex items-baseline ">
-                <p className="flex items-baseline text-[26px] font-[700]">
-                  &#36;2,000
-                  <small className="text-[24px] font-[700]">&#8228;</small>
-                  <small className="text-[16px] font-[700]">00</small>
-                </p>
-              </div>
-            </div>
-            <div className="flex-1 flex flex-col bg-tradeAshLight p-[10px] gap-[5px] rounded-[16px] border border-tradeAshExtraLight">
-              <div className="flex justify-between text-white">
-                <p className=" text-[13.5px] font-[600]">Escrow Balance</p>
-                <FaEye />
-              </div>
-
-              <div className="flex items-baseline ">
-                <p className="flex items-baseline text-[26px] text-white font-[700]">
-                  &#36;2,000
-                  <small className="text-[24px] font-[700]">&#8228;</small>
-                  <small className="text-[16px] font-[700]">00</small>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-[5px]  border-tradeAshExtraLight bg-tradeAshLight p-[5px] rounded-[16px]">
-            <div className="flex w-full gap-[5px]">
-              <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[16px]">
-                <div className="text-[25px] text-white p-[10px] rounded-[16px] bg-tradeAshLight">
-                  <LuPlus />
-                </div>
-
-                <p className="text-[15px] text-white font-[500]">Deposit</p>
-              </div>
-              <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[16px]">
-                <div className="text-[25px] text-white p-[10px] rounded-[16px] bg-tradeAshLight">
-                  <HiArrowNarrowUp />
-                </div>
-
-                <p className="text-[15px] text-white font-[500]">Withdraw</p>
-              </div>
-            </div>
-            <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[16px]">
-              <div className="text-[25px] text-white p-[10px] rounded-[16px] bg-tradeOrange">
-                <CgArrowsExchangeAltV />
-              </div>
-              <div className=" flex-1 flex gap-[5px] flex-col justify-between">
-                <p className="text-[14px] text-tradeFadeWhite font-[500]">
-                  Purchase Limit
-                </p>
-                <div className="flex gap-[20px]">
-                  <p className="text-[15px] text-white font-[600]">
-                    {" "}
-                    <small className="text-[15px] text-tradeFadeWhite font-[500]">
-                      Min :{" "}
-                    </small>
-                    $50
+            <div className="flex flex-col gap-[10px]">
+              <div className="flex-1 flex flex-col bg-tradeGreen p-[10px] gap-[5px] rounded-[16px] border border-tradeGreen">
+                <div className="flex justify-between">
+                  <p className="text-black text-[13.5px] font-[600]">
+                    Wallet Balance
                   </p>
-                  <p className="text-[15px] text-white font-[600]">
-                    {" "}
-                    <small className="text-[15px] text-tradeFadeWhite font-[500]">
-                      Max:{" "}
-                    </small>
-                    $1,000
+                  <FaEye />
+                </div>
+
+                <div className="flex items-baseline ">
+                  <p className="flex items-baseline text-[26px] font-[700]">
+                    &#36;2,000
+                    <small className="text-[24px] font-[700]">&#8228;</small>
+                    <small className="text-[16px] font-[700]">00</small>
                   </p>
                 </div>
               </div>
-              <div className="text-tradeFadeWhite items-end p-[10px]">
-                <IoIosArrowForward />
+              <div className="flex-1 flex flex-col bg-tradeAshLight p-[10px] gap-[5px] rounded-[16px] border border-tradeAshExtraLight">
+                <div className="flex justify-between text-white">
+                  <p className=" text-[13.5px] font-[600]">Escrow Balance</p>
+                  <FaEye />
+                </div>
+
+                <div className="flex items-baseline ">
+                  <p className="flex items-baseline text-[26px] text-white font-[700]">
+                    &#36;2,000
+                    <small className="text-[24px] font-[700]">&#8228;</small>
+                    <small className="text-[16px] font-[700]">00</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col gap-[5px]  border-tradeAshExtraLight bg-tradeAshLight p-[5px] rounded-[16px]">
+              <div className="flex w-full gap-[5px]">
+                <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[16px]">
+                  <div className="text-[25px] text-white p-[10px] rounded-[16px] bg-tradeAshLight">
+                    <LuPlus />
+                  </div>
+
+                  <p className="text-[15px] text-white font-[500]">Deposit</p>
+                </div>
+                <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[16px]">
+                  <div className="text-[25px] text-white p-[10px] rounded-[16px] bg-tradeAshLight">
+                    <HiArrowNarrowUp />
+                  </div>
+
+                  <p className="text-[15px] text-white font-[500]">Withdraw</p>
+                </div>
+              </div>
+              <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[16px]">
+                <div className="text-[25px] text-white p-[10px] rounded-[16px] bg-tradeOrange">
+                  <CgArrowsExchangeAltV />
+                </div>
+                <div className=" flex-1 flex gap-[5px] flex-col justify-between">
+                  <p className="text-[14px] text-tradeFadeWhite font-[500]">
+                    Purchase Limit
+                  </p>
+                  <div className="flex gap-[10px]">
+                    <p className="text-[15px] text-white font-[600]">
+                      {" "}
+                      <small className="text-[15px] text-tradeFadeWhite font-[500]">
+                        Min :{" "}
+                      </small>
+                      $50
+                    </p>
+                    <p className="text-[15px] text-white font-[600]">-</p>
+                    <p className="text-[15px] text-white font-[600]">
+                      {" "}
+                      <small className="text-[15px] text-tradeFadeWhite font-[500]">
+                        Max:{" "}
+                      </small>
+                      $1,000
+                    </p>
+                  </div>
+                </div>
+                <div className="text-tradeFadeWhite items-end p-[10px]">
+                  <IoIosArrowForward />
+                </div>
               </div>
             </div>
           </div>
-          <div className="h-[100px] p-[5px] rounded-[16px] bg-white ">
+
+          <div className="h-[100px] p-[10px] rounded-[16px] bg-white ">
             <p className="text-[12px]">
               Successfully trade 5 more deal and earn our turbo status{" "}
             </p>
           </div>
-          <div className="grid grid-cols-2 flex-col gap-[5px]">
-            <div className="p-[10px] bg-tradeAshLight rounded-[16px]">
-              <p className="text-tradeFadeWhite text-[12px] font-[600]">
+
+          <div className=" grid grid-cols-2 gap-[5px]  border-tradeAshExtraLight bg-tradeAshLight p-[5px] rounded-[16px]">
+            <div className="flex flex-col  bg-black gap-[25px] p-[10px] rounded-[16px]">
+              <p className=" text-[12px] font-[600] text-black py-[1px] px-[5px] rounded-[10px] max-w-max bg-tradeGreen">
                 Active Offers
               </p>
-              <p className="text-white font-[600] text-[30px]">5,423</p>
+              <p className="text-white text-[25px] font-[700]">13</p>
             </div>
-            <div className="p-[10px] bg-tradeAshLight rounded-[16px]">
-              <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                Pending Trades
+            <div className="flex flex-col  bg-black gap-[25px] p-[10px] rounded-[16px]">
+              <p className=" text-[12px] font-[600] text-black py-[1px] px-[5px] rounded-[10px] max-w-max bg-tradeGreen">
+                Pending Deals
               </p>
-              <p className="text-white font-[600] text-[30px]">5,423</p>
-            </div>
-            <div className="p-[10px] bg-tradeAshLight rounded-[16px]">
-              <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                Disputed Trades
+              <p className="text-white text-[25px] font-[700]">2</p>
+            </div>{" "}
+            <div className="flex flex-col  bg-black gap-[25px] p-[10px] rounded-[16px]">
+              <p className=" text-[12px] font-[600] text-black py-[1px] px-[5px] rounded-[10px] max-w-max bg-tradeGreen">
+                Disputed Trade
               </p>
-              <p className="text-white font-[600] text-[30px]">5,423</p>
-            </div>
-            <div className="p-[10px] bg-tradeAshLight rounded-[16px]">
-              <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                Completed Trades
+              <p className="text-white text-[25px] font-[700]">0</p>
+            </div>{" "}
+            <div className="flex flex-col  bg-black gap-[25px] p-[10px] rounded-[16px]">
+              <p className=" text-[12px] font-[600] text-black py-[1px] px-[5px] rounded-[10px] max-w-max bg-tradeGreen">
+                Successful Trade
               </p>
-              <p className="text-white font-[600] text-[30px]">5,423</p>
+              <p className="text-white text-[25px] font-[700]">269</p>
             </div>
           </div>
         </div>
