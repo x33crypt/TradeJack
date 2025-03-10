@@ -8,6 +8,7 @@ import { FaEye } from "react-icons/fa";
 import { LuPlus } from "react-icons/lu";
 import { HiArrowNarrowUp } from "react-icons/hi";
 import { CgArrowsExchangeAltV } from "react-icons/cg";
+import { IoIosArrowForward } from "react-icons/io";
 
 const DashMain = () => {
   return (
@@ -436,7 +437,7 @@ const DashMain = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-[10px] sm:hidden h-screen">
+      <div className="flex flex-col sm:hidden h-screen">
         <div className="flex flex-col px-[20px] py-[16px] ">
           <p className="text-[18px] text-white ">
             Welcome back,{" "}
@@ -447,7 +448,7 @@ const DashMain = () => {
         </div>
         <div className="flex flex-col gap-[10px] px-[20px] ">
           <div className="flex flex-col gap-[10px]">
-            <div className="flex-1 flex flex-col bg-tradeGreen p-[20px] gap-[5px] rounded-[16px] border border-tradeGreen">
+            <div className="flex-1 flex flex-col bg-tradeGreen p-[10px] gap-[5px] rounded-[16px] border border-tradeGreen">
               <p className="text-black text-[13.5px] font-[500]">
                 Wallet Balance
               </p>
@@ -459,7 +460,7 @@ const DashMain = () => {
                 </p>
               </div>
             </div>
-            <div className="flex-1 flex flex-col bg-tradeAshLight p-[20px] gap-[5px] rounded-[16px] border border-tradeAshExtraLight">
+            <div className="flex-1 flex flex-col bg-tradeAshLight p-[10px] gap-[5px] rounded-[16px] border border-tradeAshExtraLight">
               <p className="text-white text-[13.5px] font-[500]">
                 Escrow Balance
               </p>
@@ -497,26 +498,29 @@ const DashMain = () => {
               <div className="text-[25px] text-white p-[10px] rounded-[16px] bg-tradeOrange">
                 <CgArrowsExchangeAltV />
               </div>
-              <div className="flex flex-col justify-between">
-                <p className="text-[12px] text-tradeFadeWhite font-[500]">
+              <div className=" flex-1 flex gap-[5px] flex-col justify-between">
+                <p className="text-[14px] text-tradeFadeWhite font-[500]">
                   Account Purchase Limit
                 </p>
                 <div className="flex gap-[20px]">
-                  <p className="text-[14px] text-white font-[500]">
+                  <p className="text-[15px] text-white font-[500]">
                     {" "}
-                    <small className="text-[14px] text-tradeFadeWhite font-[500]">
+                    <small className="text-[15px] text-tradeFadeWhite font-[500]">
                       Min :{" "}
                     </small>
                     $50
                   </p>
-                  <p className="text-[14px] text-white font-[500]">
+                  <p className="text-[15px] text-white font-[500]">
                     {" "}
-                    <small className="text-[14px] text-tradeFadeWhite font-[500]">
+                    <small className="text-[15px] text-tradeFadeWhite font-[500]">
                       Max:{" "}
                     </small>
                     $1,000
                   </p>
                 </div>
+              </div>
+              <div className="text-tradeFadeWhite items-end p-[10px]">
+                <IoIosArrowForward />
               </div>
             </div>
           </div>
