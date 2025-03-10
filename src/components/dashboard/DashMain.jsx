@@ -11,6 +11,9 @@ import { CgArrowsExchangeAltV } from "react-icons/cg";
 import { IoIosArrowForward } from "react-icons/io";
 import { FcProcess } from "react-icons/fc";
 import { RiProgress3Line } from "react-icons/ri";
+import { MdOutlinePending } from "react-icons/md";
+import { GrStatusGood } from "react-icons/gr";
+import { IoExtensionPuzzleOutline } from "react-icons/io5";
 
 const DashMain = () => {
   return (
@@ -539,7 +542,7 @@ const DashMain = () => {
           </div>
 
           <div className=" grid grid-cols-2 gap-[10px] rounded-[16px]">
-            <div className="flex flex-col bg-tradeAshExtraLight gap-[10px] p-[10px] rounded-[16px]">
+            <div className="flex flex-col bg-tradeAshLight gap-[10px] p-[10px] rounded-[16px]">
               <div className="flex gap-[5px]">
                 <RiProgress3Line className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
@@ -549,9 +552,9 @@ const DashMain = () => {
 
               <p className="text-white text-[25px] font-[700]">20</p>
             </div>
-            <div className="flex flex-col bg-tradeAshExtraLight gap-[10px] p-[10px] rounded-[16px]">
+            <div className="flex flex-col bg-tradeAshLight gap-[10px] p-[10px] rounded-[16px]">
               <div className="flex gap-[5px]">
-                <RiProgress3Line className="text-tradeFadeWhite" />
+                <MdOutlinePending className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
                   Pending Trades
                 </p>
@@ -559,9 +562,9 @@ const DashMain = () => {
 
               <p className="text-white text-[25px] font-[700]">3</p>
             </div>
-            <div className="flex flex-col bg-tradeAshExtraLight gap-[10px] p-[10px] rounded-[16px]">
+            <div className="flex flex-col bg-tradeAshLight gap-[10px] p-[10px] rounded-[16px]">
               <div className="flex gap-[5px]">
-                <RiProgress3Line className="text-tradeFadeWhite" />
+                <GrStatusGood className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
                   Successful Trades
                 </p>
@@ -569,9 +572,9 @@ const DashMain = () => {
 
               <p className="text-white text-[25px] font-[700]">449</p>
             </div>
-            <div className="flex flex-col bg-tradeAshExtraLight gap-[10px] p-[10px] rounded-[16px]">
+            <div className="flex flex-col bg-tradeAshLight gap-[10px] p-[10px] rounded-[16px]">
               <div className="flex gap-[5px]">
-                <RiProgress3Line className="text-tradeFadeWhite" />
+                <IoExtensionPuzzleOutline className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
                   Disputed Trades
                 </p>
