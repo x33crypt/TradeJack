@@ -437,7 +437,7 @@ const DashMain = () => {
         </div>
       </div>
 
-      <div className="flex flex-col sm:hidden h-screen">
+      <div className="flex flex-col sm:hidden ">
         <div className="flex flex-col px-[20px] py-[16px] ">
           <p className="text-[18px] text-white ">
             Welcome back,{" "}
@@ -524,6 +524,37 @@ const DashMain = () => {
               <div className="text-tradeFadeWhite items-end p-[10px]">
                 <IoIosArrowForward />
               </div>
+            </div>
+          </div>
+          <div className="h-[100px] p-[5px] rounded-[16px] bg-white ">
+            <p className="text-[12px]">
+              Successfully trade 5 more deal and earn our turbo status{" "}
+            </p>
+          </div>
+          <div className="grid grid-cols-2 flex-col gap-[5px]">
+            <div className="p-[10px] bg-tradeAshLight rounded-[16px]">
+              <p className="text-tradeFadeWhite text-[12px] font-[600]">
+                Active Offers
+              </p>
+              <p className="text-white font-[600] text-[30px]">5,423</p>
+            </div>
+            <div className="p-[10px] bg-tradeAshLight rounded-[16px]">
+              <p className="text-tradeFadeWhite text-[12px] font-[600]">
+                Pending Trades
+              </p>
+              <p className="text-white font-[600] text-[30px]">5,423</p>
+            </div>
+            <div className="p-[10px] bg-tradeAshLight rounded-[16px]">
+              <p className="text-tradeFadeWhite text-[12px] font-[600]">
+                Disputed Trades
+              </p>
+              <p className="text-white font-[600] text-[30px]">5,423</p>
+            </div>
+            <div className="p-[10px] bg-tradeAshLight rounded-[16px]">
+              <p className="text-tradeFadeWhite text-[12px] font-[600]">
+                Completed Trades
+              </p>
+              <p className="text-white font-[600] text-[30px]">5,423</p>
             </div>
           </div>
         </div>
