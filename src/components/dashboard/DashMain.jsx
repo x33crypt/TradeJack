@@ -510,14 +510,14 @@ const DashMain = () => {
                     <small className="text-[15px] text-tradeFadeWhite font-[500]">
                       Min :{" "}
                     </small>
-                    50 USD
+                    $50
                   </p>
                   <p className="text-[15px] text-white font-[600]">
                     {" "}
                     <small className="text-[15px] text-tradeFadeWhite font-[500]">
                       Max:{" "}
                     </small>
-                    1,000 USD
+                    $1,000
                   </p>
                 </div>
               </div>
