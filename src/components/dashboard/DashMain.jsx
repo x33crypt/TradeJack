@@ -9,6 +9,8 @@ import { LuPlus } from "react-icons/lu";
 import { HiArrowNarrowUp } from "react-icons/hi";
 import { CgArrowsExchangeAltV } from "react-icons/cg";
 import { IoIosArrowForward } from "react-icons/io";
+import { FcProcess } from "react-icons/fc";
+import { RiProgress3Line } from "react-icons/ri";
 
 const DashMain = () => {
   return (
@@ -536,30 +538,46 @@ const DashMain = () => {
             </p>
           </div>
 
-          <div className=" grid grid-cols-2 gap-[5px]  border-tradeAshExtraLight bg-tradeAshLight p-[5px] rounded-[16px]">
-            <div className="flex flex-col  bg-black gap-[25px] p-[10px] rounded-[16px]">
-              <p className=" text-[12px] font-[600] text-black py-[1px] px-[5px] rounded-[10px] max-w-max bg-tradeGreen">
-                Active Offers
-              </p>
+          <div className=" grid grid-cols-2 gap-[5px] rounded-[16px]">
+            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-black gap-[20px] p-[8px] rounded-[16px]">
+              <div className="flex flex-col gap-[10px] items-center">
+                <RiProgress3Line className="text-tradeFadeWhite" />
+                <p className=" text-[12px] font-[600] text-white">
+                  Active Offers
+                </p>
+              </div>
+
               <p className="text-white text-[25px] font-[700]">13</p>
             </div>
-            <div className="flex flex-col  bg-black gap-[25px] p-[10px] rounded-[16px]">
-              <p className=" text-[12px] font-[600] text-black py-[1px] px-[5px] rounded-[10px] max-w-max bg-tradeGreen">
-                Pending Deals
-              </p>
-              <p className="text-white text-[25px] font-[700]">2</p>
-            </div>{" "}
-            <div className="flex flex-col  bg-black gap-[25px] p-[10px] rounded-[16px]">
-              <p className=" text-[12px] font-[600] text-black py-[1px] px-[5px] rounded-[10px] max-w-max bg-tradeGreen">
-                Disputed Trade
-              </p>
-              <p className="text-white text-[25px] font-[700]">0</p>
-            </div>{" "}
-            <div className="flex flex-col  bg-black gap-[25px] p-[10px] rounded-[16px]">
-              <p className=" text-[12px] font-[600] text-black py-[1px] px-[5px] rounded-[10px] max-w-max bg-tradeGreen">
-                Successful Trade
-              </p>
-              <p className="text-white text-[25px] font-[700]">269</p>
+            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-black gap-[20px] p-[8px] rounded-[16px]">
+              <div className="flex flex-col gap-[10px] items-center">
+                <RiProgress3Line className="text-tradeFadeWhite" />
+                <p className=" text-[12px] font-[600] text-white">
+                  Active Offers
+                </p>
+              </div>
+
+              <p className="text-white text-[25px] font-[700]">13</p>
+            </div>
+            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-black gap-[20px] p-[8px] rounded-[16px]">
+              <div className="flex flex-col gap-[10px] items-center">
+                <RiProgress3Line className="text-tradeFadeWhite" />
+                <p className=" text-[12px] font-[600] text-white">
+                  Active Offers
+                </p>
+              </div>
+
+              <p className="text-white text-[25px] font-[700]">13</p>
+            </div>
+            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-black gap-[20px] p-[8px] rounded-[16px]">
+              <div className="flex flex-col gap-[10px] items-center">
+                <RiProgress3Line className="text-tradeFadeWhite" />
+                <p className=" text-[12px] font-[600] text-white">
+                  Active Offers
+                </p>
+              </div>
+
+              <p className="text-white text-[25px] font-[700]">13</p>
             </div>
           </div>
         </div>
