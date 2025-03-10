@@ -532,14 +532,14 @@ const DashMain = () => {
             </div>
           </div>
 
-          <div className="h-[100px] p-[10px] rounded-[16px] bg-white ">
+          <div className="h-[80px] p-[10px] rounded-[16px] bg-white ">
             <p className="text-[12px]">
               Successfully trade 5 more deal and earn our turbo status{" "}
             </p>
           </div>
 
           <div className=" grid grid-cols-2 gap-[5px] rounded-[16px]">
-            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-black gap-[20px] p-[8px] rounded-[16px]">
+            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-tradeAsh gap-[20px] p-[8px] rounded-[16px]">
               <div className="flex flex-col gap-[10px] items-center">
                 <RiProgress3Line className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
@@ -549,7 +549,7 @@ const DashMain = () => {
 
               <p className="text-white text-[25px] font-[700]">13</p>
             </div>
-            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-black gap-[20px] p-[8px] rounded-[16px]">
+            <div className="flex flex-col items-center  border border-tradeAshExtraLight bg-tradeAsh gap-[20px] p-[8px] rounded-[16px]">
               <div className="flex flex-col gap-[10px] items-center">
                 <RiProgress3Line className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
@@ -559,7 +559,7 @@ const DashMain = () => {
 
               <p className="text-white text-[25px] font-[700]">13</p>
             </div>
-            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-black gap-[20px] p-[8px] rounded-[16px]">
+            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-tradeAsh gap-[20px] p-[8px] rounded-[16px]">
               <div className="flex flex-col gap-[10px] items-center">
                 <RiProgress3Line className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
@@ -569,7 +569,7 @@ const DashMain = () => {
 
               <p className="text-white text-[25px] font-[700]">13</p>
             </div>
-            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-black gap-[20px] p-[8px] rounded-[16px]">
+            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-tradeAsh gap-[20px] p-[8px] rounded-[16px]">
               <div className="flex flex-col gap-[10px] items-center">
                 <RiProgress3Line className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
