@@ -538,46 +538,46 @@ const DashMain = () => {
             </p>
           </div>
 
-          <div className=" grid grid-cols-2 gap-[5px] rounded-[16px]">
-            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-tradeAsh gap-[20px] p-[8px] rounded-[16px]">
-              <div className="flex flex-col gap-[10px] items-center">
+          <div className=" grid grid-cols-2 gap-[10px] rounded-[16px]">
+            <div className="flex flex-col bg-tradeAshExtraLight gap-[10px] p-[10px] rounded-[16px]">
+              <div className="flex gap-[5px]">
                 <RiProgress3Line className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
                   Active Offers
                 </p>
               </div>
 
-              <p className="text-white text-[25px] font-[700]">13</p>
+              <p className="text-white text-[25px] font-[700]">20</p>
             </div>
-            <div className="flex flex-col items-center  border border-tradeAshExtraLight bg-tradeAsh gap-[20px] p-[8px] rounded-[16px]">
-              <div className="flex flex-col gap-[10px] items-center">
+            <div className="flex flex-col bg-tradeAshExtraLight gap-[10px] p-[10px] rounded-[16px]">
+              <div className="flex gap-[5px]">
                 <RiProgress3Line className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
-                  Active Offers
+                  Pending Trades
                 </p>
               </div>
 
-              <p className="text-white text-[25px] font-[700]">13</p>
+              <p className="text-white text-[25px] font-[700]">3</p>
             </div>
-            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-tradeAsh gap-[20px] p-[8px] rounded-[16px]">
-              <div className="flex flex-col gap-[10px] items-center">
+            <div className="flex flex-col bg-tradeAshExtraLight gap-[10px] p-[10px] rounded-[16px]">
+              <div className="flex gap-[5px]">
                 <RiProgress3Line className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
-                  Active Offers
+                  Successful Trades
                 </p>
               </div>
 
-              <p className="text-white text-[25px] font-[700]">13</p>
+              <p className="text-white text-[25px] font-[700]">449</p>
             </div>
-            <div className="flex flex-col items-center  border  border-tradeAshExtraLight bg-tradeAsh gap-[20px] p-[8px] rounded-[16px]">
-              <div className="flex flex-col gap-[10px] items-center">
+            <div className="flex flex-col bg-tradeAshExtraLight gap-[10px] p-[10px] rounded-[16px]">
+              <div className="flex gap-[5px]">
                 <RiProgress3Line className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
-                  Active Offers
+                  Disputed Trades
                 </p>
               </div>
 
-              <p className="text-white text-[25px] font-[700]">13</p>
+              <p className="text-white text-[25px] font-[700]">4</p>
             </div>
           </div>
         </div>
