@@ -444,15 +444,15 @@ const DashMain = () => {
       </div>
 
       <div className="flex flex-col sm:hidden gap-[10px] ">
-        <div className="flex flex-col px-[20px] py-[16px] borde border-tradeAshLight ">
+        {/* <div className="flex flex-col px-[20px] py-[16px] borde border-tradeAshLight ">
           <p className="text-[19px] text-white ">
             Welcome back,{" "}
             <small className="text-[19px] text-white font-[700]">
               x33crypt
             </small>
           </p>
-        </div>
-        <div className="flex flex-col gap-[20px] px-[20px] ">
+        </div> */}
+        <div className="flex flex-col gap-[20px] px-[20px] py-[14px] ">
           <div className="flex flex-col gap-[20px]">
             <div className="flex flex-col overflow-hidden rounded-[16px]">
               <div className="flex-1 flex flex-col p-[10px] gap-[5px] bg-tradeGreen">
@@ -509,10 +509,12 @@ const DashMain = () => {
                 </div>
                 <div className=" flex-1 flex gap-[5px] flex-col justify-between">
                   <p className="text-[14px] text-tradeFadeWhite font-[500]">
-                    Purchase Limit
+                    Asset Purchase Limit
                   </p>
                   <div className="flex items-center gap-[10px]">
-                    <p className="text-[15px] text-white font-[600]">$3,000</p>
+                    <p className="text-[15px] text-white font-[600]">
+                      3,000 USD
+                    </p>
                     <p className="bg-tradeGreen text-[12px] font-[500] rounded-full px-[10px] py-[1px]">
                       Increase your Limit ?
                     </p>
@@ -587,7 +589,7 @@ const DashMain = () => {
                 <p className="text-white font-[700]">11 March, 2024</p>
               </div>
               <div className="flex flex-col gap-[5px]">
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[8px] px-[18px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[6px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
                   <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
                     <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                   </div>
@@ -618,7 +620,7 @@ const DashMain = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[8px] px-[18px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[6px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
                   <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
                     <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                   </div>
@@ -657,7 +659,7 @@ const DashMain = () => {
                 <p className="text-white font-[700]">13 March, 2024</p>
               </div>
               <div className="flex flex-col gap-[5px]">
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[8px] px-[18px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[6px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
                   <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
                     <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                   </div>
@@ -689,7 +691,7 @@ const DashMain = () => {
                   </div>
                 </div>
 
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[8px] px-[18px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[6px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
                   <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
                     <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                   </div>
