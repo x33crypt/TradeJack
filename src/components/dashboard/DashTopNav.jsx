@@ -163,7 +163,7 @@ const DashTopNav = () => {
               navigateTo("/marketplace");
               setIsNavOption(false);
             }}
-            className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-white py-[9px] rounded-[12px]"
+            className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-white py-[10px] rounded-[12px]"
           >
             Sell Asset
           </p>
@@ -172,7 +172,7 @@ const DashTopNav = () => {
               navigateTo("/create-offer");
               setIsNavOption(false);
             }}
-            className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-tradeGreen py-[9px] rounded-[12px]"
+            className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-tradeGreen py-[10px] rounded-[12px]"
           >
             Create Offer
           </p>
