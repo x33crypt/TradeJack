@@ -155,7 +155,7 @@ const DashTopNav = () => {
       <div
         className={`${
           isNavOption ? "flex" : "hidden"
-        } z-50 fixed right-0 left-0 top-[67px] bottom-0 bg-black p-[15px] pt-[16px] pb-[16px] lg:hidden flex flex-col gap-[20px] `}
+        } z-50 fixed right-0 left-0 top-[67px] bottom-0 bg-black p-[15px] pt-[14px] pb-[16px] lg:hidden flex flex-col gap-[20px] `}
       >
         <div className="w-full h-max flex flex-col gap-[10px]">
           <p

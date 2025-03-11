@@ -444,15 +444,15 @@ const DashMain = () => {
       </div>
 
       <div className="flex flex-col sm:hidden gap-[10px] ">
-        {/* <div className="flex flex-col px-[20px] py-[16px] borde border-tradeAshLight ">
+        <div className="flex flex-col px-[20px] py-[14px] borde border-tradeAshLight ">
           <p className="text-[19px] text-white ">
             Welcome back,{" "}
             <small className="text-[19px] text-white font-[700]">
               x33crypt
             </small>
           </p>
-        </div> */}
-        <div className="flex flex-col gap-[20px] px-[20px] py-[14px] ">
+        </div>
+        <div className="flex flex-col gap-[20px] px-[20px]  ">
           <div className="flex flex-col gap-[20px]">
             <div className="flex flex-col overflow-hidden rounded-[16px]">
               <div className="flex-1 flex flex-col p-[10px] gap-[5px] bg-tradeGreen">
