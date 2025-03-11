@@ -508,11 +508,13 @@ const DashMain = () => {
                   <CgArrowsExchangeAltV />
                 </div>
                 <div className=" flex-1 flex gap-[5px] flex-col justify-between">
-                  <p className="text-[14px] text-tradeFadeWhite font-[500]">
-                    Purchase Limit
+                  <p className="text-[13px] text-tradeFadeWhite font-[500]">
+                    Maximum Purchase Limit
                   </p>
                   <div className="flex items-center gap-[10px]">
-                    <p className="text-[15px] text-white font-[600]">$3,000</p>
+                    <p className="text-[15px] text-white font-[600]">
+                      3,000 USD
+                    </p>
                     <p className="bg-tradeGreen text-[10px] font-[500] rounded-full px-[10px] py-[px]">
                       Increase your Limit ?
                     </p>
@@ -585,7 +587,7 @@ const DashMain = () => {
             <div className="flex flex-col gap-[10px]">
               <div>
                 <p className="text-white text-[15px] font-[700]">
-                  11 March, 2024
+                  13 March, 2024
                 </p>
               </div>
               <div className="flex flex-col gap-[5px]">
@@ -596,17 +598,20 @@ const DashMain = () => {
                   <div className="w-full flex flex-col gap-[5px]">
                     <div className="flex justify-between">
                       <div className="flex items-center gap-[3px]">
-                        <p className="text-white text-[14px] font-[600]">
+                        <p className="text-white text-[14px] font-[700]">
                           Paypal
                         </p>
                         <p className="text-white text-[15px]">-</p>
-                        <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                        <p className="text-tradeFadeWhite text-[13px] font-[600]">
                           Buyer
                         </p>
                       </div>
 
                       <p className="text-white text-[14px] font-[700]">
-                        1,870.00 USD
+                        1,870.00{" "}
+                        <small className="text-tradeFadeWhite text-[14px] font-[700]">
+                          USD
+                        </small>
                       </p>
                     </div>
                     <div className="flex justify-between">
@@ -620,6 +625,7 @@ const DashMain = () => {
                     </div>
                   </div>
                 </div>
+
                 <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
                   <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
                     <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
@@ -627,17 +633,20 @@ const DashMain = () => {
                   <div className="w-full flex flex-col gap-[5px]">
                     <div className="flex justify-between">
                       <div className="flex items-center gap-[3px]">
-                        <p className="text-white text-[14px] font-[600]">
+                        <p className="text-white text-[14px] font-[700]">
                           Paypal
                         </p>
                         <p className="text-white text-[15px]">-</p>
-                        <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                        <p className="text-tradeFadeWhite text-[13px] font-[600]">
                           Buyer
                         </p>
                       </div>
 
                       <p className="text-white text-[14px] font-[700]">
-                        1,870.00 USD
+                        1,870.00{" "}
+                        <small className="text-tradeFadeWhite text-[14px] font-[700]">
+                          USD
+                        </small>
                       </p>
                     </div>
                     <div className="flex justify-between">
@@ -668,17 +677,20 @@ const DashMain = () => {
                   <div className="w-full flex flex-col gap-[5px]">
                     <div className="flex justify-between">
                       <div className="flex items-center gap-[3px]">
-                        <p className="text-white text-[14px] font-[600]">
+                        <p className="text-white text-[14px] font-[700]">
                           Paypal
                         </p>
                         <p className="text-white text-[15px]">-</p>
-                        <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                        <p className="text-tradeFadeWhite text-[13px] font-[600]">
                           Buyer
                         </p>
                       </div>
 
                       <p className="text-white text-[14px] font-[700]">
-                        1,870.00 USD
+                        1,870.00{" "}
+                        <small className="text-tradeFadeWhite text-[14px] font-[700]">
+                          USD
+                        </small>
                       </p>
                     </div>
                     <div className="flex justify-between">
@@ -700,17 +712,20 @@ const DashMain = () => {
                   <div className="w-full flex flex-col gap-[5px]">
                     <div className="flex justify-between">
                       <div className="flex items-center gap-[3px]">
-                        <p className="text-white text-[14px] font-[600]">
+                        <p className="text-white text-[14px] font-[700]">
                           Paypal
                         </p>
                         <p className="text-white text-[15px]">-</p>
-                        <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                        <p className="text-tradeFadeWhite text-[13px] font-[600]">
                           Buyer
                         </p>
                       </div>
 
                       <p className="text-white text-[14px] font-[700]">
-                        1,870.00 USD
+                        1,870.00{" "}
+                        <small className="text-tradeFadeWhite text-[14px] font-[700]">
+                          USD
+                        </small>
                       </p>
                     </div>
                     <div className="flex justify-between">
@@ -741,17 +756,20 @@ const DashMain = () => {
                   <div className="w-full flex flex-col gap-[5px]">
                     <div className="flex justify-between">
                       <div className="flex items-center gap-[3px]">
-                        <p className="text-white text-[14px] font-[600]">
+                        <p className="text-white text-[14px] font-[700]">
                           Paypal
                         </p>
                         <p className="text-white text-[15px]">-</p>
-                        <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                        <p className="text-tradeFadeWhite text-[13px] font-[600]">
                           Buyer
                         </p>
                       </div>
 
                       <p className="text-white text-[14px] font-[700]">
-                        1,870.00 USD
+                        1,870.00{" "}
+                        <small className="text-tradeFadeWhite text-[14px] font-[700]">
+                          USD
+                        </small>
                       </p>
                     </div>
                     <div className="flex justify-between">
@@ -773,17 +791,20 @@ const DashMain = () => {
                   <div className="w-full flex flex-col gap-[5px]">
                     <div className="flex justify-between">
                       <div className="flex items-center gap-[3px]">
-                        <p className="text-white text-[14px] font-[600]">
+                        <p className="text-white text-[14px] font-[700]">
                           Paypal
                         </p>
                         <p className="text-white text-[15px]">-</p>
-                        <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                        <p className="text-tradeFadeWhite text-[13px] font-[600]">
                           Buyer
                         </p>
                       </div>
 
                       <p className="text-white text-[14px] font-[700]">
-                        1,870.00 USD
+                        1,870.00{" "}
+                        <small className="text-tradeFadeWhite text-[14px] font-[700]">
+                          USD
+                        </small>
                       </p>
                     </div>
                     <div className="flex justify-between">
