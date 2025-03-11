@@ -512,9 +512,7 @@ const DashMain = () => {
                     Asset Purchase Limit
                   </p>
                   <div className="flex items-center gap-[10px]">
-                    <p className="text-[15px] text-white font-[600]">
-                      3,000 USD
-                    </p>
+                    <p className="text-[15px] text-white font-[600]">$3,000</p>
                     <p className="bg-tradeGreen text-[12px] font-[500] rounded-full px-[10px] py-[1px]">
                       Increase your Limit ?
                     </p>
