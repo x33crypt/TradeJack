@@ -179,28 +179,8 @@ const MarketTopNav = () => {
       <div
         className={`${
           isNavOption ? "flex" : "hidden"
-        } z-50 fixed right-0 left-0 top-[67px] bottom-0 bg-black p-[15px] pt-[14px] pb-[16px] lg:hidden flex flex-col gap-[20px] `}
+        } z-50 fixed right-0 left-0 top-[67px] bottom-0 bg-black p-[15px] pt-[14px] pb-[16px] lg:hidden flex flex-col justify-between gap-[20px] `}
       >
-        <div className="w-full h-max flex flex-col gap-[10px]">
-          <p
-            onClick={() => {
-              navigateTo("/marketplace");
-              setIsNavOption(false);
-            }}
-            className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-white py-[10px] rounded-[12px]"
-          >
-            Sell Asset
-          </p>
-          <p
-            onClick={() => {
-              navigateTo("/create-offer");
-              setIsNavOption(false);
-            }}
-            className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-tradeGreen py-[10px] rounded-[12px]"
-          >
-            Buy Asset
-          </p>
-        </div>
         <div className="flex flex-col gap-[10px]">
           <div
             onClick={() => {
@@ -240,6 +220,27 @@ const MarketTopNav = () => {
             <TbHelpCircle className="text-[15px] text-tradeFadeWhite" />
             <p className="text-white text-[15px] "> Help Center</p>
           </div>
+        </div>
+
+        <div className="w-full h-max flex flex-col gap-[10px]">
+          <p
+            onClick={() => {
+              navigateTo("/marketplace");
+              setIsNavOption(false);
+            }}
+            className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-white py-[10px] rounded-[12px]"
+          >
+            Sell Asset
+          </p>
+          <p
+            onClick={() => {
+              navigateTo("/create-offer");
+              setIsNavOption(false);
+            }}
+            className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-tradeGreen py-[10px] rounded-[12px]"
+          >
+            Buy Asset
+          </p>
         </div>
       </div>
     </>
