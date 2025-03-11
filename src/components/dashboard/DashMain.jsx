@@ -471,7 +471,7 @@ const DashMain = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex-1 flex flex-col p-[10px] gap-[5px] bg-tradeAshLight border-t border-black">
+              <div className="flex-1 flex flex-col p-[10px] gap-[5px] bg-tradeAsh border-t border-tradeAshExtraLight">
                 <div className="flex gap-[5px] items-center text-white">
                   <p className=" text-[12px] font-[600]">Escrow Wallet</p>
                   <FaRegQuestionCircle className="text-[14px]" />
@@ -486,7 +486,7 @@ const DashMain = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-[5px]  border-tradeAshExtraLight bg-tradeAshLight p-[5px] rounded-[16px]">
+            <div className="flex flex-col gap-[5px]  border-tradeAshExtraLight bg-tradeAsh p-[5px] rounded-[16px]">
               <div className="flex w-full gap-[5px]">
                 <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[16px]">
                   <div className="text-[25px] text-white p-[10px] rounded-[16px] bg-tradeAshLight">
@@ -532,7 +532,7 @@ const DashMain = () => {
           </div>
 
           <div className=" grid grid-cols-2 gap-[10px] rounded-[16px]">
-            <div className="flex flex-col border border-tradeAshExtraLight bg-tradeAshLight gap-[10px] p-[10px] rounded-[16px]">
+            <div className="flex flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[16px]">
               <div className="flex gap-[5px]">
                 <RiProgress3Line className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
@@ -542,7 +542,7 @@ const DashMain = () => {
 
               <p className="text-white text-[25px] font-[700]">20</p>
             </div>
-            <div className="flex flex-col border border-tradeAshExtraLight bg-tradeAshLight gap-[10px] p-[10px] rounded-[16px]">
+            <div className="flex flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[16px]">
               <div className="flex gap-[5px]">
                 <MdOutlinePending className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
@@ -552,7 +552,7 @@ const DashMain = () => {
 
               <p className="text-white text-[25px] font-[700]">3</p>
             </div>
-            <div className="flex flex-col border border-tradeAshExtraLight bg-tradeAshLight gap-[10px] p-[10px] rounded-[16px]">
+            <div className="flex flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[16px]">
               <div className="flex gap-[5px]">
                 <GrStatusGood className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
@@ -562,7 +562,7 @@ const DashMain = () => {
 
               <p className="text-white text-[25px] font-[700]">449</p>
             </div>
-            <div className="flex flex-col border border-tradeAshExtraLight bg-tradeAshLight gap-[10px] p-[10px] rounded-[16px]">
+            <div className="flex flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[16px]">
               <div className="flex gap-[5px]">
                 <IoExtensionPuzzleOutline className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
@@ -574,20 +574,22 @@ const DashMain = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-[15px] p-[5px]">
+          <div className="flex flex-col gap-[20px] p-[5px]">
             <div className="flex justify-between items-center">
-              <p className="text-tradeFadeWhite font-[600] text-[18px]">
+              <p className="text-white font-[600] text-[18px]">
                 Transaction history
               </p>
-              <p className="text-white font-[600] text-[14px]">View All</p>
+              <p className="text-tradeGreen font-[600] text-[13px]">View All</p>
             </div>
 
             <div className="flex flex-col gap-[10px]">
               <div>
-                <p className="text-white font-[700]">11 March, 2024</p>
+                <p className="text-white text-[15px] font-[700]">
+                  11 March, 2024
+                </p>
               </div>
               <div className="flex flex-col gap-[5px]">
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[6px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[6px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
                   <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
                     <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                   </div>
@@ -618,7 +620,7 @@ const DashMain = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[6px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[6px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
                   <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
                     <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                   </div>
@@ -654,10 +656,12 @@ const DashMain = () => {
 
             <div className="flex flex-col gap-[10px]">
               <div>
-                <p className="text-white font-[700]">13 March, 2024</p>
+                <p className="text-white text-[15px] font-[700]">
+                  13 March, 2024
+                </p>
               </div>
               <div className="flex flex-col gap-[5px]">
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[6px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[6px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
                   <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
                     <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                   </div>
@@ -689,7 +693,7 @@ const DashMain = () => {
                   </div>
                 </div>
 
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[6px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[6px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
                   <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
                     <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                   </div>
