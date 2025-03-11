@@ -187,38 +187,38 @@ const MarketTopNav = () => {
               navigateTo("/dashboard");
               setIsNavOption(false);
             }}
-            className=" flex gap-[10px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
+            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
           >
-            <MdSpaceDashboard className="text-[15px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Dashboard</p>
+            <MdSpaceDashboard className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[16px] ">Dashboard</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
-            <TbLayoutList className="text-[15px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">My Offers</p>
+            <TbLayoutList className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[16px] ">My Offers</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
-            <FaRegEnvelope className="text-[15px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] "> Messages</p>
+            <FaRegEnvelope className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[16px] "> Messages</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
-            <FaVenusDouble className="text-[15px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Favourite Vendors</p>
+            <FaVenusDouble className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[16px] ">Favourite Vendors</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
-            <RiExchangeFundsLine className="text-[15px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Transaction History</p>
+            <RiExchangeFundsLine className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[16px] ">Transaction History</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
-            <MdOutlineQueryStats className="text-[15px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Transaction Statistics</p>
+            <MdOutlineQueryStats className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[16px] ">Transaction Statistics</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
-            <LiaUserFriendsSolid className="text-[15px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Invite a friend</p>
+            <LiaUserFriendsSolid className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[16px] ">Invite a friend</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
-            <TbHelpCircle className="text-[15px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] "> Help Center</p>
+            <TbHelpCircle className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[16px] "> Help Center</p>
           </div>
         </div>
 
@@ -228,7 +228,7 @@ const MarketTopNav = () => {
               navigateTo("/marketplace");
               setIsNavOption(false);
             }}
-            className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-white py-[10px] rounded-[12px]"
+            className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-white py-[10px] rounded-[12px]"
           >
             Sell Asset
           </p>
@@ -237,7 +237,7 @@ const MarketTopNav = () => {
               navigateTo("/create-offer");
               setIsNavOption(false);
             }}
-            className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-tradeGreen py-[10px] rounded-[12px]"
+            className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-tradeGreen py-[10px] rounded-[12px]"
           >
             Buy Asset
           </p>
