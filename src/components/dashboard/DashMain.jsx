@@ -444,17 +444,17 @@ const DashMain = () => {
 
       <div className="flex flex-col sm:hidden ">
         <div className="flex flex-col px-[20px] py-[16px] ">
-          <p className="text-[18px] text-white ">
+          <p className="text-[19px] text-white ">
             Welcome back,{" "}
-            <small className="text-[18px] text-white font-[700]">
+            <small className="text-[19px] text-white font-[700]">
               x33crypt
             </small>
           </p>
         </div>
         <div className="flex flex-col gap-[20px] px-[20px] ">
           <div className="flex flex-col gap-[10px]">
-            <div className="flex flex-col gap-[10px]">
-              <div className="flex-1 flex flex-col bg-tradeGreen p-[10px] gap-[5px] rounded-[16px] border border-tradeGreen">
+            <div className="flex flex-col  bg-tradeGreen rounded-[16px]">
+              <div className="flex-1 flex flex-col p-[10px] gap-[5px] rounded-[16px]">
                 <div className="flex justify-between">
                   <p className="text-black text-[13.5px] font-[600]">
                     Available Balance
@@ -470,14 +470,13 @@ const DashMain = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex-1 flex flex-col bg-tradeAshLight p-[10px] gap-[5px] rounded-[16px] border border-tradeAshExtraLight">
-                <div className="flex justify-between text-white">
-                  <p className=" text-[13.5px] font-[600]">Escrow Balance</p>
-                  <FaEye />
+              <div className="flex-1 flex flex-col p-[10px] gap-[5px]  border-t border-black">
+                <div className="flex justify-between text-black">
+                  <p className=" text-[13.5px] font-[600]">Escrow Wallet</p>
                 </div>
 
                 <div className="flex items-baseline ">
-                  <p className="flex items-baseline text-[26px] text-white font-[800]">
+                  <p className="flex items-baseline text-[26px] text-black font-[800]">
                     &#36;650
                     <small className="text-[24px] font-[800]">&#8228;</small>
                     <small className="text-[16px] font-[800]">00</small>
@@ -513,7 +512,7 @@ const DashMain = () => {
                   <div className="flex items-center gap-[10px]">
                     <p className="text-[15px] text-white font-[600]">$3,000</p>
                     <p className="bg-tradeGreen text-[12px] font-[500] rounded-full px-[10px] py-[1px]">
-                      Increase Limit ?
+                      Increase your Limit ?
                     </p>
                   </div>
                 </div>
@@ -572,6 +571,8 @@ const DashMain = () => {
               <p className="text-white text-[25px] font-[700]">4</p>
             </div>
           </div>
+
+          <div></div>
         </div>
       </div>
     </div>
