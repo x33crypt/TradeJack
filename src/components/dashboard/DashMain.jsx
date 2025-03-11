@@ -464,9 +464,9 @@ const DashMain = () => {
 
                 <div className="flex items-baseline ">
                   <p className="flex items-baseline text-[26px] font-[800]">
-                    &#36;2,000
+                    &#36;2,028
                     <small className="text-[24px] font-[800]">&#8228;</small>
-                    <small className="text-[16px] font-[800]">00</small>
+                    <small className="text-[16px] font-[800]">69</small>
                   </p>
                 </div>
               </div>
@@ -478,7 +478,7 @@ const DashMain = () => {
 
                 <div className="flex items-baseline ">
                   <p className="flex items-baseline text-[26px] text-white font-[800]">
-                    &#36;2,000
+                    &#36;650
                     <small className="text-[24px] font-[800]">&#8228;</small>
                     <small className="text-[16px] font-[800]">00</small>
                   </p>
@@ -513,7 +513,7 @@ const DashMain = () => {
                   <div className="flex items-center gap-[10px]">
                     <p className="text-[15px] text-white font-[600]">$3,000</p>
                     <p className="bg-tradeGreen text-[12px] font-[500] rounded-full px-[10px] py-[1px]">
-                      Increase your Limit Today!
+                      Increase Limit ?
                     </p>
                   </div>
                 </div>
