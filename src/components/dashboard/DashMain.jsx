@@ -579,7 +579,7 @@ const DashMain = () => {
               <p className="text-white font-[600] text-[20px]">
                 Transaction history
               </p>
-              <p className="text-tradeGreen font-[700] text-[14px]">View All</p>
+              <p className="text-tradeGreen font-[700] text-[13px]">View All</p>
             </div>
 
             <div className="flex flex-col gap-[10px]">
