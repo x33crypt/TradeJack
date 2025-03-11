@@ -453,8 +453,8 @@ const DashMain = () => {
         </div>
         <div className="flex flex-col gap-[20px] px-[20px] ">
           <div className="flex flex-col gap-[10px]">
-            <div className="flex flex-col  bg-tradeGreen rounded-[16px]">
-              <div className="flex-1 flex flex-col p-[10px] gap-[5px] rounded-[16px]">
+            <div className="flex flex-col overflow-hidden rounded-[16px]">
+              <div className="flex-1 flex flex-col p-[10px] gap-[5px] bg-tradeGreen">
                 <div className="flex justify-between">
                   <p className="text-black text-[13.5px] font-[600]">
                     Available Balance
@@ -470,13 +470,13 @@ const DashMain = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex-1 flex flex-col p-[10px] gap-[5px]  border-t border-black">
-                <div className="flex justify-between text-black">
+              <div className="flex-1 flex flex-col p-[10px] gap-[5px] bg-tradeAshLight border-t border-black">
+                <div className="flex justify-between text-white">
                   <p className=" text-[13.5px] font-[600]">Escrow Wallet</p>
                 </div>
 
                 <div className="flex items-baseline ">
-                  <p className="flex items-baseline text-[26px] text-black font-[800]">
+                  <p className="flex items-baseline text-[26px] text-white font-[800]">
                     &#36;650
                     <small className="text-[24px] font-[800]">&#8228;</small>
                     <small className="text-[16px] font-[800]">00</small>
