@@ -509,11 +509,11 @@ const DashMain = () => {
                 </div>
                 <div className=" flex-1 flex gap-[5px] flex-col justify-between">
                   <p className="text-[14px] text-tradeFadeWhite font-[500]">
-                    Asset Purchase Limit
+                    Purchase Limit
                   </p>
                   <div className="flex items-center gap-[10px]">
                     <p className="text-[15px] text-white font-[600]">$3,000</p>
-                    <p className="bg-tradeGreen text-[12px] font-[500] rounded-full px-[10px] py-[1px]">
+                    <p className="bg-tradeGreen text-[10px] font-[500] rounded-full px-[10px] py-[px]">
                       Increase your Limit ?
                     </p>
                   </div>
@@ -579,7 +579,7 @@ const DashMain = () => {
               <p className="text-white font-[600] text-[20px]">
                 Transaction history
               </p>
-              <p className="text-tradeGreen font-[600] text-[13px]">View All</p>
+              <p className="text-tradeGreen font-[700] text-[14px]">View All</p>
             </div>
 
             <div className="flex flex-col gap-[10px]">
@@ -658,6 +658,79 @@ const DashMain = () => {
               <div>
                 <p className="text-white text-[15px] font-[700]">
                   13 March, 2024
+                </p>
+              </div>
+              <div className="flex flex-col gap-[5px]">
+                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                  <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+                    <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
+                  </div>
+                  <div className="w-full flex flex-col gap-[5px]">
+                    <div className="flex justify-between">
+                      <div className="flex items-center gap-[3px]">
+                        <p className="text-white text-[14px] font-[600]">
+                          Paypal
+                        </p>
+                        <p className="text-white text-[15px]">-</p>
+                        <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                          Buyer
+                        </p>
+                      </div>
+
+                      <p className="text-white text-[14px] font-[700]">
+                        1,870.00 USD
+                      </p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className="text-tradeFadeWhite text-[12px] font-[600]">
+                        04:22 AM
+                      </p>
+
+                      <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
+                        Pending
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                  <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+                    <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
+                  </div>
+                  <div className="w-full flex flex-col gap-[5px]">
+                    <div className="flex justify-between">
+                      <div className="flex items-center gap-[3px]">
+                        <p className="text-white text-[14px] font-[600]">
+                          Paypal
+                        </p>
+                        <p className="text-white text-[15px]">-</p>
+                        <p className="text-tradeFadeWhite text-[14px] font-[600]">
+                          Buyer
+                        </p>
+                      </div>
+
+                      <p className="text-white text-[14px] font-[700]">
+                        1,870.00 USD
+                      </p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className="text-tradeFadeWhite text-[12px] font-[600]">
+                        04:22 AM
+                      </p>
+
+                      <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
+                        Pending
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-[10px]">
+              <div>
+                <p className="text-white text-[15px] font-[700]">
+                  12 March, 2024
                 </p>
               </div>
               <div className="flex flex-col gap-[5px]">
