@@ -443,7 +443,7 @@ const DashMain = () => {
         </div>
       </div>
 
-      <div className="flex flex-col sm:hidden gap-[10px] ">
+      <div className="flex flex-col sm:hidden gap-[0px] ">
         <div className="flex flex-col px-[20px] py-[14px] borde border-tradeAshLight ">
           <p className="text-[19px] text-white ">
             Welcome back,{" "}
@@ -460,28 +460,28 @@ const DashMain = () => {
                   <p className="text-black text-[12px] font-[600]">
                     Available Balance
                   </p>
-                  <FaEye />
+                  <FaEye className="text-[18px]" />
                 </div>
 
                 <div className="flex items-baseline ">
-                  <p className="flex items-baseline text-[26px] font-[800]">
+                  <p className="flex items-baseline text-[28px] font-[800]">
                     &#36;2,028
-                    <small className="text-[24px] font-[800]">&#8228;</small>
-                    <small className="text-[16px] font-[800]">69</small>
+                    <small className="text-[26px] font-[800]">&#8228;</small>
+                    <small className="text-[18px] font-[800]">69</small>
                   </p>
                 </div>
               </div>
               <div className="flex-1 flex flex-col p-[10px] gap-[5px] bg-tradeAsh border-t border-tradeAshExtraLight">
                 <div className="flex gap-[5px] items-center text-white">
                   <p className=" text-[12px] font-[600]">Escrow Wallet</p>
-                  <FaRegQuestionCircle className="text-[14px]" />
+                  <FaRegQuestionCircle className="text-[14px] text-tradeFadeWhite" />
                 </div>
 
                 <div className="flex items-baseline ">
-                  <p className="flex items-baseline text-[26px] text-white font-[800]">
+                  <p className="flex items-baseline text-[28px] text-white font-[800]">
                     &#36;650
                     <small className="text-[24px] font-[800]">&#8228;</small>
-                    <small className="text-[16px] font-[800]">00</small>
+                    <small className="text-[18px] font-[800]">00</small>
                   </p>
                 </div>
               </div>
@@ -516,7 +516,7 @@ const DashMain = () => {
                       3,000 USD
                     </p>
                     <p className="bg-tradeGreen text-[10px] font-[500] rounded-full px-[10px] py-[px]">
-                      Increase your Limit ?
+                      Increase your Limit !
                     </p>
                   </div>
                 </div>
