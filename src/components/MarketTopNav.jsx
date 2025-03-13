@@ -20,6 +20,7 @@ import { FaVenusDouble } from "react-icons/fa";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { MdOutlineCancel } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
+import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 
 const MarketTopNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -185,6 +186,15 @@ const MarketTopNav = () => {
           isNavOption ? "flex" : "hidden"
         } z-50 fixed right-0 left-0 top-[67px] bottom-0 bg-black p-[15px] pt-[14px] pb-[16px] lg:hidden flex flex-col justify-between gap-[20px] `}
       >
+        <div className="flex gap-[10px] p-[10px] items-center bg-tradeAsh rounded-[12px]">
+          <HiMiniMagnifyingGlass className="text-tradeFadeWhite text-[18px]" />
+          <input
+            className="w-full bg-transparent placeholder:text-tradeFadeWhite text-[15px]"
+            type="text"
+            placeholder="Hi x33crypt, how can we help ?"
+          />
+        </div>
+
         <div className="flex flex-col gap-[10px]">
           <div
             onClick={() => {

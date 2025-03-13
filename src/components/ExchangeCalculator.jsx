@@ -6,7 +6,7 @@ const ExchangeCalculator = (prop) => {
       <div className=" h-full lg:w-[400px] flex flex-col bg-tradeAsh md:border border-tradeAsh rounded-[12.5px]">
         <div className="flex flex-col justify-between p-[20px] border-b border-tradeAshExtraLight">
           <p className="text-[18px] text-white font-[700] cursor-pointer">
-            Exchange Calculator
+            Offer Calculator
           </p>
         </div>
 
@@ -24,6 +24,7 @@ const ExchangeCalculator = (prop) => {
                       ).toLocaleString()}`}
                     </small>
                   </p>
+                  <p className="text-white">-</p>
                   <p className="text-tradeFadeWhite text-[13px] flex gap-[5px]">
                     Max
                     <small className="text-white text-[13px] font-[600]">
@@ -88,7 +89,7 @@ const ExchangeCalculator = (prop) => {
           </div>
 
           <div className=" flex lg:pb-[px] py-[15.5px] flex-col">
-            <div className="flex justify-between px-[20px] py-[5px] border-t border-tradeAshExtraLight">
+            <div className="flex justify-between px-[20px] py-[8px] border-t border-tradeAshExtraLight">
               <p className="text-[14px] font-[500] text-tradeGreen">
                 Rate breakdown
               </p>
@@ -107,7 +108,7 @@ ${
               </p>
             </div>
 
-            <div className="flex justify-between px-[20px] py-[5px] border-t border-tradeAshExtraLight">
+            <div className="flex justify-between px-[20px] py-[8px] border-t border-tradeAshExtraLight">
               <p className="text-[14px] font-[500] text-tradeFadeWhite">
                 Your receive value in ({prop?.offerDetails.currency})
               </p>
@@ -123,7 +124,7 @@ ${
               </p>
             </div>
 
-            <div className="flex justify-between px-[20px] py-[5px] border-t border-tradeAshExtraLight">
+            <div className="flex justify-between px-[20px] py-[8px] border-t border-tradeAshExtraLight">
               <p className="text-[14px] font-[500] text-tradeFadeWhite">
                 Your receive value in (USD)
               </p>
