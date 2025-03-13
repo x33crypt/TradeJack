@@ -51,7 +51,7 @@ const MarketMain = ({
         </p>
       </div>
 
-      <div className="flex flex-col md:gap-[10px] gap-[10px] px-[15px] pb-[20px]">
+      <div className="flex flex-col md:gap-[10px] gap-[10px] px-[20px] pb-[20px]">
         <div className="z-10 gap-[10px] sticky top-[65px] md:py-[20px] py-[16px] bg-black  flex flex-col ">
           <div className="flex justify-between w-full ">
             <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
@@ -148,7 +148,7 @@ const MarketMain = ({
           />
         </div>
 
-        <div className="flex flex-col gap-[20px] bg-tradeAsh p-[5px] rounded-[12px]">
+        <div className="flex flex-col gap-[20px] p-[px] rounded-[12px]">
           <div className="flex flex-col gap-[20px]">
             <div className=" sticky md:top-[135px] top-[127px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[8px] rounded-[6px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">

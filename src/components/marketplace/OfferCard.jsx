@@ -140,7 +140,7 @@ const OfferCard = (props) => {
 
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className=" bg-black flex md:hidden justify-between p-[10px] rounded-[8px] cursor-pointer transition-all duration-300"
+        className=" bg-tradeAsh flex md:hidden justify-between p-[10px] rounded-[12px] cursor-pointer transition-all duration-300"
       >
         <div className="flex flex-col gap-[4px]">
           <div className="flex gap-[10px]">
