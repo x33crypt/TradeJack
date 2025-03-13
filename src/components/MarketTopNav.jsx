@@ -189,8 +189,12 @@ const MarketTopNav = () => {
         <div className="flex gap-[10px] p-[10px] items-center bg-tradeAsh border border-tradeAshExtraLight rounded-[12px]">
           <HiMiniMagnifyingGlass className="text-tradeFadeWhite text-[20px]" />
 
-          <p className=" text-tradeFadeWhite text-[15px]">
-            Hi x33crypt, how can we help ?
+          <p className=" text-tradeFadeWhite text-[15px] font-[500]">
+            Hello,{" "}
+            <small className="text-tradeFadeWhite text-[15px] font-[600]">
+              x33crypt.
+            </small>{" "}
+            How can we help ?
           </p>
         </div>
 

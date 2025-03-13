@@ -58,7 +58,7 @@ const DashSideNav = () => {
           <p className="text-[14px] font-[500]"> Help</p>
         </div>
         <div className="p-[7px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer">
-          <LiaUserFriendsSolid className="text-[17px]" />
+          <IoSettingsOutline className="text-[17px]" />
           <p className="text-[14px] font-[500]">Settings</p>
         </div>
       </div>

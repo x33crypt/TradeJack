@@ -19,17 +19,17 @@ import { TiArrowRight } from "react-icons/ti";
 
 const DashMain = () => {
   return (
-    <div className="flex-1 flex flex-col lg:gap-[10px] gap-[30px]">
-      <div className=" md:flex flex-col gap-[30px] hidden bg-tradeBorde">
-        <div className="flex flex-col  justify-between lg:py-[px] py-[px] ">
-          <p className=" lg:text-[21px] text-[20px] text-tradeFadeWhite  ">
-            Welcome back,{" "}
-            <small className="lg:text-[21px] text-[20px] text-white font-[700]">
-              x33crypt
-            </small>
-          </p>
-        </div>
-        <div className="flex">
+    <>
+      <div className="flex-1 md:flex hidden lg:gap-[10px] gap-[30px]">
+        <div className="flex flex-1 flex-col gap-[15px]">
+          <div className="flex flex-col bg- rounded-[12px]  justify-between p-[10px] ">
+            <p className=" lg:text-[20px] text-[20px] text-tradeFadeWhite  ">
+              Welcome back,{" "}
+              <small className="lg:text-[20px] text-[20px] text-white font-[700]">
+                x33crypt
+              </small>
+            </p>
+          </div>
           <div className="flex-1 flex flex-col gap-[20px]">
             <div className="flex gap-[15px]">
               <div className="flex-1 flex flex-col h-[100px] justify-between p-[10px] gap-[5px] rounded-[12px] border border-tradeGreen bg-tradeGreen">
@@ -235,13 +235,13 @@ const DashMain = () => {
               </div>
             </div>
           </div>
-
-          <div className=" lg:flex hidden w-[300px]"></div>
         </div>
+
+        <div className=" lg:flex hidden w-[300px]"></div>
       </div>
 
-      <div className="flex flex-col md:hidden gap-[0px] ">
-        <div className="flex flex-col px-[20px] py-[16px]">
+      <div className="flex-1 flex flex-col md:hidden gap-[15px] px-[20px] ">
+        <div className="flex flex-col p-[10px]">
           <p className="text-[18px] text-tradeFadeWhite ">
             Welcome back,{" "}
             <small className="text-[18px] text-white font-[700]">
@@ -249,7 +249,7 @@ const DashMain = () => {
             </small>
           </p>
         </div>
-        <div className="flex flex-col gap-[20px] px-[20px]  ">
+        <div className="flex flex-col gap-[20px]  ">
           <div className="flex flex-col gap-[20px]">
             <div className="flex flex-col overflow-hidden rounded-[16px]">
               <div className="flex-1 flex flex-col p-[10px] gap-[5px] bg-tradeGreen">
@@ -602,7 +602,7 @@ const DashMain = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

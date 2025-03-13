@@ -44,12 +44,13 @@ const MarketMain = ({
   setClearFilter,
 }) => {
   return (
-    <div className="flex flex-col md:border border-neutral-800 md:rounded-[12px]">
+    <div className="flex flex-col md:border border-neutral-800 md:rounded-[16px]">
       <div className="flex flex-col justify-between md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700]">
           Seamless Asset Trading
         </p>
       </div>
+
       <div className="flex flex-col md:gap-[10px] gap-[10px] px-[20px] pb-[20px]">
         <div className="z-10 gap-[10px] sticky top-[65px] md:py-[20px] py-[16px] bg-black  flex flex-col ">
           <div className="flex justify-between w-full">
@@ -147,22 +148,22 @@ const MarketMain = ({
           />
         </div>
 
-        <div className="flex flex-col gap-[20px]">
+        <div className="flex flex-col gap-[20px] bg-tradeAshLight p-[5px] rounded-[12px]">
           <div className="flex flex-col gap-[20px]">
-            <div className=" sticky md:top-[135px] top-[127px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[3px] rounded-[0px]">
+            <div className=" sticky md:top-[135px] top-[127px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[8px] rounded-[6px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Promoted Offers
               </p>
             </div>
-            <div className="flex flex-col gap-[20px]">
-              <div className=" md:flex hidden bg-tradeAshLight px-[12px] py-[4px] rounded-[3px]">
+            <div className="flex flex-col gap-[20px] ">
+              <div className=" md:flex hidden bg-black px-[12px] py-[4px] rounded-[8px]">
                 <p className="flex-1 text-neutral-400 text-[14px] ">Vendor</p>
                 <p className="flex-1 text-neutral-400 text-[14px]">Details</p>
                 <p className="flex-1 text-neutral-400 text-[14px]">
-                  Rate Cap & Performance
+                  Rate & Performance
                 </p>
               </div>
-              <div className="grid grid-cols-1 items-center">
+              <div className="grid grid-cols-1 gap-[5px] items-center">
                 {promotedOffers?.map((offer, index) => (
                   <div key={index}>
                     <OfferCard
@@ -179,33 +180,37 @@ const MarketMain = ({
                       currency={offer.currency}
                       avgTradeTime={offer.avgTradeTime}
                     />
-                    <div
+                    {/* <div
                       className={`${
                         index < promotedOffers.length - 1
                           ? "border-tradeAshLight"
                           : "border-transparent"
                       } border-b`}
-                    ></div>
+                    ></div> */}
                   </div>
                 ))}
               </div>
             </div>
           </div>
           <div className="flex flex-col gap-[20px]">
-            <div className="sticky md:top-[135px] top-[127px] flex bg-white px-[12px] py-[4px] lg:rounded-[3px] rounded-[0px]">
+            <div className="sticky md:top-[135px] top-[127px] flex bg-white px-[12px] py-[4px] lg:rounded-[8px] rounded-[6px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Other Offers
               </p>
             </div>
-            <div className="flex flex-col gap-[20px]">
-              <div className=" md:flex hidden bg-tradeAshLight px-[12px] py-[4px] rounded-[3px]">
-                <p className="flex-1 text-neutral-400 text-[14px] ">Vendor</p>
-                <p className="flex-1 text-neutral-400 text-[14px]">Details</p>
-                <p className="flex-1 text-neutral-400 text-[14px]">
-                  Rate Cap & Performance
+            <div className="flex flex-col gap-[15px]">
+              <div className=" md:flex hidden bg-black px-[12px] py-[4px] rounded-[8px]">
+                <p className="flex-1 text-neutral-400 text-[14px] font-[500]">
+                  Vendor
+                </p>
+                <p className="flex-1 text-neutral-400 text-[14px] font-[500]">
+                  Details
+                </p>
+                <p className="flex-1 text-neutral-400 text-[14px] font-[500]">
+                  Rate & Performance
                 </p>
               </div>
-              <div className="grid grid-cols-1 items-center">
+              <div className="grid grid-cols-1 gap-[5px] items-center">
                 {unPromotedOffers?.map((offer, index) => (
                   <div key={index}>
                     <OfferCard
@@ -222,13 +227,13 @@ const MarketMain = ({
                       currency={offer.currency}
                       avgTradeTime={offer.avgTradeTime}
                     />
-                    <div
+                    {/* <div
                       className={`${
                         index < unPromotedOffers.length - 1
                           ? "border-tradeAshLight"
                           : "border-transparent"
                       } border-b`}
-                    ></div>
+                    ></div> */}
                   </div>
                 ))}
               </div>

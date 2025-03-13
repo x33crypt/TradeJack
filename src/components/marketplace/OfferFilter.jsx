@@ -1298,7 +1298,7 @@ const OfferFilter = ({
           <div className="flex flex-col gap-[15px]">
             <div className="flex items-center justify-between">
               <p className="text-[14.5px] text-white font-[600]">
-                Price : {""}
+                Rate : {""}
                 <small className="text-[14.5px] text-tradeFadeWhite font-[500]">
                   Low to High
                 </small>
@@ -1314,7 +1314,7 @@ const OfferFilter = ({
             </div>
             <div className="flex items-center justify-between">
               <p className="text-[14.5px] text-white font-[600]">
-                Price : {""}
+                Rate : {""}
                 <small className="text-[14.5px] text-tradeFadeWhite font-[500]">
                   High to Low
                 </small>
