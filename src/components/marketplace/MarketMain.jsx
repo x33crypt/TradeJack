@@ -53,7 +53,7 @@ const MarketMain = ({
 
       <div className="flex flex-col md:gap-[10px] gap-[10px] px-[15px] pb-[20px]">
         <div className="z-10 gap-[10px] sticky top-[65px] md:py-[20px] py-[16px] bg-black  flex flex-col ">
-          <div className="flex justify-between w-full bg-tradeAsh p-[5px] rounded-[10px]">
+          <div className="flex justify-between w-full ">
             <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
               <p
                 onClick={() => (
