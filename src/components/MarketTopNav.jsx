@@ -184,15 +184,14 @@ const MarketTopNav = () => {
       <div
         className={`${
           isNavOption ? "flex" : "hidden"
-        } z-50 fixed right-0 left-0 top-[67px] bottom-0 bg-black p-[15px] pt-[14px] pb-[16px] lg:hidden flex flex-col justify-between gap-[20px] `}
+        } z-50 fixed right-0 left-0 top-[67px] bottom-0 bg-black p-[15px] pt-[14px] pb-[16px] lg:hidden flex flex-col justify-between`}
       >
-        <div className="flex gap-[10px] p-[10px] items-center bg-tradeAsh rounded-[12px]">
-          <HiMiniMagnifyingGlass className="text-tradeFadeWhite text-[18px]" />
-          <input
-            className="w-full bg-transparent placeholder:text-tradeFadeWhite text-[15px]"
-            type="text"
-            placeholder="Hi x33crypt, how can we help ?"
-          />
+        <div className="flex gap-[10px] p-[10px] items-center bg-tradeAsh border border-tradeAshExtraLight rounded-[12px]">
+          <HiMiniMagnifyingGlass className="text-tradeFadeWhite text-[20px]" />
+
+          <p className=" text-tradeFadeWhite text-[15px]">
+            Hi x33crypt, how can we help ?
+          </p>
         </div>
 
         <div className="flex flex-col gap-[10px]">
