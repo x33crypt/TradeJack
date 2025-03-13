@@ -35,7 +35,7 @@ const OfferCard = (props) => {
     <>
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className=" bg-black md:flex hidden hover:bg-tradeAsh p-[10px] rounded-[12px] cursor-pointer transition-all duration-300 "
+        className=" bg-tradeAsh md:flex hidden hover:bg-black p-[10px] rounded-[px] cursor-pointer transition-all duration-300 "
       >
         <div className="flex-1 flex gap-[10px]">
           <div className="flex flex-col gap-[10px]">
