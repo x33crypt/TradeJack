@@ -210,7 +210,7 @@ const AboutOffer = () => {
       <MarketTopNav />
       <div className=" md:pt-[80px] pt-[67px] flex flex-col bg-black gap-[15.5px] md:p-[1.5%]">
         <div className="flex lg:flex-row flex-col w-full gap-[15.5px] lg:gap-[0.8%]">
-          <div className="flex-1 flex  justify-between flex-col bg-tradeAsh md:border border-neutral-800 md:rounded-[12.5px]">
+          <div className="flex-1 flex  justify-between flex-col md:border border-neutral-800 md:rounded-[12.5px]">
             <div className="flex items-center justify-between  md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
               <p className="text-[18px] text-white font-[700] cursor-pointer">
                 Offer Details
@@ -403,7 +403,7 @@ const AboutOffer = () => {
           </p>
         </div>
 
-        <div className="flex-1 flex flex-col bg-tradeAsh md:border border-neutral-800 md:rounded-[12.5px]">
+        <div className="flex-1 flex flex-col md:border border-neutral-800 md:rounded-[12.5px]">
           <div className="flex items-center justify-between  p-[20px] border-b border-neutral-800 ">
             <p className="text-[18px] text-white font-[700] cursor-pointer">
               Feedback on this Offer

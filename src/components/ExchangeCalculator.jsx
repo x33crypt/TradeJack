@@ -3,17 +3,16 @@ import React from "react";
 const ExchangeCalculator = (prop) => {
   return (
     <div className="px-[15.5px] md:p-0">
-      <div className=" h-full lg:w-[400px] flex flex-col bg-tradeAshLight md:border border-tradeAsh rounded-[12.5px]">
-        <div className="flex flex-col justify-between p-[20px] border-b border-tradeAsh">
+      <div className=" h-full lg:w-[400px] flex flex-col bg-tradeAsh md:border border-tradeAsh rounded-[12.5px]">
+        <div className="flex flex-col justify-between p-[20px] border-b border-tradeAshExtraLight">
           <p className="text-[18px] text-white font-[700] cursor-pointer">
             Exchange Calculator
           </p>
         </div>
-       
 
         <div className="flex flex-col h-full ">
           <div className="flex flex-col gap-[10px] p-[20px]">
-            <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15.5px] rounded-[15.5px]">
+            <div className="flex flex-col gap-[15px] bg-black p-[15.5px] rounded-[16px]">
               <div className="flex justify-between items-center">
                 <p className="text-tradeFadeWhite text-[13px]">Send</p>
                 <div className="flex items-center gap-[5px]">
@@ -40,7 +39,7 @@ const ExchangeCalculator = (prop) => {
                   {prop?.offerDetails?.currency}
                 </p>
                 <input
-                  className="h-[20px] w-full outline-none border-none bg-transparent text-right text-[19px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[18px] caret-tradeGreen"
+                  className="h-[20px] w-full outline-none border-none bg-transparent text-right text-[22px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[22px] caret-tradeGreen"
                   type="text"
                   placeholder="Enter Amount"
                   value={
@@ -52,7 +51,7 @@ const ExchangeCalculator = (prop) => {
                 />
               </div>
             </div>
-            <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15.5px] rounded-[15.5px]">
+            <div className="flex flex-col gap-[15px] bg-black p-[15.5px] rounded-[16px]">
               <div className="flex">
                 <p className="text-tradeFadeWhite text-[13px]">Receive</p>
               </div>
@@ -61,7 +60,7 @@ const ExchangeCalculator = (prop) => {
                   BTC
                 </p>
                 <input
-                  className="h-[20px] w-full outline-none border-none bg-transparent text-right text-[19px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[18px] cursor-default"
+                  className="h-[20px] w-full outline-none border-none bg-transparent text-right text-[22px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[22px] cursor-default"
                   type="text"
                   value={
                     prop?.calculatorResult?.btcValue &&
@@ -89,7 +88,7 @@ const ExchangeCalculator = (prop) => {
           </div>
 
           <div className=" flex lg:pb-[px] py-[15.5px] flex-col">
-            <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
+            <div className="flex justify-between px-[20px] py-[5px] border-t border-tradeAshExtraLight">
               <p className="text-[14px] font-[500] text-tradeGreen">
                 Rate breakdown
               </p>
@@ -108,7 +107,7 @@ ${
               </p>
             </div>
 
-            <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
+            <div className="flex justify-between px-[20px] py-[5px] border-t border-tradeAshExtraLight">
               <p className="text-[14px] font-[500] text-tradeFadeWhite">
                 Your receive value in ({prop?.offerDetails.currency})
               </p>
@@ -124,7 +123,7 @@ ${
               </p>
             </div>
 
-            <div className="flex justify-between px-[20px] py-[5px] border-t border-black">
+            <div className="flex justify-between px-[20px] py-[5px] border-t border-tradeAshExtraLight">
               <p className="text-[14px] font-[500] text-tradeFadeWhite">
                 Your receive value in (USD)
               </p>
