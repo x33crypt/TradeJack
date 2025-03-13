@@ -435,7 +435,7 @@ const OfferFilter = ({
   }, []);
 
   return (
-    <div className="bg-black lg:sticky overflow-hidden  w-full lg:h-[495px] h-full lg:top-[80px] flex flex-col lg:rounded-[16px] rounded-[18px] md:border border-neutral-800 ">
+    <div className="bg-black lg:sticky overflow-hidden  w-full lg:h-[495px] h-full lg:top-[80px] flex flex-col lg:rounded-[16px] md:rounded-[18px] md:border border-neutral-800 ">
       <div className="flex bg-tradeAsh justify-between items-center lg:p-[20px] lg:py-[20px] py-[20px] px-[20px] md:p-[20px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700] cursor-pointer">
           Filter Offer
@@ -450,7 +450,7 @@ const OfferFilter = ({
           Reset Filter
         </p>
       </div>
-      
+
       <div className="flex flex-col  h-full overflow-auto custom-scrollbar">
         <div className="flex flex-col justify-between ">
           <div className="bg- flex flex-col gap-[20px] lg:p-[20px] px-[20px] py-[20px] border-b border-tradeAshLight">
