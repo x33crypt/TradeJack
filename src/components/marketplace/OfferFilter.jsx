@@ -436,7 +436,7 @@ const OfferFilter = ({
 
   return (
     <div className="bg-black lg:sticky overflow-hidden  w-full lg:h-[495px] h-full lg:top-[80px] flex flex-col lg:rounded-[16px] md:rounded-[18px] md:border border-neutral-800 ">
-      <div className="flex bg-tradeAsh justify-between items-center lg:p-[20px] lg:py-[20px] py-[20px] px-[20px] md:p-[20px] border-b border-neutral-800 ">
+      <div className="flex bg-tradeAsh justify-between items-center lg:p-[20px] lg:py-[20px] py-[16px] px-[20px] md:p-[20px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700] cursor-pointer">
           Filter Offer
         </p>
@@ -1365,7 +1365,7 @@ const OfferFilter = ({
         </div>
       </div>
 
-      <div className="flex bg-tradeAsh lg:p-[20px] lg:py-[20px] py-[20px] px-[20px]">
+      <div className="flex bg-tradeAsh lg:p-[20px] lg:py-[20px] py-[16px] px-[20px]">
         <div
           className="flex items-center justify-between w-full lg:h-[43px] h-[45px] bg-tradeGreen p-[10px] rounded-[10px] cursor-pointer"
           onClick={handleFilterOffer}
