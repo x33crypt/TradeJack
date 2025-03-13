@@ -113,8 +113,7 @@ const MarketMain = ({
         <div
           className={` ${
             isOfferFilter ? "flex" : "hidden"
-          } z-50 fixed top-0 left-0 right-0 bottom-0 pt-[40%] px-[px] lg:hidden h-full  bg-black/20 backdrop-blur-[2px]
- `}
+          } z-50 fixed top-0 left-0 right-0 bottom-0 pt-[35%] px-[px] lg:hidden h-full`}
         >
           <OfferFilter
             serviceType={serviceType}
