@@ -67,11 +67,11 @@ const MarketTopNav = () => {
 
   return (
     <>
-      <div className="z-30 fixed right-0 left-0 bg-black md:p-[1.5%] p-[15px] h-[67px] md:h-[70px] flex justify-between items-center border-b border-neutral-800 ">
+      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] p-[15px] h-[67px] md:h-[70px] flex justify-between items-center border-b border-neutral-800 ">
         <div className="flex items-center lg:gap-[30px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
-            className="lg:hidden flex border border-tradeAshLight p-[5px] rounded-[6px]"
+            className="md:hidden flex border border-tradeAshLight p-[5px] rounded-[6px]"
           >
             {isNavOption ? (
               <IoCloseSharp className="text-white text-[24px]" />
@@ -79,49 +79,53 @@ const MarketTopNav = () => {
               <HiOutlineMenuAlt2 className="text-white text-[24px]" />
             )}
           </div>
-          <div className="flex items-center justify-start gap-[5px] ">
-            {/* <GiCardExchange className=" hidden sm:flex lg:text-[20px] text-[22px] text-tradeGreen" /> */}
-            <p className=" lg:text-[20px] text-[22px] font-[700] text-tradeGreen">
+          <div
+            onClick={() => navigateTo("/dashboard")}
+            className="flex items-center justify-start gap-[5px] cursor-pointer "
+          >
+            <GiCardExchange className=" flex lg:text-[20px] md:text-[21px] text-[20px] text-tradeGreen" />
+            <p className=" lg:text-[20px] md:text-[21px] text-[22px] font-[700] text-tradeGreen">
               Trade
-              <small className="lg:text-[20px] text-[22px] font-[700] text-white">
+              <small className="lg:text-[20px] md:text-[21px] text-[22px] font-[700] text-white">
                 Jack
               </small>
             </p>
           </div>
-          <div className=" lg:flex hidden gap-[10px] items-center">
-            <div
-              onClick={() => navigateTo("/marketplace")}
-              className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
-            >
-              <RiExchangeLine className="text-[17px]" />
-              <p className="text-[14px]">Sell Assets</p>
-            </div>
-            <div
-              onClick={() => navigateTo("/create-offer")}
-              className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
-            >
-              <TbBuildingBank className="text-[17px]" />
-              <p className="text-[14px]">Buy Assets</p>
-            </div>
-            <div
-              onClick={() => navigateTo("/create-offer")}
-              className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
-            >
-              <FaVenusDouble className="text-[17px]" />
-              <p className="text-[14px]">Favourite Vendors</p>
-            </div>
-            <div
-              onClick={() => navigateTo("/dashboard")}
-              className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
-            >
-              <MdOutlineSpaceDashboard className="text-[17px]" />
-              <p className="text-[14px]">Dashboard</p>
-            </div>
+        </div>
+
+        <div className=" md:flex hidden  gap-[10px] items-center">
+          <div
+            onClick={() => navigateTo("/marketplace")}
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
+          >
+            <RiExchangeLine className="lg:flex hidden text-[17px]" />
+            <p className="text-[14px]">Sell Assets</p>
+          </div>
+          <div
+            onClick={() => navigateTo("/create-offer")}
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
+          >
+            <TbBuildingBank className="lg:flex hidden text-[17px]" />
+            <p className="text-[14px]">Buy Assets</p>
+          </div>
+          <div
+            onClick={() => navigateTo("/create-offer")}
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
+          >
+            <FaVenusDouble className="lg:flex hidden text-[17px]" />
+            <p className="text-[14px]">Favourite Vendors</p>
+          </div>
+          <div
+            onClick={() => navigateTo("/dashboard")}
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
+          >
+            <MdOutlineSpaceDashboard className="lg:flex hidden text-[17px]" />
+            <p className="text-[14px]">Dashboard</p>
           </div>
         </div>
 
         <div className="flex items-center lg:gap-[15px] gap-[15px]">
-          <div className="sm:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[2px] gap-[10px] rounded-[10px]">
+          <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[2px] gap-[10px] rounded-[10px]">
             <FaMagnifyingGlass className="text-neutral-500 lg:text-[15px] text-[15px]" />
             <input
               className=" bg-transparent outline-none h-[28px] w-[220px] lg:placeholder:text-[13px] placeholder:text-[13px] placeholder:text-neutral-500 lg:text-[13px] text-[13px] text-white"
@@ -129,7 +133,7 @@ const MarketTopNav = () => {
               placeholder={searchplaceholder}
             />
           </div>
-          <div className="cursor-pointer flex sm:hidden">
+          <div className="cursor-pointer md:flex lg:hidden hidden">
             <FiSearch className="text-white hover:text-tradeGreen text-[23px] transition-all duration-300" />
           </div>
           <div className="cursor-pointer flex">
@@ -205,13 +209,14 @@ const MarketTopNav = () => {
             <p className="text-white text-[16px] ">Favourite Vendors</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
+            <MdOutlineQueryStats className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[16px] ">Trade Statistics</p>
+          </div>
+          <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
             <RiExchangeFundsLine className="text-[16px] text-tradeFadeWhite" />
             <p className="text-white text-[16px] ">Transaction History</p>
           </div>
-          <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
-            <MdOutlineQueryStats className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[16px] ">Transaction Statistics</p>
-          </div>
+
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
             <LiaUserFriendsSolid className="text-[16px] text-tradeFadeWhite" />
             <p className="text-white text-[16px] ">Invite a friend</p>

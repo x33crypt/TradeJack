@@ -9,14 +9,10 @@ import MarketTopNav from "@/components/MarketTopNav";
 const Dashboard = () => {
   return (
     <>
-      <DashTopNav />
-      <div className="md:pt-[80px] pt-[67px] flex bg-black lg:gap-[0.8%] md:p-[1.5%]">
-        <div className="flex flex-col gap-[10px]">
-          <DashSideNav />
-        </div>
-        <div className="flex flex-1">
-          <DashMain />
-        </div>
+      <MarketTopNav />
+      <div className=" lg:pt-[80px] md:pt-[85px] pt-[67px] flex gap-[15px] bg-black lg:p-[2%] md:p-[2.5%] ">
+        <DashSideNav />
+        <DashMain />
       </div>
       <Footer />
     </>

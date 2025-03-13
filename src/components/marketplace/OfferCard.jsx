@@ -35,7 +35,7 @@ const OfferCard = (props) => {
     <>
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className=" md:flex hidden hover:bg-tradeAshLight p-[10px] cursor-pointer transition-all duration-300 "
+        className=" md:flex hidden hover:bg-tradeAsh p-[10px] cursor-pointer transition-all duration-300 "
       >
         <div className="flex-1 flex gap-[10px]">
           <div className="flex flex-col gap-[10px]">
@@ -130,7 +130,7 @@ const OfferCard = (props) => {
           </div>
         </div>
         <div className="flex-1 flex flex-col gap-[10px]">
-          <div className="flex gap-[8px] items-center text-[15px] lg:text-[14px] font-[800] text-white">
+          <div className="flex gap-[8px] items-center text-[15px] lg:text-[14px] font-[600] text-white">
             <p>{`86,243 ${props.currency}`}</p>
             <p>&#x2248;</p>
             <p>1 {props.currency} = 0.93 USD of BTC</p>

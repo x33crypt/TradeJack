@@ -1,5 +1,4 @@
 import React from "react";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { IoMdArrowRoundUp } from "react-icons/io";
 import { FiFilter } from "react-icons/fi";
@@ -15,439 +14,237 @@ import { MdOutlinePending } from "react-icons/md";
 import { GrStatusGood } from "react-icons/gr";
 import { IoExtensionPuzzleOutline } from "react-icons/io5";
 import { FaRegQuestionCircle } from "react-icons/fa";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { TiArrowRight } from "react-icons/ti";
 
 const DashMain = () => {
   return (
-    <div className="flex flex-1 flex-col lg:gap-[10px] gap-[30px]">
-      {/* <div className="lg:p-[10px] p-[5px] bg-tradeAsh flex items-center rounded-[6px]">
-        <div className="flex items-center gap-[10px]">
-          <div>
-            <FaRegQuestionCircle className="lg:text-[25px] md:text-[23px] text-[22px] text-tradeOrange" />
-          </div>
-          <p className="lg:text-[13.5px] md:text-[12px] text-[12px] text-white font-[400]">
-            You have an active trade with{" "}
-            <small className="lg:text-[13.5px] md:text-[12px] text-[12px] font-[800]">
-              Hayjay Exchange
-            </small>
-            . The transaction is ongoing and requires your attention to proceed
-            smoothly.{" "}
-            <small className="lg:text-[13.5px] md:text-[12px] text-[12px] font-[500] underline cursor-pointer">
-              {" "}
-              Return to Chat
+    <div className="flex-1 flex flex-col lg:gap-[10px] gap-[30px]">
+      <div className=" md:flex flex-col gap-[30px] hidden bg-tradeBorde">
+        <div className="flex flex-col  justify-between lg:py-[px] py-[px] ">
+          <p className=" lg:text-[21px] text-[20px] text-tradeFadeWhite  ">
+            Welcome back,{" "}
+            <small className="lg:text-[21px] text-[20px] text-white font-[700]">
+              x33crypt
             </small>
           </p>
         </div>
-      </div> */}
-      <div className="hidden sm:flex flex-col gap-[15px] rounded-[8px] p-[15px]">
-        <div className="flex gap-[14px] ">
-          <div className="flex-1 flex flex-col justify-between gap-[15px]">
-            <div className="flex lg:hidden flex-col items-center  border-tradeAshLight p-[px] gap-[15px] rounded-[8px]">
-              <div className="flex w-full flex-col items-center gap-[8px] py-[30px] rounded-[8px]">
-                <div className="flex items-center flex-col gap-[2px]">
-                  <p className="text-tradeFadeWhite text-[14px] font-[500]">
+        <div className="flex">
+          <div className="flex-1 flex flex-col gap-[20px]">
+            <div className="flex gap-[15px]">
+              <div className="flex-1 flex flex-col h-[100px] justify-between p-[10px] gap-[5px] rounded-[12px] border border-tradeGreen bg-tradeGreen">
+                <div className="flex justify-between">
+                  <p className="text-black text-[12px] font-[600]">
                     Available Balance
                   </p>
-                  <p className="text-white lg:text-[28px] text-[40px] font-[700]">
-                    $2,280.01
+                  <FaEye className="text-[18px] cursor-pointer" />
+                </div>
+
+                <div className="flex items-baseline ">
+                  <p className="flex items-baseline text-[28px] font-[800]">
+                    &#36;2,028
+                    <small className="text-[26px] font-[800]">&#8228;</small>
+                    <small className="text-[18px] font-[800]">69</small>
                   </p>
                 </div>
-                <div className="flex bg-tradeAsh  w-max gap-[7px] border border-tradeGreen px-[12px] py-[4px] rounded-[8px]">
-                  <p className="text-[12px] text-white font-[500]">Escrow</p>
-                  <p className="text-[12px] font-[500] text-tradeGreen">
-                    $4,990.00
-                  </p>
-                </div>
               </div>
-
-              <div className="hidden">
-                <p className="text-white text-[14px] font-[500]">
-                  Minimim limit : <small className="text-[14px]">20 USD</small>{" "}
-                </p>
-                <p className="text-white text-[14px] font-[500]">
-                  Maximum limit :{" "}
-                  <small className="text-[14px] font-[500]">1,000 USD</small>{" "}
-                </p>
-              </div>
-
-              <div className="flex flex-co w-full gap-[10px]">
-                <div className="flex-1 flex items-center justify-center gap-[5px] py-[12px] rounded-[8px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer transition-all duration-300">
-                  <IoMdArrowRoundDown className="text-white" />
-                  <p className="text-white text-[15px] font-[600]">Deposit</p>
-                </div>
-                <div className="flex-1 flex items-center justify-center gap-[5px] py-[12px] rounded-[8px] bg-tradeAshLight hover:bg-tradeAshExtraLight cursor-pointer transition-all duration-300">
-                  <IoMdArrowRoundUp className="text-white" />
-                  <p className="text-white text-[15px] font-[600]">Withdraw</p>
-                </div>
-              </div>
-            </div>
-            <div className="p-[10px] lg:h-[180px] md:h-[140px] h-[110px] rounded-[10px] bg-tradeGreen">
-              <p className="text-[14px]">Unlock Higher Transaction Limits!</p>
-            </div>
-            <div className=" md:flex grid grid-cols-2 gap-[10px]">
-              <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight borde border-tradeOrange transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
-                <p className="text-[28px] text-white font-[700]">2,335</p>
-                <p className="text-[12px] text-tradeFadeWhite font-[600]">
-                  Total Trades
-                </p>
-              </div>
-              <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight  border-tradeOrange transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
-                <p className="text-[28px] text-white font-[700]">10</p>
-                <p className="text-[12px] text-tradeFadeWhite font-[600]">
-                  Active Offers
-                </p>
-              </div>
-              <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight  border-tradeOrange transition-all duration-300  flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
-                <p className="text-[28px] text-white font-[700]">5</p>
-                <p className="text-[12px] text-tradeFadeWhite font-[600]">
-                  Pending Trades
-                </p>
-              </div>
-
-              <div className="flex-1 h-[90px] bg-tradeAsh hover:bg-tradeAshLight  border-tradeOrange transition-all duration-300 flex flex-col justify-center items-center  rounded-[8px] cursor-pointer">
-                <p className="text-[28px] text-white font-[700]">1</p>
-                <p className="text-[12px] text-tradeFadeWhite font-[600]">
-                  Disputed Trades
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="w-[300px] lg:flex hidden flex-col justify-between bg-tradeAsh  border-tradeAshLight p-[15px] gap-[20px] rounded-[10px]">
-            <div className="flex flex-col gap-[10px]">
-              <div className="flex justify-between">
-                <p className="text-white text-[13px] font-[500]">
-                  Available Balance
-                </p>
-                <p className="text-tradeFadeWhite text-[13px] font-[500]">
-                  Account Limits
-                </p>
-              </div>
-              <div className="flex flex-col gap-[5px]">
+              <div className="flex-1 flex flex-col  h-[100px] justify-between p-[10px] gap-[5px] rounded-[12px] bg-tradeAsh border border-tradeAshExtraLight">
                 <div className="flex justify-between">
-                  <div className="flex items-center gap-[2px]">
-                    <p className="text-white text-[26px] font-[700]">$</p>
-                    <p className="text-white text-[28px] font-[700] flex">
-                      19,280.01
-                    </p>
+                  <div className="flex gap-[5px] items-center text-white">
+                    <p className=" text-[12px] font-[600]">Escrow Wallet</p>
+                    <FaRegQuestionCircle className="text-[14px] text-tradeFadeWhite" />
                   </div>
-                  <div>
-                    <FaEye className="text-tradeAshExtraLight text-[22px] cursor-pointer" />
-                  </div>
+                  <FaEye className="text-[18px] text-white cursor-pointer" />
                 </div>
 
-                <div className="flex w-max gap-[7px]  border-tradeGreen">
-                  <p className="text-[13px] text-tradeFadeWhite font-[600]">
-                    Escrow Wallet
-                  </p>
-                  <p className="text-[12px] font-[600] text-black bg-tradeGreen px-[6px] py-[1px] rounded-[5px]">
-                    + $4,990.00
+                <div className="flex items-baseline ">
+                  <p className="flex items-baseline text-[28px] text-white font-[800]">
+                    &#36;650
+                    <small className="text-[24px] font-[800]">&#8228;</small>
+                    <small className="text-[18px] font-[800]">00</small>
                   </p>
                 </div>
               </div>
             </div>
-            {/* <div className="border-t border-tradeAshLight"></div> */}
-            {/* <div>
-              <p className="text-white text-[14px] font-[500]">
-                Minimim limit : <small className="text-[14px]">20 USD</small>{" "}
-              </p>
-              <p className="text-white text-[14px] font-[500]">
-                Maximum limit :{" "}
-                <small className="text-[14px] font-[500]">1,000 USD</small>{" "}
-              </p>
-            </div> */}
-            <div className="flex flex-col w-full gap-[10px]">
-              <div className="flex-1 flex items-center justify-center gap-[5px] px-[15px] py-[8px] rounded-[10px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer transition-all duration-300">
-                <p className="text-white text-[14px] font-[500]">Deposit</p>
-              </div>
-              <div className="flex-1 flex items-center justify-center gap-[5px] px-[15px] py-[8px] rounded-[10px] bg-tradeAshExtraLight hover:bg-tradeAshLight cursor-pointer transition-all duration-300">
-                <p className="text-white text-[14px] font-[500]">Withdraw</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className=" bg-tradeAsh  border-tradeAshLight p-[10px] rounded-[10px]">
-          <div className="flex  justify-between p-[10px]">
-            <p className="text-[18px] text-white font-[600] cursor-pointer">
-              Transaction Stats
-            </p>
-            <div className="flex justify-between items-center gap-[5px] px-[12px] py-[4px] border border-neutral-700  rounded-[8px] cursor-pointer">
-              <FiFilter className="text-[17px] text-neutral-400" />
-              <p className="flex  text-[14px] font-[500] text-white">Filters</p>
-            </div>
-          </div>
-        </div>
-        <div className="bg-tradeAsh border-tradeAshLight gap-[px] rounded-[12px] sm:flex hidden flex-col ">
-          <div className="flex justify-between items-center px-[20px] border-b border-neutral-800 ">
-            <div className="flex gap-[20px]">
-              <p className="text-[18px] text-white font-[600] py-[20px] cursor-pointer">
-                Recent Transaction
-              </p>
-              <p className="text-[18px] text-white font-[600] py-[20px] cursor-pointer">
-                Recent Transfers
-              </p>
-            </div>
 
-            <div className="sm:flex hidden items-center border border-neutral-700 px-[10px] py-[2px] gap-[10px] rounded-[10px]">
-              <FaMagnifyingGlass className="text-neutral-500 lg:text-[16px] text-[15px]" />
-              <input
-                className=" bg-transparent outline-none h-[28px] w-[220px] lg:placeholder:text-[14px] placeholder:text-[13px] placeholder:text-neutral-500 lg:text-[14px] text-[13px] text-white"
-                type="text"
-                placeholder="Search Transaction"
-              />
-            </div>
-          </div>
-          <div className="p-[20px] flex flex-col gap-[15px]">
-            <div className=" flex lg:py-[8px] py-[8px] lg:px-[20px] px-[8px] text-tradeWhite bg-tradeAshLight rounded-[8px] border-neutral-800 font-[600] lg:text-[14.5px] text-[13.5px]">
-              <p className=" flex-1 lg:flex hidden items- gap-[5px] font-[500] text-neutral-400">
-                Service Type{" "}
-              </p>
-              <p className=" flex-1 lg:flex hidden items- gap-[5px] font-[500] text-neutral-400">
-                Service{" "}
-              </p>
-              <p className=" flex-1 lg:flex hidden items- gap-[5px] font-[500] text-neutral-400">
-                Trade ID{" "}
-              </p>
-              <p className=" flex-1 lg:flex hidden items- gap-[5px] font-[500] text-neutral-400">
-                Role{" "}
-              </p>
-              <p className=" flex-1 lg:flex hidden items- gap-[5px] font-[500] text-neutral-400">
-                Status{" "}
-              </p>{" "}
-              <p className=" flex-1 lg:flex hidden items- gap-[5px] font-[500] text-neutral-400">
-                Amount{" "}
-              </p>{" "}
-              <p className=" flex-1 lg:flex hidden items- gap-[5px] font-[500] text-neutral-400">
-                Date{" "}
-              </p>
-            </div>
-            <div className="flex flex-col gap-[5px]">
-              <div className=" flex lg:py-[8px] py-[8px] lg:px-[20px] px-[8px] font-[500] text-white lg:text-[14.px] text-[13.5px] rounded-[8px]  hover:bg-tradeAshLight cursor-pointer transition-all duration-300">
-                <p className=" flex-1 lg:flex hidden ">Online Wallet Tfr</p>
-                <p className=" flex-1 ">Gift Card</p>
-                <p className=" flex-1 sm:flex hidden">#3545671</p>
-                <p className=" flex-1 sm:flex hidden">Buyer</p>
-                <p className=" flex-1 text-tradeOrange">Pending</p>
-                <p className=" flex-1">$1,050.00</p>
-                <p className=" flex-1">15 Feb 2025</p>
-              </div>
-
-              <div className=" flex  lg:py-[8px] py-[8px] lg:px-[20px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[8px]  hover:bg-tradeAshLight cursor-pointer transition-all duration-300">
-                <p className=" flex-1 lg:flex hidden ">Online Wallet Tfr</p>
-                <p className=" flex-1 ">Apple Pay</p>
-                <p className=" flex-1 sm:flex hidden">#3545671</p>
-                <p className=" flex-1 sm:flex hidden">Seller</p>
-                <p className=" flex-1 text-tradeGreen">Completed</p>
-                <p className=" flex-1">$650.00</p>
-                <p className=" flex-1">8 Jan 2025</p>
-              </div>
-
-              <div className=" flex  lg:py-[8px] py-[8px] lg:px-[20px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[8px]  hover:bg-tradeAshLight cursor-pointer transition-all duration-300">
-                <p className=" flex-1 lg:flex hidden ">Online Wallet Tfr</p>
-
-                <p className=" flex-1 ">Cash App</p>
-                <p className=" flex-1 sm:flex hidden">#3545671</p>
-                <p className=" flex-1 sm:flex hidden">Seller</p>
-
-                <p className=" flex-1 text-tradeGreen">Completed</p>
-                <p className=" flex-1">$650.00</p>
-                <p className=" flex-1">8 Jan 2025</p>
-              </div>
-
-              <div className=" flex  lg:py-[8px] py-[8px] lg:px-[20px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[8px]  hover:bg-tradeAshLight cursor-pointer transition-all duration-300">
-                <p className=" flex-1 lg:flex hidden ">Online Wallet Tfr</p>
-
-                <p className=" flex-1 ">Paypal</p>
-                <p className=" flex-1 sm:flex hidden">#3545671</p>
-                <p className=" flex-1 sm:flex hidden">Buyer</p>
-
-                <p className=" flex-1 text-red-500">Cancelled</p>
-                <p className=" flex-1">$400.00</p>
-                <p className=" flex-1">8 Jan 2025</p>
-              </div>
-
-              <div className=" flex  lg:py-[8px] py-[8px] lg:px-[20px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[8px]  hover:bg-tradeAshLight cursor-pointer transition-all duration-300">
-                <p className=" flex-1 lg:flex hidden ">Online Wallet Tfr</p>
-
-                <p className=" flex-1 ">Zelle</p>
-                <p className=" flex-1 sm:flex hidden">#3545671</p>
-                <p className=" flex-1 sm:flex hidden">Buyer</p>
-
-                <p className=" flex-1 text-tradePurple">Disputed</p>
-                <p className=" flex-1">$250.00</p>
-                <p className=" flex-1">8 Jan 2025</p>
-              </div>
-
-              <div className=" flex  lg:py-[8px] py-[8px] lg:px-[20px] px-[8px] font-[500] text-white lg:text-[14px] text-[13.5px] rounded-[8px]  hover:bg-tradeAshLight cursor-pointer transition-all duration-300">
-                <p className=" flex-1 lg:flex hidden ">Online Wallet Tfr</p>
-
-                <p className=" flex-1 ">E-Transfer</p>
-                <p className=" flex-1 sm:flex hidden">#3545671</p>
-                <p className=" flex-1 sm:flex hidden">Seller</p>
-
-                <p className=" flex-1 text-tradeGreen">Completed</p>
-                <p className=" flex-1">$900.00</p>
-                <p className=" flex-1">8 Jan 2025</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="bg-tradeAsh border-tradeAshLight p-[10px] gap-[10px] rounded-[10px] sm:hidden flex flex-col ">
-          <div className="flex justify-between items-center  p-[10px]">
-            <p className="text-[20px] text-white font-[700]">Recent History</p>
-            <p className="text-tradeFadeWhite text-[14px] font-[600] cursor-pointer">
-              View all
-            </p>
-          </div>
-          <div className="flex flex-col gap-[4px]">
-            <div className="flex  p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-tradeAshLight cursor-pointer">
-              <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
-                <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
-              </div>
-              <div className="w-full flex flex-col gap-[5px]">
-                <div className="flex justify-between">
-                  <div className="flex items-center gap-[5px]">
-                    <p className="text-white text-[15px] font-[600]">Paypal</p>
-                    <p className="text-white text-[15px]">-</p>
-                    <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                      Buyer
-                    </p>
+            <div className="flex flex-col gap-[5px]  border-tradeAshExtraLight bg-tradeAshLight p-[5px] rounded-[12px]">
+              <div className="flex w-full gap-[5px]">
+                <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[12px] cursor-pointer hover:bg-tradeAsh transition-all duration-300">
+                  <div className="text-[25px] text-white p-[10px] rounded-[12px] bg-tradeAshLight">
+                    <LuPlus />
                   </div>
 
-                  <p className="text-white text-[15px] font-[600]">$1,870.00</p>
+                  <p className="text-[15px] text-white font-[500]">Deposit</p>
                 </div>
-                <div className="flex justify-between">
-                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
-                    10 Jan 2025, 04:22 AM
-                  </p>
+                <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[12px] cursor-pointer hover:bg-tradeAsh transition-all duration-300">
+                  <div className="text-[25px] text-white p-[10px] rounded-[12px] bg-tradeAshLight">
+                    <HiArrowNarrowUp />
+                  </div>
 
-                  <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
-                    Pending
+                  <p className="text-[15px] text-white font-[500]">Withdraw</p>
+                </div>
+              </div>
+              <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[12px] cursor-pointer hover:bg-tradeAsh transition-all duration-300">
+                <div className="text-[25px] text-white p-[10px] rounded-[12px] bg-tradeOrange">
+                  <CgArrowsExchangeAltV />
+                </div>
+                <div className=" flex-1 flex gap-[5px] flex-col justify-between">
+                  <p className="text-[13px] text-tradeFadeWhite font-[500]">
+                    Maximum Purchase Limit
                   </p>
+                  <div className="flex items-center gap-[10px]">
+                    <p className="text-[15px] text-white font-[600]">
+                      3,000 USD
+                    </p>
+                    <p className="bg-tradeGreen text-[10px] font-[500] rounded-full px-[10px] py-[px]">
+                      Increase your Limit !
+                    </p>
+                  </div>
+                </div>
+                <div className="text-tradeFadeWhite items-end p-[10px]">
+                  <IoIosArrowForward />
                 </div>
               </div>
             </div>
-            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-tradeAshLight cursor-pointer">
-              <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
-                <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
-              </div>
-              <div className="w-full flex flex-col gap-[5px]">
-                <div className="flex justify-between">
-                  <div className="flex items-center gap-[5px]">
-                    <p className="text-white text-[15px] font-[600]">Zelle</p>
-                    <p className="text-white text-[15px]">-</p>
-                    <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                      Buyer
-                    </p>
-                  </div>
 
-                  <p className="text-white text-[15px] font-[600]">$900.00</p>
+            <div className="h-[100px] p-[10px] rounded-[12px] bg-white ">
+              <p className="text-[12px]">
+                Successfully trade 5 more deal and earn our turbo status{" "}
+              </p>
+            </div>
+
+            <div className=" flex lg:grid grid-cols-2 gap-[10px] rounded-[16px]">
+              <div className="flex flex-1 flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[12px] cursor-pointer hover:bg-tradeAshLight transition-all duration-300">
+                <div className="flex gap-[5px]">
+                  <RiProgress3Line className="text-tradeFadeWhite" />
+                  <p className=" text-[12px] font-[600] text-white">
+                    Active Offers
+                  </p>
                 </div>
-                <div className="flex justify-between">
-                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
-                    10 Jan 2025, 04:22 AM
+                <div className="flex justify-between items-baseline">
+                  <p className="text-white text-[25px] font-[700]">20</p>
+                  <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
+                </div>
+              </div>
+              <div className="flex flex-1 flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[12px] cursor-pointer hover:bg-tradeAshLight transition-all duration-300">
+                <div className="flex gap-[5px]">
+                  <MdOutlinePending className="text-tradeFadeWhite" />
+                  <p className=" text-[12px] font-[600] text-white">
+                    Pending Trades
                   </p>
+                </div>
+                <div className="flex justify-between items-baseline">
+                  <p className="text-white text-[25px] font-[700]">3</p>
+                  <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
+                </div>
+              </div>
+              <div className="flex flex-1 flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[12px] cursor-pointer hover:bg-tradeAshLight transition-all duration-300">
+                <div className="flex gap-[5px]">
+                  <GrStatusGood className="text-tradeFadeWhite" />
+                  <p className=" text-[12px] font-[600] text-white">
+                    Successful Trades
+                  </p>
+                </div>
+                <div className="flex justify-between items-baseline">
+                  <p className="text-white text-[25px] font-[700]">449</p>
+                  <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
+                </div>
+              </div>
+              <div className="flex flex-1 flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[12px] cursor-pointer hover:bg-tradeAshLight transition-all duration-300">
+                <div className="flex gap-[5px]">
+                  <IoExtensionPuzzleOutline className="text-tradeFadeWhite" />
+                  <p className=" text-[12px] font-[600] text-white">
+                    Disputed Trades
+                  </p>
+                </div>
 
-                  <p className="text-red-600 text-[12px] font-[600]  border-red-600 px-[6px] py-[2px] rounded-[5px]">
-                    Cancelled
-                  </p>
+                <div className="flex justify-between items-baseline">
+                  <p className="text-white text-[25px] font-[700]">4</p>
+                  <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
                 </div>
               </div>
             </div>
-            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-tradeAshLight cursor-pointer">
-              <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
-                <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
+
+            <div>
+              <div className="flex justify-between items-baseline bg-tradeAshLight p-[10px] rounded-t-[12px]">
+                <p className="text-white font-[600] text-[18px]">
+                  Transaction history
+                </p>
+                <p className="text-tradeGreen font-[700] text-[13px] cursor-pointer ">
+                  View All
+                </p>
               </div>
-              <div className="w-full flex flex-col gap-[5px]">
-                <div className="flex justify-between">
-                  <div className="flex items-center gap-[5px]">
-                    <p className="text-white text-[15px] font-[600]">
-                      Cash App
-                    </p>
-                    <p className="text-white text-[15px]"> -</p>
-                    <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                      Buyer
-                    </p>
+
+              <div className="px-[10px] py-[5px] flex bg-transparent">
+                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-[15px]  ">
+                  <p>Service</p>
+                  <MdKeyboardArrowDown className="text-[22px]" />
+                </div>
+                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-[15px] ">
+                  <p>Trade ID</p>
+                  <MdKeyboardArrowDown className="text-[22px]" />
+                </div>
+                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-[15px] ">
+                  <p>Status</p>
+                  <MdKeyboardArrowDown className="text-[22px]" />
+                </div>
+                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite text-[15px]  ">
+                  <p>Amount</p>
+                  <MdKeyboardArrowDown className="text-[22px]" />
+                </div>
+                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite   text-[15px] ">
+                  <p>Date</p>
+                  <MdKeyboardArrowDown className="text-[22px]" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-[2px]">
+                <div className="px-[10px] py-[10px] flex bg-tradeAshLight cursor-pointer hover:bg-tradeAsh transition-all duration-300">
+                  <div className="flex-1 text-white font-[500]  text-[14px]  ">
+                    <p>Cash App</p>
                   </div>
-
-                  <p className="text-white text-[15px] font-[600]">$560.00</p>
-                </div>
-                <div className="flex justify-between">
-                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
-                    8 Jan 2025, 12:59 PM
-                  </p>
-
-                  <p className="text-tradeGreen text-[12px] font-[600]  border-tradeGreen px-[6px] py-[2px] rounded-[5px]">
-                    Successful
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-tradeAshLight cursor-pointer">
-              <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
-                <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
-              </div>
-              <div className="w-full flex flex-col gap-[5px]">
-                <div className="flex justify-between">
-                  <div className="flex items-center gap-[5px]">
-                    <p className="text-white text-[15px] font-[600]">
-                      Apple Pay
-                    </p>
-                    <p className="text-white text-[15px]"> -</p>
-                    <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                      Seller
-                    </p>
+                  <div className="flex-1 text-tradeFadeWhite font-[500] text-[14px]  ">
+                    <p>#238872</p>
                   </div>
-
-                  <p className="text-white text-[15px] font-[600]">$1,380.00</p>
-                </div>
-                <div className="flex justify-between">
-                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
-                    8 Jan 2025, 12:59 PM
-                  </p>
-
-                  <p className="text-tradeGreen text-[12px] font-[600]  border-tradeGreen px-[6px] py-[2px] rounded-[5px]">
-                    Successful
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="flex p-[10px] gap-[10px] items-center rounded-[10px]  hover:bg-tradeAshLight cursor-pointer">
-              <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
-                <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
-              </div>
-              <div className="w-full flex flex-col gap-[5px]">
-                <div className="flex justify-between">
-                  <div className="flex items-center gap-[5px]">
-                    <p className="text-white text-[15px] font-[600]">
-                      D/C Card
-                    </p>
-                    <p className="text-white text-[15px]"> -</p>
-                    <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                      Buyer
-                    </p>
+                  <div className="flex-1 text-tradeOrange font-[500] text-[14px]  ">
+                    <p>Pending</p>
                   </div>
-
-                  <p className="text-white text-[15px] font-[600]">$3,020.00</p>
+                  <div className="flex-1 text-white font-[600] text-[14px]  ">
+                    <p>$600.00</p>
+                  </div>
+                  <div className="flex-1 text-white  font-[500] text-[14px] ">
+                    <p>4d 19h ago</p>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <p className="text-tradeFadeWhite text-[12px] font-[500]">
-                    8 Jan 2025, 12:59 PM
-                  </p>
-
-                  <p className="text-tradePurple text-[12px] font-[600]  border-tradePurple px-[6px] py-[2px] rounded-[5px]">
-                    Disputed
-                  </p>
+                <div className="px-[10px] py-[10px] flex bg-tradeAshLight cursor-pointer hover:bg-tradeAsh transition-all duration-300">
+                  <div className="flex-1 text-white font-[500]  text-[14px]  ">
+                    <p>Apple Pay</p>
+                  </div>
+                  <div className="flex-1 text-tradeFadeWhite font-[500] text-[14px]  ">
+                    <p>#238872</p>
+                  </div>
+                  <div className="flex-1 text-tradeGreen font-[500] text-[14px]  ">
+                    <p>Completed</p>
+                  </div>
+                  <div className="flex-1 text-white font-[600] text-[14px]  ">
+                    <p>$1,000.00</p>
+                  </div>
+                  <div className="flex-1 text-white  font-[500] text-[14px] ">
+                    <p>5d 2h ago</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div className=" lg:flex hidden w-[300px]"></div>
         </div>
       </div>
 
-      <div className="flex flex-col sm:hidden gap-[0px] ">
-        <div className="flex flex-col px-[20px] py-[14px] borde border-tradeAshLight ">
-          <p className="text-[19px] text-white ">
+      <div className="flex flex-col md:hidden gap-[0px] ">
+        <div className="flex flex-col px-[20px] py-[16px]">
+          <p className="text-[18px] text-tradeFadeWhite ">
             Welcome back,{" "}
-            <small className="text-[19px] text-white font-[700]">
+            <small className="text-[18px] text-white font-[700]">
               x33crypt
             </small>
           </p>
@@ -542,7 +339,10 @@ const DashMain = () => {
                 </p>
               </div>
 
-              <p className="text-white text-[25px] font-[700]">20</p>
+              <div className="flex justify-between items-baseline">
+                <p className="text-white text-[25px] font-[700]">20</p>
+                <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
+              </div>
             </div>
             <div className="flex flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[16px]">
               <div className="flex gap-[5px]">
@@ -552,7 +352,10 @@ const DashMain = () => {
                 </p>
               </div>
 
-              <p className="text-white text-[25px] font-[700]">3</p>
+              <div className="flex justify-between items-baseline">
+                <p className="text-white text-[25px] font-[700]">8</p>
+                <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
+              </div>
             </div>
             <div className="flex flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[16px]">
               <div className="flex gap-[5px]">
@@ -562,7 +365,10 @@ const DashMain = () => {
                 </p>
               </div>
 
-              <p className="text-white text-[25px] font-[700]">449</p>
+              <div className="flex justify-between items-baseline">
+                <p className="text-white text-[25px] font-[700]">499</p>
+                <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
+              </div>
             </div>
             <div className="flex flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[16px]">
               <div className="flex gap-[5px]">
@@ -572,7 +378,10 @@ const DashMain = () => {
                 </p>
               </div>
 
-              <p className="text-white text-[25px] font-[700]">4</p>
+              <div className="flex justify-between items-baseline">
+                <p className="text-white text-[25px] font-[700]">4</p>
+                <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
+              </div>
             </div>
           </div>
 
@@ -584,238 +393,208 @@ const DashMain = () => {
               <p className="text-tradeGreen font-[700] text-[13px]">View All</p>
             </div>
 
-            <div className="flex flex-col gap-[10px]">
-              <div>
-                <p className="text-white text-[15px] font-[700]">
-                  13 March, 2024
-                </p>
-              </div>
-              <div className="flex flex-col gap-[5px]">
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
-                  <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
-                    <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
-                  </div>
-                  <div className="w-full flex flex-col gap-[5px]">
-                    <div className="flex justify-between">
-                      <div className="flex items-center gap-[3px]">
-                        <p className="text-white text-[14px] font-[700]">
-                          Paypal
-                        </p>
-                        <p className="text-white text-[15px]">-</p>
-                        <p className="text-tradeFadeWhite text-[13px] font-[600]">
-                          Buyer
-                        </p>
-                      </div>
-
-                      <p className="text-white text-[14px] font-[700]">
-                        1,870.00{" "}
-                        <small className="text-tradeFadeWhite text-[14px] font-[700]">
-                          USD
-                        </small>
-                      </p>
-                    </div>
-                    <div className="flex justify-between">
-                      <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                        04:22 AM
-                      </p>
-
-                      <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
-                        Pending
-                      </p>
-                    </div>
-                  </div>
+            <div className="flex flex-col gap-[5px]">
+              <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+                  <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
-
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
-                  <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
-                    <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
-                  </div>
-                  <div className="w-full flex flex-col gap-[5px]">
-                    <div className="flex justify-between">
-                      <div className="flex items-center gap-[3px]">
-                        <p className="text-white text-[14px] font-[700]">
-                          Paypal
-                        </p>
-                        <p className="text-white text-[15px]">-</p>
-                        <p className="text-tradeFadeWhite text-[13px] font-[600]">
-                          Buyer
-                        </p>
-                      </div>
-
+                <div className="w-full flex flex-col gap-[5px]">
+                  <div className="flex justify-between">
+                    <div className="flex items-center gap-[3px]">
                       <p className="text-white text-[14px] font-[700]">
-                        1,870.00{" "}
-                        <small className="text-tradeFadeWhite text-[14px] font-[700]">
-                          USD
-                        </small>
+                        Paypal
+                      </p>
+                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-tradeFadeWhite text-[13px] font-[600]">
+                        Buyer
                       </p>
                     </div>
-                    <div className="flex justify-between">
-                      <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                        04:22 AM
-                      </p>
 
-                      <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
-                        Pending
-                      </p>
-                    </div>
+                    <p className="text-white text-[14px] font-[700]">
+                      1,870.00{" "}
+                      <small className="text-tradeFadeWhite text-[14px] font-[700]">
+                        USD
+                      </small>
+                    </p>
+                  </div>
+                  <div className="flex justify-between">
+                    <p className="text-tradeFadeWhite text-[12px] font-[600]">
+                      4d 19h ago
+                    </p>
+
+                    <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
+                      Pending
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="flex flex-col gap-[10px]">
-              <div>
-                <p className="text-white text-[15px] font-[700]">
-                  13 March, 2024
-                </p>
-              </div>
-              <div className="flex flex-col gap-[5px]">
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
-                  <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
-                    <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
-                  </div>
-                  <div className="w-full flex flex-col gap-[5px]">
-                    <div className="flex justify-between">
-                      <div className="flex items-center gap-[3px]">
-                        <p className="text-white text-[14px] font-[700]">
-                          Paypal
-                        </p>
-                        <p className="text-white text-[15px]">-</p>
-                        <p className="text-tradeFadeWhite text-[13px] font-[600]">
-                          Buyer
-                        </p>
-                      </div>
-
-                      <p className="text-white text-[14px] font-[700]">
-                        1,870.00{" "}
-                        <small className="text-tradeFadeWhite text-[14px] font-[700]">
-                          USD
-                        </small>
-                      </p>
-                    </div>
-                    <div className="flex justify-between">
-                      <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                        04:22 AM
-                      </p>
-
-                      <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
-                        Pending
-                      </p>
-                    </div>
-                  </div>
+              <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+                  <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
-
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
-                  <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
-                    <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
-                  </div>
-                  <div className="w-full flex flex-col gap-[5px]">
-                    <div className="flex justify-between">
-                      <div className="flex items-center gap-[3px]">
-                        <p className="text-white text-[14px] font-[700]">
-                          Paypal
-                        </p>
-                        <p className="text-white text-[15px]">-</p>
-                        <p className="text-tradeFadeWhite text-[13px] font-[600]">
-                          Buyer
-                        </p>
-                      </div>
-
+                <div className="w-full flex flex-col gap-[5px]">
+                  <div className="flex justify-between">
+                    <div className="flex items-center gap-[3px]">
                       <p className="text-white text-[14px] font-[700]">
-                        1,870.00{" "}
-                        <small className="text-tradeFadeWhite text-[14px] font-[700]">
-                          USD
-                        </small>
+                        Paypal
+                      </p>
+                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-tradeFadeWhite text-[13px] font-[600]">
+                        Buyer
                       </p>
                     </div>
-                    <div className="flex justify-between">
-                      <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                        04:22 AM
-                      </p>
 
-                      <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
-                        Pending
-                      </p>
-                    </div>
+                    <p className="text-white text-[14px] font-[700]">
+                      1,870.00{" "}
+                      <small className="text-tradeFadeWhite text-[14px] font-[700]">
+                        USD
+                      </small>
+                    </p>
+                  </div>
+                  <div className="flex justify-between">
+                    <p className="text-tradeFadeWhite text-[12px] font-[600]">
+                      5d 7h ago
+                    </p>
+
+                    <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
+                      Pending
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="flex flex-col gap-[10px]">
-              <div>
-                <p className="text-white text-[15px] font-[700]">
-                  12 March, 2024
-                </p>
-              </div>
-              <div className="flex flex-col gap-[5px]">
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
-                  <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
-                    <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
-                  </div>
-                  <div className="w-full flex flex-col gap-[5px]">
-                    <div className="flex justify-between">
-                      <div className="flex items-center gap-[3px]">
-                        <p className="text-white text-[14px] font-[700]">
-                          Paypal
-                        </p>
-                        <p className="text-white text-[15px]">-</p>
-                        <p className="text-tradeFadeWhite text-[13px] font-[600]">
-                          Buyer
-                        </p>
-                      </div>
-
+              <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+                  <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
+                </div>
+                <div className="w-full flex flex-col gap-[5px]">
+                  <div className="flex justify-between">
+                    <div className="flex items-center gap-[3px]">
                       <p className="text-white text-[14px] font-[700]">
-                        1,870.00{" "}
-                        <small className="text-tradeFadeWhite text-[14px] font-[700]">
-                          USD
-                        </small>
+                        Paypal
+                      </p>
+                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-tradeFadeWhite text-[13px] font-[600]">
+                        Buyer
                       </p>
                     </div>
-                    <div className="flex justify-between">
-                      <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                        04:22 AM
-                      </p>
 
-                      <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
-                        Pending
-                      </p>
-                    </div>
+                    <p className="text-white text-[14px] font-[700]">
+                      1,870.00{" "}
+                      <small className="text-tradeFadeWhite text-[14px] font-[700]">
+                        USD
+                      </small>
+                    </p>
+                  </div>
+                  <div className="flex justify-between">
+                    <p className="text-tradeFadeWhite text-[12px] font-[600]">
+                      5d 7h ago
+                    </p>
+
+                    <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
+                      Pending
+                    </p>
                   </div>
                 </div>
-
-                <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
-                  <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
-                    <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
-                  </div>
-                  <div className="w-full flex flex-col gap-[5px]">
-                    <div className="flex justify-between">
-                      <div className="flex items-center gap-[3px]">
-                        <p className="text-white text-[14px] font-[700]">
-                          Paypal
-                        </p>
-                        <p className="text-white text-[15px]">-</p>
-                        <p className="text-tradeFadeWhite text-[13px] font-[600]">
-                          Buyer
-                        </p>
-                      </div>
-
+              </div>
+              <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+                  <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
+                </div>
+                <div className="w-full flex flex-col gap-[5px]">
+                  <div className="flex justify-between">
+                    <div className="flex items-center gap-[3px]">
                       <p className="text-white text-[14px] font-[700]">
-                        1,870.00{" "}
-                        <small className="text-tradeFadeWhite text-[14px] font-[700]">
-                          USD
-                        </small>
+                        Paypal
+                      </p>
+                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-tradeFadeWhite text-[13px] font-[600]">
+                        Buyer
                       </p>
                     </div>
-                    <div className="flex justify-between">
-                      <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                        04:22 AM
-                      </p>
 
-                      <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
-                        Pending
+                    <p className="text-white text-[14px] font-[700]">
+                      1,870.00{" "}
+                      <small className="text-tradeFadeWhite text-[14px] font-[700]">
+                        USD
+                      </small>
+                    </p>
+                  </div>
+                  <div className="flex justify-between">
+                    <p className="text-tradeFadeWhite text-[12px] font-[600]">
+                      5d 7h ago
+                    </p>
+
+                    <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
+                      Pending
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+                  <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
+                </div>
+                <div className="w-full flex flex-col gap-[5px]">
+                  <div className="flex justify-between">
+                    <div className="flex items-center gap-[3px]">
+                      <p className="text-white text-[14px] font-[700]">
+                        Paypal
+                      </p>
+                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-tradeFadeWhite text-[13px] font-[600]">
+                        Buyer
                       </p>
                     </div>
+
+                    <p className="text-white text-[14px] font-[700]">
+                      1,870.00{" "}
+                      <small className="text-tradeFadeWhite text-[14px] font-[700]">
+                        USD
+                      </small>
+                    </p>
+                  </div>
+                  <div className="flex justify-between">
+                    <p className="text-tradeFadeWhite text-[12px] font-[600]">
+                      5d 7h ago
+                    </p>
+
+                    <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
+                      Pending
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
+                <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+                  <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
+                </div>
+                <div className="w-full flex flex-col gap-[5px]">
+                  <div className="flex justify-between">
+                    <div className="flex items-center gap-[3px]">
+                      <p className="text-white text-[14px] font-[700]">
+                        Paypal
+                      </p>
+                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-tradeFadeWhite text-[13px] font-[600]">
+                        Buyer
+                      </p>
+                    </div>
+
+                    <p className="text-white text-[14px] font-[700]">
+                      1,870.00{" "}
+                      <small className="text-tradeFadeWhite text-[14px] font-[700]">
+                        USD
+                      </small>
+                    </p>
+                  </div>
+                  <div className="flex justify-between">
+                    <p className="text-tradeFadeWhite text-[12px] font-[600]">
+                      5d 7h ago
+                    </p>
+
+                    <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
+                      Pending
+                    </p>
                   </div>
                 </div>
               </div>

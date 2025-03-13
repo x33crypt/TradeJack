@@ -44,14 +44,14 @@ const MarketMain = ({
   setClearFilter,
 }) => {
   return (
-    <div className="flex flex-col bg-tradeAsh md:border border-neutral-800 md:rounded-[12px]">
+    <div className="flex flex-col md:border border-neutral-800 md:rounded-[12px]">
       <div className="flex flex-col justify-between md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700]">
           Seamless Asset Trading
         </p>
       </div>
-      <div className="flex flex-col md:gap-[10px] gap-[10px] px-[20px]">
-        <div className="z-10 gap-[10px] sticky top-[65px] md:py-[20px] py-[16px] bg-tradeAsh  flex flex-col ">
+      <div className="flex flex-col md:gap-[10px] gap-[10px] px-[20px] pb-[20px]">
+        <div className="z-10 gap-[10px] sticky top-[65px] md:py-[20px] py-[16px] bg-black  flex flex-col ">
           <div className="flex justify-between w-full">
             <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
               <p
@@ -113,7 +113,7 @@ const MarketMain = ({
         <div
           className={` ${
             isOfferFilter ? "flex" : "hidden"
-          } z-50 fixed top-0 left-0 right-0 bottom-0 py-[20%] px-[18px] lg:hidden h-full overflow-auto bg-white/20 backdrop-blur-[2px]
+          } z-50 fixed top-0 left-0 right-0 bottom-0 pt-[40%] px-[px] lg:hidden h-full  bg-black/20 backdrop-blur-[2px]
  `}
         >
           <OfferFilter
