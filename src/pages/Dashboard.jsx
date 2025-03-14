@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <>
       <MarketTopNav />
-      <div className=" lg:pt-[80px] md:pt-[85px] pt-[80px] flex gap-[15px] bg-black lg:p-[2%] md:p-[2.5%] ">
+      <div className=" lg:pt-[80px] md:pt-[85px] pt-[80px] pb-[50px] flex gap-[15px] bg-black lg:p-[2%] md:p-[2.5%] ">
         <DashSideNav />
         <DashMain />
       </div>

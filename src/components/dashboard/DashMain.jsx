@@ -20,9 +20,9 @@ import { TiArrowRight } from "react-icons/ti";
 const DashMain = () => {
   return (
     <>
-      <div className="flex-1 md:flex hidden lg:gap-[10px] gap-[30px]">
+      <div className="flex-1 md:flex hidden lg:gap-[15px]">
         <div className="flex flex-1 flex-col gap-[15px]">
-          <div className="flex flex-col bg- rounded-[12px]  justify-between p-[10px] ">
+          <div className="flex flex-col rounded-[12px]  justify-between px-[10px] py-[15px]">
             <p className=" lg:text-[20px] text-[20px] text-tradeFadeWhite  ">
               Welcome back,{" "}
               <small className="lg:text-[20px] text-[20px] text-white font-[700]">
@@ -237,11 +237,17 @@ const DashMain = () => {
           </div>
         </div>
 
-        <div className=" lg:flex hidden w-[300px]"></div>
+        <div className=" lg:flex hidden bg-tradeAsh w-[300px] px-[10px] py-[15px] rounded-[16px]  border border-tradeAshLight">
+          <div className="  w-full ">
+            <p className="text-[18px] font-[700] text-white">
+              Trade Performance
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div className="flex-1 flex flex-col md:hidden gap-[15px] px-[20px] ">
-        <div className="flex flex-col p-[10px]">
+      <div className="flex-1 flex flex-col md:hidden gap-[10px] px-[20px] ">
+        <div className="flex flex-col p-[10px] ">
           <p className="text-[18px] text-tradeFadeWhite ">
             Welcome back,{" "}
             <small className="text-[18px] text-white font-[700]">
@@ -394,8 +400,8 @@ const DashMain = () => {
             </div>
 
             <div className="flex flex-col gap-[5px]">
-              <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
-                <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+              <div className="flex  bg- border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+                <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
                 <div className="w-full flex flex-col gap-[5px]">
@@ -428,8 +434,8 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
-                <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+              <div className="flex  bg- border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+                <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
                 <div className="w-full flex flex-col gap-[5px]">
@@ -453,7 +459,7 @@ const DashMain = () => {
                   </div>
                   <div className="flex justify-between">
                     <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                      5d 7h ago
+                      4d 19h ago
                     </p>
 
                     <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
@@ -462,8 +468,8 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
-                <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+              <div className="flex  bg- border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+                <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
                 <div className="w-full flex flex-col gap-[5px]">
@@ -487,7 +493,7 @@ const DashMain = () => {
                   </div>
                   <div className="flex justify-between">
                     <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                      5d 7h ago
+                      4d 19h ago
                     </p>
 
                     <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
@@ -496,8 +502,8 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
-                <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+              <div className="flex  bg- border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+                <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
                 <div className="w-full flex flex-col gap-[5px]">
@@ -521,7 +527,7 @@ const DashMain = () => {
                   </div>
                   <div className="flex justify-between">
                     <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                      5d 7h ago
+                      4d 19h ago
                     </p>
 
                     <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
@@ -530,8 +536,8 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
-                <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+              <div className="flex  bg- border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+                <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
                 <div className="w-full flex flex-col gap-[5px]">
@@ -555,7 +561,7 @@ const DashMain = () => {
                   </div>
                   <div className="flex justify-between">
                     <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                      5d 7h ago
+                      4d 19h ago
                     </p>
 
                     <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
@@ -564,8 +570,8 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-tradeAshLight border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  hover:bg-tradeAshLight cursor-pointer">
-                <div className="p-[8px] rounded-full max-w-max bg-tradeAshExtraLight">
+              <div className="flex  bg- border border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+                <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
                 <div className="w-full flex flex-col gap-[5px]">
@@ -589,7 +595,7 @@ const DashMain = () => {
                   </div>
                   <div className="flex justify-between">
                     <p className="text-tradeFadeWhite text-[12px] font-[600]">
-                      5d 7h ago
+                      4d 19h ago
                     </p>
 
                     <p className="text-tradeOrange text-[12px] font-[600]  border-tradeOrange px-[6px] py-[2px] rounded-[5px]">
