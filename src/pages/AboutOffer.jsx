@@ -212,9 +212,9 @@ const AboutOffer = () => {
       <MarketTopNav />
 
       <div className=" md:pt-[80px] pt-[67px] flex flex-col bg-black gap-[15.5px] md:p-[1.5%]">
-        <div className="flex lg:flex-row flex-col w-full gap-[15.5px] lg:gap-[0.8%]">
-          <div className="flex-1 flex   justify-between flex-col md:border border-tradeAshLight md:rounded-[10px]">
-            <div className=" flex items-center gap-[10px] md:p-[15px] p-[20px]  border-b border-tradeAshLight ">
+        <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-[0.8%]">
+          <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight md:rounded-[10px]">
+            <div className=" flex items-center gap-[10px] md:p-[15px] px-[20px] py-[15px]  border-b border-tradeAshLight ">
               <p className=" text-[18px] text-white font-[700] cursor-pointer">
                 Offer Details
               </p>
@@ -263,7 +263,7 @@ const AboutOffer = () => {
               <div className="grid grid-cols-2  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    MIN PURCHASE LIMIT
+                    Min Purchase Limit
                   </p>
                   <p className="text-white text-[15.5px] font-[600]">
                     {`${parseInt(
@@ -273,7 +273,7 @@ const AboutOffer = () => {
                 </div>
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    MAX PURCHASE LIMIT
+                    Max Purchase Limit
                   </p>
                   <p className="text-white text-[15.5px] font-[600]">
                     {`${parseInt(
@@ -285,7 +285,7 @@ const AboutOffer = () => {
               <div className="grid grid-cols-2  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    MAX TRADE TIME
+                    Max Trade Time
                   </p>
                   <p className="text-white text-[15.5px] font-[600]">
                     {offerDetails?.maxTradeTime} Minutes
@@ -293,7 +293,7 @@ const AboutOffer = () => {
                 </div>
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    AVERAGE TRADE TIME
+                    Average Trade Time
                   </p>
                   <p className="text-white text-[15.5px] font-[600]">
                     {offerDetails?.avgTradeTime} Minutes
@@ -302,8 +302,8 @@ const AboutOffer = () => {
               </div>
             </div>
 
-            <div className="flex  flex-col justify-between border-t border-neutral-800">
-              <div className="flex md:p-[15px] p-[20px] border-b border-neutral-800 ">
+            <div className="flex  flex-col justify-between border-y md:border-t md:border-b-0 border-neutral-800">
+              <div className="flex md:p-[15px] px-[20px] py-[15px] border-b border-neutral-800 ">
                 <p className="text-[18px] text-white font-[600] cursor-pointer">
                   About Vendor
                 </p>
@@ -371,6 +371,7 @@ const AboutOffer = () => {
               </div>
             </div>
           </div>
+
           <ExchangeCalculator
             offerDetails={offerDetails}
             handleTradeValueChange={handleTradeValueChange}

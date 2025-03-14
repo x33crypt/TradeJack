@@ -3,8 +3,8 @@ import { AiOutlineCalculator } from "react-icons/ai";
 
 const ExchangeCalculator = (prop) => {
   return (
-    <div className="lg:w-[400px] flex flex-col justify-between  md:border border-tradeAshLight rounded-[12.5px]">
-      <div className="flex items-center gap-[10px] md:p-[15px] p-[20px] border-b border-tradeAshLight">
+    <div className="lg:w-[400px] flex flex-col justify-between  md:border border-b border-tradeAshLight md:rounded-[12px]">
+      <div className="flex items-center gap-[10px] md:p-[15px] px-[20px] py-[15px] border-b border-tradeAshLight">
         <p className="text-[18px] text-white font-[700] cursor-pointer">
           Exchange Calculator
         </p>
@@ -15,7 +15,7 @@ const ExchangeCalculator = (prop) => {
         <div className="flex flex-col gap-[10px]">
           <div className="flex border border-tradeAshLight flex-col gap-[15px] p-[15px] rounded-[12px]">
             <div className="flex justify-between items-center">
-              <p className="text-tradeFadeWhite text-[13px]">Send</p>
+              <p className="text-tradeFadeWhite text-[14px]">Send</p>
             </div>
             <div className="bg-tradePurpl flex gap-[20px] justify-between items-center">
               <input
@@ -36,7 +36,7 @@ const ExchangeCalculator = (prop) => {
           </div>
           <div className="flex border border-tradeAshLight flex-col gap-[15px] bg-black p-[15.5px] rounded-[16px]">
             <div className="flex">
-              <p className="text-tradeFadeWhite text-[13px]">Receive</p>
+              <p className="text-tradeFadeWhite text-[14px]">Receive</p>
             </div>
             <div className="flex gap-[20px] justify-between items-center">
               <input
@@ -67,19 +67,19 @@ const ExchangeCalculator = (prop) => {
             </div>
           ) : (
             <div className="flex h-[10px] items-center gap-[5px]">
-              <p className="text-[12px] font-[500] text-tradeFadeWhite">
+              <p className="text-[13px] font-[500] text-tradeFadeWhite">
                 Enter an amount to trade and view your received amount.
               </p>
             </div>
           )}
         </div>
 
-        <div className=" flex flex-col">
-          <div className="flex justify-between py-[5px]">
-            <p className="text-[13px] font-[500] text-tradeGreen">
+        <div className=" flex flex-col gap-[10px]">
+          <div className="flex justify-between">
+            <p className="text-[14px] font-[500] text-tradeGreen">
               Rate breakdown
             </p>
-            <p className="text-[13px] font-[600] text-white">
+            <p className="text-[14px] font-[600] text-white">
               {`
 1 ${prop?.offerDetails?.currency ? prop?.offerDetails.currency : "USD"} =  
 ${
@@ -94,12 +94,12 @@ ${
             </p>
           </div>
 
-          <div className="flex justify-between  py-[5px]">
-            <p className="text-[13px] font-[500] text-tradeFadeWhite">
+          <div className="flex justify-between  ">
+            <p className="text-[14px] font-[500] text-tradeFadeWhite">
               Your receive value in ({prop?.offerDetails.currency})
             </p>
 
-            <p className="text-[13px] font-[600] text-white">
+            <p className="text-[14px] font-[600] text-white">
               {isNaN(prop?.calculatorResult?.currencyValue) ||
               prop?.calculatorResult?.prop?.currencyValue === null ||
               prop?.calculatorResult?.currencyValue === undefined
@@ -109,11 +109,11 @@ ${
             </p>
           </div>
 
-          <div className="flex justify-between  py-[5px]">
-            <p className="text-[13px] font-[500] text-tradeFadeWhite">
+          <div className="flex justify-between  ">
+            <p className="text-[14px] font-[500] text-tradeFadeWhite">
               Your receive value in (USD)
             </p>
-            <p className="text-[13px] font-[600] text-white">
+            <p className="text-[14px] font-[600] text-white">
               {isNaN(prop?.calculatorResult?.usdValue) ||
               prop?.calculatorResult?.usdValue === null ||
               prop?.calculatorResult?.usdValue === undefined
@@ -126,7 +126,7 @@ ${
 
         <div className="flex  items-center justify-center  border-t border-tradeAshLight ">
           <p className="text-[15px] text-center  text-black bg-tradeGreen hover:bg-white font-[700]  border border-tradeGreen p-[10px] rounded-[5px] md:rounded-[6px]  w-[100%] transition-all duration-300 cursor-pointer">
-            Initiate Trade Now
+            Initiate Trade
           </p>
         </div>
       </div>
