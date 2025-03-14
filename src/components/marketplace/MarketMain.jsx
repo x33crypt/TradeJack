@@ -44,14 +44,14 @@ const MarketMain = ({
   setClearFilter,
 }) => {
   return (
-    <div className="flex flex-col md:border border-neutral-800 md:rounded-[16px]">
-      <div className="flex flex-col justify-between md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
+    <div className="flex flex-col md:border border-neutral-800 md:rounded-[10px]">
+      <div className="flex flex-col justify-between md:p-[15px] p-[20px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700]">
           Seamless Asset Trading
         </p>
       </div>
 
-      <div className="flex flex-col md:gap-[10px] gap-[10px] px-[20px] pb-[20px]">
+      <div className="flex flex-col  gap-[10px] md:px-[15px] px-[20px] md:pb-[15px] pb-[20px]">
         <div className="z-10 gap-[10px] sticky top-[65px] md:py-[20px] py-[16px] bg-black  flex flex-col ">
           <div className="flex justify-between w-full ">
             <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">

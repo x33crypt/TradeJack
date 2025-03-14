@@ -23,6 +23,8 @@ import { HiArrowNarrowUp } from "react-icons/hi";
 import { IoMdArrowRoundUp } from "react-icons/io";
 import { MdOutlineShowChart } from "react-icons/md";
 import ExchangeCalculator from "@/components/ExchangeCalculator";
+import { GoNote } from "react-icons/go";
+import { CgNotes } from "react-icons/cg";
 
 const AboutOffer = () => {
   const [offerDetails, setOfferDetails] = useState("");
@@ -208,18 +210,20 @@ const AboutOffer = () => {
   return (
     <>
       <MarketTopNav />
+
       <div className=" md:pt-[80px] pt-[67px] flex flex-col bg-black gap-[15.5px] md:p-[1.5%]">
         <div className="flex lg:flex-row flex-col w-full gap-[15.5px] lg:gap-[0.8%]">
-          <div className="flex-1 flex  justify-between flex-col md:border border-neutral-800 md:rounded-[12.5px]">
-            <div className="flex items-center justify-between  md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
-              <p className="text-[18px] text-white font-[700] cursor-pointer">
+          <div className="flex-1 flex   justify-between flex-col md:border border-tradeAshLight md:rounded-[10px]">
+            <div className=" flex items-center gap-[10px] md:p-[15px] p-[20px]  border-b border-tradeAshLight ">
+              <p className=" text-[18px] text-white font-[700] cursor-pointer">
                 Offer Details
               </p>
+              <CgNotes className="text-tradeAshExtraLight text-[20px]" />
             </div>
 
-            <div className="flex flex-col md:gap-[40px] gap-[35px] p-[20px]">
-              <div className="flex flex-wrap items-center lg:gap-[40px] gap-[30px]">
-                <div className="flex flex-col gap-[5px] ">
+            <div className="flex bg- flex-col md:gap-[15px] gap-[10px] md:p-[15px] p-[20px]">
+              <div className="grid grid-cols-2  flex-wrap items-center lg:gap-[15px] gap-[10px]">
+                <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Service
                   </p>
@@ -227,7 +231,7 @@ const AboutOffer = () => {
                     {offerDetails.service}
                   </p>
                 </div>
-                <div className="flex flex-col gap-[5px]">
+                <div className="flex flex-col gap-[2px]   py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Service Type
                   </p>
@@ -235,97 +239,76 @@ const AboutOffer = () => {
                     {offerDetails.serviceType}
                   </p>
                 </div>
-                <div className="flex flex-col gap-[5px]">
+              </div>
+              <div className="grid grid-cols-2  flex-wrap items-center lg:gap-[15px] gap-[10px]">
+                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Purchase Limit
+                    Price Cap
                   </p>
-                  <div className="flex gap-[10px]">
-                    <p className="flex items-center gap-[5px] text-[15.5px] font-[600] text-tradeFadeWhite">
-                      Min
-                      <small className="text-[15.5px] font-[600] text-white">{`${parseInt(
-                        offerDetails?.miniPurchase
-                      ).toLocaleString()}  ${offerDetails?.currency}`}</small>
-                    </p>
-                    <p className="text-white text-[20px] font-[800]">-</p>
-                    <p className="flex items-center gap-[5px] text-[15.5px] font-[600] text-tradeFadeWhite">
-                      Max
-                      <small className="text-[15.5px] font-[600] text-white">{`${parseInt(
-                        offerDetails?.maxPurchase
-                      ).toLocaleString()}  ${offerDetails?.currency}`}</small>
-                    </p>
-                  </div>
+                  <p className="text-white text-[15.5px] font-[600]">
+                    {`${parseInt(offerDetails?.rate).toLocaleString()}  ${
+                      offerDetails?.currency
+                    }`}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
+                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    Price Cap USD
+                  </p>
+                  <p className="text-[15.5px] font-[600] text-white">
+                    {offerDetails.serviceType}
+                  </p>
                 </div>
               </div>
-
-              <div className="flex flex-wrap items-center lg:gap-[40px] gap-[30px]">
-                <div className="flex flex-col gap-[5px] ">
+              <div className="grid grid-cols-2  flex-wrap items-center lg:gap-[15px] gap-[10px]">
+                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Maximum Trade Time
+                    MIN PURCHASE LIMIT
+                  </p>
+                  <p className="text-white text-[15.5px] font-[600]">
+                    {`${parseInt(
+                      offerDetails?.miniPurchase
+                    ).toLocaleString()}  ${offerDetails?.currency}`}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
+                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    MAX PURCHASE LIMIT
+                  </p>
+                  <p className="text-white text-[15.5px] font-[600]">
+                    {`${parseInt(
+                      offerDetails?.maxPurchase
+                    ).toLocaleString()}  ${offerDetails?.currency}`}
+                  </p>
+                </div>
+              </div>
+              <div className="grid grid-cols-2  flex-wrap items-center lg:gap-[15px] gap-[10px]">
+                <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
+                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    MAX TRADE TIME
                   </p>
                   <p className="text-white text-[15.5px] font-[600]">
                     {offerDetails?.maxTradeTime} Minutes
                   </p>
                 </div>
-                <div className="flex flex-col gap-[5px] ">
+                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Average Trade Time
+                    AVERAGE TRADE TIME
                   </p>
                   <p className="text-white text-[15.5px] font-[600]">
                     {offerDetails?.avgTradeTime} Minutes
                   </p>
                 </div>
-                <div className="flex flex-col gap-[5px]">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Offer Rate Cap
-                  </p>
-                  <div className="flex items-center gap-[10px]">
-                    <p className="flex items-baseline gap-[8px] text-[15.5px] font-[700] text-white">
-                      {`${parseInt(offerDetails?.rate).toLocaleString()}  ${
-                        offerDetails?.currency
-                      }`}
-                      <small>&#8226;</small>
-                      {offeRateMargin.status && offeRateMargin.percentage ? (
-                        offeRateMargin.status === "above" ? (
-                          <small className="flex items-center gap-[3px] text-[13px]  text-tradeGreen font-[600]">
-                            {`${offeRateMargin.percentage}% ${offeRateMargin.status} market`}
-                          </small>
-                        ) : (
-                          <small className="flex items-center gap-[3px] text-[13px] text-red-500 font-[600]">
-                            {`${offeRateMargin.percentage}% ${offeRateMargin.status} market`}
-                          </small>
-                        )
-                      ) : (
-                        <small className="text-[13px] text-tradeAshExtraLight font-[600]">
-                          Calculating margin...
-                        </small>
-                      )}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-[5px]">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Network Fee
-                  </p>
-                  <p className="text-[15.5px] font-[600] text-white">0%</p>
-                </div>
               </div>
             </div>
 
             <div className="flex  flex-col justify-between border-t border-neutral-800">
-              <div className="flex md:p-[20px] px-[20px] py-[16px] border-b border-neutral-800 ">
+              <div className="flex md:p-[15px] p-[20px] border-b border-neutral-800 ">
                 <p className="text-[18px] text-white font-[600] cursor-pointer">
                   About Vendor
                 </p>
-                {/* <div className="flex items-center gap-[4px] py-[2px] px-[8px] border border-tradeAshExtraLight rounded-full">
-                  <p className="text-[13px] lg:text-[13px] text-tradeGreen">
-                    <GoDotFill />
-                  </p>
-                  <p className="text-[13px] text-white lg:text-[12.5px] flex font-[600] ">
-                    Online
-                  </p>
-                </div> */}
               </div>
-              <div className="flex flex-wrap md:justify-between p-[20px] lg:gap-[15.5px] lg:gap-y-[30px] gap-[30px]  items-center">
+              <div className="flex flex-wrap md:justify-between md:p-[15px] p-[20px] lg:gap-[15.5px] lg:gap-y-[30px] gap-[30px]  items-center">
                 <div className=" flex items-center gap-[15.5px]">
                   <div>
                     <img
@@ -395,12 +378,6 @@ const AboutOffer = () => {
             exchangeError={exchangeError}
             tradeValue={tradeValue}
           />
-        </div>
-
-        <div className="flex items-center justify-center px-[15.5px] md:px-0  py-[5px] ">
-          <p className="text-[15.5px] text-center  text-black bg-tradeGreen hover:bg-white font-[700]  border border-tradeGreen p-[10px] rounded-[8px] md:rounded-[6px]  w-[100%] transition-all duration-300 cursor-pointer">
-            Initiate Trade Now
-          </p>
         </div>
 
         <div className="flex-1 flex flex-col md:border border-neutral-800 md:rounded-[12.5px]">

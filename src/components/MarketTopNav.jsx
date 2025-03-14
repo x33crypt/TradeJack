@@ -97,28 +97,28 @@ const MarketTopNav = () => {
         <div className=" md:flex hidden  gap-[10px] items-center">
           <div
             onClick={() => navigateTo("/marketplace")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[5px] cursor-pointer transition-all duration-300"
           >
             <RiExchangeLine className="lg:flex hidden text-[17px]" />
             <p className="text-[14px]">Sell Assets</p>
           </div>
           <div
             onClick={() => navigateTo("/create-offer")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[5px] cursor-pointer transition-all duration-300"
           >
             <TbBuildingBank className="lg:flex hidden text-[17px]" />
             <p className="text-[14px]">Buy Assets</p>
           </div>
           <div
             onClick={() => navigateTo("/create-offer")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[5px] cursor-pointer transition-all duration-300"
           >
             <FaVenusDouble className="lg:flex hidden text-[17px]" />
             <p className="text-[14px]">Favourite Vendors</p>
           </div>
           <div
             onClick={() => navigateTo("/dashboard")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[8px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[5px] cursor-pointer transition-all duration-300"
           >
             <MdOutlineSpaceDashboard className="lg:flex hidden text-[17px]" />
             <p className="text-[14px]">Dashboard</p>
@@ -126,7 +126,7 @@ const MarketTopNav = () => {
         </div>
 
         <div className="flex items-center lg:gap-[15px] gap-[15px]">
-          <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[2px] gap-[10px] rounded-[10px]">
+          <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[2px] gap-[10px] rounded-[8px]">
             <FaMagnifyingGlass className="text-neutral-500 lg:text-[15px] text-[15px]" />
             <input
               className=" bg-transparent outline-none h-[28px] w-[220px] lg:placeholder:text-[13px] placeholder:text-[13px] placeholder:text-neutral-500 lg:text-[13px] text-[13px] text-white"
