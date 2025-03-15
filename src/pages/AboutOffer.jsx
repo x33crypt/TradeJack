@@ -222,7 +222,7 @@ const AboutOffer = () => {
             </div>
 
             <div className="flex bg- flex-col md:gap-[15px] gap-[10px] md:p-[15px] p-[20px]">
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Service
@@ -240,7 +240,7 @@ const AboutOffer = () => {
                   </p>
                 </div>
               </div>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] items-center lg:gap-[15px] gap-[10px]">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Price Cap
@@ -256,11 +256,13 @@ const AboutOffer = () => {
                     Price Cap USD
                   </p>
                   <p className="text-[15.5px] font-[600] text-white">
-                    {offerDetails.serviceType}
+                    {`${parseInt(offerDetails?.rate).toLocaleString()}  ${
+                      offerDetails?.currency
+                    }`}
                   </p>
                 </div>
               </div>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Min Purchase Limit
@@ -282,7 +284,7 @@ const AboutOffer = () => {
                   </p>
                 </div>
               </div>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Max Trade Time

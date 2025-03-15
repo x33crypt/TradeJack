@@ -68,7 +68,7 @@ const ExchangeCalculator = (prop) => {
           ) : (
             <div className="flex h-[10px] items-center gap-[5px]">
               <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                Enter an amount to trade and view your received amount.
+                Enter an amount to trade and see your return.
               </p>
             </div>
           )}
