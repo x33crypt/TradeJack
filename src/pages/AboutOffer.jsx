@@ -222,7 +222,7 @@ const AboutOffer = () => {
             </div>
 
             <div className="flex bg- flex-col md:gap-[15px] gap-[10px] md:p-[15px] p-[20px]">
-              <div className="grid grid-cols-2  flex-wrap items-center lg:gap-[15px] gap-[10px]">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Service
@@ -240,7 +240,7 @@ const AboutOffer = () => {
                   </p>
                 </div>
               </div>
-              <div className="grid grid-cols-2  flex-wrap items-center lg:gap-[15px] gap-[10px]">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Price Cap
@@ -260,7 +260,7 @@ const AboutOffer = () => {
                   </p>
                 </div>
               </div>
-              <div className="grid grid-cols-2  flex-wrap items-center lg:gap-[15px] gap-[10px]">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Min Purchase Limit
@@ -282,7 +282,7 @@ const AboutOffer = () => {
                   </p>
                 </div>
               </div>
-              <div className="grid grid-cols-2  flex-wrap items-center lg:gap-[15px] gap-[10px]">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Max Trade Time
