@@ -10,9 +10,9 @@ const ExchangeCalculator = (prop) => {
         </p>
       </div>
 
-      <div className="flex h-full flex-col p-[15px] gap-[25px] ">
+      <div className="flex h-full justify-between flex-col p-[15px] gap-[20px] ">
         <div className="flex flex-col gap-[10px]">
-          <div className="flex border border-tradeAshLight flex-col gap-[15px] p-[15px] rounded-[12px]">
+          <div className="flex border border-tradeAshLight flex-col gap-[15px] bg-tradeAsh p-[15px] rounded-[16px]">
             <div className="flex justify-between items-center">
               <p className="text-tradeFadeWhite text-[14px]">Send</p>
             </div>
@@ -33,7 +33,7 @@ const ExchangeCalculator = (prop) => {
               </p>
             </div>
           </div>
-          <div className="flex border border-tradeAshLight flex-col gap-[15px] bg-black p-[15.5px] rounded-[16px]">
+          <div className="flex border border-tradeAshLight flex-col gap-[15px] bg-tradeAsh p-[15.5px] rounded-[16px]">
             <div className="flex">
               <p className="text-tradeFadeWhite text-[14px]">Receive</p>
             </div>
@@ -56,23 +56,6 @@ const ExchangeCalculator = (prop) => {
             </div>
           </div>
         </div>
-
-        <div className=" flex flex-col items-center bg-tradeAsh rounded-[6px] p-[10px]">
-          {prop?.exchangeError ? (
-            <div className="flex md:h-[10px] h-[25px] w-full justify-center items-center gap-[5px]">
-              <p className="text-[12px] font-[500] text-red-600">
-                {prop?.exchangeError}
-              </p>
-            </div>
-          ) : (
-            <div className="flex h-[10px] items-center gap-[5px]">
-              <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                Enter an amount to trade and see your return.
-              </p>
-            </div>
-          )}
-        </div>
-
         <div className=" flex flex-col gap-[10px]">
           <div className="flex justify-between">
             <p className="text-[14px] font-[500] text-tradeGreen">

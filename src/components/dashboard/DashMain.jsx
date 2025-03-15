@@ -246,7 +246,7 @@ const DashMain = () => {
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col md:hidden gap-[10px] px-[20px] ">
+      <div className="flex-1 flex flex-col md:hidden gap-[10px] px-[15px] ">
         <div className="flex flex-col p-[10px] ">
           <p className="text-[18px] text-tradeFadeWhite ">
             Welcome back,{" "}

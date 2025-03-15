@@ -45,14 +45,14 @@ const MarketMain = ({
 }) => {
   return (
     <div className="flex flex-col md:border border-neutral-800 md:rounded-[10px]">
-      <div className="flex flex-col justify-between md:p-[15px] p-[20px] border-b border-neutral-800 ">
+      <div className="flex flex-col justify-between p-[15px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700]">
           Seamless Asset Trading
         </p>
       </div>
 
-      <div className="flex flex-col  gap-[10px] md:px-[15px] px-[20px] md:pb-[15px] pb-[20px]">
-        <div className="z-10 gap-[10px] sticky top-[65px] md:py-[20px] py-[16px] bg-black  flex flex-col ">
+      <div className="flex flex-col  gap-[10px]  px-[15px] pb-[15px]">
+        <div className="z-10 gap-[10px] sticky top-[68px]  py-[15px] bg-black  flex flex-col ">
           <div className="flex justify-between w-full ">
             <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
               <p
@@ -63,8 +63,8 @@ const MarketMain = ({
                 )}
                 className={` ${
                   isAllOffer
-                    ? "text-white bg-tradeAsh border-tradeAsh"
-                    : "text-neutral-500 bg-transparent border-neutral-800"
+                    ? "text-white bg-tradeAshLight border-tradeAsh"
+                    : "text-tradeFadeWhite bg-transparent border-tradeAshLight"
                 } px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] border  hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
               >
                 All
@@ -77,8 +77,8 @@ const MarketMain = ({
                 )}
                 className={` ${
                   isOnlineOffer
-                    ? "text-white bg-tradeAsh border-tradeAsh"
-                    : "text-neutral-500 bg-transparent border-neutral-800"
+                    ? "text-white bg-tradeAshLight border-tradeAsh"
+                    : "text-tradeFadeWhite bg-transparent border-tradeAshLight"
                 } px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] border hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
               >
                 Online
@@ -100,8 +100,8 @@ const MarketMain = ({
                 onClick={() => setIsOfferFilter((prev) => !prev)}
                 className={`${
                   isOfferFilter
-                    ? "text-white bg-tradeAsh border-tradeAshExtraLight"
-                    : "text-neutral-500 bg-transparent border-neutral-800"
+                    ? "text-white bg-tradeAshLight border-tradeAsh"
+                    : "text-tradeFadeWhite bg-transparent border-tradeAshLight"
                 } md:hidden flex  justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border cursor-pointer duration-300 transition-all`}
               >
                 <LuSettings2 className="text-[17px]" />
@@ -148,9 +148,9 @@ const MarketMain = ({
           />
         </div>
 
-        <div className="flex flex-col gap-[20px] p-[px] rounded-[12px]">
-          <div className="flex flex-col gap-[20px]">
-            <div className=" sticky md:top-[135px] top-[127px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
+        <div className="flex flex-col gap-[15px]  rounded-[12px]">
+          <div className="flex flex-col gap-[15px]">
+            <div className=" sticky md:top-[128px] top-[125px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Promoted Offers
               </p>
@@ -192,8 +192,8 @@ const MarketMain = ({
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-[20px]">
-            <div className="sticky md:top-[135px] top-[127px] flex bg-white px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
+          <div className="flex flex-col gap-[15px]">
+            <div className="sticky md:top-[128px] top-[125px] flex bg-white px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Other Offers
               </p>

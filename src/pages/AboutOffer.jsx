@@ -303,23 +303,24 @@ const AboutOffer = () => {
               </div>
             </div>
 
-            <div className="flex  flex-col justify-between  md:border-t  border-neutral-800">
+            <div className="flex  flex-col justify-between ">
               <div className="flex md:p-[15px] px-[20px] py-[15px] border-b border-neutral-800 ">
                 <p className="text-[18px] text-white font-[600] cursor-pointer">
                   About Vendor
                 </p>
               </div>
-              <div className="flex flex-wrap md:justify-between md:p-[15px] p-[20px] lg:gap-[15.5px] lg:gap-y-[30px] gap-[30px]  items-center">
-                <div className=" flex items-center gap-[15.5px]">
-                  <div>
+
+              <div className="flex flex-wrap  md:gap-[15px] gap-[10px] p-[15px]">
+                <div className=" flex-1 shrink-0 flex items-center gap-[15.5px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
+                  <div className="w-[40px]">
                     <img
-                      className="w-[40px] rounded-full"
+                      className=" rounded-full"
                       src={offerDetails.profileImage}
                       alt=""
                     />
                   </div>
 
-                  <div className="flex flex-col gap-[5px] ">
+                  <div className="flex  flex-col gap-[5px] ">
                     <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                       Username
                     </p>
@@ -330,45 +331,49 @@ const AboutOffer = () => {
                   </div>
                 </div>
 
-                <div className=" flex md:max-w-max  items-center md:gap-[40px] gap-[25px]">
-                  <div className="flex flex-col gap-[5px] ">
-                    <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                      Positive Feedback
-                    </p>
-                    <div className="flex items-center gap-[10px]">
-                      <MdThumbUpAlt className="text-[15.5px] text-tradeGreen" />
-                      <p className="text-white text-[15.5px] font-[600]">
-                        {`${parseInt(
-                          offerDetails?.positiveFeedback
-                        ).toLocaleString()}`}
+                <div className="flex w-full md:max-w-max flex-wrap md:gap-[15px] gap-[10px] items-center">
+                  <div className="flex flex-1 md:justify-between  items-center md:gap-[40px] gap-[30px]  py-[5px] px-[10px] border border-tradeAshLight rounded-[5px]">
+                    <div className="flex flex-col gap-[5px] ">
+                      <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                        Positive Feedback
                       </p>
+                      <div className="flex items-center gap-[10px]">
+                        <MdThumbUpAlt className="text-[15.5px] text-tradeGreen" />
+                        <p className="text-white text-[15.5px] font-[600]">
+                          {`${parseInt(
+                            offerDetails?.positiveFeedback
+                          ).toLocaleString()}`}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-[5px] ">
+                      <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                        Negative Feedback
+                      </p>
+                      <div className="flex items-center gap-[10px]">
+                        <MdThumbDownAlt className="text-[15.5px] text-red-500" />
+                        <p className="text-white text-[15.5px] font-[600]">
+                          {`${parseInt(
+                            offerDetails?.negativeFeedback
+                          ).toLocaleString()}`}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-[5px] ">
+
+                  <div className="flex flex-col gap-[5px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
                     <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                      Negative Feedback
+                      Trust Score
                     </p>
                     <div className="flex items-center gap-[10px]">
-                      <MdThumbDownAlt className="text-[15.5px] text-red-500" />
+                      <FaRegStar className="text-[15.5px] text-tradeOrange" />
                       <p className="text-white text-[15.5px] font-[600]">
-                        {`${parseInt(
-                          offerDetails?.negativeFeedback
-                        ).toLocaleString()}`}
+                        {offerDetails.trustScore}%
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="flex flex-col gap-[5px]">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Trust Score
-                  </p>
-                  <div className="flex items-center gap-[10px]">
-                    <FaRegStar className="text-[15.5px] text-tradeOrange" />
-                    <p className="text-white text-[15.5px] font-[600]">
-                      {offerDetails.trustScore}%
-                    </p>
-                  </div>
-                </div>
+               
               </div>
             </div>
           </div>
