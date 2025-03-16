@@ -387,15 +387,15 @@ const AboutOffer = () => {
         </div>
 
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-[0.8%]">
-          <div className="lg:w-[500px] flex flex-col border border-neutral-800 md:rounded-[12.5px]">
+          <div className="lg:w-[500px] flex flex-col border-y border-neutral-800 md:rounded-[12.5px]">
             <div className="flex items-center justify-between  p-[15px] md:border-b md:border-t-0 border-b border-neutral-800 ">
               <p className="text-[18px] text-white font-[700] cursor-pointer">
                 Offer Statistics
               </p>
             </div>
-            <div className="flex items-center justify-between  p-[20px] "></div>
+            <div className="flex items-center justify-between p-[20px] "></div>
           </div>
-          <div className="flex-1 flex flex-col border border-neutral-800 md:rounded-[12.5px]">
+          <div className="flex-1 flex flex-col border-y border-neutral-800 md:rounded-[12.5px]">
             <div className="flex items-center justify-between  p-[15px] md:border-b md:border-t-0 border-b border-neutral-800 ">
               <p className="text-[18px] text-white font-[700] cursor-pointer">
                 Feedback on this Offer
