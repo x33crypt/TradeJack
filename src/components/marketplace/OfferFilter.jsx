@@ -1377,7 +1377,7 @@ const OfferFilter = ({
       <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px]">
         <div
           onClick={handleFilterOffer}
-          className="flex items-center justify-between bg-tradeGreen hover:bg-white md:p-[10px] px-[10px] py-[15px] rounded-[8px]"
+          className="flex items-center justify-between bg-tradeGreen hover:bg-white md:p-[10px] px-[10px] py-[15px] rounded-[10px]"
         >
           <p className="font-[700] text-[15px] ">
             {isFilterLoading ? "Filtering..." : "Apply Filter"}
