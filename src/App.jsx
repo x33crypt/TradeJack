@@ -6,7 +6,7 @@ import Marketplace from "./pages/Marketplace";
 import AboutOffer from "./pages/AboutOffer";
 import ScrollToTop from "./components/ScrollToTop";
 import CreateOffer from "./pages/CreateOffer";
-import Chat from "./pages/Chat";
+import TradeChat from "./pages/TradeChat";
 
 const App = () => {
   return (
@@ -19,7 +19,7 @@ const App = () => {
         <Route path="/create-offer" element={<CreateOffer />} />
         <Route path="/offer/:id" element={<AboutOffer />} />
         <Route path="/profile" element={<AboutOffer />} />
-        <Route path="/Chat/:id" element={<Chat />} />
+        <Route path="/trade" element={<TradeChat />} />
       </Routes>
     </>
   );

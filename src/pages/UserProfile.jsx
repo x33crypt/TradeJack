@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import MarketTopNav from "@/components/MarketTopNav";
+import MarketTopNav from "@/components/InAppNav";
 import React, { useState, useEffect, useRef } from "react";
 import image from "../assets/landingImg4.JPG";
 import { FaThumbsUp } from "react-icons/fa6";

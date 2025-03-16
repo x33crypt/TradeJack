@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import MarketTopNav from "@/components/MarketTopNav";
+import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
@@ -215,7 +215,7 @@ const CreateOffer = () => {
 
   return (
     <>
-      <MarketTopNav />
+      <InAppNav />
 
       <div className="lg:pt-[70px] pt-[80px] bg-black">
         <div className="lg:p-[1.5%] p-[3%] flex gap-[15px]">

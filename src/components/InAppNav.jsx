@@ -22,7 +22,7 @@ import { MdOutlineCancel } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 
-const MarketTopNav = () => {
+const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
   const [isProfileOption, setIsProfileOption] = useState(false);
 
@@ -144,11 +144,7 @@ const MarketTopNav = () => {
             className="cursor-pointer lg:w-[34px] sm:w-[30px] w-[34px]"
             onClick={() => setIsProfileOption((prev) => !prev)}
           >
-            <img
-              className=" rounded-full"
-              src={landingImg4}
-              alt=""
-            />
+            <img className=" rounded-full" src={landingImg4} alt="" />
           </div>
 
           <div
@@ -265,4 +261,4 @@ const MarketTopNav = () => {
   );
 };
 
-export default MarketTopNav;
+export default InAppNav;

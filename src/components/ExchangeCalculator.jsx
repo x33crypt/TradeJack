@@ -20,7 +20,7 @@ const ExchangeCalculator = (prop) => {
               <input
                 className="h-[20px] w-full outline-none border-none bg-transparent  text-[22px] text-white font-[600] placeholder:text-tradeFadeWhite placeholder:text-[22px] caret-tradeGreen"
                 type="text"
-                placeholder="Enter Amount"
+                placeholder="00.00"
                 value={
                   prop?.tradeValue
                     ? parseInt(prop?.tradeValue).toLocaleString()
@@ -59,9 +59,15 @@ const ExchangeCalculator = (prop) => {
         </div>
 
         <div className=" flex justify-center ">
-          <p className="text-tradeFadeWhite text-[13.5px]">
-            Enter an amount to trade and see your return.
-          </p>
+          {prop.exchangeError ? (
+            <p className="text-red-600 text-[13px] font-[500]">
+              {prop?.exchangeError}
+            </p>
+          ) : (
+            <p className="text-tradeFadeWhite text-[13px] font-[500] opacity-0">
+              Please enter an amount to trade.
+            </p>
+          )}
         </div>
 
         <div className=" flex flex-col gap-[10px]">
@@ -115,9 +121,18 @@ ${
         </div>
 
         <div className="flex  items-center justify-center ">
-          <p className="text-[15px] text-center  text-black bg-tradeGreen hover:bg-white font-[700]  border border-tradeGreen hover:border-tradeAshExtraLight p-[10px] rounded-[10px]  w-[100%] transition-all duration-300 cursor-pointer">
-            Initiate Trade
-          </p>
+          {prop?.handleShowGreenButton() ? (
+            <p
+              onClick={() => prop?.handleInitiateTrade()}
+              className="text-[15px] text-center  text-black bg-tradeGreen hover:bg-white font-[700]  border border-tradeGreen hover:border-tradeAshExtraLight p-[10px] rounded-[10px]  w-[100%] transition-all duration-300 cursor-pointer"
+            >
+              Initiate Trade
+            </p>
+          ) : (
+            <p className="text-[15px] text-center  text-white bg-tradeAshExtraLight font-[700]  border border-tradeAshExtraLight p-[10px] rounded-[10px]  w-[100%] transition-all duration-300 cursor-pointer">
+              Enter Amount
+            </p>
+          )}
         </div>
       </div>
     </div>

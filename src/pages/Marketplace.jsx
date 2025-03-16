@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MarketTopNav from "@/components/MarketTopNav";
+import InAppNav from "@/components/InAppNav";
 import MarketMain from "@/components/marketplace/MarketMain";
 import Footer from "@/components/Footer";
 import OfferFilter from "@/components/marketplace/OfferFilter";
@@ -212,8 +212,8 @@ const Marketplace = () => {
 
   return (
     <>
-      <MarketTopNav />
-      <div className=" lg:pt-[80px] md:pt-[85px] pt-[67px]  flex gap-[15px] bg-black lg:p-[2%] md:p-[2.5%] ">
+      <InAppNav />
+      <div className=" lg:pt-[80px] md:pt-[85px] pt-[67px]  flex gap-[15px] min-h-screen bg-black lg:p-[2%] md:p-[2.5%] ">
         <div className="lg:flex hidden w-[320px]">
           <OfferFilter
             serviceType={serviceType}

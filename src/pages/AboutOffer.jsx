@@ -1,30 +1,15 @@
-import MarketTopNav from "@/components/MarketTopNav";
+import MarketTopNav from "@/components/InAppNav";
 import React, { useState, useEffect } from "react";
-import { PiStarBold } from "react-icons/pi";
-import { FaRegQuestionCircle } from "react-icons/fa";
-import landingImg4 from "./../assets/landingImg4.JPG";
-import { IoMdThumbsUp } from "react-icons/io";
-import { AiOutlineSafety } from "react-icons/ai";
-import { IoMdCheckmark } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { RxCross2 } from "react-icons/rx";
-import OfferCalculator from "@/components/aboutOffer/OfferCalculator";
-import { GoDotFill } from "react-icons/go";
-import { TiTick } from "react-icons/ti";
 import { MdThumbUpAlt } from "react-icons/md";
 import { MdThumbDownAlt } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
-import { RiErrorWarningLine } from "react-icons/ri";
-import { MdOutlineInfo } from "react-icons/md";
-import { FaArrowUpLong } from "react-icons/fa6";
-import { HiArrowNarrowUp } from "react-icons/hi";
-import { IoMdArrowRoundUp } from "react-icons/io";
-import { MdOutlineShowChart } from "react-icons/md";
+import { MdOutlineVerifiedUser } from "react-icons/md";
+import { MdOutlineVerified } from "react-icons/md";
 import ExchangeCalculator from "@/components/ExchangeCalculator";
-import { GoNote } from "react-icons/go";
-import { CgNotes } from "react-icons/cg";
 
 const AboutOffer = () => {
   const [offerDetails, setOfferDetails] = useState("");
@@ -42,7 +27,6 @@ const AboutOffer = () => {
     usdValue: "",
     currencyValue: "",
   });
-
   const [tradeValue, setTradeValue] = useState("");
   const [exchangeError, setExchangeError] = useState("");
 
@@ -123,14 +107,34 @@ const AboutOffer = () => {
   };
 
   const getofferRateCapPerUnitAndUSD = () => {
-    if (tradeValue) {
-      if (
-        tradeValue < offerDetails?.miniPurchase ||
-        tradeValue > offerDetails?.maxPurchase
-      ) {
-        setExchangeError("Enter a valid amount within offer purchase limit");
-        return;
-      }
+    if (
+      tradeValue < offerDetails?.miniPurchase ||
+      tradeValue > offerDetails?.maxPurchase
+    ) {
+      setCalculatorResult((prev) => ({
+        ...prev,
+        btcValue: "00.00",
+        usdValue: "00.00",
+        currencyValue: "00.00",
+      }));
+    }
+
+    if (tradeValue < offerDetails?.miniPurchase) {
+      setExchangeError(
+        `The minimum purchase amount for this offer is ${offerDetails?.miniPurchase.toLocaleString()} ${
+          offerDetails?.currency
+        }.`
+      );
+      return;
+    }
+
+    if (tradeValue > offerDetails?.maxPurchase) {
+      setExchangeError(
+        `The maximum purchase amount for this offer is ${offerDetails?.maxPurchase.toLocaleString()} ${
+          offerDetails?.currency
+        }.`
+      );
+      return;
     }
 
     setExchangeError("");
@@ -180,10 +184,29 @@ const AboutOffer = () => {
 
   const handleTradeValueChange = (e) => {
     const rawValue = e.target.value.replace(/,/g, ""); // Remove commas
+
     if (!isNaN(rawValue) || rawValue === "") {
       // Ensure it's a number or empty string
       setTradeValue(rawValue); // Update the state with raw number
     }
+  };
+
+  const handleShowGreenButton = () => {
+    if (
+      tradeValue === "00.00" ||
+      tradeValue < offerDetails?.miniPurchase ||
+      tradeValue > offerDetails?.maxPurchase
+    ) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const navigateTo = useNavigate();
+
+  const handleInitiateTrade = () => {
+    navigateTo(`/trade`);
   };
 
   useEffect(() => {
@@ -239,10 +262,10 @@ const AboutOffer = () => {
                   </p>
                 </div>
               </div>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] items-center lg:gap-[15px] gap-[10px]">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Price Cap
+                    Rate Cap
                   </p>
                   <p className="text-white text-[15.5px] font-[600]">
                     {`${parseInt(offerDetails?.rate).toLocaleString()}  ${
@@ -252,13 +275,19 @@ const AboutOffer = () => {
                 </div>
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Price Cap USD
+                    Rate Status
                   </p>
-                  <p className="text-[15.5px] font-[600] text-white">
-                    {`${parseInt(offerDetails?.rate).toLocaleString()}  ${
-                      offerDetails?.currency
-                    }`}
-                  </p>
+                  <div>
+                    {offeRateMargin?.percentage ? (
+                      <p className="text-[15.5px] font-[600] text-white">
+                        {`${offeRateMargin?.percentage}% ${offeRateMargin?.status} market price`}
+                      </p>
+                    ) : (
+                      <p className="text-[15.5px] font-[600] text-tradeAshExtraLight">
+                        Calculating marging ...
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
@@ -310,8 +339,8 @@ const AboutOffer = () => {
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-[10px] p-[15px]">
-                <div className=" flex-1 shrink-0 flex items-center gap-[15.5px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
+              <div className="flex flex-wrap gap-[15px] p-[15px]">
+                <div className=" flex-1 shrink-0 flex items-center gap-[15px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
                   <div className="w-[40px]">
                     <img
                       className=" rounded-full"
@@ -320,18 +349,28 @@ const AboutOffer = () => {
                     />
                   </div>
 
-                  <div className="flex  flex-col gap-[5px] ">
-                    <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                      Username
-                    </p>
+                  <div className="flex  gap-[10px] ">
+                    <div className="flex  flex-col gap-[5px] ">
+                      <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                        Username
+                      </p>
 
-                    <p className="text-white text-[15.5px] font-[600] cursor-pointer">
-                      {offerDetails.username}
-                    </p>
+                      <p className="text-white text-[15.5px] font-[600] cursor-pointer">
+                        {offerDetails.username}
+                      </p>
+                    </div>
+                    <div className="flex items-end gap-[15px]">
+                      <div className=" flex items-center gap-[5px] h-max">
+                        <MdOutlineVerified className="text-neutral-400" />
+                        <p className="text-[14px] text-tradeFadeWhite font-[500]">
+                          Verified
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex md:max-w-max flex-wrap md:gap-[15px] gap-[10px] items-center">
+                <div className="flex md:max-w-max flex-wrap gap-[15px] items-center">
                   <div className="flex  md:justify-between  items-center md:gap-[40px] gap-[30px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
                     <div className="flex flex-col gap-[5px] ">
                       <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
@@ -383,11 +422,13 @@ const AboutOffer = () => {
             calculatorResult={calculatorResult}
             exchangeError={exchangeError}
             tradeValue={tradeValue}
+            handleInitiateTrade={handleInitiateTrade}
+            handleShowGreenButton={handleShowGreenButton}
           />
         </div>
 
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-[0.8%]">
-          <div className="lg:w-[500px] flex flex-col border-y border-neutral-800 md:rounded-[12.5px]">
+          <div className="lg:w-[500px] flex flex-col md:border border-y border-neutral-800 md:rounded-[12.5px]">
             <div className="flex items-center justify-between  p-[15px] md:border-b md:border-t-0 border-b border-neutral-800 ">
               <p className="text-[18px] text-white font-[700] cursor-pointer">
                 Offer Statistics
@@ -395,7 +436,7 @@ const AboutOffer = () => {
             </div>
             <div className="flex items-center justify-between p-[20px] "></div>
           </div>
-          <div className="flex-1 flex flex-col border-y border-neutral-800 md:rounded-[12.5px]">
+          <div className="flex-1 flex flex-col md:border border-y border-neutral-800 md:rounded-[12.5px]">
             <div className="flex items-center justify-between  p-[15px] md:border-b md:border-t-0 border-b border-neutral-800 ">
               <p className="text-[18px] text-white font-[700] cursor-pointer">
                 Feedback on this Offer
