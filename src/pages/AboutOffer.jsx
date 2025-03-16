@@ -304,13 +304,13 @@ const AboutOffer = () => {
             </div>
 
             <div className="flex  flex-col justify-between ">
-              <div className="flex md:p-[15px] px-[20px] py-[15px] border-b border-neutral-800 ">
+              <div className="flex p-[15px]  border-b border-neutral-800 ">
                 <p className="text-[18px] text-white font-[600] cursor-pointer">
                   About Vendor
                 </p>
               </div>
 
-              <div className="flex flex-wrap  md:gap-[15px] gap-[10px] p-[15px]">
+              <div className="flex flex-wrap gap-[10px] p-[15px]">
                 <div className=" flex-1 shrink-0 flex items-center gap-[15.5px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
                   <div className="w-[40px]">
                     <img
@@ -331,8 +331,8 @@ const AboutOffer = () => {
                   </div>
                 </div>
 
-                <div className="flex w-full md:max-w-max flex-wrap md:gap-[15px] gap-[10px] items-center">
-                  <div className="flex flex-1 md:justify-between  items-center md:gap-[40px] gap-[30px]  py-[5px] px-[10px] border border-tradeAshLight rounded-[5px]">
+                <div className="flex md:max-w-max flex-wrap md:gap-[15px] gap-[10px] items-center">
+                  <div className="flex  md:justify-between  items-center md:gap-[40px] gap-[30px]  py-[5px] px-[10px] border border-tradeAshLight rounded-[5px]">
                     <div className="flex flex-col gap-[5px] ">
                       <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                         Positive Feedback
