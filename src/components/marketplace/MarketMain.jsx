@@ -44,7 +44,7 @@ const MarketMain = ({
   setClearFilter,
 }) => {
   return (
-    <div className="flex flex-col md:border border-neutral-800 md:rounded-[10px]">
+    <div className="flex flex-col min-h-screen md:border border-neutral-800 md:rounded-[10px]">
       <div className="flex flex-col justify-between p-[15px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700]">
           Seamless Asset Trading
