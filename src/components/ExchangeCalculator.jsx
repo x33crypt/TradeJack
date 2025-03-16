@@ -58,7 +58,7 @@ const ExchangeCalculator = (prop) => {
         </div>
         <div className=" flex flex-col gap-[10px]">
           <div className="flex justify-between">
-            <p className="text-[14px] font-[500] text-tradeGreen">
+            <p className="text-[14px] font-[600] text-tradeGreen">
               Rate breakdown
             </p>
             <p className="text-[14px] font-[600] text-white">
@@ -77,8 +77,8 @@ ${
           </div>
 
           <div className="flex justify-between  ">
-            <p className="text-[14px] font-[500] text-tradeFadeWhite">
-              Your receive value in ({prop?.offerDetails.currency})
+            <p className="text-[14px] font-[600] text-tradeFadeWhite">
+              BTC worth in {prop?.offerDetails.currency}
             </p>
 
             <p className="text-[14px] font-[600] text-white">
@@ -92,8 +92,8 @@ ${
           </div>
 
           <div className="flex justify-between  ">
-            <p className="text-[14px] font-[500] text-tradeFadeWhite">
-              Your receive value in (USD)
+            <p className="text-[14px] font-[600] text-tradeFadeWhite">
+              BTC worth in USD
             </p>
             <p className="text-[14px] font-[600] text-white">
               {isNaN(prop?.calculatorResult?.usdValue) ||
@@ -107,7 +107,7 @@ ${
         </div>
 
         <div className="flex  items-center justify-center  border-t border-tradeAshLight ">
-          <p className="text-[15px] text-center  text-black bg-tradeGreen hover:bg-white font-[700]  border border-tradeGreen p-[10px] rounded-[5px] md:rounded-[6px]  w-[100%] transition-all duration-300 cursor-pointer">
+          <p className="text-[15px] text-center  text-black bg-tradeGreen hover:bg-white font-[700]  border border-tradeGreen hover:border-tradeAshExtraLight p-[10px] rounded-[10px]  w-[100%] transition-all duration-300 cursor-pointer">
             Initiate Trade
           </p>
         </div>

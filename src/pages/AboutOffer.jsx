@@ -222,7 +222,7 @@ const AboutOffer = () => {
 
             <div className="flex bg- flex-col md:gap-[15px] gap-[10px] p-[15px]">
               <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
-                <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
+                <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[8px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Service
                   </p>
@@ -230,7 +230,7 @@ const AboutOffer = () => {
                     {offerDetails.service}
                   </p>
                 </div>
-                <div className="flex flex-col gap-[2px]   py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
+                <div className="flex flex-col gap-[2px]   py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[8px]">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Service Type
                   </p>
@@ -240,7 +240,7 @@ const AboutOffer = () => {
                 </div>
               </div>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] items-center lg:gap-[15px] gap-[10px]">
-                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
+                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[8px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Price Cap
                   </p>
@@ -250,7 +250,7 @@ const AboutOffer = () => {
                     }`}
                   </p>
                 </div>
-                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
+                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[8px]">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Price Cap USD
                   </p>
@@ -262,7 +262,7 @@ const AboutOffer = () => {
                 </div>
               </div>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
-                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
+                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[8px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Min Purchase Limit
                   </p>
@@ -272,7 +272,7 @@ const AboutOffer = () => {
                     ).toLocaleString()}  ${offerDetails?.currency}`}
                   </p>
                 </div>
-                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
+                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[8px]">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Max Purchase Limit
                   </p>
@@ -284,7 +284,7 @@ const AboutOffer = () => {
                 </div>
               </div>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
-                <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px] ">
+                <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[8px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Max Trade Time
                   </p>
@@ -292,7 +292,7 @@ const AboutOffer = () => {
                     {offerDetails?.maxTradeTime} Minutes
                   </p>
                 </div>
-                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
+                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[8px]">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Average Trade Time
                   </p>
@@ -311,7 +311,7 @@ const AboutOffer = () => {
               </div>
 
               <div className="flex flex-wrap gap-[10px] p-[15px]">
-                <div className=" flex-1 shrink-0 flex items-center gap-[15.5px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
+                <div className=" flex-1 shrink-0 flex items-center gap-[15.5px]  py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[8px]">
                   <div className="w-[40px]">
                     <img
                       className=" rounded-full"
@@ -332,7 +332,7 @@ const AboutOffer = () => {
                 </div>
 
                 <div className="flex md:max-w-max flex-wrap md:gap-[15px] gap-[10px] items-center">
-                  <div className="flex  md:justify-between  items-center md:gap-[40px] gap-[30px]  py-[5px] px-[10px] border border-tradeAshLight rounded-[5px]">
+                  <div className="flex  md:justify-between  items-center md:gap-[40px] gap-[30px]  py-[5px] px-[10px] border border-tradeAshLight rounded-[8px]">
                     <div className="flex flex-col gap-[5px] ">
                       <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                         Positive Feedback
@@ -361,7 +361,7 @@ const AboutOffer = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-[5px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[5px]">
+                  <div className="flex flex-col gap-[5px] py-[5px] px-[10px] bg- border border-tradeAshLight rounded-[8px]">
                     <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                       Trust Score
                     </p>

@@ -141,11 +141,11 @@ const MarketTopNav = () => {
             <FaRegBell className="text-white hover:text-tradeGreen sm:text-[23px] text-[22px] transition-all duration-300" />
           </div>
           <div
-            className="cursor-pointer"
+            className="cursor-pointer lg:w-[34px] sm:w-[30px] w-[34px]"
             onClick={() => setIsProfileOption((prev) => !prev)}
           >
             <img
-              className="lg:w-[34px] sm:w-[30px] w-[34px] rounded-full"
+              className=" rounded-full"
               src={landingImg4}
               alt=""
             />
