@@ -708,7 +708,7 @@ const OfferFilter = ({
                 <div
                   className={` ${
                     showWalletType ? "flex" : "hidden"
-                  } flex-col gap-[20px] p-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] `}
+                  } flex-col gap-[20px] p-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]`}
                 >
                   <div className="flex h-[43px] rounded-[8px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
                     <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
@@ -1365,12 +1365,12 @@ const OfferFilter = ({
         </div>
       </div>
 
-      <div className="flex bg-tradeAsh  p-[15px]">
+      <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px]">
         <div
-          className="flex items-center justify-between w-full lg:h-[43px] h-[45px] bg-tradeGreen p-[10px] rounded-[8px] cursor-pointer"
           onClick={handleFilterOffer}
+          className="flex items-center justify-between bg-tradeGreen hover:bg-white p-[10px] rounded-[8px]"
         >
-          <p className="font-[600] lg:text-[15px] text-[15.5px]">
+          <p className="font-[700] text-[15px] ">
             {isFilterLoading ? "Filtering..." : "Apply Filter"}
           </p>
           <TbReload

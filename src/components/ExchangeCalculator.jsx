@@ -33,6 +33,7 @@ const ExchangeCalculator = (prop) => {
               </p>
             </div>
           </div>
+
           <div className="flex border border-tradeAshLight flex-col gap-[15px] bg-tradeAsh p-[15.5px] rounded-[16px]">
             <div className="flex">
               <p className="text-tradeFadeWhite text-[14px]">Receive</p>
@@ -56,6 +57,13 @@ const ExchangeCalculator = (prop) => {
             </div>
           </div>
         </div>
+
+        <div className=" flex justify-center ">
+          <p className="text-tradeFadeWhite text-[13.5px]">
+            Enter an amount to trade and see your return.
+          </p>
+        </div>
+
         <div className=" flex flex-col gap-[10px]">
           <div className="flex justify-between">
             <p className="text-[14px] font-[600] text-tradeGreen">
@@ -106,7 +114,7 @@ ${
           </div>
         </div>
 
-        <div className="flex  items-center justify-center  border-t border-tradeAshLight ">
+        <div className="flex  items-center justify-center ">
           <p className="text-[15px] text-center  text-black bg-tradeGreen hover:bg-white font-[700]  border border-tradeGreen hover:border-tradeAshExtraLight p-[10px] rounded-[10px]  w-[100%] transition-all duration-300 cursor-pointer">
             Initiate Trade
           </p>
