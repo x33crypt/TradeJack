@@ -447,13 +447,13 @@ const OfferFilter = ({
             onClick={() => {
               setClearFilter(true);
             }}
-            className="px-[8px] py-[4px] text-[13px] text-red-700 hover:text-black font-[500] rounded-[6px] bg-black hover:bg-white border border-tradeAshLight hover:border-white cursor-pointer duration-300 transition-all"
+            className="px-[8px] py-[2px] text-[13px] text-red-700 hover:text-black font-[500] rounded-[6px] bg-black hover:bg-white border border-tradeAshLight hover:border-white cursor-pointer duration-300 transition-all"
           >
             Reset Filter
           </p>
           <div
             onClick={() => setIsOfferFilter((prev) => !prev)}
-            className="md:hidden flex border border-tradeAshLight  p-[4px] rounded-[6px]"
+            className="md:hidden flex border border-tradeAshLight  p-[2px] rounded-[6px]"
           >
             <IoCloseSharp className="text-white text-[20px]" />
           </div>
@@ -1377,7 +1377,7 @@ const OfferFilter = ({
       <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px]">
         <div
           onClick={handleFilterOffer}
-          className="flex items-center justify-between bg-tradeGreen hover:bg-white md:p-[10px] px-[10px] py-[15px] rounded-[10px]"
+          className="flex items-center justify-between bg-tradeGreen hover:bg-white md:p-[10px] px-[10px] py-[14px] rounded-[10px]"
         >
           <p className="font-[700] text-[15px] ">
             {isFilterLoading ? "Filtering..." : "Apply Filter"}
