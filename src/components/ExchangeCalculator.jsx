@@ -3,8 +3,8 @@ import { AiOutlineCalculator } from "react-icons/ai";
 
 const ExchangeCalculator = (prop) => {
   return (
-    <div className="lg:w-[400px] flex flex-col justify-between  md:border border-b border-tradeAshLight md:rounded-[12px]">
-      <div className="flex items-center gap-[10px] p-[15px] border-b border-tradeAshLight">
+    <div className="lg:w-[400px] flex flex-col justify-between  md:border  border-tradeAshLight md:rounded-[12px]">
+      <div className="flex items-center gap-[10px] p-[15px] md:border-b md:border-t-0 border-y border-tradeAshLight">
         <p className="text-[18px] text-white font-[700] cursor-pointer">
           Exchange Calculator
         </p>
