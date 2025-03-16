@@ -438,16 +438,16 @@ const OfferFilter = ({
 
   return (
     <div className="bg-black lg:sticky overflow-hidden  w-full lg:h-[495px] h-full lg:top-[80px] flex flex-col lg:rounded-[10px] md:rounded-[18px] md:border border-neutral-800 ">
-      <div className="flex bg-tradeAsh justify-between items-center p-[15px] border-b border-neutral-800 ">
+      <div className="flex bg- justify-between items-center p-[15px] border-b border-neutral-800 ">
         <p className="text-[18px] text-white font-[700] cursor-pointer">
-          Filter Offer
+          Filter Offer's
         </p>
         <div className="md:hidden flex gap-[15px] items-center">
           <p
             onClick={() => {
               setClearFilter(true);
             }}
-            className="px-[8px] py-[2px] text-[13px] text-red-700 hover:text-black font-[500] rounded-[6px] bg-black hover:bg-white border border-tradeAshLight hover:border-white cursor-pointer duration-300 transition-all"
+            className="px-[8px] py-[2px] text-[13px] text-red-700 hover:text-black font-[500] rounded-[6px] bg-tradeAsh hover:bg-white border border-tradeAshLight hover:border-white cursor-pointer duration-300 transition-all"
           >
             Reset Filter
           </p>
