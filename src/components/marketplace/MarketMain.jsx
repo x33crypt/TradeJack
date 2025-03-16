@@ -52,7 +52,7 @@ const MarketMain = ({
       </div>
 
       <div className="flex flex-col  gap-[10px] px-[15px] pb-[15px]">
-        <div className="z-10 gap-[10px] sticky top-[68px]  py-[15px] bg-black  flex flex-col ">
+        <div className="z-10 gap-[10px] sticky md:top-[68px] top-[65px]  py-[15px] bg-black  flex flex-col ">
           <div className="flex justify-between w-full ">
             <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
               <p
@@ -116,7 +116,7 @@ const MarketMain = ({
         <div
           className={` ${
             isOfferFilter ? "flex" : "hidden"
-          } z-50 fixed top-0 left-0 right-0 bottom-0 mt-[32%] lg:hidden`}
+          } z-50 fixed top-0 left-0 right-0 bottom-0 mt-[20%] lg:hidden`}
         >
           <OfferFilter
             serviceType={serviceType}
