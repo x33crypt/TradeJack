@@ -105,9 +105,7 @@ const MarketMain = ({
                 } md:hidden flex  justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border cursor-pointer duration-300 transition-all`}
               >
                 <LuSettings2 className="text-[17px]" />
-                <p className="text-[14px] font-[500]">
-                  {isOfferFilter ? "Close Filter" : "Filter"}
-                </p>
+                <p className="text-[14px] font-[500]">Filter</p>
               </div>
             </div>
           </div>
@@ -116,7 +114,7 @@ const MarketMain = ({
         <div
           className={` ${
             isOfferFilter ? "flex" : "hidden"
-          } z-50 fixed top-0 left-0 right-0 bottom-0 mt-[20%] lg:hidden`}
+          } z-50 fixed top-0 left-0 right-0 bottom-0 mt-[18%] lg:hidden`}
         >
           <OfferFilter
             serviceType={serviceType}
@@ -145,6 +143,7 @@ const MarketMain = ({
             setIsOnlineOffer={setIsOnlineOffer}
             handleResetFilter={handleResetFilter}
             setClearFilter={setClearFilter}
+            setIsOfferFilter={setIsOfferFilter}
           />
         </div>
 
