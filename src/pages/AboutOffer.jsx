@@ -10,6 +10,8 @@ import { FaRegStar } from "react-icons/fa";
 import { MdOutlineVerifiedUser } from "react-icons/md";
 import { MdOutlineVerified } from "react-icons/md";
 import ExchangeCalculator from "@/components/ExchangeCalculator";
+import { SlGraph } from "react-icons/sl";
+import { GoDotFill } from "react-icons/go";
 
 const AboutOffer = () => {
   const [offerDetails, setOfferDetails] = useState("");
@@ -275,7 +277,7 @@ const AboutOffer = () => {
                 </div>
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Rate Status
+                    Rate Margine
                   </p>
                   <div>
                     {offeRateMargin?.percentage ? (
@@ -315,7 +317,7 @@ const AboutOffer = () => {
               <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Max Trade Time
+                    Maximum Trade Time
                   </p>
                   <p className="text-white text-[15.5px] font-[600]">
                     {offerDetails?.maxTradeTime} Minutes
@@ -354,36 +356,49 @@ const AboutOffer = () => {
                       Username
                     </p>
 
-                    <p className="text-white text-[15.5px] font-[600] cursor-pointer">
-                      {offerDetails.username}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
-                    Trade Badges
-                  </p>
-                  <div className="flex gap-[10px]">
-                    <div className="flex items-center gap-[5px]">
-                      <MdOutlineVerified className="text-[15.5px] text-black" />
-                      <p className="text-neutral-500 text-[15.5px] font-[600]">
-                        Verified
+                    <div className=" flex items-center gap-[5px] ">
+                      <GoDotFill className="text-tradeOrange" />
+                      <p className="text-white text-[15.5px] font-[600] cursor-pointer">
+                        {offerDetails.username}
                       </p>
                     </div>
-                    {/* <div className="flex items-center gap-[10px]">
-                      <MdThumbUpAlt className="text-[15.5px] text-tradeGreen" />
-                      <p className="text-white text-[15.5px] font-[600]">
-                        Top Trader
-                      </p>
-                    </div> */}
                   </div>
                 </div>
+
+                <div className="flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
+                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    Trade Volume
+                  </p>
+
+                  <div className="flex items-center gap-[5px]">
+                    <SlGraph className="text-[15.5px] text-tradeGreen" />
+                    <div className="flex items-center gap-[5px]">
+                      <p className="text-white text-[15.5px] font-[600]">300</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* <div className=" flex-1  flex-col shrink-0 flex  gap-[10px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
+                  <div className="flex  flex-col gap-[5px] ">
+                    <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                      Trade Badges
+                    </p>
+
+                    <div className="flex gap-[10px]">
+                      <div>
+                        <p className="text-white text-[15.5px] font-[600] cursor-pointer">
+                          {offerDetails.username}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div> */}
 
                 <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
                   <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
                     Positive Feedback
                   </p>
-                  <div className="flex items-center gap-[10px]">
+                  <div className="flex items-center gap-[5px]">
                     <MdThumbUpAlt className="text-[15.5px] text-tradeGreen" />
                     <p className="text-white text-[15.5px] font-[600]">
                       {`${parseInt(
