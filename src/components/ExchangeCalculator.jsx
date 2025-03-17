@@ -129,7 +129,7 @@ ${
               Initiate Trade
             </p>
           ) : (
-            <p className="text-[15px] text-center  text-white bg-tradeAshExtraLight font-[700]  border border-tradeAshExtraLight p-[10px] rounded-[10px]  w-[100%] transition-all duration-300 cursor-pointer">
+            <p className="text-[15px] text-center  text-white bg-tradeAshExtraLight font-[700]  border border-tradeAshExtraLight p-[10px] rounded-[10px]  w-[100%] transition-all duration-300">
               Enter Amount
             </p>
           )}
