@@ -11,7 +11,7 @@ const TradeChat = () => {
   return (
     <>
       <InAppNav />
-      <div className="h-screen flex gap-[15px] bg-black lg:p-[2%] md:p-[2.5%] pt-[67px] md:pt-[85px] lg:pt-[80px]">
+      <div className="z-30 h-[100vh] flex gap-[15px] bg-black lg:p-[2%] md:p-[2.5%] pt-[67px] md:pt-[85px] lg:pt-[80px]">
         <DashSideNav />
 
         {/* Chat Container */}
@@ -36,7 +36,7 @@ const TradeChat = () => {
 
           {/* Messages Section - Only this part scrolls */}
           <div className="flex-1 p-[15px] overflow-y-auto bg- min-h-0">
-            <div className="h-[20px]">hello (testing long content)</div>
+            <div className="h-[2000px]">hello (testing long content)</div>
           </div>
 
           {/* Input Field - Fixed at the bottom */}

@@ -12,13 +12,11 @@ import { FaRegEnvelope } from "react-icons/fa6";
 import { LiaUserFriendsSolid } from "react-icons/lia";
 import { MdOutlineQueryStats } from "react-icons/md";
 import { TbLayoutList } from "react-icons/tb";
-import { BsLightningCharge } from "react-icons/bs";
 import { TbHelpCircle } from "react-icons/tb";
 import { RiExchangeLine } from "react-icons/ri";
 import { TbBuildingBank } from "react-icons/tb";
 import { FaVenusDouble } from "react-icons/fa";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
-import { MdOutlineCancel } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 
