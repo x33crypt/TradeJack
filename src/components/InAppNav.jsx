@@ -129,7 +129,7 @@ const InAppNav = () => {
           <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[2px] gap-[10px] rounded-[8px]">
             <FaMagnifyingGlass className="text-neutral-500 lg:text-[15px] text-[15px]" />
             <input
-              className=" bg-transparent outline-none h-[28px] w-[220px] lg:placeholder:text-[13px] placeholder:text-[13px] placeholder:text-neutral-500 lg:text-[13px] text-[13px] text-white"
+              className=" bg-transparent outline-none h-[28px] w-[220px] lg:placeholder:text-[13px] placeholder:text-[13px] placeholder:text-tradeFadeWhite lg:text-[13px] text-[13px] text-white"
               type="text"
               placeholder={searchplaceholder}
             />
@@ -177,6 +177,7 @@ const InAppNav = () => {
           </div>
         </div>
       </div>
+
       <div
         className={`${
           isNavOption ? "flex" : "hidden"

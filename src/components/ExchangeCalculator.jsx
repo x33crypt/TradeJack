@@ -72,8 +72,8 @@ const ExchangeCalculator = (prop) => {
 
         <div className=" flex flex-col gap-[10px]">
           <div className="flex justify-between">
-            <p className="text-[14px] font-[600] text-tradeGreen">
-              Rate breakdown
+            <p className="text-[14px] font-[600] text-tradeFadeWhite">
+              Rate Details
             </p>
             <p className="text-[14px] font-[600] text-white">
               {`

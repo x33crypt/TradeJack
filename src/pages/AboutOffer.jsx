@@ -7,8 +7,6 @@ import axios from "axios";
 import { MdThumbUpAlt } from "react-icons/md";
 import { MdThumbDownAlt } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
-import { MdOutlineVerifiedUser } from "react-icons/md";
-import { MdOutlineVerified } from "react-icons/md";
 import ExchangeCalculator from "@/components/ExchangeCalculator";
 import { SlGraph } from "react-icons/sl";
 import { GoDotFill } from "react-icons/go";
@@ -281,7 +279,7 @@ const AboutOffer = () => {
                   </p>
                   <div>
                     {offeRateMargin?.percentage ? (
-                      <p className="text-[15.5px] font-[600] text-white">
+                      <p className="text-[15.5px] font-[600] text-tradeGreen">
                         {`${offeRateMargin?.percentage}% ${offeRateMargin?.status} market price`}
                       </p>
                     ) : (
@@ -357,8 +355,10 @@ const AboutOffer = () => {
                     </p>
 
                     <div className=" flex items-center gap-[5px] ">
-                      <GoDotFill className="text-tradeOrange" />
-                      <p className="text-white text-[15.5px] font-[600] cursor-pointer">
+                      <div className="flex gap-[2px] items-center">
+                        <GoDotFill className=" text-[14px] text-tradeGreen" />
+                      </div>
+                      <p className="text-white text-[15.5px] font-[600] hover:underline cursor-pointer">
                         {offerDetails.username}
                       </p>
                     </div>
@@ -370,7 +370,7 @@ const AboutOffer = () => {
                     Trade Volume
                   </p>
 
-                  <div className="flex items-center gap-[5px]">
+                  <div className="flex items-center gap-[8px]">
                     <SlGraph className="text-[15.5px] text-tradeGreen" />
                     <div className="flex items-center gap-[5px]">
                       <p className="text-white text-[15.5px] font-[600]">300</p>
