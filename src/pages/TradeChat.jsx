@@ -11,12 +11,12 @@ const TradeChat = () => {
   return (
     <>
       <InAppNav />
-      <div className="h-[100vh] flex gap-[15px] bg-black lg:p-[2%] md:p-[2.5%] pt-[67px] md:pt-[85px] lg:pt-[80px]">
+      <div className="h-screen flex gap-[15px] bg-black lg:p-[2%] md:p-[2.5%] pt-[67px] md:pt-[85px] lg:pt-[80px]">
         <DashSideNav />
 
         {/* Chat Container */}
         <div className="flex-1 flex flex-col md:border border-tradeAshLight md:rounded-[10px] min-h-0">
-          {/* Header */}
+          {/* Header - Fixed */}
           <div className="flex justify-between items-center gap-[10px] p-[15px] border-b border-tradeAshLight">
             <div className="flex items-center gap-[10px]">
               <div className="relative w-[35px]">
@@ -25,19 +25,21 @@ const TradeChat = () => {
                   <GoDotFill className="text-[14px] text-tradeOrange" />
                 </div>
               </div>
-              <p className="text-[17px] text-white font-[700] cursor-pointer">
+              <p className="text-[16px] text-white font-[700] cursor-pointer">
                 0xSanityy
               </p>
             </div>
-            <div className="flex border border-tradeAshLight p-[5px] rounded-[6px]">
+            <div className="flex p-[5px] rounded-[6px]">
               <SlOptionsVertical className="text-white text-[16px]" />
             </div>
           </div>
 
-          {/* Messages Section (Middle Content) */}
-          <div className="flex-1 px-[15px] overflow-y-auto min-h-0">hello</div>
+          {/* Messages Section - Only this part scrolls */}
+          <div className="flex-1 p-[15px] overflow-y-auto bg- min-h-0">
+            <div className="h-[20px]">hello (testing long content)</div>
+          </div>
 
-          {/* Input Field */}
+          {/* Input Field - Fixed at the bottom */}
           <div className="flex items-center gap-[10px] p-[15px] border-t border-tradeAshLight">
             <div className="p-[6px] rounded-full bg-white text-[20px] text-black cursor-pointer">
               <IoAttach />
