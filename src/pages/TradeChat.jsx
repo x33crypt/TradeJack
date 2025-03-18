@@ -33,7 +33,7 @@ const TradeChat = () => {
               <SlOptionsVertical className="text-white text-[16px]" />
             </div>
           </div>
-          <div className="flex-1 px-[15px] overflow-y-auto bg-tradeGreen">hello</div>
+          <div className="flex-1 px-[15px] overflow-y-auto min-h-0">hello</div>
           <div className="flex items-center gap-[10px] p-[15px] border-t border-tradeAshLight">
             <div className="p-[6px] rounded-full bg-white text-[20px] text-black cursor-pointer">
               <IoAttach />
