@@ -341,12 +341,15 @@ const AboutOffer = () => {
 
               <div className="flex flex-wrap gap-[10px] p-[15px]">
                 <div className=" flex-1 shrink-0 flex items-center gap-[10px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
-                  <div className="w-[40px]">
+                  <div className="relative w-[40px]">
                     <img
                       className=" rounded-full"
                       src={offerDetails.profileImage}
                       alt=""
                     />
+                    <div className="absolute top-[25px] right-[-2px] bg-tradeAsh rounded-full flex items-center gap-[2px]">
+                      <GoDotFill className=" text-[16px] text-tradeGreen" />
+                    </div>
                   </div>
 
                   <div className="flex  flex-col gap-[5px] ">
@@ -355,9 +358,6 @@ const AboutOffer = () => {
                     </p>
 
                     <div className=" flex items-center gap-[5px] ">
-                      <div className="flex gap-[2px] items-center">
-                        <GoDotFill className=" text-[14px] text-tradeGreen" />
-                      </div>
                       <p className="text-white text-[15.5px] font-[600] hover:underline cursor-pointer">
                         {offerDetails.username}
                       </p>
