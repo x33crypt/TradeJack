@@ -11,10 +11,10 @@ const TradeChat = () => {
   return (
     <>
       <InAppNav />
-      <div className=" lg:pt-[80px] md:pt-[85px] pt-[67px] flex gap-[15px] min-h-screen bg-black lg:p-[2%] md:p-[2.5%] ">
+      <div className="h-[100vh] lg:pt-[80px] md:pt-[85px] pt-[67px] flex gap-[15px] bg-black lg:p-[2%] md:p-[2.5%] ">
         <DashSideNav />
         <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight md:rounded-[10px]">
-          <div className=" flex justify-between items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
+          <div className="flex justify-between items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
             <div className="flex items-center gap-[10px]">
               <div className="relative w-[35px]">
                 <img className="rounded-full" src={landingImg4} alt="" />
@@ -33,7 +33,7 @@ const TradeChat = () => {
               <SlOptionsVertical className="text-white text-[16px]" />
             </div>
           </div>
-          {/* <div className="bg- px-[15px] h-full overflow-y-auto">hello</div> */}
+          <div className="flex-1 px-[15px] overflow-y-auto bg-tradeGreen">hello</div>
           <div className="flex items-center gap-[10px] p-[15px] border-t border-tradeAshLight">
             <div className="p-[6px] rounded-full bg-white text-[20px] text-black cursor-pointer">
               <IoAttach />
