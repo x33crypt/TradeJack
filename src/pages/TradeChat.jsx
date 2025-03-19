@@ -10,7 +10,7 @@ import { IoAttach } from "react-icons/io5";
 const TradeChat = () => {
   return (
     <>
-      <div className="bg-black flex h-[100vh]   ">
+      <div className="bg-black flex h-screen  ">
         <InAppNav />
 
         <div className="flex w-full gap-[15px] lg:p-[2%] md:p-[2.5%] pt-[67px] md:mt-[85px] lg:mt-[55px]">
@@ -36,7 +36,7 @@ const TradeChat = () => {
 
             {/* Messages Section - Only this part scrolls */}
             <div className="flex-1 p-[15px] overflow-y-auto min-h-0">
-              <div className="text-white">hello (testing long content)</div>
+              <div className="text-white">hello (testing long conten)</div>
             </div>
 
             {/* Input Field - Fixed at the bottom */}
