@@ -13,7 +13,7 @@ const TradeChat = () => {
       <div className="bg-black flex h-screen  ">
         <InAppNav />
 
-        <div className="flex w-full gap-[15px] lg:p-[2%] md:p-[2.5%] pt-[67px] md:mt-[85px] lg:mt-[55px]">
+        <div className="flex w-full gap-[15px] lg:p-[2%] md:p-[2.5%] mt-[67px] md:mt-[85px] lg:mt-[55px]">
           <DashSideNav />
           <div className="flex-1 flex flex-col md:border border-tradeAshLight md:rounded-[10px] min-h-0">
             {/* Header - Fixed */}
@@ -35,7 +35,7 @@ const TradeChat = () => {
             </div>
 
             {/* Messages Section - Only this part scrolls */}
-            <div className="flex-1 p-[15px] overflow-y-auto min-h-0">
+            <div className="flex-1 p-[15px] overflow-y-auto">
               <div className="text-white">hello (testing long conten)</div>
             </div>
 
