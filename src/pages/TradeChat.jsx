@@ -11,8 +11,8 @@ const TradeChat = () => {
   return (
     <>
       <InAppNav />
-      {/* <div className="bg-black flex h-screen  ">
-        <div className="flex w-full gap-[15px] lg:p-[2%] md:p-[2.5%] mt-[67px] md:mt-[85px] lg:mt-[55px]">
+      <div className="bg-black flex h-[100vh]  ">
+        {/* <div className="flex w-full gap-[15px] lg:p-[2%] md:p-[2.5%] mt-[67px] md:mt-[85px] lg:mt-[55px]">
           <DashSideNav />
           <div className="flex-1 flex flex-col md:border border-tradeAshLight md:rounded-[10px] min-h-0">
             <div className="flex justify-between items-center gap-[10px] p-[15px] border-b border-tradeAshLight">
@@ -52,8 +52,8 @@ const TradeChat = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div> */}
+        </div> */}
+      </div>
     </>
   );
 };
