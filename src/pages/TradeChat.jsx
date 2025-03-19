@@ -10,9 +10,9 @@ import { IoAttach } from "react-icons/io5";
 const TradeChat = () => {
   return (
     <>
-      <div className="bg-black flex h-svh">
-        <InAppNav />
-        <div className="flex w-full gap-[15px] lg:p-[2%] md:p-[2.5%] mt-[67px] md:mt-[85px] lg:mt-[55px]">
+      <InAppNav />
+      <div className="bg-black flex h-svh lg:p-[2%] md:p-[2.5%] pt-[67px] md:pt-[85px] lg:pt-[80px]">
+        <div className="flex w-full gap-[15px] ">
           <DashSideNav />
           <div className="flex-1 flex flex-col md:border border-tradeAshLight md:rounded-[10px] min-h-0">
             <div className="flex justify-between items-center gap-[10px] p-[15px] border-b border-tradeAshLight">
