@@ -10,7 +10,7 @@ import { IoAttach } from "react-icons/io5";
 const TradeChat = () => {
   return (
     <>
-      <div className="bg-black flex h-lvh ">
+      <div className="bg-black flex h-screen ">
         <InAppNav />
         <div className="flex w-full gap-[15px] lg:p-[2%] md:p-[2.5%] mt-[67px] md:mt-[85px] lg:mt-[55px]">
           <DashSideNav />
