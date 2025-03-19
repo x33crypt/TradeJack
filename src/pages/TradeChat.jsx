@@ -35,12 +35,12 @@ const TradeChat = () => {
             </div>
 
             {/* Messages Section - Only this part scrolls */}
-            <div className="flex-1 p-[15px] overflow-y-auto">
+            {/* <div className="flex-1 px-[15px] overflow-y-auto">
               <div className="text-white">hello (testing long conten)</div>
-            </div>
+            </div> */}
 
             {/* Input Field - Fixed at the bottom */}
-            <div className="flex items-center gap-[10px] p-[15px] border-t border-tradeAshLight">
+            {/* <div className="flex items-center gap-[10px] p-[15px] border-t border-tradeAshLight">
               <div className="p-[6px] rounded-full bg-white text-[20px] text-black cursor-pointer">
                 <IoAttach />
               </div>
@@ -54,7 +54,7 @@ const TradeChat = () => {
               <div className="p-[6px] rounded-full bg-white text-[20px] text-black cursor-pointer">
                 <TbBrandTelegram />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
