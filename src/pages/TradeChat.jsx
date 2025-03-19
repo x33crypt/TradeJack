@@ -32,7 +32,7 @@ const TradeChat = () => {
               </div>
             </div>
 
-            <div className="flex-1 px-[15px] overflow-y-auto">
+            <div className="h-full px-[15px] overflow-y-auto">
               <div className="text-white">hello (testing long conten)</div>
             </div>
 
