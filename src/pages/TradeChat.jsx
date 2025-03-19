@@ -11,7 +11,7 @@ const TradeChat = () => {
   return (
     <>
       {/* <InAppNav /> */}
-      <div className="bg-black flex min-h-screen  ">
+      <div className="bg-black flex min-h-screen overflow-hidden  ">
         {/* <div className="flex w-full gap-[15px] lg:p-[2%] md:p-[2.5%] mt-[67px] md:mt-[85px] lg:mt-[55px]">
           <DashSideNav />
           <div className="flex-1 flex flex-col md:border border-tradeAshLight md:rounded-[10px] min-h-0">
