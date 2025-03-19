@@ -10,48 +10,50 @@ import { IoAttach } from "react-icons/io5";
 const TradeChat = () => {
   return (
     <>
-      <InAppNav />
-      <div className="flex gap-[15px] bg-black lg:p-[2%] md:p-[2.5%] pt-[67px] md:pt-[85px] lg:pt-[80px]">
-        <DashSideNav />
-        {/* Chat Container */}
-        <div className="flex-1 flex flex-col md:border border-tradeAshLight md:rounded-[10px] min-h-0">
-          {/* Header - Fixed */}
-          <div className="flex justify-between items-center gap-[10px] p-[15px] border-b border-tradeAshLight">
-            <div className="flex items-center gap-[10px]">
-              <div className="relative w-[35px]">
-                <img className="rounded-full" src={landingImg4} alt="" />
-                <div className="absolute top-[21px] right-0 bg-black rounded-full flex items-center gap-[2px]">
-                  <GoDotFill className="text-[14px] text-tradeOrange" />
+      <div className="bg-black flex h-[100vh]   ">
+        <InAppNav />
+
+        <div className="flex w-full gap-[15px]  lg:p-[2%] md:p-[2.5%] mt-[67px] md:mt-[85px] lg:mt-[55px]">
+          <DashSideNav />
+          <div className="flex-1 w-full flex flex-col md:border border-tradeAshLight md:rounded-[10px] min-h-0">
+            {/* Header - Fixed */}
+            <div className="flex justify-between items-center gap-[10px] p-[15px] border-b border-tradeAshLight">
+              <div className="flex items-center gap-[10px]">
+                <div className="relative w-[35px]">
+                  <img className="rounded-full" src={landingImg4} alt="" />
+                  <div className="absolute top-[21px] right-0 bg-black rounded-full flex items-center gap-[2px]">
+                    <GoDotFill className="text-[14px] text-tradeOrange" />
+                  </div>
                 </div>
+                <p className="text-[16px] text-white font-[700] cursor-pointer">
+                  0xSanityy
+                </p>
               </div>
-              <p className="text-[16px] text-white font-[700] cursor-pointer">
-                0xSanityy
-              </p>
+              <div className="flex p-[5px] rounded-[6px]">
+                <SlOptionsVertical className="text-white text-[16px]" />
+              </div>
             </div>
-            <div className="flex p-[5px] rounded-[6px]">
-              <SlOptionsVertical className="text-white text-[16px]" />
-            </div>
-          </div>
 
-          {/* Messages Section - Only this part scrolls */}
-          <div className="flex-1 p-[15px] overflow-y-auto min-h-0">
-            <div className="h-[200px]">hello (testing long content)</div>
-          </div>
+            {/* Messages Section - Only this part scrolls */}
+            <div className="flex-1 p-[15px] overflow-y-auto min-h-0">
+              <div className="text-white">hello (testing long content)</div>
+            </div>
 
-          {/* Input Field - Fixed at the bottom */}
-          <div className="flex items-center gap-[10px] p-[15px] border-t border-tradeAshLight">
-            <div className="p-[6px] rounded-full bg-white text-[20px] text-black cursor-pointer">
-              <IoAttach />
-            </div>
-            <div className="flex-1 flex gap-[20px] bg-tradeAsh border border-tradeAshExtraLight p-[6px] rounded-[10px]">
-              <input
-                className="w-full outline-none px-[4px] py-[2px] text-[15px] font-[500] placeholder:font-[400] text-white placeholder:text-tradeFadeWhite bg-tradeAsh caret-tradeGreen"
-                type="text"
-                placeholder="Write a message..."
-              />
-            </div>
-            <div className="p-[6px] rounded-full bg-white text-[20px] text-black cursor-pointer">
-              <TbBrandTelegram />
+            {/* Input Field - Fixed at the bottom */}
+            <div className="flex items-center gap-[10px] p-[15px] border-t border-tradeAshLight">
+              <div className="p-[6px] rounded-full bg-white text-[20px] text-black cursor-pointer">
+                <IoAttach />
+              </div>
+              <div className="flex-1 flex gap-[20px] bg-tradeAsh border border-tradeAshExtraLight p-[6px] rounded-[10px]">
+                <input
+                  className="w-full outline-none px-[4px] py-[2px] text-[15px] font-[500] placeholder:font-[400] text-white placeholder:text-tradeFadeWhite bg-tradeAsh caret-tradeGreen"
+                  type="text"
+                  placeholder="Write a message..."
+                />
+              </div>
+              <div className="p-[6px] rounded-full bg-white text-[20px] text-black cursor-pointer">
+                <TbBrandTelegram />
+              </div>
             </div>
           </div>
         </div>
