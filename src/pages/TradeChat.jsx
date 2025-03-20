@@ -6,12 +6,14 @@ import { GoDotFill } from "react-icons/go";
 import { SlOptionsVertical } from "react-icons/sl";
 import { TbBrandTelegram } from "react-icons/tb";
 import { IoAttach } from "react-icons/io5";
+import { CgNotes } from "react-icons/cg";
+import { MdOutlineStickyNote2 } from "react-icons/md";
 
 const TradeChat = () => {
   return (
     <>
       <InAppNav />
-      <div className="bg-black flex h-[100vh] lg:p-[2%] md:p-[2.5%] pt-[67px] md:pt-[85px] lg:pt-[80px]">
+      <div className="bg-black flex h-svh lg:p-[2%] md:p-[2.5%] pt-[67px] md:pt-[85px] lg:pt-[80px]">
         <div className="flex w-full gap-[15px] ">
           <DashSideNav />
           <div className="flex-1 justify-between flex flex-col md:border border-tradeAshLight md:rounded-[10px] min-h-0">
@@ -27,13 +29,18 @@ const TradeChat = () => {
                   0xSanityy
                 </p>
               </div>
-              <div className="flex p-[5px] rounded-[6px]">
-                <SlOptionsVertical className="text-white text-[16px]" />
+              <div className="flex gap-[10px] p-[5px] rounded-[6px]">
+                <div className="p-[2px]  rounded-[4px] hover:bg-tradeAshLight cursor-pointer">
+                  <MdOutlineStickyNote2 className="text-tradeFadeWhite text-[18px] " />
+                </div>
+                <div className="p-[2px] cursor-pointer">
+                  <SlOptionsVertical className="text-white text-[18px] " />
+                </div>
               </div>
             </div>
 
-            <div className="h-full p-[15px] overflow-y-auto">
-              <div className="text-white">hello </div>
+            <div className="h-full p-[15px] overflow-y-auto custom-scrollbar">
+              <div className="text-white h-[2000px]">hello </div>
             </div>
 
             <div className="flex items-center gap-[10px] p-[15px] border-t border-tradeAshLight">
