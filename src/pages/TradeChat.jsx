@@ -39,8 +39,8 @@ const TradeChat = () => {
               </div>
             </div>
 
-            <div className="h-full p-[15px] overflow-y-auto custom-scrollbar">
-              <div className="text-white h-[2000px] bg-tradeGreen">hello </div>
+            <div className="flex-1 p-[15px] overflow-y-auto custom-scrollbar">
+              <div className="text-white h-[2000px]">hello </div>
             </div>
 
             <div className="flex items-center gap-[10px] p-[15px] border-t border-tradeAshLight">
