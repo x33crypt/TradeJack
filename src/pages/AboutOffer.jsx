@@ -234,7 +234,7 @@ const AboutOffer = () => {
     <>
       <MarketTopNav />
 
-      <div className=" md:pt-[80px] pt-[67px] pb-[30px] flex flex-col bg-black gap-[15.5px] md:p-[1.5%]">
+      <div className=" md:pt-[80px] pt-[67px] pb-[30px] flex flex-col bg-black gap-[15.5px] md:p-[2.5%]">
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-[0.8%]">
           <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight md:rounded-[10px]">
             <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
