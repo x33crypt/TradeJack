@@ -14,7 +14,7 @@ const TradeChat = () => {
     <>
       <InAppNav />
       <div className="flex lg:flex-row flex-col lg:gap-[15px] bg-black h-screen lg:p-[2%] md:p-[2.5%] lg:pt-[80px]">
-        <DashSideNav />
+        {/* <DashSideNav /> */}
         {/* <div className=" lg:hidden h-[67px] md:h-[56px]">
           <p className=" opacity-0">hell</p>
         </div> */}
