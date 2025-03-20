@@ -15,9 +15,9 @@ const TradeChat = () => {
       <InAppNav />
       <div className="flex lg:flex-row flex-col lg:gap-[15px] bg-black h-screen lg:p-[2%] md:p-[2.5%] lg:pt-[80px]">
         <DashSideNav />
-        <div className=" lg:hidden h-[67px] md:h-[56px]">
+        {/* <div className=" lg:hidden h-[67px] md:h-[56px]">
           <p className=" opacity-0">hell</p>
-        </div>
+        </div> */}
         <div className="flex-1 flex flex-col md:border border-tradeAshLight md:rounded-[10px]">
           <div className="flex justify-between items-center gap-[10px] p-[15px] border-b border-tradeAshLight">
             <div className="flex items-center gap-[10px]">
