@@ -133,7 +133,7 @@ const Account = () => {
     <>
       <InAppNav />
 
-      <div className="lg:pt-[80px] md:pt-[85px] pt-[85px] pb-[50px] bg-black flex p-[15px]  gap-[30px] flex-col">
+      <div className="lg:pt-[80px] md:pt-[85px] pt-[85px] pb-[100px] bg-black flex p-[15px]  gap-[30px] flex-col">
         <div className="flex items-center gap-[15px]">
           <div className=" lg:w-[60px] sm:w-[150px] w-[75px] ">
             <img className="rounded-full" src={image} alt="" />
@@ -164,42 +164,42 @@ const Account = () => {
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
           >
             <CgProfile className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Your Info</p>
+            <p className="text-white text-[16px] ">Your Info</p>
           </div>
           <div
             onClick={() => handleIsDeposit()}
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
           >
             <PiHandDepositBold className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Deposit & Withdraw</p>
+            <p className="text-white text-[16px] ">Deposit & Withdraw</p>
           </div>
           <div
             onClick={() => handleIsSecurity()}
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
           >
             <MdOutlineSecurity className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Security & Privacy</p>
+            <p className="text-white text-[16px] ">Security & Privacy</p>
           </div>
           <div
             onClick={() => handleIsSubscription()}
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
           >
             <TbAlignBoxRightTop className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Subscriptions</p>
+            <p className="text-white text-[16px] ">Subscriptions</p>
           </div>
           <div
             onClick={() => handleIsHelp()}
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
           >
             <BiSupport className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Help & Support</p>
+            <p className="text-white text-[16px] ">Help & Support</p>
           </div>
           <div
             onClick={() => handleIsLogout()}
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
           >
             <MdLogin className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Logout</p>
+            <p className="text-white text-[16px] ">Logout</p>
           </div>
         </div>
       </div>
