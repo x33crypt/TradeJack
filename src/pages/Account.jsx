@@ -136,12 +136,12 @@ const Account = () => {
 
       <div className="lg:pt-[80px] md:pt-[85px] pt-[85px] pb-[80px] bg-black flex p-[15px]  gap-[30px] flex-col">
         <div className="flex items-center gap-[15px]">
-          <div className=" lg:w-[60px] sm:w-[150px] w-[80px] ">
+          <div className=" lg:w-[60px] sm:w-[150px] w-[90px] ">
             <img className="rounded-full" src={image} alt="" />
           </div>
 
           <div className="flex flex-col gap-[1px]">
-            <p className="text-white lg:text-[18px] sm:text-[38px] text-[20px] font-extrabold">
+            <p className="text-white lg:text-[18px] sm:text-[38px] text-[22px] font-extrabold">
               0xSanityy
             </p>
 
@@ -156,7 +156,7 @@ const Account = () => {
                 Online
               </p>
             </div>
-            {/* <div className="flex items-center gap-[3px]">
+            <div className="flex items-center gap-[3px]">
               <div className="flex items-center gap-[5px]">
                 <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[600] text-white">
                   Nigeria
@@ -168,10 +168,10 @@ const Account = () => {
               <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[600] text-tradeFadeWhite">
                 Joined 3 weeks ago
               </p>
-            </div> */}
-            <p className="text-tradeFadeWhite text-[13px] font-[500]">
+            </div>
+            {/* <p className="text-tradeFadeWhite text-[13px] font-[500]">
               0xsanityy@gmail.com
-            </p>
+            </p> */}
           </div>
         </div>
 
