@@ -140,13 +140,11 @@ const Account = () => {
             <img className="rounded-full" src={image} alt="" />
           </div>
 
-          <div>
+          <div className="flex flex-col gap-[px]">
             <p className="text-white lg:text-[18px] sm:text-[38px] text-[20px] font-extrabold">
               0xSanityy
             </p>
-            {/* <p className="text-tradeFadeWhite text-[13px] font-[500]">
-              0xsanityy@gmail.com
-            </p> */}
+
             <div className="flex gap-[10px]">
               <div className="flex gap-[3px] items-center">
                 <p className="text-white lg:text-[13px] sm:text-[13px] text-[13px] font-[600]">
@@ -158,7 +156,7 @@ const Account = () => {
                 Online
               </p>
             </div>
-            <div className="flex items-center gap-[3px]">
+            {/* <div className="flex items-center gap-[3px]">
               <div className="flex items-center gap-[5px]">
                 <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[600] text-white">
                   Nigeria
@@ -170,11 +168,14 @@ const Account = () => {
               <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[600] text-tradeFadeWhite">
                 Joined 3 weeks ago
               </p>
-            </div>
+            </div> */}
+            <p className="text-tradeFadeWhite text-[13px] font-[500]">
+              0xsanityy@gmail.com
+            </p>
           </div>
         </div>
 
-        <div className="flex items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[7px]  gap-[10px] rounded-[12px]">
+        <div className="flex items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[6px]  gap-[10px] rounded-[12px]">
           <HiMiniMagnifyingGlass className="text-neutral-500 text-[20px]" />
           <input
             className=" bg-transparent outline-none h-[28px] w-[220px] text-[15px] placeholder:text-tradeFadeWhite  text-white"
