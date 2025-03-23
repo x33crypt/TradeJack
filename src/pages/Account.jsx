@@ -10,6 +10,7 @@ import { BiSupport } from "react-icons/bi";
 import { MdLogin } from "react-icons/md";
 import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
+import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 
 const Account = () => {
   const navigateTo = useNavigate();
@@ -148,8 +149,8 @@ const Account = () => {
           </div>
         </div>
 
-        <div className="flex items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[8px]  gap-[10px] rounded-[10px]">
-          <FaMagnifyingGlass className="text-neutral-500 text-[16px]" />
+        <div className="flex items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[7px]  gap-[10px] rounded-[12px]">
+          <HiMiniMagnifyingGlass className="text-neutral-500 text-[20px]" />
           <input
             className=" bg-transparent outline-none h-[28px] w-[220px] text-[15px] placeholder:text-tradeFadeWhite  text-white"
             type="text"
@@ -157,13 +158,13 @@ const Account = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-[10px]">
+        <div className="flex flex-col gap-[5px]">
           <div
             onClick={() => handleIsYourInfo()}
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
           >
-            <CgProfile className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[16px] ">Your Info</p>
+            <CgProfile className="text-[15px] text-tradeFadeWhite" />
+            <p className="text-white text-[15px] ">Your Info</p>
           </div>
           {/* <div
             onClick={() => handleIsYourInfo()}
@@ -182,8 +183,8 @@ const Account = () => {
             onClick={() => handleIsDeposit()}
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
           >
-            <PiHandDepositBold className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[16px] ">Deposit & Withdraw</p>
+            <PiHandDepositBold className="text-[15px] text-tradeFadeWhite" />
+            <p className="text-white text-[15px] ">Deposit & Withdraw</p>
           </div>
           {/* <div
             onClick={() => handleIsDeposit()}
@@ -198,7 +199,7 @@ const Account = () => {
             </div>
             <p className="text-[15px] font-[500]">Deposit & Withdraw</p>
           </div> */}
-          <div
+          {/* <div
             onClick={() => handleIsSecurity()}
             className={` ${
               activePage?.security
@@ -210,8 +211,17 @@ const Account = () => {
               <MdOutlineSecurity />
             </div>
             <p className="text-[15px] font-[500]">Security & Privacy</p>
-          </div>
+          </div> */}
+
           <div
+            onClick={() => handleIsSecurity()}
+            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
+          >
+            <MdOutlineSecurity className="text-[15px] text-tradeFadeWhite" />
+            <p className="text-white text-[15px] ">Security & Privacy</p>
+          </div>
+
+          {/* <div
             onClick={() => handleIsSubscription()}
             className={` ${
               activePage?.subscription
@@ -223,8 +233,17 @@ const Account = () => {
               <TbAlignBoxRightTop />
             </div>
             <p className="text-[15px] font-[500]">Subscriptions</p>
-          </div>
+          </div> */}
+
           <div
+            onClick={() => handleIsSubscription()}
+            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
+          >
+            <TbAlignBoxRightTop className="text-[15px] text-tradeFadeWhite" />
+            <p className="text-white text-[15px] ">Subscriptions</p>
+          </div>
+
+          {/* <div
             onClick={() => handleIsHelp()}
             className={` ${
               activePage?.help
@@ -236,8 +255,17 @@ const Account = () => {
               <BiSupport />
             </div>
             <p className="text-[15px] font-[500]">Help & Support</p>
-          </div>
+          </div> */}
+
           <div
+            onClick={() => handleIsHelp()}
+            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
+          >
+            <BiSupport className="text-[15px] text-tradeFadeWhite" />
+            <p className="text-white text-[15px] ">Help & Support</p>
+          </div>
+
+          {/* <div
             onClick={() => handleIsLogout()}
             className={` ${
               activePage?.logout
@@ -249,6 +277,14 @@ const Account = () => {
               <MdLogin />
             </div>
             <p className="text-[15px] font-[500]">Logout</p>
+          </div> */}
+
+          <div
+            onClick={() => handleIsLogout()}
+            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
+          >
+            <MdLogin className="text-[15px] text-tradeFadeWhite" />
+            <p className="text-white text-[15px] ">Logout</p>
           </div>
         </div>
       </div>
