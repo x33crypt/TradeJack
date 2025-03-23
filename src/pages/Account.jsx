@@ -16,7 +16,7 @@ const Account = () => {
   const location = useLocation();
 
   const [activePage, setActivePage] = useState({
-    yourInfo: true,
+    yourInfo: false,
     deposit: false,
     security: false,
     subscription: false,
@@ -132,7 +132,7 @@ const Account = () => {
     <>
       <InAppNav />
 
-      <div className="lg:pt-[80px] md:pt-[85px] pt-[80px] pb-[10px] bg-black flex p-[15px]  min-h-screen gap-[30px] flex-col">
+      <div className="lg:pt-[80px] md:pt-[85px] pt-[85px] pb-[10px] bg-black flex p-[15px]  min-h-screen gap-[30px] flex-col">
         <div className="flex items-center gap-[15px]">
           <div className=" lg:w-[60px] sm:w-[150px] w-[80px] ">
             <img className="rounded-full" src={image} alt="" />
@@ -142,16 +142,16 @@ const Account = () => {
             <p className="text-white lg:text-[18px] sm:text-[38px] text-[22px] font-extrabold">
               0xSanityy
             </p>
-            <p className="text-tradeFadeWhite text-[12px] font-[500]">
+            <p className="text-tradeFadeWhite text-[13px] font-[500]">
               0xsanityy@gmail.com
             </p>
           </div>
         </div>
 
-        <div className="flex items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[5px] gap-[10px] rounded-[10px]">
-          <FaMagnifyingGlass className="text-neutral-500 lg:text-[15px] text-[15px]" />
+        <div className="flex items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[8px]  gap-[10px] rounded-[10px]">
+          <FaMagnifyingGlass className="text-neutral-500 text-[16px]" />
           <input
-            className=" bg-transparent outline-none h-[28px] w-[220px] text-[14px] placeholder:text-tradeFadeWhite  text-white"
+            className=" bg-transparent outline-none h-[28px] w-[220px] text-[15px] placeholder:text-tradeFadeWhite  text-white"
             type="text"
             placeholder="Find a setting"
           />
@@ -159,6 +159,13 @@ const Account = () => {
 
         <div className="flex flex-col gap-[10px]">
           <div
+            onClick={() => handleIsYourInfo()}
+            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
+          >
+            <CgProfile className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[16px] ">Your Info</p>
+          </div>
+          {/* <div
             onClick={() => handleIsYourInfo()}
             className={` ${
               activePage?.yourInfo
@@ -170,8 +177,15 @@ const Account = () => {
               <CgProfile />
             </div>
             <p className="text-[15px] font-[500]">Your Info</p>
-          </div>
+          </div> */}
           <div
+            onClick={() => handleIsDeposit()}
+            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshLight hover:bg-tradeAsh rounded-[12px] "
+          >
+            <PiHandDepositBold className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[16px] ">Deposit & Withdraw</p>
+          </div>
+          {/* <div
             onClick={() => handleIsDeposit()}
             className={` ${
               activePage?.deposit
@@ -183,7 +197,7 @@ const Account = () => {
               <PiHandDepositBold />
             </div>
             <p className="text-[15px] font-[500]">Deposit & Withdraw</p>
-          </div>
+          </div> */}
           <div
             onClick={() => handleIsSecurity()}
             className={` ${
