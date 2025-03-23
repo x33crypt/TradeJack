@@ -45,7 +45,7 @@ const UserProfile = () => {
             <p className="text-[18px] text-white font-[700]">Your Info </p>
           </div>
           <div className="flex flex-col">
-            <div className="flex md:flex-row flex-col justify-between gap-[15px] md:items-center p-[15px]">
+            <div className="lg:flex hidden md:flex-row flex-col justify-between gap-[15px] md:items-center p-[15px]">
               <div className=" flex items-center gap-[20px] rounded-[8px]">
                 <div className=" lg:w-[120px] sm:w-[150px] w-[100px] ">
                   <img className="rounded-full" src={image} alt="" />
@@ -128,7 +128,7 @@ const UserProfile = () => {
             </div>
 
             <div className="flex flex-col p-[15px] gap-[20px]">
-              <div className="flex items-center justify-between">
+              <div className="lg:flex hidden items-center justify-between">
                 <p className="text-[16px] font-[700] text-white">
                   Profile details
                 </p>
@@ -140,7 +140,7 @@ const UserProfile = () => {
                       isProfileEdit
                         ? "text-black bg-tradeGreen border-tradeAshExtraLight"
                         : "text-neutral-500 bg-transparent border-neutral-800"
-                    } text-[14px] font-[600] md:flex hidden justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
+                    } text-[14px] font-[600] flex  justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
                   >
                     {isProfileEdit ? "Save Changes" : "Edit Profile"}
                   </p>

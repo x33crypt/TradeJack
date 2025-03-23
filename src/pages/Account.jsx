@@ -12,6 +12,9 @@ import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import { PiHorseBold } from "react-icons/pi";
+import { MdThumbUpAlt } from "react-icons/md";
+import { MdThumbDownAlt } from "react-icons/md";
+import { FaRegStar } from "react-icons/fa";
 
 const Account = () => {
   const navigateTo = useNavigate();
@@ -172,6 +175,40 @@ const Account = () => {
             {/* <p className="text-tradeFadeWhite text-[13px] font-[500]">
               0xsanityy@gmail.com
             </p> */}
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-[10px]">
+          <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
+            <div className="flex gap-[5px] items-center">
+              <MdThumbUpAlt className="text-[15px] text-tradeGreen" />
+              <p className=" text-[12px] font-[600] text-white">
+                Positive Feedback
+              </p>
+            </div>
+            <div className="flex items-center gap-[5px]">
+              <p className="text-white text-[15.5px] font-[600]">&#43;0</p>
+            </div>
+          </div>
+          <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
+            <div className="flex gap-[5px] items-center">
+              <MdThumbDownAlt className="text-[15px] text-red-500" />
+              <p className=" text-[12px] font-[600] text-white">
+                Negative Feedback
+              </p>
+            </div>
+            <div className="flex items-center gap-[5px]">
+              <p className="text-white text-[15.5px] font-[600]">&#43;0</p>
+            </div>
+          </div>
+          <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
+            <div className="flex gap-[5px] items-center">
+              <FaRegStar className="text-tradeOrange text-[12px]" />
+              <p className=" text-[12px] font-[600] text-white">Trust score</p>
+            </div>
+            <div className="flex items-center gap-[5px]">
+              <p className="text-white text-[15.5px] font-[600]"> 57&#37;</p>
+            </div>
           </div>
         </div>
 
