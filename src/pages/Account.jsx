@@ -178,7 +178,7 @@ const Account = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-[10px]">
+        <div className="flex flex-wrap gap-[5px]">
           <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
             <div className="flex gap-[5px] items-center">
               <p className=" text-[12px] font-[600] text-white">
