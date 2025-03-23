@@ -137,7 +137,7 @@ const Account = () => {
     <>
       <InAppNav />
 
-      <div className=" fixed top-0 right-0 left-0 bottom-0 lg:pt-[80px] md:pt-[85px] pt-[85px] bg-black flex p-[15px]  gap-[30px] flex-col">
+      <div className=" lg:pt-[80px] md:pt-[85px] pt-[85px] pb-[100px] bg-black flex p-[15px]  gap-[30px] flex-col">
         <div className="flex items-center gap-[15px]">
           <div className=" lg:w-[60px] sm:w-[150px] w-[90px] ">
             <img className="rounded-full" src={image} alt="" />
@@ -181,32 +181,32 @@ const Account = () => {
         <div className="flex flex-wrap gap-[10px]">
           <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
             <div className="flex gap-[5px] items-center">
-              <MdThumbUpAlt className="text-[15px] text-tradeGreen" />
               <p className=" text-[12px] font-[600] text-white">
                 Positive Feedback
               </p>
             </div>
             <div className="flex items-center gap-[5px]">
+              <MdThumbUpAlt className="text-[15px] text-tradeGreen" />
               <p className="text-white text-[15.5px] font-[600]">&#43;0</p>
             </div>
           </div>
           <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
             <div className="flex gap-[5px] items-center">
-              <MdThumbDownAlt className="text-[15px] text-red-500" />
               <p className=" text-[12px] font-[600] text-white">
                 Negative Feedback
               </p>
             </div>
             <div className="flex items-center gap-[5px]">
+              <MdThumbDownAlt className="text-[15px] text-red-500" />
               <p className="text-white text-[15.5px] font-[600]">&#43;0</p>
             </div>
           </div>
           <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
             <div className="flex gap-[5px] items-center">
-              <FaRegStar className="text-tradeOrange text-[12px]" />
               <p className=" text-[12px] font-[600] text-white">Trust score</p>
             </div>
             <div className="flex items-center gap-[5px]">
+              <FaRegStar className="text-tradeOrange text-[12px]" />
               <p className="text-white text-[15.5px] font-[600]"> 57&#37;</p>
             </div>
           </div>
