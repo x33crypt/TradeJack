@@ -134,7 +134,7 @@ const Account = () => {
     <>
       <InAppNav />
 
-      <div className="lg:pt-[80px] md:pt-[85px] pt-[85px] pb-[80px] bg-black flex p-[15px]  gap-[30px] flex-col">
+      <div className=" fixed top-0 right-0 left-0 bottom-0 lg:pt-[80px] md:pt-[85px] pt-[85px] bg-black flex p-[15px]  gap-[30px] flex-col">
         <div className="flex items-center gap-[15px]">
           <div className=" lg:w-[60px] sm:w-[150px] w-[90px] ">
             <img className="rounded-full" src={image} alt="" />
@@ -229,7 +229,7 @@ const Account = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
