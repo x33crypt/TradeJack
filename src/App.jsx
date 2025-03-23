@@ -9,6 +9,7 @@ import CreateOffer from "./pages/CreateOffer";
 import TradeChat from "./pages/TradeChat";
 import UserProfile from "./pages/UserProfile";
 import DepositAndWithdraw from "./pages/DepositAndWithdraw";
+import Account from "./pages/Account";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/account" element={<Account />} />
         <Route path="/account/profile" element={<UserProfile />} />
         <Route
           path="/account/deposit&withdraw"

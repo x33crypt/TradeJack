@@ -40,12 +40,10 @@ const UserProfile = () => {
       <MarketTopNav />
       <div className=" lg:pt-[80px] md:pt-[85px] pt-[67px] pb-[10px]  flex  bg-black gap-[15.5px] lg:px-[2%] md:px-[2.5%]">
         <UserProfileNav />
-
         <div className="flex-1 flex flex-col min-h-screen max-h-max md:border border-neutral-800 md:rounded-[14px]">
           <div className="flex flex-col justify-between p-[15px] border-b border-neutral-800">
             <p className="text-[18px] text-white font-[700]">Your Info </p>
           </div>
-
           <div className="flex flex-col">
             <div className="flex md:flex-row flex-col justify-between gap-[15px] md:items-center p-[15px]">
               <div className=" flex items-center gap-[20px] rounded-[8px]">
@@ -85,7 +83,6 @@ const UserProfile = () => {
                   </div>
                 </div>
               </div>
-
               <div className="flex flex-wrap gap-[10px]">
                 <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
                   <div className="flex gap-[5px] items-center">

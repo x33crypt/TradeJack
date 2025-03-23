@@ -246,7 +246,7 @@ const Marketplace = () => {
             setClearFilter={setClearFilter}
           />
         </div>
-        <div className="flex-1 bg-black">
+        <div className="flex-1">
           <MarketMain
             promotedOffers={promotedOffers}
             unPromotedOffers={unPromotedOffers}
