@@ -11,6 +11,7 @@ import { MdLogin } from "react-icons/md";
 import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
+import { PiHorseBold } from "react-icons/pi";
 
 const Account = () => {
   const navigateTo = useNavigate();
@@ -133,19 +134,43 @@ const Account = () => {
     <>
       <InAppNav />
 
-      <div className="lg:pt-[80px] md:pt-[85px] pt-[85px] pb-[100px] bg-black flex p-[15px]  gap-[30px] flex-col">
+      <div className="lg:pt-[80px] md:pt-[85px] pt-[85px] pb-[80px] bg-black flex p-[15px]  gap-[30px] flex-col">
         <div className="flex items-center gap-[15px]">
           <div className=" lg:w-[60px] sm:w-[150px] w-[75px] ">
             <img className="rounded-full" src={image} alt="" />
           </div>
 
           <div>
-            <p className="text-white lg:text-[18px] sm:text-[38px] text-[22px] font-extrabold">
+            <p className="text-white lg:text-[18px] sm:text-[38px] text-[20px] font-extrabold">
               0xSanityy
             </p>
-            <p className="text-tradeFadeWhite text-[13px] font-[500]">
+            {/* <p className="text-tradeFadeWhite text-[13px] font-[500]">
               0xsanityy@gmail.com
-            </p>
+            </p> */}
+            <div className="flex gap-[10px]">
+              <div className="flex gap-[3px] items-center">
+                <p className="text-white lg:text-[13px] sm:text-[13px] text-[13px] font-[600]">
+                  #TopTrader
+                </p>
+                <PiHorseBold className="text-tradeOrange" />
+              </div>
+              <p className="text-tradeGreen lg:text-[13px] sm:text-[13px] text-[13px] font-[600]">
+                Online
+              </p>
+            </div>
+            <div className="flex items-center gap-[3px]">
+              <div className="flex items-center gap-[5px]">
+                <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[600] text-white">
+                  Nigeria
+                </p>
+              </div>
+              <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[700] text-tradeFadeWhite">
+                &#x2022;
+              </p>
+              <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[600] text-tradeFadeWhite">
+                Joined 3 weeks ago
+              </p>
+            </div>
           </div>
         </div>
 
