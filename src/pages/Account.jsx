@@ -132,7 +132,7 @@ const Account = () => {
     <>
       <InAppNav />
 
-      <div className="lg:pt-[80px] md:pt-[85px] pt-[80px] pb-[10px] bg-black flex p-[15px]  max-h-screen gap-[30px] flex-col">
+      <div className="lg:pt-[80px] md:pt-[85px] pt-[80px] pb-[10px] bg-black flex p-[15px]  min-h-screen gap-[30px] flex-col">
         <div className="flex items-center gap-[15px]">
           <div className=" lg:w-[60px] sm:w-[150px] w-[80px] ">
             <img className="rounded-full" src={image} alt="" />
@@ -148,10 +148,10 @@ const Account = () => {
           </div>
         </div>
 
-        <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[2px] gap-[10px] rounded-[8px]">
+        <div className="flex items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[5px] gap-[10px] rounded-[10px]">
           <FaMagnifyingGlass className="text-neutral-500 lg:text-[15px] text-[15px]" />
           <input
-            className=" bg-transparent outline-none h-[28px] w-[220px] lg:placeholder:text-[13px] placeholder:text-[13px] placeholder:text-tradeFadeWhite lg:text-[13px] text-[13px] text-white"
+            className=" bg-transparent outline-none h-[28px] w-[220px] text-[14px] placeholder:text-tradeFadeWhite  text-white"
             type="text"
             placeholder="Find a setting"
           />
@@ -164,12 +164,12 @@ const Account = () => {
               activePage?.yourInfo
                 ? "bg-tradeGreen text-black hover:text-black"
                 : "text-tradeFadeWhite hover:text-white"
-            } p-[10px] flex items-center gap-[10px] rounded-[12px]  transition-all duration-300 cursor-pointer`}
+            } p-[8px] flex items-center gap-[10px] rounded-[10px]  transition-all duration-300 cursor-pointer`}
           >
-            <div className="text-[17px]">
+            <div className="text-[16px]">
               <CgProfile />
             </div>
-            <p className="text-[16px] font-[500]">Your Info</p>
+            <p className="text-[15px] font-[500]">Your Info</p>
           </div>
           <div
             onClick={() => handleIsDeposit()}
@@ -177,12 +177,12 @@ const Account = () => {
               activePage?.deposit
                 ? "bg-tradeGreen text-black hover:text-black"
                 : "text-tradeFadeWhite hover:text-white"
-            } p-[10px] flex items-center gap-[10px] rounded-[12px]    transition-all duration-300 cursor-pointer`}
+            } p-[8px] flex items-center gap-[10px] rounded-[10px]    transition-all duration-300 cursor-pointer`}
           >
-            <div className="text-[17px]">
+            <div className="text-[16px]">
               <PiHandDepositBold />
             </div>
-            <p className="text-[16px] font-[500]">Deposit & Withdraw</p>
+            <p className="text-[15px] font-[500]">Deposit & Withdraw</p>
           </div>
           <div
             onClick={() => handleIsSecurity()}
@@ -190,12 +190,12 @@ const Account = () => {
               activePage?.security
                 ? "bg-tradeGreen text-black hover:text-black"
                 : "text-tradeFadeWhite hover:text-white"
-            } p-[10px] flex items-center gap-[10px] rounded-[12px]    transition-all duration-300 cursor-pointer`}
+            } p-[8px] flex items-center gap-[10px] rounded-[10px]    transition-all duration-300 cursor-pointer`}
           >
-            <div className="text-[17px]">
+            <div className="text-[16px]">
               <MdOutlineSecurity />
             </div>
-            <p className="text-[16px] font-[500]">Security & Privacy</p>
+            <p className="text-[15px] font-[500]">Security & Privacy</p>
           </div>
           <div
             onClick={() => handleIsSubscription()}
@@ -203,12 +203,12 @@ const Account = () => {
               activePage?.subscription
                 ? "bg-tradeGreen text-black hover:text-black"
                 : "text-tradeFadeWhite hover:text-white"
-            } p-[10px] flex items-center gap-[10px] rounded-[12px]   transition-all duration-300 cursor-pointer`}
+            } p-[8px] flex items-center gap-[10px] rounded-[10px]   transition-all duration-300 cursor-pointer`}
           >
-            <div className="text-[17px]">
+            <div className="text-[16px]">
               <TbAlignBoxRightTop />
             </div>
-            <p className="text-[16px] font-[500]">Subscriptions</p>
+            <p className="text-[15px] font-[500]">Subscriptions</p>
           </div>
           <div
             onClick={() => handleIsHelp()}
@@ -216,12 +216,12 @@ const Account = () => {
               activePage?.help
                 ? "bg-tradeGreen text-black hover:text-black"
                 : "text-tradeFadeWhite hover:text-white"
-            } p-[10px] flex items-center gap-[10px] rounded-[12px]   transition-all duration-300 cursor-pointer`}
+            } p-[8px] flex items-center gap-[10px] rounded-[10px]   transition-all duration-300 cursor-pointer`}
           >
-            <div className="text-[17px]">
+            <div className="text-[16px]">
               <BiSupport />
             </div>
-            <p className="text-[16px] font-[500]">Help & Support</p>
+            <p className="text-[15px] font-[500]">Help & Support</p>
           </div>
           <div
             onClick={() => handleIsLogout()}
@@ -229,12 +229,12 @@ const Account = () => {
               activePage?.logout
                 ? "bg-tradeGreen text-black hover:text-black"
                 : "text-tradeFadeWhite hover:text-white"
-            } p-[10px] flex items-center gap-[10px] rounded-[12px]  transition-all duration-300 cursor-pointer`}
+            } p-[8px] flex items-center gap-[10px] rounded-[10px]  transition-all duration-300 cursor-pointer`}
           >
-            <div className="text-[17px]">
+            <div className="text-[16px]">
               <MdLogin />
             </div>
-            <p className="text-[16px] font-[500]">Logout</p>
+            <p className="text-[15px] font-[500]">Logout</p>
           </div>
         </div>
       </div>
