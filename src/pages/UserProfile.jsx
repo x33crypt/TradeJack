@@ -2,9 +2,11 @@ import Footer from "@/components/Footer";
 import MarketTopNav from "@/components/InAppNav";
 import React, { useState, useEffect, useRef } from "react";
 import image from "../assets/landingImg4.JPG";
-import { FaThumbsUp } from "react-icons/fa6";
-import { FaThumbsDown } from "react-icons/fa6";
-import { LiaChartLineSolid } from "react-icons/lia";
+import { MdThumbUpAlt } from "react-icons/md";
+import { MdThumbDownAlt } from "react-icons/md";
+import { FaRegStar } from "react-icons/fa";
+import { PiHorseBold } from "react-icons/pi";
+import UserProfileNav from "@/components/UserProfileNav";
 
 const UserProfile = () => {
   const [isProfileEdit, setIsProfileEdit] = useState(false);
@@ -36,136 +38,129 @@ const UserProfile = () => {
   return (
     <>
       <MarketTopNav />
-      <div className="pt-[70px] flex flex-col  bg-black">
-        <div className=" lg:p-[2%] p-[3%] lg:pt-[30px] pt-[20px] flex lg:flex-row flex-col gap-[20px] lg:items-center bg-tradeAsh">
-          <div className="flex-1 flex items-center gap-[15px] rounded-[8px]">
-            <div className="rounded-full border-tradeAshExtraLight">
-              <img
-                className=" lg:w-[180px] sm:w-[150px] w-[120px] rounded-full"
-                src={image}
-                alt=""
-              />
-            </div>
-            <div>
-              <div className="flex items-center gap-[10px]">
-                <p className="text-[14px] font-[400]">
-                  <small className=" lg:text-[14px] sm:text-[13px] text-[12px] font-[700] flex items-center text-tradeGreen">
-                    &#x2022; Online
-                  </small>
-                </p>
-                <p className="text-white lg:text-[14px] sm:text-[13px] text-[12px] font-[600]">
-                  #Beginner
-                </p>
-              </div>
-              <p className="text-white lg:text-[50px] sm:text-[38px] text-[28px] font-extrabold">
-                0xSanityy
-              </p>
-              <div className="flex items-center gap-[5px]">
-                <div className="flex items-center gap-[5px]">
-                  <p className="lg:text-[14px] sm:text-[13px] text-[12px] font-[600] text-tradeFadeWhite">
-                    Location :
-                  </p>
-                  <p className="lg:text-[14px] sm:text-[13px] text-[12px] font-[600] text-white">
-                    Nigeria
-                  </p>
-                </div>
-                <div className=" sm:flex hidden gap-[5px]">
-                  <p className="lg:text-[14px] sm:text-[13px] text-[12px] font-[700] text-tradeFadeWhite">
-                    {" "}
-                    &#x2022;
-                  </p>
-                  <p className="lg:text-[14px] sm:text-[13px] text-[12px] font-[600] text-tradeFadeWhite">
-                    Joined{" "}
-                    <small className="lg:text-[14px] sm:text-[13px] text-[12px] text-white font-[600]">
-                      3 weeks
-                    </small>{" "}
-                    ago
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex-1 grid grid-cols-3 gap-[20px] bg-tradeAshLight rounded-[8px] p-[10px]">
-            <div className=" flex flex-col gap-[3px]">
-              <p className="md:text-[12px] text-[10px] text-tradeFadeWhite font-[600]">
-                Total trades
-              </p>
+      <div className=" lg:pt-[80px] md:pt-[85px] pt-[67px] pb-[10px]  flex  bg-black gap-[15.5px] lg:px-[2%] md:px-[2.5%]">
+        <UserProfileNav />
 
-              <p className="lg:text-[17px] md:text-[16px] text-[15px]  font-[700] text-white">
-                2,335
-              </p>
-            </div>
-            <div className=" flex flex-col gap-[3px]">
-              <p className="md:text-[12px] text-[10px]  text-tradeFadeWhite font-[600]">
-                Minimum limit
-              </p>
-              <p className="lg:text-[17px] md:text-[16px] text-[15px] font-[700] text-white">
-                50 USD
-              </p>
-            </div>
-            <div className=" flex flex-col gap-[3px]">
-              <p className="md:text-[12px] text-[10px] text-tradeFadeWhite font-[600]">
-                Maximum limit
-              </p>
-              <p className="lg:text-[17px] md:text-[16px] text-[15px] font-[700] text-white">
-                1,000 USD
-              </p>
-            </div>
-            <div className=" flex flex-col gap-[3px]">
-              <p className="md:text-[12px] text-[10px] text-tradeFadeWhite font-[600]">
-                Positive feedback
-              </p>
-              <div className="flex gap-[10px] items-center">
-                <FaThumbsUp className="text-tradeGreen" />
-                <p className="lg:text-[17px] md:text-[16px] text-[15px] font-[700] text-white">
-                  &#43;455
-                </p>
-              </div>
-            </div>
-            <div className=" flex flex-col gap-[3px]">
-              <p className="md:text-[12px] text-[10px] text-tradeFadeWhite font-[600]">
-                Negative feedback
-              </p>
-              <div className="flex gap-[10px] items-center">
-                <FaThumbsDown className="text-red-500" />
-                <p className="lg:text-[17px] md:text-[16px] text-[15px] font-[700] text-white">
-                  &#43;0
-                </p>
-              </div>
-            </div>
-            <div className=" flex flex-col gap-[3px]">
-              <p className="md:text-[12px] text-[10px] text-tradeFadeWhite font-[600]">
-                Trust score
-              </p>
-              <div className="flex gap-[10px] items-center">
-                <LiaChartLineSolid className="text-tradeGreen text-[20px]" />
-                <p className="lg:text-[17px] md:text-[16px] text-[15px] font-[700] text-white">
-                  57&#37;
-                </p>
-              </div>
-            </div>
+        <div className="flex-1 flex flex-col min-h-screen max-h-max md:border border-neutral-800 md:rounded-[14px]">
+          <div className="flex flex-col justify-between p-[15px] border-b border-neutral-800">
+            <p className="text-[18px] text-white font-[700]">Your Info </p>
           </div>
-        </div>
-        <div className="lg:py-[40px] md:py-[30px] py-[20px] flex flex-col lg:px-[205px] md:px-[80px] gap-[10px] ">
-          <div className="flex flex-col lg:p-[2%] p-[3%] gap-[50px]">
-            <div className="flex flex-col gap-[10px]">
+
+          <div className="flex flex-col">
+            <div className="flex md:flex-row flex-col justify-between gap-[15px] md:items-center p-[15px]">
+              <div className=" flex items-center gap-[20px] rounded-[8px]">
+                <div className=" lg:w-[120px] sm:w-[150px] w-[100px] ">
+                  <img className="rounded-full" src={image} alt="" />
+                </div>
+
+                <div className="flex flex-col gap-[3px] ">
+                  <p className="text-white lg:text-[28px] sm:text-[38px] text-[25px] font-extrabold">
+                    0xSanityy
+                  </p>
+
+                  <div className="flex gap-[10px]">
+                    <div className="flex gap-[3px] items-center">
+                      <p className="text-white lg:text-[13px] sm:text-[13px] text-[13px] font-[600]">
+                        #TopTrader
+                      </p>
+                      <PiHorseBold className="text-tradeOrange" />
+                    </div>
+                    <p className="text-tradeGreen lg:text-[13px] sm:text-[13px] text-[13px] font-[600]">
+                      Online
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-[3px]">
+                    <div className="flex items-center gap-[5px]">
+                      <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[600] text-white">
+                        Nigeria
+                      </p>
+                    </div>
+                    <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[700] text-tradeFadeWhite">
+                      &#x2022;
+                    </p>
+                    <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[600] text-tradeFadeWhite">
+                      Joined 3 weeks ago
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-[10px]">
+                <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
+                  <div className="flex gap-[5px] items-center">
+                    <MdThumbUpAlt className="text-[15px] text-tradeGreen" />
+                    <p className=" text-[12px] font-[600] text-white">
+                      Positive Feedback
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-[5px]">
+                    <p className="text-white text-[15.5px] font-[600]">
+                      &#43;0
+                    </p>
+                  </div>
+                </div>
+                <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
+                  <div className="flex gap-[5px] items-center">
+                    <MdThumbDownAlt className="text-[15px] text-red-500" />
+                    <p className=" text-[12px] font-[600] text-white">
+                      Negative Feedback
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-[5px]">
+                    <p className="text-white text-[15.5px] font-[600]">
+                      &#43;0
+                    </p>
+                  </div>
+                </div>
+                <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
+                  <div className="flex gap-[5px] items-center">
+                    <FaRegStar className="text-tradeOrange text-[12px]" />
+                    <p className=" text-[12px] font-[600] text-white">
+                      Trust score
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-[5px]">
+                    <p className="text-white text-[15.5px] font-[600]">
+                      {" "}
+                      57&#37;
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col p-[15px] gap-[20px]">
               <div className="flex items-center justify-between">
-                <p className="text-[20px] font-[700] text-white">
+                <p className="text-[16px] font-[700] text-white">
                   Profile details
                 </p>
+
+                <div className="flex justify-end">
+                  <p
+                    onClick={() => setIsProfileEdit((prev) => !prev)}
+                    className={`${
+                      isProfileEdit
+                        ? "text-black bg-tradeGreen border-tradeAshExtraLight"
+                        : "text-neutral-500 bg-transparent border-neutral-800"
+                    } text-[14px] font-[600] md:flex hidden justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
+                  >
+                    {isProfileEdit ? "Save Changes" : "Edit Profile"}
+                  </p>
+                </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 lg:gap-[30px] gap-[20px] p-[10px] border border-tradeAshLight rounded-[5px]">
+              <div className="flex flex-col  gap-[20px]  borde border-tradeAshLight rounded-[5px]">
                 <div className="flex-1 flex flex-col gap-[5px]">
-                  <p className="text-[13.5px] text-tradeFadeWhite font-[700]">
+                  <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
                     Full name
                   </p>
                   <input
                     ref={profileRef}
-                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px] bg-tradeAshLight rounded-[5px] border border-neutral-700 outline-none transition-all duration-300 ${
+                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px] rounded-[8px] border border-neutral-700 outline-none transition-all duration-300 ${
                       isProfileEdit
-                        ? "cursor-text border-tradeGreen"
-                        : "cursor-default"
+                        ? "cursor-text border-tradeAshExtraLight bg-black"
+                        : "cursor-default bg-tradeAsh "
                     }`}
                     type="text"
                     readOnly={!isProfileEdit}
@@ -173,14 +168,14 @@ const UserProfile = () => {
                 </div>
 
                 <div className="flex-1 flex flex-col gap-[5px]">
-                  <p className="text-[13.5px] text-tradeFadeWhite font-[700]">
+                  <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
                     Username
                   </p>
                   <input
-                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px] bg-tradeAshLight rounded-[5px] border border-neutral-700 outline-none transition-all duration-300 ${
+                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px]  rounded-[8px] border border-neutral-700 outline-none transition-all duration-300 ${
                       isProfileEdit
-                        ? "cursor-text border-tradeGreen"
-                        : "cursor-default"
+                        ? "cursor-text border-tradeAshExtraLight bg-black"
+                        : "cursor-default bg-tradeAsh "
                     }`}
                     type="text"
                     readOnly={!isProfileEdit}
@@ -188,14 +183,14 @@ const UserProfile = () => {
                 </div>
 
                 <div className="flex-1 flex flex-col gap-[5px]">
-                  <p className="text-[13.5px] text-tradeFadeWhite font-[700]">
+                  <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
                     Email address
                   </p>
                   <input
-                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px] bg-tradeAshLight rounded-[5px] border border-neutral-700 outline-none transition-all duration-300 ${
+                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px]  rounded-[8px] border border-neutral-700 outline-none transition-all duration-300 ${
                       isProfileEdit
-                        ? "cursor-text border-tradeGreen"
-                        : "cursor-default"
+                        ? "cursor-text border-tradeAshExtraLight bg-black"
+                        : "cursor-default bg-tradeAsh "
                     }`}
                     type="text"
                     readOnly={!isProfileEdit}
@@ -203,182 +198,19 @@ const UserProfile = () => {
                 </div>
 
                 <div className="flex-1 flex flex-col gap-[5px]">
-                  <p className="text-[13.5px] text-tradeFadeWhite font-[700]">
+                  <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
                     Phone number
                   </p>
                   <input
-                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px] bg-tradeAshLight rounded-[5px] border border-neutral-700 outline-none transition-all duration-300 ${
+                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px]  rounded-[8px] border border-neutral-700 outline-none transition-all duration-300 ${
                       isProfileEdit
-                        ? "cursor-text border-tradeGreen"
-                        : "cursor-default"
+                        ? "cursor-text border-tradeAshExtraLight bg-black"
+                        : "cursor-default bg-tradeAsh "
                     }`}
                     type="text"
                     readOnly={!isProfileEdit}
                   />
                 </div>
-              </div>
-
-              <div className="flex justify-end">
-                {isProfileEdit ? (
-                  <p
-                    onClick={() => setIsProfileEdit(false)}
-                    className="border border-white bg-white active:border-tradeAshLight rounded-[3px] w-max px-[18px] py-[5px] text-black text-[14px] font-[700] cursor-pointer transition-all duration-300"
-                  >
-                    Save
-                  </p>
-                ) : (
-                  <p
-                    onClick={() => setIsProfileEdit(true)}
-                    className="border border-tradeAshLight hover:border-white active:border-tradeAshLight rounded-[3px] w-max px-[18px] py-[5px] text-white text-[14px] font-[700] cursor-pointer transition-all duration-300"
-                  >
-                    Edit
-                  </p>
-                )}
-              </div>
-            </div>
-            <div className="flex flex-col gap-[10px]">
-              <div className="flex items-center justify-between">
-                <p className="text-[20px] font-[700] text-white">
-                  Bank Accounts
-                </p>
-              </div>
-
-              <div className="grid sm:grid-cols-2 lg:gap-[30px] gap-[20px] p-[10px] border border-tradeAshLight rounded-[5px]">
-                <div className="flex-1 flex flex-col gap-[5px]">
-                  <p className="text-[13.5px] text-tradeFadeWhite font-[700]">
-                    Currency
-                  </p>
-                  <input
-                    ref={bankAccountRef}
-                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px] bg-tradeAshLight rounded-[5px] border border-neutral-700 outline-none transition-all duration-300 ${
-                      isBankAccountEdit
-                        ? "cursor-text border-tradeGreen"
-                        : "cursor-default"
-                    }`}
-                    type="text"
-                    readOnly={!isBankAccountEdit}
-                  />
-                </div>
-
-                <div className="flex-1 flex flex-col gap-[5px]">
-                  <p className="text-[13.5px] text-tradeFadeWhite font-[700]">
-                    Bank name
-                  </p>
-                  <input
-                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px] bg-tradeAshLight rounded-[5px] border border-neutral-700 outline-none transition-all duration-300 ${
-                      isBankAccountEdit
-                        ? "cursor-text border-tradeGreen"
-                        : "cursor-default"
-                    }`}
-                    type="text"
-                    readOnly={!isBankAccountEdit}
-                  />
-                </div>
-
-                <div className="flex-1 flex flex-col gap-[5px]">
-                  <p className="text-[13.5px] text-tradeFadeWhite font-[700]">
-                    Account holder's name
-                  </p>
-                  <input
-                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px] bg-tradeAshLight rounded-[5px] border border-neutral-700 outline-none transition-all duration-300 ${
-                      isBankAccountEdit
-                        ? "cursor-text border-tradeGreen"
-                        : "cursor-default"
-                    }`}
-                    type="text"
-                    readOnly={!isBankAccountEdit}
-                  />
-                </div>
-
-                <div className="flex-1 flex flex-col gap-[5px]">
-                  <p className="text-[13.5px] text-tradeFadeWhite font-[700]">
-                    Account number
-                  </p>
-                  <input
-                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px] bg-tradeAshLight rounded-[5px] border border-neutral-700 outline-none transition-all duration-300 ${
-                      isBankAccountEdit
-                        ? "cursor-text border-tradeGreen"
-                        : "cursor-default"
-                    }`}
-                    type="text"
-                    readOnly={!isBankAccountEdit}
-                  />
-                </div>
-              </div>
-
-              <div className="flex justify-end">
-                {isBankAccountEdit ? (
-                  <p
-                    onClick={() => setIsBankAccountEdit(false)}
-                    className="border border-white bg-white active:border-tradeAshLight rounded-[3px] w-max px-[18px] py-[5px] text-black text-[14px] font-[700] cursor-pointer transition-all duration-300"
-                  >
-                    Save
-                  </p>
-                ) : (
-                  <p
-                    onClick={() => setIsBankAccountEdit(true)}
-                    className="border border-tradeAshLight hover:border-white active:border-tradeAshLight rounded-[3px] w-max px-[18px] py-[5px] text-white text-[14px] font-[700] cursor-pointer transition-all duration-300"
-                  >
-                    Edit
-                  </p>
-                )}
-              </div>
-            </div>
-            <div className="flex flex-col gap-[10px]">
-              <div className="flex items-center justify-between">
-                <p className="text-[20px] font-[700] text-white">
-                  Online Wallets
-                </p>
-              </div>
-
-              <div className="grid sm:grid-cols-2 lg:gap-[30px] gap-[20px] p-[10px] border border-tradeAshLight rounded-[5px]">
-                <div className="flex-1 flex flex-col gap-[5px]">
-                  <p className="text-[13.5px] text-tradeFadeWhite font-[700]">
-                    Wallet name
-                  </p>
-                  <input
-                    ref={walletRef}
-                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px] bg-tradeAshLight rounded-[5px] border border-neutral-700 outline-none transition-all duration-300 ${
-                      isOnlineWalletEdit
-                        ? "cursor-text border-tradeGreen"
-                        : "cursor-default"
-                    }`}
-                    type="text"
-                    readOnly={!isOnlineWalletEdit}
-                  />
-                </div>
-
-                <div className="flex-1 flex flex-col gap-[5px]">
-                  <p className="text-[13.5px] text-tradeFadeWhite font-[700]">
-                    Wallet address
-                  </p>
-                  <input
-                    className={`h-[40px] px-[10px] py-[4px] text-white font-[600] text-[15px] bg-tradeAshLight rounded-[5px] border border-neutral-700 outline-none transition-all duration-300 ${
-                      isOnlineWalletEdit
-                        ? "cursor-text border-tradeGreen"
-                        : "cursor-default"
-                    }`}
-                    type="text"
-                    readOnly={!isOnlineWalletEdit}
-                  />
-                </div>
-              </div>
-              <div className="flex justify-end">
-                {isOnlineWalletEdit ? (
-                  <p
-                    onClick={() => setIsOnlineWalletEdit(false)}
-                    className="border border-white bg-white active:border-tradeAshLight rounded-[3px] w-max px-[18px] py-[5px] text-black text-[14px] font-[700] cursor-pointer transition-all duration-300"
-                  >
-                    Save
-                  </p>
-                ) : (
-                  <p
-                    onClick={() => setIsOnlineWalletEdit(true)}
-                    className="border border-tradeAshLight hover:border-white active:border-tradeAshLight rounded-[3px] w-max px-[18px] py-[5px] text-white text-[14px] font-[700] cursor-pointer transition-all duration-300"
-                  >
-                    Edit
-                  </p>
-                )}
               </div>
             </div>
           </div>

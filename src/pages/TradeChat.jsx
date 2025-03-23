@@ -12,13 +12,13 @@ import { MdOutlineStickyNote2 } from "react-icons/md";
 const TradeChat = () => {
   return (
     <>
-      {/* <InAppNav /> */}
-      <div className="flex lg:flex-row flex-col lg:gap-[15px] bg-black h-screen ">
-        {/* <DashSideNav /> */}
-        {/* <div className=" lg:hidden h-[67px] md:h-[56px]">
+      <InAppNav />
+      <div className="flex lg:flex-row flex-col lg:gap-[15px] bg-black h-screen lg:p-[2%] md:p-[2.5%] lg:pt-[80px]">
+        <DashSideNav />
+        <div className=" lg:hidden h-[67px] md:h-[56px]">
           <p className=" opacity-0">hell</p>
-        </div> */}
-        {/* <div className="flex-1 flex flex-col md:border border-tradeAshLight md:rounded-[10px]">
+        </div>
+        <div className="flex-1 flex flex-col md:border border-tradeAshLight md:rounded-[14px]">
           <div className="flex justify-between items-center gap-[10px] p-[15px] border-b border-tradeAshLight">
             <div className="flex items-center gap-[10px]">
               <div className="relative w-[35px]">
@@ -60,7 +60,7 @@ const TradeChat = () => {
               <TbBrandTelegram />
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );

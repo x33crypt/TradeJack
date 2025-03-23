@@ -44,17 +44,17 @@ const MarketMain = ({
   setClearFilter,
 }) => {
   return (
-    <div className="flex flex-col min-h-screen md:border border-neutral-800 md:rounded-[10px]">
-      <div className="flex flex-col justify-between p-[15px] border-b border-neutral-800 ">
+    <div className="flex flex-col gap-[1px] min-h-screen md:border border-neutral-800 md:rounded-[14px]">
+      <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
         <p className="text-[18px] text-white font-[700]">
           Seamless Asset Trading
         </p>
       </div>
 
-      <div className="flex flex-col  gap-[10px] px-[15px] pb-[15px]">
-        <div className="z-10 gap-[10px] sticky md:top-[68px] top-[65px]  py-[15px] bg-black  flex flex-col ">
+      <div className="flex flex-col gap-[10px] px-[15px] pb-[15px]">
+        <div className="z-10 gap-[10px] sticky md:top-[68px] top-[65px] py-[15px] flex flex-col bg-black ">
           <div className="flex justify-between w-full ">
-            <div className="max-w-max flex items-center gap-[5px] bg-transparent borde border-neutral-800 rounded-[6.5px]">
+            <div className="max-w-max flex items-center gap-[5px] bg-transparent">
               <p
                 onClick={() => (
                   setIsAllOffer(true),
@@ -89,12 +89,12 @@ const MarketMain = ({
                 onClick={() => setIsOfferSortBy((prev) => !prev)}
                 className={`${
                   isOfferSortBy
-                    ? "text-white bg-tradeAsh border-tradeAshExtraLight"
+                    ? "text-black bg-tradeGreen border-tradeGreen font-[600]"
                     : "text-neutral-500 bg-transparent border-neutral-800"
-                } md:flex hidden justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
+                } md:flex font-[600] hidden justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
               >
                 <LuSettings2 className="text-[17px]" />
-                <p className=" text-[14px] font-[500]">Sort by</p>
+                <p className=" text-[14px] font-[500]">Explore</p>
               </div>
               <div
                 onClick={() => setIsOfferFilter((prev) => !prev)}
@@ -147,7 +147,7 @@ const MarketMain = ({
           />
         </div>
 
-        <div className="flex flex-col gap-[15px]  rounded-[12px]">
+        <div className="flex flex-col gap-[15px] rounded-[12px]">
           <div className="flex flex-col gap-[15px]">
             <div className=" sticky md:top-[128px] top-[125px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
@@ -179,13 +179,6 @@ const MarketMain = ({
                       currency={offer.currency}
                       avgTradeTime={offer.avgTradeTime}
                     />
-                    {/* <div
-                      className={`${
-                        index < promotedOffers.length - 1
-                          ? "border-tradeAshLight"
-                          : "border-transparent"
-                      } border-b`}
-                    ></div> */}
                   </div>
                 ))}
               </div>
@@ -197,7 +190,7 @@ const MarketMain = ({
                 Other Offers
               </p>
             </div>
-            <div className="flex flex-col gap-[15px]">
+            <div className="flex flex-col gap-[20px]">
               <div className=" md:flex hidden bg-tradeAshLight px-[12px] py-[4px] rounded-[px]">
                 <p className="flex-1 text-neutral-400 text-[14px] font-[500]">
                   Vendor
@@ -226,13 +219,6 @@ const MarketMain = ({
                       currency={offer.currency}
                       avgTradeTime={offer.avgTradeTime}
                     />
-                    {/* <div
-                      className={`${
-                        index < unPromotedOffers.length - 1
-                          ? "border-tradeAshLight"
-                          : "border-transparent"
-                      } border-b`}
-                    ></div> */}
                   </div>
                 ))}
               </div>

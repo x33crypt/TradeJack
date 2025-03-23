@@ -30,11 +30,12 @@ const DashMain = () => {
               </small>
             </p>
           </div>
+
           <div className="flex-1 flex flex-col gap-[20px]">
             <div className="flex gap-[15px]">
-              <div className="flex-1 flex flex-col h-[100px] justify-between p-[10px] gap-[5px] rounded-[12px] border border-tradeGreen bg-tradeGreen">
+              <div className="flex-1 flex flex-col h-[100px] justify-between p-[10px] gap-[5px] rounded-[14px] border border-tradeGreen bg-tradeGreen">
                 <div className="flex justify-between">
-                  <p className="text-black text-[12px] font-[600]">
+                  <p className="text-black text-[13px] font-[600]">
                     Available Balance
                   </p>
                   <FaEye className="text-[18px] cursor-pointer" />
@@ -48,10 +49,10 @@ const DashMain = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex-1 flex flex-col  h-[100px] justify-between p-[10px] gap-[5px] rounded-[12px] bg-tradeAsh border border-tradeAshExtraLight">
+              <div className="flex-1 flex flex-col  h-[100px] justify-between p-[10px] gap-[5px] rounded-[14px] bg-tradeAsh border border-tradeAshExtraLight">
                 <div className="flex justify-between">
                   <div className="flex gap-[5px] items-center text-white">
-                    <p className=" text-[12px] font-[600]">Escrow Wallet</p>
+                    <p className=" text-[13px] font-[600]">Escrow Wallet</p>
                     <FaRegQuestionCircle className="text-[14px] text-tradeFadeWhite" />
                   </div>
                   <FaEye className="text-[18px] text-white cursor-pointer" />
@@ -67,16 +68,16 @@ const DashMain = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-[5px]  border-tradeAshExtraLight bg-tradeAshLight p-[5px] rounded-[12px]">
+            <div className="flex flex-col gap-[5px]  border-tradeAshExtraLight bg-tradeAshLight p-[5px] rounded-[14px]">
               <div className="flex w-full gap-[5px]">
-                <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[12px] cursor-pointer hover:bg-tradeAsh transition-all duration-300">
+                <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[14px] cursor-pointer hover:bg-tradeAsh transition-all duration-300">
                   <div className="text-[25px] text-white p-[10px] rounded-[12px] bg-tradeAshLight">
                     <LuPlus />
                   </div>
 
                   <p className="text-[15px] text-white font-[500]">Deposit</p>
                 </div>
-                <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[12px] cursor-pointer hover:bg-tradeAsh transition-all duration-300">
+                <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[14px] cursor-pointer hover:bg-tradeAsh transition-all duration-300">
                   <div className="text-[25px] text-white p-[10px] rounded-[12px] bg-tradeAshLight">
                     <HiArrowNarrowUp />
                   </div>
@@ -84,7 +85,7 @@ const DashMain = () => {
                   <p className="text-[15px] text-white font-[500]">Withdraw</p>
                 </div>
               </div>
-              <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[12px] cursor-pointer hover:bg-tradeAsh transition-all duration-300">
+              <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[14px] cursor-pointer hover:bg-tradeAsh transition-all duration-300">
                 <div className="text-[25px] text-white p-[10px] rounded-[12px] bg-tradeOrange">
                   <CgArrowsExchangeAltV />
                 </div>
@@ -107,14 +108,14 @@ const DashMain = () => {
               </div>
             </div>
 
-            <div className="h-[100px] p-[10px] rounded-[12px] bg-white ">
+            <div className="h-[120px] p-[10px] rounded-[16px] bg-white ">
               <p className="text-[12px]">
                 Successfully trade 5 more deal and earn our turbo status{" "}
               </p>
             </div>
 
             <div className=" flex lg:grid grid-cols-2 gap-[10px] rounded-[16px]">
-              <div className="flex flex-1 flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[12px] cursor-pointer hover:bg-tradeAshLight transition-all duration-300">
+              <div className="flex flex-1 flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[14px] cursor-pointer hover:bg-tradeAshLight transition-all duration-300">
                 <div className="flex gap-[5px]">
                   <RiProgress3Line className="text-tradeFadeWhite" />
                   <p className=" text-[12px] font-[600] text-white">
@@ -126,7 +127,7 @@ const DashMain = () => {
                   <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
                 </div>
               </div>
-              <div className="flex flex-1 flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[12px] cursor-pointer hover:bg-tradeAshLight transition-all duration-300">
+              <div className="flex flex-1 flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[14px] cursor-pointer hover:bg-tradeAshLight transition-all duration-300">
                 <div className="flex gap-[5px]">
                   <MdOutlinePending className="text-tradeFadeWhite" />
                   <p className=" text-[12px] font-[600] text-white">
@@ -138,7 +139,7 @@ const DashMain = () => {
                   <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
                 </div>
               </div>
-              <div className="flex flex-1 flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[12px] cursor-pointer hover:bg-tradeAshLight transition-all duration-300">
+              <div className="flex flex-1 flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[14px] cursor-pointer hover:bg-tradeAshLight transition-all duration-300">
                 <div className="flex gap-[5px]">
                   <GrStatusGood className="text-tradeFadeWhite" />
                   <p className=" text-[12px] font-[600] text-white">
@@ -150,7 +151,7 @@ const DashMain = () => {
                   <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
                 </div>
               </div>
-              <div className="flex flex-1 flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[12px] cursor-pointer hover:bg-tradeAshLight transition-all duration-300">
+              <div className="flex flex-1 flex-col border border-tradeAshExtraLight bg-tradeAsh gap-[10px] p-[10px] rounded-[14px] cursor-pointer hover:bg-tradeAshLight transition-all duration-300">
                 <div className="flex gap-[5px]">
                   <IoExtensionPuzzleOutline className="text-tradeFadeWhite" />
                   <p className=" text-[12px] font-[600] text-white">
@@ -166,7 +167,7 @@ const DashMain = () => {
             </div>
 
             <div>
-              <div className="flex justify-between items-baseline bg-tradeAshLight p-[10px] rounded-t-[12px]">
+              <div className="flex justify-between items-baseline bg-tradeAshLight p-[10px] rounded-t-[14px]">
                 <p className="text-white font-[600] text-[18px]">
                   Transaction history
                 </p>
@@ -197,6 +198,7 @@ const DashMain = () => {
                   <MdKeyboardArrowDown className="text-[22px]" />
                 </div>
               </div>
+
               <div className="flex flex-col gap-[2px]">
                 <div className="px-[10px] py-[10px] flex bg-tradeAshLight cursor-pointer hover:bg-tradeAsh transition-all duration-300">
                   <div className="flex-1 text-white font-[500]  text-[14px]  ">

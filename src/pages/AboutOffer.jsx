@@ -234,9 +234,9 @@ const AboutOffer = () => {
     <>
       <MarketTopNav />
 
-      <div className=" md:pt-[80px] pt-[67px] pb-[30px] flex flex-col bg-black gap-[15.5px] md:p-[2.5%]">
+      <div className=" lg:pt-[80px] md:pt-[85px] pt-[67px]  pb-[30px] flex flex-col bg-black gap-[15.5px] lg:p-[2%] md:p-[2.5%]">
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-[0.8%]">
-          <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight md:rounded-[10px]">
+          <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight md:rounded-[14px]">
             <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
               <p className=" text-[18px] text-white font-[700] cursor-pointer">
                 Offer Details
@@ -447,7 +447,7 @@ const AboutOffer = () => {
         </div>
 
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-[0.8%]">
-          <div className="lg:w-[500px] flex flex-col md:border border-y border-neutral-800 md:rounded-[12.5px]">
+          <div className="lg:w-[500px] flex flex-col md:border border-y border-neutral-800 md:rounded-[14px]">
             <div className="flex items-center justify-between  p-[15px] md:border-b md:border-t-0 border-b border-neutral-800 ">
               <p className="text-[18px] text-white font-[700] cursor-pointer">
                 Offer Statistics
@@ -455,7 +455,7 @@ const AboutOffer = () => {
             </div>
             <div className="flex items-center justify-between p-[20px] "></div>
           </div>
-          <div className="flex-1 flex flex-col md:border border-y border-neutral-800 md:rounded-[12.5px]">
+          <div className="flex-1 flex flex-col md:border border-y border-neutral-800 md:rounded-[14px]">
             <div className="flex items-center justify-between  p-[15px] md:border-b md:border-t-0 border-b border-neutral-800 ">
               <p className="text-[18px] text-white font-[700] cursor-pointer">
                 Feedback on this Offer
