@@ -132,14 +132,14 @@ const Account = () => {
     <>
       <InAppNav />
 
-      <div className="lg:pt-[80px] md:pt-[85px] pt-[80px] pb-[10px] bg-black flex p-[15px]  max-h-max gap-[30px] flex-col">
+      <div className="lg:pt-[80px] md:pt-[85px] pt-[80px] pb-[10px] bg-black flex p-[15px]  max-h-screen gap-[30px] flex-col">
         <div className="flex items-center gap-[15px]">
-          <div className=" lg:w-[60px] sm:w-[150px] w-[100px] ">
+          <div className=" lg:w-[60px] sm:w-[150px] w-[80px] ">
             <img className="rounded-full" src={image} alt="" />
           </div>
 
           <div>
-            <p className="text-white lg:text-[18px] sm:text-[38px] text-[25px] font-extrabold">
+            <p className="text-white lg:text-[18px] sm:text-[38px] text-[22px] font-extrabold">
               0xSanityy
             </p>
             <p className="text-tradeFadeWhite text-[12px] font-[500]">
@@ -164,12 +164,12 @@ const Account = () => {
               activePage?.yourInfo
                 ? "bg-tradeGreen text-black hover:text-black"
                 : "text-tradeFadeWhite hover:text-white"
-            } p-[7px] flex items-center gap-[10px] rounded-[7px]  transition-all duration-300 cursor-pointer`}
+            } p-[10px] flex items-center gap-[10px] rounded-[12px]  transition-all duration-300 cursor-pointer`}
           >
             <div className="text-[17px]">
               <CgProfile />
             </div>
-            <p className="text-[14px] font-[500]">Your Info</p>
+            <p className="text-[16px] font-[500]">Your Info</p>
           </div>
           <div
             onClick={() => handleIsDeposit()}
@@ -177,12 +177,12 @@ const Account = () => {
               activePage?.deposit
                 ? "bg-tradeGreen text-black hover:text-black"
                 : "text-tradeFadeWhite hover:text-white"
-            } p-[7px] flex items-center gap-[10px] rounded-[7px]    transition-all duration-300 cursor-pointer`}
+            } p-[10px] flex items-center gap-[10px] rounded-[12px]    transition-all duration-300 cursor-pointer`}
           >
             <div className="text-[17px]">
               <PiHandDepositBold />
             </div>
-            <p className="text-[14px] font-[500]">Deposit & Withdraw</p>
+            <p className="text-[16px] font-[500]">Deposit & Withdraw</p>
           </div>
           <div
             onClick={() => handleIsSecurity()}
@@ -190,12 +190,12 @@ const Account = () => {
               activePage?.security
                 ? "bg-tradeGreen text-black hover:text-black"
                 : "text-tradeFadeWhite hover:text-white"
-            } p-[7px] flex items-center gap-[10px] rounded-[7px]    transition-all duration-300 cursor-pointer`}
+            } p-[10px] flex items-center gap-[10px] rounded-[12px]    transition-all duration-300 cursor-pointer`}
           >
             <div className="text-[17px]">
               <MdOutlineSecurity />
             </div>
-            <p className="text-[14px] font-[500]">Security & Privacy</p>
+            <p className="text-[16px] font-[500]">Security & Privacy</p>
           </div>
           <div
             onClick={() => handleIsSubscription()}
@@ -203,12 +203,12 @@ const Account = () => {
               activePage?.subscription
                 ? "bg-tradeGreen text-black hover:text-black"
                 : "text-tradeFadeWhite hover:text-white"
-            } p-[7px] flex items-center gap-[10px] rounded-[7px]   transition-all duration-300 cursor-pointer`}
+            } p-[10px] flex items-center gap-[10px] rounded-[12px]   transition-all duration-300 cursor-pointer`}
           >
             <div className="text-[17px]">
               <TbAlignBoxRightTop />
             </div>
-            <p className="text-[14px] font-[500]">Subscriptions</p>
+            <p className="text-[16px] font-[500]">Subscriptions</p>
           </div>
           <div
             onClick={() => handleIsHelp()}
@@ -216,12 +216,12 @@ const Account = () => {
               activePage?.help
                 ? "bg-tradeGreen text-black hover:text-black"
                 : "text-tradeFadeWhite hover:text-white"
-            } p-[7px] flex items-center gap-[10px] rounded-[7px]   transition-all duration-300 cursor-pointer`}
+            } p-[10px] flex items-center gap-[10px] rounded-[12px]   transition-all duration-300 cursor-pointer`}
           >
             <div className="text-[17px]">
               <BiSupport />
             </div>
-            <p className="text-[14px] font-[500]">Help & Support</p>
+            <p className="text-[16px] font-[500]">Help & Support</p>
           </div>
           <div
             onClick={() => handleIsLogout()}
@@ -229,12 +229,12 @@ const Account = () => {
               activePage?.logout
                 ? "bg-tradeGreen text-black hover:text-black"
                 : "text-tradeFadeWhite hover:text-white"
-            } p-[7px] flex items-center gap-[10px] rounded-[7px]  transition-all duration-300 cursor-pointer`}
+            } p-[10px] flex items-center gap-[10px] rounded-[12px]  transition-all duration-300 cursor-pointer`}
           >
             <div className="text-[17px]">
               <MdLogin />
             </div>
-            <p className="text-[14px] font-[500]">Logout</p>
+            <p className="text-[16px] font-[500]">Logout</p>
           </div>
         </div>
       </div>
