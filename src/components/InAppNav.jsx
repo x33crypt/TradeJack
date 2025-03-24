@@ -139,14 +139,8 @@ const InAppNav = () => {
             <FaRegBell className="text-white hover:text-tradeGreen sm:text-[23px] text-[22px] transition-all duration-300" />
           </div>
           <div
-            className="hidden md:flex cursor-pointer lg:w-[34px] sm:w-[30px] w-[34px]"
+            className="cursor-pointer lg:w-[34px] sm:w-[30px] w-[34px]"
             onClick={() => navigateTo("/account/profile")}
-          >
-            <img className=" rounded-full" src={landingImg4} alt="" />
-          </div>
-          <div
-            className="flex md:hidden cursor-pointer lg:w-[34px] sm:w-[30px] w-[34px]"
-            onClick={() => navigateTo("/account")}
           >
             <img className=" rounded-full" src={landingImg4} alt="" />
           </div>

@@ -18,7 +18,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/account" element={<Account />} />
         <Route path="/account/profile" element={<UserProfile />} />
         <Route
           path="/account/deposit&withdraw"
