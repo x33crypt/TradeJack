@@ -45,7 +45,7 @@ const UserProfile = () => {
   return (
     <>
       <MarketTopNav />
-      <div className=" lg:flex hidden lg:pt-[80px] md:pt-[85px] pt-[67px] pb-[10px]    bg-black gap-[15.5px] lg:px-[2%] md:px-[2.5%]">
+      <div className=" lg:flex hidden lg:pt-[80px] md:pt-[85px] pt-[67px] pb-[10px]  bg-black gap-[15.5px] lg:px-[2%] md:px-[2.5%]">
         <UserProfileNav />
         <div className="flex-1 flex flex-col min-h-screen max-h-max md:border border-neutral-800 md:rounded-[14px]">
           <div className="flex flex-col justify-between p-[15px] border-b border-neutral-800">
@@ -235,12 +235,8 @@ const UserProfile = () => {
         </div>
       </div>
 
-      <div className="flex lg:hidden lg:pt-[80px] md:pt-[85px] pt-[67px] pb-[80px]  bg-black   md:p-[15px]  gap-[30px] flex-col">
-        <div className="flex-1 flex flex-col min-h-screen max-h-max md:border border-neutral-800 md:rounded-[14px]">
-          <div className="flex flex-col justify-between p-[15px] border-b border-neutral-800">
-            <p className="text-[18px] text-white font-[700]">Account </p>
-          </div>
-
+      <div className="flex lg:hidden lg:pt-[80px] md:pt-[85px] pt-[67px] pb-[50px] bg-black  md:p-[15px] gap-[30px] flex-col">
+        <div className="flex-1 flex flex-col max-h-max md:border border-neutral-800 md:rounded-[14px]">
           <div className="flex flex-col gap-[30px] p-[15px]">
             <div className="flex flex-col sm:flex-row gap-[30px] sm:justify-between sm:items-center">
               <div className="flex items-center gap-[15px]">
