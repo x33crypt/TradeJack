@@ -244,7 +244,7 @@ const UserProfile = () => {
                   <img className="rounded-full" src={image} alt="" />
                 </div>
 
-                <div className="flex flex-col gap-[1px]">
+                <div className="flex flex-col gap-[3px]">
                   <p className="text-white lg:text-[40px] sm:text-[38px] text-[22px] font-extrabold">
                     0xSanityy
                   </p>
