@@ -235,7 +235,7 @@ const UserProfile = () => {
         </div>
       </div>
 
-      <div className="flex lg:hidden lg:pt-[80px] md:pt-[85px] pt-[67px] pb-[50px] bg-black  md:p-[15px] gap-[30px] flex-col">
+      <div className="flex lg:hidden lg:pt-[80px] md:pt-[85px] pt-[80px] pb-[50px] bg-black  md:p-[15px] gap-[30px] flex-col">
         <div className="flex-1 flex flex-col max-h-max md:border border-neutral-800 md:rounded-[14px]">
           <div className="flex flex-col gap-[30px] p-[15px]">
             <div className="flex flex-col sm:flex-row gap-[30px] sm:justify-between sm:items-center">
