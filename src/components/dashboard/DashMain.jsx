@@ -312,7 +312,7 @@ const DashMain = () => {
                   <CgArrowsExchangeAltV />
                 </div>
                 <div className=" flex-1 flex gap-[5px] flex-col justify-between">
-                  <p className="text-[13px] text-tradeFadeWhite font-[500]">
+                  <p className="text-[12px] text-tradeFadeWhite font-[500]">
                     Maximum Purchase Limit
                   </p>
                   <div className="flex items-center gap-[10px]">
@@ -392,15 +392,17 @@ const DashMain = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-[20px] ">
-            <div className="flex justify-between items-baseline p-[5px]">
-              <p className="text-white font-[600] text-[20px]">
+          <div className="flex flex-col gap-[15px] bg-tradeAsh rounded-[16px] p-[10px] ">
+            <div className="flex justify-between  items-baseline ">
+              <p className="text-white font-[600] text-[19px]">
                 Recent Transaction
               </p>
-              <p className="text-tradeGreen font-[700] text-[13px]">View All</p>
+              <p className="text-tradeGreen font-[700] text-[12px]">View All</p>
             </div>
 
-            <div className="flex flex-col gap-[5px] p-[5px] bg-tradeAshLight rounded-[16px]">
+            {/* <div className="border-b border-black"></div> */}
+
+            <div className="flex flex-col gap-[5px] rounded-[16px]">
               <div className="flex  bg-black borde border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
                 <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
