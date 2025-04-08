@@ -70,22 +70,22 @@ const InAppNav = () => {
         <div className="flex items-center lg:gap-[30px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
-            className="md:hidden flex border border-tradeAshLight p-[5px] rounded-[6px]"
+            className="md:hidden flex border border-tradeAshLight p-[3px] rounded-[6px]"
           >
             {isNavOption ? (
-              <IoCloseSharp className="text-white text-[24px]" />
+              <IoCloseSharp className="text-white text-[22px]" />
             ) : (
-              <HiOutlineMenuAlt2 className="text-white text-[24px]" />
+              <HiOutlineMenuAlt2 className="text-white text-[22px]" />
             )}
           </div>
           <div
             onClick={() => navigateTo("/dashboard")}
             className="flex items-center justify-start gap-[5px] cursor-pointer "
           >
-            <GiCardExchange className=" flex lg:text-[19px] md:text-[21px] text-[18px] text-tradeGreen" />
-            <p className=" lg:text-[19px] md:text-[21px] text-[18px] font-[700] text-tradeGreen">
+            <GiCardExchange className=" flex lg:text-[19px] md:text-[21px] text-[19px] text-tradeGreen" />
+            <p className=" lg:text-[19px] md:text-[21px] text-[19px] font-[700] text-tradeGreen">
               Trade
-              <small className="lg:text-[19px] md:text-[21px] text-[18px] font-[700] text-white">
+              <small className="lg:text-[19px] md:text-[21px] text-[19px] font-[700] text-white">
                 Jack
               </small>
             </p>
@@ -139,7 +139,7 @@ const InAppNav = () => {
             <FaRegBell className="text-white hover:text-tradeGreen text-[22px] transition-all duration-300" />
           </div>
           <div
-            className="cursor-pointer lg:w-[32px] sm:w-[30px] w-[34px]"
+            className="cursor-pointer lg:w-[32px] sm:w-[30px] w-[32px]"
             onClick={() => navigateTo("/account/profile")}
           >
             <img className=" rounded-full" src={landingImg4} alt="" />
