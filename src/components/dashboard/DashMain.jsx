@@ -395,9 +395,9 @@ const DashMain = () => {
           <div className="flex flex-col gap-[15px] bg-tradeAshLight rounded-[16px] p-[10px] ">
             <div className="flex justify-between p-[5px]  items-baseline ">
               <p className="text-white font-[600] text-[19px]">
-                Recent Transaction
+                Transaction History
               </p>
-              <p className="text-tradeGreen font-[700] text-[12px]">View All</p>
+              <p className="text-tradeGreen font-[700] text-[13px]">View All</p>
             </div>
 
             <div className="flex flex-col gap-[5px] rounded-[16px]">
