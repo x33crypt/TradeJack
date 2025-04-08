@@ -4,7 +4,7 @@ const ExchangeCalculator = (prop) => {
   return (
     <div className="lg:w-[400px] flex flex-col justify-between  md:border  border-tradeAshLight md:rounded-[14px]">
       <div className="flex items-center gap-[10px] p-[15px] md:border-b md:border-t-0 border-y border-tradeAshLight">
-        <p className="text-[18px] text-white font-[700] cursor-pointer">
+        <p className="text-[17px] text-white font-[700] cursor-pointer">
           Exchange Calculator
         </p>
       </div>
@@ -59,11 +59,11 @@ const ExchangeCalculator = (prop) => {
 
         <div className=" flex justify-center ">
           {prop.exchangeError ? (
-            <p className="text-red-600 text-[13px] font-[500]">
+            <p className="text-red-600 text-[12px] font-[500]">
               {prop?.exchangeError}
             </p>
           ) : (
-            <p className="text-tradeFadeWhite text-[13px] font-[500] opacity-0">
+            <p className="text-tradeFadeWhite text-[12px] font-[500] opacity-0">
               Please enter an amount to trade.
             </p>
           )}

@@ -46,13 +46,13 @@ const MarketMain = ({
   return (
     <div className="flex flex-col gap-[1px] min-h-screen md:border border-neutral-800 md:rounded-[14px]">
       <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
-        <p className="text-[18px] text-white font-[700]">
+        <p className="text-[17px] text-white font-[700]">
           Seamless Asset Trading
         </p>
       </div>
 
       <div className="flex flex-col gap-[10px] px-[15px] pb-[15px]">
-        <div className="z-10 gap-[10px] sticky md:top-[68px] top-[65px] py-[15px] flex flex-col bg-black ">
+        <div className="z-10 gap-[10px] sticky top-[60px] py-[15px] flex flex-col bg-black ">
           <div className="flex justify-between w-full ">
             <div className="max-w-max flex items-center gap-[5px] bg-transparent">
               <p
@@ -149,7 +149,7 @@ const MarketMain = ({
 
         <div className="flex flex-col gap-[15px] rounded-[12px]">
           <div className="flex flex-col gap-[15px]">
-            <div className=" sticky md:top-[128px] top-[125px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
+            <div className=" sticky  top-[120px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Promoted Offers
               </p>
@@ -185,7 +185,7 @@ const MarketMain = ({
             </div>
           </div>
           <div className="flex flex-col gap-[15px]">
-            <div className="sticky md:top-[128px] top-[125px] flex bg-white px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
+            <div className="sticky top-[120px]  flex bg-white px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Other Offers
               </p>
