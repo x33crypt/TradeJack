@@ -18,7 +18,7 @@ import { RiDashboard2Line } from "react-icons/ri";
 const DashSideNav = () => {
   const navigateTo = useNavigate();
   return (
-    <div className="lg:flex hidden bg- rounded-[14px] p-[15px] border border-tradeAshLight w-[260px] max-h-max gap-[10px] flex-col">
+    <div className="lg:flex hidden rounded-[14px] p-[10px] border border-tradeAshLight w-[260px] max-h-max gap-[10px] flex-col">
       <div className="flex flex-col gap-[10px]">
         <div
           className="p-[7px] flex items-center gap-[10px] rounded-[7px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer"

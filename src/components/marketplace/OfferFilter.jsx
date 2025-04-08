@@ -447,9 +447,9 @@ const OfferFilter = ({
             onClick={() => {
               setClearFilter(true);
             }}
-            className="px-[8px] py-[2px] text-[13px] text-red-700 font-[500] rounded-[6px] bg- hover:bg-tradeAsh border border-tradeAshLight hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all"
+            className="px-[8px] py-[2px] text-[12px] text-red-700 font-[500] rounded-[6px] bg- hover:bg-tradeAsh border border-tradeAshLight hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all"
           >
-            Reset Filter
+            Clear Filter
           </p>
           <div
             onClick={() => setIsOfferFilter((prev) => !prev)}
@@ -464,7 +464,7 @@ const OfferFilter = ({
         <div className="flex flex-col justify-between ">
           <div className="bg- flex flex-col gap-[20px] p-[15px]  border-b border-tradeAshLight">
             <div>
-              <p className="text-white text-[16px] font-[700]">Service type</p>
+              <p className="text-white text-[15px] font-[700]">Service type</p>
             </div>
 
             <div
@@ -475,10 +475,10 @@ const OfferFilter = ({
                 <div
                   key={index}
                   onClick={() => handleServiceTypeChange(service)}
-                  className={`lg:px-[12px] px-[14px] lg:py-[5px] py-[6px] text-[14px]   hover:text-black font-[500] rounded-[8px] bg-tradeAsh hover:bg-tradeGreen border border-tradeAshLight hover:border-tradeGreen cursor-pointer duration-300 transition-all  ${
+                  className={`lg:px-[12px] px-[14px] lg:py-[5px] py-[6px] text-[13px] font-[500] rounded-[8px] border cursor-pointer duration-300 transition-all  ${
                     serviceType.includes(service)
-                      ? "text-black bg-tradeGreen border-tradeGreen"
-                      : "text-tradeFadeWhite"
+                      ? "text-black bg-tradeGreen border-tradeGreen hover:text-black"
+                      : "text-tradeFadeWhite hover:text-white bg-transparent hover:bg-tradeAsh  border-tradeAshLight"
                   }`}
                 >
                   <p>{service}</p>
@@ -493,7 +493,7 @@ const OfferFilter = ({
           >
             <div className="flex flex-col gap-[20px]">
               <div>
-                <p className="text-white text-[16px] font-[700]">
+                <p className="text-white text-[15px] font-[700]">
                   Select Account
                 </p>
               </div>
@@ -569,7 +569,7 @@ const OfferFilter = ({
 
             <div className="flex flex-col gap-[20px]">
               <div>
-                <p className="text-white text-[16px] font-[700]">
+                <p className="text-white text-[15px] font-[700]">
                   Select Currency
                 </p>
               </div>
@@ -671,7 +671,7 @@ const OfferFilter = ({
 
             <div className="flex flex-col gap-[20px]">
               <div>
-                <p className="text-white text-[16px] font-[700]">
+                <p className="text-white text-[15px] font-[700]">
                   Enter Amount
                 </p>
               </div>
@@ -694,7 +694,7 @@ const OfferFilter = ({
           >
             <div className="flex flex-col gap-[20px]">
               <div>
-                <p className="text-white text-[16px] font-[700]">
+                <p className="text-white text-[15px] font-[700]">
                   Select Wallet
                 </p>
               </div>
@@ -770,7 +770,7 @@ const OfferFilter = ({
 
             <div className="flex flex-col gap-[20px]">
               <div>
-                <p className="text-white text-[16px] font-[700]">
+                <p className="text-white text-[15px] font-[700]">
                   Select Currency
                 </p>
               </div>
@@ -872,7 +872,7 @@ const OfferFilter = ({
 
             <div className="flex flex-col gap-[20px]">
               <div>
-                <p className="text-white text-[16px] font-[700]">
+                <p className="text-white text-[15px] font-[700]">
                   Enter Amount
                 </p>
               </div>
@@ -895,7 +895,7 @@ const OfferFilter = ({
           >
             <div className="flex flex-col gap-[20px]">
               <div>
-                <p className="text-white text-[16px] font-[700]">
+                <p className="text-white text-[15px] font-[700]">
                   Select Gift Card
                 </p>
               </div>
@@ -971,7 +971,7 @@ const OfferFilter = ({
 
             <div className="flex flex-col gap-[20px]">
               <div>
-                <p className="text-white text-[16px] font-[700]">
+                <p className="text-white text-[15px] font-[700]">
                   Select Currency
                 </p>
               </div>
@@ -1073,7 +1073,7 @@ const OfferFilter = ({
 
             <div className="flex flex-col gap-[20px]">
               <div>
-                <p className="text-white text-[16px] font-[700]">
+                <p className="text-white text-[15px] font-[700]">
                   Enter Amount
                 </p>
               </div>
@@ -1096,7 +1096,7 @@ const OfferFilter = ({
           >
             <div className="flex flex-col gap-[20px]">
               <div>
-                <p className="text-white text-[16px] font-[700]">
+                <p className="text-white text-[15px] font-[700]">
                   Select Credit or Debit Card
                 </p>
               </div>
@@ -1182,7 +1182,7 @@ const OfferFilter = ({
 
             <div className="flex flex-col gap-[20px]">
               <div>
-                <p className="text-white text-[16px] font-[700]">
+                <p className="text-white text-[15px] font-[700]">
                   Select Currency
                 </p>
               </div>
@@ -1284,7 +1284,7 @@ const OfferFilter = ({
 
             <div className="flex flex-col gap-[20px]">
               <div>
-                <p className="text-white text-[16px] font-[700]">
+                <p className="text-white text-[15px] font-[700]">
                   Enter Amount
                 </p>
               </div>
@@ -1303,18 +1303,18 @@ const OfferFilter = ({
         </div>
         <div className=" bg- flex  flex-col gap-[20px] p-[15px]">
           <div>
-            <p className="text-white text-[16px] font-[700]">Sort by</p>
+            <p className="text-white text-[15px] font-[700]">Sort by</p>
           </div>
           <div className="flex flex-col gap-[15px]">
             <div className="flex items-center justify-between">
-              <p className="text-[14.5px] text-white font-[600]">
+              <p className="text-[14px] text-white font-[600]">
                 Rate : {""}
-                <small className="text-[14.5px] text-tradeFadeWhite font-[500]">
+                <small className="text-[14px] text-tradeFadeWhite font-[500]">
                   Low to High
                 </small>
               </p>
               <input
-                className="h-[16px] w-[18px]  cursor-pointer"
+                className="h-[15px] w-[18px]  cursor-pointer"
                 type="radio"
                 name="priceSort"
                 value="lowToHigh"
@@ -1323,14 +1323,14 @@ const OfferFilter = ({
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-[14.5px] text-white font-[600]">
+              <p className="text-[14px] text-white font-[600]">
                 Rate : {""}
-                <small className="text-[14.5px] text-tradeFadeWhite font-[500]">
+                <small className="text-[14px] text-tradeFadeWhite font-[500]">
                   High to Low
                 </small>
               </p>
               <input
-                className="h-[16px] w-[18px]  cursor-pointer"
+                className="h-[15px] w-[18px]  cursor-pointer"
                 type="radio"
                 name="priceSort"
                 value="highToLow"
@@ -1339,14 +1339,14 @@ const OfferFilter = ({
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-[14.5px] text-white font-[600]">
+              <p className="text-[14px] text-white font-[600]">
                 Avg. Trade Time : {""}
-                <small className="text-[14.5px] text-tradeFadeWhite font-[500]">
+                <small className="text-[14px] text-tradeFadeWhite font-[500]">
                   Slow to Fast
                 </small>
               </p>
               <input
-                className="h-[16px] w-[18px]  cursor-pointer"
+                className="h-[15px] w-[18px]  cursor-pointer"
                 type="radio"
                 name="timeSort"
                 value="slowToFast"
@@ -1355,14 +1355,14 @@ const OfferFilter = ({
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-[14.5px] text-white font-[600]">
+              <p className="text-[14px] text-white font-[600]">
                 Avg. Trade Time : {""}
-                <small className="text-[14.5px] text-tradeFadeWhite font-[500]">
+                <small className="text-[14px] text-tradeFadeWhite font-[500]">
                   Fast to Slow
                 </small>
               </p>
               <input
-                className="h-[16px] w-[18px]  cursor-pointer"
+                className="h-[15px] w-[18px]  cursor-pointer"
                 type="radio"
                 name="timeSort"
                 value="fastToSlow"
@@ -1377,9 +1377,9 @@ const OfferFilter = ({
       <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px]">
         <div
           onClick={handleFilterOffer}
-          className="flex items-center justify-between bg-tradeGreen hover:bg-white md:p-[10px] px-[10px] py-[14px] rounded-[10px]"
+          className="flex items-center justify-between bg-tradeGreen hover:bg-white md:p-[10px] px-[10px] py-[14px] rounded-[10px] cursor-pointer duration-300 transition-all"
         >
-          <p className="font-[700] text-[15px] ">
+          <p className="font-[600] text-[15px] ">
             {isFilterLoading ? "Filtering..." : "Apply Filter"}
           </p>
           <TbReload

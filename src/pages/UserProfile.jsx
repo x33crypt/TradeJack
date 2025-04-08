@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import MarketTopNav from "@/components/InAppNav";
 import React, { useState, useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import image from "../assets/landingImg4.JPG";
 import { MdThumbUpAlt } from "react-icons/md";
 import { MdThumbDownAlt } from "react-icons/md";
@@ -24,11 +25,8 @@ const UserProfile = () => {
   const bankAccountRef = useRef(null);
   const walletRef = useRef(null);
 
-  useEffect(() => {
-    if (isProfileEdit) {
-      profileRef.current?.focus(); // Focuses on the first input field
-    }
-  }, [isProfileEdit]);
+  const navigateTo = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (isBankAccountEdit) {
@@ -45,15 +43,17 @@ const UserProfile = () => {
   return (
     <>
       <MarketTopNav />
-      <div className=" lg:flex hidden lg:pt-[80px] md:pt-[85px] pt-[67px] pb-[10px]  bg-black gap-[15.5px] lg:px-[2%] md:px-[2.5%]">
+
+      <div className="flex lg:pt-[80px] md:pt-[85px] pt-[67px] pb-[10px] bg-black gap-[15.5px] lg:px-[2%] md:px-[2.5%]">
         <UserProfileNav />
-        <div className="flex-1 flex flex-col min-h-screen max-h-max md:border border-neutral-800 md:rounded-[14px]">
+
+        <div className="flex-1 flex flex-col md:border border-neutral-800 md:rounded-[14px]">
           <div className="flex flex-col justify-between p-[15px] border-b border-neutral-800">
             <p className="text-[18px] text-white font-[700]">Your Info </p>
           </div>
 
-          <div className="flex flex-col">
-            <div className="lg:flex hidden md:flex-row flex-col justify-between gap-[15px] md:items-center p-[15px]">
+          <div className="flex flex-col gap-[20px]">
+            <div className="lg:flex hidden h-full md:flex-row flex-col justify-between gap-[15px] md:items-center p-[15px]">
               <div className=" flex items-center gap-[20px] rounded-[8px]">
                 <div className=" lg:w-[120px] sm:w-[150px] w-[100px] ">
                   <img className="rounded-full" src={image} alt="" />
@@ -91,6 +91,7 @@ const UserProfile = () => {
                   </div>
                 </div>
               </div>
+
               <div className="flex flex-wrap gap-[10px]">
                 <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
                   <div className="flex gap-[5px] items-center">
@@ -137,7 +138,7 @@ const UserProfile = () => {
 
             <div className="flex flex-col p-[15px] gap-[20px]">
               <div className="lg:flex hidden items-center justify-between">
-                <p className="text-[16px] font-[700] text-white">
+                <p className="text-[15px] font-[700] text-white">
                   Profile details
                 </p>
 
@@ -148,14 +149,14 @@ const UserProfile = () => {
                       isProfileEdit
                         ? "text-black bg-tradeGreen border-tradeAshExtraLight"
                         : "text-neutral-500 bg-transparent border-neutral-800"
-                    } text-[14px] font-[600] flex  justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
+                    } text-[13px] font-[600] flex  justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
                   >
                     {isProfileEdit ? "Save Changes" : "Edit Profile"}
                   </p>
                 </div>
               </div>
 
-              <div className="flex flex-col  gap-[20px]  borde border-tradeAshLight rounded-[5px]">
+              <div className=" flex flex-col  gap-[20px] ">
                 <div className="flex-1 flex flex-col gap-[5px]">
                   <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
                     Full name
@@ -218,7 +219,7 @@ const UserProfile = () => {
                 </div>
               </div>
 
-              <div className="flex lg:hidden justify-end">
+              <div className="flex justify-end">
                 <p
                   onClick={() => setIsProfileEdit((prev) => !prev)}
                   className={`${
@@ -235,8 +236,12 @@ const UserProfile = () => {
         </div>
       </div>
 
-      <div className="flex lg:hidden lg:pt-[80px] md:pt-[85px] pt-[80px] pb-[50px] bg-black  md:p-[15px] gap-[30px] flex-col">
+      {/* <div className="flex lg:hidden md:pt-[85px] pt-[67px] md:p-[15px]  pb-[50px] bg-black  gap-[30px] flex-col">
         <div className="flex-1 flex flex-col max-h-max md:border border-neutral-800 md:rounded-[14px]">
+          <div className="flex justify-between items-center p-[15px] border-b border-neutral-800">
+            <p className="text-[18px] text-white font-[700]">Setting </p>
+            <HiMiniMagnifyingGlass className="text-tradeAshExtraLight text-[25px]" />
+          </div>
           <div className="flex flex-col gap-[30px] p-[15px]">
             <div className="flex flex-col sm:flex-row gap-[30px] sm:justify-between sm:items-center">
               <div className="flex items-center gap-[15px]">
@@ -331,7 +336,7 @@ const UserProfile = () => {
 
             <div className="flex flex-col gap-[5px]">
               <div
-                onClick={() => handleIsYourInfo()}
+                onClick={() => navigateTo("/account/info")}
                 className=" flex gap-[15px] items-center p-[10px]  rounded-[12px] "
               >
                 <CgProfile className="text-[16px] text-tradeFadeWhite" />
@@ -375,7 +380,7 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <Footer />
     </>

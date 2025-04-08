@@ -66,7 +66,7 @@ const InAppNav = () => {
 
   return (
     <>
-      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] p-[15px] h-[67px] md:h-[70px] flex justify-between items-center border-b border-neutral-800 ">
+      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] p-[15px] h-[60px] md:h-[60px] flex justify-between items-center border-b border-neutral-800 ">
         <div className="flex items-center lg:gap-[30px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
@@ -82,10 +82,10 @@ const InAppNav = () => {
             onClick={() => navigateTo("/dashboard")}
             className="flex items-center justify-start gap-[5px] cursor-pointer "
           >
-            <GiCardExchange className=" flex lg:text-[20px] md:text-[21px] text-[20px] text-tradeGreen" />
-            <p className=" lg:text-[20px] md:text-[21px] text-[22px] font-[700] text-tradeGreen">
+            <GiCardExchange className=" flex lg:text-[19px] md:text-[21px] text-[18px] text-tradeGreen" />
+            <p className=" lg:text-[19px] md:text-[21px] text-[18px] font-[700] text-tradeGreen">
               Trade
-              <small className="lg:text-[20px] md:text-[21px] text-[22px] font-[700] text-white">
+              <small className="lg:text-[19px] md:text-[21px] text-[18px] font-[700] text-white">
                 Jack
               </small>
             </p>
@@ -95,51 +95,51 @@ const InAppNav = () => {
         <div className=" md:flex hidden  gap-[10px] items-center">
           <div
             onClick={() => navigateTo("/marketplace")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[7px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
-            <RiExchangeLine className="lg:flex hidden text-[17px]" />
-            <p className="text-[14px]">Sell Assets</p>
+            <RiExchangeLine className="lg:flex hidden text-[16px]" />
+            <p className="text-[13px] font-[500]">Sell Assets</p>
           </div>
           <div
             onClick={() => navigateTo("/create-offer")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[7px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <TbBuildingBank className="lg:flex hidden text-[17px]" />
-            <p className="text-[14px]">Buy Assets</p>
+            <p className="text-[13px] font-[500]">Buy Assets</p>
           </div>
           <div
             onClick={() => navigateTo("/create-offer")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[7px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <FaVenusDouble className="lg:flex hidden text-[17px]" />
-            <p className="text-[14px]">Favourite Vendors</p>
+            <p className="text-[13px] font-[500]">Favourite Vendors</p>
           </div>
           <div
             onClick={() => navigateTo("/dashboard")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4.5px] rounded-[7px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <MdOutlineSpaceDashboard className="lg:flex hidden text-[17px]" />
-            <p className="text-[14px]">Dashboard</p>
+            <p className="text-[13px] font-[500]">Dashboard</p>
           </div>
         </div>
 
         <div className="flex items-center lg:gap-[15px] gap-[15px]">
-          <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[2px] gap-[10px] rounded-[8px]">
+          <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[1px] gap-[10px] rounded-[8px]">
             <FaMagnifyingGlass className="text-neutral-500 lg:text-[15px] text-[15px]" />
             <input
-              className=" bg-transparent outline-none h-[28px] w-[220px] lg:placeholder:text-[13px] placeholder:text-[13px] placeholder:text-tradeFadeWhite lg:text-[13px] text-[13px] text-white"
+              className=" bg-transparent outline-none h-[28px] w-[220px]  placeholder:text-tradeFadeWhite text-[12px] text-white"
               type="text"
               placeholder={searchplaceholder}
             />
           </div>
           <div className="cursor-pointer md:flex lg:hidden hidden">
-            <FiSearch className="text-white hover:text-tradeGreen text-[23px] transition-all duration-300" />
+            <FiSearch className="text-white hover:text-tradeGreen text-[22px] transition-all duration-300" />
           </div>
           <div className="cursor-pointer flex">
-            <FaRegBell className="text-white hover:text-tradeGreen sm:text-[23px] text-[22px] transition-all duration-300" />
+            <FaRegBell className="text-white hover:text-tradeGreen text-[22px] transition-all duration-300" />
           </div>
           <div
-            className="cursor-pointer lg:w-[34px] sm:w-[30px] w-[34px]"
+            className="cursor-pointer lg:w-[32px] sm:w-[30px] w-[34px]"
             onClick={() => navigateTo("/account/profile")}
           >
             <img className=" rounded-full" src={landingImg4} alt="" />
@@ -179,7 +179,7 @@ const InAppNav = () => {
       <div
         className={`${
           isNavOption ? "flex" : "hidden"
-        } z-50 fixed right-0 left-0 top-[67px] bottom-0 bg-black p-[15px] pt-[14px] pb-[16px] lg:hidden flex flex-col justify-between`}
+        } z-50 fixed right-0 left-0 top-[67px] bottom-0 bg-black p-[15px] pt-[13px] pb-[16px] lg:hidden flex flex-col justify-between`}
       >
         <div className="flex gap-[10px] p-[10px] items-center bg-tradeAsh border border-tradeAshExtraLight rounded-[12px]">
           <HiMiniMagnifyingGlass className="text-tradeFadeWhite text-[20px]" />

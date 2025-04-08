@@ -39,10 +39,29 @@ const OfferCard = (props) => {
       >
         <div className="flex-1 flex gap-[10px]">
           <div className="flex flex-col gap-[10px]">
-            <div className="flex items-center gap-[15px]">
-              <p className=" text-[13px] text-white sm:text-[14px] font-[600] w-[90px] overflow-hidden text-ellipsis whitespace-nowrap">
-                {props.username}
-              </p>
+            <div className="flex items-center gap-[10px]">
+              <div className="flex items-center gap-[5px]">
+                <div className="hidden sm:flex">
+                  {props.lastSeen == "online" ? (
+                    <>
+                      <p className="text-[13px] lg:text-[13px] text-tradeGreen p-[1px] border border-tradeAshLight rounded-full">
+                        <GoDotFill />
+                      </p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="text-[13px] lg:text-[13px] text-tradeAshExtraLight p-[1px] border border-tradeAshLight rounded-full">
+                        <GoDotFill />
+                      </p>
+                    </>
+                  )}
+                </div>
+
+                <p className=" text-[13px] text-white sm:text-[14px] font-[600] w-[90px] overflow-hidden text-ellipsis whitespace-nowrap">
+                  {props.username}
+                </p>
+              </div>
+
               <div className="flex flex-co gap-[10px] ">
                 <div className="">
                   <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
@@ -51,31 +70,6 @@ const OfferCard = (props) => {
                     {`${parseInt(props.positiveFeedback).toLocaleString()}`}
                   </p>
                 </div>
-              </div>
-              <div className="hidden sm:flex">
-                {props.lastSeen == "online" ? (
-                  <>
-                    <div className="flex items-center gap-[4px] py-[px] px-[8px] border border-tradeAshExtraLight rounded-full">
-                      <p className="text-[13px] lg:text-[13px] text-tradeGreen">
-                        <GoDotFill />
-                      </p>
-                      <p className="text-[13px] text-white lg:text-[12px] flex font-[600] ">
-                        Online
-                      </p>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="flex items-center gap-[4px] py-[px] px-[8px] border border-tradeAshExtraLight rounded-full">
-                      <p className="text-[13px] lg:text-[13px] text-tradeAshExtraLight">
-                        <GoDotFill />
-                      </p>
-                      <p className="text-[13px] text-white lg:text-[12px] flex font-[600] ">
-                        Offline
-                      </p>
-                    </div>
-                  </>
-                )}
               </div>
             </div>
             <div className=" flex flex-col gap-[3px]">
@@ -130,7 +124,7 @@ const OfferCard = (props) => {
           </div>
         </div>
         <div className="flex-1 flex flex-col gap-[10px]">
-          <div className="flex gap-[8px] items-center text-[15px] lg:text-[14px] font-[600] text-white">
+          <div className="flex gap-[8px] items-center text-[15px] lg:text-[14px] font-[700] text-white">
             <p>{`86,243 ${props.currency}`}</p>
             <p>&#x2248;</p>
             <p>1 {props.currency} = 0.93 USD of BTC</p>

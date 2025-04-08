@@ -22,23 +22,23 @@ const DashMain = () => {
     <>
       <div className="flex-1 md:flex hidden lg:gap-[15px]">
         <div className="flex flex-1 flex-col gap-[15px]">
-          <div className="flex flex-col rounded-[12px]  justify-between px-[10px] py-[15px]">
-            <p className=" lg:text-[20px] text-[20px] text-tradeFadeWhite  ">
+          <div className="bg-tradeOrang flex flex-col  justify-between p-[5px]">
+            <p className=" lg:text-[19px] text-[20px] text-tradeFadeWhite  ">
               Welcome back,{" "}
-              <small className="lg:text-[20px] text-[20px] text-white font-[700]">
+              <small className="lg:text-[19px] text-[20px] text-white font-[700]">
                 x33crypt
               </small>
             </p>
           </div>
 
-          <div className="flex-1 flex flex-col gap-[20px]">
+          <div className="flex-1 flex flex-col gap-[20px] mt-[10px]">
             <div className="flex gap-[15px]">
               <div className="flex-1 flex flex-col h-[100px] justify-between p-[10px] gap-[5px] rounded-[14px] border border-tradeGreen bg-tradeGreen">
                 <div className="flex justify-between">
-                  <p className="text-black text-[13px] font-[600]">
+                  <p className="text-black text-[12px] font-[600]">
                     Available Balance
                   </p>
-                  <FaEye className="text-[18px] cursor-pointer" />
+                  <FaEye className="text-[17px] cursor-pointer" />
                 </div>
 
                 <div className="flex items-baseline ">
@@ -49,13 +49,14 @@ const DashMain = () => {
                   </p>
                 </div>
               </div>
+
               <div className="flex-1 flex flex-col  h-[100px] justify-between p-[10px] gap-[5px] rounded-[14px] bg-tradeAsh border border-tradeAshExtraLight">
                 <div className="flex justify-between">
                   <div className="flex gap-[5px] items-center text-white">
-                    <p className=" text-[13px] font-[600]">Escrow Wallet</p>
-                    <FaRegQuestionCircle className="text-[14px] text-tradeFadeWhite" />
+                    <p className=" text-[12px] font-[600]">Escrow Wallet</p>
+                    <FaRegQuestionCircle className="text-[13px] text-tradeFadeWhite" />
                   </div>
-                  <FaEye className="text-[18px] text-white cursor-pointer" />
+                  <FaEye className="text-[17px] text-white cursor-pointer" />
                 </div>
 
                 <div className="flex items-baseline ">
@@ -75,14 +76,14 @@ const DashMain = () => {
                     <LuPlus />
                   </div>
 
-                  <p className="text-[15px] text-white font-[500]">Deposit</p>
+                  <p className="text-[14px] text-white font-[500]">Deposit</p>
                 </div>
                 <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[14px] cursor-pointer hover:bg-tradeAsh transition-all duration-300">
                   <div className="text-[25px] text-white p-[10px] rounded-[12px] bg-tradeAshLight">
                     <HiArrowNarrowUp />
                   </div>
 
-                  <p className="text-[15px] text-white font-[500]">Withdraw</p>
+                  <p className="text-[14px] text-white font-[500]">Withdraw</p>
                 </div>
               </div>
               <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[14px] cursor-pointer hover:bg-tradeAsh transition-all duration-300">
@@ -90,11 +91,11 @@ const DashMain = () => {
                   <CgArrowsExchangeAltV />
                 </div>
                 <div className=" flex-1 flex gap-[5px] flex-col justify-between">
-                  <p className="text-[13px] text-tradeFadeWhite font-[500]">
+                  <p className="text-[12px] text-tradeFadeWhite font-[500]">
                     Maximum Purchase Limit
                   </p>
                   <div className="flex items-center gap-[10px]">
-                    <p className="text-[15px] text-white font-[600]">
+                    <p className="text-[14px] text-white font-[600]">
                       3,000 USD
                     </p>
                     <p className="bg-tradeGreen text-[10px] font-[500] rounded-full px-[10px] py-[px]">
@@ -167,41 +168,39 @@ const DashMain = () => {
             </div>
 
             <div>
-              <div className="flex justify-between items-baseline bg-tradeAshLight p-[10px] rounded-t-[14px]">
-                <p className="text-white font-[600] text-[18px]">
+              <div className="flex justify-between items-baseline bg-tradeAshLight p-[10px] rounded-t-[10px]">
+                <p className="text-white font-[600] text-[17px]">
                   Transaction history
                 </p>
-                <p className="text-tradeGreen font-[700] text-[13px] cursor-pointer ">
+                <p className="text-tradeGreen font-[700] text-[12px] cursor-pointer ">
                   View All
                 </p>
               </div>
-
               <div className="px-[10px] py-[10px] flex bg-transparent">
-                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-[15px]  ">
+                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-[14px]  ">
                   <p>Service</p>
-                  <MdKeyboardArrowDown className="text-[22px]" />
+                  <MdKeyboardArrowDown className="text-[21px]" />
                 </div>
-                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-[15px] ">
+                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-[14px] ">
                   <p>Trade ID</p>
-                  <MdKeyboardArrowDown className="text-[22px]" />
+                  <MdKeyboardArrowDown className="text-[21px]" />
                 </div>
-                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-[15px] ">
+                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-[14px] ">
                   <p>Status</p>
-                  <MdKeyboardArrowDown className="text-[22px]" />
+                  <MdKeyboardArrowDown className="text-[21px]" />
                 </div>
-                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite text-[15px]  ">
+                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite text-[14px]  ">
                   <p>Amount</p>
-                  <MdKeyboardArrowDown className="text-[22px]" />
+                  <MdKeyboardArrowDown className="text-[21px]" />
                 </div>
-                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite   text-[15px] ">
+                <div className="flex-1 flex gap-[5px] text-tradeFadeWhite   text-[14px] ">
                   <p>Date</p>
-                  <MdKeyboardArrowDown className="text-[22px]" />
+                  <MdKeyboardArrowDown className="text-[21px]" />
                 </div>
               </div>
-
               <div className="flex flex-col gap-[2px]">
                 <div className="px-[10px] py-[10px] flex bg-tradeAshLight cursor-pointer hover:bg-tradeAsh transition-all duration-300">
-                  <div className="flex-1 text-white font-[500]  text-[14px]  ">
+                  <div className="flex-1 text-white font-[500] text-[14px] ">
                     <p>Cash App</p>
                   </div>
                   <div className="flex-1 text-tradeFadeWhite font-[500] text-[14px]  ">
@@ -239,9 +238,9 @@ const DashMain = () => {
           </div>
         </div>
 
-        <div className=" lg:flex hidden bg-tradeAs w-[300px]  p-[15px] rounded-[16px]  borde border-tradeAshLight">
-          <div className="  w-full ">
-            <p className="text-[20px] font-[700] text-white">
+        <div className=" lg:flex hidden w-[300px] p-[10px] rounded-[16px]  borde border-tradeAshLight">
+          <div className=" w-full">
+            <p className="text-[19px] font-[700] text-white">
               Trade Performance
             </p>
           </div>
@@ -298,14 +297,14 @@ const DashMain = () => {
                     <LuPlus />
                   </div>
 
-                  <p className="text-[15px] text-white font-[500]">Deposit</p>
+                  <p className="text-[14px] text-white font-[500]">Deposit</p>
                 </div>
                 <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[16px]">
                   <div className="text-[25px] text-white p-[10px] rounded-[16px] bg-tradeAshLight">
                     <HiArrowNarrowUp />
                   </div>
 
-                  <p className="text-[15px] text-white font-[500]">Withdraw</p>
+                  <p className="text-[14px] text-white font-[500]">Withdraw</p>
                 </div>
               </div>
               <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[16px]">
@@ -317,7 +316,7 @@ const DashMain = () => {
                     Maximum Purchase Limit
                   </p>
                   <div className="flex items-center gap-[10px]">
-                    <p className="text-[15px] text-white font-[600]">
+                    <p className="text-[14px] text-white font-[600]">
                       3,000 USD
                     </p>
                     <p className="bg-tradeGreen text-[10px] font-[500] rounded-full px-[10px] py-[px]">
@@ -412,7 +411,7 @@ const DashMain = () => {
                       <p className="text-white text-[14px] font-[700]">
                         Paypal
                       </p>
-                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-white text-[14px]">-</p>
                       <p className="text-tradeFadeWhite text-[13px] font-[600]">
                         Buyer
                       </p>
@@ -446,7 +445,7 @@ const DashMain = () => {
                       <p className="text-white text-[14px] font-[700]">
                         Paypal
                       </p>
-                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-white text-[14px]">-</p>
                       <p className="text-tradeFadeWhite text-[13px] font-[600]">
                         Buyer
                       </p>
@@ -480,7 +479,7 @@ const DashMain = () => {
                       <p className="text-white text-[14px] font-[700]">
                         Paypal
                       </p>
-                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-white text-[14px]">-</p>
                       <p className="text-tradeFadeWhite text-[13px] font-[600]">
                         Buyer
                       </p>
@@ -514,7 +513,7 @@ const DashMain = () => {
                       <p className="text-white text-[14px] font-[700]">
                         Paypal
                       </p>
-                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-white text-[14px]">-</p>
                       <p className="text-tradeFadeWhite text-[13px] font-[600]">
                         Buyer
                       </p>
@@ -548,7 +547,7 @@ const DashMain = () => {
                       <p className="text-white text-[14px] font-[700]">
                         Paypal
                       </p>
-                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-white text-[14px]">-</p>
                       <p className="text-tradeFadeWhite text-[13px] font-[600]">
                         Buyer
                       </p>
@@ -582,7 +581,7 @@ const DashMain = () => {
                       <p className="text-white text-[14px] font-[700]">
                         Paypal
                       </p>
-                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-white text-[14px]">-</p>
                       <p className="text-tradeFadeWhite text-[13px] font-[600]">
                         Buyer
                       </p>
@@ -616,7 +615,7 @@ const DashMain = () => {
                       <p className="text-white text-[14px] font-[700]">
                         Paypal
                       </p>
-                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-white text-[14px]">-</p>
                       <p className="text-tradeFadeWhite text-[13px] font-[600]">
                         Buyer
                       </p>
@@ -650,7 +649,7 @@ const DashMain = () => {
                       <p className="text-white text-[14px] font-[700]">
                         Paypal
                       </p>
-                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-white text-[14px]">-</p>
                       <p className="text-tradeFadeWhite text-[13px] font-[600]">
                         Buyer
                       </p>
@@ -684,7 +683,7 @@ const DashMain = () => {
                       <p className="text-white text-[14px] font-[700]">
                         Paypal
                       </p>
-                      <p className="text-white text-[15px]">-</p>
+                      <p className="text-white text-[14px]">-</p>
                       <p className="text-tradeFadeWhite text-[13px] font-[600]">
                         Buyer
                       </p>
