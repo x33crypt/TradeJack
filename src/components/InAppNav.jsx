@@ -82,10 +82,10 @@ const InAppNav = () => {
             onClick={() => navigateTo("/dashboard")}
             className="flex items-center justify-start gap-[5px] cursor-pointer "
           >
-            <GiCardExchange className=" flex lg:text-[19px] md:text-[21px] text-[19px] text-tradeGreen" />
-            <p className=" lg:text-[19px] md:text-[21px] text-[19px] font-[700] text-tradeGreen">
+            <GiCardExchange className=" flex lg:text-[19px] md:text-[19px] text-[19px] text-tradeGreen" />
+            <p className=" lg:text-[19px] md:text-[19px] text-[19px] font-[700] text-tradeGreen">
               Trade
-              <small className="lg:text-[19px] md:text-[21px] text-[19px] font-[700] text-white">
+              <small className="lg:text-[19px] md:text-[19px] text-[19px] font-[700] text-white">
                 Jack
               </small>
             </p>
