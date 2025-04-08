@@ -393,7 +393,7 @@ const DashMain = () => {
           </div>
 
           <div className="flex flex-col gap-[15px] bg-tradeAsh rounded-[16px] p-[10px] ">
-            <div className="flex justify-between  items-baseline ">
+            <div className="flex justify-between p-[5px]  items-baseline ">
               <p className="text-white font-[600] text-[19px]">
                 Recent Transaction
               </p>
