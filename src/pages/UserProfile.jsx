@@ -54,7 +54,7 @@ const UserProfile = () => {
           <div className=" lg:w-[300px] md:w-[250px] flex flex-col gap-[20px]  sm:p-0 borde border-tradeAshLight bg-tradeAs rounded-[14px]">
             <div className="flex justify-center cursor-pointer ">
               <img
-                className="rounded-full lg:w-[250px] md:w-[220px] w-[150px]"
+                className="rounded-full lg:w-[250px] md:w-[220px] w-[180px]"
                 src={image}
                 alt=""
               />
