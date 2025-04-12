@@ -44,8 +44,13 @@ const UserProfile = () => {
     <>
       <MarketTopNav />
 
-      <div className="lg:pt-[75px] md:pt-[75px] pt-[75px] pb-[10px]  lg:px-[2%] md:px-[2.5%] min-h-screen bg-black">
-        <div className="flex flex-col md:flex-row md:gap-[25px] gap-[10px] p-[15px] md:p-0">
+      <div className="lg:pt-[75px] md:pt-[75px] pt-[60px] pb-[10px] lg:px-[2%] md:px-[2.5%] min-h-screen bg-black">
+        <div className=" flex md:hidden items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
+          <p className=" text-[17px] text-white font-[700] cursor-pointer">
+            Profile
+          </p>
+        </div>
+        <div className="flex flex-col md:flex-row md:gap-[25px] gap-[20px] p-[15px] md:p-0">
           <div className=" lg:w-[300px] md:w-[250px] flex flex-col gap-[20px]  sm:p-0 borde border-tradeAshLight bg-tradeAs rounded-[14px]">
             <div className="flex justify-center cursor-pointer ">
               <img
@@ -57,10 +62,10 @@ const UserProfile = () => {
 
             <div className="flex flex-col gap-[10px] ">
               <div className="flex items-cente flex-col">
-                <p className="text-white lg:text-[24px] sm:text-[22px] text-[21px] font-[700]">
+                <p className="text-white lg:text-[24px] sm:text-[22px] text-[23px] font-[700]">
                   Adeleke Lukman
                 </p>
-                <p className="text-tradeFadeWhite lg:text-[18px] sm:text-[16px] text-[15px] font-[500]">
+                <p className="text-tradeFadeWhite lg:text-[18px] sm:text-[16px] text-[17px] font-[500]">
                   sanityy0x
                 </p>
               </div>
@@ -68,26 +73,26 @@ const UserProfile = () => {
               <div className="flex flex-col gap-[2px]">
                 <div className="flex gap-[10px]">
                   <div className="flex gap-[3px] items-center">
-                    <p className="text-white lg:text-[13px] sm:text-[13px] text-[13px] font-[500]">
+                    <p className="text-white lg:text-[13px] sm:text-[13px] text-[14px] font-[500]">
                       #TopTrader
                     </p>
                     <PiHorseBold className="text-tradeOrange" />
                   </div>
-                  <p className="text-tradeGreen lg:text-[13px] sm:text-[13px] text-[13px] font-[500]">
+                  <p className="text-tradeGreen lg:text-[13px] sm:text-[13px] text-[14px] font-[500]">
                     Online
                   </p>
                 </div>
 
                 <div className="flex items-center gap-[3px]">
                   <div className="flex items-center gap-[5px]">
-                    <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[500] text-white">
+                    <p className="lg:text-[13px] sm:text-[13px] text-[14px] font-[500] text-white">
                       Nigeria
                     </p>
                   </div>
-                  <p className="lg:text-[14px] sm:text-[13px] text-[13px] font-[700] text-tradeFadeWhite">
+                  <p className="lg:text-[14px] sm:text-[13px] text-[14px] font-[700] text-tradeFadeWhite">
                     &#x2022;
                   </p>
-                  <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[500] text-tradeFadeWhite">
+                  <p className="lg:text-[13px] sm:text-[13px] text-[14px] font-[500] text-tradeFadeWhite">
                     Joined 3 weeks ago
                   </p>
                 </div>
@@ -100,7 +105,7 @@ const UserProfile = () => {
                 isProfileEdit
                   ? "text-black bg-tradeGreen border-tradeAshExtraLight"
                   : "bg-tradeAsh  border-tradeAshLight hover:text-white text-tradeFadeWhite "
-              } flex items-center justify-center border gap-[10px]  px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300`}
+              } flex items-center justify-center border gap-[10px]  px-[12px] py-[7px] rounded-[7px] cursor-pointer transition-all duration-300`}
             >
               <p className="text-[14px] font-[500]">
                 {" "}
@@ -147,7 +152,7 @@ const UserProfile = () => {
               </div>
             </div>
           </div>
-          <div className="flex-1 flex flex-col gap-[20px] lg:p-[15px] md:p-[10px] p-[10px] border border-tradeAshLight bg-tradeAs rounded-[14px]">
+          <div className="flex-1 flex flex-col gap-[20px] lg:p-[15px] md:p-[10px] p-0 md:border border-tradeAshLight bg-tradeAs rounded-[14px]">
             <div className="flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[8px]">
               <div className="flex flex-col justify-between p-[10px] border-b border-tradeAshLight">
                 <p className="text-[17px] text-white font-[700]">
