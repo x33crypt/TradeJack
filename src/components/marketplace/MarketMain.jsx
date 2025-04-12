@@ -64,8 +64,8 @@ const MarketMain = ({
                 className={` ${
                   isAllOffer
                     ? "text-white bg-tradeAshLight border-tradeAsh"
-                    : "text-tradeFadeWhite bg-transparent border-tradeAshLight"
-                } px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] border  hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
+                    : "text-neutral-500 border-neutral-800 hover:text-white bg-transparent hover:bg-tradeAsh"
+                } px-[12px] py-[4px] text-[13px] font-[500] rounded-[6.5px] border  cursor-pointer duration-300 transition-all`}
               >
                 All
               </p>
@@ -78,8 +78,8 @@ const MarketMain = ({
                 className={` ${
                   isOnlineOffer
                     ? "text-white bg-tradeAshLight border-tradeAsh"
-                    : "text-tradeFadeWhite bg-transparent border-tradeAshLight"
-                } px-[12px] py-[4px] text-[14px] font-[500] rounded-[6.5px] border hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
+                    : "text-neutral-500 border-neutral-800 hover:text-white bg-transparent hover:bg-tradeAsh"
+                } px-[12px] py-[4px] text-[13px] font-[500] rounded-[6.5px] border  cursor-pointer duration-300 transition-all`}
               >
                 Online
               </p>
@@ -90,11 +90,11 @@ const MarketMain = ({
                 className={`${
                   isOfferSortBy
                     ? "text-black bg-tradeGreen border-tradeGreen font-[600]"
-                    : "text-neutral-500 bg-transparent border-neutral-800"
-                } md:flex font-[600] hidden justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all`}
+                    : "text-neutral-500 border-neutral-800 hover:text-white bg-transparent hover:bg-tradeAsh"
+                } md:flex font-[600] hidden justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border  cursor-pointer duration-300 transition-all`}
               >
                 <LuSettings2 className="text-[17px]" />
-                <p className=" text-[14px] font-[500]">Explore</p>
+                <p className=" text-[13px] font-[500]">Explore</p>
               </div>
               <div
                 onClick={() => setIsOfferFilter((prev) => !prev)}
@@ -156,9 +156,13 @@ const MarketMain = ({
             </div>
             <div className="flex flex-col gap-[20px] ">
               <div className=" md:flex hidden bg-tradeAshLight px-[12px] py-[4px] rounded-[px]">
-                <p className="flex-1 text-neutral-400 text-[14px] ">Vendor</p>
-                <p className="flex-1 text-neutral-400 text-[14px]">Details</p>
-                <p className="flex-1 text-neutral-400 text-[14px]">
+                <p className="flex-1 text-neutral-400 text-[14px] font-[500] ">
+                  Vendor
+                </p>
+                <p className="flex-1 text-neutral-400 text-[14px] font-[500] ">
+                  Details
+                </p>
+                <p className="flex-1 text-neutral-400 text-[14px] font-[500] ">
                   Rate & Performance
                 </p>
               </div>

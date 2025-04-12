@@ -234,7 +234,7 @@ const AboutOffer = () => {
     <>
       <MarketTopNav />
 
-      <div className=" lg:pt-[75px] md:pt-[75px] pt-[65px]  pb-[30px] flex flex-col bg-black gap-[15.5px] lg:p-[2%] md:p-[2.5%]">
+      <div className=" lg:pt-[75px] md:pt-[75px] pt-[65px] pb-[30px] flex flex-col bg-black gap-[15px] lg:p-[2%] md:p-[2.5%]">
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-[0.8%]">
           <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight md:rounded-[14px]">
             <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
@@ -246,44 +246,45 @@ const AboutOffer = () => {
             <div className="flex bg- flex-col md:gap-[15px] gap-[10px] p-[15px]">
               <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Service
                   </p>
-                  <p className="text-tradeOrange text-[15.5px] font-[600]">
+                  <p className="text-tradeOrange text-[15px] font-[600]">
                     {offerDetails.service}
                   </p>
                 </div>
                 <div className="flex flex-col gap-[2px]   py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Service Type
                   </p>
-                  <p className="text-[15.5px] font-[600] text-white">
+                  <p className="text-[15px] font-[600] text-white">
                     {offerDetails.serviceType}
                   </p>
                 </div>
-              </div>
+              </div> 
+              
               <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Rate Cap
                   </p>
-                  <p className="text-white text-[15.5px] font-[600]">
+                  <p className="text-white text-[15px] font-[600]">
                     {`${parseInt(offerDetails?.rate).toLocaleString()}  ${
                       offerDetails?.currency
                     }`}
                   </p>
                 </div>
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Rate Margine
                   </p>
                   <div>
                     {offeRateMargin?.percentage ? (
-                      <p className="text-[15.5px] font-[600] text-tradeGreen">
+                      <p className="text-[15px] font-[600] text-tradeGreen">
                         {`${offeRateMargin?.percentage}% ${offeRateMargin?.status} market price`}
                       </p>
                     ) : (
-                      <p className="text-[15.5px] font-[600] text-tradeAshExtraLight">
+                      <p className="text-[15px] font-[600] text-tradeAshExtraLight">
                         Calculating marging ...
                       </p>
                     )}
@@ -292,20 +293,20 @@ const AboutOffer = () => {
               </div>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Min Purchase Limit
                   </p>
-                  <p className="text-white text-[15.5px] font-[600]">
+                  <p className="text-white text-[15px] font-[600]">
                     {`${parseInt(
                       offerDetails?.miniPurchase
                     ).toLocaleString()}  ${offerDetails?.currency}`}
                   </p>
                 </div>
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Max Purchase Limit
                   </p>
-                  <p className="text-white text-[15.5px] font-[600]">
+                  <p className="text-white text-[15px] font-[600]">
                     {`${parseInt(
                       offerDetails?.maxPurchase
                     ).toLocaleString()}  ${offerDetails?.currency}`}
@@ -314,18 +315,18 @@ const AboutOffer = () => {
               </div>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Maximum Trade Time
                   </p>
-                  <p className="text-white text-[15.5px] font-[600]">
+                  <p className="text-white text-[15px] font-[600]">
                     {offerDetails?.maxTradeTime} Minutes
                   </p>
                 </div>
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Average Trade Time
                   </p>
-                  <p className="text-white text-[15.5px] font-[600]">
+                  <p className="text-white text-[15px] font-[600]">
                     {offerDetails?.avgTradeTime} Minutes
                   </p>
                 </div>
@@ -353,12 +354,12 @@ const AboutOffer = () => {
                   </div>
 
                   <div className="flex  flex-col gap-[5px] ">
-                    <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    <p className="text-[12px] font-[500] text-tradeFadeWhite">
                       Username
                     </p>
 
                     <div className=" flex items-center gap-[5px] ">
-                      <p className="text-white text-[15.5px] font-[600] hover:underline cursor-pointer">
+                      <p className="text-white text-[15px] font-[600] hover:underline cursor-pointer">
                         {offerDetails.username}
                       </p>
                     </div>
@@ -366,27 +367,27 @@ const AboutOffer = () => {
                 </div>
 
                 <div className="flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Trade Volume
                   </p>
 
                   <div className="flex items-center gap-[8px]">
-                    <SlGraph className="text-[15.5px] text-tradeGreen" />
+                    <SlGraph className="text-[15px] text-tradeGreen" />
                     <div className="flex items-center gap-[5px]">
-                      <p className="text-white text-[15.5px] font-[600]">300</p>
+                      <p className="text-white text-[15px] font-[600]">300</p>
                     </div>
                   </div>
                 </div>
 
                 {/* <div className=" flex-1  flex-col shrink-0 flex  gap-[10px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
                   <div className="flex  flex-col gap-[5px] ">
-                    <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                    <p className="text-[12px] font-[500] text-tradeFadeWhite">
                       Trade Badges
                     </p>
 
                     <div className="flex gap-[10px]">
                       <div>
-                        <p className="text-white text-[15.5px] font-[600] cursor-pointer">
+                        <p className="text-white text-[15px] font-[600] cursor-pointer">
                           {offerDetails.username}
                         </p>
                       </div>
@@ -395,12 +396,12 @@ const AboutOffer = () => {
                 </div> */}
 
                 <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Positive Feedback
                   </p>
                   <div className="flex items-center gap-[5px]">
-                    <MdThumbUpAlt className="text-[15.5px] text-tradeGreen" />
-                    <p className="text-white text-[15.5px] font-[600]">
+                    <MdThumbUpAlt className="text-[15px] text-tradeGreen" />
+                    <p className="text-white text-[15px] font-[600]">
                       {`${parseInt(
                         offerDetails?.positiveFeedback
                       ).toLocaleString()}`}
@@ -408,12 +409,12 @@ const AboutOffer = () => {
                   </div>
                 </div>
                 <div className="flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Negative Feedback
                   </p>
                   <div className="flex items-center gap-[5px]">
-                    <MdThumbDownAlt className="text-[15.5px] text-red-500" />
-                    <p className="text-white text-[15.5px] font-[600]">
+                    <MdThumbDownAlt className="text-[15px] text-red-500" />
+                    <p className="text-white text-[15px] font-[600]">
                       {`${parseInt(
                         offerDetails?.negativeFeedback
                       ).toLocaleString()}`}
@@ -421,12 +422,12 @@ const AboutOffer = () => {
                   </div>
                 </div>
                 <div className="flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
-                  <p className="text-[12.5px] font-[400] text-tradeFadeWhite">
+                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Trust Score
                   </p>
                   <div className="flex items-center gap-[5px]">
-                    <FaRegStar className="text-[15.5px] text-tradeOrange" />
-                    <p className="text-white text-[15.5px] font-[600]">
+                    <FaRegStar className="text-[15px] text-tradeOrange" />
+                    <p className="text-white text-[15px] font-[600]">
                       {offerDetails.trustScore}%
                     </p>
                   </div>

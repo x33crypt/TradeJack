@@ -124,7 +124,7 @@ const DashMain = () => {
                   </p>
                 </div>
                 <div className="flex justify-between items-baseline">
-                  <p className="text-white text-[25px] font-[700]">20</p>
+                  <p className="text-white text-[23px] font-[700]">20</p>
                   <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
                 </div>
               </div>
@@ -136,7 +136,7 @@ const DashMain = () => {
                   </p>
                 </div>
                 <div className="flex justify-between items-baseline">
-                  <p className="text-white text-[25px] font-[700]">3</p>
+                  <p className="text-white text-[23px] font-[700]">3</p>
                   <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
                 </div>
               </div>
@@ -148,7 +148,7 @@ const DashMain = () => {
                   </p>
                 </div>
                 <div className="flex justify-between items-baseline">
-                  <p className="text-white text-[25px] font-[700]">449</p>
+                  <p className="text-white text-[23px] font-[700]">449</p>
                   <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
                 </div>
               </div>
@@ -161,7 +161,7 @@ const DashMain = () => {
                 </div>
 
                 <div className="flex justify-between items-baseline">
-                  <p className="text-white text-[25px] font-[700]">4</p>
+                  <p className="text-white text-[23px] font-[700]">4</p>
                   <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
                 </div>
               </div>
@@ -172,7 +172,7 @@ const DashMain = () => {
                 <p className="text-white font-[600] text-[17px]">
                   Transaction history
                 </p>
-                <p className="text-tradeGreen font-[700] text-[12px] cursor-pointer ">
+                <p className="text-tradeGreen font-[600] text-[13px] cursor-pointer ">
                   View All
                 </p>
               </div>

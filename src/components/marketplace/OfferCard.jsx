@@ -74,7 +74,7 @@ const OfferCard = (props) => {
             </div>
             <div className=" flex flex-col gap-[3px]">
               <div className="flex gap-[10px]">
-                <p className="flex text-[13px] text-tradeFadeWhite font-[400] gap-[2px]">
+                <p className="flex text-[13px] text-tradeFadeWhite font-[500] gap-[2px]">
                   Min Purchase
                 </p>
 
@@ -85,7 +85,7 @@ const OfferCard = (props) => {
               </div>
 
               <div className="flex gap-[10px]">
-                <p className="flex text-[13px] text-tradeFadeWhite font-[400] gap-[2px]">
+                <p className="flex text-[13px] text-tradeFadeWhite font-[500] gap-[2px]">
                   Max Purchase
                 </p>
 
@@ -113,7 +113,7 @@ const OfferCard = (props) => {
             </p>
 
             <div className="flex gap-[10px]">
-              <p className="flex text-[13px] text-tradeFadeWhite font-[400] gap-[2px]">
+              <p className="flex text-[13px] text-tradeFadeWhite font-[500] gap-[2px]">
                 Avg Trade Time
               </p>
 
@@ -123,6 +123,7 @@ const OfferCard = (props) => {
             </div>
           </div>
         </div>
+
         <div className="flex-1 flex flex-col gap-[10px]">
           <div className="flex gap-[8px] items-center text-[15px] lg:text-[14px] font-[700] text-white">
             <p>{`86,243 ${props.currency}`}</p>

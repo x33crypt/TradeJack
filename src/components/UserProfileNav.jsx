@@ -127,17 +127,17 @@ const UserProfileNav = () => {
   }, [location.pathname]); // Runs every time the URL changes
 
   return (
-    <div className="lg:flex hidden rounded-[14px] p-[15px] border border-tradeAshLight w-[280px] max-h-max gap-[30px] flex-col">
+    <div className="flex  rounded-[14px] p-[10px] border border-tradeAshLight w-[260px] max-h-max gap-[30px] flex-col">
       <div className="flex items-center gap-[15px]">
         <div className=" lg:w-[60px] sm:w-[150px] w-[100px] ">
           <img className="rounded-full" src={image} alt="" />
         </div>
 
         <div>
-          <p className="text-white lg:text-[18px] sm:text-[38px] text-[25px] font-extrabold">
+          <p className="text-white lg:text-[17px] sm:text-[38px] text-[25px] font-extrabold">
             0xSanityy
           </p>
-          <p className="text-tradeFadeWhite text-[12px] font-[500]">
+          <p className="text-tradeFadeWhite text-[11px] font-[500]">
             0xsanityy@gmail.com
           </p>
         </div>
@@ -164,7 +164,7 @@ const UserProfileNav = () => {
           <div className="text-[17px]">
             <CgProfile />
           </div>
-          <p className="text-[14px] font-[500]">Your Info</p>
+          <p className="text-[13px] font-[500]">Profile</p>
         </div>
         <div
           onClick={() => handleIsDeposit()}
@@ -177,7 +177,7 @@ const UserProfileNav = () => {
           <div className="text-[17px]">
             <PiHandDepositBold />
           </div>
-          <p className="text-[14px] font-[500]">Deposit & Withdraw</p>
+          <p className="text-[13px] font-[500]">Wallet</p>
         </div>
         <div
           onClick={() => handleIsSecurity()}
@@ -190,7 +190,7 @@ const UserProfileNav = () => {
           <div className="text-[17px]">
             <MdOutlineSecurity />
           </div>
-          <p className="text-[14px] font-[500]">Security & Privacy</p>
+          <p className="text-[13px] font-[500]">Security & Privacy</p>
         </div>
         <div
           onClick={() => handleIsSubscription()}
@@ -203,7 +203,7 @@ const UserProfileNav = () => {
           <div className="text-[17px]">
             <TbAlignBoxRightTop />
           </div>
-          <p className="text-[14px] font-[500]">Subscriptions</p>
+          <p className="text-[13px] font-[500]">Subscriptions</p>
         </div>
         <div
           onClick={() => handleIsHelp()}
@@ -216,7 +216,7 @@ const UserProfileNav = () => {
           <div className="text-[17px]">
             <BiSupport />
           </div>
-          <p className="text-[14px] font-[500]">Help & Support</p>
+          <p className="text-[13px] font-[500]">Support</p>
         </div>
         <div
           onClick={() => handleIsLogout()}
@@ -229,7 +229,7 @@ const UserProfileNav = () => {
           <div className="text-[17px]">
             <MdLogin />
           </div>
-          <p className="text-[14px] font-[500]">Logout</p>
+          <p className="text-[13px] font-[500]">Logout</p>
         </div>
       </div>
     </div>

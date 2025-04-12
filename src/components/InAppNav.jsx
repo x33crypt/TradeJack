@@ -140,38 +140,9 @@ const InAppNav = () => {
           </div>
           <div
             className="cursor-pointer lg:w-[32px] sm:w-[30px] w-[32px]"
-            onClick={() => navigateTo("/account/profile")}
-          >
-            <img className=" rounded-full" src={landingImg4} alt="" />
-          </div>
-
-          <div
-            ref={navOptionRef}
-            className={` ${
-              isProfileOption ? "flex" : "hidden"
-            } fixed right-[25px] top-[70px] flex-col w-[170px] p-[3px] bg-tradeAshLight rounded-[1px]`}
             onClick={() => setIsProfileOption((prev) => !prev)}
           >
-            <p
-              className="text-white text-[12px] font-[700] py-[7px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer"
-              onClick={() => navigateTo("/profile")}
-            >
-              Account
-            </p>
-
-            <p className="text-white text-[12px] font-[700] py-[7px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
-              Support
-            </p>
-            <p className="text-white text-[12px] font-[700] py-[7px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
-              Security
-            </p>
-            <p className="text-white text-[12px] font-[700] py-[7px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
-              Settings
-            </p>
-            <div className="border-t border-tradeAshExtraLight"></div>
-            <p className="text-white text-[12px] font-[700]  py-[7px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
-              Log out
-            </p>
+            <img className=" rounded-full" src={landingImg4} alt="" />
           </div>
         </div>
       </div>
@@ -255,6 +226,37 @@ const InAppNav = () => {
             Buy Asset
           </p>
         </div>
+      </div>
+
+      <div
+        ref={navOptionRef}
+        className={` ${
+          isProfileOption ? "flex" : "hidden"
+        } z-30 fixed right-[25px] top-[60px] flex-col w-[160px] p-[3px] bg-tradeAshLight rounded-[1px]`}
+        onClick={() => setIsProfileOption((prev) => !prev)}
+      >
+        <p
+          className="text-white text-[12px] font-[700] py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer"
+          onClick={() => navigateTo("/account/profile")}
+        >
+          Profile
+        </p>
+        <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
+          Wallet
+        </p>
+        <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
+          Security & privacy
+        </p>
+        <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
+          Subscriptions
+        </p>
+        <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
+          Support
+        </p>
+        <div className="border-t border-tradeAshExtraLight"></div>
+        <p className="text-white text-[12px] font-[600]  py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
+          Log out
+        </p>
       </div>
     </>
   );

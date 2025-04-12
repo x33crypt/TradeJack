@@ -1,6 +1,8 @@
 import React from "react";
 
 const ExchangeCalculator = (prop) => {
+  console.log(prop?.calculatorResult?.perUsd);
+
   return (
     <div className="lg:w-[400px] flex flex-col justify-between  md:border  border-tradeAshLight md:rounded-[14px]">
       <div className="flex items-center gap-[10px] p-[15px] md:border-b md:border-t-0 border-y border-tradeAshLight">
@@ -13,7 +15,7 @@ const ExchangeCalculator = (prop) => {
         <div className="flex flex-col gap-[10px]">
           <div className="flex border border-tradeAshLight flex-col gap-[15px] bg-tradeAsh p-[15px] rounded-[16px]">
             <div className="flex justify-between items-center">
-              <p className="text-tradeFadeWhite text-[14px]">Send</p>
+              <p className="text-tradeFadeWhite text-[13px] font-[500]">Send</p>
             </div>
             <div className="bg-tradePurpl flex gap-[20px] justify-between items-center">
               <input
@@ -27,7 +29,7 @@ const ExchangeCalculator = (prop) => {
                 }
                 onChange={prop?.handleTradeValueChange}
               />
-              <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[600] bg-white">
+              <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[700] bg-white">
                 {prop?.offerDetails?.currency}
               </p>
             </div>
@@ -35,7 +37,9 @@ const ExchangeCalculator = (prop) => {
 
           <div className="flex border border-tradeAshLight flex-col gap-[15px] bg-tradeAsh p-[15.5px] rounded-[16px]">
             <div className="flex">
-              <p className="text-tradeFadeWhite text-[14px]">Receive</p>
+              <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                Receive
+              </p>
             </div>
             <div className="flex gap-[20px] justify-between items-center">
               <input
@@ -50,7 +54,7 @@ const ExchangeCalculator = (prop) => {
                 readOnly
                 placeholder="00.00"
               />
-              <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[600] bg-white">
+              <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[700] bg-white">
                 BTC
               </p>
             </div>
@@ -72,11 +76,14 @@ const ExchangeCalculator = (prop) => {
         <div className=" flex flex-col gap-[10px]">
           <div className="flex justify-between">
             <p className="text-[14px] font-[600] text-tradeFadeWhite">
-              Rate Details
+              Offer rate details
             </p>
             <p className="text-[14px] font-[600] text-white">
-              {`
-1 ${prop?.offerDetails?.currency ? prop?.offerDetails.currency : "USD"} =  
+              {`1 ${
+                prop?.offerDetails?.currency
+                  ? prop?.offerDetails.currency
+                  : "USD"
+              } =  
 ${
   isNaN(prop?.calculatorResult?.perUsd) ||
   prop?.calculatorResult?.perUsd === null ||
@@ -119,16 +126,22 @@ ${
           </div>
         </div>
 
-        <div className="flex  items-center justify-center ">
+        <div className="flex items-center justify-center">
           {prop?.handleShowGreenButton() ? (
-            <p
-              onClick={() => prop?.handleInitiateTrade()}
-              className="text-[15px] text-center  text-black bg-tradeGreen hover:bg-white font-[700]  border border-tradeGreen hover:border-tradeAshExtraLight p-[10px] rounded-[10px]  w-[100%] transition-all duration-300 cursor-pointer"
-            >
-              Initiate Trade
-            </p>
+            prop?.calculatorResult?.perUsd != "0.00" ? (
+              <p
+                onClick={() => prop?.handleInitiateTrade()}
+                className="text-[15px] text-center text-black bg-tradeGreen hover:bg-white font-[700] border border-tradeGreen hover:border-tradeAshExtraLight p-[10px] rounded-[10px] w-[100%] transition-all duration-300 cursor-pointer"
+              >
+                Initiate Trade
+              </p>
+            ) : (
+              <p className="text-[15px] text-center text-white bg-tradeAshExtraLight font-[700] border border-tradeAshExtraLight p-[10px] rounded-[10px] w-[100%] transition-all duration-300">
+                Calculating...
+              </p>
+            )
           ) : (
-            <p className="text-[15px] text-center  text-white bg-tradeAshExtraLight font-[700]  border border-tradeAshExtraLight p-[10px] rounded-[10px]  w-[100%] transition-all duration-300">
+            <p className="text-[15px] text-center text-white bg-tradeAshExtraLight font-[700] border border-tradeAshExtraLight p-[10px] rounded-[10px] w-[100%] transition-all duration-300">
               Enter Amount
             </p>
           )}
