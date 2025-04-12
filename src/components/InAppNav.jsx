@@ -150,14 +150,14 @@ const InAppNav = () => {
       <div
         className={`${
           isNavOption ? "flex" : "hidden"
-        } z-50 fixed right-0 left-0 top-[67px] bottom-0 bg-black p-[15px] pt-[13px] pb-[16px] lg:hidden flex flex-col justify-between`}
+        } z-50 fixed right-0 left-0 top-[60px] bottom-0 bg-black p-[15px] pt-[13px] pb-[16px] lg:hidden flex flex-col justify-between`}
       >
         <div className="flex gap-[10px] p-[10px] items-center bg-tradeAsh border border-tradeAshExtraLight rounded-[12px]">
           <HiMiniMagnifyingGlass className="text-tradeFadeWhite text-[20px]" />
 
-          <p className=" text-tradeFadeWhite text-[15px] font-[500]">
+          <p className=" text-tradeFadeWhite text-[14px] font-[500]">
             Hello,{" "}
-            <small className="text-tradeFadeWhite text-[15px] font-[600]">
+            <small className="text-tradeFadeWhite text-[14px] font-[600]">
               x33crypt.
             </small>{" "}
             How can we help ?
@@ -173,36 +173,36 @@ const InAppNav = () => {
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
           >
             <MdSpaceDashboard className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[16px] ">Dashboard</p>
+            <p className="text-white text-[15px] ">Dashboard</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
             <TbLayoutList className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[16px] ">My Offers</p>
+            <p className="text-white text-[15px] ">My Offers</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
             <FaRegEnvelope className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[16px] "> Messages</p>
+            <p className="text-white text-[15px] "> Messages</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
             <FaVenusDouble className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[16px] ">Favourite Vendors</p>
+            <p className="text-white text-[15px] ">Favourite Vendors</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
             <MdOutlineQueryStats className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[16px] ">Trade Statistics</p>
+            <p className="text-white text-[15px] ">Trade Statistics</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
             <RiExchangeFundsLine className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[16px] ">Transaction History</p>
+            <p className="text-white text-[15px] ">Transaction History</p>
           </div>
 
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
             <LiaUserFriendsSolid className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[16px] ">Invite a friend</p>
+            <p className="text-white text-[15px] ">Invite a friend</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
             <TbHelpCircle className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[16px] "> Help Center</p>
+            <p className="text-white text-[15px] "> Help Center</p>
           </div>
         </div>
 
@@ -212,7 +212,7 @@ const InAppNav = () => {
               navigateTo("/marketplace");
               setIsNavOption(false);
             }}
-            className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-white py-[10px] rounded-[12px]"
+            className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-white py-[10px] rounded-[12px]"
           >
             Sell Asset
           </p>
@@ -221,7 +221,7 @@ const InAppNav = () => {
               navigateTo("/create-offer");
               setIsNavOption(false);
             }}
-            className="flex-1 flex items-center justify-center text-black text-[16px] font-[600] bg-tradeGreen py-[10px] rounded-[12px]"
+            className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-tradeGreen py-[10px] rounded-[12px]"
           >
             Buy Asset
           </p>
@@ -232,7 +232,7 @@ const InAppNav = () => {
         ref={navOptionRef}
         className={` ${
           isProfileOption ? "flex" : "hidden"
-        } z-30 fixed right-[25px] top-[60px] flex-col w-[160px] p-[3px] bg-tradeAshLight rounded-[1px]`}
+        } z-30 fixed lg:right-[25px] md:right-[25px] right-[15px] top-[60px] flex-col w-[160px] p-[3px] bg-tradeAshLight rounded-[1px]`}
         onClick={() => setIsProfileOption((prev) => !prev)}
       >
         <p

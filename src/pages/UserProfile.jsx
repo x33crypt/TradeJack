@@ -51,10 +51,10 @@ const UserProfile = () => {
           </p>
         </div>
         <div className="flex flex-col md:flex-row md:gap-[25px] gap-[20px] p-[15px] md:p-0">
-          <div className=" lg:w-[300px] md:w-[250px] flex flex-col gap-[20px]  sm:p-0 borde border-tradeAshLight bg-tradeAs rounded-[14px]">
+          <div className=" lg:w-[350px] md:w-[300px] flex flex-col gap-[20px]  sm:p-0 borde border-tradeAshLight bg-tradeAs rounded-[14px]">
             <div className="flex justify-center cursor-pointer ">
               <img
-                className="rounded-full lg:w-[250px] md:w-[220px] w-[180px]"
+                className="rounded-full lg:w-[300px] md:w-[250px] w-[180px]"
                 src={image}
                 alt=""
               />
