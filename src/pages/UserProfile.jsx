@@ -47,7 +47,7 @@ const UserProfile = () => {
       <div className="lg:pt-[75px] md:pt-[75px] pt-[60px] pb-[10px] lg:px-[2%] md:px-[2.5%] min-h-screen bg-black">
         <div className=" flex md:hidden items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
           <p className=" text-[17px] text-white font-[700] cursor-pointer">
-            Profile
+            Your Profile
           </p>
         </div>
         <div className="flex flex-col md:flex-row md:gap-[25px] gap-[20px] p-[15px] md:p-0">
