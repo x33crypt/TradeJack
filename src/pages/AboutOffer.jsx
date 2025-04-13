@@ -234,7 +234,7 @@ const AboutOffer = () => {
     <>
       <MarketTopNav />
 
-      <div className=" lg:pt-[75px] md:pt-[75px] pt-[65px] pb-[30px] flex flex-col bg-black gap-[15px] lg:p-[2%] md:p-[2.5%]">
+      <div className=" lg:pt-[75px] md:pt-[75px] pt-[60px] pb-[30px] flex flex-col bg-black gap-[15px] lg:p-[2%] md:p-[2.5%]">
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-[0.8%]">
           <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight md:rounded-[14px]">
             <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
@@ -243,7 +243,7 @@ const AboutOffer = () => {
               </p>
             </div>
 
-            <div className="flex bg- flex-col md:gap-[15px] gap-[10px] p-[15px]">
+            <div className="flex flex-col md:gap-[15px] gap-[10px] p-[15px]">
               <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
                   <p className="text-[12px] font-[500] text-tradeFadeWhite">
@@ -333,7 +333,7 @@ const AboutOffer = () => {
               </div>
             </div>
 
-            <div className="flex  flex-col justify-between ">
+            <div className="flex flex-col">
               <div className="flex p-[15px]  border-y border-neutral-800 ">
                 <p className="text-[17px] text-white font-[600] cursor-pointer">
                   About Vendor
