@@ -57,7 +57,7 @@ const UserProfile = () => {
                 <img className="rounded-full" src={image} alt="" />
               </div>
 
-              <div className="flex flex-col justify-center gap-[20px] ">
+              <div className="flex flex-col justify-center gap-[15px] ">
                 <div className="flex flex-col">
                   <p className="text-white lg:text-[24px] sm:text-[22px] text-[23px] font-[700]">
                     Adeleke Lukman
@@ -65,6 +65,19 @@ const UserProfile = () => {
                   <p className="text-tradeFadeWhite lg:text-[18px] sm:text-[16px] text-[17px] font-[500]">
                     sanityy0x
                   </p>
+                  <div className="flex items-center gap-[3px]">
+                    <div className="flex items-center gap-[5px]">
+                      <p className="lg:text-[13px] sm:text-[13px] text-[14px] font-[500] text-white">
+                        Nigeria
+                      </p>
+                    </div>
+                    <p className="lg:text-[14px] sm:text-[13px] text-[14px] font-[700] text-tradeFadeWhite">
+                      &#x2022;
+                    </p>
+                    <p className="lg:text-[13px] sm:text-[13px] text-[14px] font-[500] text-tradeFadeWhite">
+                      Joined 3 weeks ago
+                    </p>
+                  </div>
                 </div>
 
                 {/* <div className="flex flex-col gap-[2px]">
