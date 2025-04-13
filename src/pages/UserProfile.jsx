@@ -270,7 +270,7 @@ const UserProfile = () => {
             </div>
             <div className="lg:w-[400px] flex flex-col md:flex-row gap-[20px] md:border border-tradeAshLight bg-tradeAs rounded-[14px]">
               <div className="w-full flex flex-col rounded-[8px]">
-                <div className="flex p-[15px]  lg:border-b border-y border-neutral-800 ">
+                <div className="flex p-[15px]  lg:border-b lg:border-t-0 border-y border-neutral-800 ">
                   <p className="text-[17px] text-white font-[600] cursor-pointer">
                     Trade Badges
                   </p>
