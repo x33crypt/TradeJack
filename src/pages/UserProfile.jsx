@@ -155,9 +155,9 @@ const UserProfile = () => {
                 isProfileEdit
                   ? "text-black bg-tradeGreen border-tradeAshExtraLight"
                   : "bg-tradeAsh  border-tradeAshLight hover:text-white text-tradeFadeWhite "
-              } flex items-center justify-center border gap-[10px]  px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300`}
+              } flex items-center justify-center border gap-[10px]   px-[12px] py-[6px] rounded-[7px] cursor-pointer transition-all duration-300`}
             >
-              <p className="text-[14px] font-[500]">
+              <p className="text-[14px] font-[600]">
                 {" "}
                 {isProfileEdit ? "Save Changes" : "Edit Profile"}
               </p>
