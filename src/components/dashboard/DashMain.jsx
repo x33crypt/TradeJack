@@ -392,8 +392,8 @@ const DashMain = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-[15px] bg-tradeAshLight rounded-[16px] p-[10px] ">
-            <div className="flex justify-between p-[5px]  items-baseline ">
+          <div className="flex flex-col gap-[10px] rounded-[16px] p-[5px] ">
+            <div className="flex justify-between py-[10px]  items-baseline ">
               <p className="text-white font-[600] text-[19px]">
                 Transaction History
               </p>
@@ -401,7 +401,7 @@ const DashMain = () => {
             </div>
 
             <div className="flex flex-col gap-[5px] rounded-[16px]">
-              <div className="flex  bg-black borde border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+              <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[7px] px-[10px] rounded-[16px] gap-[10px] items-center cursor-pointer">
                 <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
@@ -435,7 +435,7 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-black borde border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+              <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[7px] px-[10px] rounded-[16px] gap-[10px] items-center cursor-pointer">
                 <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
@@ -469,7 +469,7 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-black borde border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+              <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[7px] px-[10px] rounded-[16px] gap-[10px] items-center cursor-pointer">
                 <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
@@ -503,7 +503,7 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-black borde border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+              <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[7px] px-[10px] rounded-[16px] gap-[10px] items-center cursor-pointer">
                 <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
@@ -537,7 +537,7 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-black borde border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+              <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[7px] px-[10px] rounded-[16px] gap-[10px] items-center cursor-pointer">
                 <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
@@ -571,7 +571,7 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-black borde border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+              <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[7px] px-[10px] rounded-[16px] gap-[10px] items-center cursor-pointer">
                 <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
@@ -605,7 +605,7 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-black borde border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+              <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[7px] px-[10px] rounded-[16px] gap-[10px] items-center cursor-pointer">
                 <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
@@ -639,7 +639,7 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-black borde border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+              <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[7px] px-[10px] rounded-[16px] gap-[10px] items-center cursor-pointer">
                 <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
@@ -673,7 +673,7 @@ const DashMain = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex  bg-black borde border-tradeAshExtraLight py-[5px] px-[10px] gap-[10px] items-center rounded-[16px]  cursor-pointer">
+              <div className="flex  bg-tradeAsh border border-tradeAshExtraLight py-[7px] px-[10px] rounded-[16px] gap-[10px] items-center cursor-pointer">
                 <div className="p-[8px] rounded-full max-w-max bg-tradeAshLight">
                   <IoMdArrowRoundDown className="text-tradeGreen text-[20px]" />
                 </div>
