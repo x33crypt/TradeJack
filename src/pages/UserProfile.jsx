@@ -109,7 +109,7 @@ const UserProfile = () => {
                 </div> */}
 
                 <div className="flex gap-[10px]">
-                  <div className=" flex md:flex-col flex-row gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
+                  <div className=" flex md:flex-col flex-row gap-[5px] lg:py-[5px] lg:px-[10px] py-[4px] px-[6px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
                     <div className="flex gap-[10px] items-center">
                       <MdThumbUpAlt className="text-[15px] text-tradeGreen" />
                       <p className=" md:flex hidden  text-[12px] font-[600] text-white">
@@ -120,7 +120,7 @@ const UserProfile = () => {
                       <p className="text-white text-[15px] font-[600]">0</p>
                     </div>
                   </div>
-                  <div className=" flex md:flex-col flex-row gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
+                  <div className=" flex md:flex-col flex-row gap-[5px]  lg:py-[5px] lg:px-[10px] py-[4px] px-[6px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
                     <div className="flex gap-[10px] items-center">
                       <MdThumbDownAlt className="text-[15px] text-red-500" />
                       <p className="md:flex hidden text-[12px] font-[600] text-white">
@@ -131,7 +131,7 @@ const UserProfile = () => {
                       <p className="text-white text-[15px] font-[600]">0</p>
                     </div>
                   </div>
-                  <div className=" flex md:flex-col flex-row gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
+                  <div className=" flex md:flex-col flex-row gap-[5px] lg:py-[5px] lg:px-[10px] py-[4px] px-[6px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
                     <div className="flex gap-[10px] items-center">
                       <FaRegStar className="text-tradeOrange text-[12px]" />
                       <p className="md:flex hidden text-[12px] font-[600] text-white">
