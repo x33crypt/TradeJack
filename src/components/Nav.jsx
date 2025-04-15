@@ -23,10 +23,7 @@ const Nav = () => {
         <p className="text-[15px] text-neutral-400 hover:text-white cursor-pointer">
           FEATURES
         </p>
-        <p
-          onClick={() => navigateTo("/dashboard")}
-          className="text-[15px] text-neutral-400 hover:text-white cursor-pointer"
-        >
+        <p className="text-[15px] text-neutral-400 hover:text-white cursor-pointer">
           MARKETPLACE
         </p>
         <p className="text-[15px] text-neutral-400 hover:text-white cursor-pointer">

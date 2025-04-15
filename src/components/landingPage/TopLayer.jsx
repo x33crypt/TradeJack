@@ -1,7 +1,10 @@
 import React from "react";
 import { PiGlobeHemisphereEastLight } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
 const TopLayer = () => {
+  const navigateTo = useNavigate();
+
   return (
     <div className=" lg:pt-[40px] pt-[30px] lg:pb-[100px] pb-[80px] px-[5%] flex ">
       <div className="flex">
@@ -18,7 +21,10 @@ const TopLayer = () => {
             <button className=" lg:w-[170px] border border-tradeGreen py-[8px] rounded-[10px] text-black bg-tradeGreen hover:shadow-tradeGreen hover:shadow-tradeSpreadOut transition-all duration-300 font-[600]">
               Get Started Now
             </button>
-            <button className="lg:w-[230px] border border-white py-[8px] rounded-[8px] bg-transparent hover:shadow-white shadow-tradeHoverInDefault hover:shadow-tradeSpreadIn text-white ransition-all duration-300 font-[600]">
+            <button
+              className="lg:w-[230px] border border-white py-[8px] rounded-[8px] bg-transparent hover:shadow-white shadow-tradeHoverInDefault hover:shadow-tradeSpreadIn text-white ransition-all duration-300 font-[600]"
+              onClick={() => navigateTo("/dashboard")}
+            >
               Explore our Marketplace
             </button>
           </div>
