@@ -16,6 +16,7 @@ import { BiSupport } from "react-icons/bi";
 import { MdLogin } from "react-icons/md";
 import UserProfileNav from "@/components/UserProfileNav";
 
+
 const UserProfile = () => {
   const [isProfileEdit, setIsProfileEdit] = useState(false);
   const [isBankAccountEdit, setIsBankAccountEdit] = useState(false);
@@ -53,17 +54,17 @@ const UserProfile = () => {
         <div className="flex flex-col mt-[20px] md:gap-[50px] gap-[20px]">
           <div className=" flex md:flex-row flex-col justify-between md:items-center gap-[20px] md:p-0 p-[15px] ">
             <div className="flex gap-[20px] items-center ">
-              <div className="flex lg:w-[170px] md:w-[150px] w-[130px] justify-center cursor-pointer ">
+              <div className="flex lg:w-[180px] md:w-[150px] w-[130px] justify-center cursor-pointer ">
                 <img className="rounded-full" src={image} alt="" />
               </div>
 
               <div className="flex flex-col justify-center gap-[15px] ">
                 <div className="flex flex-col">
-                  <p className="text-white lg:text-[24px] sm:text-[22px] text-[20px] font-[700]">
+                  <p className="text-white lg:text-[28px] sm:text-[22px] text-[20px] font-[700]">
                     Adeleke Lukman
                   </p>
                   <p className="text-tradeFadeWhite lg:text-[18px] sm:text-[16px] text-[15px] font-[500]">
-                    sanityy0x
+                    @sanityy0x
                   </p>
                   <div className="flex items-center gap-[3px]">
                     <div className="flex items-center gap-[5px]">

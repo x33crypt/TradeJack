@@ -28,14 +28,14 @@ const DashSideNav = () => {
           <p className="text-[13px] font-[500]"> Dashboard</p>
         </div>
 
-        <div
-          className="p-[7px] flex items-center gap-[10px] rounded-[7px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer"
-          // onClick={() => navigateTo("/marketplace")}
-        >
+        <div className="p-[7px] flex items-center gap-[10px] rounded-[7px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer">
           <TbLayoutList className="text-[17px]" />
           <p className="text-[13px] font-[500]">My Offers</p>
         </div>
-        <div className="p-[7px] flex items-center gap-[10px] rounded-[7px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer">
+        <div
+          className="p-[7px] flex items-center gap-[10px] rounded-[7px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer"
+          onClick={() => navigateTo("/messages")}
+        >
           <HiOutlineEnvelope className="text-[17px]" />
           <p className="text-[13px] font-[500]"> Messages</p>
         </div>

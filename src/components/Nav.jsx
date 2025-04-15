@@ -38,11 +38,10 @@ const Nav = () => {
       </div>
       <div className="flex items-center gap-[20px]">
         <div
-          onClick={() => navigateTo("/dashboard")}
+          onClick={() => navigateTo("/signup")}
           className="flex items-center gap-[10px] text-black border border-white bg-white lg:px-[25px] px-[15px] py-[8px] rounded-[8px] transition-all duration-300 cursor-pointer"
         >
           <p className=" lg:text-[16px] text-[16px] font-[600]">Get Started</p>
-          {/* <MdArrowOutward className="text-black text-[17px] font-bold" /> */}
         </div>
         <div className="lg:hidden flex">
           <CgMenuRight className="text-neutral-400 text-[25px]" />
