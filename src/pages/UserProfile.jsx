@@ -16,7 +16,6 @@ import { BiSupport } from "react-icons/bi";
 import { MdLogin } from "react-icons/md";
 import UserProfileNav from "@/components/UserProfileNav";
 
-
 const UserProfile = () => {
   const [isProfileEdit, setIsProfileEdit] = useState(false);
   const [isBankAccountEdit, setIsBankAccountEdit] = useState(false);
@@ -58,15 +57,15 @@ const UserProfile = () => {
                 <img className="rounded-full" src={image} alt="" />
               </div>
 
-              <div className="flex flex-col justify-center gap-[15px] ">
+              <div className="flex flex-col justify-center lg:gap-[15px] gap-[10px] ">
                 <div className="flex flex-col">
-                  <p className="text-white lg:text-[28px] sm:text-[22px] text-[20px] font-[700]">
+                  {/* <p className="text-white lg:text-[28px] sm:text-[22px] text-[20px] font-[700]">
                     Adeleke Lukman
+                  </p> */}
+                  <p className="text-white lg:text-[55px] sm:text-[45px] text-[40px] font-[900]">
+                    0xSanityy
                   </p>
-                  <p className="text-tradeFadeWhite lg:text-[18px] sm:text-[16px] text-[15px] font-[500]">
-                    @sanityy0x
-                  </p>
-                  <div className="flex items-center gap-[3px]">
+                  <div className="flex items-center gap-[3px] ml-1">
                     <div className="flex items-center gap-[5px]">
                       <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[500] text-white">
                         Nigeria
@@ -109,7 +108,7 @@ const UserProfile = () => {
                   </div>
                 </div> */}
 
-                <div className="flex gap-[10px]">
+                <div className="flex gap-[10px] ml-1">
                   <div className=" flex md:flex-col flex-row gap-[5px] lg:py-[5px] lg:px-[10px] py-[4px] px-[6px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
                     <div className="flex gap-[10px] items-center">
                       <MdThumbUpAlt className="text-[15px] text-tradeGreen" />
@@ -267,7 +266,15 @@ const UserProfile = () => {
                           sanityy0x@gmail.com
                         </p>
                       </div>
+                      <div className="flex-1 flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
+                        <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
+                          Country
+                        </p>
 
+                        <p className="text-white text-[15px] font-[600]">
+                          Nigeria
+                        </p>
+                      </div>
                       <div className="flex-1 flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
                         <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
                           Phone number

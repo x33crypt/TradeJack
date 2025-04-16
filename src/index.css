@@ -4,6 +4,7 @@
 
 * {
   font-family: "Manrope", "serif";
+  box-sizing: border-box;
 }
 
 .tippy-box[data-theme~="hintUser"] {
