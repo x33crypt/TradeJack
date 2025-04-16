@@ -4,9 +4,9 @@ import { GiCardExchange } from "react-icons/gi";
 
 const Signupwithmail = () => {
   return (
-    <div className="lg:w-[600px] w-full bg-black pb-[30px] ">
-      <div className="lg:p-[80px] md:p-[50px] p-[20px] flex flex-col gap-[50px]">
-        <div className="lg:hidden flex items-center justify-center gap-[10px] ">
+    <div className="lg:w-[600px] w-full bg-black pb-[40px] ">
+      <div className="lg:p-[80px] md:p-[50px] p-[20px] flex flex-col gap-[40px]">
+        <div className="lg:hidden flex items-center justify-center gap-[10px] mt-[20px] ">
           <GiCardExchange className=" flex lg:text-[19px] md:text-[19px] text-[22px] text-tradeGreen" />
           <p className=" lg:text-[19px] md:text-[22px] text-[22px] font-[700] text-tradeGreen">
             Trade
