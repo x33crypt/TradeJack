@@ -142,19 +142,15 @@ const Signupwithmail = () => {
       <div className="lg:p-[80px] md:p-[50px] p-[20px] flex flex-col gap-[40px]">
         <div className="flex flex-col gap-[40px]">
           <div className="lg:hidden flex items-center justify-center gap-[8px] mt-[20px] ">
-            {/* <GiCardExchange className=" flex lg:text-[19px] md:text-[19px] text-[26px] text-tradeGreen" />
-            <p className=" lg:text-[19px] md:text-[22px] text-[26px] font-[700] text-tradeGreen">
+            <p className=" lg:text-[19px] md:text-[22px] text-[16px] font-[700] text-tradeGreen">
               Trade
-              <small className="lg:text-[19px] md:text-[19px] text-[26px] font-[700] text-white">
+              <small className="lg:text-[19px] md:text-[19px] text-[16px] font-[700] text-white">
                 Jack
               </small>
-            </p> */}
-            <p className="text-[15px] font-[500] text-white">Welcome</p>
+            </p>
           </div>
           <div className="flex flex-col items-center gap-[5px]">
-            <p className="text-[26px] text-white font-[700]">
-              Sign Up to TradeJack
-            </p>
+            <p className="text-[26px] text-white font-[700]">Sign Up Account</p>
             <p className="text-[14px] font-[500] text-tradeFadeWhite">
               Enter your personal data to create your account.
             </p>
