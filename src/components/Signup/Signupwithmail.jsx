@@ -208,11 +208,11 @@ const Signupwithmail = () => {
     <div className="lg:w-[600px] w-full bg-black pb-[40px] ">
       <div className="lg:p-[80px] md:p-[50px] p-[20px] flex flex-col gap-[40px]">
         <div className="flex flex-col items-center gap-[5px] mt-[30px]">
-          <p className="flex gap-[5px] text-[26px] text-white font-[700]">
+          <p className="flex gap-[5px] text-[28px] text-white font-[800]">
             Sign Up to{" "}
-            <p className="text-[26px] font-[700] text-tradeGreen">
+            <p className="text-[28px] font-[800] text-tradeGreen">
               Trade
-              <small className="text-[26px] font-[700] text-white">Jack</small>
+              <small className="text-[28px] font-[800] text-white">Jack</small>
             </p>
           </p>
           <p className="text-[13px] font-[500] text-tradeFadeWhite">
