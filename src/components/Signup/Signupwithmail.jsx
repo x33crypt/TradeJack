@@ -111,6 +111,11 @@ const Signupwithmail = () => {
     return passwordRegex.test(password);
   };
 
+  const validateUsername = (username) => {
+    const regex = /^(?!-)(?!.*--)[a-zA-Z0-9-]+(?<!-)$/;
+    return regex.test(username);
+  };
+
   const validateEmail = (email) => {
     // Basic email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -171,6 +176,14 @@ const Signupwithmail = () => {
       }
     }
 
+    if (!validateUsername(sanitizedDetails.username)) {
+      showFieldError("username", "Username doesn't meet the requirements.");
+      setIsSigningUp(false);
+      return;
+    } else {
+      closeFieldError("username");
+    }
+
     if (sanitizedDetails.password !== sanitizedDetails.confirmPassword) {
       showFieldError("confirmPassword", "Passwords do not match.");
       setIsSigningUp(false);
@@ -195,12 +208,28 @@ const Signupwithmail = () => {
       closeFieldError("email");
     }
 
+    const payload = {
+      fullname: `${sanitizedDetails.firstname} ${sanitizedDetails.lastname}`,
+      userName: sanitizedDetails.username,
+      email: signupDetails.email,
+      country: signupDetails.country,
+      password: signupDetails.password,
+    };
+
     try {
-      const response = await axios.post(`${baseUrl}/signup`, sanitizedDetails);
-      // Navigate to another page or show a success message
+      const response = await axios.post(`${baseUrl}/auth/signup`, payload);
+      console.log("Signup successful:", response.data);
+      setIsSigningUp(false);
+      // Optionally show a toast or redirect
+      // toast.success("Signup successful!");
     } catch (err) {
       setIsSigningUp(false);
-      console.log(err);
+      console.error("Signup error:", err);
+
+      const errorMsg =
+        err?.response?.data?.message ||
+        "Something went wrong. Please try again.";
+      // toast.error(errorMsg);
     }
   };
 
