@@ -425,7 +425,7 @@ const Signupwithmail = () => {
                   uppercase, lowercase, number, and special character.
                 </p>
               </div>
-              {/* <div className="w-full">
+              <div className="w-full">
                 <p className="text-[14px] text-white font-[600]">
                   Confirm Password
                 </p>
@@ -450,7 +450,7 @@ const Signupwithmail = () => {
                     {fieldError.confirmPassword.message}
                   </p>
                 </div>
-              </div> */}
+              </div>
             </div>
 
             <div className="flex flex-col items-center gap-[25px]">
@@ -460,9 +460,9 @@ const Signupwithmail = () => {
                 </p>
               </button>
 
-              <p className="text-tradeFadeWhite text-[14px] font-[500]">
+              <p className="text-tradeFadeWhite text-[13px] font-[500]">
                 Already have an account?{" "}
-                <small className="text-[14px] text-white font-[700] ml-[5px]">
+                <small className="text-[13px] text-white font-[600] ml-[5px] cursor-pointer">
                   Log in
                 </small>
               </p>
