@@ -366,7 +366,7 @@ const Signupwithmail = () => {
                 </div>
               </div>
 
-              <div className="w-full">
+              {/* <div className="w-full">
                 <p className="text-[14px] text-white font-[600]">Country</p>
                 <div className="relative w-full">
                   <select
@@ -398,7 +398,8 @@ const Signupwithmail = () => {
                   <IoWarning className="text-[14px]" />
                   <p className="text-[12px]">{fieldError.country.message}</p>
                 </div>
-              </div>
+              </div> */}
+
               <div className="w-full">
                 <p className="text-[14px] text-white font-[600]">Password</p>
                 <input
@@ -425,7 +426,7 @@ const Signupwithmail = () => {
                   uppercase, lowercase, number, and special character.
                 </p>
               </div>
-              <div className="w-full">
+              {/* <div className="w-full">
                 <p className="text-[14px] text-white font-[600]">
                   Confirm Password
                 </p>
@@ -450,7 +451,7 @@ const Signupwithmail = () => {
                     {fieldError.confirmPassword.message}
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex flex-col items-center gap-[25px]">
