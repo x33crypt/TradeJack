@@ -235,7 +235,7 @@ const Signupwithmail = () => {
 
   return (
     <div className="lg:w-[600px] w-full bg-black pb-[40px] ">
-      <div className="lg:p-[80px] md:p-[50px] p-[20px] flex flex-col gap-[40px]">
+      <div className="lg:px-[80px] lg:py-[50px] md:px-[50px] p-[20px] flex flex-col gap-[40px]">
         <div className="flex flex-col items-center gap-[5px] mt-[30px]">
           <p className="flex gap-[5px] text-[28px] text-white font-[800]">
             Sign Up to{" "}
@@ -267,7 +267,7 @@ const Signupwithmail = () => {
             </div>
 
             <div className="flex flex-col gap-[25px]">
-              <div className="flex lg:flex-row flex-col w-full gap-[25px] ">
+              {/* <div className="flex lg:flex-row flex-col w-full gap-[25px] ">
                 <div className="w-full">
                   <p className="text-[14px] font-[600] text-white">
                     First Name
@@ -316,6 +316,32 @@ const Signupwithmail = () => {
                     <p className="text-[12px]">{fieldError.lastname.message}</p>
                   </div>
                 </div>
+              </div> */}
+              <div className="w-full">
+                <p className="text-[14px] text-white font-[600]">Username</p>
+                <input
+                  className={`${
+                    signupDetails.username
+                      ? "border-tradeGreen"
+                      : "border-tradeAshLight"
+                  } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                  type="text"
+                  name="username"
+                  placeholder="Choose username"
+                  onChange={handleUsernameChange}
+                />
+                <div
+                  className={`${
+                    fieldError.username.error ? "flex" : "hidden"
+                  } gap-[4px] items-center text-red-500 my-[4px]`}
+                >
+                  <IoWarning className="text-[14px]" />
+                  <p className="text-[12px]">{fieldError.username.message}</p>
+                </div>
+                <p className="text-[13px] text-tradeFadeWhite mt-[5px]">
+                  Username can only have letters, numbers, or one hyphen ( - ).
+                  It cannot begin or end with a hyphen.
+                </p>
               </div>
               <div className="w-full">
                 <p className="text-[14px] text-white font-[600]">Email</p>
@@ -339,32 +365,7 @@ const Signupwithmail = () => {
                   <p className="text-[12px]">{fieldError.email.message}</p>
                 </div>
               </div>
-              <div className="w-full">
-                <p className="text-[14px] text-white font-[600]">Username</p>
-                <input
-                  className={`${
-                    signupDetails.username
-                      ? "border-tradeGreen"
-                      : "border-tradeAshLight"
-                  } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                  type="text"
-                  name="username"
-                  placeholder="e.g. johndoe"
-                  onChange={handleUsernameChange}
-                />
-                <div
-                  className={`${
-                    fieldError.username.error ? "flex" : "hidden"
-                  } gap-[4px] items-center text-red-500 my-[4px]`}
-                >
-                  <IoWarning className="text-[14px]" />
-                  <p className="text-[12px]">{fieldError.username.message}</p>
-                </div>
-                <p className="text-[13px] text-tradeFadeWhite mt-[5px]">
-                  Username can only have letters, numbers, or one hyphen ( - ).
-                  It cannot begin or end with a hyphen.
-                </p>
-              </div>
+
               <div className="w-full">
                 <p className="text-[14px] text-white font-[600]">Country</p>
                 <div className="relative w-full">
@@ -424,7 +425,7 @@ const Signupwithmail = () => {
                   uppercase, lowercase, number, and special character.
                 </p>
               </div>
-              <div className="w-full">
+              {/* <div className="w-full">
                 <p className="text-[14px] text-white font-[600]">
                   Confirm Password
                 </p>
@@ -449,7 +450,7 @@ const Signupwithmail = () => {
                     {fieldError.confirmPassword.message}
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex flex-col items-center gap-[25px]">
