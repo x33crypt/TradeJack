@@ -235,8 +235,8 @@ const Signupwithmail = () => {
 
   return (
     <div className="lg:w-[600px] w-full bg-black pb-[40px] ">
-      <div className="lg:px-[80px] lg:py-[50px] md:px-[50px] p-[20px] flex flex-col gap-[40px]">
-        <div className="flex flex-col items-center gap-[5px] mt-[30px]">
+      <div className="lg:px-[80px] lg:py-[50px] md:px-[50px] p-[20px] flex flex-col gap-[60px]">
+        <div className="flex flex-col items-cente gap-[5px] mt-[30px]">
           <p className="flex gap-[5px] text-[28px] text-white font-[800]">
             Sign Up to{" "}
             <p className="text-[28px] font-[800] text-tradeGreen">
@@ -250,7 +250,7 @@ const Signupwithmail = () => {
         </div>
         <form onSubmit={handleSubmitDetails}>
           <div className="flex flex-col gap-[40px]">
-            <div className="flex flex-col gap-[25px]">
+            {/* <div className="flex flex-col gap-[25px]">
               <div className=" flex items-center w-full gap-[12px] justify-center hover:bg-tradeAshLight text-white border-[1px] border-tradeAshLight p-[12px] rounded-[10px] cursor-pointer transition-all duration-300">
                 <img className="w-[18px]" src={google} alt="" />
                 <p className="text-[15px] font-semibold ">
@@ -264,7 +264,7 @@ const Signupwithmail = () => {
                 </div>
                 <div className="border-t border-tradeAshLight w-full"></div>
               </div>
-            </div>
+            </div> */}
 
             <div className="flex flex-col gap-[25px]">
               {/* <div className="flex lg:flex-row flex-col w-full gap-[25px] ">
