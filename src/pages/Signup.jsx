@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import signupImg from "../assets/signupImg.webp";
-
 import Signupwithmail from "@/components/Signup/Signupwithmail";
 
 const Signup = () => {
