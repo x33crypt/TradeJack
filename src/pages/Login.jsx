@@ -1,24 +1,152 @@
 import React, { useState, useEffect } from "react";
 import signupImg from "../assets/signupImg.webp";
 import { IoWarning } from "react-icons/io5";
+import axios from "axios";
+import DOMPurify from "dompurify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [loginDetails, setLoginpDetails] = useState({
     email: "",
-    username: "",
     password: "",
   });
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const [fieldError, setFieldError] = useState({
     email: { error: false, message: "" },
-    username: { error: false, message: "" },
     password: { error: false, message: "" },
   });
 
+  console.log(loginDetails);
+
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  const handleEmailChange = (e) => {
+    setLoginpDetails((prevDetails) => ({
+      ...prevDetails,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handlePasswordChange = (e) => {
+    setLoginpDetails((prevDetails) => ({
+      ...prevDetails,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const sanitizeInput = (input) => {
+    return DOMPurify.sanitize(input);
+  };
+
+  const validatePassword = (password) => {
+    // At least 8 characters, including uppercase, lowercase, number, and special character
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordRegex.test(password);
+  };
+
+  const validateUsername = (username) => {
+    const regex = /^(?!-)(?!.*--)[a-zA-Z0-9-]+(?<!-)$/;
+    return regex.test(username);
+  };
+
+  const validateEmail = (email) => {
+    // Basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const baseUrl = import.meta.env.VITE_API_URL;
+  console.log("API URL:", baseUrl);
+
+  const navigateTo = useNavigate();
+
+  const showFieldError = (field, message) => {
+    setFieldError((prev) => ({
+      ...prev,
+      [field]: { error: true, message },
+    }));
+  };
+
+  const closeFieldError = (field) => {
+    setFieldError((prev) => ({
+      ...prev,
+      [field]: { error: false, message: "" },
+    }));
+  };
+
+  const handleSubmitDetails = async (e) => {
+    e.preventDefault();
+    setIsLoggingIn(true);
+    setErrorMessage("");
+
+    // Sanitizing all input fields
+    const sanitizedDetails = {
+      email: sanitizeInput(loginDetails.email),
+      password: sanitizeInput(loginDetails.password),
+    };
+
+    console.log(sanitizedDetails);
+
+    setTimeout(async () => {
+      const requiredFields = ["email", "password"];
+
+      for (let field of requiredFields) {
+        if (!sanitizedDetails[field]) {
+          showFieldError(field, "Input field is required");
+          setIsLoggingIn(false);
+          return;
+        } else {
+          closeFieldError(field);
+        }
+      }
+
+      if (!validateEmail(sanitizedDetails.email)) {
+        showFieldError("email", "Invalid email format");
+        setIsLoggingIn(false);
+        return;
+      } else {
+        closeFieldError("email");
+      }
+
+      if (!validatePassword(sanitizedDetails.password)) {
+        showFieldError("password", "Password doesn't meet the requirements.");
+        setIsLoggingIn(false);
+        return;
+      } else {
+        closeFieldError("password");
+      }
+
+      const payload = {
+        email: sanitizedDetails.email,
+        password: sanitizedDetails.password,
+      };
+
+      try {
+        const response = await axios.post(`${baseUrl}/auth/login`, payload);
+        console.log("Signin successful:", response.data);
+        setIsLoggingIn(false);
+        navigateTo("/signup/completed");
+      } catch (err) {
+        setIsLoggingIn(false);
+        console.error("Signin error:", err);
+
+        const errorMsg =
+          err?.response?.data?.error?.details?.[0]?.msg ||
+          "Something went wrong. Please try again.";
+
+        setErrorMessage(errorMsg);
+      }
+    }, 1000); // <-- runs once after 5 seconds
+  };
 
   return (
     <div className="flex gap-[15px] bg-black lg:p-[10px]">
+      <div className="flex-1 lg:flex hidden bg-tradeGreen rounded-[20px] overflow-hidden">
+        <img className="object-cover" src={signupImg} alt="" />
+      </div>
       <div className="flex-1 w-full bg-black pb-[40px] ">
         <div className="lg:px-[80px] lg:py-[40px] md:px-[50px] p-[20px] flex flex-col gap-[40px]">
           <div className="flex flex-col items-cente gap-[5px] mt-[30px]">
@@ -29,7 +157,7 @@ const Login = () => {
               Enter your details to access your account.
             </p>
           </div>
-          <form>
+          <form onSubmit={handleSubmitDetails}>
             <div className="flex flex-col gap-[40px]">
               <div className="flex flex-col gap-[30px]">
                 <div className="w-full">
@@ -38,22 +166,22 @@ const Login = () => {
                   </p>
                   <input
                     className={`${
-                      loginDetails.username
+                      loginDetails.email
                         ? "border-tradeGreen"
                         : "border-tradeAshLight"
                     } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                     type="text"
-                    name="username"
-                    placeholder="Choose username"
-                    // onChange={handleUsernameChange}
+                    name="email"
+                    placeholder="eg. johndoe@gmail.com"
+                    onChange={handleEmailChange}
                   />
                   <div
                     className={`${
-                      fieldError.username.error ? "flex" : "hidden"
+                      fieldError.email.error ? "flex" : "hidden"
                     } gap-[4px] items-center text-red-500 my-[4px]`}
                   >
                     <IoWarning className="text-[14px]" />
-                    <p className="text-[12px]">{fieldError.username.message}</p>
+                    <p className="text-[12px]">{fieldError.email.message}</p>
                   </div>
                 </div>
                 <div className="w-full">
@@ -67,7 +195,7 @@ const Login = () => {
                     type="text"
                     name="password"
                     placeholder="Enter your password"
-                    // onChange={handlePasswordChange}
+                    onChange={handlePasswordChange}
                   />
                   <div
                     className={`${
@@ -90,13 +218,19 @@ const Login = () => {
                     {isLoggingIn ? "Logging in..." : "Login"}
                   </p>
                 </button>
+                <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                  Don't have an account?{" "}
+                  <small
+                    onClick={() => navigateTo("/signup")}
+                    className="text-[13px] text-white font-[600] ml-[5px] cursor-pointer"
+                  >
+                    Sign up
+                  </small>
+                </p>
               </div>
             </div>
           </form>
         </div>
-      </div>
-      <div className="flex-1 lg:flex hidden bg-tradeGreen rounded-[20px] overflow-hidden">
-        <img className="object-cover" src={signupImg} alt="" />
       </div>
     </div>
   );

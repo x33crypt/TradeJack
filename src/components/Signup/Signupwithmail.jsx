@@ -19,14 +19,15 @@ const Signupwithmail = () => {
     password: { error: false, message: "" },
     confirmPassword: { error: false, message: "" },
   });
+  const [errorMessage, setErrorMessage] = useState("");
   const [signupDetails, setSignupDetails] = useState({
-    firstname: "",
-    lastname: "",
+    // firstname: "",
+    // lastname: "",
     email: "",
     username: "",
-    country: "",
+    // country: "",
     password: "",
-    confirmPassword: "",
+    // confirmPassword: "",
   });
 
   console.log(signupDetails);
@@ -145,96 +146,99 @@ const Signupwithmail = () => {
   const handleSubmitDetails = async (e) => {
     e.preventDefault();
     setIsSigningUp(true);
+    setErrorMessage("");
 
     // Sanitizing all input fields
     const sanitizedDetails = {
-      firstname: sanitizeInput(signupDetails.firstname),
-      lastname: sanitizeInput(signupDetails.lastname),
+      // firstname: sanitizeInput(signupDetails.firstname),
+      // lastname: sanitizeInput(signupDetails.lastname),
       email: sanitizeInput(signupDetails.email),
       username: sanitizeInput(signupDetails.username),
-      country: sanitizeInput(signupDetails.country),
+      // country: sanitizeInput(signupDetails.country),
       password: sanitizeInput(signupDetails.password),
-      confirmPassword: sanitizeInput(signupDetails.confirmPassword),
+      // confirmPassword: sanitizeInput(signupDetails.confirmPassword),
     };
 
     console.log(sanitizedDetails);
 
-    const requiredFields = [
-      "firstname",
-      "lastname",
-      "username",
-      "email",
-      "country",
-      "password",
-      "confirmPassword",
-    ];
+    setTimeout(async () => {
+      const requiredFields = [
+        // "firstname",
+        // "lastname",
+        "username",
+        "email",
+        // "country",
+        "password",
+        // "confirmPassword",
+      ];
 
-    for (let field of requiredFields) {
-      if (!sanitizedDetails[field]) {
-        showFieldError(field, "Input field is required");
+      for (let field of requiredFields) {
+        if (!sanitizedDetails[field]) {
+          showFieldError(field, "Input field is required");
+          setIsSigningUp(false);
+          return;
+        } else {
+          closeFieldError(field);
+        }
+      }
+
+      if (!validateUsername(sanitizedDetails.username)) {
+        showFieldError("username", "Username doesn't meet the requirements.");
         setIsSigningUp(false);
         return;
       } else {
-        closeFieldError(field);
+        closeFieldError("username");
       }
-    }
 
-    if (!validateUsername(sanitizedDetails.username)) {
-      showFieldError("username", "Username doesn't meet the requirements.");
-      setIsSigningUp(false);
-      return;
-    } else {
-      closeFieldError("username");
-    }
+      // if (sanitizedDetails.password !== sanitizedDetails.confirmPassword) {
+      //   showFieldError("confirmPassword", "Passwords do not match.");
+      //   setIsSigningUp(false);
+      //   return;
+      // } else {
+      //   closeFieldError("confirmPassword");
+      // }
 
-    if (sanitizedDetails.password !== sanitizedDetails.confirmPassword) {
-      showFieldError("confirmPassword", "Passwords do not match.");
-      setIsSigningUp(false);
-      return;
-    } else {
-      closeFieldError("confirmPassword");
-    }
+      if (!validateEmail(sanitizedDetails.email)) {
+        showFieldError("email", "Invalid email format");
+        setIsSigningUp(false);
+        return;
+      } else {
+        closeFieldError("email");
+      }
 
-    if (!validatePassword(sanitizedDetails.password)) {
-      showFieldError("password", "Password doesn't meet the requirements.");
-      setIsSigningUp(false);
-      return;
-    } else {
-      closeFieldError("password");
-    }
+      if (!validatePassword(sanitizedDetails.password)) {
+        showFieldError("password", "Password doesn't meet the requirements.");
+        setIsSigningUp(false);
+        return;
+      } else {
+        closeFieldError("password");
+      }
 
-    if (!validateEmail(sanitizedDetails.email)) {
-      showFieldError("email", "Invalid email format");
-      setIsSigningUp(false);
-      return;
-    } else {
-      closeFieldError("email");
-    }
+      const payload = {
+        // fullname: `${sanitizedDetails.firstname} ${sanitizedDetails.lastname}`,
+        userName: sanitizedDetails.username,
+        email: signupDetails.email,
+        // country: signupDetails.country,
+        password: signupDetails.password,
+      };
 
-    const payload = {
-      fullname: `${sanitizedDetails.firstname} ${sanitizedDetails.lastname}`,
-      userName: sanitizedDetails.username,
-      email: signupDetails.email,
-      country: signupDetails.country,
-      password: signupDetails.password,
-    };
+      try {
+        const response = await axios.post(`${baseUrl}/auth/signup`, payload);
+        console.log("Signup successful:", response.data);
+        setIsSigningUp(false);
+        // Optionally show a toast or redirect
+        // toast.success("Signup successful!");
+        navigateTo("/signup/completed");
+      } catch (err) {
+        setIsSigningUp(false);
+        console.error("Signup error:", err);
 
-    try {
-      const response = await axios.post(`${baseUrl}/auth/signup`, payload);
-      console.log("Signup successful:", response.data);
-      setIsSigningUp(false);
-      // Optionally show a toast or redirect
-      // toast.success("Signup successful!");
-      navigateTo("/signup/completed");
-    } catch (err) {
-      setIsSigningUp(false);
-      console.error("Signup error:", err);
-
-      const errorMsg =
-        err?.response?.data?.message ||
-        "Something went wrong. Please try again.";
-      // toast.error(errorMsg);
-    }
+        const errorMsg =
+          err?.response?.data?.error?.details[0]?.msg ||
+          "Something went wrong. Please try again.";
+        setErrorMessage(err?.response?.data.error.details[0].msg);
+      }
+    }, 1000);
   };
 
   return (
@@ -251,6 +255,22 @@ const Signupwithmail = () => {
           <p className="text-[13px] font-[500] text-tradeFadeWhite">
             Enter your personal data to create your account.
           </p>
+        </div>
+        <div
+          className={`${
+            fieldError.email.error ? "flex" : "hidden"
+          } gap-[4px] items-center text-red-500 mt-[4px]`}
+        >
+          <IoWarning className="text-[14px]" />
+          <p className="text-[12px]">{fieldError.email.message}</p>
+        </div>
+        <div
+          className={` ${
+            errorMessage ? "flex" : "hidden"
+          } p-[12px] text-red-500 gap-[4px] items-center border  border-red-500 rounded-[10px]`}
+        >
+          <IoWarning className="text-[14px]" />
+          <p className="text-[13px]">{errorMessage}</p>
         </div>
         <form onSubmit={handleSubmitDetails}>
           <div className="flex flex-col gap-[40px]">
@@ -467,7 +487,10 @@ const Signupwithmail = () => {
 
               <p className="text-tradeFadeWhite text-[13px] font-[500]">
                 Already have an account?{" "}
-                <small className="text-[13px] text-white font-[600] ml-[5px] cursor-pointer">
+                <small
+                  onClick={() => navigateTo("/login")}
+                  className="text-[13px] text-white font-[600] ml-[5px] cursor-pointer"
+                >
                   Log in
                 </small>
               </p>
