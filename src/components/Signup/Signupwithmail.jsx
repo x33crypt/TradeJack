@@ -247,11 +247,7 @@ const Signupwithmail = () => {
       <div className="lg:px-[80px] lg:py-[40px] md:px-[50px] p-[20px] flex flex-col gap-[40px]">
         <div className="flex flex-col items-cente gap-[5px] mt-[30px]">
           <p className="flex gap-[5px] text-[28px] text-white font-[800]">
-            Sign Up to{" "}
-            <p className="text-[28px] font-[800] text-tradeGreen">
-              Trade
-              <small className="text-[28px] font-[800] text-white">Jack</small>
-            </p>
+            Create Account
           </p>
           <p className="text-[13px] font-[500] text-tradeFadeWhite">
             Enter your personal data to create your account.
