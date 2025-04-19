@@ -143,7 +143,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex gap-[15px] bg-black lg:p-[10px]">
+    <div className="flex min-h-svh gap-[15px] bg-black lg:p-[10px]">
       <div className="flex-1 lg:flex hidden bg-tradeGreen rounded-[20px] overflow-hidden">
         <img className="object-cover" src={signupImg} alt="" />
       </div>
