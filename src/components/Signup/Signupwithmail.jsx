@@ -256,14 +256,7 @@ const Signupwithmail = () => {
             Enter your personal data to create your account.
           </p>
         </div>
-        <div
-          className={`${
-            fieldError.email.error ? "flex" : "hidden"
-          } gap-[4px] items-center text-red-500 mt-[4px]`}
-        >
-          <IoWarning className="text-[14px]" />
-          <p className="text-[12px]">{fieldError.email.message}</p>
-        </div>
+
         <div
           className={` ${
             errorMessage ? "flex" : "hidden"
@@ -450,6 +443,7 @@ const Signupwithmail = () => {
                   uppercase, lowercase, number, and a special character.
                 </p>
               </div>
+
               {/* <div className="w-full">
               <p className="text-[14px] text-white font-[600]">
                 Confirm Password
