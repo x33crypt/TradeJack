@@ -447,7 +447,7 @@ const Signupwithmail = () => {
                 </div>
                 <p className="text-[13px] text-tradeFadeWhite mt-[5px]">
                   Password must be at least 8 characters with a mix of
-                  uppercase, lowercase, number, and special character.
+                  uppercase, lowercase, number, and a special character.
                 </p>
               </div>
               {/* <div className="w-full">
