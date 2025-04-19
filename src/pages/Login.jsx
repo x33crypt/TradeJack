@@ -37,7 +37,8 @@ const Login = () => {
   };
 
   const sanitizeInput = (input) => {
-    return DOMPurify.sanitize(input);
+    const cleaned = DOMPurify.sanitize(input);
+    return cleaned.replace(/\s+/g, "").trim();
   };
 
   const validatePassword = (password) => {
