@@ -52,17 +52,17 @@ const UserProfile = () => {
         </div>
         <div className="flex flex-col mt-[20px] md:gap-[50px] gap-[20px]">
           <div className=" flex md:flex-row flex-col justify-between md:items-center gap-[20px] md:p-0 p-[15px] ">
-            <div className="flex gap-[20px] items-center ">
-              <div className="flex lg:w-[180px] md:w-[150px] w-[130px] justify-center cursor-pointer ">
+            <div className="flex md:gap-[20px] gap-[10px] items-center ">
+              <div className="flex lg:w-[180px] md:w-[150px] w-[120px] justify-center cursor-pointer ">
                 <img className="rounded-full" src={image} alt="" />
               </div>
 
-              <div className="flex flex-col justify-center lg:gap-[15px] gap-[10px] ">
+              <div className="flex flex-col justify-center lg:gap-[15px] gap-[5px] ">
                 <div className="flex flex-col">
                   {/* <p className="text-white lg:text-[28px] sm:text-[22px] text-[20px] font-[700]">
                     Adeleke Lukman
                   </p> */}
-                  <p className="text-white lg:text-[55px] sm:text-[45px] text-[40px] font-[900]">
+                  <p className="text-white lg:text-[55px] sm:text-[45px] text-[30px] font-[900]">
                     0xSanityy
                   </p>
                   <div className="flex items-center gap-[3px] ml-1">
