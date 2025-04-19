@@ -134,7 +134,7 @@ const Login = () => {
         console.error("Signin error:", err);
 
         const errorMsg =
-          err?.response?.data?.error?.details?.[0]?.msg ||
+          err?.response?.data?.error?.message ||
           "Something went wrong. Please try again.";
 
         setErrorMessage(errorMsg);
@@ -156,6 +156,14 @@ const Login = () => {
             <p className="text-[13px] font-[500] text-tradeFadeWhite">
               Enter your details to access your account.
             </p>
+          </div>
+          <div
+            className={` ${
+              errorMessage ? "flex" : "hidden"
+            } p-[12px] text-red-500 gap-[4px] items-center border  border-red-500 rounded-[10px]`}
+          >
+            <IoWarning className="text-[14px]" />
+            <p className="text-[13px]">{errorMessage}</p>
           </div>
           <form onSubmit={handleSubmitDetails}>
             <div className="flex flex-col gap-[40px]">
