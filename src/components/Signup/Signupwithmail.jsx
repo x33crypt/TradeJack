@@ -241,12 +241,12 @@ const Signupwithmail = () => {
 
         setErrorMessage(errMessage);
       }
-    }, 1000);
+    }, 1000); // <-- runs once after 1 seconds
   };
 
   return (
     <div className="flex-1 w-full bg-black pb-[40px] ">
-      <div className="lg:px-[80px] lg:py-[40px] md:px-[50px] p-[20px] flex flex-col gap-[40px]">
+      <div className="lg:px-[100px] lg:py-[40px] md:px-[50px] p-[20px] flex flex-col gap-[40px]">
         <div className="flex flex-col items-cente gap-[5px] mt-[30px]">
           <p className="flex gap-[5px] text-[28px] text-white font-[800]">
             Create Account

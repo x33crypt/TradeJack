@@ -13,27 +13,33 @@ import Signup from "./pages/Signup";
 import SignupSuccess from "./pages/SignupSuccess";
 import Login from "./pages/Login";
 
+export const userContext = createContext();
+
 const App = () => {
+  const [user, setUser] = useState("");
+
   return (
     <>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signup/completed" element={<SignupSuccess />} />
-        <Route path="/login" element={<Login />} />
+      <userContext.Provider value={{ user, setUser }}>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signup/completed" element={<SignupSuccess />} />
+          <Route path="/login" element={<Login />} />
 
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/account/profile" element={<UserProfile />} />
-        <Route
-          path="/account/deposit&withdraw"
-          element={<DepositAndWithdraw />}
-        />
-        <Route path="/marketplace" element={<Marketplace />} />
-        <Route path="/create-offer" element={<CreateOffer />} />
-        <Route path="/offer/:id" element={<AboutOffer />} />
-        <Route path="/messages" element={<Messages />} />
-      </Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/account/profile" element={<UserProfile />} />
+          <Route
+            path="/account/deposit&withdraw"
+            element={<DepositAndWithdraw />}
+          />
+          <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/create-offer" element={<CreateOffer />} />
+          <Route path="/offer/:id" element={<AboutOffer />} />
+          <Route path="/messages" element={<Messages />} />
+        </Routes>
+      </userContext.Provider>
     </>
   );
 };

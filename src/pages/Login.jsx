@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import signupImg from "../assets/signupImg.webp";
 import { IoWarning } from "react-icons/io5";
 import axios from "axios";
 import DOMPurify from "dompurify";
 import { useNavigate } from "react-router-dom";
+import { userContext } from "../App.jsx";
 
 const Login = () => {
   const [loginDetails, setLoginpDetails] = useState({
@@ -17,10 +18,11 @@ const Login = () => {
     email: { error: false, message: "" },
     password: { error: false, message: "" },
   });
-
-  console.log(loginDetails);
-
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  const { user, setUser } = useContext(userContext);
+
+  console.log(user);
 
   const handleEmailChange = (e) => {
     setLoginpDetails((prevDetails) => ({
@@ -128,8 +130,9 @@ const Login = () => {
       try {
         const response = await axios.post(`${baseUrl}/auth/login`, payload);
         console.log("Signin successful:", response.data);
+        setUser(response?.data?.user);
         setIsLoggingIn(false);
-        navigateTo("/signup/completed");
+        navigateTo("/dashboard");
       } catch (err) {
         setIsLoggingIn(false);
         console.error("Signin error:", err);
@@ -140,16 +143,16 @@ const Login = () => {
 
         setErrorMessage(errMessage);
       }
-    }, 1000); // <-- runs once after 5 seconds
+    }, 1000); // <-- runs once after 1 seconds
   };
 
   return (
-    <div className="flex min-h-svh gap-[15px] bg-black lg:p-[10px]">
-      <div className="flex-1 lg:flex hidden bg-tradeGreen rounded-[20px] overflow-hidden">
+    <div className="flex min-h-svh gap-[px] bg-black">
+      <div className="flex-1 lg:flex hidden bg-tradeGreen overflow-hidden">
         <img className="object-cover" src={signupImg} alt="" />
       </div>
       <div className="flex-1 w-full bg-black pb-[40px] ">
-        <div className="lg:px-[80px] lg:py-[40px] md:px-[50px] p-[20px] flex flex-col gap-[40px]">
+        <div className="lg:px-[100px] lg:py-[40px] md:px-[50px] p-[20px] flex flex-col gap-[40px]">
           <div className="flex flex-col items-cente gap-[5px] mt-[30px]">
             <p className="flex gap-[5px] text-[28px] text-white font-[800]">
               Welcome Back
