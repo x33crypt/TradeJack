@@ -13,6 +13,7 @@ import Signup from "./pages/Signup";
 import SignupSuccess from "./pages/SignupSuccess";
 import Login from "./pages/Login";
 import RouteProtector from "./components/RouteProtector";
+import Logout from "./pages/Logout";
 
 export const userContext = createContext();
 
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/create-offer" element={<CreateOffer />} />
           <Route path="/offer/:id" element={<AboutOffer />} />
           <Route path="/messages" element={<Messages />} />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </userContext.Provider>
     </>

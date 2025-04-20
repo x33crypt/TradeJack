@@ -147,11 +147,11 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-svh gap-[px] bg-black">
+    <div className="flex min-h-svh  bg-black">
       <div className="flex-1 lg:flex hidden bg-tradeGreen overflow-hidden">
         <img className="object-cover" src={signupImg} alt="" />
       </div>
-      <div className="flex-1 w-full bg-black pb-[40px] ">
+      <div className="flex-1 w-full bg-black">
         <div className="lg:px-[100px] lg:py-[40px] md:px-[50px] p-[20px] flex flex-col gap-[40px]">
           <div className="flex flex-col items-cente gap-[5px] mt-[30px]">
             <p className="flex gap-[5px] text-[28px] text-white font-[800]">

@@ -59,9 +59,6 @@ const UserProfile = () => {
 
               <div className="flex flex-col justify-center lg:gap-[15px] gap-[5px] ">
                 <div className="flex flex-col">
-                  {/* <p className="text-white lg:text-[28px] sm:text-[22px] text-[20px] font-[700]">
-                    Adeleke Lukman
-                  </p> */}
                   <p className="text-white lg:text-[55px] sm:text-[45px] text-[30px] font-[900]">
                     0xSanityy
                   </p>
@@ -266,15 +263,7 @@ const UserProfile = () => {
                           sanityy0x@gmail.com
                         </p>
                       </div>
-                      <div className="flex-1 flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
-                        <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
-                          Country
-                        </p>
 
-                        <p className="text-white text-[15px] font-[600]">
-                          Nigeria
-                        </p>
-                      </div>
                       <div className="flex-1 flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
                         <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
                           Phone number
@@ -284,12 +273,32 @@ const UserProfile = () => {
                           08039921211
                         </p>
                       </div>
+
+                      <div className="flex-1 flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
+                        <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
+                          Address
+                        </p>
+
+                        <p className="text-white text-[15px] font-[600]">
+                          Igwe Orizu Rd, Nnewi, Anambra
+                        </p>
+                      </div>
+
+                      <div className="flex-1 flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
+                        <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
+                          Country
+                        </p>
+
+                        <p className="text-white text-[15px] font-[600]">
+                          Nigeria
+                        </p>
+                      </div>
                     </div>
                   )}
                 </div>
               </div>
             </div>
-            <div className="lg:w-[400px] flex flex-col md:flex-row gap-[20px] md:border border-tradeAshLight bg-tradeAs rounded-[14px]">
+            <div className="lg:w-[400px] h-[200px] flex flex-col md:flex-row gap-[20px] md:border border-tradeAshLight bg-tradeAs rounded-[14px]">
               <div className="w-full flex flex-col rounded-[8px]">
                 <div className="flex p-[15px]  lg:border-b lg:border-t-0 border-y border-neutral-800 ">
                   <p className="text-[17px] text-white font-[600] cursor-pointer">

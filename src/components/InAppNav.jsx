@@ -3,7 +3,6 @@ import { GiCardExchange } from "react-icons/gi";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaRegBell } from "react-icons/fa";
 import landingImg4 from "./../assets/landingImg4.JPG";
-import { useNavigate } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { MdSpaceDashboard } from "react-icons/md";
@@ -19,6 +18,7 @@ import { FaVenusDouble } from "react-icons/fa";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
+import useSafeNavigate from "./SafeNavigation";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -62,7 +62,7 @@ const InAppNav = () => {
     return () => clearInterval(interval);
   }, [placeholders]);
 
-  const navigateTo = useNavigate();
+  const safeNavigate = useSafeNavigate();
 
   return (
     <>
@@ -79,7 +79,7 @@ const InAppNav = () => {
             )}
           </div>
           <div
-            onClick={() => navigateTo("/dashboard")}
+            onClick={() => safeNavigate("/dashboard")}
             className="flex items-center justify-start gap-[5px] cursor-pointer "
           >
             <GiCardExchange className=" flex lg:text-[19px] md:text-[19px] text-[19px] text-tradeGreen" />
@@ -94,28 +94,28 @@ const InAppNav = () => {
 
         <div className=" md:flex hidden  gap-[10px] items-center">
           <div
-            onClick={() => navigateTo("/marketplace")}
+            onClick={() => safeNavigate("/marketplace")}
             className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <RiExchangeLine className="lg:flex hidden text-[16px]" />
             <p className="text-[13px] font-[500]">Sell Assets</p>
           </div>
           <div
-            onClick={() => navigateTo("/create-offer")}
+            onClick={() => safeNavigate("/create-offer")}
             className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <TbBuildingBank className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-[500]">Buy Assets</p>
           </div>
           <div
-            onClick={() => navigateTo("/create-offer")}
+            onClick={() => safeNavigate("/create-offer")}
             className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <FaVenusDouble className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-[500]">Favourite Vendors</p>
           </div>
           <div
-            onClick={() => navigateTo("/dashboard")}
+            onClick={() => safeNavigate("/dashboard")}
             className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <MdOutlineSpaceDashboard className="lg:flex hidden text-[17px]" />
@@ -167,7 +167,7 @@ const InAppNav = () => {
         <div className="flex flex-col gap-[10px]">
           <div
             onClick={() => {
-              navigateTo("/dashboard");
+              safeNavigate("/dashboard");
               setIsNavOption(false);
             }}
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
@@ -182,7 +182,7 @@ const InAppNav = () => {
           <div
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
             onClick={() => {
-              navigateTo("/messages");
+              safeNavigate("/messages");
               setIsNavOption(false);
             }}
           >
@@ -215,7 +215,7 @@ const InAppNav = () => {
         <div className="w-full h-max flex flex-col gap-[10px]">
           <p
             onClick={() => {
-              navigateTo("/marketplace");
+              safeNavigate("/marketplace");
               setIsNavOption(false);
             }}
             className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-white py-[10px] rounded-[12px]"
@@ -224,7 +224,7 @@ const InAppNav = () => {
           </p>
           <p
             onClick={() => {
-              navigateTo("/create-offer");
+              safeNavigate("/create-offer");
               setIsNavOption(false);
             }}
             className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-tradeGreen py-[10px] rounded-[12px]"
@@ -243,7 +243,7 @@ const InAppNav = () => {
       >
         <p
           className="text-white text-[12px] font-[700] py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer"
-          onClick={() => navigateTo("/account/profile")}
+          onClick={() => safeNavigate("/account/profile", { replace: true })}
         >
           Profile
         </p>
@@ -260,7 +260,12 @@ const InAppNav = () => {
           Support
         </p>
         <div className="border-t border-tradeAshExtraLight"></div>
-        <p className="text-white text-[12px] font-[600]  py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
+        <p
+          className="text-white text-[12px] font-[600]  py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer"
+          onClick={() =>
+            safeNavigate("/logout", { state: { from: location.pathname } })
+          }
+        >
           Log out
         </p>
       </div>

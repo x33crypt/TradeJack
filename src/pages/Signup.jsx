@@ -4,7 +4,7 @@ import Signupwithmail from "@/components/Signup/Signupwithmail";
 
 const Signup = () => {
   return (
-    <div className="flex gap-[15px] bg-black ">
+    <div className="flex bg-black ">
       <div className="flex-1 lg:flex hidden bg-tradeGreen overflow-hidden">
         <img className="object-cover" src={signupImg} alt="" />
       </div>

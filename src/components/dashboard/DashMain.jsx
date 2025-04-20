@@ -22,7 +22,7 @@ const DashMain = () => {
     <>
       <div className="flex-1 md:flex hidden lg:gap-[15px]">
         <div className="flex flex-1 flex-col gap-[15px]">
-          <div className="bg-tradeOrang flex flex-col  justify-between p-[5px]">
+          <div className="bg-tradeOrang flex flex-col  justify-between py-[5px]">
             <p className=" lg:text-[19px] text-[20px] text-tradeFadeWhite  ">
               Welcome back,{" "}
               <small className="lg:text-[19px] text-[20px] text-white font-[700]">
@@ -144,7 +144,7 @@ const DashMain = () => {
                 <div className="flex gap-[5px]">
                   <GrStatusGood className="text-tradeFadeWhite" />
                   <p className=" text-[12px] font-[600] text-white">
-                    Successful Trades
+                    Completed Trades
                   </p>
                 </div>
                 <div className="flex justify-between items-baseline">
@@ -238,7 +238,7 @@ const DashMain = () => {
           </div>
         </div>
 
-        <div className=" lg:flex hidden w-[300px] p-[10px] rounded-[16px]  borde border-tradeAshLight">
+        <div className=" lg:flex hidden w-[300px] py-[5px] rounded-[16px]  borde border-tradeAshLight">
           <div className=" w-full">
             <p className="text-[19px] font-[700] text-white">
               Trade Performance
@@ -247,11 +247,11 @@ const DashMain = () => {
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col md:hidden gap-[10px] px-[15px] ">
-        <div className="flex flex-col p-[10px] ">
-          <p className="text-[18px] text-tradeFadeWhite ">
+      <div className="flex-1 flex flex-col md:hidden gap-[15px] px-[15px] ">
+        <div className="flex flex-col py-[10px] ">
+          <p className="text-[19px] text-tradeFadeWhite ">
             Welcome back,{" "}
-            <small className="text-[18px] text-white font-[700]">
+            <small className="text-[19px] text-white font-[700]">
               x33crypt
             </small>
           </p>
@@ -368,7 +368,7 @@ const DashMain = () => {
               <div className="flex gap-[5px]">
                 <GrStatusGood className="text-tradeFadeWhite" />
                 <p className=" text-[12px] font-[600] text-white">
-                  Successful Trades
+                  Completed Trades
                 </p>
               </div>
 
