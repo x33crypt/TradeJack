@@ -232,12 +232,14 @@ const Signupwithmail = () => {
         navigateTo("/signup/completed");
       } catch (err) {
         setIsSigningUp(false);
+
         console.error("Signup error:", err);
 
-        const errorMsg =
-          err?.response?.data?.error?.details[0]?.msg ||
+        const errMessage =
+          err?.response?.data?.error?.message ||
           "Something went wrong. Please try again.";
-        setErrorMessage(err?.response?.data.error.details[0].msg);
+
+        setErrorMessage(errMessage);
       }
     }, 1000);
   };

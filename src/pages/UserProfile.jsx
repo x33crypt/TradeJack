@@ -53,7 +53,7 @@ const UserProfile = () => {
         <div className="flex flex-col mt-[20px] md:gap-[50px] gap-[20px]">
           <div className=" flex md:flex-row flex-col justify-between md:items-center gap-[20px] md:p-0 p-[15px] ">
             <div className="flex md:gap-[20px] gap-[10px] items-center ">
-              <div className="flex lg:w-[180px] md:w-[150px] w-[120px] justify-center cursor-pointer ">
+              <div className="flex lg:w-[180px] md:w-[150px] w-[110px] justify-center cursor-pointer ">
                 <img className="rounded-full" src={image} alt="" />
               </div>
 

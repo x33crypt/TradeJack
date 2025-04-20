@@ -134,11 +134,11 @@ const Login = () => {
         setIsLoggingIn(false);
         console.error("Signin error:", err);
 
-        const errorMsg =
+        const errMessage =
           err?.response?.data?.error?.message ||
           "Something went wrong. Please try again.";
 
-        setErrorMessage(errorMsg);
+        setErrorMessage(errMessage);
       }
     }, 1000); // <-- runs once after 5 seconds
   };
