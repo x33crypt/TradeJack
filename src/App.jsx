@@ -12,6 +12,7 @@ import DepositAndWithdraw from "./pages/DepositAndWithdraw";
 import Signup from "./pages/Signup";
 import SignupSuccess from "./pages/SignupSuccess";
 import Login from "./pages/Login";
+import RouteProtector from "./components/RouteProtector";
 
 export const userContext = createContext();
 

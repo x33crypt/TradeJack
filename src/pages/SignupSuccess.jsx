@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 const SignupSuccess = () => {
   const navigateTo = useNavigate();
   return (
-    <div className="bg-black h-screen flex p-[20px]  justify-center items-center">
-      <div className="flex flex-col items-center p-[20px] gap-[30px] rounded-[14px] bg-tradeAsh border border-tradeAshExtraLight ">
-        <div className="lg:text-[120px] md:text-[120px] text-[120px] text-tradeGreen">
+    <div className="bg-black h-screen flex p-[35px] justify-center items-center">
+      <div className="flex flex-col items-center lg:p-[20px] p-[15px] md:gap-[30px] gap-[20px] rounded-[16px] bg-tradeAsh border border-tradeAshExtraLight ">
+        <div className="lg:text-[120px] md:text-[120px] text-[100px] text-tradeGreen">
           <IoMdCheckmarkCircleOutline />
         </div>
 
