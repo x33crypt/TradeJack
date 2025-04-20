@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const SignupSuccess = () => {
   const navigateTo = useNavigate();
   return (
-    <div className="bg-black h-screen flex p-[35px] justify-center items-center">
+    <div className="bg-black min-h-svh flex p-[35px] justify-center items-center">
       <div className="flex flex-col items-center lg:p-[20px] p-[15px] md:gap-[40px] gap-[30px] rounded-[16px] bg-tradeAsh border border-tradeAshExtraLight ">
         <div className="w-full flex flex-col items-center gap-[10px]">
           <div className="lg:text-[120px] md:text-[120px] text-[100px] text-tradeGreen">
