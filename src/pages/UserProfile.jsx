@@ -114,7 +114,7 @@ const UserProfile = () => {
             <div
               className={`${
                 isAccountVerified
-                  ? "bg-tradeAsh  border-tradeAshLight hover:text-white text-tradeFadeWhite "
+                  ? "bg-tradeAsh  border-tradeAshLight  text-tradeGreen "
                   : " text-black bg-tradeGreen border-tradeAshExtraLight"
               } flex items-center justify-center border gap-[10px] lg:px-[20px] lg:py-[6px]  px-[12px] py-[10px] rounded-[7px] cursor-pointer transition-all duration-300`}
             >
@@ -210,7 +210,7 @@ const UserProfile = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
+                <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] transition-all duration-300">
                   <div className="flex-1 flex flex-col gap-[2px]  ">
                     <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
                       Country
@@ -223,7 +223,7 @@ const UserProfile = () => {
                     </div> */}
                 </div>
 
-                <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
+                <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] transition-all duration-300">
                   <div className="flex-1 flex flex-col gap-[2px]  ">
                     <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
                       Currency
