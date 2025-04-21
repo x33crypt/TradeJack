@@ -10,7 +10,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import useSafeNavigate from "@/components/SafeNavigation";
 
 const UserProfile = () => {
-  const [isAccountVerified, setIsAccountVerified] = useState(false);
+  const [isAccountVerified, setIsAccountVerified] = useState(true);
   const [isBankAccountEdit, setIsBankAccountEdit] = useState(false);
   const [isOnlineWalletEdit, setIsOnlineWalletEdit] = useState(false);
 
@@ -43,7 +43,7 @@ const UserProfile = () => {
           </p>
         </div> */}
         <div className="flex flex-col mt-[20px] md:gap-[50px] gap-[20px]">
-          <div className=" flex md:flex-row flex-col justify-between md:items-center gap-[20px] md:p-0 p-[15px] ">
+          <div className=" flex md:flex-row flex-col justify-between md:items-center gap-[30px] md:p-0 p-[15px] ">
             <div className="flex md:gap-[20px] gap-[10px] items-center ">
               <div className="flex lg:w-[190px] md:w-[150px] w-[120px] justify-center cursor-pointer ">
                 <img className="rounded-full" src={image} alt="" />
@@ -116,7 +116,7 @@ const UserProfile = () => {
                 isAccountVerified
                   ? "bg-tradeAsh  border-tradeAshLight hover:text-white text-tradeFadeWhite "
                   : " text-black bg-tradeGreen border-tradeAshExtraLight"
-              } flex items-center justify-center border gap-[10px] lg:px-[20px] lg:py-[6px]  px-[12px] py-[8px] rounded-[7px] cursor-pointer transition-all duration-300`}
+              } flex items-center justify-center border gap-[10px] lg:px-[20px] lg:py-[6px]  px-[12px] py-[10px] rounded-[7px] cursor-pointer transition-all duration-300`}
             >
               <p className="text-[14px] font-[600]">
                 {isAccountVerified ? "Verified Account" : "Verify Account"}
