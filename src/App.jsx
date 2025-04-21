@@ -14,6 +14,7 @@ import SignupSuccess from "./pages/SignupSuccess";
 import Login from "./pages/Login";
 import RouteProtector from "./components/RouteProtector";
 import Logout from "./pages/Logout";
+import ConfirmPassword from "./components/ConfirmPassword";
 
 export const userContext = createContext();
 
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/create-offer" element={<CreateOffer />} />
           <Route path="/offer/:id" element={<AboutOffer />} />
           <Route path="/messages" element={<Messages />} />
+          <Route path="/account/verify" element={<ConfirmPassword />} />
           <Route path="/logout" element={<Logout />} />
         </Routes>
       </userContext.Provider>
