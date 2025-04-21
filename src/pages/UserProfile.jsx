@@ -79,7 +79,7 @@ const UserProfile = () => {
                       </p>
                     </div>
                     <div className="flex items-center gap-[5px]">
-                      <p className="text-white text-[15px] font-[600]">0</p>
+                      <p className="text-white text-[15px] font-[600]">229</p>
                     </div>
                   </div>
                   <div className=" flex md:flex-col flex-row gap-[5px]  lg:py-[5px] lg:px-[10px] py-[4px] px-[6px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
@@ -90,7 +90,7 @@ const UserProfile = () => {
                       </p>
                     </div>
                     <div className="flex items-center gap-[5px]">
-                      <p className="text-white text-[15px] font-[600]">0</p>
+                      <p className="text-white text-[15px] font-[600]">18</p>
                     </div>
                   </div>
                   <div className=" flex md:flex-col flex-row gap-[5px] lg:py-[5px] lg:px-[10px] py-[4px] px-[6px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
@@ -126,123 +126,120 @@ const UserProfile = () => {
             </div>
           </div>
 
-          <div className="flex lg:flex-row flex-col  gap-[20px]">
-            <div className="flex-1 flex flex-col md:flex-row gap-[20px] md:border border-tradeAshLight bg-tradeAs rounded-[14px]">
-              <div className="w-full flex flex-col  rounded-[8px]">
-                <div className="flex p-[15px] border-b border-neutral-800 ">
-                  <p className="text-[17px] text-white font-[600] cursor-pointer">
-                    Personal Information
-                  </p>
+          <div className="flex lg:flex-row flex-col gap-[20px]">
+            <div className="flex-1 flex flex-col md:border border-tradeAshLight  rounded-[14px]">
+              <div className="flex p-[15px] border-b border-neutral-800 ">
+                <p className="text-[17px] text-white font-[600] cursor-pointer">
+                  Personal Information
+                </p>
+              </div>
+
+              <div className=" flex flex-col p-[15px] gap-[20px] ">
+                <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight rounded-[8px] cursor-pointer transition-all duration-300 ">
+                  <div className="flex-1 flex flex-col gap-[2px]  ">
+                    <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
+                      Full name
+                    </p>
+
+                    <p className="text-white text-[15px] font-[600]">
+                      Adeleke Lukman
+                    </p>
+                  </div>
+                  <div className="text-white text-[22px]">
+                    <MdKeyboardArrowRight />
+                  </div>
                 </div>
 
-                <div className=" flex flex-col p-[15px] gap-[20px] ">
-                  <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight rounded-[8px] cursor-pointer transition-all duration-300 ">
-                    <div className="flex-1 flex flex-col gap-[2px]  ">
-                      <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
-                        Full name
-                      </p>
+                <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
+                  <div className="flex-1 flex flex-col gap-[2px]  ">
+                    <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
+                      Username
+                    </p>
 
-                      <p className="text-white text-[15px] font-[600]">
-                        Adeleke Lukman
-                      </p>
-                    </div>
-                    <div className="text-white text-[22px]">
-                      <MdKeyboardArrowRight />
-                    </div>
+                    <p className="text-white text-[15px] font-[600]">
+                      sanityy0x
+                    </p>
                   </div>
-
-                  <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
-                    <div className="flex-1 flex flex-col gap-[2px]  ">
-                      <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
-                        Username
-                      </p>
-
-                      <p className="text-white text-[15px] font-[600]">
-                        sanityy0x
-                      </p>
-                    </div>
-                    <div className="text-white text-[22px]">
-                      <MdKeyboardArrowRight />
-                    </div>
+                  <div className="text-white text-[22px]">
+                    <MdKeyboardArrowRight />
                   </div>
+                </div>
 
-                  <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
-                    <div className="flex-1 flex flex-col gap-[2px]  ">
-                      <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
-                        Email address
-                      </p>
+                <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
+                  <div className="flex-1 flex flex-col gap-[2px]  ">
+                    <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
+                      Email address
+                    </p>
 
-                      <p className="text-white text-[15px] font-[600]">
-                        sanityy0x@gmail.com
-                      </p>
-                    </div>
-                    <div className="text-white text-[22px]">
-                      <MdKeyboardArrowRight />
-                    </div>
+                    <p className="text-white text-[15px] font-[600]">
+                      sanityy0x@gmail.com
+                    </p>
                   </div>
-
-                  <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
-                    <div className="flex-1 flex flex-col gap-[2px]  ">
-                      <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
-                        Phone number
-                      </p>
-
-                      <p className="text-white text-[15px] font-[600]">
-                        08039921211
-                      </p>
-                    </div>
-                    <div className="text-white text-[22px]">
-                      <MdKeyboardArrowRight />
-                    </div>
+                  <div className="text-white text-[22px]">
+                    <MdKeyboardArrowRight />
                   </div>
+                </div>
 
-                  <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
-                    <div className="flex-1 flex flex-col gap-[2px]  ">
-                      <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
-                        Address
-                      </p>
+                <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
+                  <div className="flex-1 flex flex-col gap-[2px]  ">
+                    <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
+                      Phone number
+                    </p>
 
-                      <p className="text-white text-[15px] font-[600]">
-                        Igwe Orizu Rd, Nnewi, Anambra
-                      </p>
-                    </div>
-                    <div className="text-white text-[22px]">
-                      <MdKeyboardArrowRight />
-                    </div>
+                    <p className="text-white text-[15px] font-[600]">
+                      08039921211
+                    </p>
                   </div>
+                  <div className="text-white text-[22px]">
+                    <MdKeyboardArrowRight />
+                  </div>
+                </div>
 
-                  <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
-                    <div className="flex-1 flex flex-col gap-[2px]  ">
-                      <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
-                        Country
-                      </p>
+                <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
+                  <div className="flex-1 flex flex-col gap-[2px]  ">
+                    <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
+                      Address
+                    </p>
 
-                      <p className="text-white text-[15px] font-[600]">
-                        Nigeria
-                      </p>
-                    </div>
-                    {/* <div className="text-white text-[22px]">
+                    <p className="text-white text-[15px] font-[600]">
+                      Igwe Orizu Rd, Nnewi, Anambra
+                    </p>
+                  </div>
+                  <div className="text-white text-[22px]">
+                    <MdKeyboardArrowRight />
+                  </div>
+                </div>
+
+                <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
+                  <div className="flex-1 flex flex-col gap-[2px]  ">
+                    <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
+                      Country
+                    </p>
+
+                    <p className="text-white text-[15px] font-[600]">Nigeria</p>
+                  </div>
+                  {/* <div className="text-white text-[22px]">
                       <MdKeyboardArrowRight />
                     </div> */}
+                </div>
+
+                <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
+                  <div className="flex-1 flex flex-col gap-[2px]  ">
+                    <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
+                      Currency
+                    </p>
+
+                    <p className="text-white text-[15px] font-[600]">
+                      Nigeria Naira
+                    </p>
                   </div>
-
-                  <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
-                    <div className="flex-1 flex flex-col gap-[2px]  ">
-                      <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
-                        Currency
-                      </p>
-
-                      <p className="text-white text-[15px] font-[600]">
-                        Nigeria Naira
-                      </p>
-                    </div>
-                    {/* <div className="text-white text-[22px]">
+                  {/* <div className="text-white text-[22px]">
                       <MdKeyboardArrowRight />
                     </div> */}
-                  </div>
                 </div>
               </div>
             </div>
+
             <div className="lg:w-[400px] h-[200px] flex flex-col md:flex-row gap-[20px] md:border border-tradeAshLight bg-tradeAs rounded-[14px]">
               <div className="w-full flex flex-col rounded-[8px]">
                 <div className="flex p-[15px]  lg:border-b lg:border-t-0 border-y border-neutral-800 ">
