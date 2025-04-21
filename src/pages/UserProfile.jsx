@@ -221,9 +221,9 @@ const UserProfile = () => {
                         Nigeria
                       </p>
                     </div>
-                    <div className="text-white text-[22px]">
+                    {/* <div className="text-white text-[22px]">
                       <MdKeyboardArrowRight />
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
@@ -236,9 +236,9 @@ const UserProfile = () => {
                         Nigeria Naira
                       </p>
                     </div>
-                    <div className="text-white text-[22px]">
+                    {/* <div className="text-white text-[22px]">
                       <MdKeyboardArrowRight />
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
