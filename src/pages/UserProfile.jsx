@@ -57,13 +57,13 @@ const UserProfile = () => {
 
                   <div className="flex flex-col gap-[3px] ml-1">
                     <div className="flex items-center gap-[5px]">
-                      <FaLocationDot className="text-tradeFadeWhite text-[13px]" />
-                      <p className="lg:text-[14px] sm:text-[13px] text-[13px] font-[500] text-white">
+                      <FaLocationDot className="text-tradePurple text-[14px]" />
+                      <p className="lg:text-[14px] sm:text-[13px] text-[13px] font-[600] text-white">
                         Nigeria
                       </p>
                     </div>
                     <div className="flex items-center gap-[3px]">
-                      <p className="lg:text-[14px] sm:text-[13px] text-[13px] font-[500] text-tradeFadeWhite">
+                      <p className="lg:text-[14px] sm:text-[13px] text-[13px] font-[600] text-tradeFadeWhite">
                         Joined 3 weeks ago
                       </p>
                     </div>
@@ -119,7 +119,9 @@ const UserProfile = () => {
               } flex items-center justify-center border gap-[10px] lg:px-[20px] lg:py-[6px]  px-[12px] py-[10px] rounded-[7px] cursor-pointer transition-all duration-300`}
             >
               <p className="text-[14px] font-[600]">
-                {isAccountVerified ? "Verified Account" : "Verify Account"}
+                {isAccountVerified
+                  ? "Verified Account"
+                  : "Complete Verification"}
               </p>
             </div>
           </div>
