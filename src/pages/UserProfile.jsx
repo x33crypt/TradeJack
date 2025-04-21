@@ -15,6 +15,7 @@ import { TbAlignBoxRightTop } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import { MdLogin } from "react-icons/md";
 import UserProfileNav from "@/components/UserProfileNav";
+import { GoDotFill } from "react-icons/go";
 
 const UserProfile = () => {
   const [isProfileEdit, setIsProfileEdit] = useState(false);
@@ -53,7 +54,7 @@ const UserProfile = () => {
         <div className="flex flex-col mt-[20px] md:gap-[50px] gap-[20px]">
           <div className=" flex md:flex-row flex-col justify-between md:items-center gap-[20px] md:p-0 p-[15px] ">
             <div className="flex md:gap-[20px] gap-[10px] items-center ">
-              <div className="flex lg:w-[180px] md:w-[150px] w-[110px] justify-center cursor-pointer ">
+              <div className="flex lg:w-[190px] md:w-[150px] w-[110px] justify-center cursor-pointer ">
                 <img className="rounded-full" src={image} alt="" />
               </div>
 
@@ -62,6 +63,18 @@ const UserProfile = () => {
                   <p className="text-white lg:text-[55px] md:text-[45px] text-[30px] font-[900]">
                     0xSanityy
                   </p>
+                  {/* <div className="flex items-center gap-[3px] ml-1">
+                    <div className="flex items-center gap-[5px]">
+                      <div className="hidden sm:flex">
+                        <p className="text-[13px] lg:text-[13px] text-tradeGreen p-[1px] border border-tradeGreen rounded-full">
+                          <GoDotFill />
+                        </p>
+                      </div>
+                      <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[500] text-white">
+                        Online
+                      </p>
+                    </div>
+                  </div> */}
                   <div className="flex items-center gap-[3px] ml-1">
                     <div className="flex items-center gap-[5px]">
                       <p className="lg:text-[13px] sm:text-[13px] text-[13px] font-[500] text-white">

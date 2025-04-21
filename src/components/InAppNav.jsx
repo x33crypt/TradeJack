@@ -251,11 +251,15 @@ const InAppNav = () => {
           Wallet
         </p>
         <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
-          Security & privacy
-        </p>
-        <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
           Subscriptions
         </p>
+        <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
+          Rewards
+        </p>
+        <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
+          Security & privacy
+        </p>
+
         <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
           Support
         </p>
