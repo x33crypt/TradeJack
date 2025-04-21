@@ -45,11 +45,11 @@ const UserProfile = () => {
       <MarketTopNav />
 
       <div className="lg:pt-[75px] md:pt-[75px] pt-[60px] pb-[10px] lg:px-[2%] md:px-[2.5%] min-h-screen bg-black">
-        <div className=" flex md:hidden items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
+        {/* <div className=" flex md:hidden items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
           <p className=" text-[17px] text-white font-[700] cursor-pointer">
             Your Profile
           </p>
-        </div>
+        </div> */}
         <div className="flex flex-col mt-[20px] md:gap-[50px] gap-[20px]">
           <div className=" flex md:flex-row flex-col justify-between md:items-center gap-[20px] md:p-0 p-[15px] ">
             <div className="flex md:gap-[20px] gap-[10px] items-center ">
@@ -57,9 +57,9 @@ const UserProfile = () => {
                 <img className="rounded-full" src={image} alt="" />
               </div>
 
-              <div className="flex flex-col justify-center lg:gap-[15px] gap-[5px] ">
-                <div className="flex flex-col">
-                  <p className="text-white lg:text-[55px] sm:text-[45px] text-[30px] font-[900]">
+              <div className="flex flex-col justify-center lg:gap-[15px] md:gap-[10px] gap-[5px] ">
+                <div className="flex flex-col ">
+                  <p className="text-white lg:text-[55px] md:text-[45px] text-[30px] font-[900]">
                     0xSanityy
                   </p>
                   <div className="flex items-center gap-[3px] ml-1">
@@ -152,7 +152,7 @@ const UserProfile = () => {
                 isProfileEdit
                   ? "text-black bg-tradeGreen border-tradeAshExtraLight"
                   : "bg-tradeAsh  border-tradeAshLight hover:text-white text-tradeFadeWhite "
-              } flex items-center justify-center border gap-[10px]   px-[12px] py-[6px] rounded-[7px] cursor-pointer transition-all duration-300`}
+              } flex items-center justify-center border gap-[10px] lg:px-[20px] lg:py-[6px]  px-[12px] py-[8px] rounded-[7px] cursor-pointer transition-all duration-300`}
             >
               <p className="text-[14px] font-[600]">
                 {" "}
