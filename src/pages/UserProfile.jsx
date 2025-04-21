@@ -114,7 +114,7 @@ const UserProfile = () => {
             <div
               className={`${
                 isAccountVerified
-                  ? "bg-tradeAsh  border-tradeAshLight  text-tradeGreen "
+                  ? "bg-tradeAsh  border-tradeAshLight  text-tradeFadeWhite "
                   : " text-black bg-tradeGreen border-tradeAshExtraLight"
               } flex items-center justify-center border gap-[10px] lg:px-[20px] lg:py-[6px]  px-[12px] py-[10px] rounded-[7px] cursor-pointer transition-all duration-300`}
             >
