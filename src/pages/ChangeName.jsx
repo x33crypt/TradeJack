@@ -127,7 +127,7 @@ const ChangeName = () => {
         {/* <div className="lg:flex hidden">
           <UserProfileNav />
         </div> */}
-        <div className="bg-tradeGree flex w-full flex-col gap-[1px] md:border border-neutral-800 md:rounded-[14px]">
+        <div className="flex w-full flex-col gap-[10px] md:border border-neutral-800 md:rounded-[14px]">
           <div className="flex justify-cente border-b p-[15px] border-tradeAshLight">
             <p className="  text-[17px] text-white font-[700]">Update Name</p>
           </div>

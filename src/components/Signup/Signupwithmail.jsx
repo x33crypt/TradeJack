@@ -245,7 +245,7 @@ const Signupwithmail = () => {
   };
 
   return (
-    <div className="flex-1 w-full bg-black">
+    <div className="flex-1 w-full bg-black min-h-screen">
       <div className="lg:px-[100px] lg:py-[40px] md:px-[50px] p-[20px] flex flex-col gap-[40px]">
         <div className="flex flex-col items-cente gap-[5px] mt-[30px]">
           <p

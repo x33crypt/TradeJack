@@ -117,17 +117,22 @@ const ConfirmPassword = () => {
       <InAppNav />
       <div className=" lg:pt-[75px] md:pt-[75px] pt-[60px] flex min-h-screen bg-black lg:p-[2%] md:p-[2.5%] ">
         <div className="bg-tradeGree flex w-full flex-col gap-[1px] md:borde border-neutral-800 md:rounded-[14px]">
+          <div className="flex md:hidden justify-cente border-b p-[15px] border-tradeAshLight">
+            <p className="  text-[17px] text-white font-[700]">
+              Confirm your password
+            </p>
+          </div>
           <form
             onSubmit={handleConfirmPassword}
             className="h-full flex justify-center items-center"
           >
-            <div className="h-full flex flex-col lg:py-[5px] md:py-[50px] p-[15px] md:justify-center md:items-center">
+            <div className="h-full w-full flex flex-col lg:py-[5px] md:py-[50px] p-[15px] md:justify-center md:items-center">
               <div className="flex flex-col md:w-[300px] w-full md:gap-[30px] gap-[30px]">
-                <div className="w-full flex flex-col gap-[5px]">
-                  <p className="text-[20px] text-white font-[600] text-cente">
+                <div className="w-full md:flex hidden items-center flex-col gap-[5px]">
+                  <p className="text-[20px] text-white font-[600]">
                     Confirm your password
                   </p>
-                  <p className="text-tradeFadeWhite text-[14px] font-[500]">
+                  <p className="text-tradeFadeWhite text-[13px] text-center font-[500]">
                     We just need to confirm it’s you. Enter your password to
                     continue.
                   </p>
@@ -144,13 +149,16 @@ const ConfirmPassword = () => {
 
                 <div className="flex flex-col gap-[30px]">
                   <div className="w-full">
+                    <p className="text-[14px] font-[600] text-white">
+                      Password
+                    </p>
                     <input
                       className={`${
                         password ? "border-tradeGreen" : "border-tradeAshLight"
                       } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                       type="text"
                       name="password"
-                      placeholder="password"
+                      placeholder="Enter your password"
                       onChange={handlePasswordChange}
                     />
                     <div
