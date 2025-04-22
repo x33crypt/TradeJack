@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, usel } from "react";
+import { useLocation } from "react-router-dom";
 import Footer from "@/components/Footer";
 import InAppNav from "@/components/InAppNav";
 import { GiCardExchange } from "react-icons/gi";
 import axios from "axios";
 import DOMPurify from "dompurify";
-import { useNavigate } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoWarning } from "react-icons/io5";
 import UserProfileNav from "@/components/UserProfileNav";
+import useSafeNavigate from "../components/SafeNavigation";
 
 const ConfirmPassword = () => {
   const [password, setPassword] = useState("");
@@ -52,7 +53,8 @@ const ConfirmPassword = () => {
     return passwordRegex.test(password);
   };
 
-  console.log(password);
+  const navigateTo = useSafeNavigate();
+  const location = useLocation();
 
   const handleConfirmPassword = async (e) => {
     e.preventDefault();
@@ -175,7 +177,10 @@ const ConfirmPassword = () => {
                 </div>
 
                 <div className="flex  flex-col gap-[20px]">
-                  <div className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
+                  <div
+                    className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
+                    onClick={() => navigateTo(location?.state?.from || -1)}
+                  >
                     <p className="text-[14px] font-[700] ">Cancel</p>
                   </div>
                   <button className=" w-full bg-tradeGreen p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer hover:bg-gray-100 transition-all duration-300">
