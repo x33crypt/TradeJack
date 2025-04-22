@@ -128,11 +128,11 @@ const ConfirmPassword = () => {
           >
             <div className="h-full w-full flex flex-col lg:py-[5px] md:py-[50px] p-[15px] md:justify-center md:items-center">
               <div className="flex flex-col md:w-[300px] w-full md:gap-[30px] gap-[30px]">
-                <div className="w-full flex md:items-center flex-col gap-[5px]">
+                <div className="w-full md:flex hidden items-center flex-col gap-[5px]">
                   <p className="md:flex hidden text-[20px] text-white font-[600]">
                     Confirm your password
                   </p>
-                  <p className="text-tradeFadeWhite text-[13px] md:text-center font-[500]">
+                  <p className="text-tradeFadeWhite text-[13px] text-center font-[500]">
                     We just need to confirm it’s you. Enter your password to
                     continue.
                   </p>
