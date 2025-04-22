@@ -176,12 +176,18 @@ const ConfirmPassword = () => {
 
                 <div className="flex  flex-col gap-[20px]">
                   <div
-                    className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
+                    className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
                     onClick={() => navigateTo("/account/profile")}
                   >
                     <p className="text-[14px] font-[700] ">Cancel</p>
                   </div>
-                  <button className=" w-full text-black hover:text-tradeGreen bg-tradeGreen hover:bg-tradeAsh p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
+                  <button
+                    className={` ${
+                      confirming
+                        ? "bg-tradeAsh text-tradeGreen"
+                        : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
+                    } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
+                  >
                     <p className="text-[14px] font-[700] ">
                       {confirming ? "Confirming..." : "Confirm"}
                     </p>

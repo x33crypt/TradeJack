@@ -21,7 +21,7 @@ const SignupSuccess = () => {
         <div className="flex flex-col gap-[10px] w-full">
           <button
             onClick={() => navigateTo("/login")}
-            className=" lg:w-[250px] w-full text-black hover:text-tradeGreen bg-tradeGreen  p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer hover:bg-tradeAsh transition-all duration-300"
+            className=" lg:w-[250px] w-full text-black hover:text-tradeGreen bg-tradeGreen  p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer hover:bg-tradeAsh transition-all duration-300"
           >
             <p className="text-[14px] font-[700] ">Proceed to log in</p>
           </button>
