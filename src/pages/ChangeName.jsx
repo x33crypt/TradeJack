@@ -211,7 +211,10 @@ const ChangeName = () => {
                 </div>
 
                 <div className="flex md:flex-row flex-col gap-[20px]">
-                  <div className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
+                  <div
+                    className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
+                    onClick={() => navigateTo(location?.state?.from || -1)}
+                  >
                     <p className="text-[14px] font-[700] ">Cancel</p>
                   </div>
                   <button className=" w-full bg-tradeGreen p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer hover:bg-gray-100 transition-all duration-300">
