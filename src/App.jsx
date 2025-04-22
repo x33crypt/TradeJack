@@ -15,6 +15,7 @@ import Login from "./pages/Login";
 import RouteProtector from "./components/RouteProtector";
 import Logout from "./pages/Logout";
 import ConfirmPassword from "./components/ConfirmPassword";
+import ChangeName from "./pages/ChangeName";
 
 export const userContext = createContext();
 
@@ -37,11 +38,16 @@ const App = () => {
             path="/account/deposit&withdraw"
             element={<DepositAndWithdraw />}
           />
+          <Route
+            path="/account/profile/update-name"
+            element={<ChangeName />}
+          />
+
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/create-offer" element={<CreateOffer />} />
           <Route path="/offer/:id" element={<AboutOffer />} />
           <Route path="/messages" element={<Messages />} />
-          <Route path="/account/verify" element={<ConfirmPassword />} />
+          <Route path="/account/verify-password" element={<ConfirmPassword />} />
           <Route path="/logout" element={<Logout />} />
         </Routes>
       </userContext.Provider>

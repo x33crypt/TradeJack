@@ -1,56 +1,184 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import RouteProtector from "./RouteProtector";
+import React, { useState, useEffect } from "react";
+import Footer from "@/components/Footer";
+import InAppNav from "@/components/InAppNav";
+import { GiCardExchange } from "react-icons/gi";
 import axios from "axios";
+import DOMPurify from "dompurify";
+import { useNavigate } from "react-router-dom";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { IoWarning } from "react-icons/io5";
+import UserProfileNav from "@/components/UserProfileNav";
 
 const ConfirmPassword = () => {
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [verifying, setVerifying] = useState(false);
+  const [fieldError, setFieldError] = useState({
+    password: { error: false, message: "" },
+  });
 
-  const handleVerify = async () => {
-    setVerifying(true);
-    setError("");
+  const [confirming, setConfirming] = useState(false);
 
-    try {
-      // replace this with your actual verification endpoint
-      await axios.post("/auth/verify-password", { password });
-      // navigate(redirectTo);
-    } catch (err) {
-      setError("Incorrect password. Please try again.");
-      setVerifying(false);
-    }
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handlePasswordChange = (e) => {
+    setPassword((prevDetails) => ({
+      ...prevDetails,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const sanitizeInput = (input) => {
+    const cleaned = DOMPurify.sanitize(input);
+    return cleaned.replace(/\s+/g, "").trim();
+  };
+
+  const showFieldError = (field, message) => {
+    setFieldError((prev) => ({
+      ...prev,
+      [field]: { error: true, message },
+    }));
+  };
+
+  const closeFieldError = (field) => {
+    setFieldError((prev) => ({
+      ...prev,
+      [field]: { error: false, message: "" },
+    }));
+  };
+
+  const validatePassword = (password) => {
+    // At least 8 characters, including uppercase, lowercase, number, and special character
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return passwordRegex.test(password);
+  };
+
+  console.log(password);
+
+  const handleConfirmPassword = async (e) => {
+    e.preventDefault();
+    setConfirming(true);
+    setErrorMessage("");
+
+    // Sanitizing all input fields
+    const sanitizedDetails = {
+      password: sanitizeInput(password),
+    };
+
+    console.log(sanitizedDetails);
+
+    setTimeout(async () => {
+      const requiredFields = ["password"];
+
+      for (let field of requiredFields) {
+        if (!sanitizedDetails[field]) {
+          showFieldError(field, "Input field is required");
+          setConfirming(false);
+          return;
+        } else {
+          closeFieldError(field);
+        }
+      }
+
+      if (!validatePassword(sanitizedDetails.password)) {
+        showFieldError("password", "Password doesn't meet the requirements.");
+        setConfirming(false);
+        return;
+      } else {
+        closeFieldError("password");
+      }
+
+      const payload = {
+        password: signupDetails.password,
+      };
+
+      try {
+        const response = await axios.post(`${baseUrl}/auth/signup`, payload);
+        console.log("Signup successful:", response.data);
+        setConfirming(false);
+        // Optionally show a toast or redirect
+        // toast.success("Signup successful!");
+        navigateTo("/signup/completed");
+      } catch (err) {
+        setConfirming(false);
+
+        console.error("Signup error:", err);
+
+        const errMessage =
+          err?.response?.data?.error?.message ||
+          "Something went wrong. Please try again.";
+
+        setErrorMessage(errMessage);
+      }
+    }, 1000); // <-- runs once after 1 seconds
   };
 
   return (
-    <div className=" z-50 fixed inset-0 bg-black min-h-svh flex p-[35px] justify-center items-center">
-      <div className="flex flex-col items-center lg:p-[20px] p-[15px] md:gap-[40px] gap-[30px] rounded-[12px] bg- borde border-tradeAshExtraLight ">
-        <div className="w-full flex flex-col items-center gap-[10px]">
-          <div className="">
-            <p className="text-white text-[20px] sm:w-[250px] text-center font-[600]">
-              Confirm Logout
-            </p>
-          </div>
-          <p className="text-tradeFadeWhite text-[14px] sm:w-[250px] text-center font-[500]">
-            You’re about to log out. Do you want to continue ?
-          </p>
-        </div>
-        <div className="flex flex-col gap-[10px] w-full">
-          <button
-            // onClick={() => safeNavigate("/login")}
-            className=" lg:w-[250px] w-full bg-tradeGreen p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer hover:bg-gray-100 transition"
-          >
-            <p className="text-[14px] font-[700] text-black">Log out</p>
-          </button>
-          <button
-            // onClick={() => safeNavigate(location?.state?.from || -1)}
-            className=" lg:w-[250px] w-full bg-tradeAsh p-[10px] rounded-[10px] borde flex justify-center items-center cursor-pointer hover:bg-tradeAsh transition"
-          >
-            <p className="text-[14px] font-[700] text-white">Cancel</p>
-          </button>
+    <>
+      <InAppNav />
+      <div className=" lg:pt-[75px] md:pt-[75px] pt-[60px] flex min-h-screen bg-black lg:p-[2%] md:p-[2.5%] ">
+        <div className="bg-tradeGree flex w-full flex-col gap-[1px] md:borde border-neutral-800 md:rounded-[14px]">
+          <form onSubmit={handleConfirmPassword} className="h-full">
+            <div className="h-full flex flex-col lg:py-[5px] md:py-[50px] p-[15px] md:justify-center md:items-center">
+              <div className="flex flex-col md:w-[300px] w-full md:gap-[30px] gap-[30px]">
+                <div>
+                  <p className="text-[20px] text-white font-[600] text-center">
+                    We just need to confirm it’s you. Enter your password to
+                    continue.
+                  </p>
+                </div>
+
+                <div
+                  className={` ${
+                    errorMessage ? "flex" : "hidden"
+                  } w-full p-[12px] text-red-500 gap-[4px] items-center border  border-red-500 rounded-[10px]`}
+                >
+                  <IoWarning className="text-[14px]" />
+                  <p className="text-[13px]">{errorMessage}</p>
+                </div>
+
+                <div className="flex flex-col gap-[30px]">
+                  <div className="w-full">
+                    <p className="text-[14px] text-white font-[600]">
+                      Re-enter your password
+                    </p>
+                    <input
+                      className={`${
+                        password ? "border-tradeGreen" : "border-tradeAshLight"
+                      } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                      type="text"
+                      name="password"
+                      onChange={handlePasswordChange}
+                    />
+                    <div
+                      className={`${
+                        fieldError.password.error ? "flex" : "hidden"
+                      } gap-[4px] items-center text-red-500 mt-[4px]`}
+                    >
+                      <IoWarning className="text-[14px]" />
+                      <p className="text-[12px]">
+                        {fieldError.password.message}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex  flex-col gap-[20px]">
+                  <div className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
+                    <p className="text-[14px] font-[700] ">Cancel</p>
+                  </div>
+                  <button className=" w-full bg-tradeGreen p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer hover:bg-gray-100 transition-all duration-300">
+                    <p className="text-[14px] font-[700] text-black">
+                      {confirming ? "Confirming..." : "Confirm"}
+                    </p>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
