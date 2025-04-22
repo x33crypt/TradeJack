@@ -16,6 +16,7 @@ import RouteProtector from "./components/RouteProtector";
 import Logout from "./pages/Logout";
 import ConfirmPassword from "./components/ConfirmPassword";
 import ChangeName from "./pages/ChangeName";
+import { AuthProvider } from "./context/AuthContext";
 
 export const userContext = createContext();
 
@@ -25,32 +26,37 @@ const App = () => {
   return (
     <>
       <ScrollToTop />
-      <userContext.Provider value={{ user, setUser }}>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/signup/completed" element={<SignupSuccess />} />
-          <Route path="/login" element={<Login />} />
+      <AuthProvider>
+        <userContext.Provider value={{ user, setUser }}>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signup/completed" element={<SignupSuccess />} />
+            <Route path="/login" element={<Login />} />
 
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/account/profile" element={<UserProfile />} />
-          <Route
-            path="/account/deposit&withdraw"
-            element={<DepositAndWithdraw />}
-          />
-          <Route
-            path="/account/profile/update-name"
-            element={<ChangeName />}
-          />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/account/profile" element={<UserProfile />} />
+            <Route
+              path="/account/deposit&withdraw"
+              element={<DepositAndWithdraw />}
+            />
+            <Route
+              path="/account/profile/update-name"
+              element={<ChangeName />}
+            />
 
-          <Route path="/marketplace" element={<Marketplace />} />
-          <Route path="/create-offer" element={<CreateOffer />} />
-          <Route path="/offer/:id" element={<AboutOffer />} />
-          <Route path="/messages" element={<Messages />} />
-          <Route path="/account/verify-password" element={<ConfirmPassword />} />
-          <Route path="/logout" element={<Logout />} />
-        </Routes>
-      </userContext.Provider>
+            <Route path="/marketplace" element={<Marketplace />} />
+            <Route path="/create-offer" element={<CreateOffer />} />
+            <Route path="/offer/:id" element={<AboutOffer />} />
+            <Route path="/messages" element={<Messages />} />
+            <Route
+              path="/account/verify-password"
+              element={<ConfirmPassword />}
+            />
+            <Route path="/logout" element={<Logout />} />
+          </Routes>
+        </userContext.Provider>
+      </AuthProvider>
     </>
   );
 };

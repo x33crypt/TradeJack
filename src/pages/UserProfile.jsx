@@ -10,7 +10,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import useSafeNavigate from "@/components/SafeNavigation";
 
 const UserProfile = () => {
-  const [isAccountVerified, setIsAccountVerified] = useState(true);
+  const [isAccountVerified, setIsAccountVerified] = useState(false);
   const [isBankAccountEdit, setIsBankAccountEdit] = useState(false);
   const [isOnlineWalletEdit, setIsOnlineWalletEdit] = useState(false);
 
@@ -114,14 +114,14 @@ const UserProfile = () => {
             <div
               className={`${
                 isAccountVerified
-                  ? "bg-tradeAsh  border-tradeAshLight  text-tradeFadeWhite "
-                  : " text-black bg-tradeGreen border-tradeAshExtraLight"
-              } flex items-center justify-center border gap-[10px] lg:px-[20px] lg:py-[6px]  px-[12px] py-[10px] rounded-[7px] cursor-pointer transition-all duration-300`}
+                  ? "bg-transparent  border-tradeAshLight hover:border-tradeAshExtraLight text-tradeFadeWhite hover:text-white "
+                  : " text-black hover:text-tradeGreen bg-tradeGreen hover:bg-tradeAsh border-tradeGreen hover:border-tradeAsh cursor-pointer"
+              } flex items-center justify-center border gap-[10px] lg:px-[20px] lg:py-[6px]  px-[12px] py-[10px] rounded-[7px]  transition-all duration-300`}
             >
-              <p className="text-[14px] font-[600]">
+              <p className="text-[14px] font-[700]">
                 {isAccountVerified
                   ? "Verified Account"
-                  : "Complete Verification"}
+                  : "Complete Verification!"}
               </p>
             </div>
           </div>

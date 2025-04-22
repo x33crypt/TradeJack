@@ -1,35 +1,25 @@
-import React, { useState, useEffect, usel } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Footer from "@/components/Footer";
 import InAppNav from "@/components/InAppNav";
-import { GiCardExchange } from "react-icons/gi";
 import axios from "axios";
 import DOMPurify from "dompurify";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoWarning } from "react-icons/io5";
 import UserProfileNav from "@/components/UserProfileNav";
 import useSafeNavigate from "../components/SafeNavigation";
+import { useAuth } from "../context/AuthContext";
 
 const ConfirmPassword = () => {
   const [password, setPassword] = useState("");
   const [fieldError, setFieldError] = useState({
     password: { error: false, message: "" },
   });
-
   const [confirming, setConfirming] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState("");
+  const { setIsVerified } = useAuth();
 
   const handlePasswordChange = (e) => {
-    setPassword((prevDetails) => ({
-      ...prevDetails,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const sanitizeInput = (input) => {
-    const cleaned = DOMPurify.sanitize(input);
-    return cleaned.replace(/\s+/g, "").trim();
+    setPassword(e.target.value);
   };
 
   const showFieldError = (field, message) => {
@@ -46,6 +36,11 @@ const ConfirmPassword = () => {
     }));
   };
 
+  const sanitizeInput = (input) => {
+    const cleaned = DOMPurify.sanitize(input);
+    return cleaned.replace(/\s+/g, "").trim();
+  };
+
   const validatePassword = (password) => {
     // At least 8 characters, including uppercase, lowercase, number, and special character
     const passwordRegex =
@@ -55,6 +50,9 @@ const ConfirmPassword = () => {
 
   const navigateTo = useSafeNavigate();
   const location = useLocation();
+  const redirectTo = location.state?.from || "/dashboard";
+  const baseUrl = import.meta.env.VITE_API_URL;
+  console.log("API URL:", baseUrl);
 
   const handleConfirmPassword = async (e) => {
     e.preventDefault();
@@ -69,17 +67,12 @@ const ConfirmPassword = () => {
     console.log(sanitizedDetails);
 
     setTimeout(async () => {
-      const requiredFields = ["password"];
-
-      for (let field of requiredFields) {
-        if (!sanitizedDetails[field]) {
-          showFieldError(field, "Input field is required");
-          setConfirming(false);
-          return;
-        } else {
-          closeFieldError(field);
-        }
+      if (!sanitizedDetails.password) {
+        showFieldError("password", "Input field is required");
+        setConfirming(false);
+        return;
       }
+      closeFieldError("password");
 
       if (!validatePassword(sanitizedDetails.password)) {
         showFieldError("password", "Password doesn't meet the requirements.");
@@ -90,21 +83,21 @@ const ConfirmPassword = () => {
       }
 
       const payload = {
-        password: signupDetails.password,
+        password: sanitizedDetails?.password,
       };
 
       try {
-        const response = await axios.post(`${baseUrl}/auth/signup`, payload);
-        console.log("Signup successful:", response.data);
+        const response = await axios.post(
+          `${baseUrl}/auth/verifyPassword`,
+          payload
+        );
+        console.log(response.data);
         setConfirming(false);
-        // Optionally show a toast or redirect
-        // toast.success("Signup successful!");
-        navigateTo("/signup/completed");
+        setIsVerified(true);
+        navigateTo(redirectTo);
       } catch (err) {
         setConfirming(false);
-
         console.error("Signup error:", err);
-
         const errMessage =
           err?.response?.data?.error?.message ||
           "Something went wrong. Please try again.";
@@ -120,7 +113,7 @@ const ConfirmPassword = () => {
       <div className=" lg:pt-[75px] md:pt-[75px] pt-[60px] flex min-h-screen bg-black lg:p-[2%] md:p-[2.5%] ">
         <div className="bg-tradeGree flex w-full flex-col gap-[1px] md:borde border-neutral-800 md:rounded-[14px]">
           <div className="flex md:hidden justify-cente border-b p-[15px] border-tradeAshLight">
-            <p className="  text-[17px] text-white font-[700]">
+            <p className=" text-[17px] text-white font-[700]">
               Confirm your password
             </p>
           </div>
@@ -131,7 +124,7 @@ const ConfirmPassword = () => {
             <div className="h-full w-full flex flex-col lg:py-[5px] md:py-[50px] p-[15px] md:justify-center md:items-center">
               <div className="flex flex-col md:w-[300px] w-full md:gap-[30px] gap-[30px]">
                 <div className="w-full md:flex hidden items-center flex-col gap-[5px]">
-                  <p className="md:flex hidden text-[20px] text-white font-[600]">
+                  <p className="md:flex hidden text-[22px] text-white font-[600]">
                     Confirm your password
                   </p>
                   <p className="text-tradeFadeWhite text-[13px] text-center font-[500]">
@@ -150,19 +143,24 @@ const ConfirmPassword = () => {
                 </div>
 
                 <div className="flex flex-col gap-[30px]">
-                  <div className="w-full">
-                    <p className="text-[14px] font-[600] text-white">
-                      Password
-                    </p>
-                    <input
-                      className={`${
-                        password ? "border-tradeGreen" : "border-tradeAshLight"
-                      } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                      type="text"
-                      name="password"
-                      placeholder="Enter your password"
-                      onChange={handlePasswordChange}
-                    />
+                  <div className="w-full flex flex-col  gap-[2px]">
+                    <div className="flex flex-col ">
+                      <p className="text-[14px] font-[600] text-white">
+                        Password
+                      </p>
+                      <input
+                        className={`${
+                          password
+                            ? "border-tradeGreen"
+                            : "border-tradeAshLight"
+                        } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                        type="text"
+                        name="password"
+                        placeholder="Enter your password"
+                        onChange={handlePasswordChange}
+                      />
+                    </div>
+
                     <div
                       className={`${
                         fieldError.password.error ? "flex" : "hidden"
@@ -179,12 +177,12 @@ const ConfirmPassword = () => {
                 <div className="flex  flex-col gap-[20px]">
                   <div
                     className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
-                    onClick={() => navigateTo(location?.state?.from || -1)}
+                    onClick={() => navigateTo("/account/profile")}
                   >
                     <p className="text-[14px] font-[700] ">Cancel</p>
                   </div>
-                  <button className=" w-full bg-tradeGreen p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer hover:bg-gray-100 transition-all duration-300">
-                    <p className="text-[14px] font-[700] text-black">
+                  <button className=" w-full text-black hover:text-tradeGreen bg-tradeGreen hover:bg-tradeAsh p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
+                    <p className="text-[14px] font-[700] ">
                       {confirming ? "Confirming..." : "Confirm"}
                     </p>
                   </button>

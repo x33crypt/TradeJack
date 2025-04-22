@@ -8,8 +8,10 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoWarning } from "react-icons/io5";
 import UserProfileNav from "@/components/UserProfileNav";
 import useSafeNavigate from "@/components/SafeNavigation";
+import { useAuth } from "../context/AuthContext";
 
 const ChangeName = () => {
+  const { isVerified, setIsVerified } = useAuth();
   const [changeDetails, setChangeDetails] = useState({
     firstname: "",
     lastname: "",
@@ -25,6 +27,16 @@ const ChangeName = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   console.log(changeDetails);
+
+  const navigateTo = useSafeNavigate();
+
+  useEffect(() => {
+    if (!isVerified) {
+      navigateTo("/account/verify-password", {
+        state: { from: "/account/change-name" },
+      });
+    }
+  }, [isVerified, navigateTo]);
 
   const handleFirstnameChange = (e) => {
     setChangeDetails((prevDetails) => ({
@@ -69,55 +81,51 @@ const ChangeName = () => {
   const baseUrl = import.meta.env.VITE_API_URL;
   console.log("API URL:", baseUrl);
 
-  const navigateTo = useSafeNavigate();
-
   const handleSubmitChange = async (e) => {
     e.preventDefault();
     setUpdating(true);
     setErrorMessage("");
 
-    navigateTo("/account/verify-password");
-
     // Sanitizing all input fields
-    // const sanitizedDetails = {
-    //   firstname: sanitizeInput(changeDetails.firstname),
-    //   lastname: sanitizeInput(changeDetails.lastname),
-    // };
+    const sanitizedDetails = {
+      firstname: sanitizeInput(changeDetails.firstname),
+      lastname: sanitizeInput(changeDetails.lastname),
+    };
 
-    // setTimeout(async () => {
-    //   const requiredFields = ["firstname", "lastname"];
+    setTimeout(async () => {
+      const requiredFields = ["firstname", "lastname"];
 
-    //   for (let field of requiredFields) {
-    //     if (!sanitizedDetails[field]) {
-    //       showFieldError(field, "Input field is required");
-    //       setUpdating(false);
-    //       return;
-    //     } else {
-    //       closeFieldError(field);
-    //     }
-    //   }
+      for (let field of requiredFields) {
+        if (!sanitizedDetails[field]) {
+          showFieldError(field, "Input field is required");
+          setUpdating(false);
+          return;
+        } else {
+          closeFieldError(field);
+        }
+      }
 
-    //   const payload = {
-    //     fullname: `${sanitizedDetails.firstname} ${sanitizedDetails.lastname}`,
-    //   };
+      const payload = {
+        fullname: `${sanitizedDetails.firstname} ${sanitizedDetails.lastname}`,
+      };
 
-    //   try {
-    //     const response = await axios.post(`${baseUrl}/auth/signup`, payload);
-    //     console.log("Signup successful:", response.data);
-    //     setUpdating(false);
-    //     navigateTo("/signup/completed");
-    //   } catch (err) {
-    //     setUpdating(false);
+      try {
+        const response = await axios.post(`${baseUrl}/auth/signup`, payload);
+        console.log("Signup successful:", response.data);
+        setUpdating(false);
+        navigateTo("/signup/completed");
+      } catch (err) {
+        setUpdating(false);
 
-    //     console.error("Signup error:", err);
+        console.error("Signup error:", err);
 
-    //     const errMessage =
-    //       err?.response?.data?.error?.message ||
-    //       "Something went wrong. Please try again.";
+        const errMessage =
+          err?.response?.data?.error?.message ||
+          "We couldn't process your request at the moment. Please try again shortly.";
 
-    //     setErrorMessage(errMessage);
-    //   }
-    // }, 1000);
+        setErrorMessage(errMessage);
+      }
+    }, 1000);
   };
 
   return (
