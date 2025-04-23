@@ -7,6 +7,8 @@ const Logout = () => {
   const navigateTo = useSafeNavigate();
   const location = useLocation();
 
+  const handleLogout = () => {};
+
   return (
     <div className="z-50 fixed inset-0 bg-black min-h-svh flex p-[35px] justify-center items-center">
       <div className="flex flex-col items-center lg:p-[20px] p-[15px] md:gap-[30px] gap-[30px] rounded-[12px] bg- borde border-tradeAshExtraLight ">

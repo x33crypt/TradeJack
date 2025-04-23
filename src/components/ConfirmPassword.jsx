@@ -71,8 +71,9 @@ const ConfirmPassword = () => {
         showFieldError("password", "Input field is required");
         setConfirming(false);
         return;
+      } else {
+        closeFieldError("password");
       }
-      closeFieldError("password");
 
       if (!validatePassword(sanitizedDetails.password)) {
         showFieldError("password", "Password doesn't meet the requirements.");
@@ -110,8 +111,8 @@ const ConfirmPassword = () => {
   return (
     <>
       <InAppNav />
-      <div className=" lg:pt-[75px] md:pt-[75px] pt-[60px] flex min-h-screen bg-black lg:p-[2%] md:p-[2.5%] ">
-        <div className="bg-tradeGree flex w-full flex-col gap-[1px] md:borde border-neutral-800 md:rounded-[14px]">
+      <div className="pt-[60px] flex min-h-screen bg-black  ">
+        <div className="bg-tradeGree flex w-full flex-col gap-[1px] md:borde border-neutral-800 ">
           <div className="flex md:hidden justify-cente border-b p-[15px] border-tradeAshLight">
             <p className=" text-[17px] text-white font-[700]">
               Confirm your password
