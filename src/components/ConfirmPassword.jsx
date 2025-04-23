@@ -111,8 +111,8 @@ const ConfirmPassword = () => {
   return (
     <>
       {/* <InAppNav /> */}
-      <div className="pt-[60px] flex items-center justify-center min-h-screen bg-black">
-        <div className="bg-tradeGree flex  flex-col gap-[px] md:borde border-neutral-800 ">
+      <div className="pt-[0px] flex items-center justify-center min-h-svh bg-black">
+        <div className="bg-tradeGree flex flex-col gap-[px] md:borde border-neutral-800 ">
           {/* <div className="flex md:hidden justify-cente border-b p-[15px] border-tradeAshLight">
             <p className=" text-[17px] text-white font-[700]">
               Confirm your password
