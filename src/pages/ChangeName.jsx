@@ -127,7 +127,7 @@ const ChangeName = () => {
   return (
     <>
       {/* <InAppNav /> */}
-      <div className="flex gap-[15px] min-h-screen bg-black  md:pt-[px] ">
+      <div className="flex gap-[15px] min-h-svh bg-black  md:pt-[px] ">
         {/* <div className="lg:flex hidden">
           <UserProfileNav />
         </div> */}

@@ -105,7 +105,7 @@ const ChangeUsername = () => {
   return (
     <>
       <InAppNav />
-      <div className=" lg:pt-[75px] md:pt-[75px] pt-[60px] flex gap-[15px] min-h-screen bg-black lg:p-[2%] md:p-[2.5%] ">
+      <div className=" lg:pt-[75px] md:pt-[75px] pt-[60px] flex gap-[15px] min-h-svh bg-black lg:p-[2%] md:p-[2.5%] ">
         {/* <div className="lg:flex hidden">
       <UserProfileNav />
     </div> */}
