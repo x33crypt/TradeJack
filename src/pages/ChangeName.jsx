@@ -240,7 +240,7 @@ const ChangeName = () => {
           </form>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
