@@ -112,7 +112,7 @@ const ConfirmPassword = () => {
     <>
       <InAppNav />
       <div className="pt-[60px] flex items-center justify-center min-h-screen bg-black">
-        <div className="bg-tradeGree flex  flex-col gap-[1px] md:borde border-neutral-800 ">
+        <div className="bg-tradeGree flex  flex-col gap-[px] md:borde border-neutral-800 ">
           {/* <div className="flex md:hidden justify-cente border-b p-[15px] border-tradeAshLight">
             <p className=" text-[17px] text-white font-[700]">
               Confirm your password
@@ -122,8 +122,8 @@ const ConfirmPassword = () => {
             onSubmit={handleConfirmPassword}
             className="h-full flex justify-center items-center"
           >
-            <div className="h-full w-full flex flex-col lg:py-[5px] md:py-[50px] p-[15px] md:justify-center md:items-center">
-              <div className="flex flex-col md:w-[300px] w-full md:gap-[30px] gap-[30px]">
+            <div className="h-full w-full flex flex-col lg:py-[5px] md:py-[50px] px-[35px] md:justify-center md:items-center">
+              <div className="flex flex-col sm:w-[300px] w-full md:gap-[30px] gap-[30px]">
                 <div className="w-full flex  items-center flex-col gap-[5px]">
                   <p className="flex  text-[22px] text-white font-[600]">
                     Confirm your password
@@ -199,7 +199,7 @@ const ConfirmPassword = () => {
           </form>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -11,7 +11,7 @@ const Logout = () => {
 
   return (
     <div className="z-50 fixed inset-0 bg-black min-h-svh flex px-[35px] justify-center items-center">
-      <div className="flex flex-col items-center lg:p-[20px] p-[15px] md:gap-[30px] gap-[30px] rounded-[12px] bg- borde border-tradeAshExtraLight ">
+      <div className="flex flex-col items-center lg:p-[20px] p-[15px] md:gap-[30px] gap-[30px] bg- borde border-tradeAshExtraLight ">
         <div className="w-full flex flex-col items-center gap-[5px]">
           <div className="w-full flex items-center justify-center  text-white text-[100px]">
             <IoLogInOutline />
