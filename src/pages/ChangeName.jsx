@@ -126,14 +126,16 @@ const ChangeName = () => {
 
   return (
     <>
-      <InAppNav />
-      <div className=" lg:pt-[75px] md:pt-[75px] pt-[60px] flex gap-[15px] min-h-screen bg-black lg:p-[2%] md:p-[2.5%] ">
+      {/* <InAppNav /> */}
+      <div className="flex gap-[15px] min-h-screen bg-black  md:pt-[px] ">
         {/* <div className="lg:flex hidden">
           <UserProfileNav />
         </div> */}
-        <div className="flex w-full flex-col gap-[10px] md:border border-neutral-800 md:rounded-[14px]">
-          <div className="flex justify-cente border-b p-[15px] border-tradeAshLight">
-            <p className="  text-[17px] text-white font-[700]">Update Name</p>
+        <div className="flex w-full flex-col gap-[10px] md:borde border-neutral-800 md:rounded-[14px]">
+          <div className="flex justify-cente border-b lg:px-[2%] md:px-[2.5%] p-[15px] border-tradeAshLight">
+            <p className="  text-[17px] text-white font-[700]">
+              Edit Profile Name
+            </p>
           </div>
           <form onSubmit={handleSubmitChange}>
             <div className="w-full h-full flex flex-col  lg:py-[50px] md:py-[50px] p-[15px] md:justify-center md:items-center">
@@ -221,8 +223,14 @@ const ChangeName = () => {
                   >
                     <p className="text-[14px] font-[700] ">Cancel</p>
                   </div>
-                  <button className=" w-full bg-tradeGreen p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer hover:bg-gray-100 transition-all duration-300">
-                    <p className="text-[14px] font-[700] text-black">
+                  <button
+                    className={` ${
+                      updating
+                        ? "bg-tradeAsh text-tradeGreen"
+                        : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
+                    } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
+                  >
+                    <p className="text-[14px] font-[700]">
                       {updating ? "Updating..." : "Update"}
                     </p>
                   </button>
