@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Footer from "@/components/Footer";
-import InAppNav from "@/components/InAppNav";
-import { GiCardExchange } from "react-icons/gi";
 import axios from "axios";
 import DOMPurify from "dompurify";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoWarning } from "react-icons/io5";
-import UserProfileNav from "@/components/UserProfileNav";
 import useSafeNavigate from "@/components/SafeNavigation";
 import { useAuth } from "../context/AuthContext";
 
@@ -33,7 +28,7 @@ const ChangeName = () => {
   useEffect(() => {
     if (!isVerified) {
       navigateTo("/account/auth/verify", {
-        state: { from: "/account/update/name" },
+        state: { from: "/account/update/email" },
       });
     }
   }, [isVerified, navigateTo]);
@@ -126,99 +121,100 @@ const ChangeName = () => {
 
   return (
     <>
-      {/* <InAppNav /> */}
-      <div className="flex gap-[15px] min-h-svh bg-black  md:pt-[px] ">
-        {/* <div className="lg:flex hidden">
-          <UserProfileNav />
-        </div> */}
-        <div className="flex w-full flex-col gap-[10px] md:borde border-neutral-800 md:rounded-[14px]">
-          <div className="flex justify-cente border-b lg:px-[2%] md:px-[2.5%] p-[15px] border-tradeAshLight">
-            <p className="  text-[17px] text-white font-[700]">
-              Edit Profile Name
-            </p>
+      <div className="flex gap-[15px] min-h-svh bg-black">
+        <div className="flex w-full flex-col gap-[10px]">
+          <div className="flex border-b lg:px-[2%] md:px-[2.5%] p-[15px] border-tradeAshLight">
+            <p className="  text-[17px] text-white font-[700]">Profile Name</p>
           </div>
           <form onSubmit={handleSubmitChange}>
             <div className="w-full h-full flex flex-col  lg:py-[50px] md:py-[50px] p-[15px] md:justify-center md:items-center">
-              <div className="flex flex-col md:w-[400px] w-full md:gap-[30px] gap-[30px]">
-                <div
-                  className={` ${
-                    errorMessage ? "flex" : "hidden"
-                  } w-full p-[12px] text-red-500 gap-[4px] items-center border  border-red-500 rounded-[10px]`}
-                >
-                  <IoWarning className="text-[14px]" />
-                  <p className="text-[13px]">{errorMessage}</p>
-                </div>
-                <div className="flex flex-col gap-[30px]">
-                  <div className="w-full ">
-                    <p className="text-[14px] font-[600] text-white">
-                      First Name
-                    </p>
-                    <input
-                      className={`${
-                        changeDetails.firstname
-                          ? "border-tradeGreen"
-                          : "border-tradeAshLight"
-                      } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                      type="text"
-                      name="firstname"
-                      placeholder="eg. John"
-                      onChange={handleFirstnameChange}
-                    />
-                    <div
-                      className={`${
-                        fieldError.firstname.error ? "flex" : "hidden"
-                      } gap-[4px] items-center text-red-500 mt-[4px]`}
-                    >
-                      <IoWarning className="text-[14px]" />
-                      <p className="text-[12px]">
-                        {fieldError.firstname.message}
-                      </p>
+              <div className="flex flex-col justify-between md:w-[400px] w-full md:gap-[30px] gap-[30px]">
+                <div className=" flex flex-col w-full gap-[30px]">
+                  <div
+                    className={` ${
+                      errorMessage ? "flex" : "hidden"
+                    } w-full p-[12px] text-red-500 gap-[4px] items-center border  border-red-500 rounded-[10px]`}
+                  >
+                    <IoWarning className="text-[14px]" />
+                    <p className="text-[13px]">{errorMessage}</p>
+                  </div>
+                  <div className="flex flex-col gap-[30px]">
+                    <div className="w-full flex flex-col gap-[2px]">
+                      <div className="flex flex-col">
+                        <p className="text-[14px] font-[600] text-white">
+                          First Name
+                        </p>
+                        <input
+                          className={`${
+                            changeDetails.firstname
+                              ? "border-tradeGreen"
+                              : "border-tradeAshLight"
+                          } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                          type="text"
+                          name="firstname"
+                          placeholder="eg. John"
+                          onChange={handleFirstnameChange}
+                        />
+                      </div>
+                      <div
+                        className={`${
+                          fieldError.firstname.error ? "flex" : "hidden"
+                        } gap-[4px] items-center text-red-500 mt-[4px]`}
+                      >
+                        <IoWarning className="text-[14px]" />
+                        <p className="text-[12px]">
+                          {fieldError.firstname.message}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="w-full flex flex-col gap-[2px]">
+                      <div className="flex flex-col">
+                        <p className="text-[14px] text-white font-[600]">
+                          Last Name
+                        </p>
+                        <input
+                          className={`${
+                            changeDetails.lastname
+                              ? "border-tradeGreen"
+                              : "border-tradeAshLight"
+                          } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                          type="text"
+                          name="lastname"
+                          placeholder="eg. Doe"
+                          onChange={handleLastnameChange}
+                        />
+                      </div>
+                      <div
+                        className={`${
+                          fieldError.lastname.error ? "flex" : "hidden"
+                        } gap-[4px] items-center text-red-500 mt-[4px]`}
+                      >
+                        <IoWarning className="text-[14px]" />
+                        <p className="text-[12px]">
+                          {fieldError.lastname.message}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <div className="w-full">
-                    <p className="text-[14px] text-white font-[600]">
-                      Last Name
+                  <div>
+                    <p className="text-tradeFadeWhite text-[14px] font-semibold">
+                      Please note:
                     </p>
-                    <input
-                      className={`${
-                        changeDetails.lastname
-                          ? "border-tradeGreen"
-                          : "border-tradeAshLight"
-                      } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                      type="text"
-                      name="lastname"
-                      placeholder="eg. Doe"
-                      onChange={handleLastnameChange}
-                    />
-                    <div
-                      className={`${
-                        fieldError.lastname.error ? "flex" : "hidden"
-                      } gap-[4px] items-center text-red-500 mt-[4px]`}
-                    >
-                      <IoWarning className="text-[14px]" />
-                      <p className="text-[12px]">
-                        {fieldError.lastname.message}
-                      </p>
-                    </div>
+                    <ul className="list-disc list-inside text-tradeFadeWhite text-[13px] space-y-1 mt-1">
+                      <li>You can only change your name once.</li>
+                      <li>Ensure the new name matches your legal identity.</li>
+                      <li>Once changed, this action cannot be undone.</li>
+                      <li>
+                        A password confirmation will be required to proceed.
+                      </li>
+                    </ul>
                   </div>
-                </div>
-                <div>
-                  <p className="text-tradeFadeWhite text-[14px] font-semibold">
-                    Please note:
-                  </p>
-                  <ul className="list-disc list-inside text-tradeFadeWhite text-[13px] space-y-1 mt-1">
-                    <li>You can only change your name once.</li>
-                    <li>Ensure the new name matches your legal identity.</li>
-                    <li>Once changed, this action cannot be undone.</li>
-                    <li>
-                      A password confirmation will be required to proceed.
-                    </li>
-                  </ul>
                 </div>
 
                 <div className="flex md:flex-row flex-col gap-[20px]">
                   <div
-                    className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[10px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
+                    className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
                     onClick={() => navigateTo(location?.state?.from || -1)}
                   >
                     <p className="text-[14px] font-[700] ">Cancel</p>
@@ -240,7 +236,6 @@ const ChangeName = () => {
           </form>
         </div>
       </div>
-      {/* <Footer /> */}
     </>
   );
 };

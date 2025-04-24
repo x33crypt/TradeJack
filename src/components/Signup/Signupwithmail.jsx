@@ -362,6 +362,7 @@ const Signupwithmail = () => {
                   It cannot begin or end with a hyphen.
                 </p>
               </div>
+              
               <div className="w-full">
                 <p className="text-[14px] text-white font-[600]">Email</p>
                 <input

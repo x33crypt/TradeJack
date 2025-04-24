@@ -18,6 +18,7 @@ import ConfirmPassword from "./components/ConfirmPassword";
 import ChangeName from "./pages/ChangeName";
 import { AuthProvider } from "./context/AuthContext";
 import ChangeUsername from "./pages/ChangeUsername";
+import ChangeEmail from "./pages/ChangeEmail";
 
 export const userContext = createContext();
 
@@ -46,6 +47,7 @@ const App = () => {
               path="/account/update/username"
               element={<ChangeUsername />}
             />
+            <Route path="/account/update/email" element={<ChangeEmail />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/create-offer" element={<CreateOffer />} />
             <Route path="/offer/:id" element={<AboutOffer />} />

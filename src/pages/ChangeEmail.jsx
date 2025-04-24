@@ -5,42 +5,40 @@ import { IoWarning } from "react-icons/io5";
 import useSafeNavigate from "@/components/SafeNavigation";
 import { useAuth } from "../context/AuthContext";
 
-const ChangeUsername = () => {
+const ChangeEmail = () => {
   const { isVerified, setIsVerified } = useAuth();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [fieldError, setFieldError] = useState({
-    username: { error: false, message: "" },
+    email: { error: false, message: "" },
   });
   const [updating, setUpdating] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  console.log(username);
+  console.log(email);
 
   const navigateTo = useSafeNavigate();
-
-  
 
   useEffect(() => {
     if (!isVerified) {
       navigateTo("/account/auth/verify", {
-        state: { from: "/account/update/username" },
-        replace: false, // 👈 this line is key!
+        state: { from: "/account/update/email" },
       });
     }
   }, [isVerified, navigateTo]);
 
   const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
+    setEmail(e.target.value);
+  };
+
+  const validateEmail = (email) => {
+    // Basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
   const sanitizeInput = (input) => {
     const cleaned = DOMPurify.sanitize(input);
     return cleaned.replace(/\s+/g, "").trim();
-  };
-
-  const validateUsername = (username) => {
-    const regex = /^(?!-)(?!.*--)[a-zA-Z0-9]+(-[a-zA-Z0-9]+)?$/;
-    return regex.test(username);
   };
 
   const showFieldError = (field, message) => {
@@ -67,28 +65,28 @@ const ChangeUsername = () => {
 
     // Sanitizing all input fields
     const sanitizedDetails = {
-      username: sanitizeInput(username),
+      email: sanitizeInput(email),
     };
 
     setTimeout(async () => {
-      if (!sanitizedDetails.username) {
-        showFieldError("username", "Input field is required");
+      if (!sanitizedDetails.email) {
+        showFieldError("email", "Input field is required");
         setUpdating(false);
         return;
       } else {
-        closeFieldError("username");
+        closeFieldError("email");
       }
 
-      if (!validateUsername(sanitizedDetails.username)) {
-        showFieldError("username", "Username doesn't meet the requirements.");
+      if (!validateEmail(sanitizedDetails.email)) {
+        showFieldError("email", "Invalid email format");
         setUpdating(false);
         return;
       } else {
-        closeFieldError("username");
+        closeFieldError("email");
       }
 
       const payload = {
-        password: `${sanitizedDetails.password}`,
+        email: `${sanitizedDetails.email}`,
       };
 
       try {
@@ -118,7 +116,9 @@ const ChangeUsername = () => {
       <div className="flex gap-[15px] min-h-svh bg-black">
         <div className="flex w-full flex-col gap-[10px]">
           <div className="flex border-b lg:px-[2%] md:px-[2.5%] p-[15px] border-tradeAshLight">
-            <p className="  text-[17px] text-white font-[700]">Edit Username</p>
+            <p className="  text-[17px] text-white font-[700]">
+              Update Email Address
+            </p>
           </div>
           <form onSubmit={handleSubmitChange}>
             <div className="w-full h-full flex flex-col  lg:py-[50px] md:py-[50px] p-[15px] md:justify-center md:items-center">
@@ -132,33 +132,29 @@ const ChangeUsername = () => {
                   <p className="text-[13px]">{errorMessage}</p>
                 </div>
                 <div className="flex flex-col gap-[30px]">
-                  <div className="w-full ">
-                    <p className="text-[14px] font-[600] text-white">
-                      Username
-                    </p>
-                    <input
-                      className={`${
-                        username ? "border-tradeGreen" : "border-tradeAshLight"
-                      } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                      type="text"
-                      name="username"
-                      placeholder="eg. John"
-                      onChange={handleUsernameChange}
-                    />
+                  <div className="w-full flex flex-col gap-[2px]">
+                    <div className="flex flex-col">
+                      <p className="text-[14px] font-[600] text-white">
+                        Email Address
+                      </p>
+                      <input
+                        className={`${
+                          email ? "border-tradeGreen" : "border-tradeAshLight"
+                        } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                        type="text"
+                        name="username"
+                        placeholder="eg. John"
+                        onChange={handleUsernameChange}
+                      />
+                    </div>
                     <div
                       className={`${
-                        fieldError.username.error ? "flex" : "hidden"
+                        fieldError.email.error ? "flex" : "hidden"
                       } gap-[4px] items-center text-red-500 mt-[4px]`}
                     >
                       <IoWarning className="text-[14px]" />
-                      <p className="text-[12px]">
-                        {fieldError.username.message}
-                      </p>
+                      <p className="text-[12px]">{fieldError.email.message}</p>
                     </div>
-                    <p className="text-[13px] text-tradeFadeWhite mt-[5px]">
-                      Username can only have letters, numbers, or one hyphen ( -
-                      ). It cannot begin or end with a hyphen.
-                    </p>
                   </div>
                 </div>
                 <div>
@@ -203,4 +199,4 @@ const ChangeUsername = () => {
   );
 };
 
-export default ChangeUsername;
+export default ChangeEmail;
