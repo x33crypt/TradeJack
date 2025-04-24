@@ -156,6 +156,7 @@ const ChangeName = () => {
                           onChange={handleFirstnameChange}
                         />
                       </div>
+                      
                       <div
                         className={`${
                           fieldError.firstname.error ? "flex" : "hidden"

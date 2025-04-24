@@ -152,7 +152,6 @@ const UserProfile = () => {
                     <MdKeyboardArrowRight />
                   </div>
                 </div>
-
                 <div
                   className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300"
                   onClick={() => navigateTo("/account/update/username")}
@@ -170,7 +169,6 @@ const UserProfile = () => {
                     <MdKeyboardArrowRight />
                   </div>
                 </div>
-
                 <div
                   className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300"
                   onClick={() => navigateTo("/account/update/email")}
@@ -188,8 +186,10 @@ const UserProfile = () => {
                     <MdKeyboardArrowRight />
                   </div>
                 </div>
-
-                <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
+                <div
+                  className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300"
+                  onClick={() => navigateTo("/account/update/phone")}
+                >
                   <div className="flex-1 flex flex-col gap-[2px]  ">
                     <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
                       Phone number
@@ -203,7 +203,6 @@ const UserProfile = () => {
                     <MdKeyboardArrowRight />
                   </div>
                 </div>
-
                 <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] cursor-pointer transition-all duration-300">
                   <div className="flex-1 flex flex-col gap-[2px]  ">
                     <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
@@ -218,7 +217,6 @@ const UserProfile = () => {
                     <MdKeyboardArrowRight />
                   </div>
                 </div>
-
                 <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] transition-all duration-300">
                   <div className="flex-1 flex flex-col gap-[2px]  ">
                     <p className="text-[12.5px] font-[500] text-tradeFadeWhite">
@@ -231,7 +229,6 @@ const UserProfile = () => {
                       <MdKeyboardArrowRight />
                     </div> */}
                 </div>
-
                 <div className="flex items-center py-[5px] px-[10px] bg-tradeAsh hover:bg-tradeAshLight border border-tradeAshLight  rounded-[8px] transition-all duration-300">
                   <div className="flex-1 flex flex-col gap-[2px]  ">
                     <p className="text-[12.5px] font-[500] text-tradeFadeWhite">

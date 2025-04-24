@@ -143,7 +143,7 @@ const ChangeUsername = () => {
                         } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                         type="text"
                         name="username"
-                        placeholder="eg. John"
+                        placeholder="Choose username"
                         onChange={handleUsernameChange}
                       />
                       <div
@@ -167,12 +167,8 @@ const ChangeUsername = () => {
                       Please note:
                     </p>
                     <ul className="list-disc list-inside text-tradeFadeWhite text-[13px] space-y-1 mt-1">
-                      <li>You can only change your name once.</li>
-                      <li>Ensure the new name matches your legal identity.</li>
-                      <li>Once changed, this action cannot be undone.</li>
-                      <li>
-                        A password confirmation will be required to proceed.
-                      </li>
+                      <li>You can only update your username twice in total.</li>
+                      <li>Choose a unique and recognizable username.</li>
                     </ul>
                   </div>
                 </div>

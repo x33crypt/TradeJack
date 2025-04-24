@@ -144,7 +144,7 @@ const ChangeEmail = () => {
                           } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                           type="text"
                           name="username"
-                          placeholder="eg. John"
+                          placeholder="eg. Johndoe@gmail.com"
                           onChange={handleUsernameChange}
                         />
                       </div>
@@ -165,11 +165,17 @@ const ChangeEmail = () => {
                       Please note:
                     </p>
                     <ul className="list-disc list-inside text-tradeFadeWhite text-[13px] space-y-1 mt-1">
-                      <li>You can only change your name once.</li>
-                      <li>Ensure the new name matches your legal identity.</li>
-                      <li>Once changed, this action cannot be undone.</li>
                       <li>
-                        A password confirmation will be required to proceed.
+                        A verification link will be sent to your email
+                        address.
+                      </li>
+                      <li>
+                        Make sure the email is valid and accessible before
+                        proceeding.
+                      </li>
+                      <li>
+                        You won’t be able to update your email again for the
+                        next 30 days.
                       </li>
                     </ul>
                   </div>

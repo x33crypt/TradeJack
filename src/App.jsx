@@ -19,6 +19,7 @@ import ChangeName from "./pages/ChangeName";
 import { AuthProvider } from "./context/AuthContext";
 import ChangeUsername from "./pages/ChangeUsername";
 import ChangeEmail from "./pages/ChangeEmail";
+import ChangePhone from "./pages/ChangePhone";
 
 export const userContext = createContext();
 
@@ -48,6 +49,7 @@ const App = () => {
               element={<ChangeUsername />}
             />
             <Route path="/account/update/email" element={<ChangeEmail />} />
+            <Route path="/account/update/phone" element={<ChangePhone />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/create-offer" element={<CreateOffer />} />
             <Route path="/offer/:id" element={<AboutOffer />} />
