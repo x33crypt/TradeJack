@@ -8,7 +8,6 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 const ChangePhone = () => {
   const { isVerified, setIsVerified } = useAuth();
-  const [phoneNumber, setPhoneNumber] = useState("");
   const [countryCodes, setCountryCode] = useState([]);
   const [phoneDetails, setPhoneDetails] = useState({
     code: "",

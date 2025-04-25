@@ -20,6 +20,7 @@ import { AuthProvider } from "./context/AuthContext";
 import ChangeUsername from "./pages/ChangeUsername";
 import ChangeEmail from "./pages/ChangeEmail";
 import ChangePhone from "./pages/ChangePhone";
+import ChangeAdress from "./pages/ChangeAdress";
 
 export const userContext = createContext();
 
@@ -50,6 +51,7 @@ const App = () => {
             />
             <Route path="/account/update/email" element={<ChangeEmail />} />
             <Route path="/account/update/phone" element={<ChangePhone />} />
+            <Route path="/account/update/address" element={<ChangeAdress />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/create-offer" element={<CreateOffer />} />
             <Route path="/offer/:id" element={<AboutOffer />} />
