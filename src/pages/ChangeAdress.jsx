@@ -254,7 +254,7 @@ const ChangeAdress = () => {
               Change Address
             </p>
           </div>
-          <form className="h-full mt-[50px]" onSubmit={handleSubmitChange}>
+          <form className="h-full mt-[70px]" onSubmit={handleSubmitChange}>
             <div className="w-full h-full flex flex-col lg:py-[50px] md:py-[50px] p-[15px] md:justify-center md:items-center">
               <div className="flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
                 <div className=" flex flex-col w-full gap-[30px]">
