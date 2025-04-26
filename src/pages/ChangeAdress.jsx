@@ -234,11 +234,7 @@ const ChangeAdress = () => {
       } else {
         closeFieldError("streetAddress");
       }
-
-      const errMessage = "We couldn't process your request at the moment.";
-
-      setErrorMessage(errMessage);
-      return;
+ 
 
       const payload = {
         country: `${sanitizedDetails.country}`,
