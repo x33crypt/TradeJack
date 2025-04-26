@@ -254,7 +254,7 @@ const ChangeAdress = () => {
               Change Address
             </p>
           </div>
-          <form className="h-full mt-[60px]" onSubmit={handleSubmitChange}>
+          <form className="h-full mt-[50px]" onSubmit={handleSubmitChange}>
             <div className="w-full h-full flex flex-col lg:py-[50px] md:py-[50px] p-[15px] md:justify-center md:items-center">
               <div className="flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
                 <div className=" flex flex-col w-full gap-[30px]">
@@ -415,25 +415,6 @@ const ChangeAdress = () => {
                         {fieldError.streetAddress.message}
                       </p>
                     </div>
-                  </div>
-
-                  <div>
-                    <p className="text-tradeFadeWhite text-[14px] font-semibold">
-                      Please note:
-                    </p>
-                    <ul className="list-disc list-inside text-tradeFadeWhite text-[13px] space-y-1 mt-1">
-                      <li>
-                        A verification code will be sent to your phone number.
-                      </li>
-                      <li>
-                        Ensure the number is active and accessible before
-                        proceeding.
-                      </li>
-                      <li>
-                        You won’t be able to update your phone number again for
-                        the next 30 days.
-                      </li>
-                    </ul>
                   </div>
                 </div>
 
