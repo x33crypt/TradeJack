@@ -8,13 +8,13 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 const ChangeAdress = () => {
   const { isVerified, setIsVerified } = useAuth();
-  const [stateOrProvince, setStateOrProvince] = useState([]);
-  const [countryCodes, setCountryCode] = useState([]);
-
+  const [countries, setCountries] = useState([]);
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
   const [addressDetails, setAddressDetails] = useState({
-    country: "",
-    stateOrProvince: "",
-    cityOrArea: "",
+    country: { iso2: "", name: "" },
+    state: { iso2: "", name: "" },
+    city: "",
     streetAddress: "",
     landmark: "",
   });
@@ -41,36 +41,39 @@ const ChangeAdress = () => {
     }
   }, [isVerified, navigateTo]);
 
-  // const handlePhoneChange = (e) => {
-  //   setAddressDetails((prevDetails) => ({
-  //     ...prevDetails,
-  //     [e.target.name]: e.target.value,
-  //   }));
-  // };
+  const handleCountryChange = (e) => {
+    const [name, iso2] = e.target.value.split("|");
 
-  // const handleCountryChange = (e) => {
-  //   const selectedCountry = countryCodes.find(
-  //     (c) => c.country === e.target.value
-  //   );
+    setAddressDetails((prevDetails) => ({
+      ...prevDetails,
+      country: {
+        name: name,
+        iso2: iso2,
+      },
+    }));
+  };
 
-  //   if (selectedCountry) {
-  //     setPhoneDetails((prev) => ({
-  //       ...prev,
-  //       code: selectedCountry.code,
-  //       country: selectedCountry.country,
-  //     }));
-  //   }
-  // };
+  const handleStateChange = (e) => {
+    const [name, iso2] = e.target.value.split("|");
 
-  // const handleStateOrProvinceChange = (e) => {
-  //   setPhoneDetails((prevDetails) => ({
-  //     ...prevDetails,
-  //     [e.target.name]: e.target.value,
-  //   }));
-  // };
+    setAddressDetails((prevDetails) => ({
+      ...prevDetails,
+      state: {
+        name: name,
+        iso2: iso2,
+      },
+    }));
+  };
 
-  const addressDetailsChange = (e) => {
-    setPhoneDetails((prevDetails) => ({
+  const handleCityChange = (e) => {
+    setAddressDetails((prevDetails) => ({
+      ...prevDetails,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleStreetChange = (e) => {
+    setAddressDetails((prevDetails) => ({
       ...prevDetails,
       [e.target.name]: e.target.value,
     }));
@@ -95,37 +98,95 @@ const ChangeAdress = () => {
     }));
   };
 
-  const getCountryCodes = async () => {
+  const baseUrl = import.meta.env.VITE_API_URL;
+  const countryStateApiKey =
+    "Zm5Gc0N5dUIzTFRoTDMwSG1LZ2t3aWJNQXptU1B1VUxBR1lhSFlJag==";
+  const countryStateApiUrl = "https://api.countrystatecity.in/v1";
+
+  const getCountries = async () => {
+    try {
+      const response = await axios.get(`${countryStateApiUrl}/countries`, {
+        headers: {
+          "X-CSCAPI-KEY": countryStateApiKey, // 👈 header must be exactly like this
+        },
+      });
+
+      const countries = response?.data?.map((item) => ({
+        name: item.name,
+        iso2: item.iso2,
+      }));
+
+      countries.sort((a, b) => a.name.localeCompare(b.name));
+      setCountries(countries);
+    } catch (error) {
+      console.error("Error fetching countries:", error);
+      throw error;
+    }
+  };
+
+  const getStates = async () => {
     try {
       const response = await axios.get(
-        "https://api.countrystatecity.in/v1/countries"
+        `${countryStateApiUrl}/countries/${addressDetails?.country?.iso2}/states`,
+        {
+          headers: {
+            "X-CSCAPI-KEY": countryStateApiKey,
+          },
+        }
       );
 
-      console.log(response);
+      const states = response?.data?.map((item) => ({
+        name: item.name,
+        iso2: item.iso2,
+      }));
 
-      // const codes = response.data
-      //   .filter((country) => country.idd?.root) // Ensure the country has a dial code
-      //   .map((country) => ({
-      //     country: country.name.common,
-      //     code: country.idd.root + (country.idd.suffixes?.[0] || ""),
-      //   }));
-
-      // codes.sort((a, b) => a.country.localeCompare(b.country));
-
-      setCountryCode(codes);
+      states.sort((a, b) => a.name.localeCompare(b.name));
+      setStates(states);
     } catch (error) {
-      console.error("Error fetching country info:", error);
+      console.error("Error fetching states:", error);
+      throw error;
+    }
+  };
+
+  const getCities = async () => {
+    try {
+      const response = await axios.get(
+        `${countryStateApiUrl}/countries/${addressDetails?.country?.iso2}/states/${addressDetails?.state?.iso2}/cities`,
+        {
+          headers: {
+            "X-CSCAPI-KEY": countryStateApiKey,
+          },
+        }
+      );
+
+      const cities = response?.data?.map((item) => ({
+        name: item.name,
+      }));
+
+      cities.sort((a, b) => a.name.localeCompare(b.name));
+      setCities(cities);
+    } catch (error) {
+      console.error("Error fetching states:", error);
+      throw error;
     }
   };
 
   useEffect(() => {
-    getCountryCodes();
+    getCountries();
   }, []);
 
-  console.log();
+  useEffect(() => {
+    getStates();
+  }, [addressDetails?.country?.name]);
 
-  const baseUrl = import.meta.env.VITE_API_URL;
-  console.log("API URL:", baseUrl);
+  useEffect(() => {
+    getCities();
+  }, [addressDetails?.state?.name]);
+
+  console.log(countries);
+  console.log(states);
+  console.log(cities);
+  console.log(addressDetails);
 
   const handleSubmitChange = async (e) => {
     e.preventDefault();
@@ -193,7 +254,7 @@ const ChangeAdress = () => {
               Change Address
             </p>
           </div>
-          <form className="h-full mt-[80px]" onSubmit={handleSubmitChange}>
+          <form className="h-full mt-[60px]" onSubmit={handleSubmitChange}>
             <div className="w-full h-full flex flex-col lg:py-[50px] md:py-[50px] p-[15px] md:justify-center md:items-center">
               <div className="flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
                 <div className=" flex flex-col w-full gap-[30px]">
@@ -214,17 +275,97 @@ const ChangeAdress = () => {
                       <div className="relative w-full">
                         <select
                           className={`${
-                            addressDetails.country
+                            addressDetails?.country?.name
                               ? "border-tradeGreen"
                               : "border-tradeAshLight"
                           } appearance-none mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]  scrollbar-thin scrollbar-thumb-tradeGreen scrollbar-track-tradeAsh`}
                           name="country"
-                          // onChange={handleSubmitChange}
+                          onChange={handleCountryChange}
                         >
-                          <option value="">-- Choose a country --</option>
-                          {countryCodes.map((c, index) => (
-                            <option key={index} value={c.country}>
-                              {c.country} ({c.code})
+                          <option value="">Select Country</option>
+                          {countries.map((c) => (
+                            <option key={c.iso2} value={`${c.name}|${c.iso2}`}>
+                              {c.name}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                          <MdKeyboardArrowDown />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      className={`${
+                        fieldError.country.error ? "flex" : "hidden"
+                      } gap-[4px] items-center text-red-500 mt-[4px]`}
+                    >
+                      <IoWarning className="text-[14px]" />
+                      <p className="text-[12px]">
+                        {fieldError.country.message}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="w-full flex flex-col gap-[2px]">
+                    <div className="w-full">
+                      <p className="text-[14px] text-white font-[600]">
+                        State/Province
+                      </p>
+                      <div className="relative w-full">
+                        <select
+                          className={`${
+                            addressDetails?.state?.name
+                              ? "border-tradeGreen"
+                              : "border-tradeAshLight"
+                          } appearance-none mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]  scrollbar-thin scrollbar-thumb-tradeGreen scrollbar-track-tradeAsh`}
+                          name="state"
+                          onChange={handleStateChange}
+                        >
+                          <option value="">Select State or Province</option>
+                          {states.map((s) => (
+                            <option key={s.iso2} value={`${s.name}|${s.iso2}`}>
+                              {s.name}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                          <MdKeyboardArrowDown />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      className={`${
+                        fieldError.country.error ? "flex" : "hidden"
+                      } gap-[4px] items-center text-red-500 mt-[4px]`}
+                    >
+                      <IoWarning className="text-[14px]" />
+                      <p className="text-[12px]">
+                        {fieldError.country.message}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="w-full flex flex-col gap-[2px]">
+                    <div className="w-full">
+                      <p className="text-[14px] text-white font-[600]">
+                        City/Area
+                      </p>
+                      <div className="relative w-full">
+                        <select
+                          className={`${
+                            addressDetails?.city
+                              ? "border-tradeGreen"
+                              : "border-tradeAshLight"
+                          } appearance-none mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]  scrollbar-thin scrollbar-thumb-tradeGreen scrollbar-track-tradeAsh`}
+                          name="city"
+                          onChange={handleCityChange}
+                        >
+                          <option value="">Select City or Area</option>
+                          {cities.map((c, index) => (
+                            <option key={index} value={`${c.name}`}>
+                              {c.name}
                             </option>
                           ))}
                         </select>
@@ -249,66 +390,6 @@ const ChangeAdress = () => {
                   <div className="w-full flex flex-col gap-[2px]">
                     <div className="w-full ">
                       <p className="text-[14px] font-[600] text-white">
-                        State/Province
-                      </p>
-                      <input
-                        className={`${
-                          addressDetails.streetAddress
-                            ? "border-tradeGreen"
-                            : "border-tradeAshLight"
-                        } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                        type="text"
-                        name="phoneNumber"
-                        placeholder="Enter your phone number"
-                        // onChange={handlePhoneChange}
-                      />
-                    </div>
-
-                    <div
-                      className={`${
-                        fieldError.streetAddress.error ? "flex" : "hidden"
-                      } gap-[4px] items-center text-red-500 mt-[4px]`}
-                    >
-                      <IoWarning className="text-[14px]" />
-                      <p className="text-[12px]">
-                        {fieldError.streetAddress.message}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="w-full flex flex-col gap-[2px]">
-                    <div className="w-full ">
-                      <p className="text-[14px] font-[600] text-white">
-                        City/Area
-                      </p>
-                      <input
-                        className={`${
-                          addressDetails.streetAddress
-                            ? "border-tradeGreen"
-                            : "border-tradeAshLight"
-                        } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                        type="text"
-                        name="phoneNumber"
-                        placeholder="Enter your phone number"
-                        // onChange={handlePhoneChange}
-                      />
-                    </div>
-
-                    <div
-                      className={`${
-                        fieldError.streetAddress.error ? "flex" : "hidden"
-                      } gap-[4px] items-center text-red-500 mt-[4px]`}
-                    >
-                      <IoWarning className="text-[14px]" />
-                      <p className="text-[12px]">
-                        {fieldError.streetAddress.message}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="w-full flex flex-col gap-[2px]">
-                    <div className="w-full ">
-                      <p className="text-[14px] font-[600] text-white">
                         Street Address
                       </p>
                       <input
@@ -319,39 +400,8 @@ const ChangeAdress = () => {
                         } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                         type="text"
                         name="phoneNumber"
-                        placeholder="House number, street name, etc."
-                        // onChange={handlePhoneChange}
-                      />
-                    </div>
-
-                    <div
-                      className={`${
-                        fieldError.streetAddress.error ? "flex" : "hidden"
-                      } gap-[4px] items-center text-red-500 mt-[4px]`}
-                    >
-                      <IoWarning className="text-[14px]" />
-                      <p className="text-[12px]">
-                        {fieldError.streetAddress.message}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="w-full flex flex-col gap-[2px]">
-                    <div className="w-full ">
-                      <p className="text-[14px] font-[600] text-white">
-                        Landmark (optional)
-                      </p>
-                      <input
-                        className={`${
-                          addressDetails.streetAddress
-                            ? "border-tradeGreen"
-                            : "border-tradeAshLight"
-                        } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                        type="text"
-                        name="phoneNumber"
-                        placeholder="e.g. Near mall, beside fuel station"
-
-                        // onChange={handlePhoneChange}
+                        placeholder="eg. House number, street name, etc."
+                        onChange={handleStreetChange}
                       />
                     </div>
 

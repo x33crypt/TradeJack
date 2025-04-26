@@ -192,10 +192,10 @@ const ChangePhone = () => {
                               ? "border-tradeGreen"
                               : "border-tradeAshLight"
                           } appearance-none mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]  scrollbar-thin scrollbar-thumb-tradeGreen scrollbar-track-tradeAsh`}
-                          name="country"
+                          name="code"
                           onChange={handleCountryCodeChange}
                         >
-                          <option value="">-- Choose a country --</option>
+                          <option value="">-- Select Country Code --</option>
                           {countryCodes.map((c, index) => (
                             <option key={index} value={c.country}>
                               {c.country} ({c.code})
@@ -218,6 +218,7 @@ const ChangePhone = () => {
                       </p>
                     </div>
                   </div>
+
                   <div className="w-full flex flex-col gap-[2px]">
                     <div className="w-full ">
                       <p className="text-[14px] font-[600] text-white">
