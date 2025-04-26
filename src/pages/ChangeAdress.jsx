@@ -16,15 +16,13 @@ const ChangeAdress = () => {
     state: { iso2: "", name: "" },
     city: "",
     streetAddress: "",
-    landmark: "",
   });
 
   const [fieldError, setFieldError] = useState({
     country: { error: false, message: "" },
-    stateOrProvince: { error: false, message: "" },
-    cityOrArea: { error: false, message: "" },
+    state: { error: false, message: "" },
+    city: { error: false, message: "" },
     streetAddress: { error: false, message: "" },
-    landmark: { error: false, message: "" },
   });
 
   const [updating, setUpdating] = useState(false);
@@ -187,62 +185,87 @@ const ChangeAdress = () => {
   console.log(states);
   console.log(cities);
   console.log(addressDetails);
+  if (errorMessage) {
+    console.log(errorMessage);
+  }
 
   const handleSubmitChange = async (e) => {
     e.preventDefault();
     setUpdating(true);
     setErrorMessage("");
 
-    // // Sanitizing all input fields
-    // const sanitizedDetails = {
-    //   code: sanitizeInput(phoneDetails?.code),
-    //   country: sanitizeInput(phoneDetails?.country),
-    //   phoneNumber: sanitizeInput(phoneDetails?.phoneNumber),
-    // };
+    // Sanitizing all input fields
+    const sanitizedDetails = {
+      country: sanitizeInput(addressDetails?.country?.name),
+      state: sanitizeInput(addressDetails?.state?.name),
+      city: sanitizeInput(addressDetails?.city),
+      streetAddress: sanitizeInput(addressDetails?.streetAddress),
+    };
 
-    // setTimeout(async () => {
-    //   if (!sanitizedDetails.country) {
-    //     showFieldError("countryCode", "Select field is required");
-    //     setUpdating(false);
-    //     return;
-    //   } else {
-    //     closeFieldError("countryCode");
-    //   }
+    setTimeout(async () => {
+      if (!sanitizedDetails.country) {
+        showFieldError("country", "Select field is required!");
+        setUpdating(false);
+        return;
+      } else {
+        closeFieldError("country");
+      }
 
-    //   if (!sanitizedDetails.phoneNumber) {
-    //     showFieldError("phoneNumber", "Input field is required.");
-    //     setUpdating(false);
-    //     return;
-    //   } else {
-    //     closeFieldError("phoneNumber");
-    //   }
+      if (!sanitizedDetails.state) {
+        showFieldError("state", "Select field is required!");
+        setUpdating(false);
+        return;
+      } else {
+        closeFieldError("state");
+      }
 
-    //   const payload = {
-    //     code: `${sanitizedDetails.code}`,
-    //     country: `${sanitizedDetails.country}`,
-    //     phoneNumber: `${sanitizedDetails.phoneNumber}`,
-    //   };
+      if (!sanitizedDetails.city) {
+        showFieldError("city", "Select field is required!");
+        setUpdating(false);
+        return;
+      } else {
+        closeFieldError("city");
+      }
 
-    //   try {
-    //     const response = await axios.post(
-    //       `${baseUrl}/auth/update/password`,
-    //       payload
-    //     );
-    //     console.log("Update successful:", response.data);
-    //     setUpdating(false);
-    //     navigateTo("/update/completed");
-    //   } catch (err) {
-    //     setUpdating(false);
+      if (!sanitizedDetails.streetAddress) {
+        showFieldError("streetAddress", "Inpute field is required!");
+        setUpdating(false);
+        return;
+      } else {
+        closeFieldError("streetAddress");
+      }
 
-    //     console.error("update error:", err);
+      const errMessage = "We couldn't process your request at the moment.";
 
-    //     const errMessage =
-    //       err?.response?.data?.error?.message ||
-    //       "We couldn't process your request at the moment. Please try again shortly.";
+      setErrorMessage(errMessage);
+      return;
 
-    //     setErrorMessage(errMessage);
-    //   }
-    // }, 1000);
+      const payload = {
+        country: `${sanitizedDetails.country}`,
+        state: `${sanitizedDetails.state}`,
+        city: `${sanitizedDetails.city}`,
+        streetAddress: `${sanitizedDetails.streetAddress}`,
+      };
+
+      try {
+        const response = await axios.post(
+          `${baseUrl}/user/updateprofile/address`,
+          payload
+        );
+        console.log("Update successful:", response.data);
+        setUpdating(false);
+        navigateTo("/update/completed");
+      } catch (err) {
+        console.error("update error:", err);
+
+        const errMessage =
+          err?.response?.data?.error?.message ||
+          "We couldn't process your request at the moment. Please try again shortly.";
+
+        setErrorMessage(errMessage);
+        setUpdating(false);
+      }
+    }, 1000);
   };
 
   return (
@@ -261,9 +284,12 @@ const ChangeAdress = () => {
                   <div
                     className={` ${
                       errorMessage ? "flex" : "hidden"
-                    } w-full p-[12px] text-red-500 gap-[4px] items-center border  border-red-500 rounded-[10px]`}
+                    } w-full p-[12px] text-red-500 gap-[8px] items-center border border-red-500 rounded-[10px]`}
                   >
-                    <IoWarning className="text-[14px]" />
+                    <div>
+                      <IoWarning className="text-[14px]" />
+                    </div>
+
                     <p className="text-[13px]">{errorMessage}</p>
                   </div>
 
@@ -337,13 +363,11 @@ const ChangeAdress = () => {
 
                     <div
                       className={`${
-                        fieldError.country.error ? "flex" : "hidden"
+                        fieldError.state.error ? "flex" : "hidden"
                       } gap-[4px] items-center text-red-500 mt-[4px]`}
                     >
                       <IoWarning className="text-[14px]" />
-                      <p className="text-[12px]">
-                        {fieldError.country.message}
-                      </p>
+                      <p className="text-[12px]">{fieldError.state.message}</p>
                     </div>
                   </div>
 
@@ -377,13 +401,11 @@ const ChangeAdress = () => {
 
                     <div
                       className={`${
-                        fieldError.country.error ? "flex" : "hidden"
+                        fieldError.city.error ? "flex" : "hidden"
                       } gap-[4px] items-center text-red-500 mt-[4px]`}
                     >
                       <IoWarning className="text-[14px]" />
-                      <p className="text-[12px]">
-                        {fieldError.country.message}
-                      </p>
+                      <p className="text-[12px]">{fieldError.city.message}</p>
                     </div>
                   </div>
 
@@ -399,7 +421,7 @@ const ChangeAdress = () => {
                             : "border-tradeAshLight"
                         } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                         type="text"
-                        name="phoneNumber"
+                        name="streetAddress"
                         placeholder="eg. House number, street name, etc."
                         onChange={handleStreetChange}
                       />
