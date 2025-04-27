@@ -25,7 +25,7 @@ const MessageSideNav = () => {
             <p className="text-tradeFadeWhite text-[14px]">Pinned</p>
           </div>
           <div className="flex flex-col gap-[10px]">
-            <div className="flex flex-col gap-[10px] p-[10px] bg-tradeAsh rounded-[16px]">
+            <div className="flex flex-col gap-[10px] p-[10px] bg-black hover:bg-tradeAsh cursor-pointer border border-tradeAshLight rounded-[16px]">
               <div className="flex justify-between ">
                 <p className="text-white text-[14px] font-[500]">Sane</p>
                 <p className="text-white text-[12px] font-[500]">4 day ago</p>
@@ -36,7 +36,7 @@ const MessageSideNav = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col gap-[10px] p-[10px] bg-tradeAsh rounded-[16px]">
+            <div className="flex flex-col gap-[10px] p-[10px] bg-black hover:bg-tradeAsh cursor-pointer border border-tradeAshLight rounded-[16px]">
               <div className="flex justify-between ">
                 <p className="text-white text-[14px] font-[500]">Sane</p>
                 <p className="text-white text-[12px] font-[500]">4 day ago</p>

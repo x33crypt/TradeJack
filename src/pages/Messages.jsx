@@ -26,6 +26,9 @@ const Messages = () => {
         <div className="flex-1 flex flex-col md:border-x border-tradeAshLight md:rounde-[14px] relative ">
           <div className="bg-tradeOrang backdrop:blur-lg flex justify-between items-center gap-[10px] px-[15px] py-[10px] border-b border-tradeAshLight">
             <div className="flex items-center gap-[10px]">
+              <div className="flex md:hidden  bg-tradeAshLight items-center p-[5px] rounded-[6px] border border-tradeAshExtraLight gap-[10px]">
+                <TbLayoutSidebarLeftCollapseFilled className="text-white text-[14px] " />
+              </div>
               <div className="relative w-[34px]">
                 <img className="rounded-full" src={landingImg4} alt="" />
                 <div className="absolute top-[21px] right-0 bg-black rounded-full flex items-center gap-[2px]">
@@ -52,13 +55,13 @@ const Messages = () => {
             </div>
           </div>
 
-          <div className="flex-1 bg-tradeOrang p-[15px] overflow-y-auto custom-scrollbar">
+          <div className="h-full bg-tradeOrang p-[15px] overflow-y-auto custom-scrollbar">
             <div className="text-white text-[14px]">heghcghc</div>
           </div>
 
           <div className=" px-[15px] py-[15px] ">
             <div className="flex items-center gap-[5px] bg-tradeAsh border border-tradeAshLight p-[10px] rounded-[16px]">
-              <div className="text-white text-[20px] p-[5px] ">
+              <div className="text-white text-[20px] p-[5px] rounded-full bg-transparent border border-tradeAshExtraLight ">
                 <IoAttach />
               </div>
               <div className="flex-1 flex gap-[20px] bg-tradeOrang borde border-tradeAshExtraLight p-[6px] rounded-[10px]">
@@ -68,7 +71,7 @@ const Messages = () => {
                   placeholder="Type a message..."
                 />
               </div>
-              <div className="text-white text-[20px] p-[5px] ">
+              <div className="text-black text-[20px] p-[5px] rounded-full bg-white ">
                 <TbBrandTelegram />
               </div>
             </div>
