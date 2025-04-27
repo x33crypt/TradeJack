@@ -646,22 +646,25 @@ const OfferFilter = ({
                       </div>
                     ) : (
                       <div className=" flex flex-col h-[230px] gap-[5px] mr-[10px]">
-                        {Object.entries(currencies)
-                          .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
-                          .map(([code, name]) => (
-                            <div
-                              className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
-                              onClick={() => handleSelectedCurrency(code, name)}
-                              key={code}
-                            >
-                              <p className=" text-[14px]  cursor-pointer ">
-                                {name}
-                              </p>
-                              <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
-                                {code}
-                              </p>
-                            </div>
-                          ))}
+                        {currencies &&
+                          Object.entries(currencies)
+                            .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
+                            .map(([code, name]) => (
+                              <div
+                                className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
+                                onClick={() =>
+                                  handleSelectedCurrency(code, name)
+                                }
+                                key={code}
+                              >
+                                <p className=" text-[14px]  cursor-pointer ">
+                                  {name}
+                                </p>
+                                <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                  {code}
+                                </p>
+                              </div>
+                            ))}
                       </div>
                     )}
                   </div>
@@ -847,22 +850,25 @@ const OfferFilter = ({
                       </div>
                     ) : (
                       <div className=" flex flex-col h-[230px] gap-[5px] mr-[10px]">
-                        {Object.entries(currencies)
-                          .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
-                          .map(([code, name]) => (
-                            <div
-                              className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
-                              onClick={() => handleSelectedCurrency(code, name)}
-                              key={code}
-                            >
-                              <p className=" text-[14px]  cursor-pointer ">
-                                {name}
-                              </p>
-                              <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
-                                {code}
-                              </p>
-                            </div>
-                          ))}
+                        {currencies &&
+                          Object.entries(currencies)
+                            .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
+                            .map(([code, name]) => (
+                              <div
+                                className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
+                                onClick={() =>
+                                  handleSelectedCurrency(code, name)
+                                }
+                                key={code}
+                              >
+                                <p className=" text-[14px]  cursor-pointer ">
+                                  {name}
+                                </p>
+                                <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                  {code}
+                                </p>
+                              </div>
+                            ))}
                       </div>
                     )}
                   </div>
@@ -1048,22 +1054,25 @@ const OfferFilter = ({
                       </div>
                     ) : (
                       <div className=" flex flex-col h-[230px] gap-[5px] mr-[10px]">
-                        {Object.entries(currencies)
-                          .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
-                          .map(([code, name]) => (
-                            <div
-                              className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
-                              onClick={() => handleSelectedCurrency(code, name)}
-                              key={code}
-                            >
-                              <p className=" text-[14px]  cursor-pointer ">
-                                {name}
-                              </p>
-                              <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
-                                {code}
-                              </p>
-                            </div>
-                          ))}
+                        {currencies &&
+                          Object.entries(currencies)
+                            .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
+                            .map(([code, name]) => (
+                              <div
+                                className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
+                                onClick={() =>
+                                  handleSelectedCurrency(code, name)
+                                }
+                                key={code}
+                              >
+                                <p className=" text-[14px]  cursor-pointer ">
+                                  {name}
+                                </p>
+                                <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                  {code}
+                                </p>
+                              </div>
+                            ))}
                       </div>
                     )}
                   </div>
@@ -1259,22 +1268,25 @@ const OfferFilter = ({
                       </div>
                     ) : (
                       <div className=" flex flex-col h-[230px] gap-[5px] mr-[10px]">
-                        {Object.entries(currencies)
-                          .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
-                          .map(([code, name]) => (
-                            <div
-                              className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
-                              onClick={() => handleSelectedCurrency(code, name)}
-                              key={code}
-                            >
-                              <p className=" text-[14px]  cursor-pointer ">
-                                {name}
-                              </p>
-                              <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
-                                {code}
-                              </p>
-                            </div>
-                          ))}
+                        {currencies &&
+                          Object.entries(currencies)
+                            .sort((a, b) => a[1].localeCompare(b[1])) // Sort by currency name
+                            .map(([code, name]) => (
+                              <div
+                                className="flex gap-[5px] justify-between items-center px-[10px] py-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
+                                onClick={() =>
+                                  handleSelectedCurrency(code, name)
+                                }
+                                key={code}
+                              >
+                                <p className=" text-[14px]  cursor-pointer ">
+                                  {name}
+                                </p>
+                                <p className=" text-[14px]  cursor-pointer border border-tradeAshLight px-[6px] py-[3px] max-w-max h-max rounded-[6px]">
+                                  {code}
+                                </p>
+                              </div>
+                            ))}
                       </div>
                     )}
                   </div>
