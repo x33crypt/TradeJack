@@ -14,7 +14,7 @@ const TradeAlert = () => {
   if (!tradeAlert) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 px-[30px]">
+    <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 px-[50px]">
       <LockByScroll />
 
       <div className="bg-tradeAsh flex flex-col items-center p-[15px] gap-[30px] rounded-[14px] ">
@@ -29,7 +29,7 @@ const TradeAlert = () => {
           </p>
         </div>
 
-        <div className="w-full sm:w-[250px] flex items-center  flex-col gap-[4px] border border-tradeAshLight rounded-[10px] p-[10px]">
+        <div className="w-full flex items-center  flex-col gap-[4px] border border-tradeAshLight rounded-[10px] p-[10px]">
           <p className="flex gap-[4px] text-[22px] text-white font-[700]">
             PayPal
           </p>
