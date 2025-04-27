@@ -59,7 +59,7 @@ const Messages = () => {
             <div className="text-white text-[14px]">heghcghc</div>
           </div>
 
-          <div className="px-[15px] py-[15px] ">
+          <div className="absolute left-0 right-0 bottom-0 px-[15px] py-[15px] ">
             <div className="flex items-center gap-[5px] bg-tradeAsh border border-tradeAshLight p-[10px] rounded-[16px]">
               <div className="text-white text-[20px] p-[5px] rounded-full bg-transparent border border-tradeAshExtraLight ">
                 <IoAttach />
