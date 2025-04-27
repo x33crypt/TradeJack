@@ -20,10 +20,10 @@ const Messages = () => {
   return (
     <>
       <InAppNav />
-      <div className="flex lg:flex-row flex-col lg:gap-[px] bg-black min-h-svh lg:px-[2%] md:px-[2.5%] pt-[60px] md:pt-[60px] md:pb-[0px]">
+      <div className="flex lg:flex-row flex-col lg:gap-[px] bg-black lg:px-[2%] md:px-[2.5%]">
         <MessageSideNav />
 
-        <div className="flex-1 flex flex-col md:border-x border-tradeAshLight md:rounde-[14px] relative ">
+        <div className="flex-1 max-h-svh pt-[60px] gap-[5px] flex flex-col md:border-x border-tradeAshLight md:rounde-[14px] relative">
           <div className="bg-tradeOrang backdrop:blur-lg flex justify-between items-center gap-[10px] px-[15px] py-[10px] border-b border-tradeAshLight">
             <div className="flex items-center gap-[10px]">
               <div className="flex md:hidden  bg-tradeAshLight items-center p-[5px] rounded-[6px] border border-tradeAshExtraLight gap-[10px]">
@@ -55,7 +55,7 @@ const Messages = () => {
             </div>
           </div>
 
-          <div className="h-full bg-tradeOrang p-[15px] overflow-y-auto custom-scrollbar">
+          <div className="flex-1 bg-tradeOrang p-[15px] overflow-y-auto custom-scrollbar">
             <div className="text-white text-[14px]">heghcghc</div>
           </div>
 
@@ -78,7 +78,7 @@ const Messages = () => {
           </div>
         </div>
 
-        <div className="lg:flex hidden w-[250px] bg-tradePurpl"></div>
+        <div className=" max-h-svh pt-[60px] lg:flex hidden w-[250px] bg-tradePurpl"></div>
       </div>
     </>
   );
