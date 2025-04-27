@@ -23,7 +23,7 @@ const Messages = () => {
       <div className="flex lg:flex-row flex-col lg:gap-[px] bg-black lg:px-[2%] md:px-[2.5%]">
         <MessageSideNav />
 
-        <div className="flex-1 min-h-svh pt-[60px] gap-[5px] flex flex-col md:border-x border-tradeAshLight md:rounde-[14px] relative">
+        <div className="min-h-svh pt-[60px] gap-[5px] flex flex-col md:border-x border-tradeAshLight md:rounde-[14px] relative">
           <div className="bg-tradeOrang backdrop:blur-lg flex justify-between items-center gap-[10px] px-[15px] py-[10px] border-b border-tradeAshLight">
             <div className="flex items-center gap-[10px]">
               <div className="flex md:hidden  bg-tradeAshLight items-center p-[5px] rounded-[6px] border border-tradeAshExtraLight gap-[10px]">
