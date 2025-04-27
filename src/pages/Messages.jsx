@@ -23,8 +23,8 @@ const Messages = () => {
       <div className="flex lg:flex-row flex-col lg:gap-[px] bg-black lg:px-[2%] md:px-[2.5%]">
         <MessageSideNav />
 
-        <div className="relative flex-1 min-h-svh pt-[60px] gap-[5px] flex flex-col justify-between md:border-x border-tradeAshLight md:rounde-[14px]">
-          <div className="absolute left-0 right-0 flex justify-between items-center gap-[10px] px-[15px] py-[13px] border-b border-tradeAshLight w-full">
+        <div className="relative flex-1 min-h-svh pt-[60px] gap-[5px] flex flex-col md:border-x border-tradeAshLight md:rounde-[14px]">
+          <div className="flex justify-between items-center gap-[10px] px-[15px] py-[13px] border-b border-tradeAshLight w-full">
             <div className="flex items-center gap-[10px]">
               <div className="flex md:hidden  bg-tradeAshLight items-center p-[5px] rounded-[6px] border border-tradeAshExtraLight gap-[10px]">
                 <TbLayoutSidebarLeftCollapseFilled className="text-white text-[14px] " />
@@ -55,11 +55,11 @@ const Messages = () => {
             </div>
           </div>
 
-          <div className="mt-[65px] bg-tradeOrang p-[15px] overflow-y-auto custom-scrollbar">
+          <div className="flex-1 bg-tradeOrang p-[15px] overflow-y-auto custom-scrollbar">
             <div className="text-white text-[14px]">heghcghc</div>
           </div>
 
-          <div className="absolute left-0 right-0 bottom-0 px-[15px] py-[15px] ">
+          <div className=" px-[15px] py-[15px] ">
             <div className="flex items-center gap-[5px] bg-tradeAsh border border-tradeAshLight p-[10px] rounded-[16px]">
               <div className="text-white text-[20px] p-[5px] rounded-full bg-transparent border border-tradeAshExtraLight ">
                 <IoAttach />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, useContext, createContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
@@ -21,11 +21,12 @@ import ChangeUsername from "./pages/ChangeUsername";
 import ChangeEmail from "./pages/ChangeEmail";
 import ChangePhone from "./pages/ChangePhone";
 import ChangeAdress from "./pages/ChangeAdress";
-
 export const userContext = createContext();
+import { useTradeAlert } from "./context/TradeAlertContext";
 
 const App = () => {
   const [user, setUser] = useState("");
+  const { tradeAlert, setTradeAlert } = useTradeAlert();
 
   return (
     <>
