@@ -469,7 +469,7 @@ const OfferFilter = ({
 
             <div
               className="
-               flex flex-wrap lg:gap-[15px] gap-[20px] "
+               flex flex-wrap lg:gap-[15px] gap-[15px] "
             >
               {services.map((service, index) => (
                 <div
@@ -1320,9 +1320,9 @@ const OfferFilter = ({
 
           <div className="flex flex-col gap-[15px]">
             <div className="flex items-center justify-between">
-              <p className="text-[13px] text-white font-[600]">
+              <p className="lg:text-[13px] text-[14px] text-white font-[600]">
                 Rate : {""}
-                <small className="text-[13px] text-tradeFadeWhite font-[500]">
+                <small className="lg:text-[13px] text-[14px] text-tradeFadeWhite font-[500]">
                   Low to High
                 </small>
               </p>
@@ -1336,9 +1336,9 @@ const OfferFilter = ({
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-[13px] text-white font-[600]">
+              <p className="lg:text-[13px] text-[14px] text-white font-[600]">
                 Rate : {""}
-                <small className="text-[13px] text-tradeFadeWhite font-[500]">
+                <small className="lg:text-[13px] text-[14px] text-tradeFadeWhite font-[500]">
                   High to Low
                 </small>
               </p>
@@ -1352,9 +1352,9 @@ const OfferFilter = ({
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-[13px] text-white font-[600]">
+              <p className="lg:text-[13px] text-[14px] text-white font-[600]">
                 Avg. Trade Time : {""}
-                <small className="text-[13px] text-tradeFadeWhite font-[500]">
+                <small className="lg:text-[13px] text-[14px] text-tradeFadeWhite font-[500]">
                   Slow to Fast
                 </small>
               </p>
@@ -1368,9 +1368,9 @@ const OfferFilter = ({
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-[13px] text-white font-[600]">
+              <p className="lg:text-[13px] text-[14px] text-white font-[600]">
                 Avg. Trade Time : {""}
-                <small className="text-[13px] text-tradeFadeWhite font-[500]">
+                <small className="lg:text-[13px] text-[14px] text-tradeFadeWhite font-[500]">
                   Fast to Slow
                 </small>
               </p>

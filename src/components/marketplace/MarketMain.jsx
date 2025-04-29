@@ -84,6 +84,7 @@ const MarketMain = ({
                 Online
               </p>
             </div>
+
             <div>
               <div
                 onClick={() => setIsOfferSortBy((prev) => !prev)}
@@ -114,7 +115,7 @@ const MarketMain = ({
         <div
           className={` ${
             isOfferFilter ? "flex" : "hidden"
-          } z-30 fixed top-[59px] left-0 right-0 bottom-0 lg:hidden bg-transparent`}
+          } z-30 fixed top-[62px] md:top-[59px] left-0 right-0 bottom-0 lg:hidden bg-transparent`}
         >
           <OfferFilter
             serviceType={serviceType}
