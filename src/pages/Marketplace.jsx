@@ -213,8 +213,8 @@ const Marketplace = () => {
   return (
     <>
       <InAppNav />
-      <div className=" lg:pt-[75px] md:pt-[75px] pt-[60px] flex gap-[15px] min-h-screen bg-black lg:p-[2%] md:p-[2.5%] ">
-        <div className="lg:flex hidden w-[300px]">
+      <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%]">
+        <div className="lg:flex lg:sticky top-[-16px] max-h-svh pt-[75px] hidden w-[290px]">
           <OfferFilter
             serviceType={serviceType}
             setServiceType={setServiceType}
@@ -246,7 +246,8 @@ const Marketplace = () => {
             setClearFilter={setClearFilter}
           />
         </div>
-        <div className="flex-1">
+
+        <div className="flex-1 md:pt-[75px] pt-[60px]">
           <MarketMain
             promotedOffers={promotedOffers}
             unPromotedOffers={unPromotedOffers}

@@ -437,8 +437,8 @@ const OfferFilter = ({
   }, []);
 
   return (
-    <div className="bg-black lg:sticky overflow-hidden  w-full lg:h-[495px] h-full lg:top-[75px] flex flex-col lg:rounded-[14px] md:rounded-[18px] md:border border-neutral-800 ">
-      <div className="flex bg- justify-between items-center p-[15px] border-b border-neutral-800 ">
+    <div className="bg-black overflow-hidden w-full h-full flex flex-col md:border-l md:border-b md:border-t border-neutral-800">
+      <div className="flex bg- justify-between items-center lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-neutral-800 ">
         <p className="text-[17px] text-white font-[700] cursor-pointer">
           Filter Offers
         </p>
@@ -462,7 +462,7 @@ const OfferFilter = ({
 
       <div className="flex flex-col  h-full overflow-auto custom-scrollbar">
         <div className="flex flex-col justify-between ">
-          <div className="bg- flex flex-col gap-[20px] p-[15px]  border-b border-tradeAshLight">
+          <div className="flex flex-col gap-[15px] lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-tradeAshLight">
             <div>
               <p className="text-white text-[15px] font-[700]">Service type</p>
             </div>
@@ -489,7 +489,7 @@ const OfferFilter = ({
           <div
             className={`${
               showAccount ? "flex" : "hidden"
-            } flex-col p-[15px] gap-[30px] border-b border-tradeAshLight`}
+            } flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
           >
             <div className="flex flex-col gap-[20px]">
               <div>
@@ -693,7 +693,7 @@ const OfferFilter = ({
           <div
             className={`${
               showWallet ? "flex" : "hidden"
-            } flex-col p-[15px] gap-[30px] border-b border-tradeAshLight`}
+            } flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
           >
             <div className="flex flex-col gap-[20px]">
               <div>
@@ -897,7 +897,7 @@ const OfferFilter = ({
           <div
             className={`${
               showGiftCard ? "flex" : "hidden"
-            } flex-col p-[15px] gap-[30px] border-b border-tradeAshLight`}
+            } flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
           >
             <div className="flex flex-col gap-[20px]">
               <div>
@@ -1101,7 +1101,7 @@ const OfferFilter = ({
           <div
             className={`${
               showDebitCreditCard ? "flex" : "hidden"
-            } flex-col p-[15] gap-[30px] border-b border-tradeAshLight`}
+            } flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
           >
             <div className="flex flex-col gap-[20px]">
               <div>
@@ -1313,15 +1313,16 @@ const OfferFilter = ({
             </div>
           </div>
         </div>
-        <div className=" bg- flex  flex-col gap-[20px] p-[15px]">
+        <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px]">
           <div>
             <p className="text-white text-[15px] font-[700]">Sort by</p>
           </div>
+
           <div className="flex flex-col gap-[15px]">
             <div className="flex items-center justify-between">
-              <p className="text-[14px] text-white font-[600]">
+              <p className="text-[13px] text-white font-[600]">
                 Rate : {""}
-                <small className="text-[14px] text-tradeFadeWhite font-[500]">
+                <small className="text-[13px] text-tradeFadeWhite font-[500]">
                   Low to High
                 </small>
               </p>
@@ -1335,9 +1336,9 @@ const OfferFilter = ({
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-[14px] text-white font-[600]">
+              <p className="text-[13px] text-white font-[600]">
                 Rate : {""}
-                <small className="text-[14px] text-tradeFadeWhite font-[500]">
+                <small className="text-[13px] text-tradeFadeWhite font-[500]">
                   High to Low
                 </small>
               </p>
@@ -1351,9 +1352,9 @@ const OfferFilter = ({
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-[14px] text-white font-[600]">
+              <p className="text-[13px] text-white font-[600]">
                 Avg. Trade Time : {""}
-                <small className="text-[14px] text-tradeFadeWhite font-[500]">
+                <small className="text-[13px] text-tradeFadeWhite font-[500]">
                   Slow to Fast
                 </small>
               </p>
@@ -1367,9 +1368,9 @@ const OfferFilter = ({
               />
             </div>
             <div className="flex items-center justify-between">
-              <p className="text-[14px] text-white font-[600]">
+              <p className="text-[13px] text-white font-[600]">
                 Avg. Trade Time : {""}
-                <small className="text-[14px] text-tradeFadeWhite font-[500]">
+                <small className="text-[13px] text-tradeFadeWhite font-[500]">
                   Fast to Slow
                 </small>
               </p>
@@ -1386,7 +1387,7 @@ const OfferFilter = ({
         </div>
       </div>
 
-      <div className="flex flex-col gap-[10px] bg-tradeAsh p-[15px]">
+      <div className="flex flex-col gap-[10px] bg-tradeAsh lg:px-[15px] md:px-[2.5%] p-[15px]">
         <div
           onClick={handleFilterOffer}
           className="flex items-center justify-between bg-tradeGreen hover:bg-white md:p-[10px] px-[10px] py-[14px] rounded-[10px] cursor-pointer duration-300 transition-all"

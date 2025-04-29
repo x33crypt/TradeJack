@@ -206,7 +206,7 @@ const AboutOffer = () => {
   const navigateTo = useNavigate();
 
   const handleInitiateTrade = () => {
-    navigateTo(`/trade`);
+    navigateTo(`/chat`);
   };
 
   useEffect(() => {
@@ -234,9 +234,9 @@ const AboutOffer = () => {
     <>
       <MarketTopNav />
 
-      <div className=" lg:pt-[75px] md:pt-[75px] pt-[60px] pb-[30px] flex flex-col bg-black gap-[15px] lg:p-[2%] md:p-[2.5%]">
-        <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-[0.8%]">
-          <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight md:rounded-[14px]">
+      <div className="flex flex-col bg-black gap-[15px] lg:px-[2%] md:px-[2.5%] pt-[60px] md:pt-[75px]">
+        <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-0 ">
+          <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight">
             <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
               <p className=" text-[17px] text-white font-[700] cursor-pointer">
                 Offer Details
@@ -261,12 +261,11 @@ const AboutOffer = () => {
                     {offerDetails.serviceType}
                   </p>
                 </div>
-              </div> 
-              
+              </div>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] items-center lg:gap-[15px] gap-[10px]">
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
                   <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Rate Cap
+                    Offer Rate Cap
                   </p>
                   <p className="text-white text-[15px] font-[600]">
                     {`${parseInt(offerDetails?.rate).toLocaleString()}  ${
@@ -276,7 +275,7 @@ const AboutOffer = () => {
                 </div>
                 <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
                   <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Rate Margine
+                    Offer Rate Margine
                   </p>
                   <div>
                     {offeRateMargin?.percentage ? (
@@ -447,8 +446,8 @@ const AboutOffer = () => {
           />
         </div>
 
-        <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-[0.8%]">
-          <div className="lg:w-[500px] flex flex-col md:border border-y border-neutral-800 md:rounded-[14px]">
+        <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-0">
+          <div className="lg:w-[500px] flex flex-col  md:border-x border-y border-neutral-800 ">
             <div className="flex items-center justify-between  p-[15px] md:border-b md:border-t-0 border-b border-neutral-800 ">
               <p className="text-[17px] text-white font-[700] cursor-pointer">
                 Offer Statistics
@@ -456,7 +455,7 @@ const AboutOffer = () => {
             </div>
             <div className="flex items-center justify-between p-[20px] "></div>
           </div>
-          <div className="flex-1 flex flex-col md:border border-y border-neutral-800 md:rounded-[14px]">
+          <div className="flex-1 flex flex-col  md:border-x lg:border-l-0 md:border-y  border-neutral-800">
             <div className="flex items-center justify-between  p-[15px] md:border-b md:border-t-0 border-b border-neutral-800 ">
               <p className="text-[17px] text-white font-[700] cursor-pointer">
                 Feedback on this Offer

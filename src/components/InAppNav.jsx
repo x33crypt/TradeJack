@@ -238,7 +238,7 @@ const InAppNav = () => {
         ref={navOptionRef}
         className={` ${
           isProfileOption ? "flex" : "hidden"
-        } z-30 fixed lg:right-[25px] md:right-[25px] right-[15px] top-[60px] flex-col w-[160px] p-[3px] bg-tradeAshLight rounded-[1px]`}
+        } z-30 fixed lg:right-[25px] md:right-[19px] right-[15px] top-[60px] flex-col w-[160px] p-[3px] bg-tradeAshLight rounded-[1px]`}
         onClick={() => setIsProfileOption((prev) => !prev)}
       >
         <p

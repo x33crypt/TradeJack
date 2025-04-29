@@ -1,30 +1,15 @@
 import React from "react";
-import landingImg4 from "../../assets/landingImg4.JPG";
 import { IoMdThumbsUp } from "react-icons/io";
 import { FaRegStar } from "react-icons/fa";
-import tippy from "tippy.js";
 import "tippy.js/dist/tippy.css";
 import { useNavigate } from "react-router-dom";
 import { GoDotFill } from "react-icons/go";
+import { FaArrowRightArrowLeft } from "react-icons/fa6";
+import { BiSolidCapsule } from "react-icons/bi";
+import { FcApprove } from "react-icons/fc";
+import { MdOutlineDeviceThermostat } from "react-icons/md";
 
 const OfferCard = (props) => {
-  tippy("[data-tippy-content]");
-
-  tippy("#-a justify-endorFavourite", {
-    content: "Add to favourite offers!",
-    theme: "custom1", // Use the custom theme defined in CSS
-  });
-
-  tippy("#-a justify-endorVerified", {
-    content: "This offer is from a verified, trusted -a justify-endor.",
-    theme: "custom2", // Use the custom theme defined in CSS
-  });
-
-  tippy("#-a justify-endorNotVerified", {
-    content: "Trade with caution, this -a justify-endor is not verified.",
-    theme: "custom3", // Use the custom theme defined in CSS
-  });
-
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
@@ -35,7 +20,7 @@ const OfferCard = (props) => {
     <>
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className=" bg-tradeAsh md:flex hidden hover:bg-black p-[10px] rounded-[px] cursor-pointer transition-all duration-300 "
+        className=" bg-tradeAsh border border-tradeAshLight md:flex hidden hover:bg-black p-[10px] cursor-pointer transition-all duration-300 "
       >
         <div className="flex-1 flex gap-[10px]">
           <div className="flex flex-col gap-[10px]">
@@ -62,7 +47,7 @@ const OfferCard = (props) => {
                 </p>
               </div>
 
-              <div className="flex flex-co gap-[10px] ">
+              <div className="flex items-center gap-[10px] ">
                 <div className="">
                   <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
                     {" "}
@@ -125,11 +110,24 @@ const OfferCard = (props) => {
         </div>
 
         <div className="flex-1 flex flex-col gap-[10px]">
-          <div className="flex gap-[8px] items-center text-[15px] lg:text-[14px] font-[700] text-white">
-            <p>{`86,243 ${props.currency}`}</p>
-            <p>&#x2248;</p>
-            <p>1 {props.currency} = 0.93 USD of BTC</p>
+          <div className="flex gap-[8px] items-center ">
+            <div className="flex items-center gap-[6px] ">
+              <p className="text-sm font-[700] text-white">{`1 ${props.currency}`}</p>
+              <FaArrowRightArrowLeft className="text-tradeFadeWhite text-[12px] " />
+              <p className="text-sm font-[700] text-white"> NGN 750.00</p>
+            </div>
+
+            <div className="flex items-center gap-[3px] ">
+              <BiSolidCapsule className="text-tradePurple text-[12px] " />
+              <p className="text-sm font-[700] text-white">USD 54,982</p>
+            </div>
+
+            <div className="flex items-center gap-[3px] ">
+              <MdOutlineDeviceThermostat className="text-tradeGreen text-[12px] " />
+              <p className="text-sm font-[700] text-white">2%</p>
+            </div>
           </div>
+          <div className="flex flex-col gap-[3px]"></div>
         </div>
       </div>
 
@@ -177,12 +175,19 @@ const OfferCard = (props) => {
           <small className=" text-[11px] font-[500] text-tradeFadeWhite">
             {props.serviceType}
           </small>
-          <p className="text-[13px] font-[800] text-white">
-            1 {props.currency} = 0.93 USD of BTC
-          </p>
+          <div className="flex items-center gap-[6px] ">
+            <p className="text-[13px] font-[800] text-white">{`1 ${props.currency}`}</p>
+            <FaArrowRightArrowLeft className="text-tradeFadeWhite text-[12px] " />
+            <p className="text-[13px] font-[800] text-white"> NGN 750.00</p>
+          </div>
         </div>
+
         <div className="flex flex-col justify-between gap-[4px]">
-          <div className="flex w-[140px] justify-between">
+          <div className="flex w-[140px] items-center justify-between">
+            <div>
+              <FcApprove className="text-[15px] lg:text-[14px]" />
+            </div>
+
             <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
               {" "}
               <IoMdThumbsUp className="text-[13px] lg:text-[14px] text-tradeGreen" />{" "}
@@ -194,6 +199,7 @@ const OfferCard = (props) => {
               {props.trustScore}%
             </p>
           </div>
+
           <div className="flex w-[140px] justify-between">
             <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
               Avg. trade Time

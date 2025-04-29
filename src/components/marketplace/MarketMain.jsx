@@ -44,7 +44,7 @@ const MarketMain = ({
   setClearFilter,
 }) => {
   return (
-    <div className="flex flex-col gap-[1px] min-h-screen md:border border-neutral-800 md:rounded-[14px]">
+    <div className="flex flex-col gap-[px] h-full md:border-x md:border-t md:border-b border-neutral-800">
       <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
         <p className="text-[17px] text-white font-[700]">
           Seamless Asset Trading
@@ -91,7 +91,7 @@ const MarketMain = ({
                   isOfferSortBy
                     ? "text-black bg-tradeGreen border-tradeGreen font-[600]"
                     : "text-neutral-500 border-neutral-800 hover:text-white bg-transparent hover:bg-tradeAsh"
-                } md:flex font-[600] hidden justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border  cursor-pointer duration-300 transition-all`}
+                } lg:flex font-[600] hidden justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border  cursor-pointer duration-300 transition-all`}
               >
                 <LuSettings2 className="text-[17px]" />
                 <p className=" text-[13px] font-[500]">Explore</p>
@@ -102,7 +102,7 @@ const MarketMain = ({
                   isOfferFilter
                     ? "text-white bg-tradeAshLight border-tradeAsh"
                     : "text-tradeFadeWhite bg-transparent border-tradeAshLight"
-                } md:hidden flex  justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border cursor-pointer duration-300 transition-all`}
+                } lg:hidden flex  justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border cursor-pointer duration-300 transition-all`}
               >
                 <LuSettings2 className="text-[17px]" />
                 <p className="text-[14px] font-[500]">Filter</p>
@@ -114,7 +114,7 @@ const MarketMain = ({
         <div
           className={` ${
             isOfferFilter ? "flex" : "hidden"
-          } z-30 fixed top-0 left-0 right-0 bottom-0 mt-[17.5%] lg:hidden bg-transparent`}
+          } z-30 fixed top-[59px] left-0 right-0 bottom-0 lg:hidden bg-transparent`}
         >
           <OfferFilter
             serviceType={serviceType}
@@ -149,7 +149,7 @@ const MarketMain = ({
 
         <div className="flex flex-col gap-[15px] rounded-[12px]">
           <div className="flex flex-col gap-[15px]">
-            <div className=" sticky  top-[120px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
+            <div className=" sticky top-[118px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Promoted Offers
               </p>
@@ -189,7 +189,7 @@ const MarketMain = ({
             </div>
           </div>
           <div className="flex flex-col gap-[15px]">
-            <div className="sticky top-[120px]  flex bg-white px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
+            <div className="sticky top-[118px]  flex bg-white px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Other Offers
               </p>

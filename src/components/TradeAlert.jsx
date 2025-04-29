@@ -19,21 +19,25 @@ const TradeAlert = () => {
 
       <div className="bg-tradeAsh flex flex-col items-center p-[15px] gap-[30px] rounded-[14px] ">
         <div className="w-full sm:w-[250px] flex items-center flex-col gap-[5px]">
-          <div className="w-full flex items-center justify-center  text-white text-[80px]">
+          <div className="w-full flex items-center justify-center text-white text-[60px]">
             <TbRefreshAlert />
           </div>
-          <p className="flex  text-[22px] text-white font-[700]">Trade Alert</p>
+          <p className="flex text-[22px] text-white font-[700]">Trade Alert</p>
           <p className="text-tradeFadeWhite text-[13px] text-center font-[500]">
             You have a new trade request waiting. View the details now and
             respond quickly to secure the offer.
           </p>
         </div>
 
+        <div>
+          <p className="flex text-[30px] text-tradeFadeWhite font-[700]">60</p>
+        </div>
+
         <div className="w-full flex items-center  flex-col gap-[4px] border border-tradeAshLight rounded-[10px] p-[10px]">
-          <p className="flex gap-[4px] text-[22px] text-white font-[700]">
+          <p className="flex gap-[4px] text-[20px] text-white font-[700]">
             PayPal
           </p>
-          <p className="flex gap-[4px] text-[14px] text-tradeFadeWhite font-[700]">
+          <p className="flex gap-[4px] text-[14px] text-tradeFadeWhite font-[500]">
             500.00 USD
           </p>
         </div>

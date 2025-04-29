@@ -1,10 +1,11 @@
 import React from "react";
+import { FaArrowRight } from "react-icons/fa6";
+import { MdCompareArrows } from "react-icons/md";
+import { FaArrowRightArrowLeft } from "react-icons/fa6";
 
 const ExchangeCalculator = (prop) => {
-  console.log(prop?.calculatorResult?.perUsd);
-
   return (
-    <div className="lg:w-[400px] flex flex-col justify-between  md:border  border-tradeAshLight md:rounded-[14px]">
+    <div className="lg:w-[380px] flex flex-col justify-between md:border-x lg:border-l-0 md:border-y  border-tradeAshLight">
       <div className="flex items-center gap-[10px] p-[15px] md:border-b md:border-t-0 border-y border-tradeAshLight">
         <p className="text-[17px] text-white font-[700] cursor-pointer">
           Exchange Calculator
@@ -38,7 +39,7 @@ const ExchangeCalculator = (prop) => {
           <div className="flex border border-tradeAshLight flex-col gap-[15px] bg-tradeAsh p-[15.5px] rounded-[16px]">
             <div className="flex">
               <p className="text-tradeFadeWhite text-[13px] font-[500]">
-                Receive
+                Payout
               </p>
             </div>
             <div className="flex gap-[20px] justify-between items-center">
@@ -61,90 +62,62 @@ const ExchangeCalculator = (prop) => {
           </div>
         </div>
 
-        <div className=" flex justify-center ">
+        <div className=" flex justify-center  ">
           {prop.exchangeError ? (
-            <p className="text-red-600 text-[12px] font-[500]">
-              {prop?.exchangeError}
-            </p>
+            <p className="text-[12px] text-red-500">{prop?.exchangeError}</p>
           ) : (
-            <p className="text-tradeFadeWhite text-[12px] font-[500] opacity-0">
-              Please enter an amount to trade.
+            <p className="text-tradeFadeWhite text-[12px]">
+              Real-time rate applied.
             </p>
           )}
         </div>
 
         <div className=" flex flex-col gap-[10px]">
           <div className="flex justify-between">
-            <p className="text-[14px] font-[600] text-tradeFadeWhite">
-              Offer rate details
+            <p className="text-sm font-semibold text-tradeFadeWhite">
+              Exchange Rate
             </p>
-            <p className="text-[14px] font-[600] text-white">
-              {`1 ${
-                prop?.offerDetails?.currency
-                  ? prop?.offerDetails.currency
-                  : "USD"
-              } =  
-${
-  isNaN(prop?.calculatorResult?.perUsd) ||
-  prop?.calculatorResult?.perUsd === null ||
-  prop?.calculatorResult?.perUsd === undefined
-    ? "00.00"
-    : prop?.calculatorResult.perUsd
-}
-`}{" "}
-              {prop?.offerDetails.currency} of BTC
-            </p>
+
+            <div className="flex items-center gap-[6px] ">
+              <p className="text-sm font-semibold text-white">{`1 ${prop?.offerDetails?.currency}`}</p>
+              <FaArrowRightArrowLeft className="text-tradeOrange text-[12px] " />
+              <p className="text-sm font-semibold text-white"> NGN 750.00</p>
+            </div>
           </div>
 
           <div className="flex justify-between  ">
-            <p className="text-[14px] font-[600] text-tradeFadeWhite">
-              BTC worth in {prop?.offerDetails.currency}
+            <p className="text-sm font-semibold text-tradeFadeWhite">
+              Payout ({prop?.offerDetails?.currency})
             </p>
 
             <p className="text-[14px] font-[600] text-white">
+              {prop?.offerDetails.currency}{" "}
               {isNaN(prop?.calculatorResult?.currencyValue) ||
               prop?.calculatorResult?.prop?.currencyValue === null ||
               prop?.calculatorResult?.currencyValue === undefined
                 ? "00.00"
-                : prop?.calculatorResult.currencyValue}{" "}
-              {prop?.offerDetails.currency}
+                : prop?.calculatorResult.currencyValue}
             </p>
           </div>
 
-          <div className="flex justify-between  ">
-            <p className="text-[14px] font-[600] text-tradeFadeWhite">
-              BTC worth in USD
+          <div className="flex justify-between">
+            <p className="text-sm font-semibold text-tradeFadeWhite">
+              Payout (NGN)
             </p>
-            <p className="text-[14px] font-[600] text-white">
-              {isNaN(prop?.calculatorResult?.usdValue) ||
-              prop?.calculatorResult?.usdValue === null ||
-              prop?.calculatorResult?.usdValue === undefined
-                ? "00.00"
-                : prop?.calculatorResult.usdValue}{" "}
-              USD
-            </p>
+            <p className="text-sm font-semibold text-white">NGN 19,435.00</p>
           </div>
         </div>
 
-        <div className="flex items-center justify-center">
-          {prop?.handleShowGreenButton() ? (
-            prop?.calculatorResult?.perUsd != "0.00" ? (
-              <p
-                onClick={() => prop?.handleInitiateTrade()}
-                className="text-[15px] text-center text-black bg-tradeGreen hover:bg-white font-[700] border border-tradeGreen hover:border-tradeAshExtraLight p-[10px] rounded-[10px] w-[100%] transition-all duration-300 cursor-pointer"
-              >
-                Initiate Trade
-              </p>
-            ) : (
-              <p className="text-[15px] text-center text-white bg-tradeAshExtraLight font-[700] border border-tradeAshExtraLight p-[10px] rounded-[10px] w-[100%] transition-all duration-300">
-                Calculating...
-              </p>
-            )
-          ) : (
-            <p className="text-[15px] text-center text-white bg-tradeAshExtraLight font-[700] border border-tradeAshExtraLight p-[10px] rounded-[10px] w-[100%] transition-all duration-300">
-              Enter Amount
-            </p>
-          )}
+        <div className="">
+          <button
+            className={`${
+              prop?.handleShowGreenButton()
+                ? "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen cursor-pointe"
+                : "bg-tradeAsh text-tradeGreen cursor-default"
+            } w-full p-[12px] rounded-[10px] flex justify-center items-center transition-all duration-300`}
+          >
+            <p className="text-[14px] font-[700] ">Initiate Trade</p>
+          </button>
         </div>
       </div>
     </div>
