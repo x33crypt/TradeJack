@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTradeAlert } from "@/context/TradeAlertContext";
-import { useLocation } from "react-router-dom";
-import { IoLogInOutline } from "react-icons/io5";
-import useSafeNavigate from "./SafeNavigation";
 import LockByScroll from "./LockByScroll";
 import { TbRefreshAlert } from "react-icons/tb";
 
 const TradeAlert = () => {
   const { tradeAlert, setTradeAlert } = useTradeAlert();
-  // const navigateTo = useSafeNavigate();
-  // const location = useLocation();
+
+  useEffect(() => {
+    console.log("Trade alert is", tradeAlert);
+  }, [tradeAlert]);
 
   if (!tradeAlert) return null;
 

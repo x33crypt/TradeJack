@@ -20,18 +20,18 @@ import { TiArrowRight } from "react-icons/ti";
 const DashMain = () => {
   return (
     <>
-      <div className="flex-1 md:flex hidden lg:gap-[15px]">
-        <div className="flex flex-1 flex-col gap-[15px]">
-          <div className="bg-tradeOrang flex flex-col  justify-between py-[5px]">
-            <p className=" lg:text-[19px] text-[20px] text-tradeFadeWhite  ">
+      <div className="flex-1 md:flex hidden md:pt-[75px] pt-[60px]">
+        <div className="flex flex-1 flex-col">
+          <div className="bg-tradeOrang flex flex-col justify-between p-[15px] border-y border-tradeAshLight">
+            <p className=" lg:text-[17px] text-[20px] text-tradeFadeWhite  ">
               Welcome back,{" "}
-              <small className="lg:text-[19px] text-[20px] text-white font-[700]">
+              <small className="lg:text-[17px] text-[20px] text-white font-[700]">
                 x33crypt
               </small>
             </p>
           </div>
 
-          <div className="flex-1 flex flex-col gap-[20px] mt-[10px]">
+          <div className="flex-1 flex flex-col gap-[20px] p-[15px]">
             <div className="flex gap-[15px]">
               <div className="flex-1 flex flex-col h-[100px] justify-between p-[10px] gap-[5px] rounded-[14px] border border-tradeGreen bg-tradeGreen">
                 <div className="flex justify-between">
@@ -69,7 +69,7 @@ const DashMain = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-[5px]  border-tradeAshExtraLight bg-tradeAshLight p-[5px] rounded-[14px]">
+            <div className="flex flex-col gap-[5px] border-tradeAshExtraLight bg-tradeAshLight p-[5px] rounded-[14px]">
               <div className="flex w-full gap-[5px]">
                 <div className="flex-1 flex items-center bg-black gap-[15px] p-[5px] rounded-[14px] cursor-pointer hover:bg-tradeAsh transition-all duration-300">
                   <div className="text-[25px] text-white p-[10px] rounded-[12px] bg-tradeAshLight">
@@ -238,16 +238,18 @@ const DashMain = () => {
           </div>
         </div>
 
-        <div className=" lg:flex hidden w-[300px] py-[5px] rounded-[16px]  borde border-tradeAshLight">
-          <div className=" w-full">
-            <p className="text-[19px] font-[700] text-white">
+        <div className="hidden lg:flex w-[300px] h-max flex-col gap-[25px] border border-tradeAshLight">
+          <div className=" w-full bg-tradeOrang h-max p-[15px] border-b border-tradeAshLight">
+            <p className="text-[17px] text-white font-[700]">
               Trade Performance
             </p>
           </div>
+
+          <div></div>
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col md:hidden gap-[15px] px-[15px] ">
+      <div className="flex-1 flex flex-col md:hidden gap-[15px] px-[15px] md:pt-[75px] pt-[60px] ">
         <div className="flex flex-col py-[10px] ">
           <p className="text-[19px] text-tradeFadeWhite ">
             Welcome back,{" "}

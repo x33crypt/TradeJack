@@ -8,6 +8,8 @@ import { FaArrowRightArrowLeft } from "react-icons/fa6";
 import { BiSolidCapsule } from "react-icons/bi";
 import { FcApprove } from "react-icons/fc";
 import { MdOutlineDeviceThermostat } from "react-icons/md";
+import { TbArrowBigUpLines } from "react-icons/tb";
+import { RxDividerVertical } from "react-icons/rx";
 
 const OfferCard = (props) => {
   const navigateTo = useNavigate();
@@ -110,21 +112,18 @@ const OfferCard = (props) => {
         </div>
 
         <div className="flex-1 flex flex-col gap-[10px]">
-          <div className="flex gap-[8px] items-center ">
-            <div className="flex items-center gap-[6px] ">
+          <div className="flex gap-[5px] items-center ">
+            <div className="flex items-center gap-[8px] ">
               <p className="text-sm font-[700] text-white">{`1 ${props.currency}`}</p>
               <FaArrowRightArrowLeft className="text-tradeFadeWhite text-[12px] " />
               <p className="text-sm font-[700] text-white"> NGN 750.00</p>
             </div>
 
-            <div className="flex items-center gap-[3px] ">
-              <BiSolidCapsule className="text-tradePurple text-[12px] " />
-              <p className="text-sm font-[700] text-white">USD 54,982</p>
-            </div>
+            <RxDividerVertical className="text-tradeAshExtraLight text-[12px] " />
 
-            <div className="flex items-center gap-[3px] ">
-              <MdOutlineDeviceThermostat className="text-tradeGreen text-[12px] " />
-              <p className="text-sm font-[700] text-white">2%</p>
+            <div className="flex gap-[4px] items-center">
+              <TbArrowBigUpLines className="text-tradeGreen text-[12px]" />
+              <p className="text-sm font-[700] text-white">+2.00%</p>
             </div>
           </div>
           <div className="flex flex-col gap-[3px]"></div>
@@ -184,9 +183,9 @@ const OfferCard = (props) => {
 
         <div className="flex flex-col justify-between gap-[4px]">
           <div className="flex w-[140px] items-center justify-between">
-            <div>
+            {/* <div>
               <FcApprove className="text-[15px] lg:text-[14px]" />
-            </div>
+            </div> */}
 
             <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
               {" "}

@@ -1,336 +1,1013 @@
 import React, { useEffect, useState, useRef } from "react";
 import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
-import { FaRegQuestionCircle } from "react-icons/fa";
-import { GoDotFill } from "react-icons/go";
-import PreferredCurrency from "@/components/createOffer/PreferredCurrency";
-import OfferTradeRate from "@/components/createOffer/OfferTradeRate";
-import PurchaseLimit from "@/components/createOffer/PurchaseLimit";
-import SelectService from "@/components/createOffer/SelectService";
-import SelectAccount from "@/components/createOffer/SelectAccount";
-import SelectWallet from "@/components/createOffer/SelectWallet";
-import SelectGitfCard from "@/components/createOffer/SelectGitfCard";
-import DebitCreditCard from "@/components/createOffer/DebitCreditCard";
-import OfferTerms from "@/components/createOffer/OfferTerms";
-import OfferSummary from "@/components/createOffer/OfferSummary";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { useSelectElement } from "@/context/SelectElementContext";
+import axios from "axios";
+import Info from "@/components/alerts/Info";
+import Warning from "@/components/alerts/Warning";
+import { FaPlus } from "react-icons/fa6";
+import { FaMinus } from "react-icons/fa6";
 
 const CreateOffer = () => {
-  const [offerPageOne, setOfferPageOne] = useState(true);
-  const [offerPageTwo, setOfferPageTwo] = useState(false);
-  const [offerRates, setOfferRates] = useState([{ from: 0, to: 0, rate: 0 }]);
-  const [rangeFrom, setRangeFrom] = useState("");
-  const [rangeTo, setRangeTo] = useState("");
-  const [rate, setRate] = useState("");
-  const [miniPurchase, setMiniPurchase] = useState("");
-  const [maxPurchase, setMaxPurchase] = useState("");
-  const [showAccount, setShowAccount] = useState(false);
-  const [showWallet, setShowWallet] = useState(true);
-  const [showGiftCard, setShowGiftCard] = useState(false);
-  const [showDebitCreditCard, setShowDebitCreditCard] = useState(false);
-  const [service, setService] = useState("Online Wallet Transfer");
-  const [wallet, setWallet] = useState("");
-  const [account, setAccount] = useState("");
-  const [giftCard, setGiftCard] = useState("");
-  const [creditOrDebitCard, setCreditOrDebitCard] = useState("");
-  const [preferredCurrency, setPreferredCurrency] = useState({
-    name: "United States Dollar",
-    code: "USD",
+  const { select, setSelect } = useSelectElement();
+  const [offerDetails, setOfferDetails] = useState({
+    serviceType: "Online Wallet Transfer",
+    service: "",
+    currency: { code: "", name: "" },
+    minimum: "",
+    maximum: "",
+    margin: 5,
+    timeLimit: 15,
   });
-  const [offerTerms, setOfferTerms] = useState([]);
-  const [purchaseLimitError, setPurchaseLimitError] = useState("");
-  const [rateError, setRateError] = useState("");
-  const [offerTermsError, setOfferTermsError] = useState("");
-  const [serviceError, setServiceError] = useState("");
+  const [currencies, setCurrencies] = useState([]);
+  const [isOnlineWallet, setIsOnlineWallet] = useState(true);
+  const [isAccount, setIsAccount] = useState(false);
+  const [isGiftCard, setIsGiftCard] = useState(false);
+  const [isDebitOrCreditCard, setIsDebitOrCreditCard] = useState(false);
+  const [isCryptoAsset, setIsCryptoAsset] = useState(false);
 
-  const smoothScrollTo = async (targetId) => {
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      // Calculate the target position
-      const headerOffset = 210; // Adjust this to the height of your header
-      const targetPosition = targetElement.offsetTop - headerOffset; // Use offsetTop for better accuracy
-      const startPosition = window.pageYOffset; // Current scroll position
-      const distance = targetPosition - startPosition; // Distance to scroll
-      const duration = 1000; // Duration of the scroll in milliseconds
-      let startTime = null;
+  const serviceType = [
+    "Online Wallet Transfer",
+    "Direct Bank Transfer",
+    "Gift Card Exchange",
+    "Card-Based Spending",
+    "Crypto Trading",
+  ];
 
-      const animation = (currentTime) => {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const progress = Math.min(timeElapsed / duration, 1); // Ensure it doesn't exceed 1
-        const easing = easeInOutQuad(progress); // Easing function for smooth effect
+  const onlineWallets = [
+    // 🌍 Global Online Wallets
+    "PayPal",
+    "Google Pay",
+    "Apple Pay",
+    "Samsung Pay",
+    "Venmo",
+    "Cash App",
+    "Revolut",
+    "Wise (formerly TransferWise)",
+    "Western Union Digital",
+    "MoneyGram Online",
+    "Payoneer",
+    "Skrill",
+    "Neteller",
 
-        window.scrollTo(0, startPosition + distance * easing);
+    // 🌎 North America (USA & Canada)
+    "Zelle",
+    "Chime",
+    "SoFi Money",
+    "Interac e-Transfer",
+    "Koho",
+    "Wealthsimple Cash",
 
-        if (timeElapsed < duration) {
-          requestAnimationFrame(animation);
+    // 🇬🇧 UK & 🇪🇺 Europe
+    "Monzo",
+    "Starling Bank",
+    "N26",
+    "SEPA Instant (EU)",
+
+    // 🇦🇺 Australia & New Zealand
+    "Beem It",
+    "Osko by BPAY",
+
+    // 🇮🇳 India & South Asia
+    "PhonePe",
+    "Paytm",
+    "Google Pay (Tez)",
+    "BHIM UPI",
+
+    // 🇵🇭 Southeast Asia & Philippines
+    "GCash",
+    "PayMaya",
+    "GrabPay",
+    "ShopeePay",
+
+    // 🌍 Africa (Nigeria, Kenya, South Africa, Ghana, etc.)
+    "Flutterwave Barter",
+    "Chipper Cash",
+    "Opay",
+    "M-Pesa",
+    "Airtel Money",
+    "MoMo (MTN Mobile Money)",
+    "Vodafone Cash",
+    "Orange Money",
+
+    // 🌏 Middle East
+    "STC Pay",
+    "PayTabs",
+    "E-Dinar",
+
+    // 🌎 Latin America
+    "Mercado Pago",
+    "PicPay",
+    "PagSeguro",
+
+    // 💰 Cryptocurrency & Blockchain Wallets
+    "Coinbase Wallet",
+    "Binance Pay",
+    "MetaMask",
+    "Trust Wallet",
+    "Exodus Wallet",
+    "Ledger Live",
+    "Trezor Suite",
+    "BitPay",
+    "Wirex",
+
+    // 🏢 Business & Merchant Payments
+    "Stripe",
+    "Square",
+    "Alipay",
+    "WeChat Pay",
+  ];
+
+  const bankAccounts = [
+    // Global Banks
+    "JPMorgan Chase",
+    "Bank of America",
+    "Citibank (Citi)",
+    "Wells Fargo",
+    "Goldman Sachs",
+    "Morgan Stanley",
+    "HSBC",
+    "Barclays",
+    "Lloyds Bank",
+    "Royal Bank of Scotland (NatWest Group)",
+    "Santander",
+    "BBVA",
+    "Deutsche Bank",
+    "Commerzbank",
+    "BNP Paribas",
+    "Société Générale",
+    "Crédit Agricole",
+    "UBS",
+    "Credit Suisse",
+    "ING Group",
+    "ABN AMRO",
+    "Rabobank",
+    "Nordea",
+    "Danske Bank",
+    "Swedbank",
+    "SEB Bank",
+    "Scotiabank",
+    "Royal Bank of Canada (RBC)",
+    "Toronto-Dominion Bank (TD Bank)",
+    "Bank of Montreal (BMO)",
+    "Commonwealth Bank",
+    "Westpac",
+    "ANZ Bank",
+    "National Australia Bank (NAB)",
+    "China Construction Bank (CCB)",
+    "Industrial and Commercial Bank of China (ICBC)",
+    "Bank of China",
+    "Agricultural Bank of China",
+    "State Bank of India (SBI)",
+    "HDFC Bank",
+    "ICICI Bank",
+    "Axis Bank",
+    "Kotak Mahindra Bank",
+    "DBS Bank",
+    "OCBC Bank",
+    "United Overseas Bank (UOB)",
+    "Maybank",
+    "Bank Rakyat Indonesia (BRI)",
+    "Standard Bank",
+    "First National Bank (FNB)",
+    "Nedbank",
+    "Absa Group (Barclays Africa)",
+    "Al Rajhi Bank",
+    "Emirates NBD",
+    "Qatar National Bank (QNB)",
+
+    // Credit Union Banks
+    "Navy Federal Credit Union",
+    "State Employees’ Credit Union",
+    "PenFed Credit Union",
+    "Alliant Credit Union",
+    "Boeing Employees Credit Union (BECU)",
+    "Teachers Credit Union",
+    "Community First Credit Union",
+
+    // Regional Banks
+    "Regions Bank",
+    "SunTrust (Now Truist)",
+    "BB&T (Now Truist)",
+    "Fifth Third Bank",
+    "KeyBank",
+    "Huntington National Bank",
+    "PNC Bank",
+    "Citizens Bank",
+
+    // Military Banks
+    "USAA",
+    "Armed Forces Bank",
+    "Wells Fargo Military Banking",
+    "Navy Federal Credit Union",
+    "Fort Sill National Bank",
+
+    // Microfinance Banks
+    "Grameen Bank",
+    "SKS Microfinance (Now Bharat Financial Inclusion)",
+    "FINCA International",
+    "Accion",
+    "Kiva Microfunds",
+    "Pro Mujer",
+    "MicroEnsure",
+    "Fundación Paraguaya",
+  ];
+
+  const giftCards = [
+    "Amazon Gift Card",
+    "iTunes / Apple Gift Card",
+    "Google Play Gift Card",
+    "Visa Gift Card",
+    "Mastercard Gift Card",
+    "PayPal Gift Card",
+    "Steam Gift Card",
+    "Netflix Gift Card",
+    "Spotify Gift Card",
+    "Walmart Gift Card",
+    "Starbucks Gift Card",
+    "Target Gift Card",
+    "eBay Gift Card",
+    "Zalando Gift Card",
+    "H&M Gift Card",
+    "Nike Gift Card",
+    "Best Buy Gift Card",
+    "Adobe Gift Card",
+    "GameStop Gift Card",
+    "Airbnb Gift Card",
+    "Uber Gift Card",
+    "Google Play Store Gift Card",
+    "Apple Store Gift Card",
+    "Ticketmaster Gift Card",
+    "Macy's Gift Card",
+    "Chanel Gift Card",
+    "Lush Gift Card",
+    "ASOS Gift Card",
+    "Disney Gift Card",
+    "Discord Gift Card",
+    "Minecraft Gift Card",
+    "Xbox Gift Card",
+    "PlayStation Network Gift Card",
+    "Xbox Game Pass Gift Card",
+    "Spotify Premium Gift Card",
+    "Roblox Gift Card",
+    "Nintendo eShop Gift Card",
+    "Barnes & Noble Gift Card",
+    "Sephora Gift Card",
+    "Lego Gift Card",
+    "Etsy Gift Card",
+    "Uber Eats Gift Card",
+    "Chipotle Gift Card",
+    "Costco Gift Card",
+    "Home Depot Gift Card",
+    "Kohl's Gift Card",
+    "Old Navy Gift Card",
+    "Apple Music Gift Card",
+    "Twitch Gift Card",
+    "Cinemark Gift Card",
+    "Fandango Gift Card",
+    "GameFly Gift Card",
+    "Bed Bath & Beyond Gift Card",
+    "Zara Gift Card",
+    "Macy's Gift Card",
+    "Krispy Kreme Gift Card",
+  ];
+
+  const debitandCreditCards = [
+    // General Prepaid Cards
+    "Green Dot Prepaid Card",
+    "Netspend Prepaid Card",
+    "Bluebird by American Express",
+    "Serve by American Express",
+    "PayPal Prepaid Mastercard",
+    "Chime Visa Debit",
+    "Venmo Mastercard Debit Card",
+    "Cash App Visa Debit Card",
+    "SoFi Money Debit Card",
+    "Varo Bank Visa Debit Card",
+
+    // Retail & Store-Specific Prepaid Cards
+    "Walmart MoneyCard",
+    "Target RedCard Prepaid Debit Card",
+    "Amazon Reloadable Prepaid Card",
+
+    // Gift & Non-Personalized Prepaid Cards
+    "Visa Prepaid Gift Card",
+    "Mastercard Prepaid Gift Card",
+    "American Express Gift Card",
+    "Vanilla Visa Prepaid Card",
+    "OneVanilla Prepaid Card",
+
+    // Cryptocurrency-Linked Prepaid Cards
+    "Coinbase Visa Debit Card",
+    "Crypto.com Visa Card",
+    "BitPay Prepaid Mastercard",
+    "Wirex Visa Card",
+  ];
+
+  const cryptoAssets = [
+    "Bitcoin (BTC)",
+    "Ethereum (ETH)",
+    "Tether (USDT)",
+    "USD Coin (USDC)",
+    "BNB (BNB)",
+    "XRP (XRP)",
+    "Cardano (ADA)",
+    "Solana (SOL)",
+    "Dogecoin (DOGE)",
+    "Toncoin (TON)",
+    "Shiba Inu (SHIB)",
+    "Avalanche (AVAX)",
+    "Polkadot (DOT)",
+    "Chainlink (LINK)",
+    "Litecoin (LTC)",
+    "Bitcoin Cash (BCH)",
+    "Polygon (MATIC)",
+    "TRON (TRX)",
+    "Stellar (XLM)",
+    "Uniswap (UNI)",
+    "Wrapped Bitcoin (WBTC)",
+    "Dai (DAI)",
+    "Ethereum Classic (ETC)",
+    "Filecoin (FIL)",
+    "Aptos (APT)",
+    "Internet Computer (ICP)",
+    "Lido DAO (LDO)",
+    "Cronos (CRO)",
+    "Render (RNDR)",
+    "Arbitrum (ARB)",
+    "VeChain (VET)",
+    "Optimism (OP)",
+    "Maker (MKR)",
+    "Sui (SUI)",
+    "Monero (XMR)",
+    "Kaspa (KAS)",
+    "THORChain (RUNE)",
+    "Algorand (ALGO)",
+    "Tezos (XTZ)",
+    "EOS (EOS)",
+    "Aave (AAVE)",
+    "Fantom (FTM)",
+    "Zcash (ZEC)",
+    "Neo (NEO)",
+    "BitTorrent (BTT)",
+    "Gala (GALA)",
+    "Injective (INJ)",
+    "Stacks (STX)",
+    "Flow (FLOW)",
+  ];
+
+  const getCurrencies = async () => {
+    try {
+      const response = await axios.get("https://restcountries.com/v3.1/all");
+      const countries = response.data;
+
+      const currencyMap = {};
+
+      countries.forEach((country) => {
+        if (country.currencies) {
+          for (const [code, { name, symbol }] of Object.entries(
+            country.currencies
+          )) {
+            if (!currencyMap[code]) {
+              currencyMap[code] = {
+                name: name || "Unknown",
+                symbol: symbol || "",
+              };
+            }
+          }
         }
-      };
+      });
 
-      const easeInOutQuad = (t) => {
-        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // Easing function
-      };
+      // Convert to array and sort
+      const currencyList = Object.entries(currencyMap)
+        .map(([code, details]) => ({
+          code,
+          name: details.name,
+          symbol: details.symbol,
+        }))
+        .sort((a, b) => a.code.localeCompare(b.code));
 
-      requestAnimationFrame(animation);
+      console.log(currencyList);
+
+      setCurrencies(currencyList);
+    } catch (error) {
+      console.error("Error fetching currency data:", error.message);
     }
   };
 
   const handleServiceTypeChange = () => {
-    if (service === "Online Wallet Transfer") {
-      setShowWallet(true);
-      setShowAccount(false);
-      setAccount("");
-      setShowGiftCard(false);
-      setGiftCard("");
-      setShowDebitCreditCard(false);
-      setCreditOrDebitCard("");
-      setMiniPurchase("");
-      setMaxPurchase("");
-      setOfferRates([{ from: 0, to: 0, rate: 0 }]);
-      setOfferTerms([]);
-    } else if (service === "Bank Transfer") {
-      setShowAccount(true);
-      setShowWallet(false);
-      setWallet("");
-      setShowGiftCard(false);
-      setGiftCard("");
-      setShowDebitCreditCard(false);
-      setCreditOrDebitCard("");
-      setMiniPurchase("");
-      setMaxPurchase("");
-      setOfferRates([{ from: 0, to: 0, rate: 0 }]);
-      setOfferTerms([]);
-    } else if (service === "Gift Cards Exchange") {
-      setShowGiftCard(true);
-      setShowAccount(false);
-      setAccount("");
-      setShowWallet(false);
-      setWallet("");
-      setShowDebitCreditCard(false);
-      setCreditOrDebitCard("");
-      setMiniPurchase("");
-      setMaxPurchase("");
-      setOfferRates([{ from: 0, to: 0, rate: 0 }]);
-      setOfferTerms([]);
-    } else if (service === "Debit/Credit Cards Spending") {
-      setShowDebitCreditCard(true);
-      setShowGiftCard(false);
-      setGiftCard("");
-      setShowAccount(false);
-      setAccount("");
-      setShowWallet(false);
-      setWallet("");
-      setMiniPurchase("");
-      setMaxPurchase("");
-      setOfferRates([{ from: 0, to: 0, rate: 0 }]);
-      setOfferTerms([]);
+    if (offerDetails.serviceType === "Online Wallet Transfer") {
+      setOfferDetails((prev) => ({
+        ...prev,
+        service: "",
+      }));
+      setIsOnlineWallet(true);
+      setIsAccount(false);
+      setIsGiftCard(false);
+      setIsDebitOrCreditCard(false);
+      setIsCryptoAsset(false);
+    } else if (offerDetails.serviceType === "Direct Bank Transfer") {
+      setOfferDetails((prev) => ({
+        ...prev,
+        service: "",
+      }));
+      setIsAccount(true);
+      setIsOnlineWallet(false);
+      setIsGiftCard(false);
+      setIsDebitOrCreditCard(false);
+      setIsCryptoAsset(false);
+    } else if (offerDetails.serviceType === "Gift Card Exchange") {
+      setOfferDetails((prev) => ({
+        ...prev,
+        service: "",
+      }));
+      setIsGiftCard(true);
+      setIsAccount(false);
+      setIsOnlineWallet(false);
+      setIsDebitOrCreditCard(false);
+      setIsCryptoAsset(false);
+    } else if (offerDetails.serviceType === "Card-Based Spending") {
+      setOfferDetails((prev) => ({
+        ...prev,
+        service: "",
+      }));
+      setIsDebitOrCreditCard(true);
+      setIsGiftCard(false);
+      setIsAccount(false);
+      setIsOnlineWallet(false);
+      setIsCryptoAsset(false);
+    } else if (offerDetails.serviceType === "Crypto Trading") {
+      setOfferDetails((prev) => ({
+        ...prev,
+        service: "",
+      }));
+      setIsCryptoAsset(true);
+      setIsDebitOrCreditCard(false);
+      setIsGiftCard(false);
+      setIsAccount(false);
+      setIsOnlineWallet(false);
     }
   };
 
   useEffect(() => {
     handleServiceTypeChange();
-  }, [service]);
+  }, [offerDetails.serviceType]);
 
-  const handleToOfferPageTwo = () => {
-    // Ensure all selections are made
-    if (!wallet && !account && !giftCard && !creditOrDebitCard) {
-      smoothScrollTo("selectAsset");
-      setServiceError("Please select at least one option.");
-      return;
-    } else {
-      setServiceError(""); // Clear the error if at least one is selected
+  useEffect(() => {
+    if (select.element === "service") {
+      setOfferDetails((prev) => ({
+        ...prev,
+        service: select.pick,
+      }));
+    } else if (select.element === "currency") {
+      setOfferDetails((prev) => ({
+        ...prev,
+        currency: select.pick,
+      }));
     }
+  }, [select]);
 
-    // Ensure both minimum and maximum purchase amounts are selected
-    if (!miniPurchase || !maxPurchase) {
-      smoothScrollTo("purchaseLimit");
-      setPurchaseLimitError(
-        "Please set both minimum and maximum purchase amounts."
-      );
-      return;
-    }
+  useEffect(() => {
+    getCurrencies();
+  }, []);
 
-    // Validate minimum purchase
-    if (miniPurchase < userTrasactionLimitMinimum) {
-      setPurchaseLimitError(
-        `Your minimum purchase cannot be lower than the minimum transaction limit of $${userTrasactionLimitMinimum}.`
-      );
-      return; // Ensure no further checks happen if this error is triggered
-    }
+  console.log(select);
+  console.log("offer details", offerDetails);
+  console.log(currencies);
 
-    // Validate maximum purchase
-    if (maxPurchase <= miniPurchase) {
-      smoothScrollTo("purchaseLimit");
-      setPurchaseLimitError(
-        `Your maximum purchase must exceed the minimum purchase limit of $${miniPurchase}.`
-      );
-      return;
-    }
+  const handleMinLimitChange = (e) => {
+    const rawValue = e.target.value.replace(/[^\d]/g, ""); // Remove all non-digit characters
 
-    if (maxPurchase > userTrasactionLimitMaximum) {
-      smoothScrollTo("purchaseLimit");
-      setPurchaseLimitError(
-        `Your maximum purchase cannot exceed your transaction limit of $${userTrasactionLimitMaximum}.`
-      );
-      return;
-    }
-
-    // Ensure at least one offer rate is provided
-    if (offerRates.length <= 1) {
-      smoothScrollTo("offerRates");
-      setRateError("Please add at least one rate to continue.");
-      return;
-    } else {
-      setRateError("");
-    }
-
-    // Ensure offer terms are provided
-    if (offerTerms <= 0) {
-      smoothScrollTo("offerTerms");
-      setOfferTermsError("Please add offer terms to proceed.");
-      return;
-    } else {
-      setOfferTermsError("");
-    }
-
-    // Proceed to the next page if all conditions are valid
-    setOfferPageOne(false);
-    setOfferPageTwo(true);
+    setOfferDetails((prev) => ({
+      ...prev,
+      minimum: rawValue,
+    }));
   };
 
-  const handleReturnToOfferPageOne = () => {
-    setOfferPageOne(true);
-    setOfferPageTwo(false);
+  const handleMaxLimitChange = (e) => {
+    const rawValue = e.target.value.replace(/[^\d]/g, ""); // Remove all non-digit characters
+
+    setOfferDetails((prev) => ({
+      ...prev,
+      maximum: rawValue,
+    }));
   };
 
-  // console.log(rangeFrom);
-  // console.log(rangeTo);
-  // console.log(rate);
-  // console.log(offerRates);
-  // console.log(miniPurchase);
-  // console.log(maxPurchase);
-  // console.log(offerTerms);
+  const handleAddMargine = (e) => {
+    setOfferDetails((prev) => ({
+      ...prev,
+      margin: Math.min(21, Number(prev.margin || 0) + 1),
+    }));
+  };
 
-  const userTrasactionLimitMinimum = "50";
-  const userTrasactionLimitMaximum = "500";
+  const handleMinusMargine = (e) => {
+    setOfferDetails((prev) => ({
+      ...prev,
+      margin: Math.max(0, Number(prev.margin || 0) - 1),
+    }));
+  };
+
+  const handleAddTimeLimit = (e) => {
+    setOfferDetails((prev) => ({
+      ...prev,
+      timeLimit: Math.min(65, Number(prev.timeLimit || 0) + 5),
+    }));
+  };
+
+  const handleMinusTimeLimit = (e) => {
+    setOfferDetails((prev) => ({
+      ...prev,
+      timeLimit: Math.max(10, Number(prev.timeLimit || 0) - 5),
+    }));
+  };
 
   return (
     <>
       <InAppNav />
-
-      <div className="lg:pt-[70px] pt-[80px] bg-black">
-        <div className="lg:p-[1.5%] p-[3%] flex gap-[15px]">
-          <div
-            className={`${
-              offerPageOne ? "flex" : "hidden"
-            }  flex-1 flex-col gap-[50px] bg-tradeAsh p-[10px] rounded-[8px]`}
-          >
-            <div>
-              <p className="text-white text-[34px] font-[900]">
-                Create a Buy Offer for an Asset
-              </p>
-            </div>
-            <div className="flex gap-[40px] ">
-              <SelectService service={service} setService={setService} />
-              <div id="selectAsset">
-                <SelectAccount
-                  showAccount={showAccount}
-                  account={account}
-                  setAccount={setAccount}
-                  setServiceError={setServiceError}
-                  serviceError={serviceError}
-                />
-                <SelectWallet
-                  showWallet={showWallet}
-                  wallet={wallet}
-                  setWallet={setWallet}
-                  setServiceError={setServiceError}
-                  serviceError={serviceError}
-                />
-                <SelectGitfCard
-                  showGiftCard={showGiftCard}
-                  giftCard={giftCard}
-                  setGiftCard={setGiftCard}
-                  setServiceError={setServiceError}
-                  serviceError={serviceError}
-                />
-                <DebitCreditCard
-                  showDebitCreditCard={showDebitCreditCard}
-                  creditOrDebitCard={creditOrDebitCard}
-                  setCreditOrDebitCard={setCreditOrDebitCard}
-                  setServiceError={setServiceError}
-                  serviceError={serviceError}
-                />
+      <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%]">
+        <div className="flex flex-col gap-[px] min-h-svh w-full md:border-x md:border-t md:border-b border-neutral-800 md:mt-[75px] mt-[60px]">
+          <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
+            <p className="text-[17px] text-white font-[700]">
+              Create Buy Offer
+            </p>
+          </div>
+          <div className="flex flex-col gap-[0px]">
+            {/* Service Type field */}
+            <div className="flex flex-col gap-[15px] p-[15px] border-b border-tradeAshLight">
+              <div>
+                <p className="text-white text-[15px] font-[500]">
+                  Select Service Type
+                </p>
+              </div>
+              <div className="flex gap-[10px] flex-wrap">
+                {serviceType.map((type, index) => (
+                  <p
+                    key={index}
+                    onClick={() =>
+                      setOfferDetails((prev) => ({
+                        ...prev,
+                        serviceType: type,
+                      }))
+                    }
+                    className={`${
+                      offerDetails.serviceType === type
+                        ? "bg-tradeGreen text-black border-transparent"
+                        : "text-tradeFadeWhite  "
+                    } text-[14px] font-[500] py-[6px] px-[10px] w-max rounded-[10px] cursor-pointer border border-tradeAshLight hover:border-tradeAshExtraLight transition-all duration-300`}
+                  >
+                    {type}
+                  </p>
+                ))}
               </div>
             </div>
-            <div>
-              <PreferredCurrency
-                preferredCurrency={preferredCurrency}
-                setPreferredCurrency={setPreferredCurrency}
-              />
+            {/* Service field */}
+            <div className="flex flex-col border-b border-tradeAshLight">
+              {/*Online Wallet Field */}
+              <div
+                className={`${
+                  isOnlineWallet ? "flex" : "hidden"
+                } flex-col gap-[15px] p-[15px]`}
+              >
+                <div>
+                  <p className="text-white text-[15px] font-[500]">
+                    Select Online Wallet
+                  </p>
+                </div>
+
+                <div className="relative w-full cursor-pointer ">
+                  <input
+                    className={`${
+                      offerDetails?.service
+                        ? "border-tradeAshExtraLight"
+                        : "border-tradeAshLight"
+                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                    type="text"
+                    readOnly
+                    placeholder="Choose wallet"
+                    value={offerDetails?.service}
+                    onClick={() =>
+                      setSelect({
+                        ...select,
+                        state: true,
+                        selectOne: true,
+                        selectTwo: false,
+                        element: "service",
+                        options: onlineWallets,
+                      })
+                    }
+                    onChange={(e) => setOfferDetails.service(e.target.value)}
+                  />
+
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                    <MdKeyboardArrowDown />
+                  </div>
+                </div>
+              </div>
+              {/*Bank 2 Bank Field */}
+              <div
+                className={`${
+                  isAccount ? "flex" : "hidden"
+                } flex-col gap-[15px] p-[15px]`}
+              >
+                <div>
+                  <p className="text-white text-[15px] font-[500]">
+                    Select Bank Account
+                  </p>
+                </div>
+
+                <div className="relative w-full cursor-pointer ">
+                  <input
+                    className={`${
+                      offerDetails?.service
+                        ? "border-tradeAshExtraLight"
+                        : "border-tradeAshLight"
+                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                    type="text"
+                    readOnly
+                    placeholder="Choose account"
+                    value={offerDetails?.service}
+                    onClick={() =>
+                      setSelect({
+                        ...select,
+                        state: true,
+                        selectOne: true,
+                        selectTwo: false,
+                        element: "service",
+                        options: bankAccounts,
+                      })
+                    }
+                    onChange={(e) => setOfferDetails.service(e.target.value)}
+                  />
+
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                    <MdKeyboardArrowDown />
+                  </div>
+                </div>
+              </div>
+              {/*Gift Card Field */}
+              <div
+                className={`${
+                  isGiftCard ? "flex" : "hidden"
+                } flex-col gap-[15px] p-[15px]`}
+              >
+                <div>
+                  <p className="text-white text-[15px] font-[500]">
+                    Select Gift Card
+                  </p>
+                </div>
+
+                <div className="relative w-full cursor-pointer ">
+                  <input
+                    className={`${
+                      offerDetails?.service
+                        ? "border-tradeAshExtraLight"
+                        : "border-tradeAshLight"
+                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                    type="text"
+                    readOnly
+                    placeholder="Choose gift card"
+                    value={offerDetails?.service}
+                    onClick={() =>
+                      setSelect({
+                        ...select,
+                        state: true,
+                        selectOne: true,
+                        selectTwo: false,
+                        element: "service",
+                        options: giftCards,
+                      })
+                    }
+                    onChange={(e) => setOfferDetails.service(e.target.value)}
+                  />
+
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                    <MdKeyboardArrowDown />
+                  </div>
+                </div>
+              </div>
+              {/*Debit & Credit Card Spending Field */}
+              <div
+                className={`${
+                  isDebitOrCreditCard ? "flex" : "hidden"
+                } flex-col gap-[15px] p-[15px]`}
+              >
+                <div>
+                  <p className="text-white text-[15px] font-[500]">
+                    Select Debit or Credit Card
+                  </p>
+                </div>
+
+                <div className="relative w-full cursor-pointer ">
+                  <input
+                    className={`${
+                      offerDetails?.service
+                        ? "border-tradeAshExtraLight"
+                        : "border-tradeAshLight"
+                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                    type="text"
+                    readOnly
+                    placeholder="Choose card"
+                    value={offerDetails?.service}
+                    onClick={() =>
+                      setSelect({
+                        ...select,
+                        state: true,
+                        selectOne: true,
+                        selectTwo: false,
+                        element: "service",
+                        options: debitandCreditCards,
+                      })
+                    }
+                    onChange={(e) => setOfferDetails.service(e.target.value)}
+                  />
+
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                    <MdKeyboardArrowDown />
+                  </div>
+                </div>
+              </div>
+              {/*Crypto Asset Field */}
+              <div
+                className={`${
+                  isCryptoAsset ? "flex" : "hidden"
+                } flex-col gap-[15px] p-[15px]`}
+              >
+                <div>
+                  <p className="text-white text-[15px] font-[500]">
+                    Select Crypto Asset
+                  </p>
+                </div>
+
+                <div className="relative w-full cursor-pointer ">
+                  <input
+                    className={`${
+                      offerDetails?.service
+                        ? "border-tradeAshExtraLight"
+                        : "border-tradeAshLight"
+                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                    type="text"
+                    readOnly
+                    placeholder="Choose asset"
+                    value={offerDetails?.service}
+                    onClick={() =>
+                      setSelect({
+                        ...select,
+                        selectOne: true,
+                        selectTwo: false,
+                        state: true,
+                        element: "service",
+                        options: cryptoAssets,
+                      })
+                    }
+                    onChange={(e) => setOfferDetails.service(e.target.value)}
+                  />
+
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                    <MdKeyboardArrowDown />
+                  </div>
+                </div>
+              </div>
             </div>
-            <div id="purchaseLimit">
-              <PurchaseLimit
-                miniPurchase={miniPurchase}
-                setMiniPurchase={setMiniPurchase}
-                maxPurchase={maxPurchase}
-                setMaxPurchase={setMaxPurchase}
-                preferredCurrency={preferredCurrency}
-                userTrasactionLimitMinimum={userTrasactionLimitMinimum}
-                userTrasactionLimitMaximum={userTrasactionLimitMaximum}
-                setPurchaseLimitError={setPurchaseLimitError}
-                purchaseLimitError={purchaseLimitError}
-              />
+            {/* Currency Field */}
+            <div className="flex flex-col gap-[15px] p-[15px] border-b border-tradeAshLight">
+              <div>
+                <p className="text-white text-[15px] font-[500]">
+                  Select Currency
+                </p>
+              </div>
+
+              <div className="relative w-full cursor-pointer ">
+                <input
+                  className={`${
+                    offerDetails?.currency?.name
+                      ? "border-tradeAshExtraLight"
+                      : "border-tradeAshLight"
+                  } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                  type="text"
+                  readOnly
+                  placeholder="Choose a currency"
+                  value={
+                    offerDetails.currency.code && offerDetails.currency.name
+                      ? `${offerDetails.currency.code} — ${offerDetails.currency.name}`
+                      : ""
+                  }
+                  onClick={() =>
+                    setSelect({
+                      ...select,
+                      state: true,
+                      selectOne: false,
+                      selectTwo: true,
+                      element: "currency",
+                      options: currencies,
+                    })
+                  }
+                  onChange={(e) => setOfferDetails.service(e.target.value)}
+                />
+
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                  <MdKeyboardArrowDown />
+                </div>
+              </div>
             </div>
-            <div id="offerRates">
-              <OfferTradeRate
-                miniPurchase={miniPurchase}
-                maxPurchase={maxPurchase}
-                rangeFrom={rangeFrom}
-                setRangeFrom={setRangeFrom}
-                rangeTo={rangeTo}
-                setRangeTo={setRangeTo}
-                rate={rate}
-                setRate={setRate}
-                offerRates={offerRates}
-                setOfferRates={setOfferRates}
-                preferredCurrency={preferredCurrency}
-                setRateError={setRateError}
-                rateError={rateError}
-              />
+            {/* Limit Field */}
+            <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
+              <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
+                <p className="text-white text-[15px] font-[500]">
+                  Offer Limit Range
+                </p>
+              </div>
+
+              <div className="w-full flex flex-col gap-[15px] p-[15px]">
+                <div className="flex w-full md:flex-row flex-col gap-[15px]">
+                  <div className="w-full">
+                    <div>
+                      <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                        Minimum
+                      </p>
+                    </div>
+                    <div
+                      className={`${
+                        offerDetails?.minimum
+                          ? "border-tradeAshExtraLight"
+                          : "border-tradeAshLight"
+                      } flex mt-[5px] bg-tradeAsh border outline-none w-full rounded-[10px] overflow-hidden cursor-pointer`}
+                    >
+                      <input
+                        className="text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh  outline-none w-full p-[12px]  cursor-pointer"
+                        type="text"
+                        placeholder="0.00"
+                        value={
+                          offerDetails?.minimum
+                            ? Number(offerDetails?.minimum).toLocaleString()
+                            : ""
+                        }
+                        onChange={(e) => handleMinLimitChange(e)}
+                      />
+                      <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
+                        <p className="text-[14px] text-white font-[700]">USD</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="w-full">
+                    <div>
+                      <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                        Maximum
+                      </p>
+                    </div>
+                    <div
+                      className={`${
+                        offerDetails?.minimum
+                          ? "border-tradeAshExtraLight"
+                          : "border-tradeAshLight"
+                      } flex mt-[5px] bg-tradeAsh border outline-none w-full rounded-[10px] overflow-hidden cursor-pointer`}
+                    >
+                      <input
+                        className="text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh  outline-none w-full p-[12px]  cursor-pointer"
+                        type="text"
+                        placeholder="0.00"
+                        value={
+                          offerDetails?.maximum
+                            ? Number(offerDetails?.maximum).toLocaleString()
+                            : ""
+                        }
+                        onChange={(e) => handleMaxLimitChange(e)}
+                      />
+                      <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
+                        <p className="text-[14px] text-white font-[700]">USD</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="">
+                  <Warning
+                    text={
+                      "To make this offer visible, be sure to have the minimum amount you’ve set within your wallet."
+                    }
+                  />
+                </div>
+              </div>
             </div>
-            <div id="offerTerms">
-              <OfferTerms
-                setOfferTerms={setOfferTerms}
-                offerTermsError={offerTermsError}
-              />
+            {/* Rate Margine Field */}
+            <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
+              <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
+                <p className="text-white text-[15px] font-[500]">
+                  Offer Rate Margine
+                </p>
+              </div>
+
+              <div className="w-full flex flex-col gap-[15px] p-[15px]">
+                <div className="flex w-full flex-row  gap-[15px]">
+                  <div
+                    onClick={handleMinusMargine}
+                    className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
+                  >
+                    <FaMinus />
+                  </div>
+                  <div className="bg-tradeAsh flex justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
+                    <p className="text-white text-[14px]">
+                      {offerDetails?.margin === 0 ? (
+                        "No margin applied"
+                      ) : offerDetails?.margin > 20 ? (
+                        "Margin cannot exceed 20%"
+                      ) : (
+                        <>
+                          <span className="font-bold">
+                            {offerDetails.margin > 0 ? "+" : ""}
+                            {offerDetails.margin}%
+                          </span>{" "}
+                          profit margin per trade
+                        </>
+                      )}
+                    </p>
+                  </div>
+                  <div
+                    onClick={handleAddMargine}
+                    className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
+                  >
+                    <FaPlus />
+                  </div>
+                </div>
+
+                <div className="">
+                  <Info
+                    text={
+                      "Set a fair and competitive rate margin to attract more traders. Pricing your offer too high may drive potential users away. A well-balanced margin, typically between 2% and 5%, can make your offer more appealing and boost trade activity."
+                    }
+                  />
+                </div>
+
+                <div className="">
+                  {/* <p className="text-white text-[13px]">
+                    To encourage more users to trade with you, set a competitive
+                    and reasonable rate margin. Excessively high margins may
+                    discourage potential traders, while fair pricing can
+                    significantly increase engagement.
+                  </p> */}
+                </div>
+              </div>
+            </div>
+            {/*  Time Limit Field */}
+            <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
+              <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
+                <p className="text-white text-[15px] font-[500]">
+                  Offer Time Limit
+                </p>
+              </div>
+
+              <div className="w-full flex flex-col gap-[15px] p-[15px]">
+                <div className="flex w-full flex-row gap-[15px]">
+                  <div
+                    onClick={handleMinusTimeLimit}
+                    className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
+                  >
+                    <FaMinus />
+                  </div>
+                  <div className="bg-tradeAsh flex  justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
+                    <p className="text-white text-[14px]">
+                      {offerDetails?.timeLimit < 15 ? (
+                        "Limit must be at least 15 minutes"
+                      ) : offerDetails?.timeLimit > 60 ? (
+                        "Limit cannot exceed 60 minutes"
+                      ) : (
+                        <>
+                          <span className="font-bold">
+                            {offerDetails.timeLimit}
+                          </span>{" "}
+                          minutes
+                        </>
+                      )}
+                    </p>
+                  </div>
+                  <div
+                    onClick={handleAddTimeLimit}
+                    className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
+                  >
+                    <FaPlus />
+                  </div>
+                </div>
+
+                <div className="">
+                  <p className="text-white text-[13px]">
+                    This is the time limit your trade partner has to make the
+                    payment and confirm by clicking{" "}
+                    <span className="font-[700] text-white">Paid</span> before
+                    the trade is automatically canceled.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-          <div
-            className={`${
-              offerPageTwo ? "flex" : "hidden"
-            }  flex-1 flex-col gap-[50px] bg-tradeAsh p-[15px] rounded-[8px]`}
-          >
-            <div>
-              <p className="text-white text-[34px] font-[900]">
-                Create a Buy Offer for an Asset
+        </div>
+        <div className="lg:flex lg:sticky min-h-svh pt-[75px] hidden w-[500px] border-neutral-800 ">
+          <div className="overflow-hidden w-full h-full flex flex-col md:border-r md:border-b md:border-t border-neutral-800">
+            <div className="flex flex-col justify-between p-[15px]  border-b border-tradeAshLight w-full">
+              <p className="text-[17px] text-white font-[700]">
+                Create Buy Offer
               </p>
             </div>
-            <div className="flex gap-[40px]"></div>
           </div>
-          <OfferSummary
-            service={service}
-            wallet={wallet}
-            account={account}
-            giftCard={giftCard}
-            creditOrDebitCard={creditOrDebitCard}
-            preferredCurrency={preferredCurrency}
-            miniPurchase={miniPurchase}
-            maxPurchase={maxPurchase}
-            offerRates={offerRates}
-            handleToOfferPageTwo={handleToOfferPageTwo}
-            handleReturnToOfferPageOne={handleReturnToOfferPageOne}
-            offerPageTwo={offerPageTwo}
-          />
         </div>
       </div>
       <Footer />

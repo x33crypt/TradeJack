@@ -22,17 +22,19 @@ import ChangeEmail from "./pages/ChangeEmail";
 import ChangePhone from "./pages/ChangePhone";
 import ChangeAdress from "./pages/ChangeAdress";
 export const userContext = createContext();
-import { useTradeAlert } from "./context/TradeAlertContext";
+import SelectElement from "./components/SelectElement";
+import TradeAlert from "./components/TradeAlert";
 
 const App = () => {
   const [user, setUser] = useState("");
-  const { tradeAlert, setTradeAlert } = useTradeAlert();
 
   return (
     <>
       <ScrollToTop />
       <AuthProvider>
         <userContext.Provider value={{ user, setUser }}>
+          <SelectElement />
+          <TradeAlert />
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/signup" element={<Signup />} />

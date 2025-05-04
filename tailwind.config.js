@@ -20,6 +20,7 @@ export default {
         tradeAshExtraLight: "#464646",
         tradeBorder: "#404040",
         tradeGreen: "#00de82",
+        tradeLightGreen: '#f0fff9',
         tradePurple: "#9e62ff",
         tradeOrange: "#ffcb4d",
       },

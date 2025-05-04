@@ -447,7 +447,7 @@ const OfferFilter = ({
             onClick={() => {
               setClearFilter(true);
             }}
-            className="px-[8px] py-[2px] text-[12px] text-red-700 font-[500] rounded-[6px] bg- hover:bg-tradeAsh border border-tradeAshLight hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all"
+            className="px-[8px] py-[2px] text-[12px] text-tradeFadeWhite font-[500] rounded-[6px] bg- hover:bg-tradeAsh border border-tradeAshLight hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all"
           >
             Clear Filter
           </p>
@@ -464,7 +464,7 @@ const OfferFilter = ({
         <div className="flex flex-col justify-between ">
           <div className="flex flex-col gap-[15px] lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-tradeAshLight">
             <div>
-              <p className="text-white text-[15px] font-[700]">Service type</p>
+              <p className="text-white text-[15px] font-[500]">Service type</p>
             </div>
 
             <div
@@ -1315,7 +1315,7 @@ const OfferFilter = ({
         </div>
         <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px]">
           <div>
-            <p className="text-white text-[15px] font-[700]">Sort by</p>
+            <p className="text-white text-[15px] font-[500]">Sort by</p>
           </div>
 
           <div className="flex flex-col gap-[15px]">

@@ -110,3 +110,24 @@
 .custom-scrollbar::-webkit-scrollbar-track {
   background-color: #141414; /* Default color */
 }
+
+/* custom styling for select elements */
+.rs__control {
+  background-color: #121212;
+  border: 1px dashed #e80808;
+  padding: 4px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.rs-option {
+  background: #000;
+}
+
+.rs-menu {
+  background-color: #ffcb4d;
+}
+
+.rs-option:hover {
+  background-color: red;
+}
