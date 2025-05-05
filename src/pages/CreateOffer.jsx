@@ -893,7 +893,7 @@ const CreateOffer = () => {
                 <div className="">
                   <Warning
                     text={
-                      "To make your offer visible, you must have at least 50% of any amount users may send you, within the range you've set, available in your wallet as collateral."
+                      "To make this offer visible, you must have at least 50% of the minimum amount you've set available in your wallet."
                     }
                   />
                 </div>

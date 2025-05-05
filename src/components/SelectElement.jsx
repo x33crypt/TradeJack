@@ -25,7 +25,7 @@ const SelectElement = () => {
   if (!select?.state) return null;
 
   return (
-    <div className="fixed inset-0  bg-black bg-opacity-80 flex flex-col gap-[15px] items-center justify-center z-50 px-[50px]">
+    <div className="fixed inset-0  bg-black bg-opacity-80 flex flex-col gap-[15px] items-center justify-center z-50 px-[40px]">
       <LockByScroll />
 
       {/* FIRST DIV — for string options */}
@@ -46,7 +46,7 @@ const SelectElement = () => {
         </div>
         <div className="overflow-y-auto custom-scrollbar w-full">
           {searchInput ? (
-            <div className="max-h-[250px] flex flex-col gap-[5px]">
+            <div className=" max-h-[300px] flex flex-col gap-[5px]">
               {(select?.options || [])
                 .filter((option) => typeof option === "string")
                 .filter((option) =>
@@ -63,7 +63,7 @@ const SelectElement = () => {
                 ))}
             </div>
           ) : (
-            <div className="h-[250px] flex flex-col gap-[5px]">
+            <div className=" max-h-[300px] flex flex-col gap-[5px]">
               {(select?.options || [])
                 .filter((option) => typeof option === "string")
                 .sort((a, b) => a.localeCompare(b))
@@ -99,7 +99,7 @@ const SelectElement = () => {
         </div>
         <div className="overflow-y-auto custom-scrollbar w-full">
           {searchInput ? (
-            <div className="h-[250px] flex flex-col gap-[10px] mr-[10px]">
+            <div className="max-h-[300px] flex flex-col gap-[10px] mr-[10px]">
               {(select?.options || [])
                 .filter(
                   (option) => typeof option === "object" && option !== null
@@ -120,7 +120,7 @@ const SelectElement = () => {
                 ))}
             </div>
           ) : (
-            <div className="h-[250px] flex flex-col gap-[5px] overflow-auto">
+            <div className="max-h-[300px] flex flex-col gap-[5px] overflow-auto">
               {(select?.options || [])
                 .filter(
                   (option) => typeof option === "object" && option !== null
