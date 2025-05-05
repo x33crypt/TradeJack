@@ -32,7 +32,7 @@ const SelectElement = () => {
       <div
         className={`${
           select?.selectOne ? "flex" : "hidden"
-        } bg-tradeAsh w-[500px] flex-col items-center p-[15px] gap-[15px] rounded-[14px]`}
+        } bg-tradeAsh md:w-[500px] w-full flex-col items-center p-[15px] gap-[15px] rounded-[14px]`}
       >
         <div className="flex h-[43px] w-full rounded-[8px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
           <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
@@ -85,7 +85,7 @@ const SelectElement = () => {
       <div
         className={`${
           select?.selectTwo ? "flex" : "hidden"
-        } bg-tradeAsh w-[500px] flex-col items-center p-[15px] gap-[15px] rounded-[14px]`}
+        } bg-tradeAsh md:w-[500px] w-full flex-col items-center p-[15px] gap-[15px] rounded-[14px]`}
       >
         <div className="flex h-[43px] w-full rounded-[8px] px-[10px] py-[5px] gap-[10px] items-center border border-tradeAshLight">
           <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
@@ -143,7 +143,7 @@ const SelectElement = () => {
       </div>
 
       <div
-        className="w-[500px] bg-black text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
+        className="md:w-[500px] w-full bg-black text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
         onClick={() => setSelect({ ...select, state: false })}
       >
         <p className="text-[14px] font-[700] ">Cancel</p>

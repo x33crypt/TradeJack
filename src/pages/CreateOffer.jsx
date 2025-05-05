@@ -534,13 +534,13 @@ const CreateOffer = () => {
           </div>
           <div className="flex flex-col gap-[0px]">
             {/* Service Type field */}
-            <div className="flex flex-col gap-[15px] p-[15px] border-b border-tradeAshLight">
+            <div className="flex flex-col gap-[30px] p-[15px] border-b border-tradeAshLight">
               <div>
                 <p className="text-white text-[15px] font-[500]">
                   Select Service Type
                 </p>
               </div>
-              <div className="flex gap-[10px] flex-wrap">
+              <div className="flex gap-[15px] flex-wrap">
                 {serviceType.map((type, index) => (
                   <p
                     key={index}
@@ -567,7 +567,7 @@ const CreateOffer = () => {
               <div
                 className={`${
                   isOnlineWallet ? "flex" : "hidden"
-                } flex-col gap-[15px] p-[15px]`}
+                } flex-col gap-[30px] p-[15px]`}
               >
                 <div>
                   <p className="text-white text-[15px] font-[500]">
@@ -608,7 +608,7 @@ const CreateOffer = () => {
               <div
                 className={`${
                   isAccount ? "flex" : "hidden"
-                } flex-col gap-[15px] p-[15px]`}
+                } flex-col gap-[30px] p-[15px]`}
               >
                 <div>
                   <p className="text-white text-[15px] font-[500]">
@@ -649,7 +649,7 @@ const CreateOffer = () => {
               <div
                 className={`${
                   isGiftCard ? "flex" : "hidden"
-                } flex-col gap-[15px] p-[15px]`}
+                } flex-col gap-[30px] p-[15px]`}
               >
                 <div>
                   <p className="text-white text-[15px] font-[500]">
@@ -690,7 +690,7 @@ const CreateOffer = () => {
               <div
                 className={`${
                   isDebitOrCreditCard ? "flex" : "hidden"
-                } flex-col gap-[15px] p-[15px]`}
+                } flex-col gap-[30px] p-[15px]`}
               >
                 <div>
                   <p className="text-white text-[15px] font-[500]">
@@ -731,7 +731,7 @@ const CreateOffer = () => {
               <div
                 className={`${
                   isCryptoAsset ? "flex" : "hidden"
-                } flex-col gap-[15px] p-[15px]`}
+                } flex-col gap-[30px] p-[15px]`}
               >
                 <div>
                   <p className="text-white text-[15px] font-[500]">
@@ -770,7 +770,7 @@ const CreateOffer = () => {
               </div>
             </div>
             {/* Currency Field */}
-            <div className="flex flex-col gap-[15px] p-[15px] border-b border-tradeAshLight">
+            <div className="flex flex-col gap-[30px] p-[15px] border-b border-tradeAshLight">
               <div>
                 <p className="text-white text-[15px] font-[500]">
                   Select Currency
@@ -845,7 +845,12 @@ const CreateOffer = () => {
                         onChange={(e) => handleMinLimitChange(e)}
                       />
                       <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
-                        <p className="text-[14px] text-white font-[700]">USD</p>
+                        <p className="text-[14px] text-white font-[700]">
+                          {offerDetails.currency.code &&
+                          offerDetails.currency.name
+                            ? `${offerDetails.currency.code}`
+                            : "- -"}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -875,7 +880,12 @@ const CreateOffer = () => {
                         onChange={(e) => handleMaxLimitChange(e)}
                       />
                       <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
-                        <p className="text-[14px] text-white font-[700]">USD</p>
+                        <p className="text-[14px] text-white font-[700]">
+                          {offerDetails.currency.code &&
+                          offerDetails.currency.name
+                            ? `${offerDetails.currency.code}`
+                            : "- -"}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -883,7 +893,7 @@ const CreateOffer = () => {
                 <div className="">
                   <Warning
                     text={
-                      "To make this offer visible, be sure to have the minimum amount you’ve set within your wallet."
+                      "To make your offer visible, you must have at least 50% of any amount users may send you, within the range you've set, available in your wallet as collateral."
                     }
                   />
                 </div>
@@ -908,9 +918,11 @@ const CreateOffer = () => {
                   <div className="bg-tradeAsh flex justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
                     <p className="text-white text-[14px]">
                       {offerDetails?.margin === 0 ? (
-                        "No margin applied"
+                        <span className="text-red-500">No margin applied</span>
                       ) : offerDetails?.margin > 20 ? (
-                        "Margin cannot exceed 20%"
+                        <span className="text-red-500">
+                          Margin cannot exceed 20%
+                        </span>
                       ) : (
                         <>
                           <span className="font-bold">
@@ -967,9 +979,13 @@ const CreateOffer = () => {
                   <div className="bg-tradeAsh flex  justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
                     <p className="text-white text-[14px]">
                       {offerDetails?.timeLimit < 15 ? (
-                        "Limit must be at least 15 minutes"
+                        <span className="text-red-500">
+                          Limit must be at least 15 minutes
+                        </span>
                       ) : offerDetails?.timeLimit > 60 ? (
-                        "Limit cannot exceed 60 minutes"
+                        <span className="text-red-500">
+                          Limit cannot exceed 60 minutes
+                        </span>
                       ) : (
                         <>
                           <span className="font-bold">
