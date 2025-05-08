@@ -15,6 +15,7 @@ const SelectElement = () => {
       state: false,
       selectOne: false,
       selectTwo: false,
+      options: [],
       pick: option,
     });
     setSearchInput("");
@@ -39,7 +40,7 @@ const SelectElement = () => {
           <input
             className="outline-none lg:h-[30px] h-[35px] text-white text-[14px] placeholder:text-tradeFadeWhite w-full bg-transparent"
             type="text"
-            placeholder="Search account"
+            placeholder={`Search ${select?.element}`}
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
@@ -92,7 +93,7 @@ const SelectElement = () => {
           <input
             className="outline-none lg:h-[30px] h-[35px] text-white text-[14px] placeholder:text-tradeFadeWhite w-full bg-transparent"
             type="text"
-            placeholder="Search account"
+            placeholder={`Search ${select?.element}`}
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />

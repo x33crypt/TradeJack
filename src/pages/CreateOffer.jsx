@@ -8,6 +8,8 @@ import Info from "@/components/alerts/Info";
 import Warning from "@/components/alerts/Warning";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
+import { IoClose } from "react-icons/io5";
+import { MdOutlineChevronRight } from "react-icons/md";
 
 const CreateOffer = () => {
   const { select, setSelect } = useSelectElement();
@@ -19,6 +21,7 @@ const CreateOffer = () => {
     maximum: "",
     margin: 5,
     timeLimit: 15,
+    instructions: [],
   });
   const [currencies, setCurrencies] = useState([]);
   const [isOnlineWallet, setIsOnlineWallet] = useState(true);
@@ -465,6 +468,23 @@ const CreateOffer = () => {
         ...prev,
         currency: select.pick,
       }));
+    } else if (select.element === "instructions") {
+      const newInstruction = select.pick?.trim();
+
+      if (newInstruction) {
+        setOfferDetails((prev) => {
+          const current = prev.instructions || [];
+
+          if (current.includes(newInstruction) || current.length >= 5) {
+            return prev; // Do not add if already exists or exceeds limit
+          }
+
+          return {
+            ...prev,
+            instructions: [...current, newInstruction],
+          };
+        });
+      }
     }
   }, [select]);
 
@@ -472,9 +492,9 @@ const CreateOffer = () => {
     getCurrencies();
   }, []);
 
-  console.log(select);
+  console.log("select details", select);
   console.log("offer details", offerDetails);
-  console.log(currencies);
+  // console.log(currencies);
 
   const handleMinLimitChange = (e) => {
     const rawValue = e.target.value.replace(/[^\d]/g, ""); // Remove all non-digit characters
@@ -521,6 +541,34 @@ const CreateOffer = () => {
       timeLimit: Math.max(10, Number(prev.timeLimit || 0) - 5),
     }));
   };
+
+  const offerInstruction = [
+    "Receipt required",
+    "No receipt needed",
+    "No third-party",
+    "Pay exact amount",
+    "Fast payment only",
+    "Same bank only",
+  ];
+
+  const creationNote = [
+    {
+      title: " Keep Your Wallet Funded",
+      text: "Make sure you have at least the minimum amount in your wallet—this is required for your offer to go live.",
+    },
+    {
+      title: " Maintain 50% Collateral",
+      text: "Before you can accept any offer, you must hold at least 50% of the trade amount in your wallet as collateral. This “Collateral Balance” ensures you can complete the trade and protects both parties.",
+    },
+    {
+      title: "Build Trust with Transparency",
+      text: "Your trust score and feedback unlock more opportunities. Honest, fair trades lead to better engagement and more deals.",
+    },
+    {
+      title: "Follow Platform Guidelines",
+      text: "Stick to our rules to ensure smooth trades and protect your reputation.",
+    },
+  ];
 
   return (
     <>
@@ -1004,14 +1052,111 @@ const CreateOffer = () => {
                   </div>
                 </div>
 
-                <div className="">
-                  <p className="text-white text-[13px]">
-                    This is the time limit your trade partner has to make the
-                    payment and confirm by clicking{" "}
-                    <span className="font-[700] text-white">Paid</span> before
-                    the trade is automatically canceled.
-                  </p>
+                <Info
+                  text={
+                    " This is the time limit your trade partner has to make the payment and confirm by clicking paid before the trade is automatically canceled"
+                  }
+                />
+              </div>
+            </div>
+            {/* Offer Instructions Field */}
+            <div className="flex flex-col gap-[30px] p-[15px] border-b border-tradeAshLight">
+              <div>
+                <p className="text-white text-[15px] font-[500]">
+                  Offer Instructions
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-[15px]">
+                <div
+                  className="relative w-full cursor-pointer "
+                  onClick={() =>
+                    setSelect({
+                      ...select,
+                      state: true,
+                      selectOne: true,
+                      selectTwo: false,
+                      element: "instructions",
+                      pick: "",
+                      options: offerInstruction,
+                    })
+                  }
+                >
+                  <div className="">
+                    <input
+                      className={`${
+                        offerDetails?.instructions
+                          ? "border-tradeAshLight"
+                          : "border-tradeAshLight"
+                      } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border hover:border-tradeAshExtraLight outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                      type="text"
+                      readOnly
+                      placeholder="Select instructions"
+                    />
+                  </div>
+
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                    <MdKeyboardArrowDown />
+                  </div>
                 </div>
+
+                <div
+                  className={`${
+                    offerDetails?.instructions ? "flex" : "hidden"
+                  } gap-[15px] flex-wrap`}
+                >
+                  {offerDetails?.instructions.map((instr, index) => (
+                    <div className="flex items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeGreen">
+                      <p
+                        key={index}
+                        className="text-[14px] font-medium text-black"
+                      >
+                        {instr}
+                      </p>
+                      <IoClose
+                        className="text-black hover:text-tradeLightGreen text-[16px] cursor-pointer transition-all duration-300"
+                        onClick={() => {
+                          setOfferDetails((prev) => ({
+                            ...prev,
+                            instructions: prev.instructions.filter(
+                              (_, i) => i !== index
+                            ),
+                          }));
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <Info
+                  text={
+                    "You can select up to 5 instructions or requirements to help clearly communicate the terms of your offer to potential traders."
+                  }
+                />
+              </div>
+            </div>
+            {/* Offer Creation Note Field */}
+            <div className="flex flex-col gap-[30px] p-[15px] border-b border-tradeAshLight">
+              <div>
+                <p className="text-white text-[15px] font-[500]">
+                  Offer Creation Note
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-[15px] bg-tradeAsh p-[10px] rounded-[10px]">
+                {creationNote.map((note, index) => (
+                  <div key={index} className="flex items-start gap-2">
+                    <MdOutlineChevronRight className="mt-1 text-tradeFadeWhite shrink-0" />
+                    <div>
+                      <p className="text-[14px] font-semibold text-white">
+                        {note.title}
+                      </p>
+                      <p className="text-[12px] text-tradeFadeWhite">
+                        {note.text}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -1020,7 +1165,7 @@ const CreateOffer = () => {
           <div className="overflow-hidden w-full h-full flex flex-col md:border-r md:border-b md:border-t border-neutral-800">
             <div className="flex flex-col justify-between p-[15px]  border-b border-tradeAshLight w-full">
               <p className="text-[17px] text-white font-[700]">
-                Create Buy Offer
+                Trending Offers
               </p>
             </div>
           </div>
