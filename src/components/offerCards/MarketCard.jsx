@@ -11,7 +11,7 @@ import { MdOutlineDeviceThermostat } from "react-icons/md";
 import { TbArrowBigUpLines } from "react-icons/tb";
 import { RxDividerVertical } from "react-icons/rx";
 
-const OfferCard = (props) => {
+const MarketCard = (props) => {
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
@@ -236,4 +236,4 @@ const OfferCard = (props) => {
   );
 };
 
-export default OfferCard;
+export default MarketCard;

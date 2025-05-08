@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TbReload } from "react-icons/tb";
-import OfferCard from "./OfferCard";
+import OfferCard from "../offerCards/MarketCard";
 import axios from "axios";
 import { LuFilter } from "react-icons/lu";
 import { IoFilter } from "react-icons/io5";

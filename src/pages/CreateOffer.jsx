@@ -10,6 +10,7 @@ import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { MdOutlineChevronRight } from "react-icons/md";
+import TrendingCards from "@/components/offerCards/TrendingCards";
 
 const CreateOffer = () => {
   const { select, setSelect } = useSelectElement();
@@ -29,6 +30,7 @@ const CreateOffer = () => {
   const [isGiftCard, setIsGiftCard] = useState(false);
   const [isDebitOrCreditCard, setIsDebitOrCreditCard] = useState(false);
   const [isCryptoAsset, setIsCryptoAsset] = useState(false);
+  const [previewOffer, setPreviewOffer] = useState(false);
 
   const serviceType = [
     "Online Wallet Transfer",
@@ -553,12 +555,12 @@ const CreateOffer = () => {
 
   const creationNote = [
     {
-      title: " Keep Your Wallet Funded",
-      text: "Make sure you have at least the minimum amount in your wallet—this is required for your offer to go live.",
+      title: "Keep Your Wallet Funded",
+      text: "Make sure you have at least the minimum amount in your wallet, this is required for your offer to go live.",
     },
     {
-      title: " Maintain 50% Collateral",
-      text: "Before you can accept any offer, you must hold at least 50% of the trade amount in your wallet as collateral. This “Collateral Balance” ensures you can complete the trade and protects both parties.",
+      title: "Maintain 100% Collateral",
+      text: "Before you can accept any offer, you must hold 100% of the trade amount in your wallet as collateral. This “Collateral Balance” ensures you can complete the trade and protects both parties.",
     },
     {
       title: "Build Trust with Transparency",
@@ -1106,15 +1108,15 @@ const CreateOffer = () => {
                   } gap-[15px] flex-wrap`}
                 >
                   {offerDetails?.instructions.map((instr, index) => (
-                    <div className="flex items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeGreen">
+                    <div className="flex items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAsh">
                       <p
                         key={index}
-                        className="text-[14px] font-medium text-black"
+                        className="text-[14px] font-medium text-tradeGreen"
                       >
                         {instr}
                       </p>
                       <IoClose
-                        className="text-black hover:text-tradeLightGreen text-[16px] cursor-pointer transition-all duration-300"
+                        className="text-white hover:text-tradeAshExtraLight text-[16px] cursor-pointer transition-all duration-300"
                         onClick={() => {
                           setOfferDetails((prev) => ({
                             ...prev,
@@ -1136,27 +1138,47 @@ const CreateOffer = () => {
               </div>
             </div>
             {/* Offer Creation Note Field */}
-            <div className="flex flex-col gap-[30px] p-[15px] border-b border-tradeAshLight">
-              <div>
-                <p className="text-white text-[15px] font-[500]">
-                  Offer Creation Note
-                </p>
-              </div>
+            <div className="flex flex-col gap-[30px] p-[15px]  border-b border-tradeAshLight">
+              <div className="flex flex-col gap-[30px] p-[15px] bg-tradeAsh border border-tradeAshLight rounded-[10px]">
+                <div>
+                  <p className="text-tradeOrange text-[15px] font-[500]">
+                    Offer Creation Note
+                  </p>
+                </div>
 
-              <div className="flex flex-col gap-[15px] bg-tradeAs py-[10px] rounded-[10px]">
-                {creationNote.map((note, index) => (
-                  <div key={index} className="flex items-start gap-2">
-                    <MdOutlineChevronRight className="mt-1 text-tradeFadeWhite shrink-0" />
-                    <div>
-                      <p className="text-[14px] font-semibold text-white">
-                        {note.title}
-                      </p>
-                      <p className="text-[12px] text-tradeFadeWhite">
-                        {note.text}
-                      </p>
+                <div className="flex flex-col gap-[15px] bg-tradeAs py-[10px] rounded-[10px]">
+                  {creationNote.map((note, index) => (
+                    <div key={index} className="flex items-start gap-2">
+                      <MdOutlineChevronRight className="mt-1 text-tradeFadeWhite shrink-0" />
+                      <div>
+                        <p className="text-[14px] font-[500] text-white">
+                          {note.title}
+                        </p>
+                        <p className="text-[12px] text-tradeFadeWhite">
+                          {note.text}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+            </div>
+            {/* Button Field */}
+            <div className="flex flex-col gap-[20px] p-[15px]">
+              <button
+                className={` ${
+                  previewOffer
+                    ? "bg-tradeAsh text-tradeGreen"
+                    : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
+                } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
+              >
+                <p className="text-[14px] font-[700]">Preview Offer</p>
+              </button>
+              <div
+                className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
+                onClick={() => navigateTo(location?.state?.from || -1)}
+              >
+                <p className="text-[14px] font-[700] ">Save as Draft</p>
               </div>
             </div>
           </div>
@@ -1167,6 +1189,9 @@ const CreateOffer = () => {
               <p className="text-[17px] text-white font-[700]">
                 Trending Offers
               </p>
+            </div>
+            <div className="overflow-auto p-[15px]">
+              <TrendingCards />
             </div>
           </div>
         </div>
