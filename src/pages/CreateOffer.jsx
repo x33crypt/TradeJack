@@ -1143,7 +1143,7 @@ const CreateOffer = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-[15px] bg-tradeAsh p-[10px] rounded-[10px]">
+              <div className="flex flex-col gap-[15px] bg-tradeAs py-[10px] rounded-[10px]">
                 {creationNote.map((note, index) => (
                   <div key={index} className="flex items-start gap-2">
                     <MdOutlineChevronRight className="mt-1 text-tradeFadeWhite shrink-0" />
