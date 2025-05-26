@@ -9,6 +9,7 @@ export const SelectElementProvider = ({ children }) => {
     state: false,
     selectOne: false,
     selectTwo: false,
+    page: "",
     element: "",
     options: [],
     pick: "",

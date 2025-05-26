@@ -24,6 +24,7 @@ import ChangeAdress from "./pages/ChangeAdress";
 export const userContext = createContext();
 import SelectElement from "./components/SelectElement";
 import TradeAlert from "./components/TradeAlert";
+import CreateOfferSummary from "./pages/CreateOfferSummary";
 
 const App = () => {
   const [user, setUser] = useState("");
@@ -57,6 +58,11 @@ const App = () => {
             <Route path="/account/update/address" element={<ChangeAdress />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/create-offer" element={<CreateOffer />} />
+            <Route
+              path="/create-offer/summary"
+              element={<CreateOfferSummary />}
+            />
+
             <Route path="/offer/:id" element={<AboutOffer />} />
             <Route path="/chat" element={<Messages />} />
             <Route path="/account/auth/verify" element={<ConfirmPassword />} />

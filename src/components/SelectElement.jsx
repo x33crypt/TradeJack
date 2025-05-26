@@ -47,7 +47,7 @@ const SelectElement = () => {
         </div>
         <div className="overflow-y-auto custom-scrollbar w-full">
           {searchInput ? (
-            <div className=" max-h-[300px] flex flex-col gap-[5px]">
+            <div className=" max-h-[300px] flex flex-col gap-[5px] w-full">
               {(select?.options || [])
                 .filter((option) => typeof option === "string")
                 .filter((option) =>
@@ -57,14 +57,14 @@ const SelectElement = () => {
                   <div
                     key={index}
                     onClick={() => handleUpdate(option)}
-                    className="px-[10px] py-[10px] mr-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
+                    className="px-[10px] py-[10px]  hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
                   >
                     <p className="text-[14px]">{option}</p>
                   </div>
                 ))}
             </div>
           ) : (
-            <div className=" max-h-[300px] flex flex-col gap-[5px]">
+            <div className=" max-h-[300px] flex flex-col gap-[5px] w-full">
               {(select?.options || [])
                 .filter((option) => typeof option === "string")
                 .sort((a, b) => a.localeCompare(b))
@@ -72,7 +72,7 @@ const SelectElement = () => {
                   <div
                     key={index}
                     onClick={() => handleUpdate(option)}
-                    className="px-[10px] py-[10px] mr-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
+                    className="px-[10px] py-[10px]  hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
                   >
                     <p className="text-[14px]">{option}</p>
                   </div>
@@ -112,7 +112,7 @@ const SelectElement = () => {
                   <div
                     key={index}
                     onClick={() => handleUpdate({ code, name })}
-                    className="px-[10px] py-[10px] mr-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
+                    className="px-[10px] py-[10px] hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
                   >
                     <p className="text-[14px]">
                       {code} — {name}
@@ -131,7 +131,7 @@ const SelectElement = () => {
                   <div
                     key={index}
                     onClick={() => handleUpdate({ code, name })}
-                    className="px-[10px] py-[10px] mr-[10px] hover:bg-tradeGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
+                    className="px-[10px] py-[10px] hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
                   >
                     <p className="text-[14px]">
                       {code} — {name}
@@ -144,7 +144,7 @@ const SelectElement = () => {
       </div>
 
       <div
-        className="md:w-[500px] w-full bg-black text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
+        className="md:w-[500px] w-full bg-tradeOrange text-black hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
         onClick={() => setSelect({ ...select, state: false })}
       >
         <p className="text-[14px] font-[700] ">Cancel</p>

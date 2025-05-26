@@ -7,19 +7,20 @@ import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { TradeAlertProvider } from "./context/TradeAlertContext";
 import { SelectElementProvider } from "./context/SelectElementContext";
-import SelectElement from "./components/SelectElement";
-import TradeAlert from "./components/TradeAlert";
+import { OfferDetailsProvider } from "./context/CreateOfferDetailsContext";
 
 // Render MainApp into #root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <SelectElementProvider>
-        <TradeAlertProvider>
-          <App />
-        </TradeAlertProvider>
-      </SelectElementProvider>
+      <OfferDetailsProvider>
+        <SelectElementProvider>
+          <TradeAlertProvider>
+            <App />
+          </TradeAlertProvider>
+        </SelectElementProvider>
+      </OfferDetailsProvider>
     </BrowserRouter>
   </StrictMode>
 );

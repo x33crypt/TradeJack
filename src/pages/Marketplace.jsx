@@ -4,11 +4,25 @@ import MarketMain from "@/components/marketplace/MarketMain";
 import Footer from "@/components/Footer";
 import OfferFilter from "@/components/marketplace/OfferFilter";
 import axios from "axios";
+import { useSelectElement } from "@/context/SelectElementContext";
 
 const Marketplace = () => {
   const [offers, setOffers] = useState();
   const [promotedOffers, setPromotedOffers] = useState();
   const [unPromotedOffers, setUnPromotedOffers] = useState();
+  const [offerFilter, setOfferFilter] = useState({
+    serviceType: "Default",
+    service: "",
+    currency: { code: "", name: "" },
+    amount: "",
+    priceSort: "",
+    timeSort: "",
+    allOffers: true,
+    onlineOffers: false,
+    clearFilter: false,
+    loading: false,
+  });
+
   const [serviceType, setServiceType] = useState("Default");
   const [accountType, setAccountType] = useState("");
   const [walletType, setWaletType] = useState("");
@@ -27,6 +41,7 @@ const Marketplace = () => {
   const [isOnlineOffer, setIsOnlineOffer] = useState(false);
   const [isFilterLoading, setIsFilterLoading] = useState(false);
   const [clearFilter, setClearFilter] = useState(false);
+  const { select, setSelect } = useSelectElement();
 
   const baseUrl = import.meta.env.BASE_URL;
 
@@ -80,7 +95,10 @@ const Marketplace = () => {
   };
 
   const handleFilterOffer = async () => {
-    setIsFilterLoading(true);
+    setOfferFilter((prev) => ({
+      ...prev,
+      loading: true,
+    }));
 
     // console.log(`Service Type: ${serviceType} `);
     // console.log(`Service: ${getSelectedService()} `);
@@ -94,66 +112,66 @@ const Marketplace = () => {
       const response = await axios.get(`/fakeData.json`);
       let filteredOffers = response.data.offers;
 
-      if (isTimeSort === "fastToSlow") {
+      if (offerFilter?.timeSort === "fastToSlow") {
         filteredOffers = [...filteredOffers].sort(
           (a, b) => a.avgTradeTime - b.avgTradeTime
         );
       }
 
-      if (isTimeSort === "slowToFast") {
+      if (offerFilter?.timeSort === "slowToFast") {
         filteredOffers = [...filteredOffers].sort(
           (a, b) => b.avgTradeTime - a.avgTradeTime
         );
       }
 
-      if (isPriceSort === "highToLow") {
+      if (offerFilter?.priceSort === "highToLow") {
         filteredOffers = filteredOffers.sort((a, b) => a.price - b.price);
       }
 
-      if (isPriceSort === "lowToHigh") {
+      if (offerFilter?.priceSort === "lowToHigh") {
         filteredOffers = filteredOffers.sort((a, b) => b.price - a.price);
       }
 
       // Reset to full list if 'Default' is selected and 'isAllOffer' is true
-      if (serviceType === "Default" && isAllOffer) {
+      if (offerFilter?.serviceType === "Default" && offerFilter?.allOffers) {
         setOffers(filteredOffers);
         return;
       }
 
       // Apply other filters
-      if (serviceType && serviceType !== "Default") {
+      if (offerFilter?.serviceType && offerFilter?.serviceType !== "Default") {
         filteredOffers = filteredOffers.filter(
-          (offer) => offer?.serviceType === serviceType
+          (offer) => offer?.serviceType === offerFilter?.serviceType
         );
       }
 
-      const service = await getSelectedService(); // Ensure it's awaited if async
-
-      if (service) {
+      if (offerFilter?.service) {
         filteredOffers = filteredOffers.filter(
-          (offer) => offer.service === service
+          (offer) => offer.service === offerFilter?.service
         );
       }
 
-      if (amount) {
+      if (offerFilter?.amount) {
         filteredOffers = filteredOffers.filter(
-          (offer) => amount >= offer.miniPurchase && amount <= offer.maxPurchase
+          (offer) =>
+            offerFilter?.amount >= offer.miniPurchase &&
+            offerFilter?.amount <= offer.maxPurchase
         );
       }
 
-      if (selectedCurrency?.code) {
+      if (offerFilter?.currency?.code) {
         filteredOffers = filteredOffers.filter(
-          (offer) => offer.currency === selectedCurrency?.code
+          (offer) => offer.currency === offerFilter?.currency?.code
         );
       }
 
-      if (isOnlineOffer) {
+      if (offerFilter?.allOffers) {
         filteredOffers = filteredOffers.filter(
           (offer) => offer.lastSeen === "online"
         );
       }
 
-      if (isOnlineOffer) {
+      if (offerFilter?.onlineOffers) {
         filteredOffers = filteredOffers.filter(
           (offer) => offer.lastSeen === "online"
         );
@@ -163,7 +181,10 @@ const Marketplace = () => {
     } catch (error) {
       console.error("Error fetching or filtering offers:", error);
     } finally {
-      setIsFilterLoading(false);
+      setOfferFilter((prev) => ({
+        ...prev,
+        loading: false,
+      }));
       setIsOfferFilter(false);
     }
   };
@@ -194,7 +215,7 @@ const Marketplace = () => {
 
   useEffect(() => {
     handleFilterOffer();
-  }, [isAllOffer, isOnlineOffer]);
+  }, [offerFilter?.allOffers, offerFilter?.onlineOffers]);
 
   // console.log(offers);
   // console.log(promotedOffers);
@@ -214,8 +235,10 @@ const Marketplace = () => {
     <>
       <InAppNav />
       <div className="flex lg:flex-row flex-col min-h-svh bg-black lg:px-[2%] md:px-[2.5%]">
-        <div className="lg:flex lg:sticky top-[-16px] max-h-svh pt-[75px] hidden w-[290px]">
+        <div className="lg:flex lg:sticky top-[-16px] max-h-svh pt-[80px] hidden w-[290px]">
           <OfferFilter
+            offerFilter={offerFilter}
+            setOfferFilter={setOfferFilter}
             serviceType={serviceType}
             setServiceType={setServiceType}
             accountType={accountType}
@@ -244,10 +267,12 @@ const Marketplace = () => {
             setIsOnlineOffer={setIsOnlineOffer}
             handleResetFilter={handleResetFilter}
             setClearFilter={setClearFilter}
+            setSelect={setSelect}
+            select={select}
           />
         </div>
 
-        <div className="flex-1 min-h-svh md:pt-[75px] pt-[60px]">
+        <div className="flex-1 min-h-svh md:pt-[80px] pt-[60px]">
           <MarketMain
             promotedOffers={promotedOffers}
             unPromotedOffers={unPromotedOffers}

@@ -3,27 +3,19 @@ import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useSelectElement } from "@/context/SelectElementContext";
+import { useCreateOfferDetails } from "@/context/CreateOfferDetailsContext";
 import axios from "axios";
 import Info from "@/components/alerts/Info";
 import Warning from "@/components/alerts/Warning";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
-import { MdOutlineChevronRight } from "react-icons/md";
-import TrendingCards from "@/components/offerCards/TrendingCards";
+import { CiBank } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
 const CreateOffer = () => {
   const { select, setSelect } = useSelectElement();
-  const [offerDetails, setOfferDetails] = useState({
-    serviceType: "Online Wallet Transfer",
-    service: "",
-    currency: { code: "", name: "" },
-    minimum: "",
-    maximum: "",
-    margin: 5,
-    timeLimit: 15,
-    instructions: [],
-  });
+  const { offerDetails, setOfferDetails } = useCreateOfferDetails();
   const [currencies, setCurrencies] = useState([]);
   const [isOnlineWallet, setIsOnlineWallet] = useState(true);
   const [isAccount, setIsAccount] = useState(false);
@@ -31,6 +23,7 @@ const CreateOffer = () => {
   const [isDebitOrCreditCard, setIsDebitOrCreditCard] = useState(false);
   const [isCryptoAsset, setIsCryptoAsset] = useState(false);
   const [previewOffer, setPreviewOffer] = useState(false);
+  const { createOffer, setCreateOffer } = useState(false);
 
   const serviceType = [
     "Online Wallet Transfer",
@@ -470,20 +463,20 @@ const CreateOffer = () => {
         ...prev,
         currency: select.pick,
       }));
-    } else if (select.element === "instructions") {
-      const newInstruction = select.pick?.trim();
+    } else if (select.element === "terms") {
+      const newTag = select.pick?.trim();
 
-      if (newInstruction) {
+      if (newTag) {
         setOfferDetails((prev) => {
-          const current = prev.instructions || [];
+          const current = prev.termTags || [];
 
-          if (current.includes(newInstruction) || current.length >= 5) {
+          if (current.includes(newTag) || current.length >= 5) {
             return prev; // Do not add if already exists or exceeds limit
           }
 
           return {
             ...prev,
-            instructions: [...current, newInstruction],
+            termTags: [...current, newTag],
           };
         });
       }
@@ -544,7 +537,14 @@ const CreateOffer = () => {
     }));
   };
 
-  const offerInstruction = [
+  const handleInstruction = (e) => {
+    setOfferDetails((prev) => ({
+      ...prev,
+      instruction: e.target.value,
+    }));
+  };
+
+  const offerTermTags = [
     "Receipt required",
     "No receipt needed",
     "No third-party",
@@ -553,30 +553,13 @@ const CreateOffer = () => {
     "Same bank only",
   ];
 
-  const creationNote = [
-    {
-      title: "Keep Your Wallet Funded",
-      text: "Make sure you have at least the minimum amount in your wallet, this is required for your offer to go live.",
-    },
-    {
-      title: "Maintain 100% Collateral",
-      text: "Before you can accept any offer, you must hold 100% of the trade amount in your wallet as collateral. This “Collateral Balance” ensures you can complete the trade and protects both parties.",
-    },
-    {
-      title: "Build Trust with Transparency",
-      text: "Your trust score and feedback unlock more opportunities. Honest, fair trades lead to better engagement and more deals.",
-    },
-    {
-      title: "Follow Platform Guidelines",
-      text: "Stick to our rules to ensure smooth trades and protect your reputation.",
-    },
-  ];
+  const navigateTo = useNavigate();
 
   return (
     <>
       <InAppNav />
       <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%]">
-        <div className="flex flex-col gap-[px] min-h-svh w-full md:border-x md:border-t md:border-b border-neutral-800 md:mt-[75px] mt-[60px]">
+        <div className="flex flex-col  min-h-svh w-full md:border-x md:border-t md:border-b border-neutral-800 md:mt-[80px] mt-[60px]">
           <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
             <p className="text-[17px] text-white font-[700]">
               Create Buy Offer
@@ -1061,11 +1044,11 @@ const CreateOffer = () => {
                 />
               </div>
             </div>
-            {/* Offer Instructions Field */}
+            {/* Offer Terms Tag Field */}
             <div className="flex flex-col gap-[30px] p-[15px] border-b border-tradeAshLight">
               <div>
                 <p className="text-white text-[15px] font-[500]">
-                  Offer Instructions
+                  Offer Terms Tag
                 </p>
               </div>
 
@@ -1078,22 +1061,22 @@ const CreateOffer = () => {
                       state: true,
                       selectOne: true,
                       selectTwo: false,
-                      element: "instructions",
+                      element: "terms",
                       pick: "",
-                      options: offerInstruction,
+                      options: offerTermTags,
                     })
                   }
                 >
                   <div className="">
                     <input
                       className={`${
-                        offerDetails?.instructions
+                        offerDetails?.termTags
                           ? "border-tradeAshLight"
                           : "border-tradeAshLight"
                       } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border hover:border-tradeAshExtraLight outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                       type="text"
                       readOnly
-                      placeholder="Select instructions"
+                      placeholder="Select terms"
                     />
                   </div>
 
@@ -1104,23 +1087,23 @@ const CreateOffer = () => {
 
                 <div
                   className={`${
-                    offerDetails?.instructions ? "flex" : "hidden"
-                  } gap-[15px] flex-wrap`}
+                    offerDetails?.termTags.length == 0 ? "hidden" : "flex"
+                  }  gap-[15px] flex-wrap`}
                 >
-                  {offerDetails?.instructions.map((instr, index) => (
+                  {offerDetails?.termTags.map((tag, index) => (
                     <div className="flex items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAsh">
                       <p
                         key={index}
                         className="text-[14px] font-medium text-tradeGreen"
                       >
-                        {instr}
+                        {tag}
                       </p>
                       <IoClose
                         className="text-white hover:text-tradeAshExtraLight text-[16px] cursor-pointer transition-all duration-300"
                         onClick={() => {
                           setOfferDetails((prev) => ({
                             ...prev,
-                            instructions: prev.instructions.filter(
+                            termTags: prev.termTags.filter(
                               (_, i) => i !== index
                             ),
                           }));
@@ -1132,66 +1115,203 @@ const CreateOffer = () => {
 
                 <Info
                   text={
-                    "You can select up to 5 instructions or requirements to help clearly communicate the terms of your offer to potential traders."
+                    "You can select up to 5 terms or requirements to help clearly communicate the terms of your offer to potential traders."
                   }
                 />
               </div>
             </div>
-            {/* Offer Creation Note Field */}
-            <div className="flex flex-col gap-[30px] p-[15px]  border-b border-tradeAshLight">
-              <div className="flex flex-col gap-[30px] p-[15px] bg-tradeAsh border border-tradeAshLight rounded-[10px]">
+            {/* Trade Instruction field Field */}
+            <div className="flex flex-col gap-[30px] p-[15px]">
+              <div>
+                <p className="text-white text-[15px] font-[500]">
+                  Trade Instructions
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-[15px]">
+                <textarea
+                  onChange={handleInstruction}
+                  className="h-[200px] w-full bg-tradeAsh border border-tradeAshLight rounded-[10px] p-[12px] text-white text-[14px] placeholder-tradeFadeWhite focus:outline-none resize-none"
+                  placeholder="Write your trade Instructions here."
+                ></textarea>
+
+                <Info
+                  text={
+                    "Use this field to add any extra Instructions or context that can help ensure a smooth and transparent trade. This could include how quickly you'll respond, reminders to be respectful, or steps sellers should follow during communication. Be clear, helpful, and professional."
+                  }
+                />
+              </div>
+            </div>
+          </div>
+          <div className=" bg-black flex lg:hidden flex-col gap-[15px] p-[15px]">
+            <button
+              onClick={() => navigateTo("/create-offer/summary")}
+              className={` ${
+                previewOffer
+                  ? "bg-tradeAsh text-tradeGreen"
+                  : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
+              } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
+            >
+              <p className="text-[14px] font-[700]">View Summary</p>
+            </button>
+          </div>
+        </div>
+
+        <div className="lg:flex hidden min-h-svh md:mt-[80px] mt-[60px]  lg:w-[520px] w-full border-neutral-800 ">
+          <div className=" relative w-full  flex flex-col md:border-r md:border-b md:border-t border-neutral-800">
+            <div className="flex flex-col justify-between p-[15px]  border-b border-tradeAshLight w-full">
+              <p className="text-[17px] text-white font-[700]">Offer Summary</p>
+            </div>
+
+            <div className="p-[15px]">
+              <p className="text-white text-[14px]">
+                Verify your offer information to set clear terms and support a
+                transparent, efficient trade.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-[25px] p-[15px] ">
+              <div className="flex gap-[15px] items-center bg-tradeAsh border border-neutral-800 lg:px-[15px] md:px-[2.5%] p-[15px] rounded-[10px]">
                 <div>
-                  <p className="text-tradeOrange text-[15px] font-[500]">
-                    Offer Creation Note
+                  <CiBank className="text-tradeOrange text-[36px]" />
+                </div>
+                <div className="flex-1 flex flex-col gap-[2px] ">
+                  <p className="text-[12.5px] text-tradeFadeWhite font-[500]">
+                    {offerDetails?.serviceType || "Service Type"}
+                  </p>
+                  <p className="text-[15px] text-tradeLightGreen font-[600]">
+                    {offerDetails?.service || "-- --"}
+                  </p>
+                </div>
+                <div></div>
+              </div>
+
+              <div className="flex flex-col gap-[4px]">
+                <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
+                  Currency
+                </p>
+                <p className="text-tradeLightGreen text-[15px] font-[600]">
+                  {offerDetails?.currency?.name
+                    ? `${offerDetails.currency.name} - ${offerDetails.currency.code}`
+                    : "-- --"}
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-[4px]">
+                <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
+                  Limit Range
+                </p>
+
+                <div className="flex flex-row justify-between">
+                  <p className="text-white text-[15px]">Minimum Purchase</p>
+                  <p className="text-tradeLightGreen text-[15px] font-[600]">
+                    {offerDetails?.minimum !== undefined &&
+                    offerDetails?.currency?.code
+                      ? `${Number(offerDetails.minimum).toLocaleString()} ${
+                          offerDetails.currency.code
+                        }`
+                      : "N/A"}
                   </p>
                 </div>
 
-                <div className="flex flex-col gap-[15px] bg-tradeAs py-[10px] rounded-[10px]">
-                  {creationNote.map((note, index) => (
-                    <div key={index} className="flex items-start gap-2">
-                      <MdOutlineChevronRight className="mt-1 text-tradeFadeWhite shrink-0" />
-                      <div>
-                        <p className="text-[14px] font-[500] text-white">
-                          {note.title}
-                        </p>
-                        <p className="text-[12px] text-tradeFadeWhite">
-                          {note.text}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                <div className="flex flex-row justify-between">
+                  <p className="text-white text-[15px]">Maximum Purchase</p>
+                  <p className="text-tradeLightGreen text-[15px] font-[600]">
+                    {offerDetails?.maximum !== undefined &&
+                    offerDetails?.currency?.code
+                      ? `${Number(offerDetails.maximum).toLocaleString()} ${
+                          offerDetails.currency.code
+                        }`
+                      : "N/A"}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+                  Profit Margin
+                </p>
+                <p className="text-white text-[15px] ">
+                  Estimated return:{" "}
+                  <span className="text-tradeLightGreen font-[600]">
+                    {offerDetails?.margin !== undefined
+                      ? `${offerDetails.margin}%`
+                      : "--"}
+                  </span>{" "}
+                  per trade
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+                  Payment Window
+                </p>
+                <p className="text-white text-[15px]">
+                  Seller has{" "}
+                  <span className="font-[600] text-tradeLightGreen">
+                    {offerDetails?.timeLimit !== undefined
+                      ? `${offerDetails.timeLimit} minutes`
+                      : "--"}
+                  </span>{" "}
+                  to complete payment
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+                  Term Tags
+                </p>
+                <div className="grid grid-cols-2 gap-y-1">
+                  {offerDetails?.termTags?.length ? (
+                    offerDetails.termTags.map((tag, index) => (
+                      <p
+                        key={index}
+                        className="text-[15px] font-[500] text-tradeOrange"
+                      >
+                        {tag}
+                        {index < offerDetails.termTags.length - 1 && ","}
+                      </p>
+                    ))
+                  ) : (
+                    <p className="text-tradeFadeWhite text-[15px] font-[500]">
+                      No terms specified
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+                  Trade Instruction
+                </p>
+                <div className="">
+                  {offerDetails?.instruction ? (
+                    <p className="text-white text-[15px]">
+                      {offerDetails?.instruction}
+                    </p>
+                  ) : (
+                    <p className="text-tradeFadeWhite text-[15px] font-[500]">
+                      No Instructions set yet
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
-            {/* Button Field */}
-            <div className="flex flex-col gap-[20px] p-[15px]">
+
+            <div className="sticky top-[60px] bottom-0 bg-black flex flex-col gap-[15px] p-[15px]">
+              <div className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
+                <p className="text-[14px] font-[700] ">Save as Draft</p>
+              </div>
               <button
+                onClick={() => setPreviewOffer(!previewOffer)}
                 className={` ${
-                  previewOffer
+                  createOffer
                     ? "bg-tradeAsh text-tradeGreen"
                     : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
                 } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
               >
-                <p className="text-[14px] font-[700]">Preview Offer</p>
+                <p className="text-[14px] font-[700]">Create Offer</p>
               </button>
-              <div
-                className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
-                onClick={() => navigateTo(location?.state?.from || -1)}
-              >
-                <p className="text-[14px] font-[700] ">Save as Draft</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="lg:flex lg:sticky min-h-svh pt-[75px] hidden w-[500px] border-neutral-800 ">
-          <div className="overflow-hidden w-full h-full flex flex-col md:border-r md:border-b md:border-t border-neutral-800">
-            <div className="flex flex-col justify-between p-[15px]  border-b border-tradeAshLight w-full">
-              <p className="text-[17px] text-white font-[700]">
-                Trending Offers
-              </p>
-            </div>
-            <div className="overflow-auto p-[15px]">
-              <TrendingCards />
             </div>
           </div>
         </div>

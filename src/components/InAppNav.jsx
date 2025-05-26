@@ -66,7 +66,7 @@ const InAppNav = () => {
 
   return (
     <>
-      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] p-[15px] h-[62px] md:h-[60px] flex justify-between items-center border-b border-neutral-800 ">
+      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] p-[15px] h-[62px] md:h-[64px] flex justify-between items-center border-b border-neutral-800 ">
         <div className="flex items-center lg:gap-[30px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
@@ -95,28 +95,28 @@ const InAppNav = () => {
         <div className=" md:flex hidden  gap-[10px] items-center">
           <div
             onClick={() => safeNavigate("/marketplace")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <RiExchangeLine className="lg:flex hidden text-[16px]" />
             <p className="text-[13px] font-[500]">Sell Assets</p>
           </div>
           <div
             onClick={() => safeNavigate("/create-offer")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <TbBuildingBank className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-[500]">Buy Assets</p>
           </div>
           <div
             onClick={() => safeNavigate("/create-offer")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <FaVenusDouble className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-[500]">Favourite Vendors</p>
           </div>
           <div
             onClick={() => safeNavigate("/dashboard")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <MdOutlineSpaceDashboard className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-[500]">Dashboard</p>

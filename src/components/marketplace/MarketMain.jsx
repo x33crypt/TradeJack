@@ -156,18 +156,7 @@ const MarketMain = ({
               </p>
             </div>
             <div className="flex flex-col gap-[20px] ">
-              <div className=" md:flex hidden bg-tradeAshLight px-[12px] py-[4px] rounded-[px]">
-                <p className="flex-1 text-neutral-400 text-[14px] font-[500] ">
-                  Vendor
-                </p>
-                <p className="flex-1 text-neutral-400 text-[14px] font-[500] ">
-                  Details
-                </p>
-                <p className="flex-1 text-neutral-400 text-[14px] font-[500] ">
-                  Rate & Performance
-                </p>
-              </div>
-              <div className="grid grid-cols-1 gap-[5px] items-center">
+              <div className="grid grid-cols-1  items-center">
                 {promotedOffers?.map((offer, index) => (
                   <div key={index}>
                     <OfferCard
@@ -196,18 +185,7 @@ const MarketMain = ({
               </p>
             </div>
             <div className="flex flex-col gap-[20px]">
-              <div className=" md:flex hidden bg-tradeAshLight px-[12px] py-[4px] rounded-[px]">
-                <p className="flex-1 text-neutral-400 text-[14px] font-[500]">
-                  Vendor
-                </p>
-                <p className="flex-1 text-neutral-400 text-[14px] font-[500]">
-                  Details
-                </p>
-                <p className="flex-1 text-neutral-400 text-[14px] font-[500]">
-                  Rate & Performance
-                </p>
-              </div>
-              <div className="grid grid-cols-1 gap-[5px] items-center">
+              <div className="grid grid-cols-1 items-center">
                 {unPromotedOffers?.map((offer, index) => (
                   <div key={index}>
                     <OfferCard
