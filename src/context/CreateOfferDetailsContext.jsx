@@ -7,6 +7,7 @@ const OfferDetailsContext = createContext();
 export const OfferDetailsProvider = ({ children }) => {
   const [offerDetails, setOfferDetails] = useState({
     serviceType: "Online Wallet Transfer",
+    serviceTypeIcon: "",
     service: "",
     currency: { code: "", name: "" },
     minimum: "",

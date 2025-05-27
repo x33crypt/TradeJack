@@ -1,19 +1,33 @@
 import React, { useState } from "react";
 import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
-import { CiBank } from "react-icons/ci";
 import { useCreateOfferDetails } from "@/context/CreateOfferDetailsContext";
+import { CiBank } from "react-icons/ci";
+import { IoWalletOutline } from "react-icons/io5";
+import { HiOutlineGift } from "react-icons/hi2";
+import { IoCardOutline } from "react-icons/io5";
+import { GiTwoCoins } from "react-icons/gi";
 
 const CreateOfferSummary = () => {
   const { offerDetails, setOfferDetails } = useCreateOfferDetails();
   const { createOffer, setCreateOffer } = useState(false);
 
+  const iconMap = {
+    CiBank: CiBank,
+    IoWalletOutline: IoWalletOutline,
+    IoCardOutline: IoCardOutline,
+    HiOutlineGift: HiOutlineGift,
+    GiTwoCoins: GiTwoCoins,
+  };
+
+  const IconComponent = iconMap[offerDetails?.serviceTypeIcon];
+
   return (
     <>
       <InAppNav />
       <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%]">
-        <div className="flex min-h-svh md:mt-[80px] mt-[60px]  lg:w-[520px] w-full border-neutral-800 ">
-          <div className=" relative w-full  flex flex-col md:border-r md:border-b md:border-t border-neutral-800">
+        <div className="flex min-h-svh md:mt-[80px] mt-[60px]  w-full b">
+          <div className=" relative w-full  flex flex-col md:border-x md:border-b md:border-t border-neutral-800">
             <div className="flex flex-col justify-between p-[15px]  border-b border-tradeAshLight w-full">
               <p className="text-[17px] text-white font-[700]">Offer Summary</p>
             </div>
@@ -28,17 +42,18 @@ const CreateOfferSummary = () => {
             <div className="flex flex-col gap-[25px] p-[15px] ">
               <div className="flex gap-[15px] items-center bg-tradeAsh border border-neutral-800 lg:px-[15px] md:px-[2.5%] p-[15px] rounded-[10px]">
                 <div>
-                  <CiBank className="text-tradeOrange text-[36px]" />
+                  {IconComponent && (
+                    <IconComponent className="text-tradeOrange text-[36px]" />
+                  )}
                 </div>
-                <div className="flex-1 flex flex-col gap-[2px] ">
-                  <p className="text-[12.5px] text-tradeFadeWhite font-[500]">
+                <div className="flex-1 flex flex-col gap-[4px] ">
+                  <p className="text-[13px] text-tradeFadeWhite font-[500]">
                     {offerDetails?.serviceType || "Service Type"}
                   </p>
                   <p className="text-[15px] text-tradeLightGreen font-[600]">
                     {offerDetails?.service || "-- --"}
                   </p>
                 </div>
-                <div></div>
               </div>
 
               <div className="flex flex-col gap-[4px]">
@@ -57,8 +72,10 @@ const CreateOfferSummary = () => {
                   Limit Range
                 </p>
 
-                <div className="flex flex-row justify-between">
-                  <p className="text-white text-[15px]">Minimum Purchase</p>
+                <div className="grid grid-cols-2 ">
+                  <p className="text-tradeFadeWhite text-[14px]">
+                    Minimum Purchase
+                  </p>
                   <p className="text-tradeLightGreen text-[15px] font-[600]">
                     {offerDetails?.minimum !== undefined &&
                     offerDetails?.currency?.code
@@ -69,8 +86,10 @@ const CreateOfferSummary = () => {
                   </p>
                 </div>
 
-                <div className="flex flex-row justify-between">
-                  <p className="text-white text-[15px]">Maximum Purchase</p>
+                <div className="grid grid-cols-2 ">
+                  <p className="text-tradeFadeWhite text-[14px]">
+                    Maximum Purchase
+                  </p>
                   <p className="text-tradeLightGreen text-[15px] font-[600]">
                     {offerDetails?.maximum !== undefined &&
                     offerDetails?.currency?.code
@@ -86,14 +105,15 @@ const CreateOfferSummary = () => {
                 <p className="text-tradeFadeWhite text-[12.5px] font-medium">
                   Profit Margin
                 </p>
-                <p className="text-white text-[15px] ">
-                  Estimated return:{" "}
-                  <span className="text-tradeLightGreen font-[600]">
+                <p className="text-white text-[14px]">
+                  Your estimated profit per transaction is{" "}
+                  <span className="text-tradeGreen text-[15px] font-[600]">
                     {offerDetails?.margin !== undefined
                       ? `${offerDetails.margin}%`
                       : "--"}
-                  </span>{" "}
-                  per trade
+                  </span>
+                  . This represents the percentage you’ll earn on each
+                  successful trade.
                 </p>
               </div>
 
@@ -101,14 +121,16 @@ const CreateOfferSummary = () => {
                 <p className="text-tradeFadeWhite text-[12.5px] font-medium">
                   Payment Window
                 </p>
-                <p className="text-white text-[15px]">
-                  Seller has{" "}
-                  <span className="font-[600] text-tradeLightGreen">
+                <p className="text-white text-[14px]">
+                  The buyer will have{" "}
+                  <span className="font-[600] text-[15px] text-tradeGreen">
                     {offerDetails?.timeLimit !== undefined
                       ? `${offerDetails.timeLimit} minutes`
                       : "--"}
                   </span>{" "}
-                  to complete payment
+                  to complete the payment after the trade begins. If payment
+                  isn't made within this window, the trade will automatically be
+                  canceled.
                 </p>
               </div>
 
@@ -119,13 +141,14 @@ const CreateOfferSummary = () => {
                 <div className="grid grid-cols-2 gap-y-1">
                   {offerDetails?.termTags?.length ? (
                     offerDetails.termTags.map((tag, index) => (
-                      <p
-                        key={index}
-                        className="text-[15px] font-[500] text-tradeOrange"
-                      >
-                        {tag}
-                        {index < offerDetails.termTags.length - 1 && ","}
-                      </p>
+                      <div className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight">
+                        <p
+                          key={index}
+                          className="text-[14px] font-medium text-tradeOrange"
+                        >
+                          {tag}
+                        </p>
+                      </div>
                     ))
                   ) : (
                     <p className="text-tradeFadeWhite text-[15px] font-[500]">
@@ -153,7 +176,7 @@ const CreateOfferSummary = () => {
               </div>
             </div>
 
-            <div className="sticky top-[60px] bottom-0 bg-black flex flex-col gap-[15px] p-[15px]">
+            <div className=" bg-black flex flex-col gap-[15px] p-[15px]">
               <div className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
                 <p className="text-[14px] font-[700] ">Save as Draft</p>
               </div>

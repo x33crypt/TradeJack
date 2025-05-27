@@ -10,8 +10,12 @@ import Warning from "@/components/alerts/Warning";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
-import { CiBank } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
+import { CiBank } from "react-icons/ci";
+import { IoWalletOutline } from "react-icons/io5";
+import { HiOutlineGift } from "react-icons/hi2";
+import { IoCardOutline } from "react-icons/io5";
+import { GiTwoCoins } from "react-icons/gi";
 
 const CreateOffer = () => {
   const { select, setSelect } = useSelectElement();
@@ -398,6 +402,7 @@ const CreateOffer = () => {
     if (offerDetails.serviceType === "Online Wallet Transfer") {
       setOfferDetails((prev) => ({
         ...prev,
+        serviceTypeIcon: "IoWalletOutline",
         service: "",
       }));
       setIsOnlineWallet(true);
@@ -408,6 +413,7 @@ const CreateOffer = () => {
     } else if (offerDetails.serviceType === "Direct Bank Transfer") {
       setOfferDetails((prev) => ({
         ...prev,
+        serviceTypeIcon: "CiBank",
         service: "",
       }));
       setIsAccount(true);
@@ -418,6 +424,7 @@ const CreateOffer = () => {
     } else if (offerDetails.serviceType === "Gift Card Exchange") {
       setOfferDetails((prev) => ({
         ...prev,
+        serviceTypeIcon: "HiOutlineGift",
         service: "",
       }));
       setIsGiftCard(true);
@@ -428,6 +435,7 @@ const CreateOffer = () => {
     } else if (offerDetails.serviceType === "Card-Based Spending") {
       setOfferDetails((prev) => ({
         ...prev,
+        serviceTypeIcon: "IoCardOutline",
         service: "",
       }));
       setIsDebitOrCreditCard(true);
@@ -438,6 +446,7 @@ const CreateOffer = () => {
     } else if (offerDetails.serviceType === "Crypto Trading") {
       setOfferDetails((prev) => ({
         ...prev,
+        serviceTypeIcon: "GiTwoCoins",
         service: "",
       }));
       setIsCryptoAsset(true);
@@ -453,7 +462,12 @@ const CreateOffer = () => {
   }, [offerDetails.serviceType]);
 
   useEffect(() => {
-    if (select.element === "service") {
+    if (select.element === "service type") {
+      setOfferDetails((prev) => ({
+        ...prev,
+        serviceType: select.pick,
+      }));
+    } else if (select.element === "service") {
       setOfferDetails((prev) => ({
         ...prev,
         service: select.pick,
@@ -553,6 +567,16 @@ const CreateOffer = () => {
     "Same bank only",
   ];
 
+  const iconMap = {
+    CiBank: CiBank,
+    IoWalletOutline: IoWalletOutline,
+    IoCardOutline: IoCardOutline,
+    HiOutlineGift: HiOutlineGift,
+    GiTwoCoins: GiTwoCoins,
+  };
+
+  const IconComponent = iconMap[offerDetails?.serviceTypeIcon];
+
   const navigateTo = useNavigate();
 
   return (
@@ -573,7 +597,7 @@ const CreateOffer = () => {
                   Select Service Type
                 </p>
               </div>
-              <div className="flex gap-[15px] flex-wrap">
+              {/* <div className="flex gap-[15px] flex-wrap">
                 {serviceType.map((type, index) => (
                   <p
                     key={index}
@@ -592,6 +616,34 @@ const CreateOffer = () => {
                     {type}
                   </p>
                 ))}
+              </div> */}
+              <div className="relative w-full cursor-pointer ">
+                <input
+                  className={`${
+                    offerDetails?.serviceType
+                      ? "border-tradeAshExtraLight"
+                      : "border-tradeAshLight"
+                  } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                  type="text"
+                  readOnly
+                  placeholder="Choose wallet"
+                  value={offerDetails?.serviceType}
+                  onClick={() =>
+                    setSelect({
+                      ...select,
+                      state: true,
+                      selectOne: true,
+                      selectTwo: false,
+                      element: "service type",
+                      options: serviceType,
+                    })
+                  }
+                  onChange={(e) => setOfferDetails.serviceType(e.target.value)}
+                />
+
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                  <MdKeyboardArrowDown />
+                </div>
               </div>
             </div>
             {/* Service field */}
@@ -614,7 +666,7 @@ const CreateOffer = () => {
                       offerDetails?.service
                         ? "border-tradeAshExtraLight"
                         : "border-tradeAshLight"
-                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                    } mt-[5px] text-[14px] text-tradeGreen placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                     type="text"
                     readOnly
                     placeholder="Choose wallet"
@@ -655,7 +707,7 @@ const CreateOffer = () => {
                       offerDetails?.service
                         ? "border-tradeAshExtraLight"
                         : "border-tradeAshLight"
-                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                    } mt-[5px] text-[14px] text-tradeGreen placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                     type="text"
                     readOnly
                     placeholder="Choose account"
@@ -696,7 +748,7 @@ const CreateOffer = () => {
                       offerDetails?.service
                         ? "border-tradeAshExtraLight"
                         : "border-tradeAshLight"
-                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                    } mt-[5px] text-[14px] text-tradeGreen placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                     type="text"
                     readOnly
                     placeholder="Choose gift card"
@@ -737,7 +789,7 @@ const CreateOffer = () => {
                       offerDetails?.service
                         ? "border-tradeAshExtraLight"
                         : "border-tradeAshLight"
-                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                    } mt-[5px] text-[14px] text-tradeGreen placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                     type="text"
                     readOnly
                     placeholder="Choose card"
@@ -778,7 +830,7 @@ const CreateOffer = () => {
                       offerDetails?.service
                         ? "border-tradeAshExtraLight"
                         : "border-tradeAshLight"
-                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                    } mt-[5px] text-[14px] text-tradeGreen placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                     type="text"
                     readOnly
                     placeholder="Choose asset"
@@ -816,13 +868,13 @@ const CreateOffer = () => {
                     offerDetails?.currency?.name
                       ? "border-tradeAshExtraLight"
                       : "border-tradeAshLight"
-                  } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                  } mt-[5px] text-[14px] text-tradeOrange placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                   type="text"
                   readOnly
                   placeholder="Choose a currency"
                   value={
                     offerDetails.currency.code && offerDetails.currency.name
-                      ? `${offerDetails.currency.code} — ${offerDetails.currency.name}`
+                      ? ` ${offerDetails.currency.name} - ${offerDetails.currency.code} `
                       : ""
                   }
                   onClick={() =>
@@ -1088,13 +1140,13 @@ const CreateOffer = () => {
                 <div
                   className={`${
                     offerDetails?.termTags.length == 0 ? "hidden" : "flex"
-                  }  gap-[15px] flex-wrap`}
+                  } gap-[15px] flex-wrap`}
                 >
                   {offerDetails?.termTags.map((tag, index) => (
-                    <div className="flex items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAsh">
+                    <div className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight">
                       <p
                         key={index}
-                        className="text-[14px] font-medium text-tradeGreen"
+                        className="text-[14px] font-medium text-tradeOrange"
                       >
                         {tag}
                       </p>
@@ -1173,10 +1225,12 @@ const CreateOffer = () => {
             <div className="flex flex-col gap-[25px] p-[15px] ">
               <div className="flex gap-[15px] items-center bg-tradeAsh border border-neutral-800 lg:px-[15px] md:px-[2.5%] p-[15px] rounded-[10px]">
                 <div>
-                  <CiBank className="text-tradeOrange text-[36px]" />
+                  {IconComponent && (
+                    <IconComponent className="text-tradeOrange text-[36px]" />
+                  )}
                 </div>
                 <div className="flex-1 flex flex-col gap-[2px] ">
-                  <p className="text-[12.5px] text-tradeFadeWhite font-[500]">
+                  <p className="text-[13px] text-tradeFadeWhite font-[500]">
                     {offerDetails?.serviceType || "Service Type"}
                   </p>
                   <p className="text-[15px] text-tradeLightGreen font-[600]">
@@ -1202,8 +1256,10 @@ const CreateOffer = () => {
                   Limit Range
                 </p>
 
-                <div className="flex flex-row justify-between">
-                  <p className="text-white text-[15px]">Minimum Purchase</p>
+                <div className="grid grid-cols-2 ">
+                  <p className="text-tradeFadeWhite text-[14px]">
+                    Minimum Purchase
+                  </p>
                   <p className="text-tradeLightGreen text-[15px] font-[600]">
                     {offerDetails?.minimum !== undefined &&
                     offerDetails?.currency?.code
@@ -1214,8 +1270,10 @@ const CreateOffer = () => {
                   </p>
                 </div>
 
-                <div className="flex flex-row justify-between">
-                  <p className="text-white text-[15px]">Maximum Purchase</p>
+                <div className="grid grid-cols-2 ">
+                  <p className="text-tradeFadeWhite text-[14px]">
+                    Maximum Purchase
+                  </p>
                   <p className="text-tradeLightGreen text-[15px] font-[600]">
                     {offerDetails?.maximum !== undefined &&
                     offerDetails?.currency?.code
@@ -1231,14 +1289,15 @@ const CreateOffer = () => {
                 <p className="text-tradeFadeWhite text-[12.5px] font-medium">
                   Profit Margin
                 </p>
-                <p className="text-white text-[15px] ">
-                  Estimated return:{" "}
-                  <span className="text-tradeLightGreen font-[600]">
+                <p className="text-white text-[14px]">
+                  Your estimated profit per transaction is{" "}
+                  <span className="text-tradeGreen text-[15px] font-[600]">
                     {offerDetails?.margin !== undefined
                       ? `${offerDetails.margin}%`
                       : "--"}
-                  </span>{" "}
-                  per trade
+                  </span>
+                  . This represents the percentage you’ll earn on each
+                  successful trade.
                 </p>
               </div>
 
@@ -1246,14 +1305,16 @@ const CreateOffer = () => {
                 <p className="text-tradeFadeWhite text-[12.5px] font-medium">
                   Payment Window
                 </p>
-                <p className="text-white text-[15px]">
-                  Seller has{" "}
-                  <span className="font-[600] text-tradeLightGreen">
+                <p className="text-white text-[14px]">
+                  The buyer will have{" "}
+                  <span className="font-[600] text-[15px] text-tradeGreen">
                     {offerDetails?.timeLimit !== undefined
                       ? `${offerDetails.timeLimit} minutes`
                       : "--"}
                   </span>{" "}
-                  to complete payment
+                  to complete the payment after the trade begins. If payment
+                  isn't made within this window, the trade will automatically be
+                  canceled.
                 </p>
               </div>
 
@@ -1264,13 +1325,14 @@ const CreateOffer = () => {
                 <div className="grid grid-cols-2 gap-y-1">
                   {offerDetails?.termTags?.length ? (
                     offerDetails.termTags.map((tag, index) => (
-                      <p
-                        key={index}
-                        className="text-[15px] font-[500] text-tradeOrange"
-                      >
-                        {tag}
-                        {index < offerDetails.termTags.length - 1 && ","}
-                      </p>
+                      <div className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight">
+                        <p
+                          key={index}
+                          className="text-[14px] font-medium text-tradeOrange"
+                        >
+                          {tag}
+                        </p>
+                      </div>
                     ))
                   ) : (
                     <p className="text-tradeFadeWhite text-[15px] font-[500]">
