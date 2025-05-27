@@ -477,7 +477,7 @@ const OfferFilter = ({
 
   return (
     <div className="bg-black overflow-hidden w-full h-full flex flex-col md:border-l md:border-b md:border-t border-neutral-800">
-      <div className="flex bg- justify-between items-center lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-neutral-800 ">
+      <div className="flex  justify-between items-center lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-neutral-800 ">
         <p className="text-[17px] text-white font-[700] cursor-pointer">
           Filter Offers
         </p>
@@ -509,13 +509,13 @@ const OfferFilter = ({
               </p>
             </div>
 
-            <div className="relative w-full cursor-pointer ">
+            <div className="bg-tra relative w-full cursor-pointer ">
               <input
                 className={` ${
                   offerFilter?.serviceType
                     ? "border-tradeAshExtraLight"
                     : "border-tradeAshLight "
-                }  mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-black border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                }  bg-tradeAsh mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                 type="text"
                 readOnly
                 value={
@@ -754,7 +754,7 @@ const OfferFilter = ({
                 offerFilter?.currency?.name
                   ? "border-tradeAshExtraLight text-tradeGreen"
                   : "border-tradeAshLight text-white"
-              } flex mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[500] bg-black border outline-none w-full p-[8px] rounded-[10px] cursor-pointer`}
+              } flex mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[8px] rounded-[10px] cursor-pointer`}
               onClick={() =>
                 setSelect({
                   state: true,
@@ -767,7 +767,7 @@ const OfferFilter = ({
               }
             >
               <input
-                className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-white text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-tradeOrange text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                 placeholder="-- --"
                 type="text"
                 readOnly
@@ -777,7 +777,7 @@ const OfferFilter = ({
               <div className="border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
                 <div>
                   <input
-                    className="w-[43px] text-[14px]  text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
+                    className="w-[43px] text-[14px]  text-tradeOrange placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
                     type="text"
                     value={offerFilter?.currency?.code}
                     readOnly
@@ -801,9 +801,9 @@ const OfferFilter = ({
               <input
                 className={` ${
                   offerFilter?.amount
-                    ? "border-tradeAshExtraLight text-tradeGreen"
+                    ? "border-tradeAshExtraLight text-white"
                     : "border-tradeAshLight text-white"
-                } mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[500] bg-black border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                } mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                 type="text"
                 placeholder="00.00"
                 value={
@@ -892,10 +892,10 @@ const OfferFilter = ({
         </div>
       </div>
 
-      <div className="flex flex-col gap-[10px] border-t border-tradeAshLight  lg:px-[15px] lg:py-[15px] md:px-[2.5%] px-[15px]">
+      <div className="flex flex-col gap-[10px] border-t border-tradeAshLight  lg:px-[15px] py-[15px] md:px-[2.5%] px-[15px]">
         <div
           onClick={handleFilterOffer}
-          className="flex items-center justify-between bg-tradeGreen hover:bg-white md:p-[10px] w-full py-[14px] rounded-[8px] cursor-pointer duration-300 transition-all"
+          className="flex items-center justify-between bg-tradeGreen hover:bg-white md:p-[10px] w-full py-[14px] px-[12px] rounded-[8px] cursor-pointer duration-300 transition-all"
         >
           <p className="font-[600] text-[15px] ">
             {isFilterLoading ? "Filtering..." : "Apply Filter"}

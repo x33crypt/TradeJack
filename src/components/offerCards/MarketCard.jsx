@@ -26,7 +26,7 @@ const MarketCard = (props) => {
     <>
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className="md:flex hidden border-t border-tradeAshLight hover:bg-tradeAsh cursor-pointer transition-all duration-500"
+        className="md:flex hidden border-t bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-500"
       >
         <div className="flex flex-1 px-[10px] py-[25px]  gap-[20px] items-center  h-full border-r border-tradeAshLight">
           <div className="">
@@ -84,7 +84,7 @@ const MarketCard = (props) => {
             </p>
           </div>
         </div>
-        <div className="flex bg-tradeAsh flex-col flex-1 px-[10px] py-[25px]  gap-[10px]  h-full">
+        <div className="flex flex-col flex-1 px-[10px] py-[25px]  gap-[10px]  h-full">
           <div className="flex gap-[5px] items-center ">
             <div className="flex items-center gap-[8px] ">
               <p className="text-[13px] font-[700] text-white">{`1 ${props.currency}`}</p>
@@ -212,9 +212,10 @@ const MarketCard = (props) => {
       </div> */}
 
       {/* market card for mobile */}
+
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className=" bg-tradeAsh flex md:hidden justify-between p-[10px] rounded-[px] cursor-pointer transition-all duration-300"
+        className=" bg-tradeAsh border-t border-tradeAshLight flex md:hidden justify-between p-[10px] rounded-[px] cursor-pointer transition-all duration-300"
       >
         <div className="flex flex-col gap-[4px]">
           <div className="flex gap-[10px]">

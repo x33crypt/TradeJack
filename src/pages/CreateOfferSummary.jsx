@@ -60,7 +60,7 @@ const CreateOfferSummary = () => {
                 <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
                   Currency
                 </p>
-                <p className="text-tradeLightGreen text-[15px] font-[600]">
+                <p className="text-tradeOrange text-[15px] font-[600]">
                   {offerDetails?.currency?.name
                     ? `${offerDetails.currency.name} - ${offerDetails.currency.code}`
                     : "-- --"}
@@ -76,7 +76,7 @@ const CreateOfferSummary = () => {
                   <p className="text-tradeFadeWhite text-[14px]">
                     Minimum Purchase
                   </p>
-                  <p className="text-tradeLightGreen text-[15px] font-[600]">
+                  <p className="text-tradeLightGreen text-[14px] font-[600]">
                     {offerDetails?.minimum !== undefined &&
                     offerDetails?.currency?.code
                       ? `${Number(offerDetails.minimum).toLocaleString()} ${
@@ -90,7 +90,7 @@ const CreateOfferSummary = () => {
                   <p className="text-tradeFadeWhite text-[14px]">
                     Maximum Purchase
                   </p>
-                  <p className="text-tradeLightGreen text-[15px] font-[600]">
+                  <p className="text-tradeLightGreen text-[14px] font-[600]">
                     {offerDetails?.maximum !== undefined &&
                     offerDetails?.currency?.code
                       ? `${Number(offerDetails.maximum).toLocaleString()} ${
@@ -107,7 +107,7 @@ const CreateOfferSummary = () => {
                 </p>
                 <p className="text-white text-[14px]">
                   Your estimated profit per transaction is{" "}
-                  <span className="text-tradeGreen text-[15px] font-[600]">
+                  <span className="text-tradeGreen text-[14px] font-[600]">
                     {offerDetails?.margin !== undefined
                       ? `${offerDetails.margin}%`
                       : "--"}
@@ -123,7 +123,7 @@ const CreateOfferSummary = () => {
                 </p>
                 <p className="text-white text-[14px]">
                   The buyer will have{" "}
-                  <span className="font-[600] text-[15px] text-tradeGreen">
+                  <span className="font-[600] text-[14px] text-tradeGreen">
                     {offerDetails?.timeLimit !== undefined
                       ? `${offerDetails.timeLimit} minutes`
                       : "--"}
@@ -164,11 +164,11 @@ const CreateOfferSummary = () => {
                 </p>
                 <div className="">
                   {offerDetails?.instruction ? (
-                    <p className="text-white text-[15px]">
+                    <p className="text-white text-[14px]">
                       {offerDetails?.instruction}
                     </p>
                   ) : (
-                    <p className="text-tradeFadeWhite text-[15px] font-[500]">
+                    <p className="text-tradeFadeWhite text-[14px] font-[500]">
                       No Instructions set yet
                     </p>
                   )}
