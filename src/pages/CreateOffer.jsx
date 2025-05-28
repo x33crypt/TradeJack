@@ -19,6 +19,7 @@ import { GiTwoCoins } from "react-icons/gi";
 
 const CreateOffer = () => {
   const { select, setSelect } = useSelectElement();
+  const { platformFee, setPlatformFee } = useState("5");
   const { offerDetails, setOfferDetails } = useCreateOfferDetails();
   const [currencies, setCurrencies] = useState([]);
   const [isOnlineWallet, setIsOnlineWallet] = useState(true);
@@ -537,17 +538,31 @@ const CreateOffer = () => {
     }));
   };
 
-  const handleAddTimeLimit = (e) => {
+  const handleAddPaymentWindow = (e) => {
     setOfferDetails((prev) => ({
       ...prev,
-      timeLimit: Math.min(65, Number(prev.timeLimit || 0) + 5),
+      paymentWindow: Math.min(24, Number(prev.paymentWindow || 0) + 1),
     }));
   };
 
-  const handleMinusTimeLimit = (e) => {
+  const handleMinusPaymentWindow = (e) => {
     setOfferDetails((prev) => ({
       ...prev,
-      timeLimit: Math.max(10, Number(prev.timeLimit || 0) - 5),
+      paymentWindow: Math.max(1, Number(prev.paymentWindow || 0) - 1),
+    }));
+  };
+
+  const handleAddConfirmationTime = (e) => {
+    setOfferDetails((prev) => ({
+      ...prev,
+      confirmationTime: Math.min(24, Number(prev.confirmationTime || 0) + 1),
+    }));
+  };
+
+  const handleMinusConfirmationTime = (e) => {
+    setOfferDetails((prev) => ({
+      ...prev,
+      confirmationTime: Math.max(1, Number(prev.confirmationTime || 0) - 1),
     }));
   };
 
@@ -899,7 +914,7 @@ const CreateOffer = () => {
             <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
               <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
                 <p className="text-white text-[15px] font-[500]">
-                  Offer Limit Range
+                  Trade Limit Range
                 </p>
               </div>
 
@@ -987,9 +1002,7 @@ const CreateOffer = () => {
             {/* Rate Margine Field */}
             <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
               <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
-                <p className="text-white text-[15px] font-[500]">
-                  Offer Rate Margine
-                </p>
+                <p className="text-white text-[15px] font-[500]">Margin Rate</p>
               </div>
 
               <div className="w-full flex flex-col gap-[15px] p-[15px]">
@@ -1030,59 +1043,59 @@ const CreateOffer = () => {
                 <div className="">
                   <Info
                     text={
-                      "Set a fair and competitive rate margin to attract more traders. Pricing your offer too high may drive potential users away. A well-balanced margin, typically between 2% and 5%, can make your offer more appealing and boost trade activity."
+                      "Set a fair and competitive margin (2–5%) to attract traders. Too high a margin may deter users. A balanced rate boosts appeal and trade volume."
                     }
                   />
                 </div>
 
-                <div className="">
-                  {/* <p className="text-white text-[13px]">
-                    To encourage more users to trade with you, set a competitive
-                    and reasonable rate margin. Excessively high margins may
-                    discourage potential traders, while fair pricing can
-                    significantly increase engagement.
-                  </p> */}
+                <div className="flex flex-col gap-[5px]">
+                  <p className="text-tradeFadeWhite text-[14px] font-[500]">
+                    Current USDT Market Price:{" "}
+                    <span className="text-tradeGreen font-[600]">
+                      1,586.95 NGN / USDT
+                    </span>
+                  </p>
+
+                  <p className="text-tradeFadeWhite text-[14px] font-[500]">
+                    Setting margin at 5% means you will be trading at a rate of{" "}
+                    <span className="text-tradeGreen font-[600]">
+                      1,666.30 NGN / USDT
+                    </span>
+                    , which translates to an earnings of approximately{" "}
+                    <span className="text-tradeGreen font-[600]">
+                      7,935 NGN
+                    </span>{" "}
+                    for every 1 USDT traded.
+                  </p>
                 </div>
               </div>
             </div>
-            {/*  Time Limit Field */}
+            {/* Payment Window Field */}
             <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
               <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
                 <p className="text-white text-[15px] font-[500]">
-                  Offer Time Limit
+                  Payment Window
                 </p>
               </div>
 
               <div className="w-full flex flex-col gap-[15px] p-[15px]">
                 <div className="flex w-full flex-row gap-[15px]">
                   <div
-                    onClick={handleMinusTimeLimit}
+                    onClick={handleMinusPaymentWindow}
                     className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
                   >
                     <FaMinus />
                   </div>
                   <div className="bg-tradeAsh flex  justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
                     <p className="text-white text-[14px]">
-                      {offerDetails?.timeLimit < 15 ? (
-                        <span className="text-red-500">
-                          Limit must be at least 15 minutes
-                        </span>
-                      ) : offerDetails?.timeLimit > 60 ? (
-                        <span className="text-red-500">
-                          Limit cannot exceed 60 minutes
-                        </span>
-                      ) : (
-                        <>
-                          <span className="font-bold">
-                            {offerDetails.timeLimit}
-                          </span>{" "}
-                          minutes
-                        </>
-                      )}
+                      <span className="font-bold">
+                        {offerDetails?.paymentWindow}
+                      </span>{" "}
+                      hour&#40;s&#41;
                     </p>
                   </div>
                   <div
-                    onClick={handleAddTimeLimit}
+                    onClick={handleAddPaymentWindow}
                     className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
                   >
                     <FaPlus />
@@ -1091,7 +1104,46 @@ const CreateOffer = () => {
 
                 <Info
                   text={
-                    " This is the time limit your trade partner has to make the payment and confirm by clicking paid before the trade is automatically canceled"
+                    "Set how long the seller’s has to make payment after the trade begins. If no payment is made within this period, the trade will be cancelled automatically."
+                  }
+                />
+              </div>
+            </div>
+            {/* Confirmation Time Field */}
+            <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
+              <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
+                <p className="text-white text-[15px] font-[500]">
+                  Confirmation Time
+                </p>
+              </div>
+
+              <div className="w-full flex flex-col gap-[15px] p-[15px]">
+                <div className="flex w-full flex-row gap-[15px]">
+                  <div
+                    onClick={handleMinusConfirmationTime}
+                    className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
+                  >
+                    <FaMinus />
+                  </div>
+                  <div className="bg-tradeAsh flex  justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
+                    <p className="text-white text-[14px]">
+                      <span className="font-bold">
+                        {offerDetails?.confirmationTime}
+                      </span>{" "}
+                      hour&#40;s&#41;
+                    </p>
+                  </div>
+                  <div
+                    onClick={handleAddConfirmationTime}
+                    className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
+                  >
+                    <FaPlus />
+                  </div>
+                </div>
+
+                <Info
+                  text={
+                    "Set how long you’ll have to confirm the seller’s payment and release their asset. This helps avoid delays and disputes."
                   }
                 />
               </div>
@@ -1306,21 +1358,37 @@ const CreateOffer = () => {
                   Payment Window
                 </p>
                 <p className="text-white text-[14px]">
-                  The buyer will have{" "}
+                  The seller has{" "}
                   <span className="font-[600] text-[14px] text-tradeGreen">
-                    {offerDetails?.timeLimit !== undefined
-                      ? `${offerDetails.timeLimit} minutes`
+                    {offerDetails?.paymentWindow !== undefined
+                      ? `${offerDetails.paymentWindow} hour(s)`
                       : "--"}
                   </span>{" "}
-                  to complete the payment after the trade begins. If payment
-                  isn't made within this window, the trade will automatically be
-                  canceled.
+                  to complete payment after the trade starts. If not, the trade
+                  will be automatically canceled.
                 </p>
               </div>
 
               <div className="flex flex-col gap-1">
                 <p className="text-tradeFadeWhite text-[12.5px] font-medium">
-                  Term Tags
+                  Confirmation Time
+                </p>
+                <p className="text-white text-[14px]">
+                  You'll have{" "}
+                  <span className="font-[600] text-[14px] text-tradeGreen">
+                    {offerDetails?.confirmationTime !== undefined
+                      ? `${offerDetails.confirmationTime} hour(s)`
+                      : "--"}
+                  </span>{" "}
+                  to confirm receipt and release funds after the seller marks
+                  the trade as paid. If you don't respond in time, the seller
+                  may escalate and file a dispute.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+                  Terms Tag
                 </p>
                 <div className="grid grid-cols-2 gap-y-1">
                   {offerDetails?.termTags?.length ? (
@@ -1356,6 +1424,18 @@ const CreateOffer = () => {
                       No Instructions set yet
                     </p>
                   )}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+                  Platform fee
+                </p>
+                <div className="">
+                  <p className="text-white text-[14px]">
+                    <span className="font-semibold text-tradeGreen">5%</span>{" "}
+                    per trade
+                  </p>
                 </div>
               </div>
             </div>

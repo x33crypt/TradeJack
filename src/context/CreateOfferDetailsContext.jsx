@@ -13,7 +13,8 @@ export const OfferDetailsProvider = ({ children }) => {
     minimum: "",
     maximum: "",
     margin: 5,
-    timeLimit: 15,
+    paymentWindow: 1,
+    confirmationTime: 1,
     termTags: [],
     instruction: "",
   });

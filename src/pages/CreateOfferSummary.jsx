@@ -122,15 +122,31 @@ const CreateOfferSummary = () => {
                   Payment Window
                 </p>
                 <p className="text-white text-[14px]">
-                  The buyer will have{" "}
+                  The seller has{" "}
                   <span className="font-[600] text-[14px] text-tradeGreen">
-                    {offerDetails?.timeLimit !== undefined
-                      ? `${offerDetails.timeLimit} minutes`
+                    {offerDetails?.paymentWindow !== undefined
+                      ? `${offerDetails.paymentWindow} hour(s)`
                       : "--"}
                   </span>{" "}
-                  to complete the payment after the trade begins. If payment
-                  isn't made within this window, the trade will automatically be
-                  canceled.
+                  to complete payment after the trade starts. If not, the trade
+                  will be automatically canceled.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+                  Confirmation Time
+                </p>
+                <p className="text-white text-[14px]">
+                  You'll have{" "}
+                  <span className="font-[600] text-[14px] text-tradeGreen">
+                    {offerDetails?.confirmationTime !== undefined
+                      ? `${offerDetails.confirmationTime} hour(s)`
+                      : "--"}
+                  </span>{" "}
+                  to confirm receipt and release funds after the seller marks
+                  the trade as paid. If you don't respond in time, the seller
+                  may escalate and file a dispute.
                 </p>
               </div>
 

@@ -108,7 +108,7 @@ const InAppNav = () => {
             <p className="text-[13px] font-[500]">Buy Assets</p>
           </div>
           <div
-            onClick={() => safeNavigate("/create-offer")}
+            // onClick={() => safeNavigate("/create-offer")}
             className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <FaVenusDouble className="lg:flex hidden text-[17px]" />
