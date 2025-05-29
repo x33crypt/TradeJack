@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import OfferCard from "../offerCards/MarketCard";
 import { useOfferFilter } from "@/context/OfferFilterContext";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import { BsFilterSquare } from "react-icons/bs";
 
 const MarketMain = ({
   promotedOffers,
@@ -30,10 +31,14 @@ const MarketMain = ({
 
   return (
     <div className="flex flex-col gap-[px] h-full md:border-x md:border-t md:border-b border-neutral-800">
-      <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
+      <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
         <p className="text-[17px] text-white font-[700]">
           Seamless Asset Trading
         </p>
+
+        <div className="text-white">
+          <BsFilterSquare />
+        </div>
       </div>
 
       <div className="flex flex-col gap-[10px] px-[15px] pb-[15px]">
@@ -175,7 +180,7 @@ const MarketMain = ({
               </p>
             </div>
             <div className="flex flex-col gap-[20px] ">
-              <div className="grid grid-cols-1  items-center">
+              <div className="grid grid-cols-1 gap-1 md:gap-0  items-center">
                 {promotedOffers?.map((offer, index) => (
                   <div key={index}>
                     <OfferCard
@@ -204,7 +209,7 @@ const MarketMain = ({
               </p>
             </div>
             <div className="flex flex-col gap-[20px]">
-              <div className="grid grid-cols-1 items-center">
+              <div className="grid grid-cols-1 gap-1 md:gap-0 items-center">
                 {unPromotedOffers?.map((offer, index) => (
                   <div key={index}>
                     <OfferCard
