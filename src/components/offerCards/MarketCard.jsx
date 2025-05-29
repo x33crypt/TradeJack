@@ -98,7 +98,7 @@ const MarketCard = (props) => {
       >
         {/* Top Section: Service + User */}
         <div className="flex justify-between px-4 py-4 border-b border-tradeAshLight">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <CiBank className="text-tradeAshLight text-[30px]" />
             <div>
               <p className="text-tradeOrange text-base font-bold">
@@ -109,10 +109,15 @@ const MarketCard = (props) => {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <HiOutlineUserCircle className="text-tradeAshLight text-[30px]" />
             <div className="flex flex-col items-end">
-              <p className="text-white text-base font-bold">{props.username}</p>
+              <p className="text-white text-base font-bold">
+                {props.username.length > 10
+                  ? props.username.slice(0, 9) + "…"
+                  : props.username}
+              </p>
+
               <div className="flex gap-3 mt-1">
                 <p className="text-xs text-white flex items-center gap-1 font-semibold">
                   <IoMdThumbsUp className="text-tradeGreen text-sm" />
@@ -152,7 +157,7 @@ const MarketCard = (props) => {
           </div>
           <div className="flex items-center gap-1 text-xs font-semibold text-tradeGreen">
             <TbArrowBigUpLines />
-            <p>+2.00%</p>
+            <p>+2.00% Margin</p>
           </div>
         </div>
       </div>
