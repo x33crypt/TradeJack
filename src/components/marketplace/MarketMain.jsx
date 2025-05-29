@@ -1,48 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { TbReload } from "react-icons/tb";
 import OfferCard from "../offerCards/MarketCard";
-import axios from "axios";
-import { LuFilter } from "react-icons/lu";
-import { IoFilter } from "react-icons/io5";
-import OfferFilter from "./OfferFilter";
-import { FiFilter } from "react-icons/fi";
-import fakeData from "../../../public/fakeData.json";
-import { LuSettings2 } from "react-icons/lu";
+import { useOfferFilter } from "@/context/OfferFilterContext";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const MarketMain = ({
   promotedOffers,
   unPromotedOffers,
-  setServiceType,
-  serviceType,
-  accountType,
-  setAccountType,
-  walletType,
-  setWaletType,
-  giftCardType,
-  setGiftCardType,
-  debitCreditCardType,
-  setDebitCreditCardType,
-  amount,
-  setAmount,
-  selectedCurrency,
-  setSelectedCurrency,
-  setIsOfferFilter,
-  isOfferFilter,
-  isFilterLoading,
-  setIsPriceSort,
-  isPriceSort,
-  setIsTimeSort,
-  isTimeSort,
-  isOfferSortBy,
-  setIsOfferSortBy,
-  isAllOffer,
-  setIsAllOffer,
-  isOnlineOffer,
-  setIsOnlineOffer,
   handleFilterOffer,
-  handleResetFilter,
-  setClearFilter,
 }) => {
+  const { offerFilter, setOfferFilter } = useOfferFilter();
+
+  const handleShowAllOffer = () => {
+    setOfferFilter((prev) => ({
+      ...prev,
+      allOffers: !prev.allOffers,
+      onlineOffers: !prev.allOffers,
+    }));
+    handleFilterOffer();
+  };
+
+  const handleShowOnlineOffer = () => {
+    setOfferFilter((prev) => ({
+      ...prev,
+      allOffers: !prev.allOffers,
+      onlineOffers: !prev.allOffers,
+    }));
+    handleFilterOffer();
+  };
+
   return (
     <div className="flex flex-col gap-[px] h-full md:border-x md:border-t md:border-b border-neutral-800">
       <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
@@ -53,66 +38,99 @@ const MarketMain = ({
 
       <div className="flex flex-col gap-[10px] px-[15px] pb-[15px]">
         <div className="z-10 gap-[10px] sticky top-[60px] py-[15px] flex flex-col bg-black ">
-          <div className="flex justify-between w-full ">
-            <div className="max-w-max flex items-center gap-[5px] bg-transparent">
+          <div className="flex justify-between w-full">
+            <div className="max-w-full overflow-x-auto whitespace-nowrap flex items-center gap-2 bg-transparent px-2 hide-scrollbar">
               <p
-                onClick={() => (
-                  setIsAllOffer(true),
-                  setIsOnlineOffer(false),
-                  handleFilterOffer()
-                )}
-                className={` ${
-                  isAllOffer
-                    ? "text-white bg-tradeAshLight border-tradeAsh"
-                    : "text-neutral-500 border-neutral-800 hover:text-white bg-transparent hover:bg-tradeAsh"
-                } px-[12px] py-[4px] text-[13px] font-[500] rounded-[6.5px] border  cursor-pointer duration-300 transition-all`}
+                onClick={handleShowAllOffer}
+                className={`${
+                  offerFilter?.allOffers
+                    ? "text-white bg-tradeAsh border-tradeGreen"
+                    : "text-neutral-500 border-neutral-800 hover:text-white"
+                } inline-block px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 All
               </p>
               <p
-                onClick={() => (
-                  setIsOnlineOffer(true),
-                  setIsAllOffer(false),
-                  handleFilterOffer()
-                )}
-                className={` ${
-                  isOnlineOffer
-                    ? "text-white bg-tradeAshLight border-tradeAsh"
-                    : "text-neutral-500 border-neutral-800 hover:text-white bg-transparent hover:bg-tradeAsh"
-                } px-[12px] py-[4px] text-[13px] font-[500] rounded-[6.5px] border  cursor-pointer duration-300 transition-all`}
+                onClick={handleShowOnlineOffer}
+                className={`${
+                  offerFilter?.allOffers
+                    ? "text-white bg-tradeAsh border-tradeGreen"
+                    : "text-neutral-500 border-neutral-800 hover:text-white"
+                } inline-block px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Online
               </p>
+              <p
+                onClick={handleShowOnlineOffer}
+                className={`${
+                  offerFilter?.allOffers
+                    ? "text-white bg-tradeAsh border-tradeGreen"
+                    : "text-neutral-500 border-neutral-800 hover:text-white"
+                } inline-block px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+              >
+                Low Rate Margin
+              </p>
+              <p
+                onClick={handleShowOnlineOffer}
+                className={`${
+                  offerFilter?.allOffers
+                    ? "text-white bg-tradeAsh border-tradeGreen"
+                    : "text-neutral-500 border-neutral-800 hover:text-white"
+                } inline-block px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+              >
+                High Rate Margin
+              </p>
+              <p
+                onClick={handleShowOnlineOffer}
+                className={`${
+                  offerFilter?.allOffers
+                    ? "text-white bg-tradeAsh border-tradeGreen"
+                    : "text-neutral-500 border-neutral-800 hover:text-white"
+                } inline-block px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+              >
+                Top-Rated
+              </p>
+              <p
+                onClick={handleShowOnlineOffer}
+                className={`${
+                  offerFilter?.allOffers
+                    ? "text-white bg-tradeAsh border-tradeGreen"
+                    : "text-neutral-500 border-neutral-800 hover:text-white"
+                } inline-block px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+              >
+                Most-Trusted
+              </p>
             </div>
 
-            <div>
+            <div className="flex gap-[5px]">
               <div
-                onClick={() => setIsOfferSortBy((prev) => !prev)}
-                className={`${
-                  isOfferSortBy
-                    ? "text-black bg-tradeGreen border-tradeGreen font-[600]"
-                    : "text-neutral-500 border-neutral-800 hover:text-white bg-transparent hover:bg-tradeAsh"
-                } lg:flex font-[600] hidden justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border  cursor-pointer duration-300 transition-all`}
+                onClick={handleShowOnlineOffer}
+                className="text-neutral-500 border-neutral-800 hover:border-tradeGreen hover:text-white 
+        flex items-center justify-center gap-[4px]
+        px-[12px] py-[4px] text-[15px] 
+        rounded-[6.5px] border cursor-pointer 
+        transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
               >
-                <LuSettings2 className="text-[17px]" />
-                <p className=" text-[13px] font-[500]">Explore</p>
+                <FaMagnifyingGlass />
+                <span className="text-[11px] font-semibold text-tradeGreen">
+                  3
+                </span>
               </div>
-              <div
-                onClick={() => setIsOfferFilter((prev) => !prev)}
+              <p
+                onClick={handleShowOnlineOffer}
                 className={`${
-                  isOfferFilter
-                    ? "text-white bg-tradeAshLight border-tradeAsh"
-                    : "text-tradeFadeWhite bg-transparent border-tradeAshLight"
-                } lg:hidden flex  justify-between items-center gap-[5px] px-[12px] py-[4px] rounded-[6.5px]  border cursor-pointer duration-300 transition-all`}
+                  offerFilter?.allOffers
+                    ? "text-white bg-tradeAsh border-tradeGreen"
+                    : "text-neutral-500 border-neutral-800 hover:text-white"
+                } px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
-                <LuSettings2 className="text-[17px]" />
-                <p className="text-[14px] font-[500]">Filter</p>
-              </div>
+                Guide Me
+              </p>
             </div>
           </div>
         </div>
 
-        <div
+        {/* <div
           className={` ${
             isOfferFilter ? "flex" : "hidden"
           } z-30 fixed top-[62px] md:top-[59px] left-0 right-0 bottom-0 lg:hidden bg-transparent`}
@@ -146,7 +164,7 @@ const MarketMain = ({
             setClearFilter={setClearFilter}
             setIsOfferFilter={setIsOfferFilter}
           />
-        </div>
+        </div> */}
 
         <div className="flex flex-col gap-[15px] rounded-[12px]">
           <div className="flex flex-col gap-[15px]">

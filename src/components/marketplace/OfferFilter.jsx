@@ -1,28 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useOfferFilter } from "@/context/OfferFilterContext";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { FaMagnifyingGlass } from "react-icons/fa6";
 import { TbReload } from "react-icons/tb";
 import { IoCloseSharp } from "react-icons/io5";
-
 import axios from "axios";
 
-const OfferFilter = ({
-  offerFilter,
-  setOfferFilter,
-  selectedCurrency,
-  handleFilterOffer,
-  isFilterLoading,
-  setIsPriceSort,
-  isPriceSort,
-  setIsTimeSort,
-  setClearFilter,
-  setIsOfferFilter,
-  select,
-  setSelect,
-}) => {
+const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
+  const { offerFilter, setOfferFilter } = useOfferFilter(); 
   const [currencies, setCurrencies] = useState([]);
-  const [currrencySearchInput, setCurrrencySearchInput] = useState("");
-  const [showCurrencyOptions, setShowCurrencyOptions] = useState(false);
   const [isOnlineWallet, setIsOnlineWallet] = useState(false);
   const [isDirectBank, setIsDirectBank] = useState(false);
   const [isGiftCard, setIsGiftCard] = useState(false);
@@ -475,6 +460,20 @@ const OfferFilter = ({
   console.log(select);
   console.log(offerFilter);
 
+  const handleCloseFilter = () => {
+    setOfferFilter((prev) => ({
+      ...prev,
+      showFilter: false,
+    }));
+  };
+
+  const handleClearFilter = () => {
+    setOfferFilter((prev) => ({
+      ...prev,
+      clearFilter: true,
+    }));
+  };
+
   return (
     <div className="bg-black overflow-hidden w-full h-full flex flex-col md:border-l md:border-b md:border-t border-neutral-800">
       <div className="flex  justify-between items-center lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-neutral-800 ">
@@ -483,15 +482,13 @@ const OfferFilter = ({
         </p>
         <div className=" flex gap-[15px] items-center">
           <p
-            onClick={() => {
-              setClearFilter(true);
-            }}
+            onClick={handleClearFilter}
             className="px-[8px] py-[2px] text-[12px] text-tradeFadeWhite hover:text-black font-[500] rounded-[6px]  hover:bg-red-700 border border-tradeAshLight hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all"
           >
             Clear Filter
           </p>
           <div
-            onClick={() => setIsOfferFilter((prev) => !prev)}
+            onClick={handleCloseFilter}
             className="md:hidden flex border border-tradeAshLight  p-[2px] rounded-[6px]"
           >
             <IoCloseSharp className="text-white text-[20px]" />
@@ -790,7 +787,7 @@ const OfferFilter = ({
           </div>
 
           {/* amount field */}
-          <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-tradeAshLight">
+          <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px] lg:border-b-0 border-b border-tradeAshLight">
             <div>
               <p className="text-tradeFadeWhite text-[14px] font-[500]">
                 Enter Amount
@@ -816,7 +813,8 @@ const OfferFilter = ({
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px] ">
+
+        <div className="lg:hidden flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px] ">
           <div>
             <p className="text-tradeFadeWhite text-[14px] font-[500]">
               Sort Filter
@@ -824,7 +822,7 @@ const OfferFilter = ({
           </div>
 
           <div className="flex flex-col gap-[15px]">
-            <div className="flex items-center justify-between">
+            {/* <div className="flex items-center justify-between">
               <p className="lg:text-[13px] text-[14px] text-white font-[600]">
                 Rate : {""}
                 <small className="lg:text-[13px] text-[14px] text-tradeFadeWhite font-[500]">
@@ -887,7 +885,7 @@ const OfferFilter = ({
                 onChange={(e) => setIsTimeSort(e.target.value)}
                 // checked={isTimeSort === "fastToSlow"}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -898,11 +896,11 @@ const OfferFilter = ({
           className="flex items-center justify-between bg-tradeGreen hover:bg-white md:p-[10px] w-full py-[14px] px-[12px] rounded-[8px] cursor-pointer duration-300 transition-all"
         >
           <p className="font-[600] text-[15px] ">
-            {isFilterLoading ? "Filtering..." : "Apply Filter"}
+            {offerFilter?.isFiltering ? "Filtering..." : "Apply Filter"}
           </p>
           <TbReload
             className={`text-[20px] transition-transform ${
-              offerFilter?.loading ? "animate-spin" : ""
+              offerFilter?.isFiltering ? "animate-spin" : ""
             }`}
           />
         </div>

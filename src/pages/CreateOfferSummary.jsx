@@ -11,6 +11,7 @@ import { GiTwoCoins } from "react-icons/gi";
 const CreateOfferSummary = () => {
   const { offerDetails, setOfferDetails } = useCreateOfferDetails();
   const { createOffer, setCreateOffer } = useState(false);
+  const [platformFee, setPlatformFee] = useState("5");
 
   const iconMap = {
     CiBank: CiBank,
@@ -128,8 +129,8 @@ const CreateOfferSummary = () => {
                       ? `${offerDetails.paymentWindow} hour(s)`
                       : "--"}
                   </span>{" "}
-                  to complete payment after the trade starts. If not, the trade
-                  will be automatically canceled.
+                  to complete payment. If not, the trade will be canceled. If
+                  funds were already sent, a dispute can be filed.
                 </p>
               </div>
 
@@ -188,6 +189,20 @@ const CreateOfferSummary = () => {
                       No Instructions set yet
                     </p>
                   )}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+                  Platform fee
+                </p>
+                <div className="">
+                  <p className="text-white text-[14px]">
+                    <span className="font-semibold text-tradeGreen">
+                      {`${platformFee}%`}
+                    </span>{" "}
+                    per trade
+                  </p>
                 </div>
               </div>
             </div>

@@ -26,292 +26,133 @@ const MarketCard = (props) => {
     <>
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className="md:flex hidden border-t bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-500"
+        className="md:flex items-center hidden border-t bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg rounded- overflow-hidden"
       >
-        <div className="flex flex-1 px-[10px] py-[25px]  gap-[20px] items-center  h-full border-r border-tradeAshLight">
-          <div className="">
-            <CiBank className="text-tradeAshLight text-[30px]" />
-          </div>
-          <div className="flex flex-col gap-[10px]">
-            <p className=" text-tradeOrange text-[14px] font-[700]">
+        {/* Bank Info Section */}
+        <div className="flex flex-1 px-4 py-6 gap-5 items-center border-r border-tradeAshLight">
+          <CiBank className="text-tradeAshLight text-[28px]" />
+          <div className="flex flex-col gap-1">
+            <p className="text-tradeOrange text-sm font-bold">
               {props.service}
             </p>
-            <p className="text-white text-[12.5px] font-[500]">
-              {" "}
+            <p className="text-white text-xs font-medium">
               {props.serviceType}
             </p>
           </div>
         </div>
-        <div className="flex flex-1 px-[10px] py-[25px]  gap-[20px] items-center  h-full">
-          <div className="">
-            <HiOutlineUserCircle className="text-tradeAshLight text-[30px]" />
-          </div>
-          <div className="flex flex-col gap-[10px]">
-            <p className=" text-white text-[14px] font-[500]">
-              {props.username}
-            </p>
-            <div className="flex items-center gap-[10px] ">
-              <div className="">
-                <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
-                  <IoMdThumbsUp className="text-[12px] lg:text-[13px] text-tradeGreen" />{" "}
-                  {`${parseInt(props.positiveFeedback).toLocaleString()}`}
-                </p>
-              </div>
-              <div className="">
-                <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
-                  <FaStar className="text-[12px] lg:text-[13px] text-tradeOrange" />{" "}
-                  {`${parseInt(props.positiveFeedback).toLocaleString()}`}
-                </p>
-              </div>
-              <p className="text-[13px] text-tradeGreen font-[500]">Online</p>
+
+        {/* User Info Section */}
+        <div className="flex flex-1 px-4 py-6 gap-5 items-center border-r border-tradeAshLight">
+          <HiOutlineUserCircle className="text-tradeAshLight text-[28px]" />
+          <div className="flex flex-col gap-1">
+            <p className="text-white text-sm font-bold">{props.username}</p>
+            <div className="flex items-center gap-3">
+              <p className="text-xs text-white flex items-center gap-1 font-semibold">
+                <IoMdThumbsUp className="text-tradeGreen text-sm" />
+                {parseInt(props.positiveFeedback).toLocaleString()}
+              </p>
+              <p className="text-xs text-white flex items-center gap-1 font-semibold">
+                <FaStar className="text-tradeOrange text-sm" />
+                {parseInt(props.positiveFeedback).toLocaleString()}
+              </p>
+              {/* <span className="text-xs text-tradeGreen font-medium">
+                Online
+              </span> */}
             </div>
           </div>
         </div>
-        <div className="flex flex-col flex-1 px-[10px] py-[25px]  gap-[10px] h-full">
-          <div className="flex gap-[20px]">
-            <p className="text-[13px] font-[500] text-white">Min Purchase </p>
-            <p className="text-[13px] font-[500] text-white">
-              {`${parseInt(props.miniPurchase).toLocaleString()}`}{" "}
-              {props.currency}
+
+        {/* Purchase Limits Section */}
+        <div className="flex flex-col justify-center flex-1 px-4 py-6 gap-1 border-r border-tradeAshLight">
+          <div className="flex justify-between items-center">
+            <p className="text-xs font-semibold  text-white">Min Purchase</p>
+            <p className="text-sm font-bold text-white">
+              {parseInt(props.miniPurchase).toLocaleString()} {props.currency}
             </p>
           </div>
-
-          <div className="flex gap-[20px]">
-            <p className="text-[13px] font-[500] text-white">Max Purchase </p>
-            <p className="text-[13px] font-[500] text-white">
-              {`${parseInt(props.maxPurchase).toLocaleString()}`}{" "}
-              {props.currency}
+          <div className="flex justify-between items-center">
+            <p className="text-xs font-semibold  text-white">Max Purchase</p>
+            <p className="text-sm font-bold text-white">
+              {parseInt(props.maxPurchase).toLocaleString()} {props.currency}
             </p>
           </div>
         </div>
-        <div className="flex flex-col flex-1 px-[10px] py-[25px]  gap-[10px]  h-full">
-          <div className="flex gap-[5px] items-center ">
-            <div className="flex items-center gap-[8px] ">
-              <p className="text-[13px] font-[700] text-white">{`1 ${props.currency}`}</p>
-              <FaArrowRightArrowLeft className="text-tradeFadeWhite text-[12px] " />
-              <p className="text-[13px] font-[700] text-white"> NGN 750.00</p>
-            </div>
-          </div>
 
-          <div className="flex gap-[4px] items-center">
-            <TbArrowBigUpLines className="text-tradeGreen text-[13px]" />
-            <p className="text-[13px] font-[700] text-white">+2.00%</p>
+        {/* Rate Info Section */}
+        <div className="flex flex-col flex-1 px-4 py-6 gap-1">
+          <div className="flex items-center gap-2">
+            <p className="text-sm font-bold text-white">1 {props.currency}</p>
+            <FaArrowRightArrowLeft className="text-tradeFadeWhite text-xs" />
+            <p className="text-sm font-bold text-white">NGN 750.00</p>
+          </div>
+          <div className="flex items-center gap-1">
+            <TbArrowBigUpLines className="text-tradeGreen text-xs" />
+            <p className="text-xs font-semibold  text-white">+2.00%</p>
           </div>
         </div>
       </div>
 
-      {/* market card for large screens */}
-      {/* <div
-        onClick={() => handleOfferClick(props.offerId)}
-        className=" bg-tradeAs border border-tradeAshLight md:flex hidden hover:bg-tradeAsh p-[10px] cursor-pointer transition-all duration-300 "
-      >
-        <div className="flex-1 flex gap-[10px]">
-          <div className="flex flex-col gap-[10px]">
-            <div className="flex items-center gap-[10px]">
-              <div className="flex items-center gap-[5px]">
-                <div className="hidden sm:flex">
-                  {props.lastSeen == "online" ? (
-                    <>
-                      <p className="text-[13px] lg:text-[13px] text-tradeGreen p-[1px] border border-tradeAshLight rounded-full">
-                        <GoDotFill />
-                      </p>
-                    </>
-                  ) : (
-                    <>
-                      <p className="text-[13px] lg:text-[13px] text-tradeAshExtraLight p-[1px] border border-tradeAshLight rounded-full">
-                        <GoDotFill />
-                      </p>
-                    </>
-                  )}
-                </div>
-
-                <p className=" text-[13px] text-white sm:text-[14px] font-[600] w-[90px] overflow-hidden text-ellipsis whitespace-nowrap">
-                  {props.username}
-                </p>
-              </div>
-
-              <div className="flex items-center gap-[10px] ">
-                <div className="">
-                  <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
-                    {" "}
-                    <IoMdThumbsUp className="text-[13px] lg:text-[14px] text-tradeGreen" />{" "}
-                    {`${parseInt(props.positiveFeedback).toLocaleString()}`}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className=" flex flex-col gap-[3px]">
-              <div className="flex gap-[10px]">
-                <p className="flex text-[13px] text-tradeFadeWhite font-[500] gap-[2px]">
-                  Min Purchase
-                </p>
-
-                <p className="text-[13px] font-[500] text-white">
-                  {`${parseInt(props.miniPurchase).toLocaleString()}`}{" "}
-                  {props.currency}
-                </p>
-              </div>
-
-              <div className="flex gap-[10px]">
-                <p className="flex text-[13px] text-tradeFadeWhite font-[500] gap-[2px]">
-                  Max Purchase
-                </p>
-
-                <p className="text-[13px] font-[500] text-white">
-                  {`${parseInt(props.maxPurchase).toLocaleString()}`}{" "}
-                  {props.currency}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex-1 flex flex-col gap-[10px]">
-          <div>
-            <p className="text-[15px] font-[600] text-tradeOrange">
-              {props.service}
-            </p>
-          </div>
-          <div className="flex flex-col gap-[3px]">
-            <p className="hidden sm:flex gap-[2px] text-[13px] lg:text-[14px] font-[400]">
-              {" "}
-              <small className=" text-[13px] lg:text-[13px] font-[500] text-white">
-                {props.serviceType}
-              </small>
-            </p>
-
-            <div className="flex gap-[10px]">
-              <p className="flex text-[13px] text-tradeFadeWhite font-[500] gap-[2px]">
-                Avg Trade Time
-              </p>
-
-              <p className="text-[13px] font-[500] text-white">
-                {props.avgTradeTime} Minutes
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex-1 flex flex-col gap-[10px]">
-          <div className="flex gap-[5px] items-center ">
-            <div className="flex items-center gap-[8px] ">
-              <p className="text-sm font-[700] text-white">{`1 ${props.currency}`}</p>
-              <FaArrowRightArrowLeft className="text-tradeFadeWhite text-[12px] " />
-              <p className="text-sm font-[700] text-white"> NGN 750.00</p>
-            </div>
-
-            <RxDividerVertical className="text-tradeAshExtraLight text-[12px] " />
-
-            <div className="flex gap-[4px] items-center">
-              <TbArrowBigUpLines className="text-tradeGreen text-[12px]" />
-              <p className="text-sm font-[700] text-white">+2.00%</p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-[3px]"></div>
-        </div>
-      </div> */}
-
-      {/* market card for mobile */}
-
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className=" bg-tradeAsh border-t border-tradeAshLight flex md:hidden justify-between p-[10px] rounded-[px] cursor-pointer transition-all duration-300"
+        className="md:hidden flex flex-col bg-tradeAsh border border-tradeAshLight rounded- cursor-pointer transition-all duration-300 hover:bg-black hover:shadow-lg overflow-hidden"
       >
-        <div className="flex flex-col gap-[4px]">
-          <div className="flex gap-[10px]">
-            <p className=" text-[12px] text-white font-[600] w-[70px] overflow-hidden text-ellipsis whitespace-nowrap">
-              {props.username}
-            </p>
-            <div className="flex">
-              {props.lastSeen === "online" ? (
-                <>
-                  <div className="flex items-center gap-[4px] py-[px] px-[8px] border border-tradeAshExtraLight rounded-full">
-                    <p className="text-[10px] text-tradeGreen">
-                      <GoDotFill />
-                    </p>
-                    <p className="text-[12px] text-white lg:text-[12px] flex font-[600] ">
-                      Online
-                    </p>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="flex items-center gap-[2px] py-[px] px-[6px] border border-tradeAshExtraLight rounded-full">
-                    <p className="text-[10px] text-tradeAshExtraLight">
-                      <GoDotFill />
-                    </p>
-                    <p className="text-[12px] text-white lg:text-[12px] flex font-[600] ">
-                      Offline
-                    </p>
-                  </div>
-                </>
-              )}
+        {/* Top Section: Service + User */}
+        <div className="flex justify-between px-4 py-4 border-b border-tradeAshLight">
+          <div className="flex items-center gap-3">
+            <CiBank className="text-tradeAshLight text-6" />
+            <div>
+              <p className="text-tradeOrange text-base font-bold">
+                {props.service}
+              </p>
+              <p className="text-white text-xs font-medium">
+                {props.serviceType}
+              </p>
             </div>
           </div>
-
-          <p className="text-[13px] lg:text-[14px] font-[400]">
-            <small className="text-[16px] font-[600] text-tradeOrange">
-              {props.service}
-            </small>
-          </p>
-          <small className=" text-[11px] font-[500] text-tradeFadeWhite">
-            {props.serviceType}
-          </small>
-          <div className="flex items-center gap-[6px] ">
-            <p className="text-[13px] font-[800] text-white">{`1 ${props.currency}`}</p>
-            <FaArrowRightArrowLeft className="text-tradeFadeWhite text-[12px] " />
-            <p className="text-[13px] font-[800] text-white"> NGN 750.00</p>
+          <div className="flex items-center gap-3">
+            <HiOutlineUserCircle className="text-tradeAshLight text-6" />
+            <div className="flex flex-col items-end">
+              <p className="text-white text-base font-bold">{props.username}</p>
+              <div className="flex gap-3 mt-1">
+                <p className="text-xs text-white flex items-center gap-1 font-semibold">
+                  <IoMdThumbsUp className="text-tradeGreen text-sm" />
+                  {parseInt(props.positiveFeedback).toLocaleString()}
+                </p>
+                <p className="text-xs text-white flex items-center gap-1 font-semibold">
+                  <FaStar className="text-tradeOrange text-sm" />
+                  {parseInt(props.positiveFeedback).toLocaleString()}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col justify-between gap-[4px]">
-          <div className="flex w-[140px] items-center justify-between">
-            {/* <div>
-              <FcApprove className="text-[15px] lg:text-[14px]" />
-            </div> */}
-
-            <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
-              {" "}
-              <IoMdThumbsUp className="text-[13px] lg:text-[14px] text-tradeGreen" />{" "}
-              {`${parseInt(props.positiveFeedback).toLocaleString()}`}
-            </p>
-            <p className="text-[13px] lg:text-[13px] text-white flex items-center gap-[4px] font-[600]">
-              {" "}
-              <FaRegStar className="text-[13px] lg:text-[14px] text-tradeOrange" />{" "}
-              {props.trustScore}%
+        {/* Middle Section: Purchase Limits */}
+        <div className="flex justify-between px-4 py-4 border-b border-tradeAshLight text-white text-sm font-semibold">
+          <div>
+            <p className="text-xs">Min Purchase</p>
+            <p className="font-bold">
+              {parseInt(props.miniPurchase).toLocaleString()} {props.currency}
             </p>
           </div>
-
-          <div className="flex w-[140px] justify-between">
-            <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
-              Avg. trade Time
-            </p>
-
-            <p className="text-[11px] font-[500] text-white">
-              {props?.avgTradeTime} Min
+          <div>
+            <p className="text-xs">Max Purchase</p>
+            <p className="font-bold">
+              {parseInt(props.maxPurchase).toLocaleString()} {props.currency}
             </p>
           </div>
+        </div>
 
-          <div className="flex w-[140px] justify-between">
-            <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
-              Min Purchase
-            </p>
-
-            <p className="text-[11px] font-[500] text-white">
-              {`${parseInt(props.miniPurchase).toLocaleString()}`}{" "}
-              {props.currency}
-            </p>
+        {/* Bottom Section: Rate Info */}
+        <div className="flex justify-between items-center px-4 py-4 text-white">
+          <div className="flex items-center gap-2 font-bold text-sm">
+            <p>1 {props.currency}</p>
+            <FaArrowRightArrowLeft className="text-tradeFadeWhite text-xs" />
+            <p>NGN 750.00</p>
           </div>
-
-          <div className="flex w-[140px] justify-between">
-            <p className="flex text-[11px] text-tradeFadeWhite font-[400] gap-[2px]">
-              Max Purchase
-            </p>
-
-            <p className="text-[11px] font-[500] text-white">
-              {`${parseInt(props.maxPurchase).toLocaleString()}`}{" "}
-              {props.currency}
-            </p>
+          <div className="flex items-center gap-1 text-xs font-semibold text-tradeGreen">
+            <TbArrowBigUpLines />
+            <p>+2.00%</p>
           </div>
         </div>
       </div>

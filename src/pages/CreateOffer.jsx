@@ -19,7 +19,7 @@ import { GiTwoCoins } from "react-icons/gi";
 
 const CreateOffer = () => {
   const { select, setSelect } = useSelectElement();
-  const { platformFee, setPlatformFee } = useState("5");
+  const [platformFee, setPlatformFee] = useState("5");
   const { offerDetails, setOfferDetails } = useCreateOfferDetails();
   const [currencies, setCurrencies] = useState([]);
   const [isOnlineWallet, setIsOnlineWallet] = useState(true);
@@ -1057,7 +1057,9 @@ const CreateOffer = () => {
                   </p>
 
                   <p className="text-tradeFadeWhite text-[14px] font-[500]">
-                    Setting margin at 5% means you will be trading at a rate of{" "}
+                    Setting margin at{" "}
+                    <span className="text-tradeOrange font-[600]">5%</span>{" "}
+                    means you will be trading at a rate of{" "}
                     <span className="text-tradeGreen font-[600]">
                       1,666.30 NGN / USDT
                     </span>
@@ -1192,7 +1194,7 @@ const CreateOffer = () => {
                 <div
                   className={`${
                     offerDetails?.termTags.length == 0 ? "hidden" : "flex"
-                  } gap-[15px] flex-wrap`}
+                  } gap-[10px] flex-wrap`}
                 >
                   {offerDetails?.termTags.map((tag, index) => (
                     <div className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight">
@@ -1364,8 +1366,8 @@ const CreateOffer = () => {
                       ? `${offerDetails.paymentWindow} hour(s)`
                       : "--"}
                   </span>{" "}
-                  to complete payment after the trade starts. If not, the trade
-                  will be automatically canceled.
+                  to complete payment. If not, the trade will be canceled. If
+                  funds were already sent, a dispute can be filed.
                 </p>
               </div>
 
@@ -1390,7 +1392,7 @@ const CreateOffer = () => {
                 <p className="text-tradeFadeWhite text-[12.5px] font-medium">
                   Terms Tag
                 </p>
-                <div className="grid grid-cols-2 gap-y-1">
+                <div className="grid grid-cols-2 gap-y-2">
                   {offerDetails?.termTags?.length ? (
                     offerDetails.termTags.map((tag, index) => (
                       <div className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight">
@@ -1433,7 +1435,9 @@ const CreateOffer = () => {
                 </p>
                 <div className="">
                   <p className="text-white text-[14px]">
-                    <span className="font-semibold text-tradeGreen">5%</span>{" "}
+                    <span className="font-semibold text-tradeGreen">
+                      {`${platformFee}%`}
+                    </span>{" "}
                     per trade
                   </p>
                 </div>

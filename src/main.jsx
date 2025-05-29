@@ -8,19 +8,22 @@ import ReactDOM from "react-dom/client";
 import { TradeAlertProvider } from "./context/TradeAlertContext";
 import { SelectElementProvider } from "./context/SelectElementContext";
 import { OfferDetailsProvider } from "./context/CreateOfferDetailsContext";
+import { OfferFilterProvider } from "./context/OfferFilterContext";
 
 // Render MainApp into #root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <OfferDetailsProvider>
-        <SelectElementProvider>
-          <TradeAlertProvider>
-            <App />
-          </TradeAlertProvider>
-        </SelectElementProvider>
-      </OfferDetailsProvider>
+      <OfferFilterProvider>
+        <OfferDetailsProvider>
+          <SelectElementProvider>
+            <TradeAlertProvider>
+              <App />
+            </TradeAlertProvider>
+          </SelectElementProvider>
+        </OfferDetailsProvider>
+      </OfferFilterProvider>
     </BrowserRouter>
   </StrictMode>
 );
