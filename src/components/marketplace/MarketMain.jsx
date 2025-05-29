@@ -102,7 +102,7 @@ const MarketMain = ({
               </p>
             </div>
 
-            <div className="flex gap-[5px]">
+            <div className=" gap-[5px] lg:flex hidden">
               <div
                 onClick={handleShowOnlineOffer}
                 className="text-neutral-500 border-neutral-800 hover:border-tradeGreen hover:text-white 
@@ -116,6 +116,7 @@ const MarketMain = ({
                   3
                 </span>
               </div>
+
               <p
                 onClick={handleShowOnlineOffer}
                 className={`${
