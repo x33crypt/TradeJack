@@ -50,100 +50,83 @@ const Marketplace = () => {
     }
   };
 
-  // const handleFilterOffer = async () => {
-  //   setOfferFilter((prev) => ({
-  //     ...prev,
-  //     loading: true,
-  //   }));
+  const handleFilterOffer = async () => {
+    // 📍 Step 1: Start filtering state
+    setOfferFilter((prev) => ({
+      ...prev,
+      isFiltering: true,
+    }));
 
-  //   // console.log(`Service Type: ${serviceType} `);
-  //   // console.log(`Service: ${getSelectedService()} `);
-  //   // console.log(`Amount: ${amount} `);
-  //   // console.log(`Currency: ${selectedCurrency.code} `);
+    try {
+      // ⏳ Step 2: Simulate loading delay for UX
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  //   try {
-  //     await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate loading delay
+      // 📦 Step 3: Fetch offers from mock data
+      const response = await axios.get(`/fakeData.json`);
+      let filteredOffers = response.data.offers;
 
-  //     // Fetch offers
-  //     const response = await axios.get(`/fakeData.json`);
-  //     let filteredOffers = response.data.offers;
+      // 🧠 Step 4: Filter by service type (skip if Default)
+      if (offerFilter?.serviceType && offerFilter.serviceType !== "Default") {
+        filteredOffers = filteredOffers.filter(
+          (offer) => offer.serviceType === offerFilter.serviceType
+        );
+      }
 
-  //     if (offerFilter?.timeSort === "fastToSlow") {
-  //       filteredOffers = [...filteredOffers].sort(
-  //         (a, b) => a.avgTradeTime - b.avgTradeTime
-  //       );
-  //     }
+      // 🧠 Step 5: Filter by service
+      if (offerFilter?.service) {
+        filteredOffers = filteredOffers.filter(
+          (offer) => offer.service === offerFilter.service
+        );
+      }
 
-  //     if (offerFilter?.timeSort === "slowToFast") {
-  //       filteredOffers = [...filteredOffers].sort(
-  //         (a, b) => b.avgTradeTime - a.avgTradeTime
-  //       );
-  //     }
+      // 💱 Step 6: Filter by currency code OR name (accurate currency match)
+      if (offerFilter?.currency?.code || offerFilter?.currency?.name) {
+        const currencyCode = offerFilter.currency?.code?.toLowerCase();
+        const currencyName = offerFilter.currency?.name?.toLowerCase();
 
-  //     if (offerFilter?.priceSort === "highToLow") {
-  //       filteredOffers = filteredOffers.sort((a, b) => a.price - b.price);
-  //     }
+        filteredOffers = filteredOffers.filter((offer) => {
+          const offerCurrency = offer.currency?.toLowerCase();
+          return (
+            offerCurrency === currencyCode || offerCurrency === currencyName
+          );
+        });
+      }
 
-  //     if (offerFilter?.priceSort === "lowToHigh") {
-  //       filteredOffers = filteredOffers.sort((a, b) => b.price - a.price);
-  //     }
+      // 💰 Step 7: Filter by transaction amount range
+      if (offerFilter?.amount) {
+        filteredOffers = filteredOffers.filter(
+          (offer) =>
+            offerFilter.amount >= offer.minimum &&
+            offerFilter.amount <= offer.maximum
+        );
+      }
 
-  //     // Reset to full list if 'Default' is selected and 'isAllOffer' is true
-  //     if (offerFilter?.serviceType === "Default" && offerFilter?.allOffers) {
-  //       setOffers(filteredOffers);
-  //       return;
-  //     }
+      // 📊 Step 8: Apply sorting filters
+      if (offerFilter?.bestMargin) {
+        // Sort by lowest margin first
+        filteredOffers = filteredOffers.sort((a, b) => a.margin - b.margin);
+      } else if (offerFilter?.topFeedBack) {
+        // Sort by highest positive feedback
+        filteredOffers = filteredOffers.sort((a, b) => b.feedback - a.feedback);
+      } else if (offerFilter?.mostTrusted) {
+        // Sort by highest trust score
+        filteredOffers = filteredOffers.sort(
+          (a, b) => b.trustScore - a.trustScore
+        );
+      }
 
-  //     // Apply other filters
-  //     if (offerFilter?.serviceType && offerFilter?.serviceType !== "Default") {
-  //       filteredOffers = filteredOffers.filter(
-  //         (offer) => offer?.serviceType === offerFilter?.serviceType
-  //       );
-  //     }
-
-  //     if (offerFilter?.service) {
-  //       filteredOffers = filteredOffers.filter(
-  //         (offer) => offer.service === offerFilter?.service
-  //       );
-  //     }
-
-  //     if (offerFilter?.amount) {
-  //       filteredOffers = filteredOffers.filter(
-  //         (offer) =>
-  //           offerFilter?.amount >= offer.miniPurchase &&
-  //           offerFilter?.amount <= offer.maxPurchase
-  //       );
-  //     }
-
-  //     if (offerFilter?.currency?.code) {
-  //       filteredOffers = filteredOffers.filter(
-  //         (offer) => offer.currency === offerFilter?.currency?.code
-  //       );
-  //     }
-
-  //     if (offerFilter?.allOffers) {
-  //       filteredOffers = filteredOffers.filter(
-  //         (offer) => offer.lastSeen === "online"
-  //       );
-  //     }
-
-  //     if (offerFilter?.onlineOffers) {
-  //       filteredOffers = filteredOffers.filter(
-  //         (offer) => offer.lastSeen === "online"
-  //       );
-  //     }
-
-  //     setOffers(filteredOffers);
-  //   } catch (error) {
-  //     console.error("Error fetching or filtering offers:", error);
-  //   } finally {
-  //     setOfferFilter((prev) => ({
-  //       ...prev,
-  //       loading: false,
-  //     }));
-  //     setIsOfferFilter(false);
-  //   }
-  // };
+      // ✅ Step 9: Update filtered offers
+      setOffers(filteredOffers);
+    } catch (error) {
+      console.error("Error fetching or filtering offers:", error);
+    } finally {
+      // 🛑 Step 10: End filtering state
+      setOfferFilter((prev) => ({
+        ...prev,
+        isFiltering: false,
+      }));
+    }
+  };
 
   useEffect(() => {
     getOffers();
@@ -160,7 +143,7 @@ const Marketplace = () => {
       <div className="flex lg:flex-row flex-col min-h-svh bg-black lg:px-[2%] md:px-[2.5%]">
         <div className="lg:flex lg:sticky top-[-17px] max-h-svh pt-[80px] hidden w-[290px]">
           <OfferFilter
-            // handleFilterOffer={handleFilterOffer}
+            handleFilterOffer={handleFilterOffer}
             setSelect={setSelect}
             select={select}
           />
@@ -170,7 +153,7 @@ const Marketplace = () => {
           <MarketMain
             promotedOffers={promotedOffers}
             unPromotedOffers={unPromotedOffers}
-            // handleFilterOffer={handleFilterOffer}
+            handleFilterOffer={handleFilterOffer}
             setSelect={setSelect}
             select={select}
           />

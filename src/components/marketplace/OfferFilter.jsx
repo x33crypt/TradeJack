@@ -4,9 +4,11 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { TbReload } from "react-icons/tb";
 import { IoCloseSharp } from "react-icons/io5";
 import axios from "axios";
+import { BiSolidBinoculars } from "react-icons/bi";
+import { IoClose } from "react-icons/io5";
 
 const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
-  const { offerFilter, setOfferFilter } = useOfferFilter(); 
+  const { offerFilter, setOfferFilter } = useOfferFilter();
   const [currencies, setCurrencies] = useState([]);
   const [isOnlineWallet, setIsOnlineWallet] = useState(false);
   const [isDirectBank, setIsDirectBank] = useState(false);
@@ -468,11 +470,31 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
   };
 
   const handleClearFilter = () => {
+    setOfferFilter({
+      serviceType: "Default",
+      service: "",
+      currency: { code: "", name: "" },
+      amount: "",
+      allOffers: true,
+      onlineOffers: false,
+      bestMargin: false,
+      topFeedBack: false,
+      mostTrusted: false,
+      showFilter: false,
+      clearFilter: true,
+    });
+  };
+
+  useEffect(() => {
+    if (offerFilter.clearFilter) {
+      handleFilterOffer();
+    }
+
     setOfferFilter((prev) => ({
       ...prev,
-      clearFilter: true,
+      clearFilter: false,
     }));
-  };
+  }, [offerFilter]);
 
   return (
     <div className="bg-black overflow-hidden w-full h-full flex flex-col md:border-l md:border-b md:border-t border-neutral-800">
@@ -480,19 +502,12 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
         <p className="text-[17px] text-white font-[700] cursor-pointer">
           Filter Offers
         </p>
-        <div className=" flex gap-[15px] items-center">
-          <p
-            onClick={handleClearFilter}
-            className="px-[8px] py-[2px] text-[12px] text-tradeFadeWhite hover:text-black font-[500] rounded-[6px]  hover:bg-red-700 border border-tradeAshLight hover:border-tradeAshExtraLight cursor-pointer duration-300 transition-all"
-          >
-            Clear Filter
-          </p>
-          <div
-            onClick={handleCloseFilter}
-            className="md:hidden flex border border-tradeAshLight  p-[2px] rounded-[6px]"
-          >
-            <IoCloseSharp className="text-white text-[20px]" />
-          </div>
+
+        <div
+          onClick={handleClearFilter}
+          className=" flex items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[10px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+        >
+          <IoClose className="text-[14px]" />
         </div>
       </div>
 
@@ -811,81 +826,6 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                 onChange={handleAmountChange}
               />
             </div>
-          </div>
-        </div>
-
-        <div className="lg:hidden flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px] ">
-          <div>
-            <p className="text-tradeFadeWhite text-[14px] font-[500]">
-              Sort Filter
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-[15px]">
-            {/* <div className="flex items-center justify-between">
-              <p className="lg:text-[13px] text-[14px] text-white font-[600]">
-                Rate : {""}
-                <small className="lg:text-[13px] text-[14px] text-tradeFadeWhite font-[500]">
-                  Low to High
-                </small>
-              </p>
-              <input
-                className="h-[15px] w-[18px]  cursor-pointer"
-                type="radio"
-                name="priceSort"
-                value="lowToHigh"
-                checked={isPriceSort === "lowToHigh"}
-                onChange={(e) => setIsPriceSort(e.target.value)}
-              />
-            </div>
-            <div className="flex items-center justify-between">
-              <p className="lg:text-[13px] text-[14px] text-white font-[600]">
-                Rate : {""}
-                <small className="lg:text-[13px] text-[14px] text-tradeFadeWhite font-[500]">
-                  High to Low
-                </small>
-              </p>
-              <input
-                className="h-[15px] w-[18px]  cursor-pointer"
-                type="radio"
-                name="priceSort"
-                value="highToLow"
-                // checked={isPriceSort === "highToLow"}
-                onChange={(e) => setIsPriceSort(e.target.value)}
-              />
-            </div>
-            <div className="flex items-center justify-between">
-              <p className="lg:text-[13px] text-[14px] text-white font-[600]">
-                Avg. Trade Time : {""}
-                <small className="lg:text-[13px] text-[14px] text-tradeFadeWhite font-[500]">
-                  Slow to Fast
-                </small>
-              </p>
-              <input
-                className="h-[15px] w-[18px]  cursor-pointer"
-                type="radio"
-                name="timeSort"
-                value="slowToFast"
-                // checked={isTimeSort === "slowToFast"}
-                onChange={(e) => setIsTimeSort(e.target.value)}
-              />
-            </div>
-            <div className="flex items-center justify-between">
-              <p className="lg:text-[13px] text-[14px] text-white font-[600]">
-                Avg. Trade Time : {""}
-                <small className="lg:text-[13px] text-[14px] text-tradeFadeWhite font-[500]">
-                  Fast to Slow
-                </small>
-              </p>
-              <input
-                className="h-[15px] w-[18px]  cursor-pointer"
-                type="radio"
-                name="timeSort"
-                value="fastToSlow"
-                onChange={(e) => setIsTimeSort(e.target.value)}
-                // checked={isTimeSort === "fastToSlow"}
-              />
-            </div> */}
           </div>
         </div>
       </div>
