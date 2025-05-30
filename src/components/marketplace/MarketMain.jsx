@@ -6,6 +6,8 @@ import { BsFilterSquare } from "react-icons/bs";
 import OfferFilter from "./OfferFilter";
 import { BiSolidBinoculars } from "react-icons/bi";
 import { TbArrowGuide } from "react-icons/tb";
+import { BiCheckShield } from "react-icons/bi";
+import { RiPoliceBadgeLine } from "react-icons/ri";
 
 const MarketMain = ({
   promotedOffers,
@@ -70,9 +72,7 @@ const MarketMain = ({
   return (
     <div className="flex flex-col gap-[px] h-full md:border-x md:border-t md:border-b border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
-        <p className="text-[17px] text-white font-[700]">
-          Seamless Asset Trading
-        </p>
+        <p className="text-[17px] text-white font-[700]">Secure P2P Trading</p>
 
         <div onClick={handleShowOfferFilter} className="text-white text-[25px]">
           <BiSolidBinoculars />
@@ -84,7 +84,7 @@ const MarketMain = ({
           <div className="flex gap-2 md:justify-between w-full">
             <div
               onClick={handleShowOfferFilter}
-              className=" flex items-center gap-2 px-[12px] py-[4px] text-tradeOrange text-[13px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+              className=" flex md:hidden items-center gap-2 px-[12px] py-[4px] text-tradeOrange text-[13px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
             >
               <BiSolidBinoculars className="text-[17px]" />
               <p>Filter</p>

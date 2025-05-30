@@ -124,6 +124,7 @@ const Marketplace = () => {
       setOfferFilter((prev) => ({
         ...prev,
         isFiltering: false,
+        showFilter: false,
       }));
     }
   };

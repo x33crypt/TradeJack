@@ -503,11 +503,24 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
           Filter Offers
         </p>
 
-        <div
-          onClick={handleClearFilter}
-          className=" flex items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[10px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-        >
-          <IoClose className="text-[14px]" />
+        <div className="flex items-center gap-[10px]">
+          <p className=" flex md:hidden items-center gap-1 px-[12px] py-[4px] text-red-600 text-[10px] font-[600] rounded-[6.5px] border border-tradeAshLight hover:border-red-600 cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            Clear Filter
+          </p>
+
+          <div
+            onClick={handleClearFilter}
+            className=" flex md:hidden items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[10px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+          >
+            <IoClose className="text-[14px]" />
+          </div>
+
+          <div
+            onClick={handleClearFilter}
+            className=" md:flex hidden items-center gap-1 px-[12px] py-[4px] text-red-600 text-[10px] font-[600] rounded-[6.5px] border border-tradeAshLight hover:border-red-600 cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+          >
+            <IoClose className="text-[14px]" />
+          </div>
         </div>
       </div>
 
@@ -802,7 +815,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
           </div>
 
           {/* amount field */}
-          <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px] lg:border-b-0 border-b border-tradeAshLight">
+          <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px]">
             <div>
               <p className="text-tradeFadeWhite text-[14px] font-[500]">
                 Enter Amount
