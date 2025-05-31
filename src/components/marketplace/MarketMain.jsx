@@ -30,7 +30,6 @@ const MarketMain = ({
       ...prev,
       allOffers: true,
       onlineOffers: false,
-      
     }));
     handleFilterOffer();
   };
@@ -84,23 +83,23 @@ const MarketMain = ({
 
       <div className="flex flex-col gap-[10px] px-[15px] pb-[15px]">
         <div className="z-10 gap-[10px] sticky top-[60px] py-[15px] flex flex-col bg-black ">
-          <div className="flex gap-2 md:justify-between w-full">
+          <div className="flex py-[2px] gap-2 md:justify-between  overflow-x-hidden whitespace-nowrap">
             <div
               onClick={handleShowOfferFilter}
-              className=" flex md:hidden items-center gap-2 px-[12px] py-[4px] text-tradeOrange text-[13px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+              className=" flex lg:hidden items-center gap-2 px-[12px] py-[4px] text-tradeOrange  lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
             >
-              <BiSolidBinoculars className="text-[17px]" />
+              <BiSolidBinoculars className="lg:text-[17px] text-[18px]" />
               <p>Filter</p>
             </div>
 
-            <div className="max-w-full overflow-hidden whitespace-nowrap flex items-center gap-2 bg-transparent ">
+            <div className=" flex items-center gap-2 bg-transparent ">
               <p
                 onClick={handleShowAllOffer}
                 className={`${
                   offerFilter?.allOffers
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } inline-block px-[12px] py-[4px] lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 All
               </p>
@@ -110,7 +109,7 @@ const MarketMain = ({
                   offerFilter?.onlineOffers
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } inline-block px-[12px] py-[4px] lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Online
               </p>
@@ -120,7 +119,7 @@ const MarketMain = ({
                   offerFilter?.bestMargin
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } inline-block px-[12px] py-[4px] lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Best Margins
               </p>
@@ -131,7 +130,7 @@ const MarketMain = ({
                   offerFilter?.topFeedBack
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } inline-block px-[12px] py-[4px] lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Top Feedback
               </p>
@@ -141,7 +140,7 @@ const MarketMain = ({
                   offerFilter?.mostTrusted
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } inline-block px-[12px] py-[4px] lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Most-Trusted
               </p>

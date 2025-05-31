@@ -504,13 +504,6 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
         </p>
 
         <div className="flex items-center gap-[10px]">
-          <p
-            onClick={handleClearFilter}
-            className=" flex md:hidden items-center gap-1 px-[12px] py-[4px] text-red-600 text-[10px] font-[600] rounded-[6.5px] border border-tradeAshLight hover:border-red-600 cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-          >
-            Clear Filter
-          </p>
-
           <div
             onClick={handleCloseFilter}
             className=" flex md:hidden items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[10px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
@@ -859,6 +852,13 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
               offerFilter?.isFiltering ? "animate-spin" : ""
             }`}
           />
+        </div>
+
+        <div
+          onClick={handleClearFilter}
+          className="flex lg:hidden items-center justify-between bg-transparent border border-tradeAshLight hover:border-red-600 md:p-[10px] w-full py-[14px] px-[12px] rounded-[8px] cursor-pointer duration-300 transition-all"
+        >
+          <p className="font-[600] text-[15px] text-red-600">Clear Filter</p>
         </div>
       </div>
     </div>

@@ -26,7 +26,7 @@ const MarketCard = (props) => {
     <>
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className="md:flex items-center hidden border-t bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg rounded- overflow-hidden"
+        className="lg:flex items-center hidden border-t bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg rounded- overflow-hidden"
       >
         {/* Bank Info Section */}
         <div className="flex flex-1 px-4 py-6 gap-5 items-center border-r border-tradeAshLight">
@@ -110,7 +110,7 @@ const MarketCard = (props) => {
 
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className="md:hidden flex flex-col bg-tradeAsh border border-tradeAshLight rounded- cursor-pointer transition-all duration-300 hover:bg-black hover:shadow-lg overflow-hidden"
+        className="lg:hidden flex flex-col bg-tradeAsh border border-tradeAshLight rounded- cursor-pointer transition-all duration-300 hover:bg-black hover:shadow-lg overflow-hidden"
       >
         {/* Top Section: Service + User */}
         <div className="flex justify-between pl-2 pr-4 py-4 border-b border-tradeAshLight">

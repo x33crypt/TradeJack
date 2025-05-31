@@ -25,6 +25,7 @@ export const userContext = createContext();
 import SelectElement from "./components/SelectElement";
 import TradeAlert from "./components/TradeAlert";
 import CreateOfferSummary from "./pages/CreateOfferSummary";
+import MyOffer from "./pages/MyOffer";
 
 const App = () => {
   const [user, setUser] = useState("");
@@ -61,7 +62,7 @@ const App = () => {
               path="/create-offer/summary"
               element={<CreateOfferSummary />}
             />
-
+            <Route path="/user/offers" element={<MyOffer />} />
             <Route path="/offer/:id" element={<AboutOffer />} />
             <Route path="/chat" element={<Messages />} />
             <Route path="/account/auth/verify" element={<ConfirmPassword />} />
