@@ -81,7 +81,7 @@ const MarketMain = ({
         </div>
       </div>
 
-      <div className="flex flex-col gap-[10px] px-[15px] pb-[15px]">
+      <div className="flex flex-col gap-[5px] px-[15px] pb-[15px]">
         <div className="z-10 gap-[10px] sticky top-[60px] py-[15px] flex flex-col bg-black ">
           <div className="flex py-[2px] gap-2 md:justify-between  overflow-x-hidden whitespace-nowrap">
             <div
@@ -175,7 +175,7 @@ const MarketMain = ({
         <div
           className={` ${
             offerFilter?.showFilter ? "flex" : "hidden"
-          } z-30 fixed top-[62px] md:top-[59px] left-0 right-0 bottom-0 lg:hidden bg-transparent`}
+          } z-30 fixed top-[62px] md:top-[59px] left-0 right-0 bottom-0 lg:hidden`}
         >
           <OfferFilter
             handleFilterOffer={handleFilterOffer}
@@ -186,7 +186,7 @@ const MarketMain = ({
 
         <div className="flex flex-col gap-[15px] rounded-[12px]">
           <div className="flex flex-col gap-[15px]">
-            <div className=" sticky top-[118px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
+            <div className=" sticky md:top-[118px] top-[124px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Promoted Offers
               </p>
@@ -217,7 +217,7 @@ const MarketMain = ({
             </div>
           </div>
           <div className="flex flex-col gap-[15px]">
-            <div className="sticky top-[118px]  flex bg-white px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
+            <div className="sticky md:top-[118px] top-[124px] flex bg-white px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Other Offers
               </p>
