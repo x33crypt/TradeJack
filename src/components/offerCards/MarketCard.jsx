@@ -113,7 +113,7 @@ const MarketCard = (props) => {
         className="md:hidden flex flex-col bg-tradeAsh border border-tradeAshLight rounded- cursor-pointer transition-all duration-300 hover:bg-black hover:shadow-lg overflow-hidden"
       >
         {/* Top Section: Service + User */}
-        <div className="flex justify-between px-4 py-4 border-b border-tradeAshLight">
+        <div className="flex justify-between pl-2 pr-4 py-4 border-b border-tradeAshLight">
           <div className="flex items-center gap-2">
             <CiBank className="text-tradeAshLight text-[30px]" />
             <div>
@@ -127,11 +127,11 @@ const MarketCard = (props) => {
           </div>
           <div className="flex items-center gap-2">
             <HiOutlineUserCircle className="text-tradeAshLight text-[30px]" />
-            <div className="flex flex-col items-end">
+            <div className="flex flex-col items-start max-w-[120px]">
               <p className="text-white text-base font-bold flex items-center gap-2">
-                {props.username.length > 10
-                  ? props.username.slice(0, 9) + "…"
-                  : props.username}
+                <span className="inline-block max-w-[80px] truncate">
+                  {props.username}
+                </span>
                 <span
                   className={`w-2.5 h-2.5 rounded-full ${
                     props.isOnline ? "bg-green-500" : "bg-gray-500"
