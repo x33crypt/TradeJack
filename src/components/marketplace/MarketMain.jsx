@@ -30,6 +30,7 @@ const MarketMain = ({
       ...prev,
       allOffers: true,
       onlineOffers: false,
+      
     }));
     handleFilterOffer();
   };
@@ -40,6 +41,7 @@ const MarketMain = ({
       onlineOffers: true,
       allOffers: false,
     }));
+
     handleFilterOffer();
   };
 
@@ -47,26 +49,27 @@ const MarketMain = ({
     setOfferFilter((prev) => ({
       ...prev,
       bestMargin: !prev.bestMargin,
+      topFeedBack: false,
+      mostTrusted: false,
     }));
-    handleFilterOffer();
   };
 
   const handleShowTopFeedBacks = () => {
     setOfferFilter((prev) => ({
       ...prev,
       topFeedBack: !prev.topFeedBack,
+      bestMargin: false,
+      mostTrusted: false,
     }));
-
-    handleFilterOffer();
   };
 
   const handleShowmostTrusted = () => {
     setOfferFilter((prev) => ({
       ...prev,
       mostTrusted: !prev.mostTrusted,
+      bestMargin: false,
+      topFeedBack: false,
     }));
-
-    handleFilterOffer();
   };
 
   return (
@@ -197,15 +200,17 @@ const MarketMain = ({
                       offerId={offer.offerId}
                       isVerified={offer.isVerified}
                       username={offer.username}
-                      lastSeen={offer.lastSeen}
+                      isOnline={offer.isOnline}
+                      paymentWindow={offer.paymentWindow}
                       service={offer.service}
                       serviceType={offer.serviceType}
-                      miniPurchase={offer.miniPurchase}
-                      maxPurchase={offer.maxPurchase}
+                      minimum={offer.minimum}
+                      maximum={offer.maximum}
                       positiveFeedback={offer.positiveFeedback}
                       trustScore={offer.trustScore}
                       currency={offer.currency}
                       avgTradeTime={offer.avgTradeTime}
+                      margin={offer.margin}
                     />
                   </div>
                 ))}
@@ -226,15 +231,17 @@ const MarketMain = ({
                       offerId={offer.offerId}
                       isVerified={offer.isVerified}
                       username={offer.username}
-                      lastSeen={offer.lastSeen}
+                      isOnline={offer.isOnline}
+                      paymentWindow={offer.paymentWindow}
                       service={offer.service}
                       serviceType={offer.serviceType}
-                      miniPurchase={offer.miniPurchase}
-                      maxPurchase={offer.maxPurchase}
+                      minimum={offer.minimum}
+                      maximum={offer.maximum}
                       positiveFeedback={offer.positiveFeedback}
                       trustScore={offer.trustScore}
                       currency={offer.currency}
                       avgTradeTime={offer.avgTradeTime}
+                      margin={offer.margin}
                     />
                   </div>
                 ))}

@@ -50,6 +50,15 @@ const Marketplace = () => {
     }
   };
 
+  useEffect(() => {
+    getOffers();
+  }, []);
+
+  useEffect(() => {
+    getPromotedOffers();
+    getUnPromotedOffers();
+  }, [offers]);
+
   const handleFilterOffer = async () => {
     // 📍 Step 1: Start filtering state
     setOfferFilter((prev) => ({
@@ -81,14 +90,11 @@ const Marketplace = () => {
 
       // 💱 Step 6: Filter by currency code OR name (accurate currency match)
       if (offerFilter?.currency?.code || offerFilter?.currency?.name) {
-        const currencyCode = offerFilter.currency?.code?.toLowerCase();
-        const currencyName = offerFilter.currency?.name?.toLowerCase();
+        const currencyCode = offerFilter.currency?.code;
 
         filteredOffers = filteredOffers.filter((offer) => {
-          const offerCurrency = offer.currency?.toLowerCase();
-          return (
-            offerCurrency === currencyCode || offerCurrency === currencyName
-          );
+          const offerCurrency = offer.currency?.code;
+          return offerCurrency === currencyCode;
         });
       }
 
@@ -96,22 +102,33 @@ const Marketplace = () => {
       if (offerFilter?.amount) {
         filteredOffers = filteredOffers.filter(
           (offer) =>
-            offerFilter.amount >= offer.minimum &&
+            offerFilter.amount >= offer.minimum ||
             offerFilter.amount <= offer.maximum
         );
       }
 
-      // 📊 Step 8: Apply sorting filters
+      // Filter by online status (must assign)
+      if (offerFilter?.onlineOffers) {
+        filteredOffers = filteredOffers.filter(
+          (offer) => offer.isOnline === true
+        );
+      }
+
       if (offerFilter?.bestMargin) {
-        // Sort by lowest margin first
-        filteredOffers = filteredOffers.sort((a, b) => a.margin - b.margin);
-      } else if (offerFilter?.topFeedBack) {
-        // Sort by highest positive feedback
-        filteredOffers = filteredOffers.sort((a, b) => b.feedback - a.feedback);
-      } else if (offerFilter?.mostTrusted) {
-        // Sort by highest trust score
         filteredOffers = filteredOffers.sort(
-          (a, b) => b.trustScore - a.trustScore
+          (a, b) => Number(a.margin) - Number(b.margin)
+        );
+      }
+
+      if (offerFilter?.topFeedBack) {
+        filteredOffers = filteredOffers.sort(
+          (a, b) => Number(b.positiveFeedback) - Number(a.positiveFeedback)
+        );
+      }
+
+      if (offerFilter?.mostTrusted) {
+        filteredOffers = filteredOffers.sort(
+          (a, b) => (Number(b.trustScore) || 0) - (Number(a.trustScore) || 0)
         );
       }
 
@@ -124,19 +141,25 @@ const Marketplace = () => {
       setOfferFilter((prev) => ({
         ...prev,
         isFiltering: false,
-        showFilter: false,
       }));
     }
   };
 
   useEffect(() => {
-    getOffers();
-  }, []);
+    handleFilterOffer();
+  }, [offerFilter.onlineOffers]);
 
   useEffect(() => {
-    getPromotedOffers();
-    getUnPromotedOffers();
-  }, [offers]);
+    handleFilterOffer();
+  }, [offerFilter.mostTrusted]);
+
+  useEffect(() => {
+    handleFilterOffer();
+  }, [offerFilter.topFeedBack]);
+
+  useEffect(() => {
+    handleFilterOffer();
+  }, [offerFilter.bestMargin]);
 
   return (
     <>

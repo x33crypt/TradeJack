@@ -480,21 +480,21 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
       bestMargin: false,
       topFeedBack: false,
       mostTrusted: false,
-      showFilter: false,
       clearFilter: true,
+      showFilter: true,
+      isFiltering: true,
     });
   };
 
   useEffect(() => {
-    if (offerFilter.clearFilter) {
-      handleFilterOffer();
-    }
+    handleFilterOffer();
 
     setOfferFilter((prev) => ({
       ...prev,
       clearFilter: false,
+      isFiltering: false,
     }));
-  }, [offerFilter]);
+  }, [offerFilter.clearFilter]);
 
   return (
     <div className="bg-black overflow-hidden w-full h-full flex flex-col md:border-l md:border-b md:border-t border-neutral-800">
@@ -504,12 +504,15 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
         </p>
 
         <div className="flex items-center gap-[10px]">
-          <p className=" flex md:hidden items-center gap-1 px-[12px] py-[4px] text-red-600 text-[10px] font-[600] rounded-[6.5px] border border-tradeAshLight hover:border-red-600 cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+          <p
+            onClick={handleClearFilter}
+            className=" flex md:hidden items-center gap-1 px-[12px] py-[4px] text-red-600 text-[10px] font-[600] rounded-[6.5px] border border-tradeAshLight hover:border-red-600 cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+          >
             Clear Filter
           </p>
 
           <div
-            onClick={handleClearFilter}
+            onClick={handleCloseFilter}
             className=" flex md:hidden items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[10px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
           >
             <IoClose className="text-[14px]" />

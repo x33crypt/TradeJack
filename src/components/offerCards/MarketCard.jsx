@@ -45,7 +45,16 @@ const MarketCard = (props) => {
         <div className="flex flex-1 px-4 py-6 gap-5 items-center border-r border-tradeAshLight">
           <HiOutlineUserCircle className="text-tradeAshLight text-[28px]" />
           <div className="flex flex-col gap-1">
-            <p className="text-white text-sm font-bold">{props.username}</p>
+            <p className="text-white text-sm font-bold flex items-center gap-2">
+              {props.username}
+              <span
+                className={`w-2.5 h-2.5 rounded-full ${
+                  props.isOnline ? "bg-green-500" : "bg-gray-500"
+                }`}
+                title={props.isOnline ? "Online" : "Offline"}
+              ></span>
+            </p>
+
             <div className="flex items-center gap-3">
               <p className="text-xs text-white flex items-center gap-1 font-semibold">
                 <IoMdThumbsUp className="text-tradeGreen text-sm" />
@@ -53,7 +62,7 @@ const MarketCard = (props) => {
               </p>
               <p className="text-xs text-white flex items-center gap-1 font-semibold">
                 <FaStar className="text-tradeOrange text-sm" />
-                {parseInt(props.positiveFeedback).toLocaleString()}
+                {parseInt(props.trustScore).toLocaleString()}
               </p>
               {/* <span className="text-xs text-tradeGreen font-medium">
                 Online
@@ -67,27 +76,34 @@ const MarketCard = (props) => {
           <div className="flex justify-between items-center">
             <p className="text-xs font-semibold  text-white">Min Purchase</p>
             <p className="text-sm font-bold text-white">
-              {parseInt(props.miniPurchase).toLocaleString()} {props.currency}
+              {props.minimum.toLocaleString()} {props.currency?.code}
             </p>
           </div>
           <div className="flex justify-between items-center">
             <p className="text-xs font-semibold  text-white">Max Purchase</p>
             <p className="text-sm font-bold text-white">
-              {parseInt(props.maxPurchase).toLocaleString()} {props.currency}
+              {props.maximum.toLocaleString()} {props.currency?.code}
             </p>
           </div>
         </div>
 
         {/* Rate Info Section */}
-        <div className="flex flex-col flex-1 px-4 py-6 gap-1">
-          <div className="flex items-center gap-2">
-            <p className="text-sm font-bold text-white">1 {props.currency}</p>
-            <FaArrowRightArrowLeft className="text-tradeFadeWhite text-xs" />
-            <p className="text-sm font-bold text-white">NGN 750.00</p>
-          </div>
-          <div className="flex items-center gap-1">
-            <TbArrowBigUpLines className="text-tradeGreen text-xs" />
-            <p className="text-xs font-semibold  text-white">+2.00%</p>
+        <div className="flex flex-col justify-center items-start flex-1 px-4 py-6 gap-2 border-l border-tradeAshLight">
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <p className="text-sm font-bold text-white">
+                1 {props.currency?.code}
+              </p>
+              <FaArrowRightArrowLeft className="text-tradeOrange text-xs" />
+              <p className="text-sm font-bold text-white">NGN 750.00</p>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <TbArrowBigUpLines className="text-tradeGreen text-xs " />
+              <p className="text-xs font-semibold text-tradeGreen">
+                +{props.margin}.00% Margin
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -112,10 +128,16 @@ const MarketCard = (props) => {
           <div className="flex items-center gap-2">
             <HiOutlineUserCircle className="text-tradeAshLight text-[30px]" />
             <div className="flex flex-col items-end">
-              <p className="text-white text-base font-bold">
+              <p className="text-white text-base font-bold flex items-center gap-2">
                 {props.username.length > 10
                   ? props.username.slice(0, 9) + "…"
                   : props.username}
+                <span
+                  className={`w-2.5 h-2.5 rounded-full ${
+                    props.isOnline ? "bg-green-500" : "bg-gray-500"
+                  }`}
+                  title={props.isOnline ? "Online" : "Offline"}
+                ></span>
               </p>
 
               <div className="flex gap-3 mt-1">
@@ -125,7 +147,7 @@ const MarketCard = (props) => {
                 </p>
                 <p className="text-xs text-white flex items-center gap-1 font-semibold">
                   <FaStar className="text-tradeOrange text-sm" />
-                  {parseInt(props.positiveFeedback).toLocaleString()}
+                  {parseInt(props.trustScore).toLocaleString()}
                 </p>
               </div>
             </div>
@@ -137,27 +159,31 @@ const MarketCard = (props) => {
           <div>
             <p className="text-xs">Min Purchase</p>
             <p className="font-bold">
-              {parseInt(props.miniPurchase).toLocaleString()} {props.currency}
+              {props.minimum.toLocaleString()} {props.currency?.code}
             </p>
           </div>
           <div>
             <p className="text-xs">Max Purchase</p>
             <p className="font-bold">
-              {parseInt(props.maxPurchase).toLocaleString()} {props.currency}
+              {props.maximum.toLocaleString()} {props.currency?.code}
             </p>
+          </div>
+          <div>
+            <p className="text-xs">Payment Window</p>
+            <p className="font-bold">{props.paymentWindow} Hour(s)</p>
           </div>
         </div>
 
         {/* Bottom Section: Rate Info */}
         <div className="flex justify-between items-center px-4 py-4 text-white">
           <div className="flex items-center gap-2 font-bold text-sm">
-            <p>1 {props.currency}</p>
-            <FaArrowRightArrowLeft className="text-tradeFadeWhite text-xs" />
+            <p>1 {props.currency?.code}</p>
+            <FaArrowRightArrowLeft className="text-tradeOrange text-xs" />
             <p>NGN 750.00</p>
           </div>
           <div className="flex items-center gap-1 text-xs font-semibold text-tradeGreen">
             <TbArrowBigUpLines />
-            <p>+2.00% Margin</p>
+            <p>+{props.margin}.00% Margin</p>
           </div>
         </div>
       </div>
