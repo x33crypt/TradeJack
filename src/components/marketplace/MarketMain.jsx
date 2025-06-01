@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import OfferCard from "../offerCards/MarketCard";
+import OfferCard from "../cards/MarketCard";
 import { useOfferFilter } from "@/context/OfferFilterContext";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { BsFilterSquare } from "react-icons/bs";
@@ -74,7 +74,7 @@ const MarketMain = ({
   return (
     <div className="flex flex-col gap-[px] h-full md:border-x md:border-t md:border-b border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
-        <p className="text-[17px] text-white font-[700]">Secure P2P Trading</p>
+        <p className="text-[17px] text-white font-[700]">Secure P2P Marketplace</p>
 
         <div onClick={handleShowOfferFilter} className="text-white text-[25px]">
           <BiSolidBinoculars />
@@ -186,7 +186,7 @@ const MarketMain = ({
 
         <div className="flex flex-col gap-[15px] rounded-[12px]">
           <div className="flex flex-col gap-[15px]">
-            <div className=" sticky md:top-[118px] top-[124px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
+            <div className=" sticky md:top-[122px] top-[124px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Promoted Offers
               </p>
@@ -217,7 +217,7 @@ const MarketMain = ({
             </div>
           </div>
           <div className="flex flex-col gap-[15px]">
-            <div className="sticky md:top-[118px] top-[124px] flex bg-white px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
+            <div className="sticky md:top-[122px] top-[124px] flex bg-white px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Other Offers
               </p>

@@ -775,7 +775,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                 offerFilter?.currency?.name
                   ? "border-tradeAshExtraLight text-tradeGreen"
                   : "border-tradeAshLight text-white"
-              } flex mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[8px] rounded-[10px] cursor-pointer`}
+              } relative flex mt-[5px] text-[14px] placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full rounded-[10px] cursor-pointer`}
               onClick={() =>
                 setSelect({
                   state: true,
@@ -788,14 +788,14 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
               }
             >
               <input
-                className="w-full lg:h-[30px] h-[35px] outline-none bg-transparent text-tradeOrange text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                className="w-full p-[12px] outline-none bg-transparent text-tradeOrange text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                 placeholder="-- --"
                 type="text"
                 readOnly
                 value={offerFilter?.currency?.name}
               />
 
-              <div className="border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
+              <div className=" absolute right-1.5 top-1/2 -translate-y-1/2  border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
                 <div>
                   <input
                     className="w-[43px] text-[14px]  text-tradeOrange placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
@@ -824,7 +824,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                   offerFilter?.amount
                     ? "border-tradeAshExtraLight text-white"
                     : "border-tradeAshLight text-white"
-                } mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                } mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[600] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                 type="text"
                 placeholder="00.00"
                 value={

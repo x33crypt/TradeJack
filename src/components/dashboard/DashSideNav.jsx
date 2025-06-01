@@ -29,7 +29,10 @@ const DashSideNav = () => {
             <p className="text-[13.5px] font-[500]"> Dashboard</p>
           </div>
 
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer">
+          <div
+            className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer"
+            onClick={() => navigateTo("/user/offers")}
+          >
             <TbLayoutList className="text-[17px]" />
             <p className="text-[13.5px] font-[500]">My Offers</p>
           </div>

@@ -10,6 +10,11 @@ import { FaRegStar } from "react-icons/fa";
 import ExchangeCalculator from "@/components/ExchangeCalculator";
 import { SlGraph } from "react-icons/sl";
 import { GoDotFill } from "react-icons/go";
+import landingImg4 from "../assets/landingImg4.JPG";
+import { CiBank } from "react-icons/ci";
+import { AiFillSafetyCertificate } from "react-icons/ai";
+import { IoMdThumbsUp } from "react-icons/io";
+import { FaInfoCircle } from "react-icons/fa";
 
 const AboutOffer = () => {
   const [offerDetails, setOfferDetails] = useState("");
@@ -20,6 +25,7 @@ const AboutOffer = () => {
     status: "",
     percentage: "",
   });
+
   const [calculatorResult, setCalculatorResult] = useState({
     perUsd: "",
     perBtc: "",
@@ -230,13 +236,22 @@ const AboutOffer = () => {
     getofferRateCapPerUnitAndUSD();
   }, [tradeValue]);
 
+  const offerTermTags = [
+    "Receipt required",
+
+    "No third-party",
+    "Pay exact amount",
+    "Fast payment only",
+    "Same bank only",
+  ];
+
   return (
     <>
       <MarketTopNav />
 
-      <div className="flex flex-col bg-black gap-[15px] lg:px-[2%] md:px-[2.5%] pt-[60px] md:pt-[75px]">
+      <div className="flex flex-col bg-black gap-[15px] lg:px-[15%] md:px-[5%] pt-[60px] md:pt-[80px]">
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-0 ">
-          <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight">
+          {/* <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight">
             <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
               <p className=" text-[17px] text-white font-[700] cursor-pointer">
                 Offer Details
@@ -378,22 +393,6 @@ const AboutOffer = () => {
                   </div>
                 </div>
 
-                {/* <div className=" flex-1  flex-col shrink-0 flex  gap-[10px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
-                  <div className="flex  flex-col gap-[5px] ">
-                    <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                      Trade Badges
-                    </p>
-
-                    <div className="flex gap-[10px]">
-                      <div>
-                        <p className="text-white text-[15px] font-[600] cursor-pointer">
-                          {offerDetails.username}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
-
                 <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
                   <p className="text-[12px] font-[500] text-tradeFadeWhite">
                     Positive Feedback
@@ -433,8 +432,233 @@ const AboutOffer = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
+          <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight">
+            <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
+              <p className=" text-[17px] text-white font-[700] cursor-pointer">
+                About Offer
+              </p>
+            </div>
+
+            <div className="flex flex-col md:gap-[15px] gap-[10px] p-[15px]  md:py-[40px] lg:py-[50px] bg-tradeAsh md:justify-center items-center">
+              <div className="lg:w-[500px] sm:w-[550px] w-full flex gap-[15px] bg-tradeAshLight border border-tradeAshExtraLight p-[12px] rounded-[10px]">
+                <div className="flex-1 flex flex-col gap-[15px]">
+                  {/* Header: Username & Avatar */}
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
+                      <div className="w-[40px] flex-shrink-0 rounded-full">
+                        <img
+                          className="rounded-full"
+                          src={landingImg4}
+                          alt="User avatar"
+                        />
+                      </div>
+                      <p className=" text-[16px] font-semibold">saneghxt</p>
+                    </div>
+                  </div>
+
+                  {/* Offer Details */}
+                  <div className="flex flex-col gap-[2px]">
+                    <p className="text-tradeOrange text-[15px] font-bold">
+                      Wells Fargo
+                    </p>
+                    <p className="text-white text-[13px] font-medium">
+                      Direct Bank Transfer
+                    </p>
+                  </div>
+
+                  {/* Rating, Reviews & Offer ID */}
+                  <div className="flex justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="flex gap-2 items-center">
+                        <p className=" flex-1 w-full text-xs text-white flex items-center gap-1 font-semibold">
+                          <IoMdThumbsUp className="text-tradeGreen text-sm" />
+                          {/* {parseInt(props.positiveFeedback).toLocaleString()} */}
+                          300
+                        </p>
+                        <p className="flex-1 w-full text-xs text-white flex items-center gap-1 font-semibold">
+                          <AiFillSafetyCertificate className="text-tradeOrange text-sm" />
+                          {/* {parseInt(props.trustScore).toLocaleString()} */}
+                          67
+                        </p>
+                      </div>
+                      <p className="text-tradeFadeWhite font-[500] text-[13px] hover:text-white cursor-pointer transition-all duration-300">
+                        (128 Reviews)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col justify-between">
+                  <div className="flex flex-col">
+                    <div className="flex gap-1">
+                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
+                        Posted:
+                      </p>
+                      <p className="text-[13px] font-[600] text-tradeGreen">
+                        February - 2025
+                      </p>
+                    </div>
+                    <div className="flex gap-1">
+                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
+                        Status:
+                      </p>
+                      <p className="text-[13px] font-[600] text-tradeGreen">
+                        Active
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-1">
+                    <p className="text-[13px] font-[500] text-tradeFadeWhite">
+                      Accepted currency:
+                    </p>
+                    <p className="text-[13px] font-[700] text-tradeOrange">
+                      USD
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Offer ID-45EDZ
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full flex flex-col gap-[10px]">
+              <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
+                <p className=" text-[17px] text-white font-[700] cursor-pointer">
+                  Other Details
+                </p>
+              </div>
+              <div className="grid grid-cols-2 lg:flex gap-[15px] p-[15px]">
+                <div className="flex-1 flex flex-col">
+                  <div className="flex items-center gap-2">
+                    <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                      Min Purchase
+                    </p>
+
+                    <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
+                      <FaInfoCircle />
+                    </div>
+                  </div>
+
+                  <div
+                    className={` flex mt-[5px] bg-tradeAsh border border-tradeAshLight outline-none w-full rounded-[10px] overflow-hidden`}
+                  >
+                    <p className="text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh  outline-none w-full p-[12px]  cursor-pointer">
+                      5,000
+                    </p>
+                    <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
+                      <p className="text-[14px] text-white font-[700]">USD</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-1 flex  flex-col">
+                  <div className="flex items-center gap-2">
+                    <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                      Max Purchase
+                    </p>
+
+                    <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
+                      <FaInfoCircle />
+                    </div>
+                  </div>
+                  <div
+                    className={` flex mt-[5px] bg-tradeAsh border border-tradeAshLight outline-none w-full rounded-[10px] overflow-hidden cursor-pointer`}
+                  >
+                    <p className="text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh  outline-none w-full p-[12px]  cursor-pointer">
+                      5,000
+                    </p>
+                    <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
+                      <p className="text-[14px] text-white font-[700]">USD</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-1 flex flex-col">
+                  <div className="flex gap-2 items-center">
+                    <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                      Payment Window
+                    </p>
+
+                    <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
+                      <FaInfoCircle />
+                    </div>
+                  </div>
+                  <p className=" bg-tradeAsh mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] border border-tradeAshLight w-full p-[12px] rounded-[10px] cursor-pointer">
+                    1 Hour(s)
+                  </p>
+                </div>
+                <div className="flex-1 flex flex-col">
+                  <div className="flex gap-2 items-center">
+                    <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                      Confirmation Window
+                    </p>
+
+                    <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
+                      <FaInfoCircle />
+                    </div>
+                  </div>
+                  <p className=" bg-tradeAsh mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] border border-tradeAshLight w-full p-[12px] rounded-[10px] cursor-pointer">
+                    1 Hour(s)
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row">
+                <div className="flex-1 p-[15px] flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                      Offer Term Tags
+                    </p>
+
+                    <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
+                      <FaInfoCircle />
+                    </div>
+                  </div>
+
+                  <div className="flex gap-[10px] flex-wrap">
+                    {offerTermTags.map((tag, index) => (
+                      <div className="flex w-max items-center gap-[8px] px-[12px] py-[5px] rounded-[6px] bg-tradeAshLight">
+                        <p
+                          key={index}
+                          className="text-[14px] font-medium text-tradeOrange"
+                        >
+                          {tag}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex-1 p-[15px] flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <p className="text-tradeFadeWhite text-[13px] font-[500] mt-0">
+                      Trade Instruction
+                    </p>
+
+                    <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
+                      <FaInfoCircle />
+                    </div>
+                  </div>
+
+                  <div className="flex">
+                    <p className="text-[14px] text-tradeFadeWhite bg-tradeAshLight p-[12px] rounded-[10px]">
+                      It’s clear, compact, and user-friendly. Let me know the
+                      specific context (e.g., banking, crypto, order
+                      processing), and I can tailor it further. It’s clear,
+                      compact, and user-friendly.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full flex justify-center">
           <ExchangeCalculator
             offerDetails={offerDetails}
             handleTradeValueChange={handleTradeValueChange}
@@ -446,23 +670,13 @@ const AboutOffer = () => {
           />
         </div>
 
-        <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-0">
-          <div className="lg:w-[500px] flex flex-col  md:border-x border-y border-neutral-800 ">
-            <div className="flex items-center justify-between  p-[15px] md:border-b md:border-t-0 border-b border-neutral-800 ">
-              <p className="text-[17px] text-white font-[700] cursor-pointer">
-                Offer Statistics
-              </p>
-            </div>
-            <div className="flex items-center justify-between p-[20px] "></div>
+        <div className="flex-1 flex flex-col border-t  md:border-x lg:border-x md:border-y  border-neutral-800">
+          <div className="flex items-center justify-between  p-[15px] border-b border-neutral-800 ">
+            <p className="text-[17px] text-white font-[700] cursor-pointer">
+              Reviews on this Offer
+            </p>
           </div>
-          <div className="flex-1 flex flex-col  md:border-x lg:border-l-0 md:border-y  border-neutral-800">
-            <div className="flex items-center justify-between  p-[15px] md:border-b md:border-t-0 border-b border-neutral-800 ">
-              <p className="text-[17px] text-white font-[700] cursor-pointer">
-                Feedback on this Offer
-              </p>
-            </div>
-            <div className="flex items-center justify-between  p-[20px]  border-neutral-800 "></div>
-          </div>
+          <div className="flex items-center justify-between p-[20px] border-neutral-800 "></div>
         </div>
       </div>
 

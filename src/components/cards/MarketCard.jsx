@@ -14,6 +14,9 @@ import { CiBank } from "react-icons/ci";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { FaStar } from "react-icons/fa6";
 import { CgArrowsExchangeAlt } from "react-icons/cg";
+import { AiOutlineSafetyCertificate } from "react-icons/ai";
+import { AiFillSafetyCertificate } from "react-icons/ai";
+import { HiStatusOnline } from "react-icons/hi";
 
 const MarketCard = (props) => {
   const navigateTo = useNavigate();
@@ -26,7 +29,7 @@ const MarketCard = (props) => {
     <>
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className="lg:flex items-center hidden border-t bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg rounded- overflow-hidden"
+        className="md:flex items-center hidden border-t bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg rounded- overflow-hidden"
       >
         {/* Bank Info Section */}
         <div className="flex flex-1 px-4 py-6 gap-5 items-center border-r border-tradeAshLight">
@@ -43,30 +46,33 @@ const MarketCard = (props) => {
 
         {/* User Info Section */}
         <div className="flex flex-1 px-4 py-6 gap-5 items-center border-r border-tradeAshLight">
-          <HiOutlineUserCircle className="text-tradeAshLight text-[28px]" />
-          <div className="flex flex-col gap-1">
-            <p className="text-white text-sm font-bold flex items-center gap-2">
-              {props.username}
-              <span
-                className={`w-2.5 h-2.5 rounded-full ${
-                  props.isOnline ? "bg-green-500" : "bg-gray-500"
-                }`}
-                title={props.isOnline ? "Online" : "Offline"}
-              ></span>
-            </p>
+          <HiOutlineUserCircle className="text-tradeAshLight text-[28px] flex-shrink-0" />
+          <div className="flex w-full flex-col gap-1">
+            <div className="flex items-center">
+              <div className="flex-1 flex ">
+                <p className=" text-white text-sm font-bold items-center max-w-[70px] inline-block truncate">
+                  {props.username}
+                </p>
+              </div>
 
-            <div className="flex items-center gap-3">
-              <p className="text-xs text-white flex items-center gap-1 font-semibold">
+              <div
+                className={`${
+                  props.isOnline ? "text-tradeGreen" : "text-tradeFadeWhite"
+                } w-[60px]`}
+              >
+                <HiStatusOnline />
+              </div>
+            </div>
+
+            <div className="flex items-center">
+              <p className=" flex-1 w-full text-xs text-white flex items-center gap-1 font-semibold">
                 <IoMdThumbsUp className="text-tradeGreen text-sm" />
                 {parseInt(props.positiveFeedback).toLocaleString()}
               </p>
-              <p className="text-xs text-white flex items-center gap-1 font-semibold">
-                <FaStar className="text-tradeOrange text-sm" />
+              <p className="flex-1 w-full  text-xs text-white flex items-center gap-1 font-semibold">
+                <AiFillSafetyCertificate className="text-tradeOrange text-sm" />
                 {parseInt(props.trustScore).toLocaleString()}
               </p>
-              {/* <span className="text-xs text-tradeGreen font-medium">
-                Online
-              </span> */}
             </div>
           </div>
         </div>
@@ -74,14 +80,25 @@ const MarketCard = (props) => {
         {/* Purchase Limits Section */}
         <div className="flex flex-col justify-center flex-1 px-4 py-6 gap-1 border-r border-tradeAshLight">
           <div className="flex justify-between items-center">
-            <p className="text-xs font-semibold  text-white">Min Purchase</p>
+            <p className=" flex md:hidden lg:flex  text-xs font-semibold  text-white">
+              Min Purchase
+            </p>
+            <p className="  hidden md:flex lg:hidden   text-xs font-semibold  text-white">
+              Minimum
+            </p>
+
             <p className="text-sm font-bold text-white">
               {props.minimum.toLocaleString()} {props.currency?.code}
             </p>
           </div>
           <div className="flex justify-between items-center">
-            <p className="text-xs font-semibold  text-white">Max Purchase</p>
-            <p className="text-sm font-bold text-white">
+            <p className=" flex md:hidden lg:flex  text-xs font-semibold  text-white">
+              Max Purchase
+            </p>
+            <p className="  hidden md:flex lg:hidden  text-xs font-semibold  text-white">
+              Maximum
+            </p>
+            <p className=" text-sm font-bold text-white">
               {props.maximum.toLocaleString()} {props.currency?.code}
             </p>
           </div>
@@ -89,16 +106,16 @@ const MarketCard = (props) => {
 
         {/* Rate Info Section */}
         <div className="flex flex-col justify-center items-start flex-1 px-4 py-6 gap-2 border-l border-tradeAshLight">
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col  gap-1">
             <div className="flex items-center gap-2">
               <p className="text-sm font-bold text-white">
                 1 {props.currency?.code}
               </p>
               <FaArrowRightArrowLeft className="text-tradeOrange text-xs" />
-              <p className="text-sm font-bold text-white">NGN 750.00</p>
+              <p className="text-sm font-bold text-white"> 750.00 NGN</p>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 p-[0.5px] bg-tradeAshExtraLight">
               <TbArrowBigUpLines className="text-tradeGreen text-xs " />
               <p className="text-xs font-semibold text-tradeGreen">
                 +{props.margin}.00% Margin
@@ -110,7 +127,7 @@ const MarketCard = (props) => {
 
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className="lg:hidden flex flex-col bg-tradeAsh border border-tradeAshLight rounded- cursor-pointer transition-all duration-300 hover:bg-black hover:shadow-lg overflow-hidden"
+        className="md:hidden flex flex-col bg-tradeAsh border border-tradeAshLight rounded- cursor-pointer transition-all duration-300 hover:bg-black hover:shadow-lg overflow-hidden"
       >
         {/* Top Section: Service + User */}
         <div className="flex justify-between pl-2 pr-4 py-4 border-b border-tradeAshLight">
@@ -128,17 +145,21 @@ const MarketCard = (props) => {
           <div className="flex items-center gap-2">
             <HiOutlineUserCircle className="text-tradeAshLight text-[30px]" />
             <div className="flex flex-col items-start max-w-[120px]">
-              <p className="text-white text-base font-bold flex items-center gap-2">
-                <span className="inline-block max-w-[80px] truncate">
-                  {props.username}
-                </span>
-                <span
-                  className={`w-2.5 h-2.5 rounded-full ${
-                    props.isOnline ? "bg-green-500" : "bg-gray-500"
-                  }`}
-                  title={props.isOnline ? "Online" : "Offline"}
-                ></span>
-              </p>
+              <div className="flex items-center gap-2">
+                <div className="flex-1 flex">
+                  <p className=" text-white text-sm font-bold items-center max-w-[80px] inline-block truncate">
+                    {props.username}
+                  </p>
+                </div>
+
+                <div
+                  className={`${
+                    props.isOnline ? "text-tradeGreen" : "text-tradeFadeWhite"
+                  } w-[60px]`}
+                >
+                  <HiStatusOnline />
+                </div>
+              </div>
 
               <div className="flex gap-3 mt-1">
                 <p className="text-xs text-white flex items-center gap-1 font-semibold">
