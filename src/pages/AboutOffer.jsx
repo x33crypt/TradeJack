@@ -441,7 +441,7 @@ const AboutOffer = () => {
               </p>
             </div>
 
-            <div className="flex flex-col md:gap-[15px] gap-[10px] p-[15px]  md:py-[40px] lg:py-[50px] bg-tradeAsh md:justify-center items-center">
+            <div className="flex flex-col md:gap-[15px] gap-[10px] p-[15px] py-[30px]  md:py-[40px] lg:py-[50px] bg-tradeAsh md:justify-center items-center">
               <div className="lg:w-[500px] sm:w-[550px] w-full flex gap-[15px] bg-tradeAshLight border border-tradeAshExtraLight p-[12px] rounded-[10px]">
                 <div className="flex-1 flex flex-col gap-[15px]">
                   {/* Header: Username & Avatar */}
@@ -456,16 +456,45 @@ const AboutOffer = () => {
                       </div>
                       <p className=" text-[16px] font-semibold">saneghxt</p>
                     </div>
+
+                    <div className="flex flex-col">
+                      <div className="flex gap-1">
+                        <p className="text-[13px] font-[500] text-tradeFadeWhite">
+                          Posted:
+                        </p>
+                        <p className="text-[13px] font-[600] text-tradeGreen">
+                          February - 2025
+                        </p>
+                      </div>
+                      <div className="flex gap-1">
+                        <p className="text-[13px] font-[500] text-tradeFadeWhite">
+                          Status:
+                        </p>
+                        <p className="text-[13px] font-[600] text-tradeGreen">
+                          Active
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Offer Details */}
-                  <div className="flex flex-col gap-[2px]">
-                    <p className="text-tradeOrange text-[15px] font-bold">
-                      Wells Fargo
-                    </p>
-                    <p className="text-white text-[13px] font-medium">
-                      Direct Bank Transfer
-                    </p>
+                  <div className="flex justify-between items-end">
+                    <div className="flex flex-col gap-[2px]">
+                      <p className="text-tradeOrange text-[15px] font-bold">
+                        Wells Fargo
+                      </p>
+                      <p className="text-white text-[13px] font-medium">
+                        Direct Bank Transfer
+                      </p>
+                    </div>
+                    <div className="flex gap-1">
+                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
+                        Accepted currency:
+                      </p>
+                      <p className="text-[13px] font-[700] text-tradeOrange">
+                        USD
+                      </p>
+                    </div>
                   </div>
 
                   {/* Rating, Reviews & Offer ID */}
@@ -483,46 +512,16 @@ const AboutOffer = () => {
                           67
                         </p>
                       </div>
-                      <p className="text-tradeFadeWhite font-[500] text-[13px] hover:text-white cursor-pointer transition-all duration-300">
+                      <p className="text-tradeFadeWhite font-semibold text-[13px] hover:text-white cursor-pointer transition-all duration-300">
                         (128 Reviews)
                       </p>
                     </div>
-                  </div>
-                </div>
 
-                <div className="flex flex-col justify-between">
-                  <div className="flex flex-col">
-                    <div className="flex gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Posted:
-                      </p>
-                      <p className="text-[13px] font-[600] text-tradeGreen">
-                        February - 2025
+                    <div className="flex items-center gap-2">
+                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                        Offer ID-45EDZ
                       </p>
                     </div>
-                    <div className="flex gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Status:
-                      </p>
-                      <p className="text-[13px] font-[600] text-tradeGreen">
-                        Active
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-1">
-                    <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                      Accepted currency:
-                    </p>
-                    <p className="text-[13px] font-[700] text-tradeOrange">
-                      USD
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Offer ID-45EDZ
-                    </p>
                   </div>
                 </div>
               </div>
@@ -538,7 +537,7 @@ const AboutOffer = () => {
                 <div className="flex-1 flex flex-col">
                   <div className="flex items-center gap-2">
                     <p className="text-tradeFadeWhite text-[13px] font-[500]">
-                      Min Purchase
+                      Minimum Purchase
                     </p>
 
                     <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
@@ -560,7 +559,7 @@ const AboutOffer = () => {
                 <div className="flex-1 flex  flex-col">
                   <div className="flex items-center gap-2">
                     <p className="text-tradeFadeWhite text-[13px] font-[500]">
-                      Max Purchase
+                      Maximum Purchase
                     </p>
 
                     <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">

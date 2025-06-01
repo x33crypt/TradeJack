@@ -16,66 +16,51 @@ const MyOfferCard = (props) => {
 
   return (
     <>
-      <div
-        // onClick={() => handleOfferClick(props.offerId)}
-        className="md:flex items-center hidden border-t bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg rounded- overflow-hidden"
-      >
-        {/* Bank Info Section */}
-        <div className="flex flex-1 px-4 py-6 gap-5 items-center border-r border-tradeAshLight">
-          <CiBank className="text-tradeAshLight text-[28px]" />
-          <div className="flex flex-col gap-1">
-            <p className="text-tradeOrange text-sm font-bold">Wells Fargo</p>
-            <p className="text-white text-xs font-medium">
-              Direct Bank Transfer
-            </p>
+      <div className="flex flex-col gap-[15px] bg-tradeAsh border border-tradeAshLight rounded-[12px] p-[16px] w-full">
+        {/* Top: Header with Service Name and Edit Button */}
+        <div className="flex justify-between items-center">
+          <div className="flex flex-col">
+            <p className="text-tradeOrange text-[15px] font-[700]">wsww</p>
+            <p className="text-tradeFadeWhite text-[13px] font-[500]">wsww</p>
+          </div>
+
+          <button
+            // onClick={() => handleEdit(offer.id)}
+            className="text-[13px] text-tradeGreen font-semibold border border-tradeGreen rounded-[8px] px-[10px] py-[5px] hover:bg-tradeGreen hover:text-black transition-all duration-300"
+          >
+            Edit
+          </button>
+        </div>
+
+        {/* Middle: Currency & Limit */}
+        <div className="grid grid-cols-2 gap-y-[10px] text-[13px]">
+          <div>
+            <p className="text-tradeFadeWhite font-medium">Currency</p>
+            <p className="text-white font-semibold">wsww</p>
+          </div>
+          <div>
+            <p className="text-tradeFadeWhite font-medium">Profit Margin</p>
+            <p className="text-tradeGreen font-semibold">5%</p>
+          </div>
+          <div>
+            <p className="text-tradeFadeWhite font-medium">Min</p>
+            <p className="text-white font-semibold">wsww USD</p>
+          </div>
+          <div>
+            <p className="text-tradeFadeWhite font-medium">Max</p>
+            <p className="text-white font-semibold">wsww USD</p>
           </div>
         </div>
 
-        {/* Purchase Limits Section */}
-        <div className="flex flex-col justify-center flex-1 px-4 py-6 gap-1 border-r border-tradeAshLight">
-          <div className="flex justify-between items-center">
-            <p className=" flex md:hidden lg:flex  text-xs font-semibold  text-white">
-              Min Purchase
-            </p>
-            <p className="  hidden md:flex lg:hidden   text-xs font-semibold  text-white">
-              Minimum
-            </p>
+        {/* Bottom: Status or any additional tags */}
+        <div className="flex justify-between items-center pt-[10px] border-t border-tradeAshLight mt-[10px]">
+          <p className="text-[13px] text-tradeFadeWhite font-medium">
+            Status:{" "}
+            <span className="text-white font-semibold capitalize">Active</span>
+          </p>
 
-            <p className="text-sm font-bold text-white">
-              200 {props.currency?.code}
-            </p>
-          </div>
-          <div className="flex justify-between items-center">
-            <p className=" flex md:hidden lg:flex  text-xs font-semibold  text-white">
-              Max Purchase
-            </p>
-            <p className="  hidden md:flex lg:hidden  text-xs font-semibold  text-white">
-              Maximum
-            </p>
-            <p className=" text-sm font-bold text-white">
-              1000 {props.currency?.code}
-            </p>
-          </div>
-        </div>
-
-        {/* Rate Info Section */}
-        <div className="flex flex-col justify-center items-start flex-1 px-4 py-6 gap-2 border-l border-tradeAshLight">
-          <div className="flex flex-col gap-1">
-            {/* <div className="flex items-center gap-2">
-              <p className="text-sm font-bold text-white">
-                1 {props.currency?.code}
-              </p>
-              <FaArrowRightArrowLeft className="text-tradeOrange text-xs" />
-              <p className="text-sm font-bold text-white">NGN 750.00</p>
-            </div> */}
-
-            <div className="flex items-center gap-2">
-              <TbArrowBigUpLines className="text-tradeGreen text-xs " />
-              <p className="text-xs font-semibold text-tradeGreen">
-                +{props.margin}.00% Margin
-              </p>
-            </div>
-          </div>
+          {/* Optional: Add timestamp or other tag */}
+          <p className="text-[12px] text-tradeAshLighter">Today</p>
         </div>
       </div>
     </>

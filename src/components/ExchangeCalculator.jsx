@@ -87,33 +87,30 @@ const ExchangeCalculator = (prop) => {
               )}
             </div>
 
-            <div className=" flex flex-col gap-[10px]">
+            <div className="flex flex-col gap-[10px]">
               <div className="flex justify-between">
                 <p className="text-sm font-[500] text-tradeFadeWhite">
-                  Rate margin
+                  Profit Margin
                 </p>
+                <p className="text-sm font-semibold text-white">3%</p>
+              </div>
 
-                <div className="flex items-center gap-[6px] ">
-                  <p className="text-sm font-semibold text-white">3%</p>
-                </div>
-              </div>{" "}
               <div className="flex justify-between">
                 <p className="text-sm font-[500] text-tradeFadeWhite">
-                  Margin breakdown
+                  Rate Breakdown
                 </p>
-
-                <div className="flex items-center gap-[6px] ">
-                  <p className="text-sm font-semibold text-white">3%</p>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-bold text-white">1 USD</p>
+                  <FaArrowRightArrowLeft className="text-tradeOrange text-xs" />
+                  <p className="text-sm font-bold text-white">0.23 USDT</p>
                 </div>
               </div>
+
               <div className="flex justify-between">
                 <p className="text-sm font-[500] text-tradeFadeWhite">
-                  You get
+                  You Receive
                 </p>
-
-                <div className="flex items-center gap-[6px] ">
-                  <p className="text-sm font-semibold text-white">3%</p>
-                </div>
+                <p className="text-sm font-semibold text-white">0.00262 USDT</p>
               </div>
             </div>
 
