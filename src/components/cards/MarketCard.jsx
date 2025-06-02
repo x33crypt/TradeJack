@@ -133,7 +133,7 @@ const MarketCard = (props) => {
         <div className="flex justify-between pl-2 pr-4 py-4 border-b border-tradeAshLight">
           <div className="flex items-center gap-2">
             <CiBank className="text-tradeAshLight text-[30px]" />
-            <div>
+            <div className="flex flex-col gap-1">
               <p className="text-tradeOrange text-base font-bold">
                 {props.service}
               </p>
@@ -178,19 +178,19 @@ const MarketCard = (props) => {
         {/* Middle Section: Purchase Limits */}
         <div className="flex justify-between px-4 py-4 border-b border-tradeAshLight text-white text-sm font-semibold">
           <div>
-            <p className="text-xs">Min Purchase</p>
+            <p className="text-xs text-tradeFadeWhite">Min Purchase</p>
             <p className="font-bold">
               {props.minimum.toLocaleString()} {props.currency?.code}
             </p>
           </div>
           <div>
-            <p className="text-xs">Max Purchase</p>
+            <p className="text-xs text-tradeFadeWhite">Max Purchase</p>
             <p className="font-bold">
               {props.maximum.toLocaleString()} {props.currency?.code}
             </p>
           </div>
           <div>
-            <p className="text-xs">Payment Window</p>
+            <p className="text-xs text-tradeFadeWhite">Payment Window</p>
             <p className="font-bold">{props.paymentWindow} Hour(s)</p>
           </div>
         </div>
@@ -200,7 +200,7 @@ const MarketCard = (props) => {
           <div className="flex items-center gap-2 font-bold text-sm">
             <p>1 {props.currency?.code}</p>
             <FaArrowRightArrowLeft className="text-tradeOrange text-xs" />
-            <p>NGN 750.00</p>
+            <p>0.02508 USDT</p>
           </div>
           <div className="flex items-center gap-1 text-xs font-semibold text-tradeGreen">
             <TbArrowBigUpLines />

@@ -92,9 +92,9 @@ const MyOfferCard = (props) => {
         {/* Bank Info */}
         <div className="flex items-center gap-3 px-4 py-3 border-b border-tradeAshLight">
           <CiBank className="text-tradeAshLight text-[24px]" />
-          <div>
-            <p className="text-tradeOrange text-sm font-bold">Wells Fargo</p>
-            <p className="text-white text-xs font-semibold">
+          <div className="flex flex-col gap-1">
+            <p className="text-tradeOrange text-base font-bold">Wells Fargo</p>
+            <p className="text-white text-xs font-medium">
               Direct Bank Transfer
             </p>
           </div>
@@ -102,24 +102,18 @@ const MyOfferCard = (props) => {
 
         {/* Accepted Currency */}
         <div className="flex justify-between items-center px-4 py-3 border-b border-tradeAshLight">
-          <p className="text-tradeFadeWhite text-xs font-semibold">
-            Accepted Currency
-          </p>
+          <p className="text-white text-xs font-semibold">Accepted Currency</p>
           <p className="text-white text-sm font-bold">United State Dollars</p>
         </div>
 
         {/* Purchase Limits */}
         <div className="flex flex-col gap-2 px-4 py-3 border-b border-tradeAshLight">
           <div className="flex justify-between">
-            <p className="text-tradeFadeWhite text-xs font-semibold">
-              Min Purchase
-            </p>
+            <p className="text-white text-xs font-semibold">Minimum Purchase</p>
             <p className="text-white text-sm font-bold">200 USD</p>
           </div>
           <div className="flex justify-between">
-            <p className="text-tradeFadeWhite text-xs font-semibold">
-              Max Purchase
-            </p>
+            <p className="text-white text-xs font-semibold">Maximum Purchase</p>
             <p className="text-white text-sm font-bold">1,000 USD</p>
           </div>
         </div>

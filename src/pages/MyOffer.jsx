@@ -16,7 +16,7 @@ const MyOffer = () => {
           </div>
 
           <div className=" z-10 sticky top-[60px] flex gap-[5px] px-[15px] bg-black">
-            <div className="w-full flex justify-between ">
+            <div className="w-full flex justify-between  gap-[10px] overflow-hidden">
               <div className=" gap-[10px] py-[15px] flex">
                 <div className=" flex items-center gap-2 px-[12px] py-[4px] text-tradeOrange  lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border border-neutral-800 hover:border-tradeOrange md:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                   <BiSolidBinoculars className="lg:text-[17px] text-[18px]" />
