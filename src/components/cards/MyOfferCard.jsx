@@ -16,51 +16,73 @@ const MyOfferCard = (props) => {
 
   return (
     <>
-      <div className="flex flex-col gap-[15px] bg-tradeAsh border border-tradeAshLight rounded-[12px] p-[16px] w-full">
-        {/* Top: Header with Service Name and Edit Button */}
-        <div className="flex justify-between items-center">
-          <div className="flex flex-col">
-            <p className="text-tradeOrange text-[15px] font-[700]">wsww</p>
-            <p className="text-tradeFadeWhite text-[13px] font-[500]">wsww</p>
+      <div className="flex flex-col md:flex-row border bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg overflow-hidden relative">
+        <div className="flex flex-col md:flex-row flex-1">
+          {/* Offer ID */}
+          <div className="flex justify-between md:flex-col md:justify-center md:gap-1 flex-1 px-4 py-4 md:py-6 border-b md:border-b-0 md:border-r border-tradeAshLight">
+            <p className="text-tradeFadeWhite text-xs font-semibold md:block hidden">
+              Offer ID
+            </p>
+            <p className="text-tradeFadeWhite text-sm md:text-[15px] font-medium">
+              516w17gasv17
+            </p>
           </div>
 
-          <button
-            // onClick={() => handleEdit(offer.id)}
-            className="text-[13px] text-tradeGreen font-semibold border border-tradeGreen rounded-[8px] px-[10px] py-[5px] hover:bg-tradeGreen hover:text-black transition-all duration-300"
-          >
-            Edit
-          </button>
+          {/* Bank Info */}
+          <div className="flex gap-4 items-center flex-1 px-4 py-4 md:py-6 border-b md:border-b-0 md:border-r border-tradeAshLight">
+            <CiBank className="text-tradeAshLight text-[24px] md:text-[28px]" />
+            <div className="flex flex-col gap-1">
+              <p className="text-tradeOrange text-sm font-bold">Wells Fargo</p>
+              <p className="text-white text-xs font-medium">
+                Direct Bank Transfer
+              </p>
+            </div>
+          </div>
+
+          {/* Accepted Currency */}
+          <div className="flex justify-between md:flex-col md:justify-center md:gap-1 flex-1 px-4 py-4 md:py-6 border-b md:border-b-0 md:border-r border-tradeAshLight">
+            <p className="text-tradeFadeWhite text-xs font-semibold md:block hidden">
+              Accepted Currency
+            </p>
+            <p className="text-white text-sm font-semibold">
+              United State Dollars - USD
+            </p>
+          </div>
+
+          {/* Purchase Limits */}
+          <div className="flex justify-center flex-col flex-1 px-4 py-4 md:py-6 border-b md:border-b-0 md:border-r border-tradeAshLight gap-1">
+            <div className="flex justify-between items-center ">
+              <p className="text-xs text-white font-medium">Min Purchase</p>
+              <p className="text-white text-sm font-bold">200 USD</p>
+            </div>
+            <div className="flex justify-between items-center">
+              <p className="text-xs text-white font-medium">Max Purchase</p>
+              <p className="text-white text-sm font-bold">1,000 USD</p>
+            </div>
+          </div>
+
+          {/* Profit Margin */}
+          <div className="flex justify-between  md:flex-col md:justify-center md:gap-1 flex-1 px-4 py-4 md:py-6">
+            <p className="text-tradeFadeWhite text-xs font-semibold md:block hidden">
+              Profit Margin
+            </p>
+            <p className="text-tradeGreen text-sm md:text-[15px] font-bold">
+              5%
+            </p>
+          </div>
         </div>
 
-        {/* Middle: Currency & Limit */}
-        <div className="grid grid-cols-2 gap-y-[10px] text-[13px]">
-          <div>
-            <p className="text-tradeFadeWhite font-medium">Currency</p>
-            <p className="text-white font-semibold">wsww</p>
+        {/* Right side: Edit section */}
+        <div className="flex flex-col justify-center items-start  gap-1 px-4 py-4 md:py-6 w-full md:w-[120px] bg-tradeAshExtraLight border-t md:border-t-0 border-tradeAshLight">
+          {/* Dot + Status (Visible on mobile) */}
+          <div className="flex items-center gap-2 ">
+            <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
+            <p className="text-tradeGreen text-xs font-[600]">Active</p>
           </div>
-          <div>
-            <p className="text-tradeFadeWhite font-medium">Profit Margin</p>
-            <p className="text-tradeGreen font-semibold">5%</p>
-          </div>
-          <div>
-            <p className="text-tradeFadeWhite font-medium">Min</p>
-            <p className="text-white font-semibold">wsww USD</p>
-          </div>
-          <div>
-            <p className="text-tradeFadeWhite font-medium">Max</p>
-            <p className="text-white font-semibold">wsww USD</p>
-          </div>
-        </div>
 
-        {/* Bottom: Status or any additional tags */}
-        <div className="flex justify-between items-center pt-[10px] border-t border-tradeAshLight mt-[10px]">
-          <p className="text-[13px] text-tradeFadeWhite font-medium">
-            Status:{" "}
-            <span className="text-white font-semibold capitalize">Active</span>
+          <p className="text-tradeOrange text-xs font-[500]">
+            Click to view and Edit
           </p>
-
-          {/* Optional: Add timestamp or other tag */}
-          <p className="text-[12px] text-tradeAshLighter">Today</p>
         </div>
       </div>
     </>

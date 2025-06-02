@@ -175,7 +175,13 @@ const InAppNav = () => {
             <MdSpaceDashboard className="text-[16px] text-tradeFadeWhite" />
             <p className="text-white text-[15px] ">Dashboard</p>
           </div>
-          <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
+          <div
+            onClick={() => {
+              safeNavigate("/user/offers");
+              setIsNavOption(false);
+            }}
+            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
+          >
             <TbLayoutList className="text-[16px] text-tradeFadeWhite" />
             <p className="text-white text-[15px] ">My Offers</p>
           </div>

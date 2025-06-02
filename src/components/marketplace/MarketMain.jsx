@@ -74,7 +74,9 @@ const MarketMain = ({
   return (
     <div className="flex flex-col gap-[px] h-full md:border-x md:border-t md:border-b border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
-        <p className="text-[17px] text-white font-[700]">Secure P2P Marketplace</p>
+        <p className="text-[17px] text-white font-[700]">
+          Secure P2P Marketplace
+        </p>
 
         <div onClick={handleShowOfferFilter} className="text-white text-[25px]">
           <BiSolidBinoculars />
@@ -161,10 +163,7 @@ const MarketMain = ({
                 </span>
               </div>
 
-              <div
-                onClick={handleShowAllOffer}
-                className=" flex items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[13px] font-[600] rounded-[6.5px] border border-neutral-800 hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-              >
+              <div className=" flex items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[13px] font-[600] rounded-[6.5px] border border-neutral-800 hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                 <TbArrowGuide className="text-[17px]" />
                 <p>Guide Me</p>
               </div>
