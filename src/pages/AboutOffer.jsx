@@ -446,7 +446,7 @@ const AboutOffer = () => {
                 <div className="flex-1 flex flex-col gap-[20px]">
                   {/* Header: Username & Avatar */}
                   <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
+                    <div className="flex-1 flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
                       <div className="w-[40px] flex-shrink-0 rounded-full">
                         <img
                           className="rounded-full"
@@ -464,7 +464,7 @@ const AboutOffer = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-col">
+                    <div className=" flex-1 flex flex-col">
                       <div className="flex gap-1">
                         <p className="text-[13px] font-[500] text-tradeFadeWhite">
                           Posted:
@@ -485,8 +485,8 @@ const AboutOffer = () => {
                   </div>
 
                   {/* Offer Details */}
-                  <div className="flex justify-between items-end">
-                    <div className="flex flex-col gap-[2px]">
+                  <div className="flex justify-between  items-center">
+                    <div className="flex flex-1 flex-col gap-[2px]">
                       <p className="text-tradeOrange text-[15px] font-bold">
                         Wells Fargo
                       </p>
@@ -494,19 +494,19 @@ const AboutOffer = () => {
                         Direct Bank Transfer
                       </p>
                     </div>
-                    <div className="flex gap-1">
+                    <div className="flex flex-1 flex-col gap-1">
                       <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Accepted currency:
+                        Accepted Currency
                       </p>
-                      <p className="text-[13px] font-[700] text-tradeOrange">
-                        USD
+                      <p className="text-[14px] font-[700] text-tradeOrange">
+                        United State Dollars
                       </p>
                     </div>
                   </div>
 
                   {/* Rating, Reviews & Offer ID */}
                   <div className="flex justify-between">
-                    <div className="flex items-center gap-2">
+                    <div className="flex-1 flex items-center gap-2">
                       <div className="flex gap-2 items-center">
                         <p className=" flex-1 w-full text-xs text-white flex items-center gap-1 font-semibold">
                           <IoMdThumbsUp className="text-tradeGreen text-sm" />
@@ -524,7 +524,7 @@ const AboutOffer = () => {
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex-1 flex items-center gap-2">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Offer ID-45EDZ
                       </p>

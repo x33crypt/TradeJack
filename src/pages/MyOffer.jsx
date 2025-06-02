@@ -61,8 +61,10 @@ const MyOffer = () => {
             </div>
           </div>
 
-          <div className="p-[15px]">
-            <MyOfferCard />
+          <div className="grid grid-cols-1 p-[15px] gap-1 md:gap-0 items-center">
+            {[...Array(10)].map((_, index) => (
+              <MyOfferCard key={index} />
+            ))}
           </div>
         </div>
       </div>

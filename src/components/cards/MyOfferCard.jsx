@@ -17,7 +17,7 @@ const MyOfferCard = (props) => {
 
   return (
     <>
-      <div className="hidden md:flex flex-1 border bg-tradeAsh border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
+      <div className="hidden md:flex flex-1 border-t bg-tradeAsh border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
         {/* Left: Main Info Sections */}
         <div className="flex flex-col gap-1 justify-center px-4 py-6 border-r border-tradeAshLight">
           <p className="text-tradeFadeWhite text-xs font-semibold">Offer ID</p>
@@ -60,7 +60,7 @@ const MyOfferCard = (props) => {
         </div>
 
         {/* Right: Status + Action */}
-        <div className="flex-1 flex flex-col justify-center items-start gap-2 px-4 py-6 bg-tradeAshLight border-l border-tradeAshLight">
+        <div className="flex-1 flex flex-col justify-center items-start gap-2 px-4 py-6 bg-tradeAshExtraLight border-l border-tradeAshLight">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
             <p className="text-tradeGreen text-xs font-semibold">Active</p>
@@ -74,14 +74,14 @@ const MyOfferCard = (props) => {
         </div>
       </div>
 
-      <div className="flex flex-col md:hidden border bg-tradeAsh border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
+      <div className="flex flex-col md:hidden border-t  bg-tradeAsh border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
         {/* Top: Offer ID and Status */}
         <div className="flex justify-between items-center px-4 py-3 border-b border-tradeAshLight">
           <div className="flex gap-2 items-center">
             <p className="text-tradeFadeWhite text-xs font-semibold">
               Offer ID:
             </p>
-            <p className="text-white text-sm font-bold">5671908</p>
+            <p className="text-white text-xs font-bold">5671908</p>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
@@ -91,7 +91,10 @@ const MyOfferCard = (props) => {
 
         {/* Bank Info */}
         <div className="flex items-center gap-3 px-4 py-3 border-b border-tradeAshLight">
-          <CiBank className="text-tradeAshLight text-[24px]" />
+          <div>
+            <CiBank className="text-tradeAshLight text-[30px]" />
+          </div>
+
           <div className="flex flex-col gap-1">
             <p className="text-tradeOrange text-base font-bold">Wells Fargo</p>
             <p className="text-white text-xs font-medium">
@@ -102,19 +105,26 @@ const MyOfferCard = (props) => {
 
         {/* Accepted Currency */}
         <div className="flex justify-between items-center px-4 py-3 border-b border-tradeAshLight">
-          <p className="text-white text-xs font-semibold">Accepted Currency</p>
-          <p className="text-white text-sm font-bold">United State Dollars</p>
+          <p className="text-xs text-tradeFadeWhite font-semibold">
+            Accepted Currency
+          </p>
+          <p className="font-bold text-white text-sm">United State Dollars</p>
         </div>
 
         {/* Purchase Limits */}
         <div className="flex flex-col gap-2 px-4 py-3 border-b border-tradeAshLight">
           <div className="flex justify-between">
-            <p className="text-white text-xs font-semibold">Minimum Purchase</p>
-            <p className="text-white text-sm font-bold">200 USD</p>
+            <p className="text-xs text-tradeFadeWhite font-semibold">
+              Minimum Purchase
+            </p>
+            <p className="font-bold text-white text-sm">200 USD</p>
           </div>
           <div className="flex justify-between">
-            <p className="text-white text-xs font-semibold">Maximum Purchase</p>
-            <p className="text-white text-sm font-bold">1,000 USD</p>
+            <p className="text-tradeFadeWhite text-xs font-semibold">
+              Maximum Purchase
+            </p>
+
+            <p className="font-bold text-white text-sm">1,000 USD</p>
           </div>
         </div>
 

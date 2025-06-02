@@ -87,7 +87,7 @@ const ExchangeCalculator = (prop) => {
               )}
             </div>
 
-            <div className="flex flex-col gap-2 bg-tradeAsh border border-tradeAshExtraLight p-[12px] rounded-[8px]">
+            <div className="flex flex-col gap-2 bg-tradeAsh border border-tradeAshLight p-[12px] rounded-[8px]">
               <div className="flex justify-between">
                 <p className="text-sm font-semibold text-tradeFadeWhite">
                   Profit margin
