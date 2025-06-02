@@ -16,7 +16,7 @@ const MyOfferCard = (props) => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row border bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg overflow-hidden relative">
+      <div className="lg:flex hidden flex-col md:flex-row border bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg overflow-hidden relative">
         <div className="flex flex-col md:flex-row flex-1">
           {/* Offer ID */}
           <div className="flex justify-between md:flex-col md:justify-center md:gap-1 flex-1 px-4 py-4 md:py-6 border-b md:border-b-0 md:border-r border-tradeAshLight">
@@ -63,7 +63,7 @@ const MyOfferCard = (props) => {
 
           {/* Profit Margin */}
           <div className="flex justify-between  md:flex-col md:justify-center md:gap-1 flex-1 px-4 py-4 md:py-6">
-            <p className="text-tradeFadeWhite text-xs font-semibold md:block hidden">
+            <p className="text-tradeFadeWhite text-xs font-semibold md:block hidden ">
               Profit Margin
             </p>
             <p className="text-tradeGreen text-sm md:text-[15px] font-bold">
@@ -82,6 +82,76 @@ const MyOfferCard = (props) => {
 
           <p className="text-tradeOrange text-xs font-[500]">
             Click to view and Edit
+          </p>
+        </div>
+      </div>
+
+      <div className="flex flex-col md:flex-row border bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg overflow-hidden relative">
+        {/* Left Main Section */}
+        <div className="flex flex-col md:flex-row flex-1">
+          {/* Top: Offer ID + Status */}
+          <div className="flex justify-between items-center px-4 py-4 md:py-6 border-b border-tradeAshLight">
+            <div className="flex gap-1 items-center">
+              <p className="text-tradeFadeWhite text-sm font-semibold">ID :</p>
+              <p className="text-tradeFadeWhite text-sm font-medium">
+                516w17gasv17
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
+              <p className="text-tradeGreen text-xs font-semibold">Active</p>
+            </div>
+          </div>
+
+          {/* Bank & Currency Info */}
+          <div className="flex flex-col md:flex-row w-full">
+            {/* Bank Details */}
+            <div className="flex items-center gap-4 flex-1 px-4 py-4 md:py-6 border-b md:border-b-0 md:border-r border-tradeAshLight">
+              <CiBank className="text-tradeAshLight text-2xl md:text-[28px]" />
+              <div className="flex flex-col gap-1">
+                <p className="text-tradeOrange text-sm font-bold">
+                  Wells Fargo
+                </p>
+                <p className="text-white text-xs font-medium">
+                  Direct Bank Transfer
+                </p>
+              </div>
+            </div>
+
+            {/* Accepted Currency */}
+            <div className="flex items-center flex-1 px-4 py-4 md:py-6 border-b md:border-b-0 md:border-r border-tradeAshLight">
+              <div className="flex flex-col gap-1">
+                <p className="text-tradeFadeWhite text-xs font-medium">
+                  Accepted Currency
+                </p>
+                <p className="text-white text-sm font-bold">
+                  United States Dollars - USD
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Purchase Limits & Margin */}
+          <div className="grid grid-cols-3 gap-4 px-4 py-4 border-b border-tradeAshLight text-white text-sm font-semibold">
+            <div>
+              <p className="text-xs text-tradeFadeWhite">Min Purchase</p>
+              <p className="font-bold">200 USD</p>
+            </div>
+            <div>
+              <p className="text-xs text-tradeFadeWhite">Max Purchase</p>
+              <p className="font-bold">1,000 USD</p>
+            </div>
+            <div>
+              <p className="text-xs text-tradeFadeWhite">Profit Margin</p>
+              <p className="text-tradeGreen font-bold">5%</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Edit Info */}
+        <div className="flex items-center md:items-start px-4 py-4 md:py-6 w-full md:w-[120px] bg-tradeAshExtraLight border-t md:border-t-0 border-tradeAshLight">
+          <p className="text-tradeOrange text-xs font-medium">
+            Click to view and edit
           </p>
         </div>
       </div>
