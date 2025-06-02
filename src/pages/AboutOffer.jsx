@@ -443,7 +443,7 @@ const AboutOffer = () => {
 
             <div className="flex flex-col md:gap-[15px] gap-[10px] p-[15px] py-[30px]  md:py-[40px] lg:py-[50px] bg-tradeAsh md:justify-center items-center">
               <div className="lg:w-[500px] sm:w-[550px] w-full flex gap-[15px] bg-tradeAshLight border border-tradeAshExtraLight p-[12px] rounded-[10px]">
-                <div className="flex-1 flex flex-col gap-[15px]">
+                <div className="flex-1 flex flex-col gap-[20px]">
                   {/* Header: Username & Avatar */}
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
@@ -454,7 +454,14 @@ const AboutOffer = () => {
                           alt="User avatar"
                         />
                       </div>
-                      <p className=" text-[16px] font-semibold">saneghxt</p>
+                      <div className="flex flex-col ">
+                        <p className="m-0 text-[16px] font-semibold text-white">
+                          saneghxt
+                        </p>
+                        <p className="m-0 text-[12px] font-semibold text-tradeFadeWhite">
+                          Top Trader
+                        </p>
+                      </div>
                     </div>
 
                     <div className="flex flex-col">

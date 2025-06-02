@@ -32,7 +32,7 @@ const MarketCard = (props) => {
         className="md:flex items-center hidden border-t bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg rounded- overflow-hidden"
       >
         {/* Bank Info Section */}
-        <div className="flex flex-1 px-4 py-6 gap-5 items-center border-r border-tradeAshLight">
+        <div className="flex flex-1 px-4 py-6 gap-3 items-center border-r border-tradeAshLight">
           <CiBank className="text-tradeAshLight text-[28px]" />
           <div className="flex flex-col gap-1">
             <p className="text-tradeOrange text-sm font-bold">
@@ -45,7 +45,7 @@ const MarketCard = (props) => {
         </div>
 
         {/* User Info Section */}
-        <div className="flex flex-1 px-4 py-6 gap-5 items-center border-r border-tradeAshLight">
+        <div className="flex flex-1 px-4 py-6 gap-3 items-center border-r border-tradeAshLight">
           <HiOutlineUserCircle className="text-tradeAshLight text-[28px] flex-shrink-0" />
           <div className="flex w-full flex-col gap-1">
             <div className="flex items-center">
@@ -112,7 +112,7 @@ const MarketCard = (props) => {
                 1 {props.currency?.code}
               </p>
               <FaArrowRightArrowLeft className="text-tradeOrange text-xs" />
-              <p className="text-sm font-bold text-white"> 750.00 NGN</p>
+              <p className="text-sm font-bold text-white"> 0.4308 USDT</p>
             </div>
 
             <div className="flex items-center gap-2 p-[0.5px] bg-tradeAshExtraLight">
@@ -142,12 +142,12 @@ const MarketCard = (props) => {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 ">
             <HiOutlineUserCircle className="text-tradeAshLight text-[30px]" />
-            <div className="flex flex-col items-start max-w-[120px]">
-              <div className="flex items-center gap-2">
+            <div className="flex gap-1 flex-col items-start w-[100px] overflow-hidden">
+              <div className="flex  items-center gap-2">
                 <div className="flex-1 flex">
-                  <p className=" text-white text-sm font-bold items-center max-w-[80px] inline-block truncate">
+                  <p className=" text-white text-sm font-bold items-center max-w-[70px] inline-block truncate">
                     {props.username}
                   </p>
                 </div>
@@ -161,7 +161,7 @@ const MarketCard = (props) => {
                 </div>
               </div>
 
-              <div className="flex gap-3 mt-1">
+              <div className="flex gap-3 ">
                 <p className="text-xs text-white flex items-center gap-1 font-semibold">
                   <IoMdThumbsUp className="text-tradeGreen text-sm" />
                   {parseInt(props.positiveFeedback).toLocaleString()}
