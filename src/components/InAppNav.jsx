@@ -94,23 +94,20 @@ const InAppNav = () => {
 
         <div className=" md:flex hidden  gap-[10px] items-center">
           <div
-            onClick={() => safeNavigate("/marketplace")}
+            onClick={() => safeNavigate("/offers/marketplace")}
             className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <RiExchangeLine className="lg:flex hidden text-[16px]" />
             <p className="text-[13px] font-[500]">Sell Assets</p>
           </div>
           <div
-            onClick={() => safeNavigate("/create-offer")}
+            onClick={() => safeNavigate("/offers/create")}
             className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <TbBuildingBank className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-[500]">Buy Assets</p>
           </div>
-          <div
-            // onClick={() => safeNavigate("/create-offer")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
-          >
+          <div className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300">
             <FaVenusDouble className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-[500]">Favourite Vendors</p>
           </div>
@@ -177,7 +174,7 @@ const InAppNav = () => {
           </div>
           <div
             onClick={() => {
-              safeNavigate("/user/offers");
+              safeNavigate("/offers/mine");
               setIsNavOption(false);
             }}
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
@@ -188,7 +185,7 @@ const InAppNav = () => {
           <div
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
             onClick={() => {
-              safeNavigate("/messages");
+              // safeNavigate("/messages");
               setIsNavOption(false);
             }}
           >
@@ -221,7 +218,7 @@ const InAppNav = () => {
         <div className="w-full h-max flex flex-col gap-[10px]">
           <p
             onClick={() => {
-              safeNavigate("/marketplace");
+              safeNavigate("/offers/marketplace");
               setIsNavOption(false);
             }}
             className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-white py-[10px] rounded-[12px]"
@@ -230,7 +227,7 @@ const InAppNav = () => {
           </p>
           <p
             onClick={() => {
-              safeNavigate("/create-offer");
+              safeNavigate("/offers/create");
               setIsNavOption(false);
             }}
             className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-tradeGreen py-[10px] rounded-[12px]"

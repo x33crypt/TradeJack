@@ -22,7 +22,7 @@ const MarketCard = (props) => {
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
-    navigateTo(`/offer/${offerId}`);
+    navigateTo(`/offers/${offerId}`);
   };
 
   return (

@@ -437,7 +437,10 @@ const AboutOffer = () => {
           <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight">
             <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
               <p className=" text-[17px] text-white font-[700] cursor-pointer">
-                About Offer
+                About Offer /{" "}
+                <span className="text-tradeFadeWhite font-semibold">
+                  i7823739139
+                </span>
               </p>
             </div>
 
@@ -513,22 +516,20 @@ const AboutOffer = () => {
                           {/* {parseInt(props.positiveFeedback).toLocaleString()} */}
                           300
                         </p>
+
                         <p className="flex-1 w-full text-xs text-white flex items-center gap-1 font-semibold">
                           <AiFillSafetyCertificate className="text-tradeOrange text-sm" />
                           {/* {parseInt(props.trustScore).toLocaleString()} */}
                           67
                         </p>
                       </div>
-                      <p className="text-tradeFadeWhite font-semibold text-[13px] hover:text-white cursor-pointer transition-all duration-300">
-                        (128 Reviews)
-                      </p>
                     </div>
 
-                    <div className="flex-1 flex items-center gap-2">
+                    {/* <div className="flex-1 flex items-center gap-2">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Offer ID-45EDZ
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

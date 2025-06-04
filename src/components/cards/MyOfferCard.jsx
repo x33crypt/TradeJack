@@ -12,7 +12,7 @@ const MyOfferCard = (props) => {
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
-    navigateTo(`/edit-offer/${offerId}`);
+    navigateTo(`/offers/${offerId}/edit`);
   };
 
   return (

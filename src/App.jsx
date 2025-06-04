@@ -39,37 +39,50 @@ const App = () => {
           <SelectElement />
           <TradeAlert />
           <Routes>
+            {/* Public */}
             <Route path="/" element={<Landing />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/signup/completed" element={<SignupSuccess />} />
+            <Route path="/signup/success" element={<SignupSuccess />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+
+            {/* Dashboard */}
             <Route path="/dashboard" element={<Dashboard />} />
+
+            {/* User Account */}
             <Route path="/account/profile" element={<UserProfile />} />
+            <Route path="/account/funds" element={<DepositAndWithdraw />} />
             <Route
-              path="/account/deposit&withdraw"
-              element={<DepositAndWithdraw />}
+              path="/account/security/verify"
+              element={<ConfirmPassword />}
             />
-            <Route path="/account/update/name" element={<ChangeName />} />
+
+            {/* Account Settings */}
+            <Route path="/account/settings/name" element={<ChangeName />} />
             <Route
-              path="/account/update/username"
+              path="/account/settings/username"
               element={<ChangeUsername />}
             />
-            <Route path="/account/update/email" element={<ChangeEmail />} />
-            <Route path="/account/update/phone" element={<ChangePhone />} />
-            <Route path="/account/update/address" element={<ChangeAdress />} />
-            <Route path="/marketplace" element={<Marketplace />} />
-            <Route path="/create-offer" element={<CreateOffer />} />
+            <Route path="/account/settings/email" element={<ChangeEmail />} />
+            <Route path="/account/settings/phone" element={<ChangePhone />} />
             <Route
-              path="/create-offer/summary"
+              path="/account/settings/address"
+              element={<ChangeAdress />}
+            />
+
+            {/* Marketplace & Offers */}
+            <Route path="/offers/marketplace" element={<Marketplace />} />
+            <Route path="/offers/create" element={<CreateOffer />} />
+            <Route
+              path="/offers/create/summary"
               element={<CreateOfferSummary />}
             />
-            <Route path="/user/offers" element={<MyOffer />} />
-            <Route path="/offer/:id" element={<AboutOffer />} />
-            <Route path="/edit-offer/:id" element={<EditOffer />} />
+            <Route path="/offers/mine" element={<MyOffer />} />
+            <Route path="/offers/:id" element={<AboutOffer />} />
+            <Route path="/offers/:id/edit" element={<EditOffer />} />
 
-            <Route path="/chat" element={<Messages />} />
-            <Route path="/account/auth/verify" element={<ConfirmPassword />} />
-            <Route path="/logout" element={<Logout />} />
+            {/* Messaging */}
+            <Route path="/messages" element={<Messages />} />
           </Routes>
         </userContext.Provider>
       </AuthProvider>

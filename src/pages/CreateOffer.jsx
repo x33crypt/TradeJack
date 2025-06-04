@@ -1251,7 +1251,7 @@ const CreateOffer = () => {
           </div>
           <div className=" bg-black flex lg:hidden flex-col gap-[15px] p-[15px]">
             <button
-              onClick={() => navigateTo("/create-offer/summary")}
+              onClick={() => navigateTo("/offers/create/summary")}
               className={` ${
                 previewOffer
                   ? "bg-tradeAsh text-tradeGreen"

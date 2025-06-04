@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import OfferCard from "../cards/MarketCard";
 import { useOfferFilter } from "@/context/OfferFilterContext";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { BsFilterSquare } from "react-icons/bs";
 import OfferFilter from "./OfferFilter";
 import { BiSolidBinoculars } from "react-icons/bi";
 import { TbArrowGuide } from "react-icons/tb";
-import { BiCheckShield } from "react-icons/bi";
-import { RiPoliceBadgeLine } from "react-icons/ri";
+import { RiColorFilterFill } from "react-icons/ri";
 
 const MarketMain = ({
   promotedOffers,
@@ -78,8 +76,8 @@ const MarketMain = ({
           Secure P2P Marketplace
         </p>
 
-        <div onClick={handleShowOfferFilter} className="text-white text-[25px]">
-          <BiSolidBinoculars />
+        <div className="text-white text-[25px]">
+          <RiColorFilterFill />
         </div>
       </div>
 
