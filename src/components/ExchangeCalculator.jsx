@@ -36,7 +36,7 @@ const ExchangeCalculator = (prop) => {
                     }
                     onChange={prop?.handleTradeValueChange}
                   />
-                  <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
+                  <div className="flex items-center justify-center w-[70px] border-l border-tradeAshLight">
                     <p className="text-[14px] text-white font-[700]">
                       <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[700] bg-white">
                         {prop?.offerDetails?.currency}
@@ -90,9 +90,9 @@ const ExchangeCalculator = (prop) => {
             <div className="flex flex-col gap-2 bg-tradeAshLight border border-tradeAshExtraLight p-[12px] rounded-[10px]">
               <div className="flex justify-between">
                 <p className="text-sm font-medium text-tradeFadeWhite">
-                  Profit margin
+                  Buyers's Profit margin
                 </p>
-                <p className="text-sm font-semibold text-white">3%</p>
+                <p className="text-sm font-semibold text-white">3.00%</p>
               </div>
 
               <div className="flex justify-between">
@@ -108,9 +108,9 @@ const ExchangeCalculator = (prop) => {
 
               <div className="flex justify-between">
                 <p className="text-sm font-medium text-tradeFadeWhite">
-                  You receive
+                  USDT worth in USD
                 </p>
-                <p className="text-sm font-semibold text-white">0.00262 USDT</p>
+                <p className="text-sm font-semibold text-white">406 USD</p>
               </div>
             </div>
 

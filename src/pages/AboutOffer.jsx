@@ -251,196 +251,10 @@ const AboutOffer = () => {
 
       <div className="flex flex-col bg-black gap-[15px] lg:px-[15%] md:px-[5%] pt-[60px] md:pt-[80px]">
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-0 ">
-          {/* <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight">
-            <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
-              <p className=" text-[17px] text-white font-[700] cursor-pointer">
-                Offer Details
-              </p>
-            </div>
-
-            <div className="flex flex-col md:gap-[15px] gap-[10px] p-[15px]">
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
-                <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
-                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Service
-                  </p>
-                  <p className="text-tradeOrange text-[15px] font-[600]">
-                    {offerDetails.service}
-                  </p>
-                </div>
-                <div className="flex flex-col gap-[2px]   py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
-                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Service Type
-                  </p>
-                  <p className="text-[15px] font-[600] text-white">
-                    {offerDetails.serviceType}
-                  </p>
-                </div>
-              </div>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] items-center lg:gap-[15px] gap-[10px]">
-                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
-                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Offer Rate Cap
-                  </p>
-                  <p className="text-white text-[15px] font-[600]">
-                    {`${parseInt(offerDetails?.rate).toLocaleString()}  ${
-                      offerDetails?.currency
-                    }`}
-                  </p>
-                </div>
-                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
-                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Offer Rate Margine
-                  </p>
-                  <div>
-                    {offeRateMargin?.percentage ? (
-                      <p className="text-[15px] font-[600] text-tradeGreen">
-                        {`${offeRateMargin?.percentage}% ${offeRateMargin?.status} market price`}
-                      </p>
-                    ) : (
-                      <p className="text-[15px] font-[600] text-tradeAshExtraLight">
-                        Calculating marging ...
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
-                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
-                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Min Purchase Limit
-                  </p>
-                  <p className="text-white text-[15px] font-[600]">
-                    {`${parseInt(
-                      offerDetails?.miniPurchase
-                    ).toLocaleString()}  ${offerDetails?.currency}`}
-                  </p>
-                </div>
-                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
-                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Max Purchase Limit
-                  </p>
-                  <p className="text-white text-[15px] font-[600]">
-                    {`${parseInt(
-                      offerDetails?.maxPurchase
-                    ).toLocaleString()}  ${offerDetails?.currency}`}
-                  </p>
-                </div>
-              </div>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))]  flex-wrap items-center lg:gap-[15px] gap-[10px]">
-                <div className="flex flex-col gap-[2px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px] ">
-                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Maximum Trade Time
-                  </p>
-                  <p className="text-white text-[15px] font-[600]">
-                    {offerDetails?.maxTradeTime} Minutes
-                  </p>
-                </div>
-                <div className="flex flex-col gap-[2px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
-                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Average Trade Time
-                  </p>
-                  <p className="text-white text-[15px] font-[600]">
-                    {offerDetails?.avgTradeTime} Minutes
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col">
-              <div className="flex p-[15px]  border-y border-neutral-800 ">
-                <p className="text-[17px] text-white font-[600] cursor-pointer">
-                  About Vendor
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-[10px] p-[15px]">
-                <div className=" flex-1 shrink-0 flex items-center gap-[10px]  py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight rounded-[8px]">
-                  <div className="relative w-[40px]">
-                    <img
-                      className=" rounded-full"
-                      src={offerDetails.profileImage}
-                      alt=""
-                    />
-                    <div className="absolute top-[25px] right-[-2px] bg-tradeAsh rounded-full flex items-center gap-[2px]">
-                      <GoDotFill className=" text-[16px] text-tradeGreen" />
-                    </div>
-                  </div>
-
-                  <div className="flex  flex-col gap-[5px] ">
-                    <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                      Username
-                    </p>
-
-                    <div className=" flex items-center gap-[5px] ">
-                      <p className="text-white text-[15px] font-[600] hover:underline cursor-pointer">
-                        {offerDetails.username}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
-                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Trade Volume
-                  </p>
-
-                  <div className="flex items-center gap-[8px]">
-                    <SlGraph className="text-[15px] text-tradeGreen" />
-                    <div className="flex items-center gap-[5px]">
-                      <p className="text-white text-[15px] font-[600]">300</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className=" flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
-                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Positive Feedback
-                  </p>
-                  <div className="flex items-center gap-[5px]">
-                    <MdThumbUpAlt className="text-[15px] text-tradeGreen" />
-                    <p className="text-white text-[15px] font-[600]">
-                      {`${parseInt(
-                        offerDetails?.positiveFeedback
-                      ).toLocaleString()}`}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
-                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Negative Feedback
-                  </p>
-                  <div className="flex items-center gap-[5px]">
-                    <MdThumbDownAlt className="text-[15px] text-red-500" />
-                    <p className="text-white text-[15px] font-[600]">
-                      {`${parseInt(
-                        offerDetails?.negativeFeedback
-                      ).toLocaleString()}`}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-[5px] py-[5px] px-[10px] bg-tradeAsh border border-tradeAshLight  rounded-[8px]">
-                  <p className="text-[12px] font-[500] text-tradeFadeWhite">
-                    Trust Score
-                  </p>
-                  <div className="flex items-center gap-[5px]">
-                    <FaRegStar className="text-[15px] text-tradeOrange" />
-                    <p className="text-white text-[15px] font-[600]">
-                      {offerDetails.trustScore}%
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
-
           <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight">
-            <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
+            <div className=" flex items-center justify-between gap-[10px] p-[15px]  border-b border-tradeAshLight ">
               <p className=" text-[17px] text-white font-[700] cursor-pointer">
-                About Offer /{" "}
-                <span className="text-tradeFadeWhite font-semibold">
-                  i7823739139
-                </span>
+                About Offer
               </p>
             </div>
 
@@ -511,25 +325,25 @@ const AboutOffer = () => {
                   <div className="flex justify-between">
                     <div className="flex-1 flex items-center gap-2">
                       <div className="flex gap-2 items-center">
-                        <p className=" flex-1 w-full text-xs text-white flex items-center gap-1 font-semibold">
-                          <IoMdThumbsUp className="text-tradeGreen text-sm" />
+                        <p className=" flex-1 w-full text-sm text-white flex items-center gap-1 font-semibold">
+                          <IoMdThumbsUp className="text-tradeGreen " />
                           {/* {parseInt(props.positiveFeedback).toLocaleString()} */}
                           300
                         </p>
 
-                        <p className="flex-1 w-full text-xs text-white flex items-center gap-1 font-semibold">
-                          <AiFillSafetyCertificate className="text-tradeOrange text-sm" />
+                        <p className="flex-1 w-full text-sm text-white flex items-center gap-1 font-semibold">
+                          <AiFillSafetyCertificate className="text-tradeOrange" />
                           {/* {parseInt(props.trustScore).toLocaleString()} */}
                           67
                         </p>
                       </div>
                     </div>
 
-                    {/* <div className="flex-1 flex items-center gap-2">
+                    <div className="flex-1 flex items-center gap-2">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Offer ID-45EDZ
+                        Offer ID - <span className="text-white">45EDZ1612JHHS</span>
                       </p>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
               </div>

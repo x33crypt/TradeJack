@@ -81,7 +81,7 @@ const MyOfferCard = (props) => {
           </div>
           <div className="flex gap-2 items-center">
             <p className="text-tradeOrange text-xs font-semibold">
-              Click to view and edit
+              Click to edit this offer
             </p>
             <FaEdit className="text-tradeOrange text-[12px]" />
           </div>
