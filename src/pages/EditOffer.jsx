@@ -13,6 +13,7 @@ import { IoClose } from "react-icons/io5";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import { IoMdThumbsUp } from "react-icons/io";
 import { MdThumbDownAlt } from "react-icons/md";
+import landingImg4 from "../assets/landingImg4.JPG";
 
 import { CiBank } from "react-icons/ci";
 
@@ -117,18 +118,27 @@ const EditOffer = () => {
                 <div className="flex-1 flex flex-col gap-[20px]">
                   {/* Rating, Reviews & Offer ID */}
                   <div className="flex justify-between  items-center">
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        OFFER ID
-                      </p>
-                      <p className="text-[14px] font-[600] text-white">
-                        #128w51721826
-                      </p>
+                    <div className="flex-1 flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
+                      <div className="w-[40px] flex-shrink-0 rounded-full">
+                        <img
+                          className="rounded-full"
+                          src={landingImg4}
+                          alt="User avatar"
+                        />
+                      </div>
+                      <div className="flex flex-col ">
+                        <p className="m-0 text-[16px] font-semibold text-white">
+                          0xSanityy
+                        </p>
+                        <p className="m-0 text-[12px] font-semibold text-tradeFadeWhite">
+                          Top Trader
+                        </p>
+                      </div>
                     </div>
 
                     <div className="flex flex-1 flex-col gap-1">
                       <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Status
+                        Offer Status
                       </p>
                       <div className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
@@ -155,7 +165,7 @@ const EditOffer = () => {
                         Accepted Currency
                       </p>
                       <p className="text-[14px] font-[600] text-white">
-                        United State Dollars
+                        US Dollar
                       </p>
                     </div>
                   </div>
@@ -173,7 +183,7 @@ const EditOffer = () => {
 
                     <div className="flex flex-1 flex-col gap-1">
                       <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Overall Feedbacks
+                        Feedback Summary
                       </p>
                       <div className="flex gap-6 items-center">
                         <p className=" text-sm text-white flex items-center gap-1 font-semibold">
@@ -194,11 +204,9 @@ const EditOffer = () => {
             </div>
             {/* Offer Id Field */}
             <div className=" sticky top-[62px] z-20 flex justify-between items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshExtraLight">
-              <p className="text-white text-xs font-semibold">
-                UPDATING OFFER WITH ID
-              </p>
+              <p className="text-white text-xs font-semibold">OFFER ID</p>
               <p className="text-tradeOrange text-sm font-semibold">
-                #128w51721826
+                #128951721826
               </p>
             </div>
             {/* Limit Field */}
@@ -561,7 +569,7 @@ const EditOffer = () => {
                 className="flex justify-center bg-transparent hover:bg-tradeAsh border border-tradeAshLight hover:border-red-600  p-[12px] rounded-[10px]  cursor-pointer duration-300 transition-all"
               >
                 <p className="text-[14px] font-[700] text-red-600">
-                  Would you like to terminate this offer ?
+                  Terminate Offer
                 </p>
               </div>
 

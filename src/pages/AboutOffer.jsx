@@ -283,7 +283,7 @@ const AboutOffer = () => {
 
                     <div className="flex flex-1 flex-col gap-1">
                       <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Vendors Availiablity
+                        Vendor Status
                       </p>
                       <div className="flex items-center gap-2">
                         <div>
@@ -312,16 +312,25 @@ const AboutOffer = () => {
                         Accepted Currency
                       </p>
                       <p className="text-[14px] font-[600] text-white">
-                        United State Dollars
+                        US Dollar
                       </p>
                     </div>
                   </div>
 
                   {/* Rating, Reviews & Offer ID */}
+
                   <div className="flex justify-between">
                     <div className="flex flex-1 flex-col gap-1">
                       <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Overall Feedbacks
+                        Trade Volume
+                      </p>
+                      <p className="text-[14px] font-[600] text-white">
+                        20 Trades
+                      </p>
+                    </div>
+                    <div className="flex flex-1 flex-col gap-1">
+                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
+                        Feedback Summary
                       </p>
                       <div className="flex gap-6 items-center">
                         <p className=" text-sm text-white flex items-center gap-1 font-semibold">
@@ -335,15 +344,6 @@ const AboutOffer = () => {
                           {/* {parseInt(props.trustScore).toLocaleString()} */}2
                         </p>
                       </div>
-                    </div>
-
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Posted
-                      </p>
-                      <p className="text-sm font-[600] text-tradeGreen">
-                        14/06/2025
-                      </p>
                     </div>
                   </div>
                 </div>

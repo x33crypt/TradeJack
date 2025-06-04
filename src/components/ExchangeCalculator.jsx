@@ -36,12 +36,9 @@ const ExchangeCalculator = (prop) => {
                     }
                     onChange={prop?.handleTradeValueChange}
                   />
+
                   <div className="flex items-center justify-center w-[70px] border-l border-tradeAshLight">
-                    <p className="text-[14px] text-white font-[700]">
-                      <p className="px-[10px] py-[2px] rounded-full text-[14px] font-[700] bg-white">
-                        {prop?.offerDetails?.currency}
-                      </p>
-                    </p>
+                    <p className="text-[14px] text-white font-[700]">USD</p>
                   </div>
                 </div>
               </div>
