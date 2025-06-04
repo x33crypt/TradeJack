@@ -109,13 +109,13 @@ const EditOffer = () => {
             </div>
             {/* Offer Id Field */}
             <div className="flex justify-between items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshExtraLight">
-              <p className="text-white text-xs font-semibold">OFFER ID</p>
+              <p className="text-white text-xs font-semibold">UPDATING OFFER WITH ID</p>
               <p className="text-tradeOrange text-sm font-semibold">
                 #128w51721826
               </p>
             </div>
             {/* Limit Field */}
-            <div className="flex mt-4 w-full flex-col md:flex-row border-y border-tradeAshLight">
+            <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
               <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
                 <p className="text-white text-[15px] font-[500]">
                   Trade Limit Range
