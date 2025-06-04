@@ -26,6 +26,7 @@ import SelectElement from "./components/SelectElement";
 import TradeAlert from "./components/TradeAlert";
 import CreateOfferSummary from "./pages/CreateOfferSummary";
 import MyOffer from "./pages/MyOffer";
+import EditOffer from "./pages/EditOffer";
 
 const App = () => {
   const [user, setUser] = useState("");
@@ -64,6 +65,8 @@ const App = () => {
             />
             <Route path="/user/offers" element={<MyOffer />} />
             <Route path="/offer/:id" element={<AboutOffer />} />
+            <Route path="/edit-offer/:id" element={<EditOffer />} />
+
             <Route path="/chat" element={<Messages />} />
             <Route path="/account/auth/verify" element={<ConfirmPassword />} />
             <Route path="/logout" element={<Logout />} />

@@ -48,9 +48,9 @@ const MarketCard = (props) => {
         <div className="flex flex-1 px-4 py-6 gap-3 items-center border-r border-tradeAshLight">
           <HiOutlineUserCircle className="text-tradeAshLight text-[28px] flex-shrink-0" />
           <div className="flex w-full flex-col gap-1">
-            <div className="flex items-center">
+            <div className="flex items-center gap-2">
               <div className="flex-1 flex ">
-                <p className=" text-white text-sm font-bold items-center max-w-[70px] inline-block truncate">
+                <p className=" text-white text-sm font-bold items-center max-w-[85px] inline-block truncate">
                   {props.username}
                 </p>
               </div>
@@ -115,8 +115,8 @@ const MarketCard = (props) => {
               <p className="text-sm font-bold text-white"> 0.4308 USDT</p>
             </div>
 
-            <div className="flex items-center gap-2 p-[0.5px] bg-tradeAshExtraLight">
-              <TbArrowBigUpLines className="text-tradeGreen text-xs " />
+            <div className="flex items-center gap-2 p-[0.5px]">
+              <TbArrowBigUpLines className="text-tradeGreen text-sm " />
               <p className="text-xs font-semibold text-tradeGreen">
                 +{props.margin}.00% Margin
               </p>
@@ -175,6 +175,14 @@ const MarketCard = (props) => {
           </div>
         </div>
 
+        {/* Accepted Currency */}
+        <div className="flex justify-between items-center px-4 py-3 border-b border-tradeAshLight">
+          <p className="text-xs text-tradeFadeWhite font-semibold">
+            Accepted Currency
+          </p>
+          <p className="font-bold text-white text-sm">United State Dollars</p>
+        </div>
+
         {/* Middle Section: Purchase Limits */}
         <div className="flex justify-between px-4 py-4 border-b border-tradeAshLight text-white text-sm font-semibold">
           <div>
@@ -202,7 +210,7 @@ const MarketCard = (props) => {
             <FaArrowRightArrowLeft className="text-tradeOrange text-xs" />
             <p>0.02508 USDT</p>
           </div>
-          <div className="flex items-center gap-1 text-xs font-semibold text-tradeGreen">
+          <div className="flex items-center gap-1 text-sm font-semibold text-tradeGreen">
             <TbArrowBigUpLines />
             <p>+{props.margin}.00% Margin</p>
           </div>

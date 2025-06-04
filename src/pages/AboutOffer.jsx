@@ -498,7 +498,7 @@ const AboutOffer = () => {
                       <p className="text-[13px] font-[500] text-tradeFadeWhite">
                         Accepted Currency
                       </p>
-                      <p className="text-[14px] font-[700] text-tradeOrange">
+                      <p className="text-[14px] font-[600] text-white">
                         United State Dollars
                       </p>
                     </div>
@@ -625,7 +625,7 @@ const AboutOffer = () => {
                     </div>
                   </div>
 
-                  <div className="flex gap-[10px] flex-wrap">
+                  <div className="flex gap-[10px] flex-wrap ">
                     {offerTermTags.map((tag, index) => (
                       <div className="flex w-max items-center gap-[8px] px-[12px] py-[5px] rounded-[6px] bg-tradeAshLight">
                         <p
@@ -651,7 +651,7 @@ const AboutOffer = () => {
                   </div>
 
                   <div className="flex">
-                    <p className="text-[14px] text-tradeFadeWhite bg-tradeAshLight p-[12px] rounded-[10px]">
+                    <p className="text-[14px] text-white bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight">
                       It’s clear, compact, and user-friendly. Let me know the
                       specific context (e.g., banking, crypto, order
                       processing), and I can tailor it further. It’s clear,

@@ -12,16 +12,19 @@ const MyOfferCard = (props) => {
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
-    navigateTo(`/offer/${offerId}`);
+    navigateTo(`/edit-offer/${offerId}`);
   };
 
   return (
     <>
-      <div className="hidden md:flex flex-1 border-t bg-tradeAsh border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
+      <div
+        onClick={() => handleOfferClick(props.offerId)}
+        className="hidden md:flex flex-1 border-t bg-tradeAsh border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
+      >
         {/* Left: Main Info Sections */}
-        <div className="flex flex-col gap-1 justify-center px-4 py-6 border-r border-tradeAshLight">
+        <div className="flex w-[150px] flex-col gap-1 justify-center px-4 py-6 border-r border-tradeAshLight">
           <p className="text-tradeFadeWhite text-xs font-semibold">Offer ID</p>
-          <p className="text-white  text-sm font-bold">5671908</p>
+          <p className="text-white  text-sm font-bold">56719018968</p>
         </div>
 
         {/* Bank Info */}
@@ -44,7 +47,7 @@ const MyOfferCard = (props) => {
         </div>
 
         {/* Purchase Limits */}
-        <div className="flex flex-col justify-center gap-1 px-4 py-6 flex-1">
+        <div className="flex flex-col justify-center gap-1 px-4 py-6 flex-1  border-r border-tradeAshLight">
           <div className="flex justify-between items-center">
             <p className="text-tradeFadeWhite text-xs font-semibold">
               Min Purchase
@@ -57,6 +60,17 @@ const MyOfferCard = (props) => {
             </p>
             <p className="text-white  text-sm font-bold">1,000 USD</p>
           </div>
+        </div>
+
+        {/* Profit Margine*/}
+        <div className="flex flex-col gap-1 justify-center px-4 py-6 flex-1">
+          <p className="text-tradeFadeWhite text-xs font-semibold">
+            Profit Margin
+          </p>
+          <p className="text-white  text-sm font-bold">
+            {" "}
+            <span className="text-tradeOrange">2%</span> on every trade
+          </p>
         </div>
 
         {/* Right: Status + Action */}
@@ -74,14 +88,17 @@ const MyOfferCard = (props) => {
         </div>
       </div>
 
-      <div className="flex flex-col md:hidden border-t  bg-tradeAsh border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
+      <div
+        onClick={() => handleOfferClick(props.offerId)}
+        className="flex flex-col md:hidden border bg-tradeAsh border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
+      >
         {/* Top: Offer ID and Status */}
         <div className="flex justify-between items-center px-4 py-3 border-b border-tradeAshLight">
           <div className="flex gap-2 items-center">
             <p className="text-tradeFadeWhite text-xs font-semibold">
               Offer ID:
             </p>
-            <p className="text-white text-xs font-bold">5671908</p>
+            <p className="text-white text-sm font-bold">5671908</p>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
@@ -112,19 +129,22 @@ const MyOfferCard = (props) => {
         </div>
 
         {/* Purchase Limits */}
-        <div className="flex flex-col gap-2 px-4 py-3 border-b border-tradeAshLight">
-          <div className="flex justify-between">
-            <p className="text-xs text-tradeFadeWhite font-semibold">
-              Minimum Purchase
-            </p>
-            <p className="font-bold text-white text-sm">200 USD</p>
-          </div>
-          <div className="flex justify-between">
-            <p className="text-tradeFadeWhite text-xs font-semibold">
-              Maximum Purchase
-            </p>
 
-            <p className="font-bold text-white text-sm">1,000 USD</p>
+        <div className="flex justify-between px-4 py-4 border-b border-tradeAshLight text-white  font-semibold">
+          <div>
+            <p className="text-xs text-tradeFadeWhite">Min Purchase</p>
+            <p className="font-bold text-sm">200 USD</p>
+          </div>
+          <div>
+            <p className="text-xs text-tradeFadeWhite">Max Purchase</p>
+            <p className="font-bold text-sm">200 USD</p>
+          </div>
+          <div>
+            <p className="text-xs text-tradeFadeWhite">Profit Margin</p>
+            <p className="font-bold text-sm">
+              {" "}
+              <span className="text-tradeOrange">5%</span> on every trade
+            </p>
           </div>
         </div>
 
