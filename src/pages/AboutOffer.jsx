@@ -15,6 +15,7 @@ import { CiBank } from "react-icons/ci";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import { IoMdThumbsUp } from "react-icons/io";
 import { FaInfoCircle } from "react-icons/fa";
+import { HiStatusOnline } from "react-icons/hi";
 
 const AboutOffer = () => {
   const [offerDetails, setOfferDetails] = useState("");
@@ -249,7 +250,7 @@ const AboutOffer = () => {
     <>
       <MarketTopNav />
 
-      <div className="flex flex-col bg-black gap-[15px] lg:px-[15%] md:px-[5%] pt-[60px] md:pt-[80px]">
+      <div className="flex flex-col relative bg-black gap-[15px] lg:px-[15%] md:px-[5%] pt-[60px] md:pt-[80px]">
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-0 ">
           <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight">
             <div className=" flex items-center justify-between gap-[10px] p-[15px]  border-b border-tradeAshLight ">
@@ -261,8 +262,7 @@ const AboutOffer = () => {
             <div className="flex flex-col md:gap-[15px] gap-[10px] p-[15px] py-[30px]  md:py-[40px] lg:py-[50px] bg-tradeAsh md:justify-center items-center">
               <div className="lg:w-[500px] sm:w-[550px] w-full flex gap-[15px] bg-tradeAshLight border border-tradeAshExtraLight p-[12px] rounded-[10px]">
                 <div className="flex-1 flex flex-col gap-[20px]">
-                  {/* Header: Username & Avatar */}
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between  items-center">
                     <div className="flex-1 flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
                       <div className="w-[40px] flex-shrink-0 rounded-full">
                         <img
@@ -273,7 +273,7 @@ const AboutOffer = () => {
                       </div>
                       <div className="flex flex-col ">
                         <p className="m-0 text-[16px] font-semibold text-white">
-                          saneghxt
+                          0xSanityy
                         </p>
                         <p className="m-0 text-[12px] font-semibold text-tradeFadeWhite">
                           Top Trader
@@ -281,21 +281,17 @@ const AboutOffer = () => {
                       </div>
                     </div>
 
-                    <div className=" flex-1 flex flex-col">
-                      <div className="flex gap-1">
-                        <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                          Posted:
-                        </p>
-                        <p className="text-[13px] font-[600] text-tradeGreen">
-                          February - 2025
-                        </p>
-                      </div>
-                      <div className="flex gap-1">
-                        <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                          Status:
-                        </p>
-                        <p className="text-[13px] font-[600] text-tradeGreen">
-                          Active
+                    <div className="flex flex-1 flex-col gap-1">
+                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
+                        Vendors Availiablity
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <div>
+                          <HiStatusOnline className="text-[18px] text-tradeGreen animate-pulse" />
+                        </div>
+
+                        <p className="m-0 text-tradeGreen text-xs font-semibold">
+                          Online
                         </p>
                       </div>
                     </div>
@@ -307,7 +303,7 @@ const AboutOffer = () => {
                       <p className="text-tradeOrange text-[15px] font-bold">
                         Wells Fargo
                       </p>
-                      <p className="text-white text-[13px] font-medium">
+                      <p className="text-white text-[14px] font-[600]">
                         Direct Bank Transfer
                       </p>
                     </div>
@@ -323,30 +319,42 @@ const AboutOffer = () => {
 
                   {/* Rating, Reviews & Offer ID */}
                   <div className="flex justify-between">
-                    <div className="flex-1 flex items-center gap-2">
-                      <div className="flex gap-2 items-center">
-                        <p className=" flex-1 w-full text-sm text-white flex items-center gap-1 font-semibold">
+                    <div className="flex flex-1 flex-col gap-1">
+                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
+                        Overall Feedbacks
+                      </p>
+                      <div className="flex gap-6 items-center">
+                        <p className=" text-sm text-white flex items-center gap-1 font-semibold">
                           <IoMdThumbsUp className="text-tradeGreen " />
                           {/* {parseInt(props.positiveFeedback).toLocaleString()} */}
-                          300
+                          18
                         </p>
 
-                        <p className="flex-1 w-full text-sm text-white flex items-center gap-1 font-semibold">
-                          <AiFillSafetyCertificate className="text-tradeOrange" />
-                          {/* {parseInt(props.trustScore).toLocaleString()} */}
-                          67
+                        <p className="text-sm text-white flex items-center gap-1 font-semibold">
+                          <MdThumbDownAlt className="text-red-500" />
+                          {/* {parseInt(props.trustScore).toLocaleString()} */}2
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex-1 flex items-center gap-2">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Offer ID - <span className="text-white">45EDZ1612JHHS</span>
+                    <div className="flex flex-1 flex-col gap-1">
+                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
+                        Posted
+                      </p>
+                      <p className="text-sm font-[600] text-tradeGreen">
+                        14/06/2025
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+            {/* Offer Id Field */}
+            <div className=" sticky top-[62px] z-20 flex justify-between items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshExtraLight">
+              <p className="text-white text-xs font-semibold">OFFER ID</p>
+              <p className="text-tradeOrange text-sm font-semibold">
+                #128951721826
+              </p>
             </div>
 
             <div className="w-full flex flex-col gap-[10px]">
