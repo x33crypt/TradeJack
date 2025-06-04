@@ -352,7 +352,7 @@ const DashMain = () => {
       </div>
 
       <div className="flex-1 flex flex-col md:hidden gap-[15px] px-[15px] md:pt-[75px] pt-[60px] ">
-        <div className="flex flex-col py-[10px] ">
+        <div className="flex flex-col mt-[20px] bg-tradeOrange">
           <p className="text-[19px] text-tradeFadeWhite ">
             Welcome back,{" "}
             <small className="text-[19px] text-white font-[700]">
@@ -360,6 +360,8 @@ const DashMain = () => {
             </small>
           </p>
         </div>
+
+
         <div className="flex flex-col gap-[20px]  ">
           <div className="flex flex-col gap-[20px]">
             <div className="flex flex-col overflow-hidden rounded-[16px]">

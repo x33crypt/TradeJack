@@ -98,7 +98,7 @@ const EditOffer = () => {
     <>
       <InAppNav />
 
-      <div className="flex flex-col bg-black gap-[15px] lg:px-[15%] md:px-[5%] pt-[60px] md:pt-[80px] pb-[40px]">
+      <div className="flex flex-col bg-black gap-[15px] lg:px-[15%] md:px-[5%] pt-[60px] md:pt-[80px] ">
         {/* Header Section */}
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-0">
           <div className="flex-1 flex flex-col md:border border-tradeAshLight">
@@ -108,8 +108,10 @@ const EditOffer = () => {
               </p>
             </div>
             {/* Offer Id Field */}
-            <div className="flex justify-between items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshExtraLight">
-              <p className="text-white text-xs font-semibold">UPDATING OFFER WITH ID</p>
+            <div className=" sticky top-[62px] z-20 flex justify-between items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshExtraLight">
+              <p className="text-white text-xs font-semibold">
+                UPDATING OFFER WITH ID
+              </p>
               <p className="text-tradeOrange text-sm font-semibold">
                 #128w51721826
               </p>
@@ -455,7 +457,7 @@ const EditOffer = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-[10px] border-t border-tradeAshLight  lg:px-[15px] py-[15px] md:px-[2.5%] px-[15px]">
+            <div className="flex flex-col gap-[10px] border-t border-tradeAshLight p-[15px]">
               <div
                 // onClick={handleFilterOffer}
                 className={` ${
@@ -476,6 +478,13 @@ const EditOffer = () => {
                 <p className="text-[14px] font-[700] text-red-600">
                   Would you like to terminate this offer ?
                 </p>
+              </div>
+
+              <div
+                // onClick={handleClearFilter}
+                className="flex justify-center bg-transparent  text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeFadeWhite  p-[12px] rounded-[10px] cursor-pointer duration-300 transition-all"
+              >
+                <p className="text-[14px] font-[700]">Cancel</p>
               </div>
             </div>
           </div>
