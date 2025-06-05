@@ -83,31 +83,41 @@ const ExchangeCalculator = (prop) => {
                 </p>
               )}
             </div>
-
-            <div className="flex flex-col gap-2 bg-transparent border border-tradeAshLight p-[12px] rounded-[10px]">
+            <div className="flex flex-col gap-2 text-sm text-white bg-transparent border border-tradeAshLight p-[12px] rounded-[10px] leading-relaxed">
+              {/* Profit Margin */}
               <div className="flex justify-between">
                 <p className="text-sm font-medium text-tradeFadeWhite">
-                  Buyers's Profit margin
+                  Buyer's Margin
                 </p>
                 <p className="text-sm font-semibold text-white">3.00%</p>
               </div>
 
-              <div className="flex justify-between">
-                <p className="text-sm font-medium text-tradeFadeWhite">
-                  Rate breakdown
+              {/* Rate Breakdown */}
+              <div className="flex justify-between text-sm">
+                <p className="font-medium text-tradeFadeWhite">Exchange Rate</p>
+                <p className="text-sm text-white font-medium">
+                  <span className="text-tradeGreen font-bold">
+                    1 USD ≈ 0.526 USDT
+                  </span>
+                  <span className="text-tradeFadeWhite"> / </span>
+                  <span className="text-tradeGreen font-bold">680 NGN</span>
                 </p>
-                <div className="flex items-center gap-2">
-                  <p className="text-sm font-bold text-white">1 USD</p>
-                  <FaArrowRightArrowLeft className="text-tradeOrange text-xs" />
-                  <p className="text-sm font-bold text-white">0.23 USDT</p>
-                </div>
               </div>
 
+              {/* USDT Value in USD */}
               <div className="flex justify-between">
                 <p className="text-sm font-medium text-tradeFadeWhite">
-                  USDT worth in USD
+                  Receive value (USD)
                 </p>
                 <p className="text-sm font-semibold text-white">406 USD</p>
+              </div>
+
+              {/* USDT Value in NGN */}
+              <div className="flex justify-between">
+                <p className="text-sm font-medium text-tradeFadeWhite">
+                  Receive value (NGN)
+                </p>
+                <p className="text-sm font-semibold text-white">310,000 NGN</p>
               </div>
             </div>
 

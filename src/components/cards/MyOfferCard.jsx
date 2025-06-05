@@ -24,7 +24,7 @@ const MyOfferCard = (props) => {
         {/* Left: Main Info Sections */}
         <div className="flex w-[150px] flex-col gap-1 justify-center px-4 py-6 border-r border-tradeAshLight">
           <p className="text-tradeFadeWhite text-xs font-semibold">Offer ID</p>
-          <p className="text-white  text-sm font-bold">56719018968</p>
+          <p className="text-white  text-sm font-bold">#128951721826</p>
         </div>
 
         {/* Bank Info */}
@@ -81,7 +81,7 @@ const MyOfferCard = (props) => {
           </div>
           <div className="flex gap-2 items-center">
             <p className="text-tradeOrange text-xs font-semibold">
-              Click to edit this offer
+              Click to view and edit
             </p>
             <FaEdit className="text-tradeOrange text-[12px]" />
           </div>
@@ -94,11 +94,11 @@ const MyOfferCard = (props) => {
       >
         {/* Top: Offer ID and Status */}
         <div className="flex justify-between items-center px-4 py-3 border-b border-tradeAshLight">
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-1 items-center">
             <p className="text-tradeFadeWhite text-xs font-semibold">
-              Offer ID:
+              OFFER ID:
             </p>
-            <p className="text-white text-sm font-bold">5671908</p>
+            <p className="text-white text-sm font-bold">#128951721826</p>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>

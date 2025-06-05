@@ -112,16 +112,18 @@ const SelectElement = () => {
                   <div
                     key={index}
                     onClick={() => handleUpdate({ code, name })}
-                    className="px-[10px] py-[10px] hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
+                    className=" relative px-[10px] py-[10px] hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
                   >
-                    <p className="text-[14px]">
-                      {code} — {name}
+                    <p className="text-[14px]">{name}</p>
+
+                    <p className=" absolute right-1.5 top-1/2 -translate-y-1/2 text-[14px]  border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
+                      {code}
                     </p>
                   </div>
                 ))}
             </div>
           ) : (
-            <div className="max-h-[300px] flex flex-col gap-[5px] overflow-auto">
+            <div className="max-h-[300px] flex flex-col gap-[5px] w-full">
               {(select?.options || [])
                 .filter(
                   (option) => typeof option === "object" && option !== null
@@ -131,10 +133,12 @@ const SelectElement = () => {
                   <div
                     key={index}
                     onClick={() => handleUpdate({ code, name })}
-                    className="px-[10px] py-[10px] hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
+                    className="relative px-[10px] py-[10px] hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
                   >
-                    <p className="text-[14px]">
-                      {code} — {name}
+                    <p className="text-[14px]">{name}</p>
+
+                    <p className=" absolute right-1.5 top-1/2 -translate-y-1/2 text-[14px]  border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
+                      {code}
                     </p>
                   </div>
                 ))}

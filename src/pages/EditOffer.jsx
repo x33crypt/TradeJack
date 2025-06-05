@@ -122,7 +122,7 @@ const EditOffer = () => {
                       <p className="text-[13px] font-[500] text-tradeFadeWhite">
                         Created On
                       </p>
-                      <p className="text-[14px] font-[600] text-tradeGreen">
+                      <p className="text-[14px] font-[600] text-white">
                         June 14, 2025
                       </p>
                     </div>
@@ -133,7 +133,7 @@ const EditOffer = () => {
                       </p>
                       <div className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
-                        <p className="text-tradeGreen text-xs font-semibold">
+                        <p className="text-tradeGreen text-[14px] font-semibold">
                           Active
                         </p>
                       </div>

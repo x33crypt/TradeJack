@@ -290,7 +290,7 @@ const AboutOffer = () => {
                           <HiStatusOnline className="text-[18px] text-tradeGreen animate-pulse" />
                         </div>
 
-                        <p className="m-0 text-tradeGreen text-xs font-semibold">
+                        <p className="m-0 text-tradeGreen text-[14px] font-semibold">
                           Online
                         </p>
                       </div>

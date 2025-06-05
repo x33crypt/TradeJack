@@ -183,7 +183,7 @@ const MarketMain = ({
 
         <div className="flex flex-col gap-[15px] rounded-[12px]">
           <div className="flex flex-col gap-[15px]">
-            <div className=" sticky md:top-[122px] top-[124px] flex bg-tradeOrange px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
+            <div className=" sticky md:top-[122px] top-[124px] flex bg-tradeOrange px-[12px] py-1">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Promoted Offers
               </p>
@@ -214,7 +214,7 @@ const MarketMain = ({
             </div>
           </div>
           <div className="flex flex-col gap-[15px]">
-            <div className="sticky md:top-[122px] top-[124px] flex bg-white px-[12px] py-[4px] lg:rounded-[px] rounded-[px]">
+            <div className="sticky md:top-[122px] top-[124px] flex bg-white px-[12px] py-1">
               <p className="flex-1 text-black text-[14px] font-[600] ">
                 Other Offers
               </p>
