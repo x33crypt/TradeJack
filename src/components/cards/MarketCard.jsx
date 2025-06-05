@@ -17,6 +17,7 @@ import { CgArrowsExchangeAlt } from "react-icons/cg";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import { HiStatusOnline } from "react-icons/hi";
+import { FiTrendingUp } from "react-icons/fi";
 
 const MarketCard = (props) => {
   const navigateTo = useNavigate();
@@ -116,7 +117,7 @@ const MarketCard = (props) => {
             </div>
 
             <div className="flex items-center gap-2 p-[0.5px]">
-              <TbArrowBigUpLines className="text-tradeGreen text-sm " />
+              <FiTrendingUp className="text-tradeGreen text-sm " />
               <p className="text-xs font-semibold text-tradeGreen">
                 +{props.margin}.00% Margin
               </p>
@@ -211,7 +212,7 @@ const MarketCard = (props) => {
             <p>0.02508 USDT</p>
           </div>
           <div className="flex items-center gap-1 text-sm font-semibold text-tradeGreen">
-            <TbArrowBigUpLines />
+            <FiTrendingUp />
             <p>+{props.margin}.00% Margin</p>
           </div>
         </div>
