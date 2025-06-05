@@ -81,9 +81,9 @@ const MarketMain = ({
         </div>
       </div>
 
-      <div className="flex flex-col gap-[5px] px-[15px] pb-[15px]">
-        <div className="z-10 gap-[10px] sticky top-[60px] py-[15px] flex flex-col bg-black ">
-          <div className="flex py-[2px] gap-2 md:justify-between  overflow-x-hidden whitespace-nowrap">
+      <div className="flex flex-col">
+        <div className=" z-20 sticky top-[60px] flex flex-col gap-[5px] px-[15px] bg-black">
+          <div className="flex py-[15px] gap-2 md:justify-between  overflow-x-hidden whitespace-nowrap">
             <div
               onClick={handleShowOfferFilter}
               className=" flex lg:hidden items-center gap-2 px-[12px] py-[4px] text-tradeOrange  lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
@@ -92,7 +92,7 @@ const MarketMain = ({
               <p>Filter</p>
             </div>
 
-            <div className=" flex items-center gap-2 bg-transparent ">
+            <div className=" flex  items-center gap-2 bg-transparent ">
               <p
                 onClick={handleShowAllOffer}
                 className={`${
@@ -181,13 +181,15 @@ const MarketMain = ({
           />
         </div>
 
-        <div className="flex flex-col gap-[15px] rounded-[12px]">
+        <div className="flex flex-col px-[15px] gap-[15px] rounded-[12px]">
           <div className="flex flex-col gap-[15px]">
-            <div className=" sticky md:top-[122px] top-[124px] flex bg-tradeOrange px-[12px] py-1">
-              <p className="flex-1 text-black text-[14px] font-[600] ">
+            <div className="z-10 sticky top-[118px] flex justify-between items-center px-4 py-2 bg-tradeOrange shadow-sm">
+              <p className="text-black text-sm font-semibold">
                 Promoted Offers
               </p>
+              <p className="text-black text-sm font-semibold">June 14, 2025</p>
             </div>
+
             <div className="flex flex-col gap-[20px] ">
               <div className="grid grid-cols-1 gap-1 md:gap-0  items-center">
                 {promotedOffers?.map((offer, index) => (
@@ -213,11 +215,11 @@ const MarketMain = ({
               </div>
             </div>
           </div>
+
           <div className="flex flex-col gap-[15px]">
-            <div className="sticky md:top-[122px] top-[124px] flex bg-white px-[12px] py-1">
-              <p className="flex-1 text-black text-[14px] font-[600] ">
-                Other Offers
-              </p>
+            <div className="z-10 sticky top-[118px] flex justify-between items-center px-4 py-2 bg-white shadow-sm">
+              <p className="text-black text-sm font-semibold">Other Offers</p>
+              <p className="text-black text-sm font-semibold">June 14, 2025</p>
             </div>
             <div className="flex flex-col gap-[20px]">
               <div className="grid grid-cols-1 gap-1 md:gap-0 items-center">
