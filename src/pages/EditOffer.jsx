@@ -118,22 +118,13 @@ const EditOffer = () => {
                 <div className="flex-1 flex flex-col gap-[20px]">
                   {/* Rating, Reviews & Offer ID */}
                   <div className="flex justify-between  items-center">
-                    <div className="flex-1 flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
-                      <div className="w-[40px] flex-shrink-0 rounded-full">
-                        <img
-                          className="rounded-full"
-                          src={landingImg4}
-                          alt="User avatar"
-                        />
-                      </div>
-                      <div className="flex flex-col ">
-                        <p className="m-0 text-[16px] font-semibold text-white">
-                          0xSanityy
-                        </p>
-                        <p className="m-0 text-[12px] font-semibold text-tradeFadeWhite">
-                          Top Trader
-                        </p>
-                      </div>
+                    <div className="flex flex-1 flex-col gap-1">
+                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
+                        Created On
+                      </p>
+                      <p className="text-[14px] font-[600] text-tradeGreen">
+                        June 14, 2025
+                      </p>
                     </div>
 
                     <div className="flex flex-1 flex-col gap-1">
@@ -213,7 +204,7 @@ const EditOffer = () => {
             <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
               <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
                 <p className="text-white text-[15px] font-[500]">
-                  Trade Limit Range
+                  Purchase Limit
                 </p>
               </div>
 
@@ -289,10 +280,11 @@ const EditOffer = () => {
                     </div>
                   </div>
                 </div>
+
                 <div className="">
                   <Warning
                     text={
-                      "To make this offer visible, you must have at least 50% of the minimum amount you've set available in your wallet."
+                      "To make this offer visible, you must have 100% of the minimum amount you’ve set available in your wallet."
                     }
                   />
                 </div>
@@ -341,36 +333,72 @@ const EditOffer = () => {
                   </div>
                 </div>
 
+                <div className="flex flex-col gap-2 text-[14px] text-white leading-relaxed">
+                  {/* Market Price */}
+                  <div>
+                    <p className="text-tradeFadeWhite font-medium">
+                      Current Market Rate:
+                    </p>
+                    <p>
+                      <span className="text-tradeGreen font-bold">
+                        1 USD = 0.650 USDT
+                      </span>{" "}
+                      —<span className="text-white font-medium"> approx.</span>
+                      <span className="text-tradeGreen font-bold">
+                        {" "}
+                        750 NGN
+                      </span>
+                    </p>
+                  </div>
+
+                  {/* Margin Breakdown */}
+                  <div>
+                    <p className="text-tradeFadeWhite font-medium">
+                      With{" "}
+                      <span className="text-tradeOrange font-bold">5%</span>{" "}
+                      Profit Margin Applied:
+                    </p>
+                    <p>
+                      <span className="text-tradeGreen font-bold">
+                        1 USD = 0.526 USDT
+                      </span>{" "}
+                      —<span className="text-white font-medium"> approx.</span>
+                      <span className="text-tradeGreen font-bold">
+                        {" "}
+                        680 NGN
+                      </span>
+                    </p>
+                  </div>
+
+                  {/* Estimated Profit */}
+                  <div>
+                    <p className="text-tradeFadeWhite font-medium">
+                      Estimated Profit (after platform fees):
+                    </p>
+                    <p>
+                      <span className="text-white font-bold">
+                        Estimated return:
+                      </span>
+                      &nbsp;
+                      <span className="text-tradeGreen font-bold">
+                        7,500 NGN
+                      </span>
+                      &nbsp; for every&nbsp;
+                      <span className="text-tradeGreen font-bold">
+                        1 USD
+                      </span>{" "}
+                      traded
+                    </p>
+                  </div>
+                </div>
+
                 <div className="">
                   <Info
                     text={
-                      "Set a fair and competitive margin (2–5%) to attract traders. Too high a margin may deter users. A balanced rate boosts appeal and trade volume."
+                      "Set a competitive profit margin that balances trader appeal and your earnings. Note that a 5% platform fee is deducted from your trades — so margins below this may result in zero or negative profit. For a healthy return, consider setting your margin slightly higher (e.g. 7–10%) while staying attractive to traders."
                     }
                   />
                 </div>
-
-                {/* <div className="flex flex-col gap-[5px]">
-                  <p className="text-tradeFadeWhite text-[14px] font-[500]">
-                    Current USDT Market Price:{" "}
-                    <span className="text-tradeGreen font-[600]">
-                      1,586.95 NGN / USDT
-                    </span>
-                  </p>
-
-                  <p className="text-tradeFadeWhite text-[14px] font-[500]">
-                    Setting margin at{" "}
-                    <span className="text-tradeOrange font-[600]">5%</span>{" "}
-                    means you will be trading at a rate of{" "}
-                    <span className="text-tradeGreen font-[600]">
-                      1,666.30 NGN / USDT
-                    </span>
-                    , which translates to an earnings of approximately{" "}
-                    <span className="text-tradeGreen font-[600]">
-                      7,935 NGN
-                    </span>{" "}
-                    for every 1 USDT traded.
-                  </p>
-                </div> */}
               </div>
             </div>
             {/* Payment Window Field */}
@@ -544,7 +572,7 @@ const EditOffer = () => {
 
                 <Info
                   text={
-                    "Use this field to add any extra Instructions or context that can help ensure a smooth and transparent trade. This could include how quickly you'll respond, reminders to be respectful, or steps sellers should follow during communication. Be clear, helpful, and professional."
+                    "Use this field to share any extra instructions or context that help ensure a smooth, respectful trade. Be clear, helpful, and professional."
                   }
                 />
               </div>
@@ -573,11 +601,8 @@ const EditOffer = () => {
                 </p>
               </div>
 
-              <div
-                // onClick={handleClearFilter}
-                className="flex justify-center bg-transparent  text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeFadeWhite  p-[12px] rounded-[10px] cursor-pointer duration-300 transition-all"
-              >
-                <p className="text-[14px] font-[700]">Cancel</p>
+              <div className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
+                <p className="text-[14px] font-[700] ">Cancel</p>
               </div>
             </div>
           </div>

@@ -26,7 +26,7 @@ const CreateOfferSummary = () => {
   return (
     <>
       <InAppNav />
-      <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%]">
+      <div className="flex lg:flex-row flex-col bg-black lg:px-[15%] md:px-[2.5%]">
         <div className="flex min-h-svh md:mt-[80px] mt-[60px]  w-full b">
           <div className=" relative w-full  flex flex-col md:border-x md:border-b md:border-t border-neutral-800">
             <div className="flex flex-col justify-between p-[15px]  border-b border-tradeAshLight w-full">
@@ -218,7 +218,7 @@ const CreateOfferSummary = () => {
                     : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
                 } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
               >
-                <p className="text-[14px] font-[700]">Create Offer</p>
+                <p className="text-[14px] font-[700]">Publish Offer</p>
               </button>
             </div>
           </div>
