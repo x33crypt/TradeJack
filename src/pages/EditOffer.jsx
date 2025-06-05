@@ -376,9 +376,7 @@ const EditOffer = () => {
                       Estimated Profit (after platform fees):
                     </p>
                     <p>
-                      <span className="text-white font-bold">
-                        Estimated return:
-                      </span>
+                      <span className="text-white font-bold">Your earn:</span>
                       &nbsp;
                       <span className="text-tradeGreen font-bold">
                         7,500 NGN
