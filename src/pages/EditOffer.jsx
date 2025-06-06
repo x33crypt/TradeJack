@@ -120,7 +120,7 @@ const EditOffer = () => {
                   <div className="flex justify-between  items-center">
                     <div className="flex flex-1 flex-col gap-1">
                       <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Created On
+                        Published On
                       </p>
                       <p className="text-[14px] font-[600] text-white">
                         June 14, 2025

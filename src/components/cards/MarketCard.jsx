@@ -18,6 +18,7 @@ import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { AiFillSafetyCertificate } from "react-icons/ai";
 import { HiStatusOnline } from "react-icons/hi";
 import { FiTrendingUp } from "react-icons/fi";
+import { LuEqualApproximately } from "react-icons/lu";
 
 const MarketCard = (props) => {
   const navigateTo = useNavigate();
@@ -30,7 +31,7 @@ const MarketCard = (props) => {
     <>
       <div
         onClick={() => handleOfferClick(props.offerId)}
-        className="md:flex items-center hidden border-t bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg rounded- overflow-hidden"
+        className="md:flex hidden border-t bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg rounded- overflow-hidden"
       >
         {/* Bank Info Section */}
         <div className="flex flex-1 px-4 py-6 gap-3 items-center border-r border-tradeAshLight">
@@ -49,7 +50,7 @@ const MarketCard = (props) => {
         <div className="flex flex-1 px-4 py-6 gap-3 items-center border-r border-tradeAshLight">
           <HiOutlineUserCircle className="text-tradeAshLight text-[28px] flex-shrink-0" />
           <div className="flex w-full flex-col gap-1">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between">
               <div className="flex-1 flex ">
                 <p className=" text-white text-sm font-bold items-center max-w-[85px] inline-block truncate">
                   {props.username}
@@ -64,8 +65,7 @@ const MarketCard = (props) => {
                 <HiStatusOnline />
               </div>
             </div>
-
-            <div className="flex items-center">
+            <div className="flex items-center justify-between">
               <p className=" flex-1 w-full text-xs text-white flex items-center gap-1 font-semibold">
                 <IoMdThumbsUp className="text-tradeGreen text-sm" />
                 {parseInt(props.positiveFeedback).toLocaleString()}
@@ -79,12 +79,12 @@ const MarketCard = (props) => {
         </div>
 
         {/* Purchase Limits Section */}
-        <div className="flex flex-col justify-center flex-1 px-4 py-6 gap-1 border-r border-tradeAshLight">
+        <div className="flex flex-1  flex-col justify-center px-4 py-6 gap-1 border-r border-tradeAshLight">
           <div className="flex justify-between items-center">
-            <p className=" flex md:hidden lg:flex  text-xs font-semibold  text-white">
+            <p className=" flex md:hidden lg:flex text-xs font-semibold text-white">
               Min Purchase
             </p>
-            <p className="  hidden md:flex lg:hidden   text-xs font-semibold  text-white">
+            <p className="  hidden md:flex lg:hidden text-xs font-semibold text-white">
               Minimum
             </p>
 
@@ -92,6 +92,7 @@ const MarketCard = (props) => {
               {props.minimum.toLocaleString()} {props.currency?.code}
             </p>
           </div>
+
           <div className="flex justify-between items-center">
             <p className=" flex md:hidden lg:flex  text-xs font-semibold  text-white">
               Max Purchase
@@ -106,22 +107,29 @@ const MarketCard = (props) => {
         </div>
 
         {/* Rate Info Section */}
-        <div className="flex flex-col justify-center items-start flex-1 px-4 py-6 gap-2 border-l border-tradeAshLight">
-          <div className="flex flex-col  gap-1">
-            <div className="flex items-center gap-2">
-              <p className="text-sm font-bold text-white">
-                1 {props.currency?.code}
-              </p>
-              <FaArrowRightArrowLeft className="text-tradeOrange text-xs" />
-              <p className="text-sm font-bold text-white"> 0.4308 USDT</p>
-            </div>
+        <div className="flex flex-1  flex-col justify-center px-4 py-6 gap-1 border-r border-tradeAshLight bg-tradeAshExtraLight">
+          <div className="flex items-center gap-2">
+            <p className="text-sm font-bold text-white">
+              123,968.44 {props.currency?.code}
+            </p>
 
-            <div className="flex items-center gap-2 p-[0.5px]">
-              <FiTrendingUp className="text-tradeGreen text-sm " />
-              <p className="text-xs font-semibold text-tradeGreen">
-                +{props.margin}.00% Margin
-              </p>
-            </div>
+            <FiTrendingUp className="text-tradeGreen text-sm " />
+            <p className="text-sm font-bold text-tradeGreen">
+              {props.margin}.00%
+            </p>
+          </div>
+
+          <div className="flex items-center ">
+            {/* <p className="text-xs text-white font-bold">
+              1&nbsp;
+              <span className="text-white font-semibold">
+                {props.currency?.code}
+              </span>
+              &nbsp;&#x2248;&nbsp;
+              <span className="text-tradeOrange font-semibold">0.526 USDT</span>
+              &nbsp;/&nbsp;
+              <span className="text-tradeOrange font-semibold">680 NGN</span>
+            </p> */}
           </div>
         </div>
       </div>
@@ -205,13 +213,18 @@ const MarketCard = (props) => {
         </div>
 
         {/* Bottom Section: Rate Info */}
-        <div className="flex justify-between items-center px-4 py-4 text-white">
-          <div className="flex items-center gap-2 font-bold text-sm">
-            <p>1 {props.currency?.code}</p>
-            <FaArrowRightArrowLeft className="text-tradeOrange text-xs" />
-            <p>0.02508 USDT</p>
+        <div className="flex justify-between items-center px-4 py-4 text-white bg-tradeAshExtraLight">
+          <div className="flex items-center gap-2">
+            <p className="text-sm font-bold text-white">
+              123,968.44 {props.currency?.code}
+            </p>
+
+            <FiTrendingUp className="text-tradeGreen text-sm " />
+            <p className="text-sm font-bold text-tradeGreen">
+              {props.margin}.00%
+            </p>
           </div>
-          <div className="flex items-center gap-1 text-sm font-semibold text-tradeGreen">
+          <div className="flex items-center gap-1 text-sm font-semibold text-tradeFadeWhite">
             <FiTrendingUp />
             <p>+{props.margin}.00% Margin</p>
           </div>

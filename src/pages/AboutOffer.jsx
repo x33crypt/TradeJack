@@ -259,9 +259,11 @@ const AboutOffer = () => {
               </p>
             </div>
 
+            {/* Offer Details */}
             <div className="flex flex-col md:gap-[15px] gap-[10px] p-[15px] py-[30px]  md:py-[40px] lg:py-[50px] bg-tradeAsh md:justify-center items-center">
               <div className="lg:w-[500px] sm:w-[550px] w-full flex gap-[15px] bg-tradeAshLight border border-tradeAshExtraLight p-[12px] rounded-[10px]">
                 <div className="flex-1 flex flex-col gap-[20px]">
+                  {/* Vendor Details */}
                   <div className="flex justify-between  items-center">
                     <div className="flex-1 flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
                       <div className="w-[40px] flex-shrink-0 rounded-full">
@@ -317,8 +319,7 @@ const AboutOffer = () => {
                     </div>
                   </div>
 
-                  {/* Rating, Reviews & Offer ID */}
-
+                  {/* Offer stats */}
                   <div className="flex justify-between">
                     <div className="flex flex-1 flex-col gap-1">
                       <p className="text-[13px] font-[500] text-tradeFadeWhite">
@@ -349,6 +350,7 @@ const AboutOffer = () => {
                 </div>
               </div>
             </div>
+
             {/* Offer Id Field */}
             <div className=" sticky top-[62px] z-20 flex justify-between items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshExtraLight">
               <p className="text-white text-xs font-semibold">OFFER ID</p>
@@ -357,6 +359,7 @@ const AboutOffer = () => {
               </p>
             </div>
 
+            {/* Other Offer details*/}
             <div className="w-full flex flex-col gap-[10px]">
               <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
                 <p className=" text-[17px] text-white font-[700] cursor-pointer">

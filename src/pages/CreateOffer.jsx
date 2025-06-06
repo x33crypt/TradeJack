@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -360,6 +361,7 @@ const CreateOffer = () => {
     "Flow (FLOW)",
   ];
 
+  //get currency function
   const getCurrencies = async () => {
     try {
       const response = await axios.get("https://restcountries.com/v3.1/all");
@@ -399,6 +401,7 @@ const CreateOffer = () => {
     }
   };
 
+  //handing service field change when service type changes
   const handleServiceTypeChange = () => {
     if (offerDetails.serviceType === "Online Wallet Transfer") {
       setOfferDetails((prev) => ({
@@ -462,45 +465,75 @@ const CreateOffer = () => {
     handleServiceTypeChange();
   }, [offerDetails.serviceType]);
 
+  // Updating create offer state
   useEffect(() => {
-    if (select.element === "service type") {
-      setOfferDetails((prev) => ({
-        ...prev,
-        serviceType: select.pick,
-      }));
-    } else if (select.element === "service") {
-      setOfferDetails((prev) => ({
-        ...prev,
-        service: select.pick,
-      }));
-    } else if (select.element === "currency") {
-      setOfferDetails((prev) => ({
-        ...prev,
-        currency: select.pick,
-      }));
-    } else if (select.element === "terms") {
-      const newTag = select.pick?.trim();
+    if (select?.page !== "create offer" || !select?.element || !select?.pick)
+      return;
 
-      if (newTag) {
-        setOfferDetails((prev) => {
-          const current = prev.termTags || [];
+    const pick = select.pick;
 
-          if (current.includes(newTag) || current.length >= 5) {
-            return prev; // Do not add if already exists or exceeds limit
-          }
-
-          return {
+    switch (select.element) {
+      case "service type":
+      case "service":
+        if (typeof pick === "string") {
+          setOfferDetails((prev) => ({
             ...prev,
-            termTags: [...current, newTag],
-          };
-        });
-      }
+            [select.element === "service type" ? "serviceType" : "service"]:
+              pick,
+          }));
+        }
+        break;
+
+      case "currency":
+        if (typeof pick === "object" && pick.code && pick.name) {
+          setOfferDetails((prev) => ({
+            ...prev,
+            currency: pick,
+          }));
+        }
+        break;
+
+      case "terms":
+        if (typeof pick === "string") {
+          const newTag = pick.trim();
+          if (newTag) {
+            setOfferDetails((prev) => {
+              const current = prev.termTags || [];
+              if (current.includes(newTag) || current.length >= 5) return prev;
+              return {
+                ...prev,
+                termTags: [...current, newTag],
+              };
+            });
+          }
+        }
+        break;
+
+      default:
+        break;
     }
   }, [select]);
 
+  // Calling currencies function to fetch currencies
   useEffect(() => {
     getCurrencies();
   }, []);
+
+  // Reset offer details on page load unless coming from the summary page
+  const location = useLocation();
+  const prevLocationRef = useRef(null);
+
+  useEffect(() => {
+    const prevPath = prevLocationRef.current;
+
+    // Only reset if the previous page was NOT the summary
+    if (prevPath !== "/offers/create/summary") {
+      setOfferDetails(offerDetails);
+    }
+
+    // Always update the previous path
+    prevLocationRef.current = location.pathname;
+  }, [location.pathname]);
 
   console.log("select details", select);
   console.log("offer details", offerDetails);
@@ -597,7 +630,7 @@ const CreateOffer = () => {
   return (
     <>
       <InAppNav />
-      <div className="flex lg:flex-row flex-col bg-black lg:px-[15%] md:px-[2.5%]">
+      <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%]">
         <div className="flex flex-col  min-h-svh w-full md:border-x md:border-t md:border-b border-neutral-800 md:mt-[80px] mt-[60px]">
           <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
             <p className="text-[17px] text-white font-[700]">
@@ -612,26 +645,6 @@ const CreateOffer = () => {
                   Select Service Type
                 </p>
               </div>
-              {/* <div className="flex gap-[15px] flex-wrap">
-                {serviceType.map((type, index) => (
-                  <p
-                    key={index}
-                    onClick={() =>
-                      setOfferDetails((prev) => ({
-                        ...prev,
-                        serviceType: type,
-                      }))
-                    }
-                    className={`${
-                      offerDetails.serviceType === type
-                        ? "bg-tradeGreen text-black border-transparent"
-                        : "text-tradeFadeWhite  "
-                    } text-[14px] font-[500] py-[6px] px-[10px] w-max rounded-[10px] cursor-pointer border border-tradeAshLight hover:border-tradeAshExtraLight transition-all duration-300`}
-                  >
-                    {type}
-                  </p>
-                ))}
-              </div> */}
               <div className="relative w-full cursor-pointer ">
                 <input
                   className={`${
@@ -651,6 +664,8 @@ const CreateOffer = () => {
                       selectTwo: false,
                       element: "service type",
                       options: serviceType,
+                      pick: "",
+                      page: "create offer",
                     })
                   }
                   onChange={(e) => setOfferDetails.serviceType(e.target.value)}
@@ -694,9 +709,11 @@ const CreateOffer = () => {
                         selectTwo: false,
                         element: "service",
                         options: onlineWallets,
+                        pick: "",
+                        page: "create offer",
                       })
                     }
-                    onChange={(e) => setOfferDetails.service(e.target.value)}
+                    // onChange={(e) => setOfferDetails.service(e.target.value)}
                   />
 
                   <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
@@ -735,6 +752,8 @@ const CreateOffer = () => {
                         selectTwo: false,
                         element: "service",
                         options: bankAccounts,
+                        pick: "",
+                        page: "create offer",
                       })
                     }
                     onChange={(e) => setOfferDetails.service(e.target.value)}
@@ -776,6 +795,8 @@ const CreateOffer = () => {
                         selectTwo: false,
                         element: "service",
                         options: giftCards,
+                        pick: "",
+                        page: "create offer",
                       })
                     }
                     onChange={(e) => setOfferDetails.service(e.target.value)}
@@ -817,6 +838,8 @@ const CreateOffer = () => {
                         selectTwo: false,
                         element: "service",
                         options: debitandCreditCards,
+                        pick: "",
+                        page: "create offer",
                       })
                     }
                     onChange={(e) => setOfferDetails.service(e.target.value)}
@@ -858,6 +881,8 @@ const CreateOffer = () => {
                         state: true,
                         element: "service",
                         options: cryptoAssets,
+                        pick: "",
+                        page: "create offer",
                       })
                     }
                     onChange={(e) => setOfferDetails.service(e.target.value)}
@@ -900,6 +925,8 @@ const CreateOffer = () => {
                       selectTwo: true,
                       element: "currency",
                       options: currencies,
+                      pick: "",
+                      page: "create offer",
                     })
                   }
                   onChange={(e) => setOfferDetails.service(e.target.value)}
@@ -1207,6 +1234,7 @@ const CreateOffer = () => {
                       selectTwo: false,
                       element: "terms",
                       pick: "",
+                      page: "create offer",
                       options: offerTermTags,
                     })
                   }
@@ -1301,7 +1329,7 @@ const CreateOffer = () => {
           </div>
         </div>
 
-        {/* <div className="lg:flex hidden min-h-svh md:mt-[80px] mt-[60px]  lg:w-[520px] w-full border-neutral-800 ">
+        <div className="lg:flex hidden min-h-svh md:mt-[80px] mt-[60px]  lg:w-[520px] w-full border-neutral-800 ">
           <div className=" relative w-full  flex flex-col md:border-r md:border-b md:border-t border-neutral-800">
             <div className="flex flex-col justify-between p-[15px]  border-b border-tradeAshLight w-full">
               <p className="text-[17px] text-white font-[700]">Offer Summary</p>
@@ -1498,7 +1526,7 @@ const CreateOffer = () => {
               </button>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
       <Footer />
     </>
