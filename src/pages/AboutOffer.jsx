@@ -262,15 +262,11 @@ const AboutOffer = () => {
               </p>
             </div>
             {/* Offer Id Field */}
-            <div className=" sticky top-[62px] z-20 flex gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshLight">
-              <p className="text-tradeFadeWhite text-xs font-semibold">
-                OFFER ID
-              </p>
-              <p className="text-white text-xs font-semibold">-</p>
+            <div className=" sticky top-[62px] z-20 flex gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-white">
+              <p className="text-tradeAsh text-sm font-semibold">Offer ID</p>
+              <p className="text-tradeAsh text-sm font-semibold">-</p>
 
-              <p className="text-tradeFadeWhite text-sm font-semibold">
-                #128951721826
-              </p>
+              <p className="text-black text-sm font-bold">128951721826</p>
             </div>
 
             {/* Offer Details */}
@@ -332,14 +328,14 @@ const AboutOffer = () => {
                 </div>
               </div>
 
-              {/* Feedback Summary */}
+              {/* Vendor */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
                 <p className=" text-[13px] text-tradeFadeWhite font-semibold">
-                  Vendor
+                  Vendor (Offer Author)
                 </p>
                 <div className="flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
                   <div className="flex flex-col ">
-                    <p className="m-0 text-sm font-semibold text-white">
+                    <p className="m-0 text-base font-semibold text-white">
                       0xSanityy
                     </p>
                   </div>

@@ -141,7 +141,7 @@ const MarketCard = (props) => {
         {/* Top Section: Service + User */}
         <div className="flex justify-between pl-2 pr-4 py-4 border-b border-tradeAshLight">
           <div className="flex items-center gap-2">
-            <CiBank className="text-tradeAshLight text-[30px]" />
+            <CiBank className="text-tradeFadeWhite text-[30px]" />
             <div className="flex flex-col gap-1">
               <p className="text-tradeOrange text-base font-bold">
                 {props.service}
