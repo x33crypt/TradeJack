@@ -16,6 +16,9 @@ import { AiFillSafetyCertificate } from "react-icons/ai";
 import { IoMdThumbsUp } from "react-icons/io";
 import { FaInfoCircle } from "react-icons/fa";
 import { HiStatusOnline } from "react-icons/hi";
+import { HiOutlineUserCircle } from "react-icons/hi2";
+import { FaStar } from "react-icons/fa6";
+import { FiTrendingUp } from "react-icons/fi";
 
 const AboutOffer = () => {
   const [offerDetails, setOfferDetails] = useState("");
@@ -258,114 +261,107 @@ const AboutOffer = () => {
                 About Offer
               </p>
             </div>
+            {/* Offer Id Field */}
+            <div className=" sticky top-[62px] z-20 flex gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshLight">
+              <p className="text-tradeFadeWhite text-xs font-semibold">
+                OFFER ID
+              </p>
+              <p className="text-white text-xs font-semibold">-</p>
+
+              <p className="text-tradeFadeWhite text-sm font-semibold">
+                #128951721826
+              </p>
+            </div>
 
             {/* Offer Details */}
-            <div className="flex flex-col md:gap-[15px] gap-[10px] p-[15px] py-[30px]  md:py-[40px] lg:py-[50px] bg-tradeAsh md:justify-center items-center">
-              <div className="lg:w-[500px] sm:w-[550px] w-full flex gap-[15px] bg-tradeAshLight border border-tradeAshExtraLight p-[12px] rounded-[10px]">
-                <div className="flex-1 flex flex-col gap-[20px]">
-                  {/* Vendor Details */}
-                  <div className="flex justify-between  items-center">
-                    <div className="flex-1 flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
-                      <div className="w-[40px] flex-shrink-0 rounded-full">
-                        <img
-                          className="rounded-full"
-                          src={landingImg4}
-                          alt="User avatar"
-                        />
-                      </div>
-                      <div className="flex flex-col ">
-                        <p className="m-0 text-[16px] font-semibold text-white">
-                          0xSanityy
-                        </p>
-                        <p className="m-0 text-[12px] font-semibold text-tradeFadeWhite">
-                          Top Trader
-                        </p>
-                      </div>
-                    </div>
+            <div className=" flex flex-col  cursor-pointer transition-all duration-300 hover:shadow-lg overflow-hidden">
+              {/* service Type*/}
+              <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
+                <p className="text-xs text-tradeFadeWhite font-semibold">
+                  Service Type
+                </p>
+                <p className=" text-white text-sm font-semibold">
+                  Direct Bank Transfer
+                </p>
+              </div>
 
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Vendor Status
-                      </p>
-                      <div className="flex items-center gap-2">
-                        <div>
-                          <HiStatusOnline className="text-[18px] text-tradeGreen animate-pulse" />
-                        </div>
+              {/* service*/}
+              <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
+                <p className="text-xs text-tradeFadeWhite font-semibold">
+                  Service
+                </p>
+                <p className="text-tradeOrange text-lg font-bold">
+                  Wells Fargo
+                </p>
+              </div>
 
-                        <p className="m-0 text-tradeGreen text-[14px] font-semibold">
-                          Online
-                        </p>
-                      </div>
-                    </div>
+              {/* Accepted Currency */}
+              <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
+                <p className=" text-xs text-tradeFadeWhite font-semibold">
+                  Accepted Currency
+                </p>
+                <p className=" font-semibold text-tradeGreen text-sm">
+                  United State Dollars
+                </p>
+              </div>
+
+              {/* Trade Volume */}
+              <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
+                <p className=" text-xs text-tradeFadeWhite font-semibold">
+                  Trade Volume
+                </p>
+                <p className=" font-semibold text-white text-sm">215 Trades</p>
+              </div>
+
+              {/* Feedback Summary */}
+              <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
+                <p className=" text-xs text-tradeFadeWhite font-semibold">
+                  Feedback Summary
+                </p>
+                <div className="flex gap-3 items-center">
+                  <p className=" text-sm text-white flex items-center gap-1 font-semibold">
+                    <IoMdThumbsUp className="text-tradeGreen " />
+                    {/* {parseInt(props.positiveFeedback).toLocaleString()} */}
+                    200
+                  </p>
+
+                  <p className="text-sm text-white flex items-center gap-1 font-semibold">
+                    <MdThumbDownAlt className="text-red-500" />
+                    {/* {parseInt(props.trustScore).toLocaleString()} */}15
+                  </p>
+                </div>
+              </div>
+
+              {/* Feedback Summary */}
+              <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
+                <p className=" text-xs text-tradeFadeWhite font-semibold">
+                  Vendor
+                </p>
+                <div className="flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
+                  <div className="flex flex-col ">
+                    <p className="m-0 text-[16px] font-semibold text-white">
+                      0xSanityy
+                    </p>
                   </div>
-
-                  {/* Offer Details */}
-                  <div className="flex justify-between  items-center">
-                    <div className="flex flex-1 flex-col gap-[2px]">
-                      <p className="text-tradeOrange text-[15px] font-bold">
-                        Wells Fargo
-                      </p>
-                      <p className="text-white text-[14px] font-[600]">
-                        Direct Bank Transfer
-                      </p>
-                    </div>
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Accepted Currency
-                      </p>
-                      <p className="text-[14px] font-[600] text-white">
-                        US Dollar
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Offer stats */}
-                  <div className="flex justify-between">
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Trade Volume
-                      </p>
-                      <p className="text-[14px] font-[600] text-white">
-                        20 Trades
-                      </p>
-                    </div>
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Feedback Summary
-                      </p>
-                      <div className="flex gap-6 items-center">
-                        <p className=" text-sm text-white flex items-center gap-1 font-semibold">
-                          <IoMdThumbsUp className="text-tradeGreen " />
-                          {/* {parseInt(props.positiveFeedback).toLocaleString()} */}
-                          18
-                        </p>
-
-                        <p className="text-sm text-white flex items-center gap-1 font-semibold">
-                          <MdThumbDownAlt className="text-red-500" />
-                          {/* {parseInt(props.trustScore).toLocaleString()} */}2
-                        </p>
-                      </div>
-                    </div>
+                  <div className="w-[30px] flex-shrink-0 rounded-full">
+                    <img
+                      className="rounded-full"
+                      src={landingImg4}
+                      alt="User avatar"
+                    />
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Offer Id Field */}
-            <div className=" sticky top-[62px] z-20 flex justify-between items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshExtraLight">
-              <p className="text-white text-xs font-semibold">OFFER ID</p>
-              <p className="text-tradeOrange text-sm font-semibold">
-                #128951721826
-              </p>
-            </div>
-
             {/* Other Offer details*/}
             <div className="w-full flex flex-col gap-[10px]">
-              <div className=" flex items-center gap-[10px] p-[15px]  border-b border-tradeAshLight ">
-                <p className=" text-[17px] text-white font-[700] cursor-pointer">
+              <div className=" flex items-center gap-[10px] px-4 py-2  border-b border-tradeAshLight bg-tradeAshExtraLight">
+                <p className=" text-[14px] text-white font-[700] cursor-pointer">
                   Other Details
                 </p>
               </div>
+
               <div className="grid grid-cols-2 lg:flex gap-[15px] p-[15px]">
                 <div className="flex-1 flex flex-col">
                   <div className="flex items-center gap-2">

@@ -213,7 +213,7 @@ const MarketCard = (props) => {
         </div>
 
         {/* Bottom Section: Rate Info */}
-        <div className="flex justify-between items-center px-4 py-4 text-white bg-tradeAshExtraLight">
+        <div className="flex justify-between items-center px-4 py-4 text-white bg-tradeAshLight">
           <div className="flex items-center gap-2">
             <p className="text-sm font-bold text-white">
               123,968.44 {props.currency?.code}
