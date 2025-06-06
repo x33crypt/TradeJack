@@ -152,7 +152,7 @@ const MarketCard = (props) => {
             </div>
           </div>
           <div className="flex items-center gap-2 ">
-            <HiOutlineUserCircle className="text-tradeAshLight text-[30px]" />
+            <HiOutlineUserCircle className="text-tradeFadeWhite text-[30px]" />
             <div className="flex gap-1 flex-col items-start w-[100px] overflow-hidden">
               <div className="flex  items-center gap-2">
                 <div className="flex-1 flex">

@@ -262,15 +262,16 @@ const AboutOffer = () => {
               </p>
             </div>
             {/* Offer Id Field */}
-            <div className=" sticky top-[62px] z-20 flex gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-white">
-              <p className="text-tradeAsh text-sm font-semibold">Offer ID</p>
-              <p className="text-tradeAsh text-sm font-semibold">-</p>
+            <div className=" sticky top-[62px] z-20 flex justify-between gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshLight">
+              <p className="text-tradeFadeWhite text-sm font-semibold">
+                Offer ID
+              </p>
 
-              <p className="text-black text-sm font-bold">128951721826</p>
+              <p className="text-tradeFadeWhite text-sm font-bold">#128951721826</p>
             </div>
 
             {/* Offer Details */}
-            <div className=" flex flex-col bg-tradeAsh  cursor-pointer transition-all duration-300 hover:shadow-lg overflow-hidden">
+            <div className="mt-3 flex flex-col bg-tradeAsh border-t border-tradeAshLight cursor-pointer transition-all duration-300 hover:shadow-lg overflow-hidden">
               {/* service Type*/}
               <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
                 <p className="text-[13px] text-tradeFadeWhite font-semibold">
