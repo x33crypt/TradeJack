@@ -273,8 +273,8 @@ const AboutOffer = () => {
             </div>
 
             {/* Offer Details */}
-            <div className="p-[15px] bg-trs">
-              <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight cursor-pointer transition-all duration-300 hover:shadow-lg overflow-hidden rounded-[10px]">
+            <div className="p-[15px]">
+              <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight transition-all duration-300 hover:shadow-lg overflow-hidden rounded-[10px]">
                 {/* service Type*/}
                 <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
                   <p className="text-[13px] text-tradeFadeWhite font-semibold">
@@ -307,9 +307,16 @@ const AboutOffer = () => {
 
                 {/* Trade Volume */}
                 <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
-                  <p className=" text-[13px] text-tradeFadeWhite font-semibold">
-                    Trade Volume
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <p className=" text-[13px] text-tradeFadeWhite font-semibold">
+                      Trade Volume
+                    </p>
+
+                    <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
+                      <FaInfoCircle />
+                    </div>
+                  </div>
+
                   <p className=" font-semibold text-white text-sm">
                     215 Trades
                   </p>
@@ -339,9 +346,9 @@ const AboutOffer = () => {
                   <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                     Vendor (Offer Author)
                   </p>
-                  <div className="flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
+                  <div className="flex items-center gap-2 cursor-pointer hover:underline text-tradeFadeWhite hover:text-white transition-all duration-300">
                     <div className="flex flex-col ">
-                      <p className="m-0 text-base font-semibold text-white">
+                      <p className="m-0 text-[15px] font-semibold text-white">
                         0xSanityy
                       </p>
                     </div>

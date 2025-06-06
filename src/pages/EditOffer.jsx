@@ -14,6 +14,7 @@ import { AiFillSafetyCertificate } from "react-icons/ai";
 import { IoMdThumbsUp } from "react-icons/io";
 import { MdThumbDownAlt } from "react-icons/md";
 import landingImg4 from "../assets/landingImg4.JPG";
+import { FaInfoCircle } from "react-icons/fa";
 
 import { CiBank } from "react-icons/ci";
 
@@ -113,91 +114,110 @@ const EditOffer = () => {
                 Edit Offer
               </p>
             </div>
-            <div className="flex flex-col md:gap-[15px] gap-[10px] p-[15px] py-[30px]  md:py-[40px] lg:py-[50px] bg-tradeAsh md:justify-center items-center">
-              <div className="lg:w-[500px] sm:w-[550px] w-full flex gap-[15px] bg-tradeAshLight border border-tradeAshExtraLight p-[12px] rounded-[10px]">
-                <div className="flex-1 flex flex-col gap-[20px]">
-                  {/* Rating, Reviews & Offer ID */}
-                  <div className="flex justify-between  items-center">
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Published On
-                      </p>
-                      <p className="text-[14px] font-[600] text-white">
-                        June 14, 2025
-                      </p>
-                    </div>
+            {/* Offer Id Field */}
+            <div className=" sticky top-[62px] z-20 flex justify-between gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshLight">
+              <p className="text-tradeFadeWhite text-sm font-semibold">
+                Offer ID
+              </p>
 
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Offer Status
-                      </p>
-                      <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
-                        <p className="text-tradeGreen text-[14px] font-semibold">
-                          Active
-                        </p>
-                      </div>
+              <p className="text-tradeFadeWhite text-sm font-bold">
+                #128951721826
+              </p>
+            </div>
+            {/* Offer Details */}
+            <div className="p-[15px]">
+              <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight transition-all duration-300 hover:shadow-lg overflow-hidden rounded-[10px]">
+                {/* Published Date*/}
+                <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    Published On
+                  </p>
+                  <p className=" text-white text-sm font-semibold">
+                    June 14, 2025
+                  </p>
+                </div>
+                {/* Offer Status*/}
+                <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    Offer Status
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
+                    <p className="text-tradeGreen text-[14px] font-semibold">
+                      Active
+                    </p>
+                  </div>
+                </div>
+                {/* service Type*/}
+                <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    Service Type
+                  </p>
+                  <p className=" text-white text-sm font-semibold">
+                    Direct Bank Transfer
+                  </p>
+                </div>
+
+                {/* service*/}
+                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    Service
+                  </p>
+                  <p className="text-tradeOrange text-[16px] font-bold">
+                    Wells Fargo
+                  </p>
+                </div>
+
+                {/* Accepted Currency */}
+                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
+                  <p className=" text-[13px] text-tradeFadeWhite font-semibold">
+                    Accepted Currency
+                  </p>
+                  <p className=" font-semibold text-tradeGreen text-sm">
+                    United State Dollars
+                  </p>
+                </div>
+
+                {/* Trade Volume */}
+                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
+                  <div className="flex items-center gap-2">
+                    <p className=" text-[13px] text-tradeFadeWhite font-semibold">
+                      Trade Volume
+                    </p>
+
+                    <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
+                      <FaInfoCircle />
                     </div>
                   </div>
 
-                  {/* Offer Details */}
-                  <div className="flex justify-between  items-center">
-                    <div className="flex flex-1 flex-col gap-[2px]">
-                      <p className="text-tradeOrange text-[15px] font-bold">
-                        Wells Fargo
-                      </p>
-                      <p className="text-white text-[14px] font-[600]">
-                        Direct Bank Transfer
-                      </p>
-                    </div>
+                  <p className=" font-semibold text-white text-sm">
+                    215 Trades
+                  </p>
+                </div>
 
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Accepted Currency
-                      </p>
-                      <p className="text-[14px] font-[600] text-white">
-                        US Dollar
-                      </p>
-                    </div>
-                  </div>
+                {/* Feedback Summary */}
+                <div className="flex items-center justify-between p-3 ">
+                  <p className=" text-[13px] text-tradeFadeWhite font-semibold">
+                    Feedback Summary
+                  </p>
+                  <div className="flex gap-3 items-center">
+                    <p className=" text-sm text-white flex items-center gap-1 font-semibold">
+                      <IoMdThumbsUp className="text-tradeGreen " />
+                      {/* {parseInt(props.positiveFeedback).toLocaleString()} */}
+                      200
+                    </p>
 
-                  {/* Rating, Reviews & Offer ID */}
-                  <div className="flex justify-between  items-center">
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Trade Volume
-                      </p>
-                      <p className="text-[14px] font-[600] text-white">
-                        20 Trades
-                      </p>
-                    </div>
-
-                    <div className="flex flex-1 flex-col gap-1">
-                      <p className="text-[13px] font-[500] text-tradeFadeWhite">
-                        Feedback Summary
-                      </p>
-                      <div className="flex gap-6 items-center">
-                        <p className=" text-sm text-white flex items-center gap-1 font-semibold">
-                          <IoMdThumbsUp className="text-tradeGreen " />
-                          {/* {parseInt(props.positiveFeedback).toLocaleString()} */}
-                          18
-                        </p>
-
-                        <p className="text-sm text-white flex items-center gap-1 font-semibold">
-                          <MdThumbDownAlt className="text-red-500" />
-                          {/* {parseInt(props.trustScore).toLocaleString()} */}2
-                        </p>
-                      </div>
-                    </div>
+                    <p className="text-sm text-white flex items-center gap-1 font-semibold">
+                      <MdThumbDownAlt className="text-red-500" />
+                      {/* {parseInt(props.trustScore).toLocaleString()} */}15
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-            {/* Offer Id Field */}
-            <div className=" sticky top-[62px] z-20 flex justify-between items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshExtraLight">
-              <p className="text-white text-xs font-semibold">OFFER ID</p>
-              <p className="text-tradeOrange text-sm font-semibold">
-                #128951721826
+            <div className=" flex items-center gap-[10px] px-4 py-2  border-b border-tradeAshLight bg-tradeAshExtraLight">
+              <p className=" text-[14px] text-white font-[700] cursor-pointer">
+                Other Details
               </p>
             </div>
             {/* Limit Field */}
