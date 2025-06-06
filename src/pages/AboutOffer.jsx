@@ -274,7 +274,7 @@ const AboutOffer = () => {
 
             {/* Offer Details */}
             <div className="p-[15px] bg-trs">
-              <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight cursor-pointer transition-all duration-300 hover:shadow-lg overflow-hidden">
+              <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight cursor-pointer transition-all duration-300 hover:shadow-lg overflow-hidden rounded-[10px]">
                 {/* service Type*/}
                 <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
                   <p className="text-[13px] text-tradeFadeWhite font-semibold">
