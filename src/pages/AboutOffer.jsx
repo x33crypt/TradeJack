@@ -272,6 +272,15 @@ const AboutOffer = () => {
               </p>
             </div>
 
+            {/* Offer Id Field */}
+            <div className="flex justify-between gap-1 items-center px-4 py-2 ">
+              <p className="text-tradeFadeWhite text-[14px] font-normal">
+                Carefully review all offer details, trade conditions, and vendor
+                details before proceeding to ensure a smooth and secure
+                transaction.
+              </p>
+            </div>
+
             {/* Offer Details */}
             <div className="p-[15px]">
               <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight transition-all duration-300 hover:shadow-lg overflow-hidden rounded-[10px]">

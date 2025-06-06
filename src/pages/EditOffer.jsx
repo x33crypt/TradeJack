@@ -121,7 +121,9 @@ const EditOffer = () => {
                 Offer ID
               </p>
 
-              <p className="text-white text-sm font-bold">#128951721826</p>
+              <p className="text-tradeFadeWhite text-sm font-bold">
+                #128951721826
+              </p>
             </div>
 
             {/* Offer Id Field */}
@@ -221,10 +223,10 @@ const EditOffer = () => {
               </div>
             </div>
 
-            {/* Offer Id Field */}
+            {/* Changes Instruction field */}
             <div className="  flex justify-between gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshExtraLight">
-              <p className="text-tradeFadeWhite text-sm font-semibold">
-                Make Changes to Your Offer
+              <p className="text-white text-sm font-semibold">
+                Make Your Changes
               </p>
             </div>
 
