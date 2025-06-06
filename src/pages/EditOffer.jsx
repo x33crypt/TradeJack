@@ -114,14 +114,25 @@ const EditOffer = () => {
                 Edit Offer
               </p>
             </div>
+
+            {/* Offer Id Field */}
+            <div className=" sticky top-[62px] z-20 flex justify-between gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshLight">
+              <p className="text-tradeFadeWhite text-sm font-semibold">
+                Offer ID
+              </p>
+
+              <p className="text-white text-sm font-bold">#128951721826</p>
+            </div>
+
             {/* Offer Id Field */}
             <div className="flex justify-between gap-1 items-center px-4 py-2 ">
-              <p className="text-white text-[14px] font-normal">
+              <p className="text-tradeFadeWhite text-[14px] font-normal">
                 Update key details of your offer to reflect your latest trade
                 preferences. You can adjust your limits, margins, timing, or
                 trade instructions before saving.
               </p>
             </div>
+
             {/* Offer Details */}
             <div className="p-[15px]">
               <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight transition-all duration-300 hover:shadow-lg overflow-hidden rounded-[10px]">
@@ -209,16 +220,14 @@ const EditOffer = () => {
                 </div>
               </div>
             </div>
-            {/* Offer Id Field */}
-            <div className=" sticky top-[62px] z-20 flex justify-between gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshLight">
-              <p className="text-tradeFadeWhite text-sm font-semibold">
-                Offer ID
-              </p>
 
-              <p className="text-tradeFadeWhite text-sm font-bold">
-                #128951721826
+            {/* Offer Id Field */}
+            <div className="  flex justify-between gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshExtraLight">
+              <p className="text-tradeFadeWhite text-sm font-semibold">
+                Make Changes to Your Offer
               </p>
             </div>
+
             {/* Limit Field */}
             <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
               <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
