@@ -290,7 +290,7 @@ const AboutOffer = () => {
                   <p className="text-[13px] text-tradeFadeWhite font-semibold">
                     Service
                   </p>
-                  <p className="text-tradeOrange text-[16px] font-bold">
+                  <p className="text-tradeOrange text-sm font-bold">
                     Wells Fargo
                   </p>
                 </div>
@@ -348,11 +348,11 @@ const AboutOffer = () => {
                   </p>
                   <div className="flex items-center gap-2 cursor-pointer hover:underline text-tradeFadeWhite hover:text-white transition-all duration-300">
                     <div className="flex flex-col ">
-                      <p className="m-0 text-[15px] font-semibold text-white">
+                      <p className="m-0 text-sm font-semibold text-white">
                         0xSanityy
                       </p>
                     </div>
-                    <div className="w-[30px] flex-shrink-0 rounded-full">
+                    <div className="w-[25px] flex-shrink-0 rounded-full">
                       <img
                         className="rounded-full"
                         src={landingImg4}

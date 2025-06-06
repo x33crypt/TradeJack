@@ -115,13 +115,11 @@ const EditOffer = () => {
               </p>
             </div>
             {/* Offer Id Field */}
-            <div className=" sticky top-[62px] z-20 flex justify-between gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshLight">
-              <p className="text-tradeFadeWhite text-sm font-semibold">
-                Offer ID
-              </p>
-
-              <p className="text-tradeFadeWhite text-sm font-bold">
-                #128951721826
+            <div className="flex justify-between gap-1 items-center px-4 py-2 ">
+              <p className="text-white text-[14px] font-normal">
+                Update key details of your offer to reflect your latest trade
+                preferences. You can adjust your limits, margins, timing, or
+                trade instructions before saving.
               </p>
             </div>
             {/* Offer Details */}
@@ -157,17 +155,15 @@ const EditOffer = () => {
                     Direct Bank Transfer
                   </p>
                 </div>
-
                 {/* service*/}
                 <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
                   <p className="text-[13px] text-tradeFadeWhite font-semibold">
                     Service
                   </p>
-                  <p className="text-tradeOrange text-[16px] font-bold">
+                  <p className="text-tradeOrange text-sm font-bold">
                     Wells Fargo
                   </p>
                 </div>
-
                 {/* Accepted Currency */}
                 <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
                   <p className=" text-[13px] text-tradeFadeWhite font-semibold">
@@ -177,7 +173,6 @@ const EditOffer = () => {
                     United State Dollars
                   </p>
                 </div>
-
                 {/* Trade Volume */}
                 <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
                   <div className="flex items-center gap-2">
@@ -194,7 +189,6 @@ const EditOffer = () => {
                     215 Trades
                   </p>
                 </div>
-
                 {/* Feedback Summary */}
                 <div className="flex items-center justify-between p-3 ">
                   <p className=" text-[13px] text-tradeFadeWhite font-semibold">
@@ -215,9 +209,14 @@ const EditOffer = () => {
                 </div>
               </div>
             </div>
-            <div className=" flex items-center gap-[10px] px-4 py-2  border-b border-tradeAshLight bg-tradeAshExtraLight">
-              <p className=" text-[14px] text-white font-[700] cursor-pointer">
-                Other Details
+            {/* Offer Id Field */}
+            <div className=" sticky top-[62px] z-20 flex justify-between gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshLight">
+              <p className="text-tradeFadeWhite text-sm font-semibold">
+                Offer ID
+              </p>
+
+              <p className="text-tradeFadeWhite text-sm font-bold">
+                #128951721826
               </p>
             </div>
             {/* Limit Field */}
