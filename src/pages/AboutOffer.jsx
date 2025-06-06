@@ -274,10 +274,10 @@ const AboutOffer = () => {
             </div>
 
             {/* Offer Details */}
-            <div className=" flex flex-col  cursor-pointer transition-all duration-300 hover:shadow-lg overflow-hidden">
+            <div className=" flex flex-col bg-tradeAsh  cursor-pointer transition-all duration-300 hover:shadow-lg overflow-hidden">
               {/* service Type*/}
               <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
-                <p className="text-xs text-tradeFadeWhite font-semibold">
+                <p className="text-[13px] text-tradeFadeWhite font-semibold">
                   Service Type
                 </p>
                 <p className=" text-white text-sm font-semibold">
@@ -287,17 +287,17 @@ const AboutOffer = () => {
 
               {/* service*/}
               <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
-                <p className="text-xs text-tradeFadeWhite font-semibold">
+                <p className="text-[13px] text-tradeFadeWhite font-semibold">
                   Service
                 </p>
-                <p className="text-tradeOrange text-lg font-bold">
+                <p className="text-tradeOrange text-[16px] font-bold">
                   Wells Fargo
                 </p>
               </div>
 
               {/* Accepted Currency */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
-                <p className=" text-xs text-tradeFadeWhite font-semibold">
+                <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                   Accepted Currency
                 </p>
                 <p className=" font-semibold text-tradeGreen text-sm">
@@ -307,7 +307,7 @@ const AboutOffer = () => {
 
               {/* Trade Volume */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
-                <p className=" text-xs text-tradeFadeWhite font-semibold">
+                <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                   Trade Volume
                 </p>
                 <p className=" font-semibold text-white text-sm">215 Trades</p>
@@ -315,7 +315,7 @@ const AboutOffer = () => {
 
               {/* Feedback Summary */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
-                <p className=" text-xs text-tradeFadeWhite font-semibold">
+                <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                   Feedback Summary
                 </p>
                 <div className="flex gap-3 items-center">
@@ -334,12 +334,12 @@ const AboutOffer = () => {
 
               {/* Feedback Summary */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-tradeAshLight">
-                <p className=" text-xs text-tradeFadeWhite font-semibold">
+                <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                   Vendor
                 </p>
                 <div className="flex items-center gap-2 cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
                   <div className="flex flex-col ">
-                    <p className="m-0 text-[16px] font-semibold text-white">
+                    <p className="m-0 text-sm font-semibold text-white">
                       0xSanityy
                     </p>
                   </div>
