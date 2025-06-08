@@ -2,6 +2,7 @@ import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { MdCompareArrows } from "react-icons/md";
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
+import { LuEqualApproximately } from "react-icons/lu";
 
 const ExchangeCalculator = (prop) => {
   return (
@@ -66,7 +67,7 @@ const ExchangeCalculator = (prop) => {
                     }
                   />
                   <div className="flex items-center justify-center w-[70px] border-l border-tradeAshLight">
-                    <p className="text-[14px] text-white font-[700]">USDT</p>
+                    <p className="text-[14px] text-white font-[700]">NGN</p>
                   </div>
                 </div>
               </div>
@@ -83,7 +84,7 @@ const ExchangeCalculator = (prop) => {
                 </p>
               )}
             </div>
-            <div className="flex flex-col gap-2 text-sm text-white bg-transparent border border-tradeAshLight p-[12px] rounded-[10px] leading-relaxed">
+            <div className="flex flex-col gap-2 text-sm text-white bg-transparent border border-tradeAshLight p-[12px] rounde-[10px] leading-relaxed">
               {/* Profit Margin */}
               <div className="flex justify-between">
                 <p className="text-sm font-medium text-tradeFadeWhite">
@@ -95,11 +96,12 @@ const ExchangeCalculator = (prop) => {
               {/* Rate Breakdown */}
               <div className="flex justify-between text-sm">
                 <p className="font-medium text-tradeFadeWhite">Exchange Rate</p>
-                <p className="text-sm text-white font-medium">
-                  <span className="text-tradeGreen font-bold">
-                    1 USD ≈ 0.526 USDT
+                <p className=" flex items-center gap-1 text-sm text-white font-medium">
+                  <span className="text-tradeGreen font-bold">1 USD</span>
+                  <span className="text-tradeFadeWhite">
+                    {" "}
+                    <LuEqualApproximately />{" "}
                   </span>
-                  <span className="text-tradeFadeWhite"> / </span>
                   <span className="text-tradeGreen font-bold">680 NGN</span>
                 </p>
               </div>
