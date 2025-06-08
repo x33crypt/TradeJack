@@ -44,11 +44,7 @@ const InAppNav = () => {
     };
   }, []);
 
-  const placeholders = [
-    "Search transaction",
-    "Search people",
-    "Search payment",
-  ];
+  const placeholders = ["Search vendor's", "Search offer's"];
   const [searchplaceholder, setSearchplaceholder] = useState(placeholders[0]);
 
   useEffect(() => {
@@ -207,13 +203,10 @@ const InAppNav = () => {
             <FaVenusDouble className="text-[16px] text-tradeFadeWhite" />
             <p className="text-white text-[15px] ">Favourite Vendors</p>
           </div>
-          <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
-            <MdOutlineQueryStats className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Trade Statistics</p>
-          </div>
+
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
             <RiExchangeFundsLine className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Transaction History</p>
+            <p className="text-white text-[15px] ">Trade History</p>
           </div>
 
           <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">

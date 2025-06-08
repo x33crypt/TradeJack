@@ -13,6 +13,7 @@ import { IoClose } from "react-icons/io5";
 import { IoMdThumbsUp } from "react-icons/io";
 import { MdThumbDownAlt } from "react-icons/md";
 import { FaInfoCircle } from "react-icons/fa";
+import { LuEqualApproximately } from "react-icons/lu";
 
 const EditOffer = () => {
   const { select, setSelect } = useSelectElement();
@@ -378,37 +379,37 @@ const EditOffer = () => {
 
                 <div className="flex flex-col gap-2 text-[14px] text-white leading-relaxed">
                   {/* Market Price */}
-                  <div>
+                  <div className="flex gap-1 items-center">
                     <p className="text-tradeFadeWhite font-medium">
-                      Current USD Exchange Rate:{" "}
-                      <span className="text-tradeGreen font-bold">
-                        1 USD = 1,560.36 NGN
-                      </span>
+                      Current USD Exchange Rate:
                     </p>
+                    <p className="text-tradeGreen font-bold">1 USD</p>
+                    <span className="text-tradeFadeWhite">
+                      <LuEqualApproximately />
+                    </span>
+                    <p className="text-tradeGreen font-bold">1,560.36 NGN</p>
                   </div>
 
                   {/* Margin Breakdown */}
-                  <div>
-                    <p className="text-tradeFadeWhite font-medium">
-                      With a{" "}
-                      <span className="text-tradeOrange font-bold">
-                        5 percentage
-                      </span>{" "}
-                      profit margin, your final rate is&nbsp;
-                      <span className="text-tradeGreen font-bold">
-                        1 USD = 680 NGN
-                      </span>
-                      , and your estimated profit after platform fees is&nbsp;
-                      <span className="text-tradeGreen font-bold">
-                        7,500 NGN
-                      </span>{" "}
-                      per&nbsp;
-                      <span className="text-tradeGreen font-bold">
-                        1 USD
-                      </span>{" "}
-                      traded.
-                    </p>
-                  </div>
+                  <p className="text-tradeFadeWhite font-medium">
+                    With a{" "}
+                    <span className="text-tradeOrange font-bold">5%</span>{" "}
+                    margin, your final rate is&nbsp;
+                    <span className="text-tradeGreen font-bold items-center gap-1 inline-flex">
+                      1 USD
+                      <LuEqualApproximately className="text-tradeFadeWhite text-sm" />
+                      1,380.28 NGN
+                    </span>
+                    , and your estimated profit after platform fees is&nbsp;
+                    <span className="text-tradeGreen font-bold">
+                      7,500 NGN
+                    </span>{" "}
+                    per&nbsp;
+                    <span className="text-tradeGreen font-bold">
+                      1 USD
+                    </span>{" "}
+                    traded.
+                  </p>
                 </div>
 
                 <div className="">
