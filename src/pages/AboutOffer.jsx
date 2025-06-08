@@ -261,16 +261,6 @@ const AboutOffer = () => {
                 About Offer
               </p>
             </div>
-            {/* Offer Id Field */}
-            <div className=" sticky top-[62px] z-20 flex justify-between gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshLight">
-              <p className="text-tradeFadeWhite text-sm font-semibold">
-                Offer ID
-              </p>
-
-              <p className="text-tradeFadeWhite text-sm font-bold">
-                #128951721826
-              </p>
-            </div>
 
             {/* Offer Id Field */}
             <div className="flex justify-between gap-1 items-center px-4 py-2 ">
@@ -283,9 +273,19 @@ const AboutOffer = () => {
 
             {/* Offer Details */}
             <div className="p-[15px]">
-              <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight transition-all duration-300 hover:shadow-lg overflow-hidden rounded-[10px]">
+              <div className=" flex flex-col bg-tradeAshLight border border-black transition-all duration-300 hover:shadow-lg overflow-hidden rounde-[10px]">
+                {/* Offer Id Field */}
+                <div className=" flex justify-between items-center p-3 border-b border-black">
+                  <p className="text-tradeFadeWhite text-sm font-semibold">
+                    Offer ID
+                  </p>
+
+                  <p className="text-tradeFadeWhite text-sm font-bold">
+                    #128951721826
+                  </p>
+                </div>
                 {/* service Type*/}
-                <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
+                <div className="flex items-center justify-between p-3 border-b border-black">
                   <p className="text-[13px] text-tradeFadeWhite font-semibold">
                     Service Type
                   </p>
@@ -295,7 +295,7 @@ const AboutOffer = () => {
                 </div>
 
                 {/* service*/}
-                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
+                <div className="flex items-center justify-between p-3  border-b border-black">
                   <p className="text-[13px] text-tradeFadeWhite font-semibold">
                     Service
                   </p>
@@ -305,7 +305,7 @@ const AboutOffer = () => {
                 </div>
 
                 {/* Accepted Currency */}
-                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
+                <div className="flex items-center justify-between p-3  border-b border-black">
                   <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                     Accepted Currency
                   </p>
@@ -315,7 +315,7 @@ const AboutOffer = () => {
                 </div>
 
                 {/* Trade Volume */}
-                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
+                <div className="flex items-center justify-between p-3  border-b border-black">
                   <div className="flex items-center gap-2">
                     <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                       Trade Volume
@@ -332,7 +332,7 @@ const AboutOffer = () => {
                 </div>
 
                 {/* Feedback Summary */}
-                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
+                <div className="flex items-center justify-between p-3  border-b border-black">
                   <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                     Feedback Summary
                   </p>
@@ -375,8 +375,8 @@ const AboutOffer = () => {
 
             {/* Other Offer details*/}
             <div className="w-full flex flex-col gap-[10px]">
-              <div className=" flex items-center gap-[10px] px-4 py-2  border-b border-tradeAshLight bg-tradeAshExtraLight">
-                <p className=" text-[14px] text-white font-[700] cursor-pointer">
+              <div className=" flex items-center gap-[10px] px-4 py-4  border-y border-tradeAshLight bg-">
+                <p className=" text-[16px] text-white font-[700] cursor-pointer">
                   Other Details
                 </p>
               </div>

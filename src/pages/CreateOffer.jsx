@@ -1017,6 +1017,7 @@ const CreateOffer = () => {
                     </div>
                   </div>
                 </div>
+                
                 <div className="">
                   <Warning
                     text={

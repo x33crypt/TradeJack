@@ -10,13 +10,9 @@ import { useCreateOfferDetails } from "@/context/CreateOfferDetailsContext";
 import axios from "axios";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
-import { AiFillSafetyCertificate } from "react-icons/ai";
 import { IoMdThumbsUp } from "react-icons/io";
 import { MdThumbDownAlt } from "react-icons/md";
-import landingImg4 from "../assets/landingImg4.JPG";
 import { FaInfoCircle } from "react-icons/fa";
-
-import { CiBank } from "react-icons/ci";
 
 const EditOffer = () => {
   const { select, setSelect } = useSelectElement();
@@ -42,6 +38,24 @@ const EditOffer = () => {
       }
     }
   }, [select]);
+
+  const handleMinLimitChange = (e) => {
+    const rawValue = e.target.value.replace(/[^\d]/g, ""); // Remove all non-digit characters
+
+    setOfferDetails((prev) => ({
+      ...prev,
+      minimum: rawValue,
+    }));
+  };
+
+  const handleMaxLimitChange = (e) => {
+    const rawValue = e.target.value.replace(/[^\d]/g, ""); // Remove all non-digit characters
+
+    setOfferDetails((prev) => ({
+      ...prev,
+      maximum: rawValue,
+    }));
+  };
 
   const handleAddMargine = (e) => {
     setOfferDetails((prev) => ({
@@ -115,18 +129,7 @@ const EditOffer = () => {
               </p>
             </div>
 
-            {/* Offer Id Field */}
-            <div className=" sticky top-[62px] z-20 flex justify-between gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshLight">
-              <p className="text-tradeFadeWhite text-sm font-semibold">
-                Offer ID
-              </p>
-
-              <p className="text-tradeFadeWhite text-sm font-bold">
-                #128951721826
-              </p>
-            </div>
-
-            {/* Offer Id Field */}
+            {/* Subheading */}
             <div className="flex justify-between gap-1 items-center px-4 py-2 ">
               <p className="text-tradeFadeWhite text-[14px] font-normal">
                 Update key details of your offer to reflect your latest trade
@@ -145,6 +148,16 @@ const EditOffer = () => {
                   </p>
                   <p className=" text-white text-sm font-semibold">
                     June 14, 2025
+                  </p>
+                </div>
+                {/* Offer Id Field */}
+                <div className="flex justify-between items-center p-3 border-b border-tradeAshLight">
+                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                    Offer ID
+                  </p>
+
+                  <p className="text-tradeFadeWhite text-[14px] font-bold">
+                    #128951721826
                   </p>
                 </div>
                 {/* Offer Status*/}
@@ -554,7 +567,10 @@ const EditOffer = () => {
                   } gap-[10px] flex-wrap`}
                 >
                   {offerDetails?.termTags.map((tag, index) => (
-                    <div className="flex w-max items-center gap-[8px] px-[12px] py-[5px] rounded-[6px] bg-tradeAshLight">
+                    <div
+                      key={index}
+                      className="flex w-max items-center gap-[8px] px-[12px] py-[5px] rounded-[6px] bg-tradeAshLight"
+                    >
                       <p
                         key={index}
                         className="text-[14px] font-medium text-tradeOrange"
