@@ -237,14 +237,14 @@ const EditOffer = () => {
             </div>
 
             {/* Changes Instruction field */}
-            {/* <div className="  flex justify-between gap-1 items-center p-4 border-b border-tradeAshLight bg-tradeAshExtraLight">
+            <div className="  flex justify-between gap-1 items-center p-4  border-y border-tradeAshLight ">
               <p className="text-white text-[16px] font-semibold">
-                Make Your Changes
+                Update Offer Details
               </p>
-            </div> */}
+            </div>
 
             {/* Limit Field */}
-            <div className="flex w-full flex-col md:flex-row border-y border-tradeAshLight">
+            <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
               <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
                 <p className="text-white text-[15px] font-[500]">
                   Purchase Limit
@@ -391,7 +391,9 @@ const EditOffer = () => {
                   <div>
                     <p className="text-tradeFadeWhite font-medium">
                       With a{" "}
-                      <span className="text-tradeOrange font-bold">5%</span>{" "}
+                      <span className="text-tradeOrange font-bold">
+                        5 percentage
+                      </span>{" "}
                       profit margin, your final rate is&nbsp;
                       <span className="text-tradeGreen font-bold">
                         1 USD = 680 NGN
