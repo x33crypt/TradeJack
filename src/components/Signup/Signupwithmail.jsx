@@ -229,7 +229,7 @@ const Signupwithmail = () => {
         setIsSigningUp(false);
         // Optionally show a toast or redirect
         // toast.success("Signup successful!");
-        navigateTo("/signup/completed");
+        navigateTo("/signup/success");
       } catch (err) {
         setIsSigningUp(false);
 
@@ -269,73 +269,7 @@ const Signupwithmail = () => {
         </div>
         <form onSubmit={handleSubmitDetails}>
           <div className="flex flex-col gap-[40px]">
-            {/* <div className="flex flex-col gap-[25px]">
-            <div className=" flex items-center w-full gap-[12px] justify-center hover:bg-tradeAshLight text-white border-[1px] border-tradeAshLight p-[12px] rounded-[10px] cursor-pointer transition-all duration-300">
-              <img className="w-[18px]" src={google} alt="" />
-              <p className="text-[15px] font-semibold ">
-                Sign up with Google
-              </p>
-            </div>
-            <div className="flex w-full items-center justify-between">
-              <div className="border-t border-tradeAshLight w-full"></div>
-              <div className="w-[100px] flex justify-center">
-                <p className="text-tradeFadeWhite text-[13px]">Or</p>
-              </div>
-              <div className="border-t border-tradeAshLight w-full"></div>
-            </div>
-          </div> */}
-
             <div className="flex flex-col gap-[30px]">
-              {/* <div className="flex lg:flex-row flex-col w-full gap-[25px] ">
-              <div className="w-full">
-                <p className="text-[14px] font-[600] text-white">
-                  First Name
-                </p>
-                <input
-                  className={`${
-                    signupDetails.firstname
-                      ? "border-tradeGreen"
-                      : "border-tradeAshLight"
-                  } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                  type="text"
-                  name="firstname"
-                  placeholder="eg. John"
-                  onChange={handleFirstnameChange}
-                />
-                <div
-                  className={`${
-                    fieldError.firstname.error ? "flex" : "hidden"
-                  } gap-[4px] items-center text-red-500 mt-[4px]`}
-                >
-                  <IoWarning className="text-[14px]" />
-                  <p className="text-[12px]">
-                    {fieldError.firstname.message}
-                  </p>
-                </div>
-              </div>
-              <div className="w-full">
-                <p className="text-[14px] text-white font-[600]">Last Name</p>
-                <input
-                  className={`${
-                    signupDetails.lastname
-                      ? "border-tradeGreen"
-                      : "border-tradeAshLight"
-                  } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                  type="text"
-                  name="lastname"
-                  placeholder="eg. Doe"
-                  onChange={handleLastnameChange}
-                />
-                <div
-                  className={`${
-                    fieldError.lastname.error ? "flex" : "hidden"
-                  } gap-[4px] items-center text-red-500 mt-[4px]`}
-                >
-                  <IoWarning className="text-[14px]" />
-                  <p className="text-[12px]">{fieldError.lastname.message}</p>
-                </div>
-              </div>
-            </div> */}
               <div className="w-full">
                 <p className="text-[14px] text-white font-[600]">Username</p>
                 <input
@@ -362,7 +296,7 @@ const Signupwithmail = () => {
                   It cannot begin or end with a hyphen.
                 </p>
               </div>
-              
+
               <div className="w-full">
                 <p className="text-[14px] text-white font-[600]">Email</p>
                 <input
@@ -385,40 +319,6 @@ const Signupwithmail = () => {
                   <p className="text-[12px]">{fieldError.email.message}</p>
                 </div>
               </div>
-
-              {/* <div className="w-full">
-              <p className="text-[14px] text-white font-[600]">Country</p>
-              <div className="relative w-full">
-                <select
-                  className={`${
-                    signupDetails.country
-                      ? "border-tradeGreen"
-                      : "border-tradeAshLight"
-                  } appearance-none mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]  scrollbar-thin scrollbar-thumb-tradeGreen scrollbar-track-tradeAsh`}
-                  // size="10"
-                  name="country"
-                  onChange={handleCountryChange}
-                >
-                  <option value="">-- Choose a country --</option>
-                  {countries.map((country) => (
-                    <option key={country} value={country}>
-                      {country}
-                    </option>
-                  ))}
-                </select>
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                  <MdKeyboardArrowDown />
-                </div>
-              </div>
-              <div
-                className={`${
-                  fieldError.country.error ? "flex" : "hidden"
-                } gap-[4px] items-center text-red-500 mt-[4px]`}
-              >
-                <IoWarning className="text-[14px]" />
-                <p className="text-[12px]">{fieldError.country.message}</p>
-              </div>
-            </div> */}
 
               <div className="w-full">
                 <p className="text-[14px] text-white font-[600]">Password</p>
@@ -446,33 +346,6 @@ const Signupwithmail = () => {
                   uppercase, lowercase, number, and a special character.
                 </p>
               </div>
-
-              {/* <div className="w-full">
-              <p className="text-[14px] text-white font-[600]">
-                Confirm Password
-              </p>
-              <input
-                className={`${
-                  signupDetails.confirmPassword
-                    ? "border-tradeGreen"
-                    : "border-tradeAshLight"
-                } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                type="text"
-                name="confirmPassword"
-                placeholder="Enter your password"
-                onChange={handleConfirmPasswordChange}
-              />
-              <div
-                className={`${
-                  fieldError.confirmPassword.error ? "flex" : "hidden"
-                } gap-[4px] items-center text-red-500 mt-[4px]`}
-              >
-                <IoWarning className="text-[14px]" />
-                <p className="text-[12px]">
-                  {fieldError.confirmPassword.message}
-                </p>
-              </div>
-            </div> */}
             </div>
 
             <div className="flex flex-col items-center gap-[25px]">

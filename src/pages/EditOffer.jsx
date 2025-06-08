@@ -243,7 +243,6 @@ const EditOffer = () => {
                 Update Offer Details
               </p>
             </div>
-
             {/* Limit Field */}
             <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
               <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
@@ -343,6 +342,7 @@ const EditOffer = () => {
               </div>
 
               <div className="w-full flex flex-col gap-[15px] p-[15px]">
+
                 <div className="flex items-center w-full flex-row  gap-[15px]">
                   <div
                     onClick={handleMinusMargine}
@@ -381,24 +381,27 @@ const EditOffer = () => {
                   {/* Market Price */}
                   <div className="flex gap-1 items-center">
                     <p className="text-tradeFadeWhite font-medium">
-                      Current USD Exchange Rate:
+                      Current{" "}
+                      <span className="text-tradeGreen font-bold">USD</span>{" "}
+                      Exchange Rate:
                     </p>
-                    <p className="text-tradeGreen font-bold">1 USD</p>
-                    <span className="text-tradeFadeWhite">
-                      <LuEqualApproximately />
-                    </span>
+
                     <p className="text-tradeGreen font-bold">1,560.36 NGN</p>
+                    <p className="text-tradeFadeWhite font-medium">per</p>
+                    <p className="text-tradeGreen font-bold">1 USD</p>
                   </div>
 
                   {/* Margin Breakdown */}
                   <p className="text-tradeFadeWhite font-medium">
                     With a{" "}
-                    <span className="text-tradeOrange font-bold">5%</span>{" "}
+                    <span className="text-tradeOrange font-bold">5 percent</span>{" "}
                     margin, your final rate is&nbsp;
                     <span className="text-tradeGreen font-bold items-center gap-1 inline-flex">
-                      1 USD
-                      <LuEqualApproximately className="text-tradeFadeWhite text-sm" />
                       1,380.28 NGN
+                    </span>{" "}
+                    per{" "}
+                    <span className="text-tradeGreen font-bold items-center gap-1 inline-flex">
+                      1 USD
                     </span>
                     , and your estimated profit after platform fees is&nbsp;
                     <span className="text-tradeGreen font-bold">
@@ -419,6 +422,7 @@ const EditOffer = () => {
                     }
                   />
                 </div>
+
               </div>
             </div>
             {/* Payment Window Field */}

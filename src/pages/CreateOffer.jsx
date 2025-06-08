@@ -17,6 +17,7 @@ import { IoWalletOutline } from "react-icons/io5";
 import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
+import { LuEqualApproximately } from "react-icons/lu";
 
 const CreateOffer = () => {
   const { select, setSelect } = useSelectElement();
@@ -1017,7 +1018,7 @@ const CreateOffer = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="">
                   <Warning
                     text={
@@ -1074,65 +1075,48 @@ const CreateOffer = () => {
 
                 <div className="flex flex-col gap-2 text-[14px] text-white leading-relaxed">
                   {/* Market Price */}
-                  <div>
+                  <div className="flex gap-1 items-center">
                     <p className="text-tradeFadeWhite font-medium">
-                      Current Market Rate:
+                      Current{" "}
+                      <span className="text-tradeGreen font-bold">USD</span>{" "}
+                      Exchange Rate:
                     </p>
-                    <p>
-                      <span className="text-tradeGreen font-bold">
-                        1 USD = 0.650 USDT
-                      </span>{" "}
-                      —<span className="text-white font-medium"> approx.</span>
-                      <span className="text-tradeGreen font-bold">
-                        {" "}
-                        750 NGN
-                      </span>
-                    </p>
+
+                    <p className="text-tradeGreen font-bold">1,560.36 NGN</p>
+                    <p className="text-tradeFadeWhite font-medium">per</p>
+                    <p className="text-tradeGreen font-bold">1 USD</p>
                   </div>
 
                   {/* Margin Breakdown */}
-                  <div>
-                    <p className="text-tradeFadeWhite font-medium">
-                      With{" "}
-                      <span className="text-tradeOrange font-bold">5%</span>{" "}
-                      Profit Margin Applied:
-                    </p>
-                    <p>
-                      <span className="text-tradeGreen font-bold">
-                        1 USD = 0.526 USDT
-                      </span>{" "}
-                      —<span className="text-white font-medium"> approx.</span>
-                      <span className="text-tradeGreen font-bold">
-                        {" "}
-                        680 NGN
-                      </span>
-                    </p>
-                  </div>
-
-                  {/* Estimated Profit */}
-                  <div>
-                    <p className="text-tradeFadeWhite font-medium">
-                      Estimated Profit (after platform fees):
-                    </p>
-                    <p>
-                      <span className="text-white font-bold">Your earn:</span>
-                      &nbsp;
-                      <span className="text-tradeGreen font-bold">
-                        7,500 NGN
-                      </span>
-                      &nbsp; for every&nbsp;
-                      <span className="text-tradeGreen font-bold">
-                        1 USD
-                      </span>{" "}
-                      traded
-                    </p>
-                  </div>
+                  <p className="text-tradeFadeWhite font-medium">
+                    With a{" "}
+                    <span className="text-tradeOrange font-bold">
+                      5 percent
+                    </span>{" "}
+                    margin, your final rate is&nbsp;
+                    <span className="text-tradeGreen font-bold items-center gap-1 inline-flex">
+                      1,380.28 NGN
+                    </span>{" "}
+                    per{" "}
+                    <span className="text-tradeGreen font-bold items-center gap-1 inline-flex">
+                      1 USD
+                    </span>
+                    , and your estimated profit after platform fees is&nbsp;
+                    <span className="text-tradeGreen font-bold">
+                      7,500 NGN
+                    </span>{" "}
+                    per&nbsp;
+                    <span className="text-tradeGreen font-bold">
+                      1 USD
+                    </span>{" "}
+                    traded.
+                  </p>
                 </div>
 
                 <div className="">
                   <Info
                     text={
-                      "Set a competitive profit margin that balances trader appeal and your earnings. Note that a 5% platform fee is deducted from your trades — so margins below this may result in zero or negative profit. For a healthy return, consider setting your margin slightly higher (e.g. 7–10%) while staying attractive to traders."
+                      "Set a profit margin that attracts traders while still earning. A 5% platform fee applies, so margins below this may yield no profit. For healthy returns, aim for 7–10% while staying competitive."
                     }
                   />
                 </div>

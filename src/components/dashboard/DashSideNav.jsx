@@ -49,13 +49,10 @@ const DashSideNav = () => {
             <HiOutlineEnvelope className="text-[17px]" />
             <p className="text-[13.5px] font-[500]"> Messages</p>
           </div>
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer">
-            <MdOutlineQueryStats className="text-[17px]" />
-            <p className="text-[13.5px] font-[500]">Trade Statistics</p>
-          </div>
+
           <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer">
             <RiExchangeFundsLine className="text-[17px]" />
-            <p className="text-[13.5px] font-[500]">Transaction History</p>
+            <p className="text-[13.5px] font-[500]">Trade History</p>
           </div>
           <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer">
             <LiaUserFriendsSolid className="text-[17px]" />
@@ -65,7 +62,7 @@ const DashSideNav = () => {
         <div className="flex flex-col pt-[10px] gap-[10px] border-t border-tradeAshLight">
           <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer">
             <LuCircleHelp className="text-[17px]" />
-            <p className="text-[13.5px] font-[500]"> Help</p>
+            <p className="text-[13.5px] font-[500]"> Help Center</p>
           </div>
           <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer">
             <IoSettingsOutline className="text-[17px]" />
