@@ -115,12 +115,12 @@ const ExchangeCalculator = (prop) => {
               </div>
 
               {/* USDT Value in NGN */}
-              <div className="flex justify-between">
+              {/* <div className="flex justify-between">
                 <p className="text-sm font-medium text-tradeFadeWhite">
                   Receive value (NGN)
                 </p>
                 <p className="text-sm font-semibold text-white">310,000 NGN</p>
-              </div>
+              </div> */}
             </div>
 
             <div className="">
