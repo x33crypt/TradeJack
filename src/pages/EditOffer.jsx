@@ -237,14 +237,14 @@ const EditOffer = () => {
             </div>
 
             {/* Changes Instruction field */}
-            <div className="  flex justify-between gap-1 items-center p-4 border-b border-tradeAshLight bg-tradeAshExtraLight">
+            {/* <div className="  flex justify-between gap-1 items-center p-4 border-b border-tradeAshLight bg-tradeAshExtraLight">
               <p className="text-white text-[16px] font-semibold">
                 Make Your Changes
               </p>
-            </div>
+            </div> */}
 
             {/* Limit Field */}
-            <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
+            <div className="flex w-full flex-col md:flex-row border-y border-tradeAshLight">
               <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
                 <p className="text-white text-[15px] font-[500]">
                   Purchase Limit
@@ -380,9 +380,9 @@ const EditOffer = () => {
                   {/* Market Price */}
                   <div>
                     <p className="text-tradeFadeWhite font-medium">
-                      Current USD Market Rate:{" "}
+                      Current USD Exchange Rate:{" "}
                       <span className="text-tradeGreen font-bold">
-                        1 USD = 750 NGN
+                        1 USD = 1,560.36 NGN
                       </span>
                     </p>
                   </div>
@@ -392,17 +392,19 @@ const EditOffer = () => {
                     <p className="text-tradeFadeWhite font-medium">
                       With a{" "}
                       <span className="text-tradeOrange font-bold">5%</span>{" "}
-                      Profit Margin, your Final Rate is{" "}
+                      profit margin, your final rate is&nbsp;
                       <span className="text-tradeGreen font-bold">
                         1 USD = 680 NGN
-                      </span>{" "}
-                      and Your Estimated Profit (after platform fees) is{" "}
+                      </span>
+                      , and your estimated profit after platform fees is&nbsp;
                       <span className="text-tradeGreen font-bold">
                         7,500 NGN
                       </span>{" "}
-                      for every{" "}
-                      <span className="text-tradeGreen font-bold">1 USD</span>{" "}
-                      traded
+                      per&nbsp;
+                      <span className="text-tradeGreen font-bold">
+                        1 USD
+                      </span>{" "}
+                      traded.
                     </p>
                   </div>
                 </div>
