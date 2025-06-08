@@ -19,6 +19,7 @@ import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import useSafeNavigate from "./SafeNavigation";
+import { IoWalletOutline } from "react-icons/io5";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -171,6 +172,16 @@ const InAppNav = () => {
           >
             <MdSpaceDashboard className="text-[16px] text-tradeFadeWhite" />
             <p className="text-white text-[15px] ">Dashboard</p>
+          </div>
+          <div
+            onClick={() => {
+              safeNavigate("/dashboard");
+              setIsNavOption(false);
+            }}
+            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
+          >
+            <IoWalletOutline className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[15px] ">Wallet</p>
           </div>
           <div
             onClick={() => {

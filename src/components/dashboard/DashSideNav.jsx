@@ -14,6 +14,7 @@ import { LuCircleHelp } from "react-icons/lu";
 import { HiOutlineEnvelope } from "react-icons/hi2";
 import { RiDashboardHorizontalLine } from "react-icons/ri";
 import { RiDashboard2Line } from "react-icons/ri";
+import { IoWalletOutline } from "react-icons/io5";
 
 const DashSideNav = () => {
   const navigateTo = useNavigate();
@@ -27,6 +28,14 @@ const DashSideNav = () => {
           >
             <RiDashboardHorizontalLine className="text-[17px]" />
             <p className="text-[13.5px] font-[500]"> Dashboard</p>
+          </div>
+
+          <div
+            className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeGreen text-tradeFadeWhite hover:text-black transition-all duration-300 cursor-pointer"
+            // onClick={() => navigateTo("/dashboard")}
+          >
+            <IoWalletOutline className="text-[17px]" />
+            <p className="text-[13.5px] font-[500]">Wallet</p>
           </div>
 
           <div

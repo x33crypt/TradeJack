@@ -140,16 +140,7 @@ const EditOffer = () => {
 
             {/* Offer Details */}
             <div className="p-[15px]">
-              <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight transition-all duration-300 hover:shadow-lg overflow-hidden rounded-[10px]">
-                {/* Published Date*/}
-                <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
-                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                    Published On
-                  </p>
-                  <p className=" text-white text-sm font-semibold">
-                    June 14, 2025
-                  </p>
-                </div>
+              <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight transition-all duration-300 hover:shadow-lg overflow-hidden">
                 {/* Offer Id Field */}
                 <div className="flex justify-between items-center p-3 border-b border-tradeAshLight">
                   <p className="text-tradeFadeWhite text-[13px] font-semibold">
@@ -159,18 +150,6 @@ const EditOffer = () => {
                   <p className="text-tradeFadeWhite text-[14px] font-bold">
                     #128951721826
                   </p>
-                </div>
-                {/* Offer Status*/}
-                <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
-                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                    Offer Status
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
-                    <p className="text-tradeGreen text-[14px] font-semibold">
-                      Active
-                    </p>
-                  </div>
                 </div>
                 {/* service Type*/}
                 <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
@@ -198,6 +177,27 @@ const EditOffer = () => {
                   <p className=" font-semibold text-tradeGreen text-sm">
                     United State Dollars
                   </p>
+                </div>
+                {/* Published Date*/}
+                <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    Published Date
+                  </p>
+                  <p className=" text-white text-sm font-semibold">
+                    June 14, 2025
+                  </p>
+                </div>
+                {/* Offer Status*/}
+                <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    Offer Status
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
+                    <p className="text-tradeGreen text-[14px] font-semibold">
+                      Active
+                    </p>
+                  </div>
                 </div>
                 {/* Trade Volume */}
                 <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
@@ -237,8 +237,8 @@ const EditOffer = () => {
             </div>
 
             {/* Changes Instruction field */}
-            <div className="  flex justify-between gap-1 items-center px-4 py-2 border-b border-tradeAshLight bg-tradeAshExtraLight">
-              <p className="text-white text-sm font-semibold">
+            <div className="  flex justify-between gap-1 items-center p-4 border-b border-tradeAshLight bg-tradeAshExtraLight">
+              <p className="text-white text-[16px] font-semibold">
                 Make Your Changes
               </p>
             </div>
@@ -380,16 +380,9 @@ const EditOffer = () => {
                   {/* Market Price */}
                   <div>
                     <p className="text-tradeFadeWhite font-medium">
-                      Current Market Rate:
-                    </p>
-                    <p>
+                      Current USD Market Rate:{" "}
                       <span className="text-tradeGreen font-bold">
-                        1 USD = 0.650 USDT
-                      </span>{" "}
-                      —<span className="text-white font-medium"> approx.</span>
-                      <span className="text-tradeGreen font-bold">
-                        {" "}
-                        750 NGN
+                        1 USD = 750 NGN
                       </span>
                     </p>
                   </div>
@@ -397,37 +390,18 @@ const EditOffer = () => {
                   {/* Margin Breakdown */}
                   <div>
                     <p className="text-tradeFadeWhite font-medium">
-                      With{" "}
+                      With a{" "}
                       <span className="text-tradeOrange font-bold">5%</span>{" "}
-                      Profit Margin Applied:
-                    </p>
-                    <p>
+                      Profit Margin, your Final Rate is{" "}
                       <span className="text-tradeGreen font-bold">
-                        1 USD = 0.526 USDT
+                        1 USD = 680 NGN
                       </span>{" "}
-                      —<span className="text-white font-medium"> approx.</span>
-                      <span className="text-tradeGreen font-bold">
-                        {" "}
-                        680 NGN
-                      </span>
-                    </p>
-                  </div>
-
-                  {/* Estimated Profit */}
-                  <div>
-                    <p className="text-tradeFadeWhite font-medium">
-                      Estimated Profit (after platform fees):
-                    </p>
-                    <p>
-                      <span className="text-white font-bold">Your earn:</span>
-                      &nbsp;
+                      and Your Estimated Profit (after platform fees) is{" "}
                       <span className="text-tradeGreen font-bold">
                         7,500 NGN
-                      </span>
-                      &nbsp; for every&nbsp;
-                      <span className="text-tradeGreen font-bold">
-                        1 USD
                       </span>{" "}
+                      for every{" "}
+                      <span className="text-tradeGreen font-bold">1 USD</span>{" "}
                       traded
                     </p>
                   </div>
@@ -436,7 +410,7 @@ const EditOffer = () => {
                 <div className="">
                   <Info
                     text={
-                      "Set a competitive profit margin that balances trader appeal and your earnings. Note that a 5% platform fee is deducted from your trades — so margins below this may result in zero or negative profit. For a healthy return, consider setting your margin slightly higher (e.g. 7–10%) while staying attractive to traders."
+                      "Set a profit margin that attracts traders while still earning. A 5% platform fee applies, so margins below this may yield no profit. For healthy returns, aim for 7–10% while staying competitive."
                     }
                   />
                 </div>
