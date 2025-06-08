@@ -273,9 +273,9 @@ const AboutOffer = () => {
 
             {/* Offer Details */}
             <div className="p-[15px]">
-              <div className=" flex flex-col bg-tradeAshLight border border-black transition-all duration-300 hover:shadow-lg overflow-hidden rounde-[10px]">
+              <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight transition-all duration-300 hover:shadow-lg overflow-hidden rounde-[10px]">
                 {/* Offer Id Field */}
-                <div className=" flex justify-between items-center p-3 border-b border-black">
+                <div className=" flex justify-between items-center p-3 border-b border-tradeAshLight">
                   <p className="text-tradeFadeWhite text-sm font-semibold">
                     Offer ID
                   </p>
@@ -285,7 +285,7 @@ const AboutOffer = () => {
                   </p>
                 </div>
                 {/* service Type*/}
-                <div className="flex items-center justify-between p-3 border-b border-black">
+                <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
                   <p className="text-[13px] text-tradeFadeWhite font-semibold">
                     Service Type
                   </p>
@@ -295,7 +295,7 @@ const AboutOffer = () => {
                 </div>
 
                 {/* service*/}
-                <div className="flex items-center justify-between p-3  border-b border-black">
+                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
                   <p className="text-[13px] text-tradeFadeWhite font-semibold">
                     Service
                   </p>
@@ -305,7 +305,7 @@ const AboutOffer = () => {
                 </div>
 
                 {/* Accepted Currency */}
-                <div className="flex items-center justify-between p-3  border-b border-black">
+                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
                   <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                     Accepted Currency
                   </p>
@@ -315,7 +315,7 @@ const AboutOffer = () => {
                 </div>
 
                 {/* Trade Volume */}
-                <div className="flex items-center justify-between p-3  border-b border-black">
+                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
                   <div className="flex items-center gap-2">
                     <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                       Trade Volume
@@ -332,7 +332,7 @@ const AboutOffer = () => {
                 </div>
 
                 {/* Feedback Summary */}
-                <div className="flex items-center justify-between p-3  border-b border-black">
+                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight ">
                   <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                     Feedback Summary
                   </p>
@@ -351,7 +351,7 @@ const AboutOffer = () => {
                 </div>
 
                 {/* Vendor */}
-                <div className="flex items-center justify-between p-3 ">
+                <div className="flex items-center justify-between p-3 bg-tradeAshLight">
                   <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                     Vendor (Offer Author)
                   </p>
