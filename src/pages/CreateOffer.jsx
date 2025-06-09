@@ -646,6 +646,7 @@ const CreateOffer = () => {
                   Select Service Type
                 </p>
               </div>
+              
               <div className="relative w-full cursor-pointer ">
                 <input
                   className={`${
