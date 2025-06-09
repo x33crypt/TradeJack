@@ -1088,27 +1088,30 @@ const CreateOffer = () => {
 
                   {/* Margin Breakdown */}
                   <p className="text-tradeFadeWhite font-medium">
-                    With{" "}
+                    With a{" "}
                     <span className="text-tradeOrange font-bold">
                       5% profit margin
                     </span>
-                    , your final rate is{" "}
+                    , your final rate is&nbsp;
                     <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
                       1,380.28 NGN
                     </span>{" "}
-                    per{" "}
+                    per&nbsp;
                     <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
                       1 USD
                     </span>
-                    . Your estimated profit is{" "}
+                    . Estimated profit:{" "}
                     <span className="text-tradeGreen font-bold">7,500 NGN</span>{" "}
-                    per <span className="text-tradeGreen font-bold">1 USD</span>{" "}
+                    per&nbsp;
+                    <span className="text-tradeGreen font-bold">
+                      1 USD
+                    </span>{" "}
                     traded.
                   </p>
 
                   {/* Service charge */}
                   <p className="text-tradeFadeWhite font-medium">
-                    Note: Service charges will be applied at the time of trade.
+                    Note: A service charge applies at the time of trade.
                   </p>
                 </div>
 
