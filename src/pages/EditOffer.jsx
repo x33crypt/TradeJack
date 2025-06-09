@@ -13,9 +13,9 @@ import { IoClose } from "react-icons/io5";
 import { IoMdThumbsUp } from "react-icons/io";
 import { MdThumbDownAlt } from "react-icons/md";
 import { FaInfoCircle } from "react-icons/fa";
-import { LuEqualApproximately } from "react-icons/lu";
+import { useNavigate } from "react-router-dom";
 
-const EditOffer = () => {
+const EditOffer = (props) => {
   const { select, setSelect } = useSelectElement();
   const { offerDetails, setOfferDetails } = useCreateOfferDetails();
 
@@ -114,6 +114,12 @@ const EditOffer = () => {
       ...prev,
       instruction: e.target.value,
     }));
+  };
+
+  const navigateTo = useNavigate();
+
+  const handleToEditSummaryPage = (offerId) => {
+    navigateTo(`/offers/${offerId}/edit/summary`);
   };
 
   return (
@@ -342,7 +348,6 @@ const EditOffer = () => {
               </div>
 
               <div className="w-full flex flex-col gap-[15px] p-[15px]">
-
                 <div className="flex items-center w-full flex-row  gap-[15px]">
                   <div
                     onClick={handleMinusMargine}
@@ -381,48 +386,50 @@ const EditOffer = () => {
                   {/* Market Price */}
                   <div className="flex gap-1 items-center">
                     <p className="text-tradeFadeWhite font-medium">
-                      Current{" "}
-                      <span className="text-tradeGreen font-bold">USD</span>{" "}
-                      Exchange Rate:
+                      Current Exchange Rate:
                     </p>
 
-                    <p className="text-tradeGreen font-bold">1,560.36 NGN</p>
-                    <p className="text-tradeFadeWhite font-medium">per</p>
-                    <p className="text-tradeGreen font-bold">1 USD</p>
+                    <p className="text-tradeGreen font-bold">
+                      1 USD = 1,560.36 NGN
+                    </p>
                   </div>
 
                   {/* Margin Breakdown */}
                   <p className="text-tradeFadeWhite font-medium">
                     With a{" "}
-                    <span className="text-tradeOrange font-bold">5 percent</span>{" "}
-                    margin, your final rate is&nbsp;
-                    <span className="text-tradeGreen font-bold items-center gap-1 inline-flex">
+                    <span className="text-tradeOrange font-bold">
+                      5 percent profit margin
+                    </span>
+                    , your final rate is&nbsp;
+                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
                       1,380.28 NGN
                     </span>{" "}
-                    per{" "}
-                    <span className="text-tradeGreen font-bold items-center gap-1 inline-flex">
+                    per&nbsp;
+                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
                       1 USD
                     </span>
-                    , and your estimated profit after platform fees is&nbsp;
-                    <span className="text-tradeGreen font-bold">
-                      7,500 NGN
-                    </span>{" "}
+                    . Estimated profit:{" "}
+                    <span className="text-tradeGreen font-bold">7,500 NGN</span>{" "}
                     per&nbsp;
                     <span className="text-tradeGreen font-bold">
                       1 USD
                     </span>{" "}
                     traded.
                   </p>
+
+                  {/* Service charge */}
+                  <p className="text-tradeFadeWhite font-medium">
+                    Note: A service charge applies at the time of trade.
+                  </p>
                 </div>
 
                 <div className="">
                   <Info
                     text={
-                      "Set a profit margin that attracts traders while still earning. A 5% platform fee applies, so margins below this may yield no profit. For healthy returns, aim for 7–10% while staying competitive."
+                      "Set a profit margin that appeals to traders while ensuring your earnings. A service charge typically between 0.50% and 2.00% applies per trade. To maintain a healthy return, consider setting your margin slightly higher (e.g. 4–8%) while staying competitive."
                     }
                   />
                 </div>
-
               </div>
             </div>
             {/* Payment Window Field */}
@@ -607,16 +614,14 @@ const EditOffer = () => {
 
             <div className="flex flex-col gap-[10px] border-t border-tradeAshLight p-[15px]">
               <div
-                // onClick={handleFilterOffer}
+                onClick={() => handleToEditSummaryPage(props?.offerId)}
                 className={` ${
                   false
                     ? "bg-tradeAsh text-tradeGreen"
                     : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
                 } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
               >
-                <p className="text-[14px] font-[700] ">
-                  {false ? "Updating your offer..." : "Update offer"}
-                </p>
+                <p className="text-[14px] font-[700] ">Continue to Summary</p>
               </div>
 
               <div

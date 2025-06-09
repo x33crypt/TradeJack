@@ -8,7 +8,7 @@ import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
 
-const CreateOfferSummary = () => {
+const EditOfferSummary = () => {
   const { offerDetails, setOfferDetails } = useCreateOfferDetails();
   const { createOffer, setCreateOffer } = useState(false);
 
@@ -229,9 +229,6 @@ const CreateOfferSummary = () => {
             </div>
 
             <div className=" bg-black flex flex-col gap-[15px] p-[15px]">
-              <div className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
-                <p className="text-[14px] font-[700] ">Save Offer to Draft</p>
-              </div>
               <button
                 className={` ${
                   createOffer
@@ -250,4 +247,4 @@ const CreateOfferSummary = () => {
   );
 };
 
-export default CreateOfferSummary;
+export default EditOfferSummary;
