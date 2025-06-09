@@ -59,9 +59,9 @@ const CreateOfferSummary = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2 p-[15px] border-t border-tradeAshLight">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
                 <p className="text-tradeFadeWhite text-[13px] font-[500]">
-                  Preferred Currency
+                  Accepted Currency
                 </p>
                 <p className="text-tradeOrange text-[15px] font-[600]">
                   {offerDetails?.currency?.name
@@ -70,7 +70,7 @@ const CreateOfferSummary = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-2 p-[15px] border-t border-tradeAshLight">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
                 <p className="text-tradeFadeWhite text-[13px] font-[500]">
                   Trade Limit Range
                 </p>
@@ -104,7 +104,7 @@ const CreateOfferSummary = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2 p-[15px] border-t border-tradeAshLight">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
                 <p className="text-tradeFadeWhite text-[13px] font-medium">
                   Profit Margin
                 </p>
@@ -121,7 +121,7 @@ const CreateOfferSummary = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-2 p-[15px] border-t border-tradeAshLight">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
                 <p className="text-tradeFadeWhite text-[13px] font-medium">
                   Payment Window
                 </p>
@@ -144,7 +144,7 @@ const CreateOfferSummary = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2 p-[15px] border-t border-tradeAshLight">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
                 <p className="text-tradeFadeWhite text-[13px] font-medium">
                   Confirmation Time
                 </p>
@@ -168,7 +168,7 @@ const CreateOfferSummary = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2 p-[15px] border-t border-tradeAshLight">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
                 <p className="text-tradeFadeWhite text-[13px] font-medium">
                   Term Tags
                 </p>
@@ -192,7 +192,7 @@ const CreateOfferSummary = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2 p-[15px] border-t border-tradeAshLight">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
                 <p className="text-tradeFadeWhite text-[13px] font-medium">
                   Trade Instruction
                 </p>
@@ -209,7 +209,7 @@ const CreateOfferSummary = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2 p-[15px] border-t border-tradeAshLight">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
                 <p className="text-tradeFadeWhite text-[13px] font-medium">
                   Platform fee
                 </p>

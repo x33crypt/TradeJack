@@ -646,7 +646,7 @@ const CreateOffer = () => {
                   Select Service Type
                 </p>
               </div>
-              
+
               <div className="relative w-full cursor-pointer ">
                 <input
                   className={`${
@@ -1078,46 +1078,44 @@ const CreateOffer = () => {
                   {/* Market Price */}
                   <div className="flex gap-1 items-center">
                     <p className="text-tradeFadeWhite font-medium">
-                      Current{" "}
-                      <span className="text-tradeGreen font-bold">USD</span>{" "}
-                      Exchange Rate:
+                      Current Exchange Rate:
                     </p>
 
-                    <p className="text-tradeGreen font-bold">1,560.36 NGN</p>
-                    <p className="text-tradeFadeWhite font-medium">per</p>
-                    <p className="text-tradeGreen font-bold">1 USD</p>
+                    <p className="text-tradeGreen font-bold">
+                      1 USD = 1,560.36 NGN
+                    </p>
                   </div>
 
                   {/* Margin Breakdown */}
                   <p className="text-tradeFadeWhite font-medium">
-                    With a{" "}
+                    With{" "}
                     <span className="text-tradeOrange font-bold">
-                      5 percent
-                    </span>{" "}
-                    margin, your final rate is&nbsp;
-                    <span className="text-tradeGreen font-bold items-center gap-1 inline-flex">
+                      5% profit margin
+                    </span>
+                    , your final rate is{" "}
+                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
                       1,380.28 NGN
                     </span>{" "}
                     per{" "}
-                    <span className="text-tradeGreen font-bold items-center gap-1 inline-flex">
+                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
                       1 USD
                     </span>
-                    , and your estimated profit after platform fees is&nbsp;
-                    <span className="text-tradeGreen font-bold">
-                      7,500 NGN
-                    </span>{" "}
-                    per&nbsp;
-                    <span className="text-tradeGreen font-bold">
-                      1 USD
-                    </span>{" "}
+                    . Your estimated profit is{" "}
+                    <span className="text-tradeGreen font-bold">7,500 NGN</span>{" "}
+                    per <span className="text-tradeGreen font-bold">1 USD</span>{" "}
                     traded.
+                  </p>
+
+                  {/* Service charge */}
+                  <p className="text-tradeFadeWhite font-medium">
+                    Note: Service charges will be applied at the time of trade.
                   </p>
                 </div>
 
                 <div className="">
                   <Info
                     text={
-                      "Set a profit margin that attracts traders while still earning. A 5% platform fee applies, so margins below this may yield no profit. For healthy returns, aim for 7–10% while staying competitive."
+                      "Set a profit margin that appeals to traders while ensuring your earnings. A service charge typically between 0.50% and 2.00% applies per trade. To maintain a healthy return, consider setting your margin slightly higher (e.g. 4–8%) while staying competitive."
                     }
                   />
                 </div>
@@ -1328,27 +1326,28 @@ const CreateOffer = () => {
               </p>
             </div>
 
-            <div className="flex flex-col gap-[25px] p-[15px] ">
-              <div className="flex gap-[15px] items-center bg-tradeAsh border border-neutral-800 lg:px-[15px] md:px-[2.5%] p-[15px] rounded-[10px]">
-                <div>
-                  {IconComponent && (
-                    <IconComponent className="text-tradeOrange text-[36px]" />
-                  )}
+            <div className="flex flex-col  ">
+              <div className="p-[15px]">
+                <div className="flex gap-[15px] items-center bg-tradeAsh border border-neutral-800 lg:px-[15px] md:px-[2.5%] p-[15px] rounded-[10px]">
+                  <div>
+                    {IconComponent && (
+                      <IconComponent className="text-tradeOrange text-[36px]" />
+                    )}
+                  </div>
+                  <div className="flex-1 flex flex-col gap-[4px] ">
+                    <p className="text-[13px] text-tradeFadeWhite font-[500]">
+                      {offerDetails?.serviceType || "Service Type"}
+                    </p>
+                    <p className="text-[15px] text-tradeLightGreen font-[600]">
+                      {offerDetails?.service || "-- --"}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-1 flex flex-col gap-[2px] ">
-                  <p className="text-[13px] text-tradeFadeWhite font-[500]">
-                    {offerDetails?.serviceType || "Service Type"}
-                  </p>
-                  <p className="text-[15px] text-tradeLightGreen font-[600]">
-                    {offerDetails?.service || "-- --"}
-                  </p>
-                </div>
-                <div></div>
               </div>
 
-              <div className="flex flex-col gap-[4px]">
-                <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
-                  Currency
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                  Accepted Currency
                 </p>
                 <p className="text-tradeOrange text-[15px] font-[600]">
                   {offerDetails?.currency?.name
@@ -1357,97 +1356,114 @@ const CreateOffer = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-[4px]">
-                <p className="text-tradeFadeWhite text-[12.5px] font-[500]">
-                  Limit Range
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                  Trade Limit Range
                 </p>
 
-                <div className="grid grid-cols-2 ">
-                  <p className="text-tradeFadeWhite text-[14px]">
-                    Minimum Purchase
-                  </p>
-                  <p className="text-tradeLightGreen text-[14px] font-[600]">
-                    {offerDetails?.minimum !== undefined &&
-                    offerDetails?.currency?.code
-                      ? `${Number(offerDetails.minimum).toLocaleString()} ${
-                          offerDetails.currency.code
-                        }`
-                      : "N/A"}
-                  </p>
-                </div>
+                <div className="flex flex-col gap-1">
+                  <div className="grid grid-cols-2 ">
+                    <p className="text-tradeFadeWhite text-[14px]">
+                      Minimum Purchase
+                    </p>
+                    <p className="text-tradeLightGreen text-[14px] font-[600]">
+                      {offerDetails?.minimum !== undefined &&
+                      offerDetails?.currency?.code
+                        ? `${Number(offerDetails.minimum).toLocaleString()} ${
+                            offerDetails.currency.code
+                          }`
+                        : "N/A"}
+                    </p>
+                  </div>
 
-                <div className="grid grid-cols-2 ">
-                  <p className="text-tradeFadeWhite text-[14px]">
-                    Maximum Purchase
-                  </p>
-                  <p className="text-tradeLightGreen text-[14px] font-[600]">
-                    {offerDetails?.maximum !== undefined &&
-                    offerDetails?.currency?.code
-                      ? `${Number(offerDetails.maximum).toLocaleString()} ${
-                          offerDetails.currency.code
-                        }`
-                      : "N/A"}
-                  </p>
+                  <div className="grid grid-cols-2 ">
+                    <p className="text-tradeFadeWhite text-[14px]">
+                      Maximum Purchase
+                    </p>
+                    <p className="text-tradeLightGreen text-[14px] font-[600]">
+                      {offerDetails?.maximum !== undefined &&
+                      offerDetails?.currency?.code
+                        ? `${Number(offerDetails.maximum).toLocaleString()} ${
+                            offerDetails.currency.code
+                          }`
+                        : "N/A"}
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1">
-                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
                   Profit Margin
                 </p>
+
                 <p className="text-white text-[14px]">
-                  Your estimated profit per transaction is{" "}
+                  You’ve set a profit margin of{" "}
                   <span className="text-tradeGreen text-[14px] font-[600]">
                     {offerDetails?.margin !== undefined
-                      ? `${offerDetails.margin}%`
+                      ? `${offerDetails.margin} percent`
                       : "--"}
                   </span>
-                  . This represents the percentage you’ll earn on each
-                  successful trade.
+                  , which represents your expected earnings per successful
+                  transaction.
                 </p>
               </div>
 
-              <div className="flex flex-col gap-1">
-                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
                   Payment Window
                 </p>
-                <p className="text-white text-[14px]">
-                  The seller has{" "}
-                  <span className="font-[600] text-[14px] text-tradeGreen">
-                    {offerDetails?.paymentWindow !== undefined
-                      ? `${offerDetails.paymentWindow} hour(s)`
-                      : "--"}
-                  </span>{" "}
-                  to complete payment. If not, the trade will be canceled. If
-                  funds were already sent, a dispute can be filed.
-                </p>
+                <div className="flex flex-col gap-1">
+                  <p className="text-white text-[14px]">
+                    You’ve set a payment window of{" "}
+                    <span className="font-[600] text-[14px] text-tradeGreen">
+                      {offerDetails?.paymentWindow !== undefined
+                        ? `${offerDetails.paymentWindow} hour(s)`
+                        : "--"}
+                    </span>{" "}
+                    for sellers to complete their payment.
+                  </p>
+
+                  <p className="text-tradeFadeWhite text-[14px]">
+                    Note:If the payment is not made within this timeframe, the
+                    trade will be automatically canceled. If funds were sent but
+                    not confirmed, sellers may initiate a dispute.
+                  </p>
+                </div>
               </div>
 
-              <div className="flex flex-col gap-1">
-                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
                   Confirmation Time
                 </p>
-                <p className="text-white text-[14px]">
-                  You'll have{" "}
-                  <span className="font-[600] text-[14px] text-tradeGreen">
-                    {offerDetails?.confirmationTime !== undefined
-                      ? `${offerDetails.confirmationTime} hour(s)`
-                      : "--"}
-                  </span>{" "}
-                  to confirm receipt and release funds after the seller marks
-                  the trade as paid. If you don't respond in time, the seller
-                  may escalate and file a dispute.
-                </p>
+
+                <div className="flex flex-col gap-1">
+                  <p className="text-white text-[14px]">
+                    You’ve agreed to confirm receipt of payment and release
+                    funds within{" "}
+                    <span className="font-[600] text-[14px] text-tradeGreen">
+                      {offerDetails?.confirmationTime !== undefined
+                        ? `${offerDetails.confirmationTime} hour(s)`
+                        : "--"}
+                    </span>{" "}
+                    after seller's marks the trade as paid.
+                  </p>
+
+                  <p className="text-tradeFadeWhite text-[14px]">
+                    Note: Failure to respond within this window may result in
+                    the buyer escalating the trade through a dispute.
+                  </p>
+                </div>
               </div>
 
-              <div className="flex flex-col gap-1">
-                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
-                  Terms Tag
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
+                  Term Tags
                 </p>
-                <div className="grid grid-cols-2 gap-y-2">
+                <div className="grid grid-cols-2 gap-2">
                   {offerDetails?.termTags?.length ? (
                     offerDetails.termTags.map((tag, index) => (
-                      <div className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight">
+                      <div className="flex w-max items-center gap-[8px] px-[10px] py-[6px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight">
                         <p
                           key={index}
                           className="text-[14px] font-medium text-tradeOrange"
@@ -1457,15 +1473,15 @@ const CreateOffer = () => {
                       </div>
                     ))
                   ) : (
-                    <p className="text-tradeFadeWhite text-[15px] font-[500]">
+                    <p className="text-tradeFadeWhite text-[14px] font-[500]">
                       No terms specified
                     </p>
                   )}
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1">
-                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
                   Trade Instruction
                 </p>
                 <div className="">
@@ -1481,13 +1497,13 @@ const CreateOffer = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1">
-                <p className="text-tradeFadeWhite text-[12.5px] font-medium">
+              <div className="flex flex-col gap-3 p-[15px] border-t border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
                   Platform fee
                 </p>
                 <div className="">
                   <p className="text-white text-[14px]">
-                    <span className="font-semibold text-tradeGreen">
+                    <span className="font-semibold text-tradeOrange">
                       {`${platformFee}%`}
                     </span>{" "}
                     per trade
