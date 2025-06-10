@@ -711,10 +711,8 @@ const CreateOffer = () => {
           {/* Sub Heading */}
           <div className="px-4 py-2">
             <p className="text-tradeFadeWhite text-[14px]">
-              Fill in the details to set up your offer, choose your service
-              type, set your rates and limits, add payment info, and let traders
-              know your terms. Everything you set here defines how your trade
-              will run
+              Fill in the details to define your offer with service type, service, pricing,
+              limits, payment method, and trade terms.
             </p>
           </div>
           {/* Offer Creation Field */}
@@ -1173,36 +1171,43 @@ const CreateOffer = () => {
                   </div>
 
                   {/* Margin Breakdown */}
-                  <p className="text-tradeFadeWhite font-medium">
-                    With{" "}
-                    <span className="text-tradeOrange font-bold">
-                      {offerDetails?.margin}% profit margin
-                    </span>
-                    , your final rate is&nbsp;
-                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                      {exchangeRateInfo.adjustedRate} NGN
-                    </span>{" "}
-                    per&nbsp;
-                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                      1 {exchangeRateInfo.baseCurrency}
-                    </span>
-                    . Estimated profit:{" "}
-                    <span className="text-tradeGreen font-bold">
-                      {" "}
-                      {exchangeRateInfo.estimatedProfit}{" "}
-                      {exchangeRateInfo.userCurrency}
-                    </span>{" "}
-                    per&nbsp;
-                    <span className="text-tradeGreen font-bold">
-                      1 {exchangeRateInfo.baseCurrency}
-                    </span>{" "}
-                    traded.
-                  </p>
+                  <div>
+                    <p className="text-tradeFadeWhite font-medium">
+                      With{" "}
+                      <span className="text-tradeOrange font-bold">
+                        {offerDetails?.margin}% profit margin
+                      </span>
+                      , your final rate is&nbsp;
+                      <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
+                        {exchangeRateInfo.adjustedRate} NGN
+                      </span>{" "}
+                      per&nbsp;
+                      <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
+                        1 {exchangeRateInfo.baseCurrency}
+                      </span>
+                      . Estimated profit:{" "}
+                      <span className="text-tradeGreen font-bold">
+                        {" "}
+                        {exchangeRateInfo.estimatedProfit}{" "}
+                        {exchangeRateInfo.userCurrency}
+                      </span>{" "}
+                      per&nbsp;
+                      <span className="text-tradeGreen font-bold">
+                        1 {exchangeRateInfo.baseCurrency}
+                      </span>{" "}
+                      traded.
+                    </p>
+                  </div>
 
                   {/* Service charge */}
-                  <p className="text-tradeFadeWhite font-medium">
-                    Note: A service charge applies at the time of trade.
-                  </p>
+                  <div>
+                    <p className="text-tradeFadeWhite font-medium">
+                      Note:{" "}
+                      <span className="text-white">
+                        Service charge applies at trade.
+                      </span>
+                    </p>
+                  </div>
                 </div>
 
                 <div className="">
