@@ -1152,7 +1152,7 @@ const CreateOffer = () => {
                   </div>
                 </div>
 
-                <div className="flex p-3 bg-tradeAsh rounded-[10px] border border-tradeAshLight flex-col gap-2 text-[14px] text-white leading-relaxed">
+                <div className="flex p-3 bg-tradeAsh rounded-[10px] border border-tradeAshLight flex-col gap-2 text-[13px] text-white leading-relaxed">
                   {/* Market Price */}
                   <div className="flex gap-1 items-center">
                     <p className="text-tradeFadeWhite font-medium">
@@ -1170,7 +1170,7 @@ const CreateOffer = () => {
                   </div>
 
                   {/* Margin Breakdown */}
-                  <p className="text-tradeFadeWhite font-medium">
+                  <p className="text-tradeFadeWhite  font-medium">
                     A{" "}
                     <span className="text-tradeOrange font-bold">
                       {offerDetails?.margin}% profit margin
@@ -1189,15 +1189,11 @@ const CreateOffer = () => {
                       {exchangeRateInfo.estimatedProfit}{" "}
                       {exchangeRateInfo.userCurrency}
                     </span>{" "}
-                    per unit traded.
-                  </p>
-
-                  {/* Profit Variance Note */}
-                  <p className="text-tradeFadeWhite font-medium">
-                    Exchange rate changes from inflation affect your profit. When
-                    rates rise, profit increases; when they fall, profit
-                    decreases. Your earnings will always reflect your set
-                    margin.
+                    per{" "}
+                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
+                      1 {exchangeRateInfo.baseCurrency}
+                    </span>{" "}
+                    traded.
                   </p>
 
                   {/* Service Charge Note */}
@@ -1210,7 +1206,7 @@ const CreateOffer = () => {
                 <div className="">
                   <Info
                     text={
-                      "Set a profit margin that appeals to traders while ensuring your earnings. A service charge typically between 0.50% and 2.00% applies per trade. To maintain a healthy return, consider setting your margin slightly higher (e.g. 4–10%) while staying competitive."
+                      "Set a competitive profit margin that secures your earnings. Note that a service charge typically between 0.5% to 2% applies per trade. To ensure healthy returns, consider starting your margin at 4% or higher."
                     }
                   />
                 </div>
