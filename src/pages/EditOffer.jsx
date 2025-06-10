@@ -14,6 +14,11 @@ import { IoMdThumbsUp } from "react-icons/io";
 import { MdThumbDownAlt } from "react-icons/md";
 import { FaInfoCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { CiBank } from "react-icons/ci";
+import { IoWalletOutline } from "react-icons/io5";
+import { HiOutlineGift } from "react-icons/hi2";
+import { IoCardOutline } from "react-icons/io5";
+import { GiTwoCoins } from "react-icons/gi";
 
 const EditOffer = (props) => {
   const { select, setSelect } = useSelectElement();
@@ -116,17 +121,29 @@ const EditOffer = (props) => {
     }));
   };
 
-  const navigateTo = useNavigate();
-
   const handleToEditSummaryPage = (offerId) => {
     navigateTo(`/offers/${offerId}/edit/summary`);
   };
+
+  // Map full service type string to corresponding icon
+  const serviceTypeIcons = {
+    "Online Wallet Transfer": IoWalletOutline,
+    "Direct Bank Transfer": CiBank,
+    "Gift Card Exchange": HiOutlineGift,
+    "Card-Based Spending": IoCardOutline,
+    "Crypto Trading": GiTwoCoins,
+  };
+
+  // Get the icon component based on the full service type
+  const IconComponent = serviceTypeIcons[offerDetails?.serviceType];
+
+  const navigateTo = useNavigate();
 
   return (
     <>
       <InAppNav />
 
-      <div className="flex flex-col bg-black gap-[15px] lg:px-[15%] md:px-[5%] pt-[60px] md:pt-[80px] ">
+      <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] pt-[60px] md:pt-[80px]">
         {/* Header Section */}
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-0">
           <div className="flex-1 flex flex-col md:border border-tradeAshLight">
@@ -146,473 +163,487 @@ const EditOffer = (props) => {
             </div>
 
             {/* Offer Details */}
-            <div className="p-[15px]">
-              <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight transition-all duration-300 hover:shadow-lg overflow-hidden">
-                {/* Offer Id Field */}
-                <div className="flex justify-between items-center p-3 border-b border-tradeAshLight">
-                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                    Offer ID
-                  </p>
+            <div className="p-[15px] ">
+              <div className=" flex md:grid grid-cols-2 md:gap-3 flex-col md:border-0 border border-tradeAshLight  hover:shadow-lg overflow-hidden">
+                <div className="flex flex-col bg-tradeAsh md:border border-tradeAshLight ">
+                  {/* Offer Id Field */}
+                  <div className="flex justify-between items-center p-3 border-b border-tradeAshLight">
+                    <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                      Offer ID
+                    </p>
 
-                  <p className="text-tradeFadeWhite text-[14px] font-bold">
-                    #128951721826
-                  </p>
-                </div>
-                {/* service Type*/}
-                <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
-                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                    Service Type
-                  </p>
-                  <p className=" text-white text-sm font-semibold">
-                    Direct Bank Transfer
-                  </p>
-                </div>
-                {/* service*/}
-                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
-                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                    Service
-                  </p>
-                  <p className="text-tradeOrange text-sm font-bold">
-                    Wells Fargo
-                  </p>
-                </div>
-                {/* Accepted Currency */}
-                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
-                  <p className=" text-[13px] text-tradeFadeWhite font-semibold">
-                    Accepted Currency
-                  </p>
-                  <p className=" font-semibold text-tradeGreen text-sm">
-                    United State Dollars
-                  </p>
-                </div>
-                {/* Published Date*/}
-                <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
-                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                    Published Date
-                  </p>
-                  <p className=" text-white text-sm font-semibold">
-                    June 14, 2025
-                  </p>
-                </div>
-                {/* Offer Status*/}
-                <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
-                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                    Offer Status
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
-                    <p className="text-tradeGreen text-[14px] font-semibold">
-                      Active
+                    <p className="text-tradeFadeWhite text-[14px] font-bold">
+                      #128951721826
+                    </p>
+                  </div>
+                  {/* service Type*/}
+                  <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Service Type
+                    </p>
+                    <p className=" text-white text-sm font-semibold">
+                      Direct Bank Transfer
+                    </p>
+                  </div>
+                  {/* service*/}
+                  <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Service
+                    </p>
+                    <p className="text-tradeOrange text-sm font-bold">
+                      Wells Fargo
+                    </p>
+                  </div>
+                  {/* Accepted Currency */}
+                  <div className="flex items-center justify-between p-3  border-b md:border-b-0 border-tradeAshLight">
+                    <p className=" text-[13px] text-tradeFadeWhite font-semibold">
+                      Accepted Currency
+                    </p>
+                    <p className=" font-semibold text-tradeGreen text-sm">
+                      United State Dollars
                     </p>
                   </div>
                 </div>
-                {/* Trade Volume */}
-                <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
-                  <div className="flex items-center gap-2">
-                    <p className=" text-[13px] text-tradeFadeWhite font-semibold">
-                      Trade Volume
+                <div className="flex flex-col bg-tradeAsh md:border border-tradeAshLight ">
+                  {/* Published Date*/}
+                  <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Published Date
                     </p>
-
-                    <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
-                      <FaInfoCircle />
+                    <p className=" text-white text-sm font-semibold">
+                      June 14, 2025
+                    </p>
+                  </div>
+                  {/* Offer Status*/}
+                  <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Offer Status
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
+                      <p className="text-tradeGreen text-[14px] font-semibold">
+                        Active
+                      </p>
                     </div>
                   </div>
+                  {/* Trade Volume */}
+                  <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
+                    <div className="flex items-center gap-2">
+                      <p className=" text-[13px] text-tradeFadeWhite font-semibold">
+                        Trade Volume
+                      </p>
 
-                  <p className=" font-semibold text-white text-sm">
-                    215 Trades
-                  </p>
-                </div>
-                {/* Feedback Summary */}
-                <div className="flex items-center justify-between p-3 ">
-                  <p className=" text-[13px] text-tradeFadeWhite font-semibold">
-                    Feedback Summary
-                  </p>
-                  <div className="flex gap-3 items-center">
-                    <p className=" text-sm text-white flex items-center gap-1 font-semibold">
-                      <IoMdThumbsUp className="text-tradeGreen " />
-                      {/* {parseInt(props.positiveFeedback).toLocaleString()} */}
-                      200
-                    </p>
+                      <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
+                        <FaInfoCircle />
+                      </div>
+                    </div>
 
-                    <p className="text-sm text-white flex items-center gap-1 font-semibold">
-                      <MdThumbDownAlt className="text-red-500" />
-                      {/* {parseInt(props.trustScore).toLocaleString()} */}15
+                    <p className=" font-semibold text-white text-sm">
+                      215 Trades
                     </p>
+                  </div>
+                  {/* Feedback Summary */}
+                  <div className="flex items-center justify-between p-3 ">
+                    <p className=" text-[13px] text-tradeFadeWhite font-semibold">
+                      Feedback Summary
+                    </p>
+                    <div className="flex gap-3 items-center">
+                      <p className=" text-sm text-white flex items-center gap-1 font-semibold">
+                        <IoMdThumbsUp className="text-tradeGreen " />
+                        {/* {parseInt(props.positiveFeedback).toLocaleString()} */}
+                        200
+                      </p>
+
+                      <p className="text-sm text-white flex items-center gap-1 font-semibold">
+                        <MdThumbDownAlt className="text-red-500" />
+                        {/* {parseInt(props.trustScore).toLocaleString()} */}15
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Changes Instruction field */}
+            {/* Changing Field Heading */}
             <div className="  flex justify-between gap-1 items-center p-4  border-y border-tradeAshLight ">
               <p className="text-white text-[16px] font-semibold">
-                Update Offer Details
+                Update Details
               </p>
             </div>
-            {/* Limit Field */}
-            <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
-              <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
-                <p className="text-white text-[15px] font-[500]">
-                  Purchase Limit
-                </p>
-              </div>
 
-              <div className="w-full flex flex-col gap-[15px] p-[15px]">
-                <div className="flex w-full md:flex-row flex-col gap-[15px]">
-                  <div className="w-full">
-                    <div>
-                      <p className="text-tradeFadeWhite text-[13px] font-[500]">
-                        Minimum
-                      </p>
-                    </div>
-                    <div
-                      className={`${
-                        offerDetails?.minimum
-                          ? "border-tradeAshExtraLight"
-                          : "border-tradeAshLight"
-                      } flex mt-[5px] bg-tradeAsh border outline-none w-full rounded-[10px] overflow-hidden cursor-pointer`}
-                    >
-                      <input
-                        className="text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh  outline-none w-full p-[12px]  cursor-pointer"
-                        type="text"
-                        placeholder="0.00"
-                        value={
+            {/* Changes Fields */}
+            <div className="flex flex-col">
+              {/* Limit Field */}
+              <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
+                <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
+                  <p className="text-white text-[15px] font-[500]">
+                    Purchase Limit
+                  </p>
+                </div>
+
+                <div className="w-full flex flex-col gap-[15px] p-[15px]">
+                  <div className="flex w-full md:flex-row flex-col gap-[15px]">
+                    <div className="w-full">
+                      <div>
+                        <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                          Minimum
+                        </p>
+                      </div>
+                      <div
+                        className={`${
                           offerDetails?.minimum
-                            ? Number(offerDetails?.minimum).toLocaleString()
-                            : ""
-                        }
-                        onChange={(e) => handleMinLimitChange(e)}
-                      />
-                      <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
-                        <p className="text-[14px] text-white font-[700]">
-                          {offerDetails.currency.code &&
-                          offerDetails.currency.name
-                            ? `${offerDetails.currency.code}`
-                            : "- -"}
+                            ? "border-tradeAshExtraLight"
+                            : "border-tradeAshLight"
+                        } flex mt-[5px] bg-tradeAsh border outline-none w-full rounded-[10px] overflow-hidden cursor-pointer`}
+                      >
+                        <input
+                          className="text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh  outline-none w-full p-[12px]  cursor-pointer"
+                          type="text"
+                          placeholder="0.00"
+                          value={
+                            offerDetails?.minimum
+                              ? Number(offerDetails?.minimum).toLocaleString()
+                              : ""
+                          }
+                          onChange={(e) => handleMinLimitChange(e)}
+                        />
+                        <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
+                          <p className="text-[14px] text-white font-[700]">
+                            {offerDetails.currency.code &&
+                            offerDetails.currency.name
+                              ? `${offerDetails.currency.code}`
+                              : "- -"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="w-full">
+                      <div>
+                        <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                          Maximum
                         </p>
+                      </div>
+                      <div
+                        className={`${
+                          offerDetails?.minimum
+                            ? "border-tradeAshExtraLight"
+                            : "border-tradeAshLight"
+                        } flex mt-[5px] bg-tradeAsh border outline-none w-full rounded-[10px] overflow-hidden cursor-pointer`}
+                      >
+                        <input
+                          className="text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh  outline-none w-full p-[12px]  cursor-pointer"
+                          type="text"
+                          placeholder="0.00"
+                          value={
+                            offerDetails?.maximum
+                              ? Number(offerDetails?.maximum).toLocaleString()
+                              : ""
+                          }
+                          onChange={(e) => handleMaxLimitChange(e)}
+                        />
+                        <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
+                          <p className="text-[14px] text-white font-[700]">
+                            {offerDetails.currency.code &&
+                            offerDetails.currency.name
+                              ? `${offerDetails.currency.code}`
+                              : "- -"}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="w-full">
-                    <div>
-                      <p className="text-tradeFadeWhite text-[13px] font-[500]">
-                        Maximum
-                      </p>
-                    </div>
-                    <div
-                      className={`${
-                        offerDetails?.minimum
-                          ? "border-tradeAshExtraLight"
-                          : "border-tradeAshLight"
-                      } flex mt-[5px] bg-tradeAsh border outline-none w-full rounded-[10px] overflow-hidden cursor-pointer`}
-                    >
-                      <input
-                        className="text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh  outline-none w-full p-[12px]  cursor-pointer"
-                        type="text"
-                        placeholder="0.00"
-                        value={
-                          offerDetails?.maximum
-                            ? Number(offerDetails?.maximum).toLocaleString()
-                            : ""
-                        }
-                        onChange={(e) => handleMaxLimitChange(e)}
-                      />
-                      <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
-                        <p className="text-[14px] text-white font-[700]">
-                          {offerDetails.currency.code &&
-                          offerDetails.currency.name
-                            ? `${offerDetails.currency.code}`
-                            : "- -"}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="">
-                  <Warning
-                    text={
-                      "To make this offer visible, you must have 100% of the minimum amount you’ve set available in your wallet."
-                    }
-                  />
-                </div>
-              </div>
-            </div>
-            {/* Profit Margine Field */}
-            <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
-              <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
-                <p className="text-white text-[15px] font-[500]">
-                  Profit Margin
-                </p>
-              </div>
-
-              <div className="w-full flex flex-col gap-[15px] p-[15px]">
-                <div className="flex items-center w-full flex-row  gap-[15px]">
-                  <div
-                    onClick={handleMinusMargine}
-                    className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
-                  >
-                    <FaMinus />
-                  </div>
-                  <div className="bg-tradeAsh flex justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
-                    <p className="text-white text-[14px]">
-                      {offerDetails?.margin === 0 ? (
-                        <span className="text-red-500">No margin applied</span>
-                      ) : offerDetails?.margin > 20 ? (
-                        <span className="text-red-500">
-                          Margin cannot exceed 20%
-                        </span>
-                      ) : (
-                        <>
-                          <span className="font-bold">
-                            {offerDetails.margin > 0 ? "+" : ""}
-                            {offerDetails.margin}%
-                          </span>{" "}
-                          profit margin per trade
-                        </>
-                      )}
-                    </p>
-                  </div>
-                  <div
-                    onClick={handleAddMargine}
-                    className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
-                  >
-                    <FaPlus />
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2 text-[14px] text-white leading-relaxed">
-                  {/* Market Price */}
-                  <div className="flex gap-1 items-center">
-                    <p className="text-tradeFadeWhite font-medium">
-                      Current Exchange Rate:
-                    </p>
-
-                    <p className="text-tradeGreen font-bold">
-                      1 USD = 1,560.36 NGN
-                    </p>
-                  </div>
-
-                  {/* Margin Breakdown */}
-                  <p className="text-tradeFadeWhite font-medium">
-                    With a{" "}
-                    <span className="text-tradeOrange font-bold">
-                      5 percent profit margin
-                    </span>
-                    , your final rate is&nbsp;
-                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                      1,380.28 NGN
-                    </span>{" "}
-                    per&nbsp;
-                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                      1 USD
-                    </span>
-                    . Estimated profit:{" "}
-                    <span className="text-tradeGreen font-bold">7,500 NGN</span>{" "}
-                    per&nbsp;
-                    <span className="text-tradeGreen font-bold">
-                      1 USD
-                    </span>{" "}
-                    traded.
-                  </p>
-
-                  {/* Service charge */}
-                  <p className="text-tradeFadeWhite font-medium">
-                    Note: A service charge applies at the time of trade.
-                  </p>
-                </div>
-
-                <div className="">
-                  <Info
-                    text={
-                      "Set a profit margin that appeals to traders while ensuring your earnings. A service charge typically between 0.50% and 2.00% applies per trade. To maintain a healthy return, consider setting your margin slightly higher (e.g. 4–8%) while staying competitive."
-                    }
-                  />
-                </div>
-              </div>
-            </div>
-            {/* Payment Window Field */}
-            <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
-              <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
-                <p className="text-white text-[15px] font-[500]">
-                  Payment Window
-                </p>
-              </div>
-
-              <div className="w-full flex flex-col gap-[15px] p-[15px]">
-                <div className="flex items-center w-full flex-row gap-[15px]">
-                  <div
-                    onClick={handleMinusPaymentWindow}
-                    className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
-                  >
-                    <FaMinus />
-                  </div>
-                  <div className="bg-tradeAsh flex  justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
-                    <p className="text-white text-[14px]">
-                      <span className="font-bold">
-                        {offerDetails?.paymentWindow}
-                      </span>{" "}
-                      hour&#40;s&#41;
-                    </p>
-                  </div>
-                  <div
-                    onClick={handleAddPaymentWindow}
-                    className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
-                  >
-                    <FaPlus />
-                  </div>
-                </div>
-
-                <Info
-                  text={
-                    "Set how long the seller’s has to make payment after the trade begins. If no payment is made within this period, the trade will be cancelled automatically."
-                  }
-                />
-              </div>
-            </div>
-            {/* Confirmation Time Field */}
-            <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
-              <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
-                <p className="text-white text-[15px] font-[500]">
-                  Confirmation Time
-                </p>
-              </div>
-
-              <div className="w-full flex flex-col gap-[15px] p-[15px]">
-                <div className="flex items-center w-full flex-row gap-[15px]">
-                  <div
-                    onClick={handleMinusConfirmationTime}
-                    className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
-                  >
-                    <FaMinus />
-                  </div>
-                  <div className="bg-tradeAsh flex  justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
-                    <p className="text-white text-[14px]">
-                      <span className="font-bold">
-                        {offerDetails?.confirmationTime}
-                      </span>{" "}
-                      hour&#40;s&#41;
-                    </p>
-                  </div>
-                  <div
-                    onClick={handleAddConfirmationTime}
-                    className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
-                  >
-                    <FaPlus />
-                  </div>
-                </div>
-
-                <Info
-                  text={
-                    "Set how long you’ll have to confirm the seller’s payment and release their asset. This helps avoid delays and disputes."
-                  }
-                />
-              </div>
-            </div>
-            {/* Offer Terms Tag Field */}
-            <div className="flex flex-col gap-[30px] p-[15px] border-b border-tradeAshLight">
-              <div>
-                <p className="text-white text-[15px] font-[500]">
-                  Offer Terms Tag
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-[15px]">
-                <div
-                  className="relative w-full cursor-pointer "
-                  onClick={() =>
-                    setSelect({
-                      ...select,
-                      state: true,
-                      selectOne: true,
-                      selectTwo: false,
-                      element: "terms",
-                      pick: "",
-                      options: offerTermTags,
-                    })
-                  }
-                >
                   <div className="">
-                    <input
-                      className={`${
-                        offerDetails?.termTags
-                          ? "border-tradeAshLight"
-                          : "border-tradeAshLight"
-                      } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border hover:border-tradeAshExtraLight outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
-                      type="text"
-                      readOnly
-                      placeholder="Select terms"
+                    <Warning
+                      text={
+                        "To make this offer visible, you must have 100% of the minimum amount you’ve set available in your wallet."
+                      }
                     />
                   </div>
+                </div>
+              </div>
+              {/* Profit Margine Field */}
+              <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
+                <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
+                  <p className="text-white text-[15px] font-[500]">
+                    Profit Margin
+                  </p>
+                </div>
 
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                    <MdKeyboardArrowDown />
+                <div className="w-full flex flex-col gap-[15px] p-[15px]">
+                  <div className="flex items-center w-full flex-row  gap-[15px]">
+                    <div
+                      onClick={handleMinusMargine}
+                      className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
+                    >
+                      <FaMinus />
+                    </div>
+                    <div className="bg-tradeAsh flex justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
+                      <p className="text-white text-[14px]">
+                        {offerDetails?.margin === 0 ? (
+                          <span className="text-red-500">
+                            No margin applied
+                          </span>
+                        ) : offerDetails?.margin > 20 ? (
+                          <span className="text-red-500">
+                            Margin cannot exceed 20%
+                          </span>
+                        ) : (
+                          <>
+                            <span className="font-bold">
+                              {offerDetails.margin > 0 ? "+" : ""}
+                              {offerDetails.margin}%
+                            </span>{" "}
+                            profit margin per trade
+                          </>
+                        )}
+                      </p>
+                    </div>
+                    <div
+                      onClick={handleAddMargine}
+                      className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
+                    >
+                      <FaPlus />
+                    </div>
+                  </div>
+
+                  <div className="flex p-3 bg-tradeAsh border border-tradeAshLight flex-col gap-2 text-[14px] text-white leading-relaxed">
+                    {/* Market Price */}
+                    <div className="flex gap-1 items-center">
+                      <p className="text-tradeFadeWhite font-medium">
+                        Current Exchange Rate:
+                      </p>
+
+                      <p className="text-tradeGreen font-bold">
+                        1 USD = 1,560.36 NGN
+                      </p>
+                    </div>
+
+                    {/* Margin Breakdown */}
+                    <p className="text-tradeFadeWhite font-medium">
+                      With a{" "}
+                      <span className="text-tradeOrange font-bold">
+                        5 percent profit margin
+                      </span>
+                      , your final rate is&nbsp;
+                      <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
+                        1,380.28 NGN
+                      </span>{" "}
+                      per&nbsp;
+                      <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
+                        1 USD
+                      </span>
+                      . Estimated profit:{" "}
+                      <span className="text-tradeGreen font-bold">
+                        7,500 NGN
+                      </span>{" "}
+                      per&nbsp;
+                      <span className="text-tradeGreen font-bold">
+                        1 USD
+                      </span>{" "}
+                      traded.
+                    </p>
+
+                    {/* Service charge */}
+                    <p className="text-tradeFadeWhite font-medium">
+                      Note: A service charge applies at the time of trade.
+                    </p>
+                  </div>
+
+                  <div className="">
+                    <Info
+                      text={
+                        "Set a profit margin that appeals to traders while ensuring your earnings. A service charge typically between 0.50% and 2.00% applies per trade. To maintain a healthy return, consider setting your margin slightly higher (e.g. 4–8%) while staying competitive."
+                      }
+                    />
                   </div>
                 </div>
 
-                <div
-                  className={`${
-                    offerDetails?.termTags.length == 0 ? "hidden" : "flex"
-                  } gap-[10px] flex-wrap`}
-                >
-                  {offerDetails?.termTags.map((tag, index) => (
-                    <div
-                      key={index}
-                      className="flex w-max items-center gap-[8px] px-[12px] py-[5px] rounded-[6px] bg-tradeAshLight"
-                    >
-                      <p
-                        key={index}
-                        className="text-[14px] font-medium text-tradeOrange"
-                      >
-                        {tag}
-                      </p>
-                      <IoClose
-                        className="text-white hover:text-tradeAshExtraLight text-[16px] cursor-pointer transition-all duration-300"
-                        onClick={() => {
-                          setOfferDetails((prev) => ({
-                            ...prev,
-                            termTags: prev.termTags.filter(
-                              (_, i) => i !== index
-                            ),
-                          }));
-                        }}
-                      />
-                    </div>
-                  ))}
+              </div>
+              {/* Payment Window Field */}
+              <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
+                <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
+                  <p className="text-white text-[15px] font-[500]">
+                    Payment Window
+                  </p>
                 </div>
 
-                <Info
-                  text={
-                    "You can select up to 5 terms or requirements to help clearly communicate the terms of your offer to potential traders."
-                  }
-                />
+                <div className="w-full flex flex-col gap-[15px] p-[15px]">
+                  <div className="flex items-center w-full flex-row gap-[15px]">
+                    <div
+                      onClick={handleMinusPaymentWindow}
+                      className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
+                    >
+                      <FaMinus />
+                    </div>
+                    <div className="bg-tradeAsh flex  justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
+                      <p className="text-white text-[14px]">
+                        <span className="font-bold">
+                          {offerDetails?.paymentWindow}
+                        </span>{" "}
+                        hour&#40;s&#41;
+                      </p>
+                    </div>
+                    <div
+                      onClick={handleAddPaymentWindow}
+                      className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
+                    >
+                      <FaPlus />
+                    </div>
+                  </div>
+
+                  <Info
+                    text={
+                      "Set how long the seller’s has to make payment after the trade begins. If no payment is made within this period, the trade will be cancelled automatically."
+                    }
+                  />
+                </div>
+              </div>
+              {/* Confirmation Time Field */}
+              <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
+                <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
+                  <p className="text-white text-[15px] font-[500]">
+                    Confirmation Time
+                  </p>
+                </div>
+
+                <div className="w-full flex flex-col gap-[15px] p-[15px]">
+                  <div className="flex items-center w-full flex-row gap-[15px]">
+                    <div
+                      onClick={handleMinusConfirmationTime}
+                      className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
+                    >
+                      <FaMinus />
+                    </div>
+                    <div className="bg-tradeAsh flex  justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
+                      <p className="text-white text-[14px]">
+                        <span className="font-bold">
+                          {offerDetails?.confirmationTime}
+                        </span>{" "}
+                        hour&#40;s&#41;
+                      </p>
+                    </div>
+                    <div
+                      onClick={handleAddConfirmationTime}
+                      className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
+                    >
+                      <FaPlus />
+                    </div>
+                  </div>
+
+                  <Info
+                    text={
+                      "Set how long you’ll have to confirm the seller’s payment and release their asset. This helps avoid delays and disputes."
+                    }
+                  />
+                </div>
+              </div>
+              {/* Offer Terms Tag Field */}
+              <div className="flex flex-col gap-[30px] p-[15px] border-b border-tradeAshLight">
+                <div>
+                  <p className="text-white text-[15px] font-[500]">
+                    Offer Terms Tag
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-[15px]">
+                  <div
+                    className="relative w-full cursor-pointer "
+                    onClick={() =>
+                      setSelect({
+                        ...select,
+                        state: true,
+                        selectOne: true,
+                        selectTwo: false,
+                        element: "terms",
+                        pick: "",
+                        options: offerTermTags,
+                      })
+                    }
+                  >
+                    <div className="">
+                      <input
+                        className={`${
+                          offerDetails?.termTags
+                            ? "border-tradeAshLight"
+                            : "border-tradeAshLight"
+                        } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border hover:border-tradeAshExtraLight outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                        type="text"
+                        readOnly
+                        placeholder="Select terms"
+                      />
+                    </div>
+
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                      <MdKeyboardArrowDown />
+                    </div>
+                  </div>
+
+                  <div
+                    className={`${
+                      offerDetails?.termTags.length == 0 ? "hidden" : "flex"
+                    } gap-[10px] flex-wrap`}
+                  >
+                    {offerDetails?.termTags.map((tag, index) => (
+                      <div
+                        key={index}
+                        className="flex w-max items-center gap-[8px] px-[12px] py-[5px] rounded-[6px] bg-tradeAshLight"
+                      >
+                        <p
+                          key={index}
+                          className="text-[14px] font-medium text-tradeOrange"
+                        >
+                          {tag}
+                        </p>
+                        <IoClose
+                          className="text-white hover:text-tradeAshExtraLight text-[16px] cursor-pointer transition-all duration-300"
+                          onClick={() => {
+                            setOfferDetails((prev) => ({
+                              ...prev,
+                              termTags: prev.termTags.filter(
+                                (_, i) => i !== index
+                              ),
+                            }));
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  <Info
+                    text={
+                      "You can select up to 5 terms or requirements to help clearly communicate the terms of your offer to potential traders."
+                    }
+                  />
+                </div>
+              </div>
+              {/* Trade Instruction field Field */}
+              <div className="flex flex-col gap-[30px] p-[15px]">
+                <div>
+                  <p className="text-white text-[15px] font-[500]">
+                    Trade Instructions
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-[15px]">
+                  <textarea
+                    onChange={handleInstruction}
+                    className="h-[150px] w-full bg-tradeAsh border border-tradeAshLight rounded-[10px] p-[12px] text-white text-[14px] placeholder-tradeFadeWhite focus:outline-none resize-none"
+                    placeholder="Write your trade Instructions here."
+                  ></textarea>
+
+                  <Info
+                    text={
+                      "Use this field to share any extra instructions or context that help ensure a smooth, respectful trade. Be clear, helpful, and professional."
+                    }
+                  />
+                </div>
               </div>
             </div>
-            {/* Trade Instruction field Field */}
-            <div className="flex flex-col gap-[30px] p-[15px]">
-              <div>
-                <p className="text-white text-[15px] font-[500]">
-                  Trade Instructions
-                </p>
-              </div>
 
-              <div className="flex flex-col gap-[15px]">
-                <textarea
-                  onChange={handleInstruction}
-                  className="h-[150px] w-full bg-tradeAsh border border-tradeAshLight rounded-[10px] p-[12px] text-white text-[14px] placeholder-tradeFadeWhite focus:outline-none resize-none"
-                  placeholder="Write your trade Instructions here."
-                ></textarea>
-
-                <Info
-                  text={
-                    "Use this field to share any extra instructions or context that help ensure a smooth, respectful trade. Be clear, helpful, and professional."
-                  }
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-[10px] border-t border-tradeAshLight p-[15px]">
+            {/* Buttons Mobile and Tabs */}
+            <div className="flex lg:hidden flex-col gap-[10px] border-t border-tradeAshLight p-[15px]">
               <div
                 onClick={() => handleToEditSummaryPage(props?.offerId)}
                 className={` ${
@@ -623,6 +654,234 @@ const EditOffer = (props) => {
               >
                 <p className="text-[14px] font-[700] ">Continue to Summary</p>
               </div>
+
+              <div
+                // onClick={handleClearFilter}
+                className="flex justify-center bg-transparent hover:bg-tradeAsh border border-tradeAshLight hover:border-red-600  p-[12px] rounded-[10px]  cursor-pointer duration-300 transition-all"
+              >
+                <p className="text-[14px] font-[700] text-red-600">
+                  Terminate Offer
+                </p>
+              </div>
+
+              <div className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
+                <p className="text-[14px] font-[700] ">Cancel</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:flex hidden min-h-svh  lg:w-[520px] w-full border-neutral-800 ">
+          <div className=" relative w-full  flex flex-col md:border-r md:border-b md:border-t border-neutral-800">
+            <div className="flex flex-col justify-between p-[15px]  border-b border-tradeAshLight w-full">
+              <p className="text-[17px] text-white font-[700]">Offer Summary</p>
+            </div>
+
+            <div className="px-4 py-2">
+              <p className="text-tradeFadeWhite text-[14px]">
+                Verify your offer information to set clear terms and support a
+                transparent, efficient trade.
+              </p>
+            </div>
+
+            <div className="flex flex-col p-[15px]">
+              <div className="flex gap-4 items-center bg-tradeAshLight border border-neutral-800 p-[15px]">
+                <div>
+                  {IconComponent && (
+                    <IconComponent className="text-tradeFadeWhite text-[36px]" />
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <p className="text-tradeOrange text-base font-bold">
+                    {offerDetails?.service || "-- --"}
+                  </p>
+                  <p className="text-white text-xs font-medium">
+                    {offerDetails?.serviceType || "Service Type"}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                  Accepted Currency
+                </p>
+                <p className="text-tradeOrange text-[15px] font-[600]">
+                  {offerDetails?.currency?.name
+                    ? `${offerDetails.currency.name} - ${offerDetails.currency.code}`
+                    : "-- --"}
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-[500]">
+                  Trade Limit Range
+                </p>
+
+                <div className="flex flex-col gap-1">
+                  <div className="grid grid-cols-2 ">
+                    <p className="text-tradeFadeWhite text-[14px]">
+                      Minimum Purchase
+                    </p>
+                    <p className="text-tradeLightGreen text-[14px] font-[600]">
+                      {offerDetails?.minimum !== undefined &&
+                      offerDetails?.currency?.code
+                        ? `${Number(offerDetails.minimum).toLocaleString()} ${
+                            offerDetails.currency.code
+                          }`
+                        : "N/A"}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-2 ">
+                    <p className="text-tradeFadeWhite text-[14px]">
+                      Maximum Purchase
+                    </p>
+                    <p className="text-tradeLightGreen text-[14px] font-[600]">
+                      {offerDetails?.maximum !== undefined &&
+                      offerDetails?.currency?.code
+                        ? `${Number(offerDetails.maximum).toLocaleString()} ${
+                            offerDetails.currency.code
+                          }`
+                        : "N/A"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
+                  Profit Margin
+                </p>
+
+                <p className="text-white text-[14px]">
+                  You’ve set a profit margin of{" "}
+                  <span className="text-tradeGreen text-[14px] font-[600]">
+                    {offerDetails?.margin !== undefined
+                      ? `${offerDetails.margin} percent`
+                      : "--"}
+                  </span>
+                  , which represents your expected earnings per successful
+                  transaction.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
+                  Payment Window
+                </p>
+                <div className="flex flex-col gap-2">
+                  <p className="text-white text-[14px]">
+                    You’ve set a payment window of{" "}
+                    <span className="font-[600] text-[14px] text-tradeGreen">
+                      {offerDetails?.paymentWindow !== undefined
+                        ? `${offerDetails.paymentWindow} hour(s)`
+                        : "--"}
+                    </span>{" "}
+                    for sellers to complete their payment.
+                  </p>
+
+                  <p className="text-tradeFadeWhite text-[14px]">
+                    <span className="text-tradeOrange font-bold">Note: </span>{" "}
+                    If the payment is not made within this timeframe, the trade
+                    will be automatically canceled. If funds were sent but not
+                    confirmed, sellers may initiate a dispute.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
+                  Confirmation Time
+                </p>
+
+                <div className="flex flex-col gap-2">
+                  <p className="text-white text-[14px]">
+                    You’ve agreed to confirm receipt of payment and release
+                    funds within{" "}
+                    <span className="font-[600] text-[14px] text-tradeGreen">
+                      {offerDetails?.confirmationTime !== undefined
+                        ? `${offerDetails.confirmationTime} hour(s)`
+                        : "--"}
+                    </span>{" "}
+                    after seller's marks the trade as paid.
+                  </p>
+
+                  <p className="text-tradeFadeWhite text-[14px]">
+                    <span className="text-tradeOrange font-bold">Note: </span>
+                    Failure to respond within this window may result in the
+                    buyer escalating the trade through a dispute.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
+                  Term Tags
+                </p>
+                <div className="grid grid-cols-2 gap-2">
+                  {offerDetails?.termTags?.length ? (
+                    offerDetails.termTags.map((tag, index) => (
+                      <div className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight">
+                        <p
+                          key={index}
+                          className="text-[14px] font-medium text-tradeOrange"
+                        >
+                          {tag}
+                        </p>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-tradeFadeWhite text-[14px] font-[500]">
+                      No terms specified
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
+                  Trade Instruction
+                </p>
+                <div className="">
+                  {offerDetails?.instruction ? (
+                    <p className="text-white text-[14px]">
+                      {offerDetails?.instruction}
+                    </p>
+                  ) : (
+                    <p className="text-tradeFadeWhite text-[14px] font-[500]">
+                      No Instructions set yet
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
+                  Service Charge
+                </p>
+                <div>
+                  <p className="text-white text-[14px]">
+                    <span className="font-semibold text-tradeOrange">
+                      Applied at time of trade
+                    </span>{" "}
+                    (typically ranges between 0.5% – 2%)
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className=" bg-black flex flex-col gap-[15px] p-[15px]">
+              <button
+                onClick={() => setPreviewOffer(!previewOffer)}
+                className={` ${
+                  false
+                    ? "bg-tradeAsh text-tradeGreen"
+                    : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
+                } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
+              >
+                <p className="text-[14px] font-[700]">Publish Offer</p>
+              </button>
 
               <div
                 // onClick={handleClearFilter}

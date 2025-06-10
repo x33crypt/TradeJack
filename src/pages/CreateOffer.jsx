@@ -30,6 +30,14 @@ const CreateOffer = () => {
   const [isCryptoAsset, setIsCryptoAsset] = useState(false);
   const [previewOffer, setPreviewOffer] = useState(false);
   const { createOffer, setCreateOffer } = useState(false);
+  const [exchangeRateInfo, setExchangeRateInfo] = useState({
+    baseCurrency: "USD", // The currency of the offer
+    userCurrency: "NGN", // The user's local or target currency
+    margin: 0,
+    unitRate: 0, // Rate per 1 baseCurrency in quoteCurrency
+    adjustedRate: 0, // Final rate after applying margin
+    estimatedProfit: 0, // Projected profit after platform fees
+  });
 
   const serviceType = [
     "Online Wallet Transfer",
@@ -615,7 +623,6 @@ const CreateOffer = () => {
     "Same bank only",
   ];
 
-  // Map full service type string to corresponding icon
   const serviceTypeIcons = {
     "Online Wallet Transfer": IoWalletOutline,
     "Direct Bank Transfer": CiBank,
@@ -629,16 +636,88 @@ const CreateOffer = () => {
 
   const navigateTo = useNavigate();
 
+  // Sync exchangeRateInfo.baseCurrency with the latest offerDetails.currency.code on change
+  useEffect(() => {
+    if (offerDetails?.currency?.code) {
+      setExchangeRateInfo((prev) => ({
+        ...prev,
+        baseCurrency: offerDetails.currency.code,
+      }));
+    }
+  }, [offerDetails?.currency?.code]);
+
+  // Sync exchangeRateInfo.margin with the latest offerDetails.margin on change
+  useEffect(() => {
+    setExchangeRateInfo((prev) => ({
+      ...prev,
+      margin: offerDetails?.margin,
+    }));
+  }, [offerDetails?.margin]);
+
+  // Calculates Users Offer profit from margin and converts offer currency to user’s account currency
+  const loadExchangeRateData = async (baseCurrency, userCurrency, margin) => {
+    try {
+      const response = await axios.get(
+        `https://api.coinbase.com/v2/prices/${baseCurrency}-${userCurrency}/spot`
+      );
+
+      const rawAmount = response.data.data.amount;
+      const roundedAmount = Number(parseFloat(rawAmount).toFixed(2));
+
+      const estimatedProfit = roundedAmount * (margin / 100);
+      const adjustedRate = roundedAmount - estimatedProfit;
+
+      setExchangeRateInfo((prev) => ({
+        ...prev,
+        unitRate: roundedAmount,
+        adjustedRate: Number(adjustedRate.toFixed(2)),
+        estimatedProfit: Number(estimatedProfit.toFixed(2)),
+      }));
+    } catch (err) {
+      console.error("Error fetching rate:", err);
+    }
+  };
+
+  useEffect(() => {
+    if (exchangeRateInfo.baseCurrency && exchangeRateInfo.userCurrency) {
+      loadExchangeRateData(
+        exchangeRateInfo.baseCurrency,
+        exchangeRateInfo.userCurrency,
+        exchangeRateInfo.margin
+      );
+    }
+  }, [
+    exchangeRateInfo.baseCurrency,
+    exchangeRateInfo.userCurrency,
+    exchangeRateInfo.margin,
+  ]);
+
+  console.log(exchangeRateInfo);
+
+  const handlePublishOffer = () => {};
+
   return (
     <>
       <InAppNav />
-      <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%]">
-        <div className="flex flex-col  min-h-svh w-full md:border-x md:border-t md:border-b border-neutral-800 md:mt-[80px] mt-[60px]">
+      <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] pt-[60px] md:pt-[80px]">
+        {/* Main Page */}
+        <div className="flex flex-col  min-h-svh w-full md:border-x md:border-t md:border-b border-neutral-800 ">
+          {/* Heading */}
           <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
             <p className="text-[17px] text-white font-[700]">
               Create Buy Offer
             </p>
           </div>
+          {/* Sub Heading */}
+          <div className="px-4 py-2">
+            <p className="text-tradeFadeWhite text-[14px]">
+              Fill in the details to set up your offer, choose your service
+              type, set your rates and limits, add payment info, and let traders
+              know your terms. Everything you set here defines how your trade
+              will run
+            </p>
+          </div>
+          {/* Offer Creation Field */}
           <div className="flex flex-col gap-[0px]">
             {/* Service Type field */}
             <div className="flex flex-col gap-[30px] p-[15px] border-b border-tradeAshLight">
@@ -1075,7 +1154,7 @@ const CreateOffer = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-2 text-[14px] text-white leading-relaxed">
+                <div className="flex p-3 bg-tradeAsh rounded-[10px] border border-tradeAshLight flex-col gap-2 text-[14px] text-white leading-relaxed">
                   {/* Market Price */}
                   <div className="flex gap-1 items-center">
                     <p className="text-tradeFadeWhite font-medium">
@@ -1083,29 +1162,39 @@ const CreateOffer = () => {
                     </p>
 
                     <p className="text-tradeGreen font-bold">
-                      1 USD = 1,560.36 NGN
+                      1 <span>{exchangeRateInfo?.baseCurrency}</span> ={" "}
+                      <span>
+                        {exchangeRateInfo.unitRate === 0
+                          ? "0.00"
+                          : exchangeRateInfo.unitRate}
+                      </span>{" "}
+                      <span>{exchangeRateInfo?.userCurrency}</span>
                     </p>
                   </div>
 
                   {/* Margin Breakdown */}
                   <p className="text-tradeFadeWhite font-medium">
-                    With a{" "}
+                    With{" "}
                     <span className="text-tradeOrange font-bold">
-                      5 percent profit margin
+                      {offerDetails?.margin}% profit margin
                     </span>
                     , your final rate is&nbsp;
                     <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                      1,380.28 NGN
+                      {exchangeRateInfo.adjustedRate} NGN
                     </span>{" "}
                     per&nbsp;
                     <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                      1 USD
+                      1 {exchangeRateInfo.baseCurrency}
                     </span>
                     . Estimated profit:{" "}
-                    <span className="text-tradeGreen font-bold">7,500 NGN</span>{" "}
+                    <span className="text-tradeGreen font-bold">
+                      {" "}
+                      {exchangeRateInfo.estimatedProfit}{" "}
+                      {exchangeRateInfo.userCurrency}
+                    </span>{" "}
                     per&nbsp;
                     <span className="text-tradeGreen font-bold">
-                      1 USD
+                      1 {exchangeRateInfo.baseCurrency}
                     </span>{" "}
                     traded.
                   </p>
@@ -1303,7 +1392,8 @@ const CreateOffer = () => {
               </div>
             </div>
           </div>
-          <div className=" bg-black flex  flex-col gap-[15px] p-[15px]">
+          {/* Navigate to Offer Summary Mobile & Tablet */}
+          <div className=" bg-black flex md:hidden  flex-col gap-[15px] p-[15px]">
             <button
               onClick={() => navigateTo("/offers/create/summary")}
               className={` ${
@@ -1316,21 +1406,21 @@ const CreateOffer = () => {
             </button>
           </div>
         </div>
-
-        <div className="lg:flex hidden min-h-svh md:mt-[80px] mt-[60px]  lg:w-[520px] w-full border-neutral-800 ">
+        {/* Offer Summary Desktop */}
+        <div className="lg:flex hidden min-h-svh  lg:w-[520px] w-full border-neutral-800 ">
           <div className=" relative w-full  flex flex-col md:border-r md:border-b md:border-t border-neutral-800">
             <div className="flex flex-col justify-between p-[15px]  border-b border-tradeAshLight w-full">
               <p className="text-[17px] text-white font-[700]">Offer Summary</p>
             </div>
 
-            <div className="p-[15px]">
+            <div className="px-4 py-2">
               <p className="text-tradeFadeWhite text-[14px]">
                 Verify your offer information to set clear terms and support a
                 transparent, efficient trade.
               </p>
             </div>
 
-            <div className="flex flex-col p-[15px]  ">
+            <div className="flex flex-col p-[15px]">
               <div className="flex gap-4 items-center bg-tradeAshLight border border-neutral-800 p-[15px]">
                 <div>
                   {IconComponent && (
@@ -1361,7 +1451,7 @@ const CreateOffer = () => {
 
               <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
                 <p className="text-tradeFadeWhite text-[13px] font-[500]">
-                  Trade Limit Range
+                  Trade Range Limit
                 </p>
 
                 <div className="flex flex-col gap-1">
@@ -1416,7 +1506,7 @@ const CreateOffer = () => {
                 <p className="text-tradeFadeWhite text-[13px] font-medium">
                   Payment Window
                 </p>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-2">
                   <p className="text-white text-[14px]">
                     You’ve set a payment window of{" "}
                     <span className="font-[600] text-[14px] text-tradeGreen">
@@ -1441,7 +1531,7 @@ const CreateOffer = () => {
                   Confirmation Time
                 </p>
 
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-2">
                   <p className="text-white text-[14px]">
                     You’ve agreed to confirm receipt of payment and release
                     funds within{" "}
@@ -1463,12 +1553,12 @@ const CreateOffer = () => {
 
               <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
                 <p className="text-tradeFadeWhite text-[13px] font-medium">
-                  Term Tags
+                  Trade Terms Tag
                 </p>
                 <div className="grid grid-cols-2 gap-2">
                   {offerDetails?.termTags?.length ? (
                     offerDetails.termTags.map((tag, index) => (
-                      <div className="flex w-max items-center gap-[8px] px-[10px] py-[6px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight">
+                      <div className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight">
                         <p
                           key={index}
                           className="text-[14px] font-medium text-tradeOrange"
@@ -1517,7 +1607,7 @@ const CreateOffer = () => {
               </div>
             </div>
 
-            <div className="sticky top-[60px] bottom-0 bg-black flex flex-col gap-[15px] p-[15px]">
+            <div className=" bg-black flex flex-col gap-[15px] p-[15px]">
               <div className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
                 <p className="text-[14px] font-[700] ">Save Offer to Draft</p>
               </div>
