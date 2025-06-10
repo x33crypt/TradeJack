@@ -694,7 +694,48 @@ const CreateOffer = () => {
 
   console.log(exchangeRateInfo);
 
-  const handlePublishOffer = () => {};
+  const baseUrl = import.meta.env.VITE_API_URL;
+  console.log("API URL:", baseUrl);
+
+  const handlePublishOffer = async () => {
+    const payload = {
+      service_type: offerDetails?.serviceType,
+      service: offerDetails?.service,
+      preferred_currency: [
+        {
+          code: offerDetails?.currency?.code,
+          name: offerDetails?.currency?.name,
+        },
+      ],
+      purchase_limits: {
+        minimum: offerDetails?.minimum,
+        maximum: offerDetails?.maximum,
+      },
+      margin_rate: [
+        {
+          from: offerDetails?.minimum,
+          to: offerDetails?.maximum,
+          rate: offerDetails?.margin,
+        },
+      ],
+      terms: offerDetails?.termTags,
+      payment_window: offerDetails?.paymentWindow,
+      confirmation_window: offerDetails?.confirmationTime,
+      instructins: offerDetails?.instruction,
+    };
+
+    console.log(payload);
+
+    try {
+      const response = await axios.post(
+        `${baseUrl}/service-provider/offers/create`,
+        payload
+      );
+      console.log("Offer has been created and published.", response.data);
+    } catch (err) {
+      console.error("Offer Publish error:", err);
+    }
+  };
 
   return (
     <>
@@ -1171,7 +1212,7 @@ const CreateOffer = () => {
 
                   {/* Margin Breakdown */}
                   <p className="text-tradeFadeWhite  font-medium">
-                    A{" "}
+                    Your offering at{" "}
                     <span className="text-tradeOrange font-bold">
                       {offerDetails?.margin}% profit margin
                     </span>{" "}
@@ -1610,7 +1651,7 @@ const CreateOffer = () => {
                 <p className="text-[14px] font-[700] ">Save Offer to Draft</p>
               </div>
               <button
-                onClick={() => setPreviewOffer(!previewOffer)}
+                onClick={handlePublishOffer}
                 className={` ${
                   createOffer
                     ? "bg-tradeAsh text-tradeGreen"

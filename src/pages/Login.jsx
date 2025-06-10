@@ -4,25 +4,20 @@ import { IoWarning } from "react-icons/io5";
 import axios from "axios";
 import DOMPurify from "dompurify";
 import { useNavigate } from "react-router-dom";
-import { userContext } from "../App.jsx";
+import { useUserContext } from "@/context/UserContext";
 
 const Login = () => {
   const [loginDetails, setLoginpDetails] = useState({
     email: "",
     password: "",
   });
-
   const [errorMessage, setErrorMessage] = useState("");
-
   const [fieldError, setFieldError] = useState({
     email: { error: false, message: "" },
     password: { error: false, message: "" },
   });
   const [isLoggingIn, setIsLoggingIn] = useState(false);
-
-  const { user, setUser } = useContext(userContext);
-
-  console.log(user);
+  const { user, setUser } = useUserContext();
 
   const handleEmailChange = (e) => {
     setLoginpDetails((prevDetails) => ({
@@ -132,6 +127,11 @@ const Login = () => {
         console.log("Signin successful:", response.data);
         setUser(response?.data?.user);
         setIsLoggingIn(false);
+        setUser((prev) => ({
+          ...prev,
+          id: response?.data?.user?.id,
+        }));
+
         navigateTo("/dashboard");
       } catch (err) {
         setIsLoggingIn(false);
