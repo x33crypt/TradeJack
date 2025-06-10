@@ -711,8 +711,8 @@ const CreateOffer = () => {
           {/* Sub Heading */}
           <div className="px-4 py-2">
             <p className="text-tradeFadeWhite text-[14px]">
-              Fill in the details to define your offer with service type, service, pricing,
-              limits, payment method, and trade terms.
+              Fill in the details to define your offer with service type,
+              service, pricing, limits, trade terms and instructions.
             </p>
           </div>
           {/* Offer Creation Field */}
@@ -1158,7 +1158,6 @@ const CreateOffer = () => {
                     <p className="text-tradeFadeWhite font-medium">
                       Current Exchange Rate:
                     </p>
-
                     <p className="text-tradeGreen font-bold">
                       1 <span>{exchangeRateInfo?.baseCurrency}</span> ={" "}
                       <span>
@@ -1171,49 +1170,47 @@ const CreateOffer = () => {
                   </div>
 
                   {/* Margin Breakdown */}
-                  <div>
-                    <p className="text-tradeFadeWhite font-medium">
-                      With{" "}
-                      <span className="text-tradeOrange font-bold">
-                        {offerDetails?.margin}% profit margin
-                      </span>
-                      , your final rate is&nbsp;
-                      <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                        {exchangeRateInfo.adjustedRate} NGN
-                      </span>{" "}
-                      per&nbsp;
-                      <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                        1 {exchangeRateInfo.baseCurrency}
-                      </span>
-                      . Estimated profit:{" "}
-                      <span className="text-tradeGreen font-bold">
-                        {" "}
-                        {exchangeRateInfo.estimatedProfit}{" "}
-                        {exchangeRateInfo.userCurrency}
-                      </span>{" "}
-                      per&nbsp;
-                      <span className="text-tradeGreen font-bold">
-                        1 {exchangeRateInfo.baseCurrency}
-                      </span>{" "}
-                      traded.
-                    </p>
-                  </div>
+                  <p className="text-tradeFadeWhite font-medium">
+                    A{" "}
+                    <span className="text-tradeOrange font-bold">
+                      {offerDetails?.margin}% profit margin
+                    </span>{" "}
+                    sets your trade rate at{" "}
+                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
+                      {exchangeRateInfo.adjustedRate}{" "}
+                      {exchangeRateInfo.userCurrency}
+                    </span>{" "}
+                    per{" "}
+                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
+                      1 {exchangeRateInfo.baseCurrency}
+                    </span>
+                    . You'll earn about{" "}
+                    <span className="text-tradeGreen font-bold">
+                      {exchangeRateInfo.estimatedProfit}{" "}
+                      {exchangeRateInfo.userCurrency}
+                    </span>{" "}
+                    per unit traded.
+                  </p>
 
-                  {/* Service charge */}
-                  <div>
-                    <p className="text-tradeFadeWhite font-medium">
-                      Note:{" "}
-                      <span className="text-white">
-                        Service charge applies at trade.
-                      </span>
-                    </p>
-                  </div>
+                  {/* Profit Variance Note */}
+                  <p className="text-tradeFadeWhite font-medium">
+                    Exchange rate changes from inflation affect your profit. When
+                    rates rise, profit increases; when they fall, profit
+                    decreases. Your earnings will always reflect your set
+                    margin.
+                  </p>
+
+                  {/* Service Charge Note */}
+                  <p className="text-tradeFadeWhite font-medium">
+                    <span className="text-white font-semibold">Note:</span>{" "}
+                    Service charge applies at trade.
+                  </p>
                 </div>
 
                 <div className="">
                   <Info
                     text={
-                      "Set a profit margin that appeals to traders while ensuring your earnings. A service charge typically between 0.50% and 2.00% applies per trade. To maintain a healthy return, consider setting your margin slightly higher (e.g. 4–8%) while staying competitive."
+                      "Set a profit margin that appeals to traders while ensuring your earnings. A service charge typically between 0.50% and 2.00% applies per trade. To maintain a healthy return, consider setting your margin slightly higher (e.g. 4–10%) while staying competitive."
                     }
                   />
                 </div>
