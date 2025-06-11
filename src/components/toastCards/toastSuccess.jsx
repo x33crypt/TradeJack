@@ -16,7 +16,7 @@ const ToastSuccess = () => {
               successMessage: "",
             }))
           }
-          className="flex items-center gap-3 bg-tradeAsh text-white border border-tradeGreen p-4 rounded-[10px] shadow-md md:w-[350px] text-center text-[13px] font-semibold toast-animate-fadeInOut"
+          className="flex items-center gap-3 bg-tradeAsh text-white border border-tradeGreen p-4 rounded-[10px] shadow-md md:w-[350px] w-full text-center text-[13px] font-semibold toast-animate-fadeInOut"
         >
           <div>
             <IoCheckmarkDoneCircleSharp className="text-[20px] text-tradeGreen" />
