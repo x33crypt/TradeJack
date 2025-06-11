@@ -27,8 +27,8 @@ import CreateOfferSummary from "./pages/CreateOfferSummary";
 import MyOffer from "./pages/MyOffer";
 import EditOffer from "./pages/EditOffer";
 import EditOfferSummary from "./pages/EditOfferSummary";
-import ToastSuccess from "./components/toastCards/ToastSuccess";
-import ToastError from "./components/toastCards/ToastError";
+// import ToastSuccess from "./components/toastCards/ToastSuccess";
+// import ToastError from "./components/toastCards/ToastError";
 
 const App = () => {
   return (
@@ -36,8 +36,8 @@ const App = () => {
       <ScrollToTop />
       <AuthProvider>
         <SelectElement />
-        <ToastSuccess />
-        <ToastError />
+        {/* <ToastSuccess />
+        <ToastError /> */}
         <TradeAlert />
         <Routes>
           {/* Public */}
