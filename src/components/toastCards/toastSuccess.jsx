@@ -6,7 +6,7 @@ const ToastSuccess = () => {
   const { toast, setToast } = useToast();
 
   return (
-    <div className="fixed flex items-center justify-center top-[70px] left-1/2 transform -translate-x-1/2 z-50 space-y-2 lg:top-auto lg:bottom-[15px] lg:px-[2%] md:px-[2.5%] px-[15px] bg-transparent w-full">
+    <div className="fixed flex items-center justify-center top-[20px] left-1/2 transform -translate-x-1/2 z-50 space-y-2 lg:top-auto lg:bottom-[15px] lg:px-[2%] md:px-[2.5%] px-[15px] bg-transparent w-full">
       {toast.success && (
         <div
           onClick={() =>
