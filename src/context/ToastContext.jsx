@@ -7,7 +7,8 @@ const ToastContext = createContext();
 export const ToastProvider = ({ children }) => {
   const [toast, setToast] = useState({
     success: true,
-    successMessage: "Your offer has been published successfully",
+    successMessage:
+      "Your offer has been published successfully. Your offer has been published successfully. Your offer has been",
     error: false,
     errorMessage: "hjhj",
     duration: 300000,

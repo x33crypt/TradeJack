@@ -6,7 +6,11 @@ const ToastSuccess = () => {
   const { toast, setToast } = useToast();
 
   return (
-    <div className="fixed flex items-center justify-center top-[15px] left-1/2 transform -translate-x-1/2 z-50 space-y-2 lg:top-auto lg:bottom-[15px] lg:px-[2%] md:px-[2.5%] px-[15px] bg-transparent w-full">
+    <div
+      className="fixed z-50 w-full px-[15px] md:px-[2.5%] lg:px-0
+             top-[15px] left-1/2 transform -translate-x-1/2 flex justify-center
+             lg:top-auto lg:bottom-[15px] pointer-events-none"
+    >
       {toast.success && (
         <div
           onClick={() =>
@@ -16,12 +20,12 @@ const ToastSuccess = () => {
               successMessage: "",
             }))
           }
-          className="flex items-center gap-2 bg-tradeAsh text-white border border-tradeGreen p-4 rounded-[10px] shadow-md md:w-[350px] w-full text-center text-[13px] font-semibold toast-animate-fadeInOut"
+          className="flex items-center gap-3 bg-black border border-tradeGreen p-4 rounded-[10px] shadow-md w-full md:w-[50%] lg:w-[360px] toast-animate-fadeInOut cursor-pointer pointer-events-auto"
         >
-          <div>
-            <IoCheckmarkDoneCircleSharp className="text-[18px] text-tradeGreen" />
-          </div>
-          <p>{toast.successMessage}</p>
+          <IoCheckmarkDoneCircleSharp className="text-[18px] text-tradeGreen shrink-0" />
+          <p className="text-[13px] text-white font-semibold">
+            {toast.successMessage}
+          </p>
         </div>
       )}
     </div>
