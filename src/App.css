@@ -1,11 +1,8 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
-.logo {
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -39,16 +36,38 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.hide-scrollbar::-webkit-scrollbar {
+/* This CSS style works for the Select Element. */
+/*  It hides scrollbar for Chrome, Safari, IE, Edge, Firefox and Opera when it turns true */
+
+/* .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+} */
+
+/* This CSS style works for the toast cards */
+@keyframes toastFadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10%,
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.toast-animate-fadeInOut {
+  animation: toastFadeInOut 3s ease-in-out;
 }

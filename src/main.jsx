@@ -10,43 +10,26 @@ import { SelectElementProvider } from "./context/SelectElementContext";
 import { OfferDetailsProvider } from "./context/CreateOfferDetailsContext";
 import { OfferFilterProvider } from "./context/OfferFilterContext";
 import { UserDetailsProvider } from "./context/UserContext";
+import { ToastProvider } from "./context/ToastContext";
 
 // Render MainApp into #root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <UserDetailsProvider>
-        <OfferFilterProvider>
-          <OfferDetailsProvider>
-            <SelectElementProvider>
-              <TradeAlertProvider>
-                <App />
-              </TradeAlertProvider>
-            </SelectElementProvider>
-          </OfferDetailsProvider>
-        </OfferFilterProvider>
-      </UserDetailsProvider>
+      <ToastProvider>
+        <UserDetailsProvider>
+          <OfferFilterProvider>
+            <OfferDetailsProvider>
+              <SelectElementProvider>
+                <TradeAlertProvider>
+                  <App />
+                </TradeAlertProvider>
+              </SelectElementProvider>
+            </OfferDetailsProvider>
+          </OfferFilterProvider>
+        </UserDetailsProvider>
+      </ToastProvider>
     </BrowserRouter>
   </StrictMode>
 );
-
-// // Render PromoContent into #rootTwo
-// const rootTwo = ReactDOM.createRoot(document.getElementById("rootTwo"));
-// rootTwo.render(
-//   <React.StrictMode>
-//     <TradeAlertProvider>
-//       <TradeAlert />
-//     </TradeAlertProvider>
-//   </React.StrictMode>
-// );
-
-// // Render PromoContent into #rootThree
-// const rootThree = ReactDOM.createRoot(document.getElementById("rootThree"));
-// rootThree.render(
-//   <React.StrictMode>
-//     <SelectElementProvider>
-//       <SelectElement />
-//     </SelectElementProvider>
-//   </React.StrictMode>
-// );

@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useSelectElement } from "@/context/SelectElementContext";
 import LockByScroll from "./LockByScroll";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { MdOutlineCancel } from "react-icons/md";
-import { IoClose } from "react-icons/io5";
 
 const SelectElement = () => {
   const { select, setSelect } = useSelectElement();
@@ -26,7 +24,7 @@ const SelectElement = () => {
   if (!select?.state) return null;
 
   return (
-    <div className="fixed inset-0  bg-black bg-opacity-80 flex flex-col gap-[15px] items-center justify-center z-50 px-[40px]">
+    <div className="fixed inset-0 bg-black bg-opacity-80 flex flex-col gap-[15px] items-center justify-center z-50 px-[40px]">
       <LockByScroll />
 
       {/* FIRST DIV — for string options */}

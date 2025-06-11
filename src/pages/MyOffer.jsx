@@ -1,4 +1,4 @@
-import MyOfferCard from "@/components/cards/MyOfferCard";
+import MyOfferCard from "@/components/offerCards/MyOfferCard";
 import Footer from "@/components/Footer";
 import InAppNav from "@/components/InAppNav";
 import React from "react";
@@ -63,7 +63,9 @@ const MyOffer = () => {
 
           <div className=" px-[15px] gap-[15px] flex flex-col ">
             <div className="z-10 sticky top-[118px] flex justify-between items-center px-4 py-2 bg-tradeAshLight shadow-sm">
-              <p className="text-tradeFadeWhite text-sm font-semibold">Published On</p>
+              <p className="text-tradeFadeWhite text-sm font-semibold">
+                Published On
+              </p>
               <p className="text-tradeOrange text-sm font-semibold">
                 June 14, 2025
               </p>

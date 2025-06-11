@@ -28,6 +28,7 @@ import CreateOfferSummary from "./pages/CreateOfferSummary";
 import MyOffer from "./pages/MyOffer";
 import EditOffer from "./pages/EditOffer";
 import EditOfferSummary from "./pages/EditOfferSummary";
+import ToastSuccess from "./components/toastCards/toastSuccess";
 
 const App = () => {
   const [user, setUser] = useState("");
@@ -38,6 +39,7 @@ const App = () => {
       <AuthProvider>
         <userContext.Provider value={{ user, setUser }}>
           <SelectElement />
+          <ToastSuccess />
           <TradeAlert />
           <Routes>
             {/* Public */}

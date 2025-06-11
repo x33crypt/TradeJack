@@ -5,6 +5,7 @@ import axios from "axios";
 import DOMPurify from "dompurify";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "@/context/UserContext";
+import { useToast } from "@/context/ToastContext";
 
 const Login = () => {
   const [loginDetails, setLoginpDetails] = useState({
@@ -18,6 +19,7 @@ const Login = () => {
   });
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const { user, setUser } = useUserContext();
+  const { toast, setToast } = useToast();
 
   const handleEmailChange = (e) => {
     setLoginpDetails((prevDetails) => ({
@@ -154,7 +156,16 @@ const Login = () => {
       <div className="flex-1 w-full bg-black">
         <div className="lg:px-[100px] lg:py-[40px] md:px-[50px] p-[20px] flex flex-col gap-[40px]">
           <div className="flex flex-col items-cente gap-[5px] mt-[30px]">
-            <p className="flex gap-[5px] text-[28px] text-white font-[800]">
+            <p
+              onClick={() =>
+                setToast({
+                  ...toast,
+                  success: true,
+                  successMessage: "hello",
+                })
+              }
+              className="flex gap-[5px] text-[28px] text-white font-[800]"
+            >
               Welcome Back
             </p>
             <p className="text-[13px] font-[500] text-tradeFadeWhite">
