@@ -40,7 +40,7 @@ const App = () => {
       <AuthProvider>
         <userContext.Provider value={{ user, setUser }}>
           <SelectElement />
-          <ToastSuccess />
+          {/* <ToastSuccess /> */}
           <ToastError />
           <TradeAlert />
           <Routes>
