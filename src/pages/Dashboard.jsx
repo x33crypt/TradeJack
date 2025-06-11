@@ -16,7 +16,8 @@ const Dashboard = () => {
 
   const getDashboard = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/profile/dashboard`);
+      const config = { withCredentials: true };
+      const response = await axios.get(`${baseUrl}/profile/dashboard`, config);
       console.log("Dasboard Retrived Successfully", response.data);
     } catch (err) {
       console.error(" Error While Fetching Dasboard:", err);
@@ -24,11 +25,7 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      getDashboard();
-    }, 5000); // 5 seconds
-
-    return () => clearTimeout(timer); // Cleanup if the component unmounts
+    getDashboard();
   }, []);
 
   return (

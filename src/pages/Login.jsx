@@ -18,7 +18,7 @@ const Login = () => {
     password: { error: false, message: "" },
   });
   const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const { user, setUser } = useUserContext();
+ 
   const { toast, setToast } = useToast();
 
   const handleEmailChange = (e) => {
@@ -127,13 +127,7 @@ const Login = () => {
       try {
         const response = await axios.post(`${baseUrl}/auth/login`, payload);
         console.log("Signin successful:", response.data);
-        setUser(response?.data?.user);
         setIsLoggingIn(false);
-        setUser((prev) => ({
-          ...prev,
-          id: response?.data?.user?.id,
-        }));
-
         navigateTo("/dashboard");
       } catch (err) {
         setIsLoggingIn(false);

@@ -17,10 +17,11 @@ import { IoWalletOutline } from "react-icons/io5";
 import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
+import { useToast } from "@/context/ToastContext";
+import { publishOffer } from "@/utils/offer/PublishOffer";
 
 const CreateOffer = () => {
   const { select, setSelect } = useSelectElement();
-  const [platformFee, setPlatformFee] = useState("5");
   const { offerDetails, setOfferDetails } = useCreateOfferDetails();
   const [currencies, setCurrencies] = useState([]);
   const [isOnlineWallet, setIsOnlineWallet] = useState(true);
@@ -28,16 +29,15 @@ const CreateOffer = () => {
   const [isGiftCard, setIsGiftCard] = useState(false);
   const [isDebitOrCreditCard, setIsDebitOrCreditCard] = useState(false);
   const [isCryptoAsset, setIsCryptoAsset] = useState(false);
-  const [previewOffer, setPreviewOffer] = useState(false);
-  const { createOffer, setCreateOffer } = useState(false);
   const [exchangeRateInfo, setExchangeRateInfo] = useState({
     baseCurrency: "USD", // The currency of the offer
     userCurrency: "NGN", // The user's local or target currency
-    margin: 0,
+    margin: 0, //The offer margin
     unitRate: 0, // Rate per 1 baseCurrency in quoteCurrency
     adjustedRate: 0, // Final rate after applying margin
     estimatedProfit: 0, // Projected profit after platform fees
   });
+  const { toast, setToast } = useToast();
 
   const serviceType = [
     "Online Wallet Transfer",
@@ -678,6 +678,8 @@ const CreateOffer = () => {
     }
   };
 
+  console.log(exchangeRateInfo);
+
   useEffect(() => {
     if (exchangeRateInfo.baseCurrency && exchangeRateInfo.userCurrency) {
       loadExchangeRateData(
@@ -692,48 +694,26 @@ const CreateOffer = () => {
     exchangeRateInfo.margin,
   ]);
 
-  console.log(exchangeRateInfo);
-
   const baseUrl = import.meta.env.VITE_API_URL;
   console.log("API URL:", baseUrl);
 
   const handlePublishOffer = async () => {
-    const payload = {
-      service_type: offerDetails?.serviceType,
-      service: offerDetails?.service,
-      preferred_currency: [
-        {
-          code: offerDetails?.currency?.code,
-          name: offerDetails?.currency?.name,
-        },
-      ],
-      purchase_limits: {
-        minimum: offerDetails?.minimum,
-        maximum: offerDetails?.maximum,
-      },
-      margin_rate: [
-        {
-          from: offerDetails?.minimum,
-          to: offerDetails?.maximum,
-          rate: offerDetails?.margin,
-        },
-      ],
-      terms: offerDetails?.termTags,
-      payment_window: offerDetails?.paymentWindow,
-      confirmation_window: offerDetails?.confirmationTime,
-      instructins: offerDetails?.instruction,
-    };
+    const result = await publishOffer(offerDetails);
 
-    console.log(payload);
-
-    try {
-      const response = await axios.post(
-        `${baseUrl}/service-provider/offers/create`,
-        payload
-      );
-      console.log("Offer has been created and published.", response.data);
-    } catch (err) {
-      console.error("Offer Publish error:", err);
+    if (result.success) {
+      console.log("Offer published:", result.data);
+      setToast({
+        ...toast,
+        success: true,
+        errorSuccess: result.data,
+      });
+    } else {
+      console.error("Publish failed:", result.error);
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: result.error,
+      });
     }
   };
 
@@ -797,7 +777,7 @@ const CreateOffer = () => {
                 </div>
               </div>
             </div>
-            {/* Service field */}
+            {/* Service fields */}
             <div className="flex flex-col border-b border-tradeAshLight">
               {/*Online Wallet Field */}
               <div
@@ -1419,6 +1399,7 @@ const CreateOffer = () => {
               <div className="flex flex-col gap-[15px]">
                 <textarea
                   onChange={handleInstruction}
+                  value={offerDetails?.instruction}
                   className="h-[150px] w-full bg-tradeAsh border border-tradeAshLight rounded-[10px] p-[12px] text-white text-[14px] placeholder-tradeFadeWhite focus:outline-none resize-none"
                   placeholder="Write your trade Instructions here."
                 ></textarea>
@@ -1434,11 +1415,15 @@ const CreateOffer = () => {
           {/* Navigate to Offer Summary Mobile & Tablet */}
           <div className=" bg-black flex md:hidden  flex-col gap-[15px] p-[15px]">
             <button
-              onClick={() => navigateTo("/offers/create/summary")}
+              onClick={() => {
+                if (offerDetails.isReadyToPublish) {
+                  navigateTo("/offers/create/summary");
+                }
+              }}
               className={` ${
-                previewOffer
-                  ? "bg-tradeAsh text-tradeGreen"
-                  : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
+                offerDetails?.isReadyToPublish
+                  ? "bg-tradeGreen  text-black"
+                  : "bg-tradeAsh text-tradeGreen"
               } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
             >
               <p className="text-[14px] font-[700]">Continue to Summary</p>
@@ -1651,12 +1636,10 @@ const CreateOffer = () => {
                 <p className="text-[14px] font-[700] ">Save Offer to Draft</p>
               </div>
               <button
-                onClick={handlePublishOffer}
-                className={` ${
-                  createOffer
-                    ? "bg-tradeAsh text-tradeGreen"
-                    : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
-                } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
+                onClick={() => {
+                  handlePublishOffer();
+                }}
+                className="bg-tradeGreen text-black w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300 active:bg-opacity-55"
               >
                 <p className="text-[14px] font-[700]">Publish Offer</p>
               </button>

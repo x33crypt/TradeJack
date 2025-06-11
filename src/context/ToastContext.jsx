@@ -6,12 +6,11 @@ const ToastContext = createContext();
 // Create the provider
 export const ToastProvider = ({ children }) => {
   const [toast, setToast] = useState({
-    success: true,
-    successMessage:
-      "Your offer has been published successfully. Your offer has been published successfully. Your offer has been",
+    success: false,
+    successMessage: "",
     error: false,
-    errorMessage: "hjhj",
-    duration: 300000,
+    errorMessage: "",
+    duration: 3000,
   });
 
   // Independent timer for success

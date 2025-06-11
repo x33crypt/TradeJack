@@ -7,10 +7,10 @@ import { IoWalletOutline } from "react-icons/io5";
 import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
+import { useToast } from "@/context/ToastContext";
 
 const CreateOfferSummary = () => {
   const { offerDetails, setOfferDetails } = useCreateOfferDetails();
-  const { createOffer, setCreateOffer } = useState(false);
 
   // Map full service type string to corresponding icon
   const serviceTypeIcons = {
@@ -23,6 +23,170 @@ const CreateOfferSummary = () => {
 
   // Get the icon component based on the full service type
   const IconComponent = serviceTypeIcons[offerDetails?.serviceType];
+
+  const handlePublishOffer = async () => {
+    const {
+      serviceType,
+      service,
+      currency,
+      minimum,
+      maximum,
+      margin,
+      termTags,
+      paymentWindow,
+      confirmationTime,
+      instruction,
+    } = offerDetails || {};
+
+    // Step-by-step validation: stops and logs the first missing field
+    if (!serviceType) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: `"Missing required field: service type"`,
+      });
+      return;
+    }
+
+    const getMissingServiceLabel = (type) => {
+      switch (type) {
+        case "Online Wallet Transfer":
+          return "Select Online Wallet";
+        case "Direct Bank Transfer":
+          return "Select Bank Account";
+        case "Gift Card Exchange":
+          return "Select Gift Card";
+        case "Card-Based Spending":
+          return "Select Debit or Credit Card";
+        case "Crypto Trading":
+          return "Select Crypto Asset";
+        default:
+          return "Service";
+      }
+    };
+
+    if (!offerDetails?.service) {
+      const label = getMissingServiceLabel(offerDetails?.serviceType);
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: `Missing required field: ${label}`,
+      });
+      return;
+    }
+
+    if (!currency?.code && !currency?.name) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: Select currency",
+      });
+      return;
+    }
+
+    if (!minimum) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: Minimum trade limit",
+      });
+      return;
+    }
+
+    if (!maximum) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: Maximum trade limit",
+      });
+      return;
+    }
+
+    if (margin <= 2) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage:
+          "Profit margin must be greater than 2% to publish your offer.",
+      });
+      return;
+    }
+
+    if (!paymentWindow) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: payment window",
+      });
+      return;
+    }
+
+    if (!confirmationTime) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: confirmation window",
+      });
+      return;
+    }
+
+    if (termTags?.length == 0) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: offer terms tag",
+      });
+      return;
+    }
+
+    if (!instruction) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: trade instruction",
+      });
+      return;
+    }
+
+    const payload = {
+      service_type: serviceType,
+      service,
+      preferred_currency: [
+        {
+          code: currency.code,
+          name: currency.name,
+        },
+      ],
+      purchase_limits: {
+        minimum,
+        maximum,
+      },
+      margin_rate: [
+        {
+          from: minimum,
+          to: maximum,
+          rate: margin,
+        },
+      ],
+      terms: termTags,
+      payment_window: paymentWindow,
+      confirmation_window: confirmationTime,
+      instructions: instruction,
+    };
+
+    try {
+      const response = await axios.post(
+        `${baseUrl}/service-provider/offers/create`,
+        payload
+      );
+      console.log("Offer successfully created:", response.data);
+    } catch (err) {
+      console.error(
+        "Failed to publish offer:",
+        err?.response?.data || err.message
+      );
+    }
+  };
 
   return (
     <>
@@ -233,10 +397,15 @@ const CreateOfferSummary = () => {
                 <p className="text-[14px] font-[700] ">Save Offer to Draft</p>
               </div>
               <button
+                onClick={() => {
+                  if (offerDetails.isReadyToPublish) {
+                    handlePublishOffer;
+                  }
+                }}
                 className={` ${
-                  createOffer
-                    ? "bg-tradeAsh text-tradeGreen"
-                    : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
+                  offerDetails.isReadyToPublish
+                    ? "bg-tradeGreen  text-black"
+                    : "bg-tradeAsh text-tradeGreen"
                 } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
               >
                 <p className="text-[14px] font-[700]">Publish Offer</p>

@@ -164,10 +164,10 @@ const EditOffer = (props) => {
 
             {/* Offer Details */}
             <div className="p-[15px] ">
-              <div className=" flex md:grid grid-cols-2 md:gap-3 flex-col md:border-0 border border-tradeAshLight  hover:shadow-lg overflow-hidden">
-                <div className="flex flex-col bg-tradeAsh md:border border-tradeAshLight ">
+              <div className=" flex md:grid grid-cols-2 gap-3 flex-col hover:shadow-lg overflow-hidden">
+                <div className="flex flex-col bg-tradeAshLight border border-tradeAshExtraLight rounded-[12px]">
                   {/* Offer Id Field */}
-                  <div className="flex justify-between items-center p-3 border-b border-tradeAshLight">
+                  <div className="flex justify-between items-center p-3 border-b border-black">
                     <p className="text-tradeFadeWhite text-[13px] font-semibold">
                       Offer ID
                     </p>
@@ -177,7 +177,7 @@ const EditOffer = (props) => {
                     </p>
                   </div>
                   {/* service Type*/}
-                  <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
+                  <div className="flex items-center justify-between p-3 border-b border-black">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       Service Type
                     </p>
@@ -186,7 +186,7 @@ const EditOffer = (props) => {
                     </p>
                   </div>
                   {/* service*/}
-                  <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
+                  <div className="flex items-center justify-between p-3  border-b border-black">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       Service
                     </p>
@@ -195,7 +195,7 @@ const EditOffer = (props) => {
                     </p>
                   </div>
                   {/* Accepted Currency */}
-                  <div className="flex items-center justify-between p-3  border-b md:border-b-0 border-tradeAshLight">
+                  <div className="flex items-center justify-between p-3">
                     <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                       Accepted Currency
                     </p>
@@ -204,9 +204,9 @@ const EditOffer = (props) => {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-col bg-tradeAsh md:border border-tradeAshLight ">
+                <div className="flex flex-col bg-tradeAshLight border border-tradeAshExtraLight rounded-[12px]">
                   {/* Published Date*/}
-                  <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
+                  <div className="flex items-center justify-between p-3 border-b border-black">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       Published Date
                     </p>
@@ -215,7 +215,7 @@ const EditOffer = (props) => {
                     </p>
                   </div>
                   {/* Offer Status*/}
-                  <div className="flex items-center justify-between p-3 border-b border-tradeAshLight">
+                  <div className="flex items-center justify-between p-3 border-b border-black">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       Offer Status
                     </p>
@@ -227,7 +227,7 @@ const EditOffer = (props) => {
                     </div>
                   </div>
                   {/* Trade Volume */}
-                  <div className="flex items-center justify-between p-3  border-b border-tradeAshLight">
+                  <div className="flex items-center justify-between p-3  border-b border-black">
                     <div className="flex items-center gap-2">
                       <p className=" text-[13px] text-tradeFadeWhite font-semibold">
                         Trade Volume
@@ -459,7 +459,6 @@ const EditOffer = (props) => {
                     />
                   </div>
                 </div>
-
               </div>
               {/* Payment Window Field */}
               <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
