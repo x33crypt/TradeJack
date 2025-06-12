@@ -521,18 +521,26 @@ const CreateOffer = () => {
     }));
   };
 
-  const handleAddMargine = (e) => {
-    setOfferDetails((prev) => ({
-      ...prev,
-      margin: Math.min(21, Number(prev.margin || 0) + 1),
-    }));
+  const handleAddMargin = () => {
+    setOfferDetails((prev) => {
+      const current = Number(prev.margin || 0);
+      const next = current + 1;
+      return {
+        ...prev,
+        margin: next > 80 ? 80 : next,
+      };
+    });
   };
 
-  const handleMinusMargine = (e) => {
-    setOfferDetails((prev) => ({
-      ...prev,
-      margin: Math.max(0, Number(prev.margin || 0) - 1),
-    }));
+  const handleMinusMargin = () => {
+    setOfferDetails((prev) => {
+      const current = Number(prev.margin || 0);
+      const next = current - 1;
+      return {
+        ...prev,
+        margin: next < 4 ? 4 : next,
+      };
+    });
   };
 
   const handleAddPaymentWindow = (e) => {
@@ -1034,7 +1042,7 @@ const CreateOffer = () => {
               <div className="w-full flex flex-col gap-[15px] p-[15px]">
                 <div className="flex items-center w-full flex-row  gap-[15px]">
                   <div
-                    onClick={handleMinusMargine}
+                    onClick={handleMinusMargin}
                     className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
                   >
                     <FaMinus />
@@ -1042,26 +1050,16 @@ const CreateOffer = () => {
 
                   <div className="bg-tradeAsh flex justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
                     <p className="text-white text-[14px]">
-                      {offerDetails?.margin === 0 ? (
-                        <span className="text-red-500">No margin applied</span>
-                      ) : offerDetails?.margin > 20 ? (
-                        <span className="text-red-500">
-                          Margin cannot exceed 20%
-                        </span>
-                      ) : (
-                        <>
-                          <span className="font-bold">
-                            {offerDetails.margin > 0 ? "+" : ""}
-                            {offerDetails.margin}%
-                          </span>{" "}
-                          profit margin per trade
-                        </>
-                      )}
+                      <span className="font-bold">
+                        {offerDetails.margin > 0 ? "+" : ""}
+                        {offerDetails.margin}%
+                      </span>{" "}
+                      profit margin per trade
                     </p>
                   </div>
 
                   <div
-                    onClick={handleAddMargine}
+                    onClick={handleAddMargin}
                     className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
                   >
                     <FaPlus />

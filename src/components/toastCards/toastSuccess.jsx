@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useToast } from "@/context/ToastContext";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 
@@ -6,11 +6,7 @@ const ToastSuccess = () => {
   const { toast, setToast } = useToast();
 
   return (
-    <div
-      className="fixed z-50 w-full px-[15px] md:px-[2.5%] lg:px-0
-             top-[15px] left-1/2 transform -translate-x-1/2 flex justify-center
-             lg:top-auto lg:bottom-[50px] pointer-events-none"
-    >
+    <div className="fixed z-50 w-full px-[15px] md:px-[2.5%] lg:px-0 top-[15px] left-1/2 transform -translate-x-1/2 flex justify-center lg:top-auto lg:bottom-[50px] pointer-events-none">
       {toast.success && (
         <div
           onClick={() =>

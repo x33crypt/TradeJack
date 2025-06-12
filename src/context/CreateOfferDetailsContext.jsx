@@ -11,7 +11,7 @@ export const OfferDetailsProvider = ({ children }) => {
     currency: { code: "", name: "" },
     minimum: "",
     maximum: "",
-    margin: 5,
+    margin: 4,
     paymentWindow: 1,
     confirmationTime: 1,
     termTags: [],
