@@ -7,15 +7,15 @@ const sanitizeInput = (input) => {
   return cleaned.trim();
 };
 
+// At least 8 characters, including uppercase, lowercase, number, and special character
 const validatePassword = (password) => {
-  // At least 8 characters, including uppercase, lowercase, number, and special character
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   return passwordRegex.test(password);
 };
 
+// Basic email format validation
 const validateEmail = (email) => {
-  // Basic email format validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
@@ -52,8 +52,7 @@ export async function signin(signinDetails) {
   if (!validatePassword(sanitizedPassword)) {
     return {
       success: false,
-      error:
-        "Password must be at least 8 characters, include uppercase, lowercase, number, and special character.",
+      error: "Invalid password format.",
     };
   }
 
@@ -63,7 +62,10 @@ export async function signin(signinDetails) {
   };
 
   try {
-    const response = await axios.post(`${baseUrl}/auth/login`, payload);
+    const config = { withCredentials: true };
+    const response = await axios.post(`${baseUrl}/auth/login`, payload, config);
+
+    console.log(response);
     return { success: true, data: response.data };
   } catch (err) {
     console.log(err);
