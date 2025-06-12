@@ -9,9 +9,9 @@ import CreateOffer from "./pages/CreateOffer";
 import Messages from "./pages/Messages";
 import UserProfile from "./pages/UserProfile";
 import DepositAndWithdraw from "./pages/DepositAndWithdraw";
-import Signup from "./pages/Signup";
+import SignupUser from "./pages/SignupUser";
 import SignupSuccess from "./pages/SignupSuccess";
-import Login from "./pages/Login";
+import SigninUser from "./pages/SigninUser";
 import Logout from "./pages/Logout";
 import ConfirmPassword from "./components/ConfirmPassword";
 import ChangeName from "./pages/ChangeName";
@@ -20,15 +20,14 @@ import ChangeUsername from "./pages/ChangeUsername";
 import ChangeEmail from "./pages/ChangeEmail";
 import ChangePhone from "./pages/ChangePhone";
 import ChangeAdress from "./pages/ChangeAdress";
-
 import SelectElement from "./components/SelectElement";
 import TradeAlert from "./components/TradeAlert";
 import CreateOfferSummary from "./pages/CreateOfferSummary";
 import MyOffer from "./pages/MyOffer";
 import EditOffer from "./pages/EditOffer";
 import EditOfferSummary from "./pages/EditOfferSummary";
-// import ToastSuccess from "./components/toastCards/ToastSuccess";
-// import ToastError from "./components/toastCards/ToastError";
+import ToastSuccess from "./components/toastCards/ToastSuccess";
+import ToastError from "./components/toastCards/ToastError";
 
 const App = () => {
   return (
@@ -36,15 +35,15 @@ const App = () => {
       <ScrollToTop />
       <AuthProvider>
         <SelectElement />
-        {/* <ToastSuccess />
-        <ToastError /> */}
+        <ToastSuccess />
+        <ToastError />
         <TradeAlert />
         <Routes>
           {/* Public */}
           <Route path="/" element={<Landing />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<SignupUser />} />
           <Route path="/signup/success" element={<SignupSuccess />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/signin" element={<SigninUser />} />
           <Route path="/logout" element={<Logout />} />
 
           {/* Dashboard */}

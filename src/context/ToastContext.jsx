@@ -10,7 +10,7 @@ export const ToastProvider = ({ children }) => {
     successMessage: "",
     error: false,
     errorMessage: "",
-    duration: 3000,
+    duration: 5000,
   });
 
   // Independent timer for success

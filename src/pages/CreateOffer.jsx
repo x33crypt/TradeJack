@@ -18,25 +18,24 @@ import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
 import { useToast } from "@/context/ToastContext";
-import { publishOffer } from "@/utils/offer/PublishOffer";
+import { publish } from "@/utils/offer/publish";
+import { useCurrencies } from "@/hooks/useCurrencies";
+import { useExchangeRate } from "@/hooks/useExchangeRate";
 
 const CreateOffer = () => {
   const { select, setSelect } = useSelectElement();
   const { offerDetails, setOfferDetails } = useCreateOfferDetails();
-  const [currencies, setCurrencies] = useState([]);
+  const { currencies } = useCurrencies();
   const [isOnlineWallet, setIsOnlineWallet] = useState(true);
   const [isAccount, setIsAccount] = useState(false);
   const [isGiftCard, setIsGiftCard] = useState(false);
   const [isDebitOrCreditCard, setIsDebitOrCreditCard] = useState(false);
   const [isCryptoAsset, setIsCryptoAsset] = useState(false);
-  const [exchangeRateInfo, setExchangeRateInfo] = useState({
-    baseCurrency: "USD", // The currency of the offer
-    userCurrency: "NGN", // The user's local or target currency
-    margin: 0, //The offer margin
-    unitRate: 0, // Rate per 1 baseCurrency in quoteCurrency
-    adjustedRate: 0, // Final rate after applying margin
-    estimatedProfit: 0, // Projected profit after platform fees
-  });
+  const { rateInfo } = useExchangeRate(
+    offerDetails.currency.code ? offerDetails.currency.code : "USD",
+    "NGN",
+    offerDetails?.margin
+  );
   const { toast, setToast } = useToast();
 
   const serviceType = [
@@ -369,45 +368,7 @@ const CreateOffer = () => {
     "Flow (FLOW)",
   ];
 
-  //get currency function
-  const getCurrencies = async () => {
-    try {
-      const response = await axios.get("https://restcountries.com/v3.1/all");
-      const countries = response.data;
-
-      const currencyMap = {};
-
-      countries.forEach((country) => {
-        if (country.currencies) {
-          for (const [code, { name, symbol }] of Object.entries(
-            country.currencies
-          )) {
-            if (!currencyMap[code]) {
-              currencyMap[code] = {
-                name: name || "Unknown",
-                symbol: symbol || "",
-              };
-            }
-          }
-        }
-      });
-
-      // Convert to array and sort
-      const currencyList = Object.entries(currencyMap)
-        .map(([code, details]) => ({
-          code,
-          name: details.name,
-          symbol: details.symbol,
-        }))
-        .sort((a, b) => a.code.localeCompare(b.code));
-
-      console.log(currencyList);
-
-      setCurrencies(currencyList);
-    } catch (error) {
-      console.error("Error fetching currency data:", error.message);
-    }
-  };
+  console.log(rateInfo);
 
   //handing service field change when service type changes
   const handleServiceTypeChange = () => {
@@ -522,11 +483,6 @@ const CreateOffer = () => {
     }
   }, [select]);
 
-  // Calling currencies function to fetch currencies
-  useEffect(() => {
-    getCurrencies();
-  }, []);
-
   // Reset offer details on page load unless coming from the summary page
   const location = useLocation();
   const prevLocationRef = useRef(null);
@@ -636,69 +592,8 @@ const CreateOffer = () => {
 
   const navigateTo = useNavigate();
 
-  // Sync exchangeRateInfo.baseCurrency with the latest offerDetails.currency.code on change
-  useEffect(() => {
-    if (offerDetails?.currency?.code) {
-      setExchangeRateInfo((prev) => ({
-        ...prev,
-        baseCurrency: offerDetails.currency.code,
-      }));
-    }
-  }, [offerDetails?.currency?.code]);
-
-  // Sync exchangeRateInfo.margin with the latest offerDetails.margin on change
-  useEffect(() => {
-    setExchangeRateInfo((prev) => ({
-      ...prev,
-      margin: offerDetails?.margin,
-    }));
-  }, [offerDetails?.margin]);
-
-  // Calculates Users Offer profit from margin and converts offer currency to user’s account currency
-  const loadExchangeRateData = async (baseCurrency, userCurrency, margin) => {
-    try {
-      const response = await axios.get(
-        `https://api.coinbase.com/v2/prices/${baseCurrency}-${userCurrency}/spot`
-      );
-
-      const rawAmount = response.data.data.amount;
-      const roundedAmount = Number(parseFloat(rawAmount).toFixed(2));
-
-      const estimatedProfit = roundedAmount * (margin / 100);
-      const adjustedRate = roundedAmount - estimatedProfit;
-
-      setExchangeRateInfo((prev) => ({
-        ...prev,
-        unitRate: roundedAmount,
-        adjustedRate: Number(adjustedRate.toFixed(2)),
-        estimatedProfit: Number(estimatedProfit.toFixed(2)),
-      }));
-    } catch (err) {
-      console.error("Error fetching rate:", err);
-    }
-  };
-
-  console.log(exchangeRateInfo);
-
-  useEffect(() => {
-    if (exchangeRateInfo.baseCurrency && exchangeRateInfo.userCurrency) {
-      loadExchangeRateData(
-        exchangeRateInfo.baseCurrency,
-        exchangeRateInfo.userCurrency,
-        exchangeRateInfo.margin
-      );
-    }
-  }, [
-    exchangeRateInfo.baseCurrency,
-    exchangeRateInfo.userCurrency,
-    exchangeRateInfo.margin,
-  ]);
-
-  const baseUrl = import.meta.env.VITE_API_URL;
-  console.log("API URL:", baseUrl);
-
-  const handlePublishOffer = async () => {
-    const result = await publishOffer(offerDetails);
+  const handlepublish = async () => {
+    const result = await publish(offerDetails);
 
     if (result.success) {
       console.log("Offer published:", result.data);
@@ -1174,54 +1069,61 @@ const CreateOffer = () => {
                 </div>
 
                 <div className="flex p-3 bg-tradeAsh rounded-[10px] border border-tradeAshLight flex-col gap-2 text-[13px] text-white leading-relaxed">
-                  {/* Market Price */}
-                  <div className="flex gap-1 items-center">
-                    <p className="text-tradeFadeWhite font-medium">
-                      Current Exchange Rate:
-                    </p>
-                    <p className="text-tradeGreen font-bold">
-                      1 <span>{exchangeRateInfo?.baseCurrency}</span> ={" "}
-                      <span>
-                        {exchangeRateInfo.unitRate === 0
-                          ? "0.00"
-                          : exchangeRateInfo.unitRate}
-                      </span>{" "}
-                      <span>{exchangeRateInfo?.userCurrency}</span>
-                    </p>
-                  </div>
+                  {offerDetails?.currency?.code ? (
+                    <>
+                      {/* Market Price */}
+                      <div className="flex gap-1 items-center">
+                        <p className="text-tradeFadeWhite font-medium">
+                          Current Exchange Rate:
+                        </p>
+                        <p className="text-tradeGreen font-bold">
+                          1 <span>{offerDetails.currency.code}</span> ={" "}
+                          <span>
+                            {rateInfo.baseRate === 0
+                              ? "0.00"
+                              : rateInfo.baseRate}
+                          </span>{" "}
+                          <span>NGN</span>
+                        </p>
+                      </div>
 
-                  {/* Margin Breakdown */}
-                  <p className="text-tradeFadeWhite  font-medium">
-                    Your offering at{" "}
-                    <span className="text-tradeOrange font-bold">
-                      {offerDetails?.margin}% profit margin
-                    </span>{" "}
-                    sets your trade rate at{" "}
-                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                      {exchangeRateInfo.adjustedRate}{" "}
-                      {exchangeRateInfo.userCurrency}
-                    </span>{" "}
-                    per{" "}
-                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                      1 {exchangeRateInfo.baseCurrency}
-                    </span>
-                    . You'll earn about{" "}
-                    <span className="text-tradeGreen font-bold">
-                      {exchangeRateInfo.estimatedProfit}{" "}
-                      {exchangeRateInfo.userCurrency}
-                    </span>{" "}
-                    per{" "}
-                    <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                      1 {exchangeRateInfo.baseCurrency}
-                    </span>{" "}
-                    traded.
-                  </p>
+                      {/* Margin Breakdown */}
+                      <p className="text-tradeFadeWhite font-medium">
+                        Your offering at{" "}
+                        <span className="text-tradeOrange font-bold">
+                          {offerDetails?.margin}% profit margin
+                        </span>{" "}
+                        sets your trade rate at{" "}
+                        <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
+                          {rateInfo.finalRate} NGN
+                        </span>{" "}
+                        per{" "}
+                        <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
+                          1 {offerDetails.currency.code}
+                        </span>
+                        . You'll earn about{" "}
+                        <span className="text-tradeGreen font-bold">
+                          {rateInfo.profit} NGN
+                        </span>{" "}
+                        per{" "}
+                        <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
+                          1 {offerDetails.currency.code}
+                        </span>{" "}
+                        traded.
+                      </p>
 
-                  {/* Service Charge Note */}
-                  <p className="text-tradeFadeWhite font-medium">
-                    <span className="text-white font-semibold">Note:</span>{" "}
-                    Service charge applies at trade.
-                  </p>
+                      {/* Service Charge Note */}
+                      <p className="text-tradeFadeWhite font-medium">
+                        <span className="text-white font-semibold">Note:</span>{" "}
+                        Service charge applies at trade.
+                      </p>
+                    </>
+                  ) : (
+                    <p className="text-tradeFadeWhite text-center py-6 font-medium">
+                      Your rate breakdown will appear here once you select a
+                      currency.
+                    </p>
+                  )}
                 </div>
 
                 <div className="">
@@ -1637,7 +1539,7 @@ const CreateOffer = () => {
               </div>
               <button
                 onClick={() => {
-                  handlePublishOffer();
+                  handlepublish();
                 }}
                 className="bg-tradeGreen text-black w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300 active:bg-opacity-55"
               >

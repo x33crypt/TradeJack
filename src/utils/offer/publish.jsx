@@ -17,7 +17,7 @@ const getMissingServiceLabel = (type) => {
   }
 };
 
-export async function publishOffer(offerDetails) {
+export async function publish(offerDetails) {
   console.log("Hey, Publishing Ok!");
 
   const baseUrl = import.meta.env.VITE_API_URL;
@@ -127,6 +127,8 @@ export async function publishOffer(offerDetails) {
     );
     return { success: true, data: response.data };
   } catch (err) {
+    console.log(err);
+
     return {
       success: false,
       error: err?.response?.data?.message || err.message || "Unknown error",
