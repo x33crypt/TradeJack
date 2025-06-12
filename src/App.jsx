@@ -26,8 +26,8 @@ import CreateOfferSummary from "./pages/CreateOfferSummary";
 import MyOffer from "./pages/MyOffer";
 import EditOffer from "./pages/EditOffer";
 import EditOfferSummary from "./pages/EditOfferSummary";
-import ToastSuccess from "./components/toastCards/ToastSuccess.jsx";
-import ToastError from "./components/toastCards/ToastError.jsx";
+import ToastSuccess from "./components/toastCards/ToastSuccess";
+import ToastError from "./components/toastCards/ToastError";
 
 const App = () => {
   return (
