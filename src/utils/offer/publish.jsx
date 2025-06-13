@@ -120,10 +120,13 @@ export async function publish(offerDetails) {
     instructions: instruction,
   };
 
+  const config = { withCredentials: true };
+
   try {
     const response = await axios.post(
       `${baseUrl}/service-provider/offers/create`,
-      payload
+      payload,
+      config
     );
     return { success: true, data: response.data };
   } catch (err) {

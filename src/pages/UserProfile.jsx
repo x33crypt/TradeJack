@@ -37,7 +37,7 @@ const UserProfile = () => {
       <MarketTopNav />
 
       <div className="md:pt-[80px] pt-[75px] pb-[10px] lg:px-[2%] md:px-[2.5%] p-[15px] min-h-screen flex flex-col gap-[20px] bg-black">
-        <div className="flex lg:flex-row flex-col p-[15px] lg:p-0 lg:pb-[15px] md:items-cente gap-[20px]  border-0 lg:border-0 lg:border-b border-tradeAshLight rounded-[10px] lg:rounded-none">
+        <div className="flex lg:flex-row flex-col  lg:pb-[15px] md:items-cente gap-[20px]  border-0 lg:border-0 lg:border-b border-tradeAshLight rounded-[10px] lg:rounded-none">
           <div className="flex-1 bg-tradeGree flex flex-col md:flex-row md:gap-[20px] gap-[20px] items-center ">
             <div className="flex lg:w-[200px] md:w-[150px] w-[150px] shrink-0 justify-center cursor-pointer ">
               <img className="rounded-full" src={image} alt="" />
