@@ -20,7 +20,7 @@ import { TiArrowRight } from "react-icons/ti";
 const DashMain = () => {
   return (
     <>
-      <div className="flex-1 md:flex hidden md:mt-[80px] pt-[m0px] border-b border-l border-tradeAshLight">
+      <div className="flex-1 md:flex hidden md:mt-[80px] border-b border-l border-tradeAshLight">
         <div className="flex flex-1 flex-col">
           <div className="bg-tradeOrang flex flex-col justify-between p-[15px] border-y border-tradeAshLight">
             <p className=" lg:text-[17px] text-[20px] text-tradeFadeWhite  ">

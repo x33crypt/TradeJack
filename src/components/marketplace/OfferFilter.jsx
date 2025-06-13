@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useOfferFilter } from "@/context/OfferFilterContext";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { TbReload } from "react-icons/tb";
-import { IoCloseSharp } from "react-icons/io5";
 import axios from "axios";
-import { BiSolidBinoculars } from "react-icons/bi";
 import { IoClose } from "react-icons/io5";
 
 const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {

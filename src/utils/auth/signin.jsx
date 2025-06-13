@@ -72,7 +72,7 @@ export async function signin(signinDetails) {
 
     return {
       success: false,
-      error: err?.response?.data?.message || err.message || "Unknown error",
+      error: err?.response?.data?.error?.message || "Unknown error",
     };
   }
 }
