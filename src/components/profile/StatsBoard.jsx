@@ -77,12 +77,12 @@ const StatsBoard = () => {
 
           <div className="flex items-center gap-2">
             <div className="p-1  rounded-full bg-[#00de82]/30 ">
-              <MdThumbUpAlt className="text-tradeGreen text-[13px] md:text-[14px] leading-none" />
+              <MdThumbUpAlt className="text-tradeGreen text-[13px] md:text-sm leading-none" />
             </div>
 
             <p
               id="positive"
-              className="text-[20px] md:text-[22px] text-white font-[900] leading-none"
+              className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
             >
               0
             </p>
@@ -96,12 +96,12 @@ const StatsBoard = () => {
 
           <div className="flex items-center gap-2">
             <div className="p-1  rounded-full bg-red-600/30">
-              <MdThumbDownAlt className="text-red-600 text-[13px] md:text-[14px] leading-none" />
+              <MdThumbDownAlt className="text-red-600 text-[13px] md:text-sm leading-none" />
             </div>
 
             <p
               id="negative"
-              className="text-[20px] md:text-[22px] text-white font-[900] leading-none"
+              className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
             >
               0
             </p>
@@ -112,11 +112,11 @@ const StatsBoard = () => {
           <p className="text-tradeFadeWhite text-xs font-bold">Trust Score</p>
           <div className="flex gap-2">
             <div className="p-1  rounded-full bg-tradeOrange/30">
-              <MdOutlineGppGood className="text-tradeOrange text-[13px] md:text-[14px] leading-none" />
+              <MdOutlineGppGood className="text-tradeOrange text-[13px] md:text-sm leading-none" />
             </div>
             <p
               id="trust"
-              className="text-[20px] md:text-[22px] text-white font-[900] leading-none"
+              className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
             >
               0
             </p>
@@ -129,7 +129,7 @@ const StatsBoard = () => {
           <div className="flex items-end gap-2">
             <p
               id="tradeVolume"
-              className="text-[20px] md:text-[22px] text-white font-[900] leading-none"
+              className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
             >
               0
             </p>
@@ -144,7 +144,7 @@ const StatsBoard = () => {
           <div className="flex items-end gap-2">
             <p
               id="tradePartners"
-              className="text-[20px] md:text-[22px] text-white font-[900] leading-none"
+              className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
             >
               0
             </p>
@@ -157,7 +157,7 @@ const StatsBoard = () => {
           <div className="flex items-end gap-2">
             <p
               id="totalTrade"
-              className="text-[20px] md:text-[22px] text-white font-[900] leading-none"
+              className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
             >
               0
             </p>

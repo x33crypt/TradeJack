@@ -17,7 +17,7 @@ const Performance = () => {
               <p className="text-xs text-tradeOrange font-bold">0,52%</p>
             </div>
             <div className="flex">
-              <p className="text-3xl text-white font-[800] leading-none">
+              <p className="md:md:text-3xl text-2xl text-white font-[800] leading-none">
                 25,568 NGN
               </p>
             </div>
@@ -31,7 +31,7 @@ const Performance = () => {
               <p className="text-xs text-tradeGreen font-bold">0,52%</p>
             </div>
             <div className="flex">
-              <p className="text-3xl text-white font-[800] leading-none">
+              <p className="md:text-3xl text-2xl text-white font-[800] leading-none">
                 25,568 NGN
               </p>
             </div>
