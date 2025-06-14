@@ -4,10 +4,13 @@ import React, { useState, useEffect, useRef } from "react";
 import image from "../assets/landingImg4.JPG";
 import { MdThumbUpAlt } from "react-icons/md";
 import { MdThumbDownAlt } from "react-icons/md";
-
 import useSafeNavigate from "@/components/SafeNavigation";
 import { GiTopHat } from "react-icons/gi";
 import { MdOutlineGppGood } from "react-icons/md";
+import { FaLocationDot } from "react-icons/fa6";
+import { TbEye } from "react-icons/tb";
+import { TbEyeFilled } from "react-icons/tb";
+import { RiEye2Fill } from "react-icons/ri";
 
 const UserProfile = () => {
   const [isAccountVerified, setIsAccountVerified] = useState(false);
@@ -39,7 +42,7 @@ const UserProfile = () => {
       <div className="md:pt-[80px] pt-[75px] pb-[10px] lg:px-[2%] md:px-[2.5%] p-[15px] min-h-screen flex flex-col gap-[20px] bg-black">
         <div className="flex lg:flex-row flex-col  lg:pb-[15px] md:items-cente gap-[20px]  border-0 lg:border-0 lg:border-b border-tradeAshLight rounded-[10px] lg:rounded-none">
           <div className="flex-1 bg-tradeGree flex flex-col md:flex-row md:gap-[20px] gap-[20px] items-center ">
-            <div className="flex lg:w-[200px] md:w-[150px] w-[150px] shrink-0 justify-center cursor-pointer ">
+            <div className="flex lg:w-[200px] md:w-[170px] w-[150px] shrink-0 justify-center cursor-pointer ">
               <img className="rounded-full" src={image} alt="" />
             </div>
 
@@ -55,23 +58,24 @@ const UserProfile = () => {
                 </p>
               </div>
 
-              <div className="flex items-center gap-5">
-                <div className="flex flex-col gap-1">
-                  <p className="text-tradeFadeWhite text-xs font-bold">
+              <div className="flex items-center md:gap-5 gap-3">
+                <div className="flex md:flex-col gap-1 items-center">
+                  <p className="md:flex hidden text-tradeFadeWhite text-xs font-bold">
                     LOCATION
                   </p>
-
+                  <FaLocationDot className="md:hidden flex text-tradeFadeWhite text-[13px] leading-none" />
                   <p className="lg:text-[14px] sm:text-[13px] text-[13px] font-[600] text-white">
                     Nigeria
                   </p>
                 </div>
 
-                <div className="flex flex-col gap-1">
-                  <p className="text-tradeFadeWhite text-xs font-bold">
+                <div className="flex md:flex-col gap-1 items-center">
+                  <p className="md:flex hidden text-tradeFadeWhite text-xs font-bold">
                     LAST SEEN
                   </p>
+                  <RiEye2Fill className="md:hidden flex text-tradeGreen text-[13px] leading-none" />
                   <p className="mt-0 text-tradeGreen text-[14px] font-[600]">
-                    10 minutes ago
+                    Online
                   </p>
                 </div>
               </div>
@@ -82,9 +86,9 @@ const UserProfile = () => {
             <p className="hidden">g</p>
           </div>
 
-          <div className="flex-1 flex items-center bg-tradeOrang">
-            <div className="grid md:grid-cols-3 grid-cols-2 gap-[35px] bg-tradeOrang h-max justify-between">
-              <div className="flex flex-col gap-2 bg-tradeGree">
+          <div className="flex-1 flex items-center bg-tradeOrang p-[12px] lg:p-0 border md:border-0 border-tradeAshLight rounded-[10px] bg-tradeAsh lg:bg-transparent">
+            <div className="grid md:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-[35px] bg-tradeOrang w-full h-max">
+              <div className="flex w-full flex-col gap-2 bg-tradeGree">
                 <p className="text-tradeFadeWhite text-xs font-bold">
                   POSITIVE FEEDBACK
                 </p>
