@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
 import MarketTopNav from "@/components/InAppNav";
 import React, { useState, useEffect, useRef } from "react";
-import Performance from "@/components/profile/performance";
+import Performance from "@/components/profile/Performance";
 import PersonalInfo from "@/components/profile/PersonalInfo";
 import Hero from "@/components/profile/Hero";
 import StatsBoard from "@/components/profile/StatsBoard";
