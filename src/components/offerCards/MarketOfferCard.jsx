@@ -81,10 +81,10 @@ const MarketCard = (props) => {
         {/* Purchase Limits Section */}
         <div className="flex flex-1  flex-col justify-center px-4 py-6 gap-1 border-r border-tradeAshLight">
           <div className="flex justify-between items-center">
-            <p className=" flex md:hidden lg:flex text-xs font-semibold text-white">
+            <p className=" flex md:hidden lg:flex text-xs font-semibold text-tradeFadeWhite">
               Min Purchase
             </p>
-            <p className="  hidden md:flex lg:hidden text-xs font-semibold text-white">
+            <p className="  hidden md:flex lg:hidden text-xs font-semibold text-tradeFadeWhite">
               Minimum
             </p>
 
@@ -94,10 +94,10 @@ const MarketCard = (props) => {
           </div>
 
           <div className="flex justify-between items-center">
-            <p className=" flex md:hidden lg:flex  text-xs font-semibold  text-white">
+            <p className=" flex md:hidden lg:flex  text-xs font-semibold  text-tradeFadeWhite">
               Max Purchase
             </p>
-            <p className="  hidden md:flex lg:hidden  text-xs font-semibold  text-white">
+            <p className="  hidden md:flex lg:hidden  text-xs font-semibold  text-tradeFadeWhite">
               Maximum
             </p>
             <p className=" text-sm font-bold text-white">
@@ -107,9 +107,9 @@ const MarketCard = (props) => {
         </div>
 
         {/* Rate Info Section */}
-        <div className="flex flex-1  flex-col justify-center px-4 py-6 gap-1 border-r border-tradeAshLight bg-tradeAshExtraLight">
-          <div className="flex items-center gap-2">
-            <p className="text-sm font-bold text-white">
+        <div className="flex flex-1  flex-col justify-center px-4 py-6 gap-1 border-r border-tradeAshLight ">
+          <div className="flex items-center justify-between">
+            <p className="text-sm font-bold text-tradeFadeWhite">
               123,968.44 {props.currency?.code}
             </p>
 
@@ -119,17 +119,12 @@ const MarketCard = (props) => {
             </p>
           </div>
 
-          <div className="flex items-center ">
-            {/* <p className="text-xs text-white font-bold">
-              1&nbsp;
-              <span className="text-white font-semibold">
-                {props.currency?.code}
-              </span>
-              &nbsp;&#x2248;&nbsp;
-              <span className="text-tradeOrange font-semibold">0.526 USDT</span>
-              &nbsp;/&nbsp;
-              <span className="text-tradeOrange font-semibold">680 NGN</span>
-            </p> */}
+          <div className="flex justify-between items-center">
+            <p className=" flex md:hidden lg:flex text-xs font-semibold text-tradeFadeWhite">
+              Trade Volume
+            </p>
+
+            <p className="text-sm font-bold text-tradeOrange">53 Trades</p>
           </div>
         </div>
       </div>

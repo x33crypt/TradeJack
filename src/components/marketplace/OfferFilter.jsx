@@ -495,7 +495,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
   }, [offerFilter.clearFilter]);
 
   return (
-    <div className="bg-black overflow-hidden w-full h-full flex flex-col md:border-l md:border-b md:border-t border-neutral-800">
+    <div className="bg-black overflow-hidden w-full h-full flex flex-col md:border md:border-t-0 border-neutral-800">
       <div className="flex  justify-between items-center lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-neutral-800 ">
         <p className="text-[17px] text-white font-[700] cursor-pointer">
           Filter Offers

@@ -4,7 +4,6 @@ import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import Marketplace from "./pages/Marketplace";
 import AboutOffer from "./pages/AboutOffer";
-import ScrollToTop from "./components/ScrollToTop";
 import CreateOffer from "./pages/CreateOffer";
 import Messages from "./pages/Messages";
 import UserProfile from "./pages/UserProfile";
@@ -14,11 +13,11 @@ import SignupSuccess from "./pages/SignupSuccess";
 import SigninUser from "./pages/SigninUser";
 import Logout from "./pages/Logout";
 import ConfirmPassword from "./components/ConfirmPassword";
-import ChangeName from "./pages/ChangeName";
+import EditFullname from "./pages/EditFullname";
 import { AuthProvider } from "./context/AuthContext";
-import ChangeUsername from "./pages/ChangeUsername";
-import ChangeEmail from "./pages/ChangeEmail";
-import ChangePhone from "./pages/ChangePhone";
+import EditUsername from "./pages/EditUsername";
+import EditEmail from "./pages/EditEmail";
+import EditMobile from "./pages/EditMobile";
 import ChangeAdress from "./pages/ChangeAdress";
 import SelectElement from "./components/SelectElement";
 import TradeAlert from "./components/TradeAlert";
@@ -28,11 +27,13 @@ import EditOffer from "./pages/EditOffer";
 import EditOfferSummary from "./pages/EditOfferSummary";
 import ToastSuccess from "./components/toastCards/ToastSuccess";
 import ToastError from "./components/toastCards/ToastError";
+import { useScrollRestoration } from "./utils/scroll/restoration";
 
 const App = () => {
+  useScrollRestoration();
+
   return (
     <>
-      <ScrollToTop />
       <AuthProvider>
         <SelectElement />
         <ToastSuccess />
@@ -58,13 +59,10 @@ const App = () => {
           />
 
           {/* Account Settings */}
-          <Route path="/account/settings/name" element={<ChangeName />} />
-          <Route
-            path="/account/settings/username"
-            element={<ChangeUsername />}
-          />
-          <Route path="/account/settings/email" element={<ChangeEmail />} />
-          <Route path="/account/settings/phone" element={<ChangePhone />} />
+          <Route path="/account/settings/name" element={<EditFullname />} />
+          <Route path="/account/settings/username" element={<EditUsername />} />
+          <Route path="/account/settings/email" element={<EditEmail />} />
+          <Route path="/account/settings/mobile" element={<EditMobile />} />
           <Route path="/account/settings/address" element={<ChangeAdress />} />
 
           {/* Marketplace & Offers */}

@@ -24,6 +24,7 @@ import { useExchangeRate } from "@/hooks/useExchangeRate";
 
 const CreateOffer = () => {
   const { select, setSelect } = useSelectElement();
+
   const { offerDetails, setOfferDetails } = useCreateOfferDetails();
   const { currencies } = useCurrencies();
   const [isOnlineWallet, setIsOnlineWallet] = useState(true);

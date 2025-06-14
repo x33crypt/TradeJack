@@ -70,7 +70,7 @@ const MarketMain = ({
   };
 
   return (
-    <div className="flex flex-col gap-[px] h-full md:border-x md:border-t md:border-b border-neutral-800">
+    <div className="flex flex-col gap-[px] h-full lg:border-x md:border-t-0 lg:border-b border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
         <p className="text-[17px] text-white font-[700]">
           Secure P2P Marketplace
@@ -82,8 +82,8 @@ const MarketMain = ({
       </div>
 
       <div className="flex flex-col">
-        <div className=" z-20 sticky top-[60px] flex flex-col gap-[5px] px-[15px] bg-black">
-          <div className="flex py-[15px] gap-2 md:justify-between  overflow-x-hidden whitespace-nowrap">
+        <div className=" z-20 sticky top-[61px] flex flex-col gap-[5px] px-[15px] bg-black">
+          <div className="flex py-[15px] gap-2 md:justify-between">
             <div
               onClick={handleShowOfferFilter}
               className=" flex lg:hidden items-center gap-2 px-[12px] py-[4px] text-tradeOrange  lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
@@ -123,7 +123,6 @@ const MarketMain = ({
               >
                 Best Margins
               </p>
-
               <p
                 onClick={handleShowTopFeedBacks}
                 className={`${
@@ -146,14 +145,10 @@ const MarketMain = ({
               </p>
             </div>
 
-            <div className=" gap-[5px] md:flex hidden">
+            <div className=" gap-[5px] flex">
               <div
                 onClick={handleShowOnlineOffer}
-                className="text-neutral-500 border-neutral-800  hover:text-white 
-        flex items-center justify-center gap-[4px]
-        px-[12px] py-[4px] text-[15px] 
-        rounded-[6.5px] border cursor-default
-        transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                className="text-neutral-500 border-neutral-800  hover:text-white flex items-center justify-center gap-[4px] px-[12px] py-[4px] text-[15px] rounded-[6.5px] border cursor-default transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
               >
                 <FaMagnifyingGlass />
                 <span className="text-[11px] font-semibold text-tradeGreen">
@@ -169,10 +164,11 @@ const MarketMain = ({
           </div>
         </div>
 
+        {/* Filter for mobile screen */}
         <div
           className={` ${
             offerFilter?.showFilter ? "flex" : "hidden"
-          } z-30 fixed top-[62px] md:top-[59px] left-0 right-0 bottom-0 lg:hidden`}
+          } z-30 fixed top-[60px] md:top-[59px] left-0 right-0 bottom-0 lg:hidden`}
         >
           <OfferFilter
             handleFilterOffer={handleFilterOffer}
@@ -181,16 +177,16 @@ const MarketMain = ({
           />
         </div>
 
-        <div className="flex flex-col px-[15px] gap-[15px] rounded-[12px]">
+        <div className="flex flex-col px-[15px] pb-[15px] gap-[15px]">
           <div className="flex flex-col gap-[15px]">
-            <div className="z-10 sticky top-[118px] flex justify-between items-center px-4 py-2 bg-tradeOrange shadow-sm">
+            <div className="z-10 sticky top-[119px] flex justify-between items-center px-4 py-2 bg-tradeOrange shadow-sm">
               <p className="text-black text-sm font-semibold">
                 Promoted Offers
               </p>
               <p className="text-black text-sm font-semibold">June 14, 2025</p>
             </div>
 
-            <div className="flex flex-col gap-[20px] ">
+            <div className="flex flex-col gap-[20px] rounded-[10px] ">
               <div className="grid grid-cols-1 gap-1 md:gap-0  items-center">
                 {promotedOffers?.map((offer, index) => (
                   <div key={index}>
@@ -217,7 +213,7 @@ const MarketMain = ({
           </div>
 
           <div className="flex flex-col gap-[15px]">
-            <div className="z-10 sticky top-[118px] flex justify-between items-center px-4 py-2 bg-white shadow-sm">
+            <div className="z-10 sticky top-[119px] flex justify-between items-center px-4 py-2 bg-white shadow-sm">
               <p className="text-black text-sm font-semibold">Other Offers</p>
               <p className="text-black text-sm font-semibold">June 14, 2025</p>
             </div>
