@@ -77,11 +77,13 @@ const EditFullname = () => {
                 onClick={() => navigateTo(location?.state?.from || -1)}
                 className="text-tradeFadeWhite text-[20px] cursor-pointer"
               />
-              <p className="  text-base text-white font-[700]">Edit Full Name</p>
+              <p className="  text-base text-white font-[700]">
+                Edit Full Name
+              </p>
             </div>
           </div>
 
-          <div className="w-full h-full flex flex-col pt-[30px] md:justify-center md:items-center">
+          <div className=" flex-1 flex flex-col md:justify-center md:items-center">
             <div className="flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
               <div className=" flex flex-col w-full gap-[30px]">
                 <div className="flex flex-col gap-[30px]">
@@ -119,7 +121,7 @@ const EditFullname = () => {
                   <p className="text-tradeOrange text-sm font-semibold">
                     Please note:
                   </p>
-                  <ul className="list-disc list-inside text-white text-xs space-y-1 mt-1">
+                  <ul className="list-disc list-inside text-white text-sm space-y-1 mt-1">
                     <li>You can only change your name once.</li>
                     <li>Ensure the new name matches your legal identity.</li>
                     <li>Once changed, this action cannot be undone.</li>

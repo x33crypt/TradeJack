@@ -69,7 +69,7 @@ const StatsBoard = () => {
       ref={statRef}
       className="flex-1 flex items-center bg-tradeOrang p-[12px] lg:p-0 border md:border-0 border-tradeAshLight rounded-[10px] bg-tradeAsh lg:bg-transparent"
     >
-      <div className="grid md:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-[35px] bg-tradeOrang w-full h-max">
+      <div className="grid md:grid-cols-4 lg:grid-cols-3 grid-cols-3 gap-[35px] bg-tradeOrang w-full h-max">
         <div className="flex w-full flex-col gap-2 bg-tradeGree">
           <p className="text-tradeFadeWhite text-xs font-bold">
             Positive Feedback

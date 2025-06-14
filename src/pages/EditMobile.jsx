@@ -101,7 +101,7 @@ const EditMobile = () => {
             </div>
           </div>
 
-          <div className="w-full h-full flex flex-col pt-[30px] md:justify-center md:items-center">
+          <div className=" flex-1 flex flex-col md:justify-center md:items-center">
             <div className="flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
               <div className=" flex flex-col w-full gap-[30px]">
                 <div className="flex flex-col gap-1">
@@ -159,7 +159,7 @@ const EditMobile = () => {
                   <p className="text-tradeOrange text-sm font-semibold">
                     Please note:
                   </p>
-                  <ul className="list-disc list-inside text-white text-xs space-y-1 mt-1">
+                  <ul className="list-disc list-inside text-white text-sm space-y-1 mt-1">
                     <li>
                       A verification code will be sent to your phone number.
                     </li>

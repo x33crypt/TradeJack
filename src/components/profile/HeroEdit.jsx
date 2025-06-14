@@ -17,9 +17,9 @@ const HeroEdit = () => {
       </div>
 
       <div className="flex w-full flex-col justify-center lg:gap-4 md:gap-[10px] gap-4 lg:border-r border-tradeAshLight">
-        <div className="flex flex-col gap-1 ">
+        <div className="flex flex-col gap-2">
           <div className="flex gap-1 items-center text-tradeOrange">
-            <p className=" text-xs font-bold">Master Trader</p>
+            <p className=" text-sm font-bold">Master Trader</p>
             <GiTopHat />
           </div>
 
@@ -28,23 +28,21 @@ const HeroEdit = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <div className="flex  gap-1 items-center ">
-            <p className="lg:text-xs sm:text-[13px] text-[13px] font-[600] text-tradeFadeWhite">
-              Joined <span className="font-[900] text-white">4 Months</span> ago
+            <p className=" text-sm font-[600] text-tradeFadeWhite">
+              Joined <span className="font-[700] text-white">4 Months</span> ago
             </p>
           </div>
 
           <div className="flex  gap-1 items-center ">
             <FaLocationDot className=" flex text-tradeOrange text-xs leading-none" />
-            <p className="lg:text-xs sm:text-[13px] text-[13px] font-[600] text-white">
-              Nigeria
-            </p>
+            <p className=" text-sm font-[600] text-white">Nigeria</p>
           </div>
 
           <div className="flex  gap-1 items-center ">
             <RiEye2Fill className=" flex text-tradeGreen text-xs leading-none" />
-            <p className="mt-0 text-tradeGreen text-xs font-[600]">Online</p>
+            <p className="mt-0 text-tradeGreen text-sm  font-[600]">Online</p>
           </div>
         </div>
       </div>

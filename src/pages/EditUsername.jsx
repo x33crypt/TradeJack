@@ -67,9 +67,9 @@ const EditUsername = () => {
           </div>
         </div>
 
-        <div className="w-full h-full flex flex-col pt-[30px] md:justify-center md:items-center">
-          <div className="flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
-            <div className=" flex flex-col w-full gap-[30px]">
+        <div className=" flex-1 h-full flex flex-col md:justify-center md:items-center">
+          <div className=" flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
+            <div className=" flex flex-col w-full gap-[30px] justify-between">
               <div className="w-full flex flex-col gap-1 ">
                 <p className="text-sm font-[600] text-white">Username</p>
 
@@ -95,7 +95,7 @@ const EditUsername = () => {
                 <p className="text-tradeOrange text-sm font-semibold">
                   Please note:
                 </p>
-                <ul className="list-disc list-inside text-white text-xs space-y-1 mt-1">
+                <ul className="list-disc list-inside text-white text-sm space-y-1 mt-1">
                   <li>You can only isUpdating your username twice in total.</li>
                   <li>Choose a unique and recognizable username.</li>
                 </ul>
