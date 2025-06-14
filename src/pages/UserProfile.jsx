@@ -47,7 +47,7 @@ const UserProfile = () => {
             </div>
 
             <div className="flex w-full flex-col justify-center lg:gap-4 md:gap-[10px] gap-4 lg:border-r border-tradeAshLight">
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col md:gap-1 gap-2">
                 <div className="flex gap-1 text-tradeOrange">
                   <p className=" text-xs font-bold">MASTER TRADER</p>
                   <GiTopHat />
@@ -59,7 +59,7 @@ const UserProfile = () => {
               </div>
 
               <div className="flex items-center md:gap-5 gap-3">
-                <div className="flex md:flex-col gap-1 items-center">
+                <div className="flex md:flex-col gap-1 items-center md:items-start">
                   <p className="md:flex hidden text-tradeFadeWhite text-xs font-bold">
                     LOCATION
                   </p>
@@ -69,7 +69,7 @@ const UserProfile = () => {
                   </p>
                 </div>
 
-                <div className="flex md:flex-col gap-1 items-center">
+                <div className="flex md:flex-col gap-1 items-center md:items-start">
                   <p className="md:flex hidden text-tradeFadeWhite text-xs font-bold">
                     LAST SEEN
                   </p>
@@ -82,7 +82,7 @@ const UserProfile = () => {
             </div>
           </div>
 
-          <div className="border-t border-tradeAshLight ">
+          <div className="border-t border-tradeAshLight md:flex hidden ">
             <p className="hidden">g</p>
           </div>
 
