@@ -77,9 +77,7 @@ const EditFullname = () => {
                 onClick={() => navigateTo(location?.state?.from || -1)}
                 className="text-tradeFadeWhite text-[20px] cursor-pointer"
               />
-              <p className="  text-[17px] text-white font-[700]">
-                Edit Full Name
-              </p>
+              <p className="  text-base text-white font-[700]">Edit Full Name</p>
             </div>
           </div>
 
@@ -88,15 +86,13 @@ const EditFullname = () => {
               <div className=" flex flex-col w-full gap-[30px]">
                 <div className="flex flex-col gap-[30px]">
                   <div className="flex flex-col gap-1">
-                    <p className="text-[14px] font-[600] text-white">
-                      First Name
-                    </p>
+                    <p className="text-sm font-[600] text-white">First Name</p>
                     <input
                       className={`${
                         nameDetails.firstname
                           ? "border-tradeAshExtraLight"
                           : "border-tradeAshLight"
-                      } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                      } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                       type="text"
                       name="firstname"
                       placeholder="eg. John"
@@ -104,15 +100,13 @@ const EditFullname = () => {
                     />
                   </div>
                   <div className="flex flex-col gap-1">
-                    <p className="text-[14px] text-white font-[600]">
-                      Last Name
-                    </p>
+                    <p className="text-sm text-white font-[600]">Last Name</p>
                     <input
                       className={`${
                         nameDetails.lastname
                           ? "border-tradeAshExtraLight"
                           : "border-tradeAshLight"
-                      } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                      } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                       type="text"
                       name="lastname"
                       placeholder="eg. Doe"
@@ -122,10 +116,10 @@ const EditFullname = () => {
                 </div>
 
                 <div>
-                  <p className="text-tradeOrange text-[14px] font-semibold">
+                  <p className="text-tradeOrange text-sm font-semibold">
                     Please note:
                   </p>
-                  <ul className="list-disc list-inside text-white text-[13px] space-y-1 mt-1">
+                  <ul className="list-disc list-inside text-white text-xs space-y-1 mt-1">
                     <li>You can only change your name once.</li>
                     <li>Ensure the new name matches your legal identity.</li>
                     <li>Once changed, this action cannot be undone.</li>
@@ -141,7 +135,7 @@ const EditFullname = () => {
                   className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
                   onClick={() => navigateTo(location?.state?.from || -1)}
                 >
-                  <p className="text-[14px] font-[700] ">Cancel</p>
+                  <p className="text-sm font-[700] ">Cancel</p>
                 </div>
                 <button
                   onClick={handleEditFullname}
@@ -151,7 +145,7 @@ const EditFullname = () => {
                       : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
                   } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
                 >
-                  <p className="text-[14px] font-[700]">
+                  <p className="text-sm font-[700]">
                     {isUpdating ? "Updating..." : "Update"}
                   </p>
                 </button>

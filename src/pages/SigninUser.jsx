@@ -62,18 +62,18 @@ const SigninUser = () => {
   };
 
   return (
-    <div className="flex min-h-svh justify-center items-center  bg-black">
-      <div className="h-max w-[300px] flex flex-col justify-center gap-[20px] ">
+    <div className="flex min-h-svh justify-center pt-16 bg-black">
+      <div className="h-max w-[300px] flex flex-col  gap-[20px] ">
         <div className="flex flex-col items-center gap-[30px]">
           <div className="bg-white p-[10px] rounded-[12px]">
             <PiSignInBold className="text-black text-[30px]" />
           </div>
 
-          <div className="flex flex-col items-center">
-            <p className="text-white text-[24px] font-semibold">
+          <div className="flex flex-col items-center gap-1">
+            <p className="text-white text-2xl font-semibold">
               Sign in with email
             </p>
-            <p className="text-[13px] font-[500] text-tradeFadeWhite">
+            <p className="md:text-xs text-[13px] font-[500] text-tradeFadeWhite">
               Enter your details to access your account.
             </p>
           </div>
@@ -82,8 +82,8 @@ const SigninUser = () => {
         <form onSubmit={handleSignin}>
           <div className="flex flex-col p-[15px] gap-[20px] bg-tradeAsh border border-tradeAshLight rounded-[10px]">
             <div className="flex flex-col gap-[20px]">
-              <div className="w-full">
-                <p className="text-[13px] text-white font-[600]">
+              <div className="flex flex-col gap-1">
+                <p className="md:text-xs text-[13px] text-white font-[700]">
                   Email address
                 </p>
                 <input
@@ -91,17 +91,19 @@ const SigninUser = () => {
                     signinDetails.email
                       ? "border-tradeAshExtraLight"
                       : "border-tradeAshLight"
-                  } mt-[5px] text-[13px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                  } mt-[5px] md:text-xs text-[13px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                   type="text"
                   name="email"
                   placeholder="eg. johndoe@gmail.com"
                   onChange={handleEmailChange}
                 />
               </div>
-              <div className="w-full">
+              <div className="flex flex-col gap-1">
                 <div className="flex items-center justify-between">
-                  <p className="text-[13px] text-white font-[600]">Password</p>
-                  <p className="text-[13px] text-tradeGreen font-[500]">
+                  <p className="md:text-xs text-[13px] text-white font-[700]">
+                    Password
+                  </p>
+                  <p className="md:text-xs text-[13px] text-tradeGreen font-[700]">
                     Forgot password ?
                   </p>
                 </div>
@@ -111,7 +113,7 @@ const SigninUser = () => {
                     signinDetails.password
                       ? "border-tradeAshExtraLight"
                       : "border-tradeAshLight"
-                  } mt-[5px] text-[13px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                  } mt-[5px] md:text-xs text-[13px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                   type="text"
                   name="password"
                   placeholder="Enter your password"
@@ -130,11 +132,11 @@ const SigninUser = () => {
         </form>
 
         <div className="w-full flex justify-center">
-          <p className="text-tradeFadeWhite text-[13px] font-[500]">
+          <p className="text-tradeFadeWhite md:text-xs text-[13px] font-[500] flex gap-1">
             Don't have an account?{" "}
             <small
               onClick={() => navigateTo("/signup")}
-              className="text-[13px] text-white font-[600] ml-[5px] cursor-pointer"
+              className="md:text-xs text-[13px] text-tradeOrange font-[900] cursor-pointer"
             >
               Sign up
             </small>

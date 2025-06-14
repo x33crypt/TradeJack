@@ -64,7 +64,7 @@ const EditEmail = () => {
                 onClick={() => navigateTo(location?.state?.from || -1)}
                 className="text-tradeFadeWhite text-[20px] cursor-pointer"
               />
-              <p className="  text-[17px] text-white font-[700]">
+              <p className="text-base text-white font-[700]">
                 Edit Email Address
               </p>
             </div>
@@ -74,15 +74,13 @@ const EditEmail = () => {
             <div className="flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
               <div className=" flex flex-col w-full gap-[30px]">
                 <div className="flex flex-col gap-1">
-                  <p className="text-[14px] font-[600] text-white">
-                    Email Address
-                  </p>
+                  <p className="text-sm font-[600] text-white">Email Address</p>
                   <input
                     className={`${
                       email
                         ? "border-tradeAshExtraLight"
                         : "border-tradeAshLight"
-                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                    } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                     type="text"
                     name="username"
                     placeholder="eg. Johndoe@gmail.com"
@@ -91,10 +89,10 @@ const EditEmail = () => {
                 </div>
 
                 <div>
-                  <p className="text-tradeOrange text-[14px] font-semibold">
+                  <p className="text-tradeOrange text-sm font-semibold">
                     Please note:
                   </p>
-                  <ul className="list-disc list-inside text-white text-[13px] space-y-1 mt-1">
+                  <ul className="list-disc list-inside text-white text-xs space-y-1 mt-1">
                     <li>
                       A verification link will be sent to your email address.
                     </li>
@@ -115,7 +113,7 @@ const EditEmail = () => {
                   className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
                   onClick={() => navigateTo(location?.state?.from || -1)}
                 >
-                  <p className="text-[14px] font-[700] ">Cancel</p>
+                  <p className="text-sm font-[700] ">Cancel</p>
                 </div>
                 <button
                   onClick={handleEditEmail}
@@ -125,7 +123,7 @@ const EditEmail = () => {
                       : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
                   } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
                 >
-                  <p className="text-[14px] font-[700]">
+                  <p className="text-sm font-[700]">
                     {isUpdating ? "isUpdating..." : "Update"}
                   </p>
                 </button>

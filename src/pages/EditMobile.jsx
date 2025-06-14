@@ -95,7 +95,7 @@ const EditMobile = () => {
                 onClick={() => navigateTo(location?.state?.from || -1)}
                 className="text-tradeFadeWhite text-[20px] cursor-pointer"
               />
-              <p className="  text-[17px] text-white font-[700]">
+              <p className="  text-base text-white font-[700]">
                 Edit Mobile Number
               </p>
             </div>
@@ -105,9 +105,7 @@ const EditMobile = () => {
             <div className="flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
               <div className=" flex flex-col w-full gap-[30px]">
                 <div className="flex flex-col gap-1">
-                  <p className="text-[14px] text-white font-[600]">
-                    Country code
-                  </p>
+                  <p className="text-sm text-white font-[600]">Country code</p>
 
                   <div className="relative w-full cursor-pointer ">
                     <input
@@ -115,7 +113,7 @@ const EditMobile = () => {
                         mobileDetails?.code
                           ? "border-tradeAshExtraLight"
                           : "border-tradeAshLight"
-                      } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite text-font-[700] placeholder:font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                      } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite text-font-[700] placeholder:font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                       type="text"
                       readOnly
                       placeholder="Select Country Code"
@@ -143,15 +141,13 @@ const EditMobile = () => {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <p className="text-[14px] font-[600] text-white">
-                    Mobile number
-                  </p>
+                  <p className="text-sm font-[600] text-white">Mobile number</p>
                   <input
                     className={`${
                       mobileDetails.number
                         ? "border-tradeAshExtraLight"
                         : "border-tradeAshLight"
-                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                    } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                     type="text"
                     name="number"
                     placeholder="Enter your mobile number"
@@ -160,10 +156,10 @@ const EditMobile = () => {
                 </div>
 
                 <div>
-                  <p className="text-tradeOrange text-[14px] font-semibold">
+                  <p className="text-tradeOrange text-sm font-semibold">
                     Please note:
                   </p>
-                  <ul className="list-disc list-inside text-white text-[13px] space-y-1 mt-1">
+                  <ul className="list-disc list-inside text-white text-xs space-y-1 mt-1">
                     <li>
                       A verification code will be sent to your phone number.
                     </li>

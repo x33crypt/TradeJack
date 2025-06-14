@@ -20,6 +20,11 @@ import { IoCloseSharp } from "react-icons/io5";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import useSafeNavigate from "./SafeNavigation";
 import { IoWalletOutline } from "react-icons/io5";
+import { RiExchangeFill } from "react-icons/ri";
+import { RiExchange2Fill } from "react-icons/ri";
+import { RiExchangeBoxLine } from "react-icons/ri";
+import { FaUserFriends } from "react-icons/fa";
+import { TbDashboardFilled } from "react-icons/tb";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -63,7 +68,7 @@ const InAppNav = () => {
 
   return (
     <>
-      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] p-[15px] h-[62px] md:h-[64px] flex justify-between items-center border-b border-neutral-800 ">
+      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] p-[15px] h-[62px] md:h-[65px] flex justify-between items-center border-b border-neutral-800 ">
         <div className="flex items-center lg:gap-[30px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
@@ -77,12 +82,12 @@ const InAppNav = () => {
           </div>
           <div
             onClick={() => safeNavigate("/dashboard")}
-            className="flex items-center justify-start gap-[5px] cursor-pointer "
+            className="flex items-center gap-[5px] cursor-pointer "
           >
-            <GiCardExchange className=" flex lg:text-[19px] md:text-[19px] text-[19px] text-tradeGreen" />
-            <p className=" lg:text-[19px] md:text-[19px] text-[19px] font-[700] text-tradeGreen">
+            <RiExchangeFill className=" flex lg:text-2xl text-tradeGreen" />
+            <p className=" text-xl font-[700] text-tradeGreen">
               Trade
-              <small className="lg:text-[19px] md:text-[19px] text-[19px] font-[700] text-white">
+              <small className="lg:text-xl md:text-[19px] text-[19px] font-[700] text-white">
                 Jack
               </small>
             </p>
@@ -94,26 +99,26 @@ const InAppNav = () => {
             onClick={() => safeNavigate("/offers/marketplace")}
             className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
-            <RiExchangeLine className="lg:flex hidden text-[16px]" />
-            <p className="text-[13px] font-[500]">Sell Assets</p>
+            <RiExchange2Fill className="lg:flex hidden text-[16px]" />
+            <p className="text-[13px] font-[700]">Sell Assets</p>
           </div>
           <div
             onClick={() => safeNavigate("/offers/create")}
             className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
-            <TbBuildingBank className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-[500]">Buy Assets</p>
+            <RiExchangeBoxLine className="lg:flex hidden text-[17px]" />
+            <p className="text-[13px] font-[700]">Buy Assets</p>
           </div>
           <div className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300">
-            <FaVenusDouble className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-[500]">Favourite Vendors</p>
+            <FaUserFriends className="lg:flex hidden text-[17px]" />
+            <p className="text-[13px] font-[700]">Trade Partners</p>
           </div>
           <div
             onClick={() => safeNavigate("/dashboard")}
             className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
-            <MdOutlineSpaceDashboard className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-[500]">Dashboard</p>
+            <TbDashboardFilled className="lg:flex hidden text-[17px]" />
+            <p className="text-[13px] font-[700]">Dashboard</p>
           </div>
         </div>
 

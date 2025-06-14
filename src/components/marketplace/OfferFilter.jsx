@@ -497,7 +497,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
   return (
     <div className="bg-black overflow-hidden w-full h-full flex flex-col md:border md:border-t-0 border-neutral-800">
       <div className="flex  justify-between items-center lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-neutral-800 ">
-        <p className="text-[17px] text-white font-[700] cursor-pointer">
+        <p className="text-lg text-white font-[700] cursor-pointer">
           Filter Offers
         </p>
 
@@ -506,14 +506,14 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
             onClick={handleCloseFilter}
             className=" flex md:hidden items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[10px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
           >
-            <IoClose className="text-[14px]" />
+            <IoClose className="text-sm" />
           </div>
 
           <div
             onClick={handleClearFilter}
-            className=" md:flex hidden items-center gap-1 px-[12px] py-[4px] text-red-600 text-[10px] font-[600] rounded-[6.5px] border border-tradeAshLight hover:border-red-600 cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+            className=" md:flex hidden items-center gap-1 px-[12px] py-1  text-red-600 text-xs font-[600] rounded-[6.5px] border border-tradeAshLight hover:border-red-600 cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
           >
-            <IoClose className="text-[14px]" />
+            <p>Clear Filter</p>
           </div>
         </div>
       </div>
@@ -523,7 +523,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
           {/* Service Type field */}
           <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-tradeAshLight">
             <div>
-              <p className="text-tradeFadeWhite text-[14px] font-[500]">
+              <p className="text-tradeFadeWhite text-sm font-[500]">
                 Service Type
               </p>
             </div>
@@ -534,7 +534,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                   offerFilter?.serviceType
                     ? "border-tradeAshExtraLight"
                     : "border-tradeAshLight "
-                }  bg-tradeAsh mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                }  bg-tradeAsh mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                 type="text"
                 readOnly
                 value={
@@ -569,7 +569,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
               }  flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
             >
               <div>
-                <p className="text-tradeFadeWhite text-[14px] font-[500]">
+                <p className="text-tradeFadeWhite text-sm font-[500]">
                   Select Online Wallet
                 </p>
               </div>
@@ -580,7 +580,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                     offerFilter?.service
                       ? "border-tradeAshExtraLight text-tradeGreen"
                       : "border-tradeAshLight text-white"
-                  } mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                  } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                   type="text"
                   readOnly
                   placeholder="-- --"
@@ -608,7 +608,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
               }  flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
             >
               <div>
-                <p className="text-tradeFadeWhite text-[14px] font-[500]">
+                <p className="text-tradeFadeWhite text-sm font-[500]">
                   Select Bank Account
                 </p>
               </div>
@@ -619,7 +619,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                     offerFilter?.service
                       ? "border-tradeAshExtraLight text-tradeGreen"
                       : "border-tradeAshLight text-white"
-                  } mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                  } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                   type="text"
                   readOnly
                   placeholder="-- --"
@@ -647,7 +647,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
               }  flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
             >
               <div>
-                <p className="text-tradeFadeWhite text-[14px] font-[500]">
+                <p className="text-tradeFadeWhite text-sm font-[500]">
                   Select Gift Card
                 </p>
               </div>
@@ -658,7 +658,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                     offerFilter?.service
                       ? "border-tradeAshExtraLight text-tradeGreen"
                       : "border-tradeAshLight text-white"
-                  } mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                  } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                   type="text"
                   readOnly
                   placeholder="-- --"
@@ -686,7 +686,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
               }  flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
             >
               <div>
-                <p className="text-tradeFadeWhite text-[14px] font-[500]">
+                <p className="text-tradeFadeWhite text-sm font-[500]">
                   Select Debit or Credit Card
                 </p>
               </div>
@@ -697,7 +697,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                     offerFilter?.service
                       ? "border-tradeAshExtraLight text-tradeGreen"
                       : "border-tradeAshLight text-white"
-                  } mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                  } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                   type="text"
                   readOnly
                   placeholder="-- --"
@@ -725,7 +725,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
               }  flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
             >
               <div>
-                <p className="text-tradeFadeWhite text-[14px] font-[500]">
+                <p className="text-tradeFadeWhite text-sm font-[500]">
                   Select Crypto Asset
                 </p>
               </div>
@@ -736,7 +736,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                     offerFilter?.service
                       ? "border-tradeAshExtraLight text-tradeGreen"
                       : "border-tradeAshLight text-white"
-                  } mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                  } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                   type="text"
                   readOnly
                   placeholder="-- --"
@@ -763,7 +763,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
           {/* currency field */}
           <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-tradeAshLight">
             <div>
-              <p className="text-tradeFadeWhite text-[14px] font-[500]">
+              <p className="text-tradeFadeWhite text-sm font-[500]">
                 Select Currency
               </p>
             </div>
@@ -773,7 +773,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                 offerFilter?.currency?.name
                   ? "border-tradeAshExtraLight text-tradeGreen"
                   : "border-tradeAshLight text-white"
-              } relative flex mt-[5px] text-[14px] placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full rounded-[10px] cursor-pointer`}
+              } relative flex mt-[5px] text-sm placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full rounded-[10px] cursor-pointer`}
               onClick={() =>
                 setSelect({
                   state: true,
@@ -786,7 +786,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
               }
             >
               <input
-                className="w-full p-[12px] outline-none bg-transparent text-tradeOrange text-[14px] font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                className="w-full p-[12px] outline-none bg-transparent text-tradeOrange text-sm font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                 placeholder="-- --"
                 type="text"
                 readOnly
@@ -796,7 +796,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
               <div className=" absolute right-1.5 top-1/2 -translate-y-1/2  border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
                 <div>
                   <input
-                    className="w-[43px] text-[14px]  text-tradeOrange placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
+                    className="w-[43px] text-sm  text-tradeOrange placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
                     type="text"
                     value={offerFilter?.currency?.code}
                     readOnly
@@ -811,7 +811,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
           {/* amount field */}
           <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px]">
             <div>
-              <p className="text-tradeFadeWhite text-[14px] font-[500]">
+              <p className="text-tradeFadeWhite text-sm font-[500]">
                 Enter Amount
               </p>
             </div>
@@ -822,7 +822,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                   offerFilter?.amount
                     ? "border-tradeAshExtraLight text-white"
                     : "border-tradeAshLight text-white"
-                } mt-[5px] text-[14px]  placeholder:text-tradeFadeWhite font-[600] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[600] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                 type="text"
                 placeholder="00.00"
                 value={
@@ -842,7 +842,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
           onClick={handleFilterOffer}
           className="flex items-center justify-between bg-tradeGreen hover:bg-white md:p-[10px] w-full py-[14px] px-[12px] rounded-[8px] cursor-pointer duration-300 transition-all"
         >
-          <p className="font-[600] text-[15px] ">
+          <p className="font-[700] text-base ">
             {offerFilter?.isFiltering ? "Filtering..." : "Apply Filter"}
           </p>
           <TbReload
@@ -856,7 +856,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
           onClick={handleClearFilter}
           className="flex lg:hidden items-center justify-between bg-transparent border border-tradeAshLight hover:border-red-600 md:p-[10px] w-full py-[14px] px-[12px] rounded-[8px] cursor-pointer duration-300 transition-all"
         >
-          <p className="font-[600] text-[15px] text-red-600">Clear Filter</p>
+          <p className="font-[600] text-base text-red-600">Clear Filter</p>
         </div>
       </div>
     </div>

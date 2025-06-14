@@ -72,9 +72,7 @@ const MarketMain = ({
   return (
     <div className="flex flex-col gap-[px] h-full lg:border-x md:border-t-0 lg:border-b border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
-        <p className="text-[17px] text-white font-[700]">
-          Secure P2P Marketplace
-        </p>
+        <p className="text-lg text-white font-[700]">Secure P2P Marketplace</p>
 
         <div className="text-white text-[25px]">
           <RiColorFilterFill />
@@ -82,24 +80,24 @@ const MarketMain = ({
       </div>
 
       <div className="flex flex-col">
-        <div className=" z-20 sticky top-[61px] flex flex-col gap-[5px] px-[15px] bg-black">
-          <div className="flex py-[15px] gap-2 md:justify-between">
+        <div className=" z-20 sticky top-[62px] flex flex-col gap-[5px] px-[15px] bg-black">
+          <div className="flex py-[15px] gap-2 md:justify-between overflow-x-hidden flex-shrink-0">
             <div
               onClick={handleShowOfferFilter}
-              className=" flex lg:hidden items-center gap-2 px-[12px] py-[4px] text-tradeOrange  lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+              className=" flex  flex-shrink-0 lg:hidden items-center gap-2 px-[12px] py-[4px] text-tradeOrange  text-sm font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
             >
               <BiSolidBinoculars className="lg:text-[17px] text-[18px]" />
               <p>Filter</p>
             </div>
 
-            <div className=" flex  items-center gap-2 bg-transparent ">
+            <div className=" flex  flex-shrink-0 items-center gap-2 bg-transparent ">
               <p
                 onClick={handleShowAllOffer}
                 className={`${
                   offerFilter?.allOffers
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block px-[12px] py-[4px] lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } shrink-0 inline-block px-[12px] py-[4px] text-sm font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 All
               </p>
@@ -109,7 +107,7 @@ const MarketMain = ({
                   offerFilter?.onlineOffers
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block px-[12px] py-[4px] lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } shrink-0 inline-block px-[12px] py-[4px] text-sm font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Online
               </p>
@@ -119,7 +117,7 @@ const MarketMain = ({
                   offerFilter?.bestMargin
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block px-[12px] py-[4px] lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } shrink-0 inline-block px-[12px] py-[4px] text-sm font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Best Margins
               </p>
@@ -129,7 +127,7 @@ const MarketMain = ({
                   offerFilter?.topFeedBack
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block px-[12px] py-[4px] lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } shrink-0 inline-block px-[12px] py-[4px] text-sm font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Top Feedback
               </p>
@@ -139,16 +137,16 @@ const MarketMain = ({
                   offerFilter?.mostTrusted
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block px-[12px] py-[4px] lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } shrink-0 inline-block px-[12px] py-[4px] text-sm font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Most-Trusted
               </p>
             </div>
 
-            <div className=" gap-[5px] flex">
+            <div className=" gap-[5px] flex flex-shrink-0">
               <div
                 onClick={handleShowOnlineOffer}
-                className="text-neutral-500 border-neutral-800  hover:text-white flex items-center justify-center gap-[4px] px-[12px] py-[4px] text-[15px] rounded-[6.5px] border cursor-default transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                className="shrink-0 text-neutral-500 border-neutral-800  hover:text-white flex items-center justify-center gap-[4px] px-[12px] py-[4px] text-[15px] rounded-[6.5px] border cursor-default transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
               >
                 <FaMagnifyingGlass />
                 <span className="text-[11px] font-semibold text-tradeGreen">
@@ -156,7 +154,7 @@ const MarketMain = ({
                 </span>
               </div>
 
-              <div className=" flex items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[13px] font-[600] rounded-[6.5px] border border-neutral-800 hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <div className=" flex-shrink-0 flex items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[13px] font-[600] rounded-[6.5px] border border-neutral-800 hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                 <TbArrowGuide className="text-[17px]" />
                 <p>Guide Me</p>
               </div>

@@ -109,9 +109,7 @@ const ChangeAdress = () => {
                 onClick={() => navigateTo(location?.state?.from || -1)}
                 className="text-tradeFadeWhite text-[20px] cursor-pointer"
               />
-              <p className="  text-[17px] text-white font-[700]">
-                Edit Address
-              </p>
+              <p className="  text-base text-white font-[700]">Edit Address</p>
             </div>
           </div>
 
@@ -119,14 +117,14 @@ const ChangeAdress = () => {
             <div className="flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
               <div className=" flex flex-col w-full gap-[30px]">
                 <div className="flex flex-col gap-1">
-                  <p className="text-[14px] text-white font-[600]">Country</p>
+                  <p className="text-sm text-white font-[600]">Country</p>
                   <div className="relative w-full">
                     <select
                       className={`${
                         addressDetails?.country?.name
                           ? "border-tradeGreen"
                           : "border-tradeAshLight"
-                      } appearance-none mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]  scrollbar-thin scrollbar-thumb-tradeGreen scrollbar-track-tradeAsh`}
+                      } appearance-none mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]  scrollbar-thin scrollbar-thumb-tradeGreen scrollbar-track-tradeAsh`}
                       name="country"
                       onChange={handleCountryChange}
                     >
@@ -144,7 +142,7 @@ const ChangeAdress = () => {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <p className="text-[14px] text-white font-[600]">
+                  <p className="text-sm text-white font-[600]">
                     State/Province
                   </p>
                   <div className="relative w-full">
@@ -153,7 +151,7 @@ const ChangeAdress = () => {
                         addressDetails?.state?.name
                           ? "border-tradeGreen"
                           : "border-tradeAshLight"
-                      } appearance-none mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]  scrollbar-thin scrollbar-thumb-tradeGreen scrollbar-track-tradeAsh`}
+                      } appearance-none mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]  scrollbar-thin scrollbar-thumb-tradeGreen scrollbar-track-tradeAsh`}
                       name="state"
                       onChange={handleStateChange}
                     >
@@ -171,14 +169,14 @@ const ChangeAdress = () => {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <p className="text-[14px] text-white font-[600]">City/Area</p>
+                  <p className="text-sm text-white font-[600]">City/Area</p>
                   <div className="relative w-full">
                     <select
                       className={`${
                         addressDetails?.city
                           ? "border-tradeGreen"
                           : "border-tradeAshLight"
-                      } appearance-none mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]  scrollbar-thin scrollbar-thumb-tradeGreen scrollbar-track-tradeAsh`}
+                      } appearance-none mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]  scrollbar-thin scrollbar-thumb-tradeGreen scrollbar-track-tradeAsh`}
                       name="city"
                       onChange={handleCityChange}
                     >
@@ -196,7 +194,7 @@ const ChangeAdress = () => {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <p className="text-[14px] font-[600] text-white">
+                  <p className="text-sm font-[600] text-white">
                     Street Address
                   </p>
                   <input
@@ -204,7 +202,7 @@ const ChangeAdress = () => {
                       addressDetails.street
                         ? "border-tradeGreen"
                         : "border-tradeAshLight"
-                    } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                    } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                     type="text"
                     name="street"
                     placeholder="eg. House number, street name, etc."
@@ -213,10 +211,10 @@ const ChangeAdress = () => {
                 </div>
 
                 <div>
-                  <p className="text-tradeOrange text-[14px] font-semibold">
+                  <p className="text-tradeOrange text-sm font-semibold">
                     Please note:
                   </p>
-                  <ul className="list-disc list-inside text-white text-[13px] space-y-1 mt-1">
+                  <ul className="list-disc list-inside text-white text-xs space-y-1 mt-1">
                     <li>
                       A verification code will be sent to your phone number.
                     </li>
@@ -237,7 +235,7 @@ const ChangeAdress = () => {
                   className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
                   onClick={() => navigateTo(location?.state?.from || -1)}
                 >
-                  <p className="text-[14px] font-[700] ">Cancel</p>
+                  <p className="text-sm font-[700] ">Cancel</p>
                 </div>
 
                 <button
@@ -248,7 +246,7 @@ const ChangeAdress = () => {
                       : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
                   } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
                 >
-                  <p className="text-[14px] font-[700]">
+                  <p className="text-sm font-[700]">
                     {isUpdating ? "updating..." : "Update"}
                   </p>
                 </button>

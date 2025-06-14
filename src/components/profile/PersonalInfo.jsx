@@ -8,9 +8,7 @@ const PersonalInfo = () => {
   return (
     <div className="flex-1 md:border border-tradeAshLight gap-[20px] md:gap-0 flex flex-col ">
       <div className="flex md:p-[15px] py-[15px]  border-b border-tradeAshLight">
-        <p className="text-[17px] text-white font-[700]">
-          Personal Information
-        </p>
+        <p className="text-lg text-white font-[700]">Personal Information</p>
       </div>
 
       <div className="flex md:p-[15px] flex-col gap-[20px] ">
@@ -70,9 +68,7 @@ const PersonalInfo = () => {
             <div className="flex-1 flex  justify-between gap-[2px]  bg-tradePurpl ">
               <p className="text-sm font-[600] text-white">KYC Levels</p>
 
-              <p className="text-tradeFadeWhite text-sm font-[600]">
-                Tier 2
-              </p>
+              <p className="text-tradeFadeWhite text-sm font-[600]">Tier 2</p>
             </div>
             <div className="text-white text-[22px]">
               <MdKeyboardArrowRight />
@@ -140,9 +136,7 @@ const PersonalInfo = () => {
             // onClick={() => navigateTo("/account/update/name")}
           >
             <div className="flex-1 flex  justify-between gap-[2px]  bg-tradePurpl ">
-              <p className="text-sm font-[600] text-white">
-                Wallet Management
-              </p>
+              <p className="text-sm font-[600] text-white">Wallet Management</p>
             </div>
             <div className="text-white text-[22px]">
               <MdKeyboardArrowRight />
