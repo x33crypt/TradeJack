@@ -40,7 +40,7 @@ const UserProfile = () => {
       <MarketTopNav />
 
       <div className="md:pt-[80px] pt-[75px] pb-[10px] lg:px-[2%] md:px-[2.5%] p-[15px] min-h-screen flex flex-col gap-[20px] bg-black">
-        <div className="flex lg:flex-row flex-col  lg:pb-[15px] md:items-cente gap-[20px]  border-0 lg:border-0 lg:border-b border-tradeAshLight rounded-[10px] lg:rounded-none">
+        <div className="flex lg:flex-row flex-col bg-tradePurpl  lg:pb-[15px] md:items-cente gap-[10px] border-0 lg:border-0 lg:border-b border-tradeAshLight rounded-[10px] lg:rounded-none">
           <div className="flex-1 bg-tradeGree flex flex-col md:flex-row md:gap-[20px] gap-[20px] items-center ">
             <div className="flex lg:w-[200px] md:w-[170px] w-[150px] shrink-0 justify-center cursor-pointer ">
               <img className="rounded-full" src={image} alt="" />
@@ -49,31 +49,25 @@ const UserProfile = () => {
             <div className="flex w-full flex-col justify-center lg:gap-4 md:gap-[10px] gap-4 lg:border-r border-tradeAshLight">
               <div className="flex flex-col md:gap-1 gap-2">
                 <div className="flex gap-1 text-tradeOrange">
-                  <p className=" text-xs font-bold">MASTER TRADER</p>
+                  <p className=" text-xs font-bold">Master Trader</p>
                   <GiTopHat />
                 </div>
 
-                <p className="mt-0 text-white lg:text-[55px] md:text-[45px] text-[30px] font-[900] leading-none ">
-                  0xHabib
+                <p className="mt-0 text-white lg:text-[40px] md:text-[40px] text-[25px] font-[900] leading-none ">
+                  <span className="text-tradeFadeWhite">@</span>Saneghxst919
                 </p>
               </div>
 
               <div className="flex items-center md:gap-5 gap-3">
-                <div className="flex md:flex-col gap-1 items-center md:items-start">
-                  <p className="md:flex hidden text-tradeFadeWhite text-xs font-bold">
-                    LOCATION
-                  </p>
-                  <FaLocationDot className="md:hidden flex text-tradeFadeWhite text-[13px] leading-none" />
+                <div className="flex  gap-1 items-center ">
+                  <FaLocationDot className=" flex text-tradeFadeWhite text-[13px] leading-none" />
                   <p className="lg:text-[14px] sm:text-[13px] text-[13px] font-[600] text-white">
                     Nigeria
                   </p>
                 </div>
 
-                <div className="flex md:flex-col gap-1 items-center md:items-start">
-                  <p className="md:flex hidden text-tradeFadeWhite text-xs font-bold">
-                    LAST SEEN
-                  </p>
-                  <RiEye2Fill className="md:hidden flex text-tradeGreen text-[13px] leading-none" />
+                <div className="flex  gap-1 items-center ">
+                  <RiEye2Fill className=" flex text-tradeGreen text-[13px] leading-none" />
                   <p className="mt-0 text-tradeGreen text-[14px] font-[600]">
                     Online
                   </p>
@@ -90,15 +84,15 @@ const UserProfile = () => {
             <div className="grid md:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-[35px] bg-tradeOrang w-full h-max">
               <div className="flex w-full flex-col gap-2 bg-tradeGree">
                 <p className="text-tradeFadeWhite text-xs font-bold">
-                  POSITIVE FEEDBACK
+                  Positive Feedback
                 </p>
 
                 <div className="flex items-center gap-2">
                   <div className="p-1  rounded-full bg-[#00de82]/30 ">
-                    <MdThumbUpAlt className="text-tradeGreen text-[16px] leading-none" />
+                    <MdThumbUpAlt className="text-tradeGreen text-[13px] leading-none" />
                   </div>
 
-                  <p className="text-[25px] text-white font-[900] leading-none">
+                  <p className="text-[20px] text-white font-[900] leading-none">
                     1,2K+
                   </p>
                 </div>
@@ -106,15 +100,15 @@ const UserProfile = () => {
 
               <div className="flex flex-col gap-2 bg-tradeGree">
                 <p className="text-tradeFadeWhite text-xs font-bold">
-                  NEGATIVE FEEDBACK
+                  Negative Feedback
                 </p>
 
                 <div className="flex items-center gap-2">
                   <div className="p-1  rounded-full bg-red-600/30">
-                    <MdThumbDownAlt className="text-red-600 text-[16px] leading-none" />
+                    <MdThumbDownAlt className="text-red-600 text-[13px] leading-none" />
                   </div>
 
-                  <p className="text-[25px] text-white font-[900] leading-none">
+                  <p className="text-[20px] text-white font-[900] leading-none">
                     29
                   </p>
                 </div>
@@ -122,13 +116,13 @@ const UserProfile = () => {
 
               <div className="flex flex-col gap-2">
                 <p className="text-tradeFadeWhite text-xs font-bold">
-                  TRUST SCORE
+                  Trust Score
                 </p>
                 <div className="flex gap-2">
                   <div className="p-1  rounded-full bg-tradeOrange/30">
-                    <MdOutlineGppGood className="text-tradeOrange text-[17px] leading-none" />
+                    <MdOutlineGppGood className="text-tradeOrange text-[13px] leading-none" />
                   </div>
-                  <p className="text-[25px] text-white font-[900] leading-none">
+                  <p className="text-[20px] text-white font-[900] leading-none">
                     56%
                   </p>
                 </div>
@@ -136,11 +130,11 @@ const UserProfile = () => {
 
               <div className=" flex flex-col gap-2">
                 <p className="text-tradeFadeWhite text-xs font-bold">
-                  OVERALL TRADES
+                  Overall Trade
                 </p>
 
                 <div className="flex items-end gap-2">
-                  <p className="text-[25px] text-white font-[900] leading-none">
+                  <p className="text-[20px] text-white font-[900] leading-none">
                     5,9K
                   </p>
                 </div>
@@ -148,11 +142,11 @@ const UserProfile = () => {
 
               <div className=" lg:flex hidden flex-col gap-2">
                 <p className="text-tradeFadeWhite text-xs font-bold">
-                  FAVOURITE VENDORS
+                  Fvourite Vendor
                 </p>
 
                 <div className="flex items-center gap-2">
-                  <p className="text-[25px] text-white font-[900] leading-none">
+                  <p className="text-[20px] text-white font-[900] leading-none">
                     9
                   </p>
                 </div>
