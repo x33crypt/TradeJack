@@ -7,7 +7,7 @@ import image from "../../assets/landingImg4.JPG";
 
 const HeroEdit = () => {
   return (
-    <div className="flex-1 bg-tradeGree flex flex-col md:flex-row md:gap-[20px] gap-[20px] items-center ">
+    <div className="flex-1 bg-tradeGree flex-shrink-0 flex flex-col md:flex-row md:gap-[20px] gap-[20px] items-center md:pr-[15px] ">
       <div className="relative flex lg:w-[200px] md:w-[170px] w-[150px] shrink-0 justify-center cursor-pointer">
         <img className="rounded-full w-full h-auto" src={image} alt="" />
 
@@ -16,7 +16,7 @@ const HeroEdit = () => {
         </div>
       </div>
 
-      <div className="flex w-full flex-col justify-center lg:gap-4 md:gap-[10px] gap-4 lg:border-r border-tradeAshLight">
+      <div className="flex w-full flex-col justify-center gap-4 flex-shrink-0">
         <div className="flex flex-col gap-2">
           <div className="flex gap-1 items-center text-tradeOrange">
             <p className=" text-sm font-bold">Master Trader</p>
@@ -28,7 +28,7 @@ const HeroEdit = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <div className="flex  gap-1 items-center ">
             <p className=" text-sm font-[600] text-tradeFadeWhite">
               Joined <span className="font-[700] text-white">4 Months</span> ago

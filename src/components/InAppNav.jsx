@@ -25,6 +25,8 @@ import { RiExchange2Fill } from "react-icons/ri";
 import { RiExchangeBoxLine } from "react-icons/ri";
 import { FaUserFriends } from "react-icons/fa";
 import { TbDashboardFilled } from "react-icons/tb";
+import { RiExchangeBoxFill } from "react-icons/ri";
+
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -84,7 +86,7 @@ const InAppNav = () => {
             onClick={() => safeNavigate("/dashboard")}
             className="flex items-center gap-[5px] cursor-pointer "
           >
-            <RiExchangeFill className=" flex lg:text-2xl text-tradeGreen" />
+            <RiExchangeFill className=" flex lg:text-2xl text-xl text-tradeGreen" />
             <p className=" text-xl font-[700] text-tradeGreen">
               Trade
               <small className="lg:text-xl md:text-[19px] text-[19px] font-[700] text-white">
@@ -106,7 +108,7 @@ const InAppNav = () => {
             onClick={() => safeNavigate("/offers/create")}
             className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
-            <RiExchangeBoxLine className="lg:flex hidden text-[17px]" />
+            <RiExchangeBoxFill className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-[700]">Buy Assets</p>
           </div>
           <div className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300">

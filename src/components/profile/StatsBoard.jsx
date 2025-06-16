@@ -65,106 +65,223 @@ const StatsBoard = () => {
   }, [animator]);
 
   return (
-    <div
-      ref={statRef}
-      className="flex-1 flex items-center bg-tradeOrang p-[12px] lg:p-0 border md:border-0 border-tradeAshLight rounded-[10px] bg-tradeAsh lg:bg-transparent"
-    >
-      <div className="grid md:grid-cols-4 lg:grid-cols-3 grid-cols-3 gap-[35px] bg-tradeOrang w-full h-max">
-        <div className="flex w-full flex-col gap-2 bg-tradeGree">
-          <p className="text-tradeFadeWhite text-xs font-bold">
-            Positive Feedback
-          </p>
+    <>
+      <div
+        ref={statRef}
+        className="flex-1 md:flex hidden items-center bg-tradeOrang p-[15px] lg:p-0 border md:border-0 border-tradeAshLight rounded-[12px] bg-tradeAsh lg:bg-transparent"
+      >
+        <div className="grid md:grid-cols-3 lg:grid-cols-3 grid-cols-2 gap-[35px] bg-tradeOrang w-full h-max">
+          <div className="flex w-full flex-col gap-2 bg-tradeGree">
+            <p className="text-tradeFadeWhite text-xs font-bold">
+              Positive Feedback
+            </p>
 
-          <div className="flex items-center gap-2">
-            <div className="p-1  rounded-full bg-[#00de82]/30 ">
-              <MdThumbUpAlt className="text-tradeGreen text-[13px] md:text-sm leading-none" />
+            <div className="flex items-center gap-2">
+              <div className="p-1  rounded-full bg-[#00de82]/30 ">
+                <MdThumbUpAlt className="text-tradeGreen text-[13px] md:text-sm leading-none" />
+              </div>
+
+              <p
+                id="positive"
+                className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
+              >
+                0
+              </p>
             </div>
-
-            <p
-              id="positive"
-              className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
-            >
-              0
-            </p>
           </div>
-        </div>
 
-        <div className="flex flex-col gap-2 bg-tradeGree">
-          <p className="text-tradeFadeWhite text-xs font-bold">
-            Negative Feedback
-          </p>
+          <div className="flex flex-col gap-2 bg-tradeGree">
+            <p className="text-tradeFadeWhite text-xs font-bold">
+              Negative Feedback
+            </p>
 
-          <div className="flex items-center gap-2">
-            <div className="p-1  rounded-full bg-red-600/30">
-              <MdThumbDownAlt className="text-red-600 text-[13px] md:text-sm leading-none" />
+            <div className="flex items-center gap-2">
+              <div className="p-1  rounded-full bg-red-600/30">
+                <MdThumbDownAlt className="text-red-600 text-[13px] md:text-sm leading-none" />
+              </div>
+
+              <p
+                id="negative"
+                className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
+              >
+                0
+              </p>
             </div>
-
-            <p
-              id="negative"
-              className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
-            >
-              0
-            </p>
           </div>
-        </div>
 
-        <div className="flex flex-col gap-2">
-          <p className="text-tradeFadeWhite text-xs font-bold">Trust Score</p>
-          <div className="flex gap-2">
-            <div className="p-1  rounded-full bg-tradeOrange/30">
-              <MdOutlineGppGood className="text-tradeOrange text-[13px] md:text-sm leading-none" />
+          <div className="flex flex-col gap-2">
+            <p className="text-tradeFadeWhite text-xs font-bold">Trust Score</p>
+            <div className="flex gap-2">
+              <div className="p-1  rounded-full bg-tradeOrange/30">
+                <MdOutlineGppGood className="text-tradeOrange text-[13px] md:text-sm leading-none" />
+              </div>
+              <p
+                id="trust"
+                className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
+              >
+                0
+              </p>
             </div>
-            <p
-              id="trust"
-              className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
-            >
-              0
-            </p>
           </div>
-        </div>
 
-        <div className=" flex flex-col gap-2">
-          <p className="text-tradeFadeWhite text-xs font-bold">Trade Volume</p>
-
-          <div className="flex items-end gap-2">
-            <p
-              id="tradeVolume"
-              className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
-            >
-              0
+          <div className=" flex flex-col gap-2">
+            <p className="text-tradeFadeWhite text-xs font-bold">
+              Trade Volume
             </p>
+
+            <div className="flex items-end gap-2">
+              <p
+                id="tradeVolume"
+                className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
+              >
+                0
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className=" flex flex-col gap-2">
-          <p className="text-tradeFadeWhite text-xs font-bold">
-            Trade Partners
-          </p>
-
-          <div className="flex items-end gap-2">
-            <p
-              id="tradePartners"
-              className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
-            >
-              0
+          <div className=" flex flex-col gap-2">
+            <p className="text-tradeFadeWhite text-xs font-bold">
+              Trade Partners
             </p>
+
+            <div className="flex items-end gap-2">
+              <p
+                id="tradePartners"
+                className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
+              >
+                0
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className=" flex flex-col gap-2">
-          <p className="text-tradeFadeWhite text-xs font-bold">Total Trade</p>
+          <div className=" flex flex-col gap-2">
+            <p className="text-tradeFadeWhite text-xs font-bold">Total Trade</p>
 
-          <div className="flex items-end gap-2">
-            <p
-              id="totalTrade"
-              className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
-            >
-              0
-            </p>
+            <div className="flex items-end gap-2">
+              <p
+                id="totalTrade"
+                className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
+              >
+                0
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <div ref={statRef} className="flex md:hidden flex-col gap-[10px]">
+        <div className="flex flex-col  bg-tradeAsh  border border-tradeAshLight rounded-[10px] overflow-hidden">
+          <div className="flex p-[12px] w-full flex-col gap-2 border-b border-tradeAshLight ">
+            <p className="text-tradeFadeWhite text-xs font-bold">
+              Positive Feedback
+            </p>
+
+            <div className="flex justify-between items-center gap-2">
+              <div className="p-1  rounded-full bg-[#00de82]/30 ">
+                <MdThumbUpAlt className="text-tradeGreen text-[13px] md:text-sm leading-none" />
+              </div>
+
+              <p
+                id="positive"
+                className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
+              >
+                0
+              </p>
+            </div>
+          </div>
+          <div className="flex p-[12px] w-full flex-col gap-2 border-b border-tradeAshLight">
+            <p className="text-tradeFadeWhite text-xs font-bold">
+              Negative Feedback
+            </p>
+
+            <div className="flex justify-between items-center gap-2">
+              <div className="p-1  rounded-full bg-red-600/30">
+                <MdThumbDownAlt className="text-red-600 text-[13px] md:text-sm leading-none" />
+              </div>
+
+              <p
+                id="negative"
+                className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
+              >
+                0
+              </p>
+            </div>
+          </div>
+          <div className="flex p-[12px] w-full flex-col gap-2 ">
+            <p className="text-tradeFadeWhite text-xs font-bold">Trust Score</p>
+
+            <div className="flex justify-between items-center gap-2">
+              <div className="p-1  rounded-full bg-tradeOrange/30">
+                <MdOutlineGppGood className="text-tradeOrange text-[13px] md:text-sm leading-none" />
+              </div>
+              <p
+                id="trust"
+                className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
+              >
+                0
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col  bg-tradeAsh border border-tradeAshLight  rounded-[10px] overflow-hidden">
+          <div className="flex p-[12px] w-full flex-col gap-2 border-b border-tradeAshLight ">
+            <p className="text-tradeFadeWhite text-xs font-bold">
+              Trade Volume
+            </p>
+
+            <div className="flex justify-between items-center gap-2">
+              <div className="p-1  rounded-full bg-red-600/30">
+                <MdThumbDownAlt className="text-red-600 text-[13px] md:text-sm leading-none" />
+              </div>
+
+              <p
+                id="tradeVolume"
+                className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
+              >
+                0
+              </p>
+            </div>
+          </div>
+          <div className="flex p-[12px] w-full flex-col gap-2 border-b border-tradeAshLight ">
+            <p className="text-tradeFadeWhite text-xs font-bold">
+              Trade Partners
+            </p>
+
+            <div className="flex justify-between items-center gap-2">
+              <div className="p-1  rounded-full bg-[#00de82]/30 ">
+                <MdThumbUpAlt className="text-tradeGreen text-[13px] md:text-sm leading-none" />
+              </div>
+
+              <p
+                id="tradePartners"
+                className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
+              >
+                0
+              </p>
+            </div>
+          </div>
+          <div className="flex p-[12px] w-full flex-col gap-2 ">
+            <p className="text-tradeFadeWhite text-xs font-bold">
+              Total Trades
+            </p>
+
+            <div className="flex justify-between items-center gap-2">
+              <div className="p-1  rounded-full bg-red-600/30">
+                <MdThumbDownAlt className="text-red-600 text-[13px] md:text-sm leading-none" />
+              </div>
+
+              <p
+                id="totalTrade"
+                className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
+              >
+                0
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

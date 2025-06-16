@@ -1,36 +1,35 @@
-import axios from "axios";
-import DOMPurify from "dompurify"; // make sure you import this if you use it
+import api from "../http/api";
+import DOMPurify from "dompurify";
+import { dashboard } from "../dashboard/dashboard";
 
+// Sanitize input
 const sanitizeInput = (input) => {
   if (typeof input !== "string") return "";
   const cleaned = DOMPurify.sanitize(input);
   return cleaned.trim();
 };
 
-// At least 8 characters, including uppercase, lowercase, number, and special character
+// Password must include uppercase, lowercase, number, special char, and be 8+ chars
 const validatePassword = (password) => {
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   return passwordRegex.test(password);
 };
 
-// Basic email format validation
+// Validate basic email format
 const validateEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
 
-export async function signin(signinDetails) {
-  console.log("Hey, signing you in!");
-
+// ✅ MAIN FUNCTION
+export async function signin(signinDetails, setDashboard) {
   const baseUrl = import.meta.env.VITE_API_URL;
-  console.log("API URL:", baseUrl);
 
   if (!signinDetails) {
     return { success: false, error: "No sign-in details provided." };
   }
 
-  // Destructure before sanitizing
   const { email, password } = signinDetails;
 
   if (!email) {
@@ -41,7 +40,6 @@ export async function signin(signinDetails) {
     return { success: false, error: "Missing required field: Password" };
   }
 
-  // Sanitize after checking existence
   const sanitizedEmail = sanitizeInput(email);
   const sanitizedPassword = sanitizeInput(password);
 
@@ -52,7 +50,8 @@ export async function signin(signinDetails) {
   if (!validatePassword(sanitizedPassword)) {
     return {
       success: false,
-      error: "Invalid password format.",
+      error:
+        "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.",
     };
   }
 
@@ -62,17 +61,31 @@ export async function signin(signinDetails) {
   };
 
   try {
-    const config = { withCredentials: true };
-    const response = await axios.post(`${baseUrl}/auth/login`, payload, config);
+    const response = await api.post(`${baseUrl}/auth/login`, payload);
 
-    console.log(response);
-    return { success: true, data: response.data };
+    // ✅ success path: login succeeded, fetch dashboard
+    if (response?.data?.success) {
+      const getDashboard = await dashboard();
+      if (getDashboard?.success && setDashboard) {
+        setDashboard(getDashboard?.data?.data);
+      }
+
+      return {
+        success: true,
+        message: response?.data?.message,
+        user: response?.data?.user,
+      };
+    } else {
+      return {
+        success: false,
+        error: response?.data?.errorMessage || "Unexpected error during login.",
+      };
+    }
   } catch (err) {
-    console.log(err);
-
     return {
       success: false,
-      error: err?.response?.data?.errormessage || "Unknown error",
+      error:
+        err?.response?.data?.errorMessage || err?.message || "Unknown error",
     };
   }
 }

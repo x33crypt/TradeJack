@@ -56,78 +56,74 @@ const EditEmail = () => {
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[63px] pt-[60px] flex flex-col gap-[15px] lg:px-[2%] md:px-[2.5%] p-[15px] min-h-svh bg-black">
-        <div className="flex w-full flex-col gap-[10px]">
-          <div className="flex items-center gap-4 border-b  py-[15px] border-tradeAshLight">
-            <div className="flex items-center gap-3 ">
-              <IoMdArrowRoundBack
-                onClick={() => navigateTo(location?.state?.from || -1)}
-                className="text-tradeFadeWhite text-[20px] cursor-pointer"
-              />
-              <p className="text-base text-white font-[700]">
-                Edit Email Address
-              </p>
-            </div>
+      <div className="md:pt-[63px] pt-[60px] flex flex-col gap-[15px] lg:px-[2%] md:px-[2.5%] p-[2.5%] min-h-svh bg-black">
+        <div className="z-20 fixed lg:right-[2%] md:right[2%] right-[2.5%]  lg:left-[2%] md:left[2%] left-[2.5%] bg-black flex items-center gap-4 border-b  py-[15px] border-tradeAshLight">
+          <div className="flex items-center gap-3 ">
+            <IoMdArrowRoundBack
+              onClick={() => navigateTo(location?.state?.from || -1)}
+              className="text-tradeFadeWhite text-[20px] cursor-pointer"
+            />
+            <p className="text-base text-white font-[700]">
+              Edit Email Address
+            </p>
           </div>
+        </div>
 
-          <div className=" flex-1 flex flex-col md:justify-center md:items-center">
-            <div className="flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
-              <div className=" flex flex-col w-full gap-[30px]">
-                <div className="flex flex-col gap-1">
-                  <p className="text-sm font-[600] text-white">Email Address</p>
-                  <input
-                    className={`${
-                      email
-                        ? "border-tradeAshExtraLight"
-                        : "border-tradeAshLight"
-                    } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                    type="text"
-                    name="username"
-                    placeholder="eg. Johndoe@gmail.com"
-                    onChange={handleUsernameChange}
-                  />
-                </div>
-
-                <div>
-                  <p className="text-tradeOrange text-sm font-semibold">
-                    Please note:
-                  </p>
-                  <ul className="list-disc list-inside text-white text-sm space-y-1 mt-1">
-                    <li>
-                      A verification link will be sent to your email address.
-                    </li>
-                    <li>
-                      Make sure the email is valid and accessible before
-                      proceeding.
-                    </li>
-                    <li>
-                      You won’t be able to update your email again for the next
-                      30 days.
-                    </li>
-                  </ul>
-                </div>
+        <div className=" flex-1 mt-[70px] h-full flex flex-col md:justify-center md:items-center bg-tradeGree">
+          <div className="flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
+            <div className=" flex flex-col w-full gap-[30px]">
+              <div className="flex flex-col gap-1">
+                <p className="text-sm font-[600] text-white">Email Address</p>
+                <input
+                  className={`${
+                    email ? "border-tradeAshExtraLight" : "border-tradeAshLight"
+                  } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                  type="text"
+                  name="username"
+                  placeholder="eg. Johndoe@gmail.com"
+                  onChange={handleUsernameChange}
+                />
               </div>
 
-              <div className="flex md:flex-row flex-col gap-[20px]">
-                <div
-                  className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
-                  onClick={() => navigateTo(location?.state?.from || -1)}
-                >
-                  <p className="text-sm font-[700] ">Cancel</p>
-                </div>
-                <button
-                  onClick={handleEditEmail}
-                  className={` ${
-                    isUpdating
-                      ? "bg-tradeAsh text-tradeGreen"
-                      : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
-                  } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
-                >
-                  <p className="text-sm font-[700]">
-                    {isUpdating ? "isUpdating..." : "Update"}
-                  </p>
-                </button>
+              <div>
+                <p className="text-tradeOrange text-sm font-semibold">
+                  Please note:
+                </p>
+                <ul className="list-disc list-inside text-white text-[13px] space-y-1 mt-1">
+                  <li>
+                    A verification link will be sent to your email address.
+                  </li>
+                  <li>
+                    Make sure the email is valid and accessible before
+                    proceeding.
+                  </li>
+                  <li>
+                    You won’t be able to update your email again for the next 30
+                    days.
+                  </li>
+                </ul>
               </div>
+            </div>
+
+            <div className="flex md:flex-row flex-col gap-[20px]">
+              <div
+                className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
+                onClick={() => navigateTo(location?.state?.from || -1)}
+              >
+                <p className="text-sm font-[700] ">Cancel</p>
+              </div>
+              <button
+                onClick={handleEditEmail}
+                className={` ${
+                  isUpdating
+                    ? "bg-tradeAsh text-tradeGreen"
+                    : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
+                } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
+              >
+                <p className="text-sm font-[700]">
+                  {isUpdating ? "isUpdating..." : "Update"}
+                </p>
+              </button>
             </div>
           </div>
         </div>

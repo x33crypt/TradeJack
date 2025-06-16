@@ -18,7 +18,7 @@ import { AuthProvider } from "./context/AuthContext";
 import EditUsername from "./pages/EditUsername";
 import EditEmail from "./pages/EditEmail";
 import EditMobile from "./pages/EditMobile";
-import ChangeAdress from "./pages/ChangeAdress";
+import EditAddress from "./pages/EditAddress";
 import SelectElement from "./components/SelectElement";
 import TradeAlert from "./components/TradeAlert";
 import CreateOfferSummary from "./pages/CreateOfferSummary";
@@ -28,6 +28,7 @@ import EditOfferSummary from "./pages/EditOfferSummary";
 import ToastSuccess from "./components/toastCards/ToastSuccess";
 import ToastError from "./components/toastCards/ToastError";
 import { useScrollRestoration } from "./utils/scroll/restoration";
+import Kyc from "./pages/Kyc";
 
 const App = () => {
   useScrollRestoration();
@@ -63,7 +64,8 @@ const App = () => {
           <Route path="/account/settings/username" element={<EditUsername />} />
           <Route path="/account/settings/email" element={<EditEmail />} />
           <Route path="/account/settings/mobile" element={<EditMobile />} />
-          <Route path="/account/settings/address" element={<ChangeAdress />} />
+          <Route path="/account/settings/address" element={<EditAddress />} />
+          <Route path="/account/settings/kyc" element={<Kyc />} />
 
           {/* Marketplace & Offers */}
           <Route path="/offers/marketplace" element={<Marketplace />} />

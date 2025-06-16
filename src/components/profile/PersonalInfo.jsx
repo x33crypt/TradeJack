@@ -63,7 +63,7 @@ const PersonalInfo = () => {
         <div className=" flex flex-col  bg-tradeAsh rounded-[10px] border border-tradeAshLight overflow-hidden">
           <div
             className="flex items-center gap-[5px]  py-3 px-3  bg-tradeAsh hover:bg-tradeAshLight  border-b border-tradeAshLight cursor-pointer transition-all duration-300 "
-            // onClick={() => navigateTo("/account/update/name")}
+            onClick={() => navigateTo("/account/settings/kyc")}
           >
             <div className="flex-1 flex  justify-between gap-[2px]  bg-tradePurpl ">
               <p className="text-sm font-[600] text-white">KYC Levels</p>
@@ -136,7 +136,9 @@ const PersonalInfo = () => {
             // onClick={() => navigateTo("/account/update/name")}
           >
             <div className="flex-1 flex  justify-between gap-[2px]  bg-tradePurpl ">
-              <p className="text-sm font-[600] text-white">Wallet Management</p>
+              <p className="text-sm font-[600] text-white">
+                Management of Account
+              </p>
             </div>
             <div className="text-white text-[22px]">
               <MdKeyboardArrowRight />
@@ -150,9 +152,9 @@ const PersonalInfo = () => {
             // onClick={() => navigateTo("/account/update/name")}
           >
             <div className="flex-1 flex flex-col justify-between gap-[2px]  bg-tradePurpl ">
-              <p className="text-sm font-[600] text-white">Vendors</p>
+              <p className="text-sm font-[600] text-white">Trade Partner</p>
               <p className="text-tradeFadeWhite text-[13px] font-[600]">
-                Manage your relationship, get benefits
+                Manage your relationship
               </p>
             </div>
             <div className="text-white text-[22px]">

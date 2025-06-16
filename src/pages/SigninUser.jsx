@@ -3,6 +3,7 @@ import { PiSignInBold } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/context/ToastContext";
 import { signin } from "@/utils/auth/signin";
+import { useDashboard } from "@/context/DashboardContext";
 
 const SigninUser = () => {
   const [signinDetails, setSigninDetails] = useState({
@@ -11,6 +12,7 @@ const SigninUser = () => {
   });
   const { toast, setToast } = useToast();
   const [isSigningIn, setIsSigningIn] = useState(false);
+  const { setDashboard } = useDashboard();
 
   const handleEmailChange = (e) => {
     setSigninDetails((prev) => ({
@@ -31,10 +33,10 @@ const SigninUser = () => {
     setIsSigningIn(true);
 
     try {
-      const result = await signin(signinDetails);
+      const result = await signin(signinDetails, setDashboard);
 
       if (result.success) {
-        console.log("Signin successful:", result.data);
+        console.log("Signin successful:", result);
         navigateTo("/dashboard");
         setToast({
           ...toast,
@@ -46,7 +48,7 @@ const SigninUser = () => {
         setToast({
           ...toast,
           error: true,
-          errorMessage: result.error,
+          errorMessage: result?.error,
         });
       }
     } catch (err) {

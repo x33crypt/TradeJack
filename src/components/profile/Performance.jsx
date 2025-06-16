@@ -2,7 +2,7 @@ import React from "react";
 
 const Performance = () => {
   return (
-    <div className="lg:w-[400px] md:border border-tradeAshLight gap-[20px] md:gap-0 flex flex-col">
+    <div className="flex-1 h-full md:border border-tradeAshLight gap-[20px] md:gap-0 flex flex-col">
       <div className="flex md:p-[15px] py-[15px]  border-b border-tradeAshLight">
         <p className="text-lg text-white font-[700]">Performance</p>
       </div>
