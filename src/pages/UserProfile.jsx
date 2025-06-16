@@ -38,7 +38,7 @@ const UserProfile = () => {
           <StatsBoard />
         </div>
 
-        <div className="flex lg:flex-row flex-col gap-[15px] ">
+        <div className="flex lg:flex-row flex-col gap-[10px] ">
           <PersonalInfo />
 
           <div className="lg:w-[400px] ">

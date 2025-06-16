@@ -19,6 +19,11 @@ import { AiFillSafetyCertificate } from "react-icons/ai";
 import { HiStatusOnline } from "react-icons/hi";
 import { FiTrendingUp } from "react-icons/fi";
 import { LuEqualApproximately } from "react-icons/lu";
+import { MdSendToMobile } from "react-icons/md";
+import { FaHourglassEnd } from "react-icons/fa6";
+import { FaRegClock } from "react-icons/fa";
+import { MdTimer } from "react-icons/md";
+import { FaBusinessTime } from "react-icons/fa";
 
 const MarketCard = (props) => {
   const navigateTo = useNavigate();
@@ -120,11 +125,18 @@ const MarketCard = (props) => {
           </div>
 
           <div className="flex justify-between items-center">
-            <p className=" flex md:hidden lg:flex text-xs font-semibold text-tradeFadeWhite">
-              Trade Volume
-            </p>
-
-            <p className="text-sm font-bold text-tradeOrange">53 Trades</p>
+            <div className="flex items-center gap-1">
+              <MdTimer className="text-tradeOrange text-sm" />
+              <p className="text-tradeFadeWhite text-sm font-medium">
+                65 Min(s)
+              </p>
+            </div>
+            <div className="flex items-center gap-1">
+              <FaBusinessTime className="text-tradeOrange text-sm" />
+              <p className="text-tradeFadeWhite text-sm font-medium">
+                4 Hour(s)
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -25,15 +25,30 @@ const DashMain = () => {
 
   console.log(dashboard);
 
+  const formatBalance = (value) => {
+    if (typeof value === "object" && value?.$numberDecimal) {
+      return parseFloat(value.$numberDecimal).toLocaleString();
+    }
+    if (typeof value === "number") {
+      return value.toLocaleString();
+    }
+    return "--.--";
+  };
+
   return (
     <>
-      <div className="flex-1 flex flex-col md:gap-[20px] ">
-        <div className="flex lg:flex-row flex-col flex-1 p-[15px] md:p-0 gap-[20px]">
-          <div className="flex-1 flex flex-col md:border border-tradeAshLight">
-            <div className="lg:flex hidden md:p-[2.5%] py-[2.5%] border-b border-tradeAshLight">
-              <p className="text-lg text-white font-[700]">Accounts</p>
+      <div className="flex-1 flex flex-col md:gap-[10px] ">
+        <div className="flex lg:flex-row flex-col flex-1 p-[15px] md:p-0 gap-[10px]">
+          <div className="flex-1 flex flex-col gap-[20px] md:gap-0 md:border border-t-0 border-tradeAshLight">
+            <div className="flex items-center gap-3 md:p-[2.5%] py-[2.5%] border-b border-tradeAshLight">
+              <p className="text-base text-tradeFadeWhite flex items-center gap-1">
+                Welcome back,{" "}
+                <small className="text-lg text-white font-[700]">
+                  {dashboard?.profile?.username || "User"}
+                </small>
+              </p>
             </div>
-            <div className="flex-1 flex flex-col gap-[20px] md:p-[15px] ">
+            <div className="flex-1 flex flex-col gap-[20px] md:p-[15px]">
               <div className="rounded-2xl overflow-hidden border border-tradeAshLight">
                 {/* Available Balance Section */}
                 <div className="bg-tradeGreen p-4 flex flex-col gap-2">
@@ -44,12 +59,23 @@ const DashMain = () => {
                     <FaEye className="text-black text-lg cursor-pointer" />
                   </div>
 
-                  <p className="text-black text-3xl md:text-3xl font-extrabold tracking-tight leading-tight">
-                    {dashboard?.balances?.available_balance}{" "}
-                    <span className="text-tradeAsh">
-                      {dashboard?.balances?.currency}
-                    </span>
-                  </p>
+                  <div>
+                    {dashboard?.balances?.available_balance ? (
+                      <p className="text-black text-3xl md:text-3xl font-extrabold tracking-tight leading-tight">
+                        {formatBalance(dashboard?.balances?.available_balance)}{" "}
+                        <span className="text-black">
+                          {dashboard?.balances?.currency ?? ""}
+                        </span>
+                      </p>
+                    ) : (
+                      <p className="text-black text-3xl md:text-3xl font-extrabold tracking-tight leading-tight">
+                        --.--{" "}
+                        <span className="text-black">
+                          {dashboard?.balances?.currency ?? ""}
+                        </span>
+                      </p>
+                    )}
+                  </div>
                 </div>
 
                 {/* Escrow Wallet Section */}
@@ -61,12 +87,23 @@ const DashMain = () => {
                     <FaRegQuestionCircle className="text-tradeOrange text-sm" />
                   </div>
 
-                  <p className="text-white text-3xl md:text-3xl font-extrabold tracking-tight leading-tight">
-                    {dashboard?.balances?.escrow_balance}{" "}
-                    <span className="text-white">
-                      {dashboard?.balances?.currency}
-                    </span>
-                  </p>
+                  <div>
+                    {dashboard?.balances?.escrow_balance ? (
+                      <p className="text-white text-3xl md:text-3xl font-extrabold tracking-tight leading-tight">
+                        {formatBalance(dashboard.balances.escrow_balance)}{" "}
+                        <span className="text-white">
+                          {dashboard?.balances?.currency ?? ""}
+                        </span>
+                      </p>
+                    ) : (
+                      <p className="text-white text-3xl md:text-3xl font-extrabold tracking-tight leading-tight">
+                        --.--{" "}
+                        <span className="text-white">
+                          {dashboard?.balances?.currency ?? ""}
+                        </span>
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -111,8 +148,8 @@ const DashMain = () => {
                         {dashboard?.balances?.currency}
                       </p>
                       <div className="flex bg-tradeGreen gap-1 items-center rounded-full px-2 py-[1px]">
-                        <FaAward className="text-black text-sm" />
-                        <p className=" text-xs font-[600]">Upgrade to Tier 2</p>
+                        <FaAward className="text-black text-xs" />
+                        <p className=" text-xs font-[500]">Upgrade to Tier 2</p>
                       </div>
                     </div>
                   </div>
@@ -138,7 +175,9 @@ const DashMain = () => {
                   </div>
                   <div className="flex justify-between items-baseline">
                     <p className="text-white text-[23px] font-[700]">
-                      {dashboard?.activitySummary?.active_offers}
+                      {dashboard?.activitySummary?.active_offers
+                        ? dashboard?.activitySummary?.active_offers
+                        : "0"}
                     </p>
                     <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
                   </div>
@@ -152,8 +191,9 @@ const DashMain = () => {
                   </div>
                   <div className="flex justify-between items-baseline">
                     <p className="text-white text-[23px] font-[700]">
-                      {" "}
-                      {dashboard?.activitySummary?.pending_trades}
+                      {dashboard?.activitySummary?.pending_trades
+                        ? dashboard?.activitySummary?.pending_trades
+                        : "0"}
                     </p>
                     <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
                   </div>
@@ -167,8 +207,9 @@ const DashMain = () => {
                   </div>
                   <div className="flex justify-between items-baseline">
                     <p className="text-white text-[23px] font-[700]">
-                      {" "}
-                      {dashboard?.activitySummary?.successful_trades}
+                      {dashboard?.activitySummary?.successful_trades
+                        ? dashboard?.activitySummary?.successful_trades
+                        : "0"}
                     </p>
                     <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
                   </div>
@@ -183,8 +224,7 @@ const DashMain = () => {
 
                   <div className="flex justify-between items-baseline">
                     <p className="text-white text-[23px] font-[700]">
-                      {" "}
-                      {dashboard?.openDisputes}
+                      {dashboard?.openDisputes ? dashboard?.openDisputes : "0"}
                     </p>
                     <i class="fa-solid fa-arrow-right text-tradeGreen text-[14px]"></i>
                   </div>

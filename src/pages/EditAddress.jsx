@@ -101,8 +101,8 @@ const EditAddress = () => {
     <>
       <InAppNav />
 
-      <div className="md:pt-[63px] pt-[60px] flex flex-col gap-[15px] lg:px-[2%] md:px-[2.5%] p-[2.5%] min-h-svh bg-black">
-        <div className="z-20 fixed lg:right-[2%] md:right[2%] right-[2.5%]  lg:left-[2%] md:left[2%] left-[2.5%] bg-black flex items-center gap-4 border-b  py-[15px] border-tradeAshLight">
+      <div className="md:pt-[63px] pt-[60px] flex flex-col gap-[15px] lg:px-[2%] md:px-[2.5%] p-[15px] min-h-svh bg-black">
+        <div className="z-20 fixed lg:right-[2%] md:right[2%] right-[15px]  lg:left-[2%] md:left[2%] left-[15px] bg-black flex items-center gap-4 border-b  py-[15px] border-tradeAshLight">
           <div className="flex items-center gap-3 ">
             <IoMdArrowRoundBack
               onClick={() => navigateTo(location?.state?.from || -1)}
