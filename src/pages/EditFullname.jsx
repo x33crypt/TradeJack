@@ -80,8 +80,8 @@ const EditFullname = () => {
           </div>
         </div>
 
-        <div className=" flex-1 mt-[70px] h-full flex flex-col md:justify-center md:items-center bg-tradeGree">
-          <div className="flex flex-col justify-between md:w-[400px] w-full h-full gap-[30px]">
+        <div className="flex-1 mt-[70px] flex flex-col md:justify-center md:items-center">
+          <div className="flex-1 md:flex-none flex flex-col justify-between md:justify-normal md:w-[400px] w-full h-full gap-[30px]">
             <div className=" flex flex-col w-full gap-[30px] ">
               <div className="flex flex-col gap-[30px]">
                 <div className="flex flex-col gap-1">
@@ -127,7 +127,7 @@ const EditFullname = () => {
               </div>
             </div>
 
-            <div className="flex md:flex-row flex-col gap-[20px]">
+            <div className="flex  w-full md:flex-row flex-col gap-[20px]">
               <div
                 className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
                 onClick={() => navigateTo(location?.state?.from || -1)}

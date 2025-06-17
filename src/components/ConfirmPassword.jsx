@@ -7,7 +7,6 @@ import DOMPurify from "dompurify";
 import { IoWarning } from "react-icons/io5";
 import UserProfileNav from "@/components/UserProfileNav";
 import useSafeNavigate from "../components/SafeNavigation";
-import { useAuth } from "../context/AuthContext";
 
 const ConfirmPassword = () => {
   const [password, setPassword] = useState("");
@@ -16,7 +15,6 @@ const ConfirmPassword = () => {
   });
   const [confirming, setConfirming] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { setIsVerified } = useAuth();
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);

@@ -3,10 +3,10 @@ import React, { createContext, useState, useContext } from "react";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isVerified, setIsVerified] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
-    <AuthContext.Provider value={{ isVerified, setIsVerified }}>
+    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );

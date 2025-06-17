@@ -1061,7 +1061,7 @@ const CreateOffer = () => {
                   </div>
                 </div>
 
-                <div className="flex p-3 bg-tradeAsh rounded-[10px] border border-tradeAshLight flex-col gap-2 text-xs text-white leading-relaxed">
+                <div className="flex p-3 bg-tradeAsh rounded-[10px] border border-tradeAshLight flex-col gap-2 text-[13px] text-white leading-relaxed">
                   {offerDetails?.currency?.code ? (
                     <>
                       {/* Market Price */}

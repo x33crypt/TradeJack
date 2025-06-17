@@ -25,14 +25,23 @@ const DashMain = () => {
 
   console.log(dashboard);
 
-  const formatBalance = (value) => {
+  const balanceFormat = (value) => {
+    let numericValue;
+
     if (typeof value === "object" && value?.$numberDecimal) {
-      return parseFloat(value.$numberDecimal).toLocaleString();
+      numericValue = parseFloat(value.$numberDecimal);
+    } else if (typeof value === "number") {
+      numericValue = value;
     }
-    if (typeof value === "number") {
-      return value.toLocaleString();
+
+    if (typeof numericValue === "number") {
+      return numericValue.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
     }
-    return "--.--";
+
+    return "0.00"; // fallback display for null/invalid/undefined
   };
 
   return (
@@ -51,24 +60,24 @@ const DashMain = () => {
             <div className="flex-1 flex flex-col gap-[20px] md:p-[15px]">
               <div className="rounded-2xl overflow-hidden border border-tradeAshLight">
                 {/* Available Balance Section */}
-                <div className="bg-tradeGreen p-4 flex flex-col gap-2">
+                <div className="bg-tradeGreen p-3 flex flex-col gap-2">
                   <div className="flex items-center justify-between">
                     <p className="text-black text-xs font-semibold">
                       Available Balance
                     </p>
-                    <FaEye className="text-black text-lg cursor-pointer" />
+                    <FaEye className="text-black text-lg cursor-pointer leading-none" />
                   </div>
 
                   <div>
-                    {dashboard?.balances?.available_balance ? (
+                    {dashboard?.balances ? (
                       <p className="text-black text-3xl md:text-3xl font-extrabold tracking-tight leading-tight">
-                        {formatBalance(dashboard?.balances?.available_balance)}{" "}
+                        {balanceFormat(dashboard?.balances?.available_balance)}{" "}
                         <span className="text-black">
                           {dashboard?.balances?.currency ?? ""}
                         </span>
                       </p>
                     ) : (
-                      <p className="text-black text-3xl md:text-3xl font-extrabold tracking-tight leading-tight">
+                      <p className="text-black text-3xl md:text-3xl font-extrabold tracking-tight">
                         --.--{" "}
                         <span className="text-black">
                           {dashboard?.balances?.currency ?? ""}
@@ -78,25 +87,25 @@ const DashMain = () => {
                   </div>
                 </div>
 
-                {/* Escrow Wallet Section */}
-                <div className="bg-tradeAsh p-4 flex flex-col gap-2">
-                  <div className="flex items-center gap-1">
+                {/* Escrow Account Section */}
+                <div className="bg-tradeAsh  p-3 flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
                     <p className="text-tradeFadeWhite text-xs font-semibold">
-                      Escrow Wallet
+                      Escrow Account
                     </p>
-                    <FaRegQuestionCircle className="text-tradeOrange text-sm" />
+                    <FaRegQuestionCircle className="text-tradeOrange text-sm leading-none" />
                   </div>
 
                   <div>
-                    {dashboard?.balances?.escrow_balance ? (
+                    {dashboard?.balances ? (
                       <p className="text-white text-3xl md:text-3xl font-extrabold tracking-tight leading-tight">
-                        {formatBalance(dashboard.balances.escrow_balance)}{" "}
+                        {balanceFormat(dashboard.balances.escrow_balance)}{" "}
                         <span className="text-white">
                           {dashboard?.balances?.currency ?? ""}
                         </span>
                       </p>
                     ) : (
-                      <p className="text-white text-3xl md:text-3xl font-extrabold tracking-tight leading-tight">
+                      <p className="text-white text-3xl md:text-3xl font-extrabold tracking-tight">
                         --.--{" "}
                         <span className="text-white">
                           {dashboard?.balances?.currency ?? ""}
@@ -137,12 +146,8 @@ const DashMain = () => {
                     <div className="flex items-center gap-[10px]">
                       <p className="text-[14px] text-white font-[600]">
                         {dashboard?.limits?.maximum_purchase_limit
-                          ?.$numberDecimal
-                          ? new Intl.NumberFormat().format(
-                              parseFloat(
-                                dashboard.limits.maximum_purchase_limit
-                                  .$numberDecimal
-                              )
+                          ? balanceFormat(
+                              dashboard?.limits?.maximum_purchase_limit
                             )
                           : "00.00"}{" "}
                         {dashboard?.balances?.currency}

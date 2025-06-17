@@ -10,7 +10,7 @@ const EditEmail = () => {
   const [isUpdating, setIsUpdating] = useState(false);
   const { toast, setToast } = useToast();
 
-  const handleUsernameChange = (e) => {
+  const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
@@ -69,8 +69,8 @@ const EditEmail = () => {
           </div>
         </div>
 
-        <div className=" flex-1 mt-[70px] h-full flex flex-col md:justify-center md:items-center bg-tradeGree">
-          <div className="flex flex-col justify-between md:w-[400px] w-full h-full md:gap-[30px] gap-[30px]">
+        <div className="flex-1 mt-[70px] flex flex-col md:justify-center md:items-center">
+          <div className="flex-1 md:flex-none flex flex-col justify-between md:justify-normal md:w-[400px] w-full h-full gap-[30px]">
             <div className=" flex flex-col w-full gap-[30px]">
               <div className="flex flex-col gap-1">
                 <p className="text-sm font-[600] text-white">Email Address</p>
@@ -79,9 +79,9 @@ const EditEmail = () => {
                     email ? "border-tradeAshExtraLight" : "border-tradeAshLight"
                   } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                   type="text"
-                  name="username"
+                  name="email"
                   placeholder="eg. Johndoe@gmail.com"
-                  onChange={handleUsernameChange}
+                  onChange={handleEmailChange}
                 />
               </div>
 
@@ -105,7 +105,7 @@ const EditEmail = () => {
               </div>
             </div>
 
-            <div className="flex md:flex-row flex-col gap-[20px]">
+            <div className="flex w-full md:flex-row flex-col gap-[20px]">
               <div
                 className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
                 onClick={() => navigateTo(location?.state?.from || -1)}

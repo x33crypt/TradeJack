@@ -63,10 +63,10 @@ const PersonalInfo = () => {
         <div className=" flex flex-col  bg-tradeAsh rounded-[10px] border border-tradeAshLight overflow-hidden">
           <div
             className="flex items-center gap-[5px]  py-3 px-3  bg-tradeAsh hover:bg-tradeAshLight  border-b border-tradeAshLight cursor-pointer transition-all duration-300 "
-            onClick={() => navigateTo("/account/settings/kyc")}
+            onClick={() => navigateTo("/account/settings/kycVerification")}
           >
             <div className="flex-1 flex  justify-between gap-[2px]  bg-tradePurpl ">
-              <p className="text-sm font-[600] text-white">KYC Levels</p>
+              <p className="text-sm font-[600] text-white">KYC Verification</p>
 
               <p className="text-tradeFadeWhite text-sm font-[600]">Tier 2</p>
             </div>
@@ -83,7 +83,7 @@ const PersonalInfo = () => {
 
               <p className="text-tradeFadeWhite text-sm font-[600]">Male</p>
             </div>
-            <div className="text-white text-[22px]">
+            <div className="text-tradeAsh text-[22px]">
               <MdKeyboardArrowRight />
             </div>
           </div>

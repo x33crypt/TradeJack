@@ -13,6 +13,7 @@ const api = axios.create({
 
 // Store CSRF token
 let csrfToken = null;
+let isRedirecting = false;
 
 // Fetch CSRF token from cookies
 const getCsrfTokenFromCookies = () => {
@@ -31,10 +32,17 @@ const getCsrfTokenFromCookies = () => {
   }
 };
 
-// Response interceptor: Capture CSRF token from GET responses
+// Clear session cookies
+const clearSession = () => {
+  csrfToken = null;
+  document.cookie = "XSRF-TOKEN=; Max-Age=0; path=/;";
+  document.cookie = "token=; Max-Age=0; path=/;";
+};
+
+// ✅ Response Interceptor
 api.interceptors.response.use(
   (response) => {
-    // Capture CSRF token from GET response
+    // Store CSRF token on GET requests
     if (response.config.method === "get") {
       const newCsrfToken =
         response.headers["x-csrf-token"] || getCsrfTokenFromCookies();
@@ -47,11 +55,34 @@ api.interceptors.response.use(
 
     if (response) {
       const { status, data } = response;
-
-      // Custom error messages based on status
       let message = data?.error?.message || "An error occurred";
 
       if (status === 401) {
+        if (
+          data?.error?.message === "Access denied. Session token expired" &&
+          !isRedirecting
+        ) {
+          isRedirecting = true;
+
+          clearSession();
+
+          // Dispatch toast notification (optional listener)
+          setToast({
+            ...toast,
+            error: true,
+            errorMessage: "Your session has expired. Please log in again.",
+          });
+
+          // Redirect to signin
+          window.location.href = "/signin?sessionExpired=true";
+
+          // Reset flag
+          setTimeout(() => {
+            isRedirecting = false;
+          }, 1000);
+
+          return Promise.reject(error);
+        }
         message = "Unauthorized – please log in again.";
       } else if (status === 403 && data?.error?.code === "ERR_CSRF_MISSING") {
         message = "CSRF token missing or invalid. Please refresh the page.";
@@ -63,11 +94,10 @@ api.interceptors.response.use(
         success: false,
         status,
         message,
-        data: data,
+        data,
       });
     }
 
-    // Network or unexpected errors
     return Promise.reject({
       success: false,
       message: "Network Error. Please check your connection.",
@@ -76,7 +106,7 @@ api.interceptors.response.use(
   }
 );
 
-// Request interceptor: Add CSRF token to protected methods
+// ✅ Request Interceptor
 api.interceptors.request.use((config) => {
   const exemptRoutes = [
     "/api/v1/auth/login",
