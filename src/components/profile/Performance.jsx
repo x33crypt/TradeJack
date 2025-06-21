@@ -2,12 +2,12 @@ import React from "react";
 
 const Performance = () => {
   return (
-    <div className="flex-1 h-full md:border border-tradeAshLight gap-[20px] md:gap-0 flex flex-col">
-      <div className="flex md:p-[15px] py-[15px]  border-b border-tradeAshLight">
+    <div className="flex-1 h-full md:border border-tradeAshLight flex flex-col">
+      <div className="flex  p-[15px]  border-b border-tradeAshLight">
         <p className="text-lg text-white font-[700]">Performance</p>
       </div>
 
-      <div className="flex h-[500px] md:h-full md:p-[15px] flex-col gap-[20px]">
+      <div className="flex h-[500px] md:h-full p-[15px] flex-col gap-[20px]">
         <div className=" flex flex-col gap-[20px] h-full">
           <div className="flex-1 flex flex-col gap-[10px] py-3 px-3  bg-tradeAsh hover:bg-tradeAshLight rounded-[10px] border border-tradeAshLight overflow-hidden cursor-pointer transition-all duration-300 ">
             <div className="flex w-full justify-between">

@@ -19,8 +19,8 @@ const UserProfile = () => {
     <>
       <MarketTopNav />
 
-      <div className="md:pt-[80px] pt-[75px] pb-[10px] lg:px-[2%] md:px-[2.5%] p-[2.5%] min-h-screen flex flex-col gap-[20px] bg-black">
-        <div className="z-20 fixed lg:right-[2%] md:right[2.5%] right-[2.5%]  lg:left-[2%] md:left[2.5%] left-[2.5%] top-[60px] md:top-[65px] bg-black flex items-center gap-4 border-b py-[15px] border-tradeAshLight">
+      <div className="md:pt-[80px] pt-[75px] pb-[10px] lg:px-[2%] md:px-[2.5%]  min-h-screen flex flex-col gap-[20px] bg-black">
+        <div className="z-20 fixed  right-0  left-0 lg:px-[2%] md:px-[2.5%] px-[15px] py-[15px] top-[60px] md:top-[65px] bg-black flex items-center gap-4 border-b border-tradeAshLight">
           <div className="flex items-center gap-3 ">
             <IoMdArrowRoundBack
               onClick={() => navigateTo(location?.state?.from || -1)}

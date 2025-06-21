@@ -11,7 +11,7 @@ const MyOffer = () => {
   return (
     <>
       <InAppNav />
-      <div className="flex flex-col min-h-svh bg-black lg:px-[2%] md:px-[5%] md:pt-[80px] pt-[60px] relative">
+      <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[60px]">
         <div className="flex flex-col w-full h-full md:border-x md:border-t md:border-b border-neutral-800">
           <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
             <p className="text-[17px] text-white font-[700]">My Offers</p>

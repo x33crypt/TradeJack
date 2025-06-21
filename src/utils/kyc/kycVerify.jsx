@@ -24,7 +24,6 @@ export async function kycVerify(kycDetails) {
   const {
     firstname,
     lastname,
-    email,
     dateOfBirth,
     gender,
     addressDetails,
@@ -39,10 +38,6 @@ export async function kycVerify(kycDetails) {
 
   if (!lastname?.trim()) {
     return { success: false, error: "Missing required field: Last Name" };
-  }
-
-  if (!email?.trim()) {
-    return { success: false, error: "Missing required field: Email Address" };
   }
 
   // Check for a valid date of birth structure
@@ -87,7 +82,6 @@ export async function kycVerify(kycDetails) {
 
   const sanitizedFirstname = sanitizeInput(firstname);
   const sanitizedLastname = sanitizeInput(lastname);
-  const sanitizedEmail = sanitizeInput(email);
   const sanitizedGender = sanitizeInput(gender);
   const sanitizedDocumentType = sanitizeInput(documentType);
   const sanitizedAddress = {
@@ -108,7 +102,6 @@ export async function kycVerify(kycDetails) {
   const payload = {
     firstName: sanitizedFirstname,
     lastName: sanitizedLastname,
-    email: sanitizedEmail,
     gender: sanitizedGender,
     documentType: sanitizedDocumentType,
     address: {
@@ -119,5 +112,18 @@ export async function kycVerify(kycDetails) {
     },
   };
 
-  console.log("Not Done Yet");
+  try {
+    const response = await api.post(`${baseUrl}/profile/kyc/submit`, payload);
+
+    return {
+      success: true,
+      message: response?.data?.message,
+    };
+  } catch (err) {
+    console.log(err);
+    return {
+      success: false,
+      error: err?.response?.data?.errormessage || "Unknown error",
+    };
+  }
 }

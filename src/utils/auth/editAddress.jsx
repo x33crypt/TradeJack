@@ -1,5 +1,6 @@
-import axios from "axios";
+
 import DOMPurify from "dompurify"; // make sure you import this if you use it
+import api from "../http/api";
 
 const sanitizeInput = (input) => {
   const cleaned = DOMPurify.sanitize(input);
@@ -46,16 +47,16 @@ export async function editAddress(addressDetails) {
     street: sanitizedStreet,
   };
 
-   try {
-    const config = { withCredentials: true };
-    const response = await axios.post(
+  try {
+    const response = await api.post(
       `${baseUrl}/user/updateprofile/address`,
-      payload,
-      config
+      payload
     );
 
-    console.log(response);
-    return { success: true, data: response.data };
+    return {
+      success: true,
+      message: response?.data?.message,
+    };
   } catch (err) {
     console.log(err);
     return {

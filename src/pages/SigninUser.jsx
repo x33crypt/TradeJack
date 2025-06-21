@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "@/context/ToastContext";
 import { signin } from "@/utils/auth/signin";
 import { useDashboard } from "@/context/DashboardContext";
+import { useSearchParams } from "react-router-dom";
 
 const SigninUser = () => {
   const [signinDetails, setSigninDetails] = useState({
@@ -13,6 +14,18 @@ const SigninUser = () => {
   const { toast, setToast } = useToast();
   const [isSigningIn, setIsSigningIn] = useState(false);
   const { setDashboard } = useDashboard();
+
+  const searchParams = new URLSearchParams(window.location.search);
+  const sessionExpired = searchParams.get("sessionExpired") === "true";
+
+  useEffect(() => {
+    if (sessionExpired) {
+      setToast({
+        error: true,
+        errorMessage: "Session expired. Please log in again.",
+      });
+    }
+  }, []);
 
   const handleEmailChange = (e) => {
     setSigninDetails((prev) => ({
@@ -72,8 +85,8 @@ const SigninUser = () => {
           </div>
 
           <div className="flex flex-col items-center gap-1">
-            <p className="text-white text-2xl font-semibold">
-              Sign in with email
+            <p className="text-white text-c text-2xl font-semibold">
+              Sign in with your email
             </p>
             <p className="md:text-xs text-[13px] font-[500] text-tradeFadeWhite">
               Enter your details to access your account.

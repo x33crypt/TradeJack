@@ -1,4 +1,5 @@
 import axios from "axios";
+import api from "../http/api";
 
 const getMissingServiceLabel = (type) => {
   switch (type) {
@@ -28,6 +29,7 @@ export async function publish(offerDetails) {
   const {
     serviceType,
     service,
+    serviceId,
     currency,
     minimum,
     maximum,
@@ -96,7 +98,8 @@ export async function publish(offerDetails) {
 
   const payload = {
     service_type: serviceType,
-    service,
+    service: service,
+    service_id: serviceId,
     preferred_currency: [
       {
         code: currency.code,
@@ -117,24 +120,29 @@ export async function publish(offerDetails) {
     terms: termTags,
     payment_window: paymentWindow,
     confirmation_window: confirmationTime,
-    instructions: instruction,
+    instructins: instruction,
   };
 
-  const config = { withCredentials: true };
-
   try {
-    const response = await axios.post(
+    const response = await api.post(
       `${baseUrl}/service-provider/offers/create`,
-      payload,
-      config
+      payload
     );
-    return { success: true, data: response.data };
+
+    console.log;
+    "Publish response:", response;
+
+    return {
+      success: true,
+      message: response?.data?.message,
+    };
   } catch (err) {
     console.log(err);
 
     return {
       success: false,
-      error: err?.response?.data?.message || err.message || "Unknown error",
+      error:
+        err?.response?.data?.errorMessage || err?.message || "Unknown error",
     };
   }
 }

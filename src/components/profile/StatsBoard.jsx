@@ -169,7 +169,7 @@ const StatsBoard = () => {
         </div>
       </div>
 
-      <div ref={statRef} className="flex md:hidden flex-col gap-[10px]">
+      <div ref={statRef} className="flex md:hidden flex-col  p-[15px]  gap-[10px]">
         <div className="flex flex-col  bg-tradeAsh  border border-tradeAshLight rounded-[10px] overflow-hidden">
           <div className="flex p-[12px] w-full flex-col gap-2 border-b border-tradeAshLight ">
             <p className="text-tradeFadeWhite text-xs font-bold">

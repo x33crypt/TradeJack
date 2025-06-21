@@ -6,12 +6,12 @@ const PersonalInfo = () => {
   const navigateTo = useNavigate();
 
   return (
-    <div className="flex-1 md:border border-tradeAshLight gap-[20px] md:gap-0 flex flex-col ">
-      <div className="flex md:p-[15px] py-[15px]  border-b border-tradeAshLight">
+    <div className="flex-1 md:border border-tradeAshLight flex flex-col ">
+      <div className="flex p-[15px]  border-b border-tradeAshLight">
         <p className="text-lg text-white font-[700]">Personal Information</p>
       </div>
 
-      <div className="flex md:p-[15px] flex-col gap-[20px] ">
+      <div className="flex p-[15px] flex-col gap-[20px] ">
         <div className=" flex flex-col bg-tradeAsh rounded-[10px] border border-tradeAshLight overflow-hidden">
           <div
             className="flex items-center gap-[5px]  py-3 px-3  bg-tradeAsh hover:bg-tradeAshLight  border-b border-tradeAshLight cursor-pointer transition-all duration-300 "
@@ -30,7 +30,7 @@ const PersonalInfo = () => {
           </div>
           <div
             className="flex items-center gap-[5px]  py-3 px-3  bg-tradeAsh hover:bg-tradeAshLight  border-b border-tradeAshLight cursor-pointer transition-all duration-300 "
-            onClick={() => navigateTo("/account/settings/name")}
+            // onClick={() => navigateTo("/account/settings/name")}
           >
             <div className="flex-1 flex  justify-between gap-[2px]  bg-tradePurpl ">
               <p className="text-sm font-[600] text-white">Full name</p>
@@ -39,7 +39,7 @@ const PersonalInfo = () => {
                 Adeleke Lukman
               </p>
             </div>
-            <div className="text-white text-[22px]">
+            <div className="text-white text-[22px] opacity-0">
               <MdKeyboardArrowRight />
             </div>
           </div>
@@ -83,7 +83,7 @@ const PersonalInfo = () => {
 
               <p className="text-tradeFadeWhite text-sm font-[600]">Male</p>
             </div>
-            <div className="text-tradeAsh text-[22px]">
+            <div className="text-tradeAsh text-[22px] opacity-0">
               <MdKeyboardArrowRight />
             </div>
           </div>
@@ -98,7 +98,7 @@ const PersonalInfo = () => {
                 Feb **, **
               </p>
             </div>
-            <div className="text-white text-[22px]">
+            <div className="text-white text-[22px] opacity-0">
               <MdKeyboardArrowRight />
             </div>
           </div>

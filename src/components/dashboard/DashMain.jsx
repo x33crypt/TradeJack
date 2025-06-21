@@ -47,9 +47,9 @@ const DashMain = () => {
   return (
     <>
       <div className="flex-1 flex flex-col md:gap-[10px] ">
-        <div className="flex lg:flex-row flex-col flex-1 p-[15px] md:p-0 gap-[10px]">
-          <div className="flex-1 flex flex-col gap-[20px] md:gap-0 md:border border-t-0 border-tradeAshLight">
-            <div className="flex items-center gap-3 md:p-[2.5%] py-[2.5%] border-b border-tradeAshLight">
+        <div className="flex lg:flex-row flex-col flex-1 md:p-0 gap-[10px]">
+          <div className="flex-1 flex flex-col md:border border-t-0 border-tradeAshLight">
+            <div className="flex items-center gap-3 p-[15px] border-b border-tradeAshLight">
               <p className="text-base text-tradeFadeWhite flex items-center gap-1">
                 Welcome back,{" "}
                 <small className="text-lg text-white font-[700]">
@@ -57,7 +57,7 @@ const DashMain = () => {
                 </small>
               </p>
             </div>
-            <div className="flex-1 flex flex-col gap-[20px] md:p-[15px]">
+            <div className="flex-1 flex flex-col gap-[20px] p-[15px]">
               <div className="rounded-2xl overflow-hidden border border-tradeAshLight">
                 {/* Available Balance Section */}
                 <div className="bg-tradeGreen p-3 flex flex-col gap-2">
@@ -237,13 +237,13 @@ const DashMain = () => {
               </div>
             </div>
           </div>
-          <div className="  lg:w-[330px] w-full lg:flex flex-col gap-[25px]">
+          <div className="lg:w-[330px] w-full lg:flex flex-col gap-[25px]">
             <Performance />
           </div>
         </div>
 
-        <div className="flex-1 px-[15px] md:p-0 md:border border-tradeAshLight gap-[20px] md:gap-0 flex flex-col bg">
-          <div className="flex md:p-[15px] py-[15px]  border-b justify-between border-tradeAshLight">
+        <div className="flex-1 md:p-0 md:border border-tradeAshLight flex flex-col">
+          <div className="flex p-[15px]  border-b justify-between border-tradeAshLight">
             <p className="text-lg text-white font-[700]">Trade History</p>
 
             <p className="text-tradeGreen font-[600] text-[13px] cursor-pointer ">
@@ -251,29 +251,29 @@ const DashMain = () => {
             </p>
           </div>
 
-          <div className="flex md:max-h-[500px] h-full md:p-[15px] flex-col gap-[px]">
-            <div className="p-[10px]  flex bg-tradeAshExtraLight">
-              <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-xs font-[700]">
+          <div className="md:flex hidden md:max-h-[500px] h-full p-[15px] flex-col">
+            <div className="p-[10px] flex bg-tradeAshExtraLight">
+              <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-xs font-medium]">
                 <p>Trade ID</p>
                 <MdKeyboardArrowDown className="text-[18px]" />
               </div>
-              <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-xs font-[700] ">
+              <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-xs font-medium ">
                 <p>Service Type</p>
                 <MdKeyboardArrowDown className="text-[18px]" />
               </div>
-              <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-xs font-[700] ">
+              <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-xs font-medium">
                 <p>Service</p>
                 <MdKeyboardArrowDown className="text-[18px]" />
               </div>
-              <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-xs font-[700]">
+              <div className="flex-1 flex gap-[5px] text-tradeFadeWhite  text-xs font-medium">
                 <p>Status</p>
                 <MdKeyboardArrowDown className="text-[18px]" />
               </div>
-              <div className="flex-1 flex gap-[5px] text-tradeFadeWhite text-xs font-[700] ">
+              <div className="flex-1 flex gap-[5px] text-tradeFadeWhite text-xs font-medium ">
                 <p>Amount</p>
                 <MdKeyboardArrowDown className="text-[18px]" />
               </div>
-              <div className="flex-1 flex gap-[5px] text-tradeFadeWhite   text-xs font-[700]">
+              <div className="flex-1 flex gap-[5px] text-tradeFadeWhite   text-xs font-medium">
                 <p>Date</p>
                 <MdKeyboardArrowDown className="text-[18px]" />
               </div>
@@ -281,24 +281,99 @@ const DashMain = () => {
 
             <div className=" flex flex-col">
               <div className="p-[10px]  flex border-t border-tradeAshLight bg-tradeAsh hover:bg-black cursor-pointer transition-all duration-300">
-                <div className="flex-1 text-tradeFadeWhite text-sm font-[700] ">
+                <div className="flex-1 text-tradeFadeWhite text-sm font-semibold ">
                   <p>#238872</p>
                 </div>
-                <div className="flex-1 text-white text-sm font-[700]">
+                <div className="flex-1 text-white text-sm font-semibold]">
                   <p>Online Wallet...</p>
                 </div>
-                <div className="flex-1 text-white text-sm font-[700]">
+                <div className="flex-1 text-white text-sm font-semibold">
                   <p>Cash App</p>
                 </div>
-
-                <div className="flex-1 text-tradeOrange text-sm font-[700] ">
+                <div className="flex-1 text-tradeOrange text-sm font-semibold ">
                   <p>Pending</p>
                 </div>
-                <div className="flex-1 text-white text-sm font-[700] ">
+                <div className="flex-1 text-white text-sm font-bold ">
                   <p>$600.00</p>
                 </div>
-                <div className="flex-1 text-white text-sm font-[700]">
-                  <p>4d 19h ago</p>
+                <div className="flex-1 text-white text-sm font-semibold">
+                  Saturday, Jun 24
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex md:hidden flex-col p-[15px]">
+            <div className="bg-tradeAshExtraLight p-[10px]">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Saturday, Jun 24
+              </p>
+            </div>
+            <div className="flex flex-col p-[10px] w-full gap-1 bg-tradeAsh hover:bg-black border-b border-tradeAshLight transition-all duration-300">
+              <div className="flex justify-between">
+                <p className="text-sm text-white font-semibold">
+                  Cash App - #1651689128278
+                </p>
+                <p className="text-sm text-white font-bold">$500.00</p>
+              </div>
+
+              <p className="text-tradeFadeWhite text-[13px] font-medium">
+                Online Wallet Transfer
+              </p>
+
+              <div className="flex justify-between">
+                <p className="text-tradeOrange text-xs font-semibold">
+                  Pending
+                </p>
+
+                <div className="w-100px text-tradeFadeWhite flex items-center">
+                  <IoIosArrowForward />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col p-[10px] w-full gap-1 bg-tradeAsh hover:bg-black border-b border-tradeAshLight">
+              <div className="flex justify-between">
+                <p className="text-sm text-white font-semibold">
+                  Wells Fargo - #1651689128278
+                </p>
+                <p className="text-sm text-white font-bold">$6,000.00</p>
+              </div>
+
+              <p className="text-tradeFadeWhite text-[13px] font-medium">
+                Direct Bank Transfer
+              </p>
+
+              <div className="flex justify-between">
+                <p className="text-tradeOrange text-xs font-semibold">
+                  Pending
+                </p>
+
+                <div className="w-100px text-tradeFadeWhite flex items-center">
+                  <IoIosArrowForward />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col p-[10px] w-full gap-1 bg-tradeAsh hover:bg-black border-b border-tradeAshLight">
+              <div className="flex justify-between">
+                <p className="text-sm text-white font-semibold">
+                  Venmo - #1651689128278
+                </p>
+                <p className="text-sm text-white font-bold">$980.00</p>
+              </div>
+
+              <p className="text-tradeFadeWhite text-[13px] font-medium">
+                Online Wallet Transfer
+              </p>
+
+              <div className="flex justify-between">
+                <p className="text-tradeGreen text-xs font-semibold">
+                  Completed
+                </p>
+
+                <div className="w-100px text-tradeFadeWhite flex items-center">
+                  <IoIosArrowForward />
                 </div>
               </div>
             </div>

@@ -27,7 +27,6 @@ import { FaUserFriends } from "react-icons/fa";
 import { TbDashboardFilled } from "react-icons/tb";
 import { RiExchangeBoxFill } from "react-icons/ri";
 
-
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
   const [isProfileOption, setIsProfileOption] = useState(false);
@@ -252,7 +251,7 @@ const InAppNav = () => {
         ref={navOptionRef}
         className={` ${
           isProfileOption ? "flex" : "hidden"
-        } z-30 fixed lg:right-[25px] md:right-[19px] right-[15px] top-[60px] flex-col w-[160px] p-[3px] bg-tradeAshLight rounded-[1px]`}
+        } z-30 fixed lg:right-[25px] md:right-[19px] right-[15px] md:top-[65px] top-[62px]  flex-col w-[160px] p-[3px] bg-tradeAshLight rounded-[1px]`}
         onClick={() => setIsProfileOption((prev) => !prev)}
       >
         <p

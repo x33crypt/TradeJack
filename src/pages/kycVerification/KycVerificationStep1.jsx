@@ -7,6 +7,7 @@ import InAppNav from "@/components/InAppNav";
 import Stepper from "@/components/Steppers";
 import { useKyc } from "@/context/KycContext";
 import { useSelectElement } from "@/context/SelectElementContext";
+import Button from "@/components/buttons/Button";
 
 const KycVerificationStep1 = () => {
   const { select, setSelect } = useSelectElement();
@@ -68,8 +69,8 @@ const KycVerificationStep1 = () => {
 
   const navigateTo = useNavigate();
 
-  const handleToStep2 = () => {
-    const { firstname, lastname, email, dateOfBirth, gender } = kycDetails;
+  const nextButton = () => {
+    const { firstname, lastname, dateOfBirth, gender } = kycDetails;
 
     if (!firstname) {
       setToast({
@@ -85,15 +86,6 @@ const KycVerificationStep1 = () => {
         ...toast,
         error: true,
         errorMessage: "Missing required field: Last Name",
-      });
-      return;
-    }
-
-    if (!email) {
-      setToast({
-        ...toast,
-        error: true,
-        errorMessage: "Missing required field: Email Address",
       });
       return;
     }
@@ -119,11 +111,15 @@ const KycVerificationStep1 = () => {
     return navigateTo("/account/settings/kycVerification/step2");
   };
 
+  const cancelButton = () => {
+    navigateTo("/account/settings/kycVerification");
+  };
+
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[63px] pt-[60px] flex flex-col gap-[15px] lg:px-[2%] md:px-[2.5%] p-[2.5%] min-h-svh bg-black">
-        <div className="z-20 fixed lg:right-[2.5%] md:right[2%] right-[2.5%]  lg:left-[2.5%] md:left[2%] left-[2.5%] bg-black flex items-center gap-4 border-b  py-[15px] border-tradeAshLight">
+      <div className="md:pt-[63px] pt-[60px] flex flex-col gap-[15px] lg:px-[2%] md:px-[2.5%] p-[15px] min-h-svh bg-black">
+        <div className="z-20 fixed  right-0  left-0 lg:px-[2%] md:px-[2.5%] px-[15px] py-[15px] top-[60px] md:top-[65px] bg-black flex items-center gap-4 border-b border-tradeAshLight">
           <div className="flex items-center gap-3 ">
             <IoMdArrowRoundBack
               onClick={() => navigateTo(location?.state?.from || -1)}
@@ -135,10 +131,9 @@ const KycVerificationStep1 = () => {
           </div>
         </div>
         <div className="flex-1 mt-[70px] flex flex-col md:justify-center md:items-center">
-          <div className="flex-1 md:flex-none flex flex-col justify-between md:justify-normal md:w-[400px] w-full h-full gap-[30px]">
-            <div className=" flex flex-col w-full gap-[30px]">
+          <div className="flex-1 md:flex-none flex flex-col justify-between md:justify-normal md:w-[600px] w-full h-full gap-[30px]">
+            <div className=" flex flex-col w-full gap-[30px] ]">
               <div className="flex flex-col gap-5">
-                <p className="text-2xl text-white font-[700] ">Step 1.</p>
                 <Stepper totalSteps={3} currentStep={1} />
               </div>
 
@@ -150,7 +145,8 @@ const KycVerificationStep1 = () => {
                   Please provide your accurate information
                 </p>
               </div>
-              <div className="flex flex-col gap-[30px]">
+
+              <div className="flex md:grid grid-cols-2 flex-col gap-[30px] items-center">
                 <div className="flex flex-col gap-1">
                   <p className="text-sm font-[600] text-white">First Name</p>
                   <input
@@ -179,21 +175,6 @@ const KycVerificationStep1 = () => {
                     placeholder="eg. Doe"
                     value={kycDetails.lastname}
                     onChange={handleLastnameChange}
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <p className="text-sm text-white font-[600]">Email Address</p>
-                  <input
-                    className={`${
-                      kycDetails.email
-                        ? "border-tradeAshExtraLight"
-                        : "border-tradeAshLight"
-                    } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                    type="text"
-                    name="email"
-                    placeholder="eg. Johndoe@gmail.com"
-                    value={kycDetails.email}
-                    onChange={handleEmailChange}
                   />
                 </div>
                 <div className="flex flex-col gap-1">
@@ -251,20 +232,14 @@ const KycVerificationStep1 = () => {
                 </div>
               </div>
             </div>
-            <div className="flex md:flex-row flex-col gap-[20px]">
-              <div
-                className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
-                onClick={() => navigateTo("/account/settings/kycVerification")}
-              >
-                <p className="text-sm font-[700] ">Cancel</p>
-              </div>
+            <div className=" flex md:flex-row flex-col-reverse gap-[15px] justify-center items-center">
+              <Button onClick={cancelButton} variant="outline">
+                Go Back
+              </Button>
 
-              <button
-                onClick={() => handleToStep2()}
-                className="bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
-              >
-                <p className="text-sm font-[700]">Continue</p>
-              </button>
+              <Button onClick={nextButton} variant="primary">
+                Continue
+              </Button>
             </div>
           </div>
         </div>

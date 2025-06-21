@@ -9,8 +9,8 @@ import Stepper from "@/components/Steppers";
 import { useKyc } from "@/context/KycContext";
 import Warning from "@/components/alerts/Warning";
 import { RiFileUploadFill } from "react-icons/ri";
-
 import { kycVerify } from "@/utils/kyc/kycVerify";
+import Button from "@/components/buttons/Button";
 
 const KycVerificationStep3 = () => {
   const { select, setSelect } = useSelectElement();
@@ -103,11 +103,15 @@ const KycVerificationStep3 = () => {
     }
   };
 
+  const cancelButton = () => {
+    navigateTo("/account/settings/kycVerification/step2");
+  };
+
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[63px] pt-[60px] flex flex-col gap-[15px] lg:px-[2%] md:px-[2.5%] p-[2.5%] min-h-svh bg-black">
-        <div className="z-20 fixed lg:right-[2.5%] md:right[2%] right-[2.5%]  lg:left-[2.5%] md:left[2%] left-[2.5%] bg-black flex items-center gap-4 border-b  py-[15px] border-tradeAshLight">
+      <div className="md:pt-[63px] pt-[60px] flex flex-col gap-[15px] lg:px-[2%] md:px-[2.5%] p-[15px] min-h-svh bg-black">
+        <div className="z-20 fixed  right-0  left-0 lg:px-[2%] md:px-[2.5%] px-[15px] py-[15px] top-[60px] md:top-[65px] bg-black flex items-center gap-4 border-b border-tradeAshLight">
           <div className="flex items-center gap-3 ">
             <IoMdArrowRoundBack
               onClick={() => navigateTo(location?.state?.from || -1)}
@@ -119,10 +123,9 @@ const KycVerificationStep3 = () => {
           </div>
         </div>
         <div className="flex-1 mt-[70px] flex flex-col md:justify-center md:items-center">
-          <div className="flex-1 md:flex-none flex flex-col justify-between md:justify-normal md:w-[400px] w-full h-full gap-[30px]">
+          <div className="flex-1 md:flex-none flex flex-col justify-between md:justify-normal md:w-[600px] w-full h-full gap-[30px]">
             <div className=" flex flex-col w-full gap-[30px]">
               <div className="flex flex-col gap-5">
-                <p className="text-2xl text-white font-[700] ">Step 3.</p>
                 <Stepper totalSteps={3} currentStep={3} />
               </div>
 
@@ -136,9 +139,48 @@ const KycVerificationStep3 = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-[30px]">
+              <div className="flex md:grid grid-cols-2 flex-col gap-[30px]">
                 <div className="flex flex-col gap-1">
                   <p className="text-sm text-white font-[600]">Document Type</p>
+                  <div className="relative w-full cursor-pointer ">
+                    <input
+                      className={`${
+                        kycDetails?.documentType
+                          ? "border-tradeAshExtraLight"
+                          : "border-tradeAshLight"
+                      } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                      type="text"
+                      readOnly
+                      placeholder="Select a document type"
+                      name="documentType"
+                      value={kycDetails?.documentType}
+                      onClick={() =>
+                        setSelect({
+                          ...select,
+                          state: true,
+                          selectOne: true,
+                          selectTwo: false,
+                          element: "document type",
+                          options: documentTypes,
+                          pick: "",
+                          page: "kyc verification",
+                        })
+                      }
+                      onChange={(e) =>
+                        setOfferDetails.serviceType(e.target.value)
+                      }
+                    />
+
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                      <MdKeyboardArrowDown />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <p className="text-sm text-white font-[600]">
+                    Expiration Date
+                  </p>
                   <div className="relative w-full cursor-pointer ">
                     <input
                       className={`${
@@ -182,15 +224,21 @@ const KycVerificationStep3 = () => {
                     <div
                       onClick={handleFrontClick}
                       className={`flex items-center justify-between mt-[5px] text-sm text-tradeFadeWhite placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border ${
-                        true // Replace with validation condition
+                        kycDetails?.frontImage?.name
                           ? "border-tradeAshExtraLight"
                           : "border-tradeAshLight"
                       } border-dashed outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                     >
-                      <p>
+                      <p
+                        className={`${
+                          kycDetails?.frontImage?.name
+                            ? "text-white"
+                            : "text-tradeFadeWhite"
+                        }`}
+                      >
                         {kycDetails?.frontImage
                           ? `Uploaded: ${kycDetails?.frontImage?.name}`
-                          : "Click here to upload your document"}
+                          : "JPG, PNG, PDF, SVG • 5MB max"}
                       </p>
 
                       <RiFileUploadFill className="text-xl" />
@@ -205,8 +253,6 @@ const KycVerificationStep3 = () => {
                       accept="image/*,application/pdf" // optional: restrict file types
                     />
                   </div>
-
-                  <Warning text={"JPG, PNG, PDF and SVG files up tp 5MB"} />
                 </div>
 
                 <div className="flex flex-col gap-[20px]">
@@ -222,10 +268,16 @@ const KycVerificationStep3 = () => {
                           : "border-tradeAshLight"
                       } border-dashed outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                     >
-                      <p>
+                      <p
+                        className={`${
+                          kycDetails?.backImage?.name
+                            ? "text-white"
+                            : "text-tradeFadeWhite"
+                        }`}
+                      >
                         {kycDetails?.backImage
                           ? `Uploaded: ${kycDetails?.backImage?.name}`
-                          : "Click here to upload your document"}
+                          : "JPG, PNG, PDF, SVG • 5MB max"}
                       </p>
 
                       <RiFileUploadFill className="text-xl" />
@@ -240,29 +292,25 @@ const KycVerificationStep3 = () => {
                       accept="image/*,application/pdf" // optional: restrict file types
                     />
                   </div>
-
-                  <Warning text={"JPG, PNG, PDF and SVG files up tp 5MB"} />
                 </div>
               </div>
             </div>
-            <div className="flex md:flex-row flex-col gap-[20px]">
-              <div
-                className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
-                onClick={() =>
-                  navigateTo("/account/settings/kycVerification/step2")
-                }
+            <div className=" flex md:flex-row flex-col-reverse gap-[15px] justify-center items-center">
+              <Button
+                onClick={cancelButton}
+                variant="outline"
+                disabled={isUploading}
               >
-                <p className="text-sm font-[700] ">Back</p>
-              </div>
+                Go Back
+              </Button>
 
-              <button
-                onClick={() => handleKycVerification()}
-                className="bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
+              <Button
+                onClick={handleKycVerification}
+                variant="primary"
+                disabled={isUploading}
               >
-                <p className="text-sm font-[700]">
-                  {isUploading ? "Submitting" : "Submit"}
-                </p>
-              </button>
+                {isUploading ? "Submitting..." : "Submit"}
+              </Button>
             </div>
           </div>
         </div>

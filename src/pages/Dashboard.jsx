@@ -13,7 +13,7 @@ const Dashboard = () => {
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[64px] pt-[50px] pb-[10px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col  gap-[10px] bg-black">
+      <div className="md:pt-[64px] pt-[62px] pb-[10px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col gap-[10px] bg-black">
         <DashSideNav />
         <DashMain />
       </div>

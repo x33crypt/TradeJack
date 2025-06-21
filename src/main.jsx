@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { TradeAlertProvider } from "./context/TradeAlertContext";
 import { SelectElementProvider } from "./context/SelectElementContext";
-import { OfferDetailsProvider } from "./context/CreateOfferDetailsContext";
+import { OfferDetailsProvider } from "./context/offer/CreateOfferContext";
 import { OfferFilterProvider } from "./context/OfferFilterContext";
 import { UserDetailsProvider } from "./context/UserContext";
 import { ToastProvider } from "./context/ToastContext";

@@ -7,6 +7,7 @@ import InAppNav from "@/components/InAppNav";
 import { editMobile } from "@/utils/auth/editMobile";
 import { useSelectElement } from "@/context/SelectElementContext";
 import { useCountryCodes } from "@/hooks/useCountryCodes";
+import Button from "@/components/buttons/Button";
 
 const EditMobile = () => {
   const { select, setSelect } = useSelectElement();
@@ -84,11 +85,15 @@ const EditMobile = () => {
     }
   };
 
+  const cancelButton = () => {
+    navigateTo(location?.state?.from || -1);
+  };
+
   return (
     <>
       <InAppNav />
       <div className="md:pt-[63px] pt-[60px] flex flex-col gap-[15px] lg:px-[2%] md:px-[2.5%] p-[15px] min-h-svh bg-black">
-        <div className="z-20 fixed lg:right-[2%] md:right[2%] right-[15px]  lg:left-[2%] md:left[2%] left-[15px] bg-black flex items-center gap-4 border-b  py-[15px] border-tradeAshLight">
+        <div className="z-20 fixed  right-0  left-0 lg:px-[2%] md:px-[2.5%] px-[15px] py-[15px] top-[60px] md:top-[65px] bg-black flex items-center gap-4 border-b border-tradeAshLight">
           <div className="flex items-center gap-3 ">
             <IoMdArrowRoundBack
               onClick={() => navigateTo(location?.state?.from || -1)}
@@ -174,25 +179,22 @@ const EditMobile = () => {
               </div>
             </div>
 
-            <div className="flex w-full md:flex-row flex-col gap-[20px]">
-              <div
-                className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
-                onClick={() => navigateTo(location?.state?.from || -1)}
+            <div className=" flex md:flex-row flex-col-reverse gap-[15px] justify-center items-center">
+              <Button
+                onClick={cancelButton}
+                variant="outline"
+                disabled={isUpdating}
               >
-                <p className="text-[14px] font-[700] ">Cancel</p>
-              </div>
-              <button
+                Cancel
+              </Button>
+
+              <Button
                 onClick={handleEditMobile}
-                className={` ${
-                  isUpdating
-                    ? "bg-tradeAsh text-tradeGreen"
-                    : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
-                } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
+                variant="primary"
+                disabled={isUpdating}
               >
-                <p className="text-[14px] font-[700]">
-                  {isUpdating ? "isUpdating..." : "Update"}
-                </p>
-              </button>
+                {isUpdating ? "updating..." : "Update"}
+              </Button>
             </div>
           </div>
         </div>

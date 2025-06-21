@@ -1,5 +1,6 @@
-import axios from "axios";
+
 import DOMPurify from "dompurify"; // make sure you import this if you use it
+import api from "../http/api";
 
 const sanitizeInput = (input) => {
   const cleaned = DOMPurify.sanitize(input);
@@ -37,12 +38,7 @@ export async function editMobile(mobileDetails) {
   };
 
   try {
-    const config = { withCredentials: true };
-    const response = await axios.post(
-      `${baseUrl}/auth/update/password`,
-      payload,
-      config
-    );
+    const response = await api.post(`${baseUrl}/auth/update/password`, payload);
 
     console.log(response);
     return { success: true, data: response.data };

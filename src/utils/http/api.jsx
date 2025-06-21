@@ -11,19 +11,17 @@ const api = axios.create({
   },
 });
 
-// Store CSRF token
+// Store CSRF token and redirect flag
 let csrfToken = null;
 let isRedirecting = false;
 
-// Fetch CSRF token from cookies
+// Helper: Fetch CSRF token from cookies
 const getCsrfTokenFromCookies = () => {
   try {
     const cookies = document.cookie.split(";");
     for (let cookie of cookies) {
       const [name, value] = cookie.trim().split("=");
-      if (name === "XSRF-TOKEN") {
-        return value;
-      }
+      if (name === "XSRF-TOKEN") return value;
     }
     return null;
   } catch (error) {
@@ -32,7 +30,7 @@ const getCsrfTokenFromCookies = () => {
   }
 };
 
-// Clear session cookies
+// Helper: Clear session-related cookies
 const clearSession = () => {
   csrfToken = null;
   document.cookie = "XSRF-TOKEN=; Max-Age=0; path=/;";
@@ -42,7 +40,7 @@ const clearSession = () => {
 // ✅ Response Interceptor
 api.interceptors.response.use(
   (response) => {
-    // Store CSRF token on GET requests
+    // Store CSRF token from headers or cookies on GET
     if (response.config.method === "get") {
       const newCsrfToken =
         response.headers["x-csrf-token"] || getCsrfTokenFromCookies();
@@ -59,30 +57,27 @@ api.interceptors.response.use(
 
       if (status === 401) {
         if (
-          data?.error?.message === "Access denied. Session token expired" &&
+          data?.error?.message === "Access denied. No token provided" &&
           !isRedirecting
         ) {
           isRedirecting = true;
-
           clearSession();
 
-          // Dispatch toast notification (optional listener)
-          setToast({
-            ...toast,
-            error: true,
-            errorMessage: "Your session has expired. Please log in again.",
-          });
+          // Optional toast-triggering error
+          const errorResponse = {
+            success: false,
+            status,
+            message: "Session expired. Please log in again.",
+          };
 
           // Redirect to signin
-          window.location.href = "/signin?sessionExpired=true";
-
-          // Reset flag
           setTimeout(() => {
-            isRedirecting = false;
-          }, 1000);
+            window.location.href = "/signin?sessionExpired=true";
+          }, 100); // Delay to ensure toast state is read before redirect
 
-          return Promise.reject(error);
+          return Promise.reject(errorResponse);
         }
+
         message = "Unauthorized – please log in again.";
       } else if (status === 403 && data?.error?.code === "ERR_CSRF_MISSING") {
         message = "CSRF token missing or invalid. Please refresh the page.";

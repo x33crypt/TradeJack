@@ -1,5 +1,5 @@
-import axios from "axios";
 import DOMPurify from "dompurify"; // make sure you import this if you use it
+import api from "../http/api";
 
 const sanitizeInput = (input) => {
   if (typeof input !== "string") return "";
@@ -18,7 +18,6 @@ export async function editUsername(username) {
   const baseUrl = import.meta.env.VITE_API_URL;
   console.log("API URL:", baseUrl);
 
-
   if (!username) {
     return { success: false, error: "Missing required field: Username" };
   }
@@ -31,12 +30,14 @@ export async function editUsername(username) {
   }
 
   const payload = {
-    username: sanitizedUsername,
+    newUsername: sanitizedUsername,
   };
 
   try {
-    const config = { withCredentials: true };
-    const response = await axios.post(`${baseUrl}/auth/login`, payload, config);
+    const response = await api.patch(
+      `${baseUrl}/user/updateprofile/username`,
+      payload
+    );
 
     console.log(response);
     return { success: true, data: response.data };

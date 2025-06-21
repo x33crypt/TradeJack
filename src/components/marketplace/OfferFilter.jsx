@@ -4,6 +4,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { TbReload } from "react-icons/tb";
 import axios from "axios";
 import { IoClose } from "react-icons/io5";
+import Button from "@/components/buttons/Button";
 
 const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
   const { offerFilter, setOfferFilter } = useOfferFilter();
@@ -837,26 +838,19 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-[10px] border-t border-tradeAshLight  lg:px-[15px] py-[15px] md:px-[2.5%] px-[15px]">
-        <div
+      <div className="flex flex-col gap-[10px] border-t border-tradeAshLight  lg:px-[15px] py-[15px] md:px-[2.5%] p-[15px]">
+        <Button
           onClick={handleFilterOffer}
-          className="flex items-center justify-between bg-tradeGreen hover:bg-white md:p-[10px] w-full py-[14px] px-[12px] rounded-[8px] cursor-pointer duration-300 transition-all"
+          variant="primary"
+          disabled={offerFilter?.isFiltering}
         >
-          <p className="font-[700] text-base ">
-            {offerFilter?.isFiltering ? "Filtering..." : "Apply Filter"}
-          </p>
-          <TbReload
-            className={`text-[20px] transition-transform ${
-              offerFilter?.isFiltering ? "animate-spin" : ""
-            }`}
-          />
-        </div>
+          {offerFilter?.isFiltering ? "Filtering..." : "Apply Filter"}
+        </Button>
 
-        <div
-          onClick={handleClearFilter}
-          className="flex lg:hidden items-center justify-between bg-transparent border border-tradeAshLight hover:border-red-600 md:p-[10px] w-full py-[14px] px-[12px] rounded-[8px] cursor-pointer duration-300 transition-all"
-        >
-          <p className="font-[600] text-base text-red-600">Clear Filter</p>
+        <div className="md:hidden flex">
+          <Button onClick={handleClearFilter} variant="danger">
+            Clear Filter
+          </Button>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 
 // Create the context
-const EditOfferDetailsContext = createContext();
+const EditOfferContext = createContext();
 
 // Create the provider
 export const OfferDetailsProvider = ({ children }) => {

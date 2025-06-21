@@ -4,21 +4,11 @@ import { useNavigate } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { MdThumbUpAlt } from "react-icons/md";
 import { MdThumbDownAlt } from "react-icons/md";
-import { FaRegStar } from "react-icons/fa";
 import ExchangeCalculator from "@/components/ExchangeCalculator";
-import { SlGraph } from "react-icons/sl";
-import { GoDotFill } from "react-icons/go";
-import landingImg4 from "../assets/landingImg4.JPG";
-import { CiBank } from "react-icons/ci";
-import { AiFillSafetyCertificate } from "react-icons/ai";
+import landingImg4 from "../../assets/landingImg4.JPG";
 import { IoMdThumbsUp } from "react-icons/io";
 import { FaInfoCircle } from "react-icons/fa";
-import { HiStatusOnline } from "react-icons/hi";
-import { HiOutlineUserCircle } from "react-icons/hi2";
-import { FaStar } from "react-icons/fa6";
-import { FiTrendingUp } from "react-icons/fi";
 
 const AboutOffer = () => {
   const [offerDetails, setOfferDetails] = useState("");
