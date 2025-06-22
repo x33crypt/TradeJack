@@ -11,10 +11,10 @@ const MyOffer = () => {
   return (
     <>
       <InAppNav />
-      <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[60px]">
+      <div className="flex lg:flex-row flex-col min-h-svh bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[60px]">
         <div className="flex flex-col w-full h-full md:border-x md:border-t md:border-b border-neutral-800">
           <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
-            <p className="text-[17px] text-white font-[700]">My Offers</p>
+            <p className="text-lg text-white font-[700]">My Offers</p>
 
             <div className="text-white text-[25px]">
               <BiSolidOffer />
@@ -51,28 +51,39 @@ const MyOffer = () => {
                 >
                   Inactive
                 </p>
+                <p
+                  className={`${
+                    false
+                      ? "text-white bg-tradeAsh border-tradeGreen"
+                      : "text-neutral-500 border-neutral-800 hover:text-white"
+                  } inline-block w-max px-[12px] py-[4px] lg:text-[13px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                >
+                  My Draft
+                </p>
               </div>
               <div className=" gap-[10px] py-[15px] flex">
                 <div className=" flex gap-2 text-neutral-500  border-neutral-800 hover:border-tradeGreen hover:text-white items-center justify-center  px-[12px] py-[4px] text-[15px] rounded-[6.5px] border cursor-default transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                   <MdDateRange className="text-tradeGreen" />
-                  <p className=" lg:text-[13px] text-[14px] font-[600]">Date</p>
+                  <p className=" md:flex hidden lg:text-[13px] text-[14px] font-[600]">
+                    Filter by Date
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className=" px-[15px] gap-[15px] flex flex-col ">
+          <div className=" p-[15px] pt-0 gap-[15px] flex flex-col ">
             <div className="z-10 sticky top-[118px] flex justify-between items-center px-4 py-2 bg-tradeAshLight shadow-sm">
               <p className="text-tradeFadeWhite text-sm font-semibold">
                 Published On
               </p>
-              <p className="text-tradeOrange text-sm font-semibold">
-                June 14, 2025
+              <p className="text-white text-sm font-semibold">
+                Saturday, Jun 24
               </p>
             </div>
 
             <div className="grid grid-cols-1 gap-1 md:gap-0 items-center">
-              {[...Array(10)].map((_, index) => (
+              {[...Array(5)].map((_, index) => (
                 <MyOfferCard key={index} />
               ))}
             </div>

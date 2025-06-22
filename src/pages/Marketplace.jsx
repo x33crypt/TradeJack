@@ -75,7 +75,7 @@ const Marketplace = () => {
       let filteredOffers = response.data.offers;
 
       // 🧠 Step 4: Filter by service type (skip if Default)
-      if (offerFilter?.serviceType && offerFilter.serviceType !== "Default") {
+      if (offerFilter?.serviceType && offerFilter.serviceType !== "") {
         filteredOffers = filteredOffers.filter(
           (offer) => offer.serviceType === offerFilter.serviceType
         );

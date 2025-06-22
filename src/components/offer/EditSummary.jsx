@@ -6,15 +6,20 @@ import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
 import { useToast } from "@/context/ToastContext";
-import { useCreateOfferDetails } from "@/context/offer/CreateOfferContext";
+import { useEditOfferDetails } from "@/context/offer/EditOfferContext";
+import Button from "@/components/buttons/Button";
+import { editOffer } from "@/utils/offer/editOffer";
+import { closeOffer } from "@/utils/offer/closeOffer";
 
 const EditSummary = () => {
-  const { offerDetails, setOfferDetails } = useCreateOfferDetails();
+  const { offerDetails, setOfferDetails } = useEditOfferDetails();
+  const [loading, setLoading] = useState(false);
+
   const { toast, setToast } = useToast();
 
   const serviceTypeIcons = {
     "Online Wallet Transfer": IoWalletOutline,
-    "Direct Bank Transfer": CiBank,
+    "Bank Transfer": CiBank,
     "Gift Card Exchange": HiOutlineGift,
     "Card-Based Spending": IoCardOutline,
     "Crypto Trading": GiTwoCoins,
@@ -25,8 +30,94 @@ const EditSummary = () => {
 
   const navigateTo = useNavigate();
 
+  const handleEdit = async () => {
+    setLoading(true);
+
+    const result = await editOffer(offerDetails);
+
+    if (result.success) {
+      setLoading(false);
+
+      console.log("Offer Edit:", result.data);
+      setToast({
+        ...toast,
+        success: true,
+        errorSuccess: result.data,
+      });
+
+      navigateTo("/offers/marketplace");
+      setOfferDetails({
+        serviceType: "Online Wallet Transfer",
+        service: "",
+        serviceId: "",
+        currency: { code: "", name: "" },
+        minimum: "",
+        maximum: "",
+        margin: 4,
+        paymentWindow: 1,
+        confirmationTime: 1,
+        termTags: [],
+        instruction: "",
+      });
+    } else {
+      console.error("Edit failed:", result.error);
+      setLoading(false);
+
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: result.error,
+      });
+    }
+  };
+
+  const handleClose = async () => {
+    setLoading(true);
+
+    const result = await closeOffer(offerDetails?.offerId);
+
+    if (result.success) {
+      setLoading(false);
+
+      console.log("Offer Edit:", result.data);
+      setToast({
+        ...toast,
+        success: true,
+        errorSuccess: result.data,
+      });
+
+      navigateTo("/offers/marketplace");
+      setOfferDetails({
+        serviceType: "Online Wallet Transfer",
+        service: "",
+        serviceId: "",
+        currency: { code: "", name: "" },
+        minimum: "",
+        maximum: "",
+        margin: 4,
+        paymentWindow: 1,
+        confirmationTime: 1,
+        termTags: [],
+        instruction: "",
+      });
+    } else {
+      console.error("Edit failed:", result.error);
+      setLoading(false);
+
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: result.error,
+      });
+    }
+  };
+
+  const cancelButton = () => {
+    navigateTo(location?.state?.from || -1);
+  };
+
   return (
-    <div className="flex lg:flex-row gap-[10px] flex-col bg-black lg:px-[2%] md:px-[2.5%] lg:pt-0 md:pt-[64px] pt-[60px]">
+    <div className="flex lg:flex-row w-full gap-[10px] flex-col bg-black  lg:pt-0 md:pt-[64px] pt-[60px]">
       <div className="relative bg-black w-full min-h-svh flex flex-col md:border-x md:border-b md:border-t-0 border-neutral-800">
         <div className="flex flex-col justify-between p-[15px]  border-b border-tradeAshLight w-full">
           <p className="text-lg text-white font-[700]">Offer Summary</p>
@@ -222,27 +313,20 @@ const EditSummary = () => {
           </div>
         </div>
 
-        <div className=" bg-black flex flex-col gap-[15px] p-[15px]">
-          <button
-            onClick={() => setPreviewOffer(!previewOffer)}
-            className={` ${
-              false
-                ? "bg-tradeAsh text-tradeGreen"
-                : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
-            } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
-          >
-            <p className="text-[14px] font-[700]">Publish Offer</p>
-          </button>
+        <div className="flex flex-col p-[15px] gap-[15px] justify-center items-center">
+          <Button onClick={handleEdit} variant="primary" disabled={loading}>
+            {loading ? "Publishing..." : "Publish Offer"}
+          </Button>
 
-          <div className="flex justify-center bg-transparent border border-tradeAshLight hover:border-red-600  p-[12px] rounded-[10px]  cursor-pointer duration-300 transition-all">
-            <p className="text-[14px] font-[700] text-red-600">
-              Terminate Offer
-            </p>
+          <div className="hidden md:flex">
+            <Button onClick={handleClose} variant="danger" disabled={loading}>
+              {loading ? "Closing Offer..." : "Close this Offer"}
+            </Button>
           </div>
 
-          <div className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
-            <p className="text-[14px] font-[700] ">Cancel Edit</p>
-          </div>
+          <Button onClick={cancelButton} variant="outline" disabled={loading}>
+            Cancel
+          </Button>
         </div>
       </div>
     </div>

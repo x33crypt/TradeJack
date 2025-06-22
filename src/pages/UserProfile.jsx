@@ -19,7 +19,7 @@ const UserProfile = () => {
     <>
       <MarketTopNav />
 
-      <div className="md:pt-[80px] pt-[75px] pb-[10px] lg:px-[2%] md:px-[2.5%]  min-h-screen flex flex-col gap-[20px] bg-black">
+      <div className="md:pt-[80px] pt-[75px] lg:px-[2%] md:px-[2.5%]  min-h-screen flex flex-col gap-[15px] bg-black">
         <div className="z-20 fixed  right-0  left-0 lg:px-[2%] md:px-[2.5%] px-[15px] py-[15px] top-[60px] md:top-[65px] bg-black flex items-center gap-4 border-b border-tradeAshLight">
           <div className="flex items-center gap-3 ">
             <IoMdArrowRoundBack
@@ -30,7 +30,7 @@ const UserProfile = () => {
           </div>
         </div>
 
-        <div className="flex mt-[70px] lg:flex-row flex-col bg-tradePurpl lg:pb-[15px] lg:items-center lg:gap-[50px] gap-[20px] rounded-[10px] lg:rounded-none overflow-hidden">
+        <div className="flex mt-[50px] lg:flex-row flex-col lg:items-center lg:gap-[50px] gap-[20px] rounded-[10px] lg:rounded-none overflow-hidden">
           <HeroEdit />
           <div className="border-t lg:border-r lg:h-[100px] border-tradeAshLight md:flex hidden ">
             <p className="hidden">g</p>

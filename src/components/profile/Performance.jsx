@@ -12,7 +12,7 @@ const Performance = () => {
           <div className="flex-1 flex flex-col gap-[10px] py-3 px-3  bg-tradeAsh hover:bg-tradeAshLight rounded-[10px] border border-tradeAshLight overflow-hidden cursor-pointer transition-all duration-300 ">
             <div className="flex w-full justify-between">
               <p className="text-xs text-tradeFadeWhite font-bold">
-                Average Daily Purchase
+                Average Weekly Purchase
               </p>
               <p className="text-xs text-tradeOrange font-bold">0,52%</p>
             </div>
@@ -26,7 +26,7 @@ const Performance = () => {
           <div className="flex-1 flex flex-col gap-[10px]  py-3 px-3  bg-tradeAsh hover:bg-tradeAshLight rounded-[10px] border border-tradeAshLight overflow-hidden cursor-pointer transition-all duration-300 ">
             <div className="flex w-full justify-between">
               <p className="text-xs text-tradeFadeWhite font-bold">
-                Average Daily Purchase
+                Average Monthly Purchase
               </p>
               <p className="text-xs text-tradeGreen font-bold">0,52%</p>
             </div>

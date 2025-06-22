@@ -44,6 +44,13 @@ const DashSideNav = () => {
           <TbLayoutList className="text-[17px]" />
           <p className="text-[13.5px] font-[500]">My Offers</p>
         </div>
+        <div
+          className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
+          onClick={() => navigateTo("/offers/mine")}
+        >
+          <TbLayoutList className="text-[17px]" />
+          <p className="text-[13.5px] font-[500]">Fvaourite Offers</p>
+        </div>
         <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
           <HiOutlineEnvelope className="text-[17px]" />
           <p className="text-[13.5px] font-[500]"> Messages</p>

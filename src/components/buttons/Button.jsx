@@ -17,7 +17,7 @@ const Button = ({
     outline:
       "bg-transparent text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite border border-tradeAshLight hover:border-tradeAshExtraLight transition-colors duration-200",
     danger:
-      "bg-red-500 text-white hover:bg-red-600 active:bg-red-700 border border-transparent transition-colors duration-200",
+      "bg-transparent text-red-500 hover:text-red-600 active:text-red-700 underline-offset-4 hover:underline transition-colors duration-200",
     ghost:
       "bg-transparent text-tradeOrange hover:text-tradeOrange underline-offset-4 hover:underline active:text-tradeFadeWhite transition-all duration-150",
   };

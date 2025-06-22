@@ -1,400 +1,84 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useOfferFilter } from "@/context/OfferFilterContext";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { TbReload } from "react-icons/tb";
 import axios from "axios";
-import { IoClose } from "react-icons/io5";
 import Button from "@/components/buttons/Button";
+import { useServices } from "@/hooks/useServices";
+import { currencies } from "@/hooks/useCurrencies";
 
 const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
   const { offerFilter, setOfferFilter } = useOfferFilter();
-  const [currencies, setCurrencies] = useState([]);
-  const [isOnlineWallet, setIsOnlineWallet] = useState(false);
-  const [isDirectBank, setIsDirectBank] = useState(false);
-  const [isGiftCard, setIsGiftCard] = useState(false);
-  const [isDebitOrCreditCard, setIsDebitOrCreditCard] = useState(false);
-  const [isCryptoTrading, setIsCryptoTrading] = useState(false);
+  const { serviceTypes, fullData } = useServices();
+  const [loading, setLoading] = useState(false);
 
-  const serviceTypes = [
-    "Default",
-    "Online Wallet Transfer",
-    "Direct Bank Transfer",
-    "Gift Card Exchange",
-    "Card-Based Spending",
-    "Crypto Trading",
-  ];
-
-  const wallets = [
-    // 🌍 Global Online Wallets
-    "PayPal",
-    "Google Pay",
-    "Apple Pay",
-    "Samsung Pay",
-    "Venmo",
-    "Cash App",
-    "Revolut",
-    "Wise (formerly TransferWise)",
-    "Western Union Digital",
-    "MoneyGram Online",
-    "Payoneer",
-    "Skrill",
-    "Neteller",
-
-    // 🌎 North America (USA & Canada)
-    "Zelle",
-    "Chime",
-    "SoFi Money",
-    "Interac e-Transfer",
-    "Koho",
-    "Wealthsimple Cash",
-
-    // 🇬🇧 UK & 🇪🇺 Europe
-    "Monzo",
-    "Starling Bank",
-    "N26",
-    "SEPA Instant (EU)",
-
-    // 🇦🇺 Australia & New Zealand
-    "Beem It",
-    "Osko by BPAY",
-
-    // 🇮🇳 India & South Asia
-    "PhonePe",
-    "Paytm",
-    "Google Pay (Tez)",
-    "BHIM UPI",
-
-    // 🇵🇭 Southeast Asia & Philippines
-    "GCash",
-    "PayMaya",
-    "GrabPay",
-    "ShopeePay",
-
-    // 🌍 Africa (Nigeria, Kenya, South Africa, Ghana, etc.)
-    "Flutterwave Barter",
-    "Chipper Cash",
-    "Opay",
-    "M-Pesa",
-    "Airtel Money",
-    "MoMo (MTN Mobile Money)",
-    "Vodafone Cash",
-    "Orange Money",
-
-    // 🌏 Middle East
-    "STC Pay",
-    "PayTabs",
-    "E-Dinar",
-
-    // 🌎 Latin America
-    "Mercado Pago",
-    "PicPay",
-    "PagSeguro",
-
-    // 💰 Cryptocurrency & Blockchain Wallets
-    "Coinbase Wallet",
-    "Binance Pay",
-    "MetaMask",
-    "Trust Wallet",
-    "Exodus Wallet",
-    "Ledger Live",
-    "Trezor Suite",
-    "BitPay",
-    "Wirex",
-
-    // 🏢 Business & Merchant Payments
-    "Stripe",
-    "Square",
-    "Alipay",
-    "WeChat Pay",
-  ];
-
-  const globalBanks = [
-    // Global Banks
-    "JPMorgan Chase",
-    "Bank of America",
-    "Citibank (Citi)",
-    "Wells Fargo",
-    "Goldman Sachs",
-    "Morgan Stanley",
-    "HSBC",
-    "Barclays",
-    "Lloyds Bank",
-    "Royal Bank of Scotland (NatWest Group)",
-    "Santander",
-    "BBVA",
-    "Deutsche Bank",
-    "Commerzbank",
-    "BNP Paribas",
-    "Société Générale",
-    "Crédit Agricole",
-    "UBS",
-    "Credit Suisse",
-    "ING Group",
-    "ABN AMRO",
-    "Rabobank",
-    "Nordea",
-    "Danske Bank",
-    "Swedbank",
-    "SEB Bank",
-    "Scotiabank",
-    "Royal Bank of Canada (RBC)",
-    "Toronto-Dominion Bank (TD Bank)",
-    "Bank of Montreal (BMO)",
-    "Commonwealth Bank",
-    "Westpac",
-    "ANZ Bank",
-    "National Australia Bank (NAB)",
-    "China Construction Bank (CCB)",
-    "Industrial and Commercial Bank of China (ICBC)",
-    "Bank of China",
-    "Agricultural Bank of China",
-    "State Bank of India (SBI)",
-    "HDFC Bank",
-    "ICICI Bank",
-    "Axis Bank",
-    "Kotak Mahindra Bank",
-    "DBS Bank",
-    "OCBC Bank",
-    "United Overseas Bank (UOB)",
-    "Maybank",
-    "Bank Rakyat Indonesia (BRI)",
-    "Standard Bank",
-    "First National Bank (FNB)",
-    "Nedbank",
-    "Absa Group (Barclays Africa)",
-    "Al Rajhi Bank",
-    "Emirates NBD",
-    "Qatar National Bank (QNB)",
-
-    // Credit Union Banks
-    "Navy Federal Credit Union",
-    "State Employees’ Credit Union",
-    "PenFed Credit Union",
-    "Alliant Credit Union",
-    "Boeing Employees Credit Union (BECU)",
-    "Teachers Credit Union",
-    "Community First Credit Union",
-
-    // Regional Banks
-    "Regions Bank",
-    "SunTrust (Now Truist)",
-    "BB&T (Now Truist)",
-    "Fifth Third Bank",
-    "KeyBank",
-    "Huntington National Bank",
-    "PNC Bank",
-    "Citizens Bank",
-
-    // Military Banks
-    "USAA",
-    "Armed Forces Bank",
-    "Wells Fargo Military Banking",
-    "Navy Federal Credit Union",
-    "Fort Sill National Bank",
-
-    // Microfinance Banks
-    "Grameen Bank",
-    "SKS Microfinance (Now Bharat Financial Inclusion)",
-    "FINCA International",
-    "Accion",
-    "Kiva Microfunds",
-    "Pro Mujer",
-    "MicroEnsure",
-    "Fundación Paraguaya",
-  ];
-
-  const globalGiftCards = [
-    "Amazon Gift Card",
-    "iTunes / Apple Gift Card",
-    "Google Play Gift Card",
-    "Visa Gift Card",
-    "Mastercard Gift Card",
-    "PayPal Gift Card",
-    "Steam Gift Card",
-    "Netflix Gift Card",
-    "Spotify Gift Card",
-    "Walmart Gift Card",
-    "Starbucks Gift Card",
-    "Target Gift Card",
-    "eBay Gift Card",
-    "Zalando Gift Card",
-    "H&M Gift Card",
-    "Nike Gift Card",
-    "Best Buy Gift Card",
-    "Adobe Gift Card",
-    "GameStop Gift Card",
-    "Airbnb Gift Card",
-    "Uber Gift Card",
-    "Google Play Store Gift Card",
-    "Apple Store Gift Card",
-    "Ticketmaster Gift Card",
-    "Macy's Gift Card",
-    "Chanel Gift Card",
-    "Lush Gift Card",
-    "ASOS Gift Card",
-    "Disney Gift Card",
-    "Discord Gift Card",
-    "Minecraft Gift Card",
-    "Xbox Gift Card",
-    "PlayStation Network Gift Card",
-    "Xbox Game Pass Gift Card",
-    "Spotify Premium Gift Card",
-    "Roblox Gift Card",
-    "Nintendo eShop Gift Card",
-    "Barnes & Noble Gift Card",
-    "Sephora Gift Card",
-    "Lego Gift Card",
-    "Etsy Gift Card",
-    "Uber Eats Gift Card",
-    "Chipotle Gift Card",
-    "Costco Gift Card",
-    "Home Depot Gift Card",
-    "Kohl's Gift Card",
-    "Old Navy Gift Card",
-    "Apple Music Gift Card",
-    "Twitch Gift Card",
-    "Cinemark Gift Card",
-    "Fandango Gift Card",
-    "GameFly Gift Card",
-    "Bed Bath & Beyond Gift Card",
-    "Zara Gift Card",
-    "Macy's Gift Card",
-    "Krispy Kreme Gift Card",
-  ];
-
-  const debitandCreditCards = [
-    // General Prepaid Cards
-    "Green Dot Prepaid Card",
-    "Netspend Prepaid Card",
-    "Bluebird by American Express",
-    "Serve by American Express",
-    "PayPal Prepaid Mastercard",
-    "Chime Visa Debit",
-    "Venmo Mastercard Debit Card",
-    "Cash App Visa Debit Card",
-    "SoFi Money Debit Card",
-    "Varo Bank Visa Debit Card",
-
-    // Retail & Store-Specific Prepaid Cards
-    "Walmart MoneyCard",
-    "Target RedCard Prepaid Debit Card",
-    "Amazon Reloadable Prepaid Card",
-
-    // Gift & Non-Personalized Prepaid Cards
-    "Visa Prepaid Gift Card",
-    "Mastercard Prepaid Gift Card",
-    "American Express Gift Card",
-    "Vanilla Visa Prepaid Card",
-    "OneVanilla Prepaid Card",
-
-    // Cryptocurrency-Linked Prepaid Cards
-    "Coinbase Visa Debit Card",
-    "Crypto.com Visa Card",
-    "BitPay Prepaid Mastercard",
-    "Wirex Visa Card",
-  ];
-
-  const handleServiceChange = () => {
-    if (offerFilter?.serviceType === "Online Wallet Transfer") {
-      setIsOnlineWallet(true);
-      setIsDirectBank(false);
-      setIsGiftCard(false);
-      setIsDebitOrCreditCard(false);
-      setOfferFilter((prev) => ({
-        ...prev,
-        service: "",
-      }));
-    } else if (offerFilter?.serviceType === "Direct Bank Transfer") {
-      setIsDirectBank(true);
-      setIsOnlineWallet(false);
-      setIsGiftCard(false);
-      setIsDebitOrCreditCard(false);
-      setOfferFilter((prev) => ({
-        ...prev,
-        service: "",
-      }));
-    } else if (offerFilter?.serviceType === "Gift Card Exchange") {
-      setIsGiftCard(true);
-      setIsDirectBank(false);
-      setIsOnlineWallet(false);
-      setIsDebitOrCreditCard(false);
-      setOfferFilter((prev) => ({
-        ...prev,
-        service: "",
-      }));
-    } else if (offerFilter?.serviceType === "Card-Based Spending") {
-      setIsDebitOrCreditCard(true);
-      setIsGiftCard(false);
-      setIsDirectBank(false);
-      setIsOnlineWallet(false);
-      setOfferFilter((prev) => ({
-        ...prev,
-        service: "",
-      }));
-    } else if (offerFilter?.serviceType === "Crypto Trading") {
-      setIsCryptoTrading(true);
-      setIsDebitOrCreditCard(false);
-      setIsGiftCard(false);
-      setIsDirectBank(false);
-      setIsOnlineWallet(false);
-      setOfferFilter((prev) => ({
-        ...prev,
-        service: "",
-      }));
-    } else if (offerFilter?.serviceType === "Default") {
-      setIsCryptoTrading(false);
-      setIsDebitOrCreditCard(false);
-      setIsGiftCard(false);
-      setIsDirectBank(false);
-      setIsOnlineWallet(false);
-      setOfferFilter((prev) => ({
-        ...prev,
-        service: "",
-      }));
-    }
-  };
-
+  // handling serviceType changes
   useEffect(() => {
-    handleServiceChange();
-  }, [offerFilter?.serviceType]);
+    if (select?.page !== "offer filter" || !select?.pick) return;
 
-  const getCurrencies = async () => {
-    try {
-      const response = await axios.get("https://restcountries.com/v3.1/all");
-      const countries = response.data;
-
-      const currencyMap = {};
-
-      countries.forEach((country) => {
-        if (country.currencies) {
-          for (const [code, currencyData] of Object.entries(
-            country.currencies
-          )) {
-            if (!currencyMap[code]) {
-              currencyMap[code] = {
-                name: currencyData.name || "Unknown",
-                symbol: currencyData.symbol || "",
-              };
-            }
-          }
-        }
-      });
-
-      // Convert the map to an array and sort by currency code
-      const currencyList = Object.entries(currencyMap)
-        .map(([code, { name, symbol }]) => ({
-          code,
-          name,
-          symbol,
-        }))
-        .sort((a, b) => a.code.localeCompare(b.code)); // <- safe because `code` is a string
-
-      console.log(currencyList); // Optional: view in console
-      setCurrencies(currencyList);
-    } catch (error) {
-      console.error("Error fetching currency data:", error.message);
+    if (select.element === "service type") {
+      setOfferFilter((prevDetails) => ({
+        ...prevDetails,
+        serviceType: select.pick,
+        service: "", // Reset service when serviceType changes
+      }));
     }
+  }, [select]);
+
+  // Get services under the selected serviceType
+  const services = useMemo(() => {
+    if (!offerFilter?.serviceType || fullData.length === 0) return [];
+
+    const selected = fullData.find(
+      (item) =>
+        item.name.toLowerCase() === offerFilter.serviceType.toLowerCase()
+    );
+
+    return selected?.services.map((service) => service.name) || [];
+  }, [offerFilter?.serviceType, fullData]);
+
+  const serviceInputLabels = {
+    "Online Wallet Transfer": "Select Online Wallet",
+    "Bank Transfer": "Select Bank Account",
+    "Gift Cards Exchange": "Select Gift Card",
+    "Crypto Trading": "Select Crypto Asset",
+    "Card-Based Spending": "Select Debit or Credit Card",
   };
+
+  // handling service changes
+  useEffect(() => {
+    if (select?.page !== "offer filter" || !select?.pick) return;
+
+    if (select.element === "service") {
+      setOfferFilter((prevDetails) => ({
+        ...prevDetails,
+        service: select.pick,
+      }));
+    }
+  }, [select]);
+
+  // handling currency changes
+  useEffect(() => {
+    if (select?.page !== "offer filter" || !select?.pick) return;
+
+    if (select.element === "currency") {
+      console.log("Currency selected:", select.pick);
+      const selectedCurrency = select.pick; // ✅ correct scope
+
+      if (
+        typeof selectedCurrency === "object" &&
+        selectedCurrency.code &&
+        selectedCurrency.name
+      ) {
+        setOfferFilter((prev) => ({
+          ...prev,
+          currency: selectedCurrency,
+        }));
+      }
+    }
+  }, [select]);
+
+  console.log("select element", select);
+  console.log("offerFilter", offerFilter);
 
   const handleAmountChange = (e) => {
     const rawValue = e.target.value.replace(/,/g, ""); // Remove commas for processing
@@ -406,61 +90,6 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
     }
   };
 
-  useEffect(() => {
-    getCurrencies();
-  }, []);
-
-  useEffect(() => {
-    if (select?.page === "marketplace" && select?.element === "service type") {
-      setOfferFilter((prev) => ({
-        ...prev,
-        serviceType: select.pick,
-      }));
-    } else if (
-      select?.page === "marketplace" &&
-      select?.element === "online wallets"
-    ) {
-      setOfferFilter((prev) => ({
-        ...prev,
-        service: select.pick,
-      }));
-    } else if (
-      select?.page === "marketplace" &&
-      select?.element === "bank accounts"
-    ) {
-      setOfferFilter((prev) => ({
-        ...prev,
-        service: select.pick,
-      }));
-    } else if (
-      select?.page === "marketplace" &&
-      select?.element === "gift cards"
-    ) {
-      setOfferFilter((prev) => ({
-        ...prev,
-        service: select.pick,
-      }));
-    } else if (
-      select?.page === "marketplace" &&
-      select?.element === "debit or credit cards"
-    ) {
-      setOfferFilter((prev) => ({
-        ...prev,
-        service: select.pick,
-      }));
-    } else if (select?.page === "marketplace" && select?.element === "currency")
-      setOfferFilter((prev) => ({
-        ...prev,
-        currency: {
-          code: select?.pick?.code,
-          name: select?.pick?.name,
-        },
-      }));
-  }, [select]);
-
-  console.log(select);
-  console.log(offerFilter);
-
   const handleCloseFilter = () => {
     setOfferFilter((prev) => ({
       ...prev,
@@ -470,7 +99,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
 
   const handleClearFilter = () => {
     setOfferFilter({
-      serviceType: "Default",
+      serviceType: "",
       service: "",
       currency: { code: "", name: "" },
       amount: "",
@@ -486,6 +115,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
   };
 
   useEffect(() => {
+    setLoading(true);
     handleFilterOffer();
 
     setOfferFilter((prev) => ({
@@ -493,30 +123,34 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
       clearFilter: false,
       isFiltering: false,
     }));
+
+    setLoading(false);
   }, [offerFilter.clearFilter]);
 
   return (
     <div className="bg-black overflow-hidden w-full h-full flex flex-col md:border md:border-t-0 border-neutral-800">
-      <div className="flex  justify-between items-center lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-neutral-800 ">
+      <div className="flex  justify-between items-center lg:px-[15px] md:px-[2.5%] p-[15px] border-y border-neutral-800 ">
         <p className="text-lg text-white font-[700] cursor-pointer">
           Filter Offers
         </p>
 
-        <div className="flex items-center gap-[10px]">
-          <div
-            onClick={handleCloseFilter}
-            className=" flex md:hidden items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[10px] font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-          >
-            <IoClose className="text-sm" />
-          </div>
+        <button
+          onClick={handleCloseFilter}
+          className={` flex lg:hidden px-[12px] py-[4px] rounded-[10px] text-sm font-semibold transition-all duration-300 bg-transparent text-tradeOrange hover:text-tradeOrange underline-offset-4 hover:underline active:text-tradeFadeWhite ${
+            loading ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+        >
+          Close Filter
+        </button>
 
-          <div
-            onClick={handleClearFilter}
-            className=" md:flex hidden items-center gap-1 px-[12px] py-1  text-red-600 text-xs font-[600] rounded-[6.5px] border border-tradeAshLight hover:border-red-600 cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-          >
-            <p>Clear Filter</p>
-          </div>
-        </div>
+        <button
+          onClick={handleClearFilter}
+          className={`lg:flex hidden px-[12px] py-[4px] rounded-[10px] text-sm font-semibold transition-all duration-300 bg-transparent text-red-500 hover:text-red-600 active:text-red-700 underline-offset-4 hover:underline ${
+            loading ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+        >
+          Clear Filter
+        </button>
       </div>
 
       <div className="flex flex-col  h-full overflow-auto custom-scrollbar">
@@ -548,7 +182,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                     state: true,
                     selectOne: true,
                     selectTwo: false,
-                    page: "marketplace",
+                    page: "offer filter",
                     element: "service type",
                     options: serviceTypes,
                     pick: "",
@@ -563,200 +197,45 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
           </div>
 
           {/* Service field */}
-          <div>
-            <div
-              className={`${
-                isOnlineWallet ? "flex" : "hidden"
-              }  flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
-            >
+          <div
+            className={`${
+              offerFilter?.serviceType ? "flex" : "hidden"
+            }  flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
+          >
+            <div>
               <div>
                 <p className="text-tradeFadeWhite text-sm font-[500]">
-                  Select Online Wallet
+                  {serviceInputLabels[offerFilter.serviceType] ||
+                    "Select Service"}
                 </p>
-              </div>
-
-              <div className="relative w-full cursor-pointer ">
-                <input
-                  className={` ${
-                    offerFilter?.service
-                      ? "border-tradeAshExtraLight text-tradeGreen"
-                      : "border-tradeAshLight text-white"
-                  } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
-                  type="text"
-                  readOnly
-                  placeholder="-- --"
-                  value={offerFilter?.service}
-                  onClick={() =>
-                    setSelect({
-                      state: true,
-                      selectOne: true,
-                      selectTwo: false,
-                      page: "marketplace",
-                      element: "online wallets",
-                      options: wallets,
-                    })
-                  }
-                />
-
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                  <MdKeyboardArrowDown />
-                </div>
               </div>
             </div>
-            <div
-              className={`${
-                isDirectBank ? "flex" : "hidden"
-              }  flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
-            >
-              <div>
-                <p className="text-tradeFadeWhite text-sm font-[500]">
-                  Select Bank Account
-                </p>
-              </div>
 
-              <div className="relative w-full cursor-pointer ">
-                <input
-                  className={` ${
-                    offerFilter?.service
-                      ? "border-tradeAshExtraLight text-tradeGreen"
-                      : "border-tradeAshLight text-white"
-                  } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
-                  type="text"
-                  readOnly
-                  placeholder="-- --"
-                  value={offerFilter?.service}
-                  onClick={() =>
-                    setSelect({
-                      state: true,
-                      selectOne: true,
-                      selectTwo: false,
-                      page: "marketplace",
-                      element: "bank accounts",
-                      options: globalBanks,
-                    })
-                  }
-                />
+            <div className="relative w-full cursor-pointer ">
+              <input
+                className={` ${
+                  offerFilter?.service
+                    ? "border-tradeAshExtraLight text-tradeGreen"
+                    : "border-tradeAshLight text-white"
+                } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                type="text"
+                readOnly
+                placeholder="-- --"
+                value={offerFilter?.service}
+                onClick={() =>
+                  setSelect({
+                    state: true,
+                    selectOne: true,
+                    selectTwo: false,
+                    page: "offer filter",
+                    element: "service",
+                    options: services,
+                  })
+                }
+              />
 
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                  <MdKeyboardArrowDown />
-                </div>
-              </div>
-            </div>
-            <div
-              className={`${
-                isGiftCard ? "flex" : "hidden"
-              }  flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
-            >
-              <div>
-                <p className="text-tradeFadeWhite text-sm font-[500]">
-                  Select Gift Card
-                </p>
-              </div>
-
-              <div className="relative w-full cursor-pointer ">
-                <input
-                  className={` ${
-                    offerFilter?.service
-                      ? "border-tradeAshExtraLight text-tradeGreen"
-                      : "border-tradeAshLight text-white"
-                  } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
-                  type="text"
-                  readOnly
-                  placeholder="-- --"
-                  value={offerFilter?.service}
-                  onClick={() =>
-                    setSelect({
-                      state: true,
-                      selectOne: true,
-                      selectTwo: false,
-                      page: "marketplace",
-                      element: "gift cards",
-                      options: globalGiftCards,
-                    })
-                  }
-                />
-
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                  <MdKeyboardArrowDown />
-                </div>
-              </div>
-            </div>
-            <div
-              className={`${
-                isDebitOrCreditCard ? "flex" : "hidden"
-              }  flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
-            >
-              <div>
-                <p className="text-tradeFadeWhite text-sm font-[500]">
-                  Select Debit or Credit Card
-                </p>
-              </div>
-
-              <div className="relative w-full cursor-pointer ">
-                <input
-                  className={` ${
-                    offerFilter?.service
-                      ? "border-tradeAshExtraLight text-tradeGreen"
-                      : "border-tradeAshLight text-white"
-                  } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
-                  type="text"
-                  readOnly
-                  placeholder="-- --"
-                  value={offerFilter?.service}
-                  onClick={() =>
-                    setSelect({
-                      state: true,
-                      selectOne: true,
-                      selectTwo: false,
-                      page: "marketplace",
-                      element: "debit or credit cards",
-                      options: debitandCreditCards,
-                    })
-                  }
-                />
-
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                  <MdKeyboardArrowDown />
-                </div>
-              </div>
-            </div>
-            <div
-              className={`${
-                isCryptoTrading ? "flex" : "hidden"
-              }  flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
-            >
-              <div>
-                <p className="text-tradeFadeWhite text-sm font-[500]">
-                  Select Crypto Asset
-                </p>
-              </div>
-
-              <div className="relative w-full cursor-pointer ">
-                <input
-                  className={` ${
-                    offerFilter?.service
-                      ? "border-tradeAshExtraLight text-tradeGreen"
-                      : "border-tradeAshLight text-white"
-                  } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
-                  type="text"
-                  readOnly
-                  placeholder="-- --"
-                  value={offerFilter?.service}
-                  onClick={() =>
-                    setSelect({
-                      state: true,
-                      selectOne: true,
-                      selectTwo: false,
-                      page: "marketplace",
-                      element: "crypto assets",
-                      options: debitandCreditCards,
-                    })
-                  }
-                />
-
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                  <MdKeyboardArrowDown />
-                </div>
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                <MdKeyboardArrowDown />
               </div>
             </div>
           </div>
@@ -780,7 +259,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                   state: true,
                   selectOne: false,
                   selectTwo: true,
-                  page: "marketplace",
+                  page: "offer filter",
                   element: "currency",
                   options: currencies,
                 })
@@ -847,8 +326,12 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
           {offerFilter?.isFiltering ? "Filtering..." : "Apply Filter"}
         </Button>
 
-        <div className="md:hidden flex">
-          <Button onClick={handleClearFilter} variant="danger">
+        <div className="lg:hidden flex">
+          <Button
+            onClick={handleClearFilter}
+            variant="danger"
+            disabled={loading}
+          >
             Clear Filter
           </Button>
         </div>

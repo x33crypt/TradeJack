@@ -11,7 +11,7 @@ import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { useCurrencies } from "@/hooks/useCurrencies";
+import { currencies } from "@/hooks/useCurrencies";
 import { useExchangeRate } from "@/hooks/useExchangeRate";
 import Button from "@/components/buttons/Button";
 import { useToast } from "@/context/ToastContext";
@@ -23,12 +23,12 @@ const CreateOffer = () => {
   const { select, setSelect } = useSelectElement();
   const { serviceTypes, fullData } = useServices();
   const { offerDetails, setOfferDetails } = useCreateOfferDetails();
-  const { currencies } = useCurrencies();
   const { rateInfo } = useExchangeRate(
     offerDetails.currency.code ? offerDetails.currency.code : "USD",
     "NGN",
     offerDetails?.margin
   );
+  const [loading, setLoading] = useState(false);
 
   // handling serviceType changes
   useEffect(() => {
@@ -339,6 +339,8 @@ const CreateOffer = () => {
     navigateTo("/offers/create/summary");
   };
 
+  const handleDraft = () => {};
+
   const cancelButton = () => {
     navigateTo(location?.state?.from || -1);
   };
@@ -346,9 +348,9 @@ const CreateOffer = () => {
   return (
     <>
       <InAppNav />
-      <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[60px]">
+      <div className="flex gap-[10px] lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[60px]">
         {/* Main Page */}
-        <div className="flex flex-col  min-h-svh w-full md:border-x md:border-t-0 md:border-b border-neutral-800 ">
+        <div className="flex flex-col min-h-svh w-full md:border-x md:border-t-0 md:border-b border-neutral-800 ">
           {/* Heading */}
           <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
             <p className="text-lg text-white font-[700]">Create Buy Offer</p>
@@ -849,6 +851,10 @@ const CreateOffer = () => {
           <div className="flex lg:hidden flex-col gap-[15px] p-[15px]">
             <Button onClick={NextButton} variant="primary">
               Continue to Summary
+            </Button>
+
+            <Button onClick={handleDraft} variant="ghost" disabled={loading}>
+              Save in Draft
             </Button>
 
             <Button onClick={cancelButton} variant="outline">

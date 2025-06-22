@@ -4,7 +4,7 @@ import React, { createContext, useState, useContext, useEffect } from "react";
 const CreateOfferContext = createContext();
 
 // Create the provider
-export const OfferDetailsProvider = ({ children }) => {
+export const CreateOfferProvider = ({ children }) => {
   const [offerDetails, setOfferDetails] = useState({
     serviceType: "Online Wallet Transfer",
     service: "",
@@ -18,7 +18,6 @@ export const OfferDetailsProvider = ({ children }) => {
     termTags: [],
     instruction: "",
   });
-
 
   return (
     <CreateOfferContext.Provider value={{ offerDetails, setOfferDetails }}>

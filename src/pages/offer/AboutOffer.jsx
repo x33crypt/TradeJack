@@ -243,13 +243,11 @@ const AboutOffer = () => {
     <>
       <MarketTopNav />
 
-      <div className="flex flex-col relative bg-black gap-[15px] lg:px-[15%] md:px-[5%] pt-[60px] md:pt-[80px]">
+      <div className="md:pt-[64px] pt-[62px] lg:px-[2%] md:px-[2.5%] min-h-svh flex flex-col gap-[10px] bg-black">
         <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-0 ">
           <div className="flex-1 flex justify-between flex-col md:border border-tradeAshLight">
             <div className=" flex items-center justify-between gap-[10px] p-[15px]  border-b border-tradeAshLight ">
-              <p className=" text-[17px] text-white font-[700] cursor-pointer">
-                About Offer
-              </p>
+              <p className="text-lg text-white font-[700]"> About Offer</p>
             </div>
 
             {/* Offer Id Field */}

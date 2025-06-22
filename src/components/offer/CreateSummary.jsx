@@ -6,7 +6,7 @@ import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
 import { useToast } from "@/context/ToastContext";
-import { publish } from "@/utils/offer/publish";
+import { publishOffer } from "@/utils/offer/publishOffer";
 import { useCreateOfferDetails } from "@/context/offer/CreateOfferContext";
 import Button from "@/components/buttons/Button";
 
@@ -18,7 +18,7 @@ const CreateSummary = () => {
 
   const serviceTypeIcons = {
     "Online Wallet Transfer": IoWalletOutline,
-    "Direct Bank Transfer": CiBank,
+    "Bank Transfer": CiBank,
     "Gift Card Exchange": HiOutlineGift,
     "Card-Based Spending": IoCardOutline,
     "Crypto Trading": GiTwoCoins,
@@ -30,8 +30,8 @@ const CreateSummary = () => {
   const navigateTo = useNavigate();
 
   const handlepublish = async () => {
-    const result = await publish(offerDetails);
     setIsUpdating(true);
+    const result = await publishOffer(offerDetails);
 
     if (result.success) {
       setIsUpdating(false);
@@ -69,12 +69,14 @@ const CreateSummary = () => {
     }
   };
 
+  const handleDraft = () => {};
+
   const cancelButton = () => {
     navigateTo(location?.state?.from || -1);
   };
 
   return (
-    <div className="flex lg:flex-row gap-[10px] flex-col bg-black lg:px-[2%] md:px-[2.5%] lg:pt-0 md:pt-[64px] pt-[60px]">
+    <div className="flex lg:flex-row gap-[10px] flex-col bg-black  lg:pt-0 md:pt-[64px] pt-[60px]">
       <div className="relative bg-black w-full min-h-svh flex flex-col md:border-x md:border-b md:border-t-0 border-neutral-800">
         <div className="flex flex-col justify-between p-[15px]  border-b border-tradeAshLight w-full">
           <p className="text-lg text-white font-[700]">Offer Summary</p>
@@ -279,13 +281,11 @@ const CreateSummary = () => {
             {isUpdating ? "Publishing..." : "Publish Offer"}
           </Button>
 
-          <Button
-            // onClick={}
-            variant="ghost"
-            disabled={isUpdating}
-          >
-            Draft
-          </Button>
+          <div className="hidden md:flex">
+            <Button onClick={handleDraft} variant="ghost" disabled={isUpdating}>
+              Save in Draft
+            </Button>
+          </div>
 
           <Button
             onClick={cancelButton}

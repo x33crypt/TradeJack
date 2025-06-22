@@ -74,13 +74,13 @@ const MyOfferCard = (props) => {
         </div>
 
         {/* Right: Status + Action */}
-        <div className="flex-1 flex flex-col justify-center items-start gap-2 px-4 py-6 bg-tradeAshExtraLight border-l border-tradeAshLight">
+        <div className="flex-1 flex flex-col justify-center items-start gap-2 px-4 py-6 border-l border-tradeAshLight">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
             <p className="text-tradeGreen text-xs font-semibold">Active</p>
           </div>
           <div className="flex gap-2 items-center">
-            <p className="text-tradeOrange text-xs font-semibold">
+            <p className="text-tradeFadeWhite text-xs font-semibold">
               Click to view and edit
             </p>
             <FaEdit className="text-tradeOrange text-[12px]" />

@@ -6,7 +6,7 @@ import Warning from "@/components/alerts/Warning";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { useSelectElement } from "@/context/SelectElementContext";
-import { useCreateOfferDetails } from "@/context/offer/CreateOfferContext";
+import { useEditOfferDetails } from "@/context/offer/EditOfferContext";
 import axios from "axios";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
@@ -20,28 +20,38 @@ import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
 import EditSummary from "../../components/offer/EditSummary";
+import Button from "@/components/buttons/Button";
+import { useExchangeRate } from "@/hooks/useExchangeRate";
 
 const EditOffer = (props) => {
   const { select, setSelect } = useSelectElement();
-  const { offerDetails, setOfferDetails } = useCreateOfferDetails();
+  const [loading, setLoading] = useState(false);
+  const { offerDetails, setOfferDetails } = useEditOfferDetails();
+  const { rateInfo } = useExchangeRate(
+    offerDetails.currency.code ? offerDetails.currency.code : "USD",
+    "NGN",
+    offerDetails?.margin
+  );
 
+  // handling terms changes
   useEffect(() => {
+    if (select?.page !== "edit offer" || !select?.pick) return;
+
     if (select.element === "terms") {
-      const newTag = select.pick?.trim();
+      const pickedTerm = select.pick; // ✅ Corrected
 
-      if (newTag) {
-        setOfferDetails((prev) => {
-          const current = prev.termTags || [];
-
-          if (current.includes(newTag) || current.length >= 5) {
-            return prev; // Do not add if already exists or exceeds limit
-          }
-
-          return {
-            ...prev,
-            termTags: [...current, newTag],
-          };
-        });
+      if (typeof pickedTerm === "string") {
+        const newTag = pickedTerm.trim();
+        if (newTag) {
+          setOfferDetails((prev) => {
+            const current = prev.termTags || [];
+            if (current.includes(newTag) || current.length >= 5) return prev;
+            return {
+              ...prev,
+              termTags: [...current, newTag],
+            };
+          });
+        }
       }
     }
   }, [select]);
@@ -64,18 +74,26 @@ const EditOffer = (props) => {
     }));
   };
 
-  const handleAddMargine = (e) => {
-    setOfferDetails((prev) => ({
-      ...prev,
-      margin: Math.min(21, Number(prev.margin || 0) + 1),
-    }));
+  const handleAddMargin = () => {
+    setOfferDetails((prev) => {
+      const current = Number(prev.margin || 0);
+      const next = current + 1;
+      return {
+        ...prev,
+        margin: next > 80 ? 80 : next,
+      };
+    });
   };
 
-  const handleMinusMargine = (e) => {
-    setOfferDetails((prev) => ({
-      ...prev,
-      margin: Math.max(0, Number(prev.margin || 0) - 1),
-    }));
+  const handleMinusMargin = () => {
+    setOfferDetails((prev) => {
+      const current = Number(prev.margin || 0);
+      const next = current - 1;
+      return {
+        ...prev,
+        margin: next < 4 ? 4 : next,
+      };
+    });
   };
 
   const handleAddPaymentWindow = (e) => {
@@ -122,10 +140,6 @@ const EditOffer = (props) => {
     }));
   };
 
-  const handleToEditSummaryPage = (offerId) => {
-    navigateTo(`/offers/${offerId}/edit/summary`);
-  };
-
   // Map full service type string to corresponding icon
   const serviceTypeIcons = {
     "Online Wallet Transfer": IoWalletOutline,
@@ -140,23 +154,96 @@ const EditOffer = (props) => {
 
   const navigateTo = useNavigate();
 
+  const nextButton = () => {
+    const {
+      serviceType,
+      service,
+      currency,
+      minimum,
+      maximum,
+      margin,
+      termTags,
+      paymentWindow,
+      confirmationTime,
+      instruction,
+    } = offerDetails;
+
+    const showToast = (message) => {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: message,
+      });
+    };
+
+    if (!serviceType) {
+      return showToast("Missing required field: Service Type");
+    }
+
+    if (!service) {
+      const label = getMissingServiceLabel(serviceType);
+      return showToast(`Missing required field: ${label}`);
+    }
+
+    if (!currency?.code && !currency?.name) {
+      return showToast("Missing required field: Select Currency");
+    }
+
+    if (!minimum) {
+      return showToast("Missing required field: Minimum trade limit");
+    }
+
+    if (!maximum) {
+      return showToast("Missing required field: Maximum trade limit");
+    }
+
+    if (margin <= 2) {
+      return showToast(
+        "Profit margin must be greater than 2% to publish your offer."
+      );
+    }
+
+    if (!paymentWindow) {
+      return showToast("Missing required field: Payment window");
+    }
+
+    if (!confirmationTime) {
+      return showToast("Missing required field: Confirmation window");
+    }
+
+    if (!termTags || termTags.length === 0) {
+      return showToast("Missing required field: Offer terms tag");
+    }
+
+    if (!instruction) {
+      return showToast("Missing required field: Trade instruction");
+    }
+
+    navigateTo("/offers/:id/edit/summary");
+  };
+
+  const handleClose = () => {};
+
+  const cancelButton = () => {
+    navigateTo(location?.state?.from || -1);
+  };
+
   return (
     <>
       <InAppNav />
 
-      <div className="flex lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[60px]">
+      <div className="flex  gap-[10px] lg:flex-row flex-col  lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[60px] bg-black">
         {/* Header Section */}
-        <div className="flex lg:flex-row flex-col w-full gap-[15px] lg:gap-0">
-          <div className="flex-1 flex flex-col md:border border-tradeAshLight">
-            <div className="flex items-center gap-[10px] p-[15px] border-b border-tradeAshLight">
-              <p className="text-[17px] text-white font-[700] cursor-pointer">
-                Edit Offer
-              </p>
+        <div className="flex flex-col  min-h-svh w-full gap-[10px]">
+          <div className="flex flex-col md:border-x md:border-t-0 md:border-b border-neutral-800 ">
+            {/* Heading */}
+            <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
+              <p className="text-lg text-white font-[700]">Edit Offer</p>
             </div>
 
             {/* Subheading */}
-            <div className="flex justify-between gap-1 items-center px-4 py-2 ">
-              <p className="text-tradeFadeWhite text-[14px] font-normal">
+            <div className="p-[15px]">
+              <p className="text-tradeFadeWhite text-sm">
                 Update key details of your offer to reflect your latest trade
                 preferences. You can adjust your limits, margins, timing, or
                 trade instructions before saving.
@@ -264,9 +351,11 @@ const EditOffer = (props) => {
                 </div>
               </div>
             </div>
+          </div>
 
+          <div className="flex flex-col md:border-x md:border-t-0 md:border-b border-neutral-800">
             {/* Changing Field Heading */}
-            <div className="  flex justify-between gap-1 items-center p-4  border-y border-tradeAshLight ">
+            <div className="  flex justify-between gap-1 items-center p-4  md:border-y border-b border-tradeAshLight ">
               <p className="text-white text-[16px] font-semibold">
                 Update Details
               </p>
@@ -367,95 +456,87 @@ const EditOffer = (props) => {
               {/* Profit Margine Field */}
               <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
                 <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
-                  <p className="text-white text-[15px] font-[500]">
-                    Profit Margin
-                  </p>
+                  <p className="text-white text-sm font-[500]">Profit Margin</p>
                 </div>
 
                 <div className="w-full flex flex-col gap-[15px] p-[15px]">
                   <div className="flex items-center w-full flex-row  gap-[15px]">
                     <div
-                      onClick={handleMinusMargine}
+                      onClick={handleMinusMargin}
                       className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
                     >
                       <FaMinus />
                     </div>
+
                     <div className="bg-tradeAsh flex justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
-                      <p className="text-white text-[14px]">
-                        {offerDetails?.margin === 0 ? (
-                          <span className="text-red-500">
-                            No margin applied
-                          </span>
-                        ) : offerDetails?.margin > 20 ? (
-                          <span className="text-red-500">
-                            Margin cannot exceed 20%
-                          </span>
-                        ) : (
-                          <>
-                            <span className="font-bold">
-                              {offerDetails.margin > 0 ? "+" : ""}
-                              {offerDetails.margin}%
-                            </span>{" "}
-                            profit margin per trade
-                          </>
-                        )}
+                      <p className="text-white text-sm">
+                        <span className="font-bold">
+                          {offerDetails.margin > 0 ? "+" : ""}
+                          {offerDetails.margin}%
+                        </span>{" "}
+                        profit margin per trade
                       </p>
                     </div>
+
                     <div
-                      onClick={handleAddMargine}
+                      onClick={handleAddMargin}
                       className="text-tradeFadeWhite text-[18px] bg-tradeAsh p-[12px] rounded-[10px] border border-tradeAshLight"
                     >
                       <FaPlus />
                     </div>
                   </div>
 
-                  <div className="flex p-3 bg-tradeAsh border border-tradeAshLight flex-col gap-2 text-[14px] text-white leading-relaxed">
+                  <div className="flex p-3 bg-tradeAsh rounded-[10px] border border-tradeAshLight flex-col gap-2 text-[13px] text-white leading-relaxed">
                     {/* Market Price */}
                     <div className="flex gap-1 items-center">
                       <p className="text-tradeFadeWhite font-medium">
                         Current Exchange Rate:
                       </p>
-
                       <p className="text-tradeGreen font-bold">
-                        1 USD = 1,560.36 NGN
+                        1 <span>{offerDetails.currency.code}</span> ={" "}
+                        <span>
+                          {rateInfo.baseRate === 0 ? "0.00" : rateInfo.baseRate}
+                        </span>{" "}
+                        <span>NGN</span>
                       </p>
                     </div>
 
                     {/* Margin Breakdown */}
                     <p className="text-tradeFadeWhite font-medium">
-                      With a{" "}
+                      Your offering at{" "}
                       <span className="text-tradeOrange font-bold">
-                        5 percent profit margin
-                      </span>
-                      , your final rate is&nbsp;
-                      <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                        1,380.28 NGN
+                        {offerDetails?.margin}% profit margin
                       </span>{" "}
-                      per&nbsp;
+                      sets your trade rate at{" "}
                       <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                        1 USD
-                      </span>
-                      . Estimated profit:{" "}
-                      <span className="text-tradeGreen font-bold">
-                        7,500 NGN
+                        {rateInfo.finalRate} NGN
                       </span>{" "}
-                      per&nbsp;
+                      per{" "}
+                      <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
+                        1 {offerDetails.currency.code}
+                      </span>
+                      . You'll earn about{" "}
                       <span className="text-tradeGreen font-bold">
-                        1 USD
+                        {rateInfo.profit} NGN
+                      </span>{" "}
+                      per{" "}
+                      <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
+                        1 {offerDetails.currency.code}
                       </span>{" "}
                       traded.
                     </p>
 
-                    {/* Service charge */}
+                    {/* Service Charge Note */}
                     <p className="text-tradeFadeWhite font-medium">
-                      Note: A service charge applies at the time of trade.
+                      <span className="text-white font-semibold">Note:</span>{" "}
+                      Service charge applies at trade.
                     </p>
                   </div>
 
                   <div className="">
                     <Info
                       text={
-                        "Set a profit margin that appeals to traders while ensuring your earnings. A service charge typically between 0.50% and 2.00% applies per trade. To maintain a healthy return, consider setting your margin slightly higher (e.g. 4–8%) while staying competitive."
+                        "Set a competitive profit margin that secures your earnings. Note that a service charge typically between 0.5% to 2% applies per trade. To ensure healthy returns, consider starting your margin at 4% or higher."
                       }
                     />
                   </div>
@@ -558,6 +639,7 @@ const EditOffer = (props) => {
                         selectTwo: false,
                         element: "terms",
                         pick: "",
+                        page: "edit offer",
                         options: offerTermTags,
                       })
                     }
@@ -641,30 +723,21 @@ const EditOffer = (props) => {
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Buttons Mobile and Tabs */}
-            <div className="flex lg:hidden flex-col gap-[10px] border-t border-tradeAshLight p-[15px]">
-              <div
-                onClick={() => handleToEditSummaryPage(props?.offerId)}
-                className={` ${
-                  false
-                    ? "bg-tradeAsh text-tradeGreen"
-                    : "bg-tradeGreen hover:bg-tradeAsh text-black hover:text-tradeGreen"
-                } w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300`}
-              >
-                <p className="text-[14px] font-[700] ">Continue to Summary</p>
-              </div>
+          {/* Buttons Mobile and Tabs */}
+          <div className="flex lg:hidden flex-col gap-[15px] md:border border-t border-neutral-800 p-[15px]">
+            <Button onClick={nextButton} variant="primary">
+              Continue to Summary
+            </Button>
 
-              <div className="flex justify-center bg-transparent border border-tradeAshLight hover:border-red-600  p-[12px] rounded-[10px]  cursor-pointer duration-300 transition-all">
-                <p className="text-[14px] font-[700] text-red-600">
-                  Terminate Offer
-                </p>
-              </div>
+            <Button onClick={handleClose} variant="danger" disabled={loading}>
+              {loading ? "Closing Offer..." : "Close this Offer"}
+            </Button>
 
-              <div className=" w-full bg-transparent text-tradeFadeWhite hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300">
-                <p className="text-[14px] font-[700] ">Cancel Edit</p>
-              </div>
-            </div>
+            <Button onClick={cancelButton} variant="outline">
+              Cancel
+            </Button>
           </div>
         </div>
 

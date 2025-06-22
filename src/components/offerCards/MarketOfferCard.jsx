@@ -112,7 +112,7 @@ const MarketCard = (props) => {
         </div>
 
         {/* Rate Info Section */}
-        <div className="flex flex-1  flex-col justify-center px-4 py-6 gap-1 border-r border-tradeAshLight ">
+        <div className="flex flex-1  flex-col justify-between px-4 py-6 gap-1 border-r border-tradeAshLight ">
           <div className="flex items-center justify-between">
             <p className="text-sm font-bold text-tradeFadeWhite">
               123,968.44 {props.currency?.code}
@@ -127,13 +127,13 @@ const MarketCard = (props) => {
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-1">
               <MdTimer className="text-tradeOrange text-sm" />
-              <p className="text-tradeFadeWhite text-sm font-medium">
+              <p className="text-tradeFadeWhite text-xs font-semibold">
                 65 Min(s)
               </p>
             </div>
             <div className="flex items-center gap-1">
               <FaBusinessTime className="text-tradeOrange text-sm" />
-              <p className="text-tradeFadeWhite text-sm font-medium">
+              <p className="text-tradeFadeWhite text-xs font-semibold">
                 4 Hour(s)
               </p>
             </div>
@@ -231,9 +231,19 @@ const MarketCard = (props) => {
               {props.margin}.00%
             </p>
           </div>
-          <div className="flex items-center gap-1 text-sm font-semibold text-tradeFadeWhite">
-            <FiTrendingUp />
-            <p>+{props.margin}.00% Margin</p>
+          <div className="flex gap-3 justify-between items-center">
+            <div className="flex items-center gap-1">
+              <MdTimer className="text-tradeOrange text-sm" />
+              <p className="text-tradeFadeWhite text-sm font-semibold">
+                65 Min(s)
+              </p>
+            </div>
+            <div className="flex items-center gap-1">
+              <FaBusinessTime className="text-tradeOrange text-sm" />
+              <p className="text-tradeFadeWhite text-sm font-semibold">
+                4 Hour(s)
+              </p>
+            </div>
           </div>
         </div>
       </div>

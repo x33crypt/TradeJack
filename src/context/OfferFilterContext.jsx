@@ -6,7 +6,7 @@ const OfferFilterContext = createContext();
 // Create the provider
 export const OfferFilterProvider = ({ children }) => {
   const [offerFilter, setOfferFilter] = useState({
-    serviceType: "Default",
+    serviceType: "",
     service: "",
     currency: { code: "", name: "" },
     amount: "",

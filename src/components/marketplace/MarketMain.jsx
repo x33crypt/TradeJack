@@ -70,7 +70,7 @@ const MarketMain = ({
   };
 
   return (
-    <div className="flex flex-col gap-[px] h-full lg:border-x md:border-t-0 lg:border-b border-neutral-800">
+    <div className="flex flex-col  h-full lg:border-x md:border-t-0 lg:border-b border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
         <p className="text-lg text-white font-[700]">Secure P2P Marketplace</p>
 

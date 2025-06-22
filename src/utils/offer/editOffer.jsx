@@ -1,25 +1,7 @@
-import axios from "axios";
 import api from "../http/api";
 
-const getMissingServiceLabel = (type) => {
-  switch (type) {
-    case "Online Wallet Transfer":
-      return "Select Online Wallet";
-    case "Direct Bank Transfer":
-      return "Select Bank Account";
-    case "Gift Card Exchange":
-      return "Select Gift Card";
-    case "Card-Based Spending":
-      return "Select Debit or Credit Card";
-    case "Crypto Trading":
-      return "Select Crypto Asset";
-    default:
-      return "Service";
-  }
-};
-
-export async function publish(offerDetails) {
-  console.log("Hey, Publishing Ok!");
+export async function editOffer(offerDetails) {
+  console.log("Hey, Editting Offer Ok!");
 
   const baseUrl = import.meta.env.VITE_API_URL;
   console.log("API URL:", baseUrl);
@@ -27,10 +9,7 @@ export async function publish(offerDetails) {
   if (!offerDetails) return { success: false, error: "No offer data provided" };
 
   const {
-    serviceType,
-    service,
-    serviceId,
-    currency,
+    offerId,
     minimum,
     maximum,
     margin,
@@ -40,17 +19,11 @@ export async function publish(offerDetails) {
     instruction,
   } = offerDetails;
 
-  if (!serviceType) {
-    return { success: false, error: "Missing required field: Service Type" };
-  }
-
-  if (!service) {
-    const label = getMissingServiceLabel(serviceType);
-    return { success: false, error: `Missing required field: ${label}` };
-  }
-
-  if (!currency?.code && !currency?.name) {
-    return { success: false, error: "Missing required field: Select Currency" };
+  if (!offerId) {
+    return {
+      success: false,
+      error: "Cannot process edit, Offer Id is invalid",
+    };
   }
 
   if (!minimum) {
@@ -97,15 +70,7 @@ export async function publish(offerDetails) {
   }
 
   const payload = {
-    service_type: serviceType,
-    service: service,
-    service_id: serviceId,
-    preferred_currency: [
-      {
-        code: currency.code,
-        name: currency.name,
-      },
-    ],
+    offer_id: offerId,
     purchase_limits: {
       minimum,
       maximum,
@@ -130,7 +95,7 @@ export async function publish(offerDetails) {
     );
 
     console.log;
-    "Publish response:", response;
+    "Close response:", response;
 
     return {
       success: true,

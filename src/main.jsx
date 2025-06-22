@@ -6,7 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { TradeAlertProvider } from "./context/TradeAlertContext";
 import { SelectElementProvider } from "./context/SelectElementContext";
-import { OfferDetailsProvider } from "./context/offer/CreateOfferContext";
+import { CreateOfferProvider } from "./context/offer/CreateOfferContext";
+import { EditOfferProvider } from "./context/offer/EditOfferContext";
 import { OfferFilterProvider } from "./context/OfferFilterContext";
 import { UserDetailsProvider } from "./context/UserContext";
 import { ToastProvider } from "./context/ToastContext";
@@ -25,13 +26,15 @@ root.render(
             <ToastProvider>
               <UserDetailsProvider>
                 <OfferFilterProvider>
-                  <OfferDetailsProvider>
-                    <SelectElementProvider>
-                      <TradeAlertProvider>
-                        <App />
-                      </TradeAlertProvider>
-                    </SelectElementProvider>
-                  </OfferDetailsProvider>
+                  <EditOfferProvider>
+                    <CreateOfferProvider>
+                      <SelectElementProvider>
+                        <TradeAlertProvider>
+                          <App />
+                        </TradeAlertProvider>
+                      </SelectElementProvider>
+                    </CreateOfferProvider>
+                  </EditOfferProvider>
                 </OfferFilterProvider>
               </UserDetailsProvider>
             </ToastProvider>
