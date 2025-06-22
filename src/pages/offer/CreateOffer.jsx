@@ -13,10 +13,10 @@ import { IoClose } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useCurrencies } from "@/hooks/useCurrencies";
 import { useExchangeRate } from "@/hooks/useExchangeRate";
-import CreateSummary from "@/components/offer/createSummary";
 import Button from "@/components/buttons/Button";
 import { useToast } from "@/context/ToastContext";
 import { useServices } from "@/hooks/useServices";
+import CreateSummary from "@/components/offer/CreateSummary";
 
 const CreateOffer = () => {
   const { toast, setToast } = useToast();

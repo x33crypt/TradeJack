@@ -1,10 +1,12 @@
-import React, { useState, useContext, useRef, useEffect } from "react";
-import { MdThumbUpAlt } from "react-icons/md";
-import { MdThumbDownAlt } from "react-icons/md";
-import { MdOutlineGppGood } from "react-icons/md";
+import React, { useRef, useEffect, useCallback } from "react";
+import { MdThumbUpAlt, MdThumbDownAlt, MdOutlineGppGood } from "react-icons/md";
+import { FaUserFriends } from "react-icons/fa";
+import { TiChartLine } from "react-icons/ti";
+import { GiRoundKnob } from "react-icons/gi";
 
 const StatsBoard = () => {
-  const statRef = useRef(null);
+  const desktopRef = useRef(null);
+  const mobileRef = useRef(null);
 
   const animateCount = (start, end, duration, id, suffix = "") => {
     const element = document.getElementById(id);
@@ -29,7 +31,7 @@ const StatsBoard = () => {
     }, stepTime);
   };
 
-  const animator = () => {
+  const animator = useCallback(() => {
     animateCount(1, 420, 2000, "positive", "K+");
     animateCount(1, 15, 4000, "negative", "");
     animateCount(1, 56, 4000, "trust", "%");
@@ -37,37 +39,37 @@ const StatsBoard = () => {
     animateCount(1, 5, 4000, "vendor", "");
     animateCount(1, 565, 2000, "totalTrade", "");
     animateCount(1, 42, 2000, "tradePartners", "");
-  };
+  }, []);
 
   useEffect(() => {
-    // Define the observer
-    const statsObserver = new IntersectionObserver((entries) => {
+    if (!desktopRef.current && !mobileRef.current) return;
+
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           console.log("Component is in view!");
-          animator(); // Trigger the animation function
-          statsObserver.unobserve(entry.target); // Unobserve to trigger only once if desired
+          animator();
+          // Unobserve both to prevent re-triggering
+          if (desktopRef.current) observer.unobserve(desktopRef.current);
+          if (mobileRef.current) observer.unobserve(mobileRef.current);
         }
       });
     });
 
-    // Observe the element
-    if (statRef.current) {
-      statsObserver.observe(statRef.current);
-    }
+    if (desktopRef.current) observer.observe(desktopRef.current);
+    if (mobileRef.current) observer.observe(mobileRef.current);
 
-    // Cleanup the observer on component unmount
     return () => {
-      if (statRef.current) {
-        statsObserver.unobserve(statRef.current);
-      }
+      if (desktopRef.current) observer.unobserve(desktopRef.current);
+      if (mobileRef.current) observer.unobserve(mobileRef.current);
     };
   }, [animator]);
 
   return (
     <>
+      {/* Desktop & Tablet View */}
       <div
-        ref={statRef}
+        ref={desktopRef}
         className="flex-1 md:flex hidden items-center bg-tradeOrang p-[15px] lg:p-0 border md:border-0 border-tradeAshLight rounded-[12px] bg-tradeAsh lg:bg-transparent"
       >
         <div className="grid md:grid-cols-3 lg:grid-cols-3 grid-cols-2 gap-[35px] bg-tradeOrang w-full h-max">
@@ -169,7 +171,11 @@ const StatsBoard = () => {
         </div>
       </div>
 
-      <div ref={statRef} className="flex md:hidden flex-col  p-[15px]  gap-[10px]">
+      {/* Mobile View */}
+      <div
+        ref={mobileRef}
+        className="flex md:hidden flex-col  p-[15px]  gap-[10px]"
+      >
         <div className="flex flex-col  bg-tradeAsh  border border-tradeAshLight rounded-[10px] overflow-hidden">
           <div className="flex p-[12px] w-full flex-col gap-2 border-b border-tradeAshLight ">
             <p className="text-tradeFadeWhite text-xs font-bold">
@@ -231,8 +237,8 @@ const StatsBoard = () => {
             </p>
 
             <div className="flex justify-between items-center gap-2">
-              <div className="p-1  rounded-full bg-red-600/30">
-                <MdThumbDownAlt className="text-red-600 text-[13px] md:text-sm leading-none" />
+              <div className="p-1  rounded-full bg-tradeAshLight/30">
+                <TiChartLine className="text-white text-[13px] md:text-sm leading-none" />
               </div>
 
               <p
@@ -249,8 +255,8 @@ const StatsBoard = () => {
             </p>
 
             <div className="flex justify-between items-center gap-2">
-              <div className="p-1  rounded-full bg-[#00de82]/30 ">
-                <MdThumbUpAlt className="text-tradeGreen text-[13px] md:text-sm leading-none" />
+              <div className="p-1  rounded-full bg-tradeAshExtraLight/30 ">
+                <FaUserFriends className="text-white text-[13px] md:text-sm leading-none" />
               </div>
 
               <p
@@ -267,8 +273,8 @@ const StatsBoard = () => {
             </p>
 
             <div className="flex justify-between items-center gap-2">
-              <div className="p-1  rounded-full bg-red-600/30">
-                <MdThumbDownAlt className="text-red-600 text-[13px] md:text-sm leading-none" />
+              <div className="p-1  rounded-full bg-tradeAshLight/30">
+                <GiRoundKnob className="text-white text-[13px] md:text-sm leading-none" />
               </div>
 
               <p
