@@ -1,14 +1,6 @@
 import React from "react";
 
-const OfferTag = () => {
-  const offerTermTags = [
-    "Receipt required",
-    "No third-party",
-    "Pay exact amount",
-    "Fast payment only",
-    "Same bank only",
-  ];
-
+const OfferTag = ({ aboutOffer }) => {
   return (
     <div className="flex flex-col flex-1 md:border border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
@@ -17,15 +9,14 @@ const OfferTag = () => {
 
       <div className="flex-1 flex  flex-col bg-tradeAs p-[15px] gap-[10px]">
         <div className="flex flex-wrap gap-[10px]">
-          {offerTermTags &&
-            offerTermTags.map((terms, index) => (
-              <p
-                className="text-sm bg-tradeOrange px-[10px] py-[3px] font-semibold rounded-[5px]"
-                key={index}
-              >
-                {terms}
-              </p>
-            ))}
+          {aboutOffer?.terms.map((term, index) => (
+            <p
+              className="text-sm bg-tradeOrange px-[10px] py-[3px] font-semibold rounded-[5px]"
+              key={index}
+            >
+              {term}
+            </p>
+          ))}
         </div>
       </div>
     </div>

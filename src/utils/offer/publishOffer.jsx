@@ -131,7 +131,7 @@ export async function publishOffer(offerDetails) {
     return {
       success: true,
       message: response?.data?.message,
-      offerId: response?.data?.data?._id,
+      offerId: response?.data?.data?.offerId,
     };
   } catch (err) {
     console.log(err);
