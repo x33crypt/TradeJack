@@ -5,7 +5,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import useAutoReloadOnReconnect from "@/hooks/useAutoReloadConnection";
 
 const ReloadPage = () => {
-  useAutoReloadOnReconnect();
+  // useAutoReloadOnReconnect();
 
   return (
     <div className="flex flex-col gap-[20px] items-center justify-center h-svh bg-black text-white">

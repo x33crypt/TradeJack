@@ -8,7 +8,7 @@ const StateHandler = ({ loading, error, loadingText, children }) => {
 
   if (loading) return <LoadingPage text={loadingText} />;
 
-  if (error) return <ReloadPage />;
+  // if (error) return <ReloadPage />;
 
   return children;
 };

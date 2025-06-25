@@ -245,7 +245,7 @@ const MyOffer = () => {
             </div>
 
             <div className=" p-[15px] gap-[15px] flex flex-col ">
-              <div className="grid grid-cols-1 gap-1 md:gap-0 items-center border border-tradeAshLight border-t-0">
+              <div className="grid grid-cols-1 gap-1 md:gap-0 items-center">
                 {myOffers && offers.length > 0 ? (
                   offers.map((offer) => (
                     <MyOfferCard key={offer.id} offer={offer} />
