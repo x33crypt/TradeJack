@@ -6,8 +6,7 @@ import { TbCameraPlus } from "react-icons/tb";
 import image from "../../assets/landingImg4.JPG";
 import { FaUserFriends } from "react-icons/fa";
 
-
-const HeroEdit = () => {
+const HeroEdit = ({ profile }) => {
   return (
     <div className="flex-1  p-[15px]  bg-tradeGree flex-shrink-0 flex flex-col md:flex-row md:gap-[20px] gap-[20px] items-center md:pr-[15px] ">
       <div className="relative flex lg:w-[200px] md:w-[170px] w-[150px] shrink-0 justify-center cursor-pointer">
@@ -26,7 +25,8 @@ const HeroEdit = () => {
           </div>
 
           <p className="mt-0 text-white lg:text-[40px] md:text-[40px] text-[25px] font-[900] leading-none ">
-            <span className="text-tradeFadeWhite">@</span>Saneghxst
+            <span className="text-tradeFadeWhite">@</span>
+            {profile?.username}
           </p>
         </div>
 

@@ -65,11 +65,6 @@ export async function signin(signinDetails, setDashboard) {
 
     // ✅ success path: login succeeded, fetch dashboard
     if (response?.data?.success) {
-      const getDashboard = await dashboard();
-      if (getDashboard?.success && setDashboard) {
-        setDashboard(getDashboard?.data?.data);
-      }
-
       return {
         success: true,
         message: response?.data?.message,

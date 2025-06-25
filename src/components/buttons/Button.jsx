@@ -14,6 +14,8 @@ const Button = ({
   const variants = {
     primary:
       "bg-tradeGreen text-black hover:bg-tradeGreen/80 active:bg-tradeAsh active:text-tradeGreen transition-colors duration-200",
+    secondary:
+      "bg-tradeOrange text-black hover:bg-tradeOrange/80 active:bg-tradeAsh active:text-tradeOrange  border border-tradeOrange transition-colors duration-200",
     outline:
       "bg-transparent text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite border border-tradeAshLight hover:border-tradeAshExtraLight transition-colors duration-200",
     danger:

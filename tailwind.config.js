@@ -20,7 +20,7 @@ export default {
         tradeAshExtraLight: "#464646",
         tradeBorder: "#404040",
         tradeGreen: "#00de82",
-        tradeLightGreen: '#f0fff9',
+        tradeLightGreen: "#f0fff9",
         tradePurple: "#9e62ff",
         tradeOrange: "#ffcb4d",
       },
@@ -33,6 +33,10 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      animation: {
+        "spin-slow": "spin 3s linear infinite", // medium-fast
+        "spin-faster": "spin 1s linear infinite", // even faster
       },
     },
   },

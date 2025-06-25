@@ -33,30 +33,22 @@ const CreateSummary = () => {
     setIsUpdating(true);
     const result = await publishOffer(offerDetails);
 
+    console.log("Offer published:", result);
+
     if (result.success) {
       setIsUpdating(false);
 
-      console.log("Offer published:", result.data);
-      setToast({
-        ...toast,
-        success: true,
-        errorSuccess: result.data,
-      });
+      // setToast({
+      //   ...toast,
+      //   success: true,
+      //   successMessage: result.message,
+      // });
 
-      navigateTo("/offers/marketplace");
-      setOfferDetails({
-        serviceType: "Online Wallet Transfer",
-        service: "",
-        serviceId: "",
-        currency: { code: "", name: "" },
-        minimum: "",
-        maximum: "",
-        margin: 4,
-        paymentWindow: 1,
-        confirmationTime: 1,
-        termTags: [],
-        instruction: "",
-      });
+      setOfferDetails((prev) => ({
+        ...prev,
+        submitSuccess: true,
+        OfferId: result.offerId, // Assuming the API returns an offerId
+      }));
     } else {
       console.error("Publish failed:", result.error);
       setIsUpdating(false);
@@ -223,11 +215,11 @@ const CreateSummary = () => {
             <div className="grid grid-cols-2 gap-2">
               {offerDetails?.termTags?.length ? (
                 offerDetails.termTags.map((tag, index) => (
-                  <div className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight">
-                    <p
-                      key={index}
-                      className="text-sm font-medium text-tradeOrange"
-                    >
+                  <div
+                    key={index}
+                    className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight"
+                  >
+                    <p className="text-sm font-medium text-tradeOrange">
                       {tag}
                     </p>
                   </div>

@@ -99,23 +99,21 @@ export async function publishOffer(offerDetails) {
     service_type: serviceType,
     service: service,
     service_id: serviceId,
-    preferred_currency: [
-      {
-        code: currency.code,
-        name: currency.name,
-      },
-    ],
+    preferred_currency: {
+      code: currency.code,
+      name: currency.name,
+    },
+
     purchase_limits: {
       minimum,
       maximum,
     },
-    margin_rate: [
-      {
-        from: minimum,
-        to: maximum,
-        rate: margin,
-      },
-    ],
+    margin_rate: {
+      from: minimum,
+      to: maximum,
+      rate: margin,
+    },
+
     terms: termTags,
     payment_window: paymentWindow,
     confirmation_window: confirmationTime,
@@ -128,12 +126,12 @@ export async function publishOffer(offerDetails) {
       payload
     );
 
-    console.log;
-    "Publish response:", response;
+    console.log("Publish Offer Response:", response);
 
     return {
       success: true,
       message: response?.data?.message,
+      offerId: response?.data?.data?._id,
     };
   } catch (err) {
     console.log(err);

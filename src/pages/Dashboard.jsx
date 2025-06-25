@@ -1,22 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DashSideNav from "../components/dashboard/DashSideNav";
 import DashMain from "@/components/dashboard/DashMain";
 import Footer from "@/components/Footer";
 import InAppNav from "@/components/InAppNav";
-import { useDashboard } from "@/context/DashboardContext";
+import { useFetchDashboard } from "@/hooks/useFetchDashboard";
+import StateHandler from "@/components/stateHandler/StateHandler";
 
 const Dashboard = () => {
-  const { dashboard } = useDashboard();
-
-  console.log(dashboard);
+  const { loading, error } = useFetchDashboard();
 
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[64px] pt-[62px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col gap-[10px] bg-black">
-        <DashSideNav />
-        <DashMain />
-      </div>
+      <StateHandler
+        loading={loading}
+        error={error}
+        loadingText="Loading your dashboard. Please wait"
+      >
+        <div className="md:pt-[64px] pt-[62px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col gap-[10px] bg-black">
+          <DashSideNav />
+          <DashMain />
+        </div>
+      </StateHandler>
       <Footer />
     </>
   );

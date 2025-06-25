@@ -50,6 +50,19 @@ const KycVerificationStep3 = () => {
     }
   };
 
+  const handleDateChange = (e) => {
+    const [year, month, day] = e.target.value.split("-");
+
+    setKycDetails((prev) => ({
+      ...prev,
+      dateOfBirth: {
+        year,
+        month,
+        date: day,
+      },
+    }));
+  };
+
   console.log(kycDetails);
 
   // handleGenderChange
@@ -178,42 +191,25 @@ const KycVerificationStep3 = () => {
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <p className="text-sm text-white font-[600]">
-                    Expiration Date
-                  </p>
-                  <div className="relative w-full cursor-pointer ">
-                    <input
-                      className={`${
-                        kycDetails?.documentType
-                          ? "border-tradeAshExtraLight"
-                          : "border-tradeAshLight"
-                      } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
-                      type="text"
-                      readOnly
-                      placeholder="Select a document type"
-                      name="documentType"
-                      value={kycDetails?.documentType}
-                      onClick={() =>
-                        setSelect({
-                          ...select,
-                          state: true,
-                          selectOne: true,
-                          selectTwo: false,
-                          element: "document type",
-                          options: documentTypes,
-                          pick: "",
-                          page: "kyc verification",
-                        })
-                      }
-                      onChange={(e) =>
-                        setOfferDetails.serviceType(e.target.value)
-                      }
-                    />
-
-                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                      <MdKeyboardArrowDown />
-                    </div>
-                  </div>
+                  <p className="text-sm text-white font-[600]">Date of Birth</p>
+                  <input
+                    type="date"
+                    name="dateOfBirth"
+                    placeholder="Select your birth date"
+                    value={
+                      kycDetails.dateOfBirth.year &&
+                      kycDetails.dateOfBirth.month &&
+                      kycDetails.dateOfBirth.date
+                        ? `${kycDetails.dateOfBirth.year}-${kycDetails.dateOfBirth.month}-${kycDetails.dateOfBirth.date}`
+                        : ""
+                    }
+                    onChange={handleDateChange}
+                    className={`${
+                      kycDetails.dateOfBirth.year
+                        ? "border-tradeAshExtraLight"
+                        : "border-tradeAshLight"
+                    }  appearance-none mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                  />
                 </div>
 
                 <div className="flex flex-col gap-[20px]">
@@ -250,7 +246,7 @@ const KycVerificationStep3 = () => {
                       name="frontImage"
                       className="hidden"
                       onChange={handleFontFileChange}
-                      accept="image/*,application/pdf" // optional: restrict file types
+                      accept="image/*,application/pdf"
                     />
                   </div>
                 </div>

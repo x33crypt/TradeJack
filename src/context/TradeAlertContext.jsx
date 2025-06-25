@@ -5,7 +5,7 @@ const TradeAlertContext = createContext();
 
 // Create the provider
 export const TradeAlertProvider = ({ children }) => {
-  const [tradeAlert, setTradeAlert] = useState(true);
+  const [tradeAlert, setTradeAlert] = useState(false);
 
   useEffect(() => {
     console.log("Trade alert is", tradeAlert);

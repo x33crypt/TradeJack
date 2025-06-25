@@ -1,13 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import useSafeNavigate from "../components/SafeNavigation";
 import { IoLogInOutline } from "react-icons/io5";
+import { logout } from "@/utils/auth/logout";
+import { useToast } from "@/context/ToastContext";
+import Button from "@/components/buttons/Button";
 
 const Logout = () => {
+  const { toast, setToast } = useToast();
+  const [loading, setLoading] = useState(false);
+
   const navigateTo = useSafeNavigate();
   const location = useLocation();
 
-  const handleLogout = () => {};
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const result = await logout();
+
+      if (result.success) {
+        console.log("Logout successful:", result);
+        navigateTo("/");
+        setToast({
+          ...toast,
+          success: true,
+          successMessage: result.message,
+        });
+      } else {
+        console.error("Signin error:", result.error);
+        setToast({
+          ...toast,
+          error: true,
+          errorMessage: result?.error,
+        });
+      }
+    } catch (err) {
+      console.error("Unexpected error:", err.message || err);
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "An unexpected error occurred. Please try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const cancelButton = (e) => {
+    navigateTo(location?.state?.from || -1);
+  };
 
   return (
     <div className="z-50 fixed inset-0 bg-black min-h-svh flex px-[35px] justify-center items-center">
@@ -22,18 +65,13 @@ const Logout = () => {
           </p>
         </div>
         <div className="flex flex-col gap-[10px] w-full">
-          <button
-            onClick={() => navigateTo("/")}
-            className=" lg:w-[250px] w-full text-black hover:text-tradeGreen bg-tradeGreen p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer hover:bg-tradeAsh transition-all duration-300"
-          >
-            <p className="text-[14px] font-[700] ">Yes, log me out</p>
-          </button>
-          <button
-            onClick={() => navigateTo(location?.state?.from || -1)}
-            className=" lg:w-[250px] w-full text-tradeFadeWhite hover:text-white bg-transparent  p-[12px] rounded-[10px] border border-tradeAshLight hover:border-tradeAshExtraLight flex justify-center items-center cursor-pointer transition"
-          >
-            <p className="text-[14px] font-[700]">Cancel</p>
-          </button>
+          <Button onClick={handleLogout} variant="primary" disabled={loading}>
+            {loading ? "loggin you out..." : "Yes, log me out"}
+          </Button>
+
+          <Button onClick={cancelButton} variant="outline">
+            Cancel
+          </Button>
         </div>
       </div>
     </div>

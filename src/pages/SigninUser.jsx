@@ -5,6 +5,7 @@ import { useToast } from "@/context/ToastContext";
 import { signin } from "@/utils/auth/signin";
 import { useDashboard } from "@/context/DashboardContext";
 import { useSearchParams } from "react-router-dom";
+import Button from "@/components/buttons/Button";
 
 const SigninUser = () => {
   const [signinDetails, setSigninDetails] = useState({
@@ -12,20 +13,11 @@ const SigninUser = () => {
     password: "",
   });
   const { toast, setToast } = useToast();
-  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { setDashboard } = useDashboard();
 
   const searchParams = new URLSearchParams(window.location.search);
   const sessionExpired = searchParams.get("sessionExpired") === "true";
-
-  useEffect(() => {
-    if (sessionExpired) {
-      setToast({
-        error: true,
-        errorMessage: "Session expired. Please log in again.",
-      });
-    }
-  }, []);
 
   const handleEmailChange = (e) => {
     setSigninDetails((prev) => ({
@@ -43,7 +35,7 @@ const SigninUser = () => {
 
   const handleSignin = async (e) => {
     e.preventDefault();
-    setIsSigningIn(true);
+    setLoading(true);
 
     try {
       const result = await signin(signinDetails, setDashboard);
@@ -51,11 +43,6 @@ const SigninUser = () => {
       if (result.success) {
         console.log("Signin successful:", result);
         navigateTo("/dashboard");
-        setToast({
-          ...toast,
-          success: true,
-          successMessage: result.message,
-        });
       } else {
         console.error("Signin error:", result.error);
         setToast({
@@ -72,7 +59,7 @@ const SigninUser = () => {
         errorMessage: "An unexpected error occurred. Please try again.",
       });
     } finally {
-      setIsSigningIn(false);
+      setLoading(false);
     }
   };
 
@@ -84,67 +71,70 @@ const SigninUser = () => {
             <PiSignInBold className="text-black text-[30px]" />
           </div>
 
-          <div className="flex flex-col items-center gap-1">
-            <p className="text-white text-c text-2xl font-semibold">
-              Sign in with your email
+          <div className="flex flex-col items-center gap-1 text-center">
+            <p className="text-white text-2xl font-semibold">
+              Sign in to your account
             </p>
-            <p className="md:text-xs text-[13px] font-[500] text-tradeFadeWhite">
-              Enter your details to access your account.
-            </p>
+
+            {sessionExpired ? (
+              <p className="text-xs font-medium text-red-500 w-[260px] text-center">
+                Your session has expired. Please sign in again to continue.
+              </p>
+            ) : (
+              <p className="md:text-xs text-[13px] font-[500] text-tradeFadeWhite">
+                Enter your details to access your account.
+              </p>
+            )}
           </div>
         </div>
 
-        <form onSubmit={handleSignin}>
-          <div className="flex flex-col p-[15px] gap-[20px] bg-tradeAsh border border-tradeAshLight rounded-[10px]">
-            <div className="flex flex-col gap-[20px]">
-              <div className="flex flex-col gap-1">
-                <p className="md:text-xs text-[13px] text-white font-[700]">
-                  Email address
-                </p>
-                <input
-                  className={`${
-                    signinDetails.email
-                      ? "border-tradeAshExtraLight"
-                      : "border-tradeAshLight"
-                  } mt-[5px] md:text-xs text-[13px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                  type="text"
-                  name="email"
-                  placeholder="eg. johndoe@gmail.com"
-                  onChange={handleEmailChange}
-                />
-              </div>
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center justify-between">
-                  <p className="md:text-xs text-[13px] text-white font-[700]">
-                    Password
-                  </p>
-                  <p className="md:text-xs text-[13px] text-tradeGreen font-[700]">
-                    Forgot password ?
-                  </p>
-                </div>
-
-                <input
-                  className={`${
-                    signinDetails.password
-                      ? "border-tradeAshExtraLight"
-                      : "border-tradeAshLight"
-                  } mt-[5px] md:text-xs text-[13px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                  type="text"
-                  name="password"
-                  placeholder="Enter your password"
-                  onChange={handlePasswordChange}
-                />
-              </div>
+        <div className="flex flex-col p-[15px] gap-[20px] bg-tradeAsh border border-tradeAshLight rounded-[10px]">
+          <div className="flex flex-col gap-[20px]">
+            <div className="flex flex-col gap-1">
+              <p className="md:text-xs text-[13px] text-white font-[700]">
+                Email address
+              </p>
+              <input
+                className={`${
+                  signinDetails.email
+                    ? "border-tradeAshExtraLight"
+                    : "border-tradeAshLight"
+                } mt-[5px] md:text-xs text-[13px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                type="text"
+                name="email"
+                placeholder="eg. johndoe@gmail.com"
+                onChange={handleEmailChange}
+              />
             </div>
-            <div className="flex flex-col items-center gap-[15px]">
-              <button className="bg-tradeGreen text-black w-full p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300 active:bg-opacity-55">
-                <p className="text-[14px] font-[700]">
-                  {isSigningIn ? "Signing in..." : "Sign in"}
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center justify-between">
+                <p className="md:text-xs text-[13px] text-white font-[700]">
+                  Password
                 </p>
-              </button>
+                <p className="md:text-xs text-[13px] text-tradeGreen font-[700]">
+                  Forgot password ?
+                </p>
+              </div>
+
+              <input
+                className={`${
+                  signinDetails.password
+                    ? "border-tradeAshExtraLight"
+                    : "border-tradeAshLight"
+                } mt-[5px] md:text-xs text-[13px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                type="text"
+                name="password"
+                placeholder="Enter your password"
+                onChange={handlePasswordChange}
+              />
             </div>
           </div>
-        </form>
+          <div className="flex flex-col items-center gap-[15px]">
+            <Button onClick={handleSignin} variant="primary" disabled={loading}>
+              {loading ? "Signing in..." : "Sign in"}
+            </Button>
+          </div>
+        </div>
 
         <div className="w-full flex justify-center">
           <p className="text-tradeFadeWhite md:text-xs text-[13px] font-[500] flex gap-1">

@@ -19,7 +19,7 @@ import { IoWalletOutline } from "react-icons/io5";
 const DashSideNav = () => {
   const navigateTo = useNavigate();
   return (
-    <div className="hidden lg:flex p-[15px] sticky top-[64px] max-h-max border border-t-0 border-tradeAshLight w-[260px] gap-[10px] flex-col">
+    <div className="bg-tr hidden lg:flex p-[15px] sticky top-[64px] max-h-max border border-t-0 border-tradeAshLight w-[260px] gap-[10px] flex-col">
       <div className="flex flex-col gap-[10px]">
         <div
           className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black  transition-all duration-300 cursor-pointer"
@@ -39,7 +39,7 @@ const DashSideNav = () => {
 
         <div
           className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
-          onClick={() => navigateTo("/offers/mine")}
+          onClick={() => navigateTo("/offers/myoffers")}
         >
           <TbLayoutList className="text-[17px]" />
           <p className="text-[13.5px] font-[500]">My Offers</p>

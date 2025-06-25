@@ -15,15 +15,12 @@ import { GrStatusGood } from "react-icons/gr";
 import { IoExtensionPuzzleOutline } from "react-icons/io5";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { TiArrowRight } from "react-icons/ti";
 import { FaAward } from "react-icons/fa6";
 import Performance from "../profile/Performance";
 import { useDashboard } from "@/context/DashboardContext";
 
 const DashMain = () => {
   const { dashboard } = useDashboard();
-
-  console.log(dashboard);
 
   const balanceFormat = (value) => {
     let numericValue;

@@ -17,6 +17,10 @@ export const CreateOfferProvider = ({ children }) => {
     confirmationTime: 1,
     termTags: [],
     instruction: "",
+
+    // Additional fields for post offer creation
+    submitSuccess: false,
+    OfferId: "",
   });
 
   return (

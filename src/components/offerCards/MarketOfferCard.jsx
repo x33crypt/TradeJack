@@ -24,6 +24,7 @@ import { FaHourglassEnd } from "react-icons/fa6";
 import { FaRegClock } from "react-icons/fa";
 import { MdTimer } from "react-icons/md";
 import { FaBusinessTime } from "react-icons/fa";
+import { MdGppGood } from "react-icons/md";
 
 const MarketCard = (props) => {
   const navigateTo = useNavigate();
@@ -39,72 +40,71 @@ const MarketCard = (props) => {
         className="md:flex hidden border-t bg-tradeAsh border-tradeAshLight hover:bg-black cursor-pointer transition-all duration-300 hover:shadow-lg rounded- overflow-hidden"
       >
         {/* Bank Info Section */}
-        <div className="flex flex-1 px-4 py-6 gap-3 items-center border-r border-tradeAshLight">
-          <CiBank className="text-tradeAshLight text-[28px]" />
-          <div className="flex flex-col gap-1">
+        <div className="flex flex-1 px-4 py-6 gap-3 items-center ">
+          <CiBank className=" text-[40px] text-tradeFadeWhite" />
+
+          <div className="flex flex-col gap-2">
             <p className="text-tradeOrange text-sm font-bold">
               {props.service}
             </p>
-            <p className="text-white text-xs font-medium">
-              {props.serviceType}
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                {props.serviceType}
+              </p>
+            </div>
           </div>
         </div>
 
         {/* User Info Section */}
-        <div className="flex flex-1 px-4 py-6 gap-3 items-center border-r border-tradeAshLight">
-          <HiOutlineUserCircle className="text-tradeAshLight text-[28px] flex-shrink-0" />
-          <div className="flex w-full flex-col gap-1">
-            <div className="flex items-center justify-between">
-              <div className="flex-1 flex ">
-                <p className=" text-white text-sm font-bold items-center max-w-[85px] inline-block truncate">
-                  {props.username}
+        <div className="flex flex-1 px-4 py-6 gap-3 items-center border-rt">
+          <HiOutlineUserCircle className="hidden lg:flex text-tradeAshLight text-[40px] flex-shrink-0" />
+
+          <div className="flex flex-col gap-2  justify-between">
+            <div className="flex-1 flex ">
+              <p className=" text-white text-sm font-bold items-center max-w-[85px] inline-block truncate">
+                {props.username}
+              </p>
+            </div>
+
+            <div className="flex gap-1 items-center">
+              <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                <GoDotFill className=" flex text-tradeGreen text-xs leading-none" />
+                <p className="text-tradeFadeWhite text-xs font-semibold">
+                  Active
                 </p>
               </div>
-
-              <div
-                className={`${
-                  props.isOnline ? "text-tradeGreen" : "text-tradeFadeWhite"
-                } w-[60px]`}
-              >
-                <HiStatusOnline />
+              <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                <MdGppGood className=" text-base text-tradeFadeWhite" />
               </div>
-            </div>
-            <div className="flex items-center justify-between">
-              <p className=" flex-1 w-full text-xs text-white flex items-center gap-1 font-semibold">
-                <IoMdThumbsUp className="text-tradeGreen text-sm" />
-                {parseInt(props.positiveFeedback).toLocaleString()}
-              </p>
-              <p className="flex-1 w-full  text-xs text-white flex items-center gap-1 font-semibold">
-                <AiFillSafetyCertificate className="text-tradeOrange text-sm" />
-                {parseInt(props.trustScore).toLocaleString()}
-              </p>
             </div>
           </div>
         </div>
 
         {/* Purchase Limits Section */}
-        <div className="flex flex-1  flex-col justify-center px-4 py-6 gap-1 border-r border-tradeAshLight">
-          <div className="flex justify-between items-center">
-            <p className=" flex md:hidden lg:flex text-xs font-semibold text-tradeFadeWhite">
-              Min Purchase
-            </p>
-            <p className="  hidden md:flex lg:hidden text-xs font-semibold text-tradeFadeWhite">
-              Minimum
-            </p>
+        <div className="flex flex-1  flex-col justify-center px-4 py-6 gap-2 ">
+          <div className="flex gap-[15px] items-center">
+            <div className="lg:flex hidden items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">Minimum</p>
+            </div>
+
+            <div className="lg:hidden flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">Min</p>
+            </div>
 
             <p className="text-sm font-bold text-white">
               {props.minimum.toLocaleString()} {props.currency?.code}
             </p>
           </div>
 
-          <div className="flex justify-between items-center">
-            <p className=" flex md:hidden lg:flex  text-xs font-semibold  text-tradeFadeWhite">
-              Max Purchase
-            </p>
-            <p className="  hidden md:flex lg:hidden  text-xs font-semibold  text-tradeFadeWhite">
-              Maximum
-            </p>
+          <div className="flex gap-[15px] items-center">
+            <div className="lg:flex hidden items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">Maximum</p>
+            </div>
+
+            <div className="lg:hidden flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">Max</p>
+            </div>
+
             <p className=" text-sm font-bold text-white">
               {props.maximum.toLocaleString()} {props.currency?.code}
             </p>
@@ -112,30 +112,28 @@ const MarketCard = (props) => {
         </div>
 
         {/* Rate Info Section */}
-        <div className="flex flex-1  flex-col justify-between px-4 py-6 gap-1 border-r border-tradeAshLight ">
+        <div className="flex flex-1  flex-col justify-between px-4 py-6 gap-2 ">
           <div className="flex items-center justify-between">
-            <p className="text-sm font-bold text-tradeFadeWhite">
+            <p className="text-[17px] font-bold text-tradeFadeWhite leading-none">
               123,968.44 {props.currency?.code}
-            </p>
-
-            <FiTrendingUp className="text-tradeGreen text-sm " />
-            <p className="text-sm font-bold text-tradeGreen">
-              {props.margin}.00%
             </p>
           </div>
 
-          <div className="flex justify-between items-center">
+          <div className="flex gap-[10px] items-center">
             <div className="flex items-center gap-1">
-              <MdTimer className="text-tradeOrange text-sm" />
+              <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                <MdTimer className=" text-base text-tradeOrange" />
+              </div>
               <p className="text-tradeFadeWhite text-xs font-semibold">
-                65 Min(s)
+                65 M's
               </p>
             </div>
+
             <div className="flex items-center gap-1">
-              <FaBusinessTime className="text-tradeOrange text-sm" />
-              <p className="text-tradeFadeWhite text-xs font-semibold">
-                4 Hour(s)
-              </p>
+              <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                <FaBusinessTime className=" text-base text-tradeGreen" />
+              </div>
+              <p className="text-tradeFadeWhite text-xs font-semibold">4 H's</p>
             </div>
           </div>
         </div>

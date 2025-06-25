@@ -2,7 +2,7 @@ import React from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-const PersonalInfo = () => {
+const PersonalInfo = ({ profile }) => {
   const navigateTo = useNavigate();
 
   return (
@@ -21,7 +21,7 @@ const PersonalInfo = () => {
               <p className="text-sm font-[600] text-white">Username</p>
 
               <p className="text-tradeFadeWhite text-sm font-[600]">
-                Saneghxst
+                {profile?.username}
               </p>
             </div>
             <div className="text-white text-[22px]">
@@ -51,7 +51,7 @@ const PersonalInfo = () => {
               <p className="text-sm font-[600] text-white">Email</p>
 
               <p className="text-tradeFadeWhite text-sm font-[600]">
-                Saneghxst919@gmail.com
+                {profile?.email}
               </p>
             </div>
             <div className="text-white text-[22px]">

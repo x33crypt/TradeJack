@@ -77,8 +77,8 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
     }
   }, [select]);
 
-  console.log("select element", select);
-  console.log("offerFilter", offerFilter);
+  // console.log("select element", select);
+  // console.log("offerFilter", offerFilter);
 
   const handleAmountChange = (e) => {
     const rawValue = e.target.value.replace(/,/g, ""); // Remove commas for processing

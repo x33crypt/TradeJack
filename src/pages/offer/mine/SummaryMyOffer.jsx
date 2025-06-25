@@ -1,9 +1,9 @@
 import React from "react";
 import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
-import EditSummary from "../../components/offer/EditSummary";
+import EditSummary from "../../../components/offer/mine/EditSummary";
 
-const EditOfferSummary = () => {
+const SummaryMyOffer = () => {
   return (
     <>
       <InAppNav />
@@ -13,4 +13,4 @@ const EditOfferSummary = () => {
   );
 };
 
-export default EditOfferSummary;
+export default SummaryMyOffer;

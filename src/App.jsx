@@ -3,8 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import Marketplace from "./pages/Marketplace";
-import AboutOffer from "./pages/offer/AboutOffer";
-import CreateOffer from "./pages/offer/CreateOffer";
+import AboutOffer from "./pages/offer/user/AboutOffer";
+import CreateOffer from "./pages/offer/user/CreateOffer";
 import Messages from "./pages/Messages";
 import UserProfile from "./pages/UserProfile";
 import DepositAndWithdraw from "./pages/DepositAndWithdraw";
@@ -20,16 +20,17 @@ import EditMobile from "./pages/EditMobile";
 import EditAddress from "./pages/EditAddress";
 import SelectElement from "./components/SelectElement";
 import TradeAlert from "./components/TradeAlert";
-import CreateOfferSummary from "./pages/offer/CreateOfferSummary";
-import MyOffer from "./pages/offer/MyOffer";
-import EditOffer from "./pages/offer/EditOffer";
-import EditOfferSummary from "./pages/offer/EditOfferSummary";
+import CreateOfferSummary from "./pages/offer/user/CreateOfferSummary";
+import MyOffer from "./pages/offer/mine/MyOffer";
+import EditMyOffer from "./pages/offer/mine/EditMyOffer";
 import ToastSuccess from "./components/toastCards/ToastSuccess";
 import ToastError from "./components/toastCards/ToastError";
 import KycVerification from "./pages/kycVerification/KycVerification";
 import KycVerificationStep1 from "./pages/kycVerification/KycVerificationStep1";
 import KycVerificationStep2 from "./pages/kycVerification/KycVerificationStep2";
 import KycVerificationStep3 from "./pages/kycVerification/KycVerificationStep3";
+import AboutMyOffer from "./pages/offer/mine/AboutMyOffer";
+import SummaryMyOffer from "./pages/offer/mine/SummaryMyOffer";
 
 const App = () => {
   return (
@@ -81,10 +82,15 @@ const App = () => {
         <Route path="/offers/marketplace" element={<Marketplace />} />
         <Route path="/offers/create" element={<CreateOffer />} />
         <Route path="/offers/create/summary" element={<CreateOfferSummary />} />
-        <Route path="/offers/mine" element={<MyOffer />} />
+        <Route path="/offers/myoffers" element={<MyOffer />} />
+        <Route path="/offers/myoffers/:id" element={<AboutMyOffer />} />
+        <Route path="/offers/myoffers/:id/edit" element={<EditMyOffer />} />
+        <Route
+          path="/offers/myoffers/:id/edit/summary"
+          element={<SummaryMyOffer />}
+        />
+
         <Route path="/offers/:id" element={<AboutOffer />} />
-        <Route path="/offers/:id/edit" element={<EditOffer />} />
-        <Route path="/offers/:id/edit/summary" element={<EditOfferSummary />} />
 
         {/* Messaging */}
         <Route path="/messages" element={<Messages />} />

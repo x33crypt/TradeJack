@@ -35,19 +35,6 @@ const KycVerificationStep1 = () => {
     }));
   };
 
-  const handleDateChange = (e) => {
-    const [year, month, day] = e.target.value.split("-");
-
-    setKycDetails((prev) => ({
-      ...prev,
-      dateOfBirth: {
-        year,
-        month,
-        date: day,
-      },
-    }));
-  };
-
   // handleGenderChange
   useEffect(() => {
     if (
@@ -70,7 +57,7 @@ const KycVerificationStep1 = () => {
   const navigateTo = useNavigate();
 
   const nextButton = () => {
-    const { firstname, lastname, dateOfBirth, gender } = kycDetails;
+    const { firstname, lastname, email, gender } = kycDetails;
 
     if (!firstname) {
       setToast({
@@ -90,11 +77,11 @@ const KycVerificationStep1 = () => {
       return;
     }
 
-    if (!dateOfBirth?.year || !dateOfBirth?.month || !dateOfBirth?.date) {
+    if (!email) {
       setToast({
         ...toast,
         error: true,
-        errorMessage: "Missing required field: Date of Birth",
+        errorMessage: "Missing required field: Email Address",
       });
       return;
     }
@@ -146,7 +133,7 @@ const KycVerificationStep1 = () => {
                 </p>
               </div>
 
-              <div className="flex md:grid grid-cols-2 flex-col gap-[30px] items-center">
+              <div className="flex md:grid grid-cols-2 flex-col gap-[30px]">
                 <div className="flex flex-col gap-1">
                   <p className="text-sm font-[600] text-white">First Name</p>
                   <input
@@ -178,24 +165,18 @@ const KycVerificationStep1 = () => {
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <p className="text-sm text-white font-[600]">Date of Birth</p>
+                  <p className="text-sm text-white font-[600]">Email Address</p>
                   <input
-                    type="date"
-                    name="dateOfBirth"
-                    placeholder="Select your birth date"
-                    value={
-                      kycDetails.dateOfBirth.year &&
-                      kycDetails.dateOfBirth.month &&
-                      kycDetails.dateOfBirth.date
-                        ? `${kycDetails.dateOfBirth.year}-${kycDetails.dateOfBirth.month}-${kycDetails.dateOfBirth.date}`
-                        : ""
-                    }
-                    onChange={handleDateChange}
                     className={`${
-                      kycDetails.dateOfBirth.year
+                      kycDetails.lastname
                         ? "border-tradeAshExtraLight"
                         : "border-tradeAshLight"
-                    }  appearance-none mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                    } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                    type="text"
+                    name="email"
+                    placeholder="e.g. john.doe@example.com"
+                    value={kycDetails.email}
+                    onChange={handleEmailChange}
                   />
                 </div>
                 <div className="flex flex-col gap-1">

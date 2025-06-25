@@ -8,6 +8,12 @@ const sanitizeInput = (input) => {
   return cleaned.trim();
 };
 
+// Validate basic email format
+const validateEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email);
+};
+
 const validateFile = (file) =>
   file instanceof File && file.size > 0 && file.type.startsWith("image/");
 
@@ -28,6 +34,7 @@ export async function kycVerify(kycDetails) {
     gender,
     addressDetails,
     documentType,
+    email,
     frontImage,
     backImage,
   } = kycDetails;
@@ -72,12 +79,20 @@ export async function kycVerify(kycDetails) {
     return { success: false, error: "Missing required field: Document Type" };
   }
 
-  if (!frontImage) {
-    return { success: false, error: "Missing required field: Front Image" };
+  if (!email?.trim()) {
+    return { success: false, error: "Missing required field: Email Address" };
   }
 
-  if (!backImage) {
-    return { success: false, error: "Missing required field: Back Image" };
+  if (!validateEmail(email)) {
+    return { success: false, error: "Invalid email format." };
+  }
+
+  if (!validateFile(frontImage)) {
+    return { success: false, error: "Missing or invalid Front Image" };
+  }
+
+  if (!validateFile(backImage)) {
+    return { success: false, error: "Missing or invalid Back Image" };
   }
 
   const sanitizedFirstname = sanitizeInput(firstname);
@@ -90,40 +105,52 @@ export async function kycVerify(kycDetails) {
     city: sanitizeInput(addressDetails?.city),
     street: sanitizeInput(addressDetails?.street),
   };
-
-  if (!validateFile(frontImage)) {
-    return { success: false, error: "Missing or invalid Front Image" };
-  }
-
-  if (!validateFile(backImage)) {
-    return { success: false, error: "Missing or invalid Back Image" };
-  }
+  const sanitizedDatateOfBirth = {
+    year: sanitizeInput(dateOfBirth.year),
+    month: sanitizeInput(dateOfBirth.month),
+    day: sanitizeInput(dateOfBirth.date),
+  };
+  const sanitizedEmail = sanitizeInput(email);
 
   const payload = {
     firstName: sanitizedFirstname,
     lastName: sanitizedLastname,
-    gender: sanitizedGender,
-    documentType: sanitizedDocumentType,
-    address: {
-      country: sanitizedAddress?.country,
-      state: sanitizedAddress?.state,
-      city: sanitizedAddress?.city,
-      street: sanitizedAddress?.street,
+    email: sanitizedEmail,
+    dateOfBirth: {
+      day: sanitizedDatateOfBirth.day,
+      month: sanitizedDatateOfBirth.month,
+      year: sanitizedDatateOfBirth.year,
     },
+    gender: sanitizedGender,
+    address: {
+      street: sanitizedAddress?.street,
+      city: sanitizedAddress?.city,
+      state: sanitizedAddress?.state,
+      country: sanitizedAddress?.country,
+    },
+    documentType: sanitizedDocumentType,
+    frontIdImage: frontImage instanceof File ? frontImage : null,
+    backIdImage: backImage instanceof File ? backImage : null,
   };
+
+  // Log the payload for debugging
+  console.log("KYC Payload:", payload);
 
   try {
     const response = await api.post(`${baseUrl}/profile/kyc/submit`, payload);
 
-    return {
-      success: true,
-      message: response?.data?.message,
-    };
+    if (response?.data?.success)
+      return {
+        success: true,
+        message: response?.data?.message,
+      };
   } catch (err) {
     console.log(err);
+
+    console.log();
     return {
       success: false,
-      error: err?.response?.data?.errormessage || "Unknown error",
+      error: err?.data?.error?.message || "Unknown error",
     };
   }
 }

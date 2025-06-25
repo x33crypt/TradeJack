@@ -56,6 +56,8 @@ const TradeAlert = () => {
           </button>
         </div>
       </div>
+
+      
     </div>
   );
 };

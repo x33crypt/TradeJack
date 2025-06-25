@@ -20,7 +20,7 @@ export const OfferFilterProvider = ({ children }) => {
     isFiltering: false,
   });
 
-  console.log(offerFilter);
+  // console.log(offerFilter);
 
   return (
     <OfferFilterContext.Provider value={{ offerFilter, setOfferFilter }}>

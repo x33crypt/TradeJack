@@ -19,11 +19,11 @@ import { IoWalletOutline } from "react-icons/io5";
 import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
-import EditSummary from "../../components/offer/EditSummary";
+import EditSummary from "../../../components/offer/mine/EditSummary";
 import Button from "@/components/buttons/Button";
 import { useExchangeRate } from "@/hooks/useExchangeRate";
 
-const EditOffer = (props) => {
+const EditMyOffer = (props) => {
   const { select, setSelect } = useSelectElement();
   const [loading, setLoading] = useState(false);
   const { offerDetails, setOfferDetails } = useEditOfferDetails();
@@ -751,4 +751,4 @@ const EditOffer = (props) => {
   );
 };
 
-export default EditOffer;
+export default EditMyOffer;

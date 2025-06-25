@@ -16,7 +16,9 @@ import { useExchangeRate } from "@/hooks/useExchangeRate";
 import Button from "@/components/buttons/Button";
 import { useToast } from "@/context/ToastContext";
 import { useServices } from "@/hooks/useServices";
-import CreateSummary from "@/components/offer/CreateSummary";
+import CreateSummary from "@/components/offer/mine/CreateSummary";
+import LockByScroll from "@/components/LockByScroll";
+import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
 const CreateOffer = () => {
   const { toast, setToast } = useToast();
@@ -345,6 +347,35 @@ const CreateOffer = () => {
     navigateTo(location?.state?.from || -1);
   };
 
+  const handleViewOffers = () => {
+    const id = offerDetails?.OfferId;
+
+    if (!id) {
+      console.error("Offer ID is missing. Cannot navigate.");
+      return;
+    }
+
+    // Navigate first
+    navigateTo(`/offers/myoffers/${id}`);
+
+    // Then reset offer details
+    setOfferDetails({
+      serviceType: "Online Wallet Transfer",
+      service: "",
+      serviceId: "",
+      currency: { code: "", name: "" },
+      minimum: "",
+      maximum: "",
+      margin: 4,
+      paymentWindow: 1,
+      confirmationTime: 1,
+      termTags: [],
+      instruction: "",
+      submitSuccess: false,
+      OfferId: "",
+    });
+  };
+
   return (
     <>
       <InAppNav />
@@ -563,10 +594,8 @@ const CreateOffer = () => {
                 </div>
 
                 <div className="">
-                  <Warning
-                    text={
-                      "To make this offer visible, you must have 100% of the minimum amount you’ve set available in your wallet."
-                    }
+                  <Info
+                    text={`Set your minimum and maximum purchase limits. Minimum is 50 ${offerDetails.currency.code}. Your current maximum purchase limit is 1,000 ${offerDetails.currency.code}. Exceeding it will cause submission errors.`}
                   />
                 </div>
               </div>
@@ -868,6 +897,27 @@ const CreateOffer = () => {
           <CreateSummary />
         </div>
       </div>
+
+      {offerDetails?.submitSuccess && (
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 px-[50px]">
+          <LockByScroll />
+          <div className="bg-tradeAsh flex flex-col items-center p-[12px] gap-4 rounded-[14px] w-[280px] text-center">
+            <IoCheckmarkDoneCircleOutline className="text-tradeAshExtraLight text-5xl lg:text-8xl" />
+            <p className="text-white font-bold text-2xl leading-none">
+              Great job!
+            </p>
+            <p className="text-[13px] text-tradeFadeWhite font-medium">
+              Your offer has been successfully created and published. You can
+              now view it, monitor its activity, or make changes from your
+              offers dashboard.
+            </p>
+            <Button onClick={handleViewOffers} variant="secondary">
+              See Offer Details
+            </Button>
+          </div>
+        </div>
+      )}
+
       <Footer />
     </>
   );

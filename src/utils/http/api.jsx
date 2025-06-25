@@ -35,6 +35,8 @@ const clearSession = () => {
   csrfToken = null;
   document.cookie = "XSRF-TOKEN=; Max-Age=0; path=/;";
   document.cookie = "token=; Max-Age=0; path=/;";
+  localStorage.clear();
+  sessionStorage.clear();
 };
 
 // ✅ Response Interceptor
@@ -55,30 +57,21 @@ api.interceptors.response.use(
       const { status, data } = response;
       let message = data?.error?.message || "An error occurred";
 
-      if (status === 401) {
-        if (
-          data?.error?.message === "Access denied. No token provided" &&
-          !isRedirecting
-        ) {
-          isRedirecting = true;
-          clearSession();
+      if (status === 401 && !isRedirecting) {
+        isRedirecting = true;
+        clearSession();
 
-          // Optional toast-triggering error
-          const errorResponse = {
-            success: false,
-            status,
-            message: "Session expired. Please log in again.",
-          };
+        const errorResponse = {
+          success: false,
+          status,
+          message: "Session expired. Please log in again.",
+        };
 
-          // Redirect to signin
-          setTimeout(() => {
-            window.location.href = "/signin?sessionExpired=true";
-          }, 100); // Delay to ensure toast state is read before redirect
+        setTimeout(() => {
+          window.location.href = "/signin?sessionExpired=true";
+        }, 100);
 
-          return Promise.reject(errorResponse);
-        }
-
-        message = "Unauthorized – please log in again.";
+        return Promise.reject(errorResponse);
       } else if (status === 403 && data?.error?.code === "ERR_CSRF_MISSING") {
         message = "CSRF token missing or invalid. Please refresh the page.";
       } else if (status === 429) {

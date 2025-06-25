@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../utils/http/api";
+import api from "@/utils/http/api";
 
 export const useServices = () => {
   const [fullData, setFullData] = useState([]);
