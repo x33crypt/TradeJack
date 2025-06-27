@@ -1,4 +1,4 @@
-import MyOfferCard from "@/components/offer/cards/MyOfferCard";
+import MyOfferCard from "@/components/cards/MyOfferCard";
 import Footer from "@/components/Footer";
 import InAppNav from "@/components/InAppNav";
 import React, { useEffect, useState, useRef } from "react";
@@ -10,6 +10,8 @@ import { useSelectElement } from "@/context/SelectElementContext";
 import Button from "@/components/buttons/Button";
 import { useNavigate } from "react-router-dom";
 import StateHandler from "@/components/stateHandler/StateHandler";
+import { MdOutlineError } from "react-icons/md";
+import { BsCloudSlashFill } from "react-icons/bs";
 
 const MyOffer = () => {
   const { loading, error } = useFetchMyOffers();
@@ -244,22 +246,19 @@ const MyOffer = () => {
               </div>
             </div>
 
-            <div className=" p-[15px] gap-[15px] flex flex-col ">
-              <div className="grid grid-cols-1 gap-1 md:gap-0 items-center">
+            <div className=" p-[15px] ">
+              <div className="grid grid-cols-1 gap-1 md:gap-0 items-center md:border md:border-t-0 border-tradeAshLight ">
                 {myOffers && offers.length > 0 ? (
                   offers.map((offer) => (
                     <MyOfferCard key={offer.id} offer={offer} />
                   ))
                 ) : (
-                  <div className="flex  flex-col gap-2 items-center justify-center text-white py-10 bg-tradeGree ">
-                    <div className="flex  flex-col gap-2 items-center justify-center text-white py-10">
-                      <p className="text-xl font-semibold">No offers found</p>
-                      <p className="text-[13px] text-tradeFadeWhite text-center max-w-[300px]">
-                        You haven't created any offers yet. Start by creating a
-                        new offer to begin trading.
-                      </p>
-                    </div>
-
+                  <div className="flex flex-col gap-2 items-center justify-center text-white py-10">
+                    <p className="text-xl font-semibold">No offers found</p>
+                    <p className="text-[13px] text-tradeFadeWhite text-center max-w-[300px]">
+                      You haven't created any offers yet. Start by creating a
+                      new offer to begin trading.
+                    </p>
                     <Button onClick={handleToCreateOffer} variant="primary">
                       Create Offer
                     </Button>

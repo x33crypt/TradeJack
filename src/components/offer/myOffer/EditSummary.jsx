@@ -55,8 +55,8 @@ const EditSummary = () => {
         maximum: "",
         margin: 4,
         paymentWindow: 1,
-        confirmationTime: 1,
-        termTags: [],
+        confirmationWindow: 1,
+        terms: [],
         instruction: "",
       });
     } else {
@@ -96,8 +96,8 @@ const EditSummary = () => {
         maximum: "",
         margin: 4,
         paymentWindow: 1,
-        confirmationTime: 1,
-        termTags: [],
+        confirmationWindow: 1,
+        terms: [],
         instruction: "",
       });
     } else {
@@ -124,7 +124,7 @@ const EditSummary = () => {
         </div>
 
         <div className="p-[15px]">
-          <p className="text-tradeFadeWhite text-sm">
+          <p className="text-tradeFadeWhite text-[13px]">
             Verify your offer information to set clear terms and support a
             transparent, efficient trade.
           </p>
@@ -142,36 +142,45 @@ const EditSummary = () => {
               <p className="text-tradeOrange text-base font-bold">
                 {offerDetails?.service || "-- --"}
               </p>
-              <p className="text-white text-xs font-medium">
-                {offerDetails?.serviceType || "Service Type"}
-              </p>
+              <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                <p className="text-white text-xs font-medium">
+                  {offerDetails?.serviceType || "Service Type"}
+                </p>
+              </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-[500]">
-              Accepted Currency
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Accepted Currency
+              </p>
+            </div>
+
             <p className="text-tradeOrange text-sm font-[600]">
-              {offerDetails?.currency?.name
-                ? `${offerDetails.currency.name} - ${offerDetails.currency.code}`
+              {offerDetails?.preferredCurrency?.name
+                ? `${offerDetails?.preferredCurrency?.name} - ${offerDetails?.preferredCurrency?.code}`
                 : "-- --"}
             </p>
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-[500]">
-              Trade Range Limit
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Trade Range Limit
+              </p>
+            </div>
 
             <div className="flex flex-col gap-1">
               <div className="grid grid-cols-2 ">
                 <p className="text-tradeFadeWhite text-sm">Minimum Purchase</p>
                 <p className="text-tradeLightGreen text-sm font-[600]">
-                  {offerDetails?.minimum !== undefined &&
-                  offerDetails?.currency?.code
-                    ? `${Number(offerDetails.minimum).toLocaleString()} ${
-                        offerDetails.currency.code
+                  {offerDetails?.marginRate?.from !== undefined &&
+                  offerDetails?.preferredCurrency?.code
+                    ? `${Number(
+                        offerDetails?.marginRate?.from
+                      ).toLocaleString()} ${
+                        offerDetails?.preferredCurrency?.code
                       }`
                     : "N/A"}
                 </p>
@@ -180,10 +189,12 @@ const EditSummary = () => {
               <div className="grid grid-cols-2 ">
                 <p className="text-tradeFadeWhite text-sm">Maximum Purchase</p>
                 <p className="text-tradeLightGreen text-sm font-[600]">
-                  {offerDetails?.maximum !== undefined &&
-                  offerDetails?.currency?.code
-                    ? `${Number(offerDetails.maximum).toLocaleString()} ${
-                        offerDetails.currency.code
+                  {offerDetails?.marginRate?.to !== undefined &&
+                  offerDetails?.preferredCurrency?.code
+                    ? `${Number(
+                        offerDetails?.marginRate?.to
+                      ).toLocaleString()} ${
+                        offerDetails?.preferredCurrency?.code
                       }`
                     : "N/A"}
                 </p>
@@ -192,15 +203,17 @@ const EditSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Profit Margin
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Profit Margin
+              </p>
+            </div>
 
             <p className="text-white text-sm">
               You’ve set a profit margin of{" "}
               <span className="text-tradeGreen text-sm font-[600]">
-                {offerDetails?.margin !== undefined
-                  ? `${offerDetails.margin} percent`
+                {offerDetails?.marginRate?.percent !== undefined
+                  ? `${offerDetails?.marginRate?.percent} percent`
                   : "--"}
               </span>
               , which represents your expected earnings per successful
@@ -209,9 +222,11 @@ const EditSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Payment Window
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Payment Window
+              </p>
+            </div>
             <div className="flex flex-col gap-2">
               <p className="text-white text-sm">
                 You’ve set a payment window of{" "}
@@ -233,17 +248,19 @@ const EditSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Confirmation Time
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Confirmation Window
+              </p>
+            </div>
 
             <div className="flex flex-col gap-2">
               <p className="text-white text-sm">
                 You’ve agreed to confirm receipt of payment and release funds
                 within{" "}
                 <span className="font-[600] text-sm text-tradeGreen">
-                  {offerDetails?.confirmationTime !== undefined
-                    ? `${offerDetails.confirmationTime} hour(s)`
+                  {offerDetails?.confirmationWindow !== undefined
+                    ? `${offerDetails.confirmationWindow} hour(s)`
                     : "--"}
                 </span>{" "}
                 after seller's marks the trade as paid.
@@ -258,12 +275,14 @@ const EditSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Trade Terms Tag
-            </p>
-            <div className="grid grid-cols-2 gap-2">
-              {offerDetails?.termTags?.length ? (
-                offerDetails.termTags.map((tag, index) => (
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Offer Terms
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {offerDetails?.terms?.length ? (
+                offerDetails.terms.map((tag, index) => (
                   <div className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight">
                     <p
                       key={index}
@@ -282,9 +301,11 @@ const EditSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Trade Instruction
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Offer Instructions
+              </p>
+            </div>
             <div className="">
               {offerDetails?.instruction ? (
                 <p className="text-white text-sm">
@@ -299,9 +320,11 @@ const EditSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Service Charge
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Service Charge
+              </p>
+            </div>
             <div>
               <p className="text-white text-sm">
                 <span className="font-semibold text-tradeOrange">

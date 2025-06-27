@@ -1,23 +1,24 @@
 import React from "react";
-import image from "../../../assets/landingImg4.JPG";
+import image from "../../../src/assets/landingImg4.JPG";
 import { GiTopHat } from "react-icons/gi";
 import { RiEye2Fill } from "react-icons/ri";
 import { MdThumbUpAlt, MdOutlineGppGood } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdThumbDownAlt } from "react-icons/md";
 import { FaLocationArrow } from "react-icons/fa6";
+import { CgArrowsExchange } from "react-icons/cg";
 
 const FeedbackCard = () => {
   return (
     <>
       {/* Desktop Card */}
-      <div className="md:flex hidden p-[15px] gap-10 items-center border border-b-0 border-tradeAshLight bg-tradeAsh">
+      <div className="md:flex hidden py-[15px] gap-10 items-center bg-tradeAsh">
         <div className="flex flex-1 items-center gap-[10px]">
-          <div className="flex-shrink-0 relative flex w-[50px]">
+          <div className="flex-shrink-0 relative flex w-[45px]">
             <img className="rounded-full" src={image} alt="" />
           </div>
           <div className="flex flex-col gap-2">
-            <p className="text-white text-sm font-semibold leading-none ">
+            <p className="text-white text-[13px] font-bold leading-none ">
               ChocoMillo
             </p>
 
@@ -41,26 +42,23 @@ const FeedbackCard = () => {
           <p className="text-white text-xs font-semibold">Negative</p>
         </div>
 
-        <div className=" flex flex-1 flex-col gap-2 ">
+        <div className="flex flex-1 gap-2 items-center">
           <div className="bg-transparent px-[8px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-            <p className="text-white text-xs font-semibold">2 </p>
+            <p className="text-tradeGreen text-xs font-bold">2 </p>
           </div>
-
-          <p className="text-tradeFadeWhite text-xs font-semibold">
-            See Date(s)
-          </p>
+          <p className="text-white text-xs font-semibold">Trade(s)</p>
         </div>
       </div>
 
       {/* Mobile Card */}
-      <div className="flex flex-col md:hidden p-[15px] gap-[15px]  w-full border border-b-0 border-tradeAshLight bg-tradeAsh">
+      <div className="flex flex-col md:hidden py-[15px] gap-[15px] bg-tradeAsh">
         <div className="flex w-full items-center justify-between">
           <div className="flex items-center gap-[15px]">
-            <div className="flex-shrink-0 relative flex w-[50px]">
+            <div className="flex-shrink-0 relative flex w-[45px]">
               <img className="rounded-full" src={image} alt="" />
             </div>
             <div className="flex flex-col gap-2">
-              <p className="text-white text-sm font-semibold leading-none ">
+              <p className="text-white text-[13px] font-bold leading-none ">
                 ChocoMillo
               </p>
 
@@ -84,14 +82,11 @@ const FeedbackCard = () => {
             Absolutely great experience working with you!
           </p>
         </div>
-        <div className="flex w-full items-center justify-between">
+        <div className="flex w-full items-center gap-1">
           <div className="bg-transparent px-[8px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-            <p className="text-white text-xs font-semibold">2 Trades</p>
+            <p className="text-tradeGreen text-xs font-bold">2 </p>
           </div>
-
-          <p className="text-tradeFadeWhite text-xs font-semibold">
-            See Date(s)
-          </p>
+          <p className="text-white text-xs font-semibold">Trade(s)</p>
         </div>
       </div>
     </>

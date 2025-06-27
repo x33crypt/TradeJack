@@ -3,13 +3,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { useParams } from "react-router-dom";
-import OfferDetails from "@/components/offer/users/OfferDetails";
-import ExchangeCalculator from "@/components/offer/users/ExchangeCalculator";
-import AboutVendor from "@/components/offer/users/AboutVendor";
+import OfferDetails from "@/components/offer/userOffer/OfferDetails";
+import ExchangeCalculator from "@/components/offer/userOffer/ExchangeCalculator";
+import AboutVendor from "@/components/offer/userOffer/AboutVendor";
 import OfferFeedback from "@/components/offer/global/OfferFeedback";
 import Button from "@/components/buttons/Button";
-import OfferInstruction from "@/components/offer/users/OfferInstruction";
-import OfferTag from "@/components/offer/users/OfferTag";
+import OfferInstruction from "@/components/offer/userOffer/OfferInstruction";
+import OfferTag from "@/components/offer/userOffer/OfferTag";
 
 const AboutOffer = () => {
   const [offerDetails, setOfferDetails] = useState("");

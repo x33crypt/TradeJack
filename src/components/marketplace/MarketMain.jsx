@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import OfferCard from "../offerCards/MarketOfferCard";
+import OfferCard from "../cards/OfferCard";
 import { useOfferFilter } from "@/context/OfferFilterContext";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import OfferFilter from "./OfferFilter";
@@ -162,7 +162,7 @@ const MarketMain = ({
           </div>
         </div> */}
 
-        <div className="sticky top-[64px]  bg-black p-[15px] border-b border-dashed border-tradeAshLight overflow-x-auto">
+        <div className="sticky top-[65px]  bg-black p-[15px] border-b border-dashed border-tradeAshLight overflow-x-auto">
           <div className="flex justify-between min-w-max gap-[10px]">
             <div className="flex items-center gap-2 bg-transparent">
               <div
@@ -178,7 +178,7 @@ const MarketMain = ({
                   offerFilter?.allOffers
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } inline-block w-max px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 All
               </p>
@@ -188,7 +188,7 @@ const MarketMain = ({
                   offerFilter?.onlineOffers
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } inline-block w-max px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Online
               </p>
@@ -198,7 +198,7 @@ const MarketMain = ({
                   offerFilter?.bestMargin
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } inline-block w-max px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Best Margins
               </p>
@@ -208,7 +208,7 @@ const MarketMain = ({
                   offerFilter?.topFeedBack
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } inline-block w-max px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Top Feedback
               </p>
@@ -218,7 +218,7 @@ const MarketMain = ({
                   offerFilter?.mostTrusted
                     ? "text-white bg-tradeAsh border-tradeGreen"
                     : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                } inline-block w-max px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Most-Trusted
               </p>

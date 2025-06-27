@@ -15,13 +15,15 @@ const Button = ({
     primary:
       "bg-tradeGreen text-black hover:bg-tradeGreen/80 active:bg-tradeAsh active:text-tradeGreen transition-colors duration-200",
     secondary:
-      "bg-tradeOrange text-black hover:bg-tradeOrange/80 active:bg-tradeAsh active:text-tradeOrange  border border-tradeOrange transition-colors duration-200",
+      "bg-tradeOrange text-white hover:bg-tradeOrange/80 active:bg-tradeAsh active:text-tradeOrange transition-colors duration-200",
+    Fadeout:
+      " bg-tradeAshLight text-white hover:bg-tradeAshLight/80 active:bg-tradeAsh active:text-tradeFadeWhite transition-colors duration-200",
     outline:
       "bg-transparent text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite border border-tradeAshLight hover:border-tradeAshExtraLight transition-colors duration-200",
     danger:
       "bg-transparent text-red-500 hover:text-red-600 active:text-red-700 underline-offset-4 hover:underline transition-colors duration-200",
     ghost:
-      "bg-transparent text-tradeOrange hover:text-tradeOrange underline-offset-4 hover:underline active:text-tradeFadeWhite transition-all duration-150",
+      "bg-transparent text-tradeOrange hover:text-tradeOrange underline-offset-4 hover:underline active:text-white transition-all duration-150",
   };
 
   return (

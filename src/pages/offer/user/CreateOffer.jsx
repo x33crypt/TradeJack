@@ -16,9 +16,10 @@ import { useExchangeRate } from "@/hooks/useExchangeRate";
 import Button from "@/components/buttons/Button";
 import { useToast } from "@/context/ToastContext";
 import { useServices } from "@/hooks/useServices";
-import CreateSummary from "@/components/offer/mine/CreateSummary";
+import CreateSummary from "@/components/offer/myOffer/CreateSummary";
 import LockByScroll from "@/components/LockByScroll";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
+import { TiInfo } from "react-icons/ti";
 
 const CreateOffer = () => {
   const { toast, setToast } = useToast();
@@ -121,23 +122,43 @@ const CreateOffer = () => {
 
   // handling terms changes
   useEffect(() => {
+    // Only run when we’re on the edit-offer page and a pick exists
     if (select?.page !== "create offer" || !select?.pick) return;
 
     if (select.element === "terms") {
-      const pickedTerm = select.pick; // ✅ Corrected
+      const pickedTerm = select.pick;
 
       if (typeof pickedTerm === "string") {
         const newTag = pickedTerm.trim();
-        if (newTag) {
-          setOfferDetails((prev) => {
-            const current = prev.termTags || [];
-            if (current.includes(newTag) || current.length >= 5) return prev;
-            return {
-              ...prev,
-              termTags: [...current, newTag],
-            };
-          });
-        }
+        if (!newTag) return; // empty string guard
+
+        setOfferDetails((prev) => {
+          const currentTags = prev.termTags || [];
+
+          /* -------- Duplicate check -------- */
+          if (currentTags.includes(newTag)) {
+            setToast({
+              error: true,
+              errorMessage: "That tag already exists.",
+            });
+            return prev; // 🛑 Do not add duplicate
+          }
+
+          /* -------- Tag-limit check -------- */
+          if (currentTags.length >= 5) {
+            setToast({
+              error: true,
+              errorMessage: "You can only add up to 5 offer tags.",
+            });
+            return prev; // 🛑 Do not exceed limit
+          }
+
+          /* -------- Add tag normally -------- */
+          return {
+            ...prev,
+            termTags: [...currentTags, newTag],
+          };
+        });
       }
     }
   }, [select]);
@@ -203,9 +224,18 @@ const CreateOffer = () => {
     setOfferDetails((prev) => {
       const current = Number(prev.margin || 0);
       const next = current - 1;
+
+      if (next < 4) {
+        setToast({
+          error: true,
+          errorMessage: "Profit margin cannot go below 4%",
+        });
+        return prev; // Return previous state — no update
+      }
+
       return {
         ...prev,
-        margin: next < 4 ? 4 : next,
+        margin: next,
       };
     });
   };
@@ -252,6 +282,25 @@ const CreateOffer = () => {
     "Pay exact amount",
     "Fast payment only",
     "Same bank only",
+    "No newly created accounts",
+    "No prepaid cards",
+    "Instant release",
+    "Available during working hours",
+    "Available weekends only",
+    "Quick responder",
+    "Response within 10 mins",
+    "Expect 30 min delay",
+    "Trusted traders only",
+    "KYC compliant",
+    "High trust score only",
+    "English only",
+    "Spanish supported",
+    "Polite communication required",
+    "Clear instructions required",
+    "Large trades accepted",
+    "Small trades welcome",
+    "New user friendly",
+    "Test trades allowed",
   ];
 
   const getMissingServiceLabel = (type) => {
@@ -386,13 +435,36 @@ const CreateOffer = () => {
           <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
             <p className="text-lg text-white font-[700]">Create Buy Offer</p>
           </div>
-          {/* Sub Heading */}
-          <div className="p-[15px]">
-            <p className="text-tradeFadeWhite text-sm">
-              Fill in the details to define your offer with service type,
-              service, pricing, limits, trade terms and instructions.
-            </p>
+
+          {/* Note Fields */}
+          <div className="flex gap-2 flex-col p-[15px] border-b border-tradeAshLight">
+            {/* <div className="w-[80px]">
+              <TiInfo className="text-tradeOrange text-[50px]" />
+            </div> */}
+
+            <div className="flex flex-col gap-2">
+              <p className="text-base text-white font-semibold">
+                Please Read Before Creating an Offer
+              </p>
+
+              <p className="text-[13px] text-tradeFadeWhite font-medium leading-relaxed">
+                Once your offer is created, it will become visible to other
+                traders on the platform. Please ensure all details including
+                your offer currency, purchase limits, profit margin, and terms
+                are accurate and clearly stated before submitting. A
+                well-prepared offer not only attracts serious traders but also
+                helps prevent misunderstandings and disputes.
+              </p>
+
+              {/* <p className="text-[13px] text-tradeFadeWhite font-medium leading-relaxed">
+                Remember: You can always edit your offer later, but changes may
+                place your offer on temporary hold for verification. Creating
+                clear, honest, and competitive offers builds trust and improves
+                your trading reputation.
+              </p> */}
+            </div>
           </div>
+
           {/* Offer Creation Field */}
           <div className="flex flex-col gap-[0px]">
             {/* Service Type field */}
@@ -433,7 +505,7 @@ const CreateOffer = () => {
               </div>
             </div>
             {/* Service fields */}
-            <div className="flex flex-col gap-[30px] p-[15px]">
+            <div className="flex flex-col gap-[30px] p-[15px] border-b border-tradeAshLight">
               <div>
                 <p className="text-white text-sm font-[500]">
                   {serviceInputLabels[offerDetails.serviceType] ||
@@ -515,9 +587,7 @@ const CreateOffer = () => {
             {/* Limit Field */}
             <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
               <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
-                <p className="text-white text-sm font-[500]">
-                  Trade Limit Range
-                </p>
+                <p className="text-white text-sm font-[500]">Purchase Limit</p>
               </div>
 
               <div className="w-full flex flex-col gap-[15px] p-[15px]">
@@ -637,45 +707,78 @@ const CreateOffer = () => {
                   {offerDetails?.currency?.code ? (
                     <>
                       {/* Market Price */}
-                      <div className="flex gap-1 items-center">
-                        <p className="text-tradeFadeWhite font-medium">
-                          Current Exchange Rate:
-                        </p>
-                        <p className="text-tradeGreen font-bold">
-                          1 <span>{offerDetails.currency.code}</span> ={" "}
-                          <span>
-                            {rateInfo.baseRate === 0
-                              ? "0.00"
-                              : rateInfo.baseRate}
-                          </span>{" "}
-                          <span>NGN</span>
-                        </p>
+                      <div className="flex flex-wrap items-center text-tradeFadeWhite text-[13px] font-medium leading-loose gap-x-1">
+                        <span className="align-middle"> Current</span>
+                        <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                          <p className="text-white text-xs font-medium">
+                            {offerDetails.currency.code}
+                          </p>
+                        </div>
+                        <span className="align-middle">exchange rate in</span>
+                        <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                          <p className="text-white text-xs font-medium">NGN</p>
+                        </div>
+                        <span className="align-middle">is</span>
+                        <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                          <p className="text-tradeGreen text-xs font-medium">
+                            <span>
+                              {rateInfo.baseRate === 0
+                                ? "0.00"
+                                : rateInfo.baseRate}
+                            </span>{" "}
+                            <span>NGN</span>
+                          </p>
+                        </div>
                       </div>
 
                       {/* Margin Breakdown */}
-                      <p className="text-tradeFadeWhite font-medium">
-                        Your offering at{" "}
-                        <span className="text-tradeOrange font-bold">
-                          {offerDetails?.margin}% profit margin
-                        </span>{" "}
-                        sets your trade rate at{" "}
-                        <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                          {rateInfo.finalRate} NGN
-                        </span>{" "}
-                        per{" "}
-                        <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                          1 {offerDetails.currency.code}
+                      <div className="flex flex-wrap items-center text-tradeFadeWhite text-[13px] font-medium leading-loose gap-x-1">
+                        <span className="align-middle">You're offering a</span>
+
+                        <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                          <p className="text-tradeOrange text-xs font-medium">
+                            {offerDetails?.margin}% profit margin
+                          </p>
+                        </div>
+
+                        <span className="align-middle">
+                          which sets your trade rate at
                         </span>
-                        . You'll earn about{" "}
-                        <span className="text-tradeGreen font-bold">
-                          {rateInfo.profit} NGN
-                        </span>{" "}
-                        per{" "}
-                        <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                          1 {offerDetails.currency.code}
-                        </span>{" "}
-                        traded.
-                      </p>
+
+                        <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                          <p className="text-tradeGreen text-xs font-medium">
+                            {rateInfo.finalRate} NGN
+                          </p>
+                        </div>
+
+                        <span className="align-middle">per</span>
+
+                        <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                          <p className="text-white text-xs font-medium">
+                            1 {offerDetails.currency.code}
+                          </p>
+                        </div>
+
+                        <span className="align-middle">
+                          . You’ll earn about
+                        </span>
+
+                        <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                          <p className="text-tradeGreen text-xs font-medium">
+                            {rateInfo.profit} NGN
+                          </p>
+                        </div>
+
+                        <span className="align-middle">for every</span>
+
+                        <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                          <p className="text-white text-xs font-medium">
+                            1 {offerDetails.currency.code}
+                          </p>
+                        </div>
+
+                        <span className="align-middle">you trade.</span>
+                      </div>
 
                       {/* Service Charge Note */}
                       <p className="text-tradeFadeWhite font-medium">
@@ -741,7 +844,7 @@ const CreateOffer = () => {
             <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
               <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
                 <p className="text-white text-sm font-[500]">
-                  Confirmation Time
+                  Confirmation Window
                 </p>
               </div>
 
@@ -779,7 +882,7 @@ const CreateOffer = () => {
             {/* Offer Terms Tag Field */}
             <div className="flex flex-col gap-[30px] p-[15px] border-b border-tradeAshLight">
               <div>
-                <p className="text-white text-sm font-[500]">Offer Terms Tag</p>
+                <p className="text-white text-sm font-[500]">Offer Terms</p>
               </div>
 
               <div className="flex flex-col gap-[15px]">
@@ -851,11 +954,11 @@ const CreateOffer = () => {
                 />
               </div>
             </div>
-            {/* Trade Instruction field Field */}
+            {/* Offer Instruction field Field */}
             <div className="flex flex-col gap-[30px] p-[15px]">
               <div>
                 <p className="text-white text-sm font-[500]">
-                  Trade Instructions
+                  Offer Instructions
                 </p>
               </div>
 

@@ -2,10 +2,11 @@ import React from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { IoMdThumbsUp } from "react-icons/io";
 import { MdThumbDownAlt } from "react-icons/md";
+import { dateTime } from "@/utils/dateTimeFormat/dateTimeFormat";
 
 const OfferDetails = ({ aboutOffer }) => {
   return (
-    <div className="flex flex-col h-full  md:border border-neutral-800">
+    <div className="flex flex-col h-full flex-1  md:border border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">About Offer</p>
       </div>
@@ -63,7 +64,9 @@ const OfferDetails = ({ aboutOffer }) => {
               Published Date
             </p>
 
-            <p className="text-white text-[13px] font-semibold">1,000 CAD</p>
+            <p className="text-white text-[13px] font-semibold">
+              {dateTime(aboutOffer?.publishedOn)}
+            </p>
           </div>
           <div className="flex-1 flex p-[12px] justify-between border-b border-tradeAshLight">
             <p className="text-tradeFadeWhite text-[13px] font-semibold">
@@ -111,13 +114,12 @@ const OfferDetails = ({ aboutOffer }) => {
             <div className="flex gap-3 items-center">
               <p className=" text-sm text-white flex items-center gap-1 font-semibold">
                 <IoMdThumbsUp className="text-tradeGreen " />
-                {/* {parseInt(props.positiveFeedback).toLocaleString()} */}
-                200
+                {aboutOffer?.offerRating?.positiveFeedback}
               </p>
 
               <p className="text-sm text-white flex items-center gap-1 font-semibold">
                 <MdThumbDownAlt className="text-red-500" />
-                {/* {parseInt(props.trustScore).toLocaleString()} */}15
+                {aboutOffer?.offerRating?.negativeFeedback}
               </p>
             </div>
           </div>

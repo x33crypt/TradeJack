@@ -1,5 +1,5 @@
 import React from "react";
-import FeedbackCard from "../cards/FeedbackCard";
+import FeedbackCard from "../../cards/FeedbackCard";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 const OfferFeedback = () => {
@@ -36,10 +36,19 @@ const OfferFeedback = () => {
         </div>
       </div>
 
-      <div className="flex  p-[15px]">
-        <div className="w-full border-b border-tradeAshLight">
-          {[...Array(5)].map((_, index) => (
-            <FeedbackCard key={index} />
+      <div className="p-[15px]">
+        <div className="w-full px-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+          {[...Array(5)].map((_, index, array) => (
+            <div
+              key={index}
+              className={`${
+                index !== array.length - 1
+                  ? "border-b border-tradeAshLight"
+                  : ""
+              }`}
+            >
+              <FeedbackCard />
+            </div>
           ))}
         </div>
       </div>

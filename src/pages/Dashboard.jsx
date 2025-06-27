@@ -12,11 +12,7 @@ const Dashboard = () => {
   return (
     <>
       <InAppNav />
-      <StateHandler
-        loading={loading}
-        error={error}
-        loadingText="Loading your dashboard. Please wait"
-      >
+      <StateHandler loading={loading} error={error}>
         <div className="md:pt-[64px] pt-[62px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col gap-[10px] bg-black">
           <DashSideNav />
           <DashMain />

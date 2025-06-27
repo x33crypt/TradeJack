@@ -44,7 +44,7 @@ const MarketCard = (props) => {
           <CiBank className=" text-[40px] text-tradeFadeWhite" />
 
           <div className="flex flex-col gap-2">
-            <p className="text-tradeOrange text-sm font-bold">
+            <p className="text-tradeOrange text-[13px] font-bold">
               {props.service}
             </p>
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
@@ -61,7 +61,7 @@ const MarketCard = (props) => {
 
           <div className="flex flex-col gap-2  justify-between">
             <div className="flex-1 flex ">
-              <p className=" text-white text-sm font-bold items-center max-w-[85px] inline-block truncate">
+              <p className=" text-white text-[13px] font-bold items-center max-w-[85px] inline-block truncate">
                 {props.username}
               </p>
             </div>
@@ -91,7 +91,7 @@ const MarketCard = (props) => {
               <p className="text-tradeFadeWhite text-xs font-medium">Min</p>
             </div>
 
-            <p className="text-sm font-bold text-white">
+            <p className="text-[13px] font-bold text-white">
               {props.minimum.toLocaleString()} {props.currency?.code}
             </p>
           </div>
@@ -105,7 +105,7 @@ const MarketCard = (props) => {
               <p className="text-tradeFadeWhite text-xs font-medium">Max</p>
             </div>
 
-            <p className=" text-sm font-bold text-white">
+            <p className=" text-[13px] font-bold text-white">
               {props.maximum.toLocaleString()} {props.currency?.code}
             </p>
           </div>
@@ -161,7 +161,7 @@ const MarketCard = (props) => {
             <div className="flex gap-1 flex-col items-start w-[100px] overflow-hidden">
               <div className="flex  items-center gap-2">
                 <div className="flex-1 flex">
-                  <p className=" text-white text-sm font-bold items-center max-w-[70px] inline-block truncate">
+                  <p className=" text-white text-[13px] font-bold items-center max-w-[70px] inline-block truncate">
                     {props.username}
                   </p>
                 </div>
@@ -177,11 +177,11 @@ const MarketCard = (props) => {
 
               <div className="flex gap-3 ">
                 <p className="text-xs text-white flex items-center gap-1 font-semibold">
-                  <IoMdThumbsUp className="text-tradeGreen text-sm" />
+                  <IoMdThumbsUp className="text-tradeGreen text-[13px]" />
                   {parseInt(props.positiveFeedback).toLocaleString()}
                 </p>
                 <p className="text-xs text-white flex items-center gap-1 font-semibold">
-                  <FaStar className="text-tradeOrange text-sm" />
+                  <FaStar className="text-tradeOrange text-[13px]" />
                   {parseInt(props.trustScore).toLocaleString()}
                 </p>
               </div>
@@ -194,11 +194,11 @@ const MarketCard = (props) => {
           <p className="text-xs text-tradeFadeWhite font-semibold">
             Accepted Currency
           </p>
-          <p className="font-bold text-white text-sm">United State Dollars</p>
+          <p className="font-bold text-white text-[13px]">United State Dollars</p>
         </div>
 
         {/* Middle Section: Purchase Limits */}
-        <div className="flex justify-between px-4 py-4 border-b border-tradeAshLight text-white text-sm font-semibold">
+        <div className="flex justify-between px-4 py-4 border-b border-tradeAshLight text-white text-[13px] font-semibold">
           <div>
             <p className="text-xs text-tradeFadeWhite">Min Purchase</p>
             <p className="font-bold">
@@ -220,25 +220,25 @@ const MarketCard = (props) => {
         {/* Bottom Section: Rate Info */}
         <div className="flex justify-between items-center px-4 py-4 text-white bg-tradeAshLight">
           <div className="flex items-center gap-2">
-            <p className="text-sm font-bold text-white">
+            <p className="text-[13px] font-bold text-white">
               123,968.44 {props.currency?.code}
             </p>
 
-            <FiTrendingUp className="text-tradeGreen text-sm " />
-            <p className="text-sm font-bold text-tradeGreen">
+            <FiTrendingUp className="text-tradeGreen text-[13px] " />
+            <p className="text-[13px] font-bold text-tradeGreen">
               {props.margin}.00%
             </p>
           </div>
           <div className="flex gap-3 justify-between items-center">
             <div className="flex items-center gap-1">
-              <MdTimer className="text-tradeOrange text-sm" />
-              <p className="text-tradeFadeWhite text-sm font-semibold">
+              <MdTimer className="text-tradeOrange text-[13px]" />
+              <p className="text-tradeFadeWhite text-[13px] font-semibold">
                 65 Min(s)
               </p>
             </div>
             <div className="flex items-center gap-1">
-              <FaBusinessTime className="text-tradeOrange text-sm" />
-              <p className="text-tradeFadeWhite text-sm font-semibold">
+              <FaBusinessTime className="text-tradeOrange text-[13px]" />
+              <p className="text-tradeFadeWhite text-[13px] font-semibold">
                 4 Hour(s)
               </p>
             </div>

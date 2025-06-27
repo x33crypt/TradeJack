@@ -1,20 +1,27 @@
 import React, { useEffect } from "react";
 import Button from "../buttons/Button";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import useAutoReloadOnReconnect from "@/hooks/useAutoReloadConnection";
+import { BsCloudSlashFill } from "react-icons/bs";
 
 const ReloadPage = () => {
   // useAutoReloadOnReconnect();
 
-  return (
-    <div className="flex flex-col gap-[20px] items-center justify-center h-svh bg-black text-white">
-      <p className="lg:text-sm font-semibold w-[350px] text-center ">
-        You're currently offline. We're retrying in the background, please check
-        your connection...
-      </p>
+  const handleReloadPage = () => {};
 
-      <AiOutlineLoading3Quarters className="text-tradeGreen text-xl lg:text-[30px] animate-spin-faster" />
+  return (
+    <div className="flex flex-col gap-[20px] items-center justify-center h-svh text-white bg-black">
+      <div className="flex flex-col gap-1 items-center">
+        <BsCloudSlashFill className="text-[100px] text-tradeAshLight leading-none" />
+        <p className="text-sm text-white font-medium">Something went wrong.</p>
+      </div>
+
+      <Button
+        onClick={handleReloadPage}
+        variant="primary"
+        maxWidth="max-w-[200px]"
+      >
+        Retry
+      </Button>
     </div>
   );
 };

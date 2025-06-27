@@ -75,7 +75,7 @@ const CreateSummary = () => {
         </div>
 
         <div className="p-[15px]">
-          <p className="text-tradeFadeWhite text-sm">
+          <p className="text-tradeFadeWhite text-[13px]">
             Verify your offer information to set clear terms and support a
             transparent, efficient trade.
           </p>
@@ -93,16 +93,20 @@ const CreateSummary = () => {
               <p className="text-tradeOrange text-base font-bold">
                 {offerDetails?.service || "-- --"}
               </p>
-              <p className="text-white text-xs font-medium">
-                {offerDetails?.serviceType || "Service Type"}
-              </p>
+              <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                <p className="text-white text-xs font-medium">
+                  {offerDetails?.serviceType || "Service Type"}
+                </p>
+              </div>
             </div>
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-[500]">
-              Accepted Currency
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Accepted Currency
+              </p>
+            </div>
             <p className="text-tradeOrange text-sm font-[600]">
               {offerDetails?.currency?.name
                 ? `${offerDetails.currency.name} - ${offerDetails.currency.code}`
@@ -111,9 +115,11 @@ const CreateSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-[500]">
-              Trade Range Limit
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Trade Range Limit
+              </p>
+            </div>
 
             <div className="flex flex-col gap-1">
               <div className="grid grid-cols-2 ">
@@ -143,9 +149,11 @@ const CreateSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Profit Margin
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Profit Margin
+              </p>
+            </div>
 
             <p className="text-white text-sm">
               You’ve set a profit margin of{" "}
@@ -160,9 +168,12 @@ const CreateSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Payment Window
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Payment Window
+              </p>
+            </div>
+
             <div className="flex flex-col gap-2">
               <p className="text-white text-sm">
                 You’ve set a payment window of{" "}
@@ -184,9 +195,11 @@ const CreateSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Confirmation Time
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Confirmation Window
+              </p>
+            </div>
 
             <div className="flex flex-col gap-2">
               <p className="text-white text-sm">
@@ -209,10 +222,13 @@ const CreateSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Trade Terms Tag
-            </p>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Offer Terms
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
               {offerDetails?.termTags?.length ? (
                 offerDetails.termTags.map((tag, index) => (
                   <div
@@ -233,9 +249,12 @@ const CreateSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Trade Instruction
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Offer Instructions
+              </p>
+            </div>
+
             <div className="">
               {offerDetails?.instruction ? (
                 <p className="text-white text-sm">
@@ -250,9 +269,12 @@ const CreateSummary = () => {
           </div>
 
           <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Service Charge
-            </p>
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Service Charge
+              </p>
+            </div>
+
             <div>
               <p className="text-white text-sm">
                 <span className="font-semibold text-tradeOrange">

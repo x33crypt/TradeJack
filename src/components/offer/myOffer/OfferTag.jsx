@@ -9,7 +9,7 @@ const OfferTag = ({ aboutOffer }) => {
 
       <div className="flex-1 flex  flex-col bg-tradeAs p-[15px] gap-[10px]">
         <div className="flex flex-wrap gap-[10px]">
-          {aboutOffer?.terms.map((term, index) => (
+          {aboutOffer?.terms?.map((term, index) => (
             <p
               className="text-sm bg-tradeOrange px-[10px] py-[3px] font-semibold rounded-[5px]"
               key={index}

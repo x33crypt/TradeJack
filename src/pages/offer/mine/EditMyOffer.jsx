@@ -7,51 +7,79 @@ import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { useSelectElement } from "@/context/SelectElementContext";
 import { useEditOfferDetails } from "@/context/offer/EditOfferContext";
-import axios from "axios";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
-import { IoMdThumbsUp } from "react-icons/io";
-import { MdThumbDownAlt } from "react-icons/md";
-import { FaInfoCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { CiBank } from "react-icons/ci";
 import { IoWalletOutline } from "react-icons/io5";
 import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
-import EditSummary from "../../../components/offer/mine/EditSummary";
+import EditSummary from "../../../components/offer/myOffer/EditSummary";
 import Button from "@/components/buttons/Button";
 import { useExchangeRate } from "@/hooks/useExchangeRate";
+import { FaInfoCircle } from "react-icons/fa";
+import { useAboutOffer } from "@/context/offer/AboutOfferContext";
+import { useToast } from "@/context/ToastContext";
+import { TiInfo } from "react-icons/ti";
 
 const EditMyOffer = (props) => {
+  const { aboutOffer, setAboutOffer } = useAboutOffer();
   const { select, setSelect } = useSelectElement();
+  const { toast, setToast } = useToast();
   const [loading, setLoading] = useState(false);
   const { offerDetails, setOfferDetails } = useEditOfferDetails();
   const { rateInfo } = useExchangeRate(
-    offerDetails.currency.code ? offerDetails.currency.code : "USD",
+    offerDetails?.preferredCurrency?.code
+      ? offerDetails?.preferredCurrency?.code
+      : "USD",
     "NGN",
-    offerDetails?.margin
+    offerDetails?.marginRate?.percent
   );
+
+  useEffect(() => {
+    setOfferDetails(aboutOffer);
+  }, [aboutOffer]);
 
   // handling terms changes
   useEffect(() => {
+    // Only run when we’re on the edit-offer page and a pick exists
     if (select?.page !== "edit offer" || !select?.pick) return;
 
     if (select.element === "terms") {
-      const pickedTerm = select.pick; // ✅ Corrected
+      const pickedTerm = select.pick;
 
       if (typeof pickedTerm === "string") {
         const newTag = pickedTerm.trim();
-        if (newTag) {
-          setOfferDetails((prev) => {
-            const current = prev.termTags || [];
-            if (current.includes(newTag) || current.length >= 5) return prev;
-            return {
-              ...prev,
-              termTags: [...current, newTag],
-            };
-          });
-        }
+        if (!newTag) return; // empty string guard
+
+        setOfferDetails((prev) => {
+          const currentTags = prev.terms || [];
+
+          /* -------- Duplicate check -------- */
+          if (currentTags.includes(newTag)) {
+            setToast({
+              error: true,
+              errorMessage: "That tag already exists.",
+            });
+            return prev; // 🛑 Do not add duplicate
+          }
+
+          /* -------- Tag-limit check -------- */
+          if (currentTags.length >= 5) {
+            setToast({
+              error: true,
+              errorMessage: "You can only add up to 5 offer tags.",
+            });
+            return prev; // 🛑 Do not exceed limit
+          }
+
+          /* -------- Add tag normally -------- */
+          return {
+            ...prev,
+            terms: [...currentTags, newTag],
+          };
+        });
       }
     }
   }, [select]);
@@ -61,7 +89,10 @@ const EditMyOffer = (props) => {
 
     setOfferDetails((prev) => ({
       ...prev,
-      minimum: rawValue,
+      marginRate: {
+        ...prev.marginRate,
+        from: rawValue,
+      },
     }));
   };
 
@@ -70,28 +101,46 @@ const EditMyOffer = (props) => {
 
     setOfferDetails((prev) => ({
       ...prev,
-      maximum: rawValue,
+      marginRate: {
+        ...prev.marginRate,
+        to: rawValue,
+      },
     }));
   };
 
   const handleAddMargin = () => {
     setOfferDetails((prev) => {
-      const current = Number(prev.margin || 0);
+      const current = Number(prev.marginRate?.percent || 0);
       const next = current + 1;
       return {
         ...prev,
-        margin: next > 80 ? 80 : next,
+        marginRate: {
+          ...prev.marginRate,
+          percent: next > 80 ? 80 : next,
+        },
       };
     });
   };
 
   const handleMinusMargin = () => {
     setOfferDetails((prev) => {
-      const current = Number(prev.margin || 0);
+      const current = Number(prev.marginRate?.percent || 0);
       const next = current - 1;
+
+      if (next < 4) {
+        setToast({
+          error: true,
+          errorMessage: "Profit margin cannot go below 4%",
+        });
+        return prev; // Return previous state — no update
+      }
+
       return {
         ...prev,
-        margin: next < 4 ? 4 : next,
+        marginRate: {
+          ...prev.marginRate,
+          percent: next,
+        },
       };
     });
   };
@@ -113,14 +162,17 @@ const EditMyOffer = (props) => {
   const handleAddConfirmationTime = (e) => {
     setOfferDetails((prev) => ({
       ...prev,
-      confirmationTime: Math.min(24, Number(prev.confirmationTime || 0) + 1),
+      confirmationWindow: Math.min(
+        24,
+        Number(prev.confirmationWindow || 0) + 1
+      ),
     }));
   };
 
   const handleMinusConfirmationTime = (e) => {
     setOfferDetails((prev) => ({
       ...prev,
-      confirmationTime: Math.max(1, Number(prev.confirmationTime || 0) - 1),
+      confirmationWindow: Math.max(1, Number(prev.confirmationWindow || 0) - 1),
     }));
   };
 
@@ -131,6 +183,25 @@ const EditMyOffer = (props) => {
     "Pay exact amount",
     "Fast payment only",
     "Same bank only",
+    "No newly created accounts",
+    "No prepaid cards",
+    "Instant release",
+    "Available during working hours",
+    "Available weekends only",
+    "Quick responder",
+    "Response within 10 mins",
+    "Expect 30 min delay",
+    "Trusted traders only",
+    "KYC compliant",
+    "High trust score only",
+    "English only",
+    "Spanish supported",
+    "Polite communication required",
+    "Clear instructions required",
+    "Large trades accepted",
+    "Small trades welcome",
+    "New user friendly",
+    "Test trades allowed",
   ];
 
   const handleInstruction = (e) => {
@@ -143,7 +214,7 @@ const EditMyOffer = (props) => {
   // Map full service type string to corresponding icon
   const serviceTypeIcons = {
     "Online Wallet Transfer": IoWalletOutline,
-    "Direct Bank Transfer": CiBank,
+    "Bank Transfer": CiBank,
     "Gift Card Exchange": HiOutlineGift,
     "Card-Based Spending": IoCardOutline,
     "Crypto Trading": GiTwoCoins,
@@ -158,15 +229,16 @@ const EditMyOffer = (props) => {
     const {
       serviceType,
       service,
-      currency,
-      minimum,
-      maximum,
-      margin,
-      termTags,
+      preferredCurrency,
+      marginRate,
+      terms,
       paymentWindow,
-      confirmationTime,
+      confirmationWindow,
       instruction,
-    } = offerDetails;
+    } = offerDetails || {};
+
+    const { from, to, percent } = marginRate || {};
+    const { name, code } = preferredCurrency || {};
 
     const showToast = (message) => {
       setToast({
@@ -185,21 +257,21 @@ const EditMyOffer = (props) => {
       return showToast(`Missing required field: ${label}`);
     }
 
-    if (!currency?.code && !currency?.name) {
+    if (!code) {
       return showToast("Missing required field: Select Currency");
     }
 
-    if (!minimum) {
-      return showToast("Missing required field: Minimum trade limit");
+    if (from == null || from === "") {
+      return showToast("Missing required field: marginRate?.from trade limit");
     }
 
-    if (!maximum) {
+    if (to == null || from === "") {
       return showToast("Missing required field: Maximum trade limit");
     }
 
-    if (margin <= 2) {
+    if (typeof percent !== "number" || percent <= 4) {
       return showToast(
-        "Profit margin must be greater than 2% to publish your offer."
+        "Profit margin must be greater than 4% to publish your offer."
       );
     }
 
@@ -207,11 +279,11 @@ const EditMyOffer = (props) => {
       return showToast("Missing required field: Payment window");
     }
 
-    if (!confirmationTime) {
+    if (!confirmationWindow) {
       return showToast("Missing required field: Confirmation window");
     }
 
-    if (!termTags || termTags.length === 0) {
+    if (!terms || (Array.isArray(terms) && terms.length === 0)) {
       return showToast("Missing required field: Offer terms tag");
     }
 
@@ -219,7 +291,11 @@ const EditMyOffer = (props) => {
       return showToast("Missing required field: Trade instruction");
     }
 
-    navigateTo("/offers/:id/edit/summary");
+    if (!offerDetails?.offerId) {
+      return showToast("Missing offer ID. Cannot proceed.");
+    }
+
+    navigateTo(`/offers/myoffers/${offerDetails?.offerId}/edit/summary`);
   };
 
   const handleClose = () => {};
@@ -235,130 +311,34 @@ const EditMyOffer = (props) => {
       <div className="flex  gap-[10px] lg:flex-row flex-col  lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[60px] bg-black">
         {/* Header Section */}
         <div className="flex flex-col  min-h-svh w-full gap-[10px]">
-          <div className="flex flex-col md:border-x md:border-t-0 md:border-b border-neutral-800 ">
-            {/* Heading */}
+          <div className="flex flex-col md:border-x md:border-t-0 md:border-b border-neutral-800">
+            {/* Changing Field Heading */}
             <div className="flex flex-col justify-between p-[15px] border-b border-tradeAshLight">
               <p className="text-lg text-white font-[700]">Edit Offer</p>
             </div>
 
-            {/* Subheading */}
-            <div className="p-[15px]">
-              <p className="text-tradeFadeWhite text-sm">
-                Update key details of your offer to reflect your latest trade
-                preferences. You can adjust your limits, margins, timing, or
-                trade instructions before saving.
-              </p>
-            </div>
+            {/* Note Fields */}
+            <div className="flex gap-2 flex-col p-[15px] border-b border-tradeAshLight">
+              {/* <div className="w-[80px]">
+                <TiInfo className="text-tradeOrange text-[50px]" />
+              </div> */}
 
-            {/* Offer Details */}
-            <div className="p-[15px] ">
-              <div className=" flex md:grid grid-cols-2 gap-3 flex-col hover:shadow-lg overflow-hidden">
-                <div className="flex flex-col bg-tradeAshLight border border-tradeAshExtraLight rounded-[12px]">
-                  {/* Offer Id Field */}
-                  <div className="flex justify-between items-center p-3 border-b border-black">
-                    <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                      Offer ID
-                    </p>
+              <div className="flex flex-col gap-2">
+                <p className="text-base text-white font-semibold">
+                  Please Read Before Editing Your Offer
+                </p>
 
-                    <p className="text-tradeFadeWhite text-[14px] font-bold">
-                      #128951721826
-                    </p>
-                  </div>
-                  {/* service Type*/}
-                  <div className="flex items-center justify-between p-3 border-b border-black">
-                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Service Type
-                    </p>
-                    <p className=" text-white text-sm font-semibold">
-                      Direct Bank Transfer
-                    </p>
-                  </div>
-                  {/* service*/}
-                  <div className="flex items-center justify-between p-3  border-b border-black">
-                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Service
-                    </p>
-                    <p className="text-tradeOrange text-sm font-bold">
-                      Wells Fargo
-                    </p>
-                  </div>
-                  {/* Accepted Currency */}
-                  <div className="flex items-center justify-between p-3">
-                    <p className=" text-[13px] text-tradeFadeWhite font-semibold">
-                      Accepted Currency
-                    </p>
-                    <p className=" font-semibold text-tradeGreen text-sm">
-                      United State Dollars
-                    </p>
-                  </div>
-                </div>
-                <div className="flex flex-col bg-tradeAshLight border border-tradeAshExtraLight rounded-[12px]">
-                  {/* Published Date*/}
-                  <div className="flex items-center justify-between p-3 border-b border-black">
-                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Published Date
-                    </p>
-                    <p className=" text-white text-sm font-semibold">
-                      June 14, 2025
-                    </p>
-                  </div>
-                  {/* Offer Status*/}
-                  <div className="flex items-center justify-between p-3 border-b border-black">
-                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Offer Status
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-tradeGreen animate-pulse"></span>
-                      <p className="text-tradeGreen text-[14px] font-semibold">
-                        Active
-                      </p>
-                    </div>
-                  </div>
-                  {/* Trade Volume */}
-                  <div className="flex items-center justify-between p-3  border-b border-black">
-                    <div className="flex items-center gap-2">
-                      <p className=" text-[13px] text-tradeFadeWhite font-semibold">
-                        Trade Volume
-                      </p>
-
-                      <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
-                        <FaInfoCircle />
-                      </div>
-                    </div>
-
-                    <p className=" font-semibold text-white text-sm">
-                      215 Trades
-                    </p>
-                  </div>
-                  {/* Feedback Summary */}
-                  <div className="flex items-center justify-between p-3 ">
-                    <p className=" text-[13px] text-tradeFadeWhite font-semibold">
-                      Feedback Summary
-                    </p>
-                    <div className="flex gap-3 items-center">
-                      <p className=" text-sm text-white flex items-center gap-1 font-semibold">
-                        <IoMdThumbsUp className="text-tradeGreen " />
-                        {/* {parseInt(props.positiveFeedback).toLocaleString()} */}
-                        200
-                      </p>
-
-                      <p className="text-sm text-white flex items-center gap-1 font-semibold">
-                        <MdThumbDownAlt className="text-red-500" />
-                        {/* {parseInt(props.trustScore).toLocaleString()} */}15
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <p className="text-[13px] text-tradeFadeWhite font-medium leading-relaxed">
+                  <span className="text-white font-medium">
+                    Your offer will be temporarily placed on hold for 30
+                    minutes.
+                  </span>{" "}
+                  During this time, it will not be visible to other traders on
+                  the platform. This pause helps ensure that all updates are
+                  reviewed and reflected correctly, maintaining a safe and
+                  reliable trading experience for everyone.
+                </p>
               </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col md:border-x md:border-t-0 md:border-b border-neutral-800">
-            {/* Changing Field Heading */}
-            <div className="  flex justify-between gap-1 items-center p-4  md:border-y border-b border-tradeAshLight ">
-              <p className="text-white text-[16px] font-semibold">
-                Update Details
-              </p>
             </div>
 
             {/* Changes Fields */}
@@ -381,7 +361,7 @@ const EditMyOffer = (props) => {
                       </div>
                       <div
                         className={`${
-                          offerDetails?.minimum
+                          offerDetails?.marginRate?.from
                             ? "border-tradeAshExtraLight"
                             : "border-tradeAshLight"
                         } flex mt-[5px] bg-tradeAsh border outline-none w-full rounded-[10px] overflow-hidden cursor-pointer`}
@@ -391,17 +371,19 @@ const EditMyOffer = (props) => {
                           type="text"
                           placeholder="0.00"
                           value={
-                            offerDetails?.minimum
-                              ? Number(offerDetails?.minimum).toLocaleString()
+                            offerDetails?.marginRate?.from
+                              ? Number(
+                                  offerDetails?.marginRate?.from
+                                ).toLocaleString()
                               : ""
                           }
                           onChange={(e) => handleMinLimitChange(e)}
                         />
                         <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
                           <p className="text-[14px] text-white font-[700]">
-                            {offerDetails.currency.code &&
-                            offerDetails.currency.name
-                              ? `${offerDetails.currency.code}`
+                            {offerDetails?.preferredCurrency?.code &&
+                            offerDetails?.preferredCurrency?.name
+                              ? `${offerDetails?.preferredCurrency?.code}`
                               : "- -"}
                           </p>
                         </div>
@@ -416,7 +398,7 @@ const EditMyOffer = (props) => {
                       </div>
                       <div
                         className={`${
-                          offerDetails?.minimum
+                          offerDetails?.marginRate?.to
                             ? "border-tradeAshExtraLight"
                             : "border-tradeAshLight"
                         } flex mt-[5px] bg-tradeAsh border outline-none w-full rounded-[10px] overflow-hidden cursor-pointer`}
@@ -426,17 +408,19 @@ const EditMyOffer = (props) => {
                           type="text"
                           placeholder="0.00"
                           value={
-                            offerDetails?.maximum
-                              ? Number(offerDetails?.maximum).toLocaleString()
+                            offerDetails?.marginRate?.to
+                              ? Number(
+                                  offerDetails?.marginRate?.to
+                                ).toLocaleString()
                               : ""
                           }
                           onChange={(e) => handleMaxLimitChange(e)}
                         />
                         <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
                           <p className="text-[14px] text-white font-[700]">
-                            {offerDetails.currency.code &&
-                            offerDetails.currency.name
-                              ? `${offerDetails.currency.code}`
+                            {offerDetails?.preferredCurrency?.code &&
+                            offerDetails?.preferredCurrency?.name
+                              ? `${offerDetails?.preferredCurrency?.code}`
                               : "- -"}
                           </p>
                         </div>
@@ -445,10 +429,8 @@ const EditMyOffer = (props) => {
                   </div>
 
                   <div className="">
-                    <Warning
-                      text={
-                        "To make this offer visible, you must have 100% of the minimum amount you’ve set available in your wallet."
-                      }
+                    <Info
+                      text={`Set your minimum and maximum purchase limits. Minimum is 50 ${offerDetails?.preferredCurrency?.code}. Your current maximum purchase limit is 1,000 ${offerDetails?.preferredCurrency?.code}. Exceeding it will cause submission errors.`}
                     />
                   </div>
                 </div>
@@ -471,8 +453,8 @@ const EditMyOffer = (props) => {
                     <div className="bg-tradeAsh flex justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
                       <p className="text-white text-sm">
                         <span className="font-bold">
-                          {offerDetails.margin > 0 ? "+" : ""}
-                          {offerDetails.margin}%
+                          {offerDetails?.marginRate?.percent > 0 ? "+" : ""}
+                          {offerDetails?.marginRate?.percent}%
                         </span>{" "}
                         profit margin per trade
                       </p>
@@ -488,46 +470,79 @@ const EditMyOffer = (props) => {
 
                   <div className="flex p-3 bg-tradeAsh rounded-[10px] border border-tradeAshLight flex-col gap-2 text-[13px] text-white leading-relaxed">
                     {/* Market Price */}
-                    <div className="flex gap-1 items-center">
-                      <p className="text-tradeFadeWhite font-medium">
-                        Current Exchange Rate:
-                      </p>
-                      <p className="text-tradeGreen font-bold">
-                        1 <span>{offerDetails.currency.code}</span> ={" "}
-                        <span>
-                          {rateInfo.baseRate === 0 ? "0.00" : rateInfo.baseRate}
-                        </span>{" "}
-                        <span>NGN</span>
-                      </p>
+                    <div className="flex flex-wrap items-center text-tradeFadeWhite text-[13px] font-medium leading-loose gap-x-1">
+                      <span className="align-middle"> Current</span>
+                      <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                        <p className="text-white text-xs font-medium">
+                          {offerDetails?.preferredCurrency?.code}
+                        </p>
+                      </div>
+                      <span className="align-middle">exchange rate in</span>
+                      <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                        <p className="text-white text-xs font-medium">NGN</p>
+                      </div>
+                      <span className="align-middle">is</span>
+                      <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                        <p className="text-tradeGreen text-xs font-medium">
+                          <span>
+                            {rateInfo.baseRate === 0
+                              ? "0.00"
+                              : rateInfo.baseRate}
+                          </span>{" "}
+                          <span>NGN</span>
+                        </p>
+                      </div>
                     </div>
 
                     {/* Margin Breakdown */}
-                    <p className="text-tradeFadeWhite font-medium">
-                      Your offering at{" "}
-                      <span className="text-tradeOrange font-bold">
-                        {offerDetails?.margin}% profit margin
-                      </span>{" "}
-                      sets your trade rate at{" "}
-                      <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                        {rateInfo.finalRate} NGN
-                      </span>{" "}
-                      per{" "}
-                      <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                        1 {offerDetails.currency.code}
+                    <div className="flex flex-wrap items-center text-tradeFadeWhite text-[13px] font-medium leading-loose gap-x-1">
+                      <span className="align-middle">You're offering a</span>
+
+                      <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                        <p className="text-tradeOrange text-xs font-medium">
+                          {offerDetails?.marginRate?.percent}% profit margin
+                        </p>
+                      </div>
+
+                      <span className="align-middle">
+                        which sets your trade rate at
                       </span>
-                      . You'll earn about{" "}
-                      <span className="text-tradeGreen font-bold">
-                        {rateInfo.profit} NGN
-                      </span>{" "}
-                      per{" "}
-                      <span className="text-tradeGreen font-bold inline-flex items-center gap-1">
-                        1 {offerDetails.currency.code}
-                      </span>{" "}
-                      traded.
-                    </p>
+
+                      <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                        <p className="text-tradeGreen text-xs font-medium">
+                          {rateInfo.finalRate} NGN
+                        </p>
+                      </div>
+
+                      <span className="align-middle">per</span>
+
+                      <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                        <p className="text-white text-xs font-medium">
+                          1 {offerDetails?.preferredCurrency?.code}
+                        </p>
+                      </div>
+
+                      <span className="align-middle">. You’ll earn about</span>
+
+                      <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                        <p className="text-tradeGreen text-xs font-medium">
+                          {rateInfo.profit} NGN
+                        </p>
+                      </div>
+
+                      <span className="align-middle">for every</span>
+
+                      <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                        <p className="text-white text-xs font-medium">
+                          1 {offerDetails?.preferredCurrency?.code}
+                        </p>
+                      </div>
+
+                      <span className="align-middle">you trade.</span>
+                    </div>
 
                     {/* Service Charge Note */}
-                    <p className="text-tradeFadeWhite font-medium">
+                    <p className="text-tradeFadeWhite text-[13px] font-medium">
                       <span className="text-white font-semibold">Note:</span>{" "}
                       Service charge applies at trade.
                     </p>
@@ -585,7 +600,7 @@ const EditMyOffer = (props) => {
               <div className="flex w-full flex-col md:flex-row border-b border-tradeAshLight">
                 <div className="w-[50%] p-[15px] bg-tradeOrang md:border-r border-tradeAshLight">
                   <p className="text-white text-[15px] font-[500]">
-                    Confirmation Time
+                    Confirmation Window
                   </p>
                 </div>
 
@@ -600,7 +615,7 @@ const EditMyOffer = (props) => {
                     <div className="bg-tradeAsh flex  justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
                       <p className="text-white text-[14px]">
                         <span className="font-bold">
-                          {offerDetails?.confirmationTime}
+                          {offerDetails?.confirmationWindow}
                         </span>{" "}
                         hour&#40;s&#41;
                       </p>
@@ -624,7 +639,7 @@ const EditMyOffer = (props) => {
               <div className="flex flex-col gap-[30px] p-[15px] border-b border-tradeAshLight">
                 <div>
                   <p className="text-white text-[15px] font-[500]">
-                    Offer Terms Tag
+                    Offer Terms
                   </p>
                 </div>
 
@@ -647,7 +662,7 @@ const EditMyOffer = (props) => {
                     <div className="">
                       <input
                         className={`${
-                          offerDetails?.termTags
+                          offerDetails?.terms
                             ? "border-tradeAshLight"
                             : "border-tradeAshLight"
                         } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border hover:border-tradeAshExtraLight outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
@@ -664,10 +679,10 @@ const EditMyOffer = (props) => {
 
                   <div
                     className={`${
-                      offerDetails?.termTags.length == 0 ? "hidden" : "flex"
+                      offerDetails?.terms?.length == 0 ? "hidden" : "flex"
                     } gap-[10px] flex-wrap`}
                   >
-                    {offerDetails?.termTags.map((tag, index) => (
+                    {offerDetails?.terms?.map((tag, index) => (
                       <div
                         key={index}
                         className="flex w-max items-center gap-[8px] px-[12px] py-[5px] rounded-[6px] bg-tradeAshLight"
@@ -683,9 +698,7 @@ const EditMyOffer = (props) => {
                           onClick={() => {
                             setOfferDetails((prev) => ({
                               ...prev,
-                              termTags: prev.termTags.filter(
-                                (_, i) => i !== index
-                              ),
+                              terms: prev.terms.filter((_, i) => i !== index),
                             }));
                           }}
                         />
@@ -704,7 +717,7 @@ const EditMyOffer = (props) => {
               <div className="flex flex-col gap-[30px] p-[15px]">
                 <div>
                   <p className="text-white text-[15px] font-[500]">
-                    Trade Instructions
+                    Offer Instructions
                   </p>
                 </div>
 
@@ -743,7 +756,7 @@ const EditMyOffer = (props) => {
 
         {/* Offer Summary For Desktop */}
         <div className="lg:flex hidden lg:w-[500px]">
-          <EditSummary />
+          <EditSummary offerDetails={offerDetails} />
         </div>
       </div>
       <Footer />

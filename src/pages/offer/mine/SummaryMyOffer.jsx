@@ -1,7 +1,7 @@
 import React from "react";
 import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
-import EditSummary from "../../../components/offer/mine/EditSummary";
+import EditSummary from "../../../components/offer/myOffer/EditSummary";
 
 const SummaryMyOffer = () => {
   return (

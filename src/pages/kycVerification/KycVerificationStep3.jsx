@@ -30,35 +30,104 @@ const KycVerificationStep3 = () => {
   const handleFrontClick = () => frontRef.current?.click();
   const handleBackClick = () => backRef.current?.click();
 
-  const handleFontFileChange = (e) => {
-    const file = e.target.files[0];
+  const handleFrontFileChange = (e) => {
+    const { name, files } = e.target;
+
+    const file = files?.[0];
+
     if (file) {
+      // Validate file size (5MB limit)
+      if (file.size > 5 * 1024 * 1024) {
+        setToast({
+          ...toast,
+          error: true,
+          errorMessage: `${name} must be less than 5MB`,
+        });
+        return;
+      }
+
+      // Validate file type
+      if (!file.type.startsWith("image/")) {
+        setToast({
+          ...toast,
+          error: true,
+          errorMessage: `${name} must be an image (JPEG, PNG, etc.)`,
+        });
+        return;
+      }
+
       setKycDetails((prevDetails) => ({
         ...prevDetails,
-        [e.target.name]: file,
+        frontImage: file,
       }));
     }
   };
 
   const handleBackFileChange = (e) => {
-    const file = e.target.files[0];
+    const { name, files } = e.target;
+    const file = files?.[0];
+
     if (file) {
+      // Validate file size (5MB limit)
+      if (file.size > 5 * 1024 * 1024) {
+        setToast({
+          ...toast,
+          error: true,
+          errorMessage: `${name} must be less than 5MB`,
+        });
+        return;
+      }
+
+      // Validate file type
+      if (!file.type.startsWith("image/")) {
+        setToast({
+          ...toast,
+          error: true,
+          errorMessage: `${name} must be an image (JPEG, PNG, etc.)`,
+        });
+        return;
+      }
+
       setKycDetails((prevDetails) => ({
         ...prevDetails,
-        [e.target.name]: file,
+        backImage: file,
       }));
     }
   };
-
+  
   const handleDateChange = (e) => {
-    const [year, month, day] = e.target.value.split("-");
+    const [year, month, day] = e.target.value.split("-").map(Number);
+
+    const enteredDate = new Date(year, month - 1, day); // month is 0-based
+    const today = new Date();
+    const minBirthDate = new Date(
+      today.getFullYear() - 18,
+      today.getMonth(),
+      today.getDate()
+    );
+
+    const isValidDate =
+      enteredDate instanceof Date &&
+      !isNaN(enteredDate) &&
+      enteredDate.getFullYear() === year &&
+      enteredDate.getMonth() === month - 1 &&
+      enteredDate.getDate() === day;
+
+    if (!isValidDate || enteredDate > minBirthDate || year < 1900) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Enter a valid birthdate (18+ required)",
+      });
+      return;
+    }
 
     setKycDetails((prev) => ({
       ...prev,
       dateOfBirth: {
-        year,
-        month,
-        date: day,
+        year: year.toString(),
+        month: month.toString().padStart(2, "0"),
+        date: day.toString().padStart(2, "0"),
       },
     }));
   };
@@ -243,9 +312,9 @@ const KycVerificationStep3 = () => {
                     <input
                       type="file"
                       ref={frontRef}
-                      name="frontImage"
+                      name="Front ID Image"
                       className="hidden"
-                      onChange={handleFontFileChange}
+                      onChange={handleFrontFileChange}
                       accept="image/*,application/pdf"
                     />
                   </div>
@@ -282,7 +351,7 @@ const KycVerificationStep3 = () => {
                     <input
                       type="file"
                       ref={backRef}
-                      name="backImage"
+                      name="Back ID Image"
                       className="hidden"
                       onChange={handleBackFileChange}
                       accept="image/*,application/pdf" // optional: restrict file types

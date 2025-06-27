@@ -10,7 +10,7 @@ const OfferPerformance = () => {
       </div>
 
       <div className="flex h-full p-[15px] flex-col gap-[20px]">
-        <div className=" flex flex-col gap-[20px] h-full">
+        <div className=" flex flex-col gap-[10px] h-full">
           <div className="flex-1 flex flex-col gap-[10px]  p-[15px]  bg-tradeAsh hover:bg-tradeAshLight rounded-[15px] border border-tradeAshLight overflow-hidden cursor-pointer transition-all duration-300 ">
             <div className="flex w-full justify-between">
               <p className="text-xs text-tradeFadeWhite font-semibold">

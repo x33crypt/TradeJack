@@ -8,7 +8,7 @@ const Performance = () => {
       </div>
 
       <div className="flex h-[500px] md:h-full p-[15px] flex-col gap-[20px]">
-        <div className=" flex flex-col gap-[20px] h-full">
+        <div className=" flex flex-col gap-[10px] h-full">
           <div className="flex-1 flex flex-col gap-[10px] py-3 px-3  bg-tradeAsh hover:bg-tradeAshLight rounded-[10px] border border-tradeAshLight overflow-hidden cursor-pointer transition-all duration-300 ">
             <div className="flex w-full justify-between">
               <p className="text-xs text-tradeFadeWhite font-bold">

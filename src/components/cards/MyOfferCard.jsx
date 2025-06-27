@@ -29,13 +29,13 @@ const MyOfferCard = ({ offer }) => {
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <MdGrid3X3 className="text-sm text-tradeAshExtraLight" />
             </div>
-            <p className="text-white  text-sm font-bold">{offer?.offerId}</p>
+            <p className="text-white text-[13px] font-bold">{offer?.offerId}</p>
           </div>
           <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <MdDateRange className="text-sm text-tradeAshExtraLight" />
             </div>
-            <p className="text-white  text-sm font-bold">14, Feb, 2024</p>
+            <p className="text-white  text-[13px] font-bold">14, Feb, 2024</p>
           </div>
         </div>
 
@@ -85,7 +85,7 @@ const MyOfferCard = ({ offer }) => {
               <p className="text-tradeFadeWhite text-xs font-medium">Min</p>
             </div>
 
-            <p className="text-sm font-bold text-white">
+            <p className="text-[13px] font-bold text-white">
               {formatDecimal(offer?.marginRate?.from)} {""}
               {offer?.preferredCurrency?.code}
             </p>
@@ -100,7 +100,7 @@ const MyOfferCard = ({ offer }) => {
               <p className="text-tradeFadeWhite text-xs font-medium">Max</p>
             </div>
 
-            <p className=" text-sm font-bold text-white">
+            <p className=" text-[13px] font-bold text-white">
               {formatDecimal(offer?.marginRate?.to)}{" "}
               {offer?.preferredCurrency?.code}
             </p>

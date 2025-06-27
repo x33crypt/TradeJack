@@ -20,31 +20,39 @@ const HeroEdit = ({ profile }) => {
       <div className="flex w-full flex-col justify-center gap-4 flex-shrink-0">
         <div className="flex flex-col gap-2">
           <div className="flex gap-1 items-center text-tradeOrange">
-            <p className=" text-sm font-bold">Master Trader</p>
+            <p className=" text-[13px] font-bold">Master Trader</p>
             <GiTopHat />
           </div>
 
           <p className="mt-0 text-white lg:text-[40px] md:text-[40px] text-[25px] font-[900] leading-none ">
             <span className="text-tradeFadeWhite">@</span>
-            {profile?.username}
+            {profile?.userName}
           </p>
         </div>
 
         <div className="flex items-center gap-3">
           <div className="flex  gap-1 items-center ">
-            <p className=" text-sm font-[600] text-tradeFadeWhite">
-              Joined <span className="font-[700] text-white">4 Months</span> ago
+            <p className=" text-[13px] font-[600] text-tradeFadeWhite">
+              Joined{" "}
+              <span className="font-[700] text-white">
+                {profile?.accAgeInMonths} Months
+              </span>{" "}
+              ago
             </p>
           </div>
 
           <div className="flex  gap-1 items-center ">
             <FaLocationDot className=" flex text-tradeOrange text-xs leading-none" />
-            <p className=" text-sm font-[600] text-white">Nigeria</p>
+            <p className=" text-[13px] font-[600] text-white">
+              {profile?.kycDetails?.address?.country}
+            </p>
           </div>
 
           <div className="flex  gap-1 items-center ">
             <RiEye2Fill className=" flex text-tradeGreen text-xs leading-none" />
-            <p className="mt-0 text-tradeGreen text-sm  font-[600]">Online</p>
+            <p className="mt-0 text-tradeGreen text-[13px]  font-[600]">
+              {profile?.status}
+            </p>
           </div>
         </div>
       </div>

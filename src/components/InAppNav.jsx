@@ -187,7 +187,7 @@ const InAppNav = () => {
           </div>
           <div
             onClick={() => {
-              safeNavigate("/offers/mine");
+              safeNavigate("/offers/myoffers");
               setIsNavOption(false);
             }}
             className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "

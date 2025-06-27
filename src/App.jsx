@@ -31,6 +31,7 @@ import KycVerificationStep2 from "./pages/kycVerification/KycVerificationStep2";
 import KycVerificationStep3 from "./pages/kycVerification/KycVerificationStep3";
 import AboutMyOffer from "./pages/offer/mine/AboutMyOffer";
 import SummaryMyOffer from "./pages/offer/mine/SummaryMyOffer";
+import Wallet from "./pages/Wallet";
 
 const App = () => {
   return (
@@ -77,6 +78,9 @@ const App = () => {
           path="/account/settings/kycVerification/step3"
           element={<KycVerificationStep3 />}
         />
+
+        {/* Wallet */}
+        <Route path="/wallet" element={<Wallet />} />
 
         {/* Marketplace & Offers */}
         <Route path="/offers/marketplace" element={<Marketplace />} />

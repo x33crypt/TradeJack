@@ -95,6 +95,9 @@ export async function kycVerify(kycDetails) {
     return { success: false, error: "Missing or invalid Back Image" };
   }
 
+  console.log("Hwy Front ID", frontImage);
+  console.log("Hwy Back ID", backImage);
+
   const sanitizedFirstname = sanitizeInput(firstname);
   const sanitizedLastname = sanitizeInput(lastname);
   const sanitizedGender = sanitizeInput(gender);
@@ -112,6 +115,7 @@ export async function kycVerify(kycDetails) {
   };
   const sanitizedEmail = sanitizeInput(email);
 
+  
   const payload = {
     firstName: sanitizedFirstname,
     lastName: sanitizedLastname,
@@ -129,8 +133,8 @@ export async function kycVerify(kycDetails) {
       country: sanitizedAddress?.country,
     },
     documentType: sanitizedDocumentType,
-    frontIdImage: frontImage instanceof File ? frontImage : null,
-    backIdImage: backImage instanceof File ? backImage : null,
+    frontIdImage: frontImage,
+    backIdImage: backImage,
   };
 
   // Log the payload for debugging

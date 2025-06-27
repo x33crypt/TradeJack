@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import api from "@/utils/http/api";
 import { useAboutOffer } from "@/context/offer/AboutOfferContext";
 
 export function useFetchAboutOffers(id) {
   const { aboutOffer, setAboutOffer } = useAboutOffer();
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const lastFetchedId = useRef(null);
 
   useEffect(() => {
-    if (!id) return; // ⛔ prevent firing if no ID
+    if (!id || lastFetchedId.current === id) return;
 
-    const FetchAboutOffers = async () => {
+    const fetchAboutOffers = async () => {
+      setLoading(true);
       try {
         const response = await api.get(`/service-provider/offers/${id}`);
-
-        console.log("About Offer response:", response); // Log the response for debugging
-
         if (response?.status === 200 && response?.data?.success) {
-          setAboutOffer(response?.data?.data);
+          setAboutOffer(response.data.data);
+          lastFetchedId.current = id; // ✅ Update last fetched id
         } else {
           setError("Unexpected response format");
         }
@@ -30,8 +30,8 @@ export function useFetchAboutOffers(id) {
       }
     };
 
-    FetchAboutOffers(); // ✅ Call the function here
-  }, [id]);
+    fetchAboutOffers();
+  }, [id, aboutOffer]);
 
   return { loading, error };
 }

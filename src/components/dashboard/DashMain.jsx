@@ -236,7 +236,7 @@ const DashMain = () => {
               </div>
             </div>
           </div>
-          <div className="lg:w-[330px] w-full lg:flex flex-col gap-[25px]">
+          <div className="lg:w-[350px] w-full lg:flex flex-col gap-[25px]">
             <Performance />
           </div>
         </div>

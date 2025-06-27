@@ -3,11 +3,8 @@ import MarketTopNav from "@/components/InAppNav";
 import React, { useState, useEffect, useRef } from "react";
 import Performance from "@/components/profile/Performance";
 import PersonalInfo from "@/components/profile/PersonalInfo";
-import Hero from "@/components/profile/Hero";
 import StatsBoard from "@/components/profile/StatsBoard";
 import HeroEdit from "@/components/profile/HeroEdit";
-import { IoMdArrowRoundBack } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
 import { useProfile } from "@/context/ProfileContext";
 import { useFetchProfile } from "@/hooks/useFetchProfile";
 import StateHandler from "@/components/stateHandler/StateHandler";
@@ -16,16 +13,12 @@ const UserProfile = () => {
   const { loading, error } = useFetchProfile();
   const { profile, setProfile } = useProfile();
 
-  console.log(profile);
+  console.log("Hero Edit", profile);
 
   return (
     <>
       <MarketTopNav />
-      <StateHandler
-        loading={loading}
-        error={error}
-        loadingText="Preparing your profile. Just a moment..."
-      >
+      <StateHandler loading={loading} error={error}>
         <div className="flex flex-col min-h-svh bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[60px] gap-[10px]">
           <div className="flex flex-col w-full h-full md:border-x md:border-b md:border-t border-neutral-800">
             <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">

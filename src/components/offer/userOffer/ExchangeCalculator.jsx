@@ -7,7 +7,7 @@ const ExchangeCalculator = (prop) => {
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Exchange Calculator</p>
       </div>
-      <div className="flex h-full justify-between flex-col p-[15px] ">
+      <div className="flex h-full justify-between flex-col p-[15px]">
         <div className="flex flex-col  gap-[10px] w-full">
           <div className="flex-1 flex flex-col p-[15px] gap-[10px] bg-tradeAsh rounded-[15px]">
             <div className="flex  justify-between">
@@ -86,7 +86,7 @@ const ExchangeCalculator = (prop) => {
           </div>
         </div>
       </div>
-      <div className=" flex md:flex-row flex-col bg-tradeAs p-[15px] gap-[10px]">
+      <div className=" flex md:flex-row flex-col bg-tradeAs p-[15px] pt-0 gap-[10px]">
         <div className="flex w-full flex-col   ">
           <div className="flex-1 flex p-[12px] justify-between border-b border-tradeAshLight">
             <div className="flex items-center gap-2">

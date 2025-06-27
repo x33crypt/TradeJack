@@ -15,7 +15,7 @@ export function useFetchProfile() {
         console.log("Profile response:", response); // Log the response for debugging
 
         if (response?.status === 200 && response?.data?.success) {
-          setProfile(response?.data?.data);
+          setProfile(response?.data?.data?.user);
         } else {
           setError("Unexpected response format");
         }
