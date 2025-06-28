@@ -1,31 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
-import { GiCardExchange } from "react-icons/gi";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaRegBell } from "react-icons/fa";
 import landingImg4 from "./../assets/landingImg4.JPG";
 import { FiSearch } from "react-icons/fi";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
-import { MdSpaceDashboard } from "react-icons/md";
-import { RiExchangeFundsLine } from "react-icons/ri";
-import { FaRegEnvelope } from "react-icons/fa6";
 import { LiaUserFriendsSolid } from "react-icons/lia";
-import { MdOutlineQueryStats } from "react-icons/md";
-import { TbLayoutList } from "react-icons/tb";
-import { TbHelpCircle } from "react-icons/tb";
-import { RiExchangeLine } from "react-icons/ri";
-import { TbBuildingBank } from "react-icons/tb";
 import { FaVenusDouble } from "react-icons/fa";
-import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { IoCloseSharp } from "react-icons/io5";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
-import useSafeNavigate from "./SafeNavigation";
 import { IoWalletOutline } from "react-icons/io5";
 import { RiExchangeFill } from "react-icons/ri";
 import { RiExchange2Fill } from "react-icons/ri";
-import { RiExchangeBoxLine } from "react-icons/ri";
 import { FaUserFriends } from "react-icons/fa";
 import { TbDashboardFilled } from "react-icons/tb";
 import { RiExchangeBoxFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
+import { TbFileLike } from "react-icons/tb";
+import { BsChatQuote } from "react-icons/bs";
+import { TbLayoutListFilled } from "react-icons/tb";
+import { BiSupport } from "react-icons/bi";
+import { TbFileInvoice } from "react-icons/tb";
+import Button from "./buttons/Button";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -65,7 +60,7 @@ const InAppNav = () => {
     return () => clearInterval(interval);
   }, [placeholders]);
 
-  const safeNavigate = useSafeNavigate();
+  const navigateTo = useNavigate();
 
   return (
     <>
@@ -82,7 +77,7 @@ const InAppNav = () => {
             )}
           </div>
           <div
-            onClick={() => safeNavigate("/dashboard")}
+            onClick={() => navigateTo("/dashboard")}
             className="flex items-center gap-[5px] cursor-pointer "
           >
             <RiExchangeFill className=" flex lg:text-2xl text-xl text-tradeGreen" />
@@ -95,28 +90,28 @@ const InAppNav = () => {
           </div>
         </div>
 
-        <div className=" md:flex hidden  gap-[10px] items-center">
+        <div className=" md:flex hidden  gap-[8px] items-center">
           <div
-            onClick={() => safeNavigate("/offers/marketplace")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
+            onClick={() => navigateTo("/offers/marketplace")}
+            className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <RiExchange2Fill className="lg:flex hidden text-[16px]" />
             <p className="text-[13px] font-[700]">Sell Assets</p>
           </div>
           <div
-            onClick={() => safeNavigate("/offers/create")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
+            onClick={() => navigateTo("/offers/create")}
+            className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <RiExchangeBoxFill className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-[700]">Buy Assets</p>
           </div>
-          <div className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300">
+          <div className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300">
             <FaUserFriends className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-[700]">Trade Partners</p>
           </div>
           <div
-            onClick={() => safeNavigate("/dashboard")}
-            className="flex items-center gap-[10px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
+            onClick={() => navigateTo("/dashboard")}
+            className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <TbDashboardFilled className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-[700]">Dashboard</p>
@@ -124,10 +119,10 @@ const InAppNav = () => {
         </div>
 
         <div className="flex items-center lg:gap-[15px] gap-[15px]">
-          <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[1px] gap-[10px] rounded-[8px]">
-            <FaMagnifyingGlass className="text-neutral-500 lg:text-[15px] text-[15px]" />
+          <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[1px] gap-[8px] rounded-[8px]">
+            <FaMagnifyingGlass className="text-neutral-500  text-[15px]" />
             <input
-              className=" bg-transparent outline-none h-[28px] w-[220px]  placeholder:text-tradeFadeWhite text-[12px] text-white"
+              className=" bg-transparent outline-none h-[28px] w-[220px]  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
               type="text"
               placeholder={searchplaceholder}
             />
@@ -152,98 +147,97 @@ const InAppNav = () => {
           isNavOption ? "flex" : "hidden"
         } z-50 fixed right-0 left-0 top-[60px] bottom-0 bg-black p-[15px] pt-[13px] pb-[16px] lg:hidden flex flex-col justify-between`}
       >
-        <div className="flex gap-[10px] p-[10px] items-center bg-tradeAsh border border-tradeAshExtraLight rounded-[12px]">
+        <div className="flex gap-[8px] p-[8px] items-center bg-tradeAsh border border-tradeAshExtraLight rounded-[10px]">
           <HiMiniMagnifyingGlass className="text-tradeFadeWhite text-[20px]" />
 
-          <p className=" text-tradeFadeWhite text-[14px] font-[500]">
-            Hello,{" "}
-            <small className="text-tradeFadeWhite text-[14px] font-[600]">
-              x33crypt.
-            </small>{" "}
-            How can we help ?
+          <p className=" text-tradeFadeWhite text-[13px] font-semibold">
+            Hello, <span className="text-white">x33crypt.</span> How can we help
+            ?
           </p>
         </div>
 
-        <div className="flex flex-col gap-[10px]">
+        <div className="flex flex-col gap-[5px]">
           <div
             onClick={() => {
-              safeNavigate("/dashboard");
+              navigateTo("/dashboard");
               setIsNavOption(false);
             }}
-            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
+            className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
           >
-            <MdSpaceDashboard className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Dashboard</p>
+            <TbDashboardFilled className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[13px] ">Dashboard</p>
           </div>
           <div
             onClick={() => {
-              safeNavigate("/dashboard");
+              navigateTo("/wallet");
               setIsNavOption(false);
             }}
-            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
+            className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
           >
             <IoWalletOutline className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Wallet</p>
+            <p className="text-white text-[13px] ">Wallet</p>
           </div>
           <div
             onClick={() => {
-              safeNavigate("/offers/myoffers");
+              navigateTo("/offers/myoffers");
               setIsNavOption(false);
             }}
-            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
+            className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
           >
-            <TbLayoutList className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">My Offers</p>
+            <TbFileInvoice className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[13px] ">My Offers</p>
+          </div>
+          <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+            <TbFileLike className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[13px] ">Favourite Offers</p>
+          </div>
+          <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+            <FaUserFriends className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[13px] ">Trade Partners</p>
           </div>
           <div
-            className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] "
+            className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
             onClick={() => {
-              // safeNavigate("/messages");
               setIsNavOption(false);
             }}
           >
-            <FaRegEnvelope className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] "> Messages</p>
+            <BsChatQuote className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[13px] "> Messages</p>
           </div>
-          <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
-            <FaVenusDouble className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Favourite Vendors</p>
+          <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+            <TbLayoutListFilled className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[13px] ">Trade History</p>
           </div>
-
-          <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
-            <RiExchangeFundsLine className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Trade History</p>
-          </div>
-
-          <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
+          <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
             <LiaUserFriendsSolid className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] ">Invite a friend</p>
+            <p className="text-white text-[13px] ">Invite a friend</p>
           </div>
-          <div className=" flex gap-[15px] items-center p-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[12px] ">
-            <TbHelpCircle className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[15px] "> Help Center</p>
+          <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+            <BiSupport className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[13px] "> Help & Support</p>
           </div>
         </div>
 
-        <div className="w-full h-max flex flex-col gap-[10px]">
-          <p
+        <div className="w-full h-max flex flex-col gap-[8px]">
+          <Button
+            variant="primary"
             onClick={() => {
-              safeNavigate("/offers/marketplace");
+              navigateTo("/offers/marketplace");
               setIsNavOption(false);
             }}
-            className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-white py-[10px] rounded-[12px]"
           >
             Sell Asset
-          </p>
-          <p
+          </Button>
+
+          <Button
+            variant="secondary"
             onClick={() => {
-              safeNavigate("/offers/create");
+              navigateTo("/offers/create");
               setIsNavOption(false);
             }}
-            className="flex-1 flex items-center justify-center text-black text-[15px] font-[600] bg-tradeGreen py-[10px] rounded-[12px]"
           >
             Buy Asset
-          </p>
+          </Button>
         </div>
       </div>
 
@@ -256,34 +250,15 @@ const InAppNav = () => {
       >
         <p
           className="text-white text-[12px] font-[700] py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer"
-          onClick={() => safeNavigate("/account/profile", { replace: true })}
+          onClick={() => navigateTo("/account/profile")}
         >
           Profile
         </p>
-        <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
-          Wallet
-        </p>
-        <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
-          Subscriptions
-        </p>
-        <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
-          Rewards
-        </p>
-        <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
-          Security & privacy
-        </p>
-
-        <p className="text-white text-[12px] font-[600] py-[8px] px-[15px]  rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer">
-          Support
-        </p>
-        <div className="border-t border-tradeAshExtraLight"></div>
         <p
-          className="text-white text-[12px] font-[600]  py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer"
-          onClick={() =>
-            safeNavigate("/logout", { state: { from: location.pathname } })
-          }
+          className="text-white text-[12px] font-[700] py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer border-t border-tradeAshExtraLight"
+          onClick={() => navigateTo("/account/setting")}
         >
-          Log out
+          Setting
         </p>
       </div>
     </>

@@ -3,8 +3,8 @@ import { FaInfoCircle } from "react-icons/fa";
 import { LuArrowUpToLine } from "react-icons/lu";
 import { FiPlus } from "react-icons/fi";
 import { PiArrowDownFill } from "react-icons/pi";
-
 import { CiShop } from "react-icons/ci";
+import { BsSafe2Fill } from "react-icons/bs";
 
 const MyWallet = () => {
   return (
@@ -42,23 +42,48 @@ const MyWallet = () => {
             </p>
           </div>
 
-          <div className="flex flex-co gap-2">
-            <div className="flex items-center gap-2">
-              <p className="text-tradeFadeWhite text-xs font-semibold">
-                Profit today
-              </p>
-
-              <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                <p className="text-tradeGreen text-xs font-medium">
-                  <PiArrowDownFill />
+          <div className="flex md:flex-row flex-col justify-between">
+            <div className="flex flex-co gap-2">
+              <div className="flex items-center gap-2">
+                <p className="text-tradeFadeWhite text-xs font-semibold">
+                  Escrow Balance:
                 </p>
+
+                <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                  <p className="text-tradeFadeWhite text-xs font-medium">
+                    <BsSafe2Fill />
+                  </p>
+                </div>
+              </div>
+              <div className="flex justify-between items-center gap-2">
+                <div>
+                  <p className="text-white text-sm font-semibold">
+                    = #28,352.00
+                  </p>
+                </div>
+                <div></div>
               </div>
             </div>
-            <div className="flex justify-between items-center gap-2">
-              <div>
-                <p className="text-white text-sm font-semibold">+ #28,352.00</p>
+            <div className="flex flex-co gap-2">
+              <div className="flex items-center gap-2">
+                <p className="text-tradeFadeWhite text-xs font-semibold">
+                  Max Profit today
+                </p>
+
+                <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                  <p className="text-tradeGreen text-xs font-medium">
+                    <FiPlus />
+                  </p>
+                </div>
               </div>
-              <div></div>
+              <div className="flex justify-between items-center gap-2">
+                <div>
+                  <p className="text-white text-sm font-semibold">
+                    + #28,352.00
+                  </p>
+                </div>
+                <div></div>
+              </div>
             </div>
           </div>
         </div>

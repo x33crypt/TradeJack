@@ -16,7 +16,7 @@ import { IoExtensionPuzzleOutline } from "react-icons/io5";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FaAward } from "react-icons/fa6";
-import Performance from "../profile/Performance";
+import Performance from "../account/profile/Performance";
 import { useDashboard } from "@/context/DashboardContext";
 
 const DashMain = () => {

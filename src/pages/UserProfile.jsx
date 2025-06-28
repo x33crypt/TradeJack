@@ -1,10 +1,10 @@
 import Footer from "@/components/Footer";
 import MarketTopNav from "@/components/InAppNav";
 import React, { useState, useEffect, useRef } from "react";
-import Performance from "@/components/profile/Performance";
-import PersonalInfo from "@/components/profile/PersonalInfo";
-import StatsBoard from "@/components/profile/StatsBoard";
-import HeroEdit from "@/components/profile/HeroEdit";
+import Performance from "@/components/account/profile/Performance";
+import PersonalInfo from "@/components/account/profile/PersonalInfo";
+import StatsBoard from "@/components/account/profile/StatsBoard";
+import HeroEdit from "@/components/account/profile/HeroEdit";
 import { useProfile } from "@/context/ProfileContext";
 import { useFetchProfile } from "@/hooks/useFetchProfile";
 import StateHandler from "@/components/stateHandler/StateHandler";

@@ -21,7 +21,7 @@ const StateHandler = ({ loading, error, children }) => {
     return () => clearTimeout(timeout);
   }, [loading]);
 
-  // if (loading || !delayedDone) return <LoadingPage />;
+  if (loading || !delayedDone) return <LoadingPage />;
 
   // Handle error screen if needed
   // if (error) return <ReloadPage />;

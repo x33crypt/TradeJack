@@ -19,7 +19,8 @@ const TransactionCard = () => {
               <MdDateRange className="text-sm text-tradeAshExtraLight" />
             </div>
             <p className="text-white  text-[13px] font-bold">
-              14, Feb, 2024 12:56:09
+              14, Feb, 2024{" "}
+              <span className="text-tradeFadeWhite">12:56:09</span>
             </p>
           </div>
         </div>
@@ -30,20 +31,17 @@ const TransactionCard = () => {
           <div className="flex flex-col flex-1 gap-2">
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <p className="text-tradeFadeWhite text-xs font-medium">
-                Description
+                Transfer To
               </p>
             </div>
-            <p className="text-white text-[13px] font-semibold">
-              Transfer <span className="text-tradeFadeWhite"> to </span>
-              0xSanityy
-            </p>
+            <p className="text-white text-[13px] font-semibold">0xSanityy</p>
           </div>
         </div>
         <div className="flex flex-col flex-1 gap-2">
           <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
             <p className="text-tradeFadeWhite text-xs font-medium">Amount</p>
           </div>
-          <p className="text-white text-[13px] font-semibold">- #109,023.00</p>
+          <p className="text-white text-[13px] font-semibold">- #109,023.00 </p>
         </div>
         <div className="flex flex-col flex-1 gap-2">
           <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">

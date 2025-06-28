@@ -25,10 +25,10 @@ import MyOffer from "./pages/offer/mine/MyOffer";
 import EditMyOffer from "./pages/offer/mine/EditMyOffer";
 import ToastSuccess from "./components/toastCards/ToastSuccess";
 import ToastError from "./components/toastCards/ToastError";
-import KycVerification from "./pages/kycVerification/KycVerification";
-import KycVerificationStep1 from "./pages/kycVerification/KycVerificationStep1";
-import KycVerificationStep2 from "./pages/kycVerification/KycVerificationStep2";
-import KycVerificationStep3 from "./pages/kycVerification/KycVerificationStep3";
+import Kyc from "./pages/kyc/Kyc";
+import KycVerifyStep1 from "./pages/kyc/KycVerifyStep1";
+import KycVerifyStep2 from "./pages/kyc/KycVerifyStep2";
+import KycVerifyStep3 from "./pages/kyc/KycVerifyStep3";
 import AboutMyOffer from "./pages/offer/mine/AboutMyOffer";
 import SummaryMyOffer from "./pages/offer/mine/SummaryMyOffer";
 import Wallet from "./pages/Wallet";
@@ -53,7 +53,6 @@ const App = () => {
 
         {/* User Account */}
         <Route path="/account/profile" element={<UserProfile />} />
-        <Route path="/account/funds" element={<DepositAndWithdraw />} />
         <Route path="/account/security/verify" element={<ConfirmPassword />} />
 
         {/* Account Settings */}
@@ -62,21 +61,18 @@ const App = () => {
         <Route path="/account/settings/email" element={<EditEmail />} />
         <Route path="/account/settings/mobile" element={<EditMobile />} />
         <Route path="/account/settings/address" element={<EditAddress />} />
+        <Route path="/account/settings/kycStatus" element={<Kyc />} />
         <Route
-          path="/account/settings/kycVerification"
-          element={<KycVerification />}
+          path="/account/settings/kycVerify/step1"
+          element={<KycVerifyStep1 />}
         />
         <Route
-          path="/account/settings/kycVerification/step1"
-          element={<KycVerificationStep1 />}
+          path="/account/settings/kycVerify/step2"
+          element={<KycVerifyStep2 />}
         />
         <Route
-          path="/account/settings/kycVerification/step2"
-          element={<KycVerificationStep2 />}
-        />
-        <Route
-          path="/account/settings/kycVerification/step3"
-          element={<KycVerificationStep3 />}
+          path="/account/settings/kycVerify/step3"
+          element={<KycVerifyStep3 />}
         />
 
         {/* Wallet */}

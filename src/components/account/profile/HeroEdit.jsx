@@ -3,7 +3,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { RiEye2Fill } from "react-icons/ri";
 import { GiTopHat } from "react-icons/gi";
 import { TbCameraPlus } from "react-icons/tb";
-import image from "../../assets/landingImg4.JPG";
+import image from "../../../assets/landingImg4.JPG";
 import { FaUserFriends } from "react-icons/fa";
 
 const HeroEdit = ({ profile }) => {
