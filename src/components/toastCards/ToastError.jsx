@@ -8,9 +8,9 @@ const ToastError = () => {
   return (
     <div
       className="fixed z-50 w-full px-[15px] md:px-[2.5%] lg:px-0 
-             top-[15px] lg:top-[67px] left-1/2 transform -translate-x-1/2 
+             top-[70px] lg:top-[73px] left-1/2 transform -translate-x-1/2 
              flex justify-center pointer-events-none 
-             lg:justify-end lg:translate-x-0 lg:left-auto lg:right-[40px]"
+              "
     >
       {toast.error && (
         <div
@@ -21,10 +21,10 @@ const ToastError = () => {
               errorMessage: "",
             }))
           }
-          className="flex items-center gap-3 bg-black border border-red-500 p-4 rounded-[10px] shadow-md lg:max-w-[400px] md:max-w-[50%] max-w-full min-w-[300px] toast-animate-fadeInOut cursor-pointer pointer-events-auto"
+          className="flex items-center gap-3 bg-red-600 border border-red-500 p-[12px] rounded-[10px] shadow-md lg:max-w-[400px] md:max-w-[50%] max-w-full min-w-[300px] toast-animate-fadeInOut cursor-pointer pointer-events-auto"
         >
-          <MdError className="text-[16px] text-red-500 shrink-0" />
-          <p className="text-[13px] text-white font-semibold">
+          <MdError className="text-[16px] text-white shrink-0" />
+          <p className="text-xs text-white font-semibold">
             {toast.errorMessage}
           </p>
         </div>

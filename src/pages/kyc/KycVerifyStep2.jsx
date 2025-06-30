@@ -10,6 +10,7 @@ import { useKyc } from "@/context/KycContext";
 import { useLocationData } from "@/hooks/useLocation";
 import Button from "@/components/buttons/Button";
 import SideNav from "@/components/account/nav/SideNav";
+import Footer from "@/components/Footer";
 
 const KycVerifyStep2 = () => {
   const { select, setSelect } = useSelectElement();
@@ -133,11 +134,11 @@ const KycVerifyStep2 = () => {
       return;
     }
 
-    return navigateTo("/account/settings/kycVerify/step3");
+    return navigateTo("/settings/account/kycVerify/3");
   };
 
   const cancelButton = () => {
-    navigateTo("/account/settings/kycVerify/step1");
+    navigateTo("/settings/account/kycVerify/1");
   };
 
   return (
@@ -310,6 +311,7 @@ const KycVerifyStep2 = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

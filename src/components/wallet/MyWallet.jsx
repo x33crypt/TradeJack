@@ -13,7 +13,7 @@ const MyWallet = () => {
         <p className="text-lg font-[700] text-white ">My Wallet</p>
       </div>
       <div className="flex flex-col p-[15px] gap-[10px] h-full">
-        <div className="flex flex-col justify-between h-full p-[12px] gap-[30px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+        <div className="flex flex-col justify-between lg:h-full md:h-[180px] h-[200px] p-[12px] gap-[30px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               <p className="text-tradeFadeWhite text-[13px] font-semibold">
@@ -37,16 +37,16 @@ const MyWallet = () => {
           </div>
 
           <div className="flex flex-col gap-[15px]">
-            <p className="text-[35px] text-white font-semibold leading-none">
+            <p className="text-[35px] text-white font-bold leading-none">
               #162,790.23
             </p>
           </div>
 
-          <div className="flex md:flex-row flex-col justify-between">
+          <div className="flex gap-1 md:flex-row flex-col justify-between">
             <div className="flex flex-co gap-2">
               <div className="flex items-center gap-2">
                 <p className="text-tradeFadeWhite text-xs font-semibold">
-                  Escrow Balance:
+                  Escrow Balance
                 </p>
 
                 <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
@@ -64,10 +64,11 @@ const MyWallet = () => {
                 <div></div>
               </div>
             </div>
+
             <div className="flex flex-co gap-2">
               <div className="flex items-center gap-2">
                 <p className="text-tradeFadeWhite text-xs font-semibold">
-                  Max Profit today
+                  Max Profit Today
                 </p>
 
                 <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">

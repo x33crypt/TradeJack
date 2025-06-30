@@ -11,7 +11,7 @@ import { TbFileInvoice } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import { RiGift2Fill } from "react-icons/ri";
 
-const DashSideNav = () => {
+const DasHboardMenu = () => {
   const navigateTo = useNavigate();
   return (
     <div className="hidden lg:flex p-[15px] sticky top-[64px] max-h-max border border-t-0 border-tradeAshLight w-[280px] gap-[10px] flex-col">
@@ -80,4 +80,4 @@ const DashSideNav = () => {
   );
 };
 
-export default DashSideNav;
+export default DasHboardMenu;

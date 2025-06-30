@@ -97,11 +97,11 @@ const KycVerifyStep1 = () => {
       return;
     }
 
-    return navigateTo("/account/settings/kycVerify/step2");
+    return navigateTo("/settings/account/kycVerify/2");
   };
 
   const cancelButton = () => {
-    navigateTo("/account/settings/kycStatus");
+    navigateTo("/account/kycStatus");
   };
 
   return (
@@ -232,7 +232,7 @@ const KycVerifyStep1 = () => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

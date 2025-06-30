@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import StateHandler from "@/components/stateHandler/StateHandler";
 import { MdOutlineError } from "react-icons/md";
 import { BsCloudSlashFill } from "react-icons/bs";
+import DasHboardMenu from "@/components/menuBars/DashboardMenu";
+import TradeCard from "@/components/cards/TradeCard";
 
 const MyOffer = () => {
   const { loading, error } = useFetchMyOffers();
@@ -165,13 +167,14 @@ const MyOffer = () => {
         error={error}
         loadingText="Loading your offers. Please wait"
       >
-        <div className="flex lg:flex-row flex-col min-h-svh bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[60px]">
-          <div className="flex flex-col w-full h-full md:border-x md:border-t md:border-b border-neutral-800">
+        <div className="md:pt-[64px] pt-[62px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col gap-[10px] bg-black">
+          <DasHboardMenu />
+          <div className="flex-1 flex flex-col h-max md:border-x md:border-b border-neutral-800">
             <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
               <p className="text-lg text-white font-[700]">My Offers</p>
             </div>
 
-            <div className="sticky top-[60px]  bg-black p-[15px] border-b border-dashed border-tradeAshLight overflow-x-auto">
+            <div className="sticky top-[60px] bg-black p-[15px] border-b border-dashed border-tradeAshLight overflow-x-auto">
               <div className="flex justify-between min-w-max gap-[10px]">
                 <div className="flex items-center gap-2 bg-transparent">
                   <p
@@ -247,24 +250,35 @@ const MyOffer = () => {
             </div>
 
             <div className=" p-[15px] ">
-              <div className="grid grid-cols-1 gap-1 md:gap-0 items-center md:border md:border-t-0 border-tradeAshLight ">
-                {myOffers && offers.length > 0 ? (
-                  offers.map((offer) => (
-                    <MyOfferCard key={offer.id} offer={offer} />
-                  ))
-                ) : (
-                  <div className="flex flex-col gap-2 items-center justify-center text-white py-10">
-                    <p className="text-xl font-semibold">No offers found</p>
-                    <p className="text-[13px] text-tradeFadeWhite text-center max-w-[300px]">
-                      You haven't created any offers yet. Start by creating a
-                      new offer to begin trading.
-                    </p>
-                    <Button onClick={handleToCreateOffer} variant="primary">
-                      Create Offer
-                    </Button>
-                  </div>
-                )}
-              </div>
+              {myOffers && offers.length > 0 ? (
+                <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
+                  {offers.map((offer, index) => (
+                    <div
+                      key={index}
+                      className={`${
+                        index !== offers.length - 1
+                          ? "md:border-b border-tradeAshLight"
+                          : ""
+                      }`}
+                    >
+                      <MyOfferCard offer={offer} />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col gap-[15px] items-center justify-center text-white py-10">
+                  <p className="text-lg font-semibold leading-none">
+                    You don’t have any active offers yet.
+                  </p>
+                  <p className="text-[13px] text-tradeFadeWhite text-center">
+                    Create your first offer to start connecting with traders and
+                    growing your activity.
+                  </p>
+                  <Button onClick={handleToCreateOffer} variant="primary">
+                    Create New Offer
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>

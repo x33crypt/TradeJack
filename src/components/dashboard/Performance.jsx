@@ -12,7 +12,7 @@ const Performance = () => {
         <div className="flex-1 flex flex-col gap-[10px] p-[12px]  bg-tradeAsh hover:bg-tradeAshLight rounded-[10px] border border-tradeAshLight overflow-hidden cursor-pointer transition-all duration-300 ">
           <div className="flex items-center justify-between">
             <p className="text-tradeFadeWhite text-[13px] font-semibold">
-              Average Weekly Visitors
+              Average Monthly Purchase
             </p>
 
             <div className="flex gap-2">

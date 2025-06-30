@@ -16,7 +16,7 @@ const PersonalInfo = ({ profile }) => {
           {/* Username */}
           <div
             className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-            onClick={() => navigateTo("/account/settings/username")}
+            onClick={() => navigateTo("/settings/account/name")}
           >
             <div className="flex-1 flex justify-between gap-[2px]">
               <p className="text-[13px] font-[600] text-white">Username</p>
@@ -48,11 +48,11 @@ const PersonalInfo = ({ profile }) => {
 
           {/* Email */}
           <div
-            className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-            onClick={() => navigateTo("/account/settings/email")}
+            className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
+            onClick={() => navigateTo("/settings/account/email")}
           >
             <div className="flex-1 flex justify-between gap-[2px]">
-              <p className="text-[13px] font-[600] text-white">Email</p>
+              <p className="text-[13px] font-[600] text-white">Email address</p>
               <p className="text-tradeFadeWhite text-[13px] font-[600]">
                 {profile?.email || "Not set"}
               </p>
@@ -68,10 +68,10 @@ const PersonalInfo = ({ profile }) => {
           {/* KYC */}
           <div
             className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-            onClick={() => navigateTo("/account/settings/kycStatus")}
+            onClick={() => navigateTo("/account/kycStatus")}
           >
             <div className="flex-1 flex justify-between gap-[2px]">
-              <p className="text-[13px] font-[600] text-white">KYC Status</p>
+              <p className="text-[13px] font-[600] text-white">KYC status</p>
               <p className="text-tradeFadeWhite text-[13px] font-[600]">
                 {profile?.kycStatus || "Not verified"}
               </p>
@@ -110,10 +110,10 @@ const PersonalInfo = ({ profile }) => {
           {/* Mobile */}
           <div
             className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-            onClick={() => navigateTo("/account/settings/mobile")}
+            onClick={() => navigateTo("/settings/account/mobile")}
           >
             <div className="flex-1 flex justify-between gap-[2px]">
-              <p className="text-[13px] font-[600] text-white">Mobile Number</p>
+              <p className="text-[13px] font-[600] text-white">Mobile number</p>
               <p className="text-tradeFadeWhite text-[13px] font-[600]">
                 {profile?.phone || "Not set"}
               </p>
@@ -126,7 +126,7 @@ const PersonalInfo = ({ profile }) => {
           {/* Address */}
           <div
             className="flex items-center py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight cursor-pointer transition-all duration-300"
-            onClick={() => navigateTo("/account/settings/address")}
+            onClick={() => navigateTo("/account/address")}
           >
             <div className="flex-1 flex justify-between gap-[2px]">
               <p className="text-[13px] font-[600] text-white">Address</p>
@@ -140,38 +140,18 @@ const PersonalInfo = ({ profile }) => {
           </div>
         </div>
 
-        <div className=" flex flex-col  bg-tradeAsh rounded-[10px] border border-tradeAshLight overflow-hidden">
-          <div
-            className="flex items-center  py-3 px-3  bg-tradeAsh hover:bg-tradeAshLight   cursor-pointer transition-all duration-300 "
-            // onClick={() => navigateTo("/account/update/name")}
-          >
+        {/* <div className=" flex flex-col  bg-tradeAsh rounded-[10px] border border-tradeAshLight overflow-hidden">
+          <div className="flex items-center  py-3 px-3  bg-tradeAsh hover:bg-tradeAshLight   cursor-pointer transition-all duration-300 ">
             <div className="flex-1 flex  justify-between gap-[2px]  bg-tradePurpl ">
               <p className="text-[13px] font-[600] text-white">
-                Management of Account
+                Manage account
               </p>
             </div>
             <div className="text-white text-[22px]">
               <MdKeyboardArrowRight />
             </div>
           </div>
-        </div>
-
-        <div className=" flex flex-col  bg-tradeAsh rounded-[10px] border border-tradeAshLight overflow-hidden">
-          <div
-            className="flex items-center  py-3 px-3  bg-tradeAsh hover:bg-tradeAshLight cursor-pointer transition-all duration-300 "
-            // onClick={() => navigateTo("/account/update/name")}
-          >
-            <div className="flex-1 flex flex-col justify-between gap-[2px]  bg-tradePurpl ">
-              <p className="text-[13px] font-[600] text-white">Trade Partner</p>
-              <p className="text-tradeFadeWhite text-xs font-[600]">
-                Manage your relationship
-              </p>
-            </div>
-            <div className="text-white text-[22px]">
-              <MdKeyboardArrowRight />
-            </div>
-          </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -194,7 +194,9 @@ const MarketCard = (props) => {
           <p className="text-xs text-tradeFadeWhite font-semibold">
             Accepted Currency
           </p>
-          <p className="font-bold text-white text-[13px]">United State Dollars</p>
+          <p className="font-bold text-white text-[13px]">
+            United State Dollars
+          </p>
         </div>
 
         {/* Middle Section: Purchase Limits */}

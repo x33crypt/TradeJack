@@ -17,7 +17,7 @@ const Overview = () => {
                   <PiArrowDownLeftFill />
                 </p>
               </div>
-              <p className="text-white text-sm font-semibold">
+              <p className="text-white text-[13px] font-semibold">
                 + # 874,352.00{" "}
               </p>
             </div>
@@ -27,7 +27,7 @@ const Overview = () => {
                   <PiArrowUpRightFill />
                 </p>
               </div>
-              <p className="text-white text-sm font-semibold">
+              <p className="text-white text-[13px] font-semibold">
                 - # 505,352.00{" "}
               </p>
             </div>

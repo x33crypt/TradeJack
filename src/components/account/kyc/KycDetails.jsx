@@ -6,7 +6,7 @@ const KycDetails = () => {
   const navigateTo = useNavigate();
 
   const nextButton = () => {
-    navigateTo("/account/settings/kycVerify/step1");
+    navigateTo("/settings/account/kycVerify/1");
   };
 
   return (

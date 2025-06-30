@@ -12,6 +12,7 @@ import { RiFileUploadFill } from "react-icons/ri";
 import { kycVerify } from "@/utils/kyc/kycVerify";
 import Button from "@/components/buttons/Button";
 import SideNav from "@/components/account/nav/SideNav";
+import Footer from "@/components/Footer";
 
 const KycVerifyStep3 = () => {
   const { select, setSelect } = useSelectElement();
@@ -187,7 +188,7 @@ const KycVerifyStep3 = () => {
   };
 
   const cancelButton = () => {
-    navigateTo("/account/settings/kycVerify/step2");
+    navigateTo("/settings/account/kycVerify/2");
   };
 
   return (
@@ -380,6 +381,7 @@ const KycVerifyStep3 = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

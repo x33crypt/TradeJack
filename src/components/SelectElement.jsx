@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelectElement } from "@/context/SelectElementContext";
 import LockByScroll from "./LockByScroll";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import Button from "./buttons/Button";
 
 const SelectElement = () => {
   const { select, setSelect } = useSelectElement();
@@ -31,12 +32,12 @@ const SelectElement = () => {
       <div
         className={`${
           select?.selectOne ? "flex" : "hidden"
-        } bg-tradeAsh md:w-[500px] w-full flex-col items-center p-[15px] gap-[15px] rounded-[14px]`}
+        } bg-tradeAsh md:w-[400px] w-full flex-col items-center p-[12px] gap-[15px] rounded-[14px]`}
       >
-        <div className="flex h-[43px] w-full rounded-[8px] px-[10px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
+        <div className="flex  w-full rounded-[10px] px-[12px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
           <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
           <input
-            className="outline-none lg:h-[30px] h-[35px] text-white text-[14px] placeholder:text-tradeFadeWhite w-full bg-transparent"
+            className="outline-none lg:h-[30px] h-[35px] text-white text-[13px] placeholder:text-tradeFadeWhite w-full bg-transparent"
             type="text"
             placeholder={`Search ${select?.element}`}
             value={searchInput}
@@ -55,9 +56,9 @@ const SelectElement = () => {
                   <div
                     key={index}
                     onClick={() => handleUpdate(option)}
-                    className="px-[10px] py-[10px]  hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
+                    className="p-[10px]  hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
                   >
-                    <p className="text-[14px]">{option}</p>
+                    <p className="text-[13px]">{option}</p>
                   </div>
                 ))}
             </div>
@@ -72,7 +73,7 @@ const SelectElement = () => {
                     onClick={() => handleUpdate(option)}
                     className="px-[10px] py-[10px]  hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
                   >
-                    <p className="text-[14px]">{option}</p>
+                    <p className="text-[13px]">{option}</p>
                   </div>
                 ))}
             </div>
@@ -84,12 +85,12 @@ const SelectElement = () => {
       <div
         className={`${
           select?.selectTwo ? "flex" : "hidden"
-        } bg-tradeAsh md:w-[500px] w-full flex-col items-center p-[15px] gap-[15px] rounded-[14px]`}
+        } bg-tradeAsh md:w-[400px] w-full flex-col items-center p-[12px] gap-[15px] rounded-[14px]`}
       >
         <div className="flex h-[43px] w-full rounded-[8px] px-[10px] py-[5px] gap-[10px] items-center border border-tradeAshLight">
           <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
           <input
-            className="outline-none lg:h-[30px] h-[35px] text-white text-[14px] placeholder:text-tradeFadeWhite w-full bg-transparent"
+            className="outline-none lg:h-[30px] h-[35px] text-white text-[13px] placeholder:text-tradeFadeWhite w-full bg-transparent"
             type="text"
             placeholder={`Search ${select?.element}`}
             value={searchInput}
@@ -112,9 +113,9 @@ const SelectElement = () => {
                     onClick={() => handleUpdate({ code, name })}
                     className=" relative px-[10px] py-[10px] hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
                   >
-                    <p className="text-[14px]">{name}</p>
+                    <p className="text-[13px]">{name}</p>
 
-                    <p className=" absolute right-1.5 top-1/2 -translate-y-1/2 text-[14px]  border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
+                    <p className=" absolute right-1.5 top-1/2 -translate-y-1/2 text-[13px]  border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
                       {code}
                     </p>
                   </div>
@@ -133,9 +134,9 @@ const SelectElement = () => {
                     onClick={() => handleUpdate({ code, name })}
                     className="relative px-[10px] py-[10px] hover:bg-tradeLightGreen text-white hover:text-black border border-tradeAshLight hover:border-tradeGreen rounded-[8px] cursor-pointer transition-all duration-300"
                   >
-                    <p className="text-[14px]">{name}</p>
+                    <p className="text-[13px]">{name}</p>
 
-                    <p className=" absolute right-1.5 top-1/2 -translate-y-1/2 text-[14px]  border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
+                    <p className=" absolute right-1.5 top-1/2 -translate-y-1/2 text-[13px]  border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
                       {code}
                     </p>
                   </div>
@@ -145,12 +146,13 @@ const SelectElement = () => {
         </div>
       </div>
 
-      <div
-        className="md:w-[500px] w-full bg-tradeOrange text-black hover:text-white border border-tradeAshLight hover:border-tradeAshExtraLight p-[12px] rounded-[10px] flex justify-center items-center cursor-pointer transition-all duration-300"
+      <Button
         onClick={() => setSelect({ ...select, state: false })}
+        variant="secondary"
+        maxWidth="md:w-[400px]"
       >
-        <p className="text-[14px] font-[700] ">Cancel</p>
-      </div>
+        Cancel
+      </Button>
     </div>
   );
 };

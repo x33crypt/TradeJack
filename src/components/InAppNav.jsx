@@ -20,7 +20,10 @@ import { BsChatQuote } from "react-icons/bs";
 import { TbLayoutListFilled } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import { TbFileInvoice } from "react-icons/tb";
+import { IoMdSettings } from "react-icons/io";
 import Button from "./buttons/Button";
+import { GiTopHat } from "react-icons/gi";
+import { RiGift2Fill } from "react-icons/ri";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -64,6 +67,7 @@ const InAppNav = () => {
 
   return (
     <>
+      {/* Desktop Nav */}
       <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] p-[15px] h-[62px] md:h-[65px] flex justify-between items-center border-b border-neutral-800 ">
         <div className="flex items-center lg:gap-[30px] gap-[15px]">
           <div
@@ -135,27 +139,27 @@ const InAppNav = () => {
           </div>
           <div
             className="cursor-pointer lg:w-[32px] sm:w-[30px] w-[32px]"
-            onClick={() => setIsProfileOption((prev) => !prev)}
+            onClick={() => navigateTo("/account/profile")}
           >
             <img className=" rounded-full" src={landingImg4} alt="" />
           </div>
         </div>
       </div>
 
+      {/* Mobile Nav */}
       <div
         className={`${
           isNavOption ? "flex" : "hidden"
         } z-50 fixed right-0 left-0 top-[60px] bottom-0 bg-black p-[15px] pt-[13px] pb-[16px] lg:hidden flex flex-col justify-between`}
       >
-        <div className="flex gap-[8px] p-[8px] items-center bg-tradeAsh border border-tradeAshExtraLight rounded-[10px]">
-          <HiMiniMagnifyingGlass className="text-tradeFadeWhite text-[20px]" />
+        <div className="flex gap-[8px] p-[12px] rounded-[10px] text-sm font-semibold items-center bg-tradeAsh border border-tradeAshExtraLight">
+          <FaMagnifyingGlass className="text-tradeFadeWhite text-[18px]" />
 
           <p className=" text-tradeFadeWhite text-[13px] font-semibold">
             Hello, <span className="text-white">x33crypt.</span> How can we help
             ?
           </p>
         </div>
-
         <div className="flex flex-col gap-[5px]">
           <div
             onClick={() => {
@@ -185,15 +189,15 @@ const InAppNav = () => {
             className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
           >
             <TbFileInvoice className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px] ">My Offers</p>
+            <p className="text-white text-[13px] ">My offers</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
             <TbFileLike className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px] ">Favourite Offers</p>
+            <p className="text-white text-[13px] ">Favourite offers</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
             <FaUserFriends className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px] ">Trade Partners</p>
+            <p className="text-white text-[13px] ">Trade partners</p>
           </div>
           <div
             className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
@@ -206,7 +210,11 @@ const InAppNav = () => {
           </div>
           <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
             <TbLayoutListFilled className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px] ">Trade History</p>
+            <p className="text-white text-[13px] ">Trade history</p>
+          </div>
+          <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+            <RiGift2Fill className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[13px] ">Rewards</p>
           </div>
           <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
             <LiaUserFriendsSolid className="text-[16px] text-tradeFadeWhite" />
@@ -214,7 +222,14 @@ const InAppNav = () => {
           </div>
           <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
             <BiSupport className="text-[16px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px] "> Help & Support</p>
+            <p className="text-white text-[13px] "> Help & support</p>
+          </div>
+          <div
+            onClick={() => navigateTo("/settings")}
+            className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
+          >
+            <IoMdSettings className="text-[16px] text-tradeFadeWhite" />
+            <p className="text-white text-[13px] ">Settings</p>
           </div>
         </div>
 
@@ -241,7 +256,7 @@ const InAppNav = () => {
         </div>
       </div>
 
-      <div
+      {/* <div
         ref={navOptionRef}
         className={` ${
           isProfileOption ? "flex" : "hidden"
@@ -260,7 +275,7 @@ const InAppNav = () => {
         >
           Setting
         </p>
-      </div>
+      </div> */}
     </>
   );
 };

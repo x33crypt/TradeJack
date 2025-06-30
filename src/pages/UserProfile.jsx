@@ -36,7 +36,7 @@ const UserProfile = () => {
           <div className="flex lg:flex-row flex-col gap-[10px] ">
             <PersonalInfo profile={profile} />
 
-            <div className="lg:w-[400px] ">
+            <div className="lg:w-[350px] ">
               <Performance />
             </div>
           </div>
