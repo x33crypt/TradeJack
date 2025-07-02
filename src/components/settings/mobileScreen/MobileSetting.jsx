@@ -12,156 +12,198 @@ import { MdOutlinePrivacyTip } from "react-icons/md";
 import { MdOutlineSecurity } from "react-icons/md";
 import { FaInfoCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { RiUserCommunityFill } from "react-icons/ri";
+import { IoArrowRedoOutline } from "react-icons/io5";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 const MobileSettings = () => {
   const navigateTo = useNavigate();
 
   return (
-    <div className="flex lg:hidden flex-col flex-1 md:border-x md:border-b md:border-t border-neutral-800">
+    <div className="flex lg:hidden flex-col flex-1 md:border-x md md:border-t border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
         <div className="flex gap-[15px] items-center">
           <IoMdArrowRoundBack className="text-white  text-[20px]" />
 
           <p className="text-lg text-white font-[700]">Settings</p>
         </div>
-
         <FaMagnifyingGlass className="text-white  text-[20px]" />
       </div>
 
       <div className="flex flex-col p-[15px] gap-[10px] bg-tradeAs">
-        <div className="flex flex-col bg-tradeAsh rounded-[15px] overflow-hidden border border-tradeAshLight">
-          <div
-            onClick={() => navigateTo("/settings/account")}
-            className="flex gap-4 border-b border-tradeAshLight p-3 items-center shadow-sm hover:shadow-md transition-shadow duration-200"
-          >
-            <div className="">
-              <div className="text-tradeFadeWhite text-[30px]">
-                <FaUserCircle className="" />
+        <div className="px-[12px] bg-tradeAsh rounded-[15px]">
+          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
+            <div
+              onClick={() => navigateTo("/settings/account")}
+              className="flex gap-4 items-center"
+            >
+              <div className="">
+                <div className="text-tradeGreen text-[20px]">
+                  <FaUserCircle className="" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-white text-sm font-semibold leading-none">
+                  Account
+                </p>
               </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-white text-sm font-semibold leading-none">
-                Account
-              </p>
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                sghxvsjhvxs
-              </p>
-            </div>
-          </div>
 
-          <div className="flex gap-4 p-3 items-center shadow-sm hover:shadow-md transition-shadow duration-200">
-            <div className="">
-              <div className="text-tradeFadeWhite text-[30px]">
-                <IoWalletOutline className="" />
-              </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-white text-sm font-semibold leading-none">
-                Manage wallet
-              </p>
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                sghxvsjhvxs
-              </p>
+            <div className="text-tradeFadeWhite text-[22px]">
+              <MdKeyboardArrowRight />
             </div>
           </div>
-        </div>
-
-        <div className="flex flex-col bg-tradeAsh rounded-[15px] overflow-hidden border border-tradeAshLight">
-          <div className="flex gap-4 border-b border-tradeAshLight p-3 items-center shadow-sm hover:shadow-md transition-shadow duration-200">
-            <div className="">
-              <div className="text-tradeFadeWhite text-[30px]">
-                <RiTimerFlashLine className="" />
+          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
+            <div className="flex gap-4 items-center">
+              <div className="">
+                <div className="text-tradeGreen text-[20px]">
+                  <IoWalletOutline className="" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-white text-sm font-semibold leading-none">
+                  Manage wallet
+                </p>
               </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-white text-sm font-semibold leading-none">
-                Promotions
-              </p>
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                sghxvsjhvxs
-              </p>
+            <div className="text-tradeFadeWhite text-[22px]">
+              <MdKeyboardArrowRight />
             </div>
           </div>
-          <div className="flex gap-4 border-b border-tradeAshLight p-3 items-center shadow-sm hover:shadow-md transition-shadow duration-200">
-            <div className="">
-              <div className="text-tradeFadeWhite text-[30px]">
-                <MdOutlinePrivacyTip className="" />
+          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
+            <div className="flex gap-4 items-center">
+              <div className="">
+                <div className="text-tradeGreen text-[20px]">
+                  <RiTimerFlashLine className="" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-white text-sm font-semibold leading-none">
+                  Promotions
+                </p>
               </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-white text-sm font-semibold leading-none">
-                Privacy & safety
-              </p>
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                sghxvsjhvxs
-              </p>
+            <div className="text-tradeFadeWhite text-[22px]">
+              <MdKeyboardArrowRight />
             </div>
           </div>
-          <div className="flex gap-4 border- border-tradeAshLight p-3 items-center shadow-sm hover:shadow-md transition-shadow duration-200">
-            <div className="">
-              <div className="text-tradeFadeWhite text-[30px]">
-                <IoNotificationsOutline className="" />
+          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
+            <div className="flex gap-4 items-center">
+              <div className="">
+                <div className="text-tradeGreen text-[20px]">
+                  <MdOutlinePrivacyTip className="" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-white text-sm font-semibold leading-none">
+                  Privacy & safety
+                </p>
               </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-white text-sm font-semibold leading-none">
-                Notifications
-              </p>
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                sghxvsjhvxs
-              </p>
+            <div className="text-tradeFadeWhite text-[22px]">
+              <MdKeyboardArrowRight />
             </div>
           </div>
-        </div>
-
-        <div className="flex flex-col bg-tradeAsh rounded-[15px] overflow-hidden border border-tradeAshLight">
-          <div className="flex gap-4 border-b border-tradeAshLight p-3 items-center shadow-sm hover:shadow-md transition-shadow duration-200">
-            <div className="">
-              <div className="text-tradeFadeWhite text-[30px]">
-                <MdOutlineSecurity className="" />
+          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
+            <div className="flex gap-4 items-center">
+              <div className="">
+                <div className="text-tradeGreen text-[20px]">
+                  <IoNotificationsOutline className="" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-white text-sm font-semibold leading-none">
+                  Notifications
+                </p>
               </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-white text-sm font-semibold leading-none">
-                Security & access
-              </p>
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                sghxvsjhvxs
-              </p>
+            <div className="text-tradeFadeWhite text-[22px]">
+              <MdKeyboardArrowRight />
             </div>
           </div>
-
-          <div className="flex gap-4 p-3 items-center shadow-sm hover:shadow-md transition-shadow duration-200">
-            <div className="">
-              <div className="text-tradeFadeWhite text-[30px]">
-                <BiSupport className="" />
+          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
+            <div className="flex gap-4 items-center">
+              <div className="">
+                <div className="text-tradeGreen text-[20px]">
+                  <MdOutlineSecurity className="" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-white text-sm font-semibold leading-none">
+                  Security & access
+                </p>
               </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-white text-sm font-semibold leading-none">
-                Help & support
-              </p>
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                sghxvsjhvxs
-              </p>
+            <div className="text-tradeFadeWhite text-[22px]">
+              <MdKeyboardArrowRight />
             </div>
           </div>
-        </div>
-
-        <div className="flex flex-col bg-tradeAsh rounded-[15px] overflow-hidden border border-tradeAshLight">
-          <div className="flex gap-4 p-3 items-center shadow-sm hover:shadow-md transition-shadow duration-200">
-            <div className="">
-              <div className="text-tradeFadeWhite text-[30px]">
-                <FaInfoCircle className="" />
+          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
+            <div className="flex gap-4 items-center">
+              <div className="">
+                <div className="text-tradeGreen text-[20px]">
+                  <BiSupport className="" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-white text-sm font-semibold leading-none">
+                  Help & support
+                </p>
               </div>
             </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-white text-sm font-semibold leading-none">
-                About
-              </p>
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                sghxvsjhvxs
-              </p>
+            <div className="text-tradeFadeWhite text-[22px]">
+              <MdKeyboardArrowRight />
+            </div>
+          </div>
+          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
+            <div className="flex gap-4 items-center">
+              <div className="">
+                <div className="text-tradeGreen text-[20px]">
+                  <RiUserCommunityFill className="" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-white text-sm font-semibold leading-none">
+                  Community
+                </p>
+              </div>
+            </div>
+            <div className="text-tradeFadeWhite text-[22px]">
+              <MdKeyboardArrowRight />
+            </div>
+          </div>
+          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
+            <div className="flex gap-4 items-center">
+              <div className="">
+                <div className="text-tradeGreen text-[20px]">
+                  <IoArrowRedoOutline className="" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-white text-sm font-semibold leading-none">
+                  Refer friends
+                </p>
+              </div>
+            </div>
+            <div className="text-tradeFadeWhite text-[22px]">
+              <MdKeyboardArrowRight />
+            </div>
+          </div>
+          <div className="flex justify-between items-center py-[12px] border- border-tradeAshLight">
+            <div className="flex gap-4 items-center">
+              <div className="">
+                <div className="text-tradeGreen text-[20px]">
+                  <FaInfoCircle className="" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-white text-sm font-semibold leading-none">
+                  About
+                </p>
+              </div>
+            </div>
+            <div className="text-tradeFadeWhite text-[22px]">
+              <MdKeyboardArrowRight />
             </div>
           </div>
         </div>

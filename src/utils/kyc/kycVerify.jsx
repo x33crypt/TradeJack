@@ -115,7 +115,6 @@ export async function kycVerify(kycDetails) {
   };
   const sanitizedEmail = sanitizeInput(email);
 
-  
   const payload = {
     firstName: sanitizedFirstname,
     lastName: sanitizedLastname,

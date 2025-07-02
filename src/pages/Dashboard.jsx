@@ -41,7 +41,7 @@ const Dashboard = () => {
                   <Stats dashboard={dashboard} />
                 </div>
               </div>
-              <div className="lg:w-[350px] w-full lg:flex flex-col gap-[10px]">
+              <div className="lg:w-[350px] w-full flex flex-col gap-[10px]">
                 <Limits dashboard={dashboard} />
                 <Performance dashboard={dashboard} />
               </div>

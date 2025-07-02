@@ -126,7 +126,7 @@ const MyOfferCard = ({ offer }) => {
             </div>
           </div>
           <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
-            <div className="flex items-center gap-1 bg-transparent px-[5px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+            <div className="flex items-center gap-1 bg-tradeGreen/10 px-[5px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <RiRadioButtonLine className="text-sm text-tradeGreen" />
             </div>
             <p className="text-white  text-sm font-semibold">Active</p>

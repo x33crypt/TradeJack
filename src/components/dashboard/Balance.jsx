@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { BsSafe2Fill } from "react-icons/bs";
 import { formatDecimal } from "@/utils/numberFormat/numberFormat";
 
 const Balance = ({ dashboard }) => {
+  const [showBalance, setShowBalance] = useState(false);
+
+  const toggleBalanceVisibility = () => {
+    setShowBalance((prev) => !prev);
+  };
+
+  console.log(showBalance);
+
   return (
-    <div className="rounded-2xl overflow-hidden border border-tradeAshLight">
+    <div className="flex flex-col justify-betwee h-[190px] p-[12px] gap-[10px] bg-tradeGreen rounded-[15px] border border-tradeAshLight">
       {/* Available Balance Section */}
-      <div className="bg-tradeGreen p-[12px] flex flex-col gap-[15px]">
+      <div className="flex-1 flex flex-col gap-[10px] ">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
             <p className="text-black text-[13px] font-semibold">
@@ -21,67 +30,70 @@ const Balance = ({ dashboard }) => {
             </div>
           </div>
 
-          <div className="flex gap-1 items-center cursor-pointer">
-            <p className="text-[13px] font-semibold">Hide</p>
-            <div className="text-black  text-[14px] ">
-              <FaEye />
+          <div className="flex items-cente gap-[5px]">
+            <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-black text-xs font-bold">USD </p>
+            </div>
+            <div
+              onClick={toggleBalanceVisibility}
+              className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer"
+            >
+              {showBalance ? (
+                <FaEye className="text-sm text-black" />
+              ) : (
+                <FaEyeSlash className="text-sm text-black" />
+              )}
             </div>
           </div>
         </div>
 
         <div>
           {dashboard?.balances ? (
-            <p className="text-black text-[35px] font-bold leading-none">
-              ${formatDecimal(dashboard?.balances?.available_balance)}{" "}
-              {/* <span className="text-black">
-                {dashboard?.balances?.currency ?? ""}
-              </span> */}
+            <p
+              className={`text-black text-[30px] font-bold leading-none transition-all duration-300 ease-in-out transform ${
+                showBalance ? "opacity-100 scale-100" : "opacity-50 scale-95"
+              }`}
+            >
+              {showBalance
+                ? `$${formatDecimal(dashboard?.balances?.available_balance)}`
+                : "****"}
             </p>
           ) : (
             <p className="text-black text-3xl md:text-3xl font-extrabold tracking-tight">
-              --.--{" "}
-              <span className="text-black">
-                {dashboard?.balances?.currency ?? ""}
-              </span>
+              --.--
             </p>
           )}
         </div>
       </div>
-
+      <div className="border-t border-tradeAshLight"></div>
       {/* Escrow Account Section */}
-      <div className="bg-tradeAsh p-[12px] flex flex-col gap-[15px]">
+      <div className="flex-1 flex flex-col gap-[10px]">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
-            <p className="text-white text-[13px] font-semibold">
+            <p className="text-black text-[13px] font-semibold">
               Escrow balance
             </p>
 
-            <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <p className="text-tradeFadeWhite text-xs font-medium">
-                <BsSafe2Fill />
-              </p>
+            <div className="text-black hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
+              <FaInfoCircle />
             </div>
-          </div>
-
-          <div className="text-tradeFadeWhite hover:text-tradeOrange cursor-pointer text-[14px] transition-all duration-300">
-            <FaInfoCircle />
           </div>
         </div>
 
         <div>
           {dashboard?.balances ? (
-            <p className="text-white text-[35px] font-bold leading-none">
-              ${formatDecimal(dashboard.balances.escrow_balance)}{" "}
-              {/* <span className="text-white">
-                {dashboard?.balances?.currency ?? ""}
-              </span> */}
+            <p
+              className={`text-black text-[30px] font-bold leading-none transition-all duration-300 ease-in-out transform ${
+                showBalance ? "opacity-100 scale-100" : "opacity-50 scale-95"
+              }`}
+            >
+              {showBalance
+                ? `$${formatDecimal(dashboard.balances.escrow_balance)}`
+                : "****"}
             </p>
           ) : (
-            <p className="text-white text-3xl md:text-3xl font-extrabold tracking-tight">
-              --.--{" "}
-              <span className="text-white">
-                {dashboard?.balances?.currency ?? ""}
-              </span>
+            <p className="text-black text-3xl md:text-3xl font-extrabold tracking-tight">
+              --.--
             </p>
           )}
         </div>

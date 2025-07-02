@@ -1,5 +1,6 @@
 import React from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
+
 import { useNavigate } from "react-router-dom";
 
 const PersonalInfo = ({ profile }) => {

@@ -16,7 +16,7 @@ const Limits = ({ dashboard }) => {
       <div className="flex flex-col p-[15px] gap-[10px] h-full">
         <div className="flex flex-col gap-[10px] p-[12px] rounded-[15px] bg-tradeAsh border border-tradeAshLight">
           <div className="flex items-center gap-[10px]">
-            <div className="flex items-center gap-1 p-2 bg-tradeAsh border border-tradeAshExtraLight rounded-[8px] w-max">
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <p className="text-tradeFadeWhite text-[13px] font-semibold">
                 Minimum
               </p>
@@ -27,7 +27,7 @@ const Limits = ({ dashboard }) => {
             </div>
           </div>
           <div className="flex items-center gap-[10px]">
-            <div className="flex items-center gap-1 p-2 bg-tradeAsh border border-tradeAshExtraLight rounded-[8px] w-max">
+            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <p className="text-tradeFadeWhite text-[13px] font-semibold">
                 Maximum
               </p>

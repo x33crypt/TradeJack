@@ -8,31 +8,30 @@ const OfferStats = () => {
       </div>
 
       <div className="flex-1 flex  flex-col bg-tradeAs p-[15px] gap-[10px]">
-        <div className="flex-1 gap-[10px] flex flex-col justify-between p-[12px] bg-tradeAsh w-full rounded-[15px] ">
+        <div className="flex-1 border border-tradeAshLight gap-[10px] flex flex-col justify-between p-[12px] bg-tradeAsh w-full rounded-[15px] ">
           <div className="flex justify-between ">
-            <p className="text-white text-[13px] font-semibold">
-              Profit Earned :
+            <p className="text-tradeFadeWhite text-[13px] font-semibold">
+              Profit Earned
             </p>
-
-            <p className="text-tradeGreen text-[13px] font-semibold">0.5%</p>
           </div>
-
-          <div className="flex justify-end">
-            <p className="text-white font-bold text-[30px]">3,000 USD</p>
+          <div className="flex items-baseline justify-between ">
+            <p className="text-white font-bold text-[25px]">3,000 USD</p>
+            <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeGreen text-[13px] font-medium">0.5%</p>
+            </div>
           </div>
         </div>
-
-        <div className="flex-1 gap-[10px] flex flex-col justify-between p-[12px] bg-tradeAsh w-full rounded-[15px] ">
+        <div className="flex-1 border border-tradeAshLight gap-[10px] flex flex-col justify-between p-[12px] bg-tradeAsh w-full rounded-[15px] ">
           <div className="flex justify-between ">
-            <p className="text-white text-[13px] font-semibold">
-              Total Traded :
+            <p className="text-tradeFadeWhite text-xs font-semibold">
+              Total Traded
             </p>
-
-            <p className="text-tradeGreen text-[13px] font-semibold">0.5%</p>
           </div>
-
-          <div className="flex justify-end">
-            <p className="text-white font-bold text-[30px]">3,000 USD</p>
+          <div className="flex items-baseline justify-between ">
+            <p className="text-white font-bold text-[25px]">3,000 USD</p>
+            <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <p className="text-tradeGreen text-xs font-medium">0.5%</p>
+            </div>
           </div>
         </div>
       </div>

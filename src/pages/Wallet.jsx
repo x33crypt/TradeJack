@@ -1,6 +1,7 @@
 import DashSideNav from "@/components/dashboard/DashSideNav";
 import Footer from "@/components/Footer";
 import InAppNav from "@/components/InAppNav";
+import LinkedAccount from "@/components/wallet/LinkedAccount";
 import MyWallet from "@/components/wallet/MyWallet";
 import WalletMain from "@/components/wallet/MyWallet";
 import Overview from "@/components/wallet/Overview";

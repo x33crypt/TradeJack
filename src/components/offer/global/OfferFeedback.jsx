@@ -38,7 +38,7 @@ const OfferFeedback = () => {
 
       <div className="p-[15px]">
         <div className="w-full px-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-          {[...Array(5)].map((_, index, array) => (
+          {[...Array(7)].map((_, index, array) => (
             <div
               key={index}
               className={`${
