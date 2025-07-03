@@ -10,8 +10,8 @@ const Overview = () => {
         <p className="text-lg font-[700] text-white ">Overview</p>
       </div>
 
-      <div className="flex h-[300px] lg:h-full p-[15px] flex-col gap-[20px]">
-        <div className="flex-1 flex flex-col gap-[10px] p-[12px]  bg-tradeAsh rounded-[10px] border border-tradeAshLight transition-all duration-300 ">
+      <div className="flex h-full p-[15px]">
+        <div className="flex-1 flex flex-col h-[350px] lg:h-full gap-[10px] p-[12px]  bg-tradeAsh rounded-[10px] border border-tradeAshLight transition-all duration-300 ">
           <div className="flex items-start justify-between">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1">
@@ -41,6 +41,7 @@ const Overview = () => {
               <MdKeyboardArrowDown className="text-tradeFadeWhite" />
             </div>
           </div>
+
           <div className="flex">
             <p className="md:md:text-3xl text-2xl text-white font-[800] leading-none"></p>
           </div>

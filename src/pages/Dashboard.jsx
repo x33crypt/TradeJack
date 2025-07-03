@@ -30,7 +30,7 @@ const Dashboard = () => {
                 <Balance dashboard={dashboard} />
 
                 <Stats dashboard={dashboard} />
-                {/* <Ads /> */}
+                <Ads />
               </div>
 
               <div className="lg:w-[350px] w-full flex flex-col gap-[10px]">

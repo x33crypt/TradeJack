@@ -9,7 +9,7 @@ const Performance = () => {
         <p className="text-lg text-white font-[700]">Performance</p>
       </div>
 
-      <div className="flex h-[300px] lg:h-full p-[15px] flex-col gap-[20px]">
+      <div className="flex h-[350px] lg:h-full p-[15px] flex-col gap-[20px]">
         <div className="flex-1 flex flex-col gap-[10px] p-[12px]  bg-tradeAsh rounded-[10px] border border-tradeAshLight transition-all duration-300 ">
           <div className="flex items-center justify-between">
             <div className="flex flex-col gap-2">

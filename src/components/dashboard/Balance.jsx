@@ -29,7 +29,7 @@ const Balance = ({ dashboard }) => {
           </span>
         </p>
       </div>
-      <p className="flex flex-col gap-[10px] p-[15px]">
+      <div className="flex flex-col gap-[10px] p-[15px]">
         <div className="flex flex-col justify-betwee h-[190px] p-[12px] gap-[10px] bg-tradeGreen rounded-[15px] border border-tradeAshLight">
           {/* Available Balance Section */}
           <div className="flex-1 flex flex-col gap-[10px] ">
@@ -119,77 +119,7 @@ const Balance = ({ dashboard }) => {
             </div>
           </div>
         </div>
-
-        {/* <div className=" grid grid-cols-2 gap-[10px] rounded-[15px] p-[8px bg-tradeAs">
-          <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[15px] p-[12px] rounded-2xl cursor-pointer ho-traborder-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
-            <div className="flex items-center gap-2">
-              <LuFileCheck2 className="text-base text-tradeGreen" />
-
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Successful Trades
-              </p>
-            </div>
-
-            <div className="flex justify-between items-center">
-              <p className="text-white text-[24px] font-bold leading-tight">
-                {dashboard?.activitySummary?.successful_trades ?? "0"}
-              </p>
-              <span className="text-xs text-tradeGreen bg-tradeGreen/10 px-2 py-[2px] rounded-md font-medium">
-                Great job!
-              </span>
-            </div>
-          </div>
-
-          <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[15px] p-[12px] rounded-2xl cursor-pointer ho-traborder-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
-            <div className="flex items-center gap-2">
-              <LuFileX2 className="text-base text-red-600" />
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Unsuccessful Trades
-              </p>
-            </div>
-
-            <div className="flex justify-between items-center">
-              <p className="text-white text-[24px] font-bold leading-tight">
-                {dashboard?.activitySummary?.successful_trades
-                  ? dashboard?.activitySummary?.successful_trades
-                  : "0"}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[15px] p-[12px] rounded-2xl cursor-pointer ho-traborder-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
-            <div className="flex items-center gap-2">
-              <LuFileClock className="text-base text-tradeOrange" />
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Pending Trades
-              </p>
-            </div>
-
-            <div className="flex justify-between items-center">
-              <p className="text-white text-[24px] font-bold leading-tight">
-                {dashboard?.activitySummary?.pending_trades
-                  ? dashboard?.activitySummary?.pending_trades
-                  : "0"}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[15px] p-[12px] rounded-2xl cursor-pointer ho-traborder-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
-            <div className="flex items-center gap-2">
-              <LuFileSearch className="text-base text-tradeFadeWhite" />
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Disputed Trades
-              </p>
-            </div>
-
-            <div className="flex justify-between items-center">
-              <p className="text-white text-[24px] font-bold leading-tight">
-                {dashboard?.openDisputes ? dashboard?.openDisputes : "0"}
-              </p>
-            </div>
-          </div>
-        </div> */}
-      </p>
+      </div>
     </div>
   );
 };
