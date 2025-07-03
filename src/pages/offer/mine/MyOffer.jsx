@@ -14,6 +14,7 @@ import { MdOutlineError } from "react-icons/md";
 import { BsCloudSlashFill } from "react-icons/bs";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import TradeCard from "@/components/cards/TradeCard";
+import { TbInvoice } from "react-icons/tb";
 
 const MyOffer = () => {
   const { loading, error } = useFetchMyOffers();
@@ -174,112 +175,118 @@ const MyOffer = () => {
               <p className="text-lg text-white font-[700]">My Offers</p>
             </div>
 
-            <div className="sticky top-[60px] bg-black p-[15px] border-b border-dashed border-tradeAshLight overflow-x-auto">
-              <div className="flex justify-between min-w-max gap-[10px]">
-                <div className="flex items-center gap-2 bg-transparent">
-                  <p
-                    onClick={handleShowAllOffers}
-                    className={`${
-                      offerFilter?.allOffers
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-neutral-500 border-neutral-800 hover:text-white"
-                    } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    All
-                  </p>
-                  <p
-                    onClick={handleShowActiveOffers}
-                    className={`${
-                      offerFilter?.activeOffers
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-neutral-500 border-neutral-800 hover:text-white"
-                    } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    Active
-                  </p>
-                  <p
-                    onClick={handleShowInActiveOffers}
-                    className={`${
-                      offerFilter?.inactiveOffers
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-neutral-500 border-neutral-800 hover:text-white"
-                    } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    Inactive
-                  </p>
-                  <p
-                    onClick={handleShowDraftedOffers}
-                    className={`${
-                      offerFilter?.draftOffers
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-neutral-500 border-neutral-800 hover:text-white"
-                    } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    My Draft
-                  </p>
-                </div>
+            {myOffers && offers.length > 0 ? (
+              <div>
+                <div className="sticky top-[60px] bg-black p-[15px] border-b border-dashed border-tradeAshLight overflow-x-auto">
+                  <div className="flex justify-between min-w-max gap-[10px]">
+                    <div className="flex items-center gap-2 bg-transparent">
+                      <p
+                        onClick={handleShowAllOffers}
+                        className={`${
+                          offerFilter?.allOffers
+                            ? "text-white bg-tradeAsh border-tradeGreen"
+                            : "text-neutral-500 border-neutral-800 hover:text-white"
+                        } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                      >
+                        All
+                      </p>
+                      <p
+                        onClick={handleShowActiveOffers}
+                        className={`${
+                          offerFilter?.activeOffers
+                            ? "text-white bg-tradeAsh border-tradeGreen"
+                            : "text-neutral-500 border-neutral-800 hover:text-white"
+                        } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                      >
+                        Active
+                      </p>
+                      <p
+                        onClick={handleShowInActiveOffers}
+                        className={`${
+                          offerFilter?.inactiveOffers
+                            ? "text-white bg-tradeAsh border-tradeGreen"
+                            : "text-neutral-500 border-neutral-800 hover:text-white"
+                        } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                      >
+                        Inactive
+                      </p>
+                      <p
+                        onClick={handleShowDraftedOffers}
+                        className={`${
+                          offerFilter?.draftOffers
+                            ? "text-white bg-tradeAsh border-tradeGreen"
+                            : "text-neutral-500 border-neutral-800 hover:text-white"
+                        } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                      >
+                        My Draft
+                      </p>
+                    </div>
 
-                <div className="flex items-center gap-2 bg-transparent">
-                  <div
-                    className={`${
-                      offerFilter?.draftOffers
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-neutral-500 border-neutral-800 hover:text-white"
-                    } relative flex items-center gap-2 min-w-[90px] px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    <p>Month</p>
-                    <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                      <MdKeyboardArrowDown />
+                    <div className="flex items-center gap-2 bg-transparent">
+                      <div
+                        className={`${
+                          offerFilter?.draftOffers
+                            ? "text-white bg-tradeAsh border-tradeGreen"
+                            : "text-neutral-500 border-neutral-800 hover:text-white"
+                        } relative flex items-center gap-2 min-w-[90px] px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                      >
+                        <p>Month</p>
+                        <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                          <MdKeyboardArrowDown />
+                        </div>
+                      </div>
+
+                      <div
+                        className={`${
+                          offerFilter?.draftOffers
+                            ? "text-white bg-tradeAsh border-tradeGreen"
+                            : "text-neutral-500 border-neutral-800 hover:text-white"
+                        } relative flex items-center gap-2 min-w-[70px] px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                      >
+                        <p>Year</p>
+                        <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                          <MdKeyboardArrowDown />
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-                  <div
-                    className={`${
-                      offerFilter?.draftOffers
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-neutral-500 border-neutral-800 hover:text-white"
-                    } relative flex items-center gap-2 min-w-[70px] px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    <p>Year</p>
-                    <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                      <MdKeyboardArrowDown />
-                    </div>
+                </div>
+                <div className=" p-[15px] ">
+                  <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
+                    {offers.map((offer, index) => (
+                      <div
+                        key={index}
+                        className={`${
+                          index !== offers.length - 1
+                            ? "md:border-b border-tradeAshLight"
+                            : ""
+                        }`}
+                      >
+                        <MyOfferCard offer={offer} />
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className=" px-[15px] ">
+                <div className="flex flex-col py-10 gap-[10px] h-full items-center justify-center">
+                  <TbInvoice className="text-tradeAshLight text-[90px] leading-none" />
+                  <p className="text-xl font-bold text-white text-center">
+                    No active offers just yet.
+                  </p>
+                  <p className="text-[13px] font-medium text-tradeFadeWhite max-w-[500px] text-center">
+                    Kickstart your trading journey by creating your first offer.
+                    Connect with other traders, build trust, and start unlocking
+                    new opportunities.
+                  </p>
 
-            <div className=" p-[15px] ">
-              {myOffers && offers.length > 0 ? (
-                <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
-                  {offers.map((offer, index) => (
-                    <div
-                      key={index}
-                      className={`${
-                        index !== offers.length - 1
-                          ? "md:border-b border-tradeAshLight"
-                          : ""
-                      }`}
-                    >
-                      <MyOfferCard offer={offer} />
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="flex flex-col gap-[15px] items-center justify-center text-white py-10">
-                  <p className="text-lg font-semibold leading-none">
-                    You don’t have any active offers yet.
-                  </p>
-                  <p className="text-[13px] text-tradeFadeWhite text-center">
-                    Create your first offer to start connecting with traders and
-                    growing your activity.
-                  </p>
                   <Button onClick={handleToCreateOffer} variant="primary">
                     Create New Offer
                   </Button>
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </StateHandler>

@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { RiUserCommunityFill } from "react-icons/ri";
 import { IoArrowRedoOutline } from "react-icons/io5";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { RiGroup2Line } from "react-icons/ri";
 
 const MobileSettings = () => {
   const navigateTo = useNavigate();
@@ -53,7 +54,7 @@ const MobileSettings = () => {
               <MdKeyboardArrowRight />
             </div>
           </div>
-          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
+          <div className="flex justify-between items-center py-[12px] border- border-tradeAshLight">
             <div className="flex gap-4 items-center">
               <div className="">
                 <div className="text-tradeGreen text-[20px]">
@@ -70,6 +71,9 @@ const MobileSettings = () => {
               <MdKeyboardArrowRight />
             </div>
           </div>
+        </div>
+
+        <div className="px-[12px] bg-tradeAsh rounded-[15px]">
           <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
             <div className="flex gap-4 items-center">
               <div className="">
@@ -80,23 +84,6 @@ const MobileSettings = () => {
               <div className="flex flex-col gap-2">
                 <p className="text-white text-sm font-semibold leading-none">
                   Promotions
-                </p>
-              </div>
-            </div>
-            <div className="text-tradeFadeWhite text-[22px]">
-              <MdKeyboardArrowRight />
-            </div>
-          </div>
-          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
-            <div className="flex gap-4 items-center">
-              <div className="">
-                <div className="text-tradeGreen text-[20px]">
-                  <MdOutlinePrivacyTip className="" />
-                </div>
-              </div>
-              <div className="flex flex-col gap-2">
-                <p className="text-white text-sm font-semibold leading-none">
-                  Privacy & safety
                 </p>
               </div>
             </div>
@@ -125,6 +112,23 @@ const MobileSettings = () => {
             <div className="flex gap-4 items-center">
               <div className="">
                 <div className="text-tradeGreen text-[20px]">
+                  <MdOutlinePrivacyTip className="" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-white text-sm font-semibold leading-none">
+                  Privacy & safety
+                </p>
+              </div>
+            </div>
+            <div className="text-tradeFadeWhite text-[22px]">
+              <MdKeyboardArrowRight />
+            </div>
+          </div>
+          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
+            <div className="flex gap-4 items-center">
+              <div className="">
+                <div className="text-tradeGreen text-[20px]">
                   <MdOutlineSecurity className="" />
                 </div>
               </div>
@@ -138,7 +142,7 @@ const MobileSettings = () => {
               <MdKeyboardArrowRight />
             </div>
           </div>
-          <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
+          <div className="flex justify-between items-center py-[12px] border- border-tradeAshLight">
             <div className="flex gap-4 items-center">
               <div className="">
                 <div className="text-tradeGreen text-[20px]">
@@ -155,16 +159,19 @@ const MobileSettings = () => {
               <MdKeyboardArrowRight />
             </div>
           </div>
+        </div>
+
+        <div className="px-[12px] bg-tradeAsh rounded-[15px]">
           <div className="flex justify-between items-center py-[12px] border-b border-tradeAshLight">
             <div className="flex gap-4 items-center">
               <div className="">
                 <div className="text-tradeGreen text-[20px]">
-                  <RiUserCommunityFill className="" />
+                  <IoArrowRedoOutline className="" />
                 </div>
               </div>
               <div className="flex flex-col gap-2">
                 <p className="text-white text-sm font-semibold leading-none">
-                  Community
+                  Invite a friend
                 </p>
               </div>
             </div>
@@ -176,12 +183,12 @@ const MobileSettings = () => {
             <div className="flex gap-4 items-center">
               <div className="">
                 <div className="text-tradeGreen text-[20px]">
-                  <IoArrowRedoOutline className="" />
+                  <RiGroup2Line className="" />
                 </div>
               </div>
               <div className="flex flex-col gap-2">
                 <p className="text-white text-sm font-semibold leading-none">
-                  Refer friends
+                  Community
                 </p>
               </div>
             </div>

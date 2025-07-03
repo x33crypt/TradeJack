@@ -58,16 +58,8 @@ const DashSideNav = () => {
           <RiGift2Fill className="text-[17px]" />
           <p className="text-[13px] font-[500]">Rewards</p>
         </div>
-        <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-          <LiaUserFriendsSolid className="text-[17px]" />
-          <p className="text-[13px] font-[500]">Invite a friend</p>
-        </div>
       </div>
       <div className="flex flex-col pt-[10px] gap-[10px] border-t border-tradeAshLight">
-        <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-          <BiSupport className="text-[17px]" />
-          <p className="text-[13px] font-[500]"> Help & support</p>
-        </div>
         <div
           onClick={() => navigateTo("/settings")}
           className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"

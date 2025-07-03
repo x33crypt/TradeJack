@@ -12,13 +12,13 @@ const RecentTrades = () => {
       </div>
 
       <div className="p-[15px]">
-        <div className="w-full overflow-hidden bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-          {[...Array(3)].map((_, index, array) => (
+        <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden  md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
+          {[...Array(5)].map((_, index, array) => (
             <div
               key={index}
               className={`${
                 index !== array.length - 1
-                  ? "border-b border-tradeAshLight"
+                  ? "md:border-b border-tradeAshLight"
                   : ""
               }`}
             >

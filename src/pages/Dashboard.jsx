@@ -26,21 +26,13 @@ const Dashboard = () => {
           <DasHboardMenu />
           <div className="flex-1 flex flex-col md:gap-[10px] ">
             <div className="flex lg:flex-row flex-col flex-1 md:p-0 gap-[10px]">
-              <div className="flex-1 flex flex-col md:border border-t-0 border-tradeAshLight">
-                <div className="flex items-center gap-3 p-[15px] border-b border-tradeAshLight">
-                  <p className="text-lg font-semibold text-tradeFadeWhite flex items-center gap-1">
-                    Welcome back,{" "}
-                    <span className=" text-white ">
-                      {dashboard?.profile?.username || "User"}
-                    </span>
-                  </p>
-                </div>
-                <div className="flex flex-col p-[15px] gap-[10px]">
-                  <Balance dashboard={dashboard} />
-                  <Ads />
-                  <Stats dashboard={dashboard} />
-                </div>
+              <div className="flex flex-col flex-1 md:gap-[10px]">
+                <Balance dashboard={dashboard} />
+
+                <Stats dashboard={dashboard} />
+                {/* <Ads /> */}
               </div>
+
               <div className="lg:w-[350px] w-full flex flex-col gap-[10px]">
                 <Limits dashboard={dashboard} />
                 <Performance dashboard={dashboard} />
