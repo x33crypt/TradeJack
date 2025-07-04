@@ -19,25 +19,39 @@ const KycVerifyStep1 = () => {
   const handleFirstnameChange = (e) => {
     setKycDetails((prevDetails) => ({
       ...prevDetails,
-      [e.target.name]: e.target.value,
+      firstName: e.target.value,
     }));
   };
 
   const handleLastnameChange = (e) => {
     setKycDetails((prevDetails) => ({
       ...prevDetails,
-      [e.target.name]: e.target.value,
+      lastName: e.target.value,
     }));
   };
 
   const handleEmailChange = (e) => {
     setKycDetails((prevDetails) => ({
       ...prevDetails,
-      [e.target.name]: e.target.value,
+      email: e.target.value,
     }));
   };
 
-  // handleGenderChange
+  // Gender mapping for display vs. backend
+  const genderMap = {
+    male: "Male",
+    female: "Female",
+  };
+
+  const genderOptions = Object.values(genderMap); // ["Male", "Female"]
+
+  // Reverse mapping for setting backend value
+  const reverseGenderMap = {
+    Male: "male",
+    Female: "female",
+  };
+
+  // Handle gender change
   useEffect(() => {
     if (
       select?.page !== "kyc verification" ||
@@ -48,20 +62,18 @@ const KycVerifyStep1 = () => {
 
     setKycDetails((prevDetails) => ({
       ...prevDetails,
-      gender: select.pick,
+      gender: reverseGenderMap[select.pick] || select.pick,
     }));
   }, [select]);
 
   console.log(kycDetails);
 
-  const gender = ["Male", "Female"];
-
   const navigateTo = useNavigate();
 
   const nextButton = () => {
-    const { firstname, lastname, email, gender } = kycDetails;
+    const { firstName, lastName, email, gender } = kycDetails;
 
-    if (!firstname) {
+    if (!firstName) {
       setToast({
         ...toast,
         error: true,
@@ -70,7 +82,7 @@ const KycVerifyStep1 = () => {
       return;
     }
 
-    if (!lastname) {
+    if (!lastName) {
       setToast({
         ...toast,
         error: true,
@@ -108,7 +120,7 @@ const KycVerifyStep1 = () => {
     <>
       <InAppNav />
       <div className="md:pt-[64px] pt-[60px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[10px] bg-black ">
-        <SideNav />
+        {/* <SideNav /> */}
 
         <div className="flex flex-col flex-1  md:border-x md:border-b md:border-t border-neutral-800">
           <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
@@ -137,14 +149,14 @@ const KycVerifyStep1 = () => {
                     </p>
                     <input
                       className={`${
-                        kycDetails.firstname
+                        kycDetails.firstName
                           ? "border-tradeAshExtraLight"
                           : "border-tradeAshLight"
                       } mt-[5px] text-[13px] text-white placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                       type="text"
-                      name="firstname"
+                      name="firstName"
                       placeholder="eg. John"
-                      value={kycDetails.firstname}
+                      value={kycDetails.firstName}
                       onChange={handleFirstnameChange}
                     />
                   </div>
@@ -154,14 +166,14 @@ const KycVerifyStep1 = () => {
                     </p>
                     <input
                       className={`${
-                        kycDetails.lastname
+                        kycDetails.lastName
                           ? "border-tradeAshExtraLight"
                           : "border-tradeAshLight"
                       } mt-[5px] text-[13px] text-white placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                       type="text"
-                      name="lastname"
+                      name="lastName"
                       placeholder="eg. Doe"
-                      value={kycDetails.lastname}
+                      value={kycDetails.lastName}
                       onChange={handleLastnameChange}
                     />
                   </div>
@@ -171,7 +183,7 @@ const KycVerifyStep1 = () => {
                     </p>
                     <input
                       className={`${
-                        kycDetails.lastname
+                        kycDetails.email
                           ? "border-tradeAshExtraLight"
                           : "border-tradeAshLight"
                       } mt-[5px] text-[13px] text-white placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
@@ -196,7 +208,9 @@ const KycVerifyStep1 = () => {
                         type="text"
                         readOnly
                         placeholder="Select gender"
-                        value={kycDetails?.gender}
+                        value={
+                          kycDetails?.gender ? genderMap[kycDetails.gender] : ""
+                        }
                         onClick={() =>
                           setSelect({
                             ...select,
@@ -204,13 +218,12 @@ const KycVerifyStep1 = () => {
                             selectOne: true,
                             selectTwo: false,
                             element: "gender",
-                            options: gender,
+                            options: genderOptions,
                             pick: "",
                             page: "kyc verification",
                           })
                         }
                       />
-
                       <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
                         <MdKeyboardArrowDown />
                       </div>
@@ -224,7 +237,6 @@ const KycVerifyStep1 = () => {
               <Button onClick={cancelButton} variant="Fadeout">
                 Cancel
               </Button>
-
               <Button onClick={nextButton} variant="primary">
                 Continue
               </Button>

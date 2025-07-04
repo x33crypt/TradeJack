@@ -23,7 +23,7 @@ const ExchangeCalculator = (prop) => {
               </div>
             </div>
 
-            <div className=" flex py-[10px]  justify-between items-baseline border-b border-tradeFadeWhite">
+            <div className=" flex py-[10px]  justify-between items-baseline border-b border-tradeAshLight">
               <input
                 type="text"
                 placeholder="00.00"
@@ -62,7 +62,7 @@ const ExchangeCalculator = (prop) => {
               </div>
             </div>
 
-            <div className=" flex py-[10px]  justify-between items-baseline border-b border-tradeFadeWhite">
+            <div className=" flex py-[10px]  justify-between items-baseline border-b border-tradeAshLight">
               <input
                 type="text"
                 placeholder="00.00"

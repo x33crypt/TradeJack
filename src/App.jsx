@@ -31,9 +31,11 @@ import KycVerifyStep2 from "./pages/kyc/KycVerifyStep2";
 import KycVerifyStep3 from "./pages/kyc/KycVerifyStep3";
 import AboutMyOffer from "./pages/offer/mine/AboutMyOffer";
 import SummaryMyOffer from "./pages/offer/mine/SummaryMyOffer";
-import Wallet from "./pages/Wallet";
+import Wallet from "./pages/wallet/Wallet";
 import Settings from "./pages/Settings";
 import Account from "./components/settings/Account";
+import Transfer from "./pages/wallet/Transfer";
+import Deposit from "./pages/wallet/Deposit";
 
 const App = () => {
   return (
@@ -77,9 +79,10 @@ const App = () => {
           path="/settings/account/kycVerify/3"
           element={<KycVerifyStep3 />}
         />
-
         {/* Wallet */}
         <Route path="/wallet" element={<Wallet />} />
+        <Route path="/wallet/transfer" element={<Transfer />} />
+        <Route path="/wallet/deposit" element={<Deposit />} />
 
         {/* Marketplace & Offers */}
         <Route path="/offers/marketplace" element={<Marketplace />} />

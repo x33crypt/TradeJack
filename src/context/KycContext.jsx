@@ -4,20 +4,20 @@ const KycContext = createContext();
 
 export const KycProvider = ({ children }) => {
   const [kycDetails, setKycDetails] = useState({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    dateOfBirth: { year: null, month: null, date: null },
+    dateOfBirth: { year: null, month: null, day: null },
     gender: "",
-    addressDetails: {
+    address: {
       country: "",
       state: "",
       city: "",
       street: "",
     },
     documentType: "",
-    frontImage: null,
-    backImage: null,
+    frontIdImage: null,
+    backIdImage: null,
     // Add more fields as needed
   });
 

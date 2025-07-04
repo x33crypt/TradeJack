@@ -3,8 +3,10 @@ import Footer from "@/components/Footer";
 import InAppNav from "@/components/InAppNav";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import LinkedAccount from "@/components/wallet/LinkedAccount";
+
 import MyWallet from "@/components/wallet/MyWallet";
 import WalletMain from "@/components/wallet/MyWallet";
+import Options from "@/components/wallet/Options";
 import Overview from "@/components/wallet/Overview";
 import RecentTransaction from "@/components/wallet/RecentTransaction";
 import React from "react";
@@ -17,7 +19,12 @@ const Wallet = () => {
         <DasHboardMenu />
         <div className="flex-1 flex flex-col gap-[10px]">
           <div className="flex lg:flex-row flex-col gap-[10px] ">
-            <MyWallet />
+            <div className="flex flex-col gap-[10px] flex-1 ">
+              <MyWallet />
+              {/* <Options /> */}
+              <LinkedAccount />
+            </div>
+
             <Overview />
           </div>
           <RecentTransaction />

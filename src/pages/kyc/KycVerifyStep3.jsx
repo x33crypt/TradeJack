@@ -20,11 +20,20 @@ const KycVerifyStep3 = () => {
   const { toast, setToast } = useToast();
   const [isUploading, setIsUploading] = useState(false);
 
-  const documentTypes = [
-    "National ID Card",
-    "Drivers License",
-    "International Passport",
-  ];
+  // Document type mapping for display vs. backend
+  const documentTypeMap = {
+    national_id: "National ID",
+    driver_license: "Driver's License",
+    passport: "Passport",
+  };
+  const documentTypes = Object.values(documentTypeMap); // ["National ID", "Driver's License", "Passport"]
+
+  // Reverse mapping for setting backend value
+  const reverseDocumentTypeMap = {
+    "National ID": "national_id",
+    "Driver's License": "driver_license",
+    Passport: "passport",
+  };
 
   const frontRef = useRef();
   const backRef = useRef();
@@ -34,7 +43,6 @@ const KycVerifyStep3 = () => {
 
   const handleFrontFileChange = (e) => {
     const { name, files } = e.target;
-
     const file = files?.[0];
 
     if (file) {
@@ -53,14 +61,14 @@ const KycVerifyStep3 = () => {
         setToast({
           ...toast,
           error: true,
-          errorMessage: `${name} must be an image (JPEG, PNG, etc.)`,
+          errorMessage: ` ${name} must be an image (JPEG, PNG, etc.)`,
         });
         return;
       }
 
       setKycDetails((prevDetails) => ({
         ...prevDetails,
-        frontImage: file,
+        frontIdImage: file,
       }));
     }
   };
@@ -92,7 +100,7 @@ const KycVerifyStep3 = () => {
 
       setKycDetails((prevDetails) => ({
         ...prevDetails,
-        backImage: file,
+        backIdImage: file,
       }));
     }
   };
@@ -129,14 +137,14 @@ const KycVerifyStep3 = () => {
       dateOfBirth: {
         year: year.toString(),
         month: month.toString().padStart(2, "0"),
-        date: day.toString().padStart(2, "0"),
+        day: day.toString().padStart(2, "0"),
       },
     }));
   };
 
   console.log(kycDetails);
 
-  // handleGenderChange
+  // Update useEffect for documentType
   useEffect(() => {
     if (
       select?.page !== "kyc verification" ||
@@ -147,13 +155,51 @@ const KycVerifyStep3 = () => {
 
     setKycDetails((prevDetails) => ({
       ...prevDetails,
-      documentType: select.pick,
+      documentType: reverseDocumentTypeMap[select.pick] || select.pick,
     }));
   }, [select]);
 
   const navigateTo = useNavigate();
 
   const handleKycVerification = async () => {
+    // Client-side validation
+    if (!kycDetails.documentType) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: Document Type",
+      });
+      return;
+    }
+    if (
+      !kycDetails.dateOfBirth.year ||
+      !kycDetails.dateOfBirth.month ||
+      !kycDetails.dateOfBirth.day
+    ) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: Date of Birth",
+      });
+      return;
+    }
+    if (!kycDetails.frontIdImage) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: Front ID Image",
+      });
+      return;
+    }
+    if (!kycDetails.backIdImage) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: Back ID Image",
+      });
+      return;
+    }
+
     setIsUploading(true);
 
     try {
@@ -235,7 +281,11 @@ const KycVerifyStep3 = () => {
                         readOnly
                         placeholder="Select a document type"
                         name="documentType"
-                        value={kycDetails?.documentType}
+                        value={
+                          kycDetails?.documentType
+                            ? documentTypeMap[kycDetails.documentType]
+                            : ""
+                        }
                         onClick={() =>
                           setSelect({
                             ...select,
@@ -248,11 +298,7 @@ const KycVerifyStep3 = () => {
                             page: "kyc verification",
                           })
                         }
-                        onChange={(e) =>
-                          setOfferDetails.serviceType(e.target.value)
-                        }
                       />
-
                       <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
                         <MdKeyboardArrowDown />
                       </div>
@@ -269,8 +315,8 @@ const KycVerifyStep3 = () => {
                       value={
                         kycDetails.dateOfBirth.year &&
                         kycDetails.dateOfBirth.month &&
-                        kycDetails.dateOfBirth.date
-                          ? `${kycDetails.dateOfBirth.year}-${kycDetails.dateOfBirth.month}-${kycDetails.dateOfBirth.date}`
+                        kycDetails.dateOfBirth.day
+                          ? `${kycDetails.dateOfBirth.year}-${kycDetails.dateOfBirth.month}-${kycDetails.dateOfBirth.day}`
                           : ""
                       }
                       onChange={handleDateChange}
@@ -283,77 +329,73 @@ const KycVerifyStep3 = () => {
                   </div>
                   <div className="flex flex-col">
                     <div className="flex flex-col gap-1">
-                      <p className="text-[13px]  text-tradeFadeWhite font-medium">
+                      <p className="text-[13px] text-tradeFadeWhite font-medium">
                         Front ID Image
                       </p>
                       <div
                         onClick={handleFrontClick}
-                        className={`flex items-center justify-between mt-[5px] text-[13px]  text-tradeFadeWhite placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border ${
-                          kycDetails?.frontImage?.name
+                        className={`flex items-center justify-between mt-[5px] text-[13px] text-tradeFadeWhite placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border ${
+                          kycDetails?.frontIdImage?.name
                             ? "border-tradeAshExtraLight"
                             : "border-tradeAshLight"
                         } border-dashed outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                       >
                         <p
                           className={`${
-                            kycDetails?.frontImage?.name
+                            kycDetails?.frontIdImage?.name
                               ? "text-white"
                               : "text-tradeFadeWhite"
                           }`}
                         >
-                          {kycDetails?.frontImage
-                            ? `Uploaded: ${kycDetails?.frontImage?.name}`
-                            : "JPG, PNG, PDF, SVG • 5MB max"}
+                          {kycDetails?.frontIdImage
+                            ? `Uploaded: ${kycDetails?.frontIdImage?.name}`
+                            : "JPG, PNG • 5MB max"}
                         </p>
-
                         <RiFileUploadFill className="text-xl" />
                       </div>
-
                       <input
                         type="file"
                         ref={frontRef}
-                        name="Front ID Image"
+                        name="frontIdImage"
                         className="hidden"
                         onChange={handleFrontFileChange}
-                        accept="image/*,application/pdf"
+                        accept="image/*"
                       />
                     </div>
                   </div>
                   <div className="flex flex-col">
                     <div className="flex flex-col gap-1">
-                      <p className="text-[13px]  text-tradeFadeWhite font-medium">
+                      <p className="text-[13px] text-tradeFadeWhite font-medium">
                         Back ID Image
                       </p>
                       <div
                         onClick={handleBackClick}
-                        className={`flex items-center justify-between mt-[5px] text-[13px]  text-tradeFadeWhite placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border ${
-                          kycDetails?.backImage?.name
+                        className={`flex items-center justify-between mt-[5px] text-[13px] text-tradeFadeWhite placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border ${
+                          kycDetails?.backIdImage?.name
                             ? "border-tradeAshExtraLight"
                             : "border-tradeAshLight"
                         } border-dashed outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
                       >
                         <p
                           className={`${
-                            kycDetails?.backImage?.name
+                            kycDetails?.backIdImage?.name
                               ? "text-white"
                               : "text-tradeFadeWhite"
                           }`}
                         >
-                          {kycDetails?.backImage
-                            ? `Uploaded: ${kycDetails?.backImage?.name}`
-                            : "JPG, PNG, PDF, SVG • 5MB max"}
+                          {kycDetails?.backIdImage
+                            ? `Uploaded: ${kycDetails?.backIdImage?.name}`
+                            : "JPG, PNG • 5MB max"}
                         </p>
-
                         <RiFileUploadFill className="text-xl" />
                       </div>
-
                       <input
                         type="file"
                         ref={backRef}
-                        name="Back ID Image"
+                        name="backIdImage"
                         className="hidden"
                         onChange={handleBackFileChange}
-                        accept="image/*,application/pdf" // optional: restrict file types
+                        accept="image/*"
                       />
                     </div>
                   </div>

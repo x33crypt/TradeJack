@@ -30,41 +30,38 @@ const KycVerifyStep2 = () => {
   }, []);
 
   useEffect(() => {
-    const { country } = kycDetails.addressDetails;
-
+    const { country } = kycDetails?.address;
     if (country) {
-      fetchStates(kycDetails.addressDetails.country);
+      fetchStates(kycDetails?.address?.country);
     }
-  }, [kycDetails?.addressDetails?.country]);
+  }, [kycDetails?.address?.country]);
 
   useEffect(() => {
-    const { country, state } = kycDetails.addressDetails;
+    const { country, state } = kycDetails.address;
     if (country && state) {
       fetchCities(country, state);
     }
-  }, [kycDetails.addressDetails.state]);
+  }, [kycDetails?.address?.state]);
 
   const handleStreetChange = (e) => {
-    const { name, value } = e.target;
-
     setKycDetails((prevDetails) => ({
       ...prevDetails,
-      addressDetails: {
-        ...prevDetails.addressDetails,
-        [name]: value,
+      address: {
+        ...prevDetails.address,
+        street: e.target.value,
       },
     }));
   };
 
-  // handling country, state and city changs
+  // Update useEffect for country, state, city
   useEffect(() => {
     if (select?.page !== "kyc verification" || !select?.pick) return;
 
     if (select.element === "country") {
       setKycDetails((prevDetails) => ({
         ...prevDetails,
-        addressDetails: {
-          ...prevDetails.addressDetails,
+        address: {
+          ...prevDetails.address,
           country: select.pick,
         },
       }));
@@ -73,8 +70,8 @@ const KycVerifyStep2 = () => {
     if (select.element === "state or province") {
       setKycDetails((prevDetails) => ({
         ...prevDetails,
-        addressDetails: {
-          ...prevDetails.addressDetails,
+        address: {
+          ...prevDetails.address,
           state: select.pick,
         },
       }));
@@ -83,8 +80,8 @@ const KycVerifyStep2 = () => {
     if (select.element === "city or area") {
       setKycDetails((prevDetails) => ({
         ...prevDetails,
-        addressDetails: {
-          ...prevDetails.addressDetails,
+        address: {
+          ...prevDetails.address,
           city: select.pick,
         },
       }));
@@ -96,7 +93,7 @@ const KycVerifyStep2 = () => {
   const navigateTo = useNavigate();
 
   const nextButton = () => {
-    const { country, state, city, street } = kycDetails.addressDetails;
+    const { country, state, city, street } = kycDetails.address;
 
     if (!country) {
       setToast({
@@ -177,7 +174,7 @@ const KycVerifyStep2 = () => {
                     <div className="relative w-full cursor-pointer ">
                       <input
                         className={`${
-                          kycDetails.addressDetails.country
+                          kycDetails?.address?.country
                             ? "border-tradeAshExtraLight"
                             : "border-tradeAshLight"
                         } mt-[5px] text-[13px] text-white placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
@@ -185,7 +182,7 @@ const KycVerifyStep2 = () => {
                         readOnly
                         placeholder="Select country"
                         name="country"
-                        value={kycDetails.addressDetails.country}
+                        value={kycDetails?.address?.country}
                         onClick={() =>
                           setSelect({
                             ...select,
@@ -197,9 +194,6 @@ const KycVerifyStep2 = () => {
                             pick: "",
                             page: "kyc verification",
                           })
-                        }
-                        onChange={(e) =>
-                          setOfferDetails.serviceType(e.target.value)
                         }
                       />
 
@@ -215,7 +209,7 @@ const KycVerifyStep2 = () => {
                     <div className="relative w-full cursor-pointer ">
                       <input
                         className={`${
-                          kycDetails.addressDetails.state
+                          kycDetails?.address?.state
                             ? "border-tradeAshExtraLight"
                             : "border-tradeAshLight"
                         } mt-[5px] text-[13px] text-white placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
@@ -223,7 +217,7 @@ const KycVerifyStep2 = () => {
                         readOnly
                         placeholder="Select state or province"
                         name="state"
-                        value={kycDetails.addressDetails.state}
+                        value={kycDetails?.address?.state}
                         onClick={() =>
                           setSelect({
                             ...select,
@@ -250,7 +244,7 @@ const KycVerifyStep2 = () => {
                     <div className="relative w-full cursor-pointer ">
                       <input
                         className={`${
-                          kycDetails.addressDetails.city
+                          kycDetails?.address?.city
                             ? "border-tradeAshExtraLight"
                             : "border-tradeAshLight"
                         } mt-[5px] text-[13px] text-white placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
@@ -258,7 +252,7 @@ const KycVerifyStep2 = () => {
                         readOnly
                         placeholder="Select city or area"
                         name="city"
-                        value={kycDetails.addressDetails.city}
+                        value={kycDetails?.address?.city}
                         onClick={() =>
                           setSelect({
                             ...select,
@@ -284,13 +278,13 @@ const KycVerifyStep2 = () => {
                     </p>
                     <input
                       className={`${
-                        kycDetails.addressDetails.street
+                        kycDetails?.address?.street
                           ? "border-tradeAshExtraLight"
                           : "border-tradeAshLight"
                       } mt-[5px] text-[13px] text-white placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                       type="text"
                       name="street"
-                      value={kycDetails.addressDetails.street}
+                      value={kycDetails?.address?.street}
                       placeholder="eg. House number, street name, etc."
                       onChange={handleStreetChange}
                     />

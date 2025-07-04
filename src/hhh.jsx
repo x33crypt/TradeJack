@@ -1,384 +1,425 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useToast } from "@/context/ToastContext";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import InAppNav from "@/components/InAppNav";
+import { useSelectElement } from "@/context/SelectElementContext";
+import Stepper from "@/components/Steppers";
+import { useKyc } from "@/context/KycContext";
+import Warning from "@/components/alerts/Warning";
+import { RiFileUploadFill } from "react-icons/ri";
+import { kycVerify } from "@/utils/kyc/kycVerify";
+import Button from "@/components/buttons/Button";
+import SideNav from "@/components/account/nav/SideNav";
 import Footer from "@/components/Footer";
-import axios from "axios";
-import { FaUserCheck } from "react-icons/fa6";
 
-const KycVerification = () => {
-  // State for form data
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    dateOfBirth: { day: "", month: "", year: "" },
-    gender: "",
-    address: { street: "", city: "", state: "", country: "" },
-    documentType: "",
-  });
+const KycVerifyStep3 = () => {
+  const { select, setSelect } = useSelectElement();
+  const { kycDetails, setKycDetails } = useKyc();
+  const { toast, setToast } = useToast();
+  const [isUploading, setIsUploading] = useState(false);
 
-  // State for file inputs
-  const [frontIdImage, setFrontIdImage] = useState(null);
-  const [backIdImage, setBackIdImage] = useState(null);
+  // Document type mapping for display vs. backend
+  const documentTypeMap = {
+    national_id: "National ID",
+    driver_license: "Driver's License",
+    passport: "Passport",
+  };
+  const documentTypes = Object.values(documentTypeMap); // ["National ID", "Driver's License", "Passport"]
 
-  // State for error and success messages
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  // Handle text input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name.includes(".")) {
-      const [parent, child] = name.split(".");
-      setFormData((prev) => ({
-        ...prev,
-        [parent]: { ...prev[parent], [child]: value },
-      }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
+  // Reverse mapping for setting backend value
+  const reverseDocumentTypeMap = {
+    "National ID": "national_id",
+    "Driver's License": "driver_license",
+    Passport: "passport",
   };
 
-  // Handle file input changes
-  const handleFileChange = (e) => {
+  const frontRef = useRef();
+  const backRef = useRef();
+
+  const handleFrontClick = () => frontRef.current?.click();
+  const handleBackClick = () => backRef.current?.click();
+
+  const handleFrontFileChange = (e) => {
     const { name, files } = e.target;
-    if (files[0]) {
+    const file = files?.[0];
+
+    if (file) {
       // Validate file size (5MB limit)
-      if (files[0].size > 5 * 1024 * 1024) {
-        setError(${name} must be less than 5MB);
+      if (file.size > 5 * 1024 * 1024) {
+        setToast({
+          ...toast,
+          error: true,
+          errorMessage: `${name} must be less than 5MB`,
+        });
         return;
       }
+
       // Validate file type
-      if (!files[0].type.startsWith("image/")) {
-        setError(${name} must be an image (JPEG, PNG, etc.));
+      if (!file.type.startsWith("image/")) {
+        setToast({
+          ...toast,
+          error: true,
+          errorMessage: ` ${name} must be an image (JPEG, PNG, etc.)`,
+        });
         return;
       }
 
-
-      
-      // if (name === "frontIdImage") {
-      //   setFrontIdImage(files[0]);
-      // } else if (name === "backIdImage") {
-      //   setBackIdImage(files[0]);
-      // }
+      setKycDetails((prevDetails) => ({
+        ...prevDetails,
+        frontIdImage: file,
+      }));
     }
   };
 
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-    setLoading(true);
+  const handleBackFileChange = (e) => {
+    const { name, files } = e.target;
+    const file = files?.[0];
 
-    // Basic client-side validation
-    if (!frontIdImage || !backIdImage) {
-      setError("Please select both front and back ID images");
-      setLoading(false);
+    if (file) {
+      // Validate file size (5MB limit)
+      if (file.size > 5 * 1024 * 1024) {
+        setToast({
+          ...toast,
+          error: true,
+          errorMessage: `${name} must be less than 5MB`,
+        });
+        return;
+      }
+
+      // Validate file type
+      if (!file.type.startsWith("image/")) {
+        setToast({
+          ...toast,
+          error: true,
+          errorMessage: `${name} must be an image (JPEG, PNG, etc.)`,
+        });
+        return;
+      }
+
+      setKycDetails((prevDetails) => ({
+        ...prevDetails,
+        backIdImage: file,
+      }));
+    }
+  };
+
+  const handleDateChange = (e) => {
+    const [year, month, day] = e.target.value.split("-").map(Number);
+
+    const enteredDate = new Date(year, month - 1, day); // month is 0-based
+    const today = new Date();
+    const minBirthDate = new Date(
+      today.getFullYear() - 18,
+      today.getMonth(),
+      today.getDate()
+    );
+
+    const isValidDate =
+      enteredDate instanceof Date &&
+      !isNaN(enteredDate) &&
+      enteredDate.getFullYear() === year &&
+      enteredDate.getMonth() === month - 1 &&
+      enteredDate.getDate() === day;
+
+    if (!isValidDate || enteredDate > minBirthDate || year < 1900) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Enter a valid birthdate (18+ required)",
+      });
+      return;
+    }
+
+    setKycDetails((prev) => ({
+      ...prev,
+      dateOfBirth: {
+        year: year.toString(),
+        month: month.toString().padStart(2, "0"),
+        day: day.toString().padStart(2, "0"),
+      },
+    }));
+  };
+
+  console.log(kycDetails);
+
+  // Update useEffect for documentType
+  useEffect(() => {
+    if (
+      select?.page !== "kyc verification" ||
+      select?.element !== "document type" ||
+      !select?.pick
+    )
+      return;
+
+    setKycDetails((prevDetails) => ({
+      ...prevDetails,
+      documentType: reverseDocumentTypeMap[select.pick] || select.pick,
+    }));
+  }, [select]);
+
+  const navigateTo = useNavigate();
+
+  const handleKycVerification = async () => {
+    // Client-side validation
+    if (!kycDetails.documentType) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: Document Type",
+      });
       return;
     }
     if (
-      !formData.firstName ||
-      !formData.lastName ||
-      !formData.email ||
-      !formData.dateOfBirth.day ||
-      !formData.dateOfBirth.month ||
-      !formData.dateOfBirth.year ||
-      !formData.gender ||
-      !formData.address.street ||
-      !formData.address.city ||
-      !formData.address.state ||
-      !formData.address.country ||
-      !formData.documentType
+      !kycDetails.dateOfBirth.year ||
+      !kycDetails.dateOfBirth.month ||
+      !kycDetails.dateOfBirth.day
     ) {
-      setError("Please fill in all required fields");
-      setLoading(false);
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: Date of Birth",
+      });
+      return;
+    }
+    if (!kycDetails.frontIdImage) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: Front ID Image",
+      });
+      return;
+    }
+    if (!kycDetails.backIdImage) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Missing required field: Back ID Image",
+      });
       return;
     }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setError("Please enter a valid email address");
-      setLoading(false);
-      return;
-    }
-
-    // Validate date of birth (basic check)
-    const currentYear = new Date().getFullYear();
-    if (
-      parseInt(formData.dateOfBirth.year) > currentYear - 18 ||
-      parseInt(formData.dateOfBirth.year) < 1900 ||
-      parseInt(formData.dateOfBirth.month) < 1 ||
-      parseInt(formData.dateOfBirth.month) > 12 ||
-      parseInt(formData.dateOfBirth.day) < 1 ||
-      parseInt(formData.dateOfBirth.day) > 31
-    ) {
-      setError("Please enter a valid date of birth (must be at least 18 years old)");
-      setLoading(false);
-      return;
-    }
-
-    // Construct FormData
-    const data = new FormData();
-    data.append("frontIdImage", frontIdImage);
-    data.append("backIdImage", backIdImage);
-    data.append("firstName", formData.firstName);
-    data.append("lastName", formData.lastName);
-    data.append("email", formData.email);
-    data.append("dateOfBirth.day", formData.dateOfBirth.day);
-    data.append("dateOfBirth.month", formData.dateOfBirth.month);
-    data.append("dateOfBirth.year", formData.dateOfBirth.year);
-    data.append("gender", formData.gender);
-    data.append("address.street", formData.address.street);
-    data.append("address.city", formData.address.city);
-    data.append("address.state", formData.address.state);
-    data.append("address.country", formData.address.country);
-    data.append("documentType", formData.documentType);
-
-    // Log FormData for debugging
-    for (let [key, value] of data.entries()) {
-      console.log(key, value);
-    }
+    setIsUploading(true);
 
     try {
-     const baseUrl = import.meta.env.VITE_API_URL || "https://tradejack.onrender.com/api/v1"
-      const response = await axios.post(${baseUrl}/profile/kyc/submit, data, {
-       withCredentials:true
+      const result = await kycVerify(kycDetails);
+
+      if (result.success) {
+        console.log("Upload successful:", result);
+        navigateTo("/dashboard");
+        setToast({
+          ...toast,
+          success: true,
+          succesMessage: result.message,
+        });
+      } else {
+        console.error("Verification error:", result.error);
+        setToast({
+          ...toast,
+          error: true,
+          errorMessage: result?.error,
+        });
+      }
+    } catch (err) {
+      console.log("Unexpected error:", err?.message || err);
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "An unexpected error occurred. Please try again.",
       });
-      setSuccess("KYC submitted successfully. Awaiting admin review.");
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        dateOfBirth: { day: "", month: "", year: "" },
-        gender: "",
-        address: { street: "", city: "", state: "", country: "" },
-        documentType: "",
-      });
-      setFrontIdImage(null);
-      setBackIdImage(null);
-    } catch (error) {
-      console.error("KYC submission error:", error.response?.data);
-      setError(
-        error.response?.data?.message ||
-          "Failed to submit KYC. Please try again."
-      );
     } finally {
-      setLoading(false);
+      setIsUploading(false);
     }
+  };
+
+  const cancelButton = () => {
+    navigateTo("/settings/account/kycVerify/2");
   };
 
   return (
     <>
       <InAppNav />
-      <div className="flex flex-col min-h-svh bg-black lg:px-[2%] md:px-[5%] md:pt-[80px] pt-[60px] relative">
-        <div className="flex flex-col w-full h-full md:border-x md:border-t md:border-b border-neutral-800">
-          {/* Header */}
-          <div className="flex items-center justify-between p-[15px] border-b border-tradeAshLight">
-            <p className="text-[17px] text-white font-[700]">
-              KYC Verification
-            </p>
-            <div className="text-white text-[25px]">
-              <FaUserCheck />
-            </div>
+      <div className="md:pt-[64px] pt-[60px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[10px] bg-black ">
+        <SideNav />
+
+        <div className="flex flex-col flex-1  md:border-x md:border-b md:border-t border-neutral-800">
+          <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
+            <p className="text-lg text-white font-[700]">KYC Verification</p>
           </div>
 
-          {/* Form */}
-          <div className="px-[15px] py-[20px] flex flex-col gap-[20px]">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-[15px]">
-              {/* Personal Information */}
-              <div className="flex flex-col gap-[10px]">
-                <h3 className="text-white text-[15px] font-[600]">
-                  Personal Information
-                </h3>
-                <input
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  placeholder="First Name"
-                  className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px] focus:outline-none focus:border-tradeGreen"
-                />
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  placeholder="Last Name"
-                  className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px] focus:outline-none focus:border-tradeGreen"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Email"
-                  className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px] focus:outline-none focus:border-tradeGreen"
-                />
+          <div className="flex flex-col h-full gap-[10px] p-[15px] items-center justify-between bg-tradePurpl">
+            <div className="flex flex-col gap-[30px] w-full lg:w-max">
+              <div className="flex flex-col gap-5">
+                <Stepper totalSteps={3} currentStep={3} />
               </div>
 
-              {/* Date of Birth */}
-              <div className="flex flex-col gap-[10px]">
-                <h3 className="text-white text-[15px] font-[600]">
-                  Date of Birth
-                </h3>
-                <div className="flex gap-[10px]">
-                  <input
-                    type="number"
-                    name="dateOfBirth.day"
-                    value={formData.dateOfBirth.day}
-                    onChange={handleInputChange}
-                    placeholder="Day"
-                    min="1"
-                    max="31"
-                    className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px] focus:outline-none focus:border-tradeGreen w-[33%]"
-                  />
-                  <input
-                    type="number"
-                    name="dateOfBirth.month"
-                    value={formData.dateOfBirth.month}
-                    onChange={handleInputChange}
-                    placeholder="Month"
-                    min="1"
-                    max="12"
-                    className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px] focus:outline-none focus:border-tradeGreen w-[33%]"
-                  />
-                  <input
-                    type="number"
-                    name="dateOfBirth.year"
-                    value={formData.dateOfBirth.year}
-                    onChange={handleInputChange}
-                    placeholder="Year"
-                    min="1900"
-                    max={new Date().getFullYear() - 18}
-                    className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px] focus:outline-none focus:border-tradeGreen w-[33%]"
-                  />
+              <div className="flex flex-col lg:w-[550px] w-full gap-[30px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
+                <div className="flex flex-col gap-1 w-full">
+                  <p className="  text-xl text-white font-[700]">
+                    Identity Verification
+                  </p>
+                  <p className="text-xs text-tradeFadeWhite leading-relaxed">
+                    Upload a clear image of a valid government-issued ID that
+                    matches your personal details.
+                  </p>
+                </div>
+
+                <div className="flex md:grid grid-cols-2 flex-col gap-[15px]">
+                  <div className="flex flex-col gap-1">
+                    <p className="text-[13px]  text-tradeFadeWhite font-medium">
+                      Document Type
+                    </p>
+                    <div className="relative w-full cursor-pointer ">
+                      <input
+                        className={`${
+                          kycDetails?.documentType
+                            ? "border-tradeAshExtraLight"
+                            : "border-tradeAshLight"
+                        } mt-[5px] text-[13px]  text-white placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                        type="text"
+                        readOnly
+                        placeholder="Select a document type"
+                        name="documentType"
+                        value={
+                          kycDetails?.documentType
+                            ? documentTypeMap[kycDetails.documentType]
+                            : ""
+                        }
+                        onClick={() =>
+                          setSelect({
+                            ...select,
+                            state: true,
+                            selectOne: true,
+                            selectTwo: false,
+                            element: "document type",
+                            options: documentTypes,
+                            pick: "",
+                            page: "kyc verification",
+                          })
+                        }
+                      />
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                        <MdKeyboardArrowDown />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <p className="text-[13px]  text-tradeFadeWhite font-medium">
+                      Date of Birth
+                    </p>
+                    <input
+                      type="date"
+                      name="dateOfBirth"
+                      placeholder="Select your birth date"
+                      value={
+                        kycDetails.dateOfBirth.year &&
+                        kycDetails.dateOfBirth.month &&
+                        kycDetails.dateOfBirth.day
+                          ? `${kycDetails.dateOfBirth.year}-${kycDetails.dateOfBirth.month}-${kycDetails.dateOfBirth.day}`
+                          : ""
+                      }
+                      onChange={handleDateChange}
+                      className={`${
+                        kycDetails.dateOfBirth.year
+                          ? "border-tradeAshExtraLight"
+                          : "border-tradeAshLight"
+                      }  appearance-none mt-[5px] text-[13px]  text-white placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <div className="flex flex-col gap-1">
+                      <p className="text-[13px] text-tradeFadeWhite font-medium">
+                        Front ID Image
+                      </p>
+                      <div
+                        onClick={handleFrontClick}
+                        className={`flex items-center justify-between mt-[5px] text-[13px] text-tradeFadeWhite placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border ${
+                          kycDetails?.frontIdImage?.name
+                            ? "border-tradeAshExtraLight"
+                            : "border-tradeAshLight"
+                        } border-dashed outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                      >
+                        <p
+                          className={`${
+                            kycDetails?.frontIdImage?.name
+                              ? "text-white"
+                              : "text-tradeFadeWhite"
+                          }`}
+                        >
+                          {kycDetails?.frontIdImage
+                            ? `Uploaded: ${kycDetails?.frontIdImage?.name}`
+                            : "JPG, PNG • 5MB max"}
+                        </p>
+                        <RiFileUploadFill className="text-xl" />
+                      </div>
+                      <input
+                        type="file"
+                        ref={frontRef}
+                        name="frontIdImage"
+                        className="hidden"
+                        onChange={handleFrontFileChange}
+                        accept="image/*"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col">
+                    <div className="flex flex-col gap-1">
+                      <p className="text-[13px] text-tradeFadeWhite font-medium">
+                        Back ID Image
+                      </p>
+                      <div
+                        onClick={handleBackClick}
+                        className={`flex items-center justify-between mt-[5px] text-[13px] text-tradeFadeWhite placeholder:text-tradeFadeWhite font-medium bg-tradeAsh border ${
+                          kycDetails?.backIdImage?.name
+                            ? "border-tradeAshExtraLight"
+                            : "border-tradeAshLight"
+                        } border-dashed outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                      >
+                        <p
+                          className={`${
+                            kycDetails?.backIdImage?.name
+                              ? "text-white"
+                              : "text-tradeFadeWhite"
+                          }`}
+                        >
+                          {kycDetails?.backIdImage
+                            ? `Uploaded: ${kycDetails?.backIdImage?.name}`
+                            : "JPG, PNG • 5MB max"}
+                        </p>
+                        <RiFileUploadFill className="text-xl" />
+                      </div>
+                      <input
+                        type="file"
+                        ref={backRef}
+                        name="backIdImage"
+                        className="hidden"
+                        onChange={handleBackFileChange}
+                        accept="image/*"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* Gender */}
-              <div className="flex flex-col gap-[10px]">
-                <h3 className="text-white text-[15px] font-[600]">Gender</h3>
-                <select
-                  name="gender"
-                  value={formData.gender}
-                  onChange={handleInputChange}
-                  className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px] focus:outline-none focus:border-tradeGreen"
-                >
-                  <option value="">Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </div>
-
-              {/* Address */}
-              <div className="flex flex-col gap-[10px]">
-                <h3 className="text-white text-[15px] font-[600]">Address</h3>
-                <input
-                  type="text"
-                  name="address.street"
-                  value={formData.address.street}
-                  onChange={handleInputChange}
-                  placeholder="Street"
-                  className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px] focus:outline-none focus:border-tradeGreen"
-                />
-                <input
-                  type="text"
-                  name="address.city"
-                  value={formData.address.city}
-                  onChange={handleInputChange}
-                  placeholder="City"
-                  className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px] focus:outline-none focus:border-tradeGreen"
-                />
-                <input
-                  type="text"
-                  name="address.state"
-                  value={formData.address.state}
-                  onChange={handleInputChange}
-                  placeholder="State"
-                  className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px] focus:outline-none focus:border-tradeGreen"
-                />
-                <input
-                  type="text"
-                  name="address.country"
-                  value={formData.address.country}
-                  onChange={handleInputChange}
-                  placeholder="Country"
-                  className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px] focus:outline-none focus:border-tradeGreen"
-                />
-              </div>
-
-              {/* Document Type */}
-              <div className="flex flex-col gap-[10px]">
-                <h3 className="text-white text-[15px] font-[600]">
-                  Document Type
-                </h3>
-                <select
-                  name="documentType"
-                  value={formData.documentType}
-                  onChange={handleInputChange}
-                  className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px] focus:outline-none focus:border-tradeGreen"
-                >
-                  <option value="">Select Document Type</option>
-                  <option value="passport">Passport</option>
-                  <option value="driver_license">Driver's License</option>
-                  <option value="national_id">National ID</option>
-                </select>
-              </div>
-
-              {/* File Uploads */}
-              <div className="flex flex-col gap-[10px]">
-                <h3 className="text-white text-[15px] font-[600]">
-                  ID Documents
-                </h3>
-                <div className="flex flex-col gap-[5px]">
-                  <label className="text-tradeFadeWhite text-[13px]">
-                    Front ID Image
-                  </label>
-                  <input
-                    type="file"
-                    name="frontIdImage"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px]"
-                  />
-                </div>
-                <div className="flex flex-col gap-[5px]">
-                  <label className="text-tradeFadeWhite text-[13px]">
-                    Back ID Image
-                  </label>
-                  <input
-                    type="file"
-                    name="backIdImage"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    className="px-[12px] py-[8px] bg-tradeAsh border border-neutral-800 text-white rounded-[6.5px]"
-                  />
-                </div>
-              </div>
-
-              {/* Error/Success Messages */}
-              {error && (
-                <p className="text-red-500 text-[13px] font-[500]">{error}</p>
-              )}
-              {success && (
-                <p className="text-tradeGreen text-[13px] font-[500]">
-                  {success}
-                </p>
-              )}
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={loading}
-                className={`px-[12px] py-[8px] bg-tradeGreen text-white rounded-[6.5px] font-[600] transition-all duration-300 hover:shadow-md hover:scale-[1.03] ${
-                  loading ? "opacity-50 cursor-not-allowed" : ""
-                }`}
+            <div className=" lg:w-[550px] w-full flex md:flex-row flex-col-reverse gap-[10px] justify-center items-center bg-tradeAs p-[12px rounded-[15px]">
+              <Button
+                onClick={cancelButton}
+                variant="Fadeout"
+                disabled={isUploading}
               >
-                {loading ? "Submitting..." : "Submit KYC"}
-              </button>
-            </form>
+                Back
+              </Button>
+
+              <Button
+                onClick={handleKycVerification}
+                variant="primary"
+                disabled={isUploading}
+              >
+                {isUploading ? "Submitting..." : "Submit"}
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -387,4 +428,4 @@ const KycVerification = () => {
   );
 };
 
-export default KycVerification;
+export default KycVerifyStep3;
