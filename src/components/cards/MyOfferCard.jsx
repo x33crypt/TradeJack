@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { CiBank } from "react-icons/ci";
-import { formatDecimal } from "@/utils/currency/format";
+import { toDecimal } from "@/utils/currency/format";
 import { MdGrid3X3 } from "react-icons/md";
 import { MdDateRange } from "react-icons/md";
 import { RiRadioButtonLine } from "react-icons/ri";
@@ -79,7 +79,7 @@ const MyOfferCard = ({ offer }) => {
             </div>
 
             <p className="text-[13px] font-bold text-white">
-              ${formatDecimal(offer?.marginRate?.from)} {""}
+              ${toDecimal(offer?.marginRate?.from)} {""}
               {/* {offer?.preferredCurrency?.code} */}
             </p>
           </div>
@@ -94,7 +94,7 @@ const MyOfferCard = ({ offer }) => {
             </div>
 
             <p className=" text-[13px] font-bold text-white">
-              ${formatDecimal(offer?.marginRate?.to)}{" "}
+              ${toDecimal(offer?.marginRate?.to)}{" "}
               {/* {offer?.preferredCurrency?.code} */}
             </p>
           </div>
@@ -179,7 +179,7 @@ const MyOfferCard = ({ offer }) => {
               </p>
             </div>
             <p className="text-[13px] font-bold text-white">
-              ${formatDecimal(offer?.marginRate?.from)} {""}
+              ${toDecimal(offer?.marginRate?.from)} {""}
               {/* {offer?.preferredCurrency?.code} */}
             </p>
           </div>
@@ -190,7 +190,7 @@ const MyOfferCard = ({ offer }) => {
               </p>
             </div>
             <p className=" text-[13px] font-bold text-white">
-              ${formatDecimal(offer?.marginRate?.to)}{" "}
+              ${toDecimal(offer?.marginRate?.to)}{" "}
               {/* {offer?.preferredCurrency?.code} */}
             </p>
           </div>
