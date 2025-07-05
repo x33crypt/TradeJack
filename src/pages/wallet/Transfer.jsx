@@ -4,13 +4,39 @@ import React, { useState, useEffect } from "react";
 import Button from "@/components/buttons/Button";
 import RecentTransfer from "./RecentTransfer";
 import { toUSD } from "@/utils/currency/toUSD";
-import { toDecimal } from "@/utils/currency/format";
+import { getMinimumWithdrawal } from "@/utils/currency/minWithdraw";
+import { toDecimal } from "@/utils/currency/toDecimal";
+import LockByScroll from "@/components/LockByScroll";
+import image from "../../assets/landingImg4.JPG";
+import { RiWaterFlashFill } from "react-icons/ri";
+import { IoClose } from "react-icons/io5";
+import { useToast } from "@/context/ToastContext";
+import { transfer } from "@/utils/wallet/Transfer";
+import { BiErrorAlt } from "react-icons/bi";
+import { BiSolidWalletAlt } from "react-icons/bi";
+import { MdError } from "react-icons/md";
 
 const Transfer = () => {
   const [transferDetails, setTransferDetails] = useState({
     username: "",
     amount: { USD: null, NGN: null },
+    transferError: "",
+    transferSuccess: false,
+    reference: "",
   });
+  const [minWithdraw, setMinWithdraw] = useState(null);
+  const [proceed, setProceed] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { toast, setToast } = useToast();
+
+  // Fetch Minimum Withdraw - $20
+  useEffect(() => {
+    async function fetchMin() {
+      const result = await getMinimumWithdrawal("NGN"); // or dynamic currency
+      if (result) setMinWithdraw(result.toFixed(2));
+    }
+    fetchMin();
+  }, []);
 
   const handleUsernameChange = (e) => {
     setTransferDetails((prevDetails) => ({
@@ -33,7 +59,7 @@ const Transfer = () => {
     }
   };
 
-  // handle GiRugbyConversion
+  // Fetch Withdaw Amount In USD
   useEffect(() => {
     const timeout = setTimeout(() => {
       const ngnValue = Number(transferDetails?.amount?.NGN);
@@ -70,6 +96,69 @@ const Transfer = () => {
 
   console.log(transferDetails);
 
+  const handleProceed = () => {
+    const { username, amount } = transferDetails;
+
+    // Validate username
+    if (!username || username.trim().length === 0) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Please enter a valid username.",
+      });
+      return;
+    }
+
+    // Validate NGN amount
+    const ngnAmount = Number(amount?.NGN);
+
+    if (!ngnAmount || isNaN(ngnAmount)) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "Please enter a valid NGN amount.",
+      });
+      return;
+    }
+
+    if (ngnAmount < minWithdraw) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: `The minimum transfer amount is NGN ${toDecimal(
+          minWithdraw
+        )}.`,
+      });
+      return;
+    }
+
+    setProceed(true);
+  };
+
+  const handleTransfer = async () => {
+    setLoading(true);
+    const result = await transfer(transferDetails);
+    console.log("Transfer:", result);
+
+    if (result.success) {
+      setLoading(false);
+
+      setTransferDetails((prev) => ({
+        ...prev,
+        transferSuccess: true,
+        reference: result.reference,
+      }));
+    } else {
+      console.error("Transfer failed:", result.error);
+      setLoading(false);
+
+      setTransferDetails((prev) => ({
+        ...prev,
+        transferError: result.error,
+      }));
+    }
+  };
+
   return (
     <>
       <InAppNav />
@@ -81,7 +170,7 @@ const Transfer = () => {
             </div>
 
             <div className="flex flex-col p-[15px] gap-[10px]">
-              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+              {/* <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                   <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
                     <p className="text-tradeGreen text-xs font-medium ">
@@ -111,6 +200,10 @@ const Transfer = () => {
                     </p>
                   </div>
                 </div>
+              </div> */}
+
+              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
+                <p className="text-sm">Event</p>
               </div>
 
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
@@ -126,63 +219,166 @@ const Transfer = () => {
                   </div>
                 </div>
 
-                <div className="w-full flex flex-col items-start justify-between gap-[10px]">
-                  <div className="flex flex-col pb-[5px] gap-[10px] w-full border-b border-tradeAshLight">
-                    <p className="text-tradeFadeWhite text-xs font-semibold">
-                      Recipient Username
-                    </p>
-                    <div className="flex-1 bg-tradeAsh w-full">
-                      <input
-                        className="bg-transparent w-full border-none outline-none text-white placeholder:text-tradeFadeWhite text-lg font-semibold leading-none"
-                        type="text"
-                        placeholder="JoneDoe"
-                        onChange={handleUsernameChange}
-                        value={transferDetails?.username}
-                      />
-                    </div>
+                <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
+                  <p className="text-tradeFadeWhite text-xs font-semibold">
+                    Recipient Username
+                  </p>
+                  <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[8px] py-[8px] px-[10px]">
+                    <input
+                      className="bg-transparent flex-1 border-none outline-none text-white placeholder:text-tradeFadeWhite text-base font-medium leading-none"
+                      type="text"
+                      placeholder="e.g., johnDoe"
+                      onChange={handleUsernameChange}
+                      value={transferDetails?.username}
+                    />
                   </div>
+                </div>
 
-                  <div className="flex flex-col w-full gap-[10px]">
-                    <div className="flex flex-col pb-[5px] gap-[10px] w-full border-b border-tradeAshLight bg-tradePurpl">
-                      <p className="text-tradeFadeWhite text-xs font-semibold">
-                        Amount
-                      </p>
-                      <div className="flex-1 flex  bg-tradeAsh w-full">
-                        <input
-                          className="bg-transparent flex-1 border-none outline-none text-white placeholder:text-tradeFadeWhite text-lg font-semibold leading-none"
-                          type="text"
-                          placeholder="Enter amount (Min: NGN 1,500)"
-                          onChange={handleAmountChange}
-                          value={
-                            transferDetails?.amount?.NGN
-                              ? toDecimal(transferDetails?.amount?.NGN)
-                              : ""
-                          }
-                        />
-                      </div>
-                    </div>
-
-                    <div className="">
-                      <p className="text-tradeOrange text-[13px] font-semibold">
-                        Transfering $
-                        {transferDetails?.amount?.USD
-                          ? transferDetails?.amount?.USD
-                          : "0.00"}
-                      </p>
-                    </div>
+                <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
+                  <p className="text-tradeFadeWhite text-xs font-semibold">
+                    Amount
+                  </p>
+                  <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[8px] py-[8px] px-[10px]">
+                    <input
+                      className="bg-transparent flex-1 border-none outline-none text-white placeholder:text-tradeFadeWhite text-base font-medium leading-none"
+                      type="text"
+                      placeholder={
+                        minWithdraw
+                          ? `Enter amount (min: ${toDecimal(minWithdraw)})`
+                          : "Loading minimum amount..."
+                      }
+                      onChange={handleAmountChange}
+                      value={
+                        transferDetails?.amount?.NGN
+                          ? toDecimal(transferDetails?.amount?.NGN)
+                          : ""
+                      }
+                    />
                   </div>
+                </div>
+
+                <div>
+                  <p className="text-tradeFadeWhite text-xs font-semibold">
+                    Value equivalent to{" "}
+                    <span className="text-tradeOrange">
+                      $
+                      {transferDetails?.amount?.USD
+                        ? transferDetails?.amount?.USD
+                        : "0.00"}
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="p-[15px] md:py-[15px] md:px-[0px] lg:p-[15px]">
-            <Button>Transfer</Button>
+            <Button
+              variant="primary"
+              onClick={handleProceed}
+              disabled={proceed}
+            >
+              Proceed
+            </Button>
           </div>
 
           <RecentTransfer />
         </div>
       </div>
+
+      {proceed && (
+        <>
+          {/* Overlay */}
+          <div className="fixed inset-0 bg-black bg-opacity-70 z-20"></div>
+          <LockByScroll />
+
+          {/* Modal */}
+          <div className="fixed inset-0 flex items-center justify-center z-40 px-[15px]">
+            <div className="flex flex-col bg-tradeAsh borde border-tradeAshLight p-[12px] gap-[10px] rounded-[15px] shadow-lg max-w-sm w-full">
+              <div className="flex justify-between items-start gap-[15px] pb-[12px] border-b border-tradeAshLight">
+                <div className="flex flex-col gap-3">
+                  <p className="text-lg font-[700] text-white leading-none">
+                    Confirm
+                  </p>
+                </div>
+
+                <div onClick={() => setProceed(false)}>
+                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
+                </div>
+              </div>
+              <div className="flex items-center gap-[10px] p-[8px] bg-tradeAshLigh rounded-[10px]">
+                <div>
+                  <img className="w-[45px] rounded-full" src={image} alt="" />
+                </div>
+                <div>
+                  <p className="text-base font-semibold text-white">
+                    @{transferDetails?.username}
+                  </p>
+                  <p className="text-[13px] text-tradeFadeWhite font-medium">
+                    Transfer
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col items-center justify-center gap-2 py-[20px] rounded-[10px]">
+                <p className="text-white font-semibold text-2xl leading-none">
+                  {toDecimal(transferDetails?.amount?.NGN)} NGN
+                </p>
+                <p className="text-tradeFadeWhite text-xs font-medium ">
+                  +0.0% Charge
+                </p>
+              </div>
+              <div className="flex flex-col gap- px-[8px] border border-tradeAshLight rounded-[10px]">
+                <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
+                  <div className="flex items-center gap-1">
+                    <BiSolidWalletAlt className="text-tradeFadeWhite" />
+                    <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                      Wallet balance
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-[13px] font-semibold text-white">
+                      0.00 NGN
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between gap-[10px]  py-[8px]">
+                  <div className="flex items-center gap-1">
+                    <RiWaterFlashFill className="text-tradeFadeWhite" />
+                    <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                      Service charge
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-[13px] font-semibold text-white">
+                      0.00 NGN
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {transferDetails?.transferError && (
+                <div className="flex items-center gap-1 p-[8px] text-xs font-medium text-white  bg-red-600 rounded-[10px]">
+                  <MdError className=" leading-none" />
+                  <p>{transferDetails?.transferError} </p>
+                </div>
+              )}
+
+              <div className="mt-[10px]">
+                <Button
+                  variant="secondary"
+                  onClick={handleTransfer}
+                  disabled={loading}
+                >
+                  Transfer
+                </Button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
       <Footer />
     </>
   );

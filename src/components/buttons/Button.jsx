@@ -12,10 +12,13 @@ const Button = ({
     "p-[12px] rounded-[10px] text-sm font-semibold transition-all duration-300 w-full";
 
   const variants = {
-    primary:
-      "bg-tradeGreen text-black hover:bg-tradeGreen/80 active:bg-tradeAsh active:text-tradeGreen transition-colors duration-200",
-    secondary:
-      "bg-tradeOrange text-black hover:bg-tradeOrange/80 active:bg-tradeAsh active:text-tradeOrange transition-colors duration-200",
+    primary: ` ${
+      disabled ? "bg-tradeAsh text-tradeGreen" : "bg-tradeGreen text-black"
+    } hover:bg-tradeGreen/80 active:bg-tradeAsh active:text-tradeGreen transition-colors duration-200`,
+
+    secondary: ` ${
+      disabled ? "bg-tradeAsh text-tradeOrange" : "bg-tradeOrange text-black"
+    } hover:bg-tradeOrange/80 active:bg-tradeAsh active:text-tradeOrange transition-colors duration-200`,
     Fadeout:
       " bg-tradeAshLight text-white hover:bg-tradeAshLight/80 active:bg-tradeAsh active:text-tradeFadeWhite transition-colors duration-200",
     outline:
@@ -30,7 +33,7 @@ const Button = ({
     <button
       type={type}
       disabled={disabled}
-      onClick={onClick}
+      onClick={disabled ? () => {} : onClick}
       className={`${baseStyles} ${variants[variant]} ${maxWidth} ${
         disabled ? "opacity-50 cursor-not-allowed" : ""
       }`}

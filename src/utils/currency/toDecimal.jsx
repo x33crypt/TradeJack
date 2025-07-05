@@ -1,5 +1,3 @@
-// utils/formatDecimal.js
-
 export function toDecimal(value, options = {}) {
   if (value === null || value === undefined || value === "") return "";
 

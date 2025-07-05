@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { CiBank } from "react-icons/ci";
-import { toDecimal } from "@/utils/currency/format";
+import { toDecimal } from "@/utils/currency/toDecimal";
 import { MdGrid3X3 } from "react-icons/md";
 import { MdDateRange } from "react-icons/md";
 import { RiRadioButtonLine } from "react-icons/ri";

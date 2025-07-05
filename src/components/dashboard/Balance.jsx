@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
-import { toDecimal } from "@/utils/currency/format";
+import { toDecimal } from "@/utils/currency/toDecimal";
 
 const Balance = ({ dashboard }) => {
   const [showBalance, setShowBalance] = useState(false);

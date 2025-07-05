@@ -17,7 +17,7 @@ const LinkedAccount = () => {
               <SiHdfcbank className="text-[35px] text-orange-600" />
             </div>
             <div className="flex flex-col gap-1">
-              <p className="text-white font-semibold text-base">
+              <p className="text-white font-semibold text-sm">
                 Bank of America
               </p>
               <p className="text-tradeFadeWhite text-xs font-medium">
@@ -36,7 +36,7 @@ const LinkedAccount = () => {
               <SiHdfcbank className="text-[35px] text-orange-600" />
             </div>
             <div className="flex flex-col gap-1">
-              <p className="text-white font-semibold text-base">
+              <p className="text-white font-semibold text-sm">
                 Bank of America
               </p>
               <p className="text-tradeFadeWhite text-xs font-medium">
