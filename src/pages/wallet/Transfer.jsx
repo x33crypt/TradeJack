@@ -227,12 +227,12 @@ const Transfer = () => {
                 </div>
 
                 <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
-                  <p className="text-tradeFadeWhite text-xs font-semibold">
+                  <p className="text-tradeFadeWhite text-xs font-medium">
                     Recipient Username
                   </p>
-                  <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[8px] py-[8px] px-[10px]">
+                  <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
                     <input
-                      className="bg-transparent flex-1 border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                      className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                       type="text"
                       placeholder="e.g., johnDoe"
                       onChange={handleUsernameChange}
@@ -242,12 +242,12 @@ const Transfer = () => {
                 </div>
 
                 <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
-                  <p className="text-tradeFadeWhite text-xs font-semibold">
+                  <p className="text-tradeFadeWhite text-xs font-medium">
                     Amount
                   </p>
-                  <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[8px] py-[8px] px-[10px]">
+                  <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
                     <input
-                      className="bg-transparent flex-1 border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                      className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                       type="text"
                       placeholder={
                         minWithdraw
@@ -300,13 +300,13 @@ const Transfer = () => {
           <LockByScroll />
 
           {/* Modal */}
-          <div className="fixed lg:inset-0 md:top-[64px] top-[60px]  left-0 bottom-0 right-0 bg-black bg-opacity-80 flex lg:items-center  lg:justify-center z-40">
-            <div className="flex flex-col justify-between gap-[10px] bg-tradeAsh borde border-tradeAshLight lg:px-[15px] md:px-[2.5%] p-[15px] lg:rounded-[15px] rounded-t-[15px shadow-lg lg:max-w-sm w-full">
+          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[15px]  bg-black bg-opacity-80 flex items-center justify-center z-40">
+            <div className="flex flex-col gap-[10px] bg-tradeAsh borde border-tradeAshLight p-[15px] rounded-[15px] shadow-lg lg:max-w-sm w-full">
               <div className="flex flex-col gap-[10px]">
                 <div className="flex justify-between items-start gap-[15px] pb-[15px]  md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
                   <div className="flex flex-col gap-3">
                     <p className="text-lg font-[700] text-white leading-none">
-                      Confirm
+                      Confirm Details
                     </p>
                   </div>
 
