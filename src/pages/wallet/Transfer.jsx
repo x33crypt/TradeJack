@@ -11,8 +11,7 @@ import image from "../../assets/landingImg4.JPG";
 import { RiWaterFlashFill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import { useToast } from "@/context/ToastContext";
-import { transfer } from "@/utils/wallet/Transfer";
-import { BiErrorAlt } from "react-icons/bi";
+import { transfer } from "@/utils/wallet/transfer";
 import { BiSolidWalletAlt } from "react-icons/bi";
 import { MdError } from "react-icons/md";
 
