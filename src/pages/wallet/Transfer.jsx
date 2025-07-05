@@ -5,7 +5,6 @@ import Button from "@/components/buttons/Button";
 import RecentTransfer from "./RecentTransfer";
 import { convertToUSD } from "@/utils/currency/convertToUsd";
 import { toDecimal } from "@/utils/currency/format";
-import { GiRugbyConversion } from "react-icons/gi";
 
 const Transfer = () => {
   const [transferDetails, setTransferDetails] = useState({
