@@ -3,7 +3,7 @@ import InAppNav from "@/components/InAppNav";
 import React, { useState, useEffect } from "react";
 import Button from "@/components/buttons/Button";
 import RecentTransfer from "./RecentTransfer";
-import { convertToUSD } from "@/utils/currency/convertToUsd";
+import { toUSD } from "@/utils/currency/toUSD";
 import { toDecimal } from "@/utils/currency/format";
 
 const Transfer = () => {
@@ -38,7 +38,7 @@ const Transfer = () => {
     const timeout = setTimeout(() => {
       const ngnValue = Number(transferDetails?.amount?.NGN);
       if (!isNaN(ngnValue) && ngnValue > 0) {
-        convertToUSD(ngnValue, "NGN").then((res) => {
+        toUSD(ngnValue, "NGN").then((res) => {
           if (res) {
             console.log("hello", res);
 

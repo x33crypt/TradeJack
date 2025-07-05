@@ -1,4 +1,4 @@
-export async function convertToUSD(amountInLocal, localCurrency = "NGN") {
+export async function toUSD(amountInLocal, localCurrency = "NGN") {
   const API_KEY = "d53707af3046be4d0da2f936";
   console.log(API_KEY);
 
