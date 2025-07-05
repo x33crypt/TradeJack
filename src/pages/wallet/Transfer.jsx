@@ -134,6 +134,14 @@ const Transfer = () => {
     setProceed(true);
   };
 
+  const handleCancel = () => {
+    setProceed(false);
+    setTransferDetails((prev) => ({
+      ...prev,
+      transferError: "",
+    }));
+  };
+
   const handleTransfer = async () => {
     setLoading(true);
     const result = await transfer(transferDetails);
@@ -165,7 +173,7 @@ const Transfer = () => {
         <div className="flex-1 lg:px-[12%] flex flex-col gap-[10px]">
           <div className=" w-full md:border lg:border-0 border-neutral-800">
             <div className="flex items-center justify-between p-[15px] border-b border-tradeAshLight">
-              <p className="text-lg font-[700] text-white">Transfer Money</p>
+              <p className="text-lg font-[700] text-white">Transfer</p>
             </div>
 
             <div className="flex flex-col p-[15px] gap-[10px]">
@@ -224,7 +232,7 @@ const Transfer = () => {
                   </p>
                   <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[8px] py-[8px] px-[10px]">
                     <input
-                      className="bg-transparent flex-1 border-none outline-none text-white placeholder:text-tradeFadeWhite text-base font-medium leading-none"
+                      className="bg-transparent flex-1 border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                       type="text"
                       placeholder="e.g., johnDoe"
                       onChange={handleUsernameChange}
@@ -239,7 +247,7 @@ const Transfer = () => {
                   </p>
                   <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[8px] py-[8px] px-[10px]">
                     <input
-                      className="bg-transparent flex-1 border-none outline-none text-white placeholder:text-tradeFadeWhite text-base font-medium leading-none"
+                      className="bg-transparent flex-1 border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                       type="text"
                       placeholder={
                         minWithdraw
@@ -288,23 +296,24 @@ const Transfer = () => {
       {proceed && (
         <>
           {/* Overlay */}
-          <div className="fixed inset-0 bg-black bg-opacity-70 z-20"></div>
+          {/* <div className="fixed inset-0 bg-black bg-opacity-70 z-20"></div> */}
           <LockByScroll />
 
           {/* Modal */}
-          <div className="fixed inset-0 flex items-center justify-center z-40 px-[15px]">
-            <div className="flex flex-col bg-tradeAsh borde border-tradeAshLight p-[12px] gap-[10px] rounded-[15px] shadow-lg max-w-sm w-full">
-              <div className="flex justify-between items-start gap-[15px] pb-[12px] border-b border-tradeAshLight">
+          <div className="fixed lg:inset-0  left-0 bottom-0 right-0 bg-black bg-opacity-80 flex lg:items-center  lg:justify-center z-40">
+            <div className="flex flex-col bg-tradeAsh borde border-tradeAshLight lg:px-[15px] md:px-[2.5%] p-[15px] gap-[10px] lg:rounded-[15px] rounded-t-[15px shadow-lg lg:max-w-sm w-full">
+              <div className="flex justify-between items-start gap-[15px] pb-[15px]  md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
                 <div className="flex flex-col gap-3">
                   <p className="text-lg font-[700] text-white leading-none">
                     Confirm
                   </p>
                 </div>
 
-                <div onClick={() => setProceed(false)}>
+                <div onClick={handleCancel}>
                   <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
                 </div>
               </div>
+
               <div className="flex items-center gap-[10px] p-[8px] bg-tradeAshLigh rounded-[10px]">
                 <div>
                   <img className="w-[45px] rounded-full" src={image} alt="" />
