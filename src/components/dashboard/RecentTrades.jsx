@@ -13,7 +13,7 @@ const RecentTrades = () => {
 
       <div className="p-[15px]">
         <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden  md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
-          {[...Array(5)].map((_, index, array) => (
+          {[...Array(8)].map((_, index, array) => (
             <div
               key={index}
               className={`${
