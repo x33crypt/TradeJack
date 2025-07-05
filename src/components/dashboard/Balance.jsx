@@ -2,13 +2,7 @@ import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
-import { FaRegQuestionCircle } from "react-icons/fa";
-import { BsSafe2Fill } from "react-icons/bs";
-import { formatDecimal } from "@/utils/currency/format";
-import { LuFileCheck2 } from "react-icons/lu";
-import { LuFileX2 } from "react-icons/lu";
-import { LuFileClock } from "react-icons/lu";
-import { LuFileSearch } from "react-icons/lu";
+import { toDecimal } from "@/utils/currency/format";
 
 const Balance = ({ dashboard }) => {
   const [showBalance, setShowBalance] = useState(false);
@@ -71,9 +65,7 @@ const Balance = ({ dashboard }) => {
                   }`}
                 >
                   {showBalance
-                    ? `$${formatDecimal(
-                        dashboard?.balances?.available_balance
-                      )}`
+                    ? `$${toDecimal(dashboard?.balances?.available_balance)}`
                     : "****"}
                 </p>
               ) : (
@@ -108,7 +100,7 @@ const Balance = ({ dashboard }) => {
                   }`}
                 >
                   {showBalance
-                    ? `$${formatDecimal(dashboard.balances.escrow_balance)}`
+                    ? `$${toDecimal(dashboard.balances.escrow_balance)}`
                     : "****"}
                 </p>
               ) : (
