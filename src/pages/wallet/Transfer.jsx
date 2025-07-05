@@ -170,45 +170,15 @@ const Transfer = () => {
     <>
       <InAppNav />
       <div className="md:pt-[64px] pt-[60px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[10px] bg-black ">
-        <div className="flex-1 lg:px-[12%] flex flex-col gap-[10px]">
+        <div className="flex-1 lg:px-[15%] flex flex-col gap-[10px]">
           <div className=" w-full md:border lg:border-0 border-neutral-800">
-            <div className="flex items-center justify-between p-[15px] border-b border-tradeAshLight">
-              <p className="text-lg font-[700] text-white">Transfer</p>
+            <div className="flex items-center justify-between p-[15px] lg:px-0 border-b border-tradeAshLight">
+              <p className="text-lg font-[700] text-white">
+                Transfer to Wallet
+              </p>
             </div>
 
-            <div className="flex flex-col p-[15px] gap-[10px]">
-              {/* <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-tradeGreen text-xs font-medium ">
-                      Transfer From
-                    </p>
-                  </div>
-
-                  <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-white text-xs font-bold">NGN</p>
-                  </div>
-                </div>
-
-                <div className="w-full flex items-start justify-between gap-2">
-                  <div className="flex flex-col gap-[10px] flex-1">
-                    <p className="text-white text-lg font-semibold leading-none">
-                      #124,896.00
-                    </p>
-
-                    <p className="text-tradeFadeWhite text-xs font-semibold">
-                      Current balance
-                    </p>
-                  </div>
-
-                  <div>
-                    <p className="text-tradeOrange text-[13px] font-semibold">
-                      $54,896.00
-                    </p>
-                  </div>
-                </div>
-              </div> */}
-
+            <div className="flex flex-col p-[15px] lg:px-0  gap-[10px]">
               <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
                 <p className="text-sm">Event</p>
               </div>
@@ -279,7 +249,7 @@ const Transfer = () => {
             </div>
           </div>
 
-          <div className="p-[15px] md:py-[15px] md:px-[0px] lg:p-[15px]">
+          <div className="p-[15px] md:py-[15px] lg:px-[0px]">
             <Button
               variant="primary"
               onClick={handleProceed}
@@ -295,12 +265,9 @@ const Transfer = () => {
 
       {proceed && (
         <>
-          {/* Overlay */}
-          {/* <div className="fixed inset-0 bg-black bg-opacity-70 z-20"></div> */}
           <LockByScroll />
-
           {/* Modal */}
-          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[15px]  bg-black bg-opacity-80 flex items-center justify-center z-40">
+          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[15px]  bg-black bg-opacity-90 flex items-center justify-center z-40">
             <div className="flex flex-col gap-[10px] bg-tradeAsh borde border-tradeAshLight p-[15px] rounded-[15px] shadow-lg lg:max-w-sm w-full">
               <div className="flex flex-col gap-[10px]">
                 <div className="flex justify-between items-start gap-[15px] pb-[15px]  md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
@@ -328,7 +295,7 @@ const Transfer = () => {
                   </div>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-2 py-[20px] rounded-[10px]">
-                  <p className="text-white font-semibold lg:text-2xl text-3xl leading-none">
+                  <p className="text-white font-semibold text-2xl leading-none">
                     {toDecimal(transferDetails?.amount?.NGN)} NGN
                   </p>
                   <p className="text-tradeFadeWhite text-xs font-medium ">

@@ -1,5 +1,4 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
-
 // Create the context
 const ToastContext = createContext();
 
