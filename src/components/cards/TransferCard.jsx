@@ -2,13 +2,14 @@ import React from "react";
 import { MdDateRange } from "react-icons/md";
 import { MdGrid3X3 } from "react-icons/md";
 import { IoMdArrowRoundUp } from "react-icons/io";
+import { CiBank } from "react-icons/ci";
+import { CgArrowsExchangeAlt } from "react-icons/cg";
 
-const TransactionCard = () => {
+const TransferCard = () => {
   return (
     <>
       {/* Desktop Card */}
-
-      <div className="md:flex hidden p-[15px] gap-10 items-center bg-tradeAsh hover:bg-black transition-all duration-300 cursor-pointer">
+      <div className="md:flex hidden p-[15px] gap-5 items-center bg-tradeAsh hover:bg-black transition-all duration-300 cursor-pointer">
         <div className="flex flex-col flex-1 gap-2">
           <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
@@ -30,7 +31,7 @@ const TransactionCard = () => {
           <div className="flex flex-col flex-1 gap-2">
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <p className="text-tradeFadeWhite text-xs font-medium">
-                Transfer From
+                Transfer To
               </p>
             </div>
             <p className="text-white text-[13px] font-semibold">
@@ -44,7 +45,7 @@ const TransactionCard = () => {
           </div>
           <p className="text-white text-[13px] font-semibold">+ #109,023.00 </p>
         </div>
-        <div className="flex flex-col flex-1 gap-2">
+        <div className="flex flex-col w-[120px] gap-2">
           <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
             <p className="text-tradeFadeWhite text-xs font-medium">
               Service Fee
@@ -52,7 +53,7 @@ const TransactionCard = () => {
           </div>
           <p className="text-white text-[13px] font-semibold">#50.00 </p>
         </div>
-        <div className="flex flex-col flex-1 gap-2">
+        <div className="flex flex-col w-[120px] gap-2">
           <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
             <p className="text-tradeFadeWhite text-xs font-medium">Status</p>
           </div>
@@ -61,7 +62,6 @@ const TransactionCard = () => {
       </div>
 
       {/* Mobile Card */}
-
       <div
         // onClick={() => handleOfferClick(offer?.offerId)}
         className="flex flex-col md:hidden  bg-tradeAsh rounded-[15px] border  border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
@@ -122,4 +122,4 @@ const TransactionCard = () => {
   );
 };
 
-export default TransactionCard;
+export default TransferCard;

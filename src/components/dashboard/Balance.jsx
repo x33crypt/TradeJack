@@ -4,7 +4,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { BsSafe2Fill } from "react-icons/bs";
-import { formatDecimal } from "@/utils/numberFormat/numberFormat";
+import { formatDecimal } from "@/utils/currency/format";
 import { LuFileCheck2 } from "react-icons/lu";
 import { LuFileX2 } from "react-icons/lu";
 import { LuFileClock } from "react-icons/lu";
