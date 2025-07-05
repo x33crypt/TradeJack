@@ -300,78 +300,78 @@ const Transfer = () => {
           <LockByScroll />
 
           {/* Modal */}
-          <div className="fixed lg:inset-0  left-0 bottom-0 right-0 bg-black bg-opacity-80 flex lg:items-center  lg:justify-center z-40">
-            <div className="flex flex-col bg-tradeAsh borde border-tradeAshLight lg:px-[15px] md:px-[2.5%] p-[15px] gap-[10px] lg:rounded-[15px] rounded-t-[15px shadow-lg lg:max-w-sm w-full">
-              <div className="flex justify-between items-start gap-[15px] pb-[15px]  md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
-                <div className="flex flex-col gap-3">
-                  <p className="text-lg font-[700] text-white leading-none">
-                    Confirm
-                  </p>
-                </div>
-
-                <div onClick={handleCancel}>
-                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
-                </div>
-              </div>
-
-              <div className="flex items-center gap-[10px] p-[8px] bg-tradeAshLigh rounded-[10px]">
-                <div>
-                  <img className="w-[45px] rounded-full" src={image} alt="" />
-                </div>
-                <div>
-                  <p className="text-base font-semibold text-white">
-                    @{transferDetails?.username}
-                  </p>
-                  <p className="text-[13px] text-tradeFadeWhite font-medium">
-                    Transfer
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-2 py-[20px] rounded-[10px]">
-                <p className="text-white font-semibold text-2xl leading-none">
-                  {toDecimal(transferDetails?.amount?.NGN)} NGN
-                </p>
-                <p className="text-tradeFadeWhite text-xs font-medium ">
-                  +0.0% Charge
-                </p>
-              </div>
-              <div className="flex flex-col gap- px-[8px] border border-tradeAshLight rounded-[10px]">
-                <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
-                  <div className="flex items-center gap-1">
-                    <BiSolidWalletAlt className="text-tradeFadeWhite" />
-                    <p className="text-[13px] font-semibold text-tradeFadeWhite">
-                      Wallet balance
+          <div className="fixed lg:inset-0 md:top-[64px] top-[60px]  left-0 bottom-0 right-0 bg-black bg-opacity-80 flex lg:items-center  lg:justify-center z-40">
+            <div className="flex flex-col justify-between gap-[10px] bg-tradeAsh borde border-tradeAshLight lg:px-[15px] md:px-[2.5%] p-[15px] lg:rounded-[15px] rounded-t-[15px shadow-lg lg:max-w-sm w-full">
+              <div className="flex flex-col gap-[10px]">
+                <div className="flex justify-between items-start gap-[15px] pb-[15px]  md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
+                  <div className="flex flex-col gap-3">
+                    <p className="text-lg font-[700] text-white leading-none">
+                      Confirm
                     </p>
                   </div>
 
+                  <div onClick={handleCancel}>
+                    <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
+                  </div>
+                </div>
+                <div className="flex items-center gap-[10px] p-[8px] bg-tradeAshLigh rounded-[10px]">
                   <div>
-                    <p className="text-[13px] font-semibold text-white">
-                      0.00 NGN
-                    </p>
+                    <img className="w-[45px] rounded-full" src={image} alt="" />
                   </div>
-                </div>
-                <div className="flex items-center justify-between gap-[10px]  py-[8px]">
-                  <div className="flex items-center gap-1">
-                    <RiWaterFlashFill className="text-tradeFadeWhite" />
-                    <p className="text-[13px] font-semibold text-tradeFadeWhite">
-                      Service charge
-                    </p>
-                  </div>
-
                   <div>
-                    <p className="text-[13px] font-semibold text-white">
-                      0.00 NGN
+                    <p className="text-base font-semibold text-white">
+                      @{transferDetails?.username}
+                    </p>
+                    <p className="text-[13px] text-tradeFadeWhite font-medium">
+                      Transfer
                     </p>
                   </div>
                 </div>
-              </div>
-
-              {transferDetails?.transferError && (
-                <div className="flex items-center gap-1 p-[8px] text-xs font-medium text-white  bg-red-600 rounded-[10px]">
-                  <MdError className=" leading-none" />
-                  <p>{transferDetails?.transferError} </p>
+                <div className="flex flex-col items-center justify-center gap-2 py-[20px] rounded-[10px]">
+                  <p className="text-white font-semibold lg:text-2xl text-3xl leading-none">
+                    {toDecimal(transferDetails?.amount?.NGN)} NGN
+                  </p>
+                  <p className="text-tradeFadeWhite text-xs font-medium ">
+                    +0.0% Charge
+                  </p>
                 </div>
-              )}
+                <div className="flex flex-col gap- px-[8px] border border-tradeAshLight rounded-[10px]">
+                  <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
+                    <div className="flex items-center gap-1">
+                      <BiSolidWalletAlt className="text-tradeFadeWhite" />
+                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                        Wallet balance
+                      </p>
+                    </div>
+
+                    <div>
+                      <p className="text-[13px] font-semibold text-white">
+                        0.00 NGN
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between gap-[10px]  py-[8px]">
+                    <div className="flex items-center gap-1">
+                      <RiWaterFlashFill className="text-tradeFadeWhite" />
+                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                        Service charge
+                      </p>
+                    </div>
+
+                    <div>
+                      <p className="text-[13px] font-semibold text-white">
+                        0.00 NGN
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {transferDetails?.transferError && (
+                  <div className="flex items-center gap-1 p-[8px] text-xs font-medium text-white  bg-red-600 rounded-[10px]">
+                    <MdError className=" leading-none" />
+                    <p>{transferDetails?.transferError} </p>
+                  </div>
+                )}
+              </div>
 
               <div className="mt-[10px]">
                 <Button
