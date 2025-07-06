@@ -32,7 +32,7 @@ const ConfirmTransfer = () => {
         <div>
           <LockByScroll />
           {/* Modal */}
-          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[30px]  bg-black bg-opacity-90 flex items-center justify-center z-40">
+          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[35px]  bg-black bg-opacity-90 flex items-center justify-center z-40">
             <div className="flex flex-col justify-between gap-[10px] bg-tradeAsh borde border-tradeAshLight p-[15px] rounded-[15px] shadow-lg lg:max-w-sm w-full min-h-[350px]">
               <div className="flex flex-col gap-[10px]">
                 <div className="flex justify-between items-start gap-[15px] pb-[15px]  md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
