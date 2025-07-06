@@ -1,5 +1,5 @@
-import TransferCard from "@/components/cards/TransferCard";
 import React from "react";
+import TransactionCard from "@/components/cards/TransactionCard";
 
 const RecentTransfer = () => {
   return (
@@ -22,7 +22,7 @@ const RecentTransfer = () => {
                   : ""
               }`}
             >
-              <TransferCard />
+              <TransactionCard />
             </div>
           ))}
         </div>

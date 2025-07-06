@@ -33,23 +33,26 @@ const Transfer = () => {
     setMinWithdraw({
       loading: true,
     });
-    const result = await getMinimumWithdrawal("NGN");
 
+    const result = await getMinimumWithdrawal("NGN");
     console.log("minimum withdraw result:", result);
 
-    if (result?.success) {
-      setMinWithdraw({
-        loading: false,
-        success: true,
-        result: result.minimum.toFixed(2),
-      });
-    } else {
-      setMinWithdraw({
-        loading: false,
-        success: false,
-        result: null,
-      });
-    }
+    // Add 2-second delay before updating state
+    setTimeout(() => {
+      if (result?.success) {
+        setMinWithdraw({
+          loading: false,
+          success: true,
+          result: result.minimum.toFixed(2),
+        });
+      } else {
+        setMinWithdraw({
+          loading: false,
+          success: false,
+          result: null,
+        });
+      }
+    }, 2000); // 2000ms = 2 seconds
   };
 
   useEffect(() => {
@@ -241,6 +244,8 @@ const Transfer = () => {
     console.log("Transfer:", result);
 
     if (result?.success) {
+      setProceed(false);
+
       setTransferDetails((prev) => ({
         ...prev,
         username: "",
@@ -392,7 +397,7 @@ const Transfer = () => {
                             ? `Enter amount (min: ${toDecimal(
                                 minWithdraw?.result
                               )} NGN)`
-                            : "Min amount is unavailable, tap to retry "
+                            : "Minimum unavailable, tap to retry..."
                         }
                         onChange={handleAmountChange}
                         value={

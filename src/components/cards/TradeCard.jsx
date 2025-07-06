@@ -84,21 +84,19 @@ const TradeCard = () => {
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <MdDateRange className="text-sm text-tradeAshExtraLight" />
             </div>
-            <p className="text-white  text-[13px] font-bold">
-              14, Feb, 2024 02:65:07 PM
-            </p>
+            <p className="text-white  text-[13px] font-bold">14, Feb, 2024</p>
           </div>
         </div>
 
         {/* Bank Info */}
         <div className="flex w-full items-center justify-between  gap-3 px-4 py-3 border-b border-tradeAshLight">
           <div className="flex gap-3 items-center">
-            <div className="flex text-tradeGreen p-3 text-base rounded-full bg-tradeAshLight">
+            <div className="flex text-tradeGreen p-3 leading-none text-base rounded-full bg-tradeAshLight">
               <CgArrowsExchangeAlt />
             </div>
 
             <div className="flex flex-col gap-1">
-              <p className="text-white text-[13px] font-semibold">SlickMayor</p>
+              <p className="text-white text-[13px] font-medium">SlickMayor</p>
               <p className="text-tradeOrange text-sm font-semibold">Cash App</p>
             </div>
           </div>
@@ -107,7 +105,7 @@ const TradeCard = () => {
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <p className="text-tradeFadeWhite text-xs font-medium">Amount</p>
             </div>
-            <p className="text-white text-base font-bold">$5,600.00 </p>
+            <p className="text-white text-sm font-bold">$5,600.00 </p>
           </div>
         </div>
 
