@@ -39,7 +39,7 @@ const SuccessTransfer = () => {
                   <FaRegCircleCheck className="text-7xl text-tradeGreen" />
                 </div>
 
-                <div className="mt-[15px] flex flex-col items-center gap-2 justify-center">
+                <div className="mt-[15px] flex flex-col items-center gap-3 justify-center">
                   <p className="text-lg font-semibold text-white leading-none">
                     Transfer Successful
                   </p>

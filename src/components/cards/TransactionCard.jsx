@@ -78,9 +78,9 @@ const TransactionCard = () => {
         </div>
 
         {/* Bank Info */}
-        <div className="flex w-full items-center justify-between  gap-3 px-4 py-3 border-b border-tradeAshLight">
+        <div className="flex w-full justify-between  gap-3 px-4 py-3 border-b border-tradeAshLight">
           <div className="flex gap-3 items-center">
-            <div className="flex text-tradeGreen p-3 text-base rounded-full bg-tradeAshLight">
+            <div className="flex text-tradeGreen p-3 text-lg rounded-full bg-tradeAshLight">
               <IoMdArrowRoundUp />
             </div>
 
@@ -96,11 +96,11 @@ const TransactionCard = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col justify-between">
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <p className="text-tradeFadeWhite text-xs font-medium">Amount</p>
             </div>
-            <p className="text-white text-sm font-semibold">$5,600.00 </p>
+            <p className="text-white text-sm font-semibold">#5,600.21 </p>
           </div>
         </div>
 

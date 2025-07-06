@@ -19,7 +19,7 @@ export const TransferProvider = ({ children }) => {
       loading: false,
     },
     success: {
-      state: false,
+      state: true,
       date: null,
       transferReferenceNo: null,
       viewBalance: null,

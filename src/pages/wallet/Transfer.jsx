@@ -208,7 +208,7 @@ const Transfer = () => {
         currency: "NGN",
         walletBalance: 571000.34,
         chargePercent: 0.5,
-        chargeAmount: 115,
+        chargeAmount: 115.43,
         transferTrigger: handleTransfer,
         cancelTransfer: handleCancel,
         loading: transferDetails?.loading,
