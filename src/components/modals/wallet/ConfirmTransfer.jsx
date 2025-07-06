@@ -32,8 +32,8 @@ const ConfirmTransfer = () => {
         <div>
           <LockByScroll />
           {/* Modal */}
-          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[25px]  bg-black bg-opacity-90 flex items-center justify-center z-40">
-            <div className="flex flex-col justify-between gap-[10px] bg-tradeAsh borde border-tradeAshLight p-[15px] rounded-[15px] shadow-lg lg:max-w-sm w-full min-h-[380px]">
+          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[30px]  bg-black bg-opacity-90 flex items-center justify-center z-40">
+            <div className="flex flex-col justify-between gap-[10px] bg-tradeAsh borde border-tradeAshLight p-[15px] rounded-[15px] shadow-lg lg:max-w-sm w-full min-h-[350px]">
               <div className="flex flex-col gap-[10px]">
                 <div className="flex justify-between items-start gap-[15px] pb-[15px]  md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
                   <div className="flex flex-col gap-3">
@@ -63,8 +63,8 @@ const ConfirmTransfer = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-col items-center justify-center gap-2 py-[20px] rounded-[10px]">
-                  <p className="text-white font-semibold text-2xl leading-none">
+                <div className="flex flex-col items-center justify-center gap-2 py-[15px] rounded-[10px] border border-tradeAshLight ronded-[15px]">
+                  <p className="text-white font-semibold text-xl leading-none">
                     {toDecimal(amount)} {currency}
                   </p>
                   <p className="text-tradeFadeWhite text-xs font-medium ">
