@@ -283,6 +283,8 @@ const Transfer = () => {
   };
 
   const handleViewBalance = () => {
+    navigateTo("/wallet");
+
     setTransfer((prev) => ({
       ...prev,
       confirm: {
@@ -306,8 +308,6 @@ const Transfer = () => {
         closeSuccess: null,
       },
     }));
-
-    navigateTo("/wallet");
   };
 
   const handleCloseSuccess = () => {
