@@ -32,6 +32,7 @@ const Transfer = () => {
   const fetchMinWithdraw = async () => {
     setMinWithdraw({
       loading: true,
+      success: false,
     });
 
     const result = await getMinimumWithdrawal("NGN");

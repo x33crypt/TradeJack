@@ -100,7 +100,7 @@ const TransactionCard = () => {
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <p className="text-tradeFadeWhite text-xs font-medium">Amount</p>
             </div>
-            <p className="text-white text-sm font-bold">$5,600.00 </p>
+            <p className="text-white text-sm font-semibold">$5,600.00 </p>
           </div>
         </div>
 
