@@ -32,7 +32,7 @@ const ConfirmTransfer = () => {
         <div>
           <LockByScroll />
           {/* Modal */}
-          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[15px]  bg-black bg-opacity-90 flex items-center justify-center z-40">
+          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[25px]  bg-black bg-opacity-90 flex items-center justify-center z-40">
             <div className="flex flex-col justify-between gap-[10px] bg-tradeAsh borde border-tradeAshLight p-[15px] rounded-[15px] shadow-lg lg:max-w-sm w-full min-h-[380px]">
               <div className="flex flex-col gap-[10px]">
                 <div className="flex justify-between items-start gap-[15px] pb-[15px]  md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
@@ -75,13 +75,13 @@ const ConfirmTransfer = () => {
                   <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
                     <div className="flex items-center gap-1">
                       <BiSolidWalletAlt className="text-tradeFadeWhite" />
-                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                      <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
                         Wallet balance
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-[13px] font-semibold text-white">
+                      <p className="md:text-[13px] text-[12px] font-semibold text-white">
                         {toDecimal(walletBalance)} {currency}
                       </p>
                     </div>
@@ -89,13 +89,13 @@ const ConfirmTransfer = () => {
                   <div className="flex items-center justify-between gap-[10px]  py-[8px]">
                     <div className="flex items-center gap-1">
                       <RiWaterFlashFill className="text-tradeFadeWhite" />
-                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                      <p className="text-[12px] font-semibold text-tradeFadeWhite">
                         Service charge
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-[13px] font-semibold text-white">
+                      <p className="md:text-[13px] text-[12px] font-semibold text-white">
                         {toDecimal(chargeAmount)} {currency}
                       </p>
                     </div>
