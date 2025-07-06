@@ -1,4 +1,5 @@
 import React from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Button = ({
   children,
@@ -9,7 +10,7 @@ const Button = ({
   maxWidth = "",
 }) => {
   const baseStyles =
-    "p-[12px] rounded-[10px] text-sm font-semibold transition-all duration-300 w-full";
+    "p-[12px] rounded-[10px] text-sm font-semibold transition-all duration-300 w-full flex items-center justify-center gap-2";
 
   const variants = {
     primary: ` ${
@@ -17,16 +18,34 @@ const Button = ({
     } hover:bg-tradeGreen/80 active:bg-tradeAsh active:text-tradeGreen transition-colors duration-200`,
 
     secondary: ` ${
-      disabled ? "bg-tradeAsh text-tradeOrange" : "bg-tradeOrange text-black"
+      disabled
+        ? "bg-tradeAsh text-tradeOrange hover:bg-transparent"
+        : "bg-tradeOrange text-black"
     } hover:bg-tradeOrange/80 active:bg-tradeAsh active:text-tradeOrange transition-colors duration-200`,
-    Fadeout:
-      " bg-tradeAshLight text-white hover:bg-tradeAshLight/80 active:bg-tradeAsh active:text-tradeFadeWhite transition-colors duration-200",
-    outline:
-      "bg-transparent text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite border border-tradeAshLight hover:border-tradeAshExtraLight transition-colors duration-200",
-    danger:
-      "bg-transparent text-red-500 hover:text-red-600 active:text-red-700 underline-offset-4 hover:underline transition-colors duration-200",
-    ghost:
-      "bg-transparent text-tradeOrange hover:text-tradeOrange underline-offset-4 hover:underline active:text-white transition-all duration-150",
+
+    Fadeout: ` ${
+      disabled
+        ? "bg-tradeAsh text-tradeFadeWhite hover:bg-transparent"
+        : "bg-tradeAshLight text-white"
+    }  hover:bg-tradeAshLight/80 active:bg-tradeAsh active:text-tradeFadeWhite transition-colors duration-200`,
+
+    outline: `${
+      disabled
+        ? "bg-transparent text-tradeFadeWhite hover:bg-transparent"
+        : "bg-transparent text-tradeFadeWhite"
+    }  hover:text-white active:text-tradeFadeWhite border border-tradeAshLight hover:border-tradeAshExtraLight transition-colors duration-200`,
+
+    danger: `${
+      disabled
+        ? "bg-transparent text-red-700 hover:bg-transparent"
+        : "bg-transparent text-red-500"
+    }  hover:text-red-600 active:text-red-700 underline-offset-4 hover:underline transition-colors duration-200`,
+
+    ghost: `${
+      disabled
+        ? "text-white hover:bg-transparent"
+        : "bg-transparent text-tradeOrange"
+    }  bg-transparent text-tradeOrange hover:text-tradeOrange underline-offset-4 hover:underline active:text-white transition-all duration-150`,
   };
 
   return (
@@ -38,7 +57,11 @@ const Button = ({
         disabled ? "opacity-50 cursor-not-allowed" : ""
       }`}
     >
-      {children}
+      {disabled ? (
+        <AiOutlineLoading3Quarters className="animate-spin text-[16px]" />
+      ) : (
+        children
+      )}
     </button>
   );
 };

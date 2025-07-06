@@ -6,35 +6,54 @@ import RecentTransfer from "./RecentTransfer";
 import { toUSD } from "@/utils/currency/toUSD";
 import { getMinimumWithdrawal } from "@/utils/currency/minWithdraw";
 import { toDecimal } from "@/utils/currency/toDecimal";
-import LockByScroll from "@/components/LockByScroll";
 import image from "../../assets/landingImg4.JPG";
-import { RiWaterFlashFill } from "react-icons/ri";
-import { IoClose } from "react-icons/io5";
 import { useToast } from "@/context/ToastContext";
-import { transfer } from "@/utils/wallet/transfer";
-import { BiSolidWalletAlt } from "react-icons/bi";
-import { MdError } from "react-icons/md";
+import { submitTransfer } from "@/utils/wallet/transfer";
+import { useTransferContext } from "@/context/wallet/TransferContext";
+import { useNavigate } from "react-router-dom";
+import { IoMdRefresh } from "react-icons/io";
 
 const Transfer = () => {
+  const { transfer, setTransfer } = useTransferContext();
   const [transferDetails, setTransferDetails] = useState({
     username: "",
     amount: { USD: null, NGN: null },
-    transferError: "",
-    transferSuccess: false,
-    reference: "",
+    error: "",
+    loading: false,
   });
-  const [minWithdraw, setMinWithdraw] = useState(null);
+  const [minWithdraw, setMinWithdraw] = useState({
+    loading: true,
+    success: false,
+    result: null,
+  });
   const [proceed, setProceed] = useState(false);
-  const [loading, setLoading] = useState(false);
   const { toast, setToast } = useToast();
 
-  // Fetch Minimum Withdraw - $20
-  useEffect(() => {
-    async function fetchMin() {
-      const result = await getMinimumWithdrawal("NGN"); // or dynamic currency
-      if (result) setMinWithdraw(result.toFixed(2));
+  const fetchMinWithdraw = async () => {
+    setMinWithdraw({
+      loading: true,
+    });
+    const result = await getMinimumWithdrawal("NGN");
+
+    console.log("minimum withdraw result:", result);
+
+    if (result?.success) {
+      setMinWithdraw({
+        loading: false,
+        success: true,
+        result: result.minimum.toFixed(2),
+      });
+    } else {
+      setMinWithdraw({
+        loading: false,
+        success: false,
+        result: null,
+      });
     }
-    fetchMin();
+  };
+
+  useEffect(() => {
+    fetchMinWithdraw();
   }, []);
 
   const handleUsernameChange = (e) => {
@@ -93,7 +112,29 @@ const Transfer = () => {
     return () => clearTimeout(timeout);
   }, [transferDetails?.amount?.NGN]);
 
-  console.log(transferDetails);
+  // updating error state in confirm transfer modal
+  useEffect(() => {
+    setTransfer((prev) => ({
+      ...prev,
+      confirm: {
+        ...prev.confirm,
+        transferError: transferDetails?.error,
+      },
+    }));
+  }, [transferDetails?.error]);
+
+  // updating loading state in confirm transfer modal
+  useEffect(() => {
+    setTransfer((prev) => ({
+      ...prev,
+      confirm: {
+        ...prev.confirm,
+        loading: transferDetails?.loading,
+      },
+    }));
+  }, [transferDetails?.loading]);
+
+  const navigateTo = useNavigate();
 
   const handleProceed = () => {
     const { username, amount } = transferDetails;
@@ -103,68 +144,192 @@ const Transfer = () => {
       setToast({
         ...toast,
         error: true,
-        errorMessage: "Please enter a valid username.",
+        errorMessage: "Missing required field: Recipient Username",
       });
       return;
     }
 
+    // Validate that minWithdraw has a valid number
+    const minAmount = Number(minWithdraw?.result);
+    const isMinValid = minWithdraw?.success && !isNaN(minAmount);
+
+    // if (!isMinValid) {
+    //   setToast({
+    //     ...toast,
+    //     error: true,
+    //     errorMessage:
+    //       "Minimum transfer amount not available. Retry and try again.",
+    //   });
+    //   return;
+    // }
+
     // Validate NGN amount
     const ngnAmount = Number(amount?.NGN);
-
     if (!ngnAmount || isNaN(ngnAmount)) {
       setToast({
         ...toast,
         error: true,
-        errorMessage: "Please enter a valid NGN amount.",
+        errorMessage: "Missing required field: Amount",
       });
       return;
     }
 
-    if (ngnAmount < minWithdraw) {
-      setToast({
-        ...toast,
-        error: true,
-        errorMessage: `The minimum transfer amount is NGN ${toDecimal(
-          minWithdraw
-        )}.`,
-      });
-      return;
-    }
+    // if (ngnAmount < minAmount) {
+    //   setToast({
+    //     ...toast,
+    //     error: true,
+    //     errorMessage: `The minimum transfer amount is NGN ${toDecimal(
+    //       minAmount
+    //     )}.`,
+    //   });
+    //   return;
+    // }
 
-    setProceed(true);
+    // If all validations pass, proceed
+    setProceed(true); // Only set after passing validation
+
+    setTransferDetails((prev) => ({
+      ...prev,
+      error: "",
+    }));
+
+    setTransfer((prev) => ({
+      ...prev,
+      confirm: {
+        ...prev.confirm,
+        state: true,
+        receiverImage: image || "",
+        receiverUsername: username,
+        amount: ngnAmount,
+        currency: "NGN",
+        walletBalance: 571000.34,
+        chargePercent: 0.5,
+        chargeAmount: 115,
+        transferTrigger: handleTransfer,
+        cancelTransfer: handleCancel,
+        loading: transferDetails?.loading,
+      },
+    }));
   };
 
   const handleCancel = () => {
     setProceed(false);
+
     setTransferDetails((prev) => ({
       ...prev,
-      transferError: "",
+      error: "",
+    }));
+
+    setTransfer((prev) => ({
+      ...prev,
+      confirm: {
+        ...prev.confirm,
+        state: false,
+        transferError: "",
+      },
     }));
   };
 
   const handleTransfer = async () => {
-    setLoading(true);
-    const result = await transfer(transferDetails);
+    setTransferDetails((prev) => ({
+      ...prev,
+      loading: true,
+      error: "",
+    }));
+
+    const result = await submitTransfer(transferDetails);
     console.log("Transfer:", result);
 
-    if (result.success) {
-      setLoading(false);
-
+    if (result?.success) {
       setTransferDetails((prev) => ({
         ...prev,
-        transferSuccess: true,
-        reference: result.reference,
+        username: "",
+        amount: { USD: null, NGN: null },
+        error: "",
+        loading: false,
+        error: "",
       }));
+
+      setTransfer((prev) => ({
+        ...prev,
+        confirm: {
+          ...prev.confirm,
+          state: false,
+        },
+        success: {
+          state: true,
+          date: result?.date,
+          transferReferenceNo: result?.reference,
+          viewBalance: handleViewBalance,
+          closeSuccess: handleCloseSuccess,
+        },
+      }));
+
+      // Do more stuff
     } else {
       console.error("Transfer failed:", result.error);
-      setLoading(false);
-
       setTransferDetails((prev) => ({
         ...prev,
-        transferError: result.error,
+        error: result.error,
+        loading: false,
       }));
     }
   };
+
+  const handleViewBalance = () => {
+    setTransfer((prev) => ({
+      ...prev,
+      confirm: {
+        state: false,
+        receiverImage: null,
+        receiverUsername: null,
+        amount: null,
+        currency: null,
+        walletBalance: null,
+        chargePercent: null,
+        chargeAmount: null,
+        transferTrigger: null,
+        cancelTransfer: null,
+        transferError: null,
+        loading: false,
+      },
+      success: {
+        ...prev.success,
+        state: false,
+        viewBalance: null,
+        closeSuccess: null,
+      },
+    }));
+
+    navigateTo("/wallet");
+  };
+
+  const handleCloseSuccess = () => {
+    setTransfer((prev) => ({
+      ...prev,
+      confirm: {
+        state: false,
+        receiverImage: null,
+        receiverUsername: null,
+        amount: null,
+        currency: null,
+        walletBalance: null,
+        chargePercent: null,
+        chargeAmount: null,
+        transferTrigger: null,
+        cancelTransfer: null,
+        transferError: null,
+        loading: false,
+      },
+      success: {
+        state: false,
+        viewBalance: null,
+        closeSuccess: null,
+      },
+    }));
+  };
+
+  console.log(transfer);
 
   return (
     <>
@@ -215,22 +380,41 @@ const Transfer = () => {
                   <p className="text-tradeFadeWhite text-xs font-medium">
                     Amount
                   </p>
-                  <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
-                    <input
-                      className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                      type="text"
-                      placeholder={
-                        minWithdraw
-                          ? `Enter amount (min: ${toDecimal(minWithdraw)})`
-                          : "Loading minimum amount..."
-                      }
-                      onChange={handleAmountChange}
-                      value={
-                        transferDetails?.amount?.NGN
-                          ? toDecimal(transferDetails?.amount?.NGN)
-                          : ""
-                      }
-                    />
+                  <div className="flex items-center  gap-[5px]">
+                    <div className="flex-1 flex  bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
+                      <input
+                        className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                        type="text"
+                        placeholder={
+                          minWithdraw?.loading
+                            ? "Loading minimum amount..."
+                            : minWithdraw?.success
+                            ? `Enter amount (min: ${toDecimal(
+                                minWithdraw?.result
+                              )} NGN)`
+                            : "Min amount is unavailable, tap to retry "
+                        }
+                        onChange={handleAmountChange}
+                        value={
+                          transferDetails?.amount?.NGN
+                            ? toDecimal(transferDetails?.amount?.NGN)
+                            : ""
+                        }
+                      />
+                    </div>
+
+                    {minWithdraw?.success == false && (
+                      <div
+                        onClick={fetchMinWithdraw}
+                        className="flex gap-1 items-center bg-tradeAsh border border-tradeAshLight p-[12px] rounded-[10px] cursor-pointer"
+                      >
+                        <IoMdRefresh
+                          className={`text-tradeGreen text-lg transition-transform duration-300 ${
+                            minWithdraw?.loading ? "animate-spin" : ""
+                          }`}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -262,98 +446,6 @@ const Transfer = () => {
           <RecentTransfer />
         </div>
       </div>
-
-      {proceed && (
-        <>
-          <LockByScroll />
-          {/* Modal */}
-          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[15px]  bg-black bg-opacity-90 flex items-center justify-center z-40">
-            <div className="flex flex-col gap-[10px] bg-tradeAsh borde border-tradeAshLight p-[15px] rounded-[15px] shadow-lg lg:max-w-sm w-full">
-              <div className="flex flex-col gap-[10px]">
-                <div className="flex justify-between items-start gap-[15px] pb-[15px]  md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
-                  <div className="flex flex-col gap-3">
-                    <p className="text-lg font-[700] text-white leading-none">
-                      Confirm Details
-                    </p>
-                  </div>
-
-                  <div onClick={handleCancel}>
-                    <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
-                  </div>
-                </div>
-                <div className="flex items-center gap-[10px] p-[8px] bg-tradeAshLigh rounded-[10px]">
-                  <div>
-                    <img className="w-[45px] rounded-full" src={image} alt="" />
-                  </div>
-                  <div>
-                    <p className="text-base font-semibold text-white">
-                      @{transferDetails?.username}
-                    </p>
-                    <p className="text-[13px] text-tradeFadeWhite font-medium">
-                      Transfer
-                    </p>
-                  </div>
-                </div>
-                <div className="flex flex-col items-center justify-center gap-2 py-[20px] rounded-[10px]">
-                  <p className="text-white font-semibold text-2xl leading-none">
-                    {toDecimal(transferDetails?.amount?.NGN)} NGN
-                  </p>
-                  <p className="text-tradeFadeWhite text-xs font-medium ">
-                    +0.0% Charge
-                  </p>
-                </div>
-                <div className="flex flex-col gap- px-[8px] border border-tradeAshLight rounded-[10px]">
-                  <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
-                    <div className="flex items-center gap-1">
-                      <BiSolidWalletAlt className="text-tradeFadeWhite" />
-                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
-                        Wallet balance
-                      </p>
-                    </div>
-
-                    <div>
-                      <p className="text-[13px] font-semibold text-white">
-                        0.00 NGN
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between gap-[10px]  py-[8px]">
-                    <div className="flex items-center gap-1">
-                      <RiWaterFlashFill className="text-tradeFadeWhite" />
-                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
-                        Service charge
-                      </p>
-                    </div>
-
-                    <div>
-                      <p className="text-[13px] font-semibold text-white">
-                        0.00 NGN
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {transferDetails?.transferError && (
-                  <div className="flex items-center gap-1 p-[8px] text-xs font-medium text-white  bg-red-600 rounded-[10px]">
-                    <MdError className=" leading-none" />
-                    <p>{transferDetails?.transferError} </p>
-                  </div>
-                )}
-              </div>
-
-              <div className="mt-[10px]">
-                <Button
-                  variant="secondary"
-                  onClick={handleTransfer}
-                  disabled={loading}
-                >
-                  Transfer
-                </Button>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-
       <Footer />
     </>
   );

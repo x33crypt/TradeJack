@@ -36,6 +36,8 @@ import Settings from "./pages/Settings";
 import Account from "./components/settings/Account";
 import Transfer from "./pages/wallet/Transfer";
 import Deposit from "./pages/wallet/Deposit";
+import ConfirmTransfer from "./components/modals/wallet/ConfirmTransfer";
+import SuccessTransfer from "./components/modals/wallet/SuccessTransfer";
 
 const App = () => {
   return (
@@ -44,6 +46,8 @@ const App = () => {
       <ToastSuccess />
       <ToastError />
       <TradeAlert />
+      <ConfirmTransfer />
+      <SuccessTransfer />
       <Routes>
         {/* Public */}
         <Route path="/" element={<Landing />} />

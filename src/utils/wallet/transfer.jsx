@@ -8,7 +8,7 @@ const sanitizeInput = (input) => {
   return cleaned.trim();
 };
 
-export async function transfer(transferDetails) {
+export async function submitTransfer(transferDetails) {
   console.log("Initiating Wallet Transfer...");
 
   const baseUrl = import.meta.env.VITE_API_URL;

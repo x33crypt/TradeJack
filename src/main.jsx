@@ -16,37 +16,40 @@ import { AuthProvider } from "./context/AuthContext";
 import { KycProvider } from "./context/KycContext";
 import { MyOfferProvider } from "./context/offer/MyOffersContext";
 import { AboutOfferProvider } from "./context/offer/AboutOfferContext";
+import { TransferProvider } from "./context/wallet/TransferContext";
 
 // Render MainApp into #root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <ProfileProvider>
-        <AboutOfferProvider>
-          <MyOfferProvider>
-            <KycProvider>
-              <AuthProvider>
-                <DashboardProvider>
-                  <ToastProvider>
-                    <OfferFilterProvider>
-                      <EditOfferProvider>
-                        <CreateOfferProvider>
-                          <SelectElementProvider>
-                            <TradeAlertProvider>
-                              <App />
-                            </TradeAlertProvider>
-                          </SelectElementProvider>
-                        </CreateOfferProvider>
-                      </EditOfferProvider>
-                    </OfferFilterProvider>
-                  </ToastProvider>
-                </DashboardProvider>
-              </AuthProvider>
-            </KycProvider>
-          </MyOfferProvider>
-        </AboutOfferProvider>
-      </ProfileProvider>
+      <TransferProvider>
+        <ProfileProvider>
+          <AboutOfferProvider>
+            <MyOfferProvider>
+              <KycProvider>
+                <AuthProvider>
+                  <DashboardProvider>
+                    <ToastProvider>
+                      <OfferFilterProvider>
+                        <EditOfferProvider>
+                          <CreateOfferProvider>
+                            <SelectElementProvider>
+                              <TradeAlertProvider>
+                                <App />
+                              </TradeAlertProvider>
+                            </SelectElementProvider>
+                          </CreateOfferProvider>
+                        </EditOfferProvider>
+                      </OfferFilterProvider>
+                    </ToastProvider>
+                  </DashboardProvider>
+                </AuthProvider>
+              </KycProvider>
+            </MyOfferProvider>
+          </AboutOfferProvider>
+        </ProfileProvider>
+      </TransferProvider>
     </BrowserRouter>
   </StrictMode>
 );
