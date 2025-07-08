@@ -2,7 +2,6 @@ import Footer from "@/components/Footer";
 import InAppNav from "@/components/InAppNav";
 import React, { useState, useEffect } from "react";
 import Button from "@/components/buttons/Button";
-import RecentTransfer from "./RecentTransfer";
 import { toUSD } from "@/utils/currency/toUSD";
 import { getMinimumWithdrawal } from "@/utils/currency/minWithdraw";
 import { toDecimal } from "@/utils/currency/toDecimal";
@@ -12,6 +11,7 @@ import { submitTransfer } from "@/utils/wallet/transfer";
 import { useTransferContext } from "@/context/wallet/TransferContext";
 import { useNavigate } from "react-router-dom";
 import { IoMdRefresh } from "react-icons/io";
+import RecentTransfer from "@/components/wallet/RecentTransfer";
 
 const Transfer = () => {
   const { transfer, setTransfer } = useTransferContext();
@@ -189,6 +189,15 @@ const Transfer = () => {
     //   return;
     // }
 
+    if (ngnAmount < Number(5000)) {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: `The minimum transfer amount is NGN ${toDecimal(5000)}.`,
+      });
+      return;
+    }
+
     // If all validations pass, proceed
     setProceed(true); // Only set after passing validation
 
@@ -270,8 +279,6 @@ const Transfer = () => {
           closeSuccess: handleCloseSuccess,
         },
       }));
-
-      // Do more stuff
     } else {
       console.error("Transfer failed:", result.error);
       setTransferDetails((prev) => ({
@@ -391,15 +398,16 @@ const Transfer = () => {
                       <input
                         className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                         type="text"
-                        placeholder={
-                          minWithdraw?.loading
-                            ? "Loading minimum amount..."
-                            : minWithdraw?.success
-                            ? `Enter amount (min: ${toDecimal(
-                                minWithdraw?.result
-                              )} NGN)`
-                            : "Minimum unavailable, tap to retry..."
-                        }
+                        // placeholder={
+                        //   minWithdraw?.loading
+                        //     ? "Loading minimum amount..."
+                        //     : minWithdraw?.success
+                        //     ? `Enter amount (min: ${toDecimal(
+                        //         minWithdraw?.result
+                        //       )} NGN)`
+                        //     : "Minimum unavailable, tap to retry..."
+                        // }
+                        placeholder="Enter amount (min: 5,000.00 NGN)"
                         onChange={handleAmountChange}
                         value={
                           transferDetails?.amount?.NGN
@@ -409,7 +417,7 @@ const Transfer = () => {
                       />
                     </div>
 
-                    {minWithdraw?.success == false && (
+                    {/* {minWithdraw?.success == false && (
                       <div
                         onClick={fetchMinWithdraw}
                         className="flex gap-1 items-center bg-tradeAsh border border-tradeAshLight p-[12px] rounded-[10px] cursor-pointer"
@@ -420,7 +428,7 @@ const Transfer = () => {
                           }`}
                         />
                       </div>
-                    )}
+                    )} */}
                   </div>
                 </div>
 

@@ -102,7 +102,7 @@ const ConfirmTransfer = () => {
                   </div>
                 </div>
                 {transferError && (
-                  <div className="flex items-center gap-1 p-[8px] text-xs font-medium text-white  bg-red-600 rounded-[10px]">
+                  <div className="flex items-center gap-1 p-[8px] text-xs font-medium text-white  bg-red-600 rounded-[6px]">
                     <MdError className=" leading-none shrink-0 flex" />
                     <p>{transferError} </p>
                   </div>

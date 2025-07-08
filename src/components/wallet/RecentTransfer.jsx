@@ -5,7 +5,7 @@ const RecentTransfer = () => {
   return (
     <div className="h-max md:border lg:border-0 border-tradeAshLight flex flex-col">
       <div className="flex justify-between items-center p-[15px] lg:px-0  border-b border-tradeAshLight">
-        <p className="text-lg text-white font-semibold">Recent Transfers</p>
+        <p className="text-lg text-white font-semibold">Recent Transfer</p>
         <p className="text-[13px] font-semibold text-tradeOrange hover:text-tradeOrange/50 transition-all duration-300 underline-offset-4 hover:underline cursor-pointer">
           View all
         </p>

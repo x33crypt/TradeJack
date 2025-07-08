@@ -125,7 +125,7 @@ const MyWallet = () => {
               className="flex cursor-pointer gap-1 items-center justify-center p-[12px] rounded-[10px] text-sm font-semibold w-full bg-tradeGreen text-black hover:bg-tradeGreen/80 active:bg-tradeAsh active:text-tradeGreen transition-colors duration-200"
             >
               <HiPlus className="text-xl" />
-              <p>Add Money</p>
+              <p>Add Cash</p>
             </div>
             <div
               onClick={Transfer}
