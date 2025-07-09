@@ -246,10 +246,8 @@ const Deposit = () => {
                   <p className="inline items-start gap-1">
                     <span className="text-white mr-[2px]">•</span>
                     Deposits are{" "}
-                    <span className="font-semibold text-white">
-                      completely free
-                    </span>{" "}
-                    — no transaction or processing fees
+                    <span className="font-semibold text-white">free</span> — no
+                    transaction or processing fees
                   </p>
                 </div>
               </div>
