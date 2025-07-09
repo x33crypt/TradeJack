@@ -191,6 +191,11 @@ const Deposit = () => {
       return;
     }
 
+    const payload = {
+      amountInUSD: depositDetails?.amount?.USD,
+      amountInNGN: depositDetails?.amount?.NGN,
+    };
+
     // Submit deposit
     const result = await submitDeposit(depositDetails);
     console.log("Deposit:", result);
