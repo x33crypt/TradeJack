@@ -8,8 +8,8 @@ const ToastSuccess = () => {
   return (
     <div
       className="fixed z-50 w-full px-[15px] md:px-[2.5%] lg:px-0 
-         bottom-[30px] left-1/2 transform -translate-x-1/2 
-         flex justify-center pointer-events-none"
+             top-[70px] lg:top-[73px] left-1/2 transform -translate-x-1/2 
+             flex justify-center pointer-events-none "
     >
       {toast.success && (
         <div
