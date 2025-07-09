@@ -9,31 +9,119 @@ import { submitDeposit } from "@/utils/wallet/deposit";
 import { useDepositContext } from "@/context/wallet/DepositContext";
 import paystackLogo from "../../assets/logos-paystack.png";
 import { IoIosLock } from "react-icons/io";
+import { toUSD } from "@/utils/currency/toUSD";
+import { toNGN } from "@/utils/currency/toNGN";
+import { useEffect } from "react";
 
 const Deposit = () => {
   const { deposit, setDeposit } = useDepositContext();
   const [depositDetails, setDepositDetails] = useState({
-    amount: null,
     url: null,
-    amount: { NGN: "", USD: "" },
+    selectedCurrency: "NGN",
+    amount: { NGN: null, USD: null },
   });
 
   const { toast, setToast } = useToast();
 
-  const handleAmountChange = (e) => {
-    const rawValue = e.target.value.replace(/,/g, "");
-
-    if (!isNaN(rawValue)) {
-      setDepositDetails((prevDetails) => ({
-        ...prevDetails,
-        amount: rawValue,
-      }));
-    }
+  const selectUSD = () => {
+    setDepositDetails((prevDetails) => ({
+      url: null,
+      selectedCurrency: "USD",
+      amount: { NGN: null, USD: null },
+    }));
   };
 
-  const handleUSDAmountChange = () => {};
+  const selectNGN = () => {
+    setDepositDetails((prevDetails) => ({
+      url: null,
+      selectedCurrency: "NGN",
+      amount: { NGN: null, USD: null },
+    }));
+  };
 
-  const handleNGNAmountChange = () => {};
+  const handleUSDAmountChange = (e) => {
+    const rawValue = e.target.value.replace(/,/g, ""); // Remove commas
+    const usdValue = rawValue || ""; // Default to empty string if cleared
+
+    setDepositDetails((prevDetails) => ({
+      ...prevDetails,
+      amount: {
+        ...prevDetails.amount,
+        USD: usdValue,
+      },
+    }));
+  };
+
+  // update NGN amount if user input USD
+  useEffect(() => {
+    if (
+      !depositDetails?.amount?.USD ||
+      depositDetails?.selectedCurrency !== "USD"
+    )
+      return;
+
+    const debounceTimeout = setTimeout(async () => {
+      try {
+        const { amount: ngnValue } = await toNGN(depositDetails.amount.USD);
+
+        if (ngnValue) {
+          setDepositDetails((prevDetails) => ({
+            ...prevDetails,
+            amount: {
+              ...prevDetails.amount,
+              NGN: ngnValue,
+            },
+          }));
+        }
+      } catch (error) {
+        console.error("Conversion to NGN failed:", error);
+      }
+    }, 2000); // 2 seconds delay
+
+    return () => clearTimeout(debounceTimeout); // Clear previous timeout on new input
+  }, [depositDetails?.amount?.USD, depositDetails?.selectedCurrency]);
+
+  const handleNGNAmountChange = (e) => {
+    const rawValue = e.target.value.replace(/,/g, ""); // Remove commas
+    const ngnValue = rawValue || ""; // Default to empty string if cleared
+
+    setDepositDetails((prevDetails) => ({
+      ...prevDetails,
+      amount: {
+        ...prevDetails.amount,
+        NGN: ngnValue,
+      },
+    }));
+  };
+
+  // update USD amount if user input NGN
+  useEffect(() => {
+    if (
+      !depositDetails?.amount?.NGN ||
+      depositDetails?.selectedCurrency !== "NGN"
+    )
+      return;
+
+    const debounceTimeout = setTimeout(async () => {
+      try {
+        const { amount: usdValue } = await toUSD(depositDetails.amount.NGN);
+
+        if (usdValue) {
+          setDepositDetails((prevDetails) => ({
+            ...prevDetails,
+            amount: {
+              ...prevDetails.amount,
+              USD: usdValue,
+            },
+          }));
+        }
+      } catch (error) {
+        console.error("Conversion to USD failed:", error);
+      }
+    }, 2000); // 2 second delay
+
+    return () => clearTimeout(debounceTimeout); // Clear on new keystroke
+  }, [depositDetails?.amount?.NGN, depositDetails?.selectedCurrency]);
 
   console.log(depositDetails?.amount);
 
@@ -59,7 +147,10 @@ const Deposit = () => {
       loading: true,
     }));
 
-    const amount = Number(depositDetails?.amount);
+    const currency = depositDetails?.selectedCurrency;
+    const rawAmount = depositDetails?.amount?.[currency];
+    const amount = Number(rawAmount?.toString().replace(/,/g, ""));
+
     if (!amount || isNaN(amount)) {
       setDeposit((prev) => ({
         ...prev,
@@ -73,7 +164,8 @@ const Deposit = () => {
       return;
     }
 
-    if (amount < Number(5000)) {
+    // Validate minimums
+    if (currency === "USD" && amount < 10) {
       setDeposit((prev) => ({
         ...prev,
         loading: false,
@@ -81,11 +173,25 @@ const Deposit = () => {
       setToast({
         ...toast,
         error: true,
-        errorMessage: `The minimum transfer amount is NGN ${toDecimal(5000)}.`,
+        errorMessage: "The minimum deposit amount is USD 10.",
       });
       return;
     }
 
+    if (currency === "NGN" && amount < 15000) {
+      setDeposit((prev) => ({
+        ...prev,
+        loading: false,
+      }));
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: `The minimum deposit amount is NGN ${toDecimal(15000)}.`,
+      });
+      return;
+    }
+
+    // Submit deposit
     const result = await submitDeposit(depositDetails);
     console.log("Deposit:", result);
 
@@ -97,7 +203,6 @@ const Deposit = () => {
         loading: false,
       }));
 
-      // Redirect to the payment page
       window.location.href = result?.redirectUrl;
     } else {
       console.error("Deposit failed:", result.error);
@@ -159,12 +264,6 @@ const Deposit = () => {
                 </Button>
               </div>
 
-              <div className="text-sm text-tradeFadeWhite flex justify-center items-center gap-[15px]">
-                <div className="border-b border-tradeAshLight w-[100px]"></div>{" "}
-                or
-                <div className="border-b border-tradeAshLight w-[100px]"></div>
-              </div>
-
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                   <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
@@ -174,41 +273,90 @@ const Deposit = () => {
                   </div>
 
                   <div className="flex gap-1">
-                    <div className="bg-tradeOrange px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                    <div
+                      onClick={selectNGN}
+                      className={`${
+                        depositDetails?.selectedCurrency === "NGN"
+                          ? "bg-tradeOrange"
+                          : "bg-transparent"
+                      }  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                    >
                       <p className="text-white text-xs font-bold">NGN</p>
                     </div>
-                    <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                    <div
+                      onClick={selectUSD}
+                      className={`${
+                        depositDetails?.selectedCurrency === "USD"
+                          ? "bg-tradeOrange"
+                          : "bg-transparent"
+                      }  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                    >
                       <p className="text-white text-xs font-bold">USD</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-[10px] w-full">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    Amount in NGN
-                  </p>
-                  <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
-                    <input
-                      className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                      type="text"
-                      placeholder={`Enter amount (min: 5,000.00 NGN)`}
-                      onChange={handleAmountChange}
-                      value={toDecimal(depositDetails?.amount)}
-                    />
-                  </div>
-                </div>
+                {depositDetails?.selectedCurrency === "NGN" ? (
+                  // NGN
+                  <div className="flex flex-col gap-[10px]">
+                    <div className="flex flex-col gap-[10px] w-full">
+                      <p className="text-tradeFadeWhite text-xs font-medium">
+                        Amount in NGN
+                      </p>
+                      <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
+                        <input
+                          className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                          type="text"
+                          placeholder={`Enter amount (min: 15,000.00 NGN)`}
+                          onChange={handleNGNAmountChange}
+                          value={toDecimal(depositDetails?.amount?.NGN) || ""}
+                        />
+                      </div>
+                    </div>
 
-                <div>
-                  <p className="text-tradeFadeWhite text-xs font-semibold">
-                    Value equivalent to{" "}
-                    <span className="text-tradeOrange">
-                      USD {""}
-                      {depositDetails?.amount?.USD
-                        ? depositDetails?.amount?.USD
-                        : "0.00"}
-                    </span>
-                  </p>
-                </div>
+                    <div>
+                      <p className="text-tradeFadeWhite text-xs font-semibold">
+                        Value equivalent to{" "}
+                        <span className="text-tradeOrange">
+                          USD {""}
+                          {depositDetails?.amount?.USD
+                            ? toDecimal(depositDetails?.amount?.USD)
+                            : "0.00"}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  // USD
+                  <div className="flex flex-col gap-[10px]">
+                    <div className="flex flex-col gap-[10px] w-full">
+                      <p className="text-tradeFadeWhite text-xs font-medium">
+                        Amount in USD
+                      </p>
+                      <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
+                        <input
+                          className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                          type="text"
+                          placeholder={`Enter amount (min: 10.00 USD)`}
+                          onChange={handleUSDAmountChange}
+                          value={toDecimal(depositDetails?.amount?.USD) || ""}
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="text-tradeFadeWhite text-xs font-semibold">
+                        Value equivalent to{" "}
+                        <span className="text-tradeOrange">
+                          NGN {""}
+                          {depositDetails?.amount?.NGN
+                            ? toDecimal(depositDetails?.amount?.NGN)
+                            : "0.00"}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

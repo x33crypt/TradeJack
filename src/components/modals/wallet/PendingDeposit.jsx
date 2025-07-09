@@ -105,7 +105,7 @@ const PendingDeposit = () => {
               </div>
 
               <Button variant="secondary" onClick={viewDetails}>
-                View Deatils
+                See Deatils
               </Button>
             </div>
           </div>
