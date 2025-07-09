@@ -7,7 +7,7 @@ export const DepositProvider = ({ children }) => {
     depositAmount: null,
     depositReference: null,
     loading: false,
-    depositPending: false,
+    depositPending: true,
   });
 
   useEffect(() => {

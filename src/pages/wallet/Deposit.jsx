@@ -7,6 +7,8 @@ import { toDecimal } from "@/utils/currency/toDecimal";
 import { useToast } from "@/context/ToastContext";
 import { submitDeposit } from "@/utils/wallet/deposit";
 import { useDepositContext } from "@/context/wallet/DepositContext";
+import paystackLogo from "../../assets/logos-paystack.png";
+import { IoIosLock } from "react-icons/io";
 
 const Deposit = () => {
   const { deposit, setDeposit } = useDepositContext();
@@ -29,6 +31,22 @@ const Deposit = () => {
   };
 
   console.log(depositDetails?.amount);
+
+  const handleCopy = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        // Optionally show toast or feedback
+        setToast({
+          ...toast,
+          success: true,
+          successMessage: `Accound ID copied.`,
+        });
+      })
+      .catch((err) => {
+        console.error("Copy failed:", err);
+      });
+  };
 
   const handleDeposit = async () => {
     setDeposit((prev) => ({
@@ -129,8 +147,8 @@ const Deposit = () => {
 
                 <Button
                   variant="outline"
-                  // onClick={handleProceed}
-                  // disabled={proceed}
+                  onClick={() => handleCopy("sane")}
+                  textToCopy="tradejack-username"
                 >
                   Copy
                 </Button>
@@ -161,6 +179,63 @@ const Deposit = () => {
                       onChange={handleAmountChange}
                       value={toDecimal(depositDetails?.amount)}
                     />
+                  </div>
+                </div>
+
+                {/* <div className="bg-tradeOrang flex items-cente justify-center px-[10px] py-2 rounded-md">
+                  <div className="bg-tradeOrang h-max text-tradeFadeWhite text-sm mr[2px] mt-[2px] leading-none">
+                    <IoIosLock className="" />
+                  </div>
+
+                  <p className="text-tradeFadeWhite text-xs text-center leading-relaxed">
+                    Secured by{""}
+                    <span className="font-bold text-white ml-1">
+                      Paystack
+                    </span>{" "}
+                    — you’ll be redirected to complete your deposit. Please
+                    don’t close this tab.
+                  </p>
+                </div> */}
+
+                <div className="flex flex-col gap-[20px] mt-[10px] bg-tradeOrang   rounded-lg">
+                  <div className="w-full flex justify-center">
+                    <img
+                      className="w-[200px] leading-none"
+                      src={paystackLogo}
+                      alt=""
+                    />
+                  </div>
+                  <div className="flex flex-wrap items-center text-xs text-tradeFadeWhite gap-1">
+                    <p className="flex items-start gap-1">
+                      <span className="text-white">•</span>
+                      Your payment is{" "}
+                      <span className="font-semibold text-white">
+                        secured by Paystack
+                      </span>
+                    </p>
+                    <p className="flex items-start gap-1">
+                      <span className="text-white">•</span>
+                      You’ll be{" "}
+                      <span className="font-semibold text-white">
+                        redirected
+                      </span>{" "}
+                      to Paystack to complete your deposit
+                    </p>
+                    <p className="flex items-start gap-1">
+                      <span className="text-white">•</span>
+                      <span className="font-semibold text-white">
+                        Do not close
+                      </span>{" "}
+                      this tab or navigate away during the process
+                    </p>
+                    <p className="flex items-start gap-1">
+                      <span className="text-white">•</span>
+                      Deposits are{" "}
+                      <span className="font-semibold text-white">
+                        completely free
+                      </span>{" "}
+                      — no transaction or processing fees
+                    </p>
                   </div>
                 </div>
               </div>
