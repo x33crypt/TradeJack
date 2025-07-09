@@ -3,11 +3,10 @@ const DepositContext = createContext();
 
 export const DepositProvider = ({ children }) => {
   const [deposit, setDeposit] = useState({
-    state: true,
     depositAmount: null,
     depositReference: null,
     loading: false,
-    depositPending: true,
+    depositPending: false,
   });
 
   useEffect(() => {
