@@ -15,6 +15,7 @@ const Deposit = () => {
   const [depositDetails, setDepositDetails] = useState({
     amount: null,
     url: null,
+    amount: { NGN: "", USD: "" },
   });
 
   const { toast, setToast } = useToast();
@@ -29,6 +30,10 @@ const Deposit = () => {
       }));
     }
   };
+
+  const handleUSDAmountChange = () => {};
+
+  const handleNGNAmountChange = () => {};
 
   console.log(depositDetails?.amount);
 
@@ -154,6 +159,12 @@ const Deposit = () => {
                 </Button>
               </div>
 
+              <div className="text-sm text-tradeFadeWhite flex justify-center items-center gap-[15px]">
+                <div className="border-b border-tradeAshLight w-[100px]"></div>{" "}
+                or
+                <div className="border-b border-tradeAshLight w-[100px]"></div>
+              </div>
+
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                   <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
@@ -162,14 +173,19 @@ const Deposit = () => {
                     </p>
                   </div>
 
-                  <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-white text-xs font-bold">NGN</p>
+                  <div className="flex gap-1">
+                    <div className="bg-tradeOrange px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                      <p className="text-white text-xs font-bold">NGN</p>
+                    </div>
+                    <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                      <p className="text-white text-xs font-bold">USD</p>
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-[10px] w-full">
                   <p className="text-tradeFadeWhite text-xs font-medium">
-                    Amount
+                    Amount in NGN
                   </p>
                   <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
                     <input
@@ -182,20 +198,17 @@ const Deposit = () => {
                   </div>
                 </div>
 
-                {/* <div className="bg-tradeOrang flex items-cente justify-center px-[10px] py-2 rounded-md">
-                  <div className="bg-tradeOrang h-max text-tradeFadeWhite text-sm mr[2px] mt-[2px] leading-none">
-                    <IoIosLock className="" />
-                  </div>
-
-                  <p className="text-tradeFadeWhite text-xs text-center leading-relaxed">
-                    Secured by{""}
-                    <span className="font-bold text-white ml-1">
-                      Paystack
-                    </span>{" "}
-                    — you’ll be redirected to complete your deposit. Please
-                    don’t close this tab.
+                <div>
+                  <p className="text-tradeFadeWhite text-xs font-semibold">
+                    Value equivalent to{" "}
+                    <span className="text-tradeOrange">
+                      USD {""}
+                      {depositDetails?.amount?.USD
+                        ? depositDetails?.amount?.USD
+                        : "0.00"}
+                    </span>
                   </p>
-                </div> */}
+                </div>
               </div>
             </div>
           </div>
