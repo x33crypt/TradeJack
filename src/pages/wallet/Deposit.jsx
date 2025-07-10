@@ -148,10 +148,10 @@ const Deposit = () => {
     }));
 
     const currency = depositDetails?.selectedCurrency;
-    const rawAmount = depositDetails?.amount?.[currency];
-    const amount = Number(rawAmount?.toString().replace(/,/g, ""));
+    const amountUSD = depositDetails?.amount?.USD;
+    const amountNGN = depositDetails?.amount?.NGN;
 
-    if (!amount || isNaN(amount)) {
+    if (!amountNGN || isNaN(amountNGN)) {
       setDeposit((prev) => ({
         ...prev,
         loading: false,
@@ -164,21 +164,21 @@ const Deposit = () => {
       return;
     }
 
-    // Validate minimums
-    if (currency === "USD" && amount < 10) {
-      setDeposit((prev) => ({
-        ...prev,
-        loading: false,
-      }));
-      setToast({
-        ...toast,
-        error: true,
-        errorMessage: "The minimum deposit amount is USD 10.",
-      });
-      return;
-    }
+    // // Validate minimums
+    // if (currency === "USD" && amountUSD < 10) {
+    //   setDeposit((prev) => ({
+    //     ...prev,
+    //     loading: false,
+    //   }));
+    //   setToast({
+    //     ...toast,
+    //     error: true,
+    //     errorMessage: "The minimum deposit amount is USD 10.",
+    //   });
+    //   return;
+    // }
 
-    if (currency === "NGN" && amount < 15000) {
+    if (amountNGN < 15000) {
       setDeposit((prev) => ({
         ...prev,
         loading: false,
@@ -192,12 +192,13 @@ const Deposit = () => {
     }
 
     const payload = {
-      amountInUSD: depositDetails?.amount?.USD,
-      amountInNGN: depositDetails?.amount?.NGN,
+      amount_ngn: depositDetails?.amount?.NGN,
     };
 
+    console.log("Depost Amount :", payload);
+
     // Submit deposit
-    const result = await submitDeposit(depositDetails);
+    const result = await submitDeposit(payload);
     console.log("Deposit:", result);
 
     if (result?.success) {

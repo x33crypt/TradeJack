@@ -40,6 +40,7 @@ import ConfirmTransfer from "./components/modals/wallet/ConfirmTransfer";
 import SuccessTransfer from "./components/modals/wallet/SuccessTransfer";
 import PendingDeposit from "./components/modals/wallet/PendingDeposit";
 import { useDepositContext } from "./context/wallet/DepositContext";
+import TransactionHistory from "./pages/wallet/TransactionHistory";
 
 const App = () => {
   const { deposit, setDeposit } = useDepositContext();
@@ -92,6 +93,7 @@ const App = () => {
         <Route path="/wallet" element={<Wallet />} />
         <Route path="/wallet/transfer" element={<Transfer />} />
         <Route path="/wallet/deposit" element={<Deposit />} />
+        <Route path="/wallet/transactions" element={<TransactionHistory />} />
 
         {/* Marketplace & Offers */}
         <Route path="/offers/marketplace" element={<Marketplace />} />

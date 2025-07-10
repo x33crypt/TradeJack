@@ -2,7 +2,6 @@ import MyOfferCard from "@/components/cards/MyOfferCard";
 import Footer from "@/components/Footer";
 import InAppNav from "@/components/InAppNav";
 import React, { useEffect, useState, useRef } from "react";
-import { BiSolidOffer } from "react-icons/bi";
 import { useFetchMyOffers } from "@/hooks/useFetchOffers";
 import { useMyOffer } from "@/context/offer/MyOffersContext";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -10,10 +9,7 @@ import { useSelectElement } from "@/context/SelectElementContext";
 import Button from "@/components/buttons/Button";
 import { useNavigate } from "react-router-dom";
 import StateHandler from "@/components/stateHandler/StateHandler";
-import { MdOutlineError } from "react-icons/md";
-import { BsCloudSlashFill } from "react-icons/bs";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
-import TradeCard from "@/components/cards/TradeCard";
 import { TbInvoice } from "react-icons/tb";
 
 const MyOffer = () => {
