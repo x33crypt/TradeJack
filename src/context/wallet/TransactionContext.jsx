@@ -3,10 +3,10 @@ const TransactionContext = createContext();
 
 export const TransactionProvider = ({ children }) => {
   const [transactions, setTransactions] = useState({ page: 1 });
-  const [Filter, setFilter] = useState({
-    date: { month: "", year: "" },
-    type: "All types",
-    status: "All status",
+  const [filter, setFilter] = useState({
+    date: { month: null, year: null },
+    type: null,
+    status: null,
   });
   const [details, setDetails] = useState({
     state: false,
@@ -21,7 +21,7 @@ export const TransactionProvider = ({ children }) => {
       value={{
         transactions,
         setTransactions,
-        Filter,
+        filter,
         setFilter,
         details,
         setDetails,

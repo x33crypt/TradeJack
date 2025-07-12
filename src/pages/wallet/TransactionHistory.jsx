@@ -16,17 +16,118 @@ import { RiArrowRightUpFill } from "react-icons/ri";
 import { RiArrowLeftDownFill } from "react-icons/ri";
 import { CiWallet } from "react-icons/ci";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { SlCalender } from "react-icons/sl";
+import { HiMiniCalendarDateRange } from "react-icons/hi2";
+import { HiAdjustmentsHorizontal } from "react-icons/hi2";
+import { IoIosWallet } from "react-icons/io";
+import { IoWallet } from "react-icons/io5";
+import { useSelectElement } from "@/context/SelectElementContext";
 
 const TransactionHistory = () => {
-  const topRef = useRef(null); // this will help us scroll here
+  const topRef = useRef(null);
   const { loading, error, pagination, page, displayedCount, next } =
-    useFetchTransactions(); // defaults: page 1, limit 10
-  const { transactions } = useTransaction();
+    useFetchTransactions();
+  const { transactions, filter, setFilter } = useTransaction();
   const [triggerScroll, setTriggerScroll] = useState(false);
   const [loadingNext, setLoadingNext] = useState(false);
+  const { select, setSelect } = useSelectElement();
 
-  console.log("line 13", transactions);
+  console.log("Transactions", transactions);
+  console.log("Filter", filter);
 
+  // This Function handles Filter changes
+
+  const inputRef = useRef(null);
+  const handleDateClick = () => {
+    if (!inputRef.current) return;
+    if (inputRef.current.showPicker) {
+      // works in Chromium ≥ 111
+      inputRef.current.showPicker();
+    } else {
+      // fallback
+      inputRef.current.focus();
+    }
+  };
+
+  const joinDate = "march 10, 2025";
+  const join = new Date(joinDate);
+  const now = new Date();
+
+  const min = `${join.getFullYear()}-${String(join.getMonth() + 1).padStart(
+    2,
+    "0"
+  )}`;
+  const max = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(
+    2,
+    "0"
+  )}`;
+
+  const handleDateChange = (e) => {
+    const value = e.target.value; // format: "YYYY-MM"
+    if (!value) return;
+
+    const [year, month] = value.split("-");
+    const monthName = new Date(`${year}-${month}-01`).toLocaleString(
+      "default",
+      {
+        month: "long",
+      }
+    );
+
+    setFilter((prev) => ({
+      ...prev,
+      date: {
+        year: Number(year),
+        month: monthName,
+      },
+    }));
+  };
+
+  useEffect(() => {
+    setFilter((prev) => ({
+      ...prev,
+      date: {
+        year: null,
+        month: null,
+      },
+    }));
+  }, []);
+
+  const transactionStatus = ["Pending", "Failed", "Successful"];
+
+  const transactionTypes = ["Transfer", "Deposit"];
+
+  // handling transaction type change
+  useEffect(() => {
+    if (select?.page !== "transaction history" || !select?.pick) return;
+
+    if (select.element === "transaction type") {
+      console.log("Transaction type selected:", select.pick);
+      const selectedType = select.pick;
+
+      setFilter((prev) => ({
+        ...prev,
+        type: selectedType,
+      }));
+    }
+  }, [select]);
+
+  // handling transaction status change
+  useEffect(() => {
+    if (select?.page !== "transaction history" || !select?.pick) return;
+
+    if (select.element === "transaction status") {
+      console.log("Transaction status selected:", select.pick);
+      const selectedStatus = select.pick;
+
+      setFilter((prev) => ({
+        ...prev,
+        status: selectedStatus,
+      }));
+    }
+  }, [select]);
+
+  // This Function handles Loading of transactions
   // 👇 Scroll after page changes
   useEffect(() => {
     if (triggerScroll && transactionRef.current) {
@@ -58,7 +159,7 @@ const TransactionHistory = () => {
       >
         <DasHboardMenu />
         <div className="flex-1 flex flex-col h-[100%] md:border border-neutral-800">
-          <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
+          <div className="flex  items-center justify-between px-[15px] py-[12px] md:py-[15px] border-b border-tradeAshLight">
             <p className="text-lg font-[700] text-white ">
               Transaction History
             </p>
@@ -68,7 +169,7 @@ const TransactionHistory = () => {
               <div className="flex-1 flex flex-col p-[12px] gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer">
-                    <CiWallet className=" text-tradeOrange" />
+                    <IoWallet className=" text-tradeOrange" />
                   </div>
 
                   <p className="text-tradeFadeWhite text-xs font-semibold">
@@ -152,45 +253,89 @@ const TransactionHistory = () => {
             </div>
 
             <div className="sticky md:top-[65px] top-[60px] mt-[30px] bg-black flex justify-between items-center w-full py-[12px] border-b border-dashed border-tradeAshLight">
-              <div className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300">
-                <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <TiArrowSortedDown />
-                </div>
-                <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <p className="text-[13px] font-semibold">July</p>
+              <div
+                onClick={handleDateClick}
+                className="flex gap-[5px] cursor-pointer transition-all duration-300"
+              >
+                <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                  <HiMiniCalendarDateRange />
                 </div>
 
-                <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <p className="text-[13px] font-semibold">2025</p>
+                <div
+                  className={`${
+                    filter.date?.month ? "text-white" : "text-tradeFadeWhite "
+                  } flex gap-[5px] transition-all duration-300 hover:text-white`}
+                >
+                  <div className=" flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                    <p className="text-[13px] font-semibold">
+                      {filter.date?.month ? filter.date?.month : "Month"}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                    <p className="text-[13px] font-semibold">
+                      {filter.date?.year ? filter.date?.year : "Year"}
+                    </p>
+                  </div>
+                  <div>
+                    <input
+                      type="month"
+                      min={min}
+                      max={max}
+                      onChange={handleDateChange}
+                      ref={inputRef}
+                      className="absolute opacity-0 w-0 h-0 pointer-events-none"
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="md:hidden flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300">
-                  <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <IoFilter />
-                  </div>
-                  <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-[13px] font-semibold">Filter</p>
-                  </div>
+              <div className="flex gap-[5px] cursor-pointer transition-all duration-300">
+                <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                  <HiAdjustmentsHorizontal />
                 </div>
 
-                <div className="md:flex hidden gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300">
-                  <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <TiArrowSortedDown />
-                  </div>
-                  <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-[13px] font-semibold">All types</p>
-                  </div>
+                <div
+                  onClick={() =>
+                    setSelect({
+                      ...select,
+                      state: true,
+                      selectOne: true,
+                      selectTwo: false,
+                      element: "transaction type",
+                      options: transactionTypes,
+                      pick: "",
+                      page: "transaction history",
+                    })
+                  }
+                  className={` ${
+                    filter?.type ? "text-white" : "text-tradeFadeWhite"
+                  }  flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max`}
+                >
+                  <p className="text-[13px] font-semibold">
+                    {filter?.type ? filter?.type : "All types"}
+                  </p>
                 </div>
 
-                <div className="md:flex hidden gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300">
-                  <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <TiArrowSortedDown />
-                  </div>
-                  <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-[13px] font-semibold">All status</p>
-                  </div>
+                <div
+                  onClick={() =>
+                    setSelect({
+                      ...select,
+                      state: true,
+                      selectOne: true,
+                      selectTwo: false,
+                      element: "transaction status",
+                      options: transactionStatus,
+                      pick: "",
+                      page: "transaction history",
+                    })
+                  }
+                  className={` ${
+                    filter?.status ? "text-white" : "text-tradeFadeWhite"
+                  } flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max`}
+                >
+                  <p className="text-[13px] font-semibold">
+                    {filter?.status ? filter?.status : "All status"}
+                  </p>
                 </div>
               </div>
             </div>
@@ -211,16 +356,27 @@ const TransactionHistory = () => {
             </div>
 
             <div className="flex gap-4 justify-between items-center w-full py-[12px]">
-              <div className="flex gap-[5px]">
-                <p className="text-[13px] text-tradeFadeWhite">Show data</p>
-                <p className="text-[13px] text-white font-semibold">
-                  {displayedCount} {""}
-                  <span className="text-tradeFadeWhite">of</span>{" "}
-                  {pagination?.totalItems ? pagination?.totalItems : "0"}
-                </p>
+              <div className="flex gap-[5px]  transition-all duration-300">
+                <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                  <p className="text-[13px] font-semibold ">Data</p>
+                </div>
+                <div className="flex items-center gap-1 bg-tradeAsh text-white px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                  <p className="text-[13px] font-semibold">{displayedCount}</p>
+                </div>
+
+                <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                  <p className="text-[13px] font-semibold">of</p>
+                </div>
+
+                <div className="flex items-center gap-1 bg-tradeAsh text-white px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                  <p className="text-[13px] font-semibold">
+                    {" "}
+                    {pagination?.totalItems ? pagination?.totalItems : "0"}
+                  </p>
+                </div>
               </div>
 
-              <div className="flex gap-2">
+              <div className="flex gap-[5px]">
                 <div>
                   <div
                     onClick={handleNext}

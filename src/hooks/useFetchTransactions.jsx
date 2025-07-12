@@ -3,8 +3,7 @@ import api from "@/utils/http/api";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 
 export function useFetchTransactions(initialPage = 1, limit = 10) {
-  const { setTransactions } = useTransaction();
-
+  const { setTransactions, filter, setFilter } = useTransaction();
   const [page, setPage] = useState(initialPage);
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -19,8 +18,33 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
       setLoading(true);
       setError(null);
 
+      const buildUrl = () => {
+        const params = new URLSearchParams();
+
+        if (filter?.type && filter.type !== "All types") {
+          params.append("type", filter.type);
+        }
+
+        if (filter?.status && filter.status !== "All status") {
+          params.append("status", filter.status);
+        }
+
+        if (filter?.date?.month) {
+          params.append("month", filter.date.month);
+        }
+
+        if (filter?.date?.year) {
+          params.append("year", filter.date.year);
+        }
+
+        return `/payment/wallet-history?${params.toString()}`;
+      };
+
       try {
-        const res = await api.get("/payment/wallet-history", {
+        const url = buildUrl();
+        console.log(url);
+
+        const res = await api.get(url, {
           params: { page: pageToLoad, limit },
         });
 
@@ -28,11 +52,9 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
           const { data, pagination } = res.data;
 
           if (pageToLoad === 1) {
-            // first page or forced refresh
             setTransactions(res.data);
             setDisplayedCount(data.length);
           } else {
-            // append
             setTransactions((prev) => ({
               ...res.data,
               data: [...prev.data, ...data],
@@ -53,14 +75,13 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
         setLoading(false);
       }
     },
-    [limit, setTransactions] // `page` removed ⇒ function is stable
+    [limit, filter, setTransactions]
   );
 
   // first load – run once
   useEffect(() => {
-    fetchPage(initialPage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    fetchPage(1); // Always reset to page 1 on filter change
+  }, [filter, fetchPage]);
 
   // ───────────── helper for “Next” (Prev removed) ─────────────
   const next = async () => {
