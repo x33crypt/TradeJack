@@ -68,16 +68,16 @@ const InAppNav = () => {
   return (
     <>
       {/* Desktop Nav */}
-      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] p-[15px] h-[62px] md:h-[65px] flex justify-between items-center border-b border-neutral-800 ">
+      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] py-[12px] px-[15px] h-[55px] md:h-[65px] flex justify-between items-center border-b border-neutral-800 ">
         <div className="flex items-center lg:gap-[30px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
-            className="md:hidden flex border border-tradeAshLight p-[3px] rounded-[6px]"
+            className="flex md:hidden items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max"
           >
             {isNavOption ? (
-              <IoCloseSharp className="text-white text-[22px]" />
+              <IoCloseSharp className="text-white text-lg" />
             ) : (
-              <HiOutlineMenuAlt2 className="text-white text-[22px]" />
+              <HiOutlineMenuAlt2 className="text-white text-lg" />
             )}
           </div>
           <div
@@ -85,11 +85,9 @@ const InAppNav = () => {
             className="flex items-center gap-[5px] cursor-pointer "
           >
             <RiExchangeFill className=" flex lg:text-2xl text-xl text-tradeGreen" />
-            <p className=" text-xl font-[700] text-tradeGreen">
+            <p className=" lg:text-xl md:text-[19px] text-lg  font-semibold text-tradeGreen">
               Trade
-              <small className="lg:text-xl md:text-[19px] text-[19px] font-[700] text-white">
-                Jack
-              </small>
+              <span className="font-semibold text-white">Jack</span>
             </p>
           </div>
         </div>

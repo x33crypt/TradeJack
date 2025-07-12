@@ -69,7 +69,7 @@ const TransactionDetails = () => {
 
                           if (type === "deposit") {
                             return (
-                              <div className="flex text-tradeGreen p-4 text-lg rounded-full bg-tradeAshLight">
+                              <div className="flex text-tradeGreen p-4 text-xl rounded-full bg-tradeAshLight">
                                 <IoMdArrowRoundDown />
                               </div>
                             );
@@ -77,14 +77,14 @@ const TransactionDetails = () => {
 
                           if (type === "transfer") {
                             return (
-                              <div className="flex text-red-600 p-4 text-lg rounded-full bg-tradeAshLight">
+                              <div className="flex text-red-600 p-4 text-xl rounded-full bg-tradeAshLight">
                                 <IoMdArrowRoundUp />
                               </div>
                             );
                           }
 
                           return (
-                            <div className="flex text-tradeFadeWhite p-4 text-lg rounded-full bg-tradeAshLight">
+                            <div className="flex text-tradeFadeWhite p-4 text-xl rounded-full bg-tradeAshLight">
                               <MdOutlineQuestionMark />
                             </div>
                           );
@@ -109,9 +109,9 @@ const TransactionDetails = () => {
                           txOverview
                             ? "bg-tradeAshLight text-white"
                             : "bg-transparent text-tradeFadeWhite"
-                        } flex-1 flex items-center justify-center gap-1 py-[6px] rounded-[6px] transition-all duration-300 cursor-pointer`}
+                        } flex-1 flex items-center justify-center gap-1 py-[7px] rounded-[6px] transition-all duration-300 cursor-pointer`}
                       >
-                        <p className="md:text-[13px] text-[12px] font-medium ">
+                        <p className="text-[13px] font-medium ">
                           Overview
                         </p>
                       </div>
@@ -122,9 +122,9 @@ const TransactionDetails = () => {
                           txDetails
                             ? "bg-tradeAshLight text-white"
                             : "bg-transparent text-tradeFadeWhite"
-                        } flex-1 flex items-center justify-center gap-1 py-[6px] rounded-[6px] transition-all duration-300 cursor-pointer`}
+                        } flex-1 flex items-center justify-center gap-1 py-[7px] rounded-[6px] transition-all duration-300 cursor-pointer`}
                       >
-                        <p className="md:text-[13px] text-[12px] font-medium">
+                        <p className="text-[13px] font-medium">
                           Details
                         </p>
                       </div>
