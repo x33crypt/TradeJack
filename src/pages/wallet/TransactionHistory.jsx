@@ -22,6 +22,8 @@ import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import { IoIosWallet } from "react-icons/io";
 import { IoWallet } from "react-icons/io5";
 import { useSelectElement } from "@/context/SelectElementContext";
+import { IoClose } from "react-icons/io5";
+import { date } from "@/utils/dateTimeFormat/date";
 
 const TransactionHistory = () => {
   const topRef = useRef(null);
@@ -49,7 +51,7 @@ const TransactionHistory = () => {
     }
   };
 
-  const joinDate = "march 10, 2025";
+  const joinDate = date(transactions?.transactionDateRange?.firstTransaction);
   const join = new Date(joinDate);
   const now = new Date();
 
@@ -67,6 +69,7 @@ const TransactionHistory = () => {
     if (!value) return;
 
     const [year, month] = value.split("-");
+    const monthNum = Number(month);
     const monthName = new Date(`${year}-${month}-01`).toLocaleString(
       "default",
       {
@@ -78,19 +81,23 @@ const TransactionHistory = () => {
       ...prev,
       date: {
         year: Number(year),
-        month: monthName,
+        monthNo: monthNum,
+        monthName: monthName,
       },
     }));
   };
 
-  useEffect(() => {
+  const resetFilter = () => {
     setFilter((prev) => ({
       ...prev,
-      date: {
-        year: null,
-        month: null,
-      },
+      date: { monthNo: null, monthName: null, year: null },
+      type: null,
+      status: null,
     }));
+  };
+
+  useEffect(() => {
+    resetFilter();
   }, []);
 
   const transactionStatus = ["Pending", "Failed", "Successful"];
@@ -149,6 +156,11 @@ const TransactionHistory = () => {
     await next();
     setLoadingNext(false);
   };
+
+  const isEmpty = transactions?.data?.length === 0;
+  const isEnd = pagination && !pagination.hasNextPage && !isEmpty;
+
+  const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
 
   return (
     <>
@@ -263,12 +275,16 @@ const TransactionHistory = () => {
 
                 <div
                   className={`${
-                    filter.date?.month ? "text-white" : "text-tradeFadeWhite "
+                    filter.date?.monthName
+                      ? "text-white"
+                      : "text-tradeFadeWhite "
                   } flex gap-[5px] transition-all duration-300 hover:text-white`}
                 >
                   <div className=" flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                     <p className="text-[13px] font-semibold">
-                      {filter.date?.month ? filter.date?.month : "Month"}
+                      {filter.date?.monthName
+                        ? filter.date?.monthName
+                        : "Month"}
                     </p>
                   </div>
                   <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
@@ -289,53 +305,63 @@ const TransactionHistory = () => {
                 </div>
               </div>
 
-              <div className="flex gap-[5px] cursor-pointer transition-all duration-300">
-                <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <HiAdjustmentsHorizontal />
+              <div className="flex gap-[10px]">
+                <div className="flex gap-[5px] cursor-pointer transition-all duration-300">
+                  <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                    <HiAdjustmentsHorizontal />
+                  </div>
+                  <div
+                    onClick={() =>
+                      setSelect({
+                        ...select,
+                        state: true,
+                        selectOne: true,
+                        selectTwo: false,
+                        element: "transaction type",
+                        options: transactionTypes,
+                        pick: "",
+                        page: "transaction history",
+                      })
+                    }
+                    className={` ${
+                      filter?.type ? "text-white" : "text-tradeFadeWhite"
+                    }  flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max`}
+                  >
+                    <p className="text-[13px] font-semibold">
+                      {filter?.type ? filter?.type : "All types"}
+                    </p>
+                  </div>
+                  <div
+                    onClick={() =>
+                      setSelect({
+                        ...select,
+                        state: true,
+                        selectOne: true,
+                        selectTwo: false,
+                        element: "transaction status",
+                        options: transactionStatus,
+                        pick: "",
+                        page: "transaction history",
+                      })
+                    }
+                    className={` ${
+                      filter?.status ? "text-white" : "text-tradeFadeWhite"
+                    } flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max`}
+                  >
+                    <p className="text-[13px] font-semibold">
+                      {filter?.status ? filter?.status : "All status"}
+                    </p>
+                  </div>
                 </div>
 
                 <div
-                  onClick={() =>
-                    setSelect({
-                      ...select,
-                      state: true,
-                      selectOne: true,
-                      selectTwo: false,
-                      element: "transaction type",
-                      options: transactionTypes,
-                      pick: "",
-                      page: "transaction history",
-                    })
-                  }
-                  className={` ${
-                    filter?.type ? "text-white" : "text-tradeFadeWhite"
-                  }  flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max`}
+                  onClick={resetFilter}
+                  className="flex items-center cursor-pointer gap-1 bg-tradeAsh text-tradeFadeWhite hover:text-tradeOrange px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max"
                 >
-                  <p className="text-[13px] font-semibold">
-                    {filter?.type ? filter?.type : "All types"}
+                  <p className="md:flex  hidden text-[13px] font-semibold">
+                    Clear Filter
                   </p>
-                </div>
-
-                <div
-                  onClick={() =>
-                    setSelect({
-                      ...select,
-                      state: true,
-                      selectOne: true,
-                      selectTwo: false,
-                      element: "transaction status",
-                      options: transactionStatus,
-                      pick: "",
-                      page: "transaction history",
-                    })
-                  }
-                  className={` ${
-                    filter?.status ? "text-white" : "text-tradeFadeWhite"
-                  } flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max`}
-                >
-                  <p className="text-[13px] font-semibold">
-                    {filter?.status ? filter?.status : "All status"}
-                  </p>
+                  <IoClose className="md" />
                 </div>
               </div>
             </div>
@@ -360,7 +386,7 @@ const TransactionHistory = () => {
                 <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                   <p className="text-[13px] font-semibold ">Data</p>
                 </div>
-                <div className="flex items-center gap-1 bg-tradeAsh text-white px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                   <p className="text-[13px] font-semibold">{displayedCount}</p>
                 </div>
 
@@ -368,7 +394,7 @@ const TransactionHistory = () => {
                   <p className="text-[13px] font-semibold">of</p>
                 </div>
 
-                <div className="flex items-center gap-1 bg-tradeAsh text-white px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                   <p className="text-[13px] font-semibold">
                     {" "}
                     {pagination?.totalItems ? pagination?.totalItems : "0"}
@@ -378,20 +404,28 @@ const TransactionHistory = () => {
 
               <div className="flex gap-[5px]">
                 <div>
-                  <div
-                    onClick={handleNext}
-                    className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
-                  >
-                    <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                      <p className="text-[13px] font-semibold">
-                        {loadingNext ? (
-                          <AiOutlineLoading3Quarters className="animate-spin text-[19.5px] text-tradeFadeWhite" />
-                        ) : (
-                          "Load more"
-                        )}
-                      </p>
+                  {pagination?.hasNextPage ? (
+                    <div
+                      onClick={handleNext}
+                      className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
+                    >
+                      <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                        <p className="text-[13px] font-semibold">
+                          {loadingNext ? (
+                            <AiOutlineLoading3Quarters className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                          ) : (
+                            "Load more"
+                          )}
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    (isEmpty || isEnd) && (
+                      <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                        <p className="text-[13px] font-semibold">{message}</p>
+                      </div>
+                    )
+                  )}
                 </div>
 
                 <div

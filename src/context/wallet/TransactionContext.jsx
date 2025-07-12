@@ -4,7 +4,7 @@ const TransactionContext = createContext();
 export const TransactionProvider = ({ children }) => {
   const [transactions, setTransactions] = useState({ page: 1 });
   const [filter, setFilter] = useState({
-    date: { month: null, year: null },
+    date: { monthNo: null, monthName: null, year: null },
     type: null,
     status: null,
   });

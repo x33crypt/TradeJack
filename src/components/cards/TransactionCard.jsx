@@ -19,7 +19,6 @@ const TransactionCard = ({ transaction }) => {
   return (
     <>
       {/* Desktop Card */}
-
       <div
         onClick={() => viewDetails(transaction.reference)}
         className="md:flex hidden p-[15px] gap-5 items-center bg-tradeAsh hover:bg-black transition-all duration-300 cursor-pointer"
@@ -250,7 +249,7 @@ const TransactionCard = ({ transaction }) => {
 
       {/* Mobile Card */}
       <div
-        onClick={() => viewDetails(transaction.transactionId)}
+        onClick={() => viewDetails(transaction.reference)}
         className="flex flex-col md:hidden  bg-tradeAsh rounded-[15px] border  border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
       >
         {/* Top: Offer ID and Status */}

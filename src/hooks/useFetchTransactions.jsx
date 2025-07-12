@@ -22,15 +22,15 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
         const params = new URLSearchParams();
 
         if (filter?.type && filter.type !== "All types") {
-          params.append("type", filter.type);
+          params.append("type", filter.type.toLowerCase());
         }
 
         if (filter?.status && filter.status !== "All status") {
-          params.append("status", filter.status);
+          params.append("status", filter.status.toLowerCase());
         }
 
-        if (filter?.date?.month) {
-          params.append("month", filter.date.month);
+        if (filter?.date?.monthNo) {
+          params.append("month", filter.date.monthNo);
         }
 
         if (filter?.date?.year) {
