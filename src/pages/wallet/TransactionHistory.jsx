@@ -305,7 +305,7 @@ const TransactionHistory = () => {
                 </div>
               </div>
 
-              <div className="flex gap-[5px]">
+              <div className="flex gap-[10px]">
                 <div className="flex gap-[5px] cursor-pointer transition-all duration-300">
                   <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                     <HiAdjustmentsHorizontal />
