@@ -3,7 +3,6 @@ import DOMPurify from "dompurify";
 
 // Sanitize input
 const sanitizeInput = (input) => {
-  if (typeof input !== "string") return "";
   const cleaned = DOMPurify.sanitize(input);
   return cleaned.trim();
 };
@@ -24,6 +23,8 @@ export async function submitDeposit(transferDetails) {
   const payload = {
     amount_ngn: sanitizedAmount,
   };
+
+  console.log(payload);
 
   try {
     const response = await api.post(`${baseUrl}/payment/deposit`, payload);

@@ -2,6 +2,7 @@ import React from "react";
 import TransactionCard from "../cards/TransactionCard";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import { useNavigate } from "react-router-dom";
+import { RiArrowRightFill } from "react-icons/ri";
 
 const RecentTransaction = ({ transactions }) => {
   console.log("transactions value:", transactions);
@@ -13,12 +14,17 @@ const RecentTransaction = ({ transactions }) => {
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Recent Transaction</p>
 
-        <p
+        <div
           onClick={() => navigateTo("/wallet/transactions")}
-          className="text-[13px] font-semibold text-tradeOrange hover:text-tradeOrange/50 transition-all duration-300 underline-offset-4 hover:underline cursor-pointer"
+          className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
         >
-          View all
-        </p>
+          <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+            <RiArrowRightFill />
+          </div>
+          <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+            <p className="text-[13px] font-semibold">See More</p>
+          </div>
+        </div>
       </div>
 
       <div className="p-[15px]">

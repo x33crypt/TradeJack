@@ -5,19 +5,34 @@ import { IoMdArrowRoundUp, IoMdArrowRoundDown } from "react-icons/io";
 import { date } from "@/utils/dateTimeFormat/date";
 import { toDecimal } from "@/utils/currency/toDecimal";
 import { shortenID } from "@/utils/shortenID/shortenID";
+import { MdOutlineQuestionMark } from "react-icons/md";
+import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useFetchTransactionsDetails } from "@/hooks/useFetchTransactionDetails";
 
 const TransactionCard = ({ transaction }) => {
+  const { details, setDetails } = useTransaction();
+
+  const viewDetails = (id) => {
+    setDetails({ state: true, transactionId: id, data: {} });
+  };
+
   return (
     <>
       {/* Desktop Card */}
-      <div className="md:flex hidden p-[15px] gap-5 items-center bg-tradeAsh hover:bg-black transition-all duration-300 cursor-pointer">
+
+      <div
+        onClick={() => viewDetails(transaction.reference)}
+        className="md:flex hidden p-[15px] gap-5 items-center bg-tradeAsh hover:bg-black transition-all duration-300 cursor-pointer"
+      >
         <div className="flex flex-col lg:flex-1 w-[160px] gap-2">
           <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <MdGrid3X3 className="text-sm text-tradeAshExtraLight" />
             </div>
             <p className="text-white  text-[13px] font-semibold">
-              {shortenID(transaction?.transactionId)}
+              {transaction?.transactionId
+                ? shortenID(transaction.transactionId)
+                : "No transaction ID"}
             </p>
           </div>
           <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
@@ -25,7 +40,9 @@ const TransactionCard = ({ transaction }) => {
               <MdDateRange className="text-sm text-tradeAshExtraLight" />
             </div>
             <p className="text-white  text-[13px] font-semibold">
-              {date(transaction?.createdAt)}
+              {transaction?.createdAt
+                ? date(transaction.createdAt)
+                : "Date not available"}
             </p>
           </div>
         </div>
@@ -50,7 +67,11 @@ const TransactionCard = ({ transaction }) => {
                 );
               }
 
-              return null;
+              return (
+                <div className="lg:flex hidden text-tradeFadeWhite p-3 text-base rounded-full bg-tradeAshLight">
+                  <MdOutlineQuestionMark />
+                </div>
+              );
             })()}
           </div>
           <div className="flex flex-col flex-1 gap-2">
@@ -85,7 +106,7 @@ const TransactionCard = ({ transaction }) => {
                     return "Transfer To";
                   }
 
-                  return "";
+                  return "Unknown type";
                 })()}
               </p>
             </div>
@@ -131,7 +152,11 @@ const TransactionCard = ({ transaction }) => {
                   );
                 }
 
-                return null;
+                return (
+                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                    N/A
+                  </p>
+                );
               })()}
             </div>
           </div>
@@ -182,7 +207,11 @@ const TransactionCard = ({ transaction }) => {
                 );
               }
 
-              return null;
+              return (
+                <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                  N/A
+                </p>
+              );
             })()}
           </div>
         </div>
@@ -192,7 +221,11 @@ const TransactionCard = ({ transaction }) => {
               Service Fee
             </p>
           </div>
-          <p className="text-white text-[13px] font-semibold">#0.00 </p>
+          <p className="text-white text-[13px] font-semibold">
+            {transaction?.serviceFee?.ngn !== undefined
+              ? `#${toDecimal(transaction.serviceFee.ngn)}`
+              : "#0.00"}
+          </p>
         </div>
         <div className="flex flex-col flex-1  gap-2">
           <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
@@ -210,13 +243,16 @@ const TransactionCard = ({ transaction }) => {
                 : "text-tradeAshDark" // default or unknown status
             }`}
           >
-            {transaction?.status}
+            {transaction?.status || "Status unknown"}
           </p>
         </div>
       </div>
 
       {/* Mobile Card */}
-      <div className="flex flex-col md:hidden  bg-tradeAsh rounded-[15px] border  border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden">
+      <div
+        onClick={() => viewDetails(transaction.transactionId)}
+        className="flex flex-col md:hidden  bg-tradeAsh rounded-[15px] border  border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
+      >
         {/* Top: Offer ID and Status */}
         <div className="flex justify-between items-center px-4 py-3 border-b border-tradeAshLight">
           <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
@@ -224,7 +260,9 @@ const TransactionCard = ({ transaction }) => {
               <MdGrid3X3 className="text-sm text-tradeAshExtraLight" />
             </div>
             <p className="text-white  text-[13px] font-bold">
-              {shortenID(transaction?.transactionId)}
+              {transaction?.transactionId
+                ? shortenID(transaction.transactionId)
+                : "No transaction ID"}
             </p>
           </div>
           <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
@@ -232,7 +270,9 @@ const TransactionCard = ({ transaction }) => {
               <MdDateRange className="text-sm text-tradeAshExtraLight" />
             </div>
             <p className="text-white  text-[13px] font-bold">
-              {date(transaction?.createdAt)}
+              {transaction?.createdAt
+                ? date(transaction.createdAt)
+                : "Date not available"}
             </p>
           </div>
         </div>
@@ -260,7 +300,11 @@ const TransactionCard = ({ transaction }) => {
                   );
                 }
 
-                return null;
+                return (
+                  <div className="flex text-tradeFadeWhite p-3 text-lg rounded-full bg-tradeAshLight">
+                    <MdOutlineQuestionMark />
+                  </div>
+                );
               })()}
             </div>
             <div className="flex flex-col flex-1 gap-2">
@@ -295,7 +339,7 @@ const TransactionCard = ({ transaction }) => {
                       return "Transfer To";
                     }
 
-                    return "";
+                    return "Unknown type";
                   })()}
                 </p>
               </div>
@@ -342,7 +386,11 @@ const TransactionCard = ({ transaction }) => {
                     );
                   }
 
-                  return null;
+                  return (
+                    <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                      N/A
+                    </p>
+                  );
                 })()}
               </div>
             </div>
@@ -394,7 +442,11 @@ const TransactionCard = ({ transaction }) => {
                   );
                 }
 
-                return null;
+                return (
+                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                    N/A
+                  </p>
+                );
               })()}
             </div>
           </div>
@@ -417,7 +469,7 @@ const TransactionCard = ({ transaction }) => {
                 : "text-tradeAshDark" // default or unknown status
             }`}
           >
-            {transaction?.status}
+            {transaction?.status || "Status unknown"}
           </p>
         </div>
       </div>

@@ -12,8 +12,10 @@ import { IoIosLock } from "react-icons/io";
 import { toUSD } from "@/utils/currency/toUSD";
 import { toNGN } from "@/utils/currency/toNGN";
 import { useEffect } from "react";
+import { useTransaction } from "@/context/wallet/TransactionContext";
 
 const Deposit = () => {
+  const { transactions } = useTransaction();
   const { deposit, setDeposit } = useDepositContext();
   const [depositDetails, setDepositDetails] = useState({
     url: null,
@@ -147,8 +149,6 @@ const Deposit = () => {
       loading: true,
     }));
 
-    const currency = depositDetails?.selectedCurrency;
-    const amountUSD = depositDetails?.amount?.USD;
     const amountNGN = depositDetails?.amount?.NGN;
 
     if (!amountNGN || isNaN(amountNGN)) {
@@ -164,20 +164,6 @@ const Deposit = () => {
       return;
     }
 
-    // // Validate minimums
-    // if (currency === "USD" && amountUSD < 10) {
-    //   setDeposit((prev) => ({
-    //     ...prev,
-    //     loading: false,
-    //   }));
-    //   setToast({
-    //     ...toast,
-    //     error: true,
-    //     errorMessage: "The minimum deposit amount is USD 10.",
-    //   });
-    //   return;
-    // }
-
     if (amountNGN < 15000) {
       setDeposit((prev) => ({
         ...prev,
@@ -192,7 +178,7 @@ const Deposit = () => {
     }
 
     const payload = {
-      amount_ngn: depositDetails?.amount?.NGN,
+      amount: depositDetails?.amount?.NGN,
     };
 
     console.log("Depost Amount :", payload);
@@ -352,7 +338,7 @@ const Deposit = () => {
 
                     <div>
                       <p className="text-tradeFadeWhite text-xs font-semibold">
-                        Value equivalent to{" "}
+                        You are depositing{" "}
                         <span className="text-tradeOrange">
                           NGN {""}
                           {depositDetails?.amount?.NGN
@@ -421,7 +407,7 @@ const Deposit = () => {
             </div>
           </div>
 
-          <RecentDeposit />
+          <RecentDeposit transactions={transactions} />
         </div>
       </div>
       <Footer />

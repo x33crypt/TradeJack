@@ -65,13 +65,13 @@ const ConfirmTransfer = () => {
                 </div>
                 <div className="flex flex-col items-center justify-center gap-2 py-[15px] rounded-[10px] border border-tradeAshLight ronded-[15px]">
                   <p className="text-white font-semibold text-xl leading-none">
-                    {toDecimal(amount)} {currency}
+                    {currency} {toDecimal(amount)}
                   </p>
                   <p className="text-tradeFadeWhite text-xs font-medium ">
                     {`+${chargePercent}% Charge`}
                   </p>
                 </div>
-                <div className="flex flex-col gap- px-[8px] border border-tradeAshLight rounded-[10px]">
+                <div className="flex flex-col px-[8px] border border-tradeAshLight rounded-[10px]">
                   <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
                     <div className="flex items-center gap-1">
                       <BiSolidWalletAlt className="text-tradeFadeWhite" />
@@ -82,7 +82,7 @@ const ConfirmTransfer = () => {
 
                     <div>
                       <p className="md:text-[13px] text-[12px] font-semibold text-white">
-                        {toDecimal(walletBalance)} {currency}
+                        {currency} {toDecimal(walletBalance)}
                       </p>
                     </div>
                   </div>
@@ -96,7 +96,7 @@ const ConfirmTransfer = () => {
 
                     <div>
                       <p className="md:text-[13px] text-[12px] font-semibold text-white">
-                        {toDecimal(chargeAmount)} {currency}
+                        {currency} {toDecimal(chargeAmount)}
                       </p>
                     </div>
                   </div>
@@ -108,7 +108,6 @@ const ConfirmTransfer = () => {
                   </div>
                 )}
               </div>
-
               <Button
                 variant="secondary"
                 onClick={transferTrigger}

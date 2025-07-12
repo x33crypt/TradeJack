@@ -1,5 +1,4 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
-
 const TransactionContext = createContext();
 
 export const TransactionProvider = ({ children }) => {
@@ -9,10 +8,24 @@ export const TransactionProvider = ({ children }) => {
     type: "All types",
     status: "All status",
   });
+  const [details, setDetails] = useState({
+    state: false,
+    transactionId: "",
+    data: {},
+  });
+
+  console.log("transactions Details :", details);
 
   return (
     <TransactionContext.Provider
-      value={{ transactions, setTransactions, Filter, setFilter }}
+      value={{
+        transactions,
+        setTransactions,
+        Filter,
+        setFilter,
+        details,
+        setDetails,
+      }}
     >
       {children}
     </TransactionContext.Provider>

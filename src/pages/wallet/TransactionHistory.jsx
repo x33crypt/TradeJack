@@ -19,14 +19,8 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const TransactionHistory = () => {
   const topRef = useRef(null); // this will help us scroll here
-  const {
-    loading,
-    error,
-    pagination,
-    page,
-    displayedCount,
-    next,
-  } = useFetchTransactions(); // defaults: page 1, limit 10
+  const { loading, error, pagination, page, displayedCount, next } =
+    useFetchTransactions(); // defaults: page 1, limit 10
   const { transactions } = useTransaction();
   const [triggerScroll, setTriggerScroll] = useState(false);
   const [loadingNext, setLoadingNext] = useState(false);
@@ -71,18 +65,18 @@ const TransactionHistory = () => {
           </div>
           <div className="flex flex-col p-[15px] gap-[10px]">
             <div className="flex lg:flex-row flex-col w-full gap-[10px]">
-              <div className="flex-1 flex flex-col p-[12px] gap-[25px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
+              <div className="flex-1 flex flex-col p-[12px] gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
                 <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer">
-                    <CiWallet className=" text-white" />
+                  <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer">
+                    <CiWallet className=" text-tradeOrange" />
                   </div>
 
-                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                  <p className="text-tradeFadeWhite text-xs font-semibold">
                     Total Transaction This Month
                   </p>
                 </div>
                 <div>
-                  <p className="text-white text-[28px] font-semibold">
+                  <p className="text-white text-[22px] font-semibold">
                     #23,200,000.68
                   </p>
                 </div>
@@ -99,18 +93,18 @@ const TransactionHistory = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex-1 flex flex-col p-[12px] gap-[25px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
+              <div className="flex-1 flex flex-col p-[12px] gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
                 <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer">
-                    <RiArrowLeftDownFill className=" text-white" />
+                  <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer">
+                    <RiArrowLeftDownFill className=" text-tradeGreen" />
                   </div>
 
-                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                    Total Deposit
+                  <p className="text-tradeFadeWhite text-xs font-semibold">
+                    Total Deposit This Month
                   </p>
                 </div>
                 <div>
-                  <p className="text-white text-[28px] font-semibold">
+                  <p className="text-white text-[22px] font-semibold">
                     #23,200,000.68
                   </p>
                 </div>
@@ -127,18 +121,18 @@ const TransactionHistory = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex-1 flex flex-col p-[12px] gap-[25px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
+              <div className="flex-1 flex flex-col p-[12px] gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
                 <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer">
-                    <RiArrowLeftDownFill className=" text-white" />
+                  <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer">
+                    <RiArrowRightUpFill className=" text-red-600 " />
                   </div>
 
-                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                    Total Deposit
+                  <p className="text-tradeFadeWhite text-xs font-semibold">
+                    Total Transfer This Month
                   </p>
                 </div>
                 <div>
-                  <p className="text-white text-[28px] font-semibold">
+                  <p className="text-white text-[22px] font-semibold">
                     #23,200,000.68
                   </p>
                 </div>
@@ -157,7 +151,7 @@ const TransactionHistory = () => {
               </div>
             </div>
 
-            <div className="sticky md:top-[65px] top-[60px] mt-[50px] bg-black flex justify-between items-center w-full py-[12px] border-b border-dashed border-tradeAshLight">
+            <div className="sticky md:top-[65px] top-[60px] mt-[30px] bg-black flex justify-between items-center w-full py-[12px] border-b border-dashed border-tradeAshLight">
               <div className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300">
                 <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                   <TiArrowSortedDown />
@@ -217,49 +211,43 @@ const TransactionHistory = () => {
             </div>
 
             <div className="flex gap-4 justify-between items-center w-full py-[12px]">
-              <div>
-                {loadingNext ? (
-                  <AiOutlineLoading3Quarters className="animate-spin text-[16px] text-tradeFadeWhite" />
-                ) : (
-                  <div className="flex gap-[5px]">
-                    <p className="text-[13px] text-tradeFadeWhite">Show data</p>
-                    <p className="text-[13px] text-white font-semibold">
-                      {displayedCount} {""}
-                      <span className="text-tradeFadeWhite">of</span>{" "}
-                      {pagination?.totalItems}
-                    </p>
-                  </div>
-                )}
+              <div className="flex gap-[5px]">
+                <p className="text-[13px] text-tradeFadeWhite">Show data</p>
+                <p className="text-[13px] text-white font-semibold">
+                  {displayedCount} {""}
+                  <span className="text-tradeFadeWhite">of</span>{" "}
+                  {pagination?.totalItems ? pagination?.totalItems : "0"}
+                </p>
               </div>
 
-              <div className="flex gap-4">
-                {pagination?.hasNextPage ? (
+              <div className="flex gap-2">
+                <div>
                   <div
                     onClick={handleNext}
                     className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
                   >
                     <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                      <TiArrowSortedDown />
-                    </div>
-                    <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                      <p className="text-[13px] font-semibold">Load More</p>
-                    </div>
-                  </div>
-                ) : (
-                  <div
-                    onClick={() =>
-                      window.scrollTo({ top: 0, behavior: "smooth" })
-                    }
-                    className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
-                  >
-                    <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                      <TiArrowSortedDown />
-                    </div>
-                    <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                      <p className="text-[13px] font-semibold">Scroll to Top</p>
+                      <p className="text-[13px] font-semibold">
+                        {loadingNext ? (
+                          <AiOutlineLoading3Quarters className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                        ) : (
+                          "Load more"
+                        )}
+                      </p>
                     </div>
                   </div>
-                )}
+                </div>
+
+                <div
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                  className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
+                >
+                  <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                    <p className="text-[13px] font-semibold">Scroll to Top</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
