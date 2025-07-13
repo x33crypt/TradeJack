@@ -23,7 +23,7 @@ import { IoIosWallet } from "react-icons/io";
 import { IoWallet } from "react-icons/io5";
 import { useSelectElement } from "@/context/SelectElementContext";
 import { IoClose } from "react-icons/io5";
-import { date } from "@/utils/dateTimeFormat/date";
+import { date } from "@/utils/date";
 
 const TransactionHistory = () => {
   const topRef = useRef(null);
@@ -264,104 +264,106 @@ const TransactionHistory = () => {
               </div>
             </div>
 
-            <div className="sticky md:top-[65px] top-[57px] mt-[30px] bg-black flex justify-between items-center w-full py-[12px] border-b border-dashed border-tradeAshLight">
-              <div
-                onClick={handleDateClick}
-                className="flex gap-[5px] cursor-pointer transition-all duration-300"
-              >
-                <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <HiMiniCalendarDateRange />
-                </div>
-
+            <div className="sticky md:top-[65px] top-[57px] mt-[30px] bg-black py-[12px] border-b border-dashed border-tradeAshLight">
+              <div className="flex justify-between items-center w-full gap-[10px]">
                 <div
-                  className={`${
-                    filter.date?.monthName
-                      ? "text-white"
-                      : "text-tradeFadeWhite "
-                  } flex gap-[5px] transition-all duration-300 hover:text-white`}
+                  onClick={handleDateClick}
+                  className="flex gap-[5px] cursor-pointer transition-all duration-300"
                 >
-                  <div className=" flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-[13px] font-semibold">
-                      {filter.date?.monthName
-                        ? filter.date?.monthName
-                        : "Month"}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-[13px] font-semibold">
-                      {filter.date?.year ? filter.date?.year : "Year"}
-                    </p>
-                  </div>
-                  <div>
-                    <input
-                      type="month"
-                      min={min}
-                      max={max}
-                      onChange={handleDateChange}
-                      ref={inputRef}
-                      className="absolute opacity-0 w-0 h-0 pointer-events-none"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-[10px]">
-                <div className="flex gap-[5px] cursor-pointer transition-all duration-300">
                   <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <HiAdjustmentsHorizontal />
+                    <HiMiniCalendarDateRange />
                   </div>
+
                   <div
-                    onClick={() =>
-                      setSelect({
-                        ...select,
-                        state: true,
-                        selectOne: true,
-                        selectTwo: false,
-                        element: "transaction type",
-                        options: transactionTypes,
-                        pick: "",
-                        page: "transaction history",
-                      })
-                    }
-                    className={` ${
-                      filter?.type ? "text-white" : "text-tradeFadeWhite"
-                    }  flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max`}
+                    className={`${
+                      filter.date?.monthName
+                        ? "text-white"
+                        : "text-tradeFadeWhite "
+                    } flex gap-[5px] transition-all duration-300 hover:text-white`}
                   >
-                    <p className="text-[13px] font-semibold">
-                      {filter?.type ? filter?.type : "All types"}
-                    </p>
-                  </div>
-                  <div
-                    onClick={() =>
-                      setSelect({
-                        ...select,
-                        state: true,
-                        selectOne: true,
-                        selectTwo: false,
-                        element: "transaction status",
-                        options: transactionStatus,
-                        pick: "",
-                        page: "transaction history",
-                      })
-                    }
-                    className={` ${
-                      filter?.status ? "text-white" : "text-tradeFadeWhite"
-                    } flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max`}
-                  >
-                    <p className="text-[13px] font-semibold">
-                      {filter?.status ? filter?.status : "All status"}
-                    </p>
+                    <div className=" flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                      <p className="text-[13px] font-semibold">
+                        {filter.date?.monthName
+                          ? filter.date?.monthName
+                          : "Month"}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                      <p className="text-[13px] font-semibold">
+                        {filter.date?.year ? filter.date?.year : "Year"}
+                      </p>
+                    </div>
+                    <div>
+                      <input
+                        type="month"
+                        min={min}
+                        max={max}
+                        onChange={handleDateChange}
+                        ref={inputRef}
+                        className="absolute opacity-0 w-0 h-0 pointer-events-none"
+                      />
+                    </div>
                   </div>
                 </div>
 
-                <div
-                  onClick={resetFilter}
-                  className="flex items-center cursor-pointer gap-1 bg-tradeAsh text-tradeFadeWhite hover:text-tradeOrange px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max"
-                >
-                  <p className="md:flex  hidden text-[13px] font-semibold">
-                    Clear Filter
-                  </p>
-                  <IoClose className="md" />
+                <div className="flex gap-[10px]">
+                  <div className="flex gap-[5px] cursor-pointer transition-all duration-300">
+                    <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                      <HiAdjustmentsHorizontal />
+                    </div>
+                    <div
+                      onClick={() =>
+                        setSelect({
+                          ...select,
+                          state: true,
+                          selectOne: true,
+                          selectTwo: false,
+                          element: "transaction type",
+                          options: transactionTypes,
+                          pick: "",
+                          page: "transaction history",
+                        })
+                      }
+                      className={` ${
+                        filter?.type ? "text-white" : "text-tradeFadeWhite"
+                      }  flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max`}
+                    >
+                      <p className="text-[13px] font-semibold">
+                        {filter?.type ? filter?.type : "All types"}
+                      </p>
+                    </div>
+                    <div
+                      onClick={() =>
+                        setSelect({
+                          ...select,
+                          state: true,
+                          selectOne: true,
+                          selectTwo: false,
+                          element: "transaction status",
+                          options: transactionStatus,
+                          pick: "",
+                          page: "transaction history",
+                        })
+                      }
+                      className={` ${
+                        filter?.status ? "text-white" : "text-tradeFadeWhite"
+                      } flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max`}
+                    >
+                      <p className="text-[13px] font-semibold">
+                        {filter?.status ? filter?.status : "All status"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    onClick={resetFilter}
+                    className="flex items-center cursor-pointer gap-1 bg-tradeAsh text-tradeFadeWhite hover:text-tradeOrange px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max"
+                  >
+                    <p className="md:flex  hidden text-[13px] font-semibold">
+                      Clear Filter
+                    </p>
+                    <IoClose className="md" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -381,7 +383,7 @@ const TransactionHistory = () => {
               ))}
             </div>
 
-            <div className="flex gap-4 justify-between items-center w-full py-[12px]">
+            <div className="flex gap-[5px] justify-between w-full items-center overflow-x-auto">
               <div className="flex gap-[5px]  transition-all duration-300">
                 <div className="flex items-center gap-1 bg-tradeAsh text-tradeFadeWhite  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                   <p className="text-[13px] font-semibold ">Data</p>

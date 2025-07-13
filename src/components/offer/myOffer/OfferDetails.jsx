@@ -2,7 +2,7 @@ import React from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { IoMdThumbsUp } from "react-icons/io";
 import { MdThumbDownAlt } from "react-icons/md";
-import { dateTime } from "@/utils/dateTimeFormat/dateTimeFormat";
+import { dateTime } from "@/utils/dateTime";
 
 const OfferDetails = ({ aboutOffer }) => {
   return (

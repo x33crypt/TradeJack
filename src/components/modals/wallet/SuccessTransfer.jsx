@@ -6,7 +6,7 @@ import { BiSolidWalletAlt } from "react-icons/bi";
 import { MdError } from "react-icons/md";
 import { RiWaterFlashFill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
-import { toDecimal } from "@/utils/currency/toDecimal";
+import { toDecimal } from "@/utils/auth/toDecimal";
 import { TiTick } from "react-icons/ti";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { MdDateRange } from "react-icons/md";

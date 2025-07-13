@@ -22,7 +22,7 @@ const Dashboard = () => {
     <>
       <InAppNav />
       <StateHandler loading={loading} error={error}>
-        <div className="md:pt-[64px] pt-[62px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col gap-[10px] bg-black">
+        <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col gap-[10px] bg-black">
           <DasHboardMenu />
           <div className="flex-1 flex flex-col md:gap-[10px] ">
             <div className="flex lg:flex-row flex-col flex-1 md:p-0 gap-[10px]">

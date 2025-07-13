@@ -12,7 +12,7 @@ import { LuFileSearch } from "react-icons/lu";
 const Stats = ({ dashboard }) => {
   return (
     <div className="flex flex-col md:border border-neutral-800">
-      <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
+      <div className="flex  items-center justify-between md:p-[15px] px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Trading Stats</p>
       </div>
 

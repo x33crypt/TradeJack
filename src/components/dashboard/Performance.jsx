@@ -5,7 +5,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 const Performance = () => {
   return (
     <div className="flex-1 h-full md:border border-tradeAshLight flex flex-col">
-      <div className="flex  p-[15px]  border-b border-tradeAshLight">
+      <div className="flex  md:p-[15px] px-[15px] py-[12px]  border-b border-tradeAshLight">
         <p className="text-lg text-white font-[700]">Performance</p>
       </div>
 

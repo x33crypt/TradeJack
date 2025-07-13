@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaInfoCircle } from "react-icons/fa";
-import { toDecimal } from "@/utils/currency/toDecimal";
+import { toDecimal } from "@/utils/auth/toDecimal";
 
 const Balance = ({ dashboard }) => {
   const [showBalance, setShowBalance] = useState(false);
@@ -15,7 +15,7 @@ const Balance = ({ dashboard }) => {
 
   return (
     <div className="flex flex-col md:border border-neutral-800">
-      <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
+      <div className="flex  items-center justify-between md:p-[15px] px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-semibold text-tradeFadeWhite flex items-center gap-1">
           Welcome back,{" "}
           <span className=" text-white ">

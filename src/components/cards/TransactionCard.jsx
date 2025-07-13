@@ -2,12 +2,12 @@ import React from "react";
 import { MdDateRange } from "react-icons/md";
 import { MdGrid3X3 } from "react-icons/md";
 import { IoMdArrowRoundUp, IoMdArrowRoundDown } from "react-icons/io";
-import { date } from "@/utils/dateTimeFormat/date";
-import { toDecimal } from "@/utils/currency/toDecimal";
-import { shortenID } from "@/utils/shortenID/shortenID";
+import { date } from "@/utils/date";
+import { toDecimal } from "@/utils/auth/toDecimal";
+import { shortenID } from "@/utils/shortenID";
 import { MdOutlineQuestionMark } from "react-icons/md";
 import { useTransaction } from "@/context/wallet/TransactionContext";
-import { useFetchTransactionsDetails } from "@/hooks/useFetchTransactionDetails";
+import { capitalizeFirst } from "@/utils/capitalizeFirst";
 
 const TransactionCard = ({ transaction }) => {
   const { details, setDetails } = useTransaction();
@@ -242,7 +242,7 @@ const TransactionCard = ({ transaction }) => {
                 : "text-tradeAshDark" // default or unknown status
             }`}
           >
-            {transaction?.status || "Status unknown"}
+            {capitalizeFirst(transaction?.status) || "Status unknown"}
           </p>
         </div>
       </div>
@@ -468,7 +468,7 @@ const TransactionCard = ({ transaction }) => {
                 : "text-tradeAshDark" // default or unknown status
             }`}
           >
-            {transaction?.status || "Status unknown"}
+            {capitalizeFirst(transaction?.status) || "Status unknown"}
           </p>
         </div>
       </div>

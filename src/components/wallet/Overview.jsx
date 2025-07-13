@@ -5,13 +5,13 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Overview = () => {
   return (
-    <div className="flex flex-col h-full lg:w-[350px] lg:h-full  md:border border-neutral-800">
+    <div className="flex flex-col  lg:w-[350px] h-[364px] md:border border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Overview</p>
       </div>
 
-      <div className="flex h-full p-[15px]">
-        <div className="flex-1 flex flex-col h-[350px] lg:h-full gap-[10px] p-[12px]  bg-tradeAsh rounded-[10px] border border-tradeAshLight transition-all duration-300 ">
+      <div className="flex p-[15px] h-full">
+        <div className="flex-1 flex flex-col lg:h-full  gap-[10px] p-[12px]  bg-tradeAsh rounded-[10px] border border-tradeAshLight transition-all duration-300 ">
           <div className="flex items-start justify-between">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1">

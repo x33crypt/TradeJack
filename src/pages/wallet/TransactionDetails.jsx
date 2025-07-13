@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import LockByScroll from "@/components/LockByScroll";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import { IoClose } from "react-icons/io5";
-import { shortenID } from "@/utils/shortenID/shortenID";
+import { shortenID } from "@/utils/shortenID";
 import { useFetchTransactionsDetails } from "@/hooks/useFetchTransactionDetails";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Button from "@/components/buttons/Button";
 import { IoMdArrowRoundUp, IoMdArrowRoundDown } from "react-icons/io";
 import { MdOutlineQuestionMark } from "react-icons/md";
-import { toDecimal } from "@/utils/currency/toDecimal";
+import { toDecimal } from "@/utils/auth/toDecimal";
 import { FaRegCopy } from "react-icons/fa6";
+import { capitalizeFirst } from "@/utils/capitalizeFirst";
+import { dateTime } from "@/utils/dateTime";
 
 const TransactionDetails = () => {
   const { loading, error } = useFetchTransactionsDetails();
@@ -141,7 +143,8 @@ const TransactionDetails = () => {
 
                           <div>
                             <p className="md:text-[13px] text-[12px] font-semibold text-white">
-                              {transaction?.type || "Status unknown"}
+                              {capitalizeFirst(transaction?.type) ||
+                                "Status unknown"}
                             </p>
                           </div>
                         </div>
@@ -228,7 +231,7 @@ const TransactionDetails = () => {
                             </p>
                           </div>
 
-                          <div>
+                          <div className="flex items-center gap-2">
                             <p
                               className={`text-[13px] font-semibold ${
                                 transaction?.status === "pending"
@@ -240,8 +243,23 @@ const TransactionDetails = () => {
                                   : "text-tradeAshDark" // default or unknown status
                               }`}
                             >
-                              {transaction?.status || "Status unknown"}
+                              {capitalizeFirst(transaction?.status) ||
+                                "Status unknown"}
                             </p>
+
+                            <div>
+                              {transaction?.status === "pending" && (
+                                <div className=" flex items-center bg-tradeAshLight text-tradeFadeWhite hover:text-white px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max transition-all duration-300 cursor-pointer">
+                                  <p className="text-xs font-semibold">
+                                    {false ? (
+                                      <AiOutlineLoading3Quarters className="animate-spin text-sm text-tradeFadeWhite" />
+                                    ) : (
+                                      "Recheck Status"
+                                    )}
+                                  </p>
+                                </div>
+                              )}
+                            </div>
                           </div>
                         </div>
                         <div className="flex items-center justify-between gap-[10px] py-[8px] border- border-tradeAshLight">
@@ -253,12 +271,12 @@ const TransactionDetails = () => {
 
                           <div>
                             <p className="md:text-[13px] text-[12px] font-semibold text-white">
-                              {transaction?.createdAt || "Status unknown"}
+                              {dateTime(transaction?.createdAt) ||
+                                "Status unknown"}
                             </p>
                           </div>
                         </div>
                       </div>
-
                       <div
                         className={`${
                           txDetails ? "flex" : "hidden"
@@ -303,19 +321,6 @@ const TransactionDetails = () => {
                             </p>
                           </div>
                         </div>
-                        {/* <div className="flex items-center justify-between gap-[10px] py-[8px] border- border-tradeAshLight">
-                          <div className="flex items-center gap-1">
-                            <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
-                              IP Address
-                            </p>
-                          </div>
-
-                          <div>
-                            <p className="md:text-[13px] text-[12px] font-semibold text-white">
-                              197.210.x.x
-                            </p>
-                          </div>
-                        </div> */}
                       </div>
                     </div>
 
@@ -324,8 +329,6 @@ const TransactionDetails = () => {
                         txDetails ? "flex" : "hidden"
                       } flex-col gap-1 items-center`}
                     >
-                      {/* <Button variant="outline">Report Issue</Button> */}
-
                       <p className="text-xs text-tradeFadeWhite font-medium">
                         Need assistance?{"  "}
                         <span className="text-tradeGreen font-semibold cursor-pointer hover:text-tradeGreen/80">

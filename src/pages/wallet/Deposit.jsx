@@ -3,14 +3,14 @@ import InAppNav from "@/components/InAppNav";
 import React, { useState } from "react";
 import Button from "@/components/buttons/Button";
 import RecentDeposit from "@/components/wallet/RecentDeposit";
-import { toDecimal } from "@/utils/currency/toDecimal";
+import { toDecimal } from "@/utils/auth/toDecimal";
 import { useToast } from "@/context/ToastContext";
 import { submitDeposit } from "@/utils/wallet/deposit";
 import { useDepositContext } from "@/context/wallet/DepositContext";
 import paystackLogo from "../../assets/logos-paystack.png";
 import { IoIosLock } from "react-icons/io";
-import { toUSD } from "@/utils/currency/toUSD";
-import { toNGN } from "@/utils/currency/toNGN";
+import { toUSD } from "@/utils/toUSD";
+import { toNGN } from "@/utils/toNGN";
 import { useEffect } from "react";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 
@@ -307,7 +307,7 @@ const Deposit = () => {
                         </div>
                       </div>
 
-                      {/* <div>
+                      <div>
                         <p className="text-tradeFadeWhite text-xs font-semibold">
                           Value equivalent to{" "}
                           <span className="text-tradeOrange">
@@ -317,7 +317,7 @@ const Deposit = () => {
                               : "0.00"}
                           </span>
                         </p>
-                      </div> */}
+                      </div>
                     </div>
                   ) : (
                     // USD
@@ -337,7 +337,7 @@ const Deposit = () => {
                         </div>
                       </div>
 
-                      {/* <div>
+                      <div>
                         <p className="text-tradeFadeWhite text-xs font-semibold">
                           You are depositing{" "}
                           <span className="text-tradeOrange">
@@ -347,45 +347,6 @@ const Deposit = () => {
                               : "0.00"}
                           </span>
                         </p>
-                      </div> */}
-                    </div>
-                  )}
-                </div>
-                <div>
-                  {depositDetails?.selectedCurrency === "NGN" ? (
-                    // NGN
-                    <div className="flex flex-col gap-[10px]">
-                      <div className="flex flex-col gap-[10px] w-full">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          Amount in NGN
-                        </p>
-                        <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
-                          <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                            type="text"
-                            placeholder={`Enter amount (min: 15,000.00 NGN)`}
-                            onChange={handleNGNAmountChange}
-                            value={toDecimal(depositDetails?.amount?.NGN) || ""}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    // USD
-                    <div className="flex flex-col gap-[10px]">
-                      <div className="flex flex-col gap-[10px] w-full">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          Amount in USD
-                        </p>
-                        <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
-                          <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                            type="text"
-                            placeholder={`Enter amount (min: 10.00 USD)`}
-                            onChange={handleUSDAmountChange}
-                            value={toDecimal(depositDetails?.amount?.USD) || ""}
-                          />
-                        </div>
                       </div>
                     </div>
                   )}

@@ -5,7 +5,7 @@ import { PiArrowUpFill } from "react-icons/pi";
 const Limits = ({ dashboard }) => {
   return (
     <div className="h-max md:border border-tradeAshLight flex flex-col">
-      <div className="flex  p-[15px]  border-b border-tradeAshLight">
+      <div className="flex  md:p-[15px] px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg text-white font-semibold">Purchase Limits</p>
       </div>
       <div className="flex flex-col p-[15px] gap-[10px] h-full">
