@@ -7,7 +7,6 @@ import AboutOffer from "./pages/offer/user/AboutOffer";
 import CreateOffer from "./pages/offer/user/CreateOffer";
 import Messages from "./pages/Messages";
 import UserProfile from "./pages/UserProfile";
-import DepositAndWithdraw from "./pages/DepositAndWithdraw";
 import SignupUser from "./pages/SignupUser";
 import SignupSuccess from "./pages/SignupSuccess";
 import SigninUser from "./pages/SigninUser";
