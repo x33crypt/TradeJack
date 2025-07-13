@@ -12,16 +12,16 @@ const LinkedAccount = () => {
         <p className="text-lg font-[700] text-white ">Linked Account</p>
       </div>
 
-      <div>
-        <div className="flex flex-col px-[15px] py-[20px] gap-[10px] h-full">
-          <div className="text-tradeOrange w-full justify-center flex">
-            <RiBankLine className="text-[50px]" />
+      <div className="p-[15px]">
+        <div className="flex flex-col px-[12px] py-[20px] gap-[20px] h-full bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+          <div className="text-tradeFadeWhite w-full justify-center flex">
+            <RiBankLine className="lg:text-[50px] text-[40px]" />
           </div>
           <div className="flex flex-col items-center text-center">
             <div className="flex justify-center gap-2 text-lg font-semibold text-white">
               <p>Link Bank Accounts</p>
             </div>
-            <p className="text-[13px] max-w-[350px] font-medium text-tradeFadeWhite mt-1">
+            <p className="text-[13px] md:max-w-[350px] w-[300px] font-medium text-tradeFadeWhite mt-1">
               Securely connect your bank to withdraw funds. We use bank-level
               security, encryption, and strict data protection.
             </p>
