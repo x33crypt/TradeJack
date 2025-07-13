@@ -68,7 +68,7 @@ const InAppNav = () => {
   return (
     <>
       {/* Desktop Nav */}
-      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] py-[1px] px-[15px] h-[57px] md:h-[65px] flex justify-between items-center border-b border-neutral-800 ">
+      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] px-[15px] h-[57px] md:h-[65px] flex justify-between items-center border-b border-neutral-800 ">
         <div className="flex items-center lg:gap-[30px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}

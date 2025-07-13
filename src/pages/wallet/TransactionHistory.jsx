@@ -167,7 +167,7 @@ const TransactionHistory = () => {
       <InAppNav />
       <div
         ref={topRef}
-        className="md:pt-[64px] pt-[55px] lg:px-[2%] md:px-[2.5%]  min-h-svh flex gap-[10px] bg-black "
+        className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%]  min-h-svh flex gap-[10px] bg-black "
       >
         <DasHboardMenu />
         <div className="flex-1 flex flex-col h-[100%] md:border border-neutral-800">
@@ -264,7 +264,7 @@ const TransactionHistory = () => {
               </div>
             </div>
 
-            <div className="sticky md:top-[65px] top-[55px] mt-[30px] bg-black flex justify-between items-center w-full py-[12px] border-b border-dashed border-tradeAshLight">
+            <div className="sticky md:top-[65px] top-[57px] mt-[30px] bg-black flex justify-between items-center w-full py-[12px] border-b border-dashed border-tradeAshLight">
               <div
                 onClick={handleDateClick}
                 className="flex gap-[5px] cursor-pointer transition-all duration-300"

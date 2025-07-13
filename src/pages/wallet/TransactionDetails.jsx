@@ -111,9 +111,7 @@ const TransactionDetails = () => {
                             : "bg-transparent text-tradeFadeWhite"
                         } flex-1 flex items-center justify-center gap-1 py-[7px] rounded-[6px] transition-all duration-300 cursor-pointer`}
                       >
-                        <p className="text-[13px] font-medium ">
-                          Overview
-                        </p>
+                        <p className="text-[13px] font-medium ">Overview</p>
                       </div>
 
                       <div
@@ -124,9 +122,7 @@ const TransactionDetails = () => {
                             : "bg-transparent text-tradeFadeWhite"
                         } flex-1 flex items-center justify-center gap-1 py-[7px] rounded-[6px] transition-all duration-300 cursor-pointer`}
                       >
-                        <p className="text-[13px] font-medium">
-                          Details
-                        </p>
+                        <p className="text-[13px] font-medium">Details</p>
                       </div>
                     </div>
 
@@ -271,7 +267,7 @@ const TransactionDetails = () => {
                         <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
                           <div className="flex items-center gap-1">
                             <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
-                              Reference
+                              Reference ID
                             </p>
                           </div>
 
@@ -294,7 +290,7 @@ const TransactionDetails = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
+                        <div className="flex items-center justify-between gap-[10px] py-[8px] border- border-tradeAshLight">
                           <div className="flex items-center gap-1">
                             <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
                               Payment Channel
@@ -307,7 +303,7 @@ const TransactionDetails = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="flex items-center justify-between gap-[10px] py-[8px] border- border-tradeAshLight">
+                        {/* <div className="flex items-center justify-between gap-[10px] py-[8px] border- border-tradeAshLight">
                           <div className="flex items-center gap-1">
                             <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
                               IP Address
@@ -319,14 +315,27 @@ const TransactionDetails = () => {
                               197.210.x.x
                             </p>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
+                    </div>
+
+                    <div
+                      className={`${
+                        txDetails ? "flex" : "hidden"
+                      } flex-col gap-1 items-center`}
+                    >
+                      {/* <Button variant="outline">Report Issue</Button> */}
+
+                      <p className="text-xs text-tradeFadeWhite font-medium">
+                        Need assistance?{"  "}
+                        <span className="text-tradeGreen font-semibold cursor-pointer hover:text-tradeGreen/80">
+                          Customer Service
+                        </span>
+                      </p>
                     </div>
                   </div>
                 )}
               </div>
-
-              <Button variant="outline">Report Issue</Button>
             </div>
           </div>
         </div>
