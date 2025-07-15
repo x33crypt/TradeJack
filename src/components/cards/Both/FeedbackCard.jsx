@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../../../src/assets/landingImg4.JPG";
+import image from "../../../../src/assets/landingImg4.JPG";
 import { GiTopHat } from "react-icons/gi";
 import { RiEye2Fill } from "react-icons/ri";
 import { MdThumbUpAlt, MdOutlineGppGood } from "react-icons/md";

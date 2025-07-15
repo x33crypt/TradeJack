@@ -12,8 +12,11 @@ import { useTransferContext } from "@/context/wallet/TransferContext";
 import { useNavigate } from "react-router-dom";
 import { IoMdRefresh } from "react-icons/io";
 import RecentTransfer from "@/components/wallet/RecentTransfer";
+import DasHboardMenu from "@/components/menuBars/DashboardMenu";
+import { useTransaction } from "@/context/wallet/TransactionContext";
 
 const Transfer = () => {
+  const { transactions } = useTransaction();
   const { transfer, setTransfer } = useTransferContext();
   const [transferDetails, setTransferDetails] = useState({
     username: "",
@@ -347,20 +350,23 @@ const Transfer = () => {
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[64px] pt-[60px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[10px] bg-black ">
-        <div className="flex-1 lg:px-[15%] flex flex-col gap-[10px]">
-          <div className=" w-full md:border lg:border-0 border-neutral-800">
-            <div className="flex items-center justify-between p-[15px] lg:px-0 border-b border-tradeAshLight">
-              <p className="text-lg font-[700] text-white">
+      <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[10px] bg-black ">
+        <DasHboardMenu />
+        <div className="flex-1  h-max flex flex-col md:flex-row gap-[5px]">
+          <div className="flex flex-col flex-1 md:border border-neutral-800">
+            <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
+              <p className="text-lg font-[700] text-white ">
                 Transfer to Wallet
               </p>
             </div>
 
-            <div className="flex flex-col p-[15px] lg:px-0  gap-[10px]">
+            <div className="h-full flex flex-col justify-between p-[15px] gap-[10px]">
+              {/* Event */}
               <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
                 <p className="text-sm">Event</p>
               </div>
 
+              {/* Recipient Wallet */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                   <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
@@ -368,46 +374,57 @@ const Transfer = () => {
                       Transfer To
                     </p>
                   </div>
-
-                  <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-white text-xs font-bold">NGN</p>
-                  </div>
                 </div>
 
                 <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
                   <p className="text-tradeFadeWhite text-xs font-medium">
-                    Recipient Username
+                    Recipient Wallet
                   </p>
-                  <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
+                  <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
                     <input
                       className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                       type="text"
-                      placeholder="e.g., johnDoe"
+                      placeholder="Username/Email"
                       onChange={handleUsernameChange}
                       value={transferDetails?.username}
                     />
                   </div>
                 </div>
 
+                <p className="text-tradeFadeWhite text-xs font-medium">
+                  Please confirm the recipient’s username before proceeding with
+                  the transfer. Transfers to the wrong user cannot be reversed.
+                </p>
+              </div>
+
+              {/* Amount */}
+              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
+                    <p className="text-tradeGreen text-xs font-medium ">
+                      Currency
+                    </p>
+                  </div>
+
+                  <div className="flex gap-1">
+                    <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                      <p className="text-white text-xs font-bold">USD</p>
+                    </div>{" "}
+                    <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                      <p className="text-white text-xs font-bold">NGN</p>
+                    </div>
+                  </div>
+                </div>
                 <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
                   <p className="text-tradeFadeWhite text-xs font-medium">
                     Amount
                   </p>
                   <div className="flex items-center  gap-[5px]">
-                    <div className="flex-1 flex  bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
+                    <div className="flex-1 flex  bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
                       <input
                         className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                         type="text"
-                        // placeholder={
-                        //   minWithdraw?.loading
-                        //     ? "Loading minimum amount..."
-                        //     : minWithdraw?.success
-                        //     ? `Enter amount (min: ${toDecimal(
-                        //         minWithdraw?.result
-                        //       )} NGN)`
-                        //     : "Minimum unavailable, tap to retry..."
-                        // }
-                        placeholder="Enter amount (min: 5,000.00 NGN)"
+                        placeholder="15,000.00 - 30,000,000.00"
                         onChange={handleAmountChange}
                         value={
                           transferDetails?.amount?.NGN
@@ -416,48 +433,34 @@ const Transfer = () => {
                         }
                       />
                     </div>
-
-                    {/* {minWithdraw?.success == false && (
-                      <div
-                        onClick={fetchMinWithdraw}
-                        className="flex gap-1 items-center bg-tradeAsh border border-tradeAshLight p-[12px] rounded-[10px] cursor-pointer"
-                      >
-                        <IoMdRefresh
-                          className={`text-tradeGreen text-lg transition-transform duration-300 ${
-                            minWithdraw?.loading ? "animate-spin" : ""
-                          }`}
-                        />
-                      </div>
-                    )} */}
                   </div>
                 </div>
 
                 <div>
                   <p className="text-tradeFadeWhite text-xs font-semibold">
-                    Value equivalent to{" "}
+                    You're about to transfer the equivalent of{" "}
                     <span className="text-tradeOrange">
-                      $
-                      {transferDetails?.amount?.USD
-                        ? transferDetails?.amount?.USD
-                        : "0.00"}
+                      USD{transferDetails?.amount?.USD ?? "0.00"}
                     </span>
                   </p>
                 </div>
               </div>
+
+              <Button
+                variant="primary"
+                onClick={handleProceed}
+                disabled={proceed}
+              >
+                Proceed
+              </Button>
+
+              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
+                <p className="text-sm">Event</p>
+              </div>
             </div>
           </div>
 
-          <div className="p-[15px] md:py-[15px] lg:px-[0px]">
-            <Button
-              variant="primary"
-              onClick={handleProceed}
-              disabled={proceed}
-            >
-              Proceed
-            </Button>
-          </div>
-
-          <RecentTransfer />
+          <RecentTransfer transactions={transactions} />
         </div>
       </div>
       <Footer />

@@ -30,10 +30,11 @@ const Wallet = () => {
 
             <div className="flex flex-col gap-[10px] flex-1 md:flex-none md:w-[350px] lg:flex-none ">
               <Overview />
-              <div className="p-[15px] flex-1 md:border border-neutral-800">
-                <p className="bg-tradeFadeWhite h-full border border-tradeAshLight rounded-[10px] p-[12px]">
-                  Event
-                </p>
+              <div className="flex flex-col flex-1 md:border border-neutral-800">
+                <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
+                  <p className="text-lg font-[700] text-white ">Events</p>
+                </div>
+                <div className="flex p-[15px] h-full"></div>
               </div>
             </div>
           </div>

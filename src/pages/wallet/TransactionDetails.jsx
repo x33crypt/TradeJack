@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react";
 import LockByScroll from "@/components/LockByScroll";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import { IoClose } from "react-icons/io5";
-import { shortenID } from "@/utils/shortenID";
 import { useFetchTransactionsDetails } from "@/hooks/useFetchTransactionDetails";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import Button from "@/components/buttons/Button";
 import { IoMdArrowRoundUp, IoMdArrowRoundDown } from "react-icons/io";
 import { MdOutlineQuestionMark } from "react-icons/md";
 import { toDecimal } from "@/utils/auth/toDecimal";
-import { FaRegCopy } from "react-icons/fa6";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import { dateTime } from "@/utils/dateTime";
 
@@ -27,6 +24,7 @@ const TransactionDetails = () => {
     setTxOverview(true);
     setTxDetails(false);
   };
+
   const showDetails = () => {
     setTxOverview(false);
     setTxDetails(true);

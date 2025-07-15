@@ -1,5 +1,5 @@
 import React from "react";
-import FeedbackCard from "../../cards/FeedbackCard";
+import FeedbackCard from "../../cards/Both/FeedbackCard";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 const OfferFeedback = () => {

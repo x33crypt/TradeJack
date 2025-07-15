@@ -1,11 +1,15 @@
 import React from "react";
-import { SiBankofamerica } from "react-icons/si";
-import { SiHdfcbank } from "react-icons/si";
-import { IoMdArrowDropright } from "react-icons/io";
-import Button from "../buttons/Button";
 import { RiBankLine } from "react-icons/ri";
+import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
+import Button from "../buttons/Button";
 
 const LinkedAccount = () => {
+  const { linkAccount, setLinkAccount } = useLinkedAccount();
+
+  const handleLinkAccount = () => {
+    setLinkAccount({ state: true });
+  };
+
   return (
     <div className="flex flex-col w-full md:border border-neutral-800 bg-tradeAs">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
@@ -15,10 +19,10 @@ const LinkedAccount = () => {
       <div className="p-[15px]">
         <div className="flex flex-col px-[12px] py-[20px] gap-[20px] h-full bg-tradeAsh rounded-[15px] border border-tradeAshLight">
           <div className="text-tradeFadeWhite w-full justify-center flex">
-            <RiBankLine className="lg:text-[50px] text-[40px]" />
+            <RiBankLine className="lg:text-[40px] text-[40px]" />
           </div>
           <div className="flex flex-col items-center text-center">
-            <div className="flex justify-center gap-2 text-lg font-semibold text-white">
+            <div className="flex justify-center gap-2 text-base font-semibold text-white">
               <p>Link Bank Accounts</p>
             </div>
             <p className="text-[13px] md:max-w-[350px] w-[300px] font-medium text-tradeFadeWhite mt-1">
@@ -74,7 +78,13 @@ const LinkedAccount = () => {
       </div> */}
 
       <div className="flex p-[15px]">
-        <Button variant="primary">Connect your Bank</Button>
+        <Button
+          variant="primary"
+          disabled={linkAccount?.state}
+          onClick={handleLinkAccount}
+        >
+          Connect your Bank
+        </Button>
       </div>
     </div>
   );

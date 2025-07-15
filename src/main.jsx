@@ -19,43 +19,46 @@ import { AboutOfferProvider } from "./context/offer/AboutOfferContext";
 import { TransferProvider } from "./context/wallet/TransferContext";
 import { DepositProvider } from "./context/wallet/DepositContext";
 import { TransactionProvider } from "./context/wallet/TransactionContext";
+import { LinkedAccountProvider } from "./context/wallet/LinkedAccountContext";
 
 // Render MainApp into #root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <TransactionProvider>
-        <DepositProvider>
-          <TransferProvider>
-            <ProfileProvider>
-              <AboutOfferProvider>
-                <MyOfferProvider>
-                  <KycProvider>
-                    <AuthProvider>
-                      <DashboardProvider>
-                        <ToastProvider>
-                          <OfferFilterProvider>
-                            <EditOfferProvider>
-                              <CreateOfferProvider>
-                                <SelectElementProvider>
-                                  <TradeAlertProvider>
-                                    <App />
-                                  </TradeAlertProvider>
-                                </SelectElementProvider>
-                              </CreateOfferProvider>
-                            </EditOfferProvider>
-                          </OfferFilterProvider>
-                        </ToastProvider>
-                      </DashboardProvider>
-                    </AuthProvider>
-                  </KycProvider>
-                </MyOfferProvider>
-              </AboutOfferProvider>
-            </ProfileProvider>
-          </TransferProvider>
-        </DepositProvider>
-      </TransactionProvider>
+      <LinkedAccountProvider>
+        <TransactionProvider>
+          <DepositProvider>
+            <TransferProvider>
+              <ProfileProvider>
+                <AboutOfferProvider>
+                  <MyOfferProvider>
+                    <KycProvider>
+                      <AuthProvider>
+                        <DashboardProvider>
+                          <ToastProvider>
+                            <OfferFilterProvider>
+                              <EditOfferProvider>
+                                <CreateOfferProvider>
+                                  <SelectElementProvider>
+                                    <TradeAlertProvider>
+                                      <App />
+                                    </TradeAlertProvider>
+                                  </SelectElementProvider>
+                                </CreateOfferProvider>
+                              </EditOfferProvider>
+                            </OfferFilterProvider>
+                          </ToastProvider>
+                        </DashboardProvider>
+                      </AuthProvider>
+                    </KycProvider>
+                  </MyOfferProvider>
+                </AboutOfferProvider>
+              </ProfileProvider>
+            </TransferProvider>
+          </DepositProvider>
+        </TransactionProvider>
+      </LinkedAccountProvider>
     </BrowserRouter>
   </StrictMode>
 );

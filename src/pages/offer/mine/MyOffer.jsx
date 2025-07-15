@@ -1,4 +1,4 @@
-import MyOfferCard from "@/components/cards/MyOfferCard";
+import MyOfferCard from "@/components/cards/Both/MyOfferCard";
 import Footer from "@/components/Footer";
 import InAppNav from "@/components/InAppNav";
 import React, { useEffect, useState, useRef } from "react";

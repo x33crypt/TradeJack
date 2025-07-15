@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import OfferCard from "../cards/OfferCard";
+import OfferCard from "../cards/Both/OfferCard";
 import { useOfferFilter } from "@/context/OfferFilterContext";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import OfferFilter from "./OfferFilter";

@@ -3,7 +3,7 @@ import InAppNav from "@/components/InAppNav";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import React, { useRef, useEffect, useState } from "react";
 import { IoFilter } from "react-icons/io5";
-import TransactionCard from "@/components/cards/TransactionCard";
+import TransactionCard from "@/components/cards/Both/TransactionCard";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import { MdArrowDropDown } from "react-icons/md";
 import { MdDateRange } from "react-icons/md";

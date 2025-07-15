@@ -1,14 +1,19 @@
 import React from "react";
-import TransactionCard from "@/components/cards/TransactionCard";
 import { RiArrowRightFill } from "react-icons/ri";
+import TransactionCard from "../cards/Mobile/TransactionCard";
+import { useNavigate } from "react-router-dom";
 
 const RecentDeposit = ({ transactions }) => {
-  return (
-    <div className="h-max md:border lg:border-0 border-tradeAshLight flex flex-col">
-      <div className="flex justify-between items-center p-[15px] lg:px-0  border-b border-tradeAshLight">
-        <p className="text-lg text-white font-semibold">Recent Deposit</p>
+  const navigateTo = useNavigate();
 
-        <div className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300">
+  return (
+    <div className=" md:w-[350px] flex flex-col md:border border-neutral-800">
+      <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
+        <p className="text-lg text-white font-semibold">Recent Deposit</p>
+        <div
+          onClick={() => navigateTo("/wallet/transactions")}
+          className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
+        >
           <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
             <RiArrowRightFill />
           </div>
@@ -18,21 +23,13 @@ const RecentDeposit = ({ transactions }) => {
         </div>
       </div>
 
-      <div className="p-[15px] lg:px-0">
-        <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden  md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
+      <div className="p-[15px]">
+        <div className="flex flex-col gap-[5px] w-full">
           {transactions?.data
             ?.filter((transaction) => transaction.type === "deposit")
+            ?.slice(0, 6)
             ?.map((transaction, index) => (
-              <div
-                key={transaction.id || index}
-                className={`${
-                  index !==
-                  transactions.data.filter((t) => t.type === "deposit").length -
-                    1
-                    ? "md:border-b border-tradeAshLight"
-                    : ""
-                }`}
-              >
+              <div key={transaction.id || index}>
                 <TransactionCard transaction={transaction} />
               </div>
             ))}

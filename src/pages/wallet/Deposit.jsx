@@ -13,6 +13,7 @@ import { toUSD } from "@/utils/toUSD";
 import { toNGN } from "@/utils/toNGN";
 import { useEffect } from "react";
 import { useTransaction } from "@/context/wallet/TransactionContext";
+import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 
 const Deposit = () => {
   const { transactions } = useTransaction();
@@ -213,14 +214,16 @@ const Deposit = () => {
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[64px] pt-[60px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[10px] bg-black ">
-        <div className="flex-1 lg:px-[15%] flex flex-col gap-[10px]">
-          <div className=" w-full md:border lg:border-0 border-neutral-800">
-            <div className="flex items-center justify-between p-[15px] lg:px-0 border-b border-tradeAshLight">
-              <p className="text-lg font-[700] text-white">Add Cash</p>
+      <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[10px] bg-black ">
+        <DasHboardMenu />
+        <div className="flex-1 h-max flex flex-col md:flex-row gap-[5px]">
+          <div className="flex flex-col flex-1 md:border border-neutral-800">
+            <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
+              <p className="text-lg font-[700] text-white ">Add Cash</p>
             </div>
 
-            <div className="flex flex-col p-[15px] lg:px-0 gap-[10px]">
+            <div className="h-full flex flex-col justify-between p-[15px] gap-[10px]">
+              {/* Internal Deposit */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                   <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
@@ -248,7 +251,7 @@ const Deposit = () => {
                 </div>
 
                 <Button
-                  variant="outline"
+                  variant="Fadeout"
                   onClick={() => handleCopy("sane")}
                   textToCopy="tradejack-username"
                 >
@@ -256,6 +259,7 @@ const Deposit = () => {
                 </Button>
               </div>
 
+              {/* External Deposit */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                   <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
@@ -294,13 +298,13 @@ const Deposit = () => {
                     <div className="flex flex-col gap-[10px]">
                       <div className="flex flex-col gap-[10px] w-full">
                         <p className="text-tradeFadeWhite text-xs font-medium">
-                          Amount in NGN
+                          Enter Amount in NGN
                         </p>
-                        <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
+                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
                           <input
                             className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                             type="text"
-                            placeholder={`Enter amount (min: 15,000.00 NGN)`}
+                            placeholder={`15,000.000 - 30,000,000.00`}
                             onChange={handleNGNAmountChange}
                             value={toDecimal(depositDetails?.amount?.NGN) || ""}
                           />
@@ -309,7 +313,7 @@ const Deposit = () => {
 
                       <div>
                         <p className="text-tradeFadeWhite text-xs font-semibold">
-                          Value equivalent to{" "}
+                          You're about to deposit the equivalent of{" "}
                           <span className="text-tradeOrange">
                             USD {""}
                             {depositDetails?.amount?.USD
@@ -324,13 +328,13 @@ const Deposit = () => {
                     <div className="flex flex-col gap-[10px]">
                       <div className="flex flex-col gap-[10px] w-full">
                         <p className="text-tradeFadeWhite text-xs font-medium">
-                          Amount in USD
+                          Enter Amount in USD
                         </p>
-                        <div className="flex-1 flex bg-tradeAsh w-full border border-tradeAshLight rounded-[10px]">
+                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
                           <input
                             className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                             type="text"
-                            placeholder={`Enter amount (min: 10.00 USD)`}
+                            placeholder={`10.00 - 20,000.00`}
                             onChange={handleUSDAmountChange}
                             value={toDecimal(depositDetails?.amount?.USD) || ""}
                           />
@@ -339,7 +343,7 @@ const Deposit = () => {
 
                       <div>
                         <p className="text-tradeFadeWhite text-xs font-semibold">
-                          You are depositing{" "}
+                          You're about to deposit the equivalent of{" "}
                           <span className="text-tradeOrange">
                             NGN {""}
                             {depositDetails?.amount?.NGN
@@ -352,58 +356,54 @@ const Deposit = () => {
                   )}
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div className="p-[15px] md:py-[15px] lg:px-[0px]">
-            <Button
-              variant="primary"
-              onClick={handleDeposit}
-              disabled={deposit?.loading}
-            >
-              Add Cash Now
-            </Button>
-          </div>
+              <Button
+                variant="primary"
+                onClick={handleDeposit}
+                disabled={deposit?.loading}
+              >
+                Add Cash Now
+              </Button>
 
-          <div className="flex flex-col p-[15px] lg:px-0 gap-[10px]">
-            <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-              <div className="flex flex-col gap-[20px] bg-tradeOrang rounded-lg">
-                <div className="w-full flex justify-center">
-                  <img
-                    className="w-[180px] leading-none"
-                    src={paystackLogo}
-                    alt=""
-                  />
-                </div>
-                <div className="flex flex-wrap lg:items-center text-xs text-tradeFadeWhite gap-1">
-                  <p className="inline items-start gap-1">
-                    <span className="text-white mr-[2px]">•</span>
-                    Your payment is{" "}
-                    <span className="font-semibold text-white">
-                      secured by Paystack
-                    </span>
-                  </p>
-                  <p className=" inline items-start gap-1">
-                    <span className="text-white mr-[2px]">•</span>
-                    You’ll be{" "}
-                    <span className="font-semibold text-white">
-                      redirected
-                    </span>{" "}
-                    to Paystack to complete your deposit
-                  </p>
-                  <p className="inline items-start gap-1">
-                    <span className="text-white mr-[2px]">•</span>
-                    <span className="font-semibold text-white">
-                      Do not close
-                    </span>{" "}
-                    this tab or navigate away during the process
-                  </p>
-                  <p className="inline items-start gap-1">
-                    <span className="text-white mr-[2px]">•</span>
-                    Deposits are{" "}
-                    <span className="font-semibold text-white">free</span> — no
-                    transaction or processing fees
-                  </p>
+              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                <div className="flex flex-col gap-[20px] bg-tradeOrang rounded-lg">
+                  <div className="w-full flex justify-center">
+                    <img
+                      className="w-[180px] leading-none"
+                      src={paystackLogo}
+                      alt=""
+                    />
+                  </div>
+                  <div className="flex flex-wrap lg:items-center text-xs text-tradeFadeWhite gap-1">
+                    <p className="inline items-start gap-1">
+                      <span className="text-white mr-[2px]">•</span>
+                      Your payment is{" "}
+                      <span className="font-semibold text-white">
+                        secured by Paystack
+                      </span>
+                    </p>
+                    <p className=" inline items-start gap-1">
+                      <span className="text-white mr-[2px]">•</span>
+                      You’ll be{" "}
+                      <span className="font-semibold text-white">
+                        redirected
+                      </span>{" "}
+                      to Paystack to complete your deposit
+                    </p>
+                    <p className="inline items-start gap-1">
+                      <span className="text-white mr-[2px]">•</span>
+                      <span className="font-semibold text-white">
+                        Do not close
+                      </span>{" "}
+                      this tab or navigate away during the process
+                    </p>
+                    <p className="inline items-start gap-1">
+                      <span className="text-white mr-[2px]">•</span>
+                      Deposits are{" "}
+                      <span className="font-semibold text-white">free</span> —
+                      no transaction or processing fees
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
