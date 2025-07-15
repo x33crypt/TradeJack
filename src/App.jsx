@@ -42,6 +42,7 @@ import { useDepositContext } from "./context/wallet/DepositContext";
 import TransactionHistory from "./pages/wallet/TransactionHistory";
 import TransactionDetails from "./pages/wallet/TransactionDetails";
 import LinkAccount from "./pages/wallet/LinkAccount";
+import LinkedAccounts from "./pages/LinkedAccounts";
 
 const App = () => {
   const { deposit, setDeposit } = useDepositContext();
@@ -72,6 +73,7 @@ const App = () => {
         <Route path="/account/profile" element={<UserProfile />} />
         <Route path="/account/kycStatus" element={<Kyc />} />
         <Route path="/account/address" element={<EditAddress />} />
+        <Route path="/account/linkedAccounts" element={<LinkedAccounts />} />
 
         {/* Account Settings */}
         <Route path="/settings" element={<Settings />} />
