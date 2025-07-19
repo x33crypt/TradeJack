@@ -9,7 +9,7 @@ const LinkedAccount = () => {
 
   return (
     <div className="flex flex-col w-full md:border border-neutral-800 bg-tradeAs">
-      <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
+      <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Linked Account</p>
       </div>
 
@@ -18,11 +18,11 @@ const LinkedAccount = () => {
           <div className="flex flex-col  items-center text-center gap-3 px-4 py-5 rounded-2xl bg-tradeAsh border border-tradeAshLight w-full ">
             <RiBankLine className="text-[32px] text-tradeFadeWhite" />
 
-            <h3 className="text-white text-sm font-semibold">
+            <h3 className="text-white text-base font-semibold">
               Link Bank Account
             </h3>
 
-            <p className="text-tradeFadeWhite text-xs font-medium md:max-w-[340px]">
+            <p className="text-tradeFadeWhite text-[13px] font-medium md:max-w-[320px]">
               Securely connect your bank to withdraw funds. Bank-level security
               and encryption applied.
             </p>
@@ -75,9 +75,9 @@ const LinkedAccount = () => {
 
         <Button
           variant="primary"
-          onClick={() => navigateTo("/account/linkedAccounts")}
+          onClick={() => navigateTo("/wallet/accounts")}
         >
-          Link a New Account
+          Add New Account
         </Button>
       </div>
     </div>

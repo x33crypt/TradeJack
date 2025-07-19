@@ -2,9 +2,11 @@ import React, { createContext, useState, useContext, useEffect } from "react";
 const LinkedAccountContext = createContext();
 
 export const LinkedAccountProvider = ({ children }) => {
-  const [linkedAccounts, setLinkedAccounts] = useState({});
+  const [linkedAccounts, setLinkedAccounts] = useState([]);
   const [linkAccount, setLinkAccount] = useState({
-    state: false,
+    loading: false,
+    verified: false,
+    success: false,
     bank: "",
     bankAccount: "",
     holdersName: null,

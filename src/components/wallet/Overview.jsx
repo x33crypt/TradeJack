@@ -5,8 +5,8 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Overview = () => {
   return (
-    <div className="flex flex-col  lg:w-[350px] h-[364px] md:border border-neutral-800">
-      <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
+    <div className="flex flex-col  lg:w-[350px] h-[358px] md:border border-neutral-800">
+      <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Overview</p>
       </div>
 

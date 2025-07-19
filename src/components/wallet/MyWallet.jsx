@@ -30,7 +30,7 @@ const MyWallet = () => {
 
   return (
     <div className="flex flex-col flex-1 h-full md:border border-neutral-800 bg-tradeAs">
-      <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
+      <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">My Wallet</p>
       </div>
       <div className="flex flex-col p-[15px] gap-[10px] h-full">

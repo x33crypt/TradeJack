@@ -11,8 +11,6 @@ const SelectElement = () => {
   const { state } = select;
   const [searchInput, setSearchInput] = useState("");
 
-  console.log(select.options);
-
   const close = () => {
     setSelect({ ...select, state: false });
   };

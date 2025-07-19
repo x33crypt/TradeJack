@@ -41,8 +41,8 @@ import PendingDeposit from "./components/modals/wallet/PendingDeposit";
 import { useDepositContext } from "./context/wallet/DepositContext";
 import TransactionHistory from "./pages/wallet/TransactionHistory";
 import TransactionDetails from "./pages/wallet/TransactionDetails";
-import LinkAccount from "./pages/wallet/LinkAccount";
-import LinkedAccounts from "./pages/LinkedAccounts";
+import MyAccounts from "./pages/accounts/MyAccounts";
+import AddNewAccount from "./pages/accounts/AddNewAccount";
 
 const App = () => {
   const { deposit, setDeposit } = useDepositContext();
@@ -57,7 +57,7 @@ const App = () => {
       <SuccessTransfer />
       <PendingDeposit />
       <TransactionDetails />
-      <LinkAccount />
+
       <Routes>
         {/* Public */}
         <Route path="/" element={<Landing />} />
@@ -73,7 +73,6 @@ const App = () => {
         <Route path="/account/profile" element={<UserProfile />} />
         <Route path="/account/kycStatus" element={<Kyc />} />
         <Route path="/account/address" element={<EditAddress />} />
-        <Route path="/account/linkedAccounts" element={<LinkedAccounts />} />
 
         {/* Account Settings */}
         <Route path="/settings" element={<Settings />} />
@@ -99,6 +98,8 @@ const App = () => {
         <Route path="/wallet/transfer" element={<Transfer />} />
         <Route path="/wallet/deposit" element={<Deposit />} />
         <Route path="/wallet/transactions" element={<TransactionHistory />} />
+        <Route path="/wallet/accounts" element={<MyAccounts />} />
+        <Route path="/wallet/accounts/new" element={<AddNewAccount />} />
 
         {/* Marketplace & Offers */}
         <Route path="/offers/marketplace" element={<Marketplace />} />

@@ -95,33 +95,41 @@ const InAppNav = () => {
         <div className=" md:flex hidden  gap-[8px] items-center">
           <div
             onClick={() => navigateTo("/offers/marketplace")}
-            className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[8px] hover:bg-tradeAsh hover:text-white borde  border-black hover:border-tradeAshLight text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <RiExchange2Fill className="lg:flex hidden text-[16px]" />
-            <p className="text-[13px] font-[700]">Sell Assets</p>
+            <p className="text-[13px] font-medium">Sell Assets</p>
           </div>
           <div
             onClick={() => navigateTo("/offers/create")}
-            className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
+            className="flex items-center gap-[8px] hover:bg-tradeAsh borde  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <RiExchangeBoxFill className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-[700]">Buy Assets</p>
+            <p className="text-[13px] font-medium">Buy Assets</p>
           </div>
           <div className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300">
             <FaUserFriends className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-[700]">Trade Partners</p>
+            <p className="text-[13px] font-medium">Trade Partners</p>
           </div>
           <div
             onClick={() => navigateTo("/dashboard")}
             className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
             <TbDashboardFilled className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-[700]">Dashboard</p>
+            <p className="text-[13px] font-medium">Dashboard</p>
+          </div>
+
+          <div
+            onClick={() => navigateTo("/dashboard")}
+            className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
+          >
+            <TbDashboardFilled className="lg:flex hidden text-[17px]" />
+            <p className="text-[13px] font-medium">Wallet</p>
           </div>
         </div>
 
         <div className="flex items-center lg:gap-[15px] gap-[15px]">
-          <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight px-[10px] py-[1px] gap-[8px] rounded-[8px]">
+          <div className="lg:flex hidden items-center bg-tradeAsh borde border-tradeAshLight px-[10px] py-[1px] gap-[8px] rounded-[8px]">
             <FaMagnifyingGlass className="text-neutral-500  text-[15px]" />
             <input
               className=" bg-transparent outline-none h-[28px] w-[220px]  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
@@ -137,7 +145,7 @@ const InAppNav = () => {
           </div>
           <div
             className="cursor-pointer lg:w-[32px] sm:w-[30px] w-[32px]"
-            onClick={() => navigateTo("/account/profile")}
+            onClick={() => setIsProfileOption(!isProfileOption)}
           >
             <img className=" rounded-full" src={landingImg4} alt="" />
           </div>
@@ -254,7 +262,7 @@ const InAppNav = () => {
         </div>
       </div>
 
-      {/* <div
+      <div
         ref={navOptionRef}
         className={` ${
           isProfileOption ? "flex" : "hidden"
@@ -262,18 +270,18 @@ const InAppNav = () => {
         onClick={() => setIsProfileOption((prev) => !prev)}
       >
         <p
-          className="text-white text-[12px] font-[700] py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer"
+          className="text-white text-[12px] font-medium py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer"
           onClick={() => navigateTo("/account/profile")}
         >
           Profile
         </p>
         <p
-          className="text-white text-[12px] font-[700] py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer border-t border-tradeAshExtraLight"
+          className="text-white text-[12px] font-medium py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer border-t border-tradeAshExtraLight"
           onClick={() => navigateTo("/account/setting")}
         >
           Setting
         </p>
-      </div> */}
+      </div>
     </>
   );
 };

@@ -216,7 +216,7 @@ const Deposit = () => {
       <InAppNav />
       <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
         <DasHboardMenu />
-        <div className="flex-1 h-max flex flex-col md:flex-row md:gap-[10px] gap-[15px]">
+        <div className="flex-1 h-max flex flex-col md:flex-row md:gap-[5px] gap-[15px]">
           <div className="flex flex-col flex-1 md:border border-neutral-800">
             <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
               <p className="text-lg font-[700] text-white ">Add Cash</p>
