@@ -174,7 +174,7 @@ const AddNew = () => {
           bankAccount: "",
           holdersName: null,
         });
-      }, 30000); // 50 seconds
+      }, 20000); // 10 seconds
 
       return () => clearTimeout(timer);
     }
@@ -377,24 +377,22 @@ const AddNew = () => {
               )}
             </div>
 
-            <div>
-              {linkedAccounts?.length < 2 ? (
-                <Button variant="primary" onClick={addNewAccount}>
+            <div className="flex flex-col gap-[10px]">
+              {linkedAccounts?.length < 2 && (
+                <Button variant="outline" onClick={addNewAccount}>
                   Add New Account
                 </Button>
-              ) : (
-                <div>
-                  <div className="md:hidden flex">
-                    <Button
-                      variant="primary"
-                      disabled={linkAccount?.loading}
-                      onClick={() => navigateTo("/wallet/accounts")}
-                    >
-                      View My Accounts
-                    </Button>
-                  </div>
-                </div>
               )}
+
+              <div className="md:hidden flex">
+                <Button
+                  variant="primary"
+                  disabled={linkAccount?.loading}
+                  onClick={() => navigateTo("/wallet/accounts")}
+                >
+                  View My Accounts
+                </Button>
+              </div>
             </div>
           </div>
         </div>

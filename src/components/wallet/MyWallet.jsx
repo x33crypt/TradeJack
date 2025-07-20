@@ -118,7 +118,7 @@ const MyWallet = () => {
           </div>
         </div>
 
-        <div className="flex flex-col pt-[30px] gap-[10px] md:w-[350px bg-tradeAs rounded-[15px] borde border-tradeAshLight">
+        <div className="flex flex-col md:pt-[30px] gap-[10px] md:w-[350px bg-tradeAs rounded-[15px] borde border-tradeAshLight">
           <div className="flex  w-full gap-[10px]">
             <div
               onClick={Deposit}

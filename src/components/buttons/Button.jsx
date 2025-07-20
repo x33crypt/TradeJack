@@ -37,13 +37,13 @@ const Button = ({
 
     danger: `${
       disabled
-        ? "text-red-700"
-        : "text-white"
-    } bg-red-600 hover:text-white border border-red-600 active:text-red-700 underline-offset-4 hover:underline transition-colors duration-200`,
+        ? "text-red-700 bg-transparent border border-red-600 hover:text-red-600 "
+        : "bg-red-600 text-white hover:bg-red-800"
+    } active:text-red-700 transition-colors duration-200`,
 
     ghost: `${
       disabled
-        ? "text-white hover:bg-transparent"
+        ? "text-white  hover:bg-transparent"
         : "bg-transparent text-tradeOrange"
     }  bg-transparent text-tradeOrange hover:text-tradeOrange underline-offset-4 hover:underline active:text-white transition-all duration-150`,
   };

@@ -19,7 +19,7 @@ const LinkedAccount = () => {
             <RiBankLine className="text-[32px] text-tradeFadeWhite" />
 
             <h3 className="text-white text-base font-semibold">
-              Link Bank Account
+              Link Your Bank Account
             </h3>
 
             <p className="text-tradeFadeWhite text-[13px] font-medium md:max-w-[320px]">

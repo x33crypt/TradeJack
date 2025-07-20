@@ -205,7 +205,7 @@ const MyAccounts = () => {
                           </div>
                         </div>
 
-                        <div className="flex flex-col gap-[10px] items-cente w-full">
+                        <div className="flex flex-col gap-[10px] items-cente w-full mt-[100px]">
                           <div>
                             {manageAccount.state ? (
                               <Button
