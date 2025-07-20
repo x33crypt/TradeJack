@@ -12,6 +12,12 @@ export const LinkedAccountProvider = ({ children }) => {
     bankAccount: "",
     holdersName: null,
   });
+  const [manageAccount, setManageAccount] = useState({
+    state: false,
+    accountId: null,
+    loading: false,
+    success: false,
+  });
 
   console.log("Link Account Details :", linkAccount);
 
@@ -22,6 +28,8 @@ export const LinkedAccountProvider = ({ children }) => {
         setLinkedAccounts,
         linkAccount,
         setLinkAccount,
+        manageAccount,
+        setManageAccount,
       }}
     >
       {children}

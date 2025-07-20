@@ -37,9 +37,9 @@ const Button = ({
 
     danger: `${
       disabled
-        ? "bg-transparent text-red-700 hover:bg-transparent"
-        : "bg-transparent text-red-500"
-    }  hover:text-red-600 active:text-red-700 underline-offset-4 hover:underline transition-colors duration-200`,
+        ? "text-red-700"
+        : "text-white"
+    } bg-red-600 hover:text-white border border-red-600 active:text-red-700 underline-offset-4 hover:underline transition-colors duration-200`,
 
     ghost: `${
       disabled

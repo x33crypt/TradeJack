@@ -10,10 +10,17 @@ import AddNew from "@/components/myAccounts/AddNew";
 import { useNavigate } from "react-router-dom";
 import Loading from "@/components/Loading";
 import { LuFileX2 } from "react-icons/lu";
+import LockByScroll from "@/components/LockByScroll";
+import { IoClose } from "react-icons/io5";
+import { useToast } from "@/context/ToastContext";
+import api from "@/utils/http/api";
 
 const MyAccounts = () => {
   const { loading, error, refetch } = useFetchLinkedBanks();
-  const { linkAccount, linkedAccounts } = useLinkedAccount();
+  const { linkAccount, linkedAccounts, manageAccount, setManageAccount } =
+    useLinkedAccount();
+  const { state, accountId, success } = manageAccount;
+  const { toast, setToast } = useToast();
 
   console.log(linkedAccounts);
 
@@ -23,18 +30,86 @@ const MyAccounts = () => {
     }
   }, [linkedAccounts]);
 
-  // Refetch linked accounts after linking
-  // useEffect(() => {
-  //   if (linkAccount?.success === true) {
-  //     try {
-  //       refetch();
-  //     } catch (err) {
-  //       console.error("Refetch failed:", err);
-  //     }
-  //   }
-  // }, [linkAccount?.success]);
+  const handleManageAccount = () => {
+    setManageAccount({
+      state: true,
+    });
+  };
+
+  const handleCancelManageAccount = () => {
+    setManageAccount({
+      state: false,
+    });
+  };
+
+  const closeConfrimDeleteAccount = () => {
+    setManageAccount({
+      state: false,
+      accountId: null,
+    });
+  };
+
+  const deleteAccount = async () => {
+    try {
+      setManageAccount((prev) => ({
+        ...prev,
+        loading: true,
+      }));
+
+      const accountId = manageAccount.accountId;
+
+      const res = await api.delete(`/payment/remove-bank-account/${accountId}`);
+
+      if (res?.data?.success) {
+        setManageAccount({
+          state: false,
+          accountId: null,
+          loading: false,
+          success: true,
+        });
+
+        setToast({
+          success: true,
+          successMessage: "Account successfully removed.",
+        });
+      } else {
+        setToast({
+          error: true,
+          errorMessage: res?.data?.message || "Failed to remove account.",
+        });
+      }
+    } catch (err) {
+      setToast({
+        error: true,
+        errorMessage:
+          err?.response?.data?.errorMessage ||
+          err.message ||
+          "An unknown error occurred.",
+      });
+    } finally {
+      setManageAccount((prev) => ({
+        ...prev,
+        loading: true,
+      }));
+    }
+  };
+
+  useEffect(() => {
+    if (success) {
+      setTimeout(() => {
+        setManageAccount({
+          state: false,
+          accountId: null,
+          loading: false,
+          success: false,
+        });
+        refetch();
+      }, 3000);
+    }
+  }, [success]);
 
   console.log("Showing Link Account Details :", linkAccount);
+  console.log("Showing manage account details :", manageAccount);
 
   const navigateTo = useNavigate();
 
@@ -132,13 +207,22 @@ const MyAccounts = () => {
 
                         <div className="flex flex-col gap-[10px] items-cente w-full">
                           <div>
-                            <Button
-                              variant="outline"
-                              // disabled={linkAccount?.loading}
-                              // onClick={handleVerifyBank}
-                            >
-                              Manage Accounts
-                            </Button>
+                            {manageAccount.state ? (
+                              <Button
+                                variant="outline"
+                                // disabled={linkAccount?.loading}
+                                onClick={handleCancelManageAccount}
+                              >
+                                Cancel
+                              </Button>
+                            ) : (
+                              <Button
+                                variant="outline"
+                                onClick={handleManageAccount}
+                              >
+                                Manage Accounts
+                              </Button>
+                            )}
                           </div>
 
                           <div className="md:hidden flex w-full">
@@ -185,8 +269,43 @@ const MyAccounts = () => {
           </div>
         </div>
       </div>
-
       <Footer />
+
+      {accountId ? (
+        <div>
+          <LockByScroll />
+          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-90 flex items-center justify-center z-40">
+            <div className="flex flex-col justify-between gap-[10px] bg-tradeAsh borde border-tradeAshLight p-[15px] rounded-[15px] shadow-lg lg:max-w-[350px] w-full">
+              <div className="flex justify-between items-start gap-[15px] pb-[15px] md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
+                <div className="flex flex-col gap-3">
+                  <p className="text-lg font-semibold text-white leading-none">
+                    Delete Account
+                  </p>
+                </div>
+
+                <div onClick={closeConfrimDeleteAccount}>
+                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-[30px]">
+                <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed">
+                  Are you sure you want to delete this account? This action
+                  can’t be undone, and you'll need to link it again if required.
+                </p>
+
+                <Button
+                  variant="danger"
+                  disabled={manageAccount?.loading}
+                  onClick={deleteAccount}
+                >
+                  Yes, Unlink & Delete
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 };

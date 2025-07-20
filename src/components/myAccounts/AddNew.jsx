@@ -149,6 +149,18 @@ const AddNew = () => {
     }));
   };
 
+  const addNewAccount = () => {
+    setLinkAccount((prev) => ({
+      ...prev,
+      loading: false,
+      details: true,
+      verified: false,
+      success: false,
+      bank: "",
+      bankAccount: "",
+    }));
+  };
+
   // Reset Add New Account form after Success
   useEffect(() => {
     if (linkAccount?.success === true) {
@@ -367,11 +379,7 @@ const AddNew = () => {
 
             <div>
               {linkedAccounts?.length < 2 ? (
-                <Button
-                  variant="primary"
-                  disabled={linkAccount?.loading}
-                  onClick={handleLinkAccount}
-                >
+                <Button variant="primary" onClick={addNewAccount}>
                   Add New Account
                 </Button>
               ) : (
