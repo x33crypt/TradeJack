@@ -8,7 +8,7 @@ const AccountCard = ({ account, index }) => {
   return (
     <div
       key={index}
-      className="flex flex-col p-[12px] gap-[25px] bg-tradeAsh border border-tradeAshLight rounded-[15px]"
+      className="flex flex-col p-[12px] gap-[30px] bg-tradeAsh border border-tradeAshLight rounded-[15px]"
     >
       <div className="flex justify-between">
         <div
@@ -30,7 +30,7 @@ const AccountCard = ({ account, index }) => {
           <img className="w-[40px]" src={account?.logo} alt="" />
         </div>
         <div className="flex flex-col gap-1">
-          <p className="text-base font-semibold text-white leading-none">
+          <p className="text-base font-semibold text-white leading-relaxed">
             {account?.bank_name}
           </p>
           <p className="text-[13px] font-semibold text-tradeFadeWhite">

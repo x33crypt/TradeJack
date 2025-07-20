@@ -120,6 +120,12 @@ const AddNew = () => {
         successMessage: "Bank account successfully linked",
       });
 
+      try {
+        await refetch();
+      } catch (err) {
+        console.error("Refetch failed:", err);
+      }
+
       setLinkAccount({
         loading: false,
         details: false,
@@ -156,7 +162,7 @@ const AddNew = () => {
           bankAccount: "",
           holdersName: null,
         });
-      }, 20000); // 50 seconds
+      }, 30000); // 50 seconds
 
       return () => clearTimeout(timer);
     }
@@ -317,7 +323,7 @@ const AddNew = () => {
                 disabled={linkAccount?.loading}
                 onClick={handleLinkAccount}
               >
-                Confirm & Link Account
+                Confirm & Add Account
               </Button>
               <Button variant="outline" onClick={handleEditDetails}>
                 Edit Details

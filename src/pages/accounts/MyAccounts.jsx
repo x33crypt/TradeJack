@@ -24,15 +24,15 @@ const MyAccounts = () => {
   }, [linkedAccounts]);
 
   // Refetch linked accounts after linking
-  useEffect(() => {
-    if (linkAccount?.success === true) {
-      try {
-        refetch();
-      } catch (err) {
-        console.error("Refetch failed:", err);
-      }
-    }
-  }, [linkAccount?.success]);
+  // useEffect(() => {
+  //   if (linkAccount?.success === true) {
+  //     try {
+  //       refetch();
+  //     } catch (err) {
+  //       console.error("Refetch failed:", err);
+  //     }
+  //   }
+  // }, [linkAccount?.success]);
 
   console.log("Showing Link Account Details :", linkAccount);
 
@@ -59,10 +59,9 @@ const MyAccounts = () => {
                     <div className="h-full flex flex-col p-[15px] gap-[25px]">
                       <div className="">
                         <p className="text-xs text-tradeFadeWhite font-medium">
-                          Manage your linked accounts with ease. You can keep up
-                          to two accounts, one as your default and another as an
-                          alternative. To update details, simply remove an
-                          account and add a new one for hassle-free withdrawals.
+                          Manage your linked accounts with ease. To update
+                          details, simply remove an account and add a new one
+                          for hassle-free withdrawals.
                         </p>
                       </div>
 
@@ -186,6 +185,7 @@ const MyAccounts = () => {
           </div>
         </div>
       </div>
+
       <Footer />
     </>
   );
