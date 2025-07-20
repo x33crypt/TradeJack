@@ -144,23 +144,23 @@ const AddNew = () => {
   };
 
   // Reset Add New Account form after Success
-  // useEffect(() => {
-  //   if (linkAccount?.success === true) {
-  //     const timer = setTimeout(() => {
-  //       setLinkAccount({
-  //         loading: false,
-  //         details: true,
-  //         verified: false,
-  //         success: false,
-  //         bank: "",
-  //         bankAccount: "",
-  //         holdersName: null,
-  //       });
-  //     }, 20000); // 50 seconds
+  useEffect(() => {
+    if (linkAccount?.success === true) {
+      const timer = setTimeout(() => {
+        setLinkAccount({
+          loading: false,
+          details: true,
+          verified: false,
+          success: false,
+          bank: "",
+          bankAccount: "",
+          holdersName: null,
+        });
+      }, 20000); // 50 seconds
 
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [linkAccount?.success]);
+      return () => clearTimeout(timer);
+    }
+  }, [linkAccount?.success]);
 
   const navigateTo = useNavigate();
 
