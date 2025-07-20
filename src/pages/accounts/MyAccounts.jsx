@@ -163,7 +163,15 @@ const MyAccounts = () => {
                         </p>
                       </div>
                       <div className="flex-1 h-full flex items-center justify-center">
-                        <LuFileX2 className="text-5xl text-tradeGreen" />
+                        <LuFileX2 className="text-6xl text-tradeGreen" />
+                      </div>
+                      <div className="md:hidden flex w-full">
+                        <Button
+                          variant="primary"
+                          onClick={() => navigateTo("/wallet/accounts/new")}
+                        >
+                          Add New Account
+                        </Button>
                       </div>
                     </div>
                   )}
