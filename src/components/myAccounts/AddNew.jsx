@@ -11,6 +11,7 @@ import { verifyBankHolder } from "@/utils/wallet/verifyBankHolder";
 import { FaCheckCircle } from "react-icons/fa";
 import { linkBankAccount } from "@/utils/wallet/linkBank";
 import { FaRegCircleCheck } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const AddNew = () => {
   const { linkAccount, setLinkAccount, linkedAccounts } = useLinkedAccount();
@@ -160,6 +161,8 @@ const AddNew = () => {
   //     return () => clearTimeout(timer);
   //   }
   // }, [linkAccount?.success]);
+
+  const navigateTo = useNavigate();
 
   return (
     <div className=" flex flex-col md:border border-neutral-800 w-full">
@@ -349,7 +352,7 @@ const AddNew = () => {
 
           <div className="flex-1 flex flex-col justify-between w-full">
             <div>
-              {linkedAccounts?.lenght < 2 ? (
+              {linkedAccounts?.length < 2 ? (
                 <Info text="You might want to add an alternative account as a backup for smoother withdrawals and flexibility." />
               ) : (
                 <Info text="You’ve reached the maximum number of linked accounts. To add a new one, please unlink one of your existing accounts first." />
@@ -357,7 +360,7 @@ const AddNew = () => {
             </div>
 
             <div>
-              {linkedAccounts?.lenght < 1 ? (
+              {linkedAccounts?.length < 2 ? (
                 <Button
                   variant="primary"
                   disabled={linkAccount?.loading}
@@ -371,9 +374,9 @@ const AddNew = () => {
                     <Button
                       variant="primary"
                       disabled={linkAccount?.loading}
-                      onClick={handleLinkAccount}
+                      onClick={() => navigateTo("/wallet/accounts")}
                     >
-                      View All Accounts
+                      View My Accounts
                     </Button>
                   </div>
                 </div>
