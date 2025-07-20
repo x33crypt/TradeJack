@@ -5,8 +5,9 @@ export const LinkedAccountProvider = ({ children }) => {
   const [linkedAccounts, setLinkedAccounts] = useState([]);
   const [linkAccount, setLinkAccount] = useState({
     loading: false,
+    details: false,
     verified: false,
-    success: false,
+    success: true,
     bank: "",
     bankAccount: "",
     holdersName: null,

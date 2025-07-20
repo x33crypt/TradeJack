@@ -27,8 +27,10 @@ export async function linkBankAccount({ bankAccount, bank, holdersName }) {
   try {
     const res = await api.post("/payment/add-bank-account", payload);
 
-    if (res?.status === 200 && res.data?.success) {
-      return { data: res.data.data, error: null };
+    console.log("Server Link Accounts res:", res);
+
+    if (res.data?.success) {
+      return { data: res?.data, error: null };
     }
 
     return {

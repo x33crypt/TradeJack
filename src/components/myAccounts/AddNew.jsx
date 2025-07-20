@@ -8,9 +8,13 @@ import { useToast } from "@/context/ToastContext";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Info from "../alerts/Info";
 import { verifyBankHolder } from "@/utils/wallet/verifyBankHolder";
+import { FaCheckCircle } from "react-icons/fa";
+import { linkBankAccount } from "@/utils/wallet/linkBank";
+import { FaRegCircleCheck } from "react-icons/fa6";
 
 const AddNew = () => {
-  const { linkAccount, setLinkAccount } = useLinkedAccount();
+  const { linkAccount, setLinkAccount, linkedAccounts } = useLinkedAccount();
+  const { refetch } = useFetchLinkedBanks();
   const { select, setSelect } = useSelectElement();
   const { banks } = useFetchBanks();
   const { toast, setToast } = useToast();
@@ -30,6 +34,7 @@ const AddNew = () => {
     }
   }, [select]);
 
+  // Handle bank account input change
   const handleBankAccountChange = (e) => {
     const rawValue = e.target.value.replace(/[^\d]/g, ""); // Remove all non-digit characters
 
@@ -39,6 +44,7 @@ const AddNew = () => {
     }));
   };
 
+  // Handle bank verification
   const handleVerifyBank = async () => {
     setLinkAccount((prev) => ({
       ...prev,
@@ -66,13 +72,16 @@ const AddNew = () => {
       setLinkAccount((prev) => ({
         ...prev,
         loading: false,
+        details: false,
         verified: true,
+        success: false,
         data: data,
         holdersName: cleanedHolderName,
       }));
     }
   };
 
+  // Handle linking account
   const handleLinkAccount = async () => {
     setLinkAccount((prev) => ({
       ...prev,
@@ -92,36 +101,65 @@ const AddNew = () => {
         ...prev,
         loading: false,
       }));
+
       setToast({
         ...toast,
         error: true,
         errorMessage: error,
       });
+      return;
     }
+
     if (data) {
       console.log("Bank holder verified:", data);
+
       setToast({
         ...toast,
         success: true,
         successMessage: "Bank account successfully linked",
       });
-      setLinkAccount((prev) => ({
-        ...prev,
+
+      setLinkAccount({
         loading: false,
+        details: false,
         verified: false,
         success: true,
         bank: "",
         bankAccount: "",
         holdersName: null,
-      }));
-
-      try {
-        await refetch();
-      } catch (err) {
-        console.error("Refetch failed:", err);
-      }
+      });
     }
   };
+
+  // Handle edit details
+  const handleEditDetails = () => {
+    setLinkAccount((prev) => ({
+      ...prev,
+      loading: false,
+      details: true,
+      verified: false,
+      success: false,
+    }));
+  };
+
+  // Reset Add New Account form after Success
+  // useEffect(() => {
+  //   if (linkAccount?.success === true) {
+  //     const timer = setTimeout(() => {
+  //       setLinkAccount({
+  //         loading: false,
+  //         details: true,
+  //         verified: false,
+  //         success: false,
+  //         bank: "",
+  //         bankAccount: "",
+  //         holdersName: null,
+  //       });
+  //     }, 20000); // 50 seconds
+
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [linkAccount?.success]);
 
   return (
     <div className=" flex flex-col md:border border-neutral-800 w-full">
@@ -130,218 +168,219 @@ const AddNew = () => {
       </div>
 
       <div className=" h-full w-full">
-        {linkAccount?.success ? (
-          <div className="flex flex-col justify-between p-[15px] gap-[15px] h-full w-full">
-            <div className="flex flex-col gap-[10px] items-center text-center">
-              <div className="flex justify-center">
-                <FaRegCircleCheck className="text-5xl text-tradeGreen" />
+        {/* Form Page */}
+        <div
+          className={` ${
+            linkAccount?.details ? "flex" : "hidden"
+          } flex-col justify-between p-[15px] gap-[15px] h-full w-full`}
+        >
+          <div className="">
+            <p className="text-xs text-tradeFadeWhite font-medium">
+              To ensure the security of your funds, only bank accounts bearing
+              the same credentials as your verified KYC information can be
+              linked.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-[15px] h-full justify-between">
+            <div className="flex flex-col gap-[10px]">
+              <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
+                <div className="flex flex-col gap-[10px] w-full">
+                  <p className="text-tradeFadeWhite text-xs font-medium">
+                    Select your Bank
+                  </p>
+                  <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
+                    <input
+                      className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
+                      type="text"
+                      placeholder={`Select Bank`}
+                      readOnly
+                      value={linkAccount?.bank}
+                      onClick={() =>
+                        setSelect({
+                          ...select,
+                          state: true,
+                          selectOne: true,
+                          selectTwo: false,
+                          element: "bank",
+                          options: banks,
+                          pick: "",
+                          page: "Link Bank Account",
+                        })
+                      }
+                    />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                      <MdKeyboardArrowDown />
+                    </div>
+                  </div>
+
+                  <p className="text-xs font-medium text-tradeFadeWhite">
+                    We support all major banks in Nigeria.
+                  </p>
+                </div>
+              </div>
+              <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
+                <div className="flex flex-col gap-[10px] w-full">
+                  <p className="text-tradeFadeWhite text-xs font-medium">
+                    Bank Account
+                  </p>
+
+                  <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                    <input
+                      className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                      type="text"
+                      placeholder={`Enter 10-digit account number`}
+                      onChange={handleBankAccountChange}
+                      value={linkAccount?.bankAccount || ""}
+                    />
+                  </div>
+                  <p className="text-xs font-medium text-tradeFadeWhite">
+                    Ensure the account is valid and in your name.
+                  </p>
+                </div>
               </div>
 
-              <h2 className="text-white text-lg font-semibold">
-                Account Linked Successfully
-              </h2>
-              <p className="text-[13px] text-tradeFadeWhite font-medium max-w-[280px]">
-                Your bank account has been securely linked and is now available
-                for withdrawals and other transactions.
-              </p>
+              <div className="mt-20px]">
+                <Info
+                  text={
+                    "We never store your bank credentials. Your data is protected with end-to-end encryption to ensure it stays private and secure."
+                  }
+                />
+              </div>
             </div>
 
-            <div className="w-full bg-tradeAsh border border-tradeAshLight rounded-[15px] px-[8px] flex flex-col">
-              <div className="flex flex-col gap-[8px] w-full py-[8px] border-b border-tradeAshLight">
-                <p className="text-tradeFadeWhite text-xs font-medium">Name</p>
+            <div className="flex flex-col items-center gap-[10px]">
+              <Button
+                variant="primary"
+                disabled={linkAccount?.loading}
+                onClick={handleVerifyBank}
+              >
+                Verify Account
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Verification Page */}
+        <div
+          className={` ${
+            linkAccount?.verified ? "flex" : "hidden"
+          } flex-col justify-between p-[15px] gap-[15px] h-full w-full`}
+        >
+          <div className="">
+            <p className="text-xs text-tradeFadeWhite font-medium">
+              We found a match. Please review and confirm the verified details
+              before linking this account.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-[15px] h-full justify-between">
+            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
+              <div className="flex flex-col gap-[10px] w-full">
+                <p className="text-tradeFadeWhite text-xs font-medium">
+                  Holder’s Name
+                </p>
                 <p className="text-white text-sm font-semibold leading-none">
-                  {linkAccount?.holdersName || "John Doe"}
+                  {linkAccount?.data?.account_name}
                 </p>
               </div>
-              <div className="flex flex-col gap-[8px] w-full py-[8px] border-b border-tradeAshLight">
+
+              <div className="flex flex-col gap-[10px] w-full">
                 <p className="text-tradeFadeWhite text-xs font-medium">Bank</p>
                 <p className="text-white text-sm font-semibold leading-none">
-                  {linkAccount?.bank || "Access Bank"}
+                  {linkAccount?.data?.bank_name}
                 </p>
               </div>
-              <div className="flex flex-col gap-[8px] w-full py-[8px] border- border-tradeAshLight">
-                <p className="text-tradeFadeWhite text-xs font-medium">
-                  Bank Account
-                </p>
-                <p className="text-white text-sm font-semibold leading-none">
-                  {linkAccount?.bankAccount || "0123456789"}
-                </p>
+
+              <div className="flex justify-between items-end">
+                <div className="flex flex-col gap-[10px] w-full">
+                  <p className="text-tradeFadeWhite text-xs font-medium">
+                    Account Number
+                  </p>
+                  <p className="text-white text-sm font-semibold leading-none">
+                    {linkAccount?.data?.account_number}
+                  </p>
+                </div>
+
+                <div className="text-base text-tradeGreen">
+                  <FaCheckCircle />
+                </div>
               </div>
             </div>
 
-            <Button
-              variant="outline"
-              disabled={linkAccount?.loading}
-              onClick={handleVerifyBank}
-            >
-              Link Another Account
-            </Button>
+            <div className="flex flex-col items-center gap-[10px]">
+              <Button
+                variant="primary"
+                disabled={linkAccount?.loading}
+                onClick={handleLinkAccount}
+              >
+                Confirm & Link Account
+              </Button>
+              <Button variant="outline" onClick={handleEditDetails}>
+                Edit Details
+              </Button>
+            </div>
           </div>
-        ) : (
-          <div
-            className={` ${
-              linkAccount?.success ? "hidden" : "flex"
-            } h-full w-full`}
-          >
-            {linkAccount?.verified ? (
-              <div className="flex flex-col justify-between p-[15px] gap-[15px] h-full w-full">
-                <div className="">
-                  <p className="text-xs text-tradeFadeWhite font-medium">
-                    We found a match. Please review and confirm the verified
-                    details before linking this account.
-                  </p>
-                </div>
+        </div>
 
-                <div className="flex flex-col gap-[15px] h-full justify-between">
-                  <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
-                    <div className="flex flex-col gap-[10px] w-full">
-                      <p className="text-tradeFadeWhite text-xs font-medium">
-                        Holder’s Name
-                      </p>
-                      <p className="text-white text-sm font-semibold leading-none">
-                        {linkAccount?.data?.account_name}
-                      </p>
-                    </div>
+        {/* Success Page */}
+        <div
+          className={` ${
+            linkAccount?.success ? "flex" : "hidden"
+          } flex-col justify-between items-center p-[15px] gap-[15px] h-full w-full`}
+        >
+          <div className="flex-1 flex flex-col gap-[15px]">
+            <div className="flex justify-center mt-[15px]">
+              <FaRegCircleCheck className="text-5xl text-tradeGreen" />
+            </div>
+            <div className=" justify-center flex flex-col gap-2">
+              <div className="w-full flex flex-col items-center">
+                <p className="text-white text-lg font-semibold w-[220px] text-center">
+                  Connection successful, you're ready to go.
+                </p>
+              </div>
 
-                    <div className="flex flex-col gap-[10px] w-full">
-                      <p className="text-tradeFadeWhite text-xs font-medium">
-                        Bank
-                      </p>
-                      <p className="text-white text-sm font-semibold leading-none">
-                        {linkAccount?.data?.bank_name}
-                      </p>
-                    </div>
+              <p className="text-[13px] text-tradeFadeWhite font-medium max-w-[280px] text-center">
+                Your account is now securely linked and ready to use for
+                seamless withdrawals and transactions
+              </p>
+            </div>
+          </div>
 
-                    <div className="flex justify-between items-end">
-                      <div className="flex flex-col gap-[10px] w-full">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          Account Number
-                        </p>
-                        <p className="text-white text-sm font-semibold leading-none">
-                          {linkAccount?.data?.account_number}
-                        </p>
-                      </div>
+          <div className="flex-1 flex flex-col justify-between w-full">
+            <div>
+              {linkedAccounts?.lenght < 2 ? (
+                <Info text="You might want to add an alternative account as a backup for smoother withdrawals and flexibility." />
+              ) : (
+                <Info text="You’ve reached the maximum number of linked accounts. To add a new one, please unlink one of your existing accounts first." />
+              )}
+            </div>
 
-                      <div className="text-base text-tradeGreen">
-                        <FaCheckCircle />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col items-center gap-[10px]">
-                    <Button
-                      variant="ghost"
-                      disabled={linkAccount?.loading}
-                      onClick={handleLinkAccount}
-                    >
-                      Back
-                    </Button>
+            <div>
+              {linkedAccounts?.lenght < 1 ? (
+                <Button
+                  variant="primary"
+                  disabled={linkAccount?.loading}
+                  onClick={handleLinkAccount}
+                >
+                  Add a New Account
+                </Button>
+              ) : (
+                <div>
+                  <div className="md:hidden flex">
                     <Button
                       variant="primary"
                       disabled={linkAccount?.loading}
                       onClick={handleLinkAccount}
                     >
-                      Confirm & Link Account
-                    </Button>
-
-                    <p className="text-[11px] font-medium text-tradeAshExtraLight w-[250px] text-center">
-                      We do not store your bank credentials. All data is
-                      encrypted end-to-end.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="flex flex-col justify-between p-[15px] gap-[15px] h-full w-full">
-                <div className="">
-                  <p className="text-xs text-tradeFadeWhite font-medium">
-                    To ensure the security of your funds, only bank accounts
-                    bearing the same credentials as your verified KYC
-                    information can be linked.
-                  </p>
-                </div>
-
-                <div className="flex flex-col gap-[15px] h-full justify-between">
-                  <div className="flex flex-col gap-[10px]">
-                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
-                      <div className="flex flex-col gap-[10px] w-full">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          Select your Bank
-                        </p>
-                        <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
-                          <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
-                            type="text"
-                            placeholder={`Select Bank`}
-                            readOnly
-                            value={linkAccount?.bank}
-                            onClick={() =>
-                              setSelect({
-                                ...select,
-                                state: true,
-                                selectOne: true,
-                                selectTwo: false,
-                                element: "bank",
-                                options: banks,
-                                pick: "",
-                                page: "Link Bank Account",
-                              })
-                            }
-                          />
-                          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                            <MdKeyboardArrowDown />
-                          </div>
-                        </div>
-
-                        <p className="text-xs font-medium text-tradeFadeWhite">
-                          We support all major banks in Nigeria.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
-                      <div className="flex flex-col gap-[10px] w-full">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          Bank Account
-                        </p>
-
-                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                          <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                            type="text"
-                            placeholder={`Enter 10-digit account number`}
-                            onChange={handleBankAccountChange}
-                            value={linkAccount?.bankAccount || ""}
-                          />
-                        </div>
-                        <p className="text-xs font-medium text-tradeFadeWhite">
-                          Ensure the account is valid and in your name.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-20px]">
-                      <Info
-                        text={
-                          "We never store your bank credentials. Your information is protected with end-to-end encryption, ensuring your data remains private and secure."
-                        }
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col items-center gap-[10px]">
-                    <Button
-                      variant="primary"
-                      disabled={linkAccount?.loading}
-                      onClick={handleVerifyBank}
-                    >
-                      Verify Account
+                      View All Accounts
                     </Button>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
