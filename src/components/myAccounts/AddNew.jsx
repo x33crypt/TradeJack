@@ -363,7 +363,7 @@ const AddNew = () => {
                   disabled={linkAccount?.loading}
                   onClick={handleLinkAccount}
                 >
-                  Add a New Account
+                  Add New Account
                 </Button>
               ) : (
                 <div>
