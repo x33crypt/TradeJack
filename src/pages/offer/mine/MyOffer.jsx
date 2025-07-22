@@ -11,6 +11,9 @@ import { useNavigate } from "react-router-dom";
 import StateHandler from "@/components/stateHandler/StateHandler";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import { TbInvoice } from "react-icons/tb";
+import { LuFileX2 } from "react-icons/lu";
+import { LuFileSearch } from "react-icons/lu";
+import { HiMiniCalendarDateRange } from "react-icons/hi2";
 
 const MyOffer = () => {
   const { loading, error } = useFetchMyOffers();
@@ -164,125 +167,138 @@ const MyOffer = () => {
         error={error}
         loadingText="Loading your offers. Please wait"
       >
-        <div className="md:pt-[64px] pt-[62px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col gap-[10px] bg-black">
+        <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col gap-[5px] bg-black">
           <DasHboardMenu />
-          <div className="flex-1 flex flex-col h-max md:border-x md:border-b border-neutral-800">
-            <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
+          <div className="flex flex-col flex-1 md:border border-tradeAshLight">
+            <div className="flex items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
               <p className="text-lg text-white font-[700]">My Offers</p>
             </div>
 
-            {myOffers && offers.length > 0 ? (
-              <div>
-                <div className="sticky top-[60px] bg-black p-[15px] border-b border-dashed border-tradeAshLight overflow-x-auto">
-                  <div className="flex justify-between min-w-max gap-[10px]">
-                    <div className="flex items-center gap-2 bg-transparent">
-                      <p
-                        onClick={handleShowAllOffers}
-                        className={`${
-                          offerFilter?.allOffers
-                            ? "text-white bg-tradeAsh border-tradeGreen"
-                            : "text-neutral-500 border-neutral-800 hover:text-white"
-                        } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                      >
-                        All
-                      </p>
-                      <p
-                        onClick={handleShowActiveOffers}
-                        className={`${
-                          offerFilter?.activeOffers
-                            ? "text-white bg-tradeAsh border-tradeGreen"
-                            : "text-neutral-500 border-neutral-800 hover:text-white"
-                        } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                      >
-                        Active
-                      </p>
-                      <p
-                        onClick={handleShowInActiveOffers}
-                        className={`${
-                          offerFilter?.inactiveOffers
-                            ? "text-white bg-tradeAsh border-tradeGreen"
-                            : "text-neutral-500 border-neutral-800 hover:text-white"
-                        } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                      >
-                        Inactive
-                      </p>
-                      <p
-                        onClick={handleShowDraftedOffers}
-                        className={`${
-                          offerFilter?.draftOffers
-                            ? "text-white bg-tradeAsh border-tradeGreen"
-                            : "text-neutral-500 border-neutral-800 hover:text-white"
-                        } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                      >
-                        My Draft
-                      </p>
+            <div className="flex-1 flex ">
+              {myOffers && offers.length > 0 ? (
+                <div className="flex-1">
+                  {/* <div className="sticky md:top-[65px] top-[57px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight overflow-x-auto">
+                    <div className="flex justify-between items-center w-full gap-[10px]">
+                      <div className="flex items-center gap-2 bg-transparent">
+                        <p
+                          onClick={handleShowAllOffers}
+                          className={`${
+                            offerFilter?.allOffers
+                              ? "text-white bg-tradeAsh border-tradeGreen"
+                              : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                          } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                        >
+                          All
+                        </p>
+                        <p
+                          onClick={handleShowActiveOffers}
+                          className={`${
+                            offerFilter?.activeOffers
+                              ? "text-white bg-tradeAsh border-tradeGreen"
+                              : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                          } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                        >
+                          Active
+                        </p>
+                        <p
+                          onClick={handleShowInActiveOffers}
+                          className={`${
+                            offerFilter?.inactiveOffers
+                              ? "text-white bg-tradeAsh border-tradeGreen"
+                              : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                          } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium  rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                        >
+                          Inactive
+                        </p>
+                        <p
+                          onClick={handleShowDraftedOffers}
+                          className={`${
+                            offerFilter?.draftOffers
+                              ? "text-white bg-tradeAsh border-tradeGreen"
+                              : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                          } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium  rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                        >
+                          My Draft
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2 bg-transparent">
+                        <div className="flex  gap-2 bg-transparent">
+                          <div className="md:flex hidden items-center gap-1 text-tradeAshLight border-tradeAshLight px-[6px] py-0.5 border rounded-[6.5px] w-max">
+                            <HiMiniCalendarDateRange />
+                          </div>
+                          <div
+                            className={`${
+                              offerFilter?.draftOffers
+                                ? "text-white bg-tradeAsh border-tradeGreen"
+                                : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                            } relative flex items-center gap-2  px-[12px] py-[4px] text-[13px] font-medium  rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                          >
+                            <p>Month</p>
+                          </div>
+
+                          <div
+                            className={`${
+                              offerFilter?.draftOffers
+                                ? "text-white bg-tradeAsh border-tradeGreen"
+                                : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                            } relative flex items-center gap-2 px-[12px] py-[4px] text-[13px] font-medium  rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                          >
+                            <p>Year</p>
+                          </div>
+                        </div>
+
+                        <div
+                          className={`${
+                            offerFilter?.draftOffers
+                              ? "text-white bg-tradeAsh border-tradeGreen"
+                              : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                          } relative flex items-center gap-2 px-[12px] py-[4px] text-[13px] font-medium  rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                        >
+                          <p>Clear Filter</p>
+                        </div>
+                      </div>
                     </div>
+                  </div> */}
 
-                    <div className="flex items-center gap-2 bg-transparent">
-                      <div
-                        className={`${
-                          offerFilter?.draftOffers
-                            ? "text-white bg-tradeAsh border-tradeGreen"
-                            : "text-neutral-500 border-neutral-800 hover:text-white"
-                        } relative flex items-center gap-2 min-w-[90px] px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                      >
-                        <p>Month</p>
-                        <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                          <MdKeyboardArrowDown />
+                  <div className=" p-[15px] ">
+                    <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
+                      {offers.map((offer, index) => (
+                        <div
+                          key={index}
+                          className={`${
+                            index !== offers.length - 1
+                              ? "md:border-b border-tradeAshLight"
+                              : ""
+                          }`}
+                        >
+                          <MyOfferCard offer={offer} />
                         </div>
-                      </div>
-
-                      <div
-                        className={`${
-                          offerFilter?.draftOffers
-                            ? "text-white bg-tradeAsh border-tradeGreen"
-                            : "text-neutral-500 border-neutral-800 hover:text-white"
-                        } relative flex items-center gap-2 min-w-[70px] px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                      >
-                        <p>Year</p>
-                        <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                          <MdKeyboardArrowDown />
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
-                <div className=" p-[15px] ">
-                  <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
-                    {offers.map((offer, index) => (
-                      <div
-                        key={index}
-                        className={`${
-                          index !== offers.length - 1
-                            ? "md:border-b border-tradeAshLight"
-                            : ""
-                        }`}
-                      >
-                        <MyOfferCard offer={offer} />
-                      </div>
-                    ))}
+              ) : (
+                <div className="flex-1 flex flex-col p-[15px] gap-[25px]">
+                  <div className="">
+                    <p className="text-xs text-tradeFadeWhite font-medium">
+                      You currently don’t have any active offers. Creating your
+                      first offer is a quick way to connect with trusted
+                      traders, expand your trading opportunities, and start
+                      growing your activity on the platform.
+                    </p>
+                  </div>
+                  <div className="flex-1 h-full flex items-center justify-center">
+                    <LuFileX2 className="text-6xl text-tradeGreen" />
+                  </div>
+                  <div className="flex w-full">
+                    <Button onClick={handleToCreateOffer} variant="primary">
+                      Create New Offer
+                    </Button>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <div className=" px-[15px] ">
-                <div className="flex flex-col py-10 gap-[10px] h-full items-center justify-center">
-                  <TbInvoice className="text-tradeAshLight text-[90px] leading-none" />
-                  <p className="text-xl font-bold text-white text-center">
-                    No active offers just yet.
-                  </p>
-                  <p className="text-[13px] font-medium text-tradeFadeWhite max-w-[500px] text-center">
-                    Kickstart your trading journey by creating your first offer.
-                    Connect with other traders, build trust, and start unlocking
-                    new opportunities.
-                  </p>
-
-                  <Button onClick={handleToCreateOffer} variant="primary">
-                    Create New Offer
-                  </Button>
-                </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </StateHandler>

@@ -165,7 +165,6 @@ const MyAccounts = () => {
                                 ))}
                             </div>
                           </div>
-
                           {/* Aternative Account */}
                           <div className="flex flex-col gap-[10px] p-[12px bg-tradeAs rounded-[15px borde border-tradeAshLight">
                             <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -205,7 +204,7 @@ const MyAccounts = () => {
                           </div>
                         </div>
 
-                        <div className="flex flex-col gap-[10px] items-cente w-full mt-[100px]">
+                        <div className="flex flex-col gap-[10px] items-cente w-full mt-[0px]">
                           <div>
                             {manageAccount.state ? (
                               <Button
@@ -269,7 +268,8 @@ const MyAccounts = () => {
           </div>
         </div>
       </div>
-      <Footer />
+
+      <Footer big={"flex"} small={"hidden"} />
 
       {accountId ? (
         <div>
@@ -290,8 +290,14 @@ const MyAccounts = () => {
 
               <div className="flex flex-col gap-[30px]">
                 <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed">
-                  Are you sure you want to delete this account? This action
-                  can’t be undone, and you'll need to link it again if required.
+                  Are you sure you want to delete your linked account with {""}
+                  <span className="text-white font-semibold">
+                    Zenith Bank{" "}
+                  </span>{" "}
+                  ending in{" "}
+                  <span className="text-white font-semibold">2345</span> ? Once
+                  removed, this account will no longer be available for
+                  transactions.
                 </p>
 
                 <Button

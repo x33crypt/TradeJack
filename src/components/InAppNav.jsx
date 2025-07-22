@@ -24,6 +24,8 @@ import { IoMdSettings } from "react-icons/io";
 import Button from "./buttons/Button";
 import { GiTopHat } from "react-icons/gi";
 import { RiGift2Fill } from "react-icons/ri";
+import { IoIosWallet } from "react-icons/io";
+import { IoWallet } from "react-icons/io5";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -94,6 +96,22 @@ const InAppNav = () => {
 
         <div className=" md:flex hidden  gap-[8px] items-center">
           <div
+            onClick={() => navigateTo("/dashboard")}
+            className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
+          >
+            <TbDashboardFilled className="lg:flex hidden text-[17px]" />
+            <p className="text-[13px] font-medium">Dashboard</p>
+          </div>
+
+          <div
+            onClick={() => navigateTo("/dashboard")}
+            className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
+          >
+            <IoWallet className="lg:flex hidden text-[17px]" />
+            <p className="text-[13px] font-medium">Wallet</p>
+          </div>
+
+          <div
             onClick={() => navigateTo("/offers/marketplace")}
             className="flex items-center gap-[8px] hover:bg-tradeAsh hover:text-white borde  border-black hover:border-tradeAshLight text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
@@ -110,21 +128,6 @@ const InAppNav = () => {
           <div className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300">
             <FaUserFriends className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-medium">Trade Partners</p>
-          </div>
-          <div
-            onClick={() => navigateTo("/dashboard")}
-            className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
-          >
-            <TbDashboardFilled className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-medium">Dashboard</p>
-          </div>
-
-          <div
-            onClick={() => navigateTo("/dashboard")}
-            className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
-          >
-            <TbDashboardFilled className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-medium">Wallet</p>
           </div>
         </div>
 

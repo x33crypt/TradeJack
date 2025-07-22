@@ -5,6 +5,7 @@ import { toDecimal } from "@/utils/auth/toDecimal";
 import { MdGrid3X3 } from "react-icons/md";
 import { MdDateRange } from "react-icons/md";
 import { RiRadioButtonLine } from "react-icons/ri";
+import { RiBankFill } from "react-icons/ri";
 
 const MyOfferCard = ({ offer }) => {
   const navigateTo = useNavigate();
@@ -19,83 +20,82 @@ const MyOfferCard = ({ offer }) => {
     <>
       <div
         onClick={() => handleOfferClick(offer?.offerId)}
-        className="md:flex hidden p-[15px] gap-10 items-center bg-tradeAsh hover:bg-black transition-all duration-300 cursor-pointer"
+        className="md:flex hidden p-[15px] gap-5 items-center bg-tradeAsh hover:bg-black transition-all duration-300 cursor-pointer"
       >
-        <div className=" flex flex-col  gap-2">
+        <div className=" flex-1 lg:flex-none flex flex-col gap-2">
           <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
-            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+            <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <MdGrid3X3 className="text-sm text-tradeAshExtraLight" />
             </div>
-            <p className="text-white  text-[13px] font-bold">
+            <p className="text-white  text-[13px] font-semibold">
               {offer?.offerId}
             </p>
           </div>
           <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
-            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+            <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <MdDateRange className="text-sm text-tradeAshExtraLight" />
             </div>
-            <p className="text-white  text-[13px] font-bold">14, Feb, 2024 </p>
+            <p className="text-white  text-[13px] font-semibold">
+              14, Feb, 2024{" "}
+            </p>
           </div>
         </div>
-        <div className="flex-1 flex gap-2 items-center">
-          <div className="lg:flex hidden text-tradeFadeWhite p-3 text-base rounded-full bg-tradeAshLight">
-            <CiBank />
+        <div className="flex-1 flex gap-[10px] items-center">
+          <div className="lg:flex hidden text-tradeGreen p-3 text-base rounded-full bg-tradeAshLight">
+            <RiBankFill />
           </div>
           <div className="flex flex-col flex-1 gap-2">
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <p className="text-tradeFadeWhite text-xs font-medium">
-                {offer?.serviceType}
-              </p>
+              <p className="text-tradeFadeWhite text-xs font-medium">Service</p>
             </div>
-            <p className="text-tradeOrange text-[13px] font-semibold">
+            <p className="text-white text-[13px] font-semibold">
               {offer?.service}
             </p>
           </div>
         </div>
-        <div className="flex-1 flex flex-col  gap-2">
+        <div className="lg:w-[150px] flex-1 lg:flex-none flex flex-col  gap-2">
           <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Offer Currency
-            </p>
+            <p className="text-tradeFadeWhite text-xs font-medium">Currency</p>
           </div>
           <div className="flex gap-1 items-center">
-            <p className="text-white text-[13px] font-semibold">
+            <p className="lg:flex hidden text-white text-[13px] font-semibold">
               {offer?.preferredCurrency?.name}
             </p>
-            <p className="text-tradeFadeWhite">-</p>
-            <p className="text-white text-[13px] font-semibold">
+
+            <p className="lg:hidden flex text-white text-[13px] font-semibold">
               {offer?.preferredCurrency?.code}
             </p>
           </div>
         </div>
-        <div className="w-[200px] bg-tradeGree flex flex-col justify-center gap-2   ">
-          <div className="flex gap-[15px] items-center">
-            <div className="lg:flex hidden items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <p className="text-tradeFadeWhite text-xs font-medium">Minimum</p>
-            </div>
-
-            <div className="lg:hidden flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <p className="text-tradeFadeWhite text-xs font-medium">Min</p>
-            </div>
-
-            <p className="text-[13px] font-bold text-white">
-              ${toDecimal(offer?.marginRate?.from)} {""}
-              {/* {offer?.preferredCurrency?.code} */}
+        <div className="lg:w-[150px] flex-1 lg:flex-none flex flex-col justify-center gap-2   ">
+          <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+            <p className="text-tradeFadeWhite text-xs font-medium">
+              Purchase Limits
             </p>
           </div>
 
-          <div className="flex gap-[15px] items-center">
-            <div className="lg:flex hidden items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <p className="text-tradeFadeWhite text-xs font-medium">Maximum</p>
-            </div>
-
-            <div className="lg:hidden flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <p className="text-tradeFadeWhite text-xs font-medium">Max</p>
-            </div>
-
+          <div className="flex gap-1 items-center">
+            <p className="text-[13px] font-bold text-white">
+              {offer?.preferredCurrency?.code}{" "}
+              {toDecimal(offer?.marginRate?.from)} {""}
+            </p>
+            <p className="text-tradeFadeWhite">-</p>
             <p className=" text-[13px] font-bold text-white">
-              ${toDecimal(offer?.marginRate?.to)}{" "}
-              {/* {offer?.preferredCurrency?.code} */}
+              {offer?.preferredCurrency?.code}{" "}
+              {toDecimal(offer?.marginRate?.to)}{" "}
+            </p>
+          </div>
+        </div>
+        <div className="lg:w-[150px] flex-1 lg:flex-none flex flex-col justify-center gap-2   ">
+          <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+            <p className="text-tradeFadeWhite text-xs font-medium">
+              Profit Margin
+            </p>
+          </div>
+
+          <div className="flex gap-1 items-center">
+            <p className="text-[13px] font-bold text-white">
+              {offer?.marginRate?.rate} on every trade
             </p>
           </div>
         </div>
@@ -103,111 +103,75 @@ const MyOfferCard = ({ offer }) => {
 
       <div
         onClick={() => handleOfferClick(offer?.offerId)}
-        className="flex flex-col md:hidden  bg-tradeAsh rounded-[15px] border border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
+        className="md:hidden flex flex-col p-[12px] bg-tradeAsh hover:bg-black transition-all duration-300 rounded-[15px] cursor-pointer gap-3 border border-tradeAshLight"
       >
-        {/* Top: Offer ID and Status */}
-        <div className="flex justify-between items-center px-4 py-3 border-b border-tradeAshLight">
-          <div className=" flex gap-[10px]">
-            <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
-              <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                <MdGrid3X3 className="text-sm text-tradeAshExtraLight" />
-              </div>
-              <p className="text-white  text-[13px] font-bold">
-                {offer?.offerId}
-              </p>
+        {/* Top Section: Offer ID and Date */}
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+              <MdGrid3X3 className="text-sm text-tradeAshExtraLight" />
             </div>
-            <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
-              <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+            <p className="text-xs text-tradeFadeWhite font-medium">
+              {offer?.offerId}
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="text-xs px-2 py-0.5 rounded-[5px] bg-tradeGreen text-black font-medium">
+              Active
+            </span>
+            <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                 <MdDateRange className="text-sm text-tradeAshExtraLight" />
               </div>
-              <p className="text-white  text-[13px] font-bold">
-                14, Feb, 2024{" "}
-              </p>
+              <p className="text-tradeFadeWhite text-xs">14, Feb, 2024</p>
             </div>
-          </div>
-          <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
-            <div className="flex items-center gap-1 bg-tradeGreen/10 px-[5px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <RiRadioButtonLine className="text-sm text-tradeGreen" />
-            </div>
-            <p className="text-white  text-sm font-semibold">Active</p>
           </div>
         </div>
 
-        {/* Bank Info */}
-        <div className="flex items-center gap-3 px-4 py-3 border-b border-tradeAshLight">
-          <div className="flex text-tradeFadeWhite p-3 text-base rounded-full bg-tradeAshLight">
-            <CiBank />
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <p className="text-tradeOrange text-sm font-semibold">
-              {" "}
+        {/* Service & Currency */}
+        <div className="flex justify-between items-center">
+          <div className="flex flex-col">
+            <span className="text-tradeFadeWhite text-[11px]">Service</span>
+            <p className="text-tradeGreen text-sm font-semibold">
               {offer?.service}
             </p>
-            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <p className="text-tradeFadeWhite text-xs font-medium">
-                {offer?.serviceType}
-              </p>
-            </div>
           </div>
-        </div>
-
-        {/* Accepted Currency */}
-        <div className="flex justify-between items-center px-4 py-3 border-b border-tradeAshLight">
-          <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Offer Currency
-            </p>
-          </div>
-          <div className="flex gap-1 items-center">
-            <p className="text-white text-[13px] font-semibold">
-              {offer?.preferredCurrency?.name}
-            </p>
-            <p className="text-tradeFadeWhite">-</p>
-            <p className="text-white text-[13px] font-semibold">
+          <div className="flex flex-col items-end">
+            <span className="text-tradeFadeWhite text-[11px]">Currency</span>
+            <p className="text-tradeOrange text-sm font-semibold">
               {offer?.preferredCurrency?.code}
             </p>
           </div>
         </div>
 
         {/* Purchase Limits */}
-        <div className="flex justify-between px-4 py-4 border- border-tradeAshLight text-white  font-semibold">
-          <div className="flex flex-col gap-1">
-            <div className="flex  items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <p className="text-tradeFadeWhite text-xs font-medium">
-                Min Purchase
-              </p>
-            </div>
-            <p className="text-[13px] font-bold text-white">
-              ${toDecimal(offer?.marginRate?.from)} {""}
-              {/* {offer?.preferredCurrency?.code} */}
+        <div className="flex flex-col">
+          <span className="text-tradeFadeWhite text-[11px]">
+            Purchase Limits
+          </span>
+          <p className="text-white text-sm font-bold">
+            {offer?.preferredCurrency?.code}{" "}
+            {toDecimal(offer?.marginRate?.from)} -{" "}
+            {offer?.preferredCurrency?.code} {toDecimal(offer?.marginRate?.to)}
+          </p>
+        </div>
+
+        {/* Profit Margin */}
+        <div className="flex justify-between items-center">
+          <div className="flex flex-col">
+            <span className="text-tradeFadeWhite text-[11px]">
+              Profit Margin
+            </span>
+            <p className="text-white text-sm font-bold">
+              {offer?.marginRate?.rate} on every trade
             </p>
           </div>
-          <div className="flex flex-col gap-1">
-            <div className="flex  items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <p className="text-tradeFadeWhite text-xs font-medium">
-                Max Purchase
-              </p>
-            </div>
-            <p className=" text-[13px] font-bold text-white">
-              ${toDecimal(offer?.marginRate?.to)}{" "}
-              {/* {offer?.preferredCurrency?.code} */}
-            </p>
-          </div>
-          <div className="flex flex-col gap-1">
-            <div className="flex  items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <p className="text-tradeFadeWhite text-xs font-medium">
-                Profit Margin
-              </p>
-            </div>
-            <p className="font-bold text-[13px] text-white">
-              {" "}
-              <span className="text-tradeOrange">
-                {" "}
-                {offer?.marginRate?.percent}%
-              </span>{" "}
-              on every trade
-            </p>
+
+          <div>
+            <span className="text-xs px-4 py-2 rounded-[5px] bg-tradeAshExtraLight text-white font-medium">
+              See Details
+            </span>
           </div>
         </div>
       </div>

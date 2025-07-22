@@ -1,5 +1,4 @@
 import React from "react";
-import { GiCardExchange } from "react-icons/gi";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

@@ -2,6 +2,8 @@ import React from "react";
 import { date } from "@/utils/date";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
+import { TiFlash } from "react-icons/ti";
+import { FaArrowUp } from "react-icons/fa";
 
 const AccountCard = ({ account, index }) => {
   const { manageAccount, setManageAccount } = useLinkedAccount();
@@ -65,11 +67,21 @@ const AccountCard = ({ account, index }) => {
             </div>
           </div>
           {state && (
-            <div
-              onClick={() => selectDeleteAccount(account?.bankId)}
-              className="p-[8px] bg-red-500/10 border border-red-500 hover:bg-red-500/20 transition-all duration-300 cursor-pointer rounded-[8px] w-max"
-            >
-              <AiOutlineDelete className="text-red-600  text-sm font-medium " />
+            <div className="flex gap-2 items-center">
+              {account?.isDefault === false && (
+                <div
+                  onClick={() => selectDeleteAccount(account?.bankId)}
+                  className="p-[8px] bg-tradeOrange/20 border border-tradeOrange hover:bg-tradeOrange/50 transition-all duration-300 cursor-pointer rounded-[8px] w-max"
+                >
+                  <FaArrowUp className="text-tradeOrange  text-sm font-medium " />
+                </div>
+              )}
+              <div
+                onClick={() => selectDeleteAccount(account?.bankId)}
+                className="p-[8px] bg-red-500/10 border border-red-500 hover:bg-red-500/20 transition-all duration-300 cursor-pointer rounded-[8px] w-max"
+              >
+                <AiOutlineDelete className="text-red-600  text-sm font-medium " />
+              </div>
             </div>
           )}
         </div>

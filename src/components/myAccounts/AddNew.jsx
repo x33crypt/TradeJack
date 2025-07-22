@@ -174,7 +174,7 @@ const AddNew = () => {
           bankAccount: "",
           holdersName: null,
         });
-      }, 20000); // 10 seconds
+      }, 40000); // 10 seconds
 
       return () => clearTimeout(timer);
     }
