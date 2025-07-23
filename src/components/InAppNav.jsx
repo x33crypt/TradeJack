@@ -238,6 +238,12 @@ const InAppNav = () => {
               Help & support
             </p>
           </div>
+          <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+            <BiSupport className="text-[20px] text-tradeFadeWhite" />
+            <p className="text-white text-[13px]  font-medium">
+              Invite a friend
+            </p>
+          </div>
           <div
             onClick={() => navigateTo("/settings")}
             className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
