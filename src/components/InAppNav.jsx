@@ -175,7 +175,7 @@ const InAppNav = () => {
               navigateTo("/dashboard");
               setIsNavOption(false);
             }}
-            className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
+            className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
           >
             <TbDashboardFilled className="text-[20px] text-tradeFadeWhite" />
             <p className="text-white text-[13px] font-medium">Dashboard</p>
@@ -185,7 +185,7 @@ const InAppNav = () => {
               navigateTo("/wallet");
               setIsNavOption(false);
             }}
-            className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
+            className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
           >
             <IoWalletOutline className="text-[20px] text-tradeFadeWhite" />
             <p className="text-white text-[13px]  font-medium ">Wallet</p>
@@ -195,23 +195,23 @@ const InAppNav = () => {
               navigateTo("/offers/myoffers");
               setIsNavOption(false);
             }}
-            className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
+            className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
           >
             <TbFileInvoice className="text-[20px] text-tradeFadeWhite" />
             <p className="text-white text-[13px]  font-medium ">My offers</p>
           </div>
-          <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+          <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
             <TbFileLike className="text-[20px] text-tradeFadeWhite" />
             <p className="text-white text-[13px] ">Favourite offers</p>
           </div>
-          <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+          <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
             <FaUserFriends className="text-[20px] text-tradeFadeWhite" />
             <p className="text-white text-[13px]  font-medium ">
               Trade partners
             </p>
           </div>
           <div
-            className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
+            className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
             onClick={() => {
               setIsNavOption(false);
             }}
@@ -219,19 +219,19 @@ const InAppNav = () => {
             <BsChatQuote className="text-[20px] text-tradeFadeWhite" />
             <p className="text-white text-[13px]  font-medium "> Messages</p>
           </div>
-          <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+          <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
             <TbLayoutListFilled className="text-[20px] text-tradeFadeWhite" />
             <p className="text-white text-[13px]  font-medium ">
               Trade history
             </p>
           </div>
-          <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+          <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
             <TbLayoutListFilled className="text-[20px] text-tradeFadeWhite" />
             <p className="text-white text-[13px]  font-medium ">
               Transaction history
             </p>
           </div>
-          <div className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+          <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
             <BiSupport className="text-[20px] text-tradeFadeWhite" />
             <p className="text-white text-[13px]  font-medium">
               {" "}
@@ -240,7 +240,7 @@ const InAppNav = () => {
           </div>
           <div
             onClick={() => navigateTo("/settings")}
-            className=" flex gap-[15px] items-center p-[8px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
+            className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
           >
             <IoMdSettings className="text-[20px] text-tradeFadeWhite" />
             <p className="text-white text-[13px]  font-medium ">Settings</p>
