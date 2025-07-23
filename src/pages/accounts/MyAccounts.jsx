@@ -219,7 +219,7 @@ const MyAccounts = () => {
                                 variant="outline"
                                 onClick={handleManageAccount}
                               >
-                                Manage Accounts
+                                Edit Accounts
                               </Button>
                             )}
                           </div>
