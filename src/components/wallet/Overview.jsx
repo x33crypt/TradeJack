@@ -11,7 +11,7 @@ const Overview = () => {
       </div>
 
       <div className="flex p-[15px] h-full">
-        <div className="flex-1 flex flex-col lg:h-full  gap-[10px] p-[12px]  bg-tradeAsh rounded-[10px] border border-tradeAshLight transition-all duration-300 ">
+        <div className="flex-1 flex flex-col lg:h-full  gap-[10px] p-[12px]  bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
           <div className="flex items-start justify-between">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1">
