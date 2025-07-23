@@ -3,8 +3,9 @@ import InAppNav from "@/components/InAppNav";
 import React, { useState, useEffect } from "react";
 import Button from "@/components/buttons/Button";
 import { toUSD } from "@/utils/toUSD";
+import { toNGN } from "@/utils/toNGN";
 import { getMinimumWithdrawal } from "@/utils/currency/minWithdraw";
-import { toDecimal } from "@/utils/auth/toDecimal";
+import { toDecimal } from "@/utils/toDecimal";
 import image from "../../assets/landingImg4.JPG";
 import { useToast } from "@/context/ToastContext";
 import { submitTransfer } from "@/utils/wallet/transfer";
@@ -20,6 +21,7 @@ const Transfer = () => {
   const { transfer, setTransfer } = useTransferContext();
   const [transferDetails, setTransferDetails] = useState({
     username: "",
+    selectedCurrency: "NGN",
     amount: { USD: null, NGN: null },
     error: "",
     loading: false,
@@ -31,6 +33,7 @@ const Transfer = () => {
   });
   const [proceed, setProceed] = useState(false);
   const { toast, setToast } = useToast();
+  const [isEditing, setIsEditing] = useState(false);
 
   const fetchMinWithdraw = async () => {
     setMinWithdraw({
@@ -347,6 +350,124 @@ const Transfer = () => {
 
   console.log(transfer);
 
+  const selectUSD = () => {
+    setTransferDetails((prevDetails) => ({
+      selectedCurrency: "USD",
+      amount: { NGN: null, USD: null },
+    }));
+  };
+
+  const selectNGN = () => {
+    setTransferDetails((prevDetails) => ({
+      selectedCurrency: "NGN",
+      amount: { NGN: null, USD: null },
+    }));
+  };
+
+  const handleUSDAmountChange = (e) => {
+    let rawValue = e.target.value.replace(/[^\d.]/g, ""); // Allow only numbers & dot
+
+    // Prevent multiple dots
+    const parts = rawValue.split(".");
+    if (parts.length > 2) {
+      rawValue = parts[0] + "." + parts.slice(1).join("");
+    }
+
+    setTransferDetails((prevDetails) => ({
+      ...prevDetails,
+      amount: {
+        ...prevDetails.amount,
+        USD: rawValue,
+      },
+    }));
+  };
+
+  const handleNGNAmountChange = (e) => {
+    let rawValue = e.target.value.replace(/[^\d.]/g, ""); // Allow only numbers & dot
+
+    // Prevent multiple dots
+    const parts = rawValue.split(".");
+    if (parts.length > 2) {
+      rawValue = parts[0] + "." + parts.slice(1).join("");
+    }
+
+    setTransferDetails((prevDetails) => ({
+      ...prevDetails,
+      amount: {
+        ...prevDetails.amount,
+        NGN: rawValue,
+      },
+    }));
+  };
+
+  const formatWithCommas = (value) => {
+    if (!value) return "";
+    const num = parseFloat(value);
+    if (isNaN(num)) return value;
+    return num.toLocaleString("en-US", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    });
+  };
+
+  // update NGN amount if user input USD
+  useEffect(() => {
+    if (
+      !transferDetails?.amount?.USD ||
+      transferDetails?.selectedCurrency !== "USD"
+    )
+      return;
+
+    const debounceTimeout = setTimeout(async () => {
+      try {
+        const { amount: ngnValue } = await toNGN(transferDetails.amount.USD);
+
+        if (ngnValue) {
+          setTransferDetails((prevDetails) => ({
+            ...prevDetails,
+            amount: {
+              ...prevDetails.amount,
+              NGN: ngnValue,
+            },
+          }));
+        }
+      } catch (error) {
+        console.error("Conversion to NGN failed:", error);
+      }
+    }, 2000); // 2 seconds delay
+
+    return () => clearTimeout(debounceTimeout); // Clear previous timeout on new input
+  }, [transferDetails?.amount?.USD, transferDetails?.selectedCurrency]);
+
+  // update USD amount if user input NGN
+  useEffect(() => {
+    if (
+      !transferDetails?.amount?.NGN ||
+      transferDetails?.selectedCurrency !== "NGN"
+    )
+      return;
+
+    const debounceTimeout = setTimeout(async () => {
+      try {
+        const { amount: usdValue } = await toUSD(transferDetails.amount.NGN);
+
+        if (usdValue) {
+          setTransferDetails((prevDetails) => ({
+            ...prevDetails,
+            amount: {
+              ...prevDetails.amount,
+              USD: usdValue,
+            },
+          }));
+        }
+      } catch (error) {
+        console.error("Conversion to USD failed:", error);
+      }
+    }, 2000); // 2 second delay
+
+    return () => clearTimeout(debounceTimeout); // Clear on new keystroke
+  }, [transferDetails?.amount?.NGN, transferDetails?.selectedCurrency]);
+
   return (
     <>
       <InAppNav />
@@ -380,11 +501,12 @@ const Transfer = () => {
                   <p className="text-tradeFadeWhite text-xs font-medium">
                     Recipient Wallet
                   </p>
+
                   <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
                     <input
                       className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                       type="text"
-                      placeholder="Username/Email"
+                      placeholder="Username"
                       onChange={handleUsernameChange}
                       value={transferDetails?.username}
                     />
@@ -407,42 +529,112 @@ const Transfer = () => {
                   </div>
 
                   <div className="flex gap-1">
-                    <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                      <p className="text-white text-xs font-bold">USD</p>
-                    </div>{" "}
-                    <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                    <div
+                      onClick={selectNGN}
+                      className={`${
+                        transferDetails?.selectedCurrency === "NGN"
+                          ? "bg-tradeOrange"
+                          : "bg-transparent"
+                      }  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                    >
                       <p className="text-white text-xs font-bold">NGN</p>
                     </div>
-                  </div>
-                </div>
-                <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    Amount
-                  </p>
-                  <div className="flex items-center  gap-[5px]">
-                    <div className="flex-1 flex  bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                      <input
-                        className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                        type="text"
-                        placeholder="15,000.00 - 30,000,000.00"
-                        onChange={handleAmountChange}
-                        value={
-                          transferDetails?.amount?.NGN
-                            ? toDecimal(transferDetails?.amount?.NGN)
-                            : ""
-                        }
-                      />
+                    <div
+                      onClick={selectUSD}
+                      className={`${
+                        transferDetails?.selectedCurrency === "USD"
+                          ? "bg-tradeOrange"
+                          : "bg-transparent"
+                      }  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                    >
+                      <p className="text-white text-xs font-bold">USD</p>
                     </div>
                   </div>
                 </div>
+                <div className="flex flex-col w-full">
+                  {transferDetails?.selectedCurrency === "NGN" ? (
+                    // NGN
+                    <div className="flex flex-col gap-[10px]">
+                      <div className="flex flex-col gap-[10px] w-full">
+                        <p className="text-tradeFadeWhite text-xs font-medium">
+                          Enter Amount in NGN
+                        </p>
+                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                          <input
+                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                            type="text"
+                            placeholder={`15,000.000 - 30,000,000.00`}
+                            value={formatWithCommas(
+                              transferDetails?.amount?.NGN
+                            )}
+                            onChange={handleNGNAmountChange}
+                            onFocus={(e) =>
+                              (e.target.value =
+                                transferDetails?.amount?.NGN || "")
+                            } // show raw when editing
+                            onBlur={(e) =>
+                              (e.target.value = formatWithCommas(
+                                transferDetails?.amount?.NGN
+                              ))
+                            } // format on blur
+                          />
+                        </div>
+                      </div>
 
-                <div>
-                  <p className="text-tradeFadeWhite text-xs font-semibold">
-                    You're about to transfer the equivalent of{" "}
-                    <span className="text-tradeOrange">
-                      USD{transferDetails?.amount?.USD ?? "0.00"}
-                    </span>
-                  </p>
+                      <div>
+                        <p className="text-tradeFadeWhite text-xs font-semibold">
+                          You're about to deposit the equivalent of{" "}
+                          <span className="text-tradeOrange">
+                            USD {""}
+                            {transferDetails?.amount?.USD
+                              ? toDecimal(transferDetails?.amount?.USD)
+                              : "0.00"}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    // USD
+                    <div className="flex flex-col gap-[10px]">
+                      <div className="flex flex-col gap-[10px] w-full">
+                        <p className="text-tradeFadeWhite text-xs font-medium">
+                          Enter Amount in USD
+                        </p>
+                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                          <input
+                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                            type="text"
+                            placeholder={`10.00 - 20,000.00`}
+                            value={formatWithCommas(
+                              transferDetails?.amount?.USD
+                            )}
+                            onChange={handleUSDAmountChange}
+                            onFocus={(e) =>
+                              (e.target.value =
+                                transferDetails?.amount?.USD || "")
+                            } // show raw when editing
+                            onBlur={(e) =>
+                              (e.target.value = formatWithCommas(
+                                transferDetails?.amount?.USD
+                              ))
+                            } // format on blur
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <p className="text-tradeFadeWhite text-xs font-semibold">
+                          You're about to deposit the equivalent of{" "}
+                          <span className="text-tradeOrange">
+                            NGN {""}
+                            {transferDetails?.amount?.NGN
+                              ? toDecimal(transferDetails?.amount?.NGN)
+                              : "0.00"}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 

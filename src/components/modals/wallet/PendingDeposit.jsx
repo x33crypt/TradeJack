@@ -3,7 +3,7 @@ import LockByScroll from "@/components/LockByScroll";
 import Button from "@/components/buttons/Button";
 import { RiWaterFlashFill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
-import { toDecimal } from "@/utils/auth/toDecimal";
+import { toDecimal } from "@/utils/toDecimal";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { MdDateRange } from "react-icons/md";
 import { MdOutlinePending } from "react-icons/md";

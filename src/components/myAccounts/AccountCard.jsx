@@ -9,10 +9,23 @@ const AccountCard = ({ account, index }) => {
   const { manageAccount, setManageAccount } = useLinkedAccount();
   const { state } = manageAccount;
 
-  const selectDeleteAccount = (id) => {
+  const selectDeleteAccount = (id, bank, digit) => {
     setManageAccount({
       state: false,
+      isDelete: true,
       accountId: id,
+      bank: bank,
+      last4digits: digit,
+    });
+  };
+
+  const selectSetDefault = (id, bank, digit) => {
+    setManageAccount({
+      state: false,
+      isDefault: true,
+      accountId: id,
+      bank: bank,
+      last4digits: digit,
     });
   };
 
@@ -70,14 +83,26 @@ const AccountCard = ({ account, index }) => {
             <div className="flex gap-2 items-center">
               {account?.isDefault === false && (
                 <div
-                  onClick={() => selectDeleteAccount(account?.bankId)}
+                  onClick={() =>
+                    selectSetDefault(
+                      account?.bankId,
+                      account?.bank_name,
+                      account?.account_number.slice(-4)
+                    )
+                  }
                   className="p-[8px] bg-tradeOrange/20 border border-tradeOrange hover:bg-tradeOrange/50 transition-all duration-300 cursor-pointer rounded-[8px] w-max"
                 >
                   <FaArrowUp className="text-tradeOrange  text-sm font-medium " />
                 </div>
               )}
               <div
-                onClick={() => selectDeleteAccount(account?.bankId)}
+                onClick={() =>
+                  selectDeleteAccount(
+                    account?.bankId,
+                    account?.bank_name,
+                    account?.account_number.slice(-4)
+                  )
+                }
                 className="p-[8px] bg-red-500/10 border border-red-500 hover:bg-red-500/20 transition-all duration-300 cursor-pointer rounded-[8px] w-max"
               >
                 <AiOutlineDelete className="text-red-600  text-sm font-medium " />

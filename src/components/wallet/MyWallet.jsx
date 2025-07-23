@@ -6,11 +6,17 @@ import { FaEye } from "react-icons/fa";
 import { HiPlus } from "react-icons/hi";
 import { FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { PiArrowDownLeftFill } from "react-icons/pi";
-import { RiArrowLeftDownFill } from "react-icons/ri";
+import { useFetchBalance } from "@/hooks/useFetchBalance";
+import toDecimal from "@/utils/toDecimal";
+import Info from "../alerts/Info";
+import { useBalance } from "@/context/BalanceContext";
 
 const MyWallet = () => {
+  const { balance, setBalance } = useBalance();
+  const { loading, error, refetch } = useFetchBalance();
   const [showBalance, setShowBalance] = useState(false);
+
+  console.log("Balance:", balance);
 
   const toggleBalanceVisibility = () => {
     setShowBalance((prev) => !prev);
@@ -34,7 +40,7 @@ const MyWallet = () => {
         <p className="text-lg font-[700] text-white ">My Wallet</p>
       </div>
       <div className="flex flex-col p-[15px] gap-[10px] h-full">
-        <div className="bg-tradePurpl flex flex-col justify-between md:h-[190px] p-[12px] gap-[30px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+        <div className="flex flex-col justify-between md:h-[190px] p-[12px] gap-[30px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
           <div className="bg-tradeGree flex justify-between items-center">
             <div className="flex items-center gap-2">
               <p className="text-tradeFadeWhite text-[13px] font-semibold">
@@ -63,17 +69,33 @@ const MyWallet = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-[15px]">
-            <p
-              className={`text-white text-[35px] font-semibold transition-all duration-300 ease-in-out transform ${
-                showBalance ? "opacity-100 scale-100" : "opacity-50 scale-95"
-              }`}
-            >
-              {showBalance ? "#162,790.23" : "****"}
-            </p>
+          <div className="flex items-center">
+            {balance?.available_balance.NGN ? (
+              <div className="flex flex-col gap-[15px]">
+                <p
+                  className={`text-white text-[35px] font-semibold transition-all duration-300 ease-in-out transform ${
+                    showBalance
+                      ? "opacity-100 scale-100"
+                      : "opacity-50 scale-95"
+                  }`}
+                >
+                  {showBalance
+                    ? `#${toDecimal(balance.available_balance.NGN)}`
+                    : "****"}
+                </p>
+              </div>
+            ) : (
+              <div className="flex h-[35px] items-center">
+                <Info
+                  text={
+                    "Balance unavailable at the moment. Please verify your internet connection or refresh the page to try again."
+                  }
+                />
+              </div>
+            )}
           </div>
 
-          <div className="flex gap-2 h-full  md:flex-row flex-col justify-between bg-tradeGree">
+          <div className="flex gap-2 h-ful  md:flex-row flex-col justify-between bg-tradeGree">
             <div className="flex justify-between flex-co gap-2">
               <div className="flex items-center gap-2">
                 <p className="text-tradeFadeWhite text-[13px] font-semibold">
@@ -82,15 +104,25 @@ const MyWallet = () => {
               </div>
               <div className="flex justify-between items-center gap-2">
                 <div>
-                  <p
-                    className={`text-white text-[13px] font-semibold transition-all duration-300 ease-in-out transform ${
-                      showBalance
-                        ? "opacity-100 scale-100"
-                        : "opacity-50 scale-95"
-                    }`}
-                  >
-                    {showBalance ? "#28,352.00" : "****"}
-                  </p>
+                  {balance?.escrow_balance?.NGN ? (
+                    <p
+                      className={`text-white text-[13px] font-semibold transition-all duration-300 ease-in-out transform ${
+                        showBalance
+                          ? "opacity-100 scale-100"
+                          : "opacity-50 scale-95"
+                      }`}
+                    >
+                      {showBalance
+                        ? `#${toDecimal(balance?.escrow_balance?.NGN)}`
+                        : "****"}
+                    </p>
+                  ) : (
+                    <p
+                      className={`text-white text-[13px] font-semibold transition-all duration-300 ease-in-out transform`}
+                    >
+                      #0.00
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
@@ -103,21 +135,32 @@ const MyWallet = () => {
               </div>
               <div className="flex justify-between items-center gap-2">
                 <div>
-                  <p
-                    className={`text-white text-[13px] font-semibold transition-all duration-300 ease-in-out transform ${
-                      showBalance
-                        ? "opacity-100 scale-100"
-                        : "opacity-50 scale-95"
-                    }`}
-                  >
-                    {showBalance ? "#28,352.00" : "****"}
-                  </p>
+                  {balance?.escrow_balance?.NGN ? (
+                    <p
+                      className={`text-white text-[13px] font-semibold transition-all duration-300 ease-in-out transform ${
+                        showBalance
+                          ? "opacity-100 scale-100"
+                          : "opacity-50 scale-95"
+                      }`}
+                    >
+                      {showBalance
+                        ? `#${toDecimal(balance?.escrow_balance?.NGN)}`
+                        : "****"}
+                    </p>
+                  ) : (
+                    <p
+                      className={`text-white text-[13px] font-semibold transition-all duration-300 ease-in-out transform`}
+                    >
+                      #0.00
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Move Money Options */}
         <div className="flex flex-col md:pt-[30px] gap-[10px] md:w-[350px bg-tradeAs rounded-[15px] borde border-tradeAshLight">
           <div className="flex  w-full gap-[10px]">
             <div

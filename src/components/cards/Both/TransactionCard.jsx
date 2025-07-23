@@ -3,7 +3,7 @@ import { MdDateRange } from "react-icons/md";
 import { MdGrid3X3 } from "react-icons/md";
 import { IoMdArrowRoundUp, IoMdArrowRoundDown } from "react-icons/io";
 import { date } from "@/utils/date";
-import { toDecimal } from "@/utils/auth/toDecimal";
+import { toDecimal } from "@/utils/toDecimal";
 import { shortenID } from "@/utils/shortenID";
 import { MdOutlineQuestionMark } from "react-icons/md";
 import { useTransaction } from "@/context/wallet/TransactionContext";

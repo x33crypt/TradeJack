@@ -6,7 +6,7 @@ import { useFetchTransactionsDetails } from "@/hooks/useFetchTransactionDetails"
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoMdArrowRoundUp, IoMdArrowRoundDown } from "react-icons/io";
 import { MdOutlineQuestionMark } from "react-icons/md";
-import { toDecimal } from "@/utils/auth/toDecimal";
+import { toDecimal } from "@/utils/toDecimal";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import { dateTime } from "@/utils/dateTime";
 

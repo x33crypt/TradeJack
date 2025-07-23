@@ -27,7 +27,7 @@ const LinkedAccount = () => {
           ) : (
             <div className="">
               {linkedAccounts?.length && linkedAccounts?.length !== 0 ? (
-                <div className="flex flex-col gap-[15px]">
+                <div className="flex flex-col gap-[15px] justify-between h-full">
                   <div className="flex flex-col gap-[10px] h-full">
                     {linkedAccounts.map((account, index) => (
                       <div

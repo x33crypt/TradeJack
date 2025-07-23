@@ -3,7 +3,7 @@ import InAppNav from "@/components/InAppNav";
 import React, { useState } from "react";
 import Button from "@/components/buttons/Button";
 import RecentDeposit from "@/components/wallet/RecentDeposit";
-import { toDecimal } from "@/utils/auth/toDecimal";
+import { toDecimal } from "@/utils/toDecimal";
 import { useToast } from "@/context/ToastContext";
 import { submitDeposit } from "@/utils/wallet/deposit";
 import { useDepositContext } from "@/context/wallet/DepositContext";
@@ -23,8 +23,8 @@ const Deposit = () => {
     selectedCurrency: "NGN",
     amount: { NGN: null, USD: null },
   });
-
   const { toast, setToast } = useToast();
+  const [editingAmount, setEditingAmount] = useState(false);
 
   const selectUSD = () => {
     setDepositDetails((prevDetails) => ({
@@ -43,88 +43,124 @@ const Deposit = () => {
   };
 
   const handleUSDAmountChange = (e) => {
-    const rawValue = e.target.value.replace(/,/g, ""); // Remove commas
-    const usdValue = rawValue || ""; // Default to empty string if cleared
+    let rawValue = e.target.value.replace(/[^\d.]/g, ""); // Allow only numbers & dot
+
+    // Prevent multiple dots
+    const parts = rawValue.split(".");
+    if (parts.length > 2) {
+      rawValue = parts[0] + "." + parts.slice(1).join("");
+    }
 
     setDepositDetails((prevDetails) => ({
       ...prevDetails,
       amount: {
         ...prevDetails.amount,
-        USD: usdValue,
+        USD: rawValue,
       },
     }));
   };
 
-  // update NGN amount if user input USD
+  const handleNGNAmountChange = (e) => {
+    let rawValue = e.target.value.replace(/[^\d.]/g, ""); // allow only numbers and one dot
+
+    // Prevent multiple dots
+    const parts = rawValue.split(".");
+    if (parts.length > 2) {
+      rawValue = parts[0] + "." + parts.slice(1).join("");
+    }
+
+    setDepositDetails((prevDetails) => ({
+      ...prevDetails,
+      amount: {
+        ...prevDetails.amount,
+        NGN: rawValue, // store the raw value
+      },
+    }));
+  };
+
+  const formatWithCommas = (value) => {
+    if (!value) return "";
+    const num = parseFloat(value);
+    if (isNaN(num)) return value;
+    return num.toLocaleString("en-US", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    });
+  };
+
+  // Update NGN amount if user inputs USD (convert USD → NGN)
   useEffect(() => {
     if (
-      !depositDetails?.amount?.USD ||
-      depositDetails?.selectedCurrency !== "USD"
+      !depositDetails.amount?.USD || // check USD input, not NGN
+      depositDetails.selectedCurrency !== "USD"
     )
       return;
 
+    const currentUSD = depositDetails.amount.USD;
+
     const debounceTimeout = setTimeout(async () => {
       try {
-        const { amount: ngnValue } = await toNGN(depositDetails.amount.USD);
+        const { amount: ngnValue } = await toNGN(currentUSD); // convert USD to NGN
 
-        if (ngnValue) {
-          setDepositDetails((prevDetails) => ({
-            ...prevDetails,
+        // Only update if USD value hasn't changed during fetch
+        setDepositDetails((prev) => {
+          if (prev.amount.USD !== currentUSD) return prev;
+          return {
+            ...prev,
             amount: {
-              ...prevDetails.amount,
-              NGN: ngnValue,
+              ...prev.amount,
+              NGN: ngnValue || "",
             },
-          }));
-        }
+          };
+        });
       } catch (error) {
         console.error("Conversion to NGN failed:", error);
       }
-    }, 2000); // 2 seconds delay
+    }, 700);
 
-    return () => clearTimeout(debounceTimeout); // Clear previous timeout on new input
-  }, [depositDetails?.amount?.USD, depositDetails?.selectedCurrency]);
+    return () => clearTimeout(debounceTimeout);
+  }, [
+    depositDetails.amount?.USD,
+    depositDetails.selectedCurrency,
+    editingAmount,
+  ]);
 
-  const handleNGNAmountChange = (e) => {
-    const rawValue = e.target.value.replace(/,/g, ""); // Remove commas
-    const ngnValue = rawValue || ""; // Default to empty string if cleared
-
-    setDepositDetails((prevDetails) => ({
-      ...prevDetails,
-      amount: {
-        ...prevDetails.amount,
-        NGN: ngnValue,
-      },
-    }));
-  };
-
-  // update USD amount if user input NGN
+  // Update NGN amount if user inputs NGN (convert NGN → USD)
   useEffect(() => {
     if (
-      !depositDetails?.amount?.NGN ||
-      depositDetails?.selectedCurrency !== "NGN"
+      !depositDetails.amount?.NGN ||
+      depositDetails.selectedCurrency !== "NGN"
     )
       return;
 
+    const currentNGN = depositDetails.amount.NGN;
+
     const debounceTimeout = setTimeout(async () => {
       try {
-        const { amount: usdValue } = await toUSD(depositDetails.amount.NGN);
+        const { amount: usdValue } = await toUSD(currentNGN);
 
-        if (usdValue) {
-          setDepositDetails((prevDetails) => ({
-            ...prevDetails,
+        // Only update if NGN value hasn't changed during fetch
+        setDepositDetails((prev) => {
+          if (prev.amount.NGN !== currentNGN) return prev;
+          return {
+            ...prev,
             amount: {
-              ...prevDetails.amount,
-              USD: usdValue,
+              ...prev.amount,
+              USD: usdValue || "",
             },
-          }));
-        }
+          };
+        });
       } catch (error) {
         console.error("Conversion to USD failed:", error);
       }
-    }, 2000); // 2 second delay
+    }, 700); // ~700ms debounce
 
-    return () => clearTimeout(debounceTimeout); // Clear on new keystroke
-  }, [depositDetails?.amount?.NGN, depositDetails?.selectedCurrency]);
+    return () => clearTimeout(debounceTimeout);
+  }, [
+    depositDetails.amount?.NGN,
+    depositDetails.selectedCurrency,
+    editingAmount,
+  ]);
 
   console.log(depositDetails?.amount);
 
@@ -210,6 +246,9 @@ const Deposit = () => {
       });
     }
   };
+
+  console.log("Deposit Details:", depositDetails);
+  console.log("editingAmount:", editingAmount);
 
   return (
     <>
@@ -305,8 +344,14 @@ const Deposit = () => {
                             className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                             type="text"
                             placeholder={`15,000.000 - 30,000,000.00`}
+                            value={
+                              editingAmount
+                                ? depositDetails?.amount?.NGN || ""
+                                : formatWithCommas(depositDetails?.amount?.NGN)
+                            }
                             onChange={handleNGNAmountChange}
-                            value={toDecimal(depositDetails?.amount?.NGN) || ""}
+                            onFocus={() => setEditingAmount(true)}
+                            onBlur={() => setEditingAmount(false)}
                           />
                         </div>
                       </div>
@@ -335,8 +380,14 @@ const Deposit = () => {
                             className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                             type="text"
                             placeholder={`10.00 - 20,000.00`}
+                            value={
+                              editingAmount
+                                ? depositDetails?.amount?.USD || ""
+                                : formatWithCommas(depositDetails?.amount?.USD)
+                            }
                             onChange={handleUSDAmountChange}
-                            value={toDecimal(depositDetails?.amount?.USD) || ""}
+                            onFocus={() => setEditingAmount(true)}
+                            onBlur={() => setEditingAmount(false)}
                           />
                         </div>
                       </div>

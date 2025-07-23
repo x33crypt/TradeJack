@@ -5,7 +5,7 @@ import { RiArrowRightFill } from "react-icons/ri";
 const RecentTrades = () => {
   return (
     <div className="h-max md:border border-tradeAshLight flex flex-col">
-      <div className="flex justify-between items-center md:p-[15px] px-[15px] py-[12px]  border-b border-tradeAshLight">
+      <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg text-white font-semibold">Recent Trades</p>
 
 
@@ -13,9 +13,9 @@ const RecentTrades = () => {
           // onClick={() => navigateTo("/wallet/transactions")}
           className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
         >
-          <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+          {/* <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
             <RiArrowRightFill />
-          </div>
+          </div> */}
           <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
             <p className="text-[13px] font-semibold">See More</p>
           </div>

@@ -19,10 +19,11 @@ const MyAccounts = () => {
   const { loading, error, refetch } = useFetchLinkedBanks();
   const { linkAccount, linkedAccounts, manageAccount, setManageAccount } =
     useLinkedAccount();
-  const { state, accountId, success } = manageAccount;
+  const { isDelete, isDefault, success } = manageAccount;
   const { toast, setToast } = useToast();
 
   console.log(linkedAccounts);
+  console.log("Manage Account:", manageAccount);
 
   useEffect(() => {
     if (linkedAccounts.length) {
@@ -36,16 +37,9 @@ const MyAccounts = () => {
     });
   };
 
-  const handleCancelManageAccount = () => {
+  const closeEditAccounts = () => {
     setManageAccount({
       state: false,
-    });
-  };
-
-  const closeConfrimDeleteAccount = () => {
-    setManageAccount({
-      state: false,
-      accountId: null,
     });
   };
 
@@ -63,7 +57,11 @@ const MyAccounts = () => {
       if (res?.data?.success) {
         setManageAccount({
           state: false,
+          isDefault: false,
+          isDelete: false,
           accountId: null,
+          bank: null,
+          last4digits: null,
           loading: false,
           success: true,
         });
@@ -89,9 +87,73 @@ const MyAccounts = () => {
     } finally {
       setManageAccount((prev) => ({
         ...prev,
-        loading: true,
+        loading: false,
       }));
     }
+  };
+
+  const setDefaultAccount = async () => {
+    try {
+      setManageAccount((prev) => ({
+        ...prev,
+        loading: true,
+      }));
+
+      const accountId = manageAccount.accountId;
+
+      const res = await api.patch(
+        `/payment/bank-accounts/${accountId}/set-default`
+      );
+
+      if (res?.data?.success) {
+        setManageAccount({
+          state: false,
+          isDefault: false,
+          isDelete: false,
+          accountId: null,
+          bank: null,
+          last4digits: null,
+          loading: false,
+          success: true,
+        });
+
+        setToast({
+          success: true,
+          successMessage: "Account has been set as default.",
+        });
+      } else {
+        setToast({
+          error: true,
+          errorMessage: res?.data?.message || "Failed to set default account.",
+        });
+      }
+    } catch (err) {
+      setToast({
+        error: true,
+        errorMessage:
+          err?.response?.data?.errorMessage ||
+          err.message ||
+          "An unknown error occurred.",
+      });
+    } finally {
+      setManageAccount((prev) => ({
+        ...prev,
+        loading: false,
+      }));
+    }
+  };
+
+  const closeAccountSetting = () => {
+    setManageAccount({
+      state: false,
+      isDefault: false,
+      isDelete: false,
+      accountId: null,
+      bank: null,
+      last4digits: null,
+      loading: false,
+      success: false,
+    });
   };
 
   useEffect(() => {
@@ -104,7 +166,7 @@ const MyAccounts = () => {
           success: false,
         });
         refetch();
-      }, 3000);
+      });
     }
   }, [success]);
 
@@ -209,8 +271,7 @@ const MyAccounts = () => {
                             {manageAccount.state ? (
                               <Button
                                 variant="outline"
-                                // disabled={linkAccount?.loading}
-                                onClick={handleCancelManageAccount}
+                                onClick={closeEditAccounts}
                               >
                                 Cancel
                               </Button>
@@ -271,7 +332,7 @@ const MyAccounts = () => {
 
       <Footer big={"flex"} small={"hidden"} />
 
-      {accountId ? (
+      {isDelete ? (
         <div>
           <LockByScroll />
           <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-90 flex items-center justify-center z-40">
@@ -279,24 +340,27 @@ const MyAccounts = () => {
               <div className="flex justify-between items-start gap-[15px] pb-[15px] md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
                 <div className="flex flex-col gap-3">
                   <p className="text-lg font-semibold text-white leading-none">
-                    Delete Account
+                    Confirm Account Deletion
                   </p>
                 </div>
 
-                <div onClick={closeConfrimDeleteAccount}>
+                <div onClick={closeAccountSetting}>
                   <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-[30px]">
                 <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed">
-                  Are you sure you want to delete your linked account with {""}
+                  Are you sure you want to delete your linked account {""}
                   <span className="text-white font-semibold">
-                    Zenith Bank{" "}
+                    {manageAccount?.bank}{" "}
                   </span>{" "}
                   ending in{" "}
-                  <span className="text-white font-semibold">2345</span> ? Once
-                  removed, this account will no longer be available for
+                  <span className="text-white font-semibold">
+                    {" "}
+                    {manageAccount?.last4digits}
+                  </span>{" "}
+                   ? Once removed, this account will no longer be available for
                   transactions.
                 </p>
 
@@ -306,6 +370,50 @@ const MyAccounts = () => {
                   onClick={deleteAccount}
                 >
                   Yes, Unlink & Delete
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
+      {isDefault ? (
+        <div>
+          <LockByScroll />
+          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-90 flex items-center justify-center z-40">
+            <div className="flex flex-col justify-between gap-[10px] bg-tradeAsh borde border-tradeAshLight p-[15px] rounded-[15px] shadow-lg lg:max-w-[350px] w-full">
+              <div className="flex justify-between items-start gap-[15px] pb-[15px] md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
+                <div className="flex flex-col gap-3">
+                  <p className="text-lg font-semibold text-white leading-none">
+                    Confirm Default Account
+                  </p>
+                </div>
+
+                <div onClick={closeAccountSetting}>
+                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-[30px]">
+                <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed">
+                  Are you sure you want to set{" "}
+                  <span className="text-white font-semibold">
+                    {manageAccount?.bank}
+                  </span>{" "}
+                  account ending in{" "}
+                  <span className="text-white font-semibold">
+                    {manageAccount?.last4digits}
+                  </span>{" "}
+                  as your default account? This will replace your current
+                  default for all future transactions.
+                </p>
+
+                <Button
+                  variant="secondary"
+                  disabled={manageAccount?.loading}
+                  onClick={setDefaultAccount}
+                >
+                  Yes, Set as Default
                 </Button>
               </div>
             </div>
