@@ -26,29 +26,11 @@ import { GiTopHat } from "react-icons/gi";
 import { RiGift2Fill } from "react-icons/ri";
 import { IoIosWallet } from "react-icons/io";
 import { IoWallet } from "react-icons/io5";
+import { useProfileNav } from "@/context/ProfileNavContext";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
-  const [isProfileOption, setIsProfileOption] = useState(false);
-
-  const navOptionRef = useRef(null);
-
-  useEffect(() => {
-    const handleNavOptClickOutside = (event) => {
-      if (
-        navOptionRef.current &&
-        !navOptionRef.current.contains(event.target)
-      ) {
-        setIsProfileOption(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleNavOptClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleNavOptClickOutside);
-    };
-  }, []);
+  const { show, setShow } = useProfileNav();
 
   const placeholders = ["Search vendor's", "Search offer's"];
   const [searchplaceholder, setSearchplaceholder] = useState(placeholders[0]);
@@ -67,6 +49,8 @@ const InAppNav = () => {
 
   const navigateTo = useNavigate();
 
+  console.log("profile nav is active ", show);
+
   return (
     <>
       {/* Desktop Nav */}
@@ -74,7 +58,7 @@ const InAppNav = () => {
         <div className="flex items-center lg:gap-[30px] gap-[15px]">
           <div
             onClick={() => setIsNavOption((prev) => !prev)}
-            className="flex md:hidden items-center gap-1 bg-tradeAs text-white px-[5px] py-1 border border-tradeAshExtraLight rounded-[4px] w-max"
+            className="flex md:hidden items-center gap-1 bg-tradeAs text-white px-[5px] py-1 border border-tradeAshExtraLight rounded-[6px] w-max"
           >
             {isNavOption ? (
               <IoCloseSharp className="text-white text-lg" />
@@ -148,7 +132,7 @@ const InAppNav = () => {
           </div>
           <div
             className="cursor-pointer lg:w-[32px] sm:w-[30px] w-[32px]"
-            onClick={() => setIsProfileOption(!isProfileOption)}
+            onClick={() => setShow((prev) => !prev)}
           >
             <img className=" rounded-full" src={landingImg4} alt="" />
           </div>
@@ -161,14 +145,15 @@ const InAppNav = () => {
           isNavOption ? "flex" : "hidden"
         } z-50 fixed right-0 left-0 top-[57px] bottom-0 bg-black p-[15px] pt-[13px] pb-[16px] lg:hidden flex flex-col justify-between`}
       >
-        {/* <div className="flex gap-[8px] p-[12px] rounded-[10px] text-sm font-semibold items-center bg-tradeAsh border border-tradeAshExtraLight">
+        <div className="flex gap-[8px] p-[12px] rounded-[10px] text-sm font-semibold items-center bg-tradeAsh border border-tradeAshExtraLight">
           <FaMagnifyingGlass className="text-tradeFadeWhite text-[18px]" />
 
           <p className=" text-tradeFadeWhite text-[13px] font-semibold">
             Hello, <span className="text-white">x33crypt.</span> How can we help
             ?
           </p>
-        </div> */}
+        </div>
+
         <div className="flex flex-col gap-[5px]">
           <div
             onClick={() => {
@@ -274,27 +259,6 @@ const InAppNav = () => {
             Buy Asset
           </Button>
         </div>
-      </div>
-
-      <div
-        ref={navOptionRef}
-        className={` ${
-          isProfileOption ? "flex" : "hidden"
-        } z-30 fixed lg:right-[25px] md:right-[19px] right-[15px] md:top-[65px] top-[62px]  flex-col w-[160px] p-[3px] bg-tradeAshLight rounded-[1px]`}
-        onClick={() => setIsProfileOption((prev) => !prev)}
-      >
-        <p
-          className="text-white text-[12px] font-medium py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer"
-          onClick={() => navigateTo("/account/profile")}
-        >
-          Profile
-        </p>
-        <p
-          className="text-white text-[12px] font-medium py-[8px] px-[15px] rounded-[1px] hover:bg-tradeAshExtraLight hover:underline transition-all duration-300 cursor-pointer border-t border-tradeAshExtraLight"
-          onClick={() => navigateTo("/account/setting")}
-        >
-          Setting
-        </p>
       </div>
     </>
   );

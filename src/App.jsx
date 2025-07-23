@@ -43,6 +43,7 @@ import TransactionHistory from "./pages/wallet/TransactionHistory";
 import TransactionDetails from "./pages/wallet/TransactionDetails";
 import MyAccounts from "./pages/accounts/MyAccounts";
 import AddNewAccount from "./pages/accounts/AddNewAccount";
+import ProfileNav from "./components/ProfileNav";
 
 const App = () => {
   const { deposit, setDeposit } = useDepositContext();
@@ -57,6 +58,7 @@ const App = () => {
       <SuccessTransfer />
       <PendingDeposit />
       <TransactionDetails />
+      <ProfileNav />
 
       <Routes>
         {/* Public */}

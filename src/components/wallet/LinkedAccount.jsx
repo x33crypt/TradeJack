@@ -32,7 +32,7 @@ const LinkedAccount = () => {
                     {linkedAccounts.map((account, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-[15px] p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[12px]"
+                        className="flex items-center gap-[15px] px-[12px] py-[10px] bg-tradeAsh border border-tradeAshLight rounded-[12px]"
                       >
                         <div>
                           <img
@@ -42,7 +42,7 @@ const LinkedAccount = () => {
                           />
                         </div>
                         <div className="flex flex-col gap-1">
-                          <p className="text-base font-semibold text-white leading-relaxed">
+                          <p className="text-sm font-semibold text-white leading-relaxed">
                             {account?.bank_name}
                           </p>
                           <p className="text-[13px] font-semibold text-tradeFadeWhite">
