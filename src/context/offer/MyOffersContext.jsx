@@ -4,7 +4,7 @@ const MyOfferContext = createContext();
 
 // Create the provider
 export const MyOfferProvider = ({ children }) => {
-  const [myOffers, setMyOffers] = useState("");
+  const [myOffers, setMyOffers] = useState(null);
 
   return (
     <MyOfferContext.Provider value={{ myOffers, setMyOffers }}>

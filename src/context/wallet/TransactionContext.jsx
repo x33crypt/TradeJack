@@ -2,7 +2,8 @@ import React, { createContext, useState, useContext, useEffect } from "react";
 const TransactionContext = createContext();
 
 export const TransactionProvider = ({ children }) => {
-  const [transactions, setTransactions] = useState({ page: 1 });
+  const [transactions, setTransactions] = useState(null);
+
   const [filter, setFilter] = useState({
     date: { monthNo: null, monthName: null, year: null },
     type: null,

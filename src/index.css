@@ -131,3 +131,23 @@
 .rs-option:hover {
   background-color: red;
 }
+
+.custom-x-scrollbar {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.custom-x-scrollbar::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.custom-x-scrollbar2 {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.custom-x-scrollbar2::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}

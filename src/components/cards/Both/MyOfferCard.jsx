@@ -22,7 +22,7 @@ const MyOfferCard = ({ offer }) => {
         onClick={() => handleOfferClick(offer?.offerId)}
         className="md:flex hidden p-[15px] gap-5 items-center bg-tradeAsh hover:bg-black transition-all duration-300 cursor-pointer"
       >
-        <div className=" flex-1 lg:flex-none flex flex-col gap-2">
+        <div className=" lg:w-[120px] flex-1 lg:flex-none flex flex-col gap-2">
           <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
             <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <MdGrid3X3 className="text-sm text-tradeAshExtraLight" />
@@ -48,12 +48,12 @@ const MyOfferCard = ({ offer }) => {
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <p className="text-tradeFadeWhite text-xs font-medium">Service</p>
             </div>
-            <p className="text-white text-[13px] font-semibold">
+            <p className="text-white text-[13px] font-semibold md:w-[130px] truncate  bg-tradeOrang">
               {offer?.service}
             </p>
           </div>
         </div>
-        <div className="lg:w-[150px] flex-1 lg:flex-none flex flex-col  gap-2">
+        <div className="lg:w-[150px] flex-1  lg:flex-none flex flex-col  gap-2">
           <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
             <p className="text-tradeFadeWhite text-xs font-medium">Currency</p>
           </div>
@@ -76,12 +76,10 @@ const MyOfferCard = ({ offer }) => {
 
           <div className="flex gap-1 items-center">
             <p className="text-[13px] font-bold text-white">
-              {offer?.preferredCurrency?.code}{" "}
               {toDecimal(offer?.marginRate?.from)} {""}
             </p>
             <p className="text-tradeFadeWhite">-</p>
             <p className=" text-[13px] font-bold text-white">
-              {offer?.preferredCurrency?.code}{" "}
               {toDecimal(offer?.marginRate?.to)}{" "}
             </p>
           </div>
@@ -95,7 +93,7 @@ const MyOfferCard = ({ offer }) => {
 
           <div className="flex gap-1 items-center">
             <p className="text-[13px] font-bold text-white">
-              {offer?.marginRate?.rate} on every trade
+              {offer?.marginRate?.rate}
             </p>
           </div>
         </div>

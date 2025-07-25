@@ -11,11 +11,6 @@ import { useTransaction } from "@/context/wallet/TransactionContext";
 import { useFetchTransactions } from "@/hooks/useFetchTransactions";
 
 const Wallet = () => {
-  const { loading, error } = useFetchTransactions();
-  const { transactions } = useTransaction();
-
-  console.log("Wallet Transaction", transactions);
-
   return (
     <>
       <InAppNav />
@@ -38,7 +33,7 @@ const Wallet = () => {
               </div>
             </div>
           </div>
-          <RecentTransaction transactions={transactions} />
+          <RecentTransaction />
         </div>
       </div>
       <Footer />
