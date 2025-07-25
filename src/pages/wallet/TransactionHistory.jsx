@@ -212,7 +212,7 @@ const TransactionHistory = () => {
                 </div>
 
                 <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0">
-                  <div className="flex text-black items-center gap-1 bg-tradeOrange px-[10px] py-[4px] text-sm font-medium rounded-[6.5px] w-max">
+                  <div className="md:flex hidden text-black items-center gap-1 bg-tradeOrange px-[10px] py-[4px] text-sm font-medium rounded-[6.5px] w-max">
                     <HiMiniCalendarDateRange />
                   </div>
                   <div
@@ -298,7 +298,7 @@ const TransactionHistory = () => {
 
             <div className="custom-x-scrollbar flex p-[15px] h-max gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
               <div className="flex gap-[5px] transition-all duration-300">
-                <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+                <div className="md:flex hidden items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
                   <p className="text-[13px] font-semibold ">Data</p>
                 </div>
                 <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
@@ -311,7 +311,6 @@ const TransactionHistory = () => {
 
                 <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
                   <p className="text-[13px] font-semibold">
-                    {" "}
                     {pagination?.totalItems ? pagination?.totalItems : "0"}
                   </p>
                 </div>
