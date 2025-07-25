@@ -48,7 +48,7 @@ const MyOfferCard = ({ offer }) => {
             <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
               <p className="text-tradeFadeWhite text-xs font-medium">Service</p>
             </div>
-            <p className="text-white text-[13px] font-semibold md:w-[130px] truncate  bg-tradeOrang">
+            <p className="text-white text-[13px] font-semibold md:w-[130px] truncate ">
               {offer?.service}
             </p>
           </div>
@@ -58,7 +58,7 @@ const MyOfferCard = ({ offer }) => {
             <p className="text-tradeFadeWhite text-xs font-medium">Currency</p>
           </div>
           <div className="flex gap-1 items-center">
-            <p className="lg:flex hidden text-white text-[13px] font-semibold">
+            <p className="lg:flex hidden text-white text-[13px] font-semibold md:w-[130px] truncate">
               {offer?.preferredCurrency?.name}
             </p>
 
@@ -98,6 +98,7 @@ const MyOfferCard = ({ offer }) => {
           </div>
         </div>
       </div>
+
 
       <div
         onClick={() => handleOfferClick(offer?.offerId)}

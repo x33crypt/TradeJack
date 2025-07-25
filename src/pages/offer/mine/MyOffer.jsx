@@ -194,9 +194,15 @@ const MyOffer = () => {
 
             <div className="flex flex-col flex-1 ">
               <div className="sticky md:top-[65px] top-[57px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
-                <div className="custom-x-scrollbar flex justify-between items-center gap-[10px] ">
+                <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] ">
                   {/* Left group */}
-                  <div className="flex items-center gap-[5px] bg-transparent flex-shrink-0">
+                  <div
+                    className={`${
+                      Array.isArray(myOffers) && myOffers.length < 1
+                        ? "hidden"
+                        : "flex"
+                    } flex items-center gap-[5px] bg-transparent flex-shrink-0`}
+                  >
                     <p
                       onClick={handleShowAllOffers}
                       className={`${
@@ -250,9 +256,15 @@ const MyOffer = () => {
                   </div>
 
                   {/* Right group */}
-                  <div className="flex items-center gap-[5px] bg-transparent flex-shrink-0">
+                  <div
+                    className={` ${
+                      Array.isArray(myOffers) && myOffers.length < 1
+                        ? "flex-1"
+                        : null
+                    } flex justify-between items-center gap-[5px] bg-transparent flex-shrink-0`}
+                  >
                     <div className="flex gap-[5px] bg-transparent">
-                      <div className="flex text-black items-center gap-1 bg-tradeOrange px-[10px] py-[4px] text-sm font-medium rounded-[6.5px] w-max">
+                      <div className="md:flex hidden text-black items-center gap-1 bg-tradeOrange px-[10px] py-[4px] text-sm font-medium rounded-[6.5px] w-max">
                         <HiMiniCalendarDateRange />
                       </div>
                       <div
@@ -276,7 +288,7 @@ const MyOffer = () => {
                     </div>
 
                     <div className=" bg-tradeGreen text-black font-semibold relative flex items-center gap-2 px-[12px] py-[4px] text-[13px] rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                      <p>Create New Offer</p>
+                      <p>Create New</p>
                     </div>
                   </div>
                 </div>
@@ -391,7 +403,7 @@ const MyOffer = () => {
           </div>
         </div>
       </StateHandler>
-      <Footer />
+      <Footer show={true} />
     </>
   );
 };
