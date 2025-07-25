@@ -165,7 +165,7 @@ const TransactionHistory = () => {
           </div>
           <div className="flex flex-col flex-1 ">
             <div className="sticky md:top-[65px] top-[57px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
-              <div className="custom-x-scrollbar flex justify-between items-center gap-[10px]">
+              <div className="custom-x-scrollbar flex justify-between items-center gap-[10px] py-[2px]">
                 <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0">
                   <div
                     onClick={() =>
@@ -257,7 +257,7 @@ const TransactionHistory = () => {
             </div>
 
             <div className="flex flex-1 p-[15px]">
-              {loading ? (
+              {loading && Array.isArray(transactions?.data).length < 0 ? (
                 <Loading />
               ) : (
                 <div className="flex flex-1">

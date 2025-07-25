@@ -194,7 +194,7 @@ const MyOffer = () => {
 
             <div className="flex flex-col flex-1 ">
               <div className="sticky md:top-[65px] top-[57px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
-                <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] ">
+                <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] py-[2px]">
                   {/* Left group */}
                   <div
                     className={`${
@@ -294,7 +294,7 @@ const MyOffer = () => {
                 </div>
               </div>
 
-              <div className="flex flex-1 p-[15px]">
+              <div className="flex flex-1 p-[15p]">
                 {loading ? (
                   <Loading />
                 ) : (
