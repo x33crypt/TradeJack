@@ -53,7 +53,15 @@ const TransactionHistory = () => {
 
   const handleDateChange = (e) => {
     const value = e.target.value; // format: "YYYY-MM"
-    if (!value) return;
+
+    if (!value) {
+      // Clear the filter if input is cleared
+      setFilter((prev) => ({
+        ...prev,
+        date: null,
+      }));
+      return;
+    }
 
     const [year, month] = value.split("-");
     const monthNum = Number(month);
@@ -270,7 +278,7 @@ const TransactionHistory = () => {
                     <div className="flex flex-1">
                       {Array.isArray(transactions?.data) &&
                       transactions?.data.length > 0 ? (
-                        <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
+                        <div className="flex flex-col gap-[5px] md:gap-0 w-full h-max md:overflow-hidden md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
                           {transactions?.data?.map((transaction, index) => (
                             <div
                               key={transaction.id || index}

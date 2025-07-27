@@ -40,7 +40,7 @@ const MyWallet = () => {
         <p className="text-lg font-[700] text-white ">My Wallet</p>
       </div>
       <div className="flex flex-col p-[15px] gap-[10px] h-full">
-        <div className="flex flex-col justify-between md:h-[190px] p-[12px] gap-[30px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+        <div className="flex flex-col justify-between md:h-[190px] h-[210px] p-[12px] gap-[30px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
           <div className="bg-tradeGree flex justify-between items-center">
             <div className="flex items-center gap-2">
               <p className="text-tradeFadeWhite text-[13px] font-semibold">
