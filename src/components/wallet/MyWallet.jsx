@@ -34,6 +34,10 @@ const MyWallet = () => {
     navigateTo("/wallet/deposit");
   };
 
+  const Withdraw = () => {
+    navigateTo("/wallet/withdraw");
+  };
+
   return (
     <div className="flex flex-col flex-1 h-full md:border border-neutral-800 bg-tradeAs">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
@@ -86,7 +90,7 @@ const MyWallet = () => {
               </div>
             ) : (
               <div className="flex h-[35px] items-center">
-                <Info text="Balance unavailable. Check your internet or refresh." />
+                <Info text="Balance unavailable. Check your internet connection or refresh the page to try again." />
               </div>
             )}
           </div>
@@ -173,7 +177,10 @@ const MyWallet = () => {
               <RiArrowRightUpFill className="text-xl" />
               <p>Transfer</p>
             </div>
-            <div className="md:flex hidden cursor-pointer gap-1  items-center justify-center p-[12px] rounded-[10px] text-sm font-semibold w-full  bg-tradeOrange text-black hover:bg-tradeOrange/80 active:bg-tradeAsh active:text-tradeOrange transition-colors duration-200">
+            <div
+              onClick={Withdraw}
+              className="md:flex hidden cursor-pointer gap-1  items-center justify-center p-[12px] rounded-[10px] text-sm font-semibold w-full  bg-tradeOrange text-black hover:bg-tradeOrange/80 active:bg-tradeAsh active:text-tradeOrange transition-colors duration-200"
+            >
               <RiArrowUpFill className="text-xl" />
               <p>Withdraw</p>
             </div>

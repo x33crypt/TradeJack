@@ -36,40 +36,49 @@ const TransactionDetails = () => {
     setTxDetails(false);
   };
 
+  const DetailRow = ({ label, value }) => (
+    <div className="flex items-center justify-between py-2 px-2">
+      <p className="text-[12px] md:text-[13px] font-semibold text-tradeFadeWhite">
+        {label}
+      </p>
+      <p className="text-[12px] md:text-[13px] font-semibold text-white">
+        {value}
+      </p>
+    </div>
+  );
+
   return (
     <div>
       {state && (
         <div>
           <LockByScroll />
-          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[35px]  bg-black bg-opacity-90 flex items-center justify-center z-40">
-            <div className="flex flex-col gap-[10px] bg-tradeAsh borde border-tradeAshLight p-[15px] rounded-[15px] shadow-lg lg:max-w-sm w-full min-h-[350px]">
-              <div className="flex justify-between items-start gap-[15px] pb-[15px] md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
-                <div className="flex flex-col gap-3">
-                  <p className="text-lg font-[700] text-white leading-none">
-                    Transaction Details
-                  </p>
-                </div>
+          <div className="fixed  top-0 right-0 left-0 bottom-0 lg:px-[2%] md:px-[2.5%] p-[12.4px]  bg-black bg-opacity-60 flex items-cente justify-end z-40">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg md:max-w-[350px] w-full ">
+              <div className="flex  items-center justify-between  py-[12.3px] border-b border-tradeAshLight">
+                <p className="text-lg font-[700] text-white ">
+                  Transaction Details
+                </p>
 
                 <div onClick={close}>
                   <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
                 </div>
               </div>
 
-              <div className="flex-1 flex">
+              <div className="flex-1 flex py-[15px]">
                 {loading ? (
                   <div className="flex-1 flex items-center justify-center">
                     <AiOutlineLoading3Quarters className="animate-spin text-[18px] text-tradeFadeWhite" />
                   </div>
                 ) : (
                   <div className="flex-1 flex flex-col gap-[20px]">
-                    <div className="w-full flex flex-col gap-[10px] justify-center items-center mt-[12px] borde border-tradeAshLight rounded-[15px]">
+                    <div className="w-full flex items-center gap-[10px] p-[12px] border border-tradeAshLight rounded-[15px]">
                       <div>
                         {(() => {
                           const type = transaction?.type;
 
                           if (type === "deposit") {
                             return (
-                              <div className="flex text-tradeGreen p-4 text-xl rounded-full bg-tradeAshLight">
+                              <div className="flex w-max text-tradeGreen p-3 text-base rounded-full bg-tradeAshLight">
                                 <IoMdArrowRoundDown />
                               </div>
                             );
@@ -77,62 +86,35 @@ const TransactionDetails = () => {
 
                           if (type === "transfer") {
                             return (
-                              <div className="flex text-red-600 p-4 text-xl rounded-full bg-tradeAshLight">
+                              <div className="flex w-max text-red-600 p-3 text-base rounded-full bg-tradeAshLight">
                                 <IoMdArrowRoundUp />
                               </div>
                             );
                           }
 
                           return (
-                            <div className="flex text-tradeFadeWhite p-4 text-xl rounded-full bg-tradeAshLight">
+                            <div className="flex w-max text-tradeFadeWhite p-3 text-base rounded-full bg-tradeAshLight">
                               <MdOutlineQuestionMark />
                             </div>
                           );
                         })()}
                       </div>
 
-                      <div className="flex flex-col items-center gap-1">
-                        <p className="text-white text-xl font-semibold">
+                      <div className="flex flex-col gap-[2px]">
+                        <p className="text-base text-white font-medium">
                           {userCurrency?.code}{" "}
                           {toDecimal(transaction?.amount.ngn)}
                         </p>
-                        <p className="text-tradeFadeWhite text-[13px] font-medium">
+
+                        <p className=" text-sm font-semibold text-tradeFadeWhite">
                           USD {toDecimal(transaction?.amount?.usd)}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between gap-1 p-1 border border-tradeAshLight rounded-[10px]">
-                      <div
-                        onClick={showOverview}
-                        className={`${
-                          txOverview
-                            ? "bg-tradeAshLight text-white"
-                            : "bg-transparent text-tradeFadeWhite"
-                        } flex-1 flex items-center justify-center gap-1 py-[7px] rounded-[6px] transition-all duration-300 cursor-pointer`}
-                      >
-                        <p className="text-[13px] font-medium ">Overview</p>
-                      </div>
-
-                      <div
-                        onClick={showDetails}
-                        className={`${
-                          txDetails
-                            ? "bg-tradeAshLight text-white"
-                            : "bg-transparent text-tradeFadeWhite"
-                        } flex-1 flex items-center justify-center gap-1 py-[7px] rounded-[6px] transition-all duration-300 cursor-pointer`}
-                      >
-                        <p className="text-[13px] font-medium">Details</p>
-                      </div>
-                    </div>
-
                     <div className="flex-1 flex flex-col gap-[10px]">
-                      <div
-                        className={`${
-                          txOverview ? "flex" : "hidden"
-                        } flex-col px-[8px] border border-tradeAshLight rounded-[10px]`}
-                      >
-                        <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
+                      <div className="flex flex-col  border border-tradeAshLight rounded-[15px]">
+                        <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAshLight">
                           <div className="flex items-center gap-1">
                             <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
                               Transaction Type
@@ -146,7 +128,7 @@ const TransactionDetails = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
+                        <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAshLight">
                           <div className="flex items-center gap-1">
                             <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
                               {(() => {
@@ -186,7 +168,7 @@ const TransactionDetails = () => {
 
                           <div>
                             <p className="md:text-[13px] text-[12px] text-white font-semibold">
-                              <span className="text-tradeFadeWhite"> @</span>
+                              <span className="text-tradeFadeWhite"></span>
                               {(() => {
                                 const sender = transaction?.senderUsername;
                                 const recipient =
@@ -198,7 +180,7 @@ const TransactionDetails = () => {
                                   recipient === "Unknown" &&
                                   type === "deposit"
                                 ) {
-                                  return "Wallet Credit";
+                                  return "Bank Deposit";
                                 }
 
                                 if (
@@ -206,7 +188,7 @@ const TransactionDetails = () => {
                                   recipient === "Unknown" &&
                                   type === "deposit"
                                 ) {
-                                  return sender;
+                                  return `@${sender}`;
                                 }
 
                                 if (
@@ -214,7 +196,7 @@ const TransactionDetails = () => {
                                   recipient !== "Unknown" &&
                                   type === "transfer"
                                 ) {
-                                  return recipient;
+                                  return `@${recipient}`;
                                 }
 
                                 return "N/A";
@@ -222,7 +204,7 @@ const TransactionDetails = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
+                        <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAshLight">
                           <div className="flex items-center gap-1">
                             <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
                               Status
@@ -260,7 +242,7 @@ const TransactionDetails = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="flex items-center justify-between gap-[10px] py-[8px] border- border-tradeAshLight">
+                        <div className="flex items-center justify-between gap-[10px] p-[8px] border- border-tradeAshLight">
                           <div className="flex items-center gap-1">
                             <p className="md:text-[13px] text-[12px] font-medium text-tradeFadeWhite">
                               Date & Time
@@ -275,12 +257,8 @@ const TransactionDetails = () => {
                           </div>
                         </div>
                       </div>
-                      <div
-                        className={`${
-                          txDetails ? "flex" : "hidden"
-                        } flex-col px-[8px] border border-tradeAshLight rounded-[10px]`}
-                      >
-                        <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
+                      <div className="flex flex-col border border-tradeAshLight rounded-[15px]">
+                        <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAshLight">
                           <div className="flex items-center gap-1">
                             <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
                               Reference ID
@@ -293,7 +271,7 @@ const TransactionDetails = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
+                        <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAshLight">
                           <div className="flex items-center gap-1">
                             <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
                               Service Fee
@@ -306,7 +284,7 @@ const TransactionDetails = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="flex items-center justify-between gap-[10px] py-[8px] border- border-tradeAshLight">
+                        <div className="flex items-center justify-between gap-[10px] p-[8px] border- border-tradeAshLight">
                           <div className="flex items-center gap-1">
                             <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
                               Payment Channel
@@ -322,13 +300,9 @@ const TransactionDetails = () => {
                       </div>
                     </div>
 
-                    <div
-                      className={`${
-                        txDetails ? "flex" : "hidden"
-                      } flex-col gap-1 items-center`}
-                    >
+                    <div className="flex flex-col gap-1 items-center p-[12px] pb-[15px] ">
                       <p className="text-xs text-tradeFadeWhite font-medium">
-                        Need assistance?{"  "}
+                        Need assistance ?{"  "}
                         <span className="text-tradeGreen font-semibold cursor-pointer hover:text-tradeGreen/80">
                           Customer Service
                         </span>

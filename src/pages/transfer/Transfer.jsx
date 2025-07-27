@@ -4,362 +4,44 @@ import React, { useState, useEffect } from "react";
 import Button from "@/components/buttons/Button";
 import { toUSD } from "@/utils/toUSD";
 import { toNGN } from "@/utils/toNGN";
-import { getMinimumWithdrawal } from "@/utils/currency/minWithdraw";
 import { toDecimal } from "@/utils/toDecimal";
 import image from "../../assets/landingImg4.JPG";
 import { useToast } from "@/context/ToastContext";
-import { submitTransfer } from "@/utils/wallet/transfer";
 import { useTransferContext } from "@/context/wallet/TransferContext";
-import { useNavigate } from "react-router-dom";
-import { IoMdRefresh } from "react-icons/io";
 import RecentTransfer from "@/components/wallet/RecentTransfer";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useBalance } from "@/context/BalanceContext";
 
 const Transfer = () => {
+  const { balance } = useBalance();
   const { transactions } = useTransaction();
   const { transfer, setTransfer } = useTransferContext();
-  const [transferDetails, setTransferDetails] = useState({
-    username: "",
-    selectedCurrency: "NGN",
-    amount: { USD: null, NGN: null },
-    error: "",
-    loading: false,
-  });
-  const [minWithdraw, setMinWithdraw] = useState({
-    loading: true,
-    success: false,
-    result: null,
-  });
-  const [proceed, setProceed] = useState(false);
-  const { toast, setToast } = useToast();
-  const [isEditing, setIsEditing] = useState(false);
+  const { setToast } = useToast();
 
-  const fetchMinWithdraw = async () => {
-    setMinWithdraw({
-      loading: true,
-      success: false,
-    });
-
-    const result = await getMinimumWithdrawal("NGN");
-    console.log("minimum withdraw result:", result);
-
-    // Add 2-second delay before updating state
-    setTimeout(() => {
-      if (result?.success) {
-        setMinWithdraw({
-          loading: false,
-          success: true,
-          result: result.minimum.toFixed(2),
-        });
-      } else {
-        setMinWithdraw({
-          loading: false,
-          success: false,
-          result: null,
-        });
-      }
-    }, 2000); // 2000ms = 2 seconds
-  };
-
-  useEffect(() => {
-    fetchMinWithdraw();
-  }, []);
+  console.log("Transfer Context:", transfer);
+  console.log("Balance in Transfer:", balance?.available_balance);
 
   const handleUsernameChange = (e) => {
-    setTransferDetails((prevDetails) => ({
-      ...prevDetails,
+    setTransfer((prev) => ({
+      ...prev,
       username: e.target.value,
     }));
   };
 
-  const handleAmountChange = (e) => {
-    const rawValue = e.target.value.replace(/,/g, "");
-
-    if (!isNaN(rawValue)) {
-      setTransferDetails((prev) => ({
-        ...prev,
-        amount: {
-          ...prev.amount,
-          NGN: rawValue,
-        },
-      }));
-    }
-  };
-
-  // Fetch Withdaw Amount In USD
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      const ngnValue = Number(transferDetails?.amount?.NGN);
-      if (!isNaN(ngnValue) && ngnValue > 0) {
-        toUSD(ngnValue, "NGN").then((res) => {
-          if (res) {
-            console.log("hello", res);
-
-            setTransferDetails((prev) => ({
-              ...prev,
-              amount: {
-                ...prev.amount,
-                USD: toDecimal(res?.amount, {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                }),
-              },
-            }));
-          }
-        });
-      } else {
-        setTransferDetails((prev) => ({
-          ...prev,
-          amount: {
-            ...prev.amount,
-            USD: "",
-          },
-        }));
-      }
-    }, 500); // debounce time
-
-    return () => clearTimeout(timeout);
-  }, [transferDetails?.amount?.NGN]);
-
-  // updating error state in confirm transfer modal
-  useEffect(() => {
-    setTransfer((prev) => ({
-      ...prev,
-      confirm: {
-        ...prev.confirm,
-        transferError: transferDetails?.error,
-      },
-    }));
-  }, [transferDetails?.error]);
-
-  // updating loading state in confirm transfer modal
-  useEffect(() => {
-    setTransfer((prev) => ({
-      ...prev,
-      confirm: {
-        ...prev.confirm,
-        loading: transferDetails?.loading,
-      },
-    }));
-  }, [transferDetails?.loading]);
-
-  const navigateTo = useNavigate();
-
-  const handleProceed = () => {
-    const { username, amount } = transferDetails;
-
-    // Validate username
-    if (!username || username.trim().length === 0) {
-      setToast({
-        ...toast,
-        error: true,
-        errorMessage: "Missing required field: Recipient Username",
-      });
-      return;
-    }
-
-    // Validate that minWithdraw has a valid number
-    const minAmount = Number(minWithdraw?.result);
-    const isMinValid = minWithdraw?.success && !isNaN(minAmount);
-
-    // if (!isMinValid) {
-    //   setToast({
-    //     ...toast,
-    //     error: true,
-    //     errorMessage:
-    //       "Minimum transfer amount not available. Retry and try again.",
-    //   });
-    //   return;
-    // }
-
-    // Validate NGN amount
-    const ngnAmount = Number(amount?.NGN);
-    if (!ngnAmount || isNaN(ngnAmount)) {
-      setToast({
-        ...toast,
-        error: true,
-        errorMessage: "Missing required field: Amount",
-      });
-      return;
-    }
-
-    // if (ngnAmount < minAmount) {
-    //   setToast({
-    //     ...toast,
-    //     error: true,
-    //     errorMessage: `The minimum transfer amount is NGN ${toDecimal(
-    //       minAmount
-    //     )}.`,
-    //   });
-    //   return;
-    // }
-
-    if (ngnAmount < Number(5000)) {
-      setToast({
-        ...toast,
-        error: true,
-        errorMessage: `The minimum transfer amount is NGN ${toDecimal(5000)}.`,
-      });
-      return;
-    }
-
-    // If all validations pass, proceed
-    setProceed(true); // Only set after passing validation
-
-    setTransferDetails((prev) => ({
-      ...prev,
-      error: "",
-    }));
-
-    setTransfer((prev) => ({
-      ...prev,
-      confirm: {
-        ...prev.confirm,
-        state: true,
-        receiverImage: image || "",
-        receiverUsername: username,
-        amount: ngnAmount,
-        currency: "NGN",
-        walletBalance: 571000.34,
-        chargePercent: 0.5,
-        chargeAmount: 115.43,
-        transferTrigger: handleTransfer,
-        cancelTransfer: handleCancel,
-        loading: transferDetails?.loading,
-      },
-    }));
-  };
-
-  const handleCancel = () => {
-    setProceed(false);
-
-    setTransferDetails((prev) => ({
-      ...prev,
-      error: "",
-    }));
-
-    setTransfer((prev) => ({
-      ...prev,
-      confirm: {
-        ...prev.confirm,
-        state: false,
-        transferError: "",
-      },
-    }));
-  };
-
-  const handleTransfer = async () => {
-    setTransferDetails((prev) => ({
-      ...prev,
-      loading: true,
-      error: "",
-    }));
-
-    const result = await submitTransfer(transferDetails);
-    console.log("Transfer:", result);
-
-    if (result?.success) {
-      setProceed(false);
-
-      setTransferDetails((prev) => ({
-        ...prev,
-        username: "",
-        amount: { USD: null, NGN: null },
-        error: "",
-        loading: false,
-        error: "",
-      }));
-
-      setTransfer((prev) => ({
-        ...prev,
-        confirm: {
-          ...prev.confirm,
-          state: false,
-        },
-        success: {
-          state: true,
-          date: result?.date,
-          transferReferenceNo: result?.reference,
-          viewBalance: handleViewBalance,
-          closeSuccess: handleCloseSuccess,
-        },
-      }));
-    } else {
-      console.error("Transfer failed:", result.error);
-      setTransferDetails((prev) => ({
-        ...prev,
-        error: result.error,
-        loading: false,
-      }));
-    }
-  };
-
-  const handleViewBalance = () => {
-    navigateTo("/wallet");
-
-    setTransfer((prev) => ({
-      ...prev,
-      confirm: {
-        state: false,
-        receiverImage: null,
-        receiverUsername: null,
-        amount: null,
-        currency: null,
-        walletBalance: null,
-        chargePercent: null,
-        chargeAmount: null,
-        transferTrigger: null,
-        cancelTransfer: null,
-        transferError: null,
-        loading: false,
-      },
-      success: {
-        ...prev.success,
-        state: false,
-        viewBalance: null,
-        closeSuccess: null,
-      },
-    }));
-  };
-
-  const handleCloseSuccess = () => {
-    setTransfer((prev) => ({
-      ...prev,
-      confirm: {
-        state: false,
-        receiverImage: null,
-        receiverUsername: null,
-        amount: null,
-        currency: null,
-        walletBalance: null,
-        chargePercent: null,
-        chargeAmount: null,
-        transferTrigger: null,
-        cancelTransfer: null,
-        transferError: null,
-        loading: false,
-      },
-      success: {
-        state: false,
-        viewBalance: null,
-        closeSuccess: null,
-      },
-    }));
-  };
-
-  console.log(transfer);
-
   const selectUSD = () => {
-    setTransferDetails((prevDetails) => ({
-      selectedCurrency: "USD",
+    setTransfer((prev) => ({
+      ...prev,
+
+      currency: "USD",
       amount: { NGN: null, USD: null },
     }));
   };
 
   const selectNGN = () => {
-    setTransferDetails((prevDetails) => ({
-      selectedCurrency: "NGN",
+    setTransfer((prev) => ({
+      ...prev,
+      currency: "NGN",
       amount: { NGN: null, USD: null },
     }));
   };
@@ -373,10 +55,10 @@ const Transfer = () => {
       rawValue = parts[0] + "." + parts.slice(1).join("");
     }
 
-    setTransferDetails((prevDetails) => ({
-      ...prevDetails,
+    setTransfer((prev) => ({
+      ...prev,
       amount: {
-        ...prevDetails.amount,
+        ...prev.amount,
         USD: rawValue,
       },
     }));
@@ -391,10 +73,10 @@ const Transfer = () => {
       rawValue = parts[0] + "." + parts.slice(1).join("");
     }
 
-    setTransferDetails((prevDetails) => ({
-      ...prevDetails,
+    setTransfer((prev) => ({
+      ...prev,
       amount: {
-        ...prevDetails.amount,
+        ...prev.amount,
         NGN: rawValue,
       },
     }));
@@ -412,24 +94,24 @@ const Transfer = () => {
 
   // update NGN amount if user input USD
   useEffect(() => {
-    if (
-      !transferDetails?.amount?.USD ||
-      transferDetails?.selectedCurrency !== "USD"
-    )
-      return;
+    if (!transfer?.amount?.USD || transfer?.currency !== "USD") return;
 
     const debounceTimeout = setTimeout(async () => {
       try {
-        const { amount: ngnValue } = await toNGN(transferDetails.amount.USD);
+        const result = await toNGN(transfer?.amount?.USD);
 
-        if (ngnValue) {
-          setTransferDetails((prevDetails) => ({
-            ...prevDetails,
+        if (result && result.amount) {
+          console.log("Converted NGN Value:", result.amount);
+
+          setTransfer((prev) => ({
+            ...prev,
             amount: {
-              ...prevDetails.amount,
-              NGN: ngnValue,
+              ...prev.amount,
+              NGN: result.amount,
             },
           }));
+        } else {
+          console.error("Conversion to NGN failed: Invalid response", result);
         }
       } catch (error) {
         console.error("Conversion to NGN failed:", error);
@@ -437,28 +119,30 @@ const Transfer = () => {
     }, 2000); // 2 seconds delay
 
     return () => clearTimeout(debounceTimeout); // Clear previous timeout on new input
-  }, [transferDetails?.amount?.USD, transferDetails?.selectedCurrency]);
+  }, [transfer?.amount?.USD, transfer?.currency]);
 
   // update USD amount if user input NGN
   useEffect(() => {
-    if (
-      !transferDetails?.amount?.NGN ||
-      transferDetails?.selectedCurrency !== "NGN"
-    )
-      return;
+    if (!transfer?.amount?.NGN || transfer?.currency !== "NGN") return;
+
+    console.log("Converting NGN to USD:", transfer?.amount?.NGN);
 
     const debounceTimeout = setTimeout(async () => {
       try {
-        const { amount: usdValue } = await toUSD(transferDetails.amount.NGN);
+        const result = await toUSD(transfer?.amount?.NGN);
 
-        if (usdValue) {
-          setTransferDetails((prevDetails) => ({
-            ...prevDetails,
+        if (result && result.amount) {
+          console.log("Converted USD Value:", result.amount);
+
+          setTransfer((prev) => ({
+            ...prev,
             amount: {
-              ...prevDetails.amount,
-              USD: usdValue,
+              ...prev.amount,
+              USD: result.amount,
             },
           }));
+        } else {
+          console.error("Conversion to USD failed: Invalid response", result);
         }
       } catch (error) {
         console.error("Conversion to USD failed:", error);
@@ -466,7 +150,99 @@ const Transfer = () => {
     }, 2000); // 2 second delay
 
     return () => clearTimeout(debounceTimeout); // Clear on new keystroke
-  }, [transferDetails?.amount?.NGN, transferDetails?.selectedCurrency]);
+  }, [transfer?.amount?.NGN, transfer?.currency]);
+
+  const handleProceed = () => {
+    const { username, currency, amount } = transfer;
+
+    // Validate username
+    if (!username?.trim()) {
+      setToast({
+        error: true,
+        errorMessage: "Missing required field: Recipient Wallet",
+      });
+      return;
+    }
+
+    // Validate amount in NGN
+    if (currency === "NGN") {
+      const value = Number(amount?.NGN);
+
+      if (!value || isNaN(value)) {
+        setToast({
+          error: true,
+          success: false,
+          errorMessage: "Missing required field: Amount",
+        });
+        return;
+      }
+
+      // Validate minimum amount
+      if (value < 15000) {
+        setToast({
+          error: true,
+          success: false,
+          errorMessage: `The minimum transfer amount is NGN ${toDecimal(
+            15000
+          )}.`,
+        });
+        return;
+      }
+
+      // Validate balance
+      if (
+        Number(toDecimal(amount?.NGN) || 0) >
+        Number(toDecimal(balance?.available_balance?.NGN) || 0)
+      ) {
+        setToast({
+          error: true,
+          success: false,
+          errorMessage: "Insufficient balance for this transfer.",
+        });
+        return;
+      }
+    }
+
+    // Validate amount in USD
+    if (currency === "USD") {
+      const UsdAmount = Number(amount?.USD);
+      const NgnAmount = Number(amount?.NGN);
+
+      if (!UsdAmount || isNaN(UsdAmount)) {
+        setToast({
+          error: true,
+          success: false,
+          errorMessage: "Missing required field: Amount",
+        });
+        return;
+      }
+
+      if (!NgnAmount || isNaN(NgnAmount)) {
+        setToast({
+          error: true,
+          success: false,
+          errorMessage: "Missing required field: Amount",
+        });
+        return;
+      }
+
+      if (UsdAmount < 10) {
+        setToast({
+          error: true,
+          success: false,
+          errorMessage: `The minimum transfer amount is USD ${toDecimal(10)}.`,
+        });
+        return;
+      }
+    }
+
+    // Proceed
+    setTransfer((prev) => ({
+      ...prev,
+      proceed: true,
+      confirm: true,
+    }));
+  };
 
   return (
     <>
@@ -508,7 +284,7 @@ const Transfer = () => {
                       type="text"
                       placeholder="Username"
                       onChange={handleUsernameChange}
-                      value={transferDetails?.username}
+                      value={transfer?.username}
                     />
                   </div>
                 </div>
@@ -532,7 +308,7 @@ const Transfer = () => {
                     <div
                       onClick={selectNGN}
                       className={`${
-                        transferDetails?.selectedCurrency === "NGN"
+                        transfer?.currency === "NGN"
                           ? "bg-tradeOrange"
                           : "bg-transparent"
                       }  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
@@ -542,7 +318,7 @@ const Transfer = () => {
                     <div
                       onClick={selectUSD}
                       className={`${
-                        transferDetails?.selectedCurrency === "USD"
+                        transfer?.currency === "USD"
                           ? "bg-tradeOrange"
                           : "bg-transparent"
                       }  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
@@ -552,7 +328,7 @@ const Transfer = () => {
                   </div>
                 </div>
                 <div className="flex flex-col w-full">
-                  {transferDetails?.selectedCurrency === "NGN" ? (
+                  {transfer?.currency === "NGN" ? (
                     // NGN
                     <div className="flex flex-col gap-[10px]">
                       <div className="flex flex-col gap-[10px] w-full">
@@ -564,17 +340,14 @@ const Transfer = () => {
                             className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                             type="text"
                             placeholder={`15,000.000 - 30,000,000.00`}
-                            value={formatWithCommas(
-                              transferDetails?.amount?.NGN
-                            )}
+                            value={formatWithCommas(transfer?.amount?.NGN)}
                             onChange={handleNGNAmountChange}
                             onFocus={(e) =>
-                              (e.target.value =
-                                transferDetails?.amount?.NGN || "")
+                              (e.target.value = transfer?.amount?.NGN || "")
                             } // show raw when editing
                             onBlur={(e) =>
                               (e.target.value = formatWithCommas(
-                                transferDetails?.amount?.NGN
+                                transfer?.amount?.NGN
                               ))
                             } // format on blur
                           />
@@ -586,8 +359,8 @@ const Transfer = () => {
                           You're about to deposit the equivalent of{" "}
                           <span className="text-tradeOrange">
                             USD {""}
-                            {transferDetails?.amount?.USD
-                              ? toDecimal(transferDetails?.amount?.USD)
+                            {transfer?.amount?.USD
+                              ? toDecimal(transfer?.amount?.USD)
                               : "0.00"}
                           </span>
                         </p>
@@ -605,17 +378,14 @@ const Transfer = () => {
                             className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                             type="text"
                             placeholder={`10.00 - 20,000.00`}
-                            value={formatWithCommas(
-                              transferDetails?.amount?.USD
-                            )}
+                            value={formatWithCommas(transfer?.amount?.USD)}
                             onChange={handleUSDAmountChange}
                             onFocus={(e) =>
-                              (e.target.value =
-                                transferDetails?.amount?.USD || "")
+                              (e.target.value = transfer?.amount?.USD || "")
                             } // show raw when editing
                             onBlur={(e) =>
                               (e.target.value = formatWithCommas(
-                                transferDetails?.amount?.USD
+                                transfer?.amount?.USD
                               ))
                             } // format on blur
                           />
@@ -627,8 +397,8 @@ const Transfer = () => {
                           You're about to deposit the equivalent of{" "}
                           <span className="text-tradeOrange">
                             NGN {""}
-                            {transferDetails?.amount?.NGN
-                              ? toDecimal(transferDetails?.amount?.NGN)
+                            {transfer?.amount?.NGN
+                              ? toDecimal(transfer?.amount?.NGN)
                               : "0.00"}
                           </span>
                         </p>
@@ -641,7 +411,7 @@ const Transfer = () => {
               <Button
                 variant="primary"
                 onClick={handleProceed}
-                disabled={proceed}
+                disabled={transfer?.proceed}
               >
                 Proceed
               </Button>

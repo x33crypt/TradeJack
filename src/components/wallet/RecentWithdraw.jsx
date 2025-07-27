@@ -1,5 +1,4 @@
 import React from "react";
-// import TransactionCard from "@/components/cards/Both/TransactionCard";
 import { RiArrowRightFill } from "react-icons/ri";
 import TransactionCard from "../cards/Mobile/TransactionCard";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +7,7 @@ import { useTransaction } from "@/context/wallet/TransactionContext";
 import Loading from "../Loading";
 import Info from "../alerts/Info";
 
-const RecentTransfer = () => {
+const RecentWithdraw = () => {
   const { loading, error } = useFetchTransactions();
   const { transactions } = useTransaction();
   const navigateTo = useNavigate();
@@ -16,7 +15,7 @@ const RecentTransfer = () => {
   return (
     <div className=" md:w-[350px] flex flex-col md:border border-neutral-800">
       <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg text-white font-semibold">Recent Transfer</p>
+        <p className="text-lg text-white font-semibold">Recent Withdraws</p>
         <div
           onClick={() => navigateTo("/wallet/transactions")}
           className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
@@ -35,7 +34,7 @@ const RecentTransfer = () => {
             {transactions?.data ? (
               <div className="flex flex-col gap-[5px] w-full">
                 {transactions?.data
-                  ?.filter((transaction) => transaction.type === "transfer")
+                  ?.filter((transaction) => transaction.type === "withdraw")
                   ?.slice(0, 6)
                   ?.map((transaction, index) => (
                     <div key={transaction.id || index}>
@@ -46,7 +45,7 @@ const RecentTransfer = () => {
             ) : (
               <div className="h-full flex items-center justify-center ">
                 <div>
-                  <Info text="Can't load recent transfers. Check your connection or refresh." />
+                  <Info text="Can't load recent withdraws. Check your connection or refresh." />
                 </div>
               </div>
             )}
@@ -57,4 +56,4 @@ const RecentTransfer = () => {
   );
 };
 
-export default RecentTransfer;
+export default RecentWithdraw;

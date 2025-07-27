@@ -11,7 +11,6 @@ import SignupUser from "./pages/SignupUser";
 import SignupSuccess from "./pages/SignupSuccess";
 import SigninUser from "./pages/SigninUser";
 import Logout from "./pages/Logout";
-import ConfirmPassword from "./components/ConfirmPassword";
 import EditFullname from "./pages/EditFullname";
 import EditUsername from "./pages/EditUsername";
 import EditEmail from "./pages/EditEmail";
@@ -33,21 +32,19 @@ import SummaryMyOffer from "./pages/offer/mine/SummaryMyOffer";
 import Wallet from "./pages/wallet/Wallet";
 import Settings from "./pages/Settings";
 import Account from "./components/settings/Account";
-import Transfer from "./pages/wallet/Transfer";
-import Deposit from "./pages/wallet/Deposit";
-import ConfirmTransfer from "./components/modals/wallet/ConfirmTransfer";
-import SuccessTransfer from "./components/modals/wallet/SuccessTransfer";
-import PendingDeposit from "./components/modals/wallet/PendingDeposit";
-import { useDepositContext } from "./context/wallet/DepositContext";
+import Transfer from "./pages/transfer/Transfer";
+import Deposit from "./pages/deposit/Deposit";
+import ConfirmTransfer from "./pages/transfer/ConfirmTransfer";
+import SuccessTransfer from "./pages/transfer/SuccessTransfer";
+import PendingDeposit from "./pages/deposit/PendingDeposit";
 import TransactionHistory from "./pages/wallet/TransactionHistory";
 import TransactionDetails from "./pages/wallet/TransactionDetails";
 import MyAccounts from "./pages/accounts/MyAccounts";
 import AddNewAccount from "./pages/accounts/AddNewAccount";
 import ProfileNav from "./components/ProfileNav";
+import Withdraw from "./pages/withdraw/Withdraw";
 
 const App = () => {
-  const { deposit, setDeposit } = useDepositContext();
-
   return (
     <>
       <SelectElement />
@@ -99,6 +96,7 @@ const App = () => {
         <Route path="/wallet" element={<Wallet />} />
         <Route path="/wallet/transfer" element={<Transfer />} />
         <Route path="/wallet/deposit" element={<Deposit />} />
+        <Route path="/wallet/withdraw" element={<Withdraw />} />
         <Route path="/wallet/transactions" element={<TransactionHistory />} />
         <Route path="/wallet/accounts" element={<MyAccounts />} />
         <Route path="/wallet/accounts/new" element={<AddNewAccount />} />

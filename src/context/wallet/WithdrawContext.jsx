@@ -1,9 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
-const TransferContext = createContext();
+const WithdrawContext = createContext();
 
 // Create the provider
-export const TransferProvider = ({ children }) => {
-  const [transfer, setTransfer] = useState({
+export const WithdrawProvider = ({ children }) => {
+  const [withdraw, setWithdraw] = useState({
     error: "",
     proceed: false,
     confirm: false,
@@ -27,14 +27,14 @@ export const TransferProvider = ({ children }) => {
     date: null,
   });
 
-  console.log(transfer);
+  console.log(withdraw);
 
   return (
-    <TransferContext.Provider value={{ transfer, setTransfer }}>
+    <WithdrawContext.Provider value={{ withdraw, setWithdraw }}>
       {children}
-    </TransferContext.Provider>
+    </WithdrawContext.Provider>
   );
 };
 
 // Create a hook for easy use
-export const useTransferContext = () => useContext(TransferContext);
+export const useWithdrawContext = () => useContext(WithdrawContext);

@@ -13,14 +13,22 @@ import { MdDateRange } from "react-icons/md";
 
 const SuccessTransfer = () => {
   const { transfer, setTransfer } = useTransferContext();
-  const { confirm } = transfer;
-  const { receiverUsername, amount, currency, chargeAmount } = confirm;
-  const { success } = transfer;
-  const { state, viewBalance, closeSuccess } = success;
+  const {
+    confirm,
+    success,
+    loading,
+    username,
+    currency,
+    amount,
+    balance,
+    charges,
+    referenceId,
+    date,
+  } = transfer;
 
   return (
     <div>
-      {state && (
+      {success && (
         <div>
           <LockByScroll />
           {/* Modal */}
@@ -48,7 +56,7 @@ const SuccessTransfer = () => {
                     </span>{" "}
                     is on its way to{" "}
                     <span className="font-semibold text-tradeOrange">
-                      @{receiverUsername}
+                      @{username}
                     </span>
                     ’s wallet. You can view the details in your transaction
                     history.

@@ -31,7 +31,7 @@ const Balance = ({ dashboard }) => {
         </p>
       </div>
       <div className="flex flex-col gap-[10px] p-[15px]">
-        <div className="flex flex-col justify-between md:h-[190px] p-[12px] gap-[30px] bg-tradeGreen rounded-[15px] border border-tradeAshLight">
+        <div className="flex flex-col justify-between md:h-[190px] h-[210px] p-[12px] gap-[30px] bg-tradeGreen rounded-[15px] border border-tradeAshLight">
           <div className="bg-tradeGree flex justify-between items-center">
             <div className="flex items-center gap-2">
               <p className="text-black text-[13px] font-semibold">
@@ -77,7 +77,7 @@ const Balance = ({ dashboard }) => {
               </div>
             ) : (
               <div className="flex h-[35px] items-center">
-                <Info text="Balance unavailable. Check your internet or refresh." />
+                <Info text="Balance unavailable. Check your internet connection or refresh the page to try again." />
               </div>
             )}
           </div>

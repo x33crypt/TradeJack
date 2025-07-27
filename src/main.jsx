@@ -22,6 +22,7 @@ import { TransactionProvider } from "./context/wallet/TransactionContext";
 import { LinkedAccountProvider } from "./context/wallet/LinkedAccountContext";
 import { BalanceProvider } from "./context/BalanceContext";
 import { ProfileNavProvider } from "./context/ProfileNavContext";
+import { WithdrawProvider } from "./context/wallet/WithdrawContext";
 
 // Render MainApp into #root
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -32,35 +33,37 @@ root.render(
         <BalanceProvider>
           <LinkedAccountProvider>
             <TransactionProvider>
-              <DepositProvider>
-                <TransferProvider>
-                  <ProfileProvider>
-                    <AboutOfferProvider>
-                      <MyOfferProvider>
-                        <KycProvider>
-                          <AuthProvider>
-                            <DashboardProvider>
-                              <ToastProvider>
-                                <OfferFilterProvider>
-                                  <EditOfferProvider>
-                                    <CreateOfferProvider>
-                                      <SelectElementProvider>
-                                        <TradeAlertProvider>
-                                          <App />
-                                        </TradeAlertProvider>
-                                      </SelectElementProvider>
-                                    </CreateOfferProvider>
-                                  </EditOfferProvider>
-                                </OfferFilterProvider>
-                              </ToastProvider>
-                            </DashboardProvider>
-                          </AuthProvider>
-                        </KycProvider>
-                      </MyOfferProvider>
-                    </AboutOfferProvider>
-                  </ProfileProvider>
-                </TransferProvider>
-              </DepositProvider>
+              <WithdrawProvider>
+                <DepositProvider>
+                  <TransferProvider>
+                    <ProfileProvider>
+                      <AboutOfferProvider>
+                        <MyOfferProvider>
+                          <KycProvider>
+                            <AuthProvider>
+                              <DashboardProvider>
+                                <ToastProvider>
+                                  <OfferFilterProvider>
+                                    <EditOfferProvider>
+                                      <CreateOfferProvider>
+                                        <SelectElementProvider>
+                                          <TradeAlertProvider>
+                                            <App />
+                                          </TradeAlertProvider>
+                                        </SelectElementProvider>
+                                      </CreateOfferProvider>
+                                    </EditOfferProvider>
+                                  </OfferFilterProvider>
+                                </ToastProvider>
+                              </DashboardProvider>
+                            </AuthProvider>
+                          </KycProvider>
+                        </MyOfferProvider>
+                      </AboutOfferProvider>
+                    </ProfileProvider>
+                  </TransferProvider>
+                </DepositProvider>
+              </WithdrawProvider>
             </TransactionProvider>
           </LinkedAccountProvider>
         </BalanceProvider>
