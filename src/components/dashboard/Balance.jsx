@@ -77,11 +77,7 @@ const Balance = ({ dashboard }) => {
               </div>
             ) : (
               <div className="flex h-[35px] items-center">
-                <Info
-                  text={
-                    "Balance unavailable at the moment. Please verify your internet connection or refresh the page to try again."
-                  }
-                />
+                <Info text="Balance unavailable. Check your internet or refresh." />
               </div>
             )}
           </div>
