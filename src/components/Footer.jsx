@@ -5,9 +5,7 @@ const Footer = ({ show }) => {
 
   return (
     <div
-      className={` ${
-        show ? "flex" : "hidden"
-      } bg-black md:flex flex-1 pt-[5px]`}
+      className={`bg-black md:flex flex-1 pt-[5px]`}
     >
       <div className="flex-1 bg-black lg:p-[2%] md:p-[2.5%] p-[15px] flex lg:flex-row flex-col justify-between items-center gap-[25px] border-t  border-tradeAshLight">
         <div className="sm:mt-0 lg:w-[150px] w-[150px] flex justify-between">

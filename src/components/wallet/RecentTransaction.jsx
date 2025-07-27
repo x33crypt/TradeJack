@@ -30,11 +30,11 @@ const RecentTransaction = () => {
         </div>
       </div>
 
-      <div className="min-h-[100px] p-[15px] h-full">
+      <div className="flex min-h-[100px] p-[15px] h-full">
         {loading ? (
           <Loading />
         ) : (
-          <div className="h-full">
+          <div className="flex-1">
             {transactions?.data ? (
               <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden  md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
                 {transactions?.data?.map((transaction, index) => (

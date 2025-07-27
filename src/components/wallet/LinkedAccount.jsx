@@ -22,11 +22,11 @@ const LinkedAccount = () => {
       </div>
 
       <div className="flex flex-col p-[15px] gap-[10px]">
-        <div className="min-h-[100px]">
+        <div className="flex min-h-[100px]">
           {loading ? (
             <Loading />
           ) : (
-            <div className="h-full">
+            <div className="flex-1">
               {linkedAccounts === null ? (
                 <div className="h-full flex items-center justify-center ">
                   <div>
@@ -34,9 +34,6 @@ const LinkedAccount = () => {
                   </div>
                 </div>
               ) : (
-                // <div className="h-full flex items-center ">
-                //   <Info text="Unable to load your linked accounts at the moment. Please check your internet connection or refresh the page to try again." />
-                // </div>
                 <div className="h-full">
                   {linkedAccounts?.length && linkedAccounts?.length !== 0 ? (
                     <div className="flex flex-col gap-[15px] justify-between h-full">

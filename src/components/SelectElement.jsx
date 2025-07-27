@@ -51,7 +51,7 @@ const SelectElement = () => {
                 <div
                   className={`${
                     select?.selectOne ? "flex" : "hidden"
-                  } bg-tradeAsh w-full flex-col items-center gap-[15px] rounded-[14px] h-[280px]`}
+                  } bg-tradeAsh w-full flex-col items-center gap-[15px] rounded-[14px] max-h-[280px]`}
                 >
                   <div className="flex bg-tradeAshLight  w-full rounded-[10px] px-[12px] py-[5px] gap-[10px] items-center  border border-tradeAshLight">
                     <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />
@@ -106,7 +106,7 @@ const SelectElement = () => {
                 <div
                   className={`${
                     select?.selectTwo ? "flex" : "hidden"
-                  } flex-col items-center p-[12px] gap-[10px]`}
+                  } bg-tradeAsh w-full flex-col items-center gap-[15px] rounded-[14px] max-h-[280px]`}
                 >
                   <div className="flex h-[43px] w-full rounded-[8px] px-[10px] py-[5px] gap-[10px] items-center border border-tradeAshLight">
                     <FaMagnifyingGlass className="text-[18px] text-tradeFadeWhite" />

@@ -87,9 +87,9 @@ const TransactionHistory = () => {
     resetFilter();
   }, []);
 
-  const transactionStatus = ["Pending", "Failed", "Successful"];
+  const transactionStatus = ["All status", "Pending", "Failed", "Successful"];
 
-  const transactionTypes = ["Transfer", "Deposit"];
+  const transactionTypes = ["All types", "Transfer", "Deposit"];
 
   // handling transaction type change
   useEffect(() => {
@@ -97,7 +97,7 @@ const TransactionHistory = () => {
 
     if (select.element === "transaction type") {
       console.log("Transaction type selected:", select.pick);
-      const selectedType = select.pick;
+      const selectedType = select.pick === "All types" ? null : select.pick;
 
       setFilter((prev) => ({
         ...prev,
@@ -111,8 +111,7 @@ const TransactionHistory = () => {
     if (select?.page !== "transaction history" || !select?.pick) return;
 
     if (select.element === "transaction status") {
-      console.log("Transaction status selected:", select.pick);
-      const selectedStatus = select.pick;
+      const selectedStatus = select.pick === "All status" ? null : select.pick;
 
       setFilter((prev) => ({
         ...prev,
@@ -166,7 +165,7 @@ const TransactionHistory = () => {
           <div className="flex flex-col flex-1 ">
             <div className="sticky md:top-[65px] top-[57px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
               <div className="custom-x-scrollbar flex justify-between items-center gap-[10px] ">
-                <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[2px]">
+                <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                   <div
                     onClick={() =>
                       setSelect({
@@ -211,7 +210,7 @@ const TransactionHistory = () => {
                   </div>
                 </div>
 
-                <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[2px]">
+                <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                   <div className="md:flex hidden text-black items-center gap-1 bg-tradeOrange px-[10px] py-[4px] text-sm font-medium rounded-[6.5px] w-max">
                     <HiMiniCalendarDateRange />
                   </div>
@@ -297,7 +296,7 @@ const TransactionHistory = () => {
             </div>
 
             <div className="custom-x-scrollbar flex p-[15px] h-max gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
-              <div className="flex gap-[5px] transition-all duration-300 py-[2px]">
+              <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
                 <div className="md:flex hidden items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
                   <p className="text-[13px] font-semibold ">Data</p>
                 </div>
@@ -316,7 +315,7 @@ const TransactionHistory = () => {
                 </div>
               </div>
 
-              <div className="flex gap-[5px] py-[2px]">
+              <div className="flex gap-[5px] py-[1px]">
                 <div>
                   {pagination?.hasNextPage ? (
                     <div
