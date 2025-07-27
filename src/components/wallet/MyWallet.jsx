@@ -186,7 +186,10 @@ const MyWallet = () => {
             </div>
           </div>
 
-          <div className="flex md:hidden flex-1 cursor-pointer gap-1  items-center justify-center p-[12px] rounded-[10px] text-sm font-semibold w-full  bg-tradeOrange text-black hover:bg-tradeOrange/80 active:bg-tradeAsh active:text-tradeOrange transition-colors duration-200">
+          <div
+            onClick={Withdraw}
+            className="flex md:hidden flex-1 cursor-pointer gap-1  items-center justify-center p-[12px] rounded-[10px] text-sm font-semibold w-full  bg-tradeOrange text-black hover:bg-tradeOrange/80 active:bg-tradeAsh active:text-tradeOrange transition-colors duration-200"
+          >
             <RiArrowUpFill className="text-xl" />
             <p>Withdraw</p>
           </div>

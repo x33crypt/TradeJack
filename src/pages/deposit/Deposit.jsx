@@ -263,11 +263,6 @@ const Deposit = () => {
             </div>
 
             <div className="h-full flex flex-col justify-between p-[15px] md:gap-[10px] gap-[15px]">
-              {/* Event */}
-              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
-                <p className="text-sm">Event</p>
-              </div>
-
               {/* Internal Deposit */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -287,8 +282,12 @@ const Deposit = () => {
                     <p className="text-white font-semibold text-2xl leading-none bg-tradeOrang">
                       <span className="text-tradeFadeWhite">@</span>sane
                     </p>
-                    <div className="p-2 bg-tradeAshLight text-tradeOrange text-xl rounded-[8px] cursor-pointer">
-                      <IoCopy />
+                    <div
+                      onClick={() => handleCopy("sane")}
+                      className="flex gap-2 items-center px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300"
+                    >
+                      <p className="text-xs text-white font-bold">Copy</p>
+                      <IoCopy className="text-sm text-tradeOrange" />
                     </div>
                   </div>
                 </div>
@@ -468,6 +467,11 @@ const Deposit = () => {
                     </p>
                   </div>
                 </div>
+              </div>
+
+              {/* Event */}
+              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
+                <p className="text-sm">Event</p>
               </div>
             </div>
           </div>

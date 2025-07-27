@@ -135,6 +135,7 @@ const Withdraw = () => {
                   </div>
                 </div>
               </div>
+              
               {/* Amount */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -297,6 +298,11 @@ const Withdraw = () => {
                     </p>
                   </div>
                 </div>
+              </div>
+
+              {/* Event */}
+              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
+                <p className="text-sm">Event</p>
               </div>
             </div>
           </div>
