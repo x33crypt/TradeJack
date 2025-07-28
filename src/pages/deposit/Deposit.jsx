@@ -278,16 +278,16 @@ const Deposit = () => {
                     Username
                   </p>
 
-                  <div className="flex justify-between items-center bg-tradePurpl">
-                    <p className="text-white font-semibold text-2xl leading-none bg-tradeOrang">
+                  <div className="flex justify-between items-center bg-tradePurpl p-[12px] bg-tradeAshLight border border-tradeAshLight rounded-[10px]">
+                    <p className="text-white font-medium text-lg leading-none bg-tradeOrang">
                       <span className="text-tradeFadeWhite">@</span>sane
                     </p>
+
                     <div
                       onClick={() => handleCopy("sane")}
-                      className="flex gap-2 items-center px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300"
+                      className={` bg-transparent text-sm text-white hover:text-tradeFadeWhite px-[6px] py-[4px] border border-tradeAshExtraLight rounded-[6px] w-max cursor-pointer transition-all duration-300`}
                     >
-                      <p className="text-xs text-white font-bold">Copy</p>
-                      <IoCopy className="text-sm text-tradeOrange" />
+                      <IoCopy className="" />
                     </div>
                   </div>
                 </div>
