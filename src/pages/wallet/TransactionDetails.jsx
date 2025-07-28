@@ -80,7 +80,7 @@ const TransactionDetails = () => {
                           {(() => {
                             const status = transaction?.status;
 
-                            if (status === "successfull") {
+                            if (status === "successful") {
                               return (
                                 <div className="p-[6px] bg-tradeAshLight text-[45px] text-tradeGreen rounded-full">
                                   <IoIosCheckmarkCircle />
