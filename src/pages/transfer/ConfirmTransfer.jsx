@@ -86,9 +86,9 @@ const ConfirmTransfer = () => {
         <div>
           <LockByScroll />
           {/* Modal */}
-          <div className="fixed top-0 right-0 left-0 bottom-0 lg:px-[2%] md:px-[2.5%] px-[20px]  bg-black bg-opacity-80 flex items-center justify-center z-40">
+          <div className="fixed top-0 right-0 left-0 bottom-0 lg:px-[2%] md:px-[2.5%] px-[30px]  bg-black bg-opacity-80 flex items-center justify-center z-40">
             <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[350px] h-[400px] ">
-              <div className="flex  items-center justify-between py-[12.3px] border-b border-tradeAshLight">
+              <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
                   Confirm Transfer
                 </p>

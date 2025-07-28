@@ -11,6 +11,7 @@ import { useSelectElement } from "@/context/SelectElementContext";
 import { date } from "@/utils/date";
 import Loading from "@/components/Loading";
 import Info from "@/components/alerts/Info";
+import { useLocation } from "react-router-dom";
 
 const TransactionHistory = () => {
   const topRef = useRef(null);

@@ -9,16 +9,13 @@ export const WithdrawProvider = ({ children }) => {
     confirm: false,
     success: false,
     loading: false,
-    username: "",
     currency: "NGN",
     amount: {
       USD: null,
       NGN: null,
     },
-    balance: {
-      USD: null,
-      NGN: null,
-    },
+    account: "Default",
+    bank: {},
     charges: {
       USD: null,
       NGN: null,

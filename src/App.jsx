@@ -43,6 +43,7 @@ import MyAccounts from "./pages/accounts/MyAccounts";
 import AddNewAccount from "./pages/accounts/AddNewAccount";
 import ProfileNav from "./components/ProfileNav";
 import Withdraw from "./pages/withdraw/Withdraw";
+import ConfirmWithdraw from "./pages/withdraw/ConfirmWithdraw";
 
 const App = () => {
   return (
@@ -51,6 +52,7 @@ const App = () => {
       <ToastSuccess />
       <ToastError />
       <TradeAlert />
+      <ConfirmWithdraw />
       <ConfirmTransfer />
       <SuccessTransfer />
       <PendingDeposit />

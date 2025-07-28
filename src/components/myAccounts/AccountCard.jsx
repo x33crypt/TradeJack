@@ -51,9 +51,10 @@ const AccountCard = ({ account, index }) => {
         </div>
 
         <div className="flex items-center gap-[15px]">
-          <div>
+          <div className="p-[10px] bg-tradeAshLight rounded-[10px]">
             <img className="w-[40px]" src={account?.logo} alt="" />
           </div>
+
           <div className="flex flex-col gap-1">
             <p className="text-base font-semibold text-white leading-relaxed">
               {account?.bank_name}

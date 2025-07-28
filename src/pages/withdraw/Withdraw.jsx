@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
@@ -10,9 +10,48 @@ import { useToast } from "@/context/ToastContext";
 import { toDecimal } from "@/utils/toDecimal";
 import { useWithdrawContext } from "@/context/wallet/WithdrawContext";
 import { IoWalletOutline } from "react-icons/io5";
+import { useBalance } from "@/context/BalanceContext";
+import { useFetchLinkedBanks } from "@/hooks/useFetchLinkedBanks";
+import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
 
 const Withdraw = () => {
+  const { balance } = useBalance();
   const { withdraw, setWithdraw } = useWithdrawContext();
+  const { loading, error, refetch } = useFetchLinkedBanks();
+  const { linkedAccounts } = useLinkedAccount();
+  const { setToast } = useToast();
+
+  console.log("Withdraw Context:", withdraw);
+  console.log("Balance in Withdraw:", balance?.available_balance);
+  console.log("Linked Accounts:", linkedAccounts);
+
+  const selectDefaultAccount = () => {
+    setWithdraw((prev) => ({
+      ...prev,
+      account: "Default",
+    }));
+  };
+
+  useEffect(() => {
+    if (withdraw?.account === "Default") {
+      setWithdraw((prev) => ({
+        ...prev,
+        bank: linkedAccounts?.find((account) => account?.isDefault === true),
+      }));
+    } else if (withdraw?.account === "Alternative") {
+      setWithdraw((prev) => ({
+        ...prev,
+        bank: linkedAccounts?.find((account) => account?.isDefault === false),
+      }));
+    }
+  }, [withdraw?.account, linkedAccounts]);
+
+  const selectAlternativeAccount = () => {
+    setWithdraw((prev) => ({
+      ...prev,
+      account: "Alternative",
+    }));
+  };
 
   const selectUSD = () => {
     setWithdraw((prev) => ({
@@ -77,7 +116,156 @@ const Withdraw = () => {
     });
   };
 
-  const handleProceed = () => {};
+  // update NGN amount if user input USD
+  useEffect(() => {
+    if (!withdraw?.amount?.USD || withdraw?.currency !== "USD") return;
+
+    const debounceTimeout = setTimeout(async () => {
+      try {
+        const result = await toNGN(withdraw?.amount?.USD);
+
+        if (result && result.amount) {
+          console.log("Converted NGN Value:", result.amount);
+
+          setWithdraw((prev) => ({
+            ...prev,
+            amount: {
+              ...prev.amount,
+              NGN: result.amount,
+            },
+          }));
+        } else {
+          console.error("Conversion to NGN failed: Invalid response", result);
+        }
+      } catch (error) {
+        console.error("Conversion to NGN failed:", error);
+      }
+    }, 2000); // 2 seconds delay
+
+    return () => clearTimeout(debounceTimeout); // Clear previous timeout on new input
+  }, [withdraw?.amount?.USD, withdraw?.currency]);
+
+  // update USD amount if user input NGN
+  useEffect(() => {
+    if (!withdraw?.amount?.NGN || withdraw?.currency !== "NGN") return;
+
+    console.log("Converting NGN to USD:", withdraw?.amount?.NGN);
+
+    const debounceTimeout = setTimeout(async () => {
+      try {
+        const result = await toUSD(withdraw?.amount?.NGN);
+
+        if (result && result.amount) {
+          console.log("Converted USD Value:", result.amount);
+
+          setWithdraw((prev) => ({
+            ...prev,
+            amount: {
+              ...prev.amount,
+              USD: result.amount,
+            },
+          }));
+        } else {
+          console.error("Conversion to USD failed: Invalid response", result);
+        }
+      } catch (error) {
+        console.error("Conversion to USD failed:", error);
+      }
+    }, 2000); // 2 second delay
+
+    return () => clearTimeout(debounceTimeout); // Clear on new keystroke
+  }, [withdraw?.amount?.NGN, withdraw?.currency]);
+
+  const handleProceed = () => {
+    const { currency, amount, bank } = withdraw;
+
+    // Validate amount in NGN
+    if (currency === "NGN") {
+      const value = Number(amount?.NGN);
+
+      if (!value || isNaN(value)) {
+        setToast({
+          error: true,
+          success: false,
+          errorMessage: "Missing required field: Amount",
+        });
+        return;
+      }
+
+      // Validate minimum amount
+      if (value < 15000) {
+        setToast({
+          error: true,
+          success: false,
+          errorMessage: `The minimum transfer amount is NGN ${toDecimal(
+            15000
+          )}.`,
+        });
+        return;
+      }
+
+      // Validate balance
+      if (
+        Number(toDecimal(amount?.NGN) || 0) >
+        Number(toDecimal(balance?.available_balance?.NGN) || 0)
+      ) {
+        setToast({
+          error: true,
+          success: false,
+          errorMessage: "Insufficient balance for this transfer.",
+        });
+        return;
+      }
+    }
+
+    // Validate amount in USD
+    if (currency === "USD") {
+      const UsdAmount = Number(amount?.USD);
+      const NgnAmount = Number(amount?.NGN);
+
+      if (!UsdAmount || isNaN(UsdAmount)) {
+        setToast({
+          error: true,
+          success: false,
+          errorMessage: "Missing required field: Amount",
+        });
+        return;
+      }
+
+      if (!NgnAmount || isNaN(NgnAmount)) {
+        setToast({
+          error: true,
+          success: false,
+          errorMessage: "Missing required field: Amount",
+        });
+        return;
+      }
+
+      if (UsdAmount < 10) {
+        setToast({
+          error: true,
+          success: false,
+          errorMessage: `The minimum transfer amount is USD ${toDecimal(10)}.`,
+        });
+        return;
+      }
+    }
+
+    if (!bank?.bankId) {
+      setToast({
+        error: true,
+        errorMessage: "Missing required field: Recipient Wallet",
+      });
+      return;
+    }
+
+    // Proceed
+    setWithdraw((prev) => ({
+      ...prev,
+      proceed: true,
+      confirm: true,
+    }));
+  };
 
   return (
     <>
@@ -90,6 +278,7 @@ const Withdraw = () => {
               <p className="text-lg font-[700] text-white ">Withdraw Funds</p>
             </div>
             <div className="h-full flex flex-col justify-between p-[15px] md:gap-[10px] gap-[15px]">
+              {/* Wallet */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                   <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
@@ -107,12 +296,13 @@ const Withdraw = () => {
                       Current balance
                     </p>
                     <p className="text-white text-[15px] font-semibold">
-                      USD 500,000.78
+                      NGN {toDecimal(balance?.available_balance?.NGN)}
                     </p>
                   </div>
                 </div>
               </div>
 
+              {/* Account */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                   <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
@@ -120,22 +310,54 @@ const Withdraw = () => {
                       To Bank Account
                     </p>
                   </div>
+
+                  <div className="flex gap-1">
+                    <div
+                      onClick={selectDefaultAccount}
+                      className={` ${
+                        withdraw?.account === "Default"
+                          ? "bg-tradeOrange"
+                          : "bg-transparent"
+                      }  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                    >
+                      <p className="text-white text-xs font-bold">Default</p>
+                    </div>
+
+                    <div
+                      onClick={selectAlternativeAccount}
+                      className={`${
+                        withdraw?.account === "Alternative"
+                          ? "bg-tradeOrange"
+                          : "bg-transparent"
+                      } px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                    >
+                      <p className="text-white text-xs font-bold">
+                        Alternative
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <div className="flex items-center gap-[10px] w-full border- border-tradeAshLight">
-                  <div className="p-3 bg-tradeAshLight w-max rounded-[10px]">
-                    <IoWalletOutline className="text-[25px] text-tradeWhite" />
+                  <div className="p-[10px] bg-tradeAshLight rounded-[10px]">
+                    <img
+                      className="w-[30px]"
+                      src={
+                        withdraw?.bank?.logo || "/images/default-bank-logo.png"
+                      }
+                      alt=""
+                    />
                   </div>
                   <div className="flex flex-col gap-[3px]">
                     <p className="text-tradeFadeWhite text-xs font-medium">
-                      United Bank Of Africa
+                      {withdraw?.bank?.bank_name || "Bank Name"}
                     </p>
                     <p className="text-white text-[15px] font-semibold">
-                      ***********7689
+                      {withdraw?.bank?.account_number || "Account Number"}
                     </p>
                   </div>
                 </div>
               </div>
-              
+
               {/* Amount */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
