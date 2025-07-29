@@ -68,14 +68,14 @@ const TransactionDetails = () => {
               </div>
 
               <div className="flex-1 flex py-[15px]">
-                {loading ? (
+                {false ? (
                   <div className="flex-1 flex items-center justify-center">
                     <AiOutlineLoading3Quarters className="animate-spin text-[18px] text-tradeFadeWhite" />
                   </div>
                 ) : (
                   <div className="flex-1 flex flex-col justify-between gap-[30px]">
                     <div className="flex flex-col gap-[20px]">
-                      <div className="flex flex-col items-center justify-center gap-2">
+                      <div className="flex flex-col items-center justify-center gap-3">
                         <div>
                           {(() => {
                             const status = transaction?.status;
@@ -109,11 +109,11 @@ const TransactionDetails = () => {
                           {capitalizeFirst(transaction?.type)}{" "}
                           {capitalizeFirst(transaction?.status)}
                         </p>
-                        <p className="text-xl font-bold text-white leading-none">
+                        <p className="text-2xl font-bold text-white leading-none">
                           {userCurrency?.code}{" "}
                           {toDecimal(transaction?.amount.ngn)}
                         </p>
-                        <p className="text-xs font-bold text-tradeOrange leading-none">
+                        <p className="text-[13px] font-bold text-tradeOrange leading-none">
                           USD {toDecimal(transaction?.amount?.usd)}
                         </p>
                       </div>
@@ -126,13 +126,13 @@ const TransactionDetails = () => {
                         >
                           <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAsh">
                             <div className="flex items-center gap-1">
-                              <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
+                              <p className="text-[13px] font-semibold text-tradeFadeWhite">
                                 Transaction Type
                               </p>
                             </div>
 
                             <div>
-                              <p className="md:text-[13px] text-[12px] font-semibold text-white">
+                              <p className="text-[13px] font-semibold text-white">
                                 {capitalizeFirst(transaction?.type) ||
                                   "Status unknown"}
                               </p>
@@ -140,7 +140,7 @@ const TransactionDetails = () => {
                           </div>
                           <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAsh">
                             <div className="flex items-center gap-1">
-                              <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
+                              <p className="text-[13px] font-semibold text-tradeFadeWhite">
                                 {(() => {
                                   const sender = transaction?.senderUsername;
                                   const recipient =
@@ -177,7 +177,7 @@ const TransactionDetails = () => {
                             </div>
 
                             <div>
-                              <p className="md:text-[13px] text-[12px] text-white font-semibold">
+                              <p className="text-[13px] text-white font-semibold">
                                 <span className="text-tradeFadeWhite"></span>
                                 {(() => {
                                   const sender = transaction?.senderUsername;
@@ -216,13 +216,13 @@ const TransactionDetails = () => {
                           </div>
                           <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAsh">
                             <div className="flex items-center gap-1">
-                              <p className="md:text-[13px] text-[12px] font-medium text-tradeFadeWhite">
+                              <p className="text-[13px] font-medium text-tradeFadeWhite">
                                 Date & Time
                               </p>
                             </div>
 
                             <div>
-                              <p className="md:text-[13px] text-[12px] font-semibold text-white">
+                              <p className="text-[13px] font-semibold text-white">
                                 {dateTime(transaction?.createdAt) ||
                                   "Status unknown"}
                               </p>
@@ -230,13 +230,13 @@ const TransactionDetails = () => {
                           </div>
                           <div className="flex items-center justify-between gap-[10px] p-[8px]">
                             <div className="flex items-center gap-1">
-                              <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
+                              <p className="text-[13px] font-semibold text-tradeFadeWhite">
                                 Reference ID
                               </p>
                             </div>
 
                             <div className="">
-                              <p className="md:text-[13px] text-[12px] font-semibold text-white">
+                              <p className="text-[13px] font-semibold text-white">
                                 {transaction?.reference || "Status unknown"}
                               </p>
                             </div>
@@ -249,26 +249,26 @@ const TransactionDetails = () => {
                         >
                           <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAshLight">
                             <div className="flex items-center gap-1">
-                              <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
+                              <p className="text-[13px] font-semibold text-tradeFadeWhite">
                                 Reference ID
                               </p>
                             </div>
 
                             <div className="">
-                              <p className="md:text-[13px] text-[12px] font-semibold text-white">
+                              <p className="text-[13px] font-semibold text-white">
                                 {transaction?.reference || "Status unknown"}
                               </p>
                             </div>
                           </div>
                           <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAshLight">
                             <div className="flex items-center gap-1">
-                              <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
+                              <p className="text-[13px] font-semibold text-tradeFadeWhite">
                                 Service Fee
                               </p>
                             </div>
 
                             <div>
-                              <p className="md:text-[13px] text-[12px] font-semibold text-white">
+                              <p className="text-[13px] font-semibold text-white">
                                 {transaction?.fee ||
                                   `${userCurrency?.code} 0.00`}
                               </p>
@@ -276,13 +276,13 @@ const TransactionDetails = () => {
                           </div>
                           <div className="flex items-center justify-between gap-[10px] p-[8px] border- border-tradeAshLight">
                             <div className="flex items-center gap-1">
-                              <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
+                              <p className="text-[13px] font-semibold text-tradeFadeWhite">
                                 Payment Channel
                               </p>
                             </div>
 
                             <div>
-                              <p className="md:text-[13px] text-[12px] font-semibold text-white">
+                              <p className="text-[13px] font-semibold text-white">
                                 Wallet
                               </p>
                             </div>

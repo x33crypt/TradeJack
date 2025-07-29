@@ -52,7 +52,7 @@ const AccountCard = ({ account, index }) => {
 
         <div className="flex items-center gap-[15px]">
           <div className="p-[10px] bg-tradeAshLight rounded-[10px]">
-            <img className="w-[40px]" src={account?.logo} alt="" />
+            <img className="w-[30px]" src={account?.logo} alt="" />
           </div>
 
           <div className="flex flex-col gap-1">
@@ -76,7 +76,7 @@ const AccountCard = ({ account, index }) => {
               <MdDateRange className="text-[12px] text-tradeAshExtraLight" />
             </div> */}
               <p className="text-tradeFadeWhite text-xs font-medium">
-                Account Added On {date(account?.createdAt)}
+                Added - {date(account?.createdAt)}
               </p>
             </div>
           </div>

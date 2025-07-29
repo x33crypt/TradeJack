@@ -45,7 +45,7 @@ const LinkedAccount = () => {
                           >
                             <div className="p-[10px] bg-tradeAshLight rounded-[10px]">
                               <img
-                                className="w-[30px]"
+                                className="w-[25px]"
                                 src={account?.logo}
                                 alt=""
                               />
