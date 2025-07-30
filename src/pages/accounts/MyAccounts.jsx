@@ -14,6 +14,7 @@ import LockByScroll from "@/components/LockByScroll";
 import { IoClose } from "react-icons/io5";
 import { useToast } from "@/context/ToastContext";
 import api from "@/utils/http/api";
+import Info from "@/components/alerts/Info";
 
 const MyAccounts = () => {
   const { loading, error, refetch } = useFetchLinkedBanks();
@@ -26,7 +27,7 @@ const MyAccounts = () => {
   console.log("Manage Account:", manageAccount);
 
   useEffect(() => {
-    if (linkedAccounts.length) {
+    if (linkedAccounts?.length) {
       console.log("Linked accounts:", linkedAccounts);
     }
   }, [linkedAccounts]);
@@ -187,12 +188,12 @@ const MyAccounts = () => {
               <p className="text-lg font-[700] text-white ">My Accounts</p>
             </div>
 
-            <div className="h-full">
+            <div className="flex flex-1">
               {loading ? (
                 <Loading />
               ) : (
                 <div className="w-full h-full">
-                  {linkedAccounts?.length && linkedAccounts?.length !== 0 ? (
+                  {linkedAccounts?.length > 0 ? (
                     <div className="h-full flex flex-col p-[15px] gap-[25px]">
                       <div className="">
                         <p className="text-xs text-tradeFadeWhite font-medium">
@@ -203,16 +204,9 @@ const MyAccounts = () => {
                       </div>
 
                       <div className="flex flex-col gap-[30px] h-full justify-between ">
-                        <div className="flex flex-col gap-[30px]">
+                        <div className="flex flex-col gap-[15px]">
                           {/* Default Account */}
                           <div className="flex flex-col gap-[10px] p-[12px bg-tradeAs rounded-[15px borde border-tradeAshLight">
-                            <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                              <div className="px-[6px] py-0.5 bg-tradeOrange/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
-                                <p className="text-tradeOrange text-xs font-medium ">
-                                  Default Account
-                                </p>
-                              </div>
-                            </div>
                             <div>
                               {linkedAccounts
                                 ?.filter(
@@ -229,14 +223,6 @@ const MyAccounts = () => {
                           </div>
                           {/* Aternative Account */}
                           <div className="flex flex-col gap-[10px] p-[12px bg-tradeAs rounded-[15px borde border-tradeAshLight">
-                            <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                              <div className="px-[6px] py-0.5 bg-tradeAshExtraLight/40 borde border-tradeAshExtraLight rounded-[4px] w-max">
-                                <p className="text-tradeFadeWhite text-xs font-medium ">
-                                  Alternative Account
-                                </p>
-                              </div>
-                            </div>
-
                             <div className="flex flex-col gap-[10px]">
                               {linkedAccounts?.some(
                                 (account) => account?.isDefault == false
@@ -254,12 +240,12 @@ const MyAccounts = () => {
                                   ))
                               ) : (
                                 <div className="">
-                                  <p className="text-xs text-tradeFadeWhite font-medium">
-                                    You currently don’t have an alternative
+                                  <Info
+                                    text="You currently don’t have an alternative
                                     account linked. Adding one provides a
                                     reliable backup option in case your primary
-                                    account is unavailable.
-                                  </p>
+                                    account is unavailable."
+                                  />
                                 </div>
                               )}
                             </div>
@@ -306,7 +292,7 @@ const MyAccounts = () => {
                         </p>
                       </div>
                       <div className="flex-1 h-full flex items-center justify-center">
-                        <LuFileX2 className="text-6xl text-tradeGreen" />
+                        <LuFileX2 className="text-[55px] text-tradeGreen" />
                       </div>
                       <div className="md:hidden flex w-full">
                         <Button

@@ -8,6 +8,8 @@ import Loading from "../Loading";
 import { SiHdfcbank } from "react-icons/si";
 import { IoMdArrowDropright } from "react-icons/io";
 import Info from "../alerts/Info";
+import { LuCrown } from "react-icons/lu";
+import { LuFileX2 } from "react-icons/lu";
 
 const LinkedAccount = () => {
   const { loading, error, refetch } = useFetchLinkedBanks();
@@ -22,11 +24,11 @@ const LinkedAccount = () => {
       </div>
 
       <div className="flex flex-col p-[15px] gap-[10px]">
-        <div className="flex min-h-[100px]">
+        <div className="flex min-h-[150px]">
           {loading ? (
             <Loading />
           ) : (
-            <div className="flex-1">
+            <div className="flex flex-1">
               {linkedAccounts === null ? (
                 <div className="h-full flex items-center justify-center ">
                   <div>
@@ -34,9 +36,9 @@ const LinkedAccount = () => {
                   </div>
                 </div>
               ) : (
-                <div className="h-full">
+                <div className="flex flex-1">
                   {linkedAccounts?.length && linkedAccounts?.length !== 0 ? (
-                    <div className="flex flex-col gap-[15px] justify-between h-full">
+                    <div className="flex flex-1 flex-col gap-[15px] justify-between">
                       <div className="flex flex-col gap-[10px] h-full">
                         {linkedAccounts.map((account, index) => (
                           <div
@@ -50,13 +52,33 @@ const LinkedAccount = () => {
                                 alt=""
                               />
                             </div>
-                            <div className="flex flex-col gap-1">
-                              <p className="text-[15px] font-semibold text-white leading-relaxed">
-                                {account?.bank_name}
-                              </p>
-                              <p className="text-[13px] font-semibold text-tradeFadeWhite">
-                                {account?.account_number}
-                              </p>
+
+                            <div className="flex w-full justify-between items-center">
+                              <div className="flex flex-col gap-1">
+                                <p className="text-[15px] font-semibold text-white leading-relaxed">
+                                  {account?.bank_name}
+                                </p>
+
+                                <div className="flex items-center gap-1">
+                                  <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                                    {account?.account_number}
+                                  </p>
+
+                                  <div className="bg-transparent px-[4px] py-0.2 border border-tradeAshExtraLight rounded-[4px] w-max">
+                                    <p className="text-white text-xs font-medium">
+                                      Verified Bank
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {account?.isDefault && (
+                                <div className="bg-transparent px-[5px] py-1 border border-tradeAshExtraLight rounded-[8px] w-max">
+                                  <div className="text-[22px] text-tradeOrange">
+                                    <LuCrown />
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           </div>
                         ))}
@@ -70,36 +92,36 @@ const LinkedAccount = () => {
                       </Button>
                     </div>
                   ) : (
-                    <div className="flex flex-col gap-[10px]">
-                      <div className="flex flex-col  items-center text-center gap-3 px-4 py-5 rounded-2xl bg-tradeAsh border border-tradeAshLight w-full ">
-                        <RiBankLine className="text-[32px] text-tradeFadeWhite" />
-
-                        <h3 className="text-white text-base font-semibold">
-                          Link Your Bank Account
-                        </h3>
-
-                        <p className="text-tradeFadeWhite text-[13px] font-medium md:max-w-[320px]">
-                          Securely connect your bank to withdraw funds.
-                          Bank-level security and encryption applied.
+                    <div className="flex-1 flex flex-col h-[200px]">
+                      <div>
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          You haven't linked any bank account yet. Add one to
+                          enable secure and seamless withdraw to your bank.
                         </p>
                       </div>
 
-                      <div className="md:flex hidden">
-                        <Button
-                          variant="primary"
-                          onClick={() => navigateTo("/wallet/accounts")}
-                        >
-                          Add New Account
-                        </Button>
+                      <div className="flex-1 flex justify-center items-center text-[55px] text-tradeGreen">
+                        <LuFileX2 />
                       </div>
 
-                      <div className="md:hidden flex">
-                        <Button
-                          variant="primary"
-                          onClick={() => navigateTo("/wallet/accounts/new")}
-                        >
-                          Add New Account
-                        </Button>
+                      <div>
+                        <div className="md:flex hidden">
+                          <Button
+                            variant="primary"
+                            onClick={() => navigateTo("/wallet/accounts")}
+                          >
+                            Add New Account
+                          </Button>
+                        </div>
+
+                        <div className="md:hidden flex">
+                          <Button
+                            variant="primary"
+                            onClick={() => navigateTo("/wallet/accounts/new")}
+                          >
+                            Add New Account
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   )}

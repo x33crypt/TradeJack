@@ -12,11 +12,18 @@ import { date } from "@/utils/date";
 import Loading from "@/components/Loading";
 import Info from "@/components/alerts/Info";
 import { useLocation } from "react-router-dom";
+import { LuFileX2 } from "react-icons/lu";
 
 const TransactionHistory = () => {
   const topRef = useRef(null);
-  const { loading, error, pagination, page, displayedCount, next } =
-    useFetchTransactions();
+  const {
+    loading,
+    refetchTransactions,
+    pagination,
+    page,
+    displayedCount,
+    next,
+  } = useFetchTransactions();
   const { transactions, filter, setFilter } = useTransaction();
   const [triggerScroll, setTriggerScroll] = useState(false);
   const [loadingNext, setLoadingNext] = useState(false);
@@ -83,22 +90,27 @@ const TransactionHistory = () => {
     }));
   };
 
-  const resetFilter = () => {
-    setFilter((prev) => ({
-      ...prev,
+  useEffect(() => {
+    setFilter({
       date: { monthNo: null, monthName: null, year: null },
       type: null,
       status: null,
-    }));
-  };
+    });
 
-  useEffect(() => {
-    resetFilter();
+    refetchTransactions();
   }, []);
 
-  const transactionStatus = ["All status", "Pending", "Failed", "Successful"];
+  console.log("recent transactions", transactions);
 
-  const transactionTypes = ["All types", "Transfer", "Deposit"];
+  const transactionStatus = [
+    "All status",
+    "Pending",
+    "Failed",
+    "Successful",
+    "Processing",
+  ];
+
+  const transactionTypes = ["All types", "Transfer", "Deposit", "Withdraw"];
 
   // handling transaction type change
   useEffect(() => {
@@ -154,7 +166,6 @@ const TransactionHistory = () => {
 
   const isEmpty = transactions?.data?.length === 0;
   const isEnd = pagination && !pagination.hasNextPage && !isEmpty;
-
   const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
 
   return (
@@ -294,8 +305,17 @@ const TransactionHistory = () => {
                           ))}
                         </div>
                       ) : (
-                        <div className="flex-1 flex items-center justify-center">
-                          <Info text="No active offers yet. Create your first offer to start trading and grow your activity." />
+                        <div className="flex-1 flex flex-col">
+                          <div>
+                            <p className="text-xs font-medium text-tradeFadeWhite">
+                              You haven’t made any transactions yet. When you
+                              do, your recent deposits activity will be shown
+                              here for easy tracking.
+                            </p>
+                          </div>
+                          <div className="flex-1 flex justify-center items-center text-[55px] text-tradeGreen">
+                            <LuFileX2 />
+                          </div>
                         </div>
                       )}
                     </div>

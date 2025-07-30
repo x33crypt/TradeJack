@@ -6,6 +6,7 @@ import { useFetchTransactions } from "@/hooks/useFetchTransactions";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import Loading from "../Loading";
 import Info from "../alerts/Info";
+import { LuFileX2 } from "react-icons/lu";
 
 const RecentDeposit = () => {
   const { loading, refetchTransactions } = useFetchTransactions();
@@ -38,19 +39,19 @@ const RecentDeposit = () => {
         </div>
       </div>
 
-      <div className="min-h-[100px] p-[15px] h-full">
+      <div className="flex h-full min-h-[300px] p-[15px]">
         {loading ? (
           <Loading />
         ) : (
-          <div className="h-full">
+          <div className="flex flex-1">
             {transactions === null ? (
-              <div className="flex-1 flex items-center justify-center ">
-                <div className="">
-                  <Info text="Unable to load your transactions history. Please check your internet connection or refresh the page to try again." />
+              <div className="flex-1  flex items-center justify-center ">
+                <div>
+                  <Info text="Can't load recent deposits. Check your connection or refresh." />
                 </div>
               </div>
             ) : (
-              <div className="h-full">
+              <div className="flex flex-1">
                 {Array.isArray(transactions?.data) &&
                 transactions?.data.length > 0 ? (
                   <div className="flex flex-col gap-[5px] w-full">
@@ -64,8 +65,17 @@ const RecentDeposit = () => {
                       ))}
                   </div>
                 ) : (
-                  <div className="h-full flex items-center">
-                    <Info text="No active offers yet. Create your first offer to start trading and grow your activity." />
+                  <div className="flex-1 flex flex-col">
+                    <div>
+                      <p className="text-xs font-medium text-tradeFadeWhite">
+                        You haven’t made any Deposits yet. When you do, your
+                        recent deposits activity will be shown here for easy
+                        tracking.
+                      </p>
+                    </div>
+                    <div className="flex-1 flex justify-center items-center text-[55px] text-tradeGreen">
+                      <LuFileX2 />
+                    </div>
                   </div>
                 )}
               </div>

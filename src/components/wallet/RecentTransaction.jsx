@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TransactionCard from "../cards/Both/TransactionCard";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import { useNavigate } from "react-router-dom";
@@ -6,14 +6,24 @@ import { RiArrowRightFill } from "react-icons/ri";
 import { useFetchTransactions } from "@/hooks/useFetchTransactions";
 import Loading from "../Loading";
 import Info from "../alerts/Info";
+import { LuFileX2 } from "react-icons/lu";
 
 const RecentTransaction = () => {
-  const { loading, error } = useFetchTransactions();
-  const { transactions } = useTransaction();
-
-  console.log("transactions value:", transactions);
-
+  const { loading, refetchTransactions } = useFetchTransactions();
+  const { transactions, setFilter } = useTransaction();
   const navigateTo = useNavigate();
+
+  useEffect(() => {
+    setFilter({
+      date: { monthNo: null, monthName: null, year: null },
+      type: null,
+      status: null,
+    });
+
+    refetchTransactions();
+  }, []);
+
+  console.log("recent transactions", transactions);
 
   return (
     <div className="flex flex-col h-full  md:border border-neutral-800">
@@ -30,31 +40,49 @@ const RecentTransaction = () => {
         </div>
       </div>
 
-      <div className="flex min-h-[100px] p-[15px] h-full">
+      <div className="flex h-full min-h-[300px] p-[15px]">
         {loading ? (
           <Loading />
         ) : (
-          <div className="flex-1">
-            {transactions?.data ? (
-              <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden  md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
-                {transactions?.data?.map((transaction, index) => (
-                  <div
-                    key={transaction.id || index}
-                    className={`${
-                      index !== transactions?.data?.length - 1
-                        ? "md:border-b border-tradeAshLight"
-                        : ""
-                    }`}
-                  >
-                    <TransactionCard transaction={transaction} />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="h-full flex items-center justify-center ">
+          <div className="flex flex-1">
+            {transactions === null ? (
+              <div className="flex-1  flex items-center justify-center ">
                 <div>
                   <Info text="Can't load recent transactions. Check your connection or refresh." />
                 </div>
+              </div>
+            ) : (
+              <div className="flex flex-1">
+                {Array.isArray(transactions?.data) &&
+                transactions?.data.length > 0 ? (
+                  <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden  md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
+                    {transactions?.data?.map((transaction, index) => (
+                      <div
+                        key={transaction.id || index}
+                        className={`${
+                          index !== transactions?.data?.length - 1
+                            ? "md:border-b border-tradeAshLight"
+                            : ""
+                        }`}
+                      >
+                        <TransactionCard transaction={transaction} />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex-1 flex flex-col">
+                    <div>
+                      <p className="text-xs font-medium text-tradeFadeWhite">
+                        You haven’t made any transactions yet. When you do, your
+                        recent deposits activity will be shown here for easy
+                        tracking.
+                      </p>
+                    </div>
+                    <div className="flex-1 flex justify-center items-center text-[55px] text-tradeGreen">
+                      <LuFileX2 />
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>

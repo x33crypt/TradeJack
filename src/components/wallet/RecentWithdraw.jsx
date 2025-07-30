@@ -39,8 +39,8 @@ const RecentWithdraw = () => {
         </div>
       </div>
 
-      <div className="flex h-full min-h-[260px] p-[15px]">
-        {false ? (
+      <div className="flex h-full min-h-[300px] p-[15px]">
+        {loading ? (
           <Loading />
         ) : (
           <div className="flex flex-1">
@@ -73,7 +73,7 @@ const RecentWithdraw = () => {
                         tracking.
                       </p>
                     </div>
-                    <div className="flex-1 flex justify-center items-center text-[60px] text-tradeGreen">
+                    <div className="flex-1 flex justify-center items-center text-[55px] text-tradeGreen">
                       <LuFileX2 />
                     </div>
                   </div>
