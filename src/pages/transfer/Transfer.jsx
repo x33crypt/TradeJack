@@ -371,7 +371,7 @@ const Transfer = () => {
 
                       <div>
                         <p className="text-tradeFadeWhite text-xs font-semibold">
-                          You're about to deposit the equivalent of{" "}
+                          You're about to transfer the equivalent of{" "}
                           <span className="text-tradeOrange">
                             USD {""}
                             {transfer?.amount?.USD
@@ -409,7 +409,7 @@ const Transfer = () => {
 
                       <div>
                         <p className="text-tradeFadeWhite text-xs font-semibold">
-                          You're about to deposit the equivalent of{" "}
+                          You're about to transfer the equivalent of{" "}
                           <span className="text-tradeOrange">
                             NGN {""}
                             {transfer?.amount?.NGN

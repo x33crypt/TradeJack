@@ -83,16 +83,9 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
     fetchPage(1); // Always reset to page 1 on filter change
   }, [filter, fetchPage]);
 
-  // 🔁 Refetch AND reset filters
+  // 🔁 Refetch
   const refetchTransactions = () => {
-    const clearedFilter = {
-      type: "All types",
-      status: "All status",
-      date: null,
-    };
-
-    setFilter(clearedFilter); // update context first
-    fetchPage(1, clearedFilter); // then fetch fresh with empty filter
+    fetchPage(1); // then fetch fresh with empty filter
   };
 
   // ───────────── helper for “Next” (Prev removed) ─────────────

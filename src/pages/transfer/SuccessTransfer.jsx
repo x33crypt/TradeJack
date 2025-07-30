@@ -23,10 +23,13 @@ const SuccessTransfer = () => {
     setTransfer((prev) => ({
       ...prev,
       success: false,
+      referenceId: null,
     }));
   };
 
   const viewDetails = (id) => {
+    setDetails({ state: true, transactionId: id, data: {} });
+
     setTransfer((prev) => ({
       ...prev,
       success: false,
@@ -35,9 +38,8 @@ const SuccessTransfer = () => {
         USD: null,
         NGN: null,
       },
+      referenceId: null,
     }));
-
-    setDetails({ state: true, transactionId: id, data: {} });
   };
 
   const navigateTo = useNavigate();
@@ -46,6 +48,7 @@ const SuccessTransfer = () => {
     setTransfer((prev) => ({
       ...prev,
       success: false,
+      referenceId: null,
     }));
 
     navigateTo("/wallet");
@@ -96,6 +99,17 @@ const SuccessTransfer = () => {
                       </span>{" "}
                       will typically receive them within 1 to 3 minutes.
                     </p>
+                  </div>
+
+                  <div className="flex flex-col bg-tradeAshLigh  borde border-tradeAshLight rounded-[15px]">
+                    <div className="flex items-center justify-betwee justify-center gap-[10px] p-[8px border- border-tradeAsh">
+                      <p className="text-[13px] font-medium text-tradeFadeWhite">
+                        Reference -{" "}
+                        <span className="font-semibold text-white">
+                          {referenceId}
+                        </span>
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div className="flex flex-col gap-[10px]">

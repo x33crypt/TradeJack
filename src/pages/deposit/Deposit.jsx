@@ -279,7 +279,7 @@ const Deposit = () => {
                   </p>
 
                   <div className="flex justify-between items-center bg-tradePurpl p-[12px] bg-tradeAshLight border border-tradeAshLight rounded-[10px]">
-                    <p className="text-white font-bold text-lg leading-none bg-tradeOrang">
+                    <p className="text-white font-semibold text-lg leading-none bg-tradeOrang">
                       <span className="text-tradeFadeWhite">@</span>sane
                     </p>
 
@@ -299,14 +299,6 @@ const Deposit = () => {
                     payments and fund your wallet seamlessly.
                   </p>
                 </div>
-
-                {/* <Button
-                  variant="Fadeout"
-                  onClick={() => handleCopy("sane")}
-                  textToCopy="tradejack-username"
-                >
-                  Copy
-                </Button> */}
               </div>
 
               {/* External Deposit */}

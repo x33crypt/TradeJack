@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RiArrowRightFill } from "react-icons/ri";
 import TransactionCard from "../cards/Mobile/TransactionCard";
 import { useNavigate } from "react-router-dom";
@@ -8,9 +8,21 @@ import Loading from "../Loading";
 import Info from "../alerts/Info";
 
 const RecentDeposit = () => {
-  const { loading, error } = useFetchTransactions();
-  const { transactions } = useTransaction();
+  const { loading, refetchTransactions } = useFetchTransactions();
+  const { transactions, setFilter } = useTransaction();
   const navigateTo = useNavigate();
+
+  useEffect(() => {
+    setFilter({
+      date: { monthNo: null, monthName: null, year: null },
+      type: "Deposit",
+      status: null,
+    });
+
+    refetchTransactions();
+  }, []);
+
+  console.log("resent deposits", transactions);
 
   return (
     <div className=" md:w-[350px] flex flex-col md:border border-neutral-800">
@@ -31,20 +43,31 @@ const RecentDeposit = () => {
           <Loading />
         ) : (
           <div className="h-full">
-            {transactions?.data ? (
-              <div className="flex flex-col gap-[5px] w-full">
-                {transactions?.data
-                  ?.filter((transaction) => transaction.type === "deposit")
-                  ?.slice(0, 6)
-                  ?.map((transaction, index) => (
-                    <div key={transaction.id || index}>
-                      <TransactionCard transaction={transaction} />
-                    </div>
-                  ))}
+            {transactions === null ? (
+              <div className="flex-1 flex items-center justify-center ">
+                <div className="">
+                  <Info text="Unable to load your transactions history. Please check your internet connection or refresh the page to try again." />
+                </div>
               </div>
             ) : (
-              <div className="h-full flex items-center">
-                <Info text="Unable to load your recent deposits. Please check your internet connection or refresh the page to try again." />
+              <div className="h-full">
+                {Array.isArray(transactions?.data) &&
+                transactions?.data.length > 0 ? (
+                  <div className="flex flex-col gap-[5px] w-full">
+                    {transactions?.data
+                      ?.filter((transaction) => transaction.type === "deposit")
+                      ?.slice(0, 6)
+                      ?.map((transaction, index) => (
+                        <div key={transaction.id || index}>
+                          <TransactionCard transaction={transaction} />
+                        </div>
+                      ))}
+                  </div>
+                ) : (
+                  <div className="h-full flex items-center">
+                    <Info text="No active offers yet. Create your first offer to start trading and grow your activity." />
+                  </div>
+                )}
               </div>
             )}
           </div>
