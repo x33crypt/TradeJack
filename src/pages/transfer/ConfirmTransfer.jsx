@@ -7,8 +7,13 @@ import { MdError } from "react-icons/md";
 import { RiWaterFlashFill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import { toDecimal } from "@/utils/toDecimal";
+import image from "../../assets/landingImg4.JPG";
+import { useBalance } from "@/context/BalanceContext";
+import { submitTransfer } from "@/utils/wallet/transfer";
+import { useToast } from "@/context/ToastContext";
 
 const ConfirmTransfer = () => {
+  const { balance } = useBalance();
   const { transfer, setTransfer } = useTransferContext();
   const {
     error,
@@ -16,13 +21,14 @@ const ConfirmTransfer = () => {
     success,
     loading,
     username,
-    currency,
     amount,
-    balance,
     charges,
     referenceId,
     date,
   } = transfer;
+  const { setToast } = useToast();
+
+  console.log("Balance in Withdraw:", balance?.available_balance);
 
   const close = () => {
     setTransfer((prev) => ({
@@ -32,49 +38,34 @@ const ConfirmTransfer = () => {
     }));
   };
 
-  const initiateTransfer = () => {};
-
-  const handleTransfer = async () => {
-    setTransferDetails((prev) => ({
+  const initiateTransfer = async () => {
+    setTransfer((prev) => ({
       ...prev,
       loading: true,
-      error: "",
     }));
 
-    const result = await submitTransfer(transferDetails);
-    console.log("Transfer:", result);
+    const details = { username: username, amount: amount };
+
+    const result = await submitTransfer(details);
+    console.log("Transfer Result:", result);
 
     if (result?.success) {
       setProceed(false);
 
-      setTransferDetails((prev) => ({
+      setTransfer((prev) => ({
         ...prev,
         username: "",
         amount: { USD: null, NGN: null },
-        error: "",
         loading: false,
-        error: "",
       }));
+    } else {
+      setToast({
+        error: true,
+        errorMessage: result.error,
+      });
 
       setTransfer((prev) => ({
         ...prev,
-        confirm: {
-          ...prev.confirm,
-          state: false,
-        },
-        success: {
-          state: true,
-          date: result?.date,
-          transferReferenceNo: result?.reference,
-          viewBalance: handleViewBalance,
-          closeSuccess: handleCloseSuccess,
-        },
-      }));
-    } else {
-      console.error("Transfer failed:", result.error);
-      setTransferDetails((prev) => ({
-        ...prev,
-        error: result.error,
         loading: false,
       }));
     }
@@ -87,7 +78,7 @@ const ConfirmTransfer = () => {
           <LockByScroll />
           {/* Modal */}
           <div className="fixed top-0 right-0 left-0 bottom-0 lg:px-[2%] md:px-[2.5%] px-[30px]  bg-black bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[350px] h-[400px] ">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[350px] min-h-[400px] ">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
                   Confirm Transfer
@@ -98,57 +89,68 @@ const ConfirmTransfer = () => {
                 </div>
               </div>
 
-              <div className="flex-1 flex flex-col justify-between py-[15px]">
-                <div className="flex flex-col gap-[15px]">
-                  <div className="flex items-center gap-[10px] p-[8px] bg-tradeAshLight rounded-[10px]">
-                    <div>
-                      <img className="w-[45px] rounded-full" src={""} alt="" />
-                    </div>
-                    <div>
-                      <p className="text-base font-semibold text-white">
+              <div className="flex-1 flex flex-col justify-between py-[15px] gap-[30px]">
+                <div className="flex flex-col gap-[20px]">
+                  <div className="flex flex-col items-center justify-center gap-3">
+                    <img
+                      src={image}
+                      className="p-[10px bg-tradeAshLight w-[65px] text-red-600 rounded-full"
+                      alt=""
+                    />
+
+                    <div className="flex gap-1">
+                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                        Recipient -
+                      </p>
+                      <p className="text-[13px] font-semibold text-white">
                         @{username}
                       </p>
-                      <p className="text-xs text-tradeFadeWhite font-medium">
-                        Recipient
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col bg-tradeAshLight  border border-tradeAshLight rounded-[15px]">
+                    <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAsh">
+                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                        Amount
+                      </p>
+
+                      <p className="text-[13px]  font-semibold text-white">
+                        NGN {toDecimal(amount?.NGN)}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAsh">
+                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                        Current Balance
+                      </p>
+
+                      <p className="text-[13px]  font-semibold text-white">
+                        NGN {toDecimal(balance?.available_balance?.NGN)}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between gap-[10px] p-[8px]">
+                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                        Service Charge
+                      </p>
+
+                      <p className="text-[13px]  font-semibold text-white">
+                        NGN 0.00
                       </p>
                     </div>
                   </div>
-                  <div className="flex flex-col items-center justify-center gap-2 py-[15px] rounded-[10px] border border-tradeAshLight ronded-[15px]">
-                    <p className="text-white font-semibold text-xl leading-none">
-                      NGN {toDecimal(amount)}
-                    </p>
-                    <p className="text-tradeFadeWhite text-xs font-medium ">
-                      {`+${charges?.NGN}`}
-                    </p>
-                  </div>
-                  <div className="flex flex-col border border-tradeAshLight rounded-[10px]">
-                    <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAshLight">
-                      <div className="flex items-center gap-1">
-                        <BiSolidWalletAlt className="text-tradeFadeWhite" />
-                        <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
-                          Wallet balance
-                        </p>
-                      </div>
 
-                      <div>
-                        <p className="md:text-[13px] text-[12px] font-semibold text-white">
-                          NGN {toDecimal(balance?.NGN)}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between gap-[10px]  p-[8px]">
-                      <div className="flex items-center gap-1">
-                        <RiWaterFlashFill className="text-tradeFadeWhite" />
-                        <p className="text-[12px] font-semibold text-tradeFadeWhite">
-                          Service charge
-                        </p>
-                      </div>
+                  <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
+                    <p className="text-tradeFadeWhite text-xs font-medium">
+                      Add a note
+                    </p>
 
-                      <div>
-                        <p className="md:text-[13px] text-[12px] font-semibold text-white">
-                          NGN {toDecimal(charges?.NGN)}
-                        </p>
-                      </div>
+                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                      <input
+                        className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-[13px] font-semibold leading-none"
+                        type="text"
+                        placeholder="What's this for?"
+                        // onChange={handleUsernameChange}
+                        // value={transfer?.username}
+                      />
                     </div>
                   </div>
                 </div>

@@ -8,16 +8,16 @@ const sanitizeInput = (input) => {
   return cleaned.trim();
 };
 
-export async function submitTransfer(transferDetails) {
+export async function submitTransfer(details) {
   console.log("Initiating Wallet Transfer...");
 
   const baseUrl = import.meta.env.VITE_API_URL;
 
-  if (!transferDetails) {
+  if (!details) {
     return { success: false, error: "No Transfer details provided." };
   }
 
-  const { username, amount } = transferDetails;
+  const { username, amount } = details;
 
   const sanitizedUsername = sanitizeInput(username);
   const sanitizedAmountNgn = sanitizeInput(amount?.NGN);

@@ -15,10 +15,6 @@ export const TransferProvider = ({ children }) => {
       USD: null,
       NGN: null,
     },
-    balance: {
-      USD: null,
-      NGN: null,
-    },
     charges: {
       USD: null,
       NGN: null,

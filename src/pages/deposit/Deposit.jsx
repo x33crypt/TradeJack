@@ -279,7 +279,7 @@ const Deposit = () => {
                   </p>
 
                   <div className="flex justify-between items-center bg-tradePurpl p-[12px] bg-tradeAshLight border border-tradeAshLight rounded-[10px]">
-                    <p className="text-white font-semibold text-lg leading-none bg-tradeOrang">
+                    <p className="text-white font-bold text-lg leading-none bg-tradeOrang">
                       <span className="text-tradeFadeWhite">@</span>sane
                     </p>
 

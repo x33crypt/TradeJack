@@ -19,7 +19,7 @@ const TransactionCard = ({ transaction }) => {
   return (
     <div
       onClick={() => viewDetails(transaction.reference)}
-      className="bg-tradeAsh rounded-[12px] border border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer p-3 space-y-3"
+      className="bg-tradeAsh rounded-[15px] border border-tradeAshLight hover:bg-black hover:shadow-lg transition-all duration-300 cursor-pointer p-3 space-y-3"
     >
       {/* Top Row: ID, Date, Status */}
       <div className="flex justify-between items-center text-xs text-tradeFadeWhite font-medium">
@@ -66,7 +66,7 @@ const TransactionCard = ({ transaction }) => {
             )}
           </div>
           <div className="flex gap-1 flex-col">
-            <div className="flex items-center gap-1 bg-transparent px-[6px] border border-tradeAshExtraLight rounded-[4px] w-max">
+            <div className="flex items-center gap-1 bg-transparent px-[4px] border border-tradeAshExtraLight rounded-[4px] w-max">
               <span className="text-[12px] text-tradeFadeWhite">
                 {(() => {
                   const { senderUsername, recipientUsername, type } =
@@ -94,7 +94,7 @@ const TransactionCard = ({ transaction }) => {
               </span>
             </div>
 
-            <span className="text-white text-[13px] font-semibold">
+            <span className="text-white text-[13px] font-bold">
               {(() => {
                 const { senderUsername, recipientUsername, type } =
                   transaction || {};
@@ -124,7 +124,7 @@ const TransactionCard = ({ transaction }) => {
 
         {/* Amount */}
         <div className="flex flex-col items-end gap-1">
-          <div className="flex items-center gap-1 bg-transparent px-[6px] border border-tradeAshExtraLight rounded-[4px] w-max">
+          <div className="flex items-center gap-1 bg-transparent px-[4px] border border-tradeAshExtraLight rounded-[4px] w-max">
             <p className="text-[12px] text-tradeFadeWhite font-medium">
               Amount
             </p>
@@ -138,20 +138,18 @@ const TransactionCard = ({ transaction }) => {
               (type === "deposit" && senderUsername !== "Unknown")
             )
               return (
-                <p className="text-tradeGreen text-[13px] font-semibold">
+                <p className="text-tradeGreen text-[13px] font-bold">
                   + #{toDecimal(amount?.ngn)}
                 </p>
               );
             if (type === "transfer" && recipientUsername !== "Unknown")
               return (
-                <p className="text-red-600 text-[13px] font-semibold">
+                <p className="text-red-600 text-[13px] font-bold">
                   - #{toDecimal(amount?.ngn)}
                 </p>
               );
             return (
-              <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                N/A
-              </p>
+              <p className="text-tradeFadeWhite text-[13px] font-bold">N/A</p>
             );
           })()}
         </div>

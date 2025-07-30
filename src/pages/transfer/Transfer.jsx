@@ -13,6 +13,7 @@ import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import { useBalance } from "@/context/BalanceContext";
 
+
 const Transfer = () => {
   const { balance } = useBalance();
   const { transactions } = useTransaction();
@@ -191,8 +192,7 @@ const Transfer = () => {
 
       // Validate balance
       if (
-        Number(toDecimal(amount?.NGN) || 0) >
-        Number(toDecimal(balance?.available_balance?.NGN) || 0)
+        Number(amount?.NGN || 0) > Number(balance?.available_balance?.NGN || 0)
       ) {
         setToast({
           error: true,

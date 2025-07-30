@@ -12,6 +12,8 @@ import { dateTime } from "@/utils/dateTime";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { MdPending } from "react-icons/md";
 import { MdCancel } from "react-icons/md";
+import { FaCopy } from "react-icons/fa6";
+import { useToast } from "@/context/ToastContext";
 
 const TransactionDetails = () => {
   const { loading, error } = useFetchTransactionsDetails();
@@ -19,6 +21,7 @@ const TransactionDetails = () => {
   const { state, transactionId, data } = details;
   const [txOverview, setTxOverview] = useState(true);
   const [txDetails, setTxDetails] = useState(false);
+  const { toast, setToast } = useToast();
 
   const transaction = data?.data;
   const userCurrency = data?.userCurrency;
@@ -50,6 +53,22 @@ const TransactionDetails = () => {
     </div>
   );
 
+  const handleCopy = (text) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        // Optionally show toast or feedback
+        setToast({
+          ...toast,
+          success: true,
+          successMessage: `Reference ID copied to clipboard`,
+        });
+      })
+      .catch((err) => {
+        console.error("Copy failed:", err);
+      });
+  };
+
   return (
     <div>
       {state && (
@@ -68,7 +87,7 @@ const TransactionDetails = () => {
               </div>
 
               <div className="flex-1 flex py-[15px]">
-                {false ? (
+                {loading ? (
                   <div className="flex-1 flex items-center justify-center">
                     <AiOutlineLoading3Quarters className="animate-spin text-[18px] text-tradeFadeWhite" />
                   </div>
@@ -235,10 +254,18 @@ const TransactionDetails = () => {
                               </p>
                             </div>
 
-                            <div className="">
+                            <div className="flex items-center gap-2">
                               <p className="text-[13px] font-semibold text-white">
                                 {transaction?.reference || "Status unknown"}
                               </p>
+                              <div
+                                onClick={() =>
+                                  handleCopy(`${transaction?.reference}`)
+                                }
+                                className="text-tradeGreen cursor-pointer"
+                              >
+                                <FaCopy className="" />
+                              </div>
                             </div>
                           </div>
                         </div>
