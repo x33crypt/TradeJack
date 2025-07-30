@@ -50,13 +50,19 @@ const ConfirmTransfer = () => {
     console.log("Transfer Result:", result);
 
     if (result?.success) {
-      setProceed(false);
-
       setTransfer((prev) => ({
         ...prev,
-        username: "",
-        amount: { USD: null, NGN: null },
+        error: "",
+        proceed: false,
+        confirm: false,
+        success: true,
         loading: false,
+        currency: "NGN",
+        charges: {
+          USD: null,
+          NGN: null,
+        },
+        referenceId: result?.reference,
       }));
     } else {
       setToast({

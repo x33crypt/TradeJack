@@ -12,10 +12,13 @@ import RecentTransfer from "@/components/wallet/RecentTransfer";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import { useBalance } from "@/context/BalanceContext";
-
+import { useFetchBalance } from "@/hooks/useFetchBalance";
+import { useFetchTransactions } from "@/hooks/useFetchTransactions";
 
 const Transfer = () => {
+  const { loading, error, refetch } = useFetchBalance();
   const { balance } = useBalance();
+  const { refetchTransactions } = useFetchTransactions();
   const { transactions } = useTransaction();
   const { transfer, setTransfer } = useTransferContext();
   const { setToast } = useToast();
@@ -243,6 +246,18 @@ const Transfer = () => {
       confirm: true,
     }));
   };
+
+  // Refetch transactions after a successfull transfer
+  useEffect(() => {
+    if (transfer?.success) {
+      refetchTransactions();
+    }
+  }, [transfer?.success]);
+
+  // Refetch transactions on page mount
+  useEffect(() => {
+    refetchTransactions();
+  }, []);
 
   return (
     <>

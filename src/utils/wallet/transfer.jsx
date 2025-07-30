@@ -41,6 +41,8 @@ export async function submitTransfer(details) {
       recipient: response?.data?.data?.recipient,
       reference: response?.data?.data?.reference,
     };
+
+    
   } catch (err) {
     console.log(err);
 

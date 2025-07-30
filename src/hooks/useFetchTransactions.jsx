@@ -83,6 +83,18 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
     fetchPage(1); // Always reset to page 1 on filter change
   }, [filter, fetchPage]);
 
+  // 🔁 Refetch AND reset filters
+  const refetchTransactions = () => {
+    const clearedFilter = {
+      type: "All types",
+      status: "All status",
+      date: null,
+    };
+
+    setFilter(clearedFilter); // update context first
+    fetchPage(1, clearedFilter); // then fetch fresh with empty filter
+  };
+
   // ───────────── helper for “Next” (Prev removed) ─────────────
   const next = async () => {
     if (pagination?.hasNextPage) {
@@ -97,5 +109,6 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
     page,
     displayedCount, // how many txs are on screen
     next,
+    refetchTransactions,
   };
 }

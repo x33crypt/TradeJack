@@ -11,31 +11,46 @@ import { TiTick } from "react-icons/ti";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { MdDateRange } from "react-icons/md";
 import { IoIosCheckmarkCircle } from "react-icons/io";
+import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useNavigate } from "react-router-dom";
 
 const SuccessTransfer = () => {
+  const { details, setDetails } = useTransaction();
   const { transfer, setTransfer } = useTransferContext();
-  const {
-    confirm,
-    success,
-    loading,
-    username,
-    currency,
-    amount,
-    balance,
-    charges,
-    referenceId,
-    date,
-  } = transfer;
+  const { success, username, amount, referenceId } = transfer;
 
   const close = () => {
     setTransfer((prev) => ({
       ...prev,
-      proceed: false,
-      confirm: false,
+      success: false,
     }));
   };
 
-  const viewBalance = () => {};
+  const viewDetails = (id) => {
+    setTransfer((prev) => ({
+      ...prev,
+      success: false,
+      username: "",
+      amount: {
+        USD: null,
+        NGN: null,
+      },
+    }));
+
+    setDetails({ state: true, transactionId: id, data: {} });
+  };
+
+  const navigateTo = useNavigate();
+
+  const viewBalance = () => {
+    setTransfer((prev) => ({
+      ...prev,
+      success: false,
+    }));
+
+    navigateTo("/wallet");
+  };
+
   return (
     <div>
       {success && (
@@ -65,56 +80,35 @@ const SuccessTransfer = () => {
                       Transfer Successful
                     </p>
 
-                    <div className="mt-[15px] flex flex-col items-center gap-3  justify-center">
-                      <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed text-center">
-                        Good job!{" "}
-                        <span className="font-semibold text-white">
-                          {toDecimal(amount?.NGN)} NGN
-                        </span>{" "}
-                        is on its way to{" "}
-                        <span className="font-semibold text-tradeOrange">
-                          @{username}
-                        </span>
-                        ’s wallet. You can view the details in your transaction
-                        history.
-                      </p>
-                    </div>
+                    <p className="text-2xl font-bold text-white leading-none">
+                      NGN {toDecimal(amount.NGN)}
+                    </p>
+                    <p className="text-[13px] font-bold text-tradeOrange leading-none">
+                      USD {amount.USD ? toDecimal(amount.USD) : "0.00"}
+                    </p>
                   </div>
 
-                  <div className="flex flex-col gap- px-[8px] border border-tradeAshLight rounded-[10px]">
-                    <div className="flex items-center justify-between gap-[10px] py-[8px] border-b border-tradeAshLight">
-                      <div className="flex items-center gap-2">
-                        <RiWaterFlashFill className="text-tradeFadeWhite" />
-                        <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
-                          Service charge
-                        </p>
-                      </div>
-
-                      <div>
-                        <p className="md:text-[13px] text-[12px] font-semibold text-white">
-                          {charges ? toDecimal(charges?.NGN) : "0.00"} NGN
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between gap-[10px]  py-[8px]">
-                      <div className="flex items-center gap-2">
-                        <MdDateRange className="text-tradeFadeWhite" />
-                        <p className="md:text-[13px] text-[12px] font-semibold text-tradeFadeWhite">
-                          Date
-                        </p>
-                      </div>
-
-                      <div>
-                        <p className="md:text-[13px] text-[12px] font-semibold text-white">
-                          14 Feb, 2015 11:42:20 AM
-                        </p>
-                      </div>
-                    </div>
+                  <div className="mt-[15px] flex flex-col items-center gap-3  justify-center">
+                    <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed text-center">
+                      Funds are now being processed.{" "}
+                      <span className="font-semibold text-tradeOrange">
+                        @{username}
+                      </span>{" "}
+                      will typically receive them within 1 to 3 minutes.
+                    </p>
                   </div>
                 </div>
-                <Button variant="secondary" onClick={viewBalance}>
-                  View My Balance
-                </Button>
+                <div className="flex flex-col gap-[10px]">
+                  <Button
+                    variant="Fadeout"
+                    onClick={() => viewDetails(referenceId)}
+                  >
+                    View Details
+                  </Button>
+                  <Button variant="secondary" onClick={viewBalance}>
+                    Go to Wallet
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
