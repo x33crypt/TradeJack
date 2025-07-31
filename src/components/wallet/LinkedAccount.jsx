@@ -17,6 +17,8 @@ const LinkedAccount = () => {
 
   const navigateTo = useNavigate();
 
+  console.log("linked accounts", linkedAccounts);
+
   return (
     <div className="flex flex-col w-full md:border border-neutral-800 bg-tradeAs">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
@@ -24,13 +26,13 @@ const LinkedAccount = () => {
       </div>
 
       <div className="flex flex-col p-[15px] gap-[10px]">
-        <div className="flex min-h-[150px]">
+        <div className="flex min-h-[150px] w-full">
           {loading ? (
             <Loading />
           ) : (
             <div className="flex flex-1">
               {linkedAccounts === null ? (
-                <div className="h-full flex items-center justify-center ">
+                <div className="flex-1 flex items-center justify-center ">
                   <div>
                     <Info text="Can't load linked accounts. Check your connection or refresh." />
                   </div>
@@ -100,8 +102,8 @@ const LinkedAccount = () => {
                         </p>
                       </div>
 
-                      <div className="flex-1 flex justify-center items-center text-[55px] text-tradeGreen">
-                        <LuFileX2 />
+                      <div className="flex-1 flex justify-center items-center text-[55px] text-tradeAshLight">
+                        <RiBankLine />
                       </div>
 
                       <div>

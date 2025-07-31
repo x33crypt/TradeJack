@@ -30,9 +30,7 @@ export function useFetchLinkedBanks() {
   }, [setLinkedAccounts]);
 
   useEffect(() => {
-    if (!linkedAccounts || linkedAccounts.length === 0) {
-      fetchLinkedAccounts();
-    }
+    fetchLinkedAccounts();
   }, [linkedAccounts, fetchLinkedAccounts]);
 
   return { linkedAccounts, loading, error, refetch: fetchLinkedAccounts };

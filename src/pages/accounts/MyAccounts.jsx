@@ -21,16 +21,7 @@ const MyAccounts = () => {
   const { linkAccount, linkedAccounts, manageAccount, setManageAccount } =
     useLinkedAccount();
   const { isDelete, isDefault, success } = manageAccount;
-  const { toast, setToast } = useToast();
-
-  console.log(linkedAccounts);
-  console.log("Manage Account:", manageAccount);
-
-  useEffect(() => {
-    if (linkedAccounts?.length) {
-      console.log("Linked accounts:", linkedAccounts);
-    }
-  }, [linkedAccounts]);
+  const { setToast } = useToast();
 
   const handleManageAccount = () => {
     setManageAccount({
@@ -157,19 +148,19 @@ const MyAccounts = () => {
     });
   };
 
-  useEffect(() => {
-    if (success) {
-      setTimeout(() => {
-        setManageAccount({
-          state: false,
-          accountId: null,
-          loading: false,
-          success: false,
-        });
-        refetch();
-      });
-    }
-  }, [success]);
+  // useEffect(() => {
+  //   if (success === true) {
+  //     setTimeout(() => {
+  //       setManageAccount({
+  //         state: false,
+  //         accountId: null,
+  //         loading: false,
+  //         success: false,
+  //       });
+  //       refetch();
+  //     });
+  //   }
+  // }, [success]);
 
   console.log("Showing Link Account Details :", linkAccount);
   console.log("Showing manage account details :", manageAccount);

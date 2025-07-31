@@ -13,6 +13,7 @@ import { IoWalletOutline } from "react-icons/io5";
 import { useBalance } from "@/context/BalanceContext";
 import { useFetchLinkedBanks } from "@/hooks/useFetchLinkedBanks";
 import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
+import { RiBankLine } from "react-icons/ri";
 
 const Withdraw = () => {
   const { balance } = useBalance();
@@ -288,7 +289,7 @@ const Withdraw = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-[10px] w-full border- border-tradeAshLight">
-                  <div className="p-3 bg-tradeAshLight w-max rounded-[10px]">
+                  <div className="p-[10px] bg-tradeAshLight w-max rounded-[10px]">
                     <IoWalletOutline className="text-[25px] text-tradeWhite" />
                   </div>
                   <div className="flex flex-col gap-[3px]">
@@ -339,13 +340,18 @@ const Withdraw = () => {
                 </div>
                 <div className="flex items-center gap-[10px] w-full border- border-tradeAshLight">
                   <div className="p-[10px] bg-tradeAshLight rounded-[10px]">
-                    <img
-                      className="w-[30px]"
-                      src={
-                        withdraw?.bank?.logo || "/images/default-bank-logo.png"
-                      }
-                      alt=""
-                    />
+                    {withdraw?.bank?.logo ? (
+                      <img
+                        className="w-[30px]"
+                        src={
+                          withdraw?.bank?.logo ||
+                          "/images/default-bank-logo.png"
+                        }
+                        alt=""
+                      />
+                    ) : (
+                      <RiBankLine className="text-[25px] text-tradeWhite" />
+                    )}
                   </div>
                   <div className="flex flex-col gap-[3px]">
                     <p className="text-tradeFadeWhite text-xs font-medium">

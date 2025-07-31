@@ -23,7 +23,7 @@ import MyOffer from "./pages/offer/mine/MyOffer";
 import EditMyOffer from "./pages/offer/mine/EditMyOffer";
 import ToastSuccess from "./components/toastCards/ToastSuccess";
 import ToastError from "./components/toastCards/ToastError";
-import Kyc from "./pages/kyc/Kyc";
+import Kyc from "./pages/kyc/KycStatus";
 import KycVerifyStep1 from "./pages/kyc/KycVerifyStep1";
 import KycVerifyStep2 from "./pages/kyc/KycVerifyStep2";
 import KycVerifyStep3 from "./pages/kyc/KycVerifyStep3";
@@ -44,6 +44,8 @@ import AddNewAccount from "./pages/accounts/AddNewAccount";
 import ProfileNav from "./components/ProfileNav";
 import Withdraw from "./pages/withdraw/Withdraw";
 import ConfirmWithdraw from "./pages/withdraw/ConfirmWithdraw";
+import KycStatus from "./pages/kyc/KycStatus";
+import KycVerification from "./pages/kyc/KycVerification";
 
 const App = () => {
   return (
@@ -74,6 +76,8 @@ const App = () => {
         <Route path="/account/profile" element={<UserProfile />} />
         <Route path="/account/kycStatus" element={<Kyc />} />
         <Route path="/account/address" element={<EditAddress />} />
+        <Route path="/account/kyc/status" element={<KycStatus />} />
+        <Route path="/account/kyc/verification" element={<KycVerification />} />
 
         {/* Account Settings */}
         <Route path="/settings" element={<Settings />} />
@@ -82,18 +86,7 @@ const App = () => {
         <Route path="/settings/account/username" element={<EditUsername />} />
         <Route path="/settings/account/email" element={<EditEmail />} />
         <Route path="/settings/account/mobile" element={<EditMobile />} />
-        <Route
-          path="/settings/account/kycVerify/1"
-          element={<KycVerifyStep1 />}
-        />
-        <Route
-          path="/settings/account/kycVerify/2"
-          element={<KycVerifyStep2 />}
-        />
-        <Route
-          path="/settings/account/kycVerify/3"
-          element={<KycVerifyStep3 />}
-        />
+
         {/* Wallet */}
         <Route path="/wallet" element={<Wallet />} />
         <Route path="/wallet/transfer" element={<Transfer />} />

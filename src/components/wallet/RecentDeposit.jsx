@@ -16,7 +16,7 @@ const RecentDeposit = () => {
   useEffect(() => {
     setFilter({
       date: { monthNo: null, monthName: null, year: null },
-      type: "Deposit",
+      type: "deposit",
       status: null,
     });
 

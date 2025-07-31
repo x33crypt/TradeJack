@@ -8,7 +8,7 @@ export const KycProvider = ({ children }) => {
     lastName: "",
     email: "",
     dateOfBirth: { year: null, month: null, day: null },
-    gender: "",
+    gender: "male",
     address: {
       country: "",
       state: "",
@@ -21,8 +21,27 @@ export const KycProvider = ({ children }) => {
     // Add more fields as needed
   });
 
+  const [verification, setVerification] = useState({
+    stepOne: true,
+    stepTwo: false,
+    stepThree: false,
+    loading: false,
+    success: false,
+  });
+
+  const [status, setStatus] = useState({ state: null, data: null });
+
   return (
-    <KycContext.Provider value={{ kycDetails, setKycDetails }}>
+    <KycContext.Provider
+      value={{
+        kycDetails,
+        setKycDetails,
+        verification,
+        setVerification,
+        status,
+        setStatus,
+      }}
+    >
       {children}
     </KycContext.Provider>
   );

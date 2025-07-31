@@ -13,15 +13,17 @@ const RecentTransfer = () => {
   const { transactions, setFilter } = useTransaction();
   const navigateTo = useNavigate();
 
-  useEffect(() => {
-    setFilter({
-      date: { monthNo: null, monthName: null, year: null },
-      type: "Transfer",
-      status: null,
-    });
+  // useEffect(() => {
+  //   if (loading === false) {
+  //     setFilter({
+  //       date: { monthNo: null, monthName: null, year: null },
+  //       type: "transfer",
+  //       status: null,
+  //     });
 
-    refetchTransactions();
-  }, []);
+  //     refetchTransactions();
+  //   }
+  // }, [loading]);
 
   console.log("resent transfers", transactions);
 

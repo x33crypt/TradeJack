@@ -188,7 +188,7 @@ const AddNew = () => {
         <p className="text-lg font-[700] text-white ">Add New Account</p>
       </div>
 
-      <div className=" h-full w-full">
+      <div className="flex h-full w-full">
         {/* Form Page */}
         <div
           className={` ${
@@ -348,51 +348,48 @@ const AddNew = () => {
         <div
           className={` ${
             linkAccount?.success ? "flex" : "hidden"
-          } flex-col justify-between items-center p-[15px] gap-[15px] h-full w-full`}
+          } flex-col justify-between  items-center p-[15px] h-full w-full`}
         >
-          <div className="flex-1 flex flex-col gap-[15px]">
-            <div className="flex justify-center mt-[15px]">
-              <FaRegCircleCheck className="text-5xl text-tradeGreen" />
+          <div className="flex flex-col gap-[15px] items-center justify-center">
+            <div className="flex justify-center">
+              <FaRegCircleCheck className="text-[50px] text-tradeGreen leading-none" />
             </div>
-            <div className=" justify-center flex flex-col gap-2">
-              <div className="w-full flex flex-col items-center">
-                <p className="text-white text-lg font-semibold w-[220px] text-center">
-                  Connection successful, you're ready to go.
-                </p>
-              </div>
 
-              <p className="text-[13px] text-tradeFadeWhite font-medium max-w-[280px] text-center">
-                Your account is now securely linked and ready to use for
-                seamless withdrawals and transactions
+            <div className="w-full flex flex-col items-center">
+              <p className="text-white text-lg font-semibold w-[220px] text-center">
+                Connection successful, you're ready to go.
               </p>
             </div>
+
+            <p className="text-xs text-tradeFadeWhite font-medium max-w-[280px text-center">
+              Your account is now securely linked and ready to use for seamless
+              withdrawals and transactions
+            </p>
           </div>
 
-          <div className="flex-1 flex flex-col justify-between w-full">
-            <div>
-              {linkedAccounts?.length < 2 ? (
-                <Info text="You might want to add an alternative account as a backup for smoother withdrawals and flexibility." />
-              ) : (
-                <Info text="You’ve reached the maximum number of linked accounts. To add a new one, please unlink one of your existing accounts first." />
-              )}
-            </div>
+          <div>
+            {linkedAccounts?.length < 2 ? (
+              <Info text="You might want to add an alternative account as a backup for smoother withdrawals and flexibility." />
+            ) : (
+              <Info text="You’ve reached the maximum number of linked accounts. To add a new one, please unlink one of your existing accounts first." />
+            )}
+          </div>
 
-            <div className="flex flex-col gap-[10px]">
-              {linkedAccounts?.length < 2 && (
-                <Button variant="outline" onClick={addNewAccount}>
-                  Add New Account
-                </Button>
-              )}
+          <div className="flex flex-col gap-[10px] w-full">
+            {linkedAccounts?.length < 2 && (
+              <Button variant="outline" onClick={addNewAccount}>
+                Add New Account
+              </Button>
+            )}
 
-              <div className="md:hidden flex">
-                <Button
-                  variant="primary"
-                  disabled={linkAccount?.loading}
-                  onClick={() => navigateTo("/wallet/accounts")}
-                >
-                  View My Accounts
-                </Button>
-              </div>
+            <div className="md:hidden flex">
+              <Button
+                variant="primary"
+                disabled={linkAccount?.loading}
+                onClick={() => navigateTo("/wallet/accounts")}
+              >
+                View My Accounts
+              </Button>
             </div>
           </div>
         </div>

@@ -33,12 +33,12 @@ const KycBenefits = () => {
   ];
 
   return (
-    <div className="flex flex-col w-full h-full md:border-x md:border-b md:border-t border-neutral-800">
+    <div className="flex flex-col w-full h-max md:border-x md:border-b md:border-t border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
         <p className="text-lg text-white font-[700]">KYC Benefit</p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-[10px] p-[15px]">
+      <div className="flex flex-col gap-[10px] p-[15px]">
         {benefits?.map((benefit, index) => (
           <div
             key={index}
