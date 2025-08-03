@@ -3,14 +3,11 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 
 import { useNavigate } from "react-router-dom";
 
-const PersonalInfo = ({ profile }) => {
+const Profile = ({ profile, view }) => {
   const navigateTo = useNavigate();
 
   return (
-    <div className="flex-1 flex flex-col ">
-      {/* <div className="flex px-[15px] py-[12px]  border-b border-tradeAshLight">
-        <p className="text-lg text-white font-[700]">Personal Information</p>
-      </div> */}
+    <div className={`${view ? "flex" : "hidden"} flex-1 flex-col `}>
       <div className="flex p-[15px] flex-col gap-[10px]">
         <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
           {/* Username */}
@@ -70,7 +67,7 @@ const PersonalInfo = ({ profile }) => {
           {/* KYC */}
           <div
             className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-            onClick={() => navigateTo("/account/kycStatus")}
+            onClick={() => navigateTo("/account/kyc/status")}
           >
             <div className="flex-1 flex justify-between gap-[2px]">
               <p className="text-[13px] font-semibold text-white">KYC status</p>
@@ -150,4 +147,4 @@ const PersonalInfo = ({ profile }) => {
   );
 };
 
-export default PersonalInfo;
+export default Profile;

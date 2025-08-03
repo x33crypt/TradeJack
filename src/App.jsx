@@ -6,7 +6,7 @@ import Marketplace from "./pages/Marketplace";
 import AboutOffer from "./pages/offer/user/AboutOffer";
 import CreateOffer from "./pages/offer/user/CreateOffer";
 import Messages from "./pages/Messages";
-import UserProfile from "./pages/UserProfile";
+import Account from "./pages/Account";
 import SignupUser from "./pages/SignupUser";
 import SignupSuccess from "./pages/SignupSuccess";
 import SigninUser from "./pages/SigninUser";
@@ -23,15 +23,10 @@ import MyOffer from "./pages/offer/mine/MyOffer";
 import EditMyOffer from "./pages/offer/mine/EditMyOffer";
 import ToastSuccess from "./components/toastCards/ToastSuccess";
 import ToastError from "./components/toastCards/ToastError";
-import Kyc from "./pages/kyc/KycStatus";
-import KycVerifyStep1 from "./pages/kyc/KycVerifyStep1";
-import KycVerifyStep2 from "./pages/kyc/KycVerifyStep2";
-import KycVerifyStep3 from "./pages/kyc/KycVerifyStep3";
 import AboutMyOffer from "./pages/offer/mine/AboutMyOffer";
 import SummaryMyOffer from "./pages/offer/mine/SummaryMyOffer";
 import Wallet from "./pages/wallet/Wallet";
 import Settings from "./pages/Settings";
-import Account from "./components/settings/Account";
 import Transfer from "./pages/transfer/Transfer";
 import Deposit from "./pages/deposit/Deposit";
 import ConfirmTransfer from "./pages/transfer/ConfirmTransfer";
@@ -73,14 +68,12 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
 
         {/* User Account */}
-        <Route path="/account/profile" element={<UserProfile />} />
+        <Route path="/account" element={<Account />} />
         <Route path="/account/address" element={<EditAddress />} />
         <Route path="/account/kyc/status" element={<KycStatus />} />
         <Route path="/account/kyc/verification" element={<KycVerification />} />
 
         {/* Account Settings */}
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/settings/account" element={<Account />} />
         <Route path="/settings/account/name" element={<EditFullname />} />
         <Route path="/settings/account/username" element={<EditUsername />} />
         <Route path="/settings/account/email" element={<EditEmail />} />

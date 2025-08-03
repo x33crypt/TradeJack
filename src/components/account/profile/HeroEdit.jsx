@@ -7,6 +7,10 @@ import image from "../../../assets/landingImg4.JPG";
 import { FaUserFriends } from "react-icons/fa";
 import { IoLink } from "react-icons/io5";
 import { FiMoreHorizontal } from "react-icons/fi";
+import { FaCalendarCheck } from "react-icons/fa";
+import { BiSolidCalendarEdit } from "react-icons/bi";
+import { FaEdit } from "react-icons/fa";
+import { capitalizeFirst } from "@/utils/capitalizeFirst";
 
 const HeroEdit = ({ profile }) => {
   return (
@@ -22,12 +26,12 @@ const HeroEdit = ({ profile }) => {
           </div>
 
           <div className="flex  flex-col justify-center items-center md:items-start gap-3">
-            <div className="flex flex-col gap-2 items-center md:items-start">
+            <div className="flex flex-col gap-3 items-center md:items-start">
               <p className="mt-0 text-white lg:text-[40px] md:text-[40px] text-[25px] font-[900] leading-none ">
                 <span className="text-tradeFadeWhite">@</span>
                 {profile?.userName}
               </p>
-              <div className="flex gap-[4px] items-center w-max px-[6px] py-[1px] bg-tradeOrange/10 rounded-[10px]">
+              <div className="flex gap-[4px] items-center w-max px-[6px] py-[1px] bg-tradeOrange/10 border border-tradeOrange rounded-[10px]">
                 <GiTopHat className="text-[14px] text-tradeOrange" />
                 <p className="text-xs text-tradeOrange font-semibold">5x</p>
                 <p className="text-xs font-semibold text-white">
@@ -39,27 +43,35 @@ const HeroEdit = ({ profile }) => {
             <div className="flex items-center gap-3">
               <div className="flex  gap-1 items-center ">
                 <FaLocationDot className=" flex text-tradeOrange text-xs leading-none" />
-                <p className=" text-[13px] font-[600] text-white">
+                <p className=" text-[13px] font-medium text-white">
                   {profile?.kycDetails?.address?.country}
                 </p>
               </div>
 
               <div className="flex  gap-1 items-center ">
                 <RiEye2Fill className=" flex text-tradeGreen text-xs leading-none" />
-                <p className="mt-0 text-tradeGreen text-[13px]  font-[600]">
-                  {profile?.status}
+                <p className="mt-0 text-tradeGreen text-[13px]  font-medium">
+                  {capitalizeFirst(profile?.status)}
                 </p>
               </div>
 
               <div className="flex  gap-1 items-center ">
-                <p className=" text-[13px] font-[600] text-tradeFadeWhite">
+                <FaCalendarCheck className=" flex text-tradeAshExtraLight text-xs leading-none" />
+                <p className=" text-[13px] font-medium text-tradeFadeWhite">
                   Joined{" "}
-                  <span className="font-[700] text-white">
+                  <span className="font-semibold text-white">
                     {profile?.accAgeInMonths} Months
                   </span>{" "}
                   ago
                 </p>
               </div>
+            </div>
+
+            <div className="flex gap-1 items-center ">
+              <FaEdit className=" flex text-tradeAshExtraLight text-sm leading-none" />
+              <p className=" text-[13px] font-semibold text-tradeFadeWhite">
+                16th May, 2025 - 14:20:25
+              </p>
             </div>
           </div>
         </div>

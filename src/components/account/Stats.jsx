@@ -4,7 +4,7 @@ import { FaUserFriends } from "react-icons/fa";
 import { TiChartLine } from "react-icons/ti";
 import { GiRoundKnob } from "react-icons/gi";
 
-const StatsBoard = ({ profile }) => {
+const Stats = ({ profile }) => {
   return (
     <div className="flex flex-col flex-1 h-full md:border border-neutral-800 bg-tradeAs">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
@@ -123,4 +123,4 @@ const StatsBoard = ({ profile }) => {
   );
 };
 
-export default StatsBoard;
+export default Stats;

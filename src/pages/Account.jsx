@@ -2,20 +2,24 @@ import Footer from "@/components/Footer";
 import MarketTopNav from "@/components/InAppNav";
 import React, { useState, useEffect, useRef } from "react";
 import Performance from "@/components/account/profile/Performance";
-import PersonalInfo from "@/components/account/profile/PersonalInfo";
-import StatsBoard from "@/components/account/profile/StatsBoard";
+import PersonalInfo from "@/components/account/Profile";
+import StatsBoard from "@/components/account/Stats";
 import HeroEdit from "@/components/account/profile/HeroEdit";
 import { useProfile } from "@/context/ProfileContext";
 import { useFetchProfile } from "@/hooks/useFetchProfile";
 import StateHandler from "@/components/stateHandler/StateHandler";
 import ProfileNav from "@/components/ProfileNav";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
+import { useAccount } from "@/context/AccountContext";
 
-const UserProfile = () => {
+const Account = () => {
+  const { account, setAccount } = useAccount();
+  const { view } = account;
   const { loading, error } = useFetchProfile();
   const { profile, setProfile } = useProfile();
 
   console.log("Hero Edit", profile);
+  console.log("Page in View : ", view);
 
   return (
     <>
@@ -29,16 +33,16 @@ const UserProfile = () => {
           <div className="flex flex-col">
             <HeroEdit profile={profile} />
             <div className=" bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
-              <div className="custom-x-scrollbar flex justify-between items-center gap-[10px] ">
+              <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] ">
                 <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                   <div
                     className={`${
-                      false
-                        ? "text-white bg-tradeAsh border-tradeGreen"
+                      view === "Profile"
+                        ? "text-tradeOrange bg-tradeOrange/20 border-tradeOrange"
                         : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
                     } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                   >
-                    <p>Profile Information</p>
+                    <p>Profile</p>
                   </div>
                   <div
                     className={`${
@@ -47,7 +51,7 @@ const UserProfile = () => {
                         : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
                     } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                   >
-                    <p>My Stats</p>
+                    <p>Stats</p>
                   </div>
                   <div
                     className={`${
@@ -67,7 +71,6 @@ const UserProfile = () => {
                   >
                     <p>Security & Access</p>
                   </div>
-
                   <div
                     className={`${
                       false
@@ -104,7 +107,6 @@ const UserProfile = () => {
                   >
                     <p>Rewards</p>
                   </div>
-
                   <div
                     className={`${
                       false
@@ -114,6 +116,8 @@ const UserProfile = () => {
                   >
                     <p>Help & Support</p>
                   </div>
+                </div>
+                <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                   <div
                     className={`${
                       false
@@ -135,7 +139,7 @@ const UserProfile = () => {
                 </div>
               </div>
             </div>
-            <PersonalInfo profile={profile} />
+            <PersonalInfo profile={profile} view={view} />
           </div>
         </div>
       </div>
@@ -144,4 +148,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default Account;
