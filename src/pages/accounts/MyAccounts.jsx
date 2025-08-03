@@ -215,30 +215,17 @@ const MyAccounts = () => {
                           {/* Aternative Account */}
                           <div className="flex flex-col gap-[10px] p-[12px bg-tradeAs rounded-[15px borde border-tradeAshLight">
                             <div className="flex flex-col gap-[10px]">
-                              {linkedAccounts?.some(
-                                (account) => account?.isDefault == false
-                              ) ? (
-                                linkedAccounts
-                                  .filter(
-                                    (account) => account?.isDefault === false
-                                  )
-                                  .map((account, index) => (
-                                    <AccountCard
-                                      key={index}
-                                      account={account}
-                                      index={index}
-                                    />
-                                  ))
-                              ) : (
-                                <div className="">
-                                  <Info
-                                    text="You currently don’t have an alternative
-                                    account linked. Adding one provides a
-                                    reliable backup option in case your primary
-                                    account is unavailable."
+                              {linkedAccounts
+                                .filter(
+                                  (account) => account?.isDefault === false
+                                )
+                                .map((account, index) => (
+                                  <AccountCard
+                                    key={index}
+                                    account={account}
+                                    index={index}
                                   />
-                                </div>
-                              )}
+                                ))}
                             </div>
                           </div>
                         </div>
