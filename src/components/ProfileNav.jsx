@@ -17,7 +17,7 @@ const ProfileNav = () => {
 
   const toAccount = () => {
     setShow(false);
-    navigateTo("/account/profile");
+    navigateTo("/account");
   };
 
   return (
