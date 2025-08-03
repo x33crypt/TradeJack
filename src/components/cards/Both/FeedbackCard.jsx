@@ -39,7 +39,7 @@ const FeedbackCard = () => {
           <div className="p-1  rounded-full bg-red-600/30">
             <MdThumbDownAlt className="text-red-600 text-xs leading-none" />
           </div>
-          <p className="text-white text-xs font-semibold">Negative</p>
+          <p className="text-white text-xs font-semibold">Negative Feedback</p>
         </div>
 
         <div className="flex flex-1 gap-2 items-center">
@@ -62,8 +62,11 @@ const FeedbackCard = () => {
                 ChocoMillo
               </p>
 
-              <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                <FaLocationArrow className=" flex text-tradeOrange text-xs leading-none" />
+              <div className="flex gap-1">
+                <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
+                  <FaLocationArrow className=" flex text-tradeOrange text-xs leading-none" />
+                </div>
+
                 <p className="text-tradeFadeWhite text-xs font-semibold">
                   Nigeria
                 </p>
