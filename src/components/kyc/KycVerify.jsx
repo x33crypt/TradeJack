@@ -11,6 +11,8 @@ import { MdOutlineAccessTime } from "react-icons/md";
 import { useFetchKycStatus } from "@/hooks/useFetchKycStatus";
 import Loading from "@/components/Loading";
 import Info from "@/components/alerts/Info";
+import { MdOutlineBadge } from "react-icons/md";
+import NetworkError from "../NetworkError";
 
 const KycVerify = () => {
   const { loading, error, refetchKycStatus } = useFetchKycStatus();
@@ -488,17 +490,13 @@ const KycVerify = () => {
         <p className="text-lg font-[700] text-white ">KYC Verification</p>
       </div>
 
-      <div className="flex h-full w-full">
+      <div className="flex h-full w-full  p-[15px]">
         {loading ? (
           <Loading />
         ) : (
           <div className="flex h-full w-full">
             {status?.state === null ? (
-              <div className="flex-1 flex items-center justify-center p-[15px] ">
-                <div>
-                  <Info text="Can't load verification. Check your connection or refresh." />
-                </div>
-              </div>
+              <NetworkError text={"KYC Verification"} />
             ) : (
               <div className="flex h-full w-full">
                 {status?.state === "not_submitted" ? (
@@ -506,7 +504,7 @@ const KycVerify = () => {
                     <div
                       className={`${
                         verification?.stepOne ? "flex" : "hidden"
-                      } flex-col justify-between p-[15px] gap-[15px] h-full w-full`}
+                      } flex-col justify-between gap-[15px] h-full w-full`}
                     >
                       <div className="">
                         <p className="text-xs text-tradeFadeWhite font-medium">
@@ -515,7 +513,7 @@ const KycVerify = () => {
                         </p>
                       </div>
 
-                      <div className="flex flex-col gap-[15px] h-full justify-between">
+                      <div className="flex flex-col h-full justify-between">
                         <div className="flex flex-col gap-[10px]">
                           <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                             <div className="flex flex-col gap-[10px] w-full">
@@ -621,7 +619,7 @@ const KycVerify = () => {
                     <div
                       className={`${
                         verification?.stepTwo ? "flex" : "hidden"
-                      } flex-col justify-between p-[15px] gap-[15px] h-full w-full`}
+                      } flex-col justify-between gap-[15px] h-full w-full`}
                     >
                       <div className="">
                         <p className="text-xs text-tradeFadeWhite font-medium">
@@ -762,7 +760,7 @@ const KycVerify = () => {
                     <div
                       className={`${
                         verification?.stepThree ? "flex" : "hidden"
-                      } flex-col justify-between p-[15px] gap-[15px] h-full w-full`}
+                      } flex-col justify-between  gap-[15px] h-full w-full`}
                     >
                       <div className="">
                         <p className="text-xs text-tradeFadeWhite font-medium">
@@ -925,13 +923,13 @@ const KycVerify = () => {
                 ) : status?.state === "pending" ? (
                   <div className=" h-full w-full">
                     <div
-                      className={`flex flex-col justify-between p-[15px] gap-[15px] h-full w-full`}
+                      className={`flex flex-col justify-between gap-[15px] h-full w-full`}
                     >
                       <div className="flex flex-col h-full justify-between">
                         <div className="flex flex-col gap-[15px] items-center justify-center">
                           <div className="flex items-center">
                             <div className="text-[60px] text-tradeGreen leading-none">
-                              <MdOutlineAccessTime />
+                              <MdOutlineBadge />
                             </div>
                           </div>
 

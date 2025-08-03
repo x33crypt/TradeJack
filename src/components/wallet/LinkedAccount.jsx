@@ -10,6 +10,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 import Info from "../alerts/Info";
 import { LuCrown } from "react-icons/lu";
 import { LuFileX2 } from "react-icons/lu";
+import NetworkError from "../NetworkError";
 
 const LinkedAccount = () => {
   const { loading, error, refetch } = useFetchLinkedBanks();
@@ -26,17 +27,13 @@ const LinkedAccount = () => {
       </div>
 
       <div className="flex flex-col p-[15px] gap-[10px]">
-        <div className="flex min-h-[150px] w-full">
+        <div className="flex min-h-[200px] w-full">
           {loading ? (
             <Loading />
           ) : (
             <div className="flex flex-1">
               {linkedAccounts === null ? (
-                <div className="flex-1 flex items-center justify-center ">
-                  <div>
-                    <Info text="Can't load linked accounts. Check your connection or refresh." />
-                  </div>
-                </div>
+                <NetworkError />
               ) : (
                 <div className="flex flex-1">
                   {linkedAccounts?.length && linkedAccounts?.length !== 0 ? (
@@ -94,19 +91,21 @@ const LinkedAccount = () => {
                       </Button>
                     </div>
                   ) : (
-                    <div className="flex-1 flex flex-col h-[200px]">
-                      <div>
-                        <p className="text-xs font-medium text-tradeFadeWhite">
-                          You haven't linked any bank account yet. Add one to
-                          enable secure and seamless withdraw to your bank.
-                        </p>
-                      </div>
-
-                      <div className="flex-1 flex justify-center items-center text-[55px] text-tradeAshLight">
+                    <div className="flex-1 flex flex-col gap-[15px] items-center justify-center">
+                      <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
                         <RiBankLine />
                       </div>
 
-                      <div>
+                      <p className="text-lg font-semibold text-white leading-none">
+                        No Linked Account{" "}
+                      </p>
+
+                      <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
+                        You haven't linked any bank account yet. Add one to
+                        enable secure and seamless withdraw to your bank.
+                      </p>
+
+                      <div className="w-full">
                         <div className="md:flex hidden">
                           <Button
                             variant="primary"

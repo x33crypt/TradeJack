@@ -324,18 +324,20 @@ const Withdraw = () => {
                       <p className="text-white text-xs font-bold">Default</p>
                     </div>
 
-                    <div
-                      onClick={selectAlternativeAccount}
-                      className={`${
-                        withdraw?.account === "Alternative"
-                          ? "bg-tradeOrange"
-                          : "bg-transparent"
-                      } px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
-                    >
-                      <p className="text-white text-xs font-bold">
-                        Alternative
-                      </p>
-                    </div>
+                    {linkedAccounts?.length > 1 && (
+                      <div
+                        onClick={selectAlternativeAccount}
+                        className={`${
+                          withdraw?.account === "Alternative"
+                            ? "bg-tradeOrange"
+                            : "bg-transparent"
+                        } px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                      >
+                        <p className="text-white text-xs font-bold">
+                          Alternative
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="flex items-center gap-[10px] w-full border- border-tradeAshLight">
@@ -485,48 +487,6 @@ const Withdraw = () => {
               >
                 Proceed
               </Button>
-
-              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight h-[100px]">
-                <div className="flex flex-col gap-[20px] bg-tradeOrang rounded-lg">
-                  {/* <div className="w-full flex justify-center">
-                    <img
-                      className="w-[180px] leading-none"
-                      src={paystackLogo}
-                      alt=""
-                    />
-                  </div> */}
-                  <div className="flex flex-wrap lg:items-center text-xs text-tradeFadeWhite gap-1">
-                    <p className="inline items-start gap-1">
-                      <span className="text-white mr-[2px]">•</span>
-                      Your payment is{" "}
-                      <span className="font-semibold text-white">
-                        secured by Paystack
-                      </span>
-                    </p>
-                    <p className=" inline items-start gap-1">
-                      <span className="text-white mr-[2px]">•</span>
-                      You’ll be{" "}
-                      <span className="font-semibold text-white">
-                        redirected
-                      </span>{" "}
-                      to Paystack to complete your deposit
-                    </p>
-                    <p className="inline items-start gap-1">
-                      <span className="text-white mr-[2px]">•</span>
-                      <span className="font-semibold text-white">
-                        Do not close
-                      </span>{" "}
-                      this tab or navigate away during the process
-                    </p>
-                    <p className="inline items-start gap-1">
-                      <span className="text-white mr-[2px]">•</span>
-                      Deposits are{" "}
-                      <span className="font-semibold text-white">free</span> —
-                      no transaction or processing fees
-                    </p>
-                  </div>
-                </div>
-              </div>
 
               {/* Event */}
               <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">

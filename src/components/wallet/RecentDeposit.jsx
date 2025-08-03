@@ -7,23 +7,14 @@ import { useTransaction } from "@/context/wallet/TransactionContext";
 import Loading from "../Loading";
 import Info from "../alerts/Info";
 import { LuFileX2 } from "react-icons/lu";
+import NetworkError from "../NetworkError";
 
 const RecentDeposit = () => {
   const { loading, refetchTransactions } = useFetchTransactions();
   const { transactions, setFilter } = useTransaction();
   const navigateTo = useNavigate();
 
-  useEffect(() => {
-    setFilter({
-      date: { monthNo: null, monthName: null, year: null },
-      type: "deposit",
-      status: null,
-    });
-
-    refetchTransactions();
-  }, []);
-
-  console.log("resent deposits", transactions);
+  console.log("recent deposits", transactions);
 
   return (
     <div className=" md:w-[350px] flex flex-col md:border border-neutral-800">
@@ -45,18 +36,13 @@ const RecentDeposit = () => {
         ) : (
           <div className="flex flex-1">
             {transactions === null ? (
-              <div className="flex-1  flex items-center justify-center ">
-                <div>
-                  <Info text="Can't load recent deposits. Check your connection or refresh." />
-                </div>
-              </div>
+              <NetworkError />
             ) : (
               <div className="flex flex-1">
                 {Array.isArray(transactions?.data) &&
                 transactions?.data.length > 0 ? (
                   <div className="flex flex-col gap-[5px] w-full">
                     {transactions?.data
-                      ?.filter((transaction) => transaction.type === "deposit")
                       ?.slice(0, 6)
                       ?.map((transaction, index) => (
                         <div key={transaction.id || index}>

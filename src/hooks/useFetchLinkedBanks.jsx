@@ -31,7 +31,7 @@ export function useFetchLinkedBanks() {
 
   useEffect(() => {
     fetchLinkedAccounts();
-  }, [linkedAccounts, fetchLinkedAccounts]);
+  }, []);
 
   return { linkedAccounts, loading, error, refetch: fetchLinkedAccounts };
 }

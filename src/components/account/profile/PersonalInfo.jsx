@@ -7,21 +7,20 @@ const PersonalInfo = ({ profile }) => {
   const navigateTo = useNavigate();
 
   return (
-    <div className="flex-1 md:border border-tradeAshLight flex flex-col ">
-      <div className="flex p-[15px]  border-b border-tradeAshLight">
+    <div className="flex-1 flex flex-col ">
+      {/* <div className="flex px-[15px] py-[12px]  border-b border-tradeAshLight">
         <p className="text-lg text-white font-[700]">Personal Information</p>
-      </div>
-
-      <div className="flex p-[15px] flex-col gap-[10px] ">
-        <div className="flex flex-col bg-tradeAsh rounded-[10px] border border-tradeAshLight overflow-hidden">
+      </div> */}
+      <div className="flex p-[15px] flex-col gap-[10px]">
+        <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
           {/* Username */}
           <div
             className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
             onClick={() => navigateTo("/settings/account/name")}
           >
             <div className="flex-1 flex justify-between gap-[2px]">
-              <p className="text-[13px] font-[600] text-white">Username</p>
-              <p className="text-tradeFadeWhite text-[13px] font-[600]">
+              <p className="text-[13px] font-semibold text-white">Username</p>
+              <p className="text-tradeFadeWhite text-[13px] font-semibold">
                 {profile?.userName || "Not set"}
               </p>
             </div>
@@ -33,8 +32,8 @@ const PersonalInfo = ({ profile }) => {
           {/* Full Name */}
           <div className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight transition-all duration-300">
             <div className="flex-1 flex justify-between gap-[2px]">
-              <p className="text-[13px] font-[600] text-white">Full name</p>
-              <p className="text-tradeFadeWhite text-[13px] font-[600]">
+              <p className="text-[13px] font-semibold text-white">Full name</p>
+              <p className="text-tradeFadeWhite text-[13px] font-semibold">
                 {profile?.lastName || profile?.firstName
                   ? `${profile?.lastName || ""} ${
                       profile?.firstName || ""
@@ -53,8 +52,10 @@ const PersonalInfo = ({ profile }) => {
             onClick={() => navigateTo("/settings/account/email")}
           >
             <div className="flex-1 flex justify-between gap-[2px]">
-              <p className="text-[13px] font-[600] text-white">Email address</p>
-              <p className="text-tradeFadeWhite text-[13px] font-[600]">
+              <p className="text-[13px] font-semibold text-white">
+                Email address
+              </p>
+              <p className="text-tradeFadeWhite text-[13px] font-semibold">
                 {profile?.email || "Not set"}
               </p>
             </div>
@@ -65,15 +66,15 @@ const PersonalInfo = ({ profile }) => {
         </div>
 
         {/* Additional Info */}
-        <div className="flex flex-col bg-tradeAsh rounded-[10px] border border-tradeAshLight overflow-hidden">
+        <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
           {/* KYC */}
           <div
             className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
             onClick={() => navigateTo("/account/kycStatus")}
           >
             <div className="flex-1 flex justify-between gap-[2px]">
-              <p className="text-[13px] font-[600] text-white">KYC status</p>
-              <p className="text-tradeFadeWhite text-[13px] font-[600]">
+              <p className="text-[13px] font-semibold text-white">KYC status</p>
+              <p className="text-tradeFadeWhite text-[13px] font-semibold">
                 {profile?.kycStatus || "Not verified"}
               </p>
             </div>
@@ -85,8 +86,8 @@ const PersonalInfo = ({ profile }) => {
           {/* Gender */}
           <div className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight transition-all duration-300">
             <div className="flex-1 flex justify-between gap-[2px]">
-              <p className="text-[13px] font-[600] text-white">Gender</p>
-              <p className="text-tradeFadeWhite text-[13px] font-[600]">
+              <p className="text-[13px] font-semibold text-white">Gender</p>
+              <p className="text-tradeFadeWhite text-[13px] font-semibold">
                 {profile?.gender || "Not set"}
               </p>
             </div>
@@ -98,8 +99,10 @@ const PersonalInfo = ({ profile }) => {
           {/* Date of Birth */}
           <div className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight transition-all duration-300">
             <div className="flex-1 flex justify-between gap-[2px]">
-              <p className="text-[13px] font-[600] text-white">Date of birth</p>
-              <p className="text-tradeFadeWhite text-[13px] font-[600]">
+              <p className="text-[13px] font-semibold text-white">
+                Date of birth
+              </p>
+              <p className="text-tradeFadeWhite text-[13px] font-semibold">
                 {profile?.dateOfBirth || "Not set"}
               </p>
             </div>
@@ -114,8 +117,10 @@ const PersonalInfo = ({ profile }) => {
             onClick={() => navigateTo("/settings/account/mobile")}
           >
             <div className="flex-1 flex justify-between gap-[2px]">
-              <p className="text-[13px] font-[600] text-white">Mobile number</p>
-              <p className="text-tradeFadeWhite text-[13px] font-[600]">
+              <p className="text-[13px] font-semibold text-white">
+                Mobile number
+              </p>
+              <p className="text-tradeFadeWhite text-[13px] font-semibold">
                 {profile?.phone || "Not set"}
               </p>
             </div>
@@ -130,8 +135,8 @@ const PersonalInfo = ({ profile }) => {
             onClick={() => navigateTo("/account/address")}
           >
             <div className="flex-1 flex justify-between gap-[2px]">
-              <p className="text-[13px] font-[600] text-white">Address</p>
-              {/* <p className="text-tradeFadeWhite text-[13px] font-[600]">
+              <p className="text-[13px] font-semibold text-white">Address</p>
+              {/* <p className="text-tradeFadeWhite text-[13px] font-semibold">
                 {profile?.address || "Not set"}
               </p> */}
             </div>
@@ -140,19 +145,6 @@ const PersonalInfo = ({ profile }) => {
             </div>
           </div>
         </div>
-
-        {/* <div className=" flex flex-col  bg-tradeAsh rounded-[10px] border border-tradeAshLight overflow-hidden">
-          <div className="flex items-center  py-3 px-3  bg-tradeAsh hover:bg-tradeAshLight   cursor-pointer transition-all duration-300 ">
-            <div className="flex-1 flex  justify-between gap-[2px]  bg-tradePurpl ">
-              <p className="text-[13px] font-[600] text-white">
-                Manage account
-              </p>
-            </div>
-            <div className="text-white text-[22px]">
-              <MdKeyboardArrowRight />
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

@@ -6,26 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { useFetchTransactions } from "@/hooks/useFetchTransactions";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import Loading from "../Loading";
-import Info from "../alerts/Info";
+import NetworkError from "../NetworkError";
 
 const RecentTransfer = () => {
   const { loading, refetchTransactions } = useFetchTransactions();
   const { transactions, setFilter } = useTransaction();
   const navigateTo = useNavigate();
 
-  // useEffect(() => {
-  //   if (loading === false) {
-  //     setFilter({
-  //       date: { monthNo: null, monthName: null, year: null },
-  //       type: "transfer",
-  //       status: null,
-  //     });
-
-  //     refetchTransactions();
-  //   }
-  // }, [loading]);
-
-  console.log("resent transfers", transactions);
+  console.log("recent transfers", transactions);
 
   return (
     <div className=" md:w-[350px] flex flex-col md:border border-neutral-800">
@@ -47,18 +35,13 @@ const RecentTransfer = () => {
         ) : (
           <div className="flex flex-1">
             {transactions === null ? (
-              <div className="flex-1  flex items-center justify-center ">
-                <div>
-                  <Info text="Can't load recent transfers. Check your connection or refresh." />
-                </div>
-              </div>
+              <NetworkError />
             ) : (
               <div className="flex flex-1">
                 {Array.isArray(transactions?.data) &&
                 transactions?.data.length > 0 ? (
                   <div className="flex flex-col gap-[5px] w-full">
                     {transactions?.data
-                      ?.filter((transaction) => transaction.type === "transfer")
                       ?.slice(0, 6)
                       ?.map((transaction, index) => (
                         <div key={transaction.id || index}>
@@ -67,17 +50,20 @@ const RecentTransfer = () => {
                       ))}
                   </div>
                 ) : (
-                  <div className="flex-1 flex flex-col">
-                    <div>
-                      <p className="text-xs font-medium text-tradeFadeWhite">
-                        You haven’t made any transfers yet. When you do, your
-                        recent transfers activity will be shown here for easy
-                        tracking.
-                      </p>
-                    </div>
-                    <div className="flex-1 flex justify-center items-center text-[55px] text-tradeGreen">
+                  <div className="flex-1 flex flex-col gap-[15px] items-center justify-center">
+                    <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
                       <LuFileX2 />
                     </div>
+
+                    <p className="text-lg font-semibold text-white leading-none">
+                      No Linked Account{" "}
+                    </p>
+
+                    <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
+                      You haven’t made any transfers yet. When you do, your
+                      recent transfers activity will be shown here for easy
+                      tracking.
+                    </p>
                   </div>
                 )}
               </div>

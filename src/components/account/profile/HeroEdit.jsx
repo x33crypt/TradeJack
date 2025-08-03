@@ -8,51 +8,53 @@ import { FaUserFriends } from "react-icons/fa";
 
 const HeroEdit = ({ profile }) => {
   return (
-    <div className="flex-1  p-[15px]  bg-tradeGree flex-shrink-0 flex flex-col md:flex-row md:gap-[20px] gap-[20px] items-center md:pr-[15px] ">
-      <div className="relative flex lg:w-[200px] md:w-[170px] w-[150px] shrink-0 justify-center cursor-pointer">
-        <img className="rounded-full w-full h-auto" src={image} alt="" />
+    <div className="flex p-[15px] h-max border-b border-neutral-800">
+      <div className="flex-1 p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col md:flex-row gap-[15px] items-center">
+        <div className="relative flex md:w-[180px] w-[150px] shrink-0 justify-center cursor-pointer">
+          <img className="rounded-full w-full h-auto" src={image} alt="" />
 
-        <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-full">
-          <TbCameraPlus className="text-white text-[40px]" />
-        </div>
-      </div>
-
-      <div className="flex w-full flex-col justify-center gap-4 flex-shrink-0">
-        <div className="flex flex-col gap-2">
-          <div className="flex gap-1 items-center text-tradeOrange">
-            <p className=" text-[13px] font-bold">Master Trader</p>
-            <GiTopHat />
+          <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-full">
+            <TbCameraPlus className="text-white text-[40px]" />
           </div>
-
-          <p className="mt-0 text-white lg:text-[40px] md:text-[40px] text-[25px] font-[900] leading-none ">
-            <span className="text-tradeFadeWhite">@</span>
-            {profile?.userName}
-          </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="flex  gap-1 items-center ">
-            <p className=" text-[13px] font-[600] text-tradeFadeWhite">
-              Joined{" "}
-              <span className="font-[700] text-white">
-                {profile?.accAgeInMonths} Months
-              </span>{" "}
-              ago
+        <div className="flex  flex-col justify-center items-center md:items-start gap-3">
+          <div className="flex flex-col gap-2">
+            <p className="mt-0 text-white lg:text-[40px] md:text-[40px] text-[25px] font-[900] leading-none ">
+              <span className="text-tradeFadeWhite">@</span>
+              {profile?.userName}
             </p>
+            <div className="flex gap-[4px] items-center w-max px-[6px] py-[1px] bg-tradeOrange/10 rounded-[10px]">
+              <GiTopHat className="text-[14px] text-tradeOrange" />
+              <p className="text-xs text-tradeOrange font-semibold">5x</p>
+              <p className="text-xs font-semibold text-white">Master Trader</p>
+            </div>
           </div>
 
-          <div className="flex  gap-1 items-center ">
-            <FaLocationDot className=" flex text-tradeOrange text-xs leading-none" />
-            <p className=" text-[13px] font-[600] text-white">
-              {profile?.kycDetails?.address?.country}
-            </p>
-          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex  gap-1 items-center ">
+              <FaLocationDot className=" flex text-tradeOrange text-xs leading-none" />
+              <p className=" text-[13px] font-[600] text-white">
+                {profile?.kycDetails?.address?.country}
+              </p>
+            </div>
 
-          <div className="flex  gap-1 items-center ">
-            <RiEye2Fill className=" flex text-tradeGreen text-xs leading-none" />
-            <p className="mt-0 text-tradeGreen text-[13px]  font-[600]">
-              {profile?.status}
-            </p>
+            <div className="flex  gap-1 items-center ">
+              <RiEye2Fill className=" flex text-tradeGreen text-xs leading-none" />
+              <p className="mt-0 text-tradeGreen text-[13px]  font-[600]">
+                {profile?.status}
+              </p>
+            </div>
+
+            <div className="flex  gap-1 items-center ">
+              <p className=" text-[13px] font-[600] text-tradeFadeWhite">
+                Joined{" "}
+                <span className="font-[700] text-white">
+                  {profile?.accAgeInMonths} Months
+                </span>{" "}
+                ago
+              </p>
+            </div>
           </div>
         </div>
       </div>

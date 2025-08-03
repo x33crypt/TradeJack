@@ -7,6 +7,7 @@ import { useFetchTransactions } from "@/hooks/useFetchTransactions";
 import Loading from "../Loading";
 import Info from "../alerts/Info";
 import { LuFileX2 } from "react-icons/lu";
+import NetworkError from "../NetworkError";
 
 const RecentTransaction = () => {
   const { loading, refetchTransactions } = useFetchTransactions();
@@ -46,11 +47,7 @@ const RecentTransaction = () => {
         ) : (
           <div className="flex flex-1">
             {transactions === null ? (
-              <div className="flex-1  flex items-center justify-center ">
-                <div>
-                  <Info text="Can't load recent transactions. Check your connection or refresh." />
-                </div>
-              </div>
+              <NetworkError />
             ) : (
               <div className="flex flex-1">
                 {Array.isArray(transactions?.data) &&

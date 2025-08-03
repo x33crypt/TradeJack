@@ -74,7 +74,6 @@ const App = () => {
 
         {/* User Account */}
         <Route path="/account/profile" element={<UserProfile />} />
-        <Route path="/account/kycStatus" element={<Kyc />} />
         <Route path="/account/address" element={<EditAddress />} />
         <Route path="/account/kyc/status" element={<KycStatus />} />
         <Route path="/account/kyc/verification" element={<KycVerification />} />

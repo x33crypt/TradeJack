@@ -43,6 +43,8 @@ const MyWallet = () => {
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">My Wallet</p>
       </div>
+
+      
       <div className="flex flex-col p-[15px] gap-[10px] h-full">
         <div className="flex flex-col justify-between md:h-[190px] h-[210px] p-[12px] gap-[30px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
           <div className="bg-tradeGree flex justify-between items-center">
