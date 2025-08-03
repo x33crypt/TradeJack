@@ -6,7 +6,7 @@ const ViewOptions = () => {
   const { view } = account;
 
   return (
-    <div className="sticky md:top-[65px] top-[57px] z-30 bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
+    <div className="sticky md:top-[65px] top-[57px] z-20 bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
       <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] ">
         <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
           <div

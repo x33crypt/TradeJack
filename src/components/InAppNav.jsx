@@ -27,6 +27,7 @@ import { RiGift2Fill } from "react-icons/ri";
 import { IoIosWallet } from "react-icons/io";
 import { IoWallet } from "react-icons/io5";
 import { useProfileNav } from "@/context/ProfileNavContext";
+import LockByScroll from "./LockByScroll";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -140,123 +141,137 @@ const InAppNav = () => {
       </div>
 
       {/* Mobile Nav */}
-      <div
-        className={`${
-          isNavOption ? "flex" : "hidden"
-        } z-50 fixed right-0 left-0 top-[57px] bottom-0 bg-black p-[15px] pt-[13px] pb-[16px] lg:hidden flex flex-col justify-between`}
-      >
-        <div className="flex gap-[8px] p-[12px] rounded-[10px] text-sm font-semibold items-center bg-tradeAsh border border-tradeAshExtraLight">
-          <FaMagnifyingGlass className="text-tradeFadeWhite text-[18px]" />
+      <div>
+        {isNavOption === true && (
+          <div>
+            <LockByScroll />
+            <div
+              className={`${
+                isNavOption ? "flex" : "hidden"
+              }  z-50 fixed right-0 left-0 top-[57px] bottom-0 bg-black p-[15px] pt-[13px] pb-[16px] lg:hidden flex-col justify-between`}
+            >
+              <div className="flex gap-[8px] p-[12px] rounded-[10px] text-sm font-semibold items-center bg-tradeAsh border border-tradeAshExtraLight">
+                <FaMagnifyingGlass className="text-tradeFadeWhite text-[18px]" />
 
-          <p className=" text-tradeFadeWhite text-[13px] font-semibold">
-            Hello, <span className="text-white">x33crypt.</span> How can we help
-            ?
-          </p>
-        </div>
+                <p className=" text-tradeFadeWhite text-[13px] font-semibold">
+                  Hello, <span className="text-white">x33crypt.</span> How can
+                  we help ?
+                </p>
+              </div>
 
-        <div className="flex flex-col gap-[5px]">
-          <div
-            onClick={() => {
-              navigateTo("/dashboard");
-              setIsNavOption(false);
-            }}
-            className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
-          >
-            <TbDashboardFilled className="text-[20px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px] font-medium">Dashboard</p>
-          </div>
-          <div
-            onClick={() => {
-              navigateTo("/wallet");
-              setIsNavOption(false);
-            }}
-            className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
-          >
-            <IoWalletOutline className="text-[20px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px]  font-medium ">Wallet</p>
-          </div>
-          <div
-            onClick={() => {
-              navigateTo("/offers/myoffers");
-              setIsNavOption(false);
-            }}
-            className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
-          >
-            <TbFileInvoice className="text-[20px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px]  font-medium ">My offers</p>
-          </div>
-          <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
-            <TbFileLike className="text-[20px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px] ">Favourite offers</p>
-          </div>
-          <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
-            <FaUserFriends className="text-[20px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px]  font-medium ">
-              Trade partners
-            </p>
-          </div>
-          <div
-            className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
-            onClick={() => {
-              setIsNavOption(false);
-            }}
-          >
-            <BsChatQuote className="text-[20px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px]  font-medium "> Messages</p>
-          </div>
-          <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
-            <TbLayoutListFilled className="text-[20px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px]  font-medium ">
-              Trade history
-            </p>
-          </div>
-          <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
-            <TbLayoutListFilled className="text-[20px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px]  font-medium ">
-              Transaction history
-            </p>
-          </div>
-          <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
-            <BiSupport className="text-[20px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px]  font-medium">
-              {" "}
-              Help & support
-            </p>
-          </div>
-          <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
-            <BiSupport className="text-[20px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px]  font-medium">Rewards</p>
-          </div>
-          {/* <div
+              <div className="flex flex-col gap-[5px]">
+                <div
+                  onClick={() => {
+                    navigateTo("/dashboard");
+                    setIsNavOption(false);
+                  }}
+                  className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
+                >
+                  <TbDashboardFilled className="text-[20px] text-tradeFadeWhite" />
+                  <p className="text-white text-[13px] font-medium">
+                    Dashboard
+                  </p>
+                </div>
+                <div
+                  onClick={() => {
+                    navigateTo("/wallet");
+                    setIsNavOption(false);
+                  }}
+                  className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
+                >
+                  <IoWalletOutline className="text-[20px] text-tradeFadeWhite" />
+                  <p className="text-white text-[13px]  font-medium ">Wallet</p>
+                </div>
+                <div
+                  onClick={() => {
+                    navigateTo("/offers/myoffers");
+                    setIsNavOption(false);
+                  }}
+                  className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
+                >
+                  <TbFileInvoice className="text-[20px] text-tradeFadeWhite" />
+                  <p className="text-white text-[13px]  font-medium ">
+                    My offers
+                  </p>
+                </div>
+                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+                  <TbFileLike className="text-[20px] text-tradeFadeWhite" />
+                  <p className="text-white text-[13px] ">Favourite offers</p>
+                </div>
+                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+                  <FaUserFriends className="text-[20px] text-tradeFadeWhite" />
+                  <p className="text-white text-[13px]  font-medium ">
+                    Trade partners
+                  </p>
+                </div>
+                <div
+                  className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
+                  onClick={() => {
+                    setIsNavOption(false);
+                  }}
+                >
+                  <BsChatQuote className="text-[20px] text-tradeFadeWhite" />
+                  <p className="text-white text-[13px]  font-medium ">
+                    {" "}
+                    Messages
+                  </p>
+                </div>
+                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+                  <TbLayoutListFilled className="text-[20px] text-tradeFadeWhite" />
+                  <p className="text-white text-[13px]  font-medium ">
+                    Trade history
+                  </p>
+                </div>
+                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+                  <TbLayoutListFilled className="text-[20px] text-tradeFadeWhite" />
+                  <p className="text-white text-[13px]  font-medium ">
+                    Transaction history
+                  </p>
+                </div>
+                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+                  <BiSupport className="text-[20px] text-tradeFadeWhite" />
+                  <p className="text-white text-[13px]  font-medium">
+                    {" "}
+                    Help & support
+                  </p>
+                </div>
+                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
+                  <BiSupport className="text-[20px] text-tradeFadeWhite" />
+                  <p className="text-white text-[13px]  font-medium">Rewards</p>
+                </div>
+                {/* <div
             onClick={() => navigateTo("/settings")}
             className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
           >
             <IoMdSettings className="text-[20px] text-tradeFadeWhite" />
             <p className="text-white text-[13px]  font-medium ">Settings</p>
           </div> */}
-        </div>
+              </div>
 
-        <div className="w-full h-max flex flex-col gap-[8px]">
-          <Button
-            variant="primary"
-            onClick={() => {
-              navigateTo("/offers/marketplace");
-              setIsNavOption(false);
-            }}
-          >
-            Sell Asset
-          </Button>
+              <div className="w-full h-max flex flex-col gap-[8px]">
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    navigateTo("/offers/marketplace");
+                    setIsNavOption(false);
+                  }}
+                >
+                  Sell Asset
+                </Button>
 
-          <Button
-            variant="secondary"
-            onClick={() => {
-              navigateTo("/offers/create");
-              setIsNavOption(false);
-            }}
-          >
-            Buy Asset
-          </Button>
-        </div>
+                <Button
+                  variant="secondary"
+                  onClick={() => {
+                    navigateTo("/offers/create");
+                    setIsNavOption(false);
+                  }}
+                >
+                  Buy Asset
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
