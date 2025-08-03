@@ -12,9 +12,9 @@ const FeedbackCard = () => {
   return (
     <>
       {/* Desktop Card */}
-      <div className="md:flex hidden py-[15px] gap-10 items-center bg-tradeAsh">
+      <div className="md:flex hidden p-[15px] gap-10 items-center bg-tradeAsh">
         <div className="flex flex-1 items-center gap-[10px]">
-          <div className="flex-shrink-0 relative flex w-[45px]">
+          <div className="flex-shrink-0 flex w-[45px] z-0">
             <img className="rounded-full" src={image} alt="" />
           </div>
           <div className="flex flex-col gap-2">
@@ -51,7 +51,7 @@ const FeedbackCard = () => {
       </div>
 
       {/* Mobile Card */}
-      <div className="flex flex-col md:hidden py-[15px] gap-[15px] bg-tradeAsh">
+      <div className="md:hidden flex flex-col p-[12px] bg-tradeAsh hover:bg-black transition-all duration-300 rounded-[15px] cursor-pointer gap-3 border border-tradeAshLight">
         <div className="flex w-full items-center justify-between">
           <div className="flex items-center gap-[15px]">
             <div className="flex-shrink-0 relative flex w-[45px]">

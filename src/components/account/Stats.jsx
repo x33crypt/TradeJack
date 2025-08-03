@@ -3,122 +3,100 @@ import { MdThumbUpAlt, MdThumbDownAlt, MdOutlineGppGood } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
 import { TiChartLine } from "react-icons/ti";
 import { GiRoundKnob } from "react-icons/gi";
+import Feedbacks from "./Feedbacks";
 
-const Stats = ({ profile }) => {
+const Stats = ({ profile, view }) => {
   return (
-    <div className="flex flex-col flex-1 h-full md:border border-neutral-800 bg-tradeAs">
-      <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">My Wallet</p>
-      </div>
-
-      <div className="flex p-[15px] h-full">
-        <div className="flex-1 flex flex-col border border-tradeAshLight p-[12px] gap-[35px] bg-tradeAsh rounded-[15px]">
-          <div className="flex justify-between bg-tradeGree w-full">
-            <div className="flex flex-col gap-2 min-w-[120px]">
-              <p className="text-tradeFadeWhite text-xs font-bold">
-                Positive Feedback
-              </p>
-
-              <div className="flex items-center gap-2">
-                <div className="p-1  rounded-full bg-[#00de82]/30 ">
-                  <MdThumbUpAlt className="text-tradeGreen text-[13px] md:text-sm leading-none" />
-                </div>
-
-                <p
-                  id="positive"
-                  className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
-                >
-                  {profile?.feedback?.positive}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2 min-w-[120px]">
-              <p className="text-tradeFadeWhite text-xs font-bold">
-                Negative Feedback
-              </p>
-
-              <div className="flex items-center gap-2">
-                <div className="p-1  rounded-full bg-red-600/30">
-                  <MdThumbDownAlt className="text-red-600 text-[13px] md:text-sm leading-none" />
-                </div>
-
-                <p
-                  id="negative"
-                  className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
-                >
-                  {profile?.feedback?.negative}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2 min-w-[120px]">
-              <p className="text-tradeFadeWhite text-xs font-bold">
-                Trust Score
-              </p>
-              <div className="flex gap-2">
-                <div className="p-1  rounded-full bg-tradeOrange/30">
-                  <MdOutlineGppGood className="text-tradeOrange text-[13px] md:text-sm leading-none" />
-                </div>
-                <p
-                  id="trust"
-                  className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
-                >
-                  {profile?.trustScore}
-                </p>
-              </div>
-            </div>
+    <div
+      className={`${
+        view === "Stats" ? "flex" : "hidden"
+      } flex-1 flex-col md:flex-row p-[15px] gap-[15px] `}
+    >
+      {/* Stats */}
+      <div className=" lg:sticky top-[140px] max-h-max md:w-[310px] flex flex-col gap-[10px] ">
+        <div className="flex flex-1 items-center justify-between p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
+          <div className="flex flex-col gap-1">
+            <p className="text-white text-base font-bold">
+              {profile?.feedback?.positive}
+            </p>
+            <p className="text-tradeFadeWhite text-xs font-semibold">
+              Positive Feedback
+            </p>
           </div>
-
-          <div className="flex justify-between bg-tradeGree w-full">
-            <div className="flex flex-col gap-2 min-w-[120px]">
-              <p className="text-tradeFadeWhite text-xs font-bold">
-                Trade Volume
-              </p>
-
-              <div className="flex items-end gap-2">
-                <p
-                  id="tradeVolume"
-                  className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
-                >
-                  {profile?.totalTradeVolume?.amount}{" "}
-                  {profile?.totalTradeVolume?.currency}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2 min-w-[120px]">
-              <p className="text-tradeFadeWhite text-xs font-bold">
-                Trade Partners
-              </p>
-
-              <div className="flex items-end gap-2">
-                <p
-                  id="tradePartners"
-                  className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
-                >
-                  {profile?.totalTradePartners}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2 min-w-[120px]">
-              <p className="text-tradeFadeWhite text-xs font-bold">
-                Total Trade
-              </p>
-
-              <div className="flex items-end gap-2">
-                <p
-                  id="totalTrade"
-                  className="text-[18px] md:text-[22px] text-white font-[900] leading-none"
-                >
-                  {profile?.totalTrades}
-                </p>
-              </div>
-            </div>
+          <div className="p-1  rounded-full bg-[#00de82]/30 ">
+            <MdThumbUpAlt className="text-tradeGreen text-[13px] md:text-sm leading-none" />
+          </div>
+        </div>
+        <div className="flex flex-1 items-center justify-between p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
+          <div className="flex flex-col gap-1">
+            <p className="text-white text-base font-bold">
+              {profile?.feedback?.negative}
+            </p>
+            <p className="text-tradeFadeWhite text-xs font-semibold">
+              Negative Feedback
+            </p>
+          </div>
+          <div className="p-1  rounded-full bg-red-600/30">
+            <MdThumbDownAlt className="text-red-600 text-[13px] md:text-sm leading-none" />
+          </div>
+        </div>
+        <div className="flex flex-1 items-center justify-between p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
+          <div className="flex flex-col gap-1">
+            <p className="text-white text-base font-bold">
+              {profile?.trustScore}
+            </p>
+            <p className="text-tradeFadeWhite text-xs font-semibold">
+              Trust Score
+            </p>
+          </div>
+          <div className="p-1  rounded-full bg-tradeOrange/30">
+            <MdOutlineGppGood className="text-tradeOrange text-[13px] md:text-sm leading-none" />
+          </div>
+        </div>
+        {/* <div className="flex flex-1 items-center justify-between p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
+          <div className="flex flex-col gap-1">
+            <p className="text-white text-base font-bold">
+              {profile?.totalTradeVolume?.amount}{" "}
+              {profile?.totalTradeVolume?.currency}
+            </p>
+            <p className="text-tradeFadeWhite text-xs font-semibold">
+              Trade Volume
+            </p>
+          </div>
+          <div className="p-1 rounded-full bg-tradeAshExtraLight/30 border border-tradeFadeWhite">
+            <TiChartLine className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+          </div>
+        </div> */}
+        <div className="flex flex-1 items-center justify-between p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
+          <div className="flex flex-col gap-1">
+            <p className="text-white text-base font-bold">
+              {profile?.totalTradePartners}
+            </p>
+            <p className="text-tradeFadeWhite text-xs font-semibold">
+              Trade Partners
+            </p>
+          </div>
+          <div className="p-1 rounded-full bg-tradeAshExtraLight/30 border border-tradeFadeWhite">
+            <FaUserFriends className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+          </div>
+        </div>
+        <div className="flex flex-1 items-center justify-between p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
+          <div className="flex flex-col gap-1">
+            <p className="text-white text-base font-bold">
+              {profile?.totalTrades}
+            </p>
+            <p className="text-tradeFadeWhite text-xs font-semibold">
+              Total Trades
+            </p>
+          </div>
+          <div className="p-1 rounded-full bg-tradeAshExtraLight/30 border border-tradeFadeWhite">
+            <GiRoundKnob className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
           </div>
         </div>
       </div>
+
+      {/* Feedbacks */}
+      <Feedbacks />
     </div>
   );
 };

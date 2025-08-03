@@ -43,24 +43,24 @@ const HeroEdit = ({ profile }) => {
             <div className="flex items-center gap-3">
               <div className="flex  gap-1 items-center ">
                 <FaLocationDot className=" flex text-tradeOrange text-xs leading-none" />
-                <p className=" text-[13px] font-medium text-white">
+                <p className=" text-[13px] font-semibold text-white">
                   {profile?.kycDetails?.address?.country}
                 </p>
               </div>
 
               <div className="flex  gap-1 items-center ">
                 <RiEye2Fill className=" flex text-tradeGreen text-xs leading-none" />
-                <p className="mt-0 text-tradeGreen text-[13px]  font-medium">
+                <p className="mt-0 text-tradeGreen text-[13px] font-semibold">
                   {capitalizeFirst(profile?.status)}
                 </p>
               </div>
 
               <div className="flex  gap-1 items-center ">
-                <FaCalendarCheck className=" flex text-tradeAshExtraLight text-xs leading-none" />
+                <FaCalendarCheck className=" flex text-tradeAshExtraLight text-sm leading-none" />
                 <p className=" text-[13px] font-medium text-tradeFadeWhite">
                   Joined{" "}
                   <span className="font-semibold text-white">
-                    {profile?.accAgeInMonths} Months
+                    {profile?.accAgeInMonths} month
                   </span>{" "}
                   ago
                 </p>

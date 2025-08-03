@@ -1,13 +1,14 @@
 import React from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
-
 import { useNavigate } from "react-router-dom";
 
 const Profile = ({ profile, view }) => {
   const navigateTo = useNavigate();
 
   return (
-    <div className={`${view ? "flex" : "hidden"} flex-1 flex-col `}>
+    <div
+      className={`${view === "Profile" ? "flex" : "hidden"} flex-1 flex-col `}
+    >
       <div className="flex p-[15px] flex-col gap-[10px]">
         <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
           {/* Username */}
