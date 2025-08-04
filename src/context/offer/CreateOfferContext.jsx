@@ -13,8 +13,8 @@ export const CreateOfferProvider = ({ children }) => {
     minimum: "",
     maximum: "",
     margin: 4,
-    paymentWindow: 1,
-    confirmationTime: 1,
+    vendorPaymentWindow: { minutes: 0, hours: 0 },
+    tradersPaymentWindow: { minutes: 0, hours: 0 },
     termTags: [],
     instruction: "",
 

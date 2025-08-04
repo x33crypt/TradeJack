@@ -4,10 +4,7 @@ import { FaRegBell } from "react-icons/fa";
 import landingImg4 from "./../assets/landingImg4.JPG";
 import { FiSearch } from "react-icons/fi";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
-import { LiaUserFriendsSolid } from "react-icons/lia";
-import { FaVenusDouble } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
-import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import { IoWalletOutline } from "react-icons/io5";
 import { RiExchangeFill } from "react-icons/ri";
 import { RiExchange2Fill } from "react-icons/ri";
@@ -17,17 +14,13 @@ import { RiExchangeBoxFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { TbFileLike } from "react-icons/tb";
 import { BsChatQuote } from "react-icons/bs";
-import { TbLayoutListFilled } from "react-icons/tb";
-import { BiSupport } from "react-icons/bi";
 import { TbFileInvoice } from "react-icons/tb";
-import { IoMdSettings } from "react-icons/io";
 import Button from "./buttons/Button";
-import { GiTopHat } from "react-icons/gi";
-import { RiGift2Fill } from "react-icons/ri";
-import { IoIosWallet } from "react-icons/io";
 import { IoWallet } from "react-icons/io5";
 import { useProfileNav } from "@/context/ProfileNavContext";
 import LockByScroll from "./LockByScroll";
+import { HiGiftTop } from "react-icons/hi2";
+import { RiExchangeBoxLine } from "react-icons/ri";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -217,13 +210,13 @@ const InAppNav = () => {
                   </p>
                 </div>
                 <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
-                  <TbLayoutListFilled className="text-[20px] text-tradeFadeWhite" />
+                  <RiExchange2Fill className="text-[20px] text-tradeFadeWhite" />
                   <p className="text-white text-[13px]  font-medium ">
                     Trade history
                   </p>
                 </div>
                 <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
-                  <TbLayoutListFilled className="text-[20px] text-tradeFadeWhite" />
+                  <RiExchangeBoxLine className="text-[20px] text-tradeFadeWhite" />
                   <p className="text-white text-[13px]  font-medium ">
                     Transaction history
                   </p>
@@ -236,16 +229,9 @@ const InAppNav = () => {
                   </p>
                 </div>
                 <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] ">
-                  <BiSupport className="text-[20px] text-tradeFadeWhite" />
+                  <HiGiftTop className="text-[20px] text-tradeFadeWhite" />
                   <p className="text-white text-[13px]  font-medium">Rewards</p>
                 </div>
-                {/* <div
-            onClick={() => navigateTo("/settings")}
-            className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight hover:bg-tradeAsh rounded-[10px] "
-          >
-            <IoMdSettings className="text-[20px] text-tradeFadeWhite" />
-            <p className="text-white text-[13px]  font-medium ">Settings</p>
-          </div> */}
               </div>
 
               <div className="w-full h-max flex flex-col gap-[8px]">
