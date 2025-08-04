@@ -51,17 +51,20 @@ const RecentDeposit = () => {
                       ))}
                   </div>
                 ) : (
-                  <div className="flex-1 flex flex-col">
-                    <div>
-                      <p className="text-xs font-medium text-tradeFadeWhite">
-                        You haven’t made any Deposits yet. When you do, your
-                        recent deposits activity will be shown here for easy
-                        tracking.
-                      </p>
-                    </div>
-                    <div className="flex-1 flex justify-center items-center text-[55px] text-tradeGreen">
+                  <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
+                    <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
                       <LuFileX2 />
                     </div>
+
+                    <p className="text-lg font-semibold text-white leading-none">
+                      No Recent deposits
+                    </p>
+
+                    <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
+                      You haven’t made any deposits yet. When you do, your
+                      recent deposits activity will be shown here for easy
+                      tracking.
+                    </p>
                   </div>
                 )}
               </div>

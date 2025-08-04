@@ -82,18 +82,6 @@ const RecentTransaction = () => {
                       tracking.
                     </p>
                   </div>
-                  // <div className="flex-1 flex flex-col">
-                  //   <div>
-                  //     <p className="text-xs font-medium text-tradeFadeWhite">
-                  //       You haven’t made any transactions yet. When you do, your
-                  //       recent deposits activity will be shown here for easy
-                  //       tracking.
-                  //     </p>
-                  //   </div>
-                  //   <div className="flex-1 flex justify-center items-center text-[55px] text-tradeGreen">
-                  //     <LuFileX2 />
-                  //   </div>
-                  // </div>
                 )}
               </div>
             )}

@@ -7,6 +7,7 @@ import { useFetchTransactions } from "@/hooks/useFetchTransactions";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import Loading from "../Loading";
 import NetworkError from "../NetworkError";
+import { LuFileX2 } from "react-icons/lu";
 
 const RecentTransfer = () => {
   const { loading, refetchTransactions } = useFetchTransactions();
@@ -50,13 +51,13 @@ const RecentTransfer = () => {
                       ))}
                   </div>
                 ) : (
-                  <div className="flex-1 flex flex-col gap-[15px] items-center justify-center">
+                  <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
                     <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
                       <LuFileX2 />
                     </div>
 
                     <p className="text-lg font-semibold text-white leading-none">
-                      No Linked Account{" "}
+                      No Recent transfers
                     </p>
 
                     <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
