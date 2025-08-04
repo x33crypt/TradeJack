@@ -14,6 +14,7 @@ import { RiExchangeBoxFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { TbFileLike } from "react-icons/tb";
 import { BsChatQuote } from "react-icons/bs";
+import { BiSupport } from "react-icons/bi";
 import { TbFileInvoice } from "react-icons/tb";
 import Button from "./buttons/Button";
 import { IoWallet } from "react-icons/io5";
