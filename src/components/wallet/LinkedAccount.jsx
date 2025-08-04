@@ -91,7 +91,7 @@ const LinkedAccount = () => {
                       </Button>
                     </div>
                   ) : (
-                    <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
+                    <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-between">
                       <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
                         <RiBankLine />
                       </div>

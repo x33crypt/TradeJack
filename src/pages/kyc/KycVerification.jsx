@@ -10,7 +10,7 @@ const KycVerification = () => {
     <>
       <InAppNav />
 
-      <div className="md:pt-[64px] pt-[60px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
+      <div className=" lg:sticky top-[64px] max-h-max md:pt-[64px] pt-[60px] lg:px-[2%] md:px-[2.5%] min-h-sv flex gap-[5px] bg-black ">
         <KycVerify />
       </div>
 

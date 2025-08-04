@@ -26,11 +26,13 @@ const Account = () => {
           <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
             <p className="text-lg font-[700] text-white ">Account</p>
           </div>
-          <div className="flex flex-col">
+          <div></div>
+
+          <div className="flex flex-col flex-1">
             <HeroEdit profile={profile} />
             <ViewOptions />
             <PersonalInfo profile={profile} view={view} />
-            <Stats profile={profile} view={view}/>
+            <Stats profile={profile} view={view} />
           </div>
         </div>
       </div>

@@ -13,6 +13,8 @@ import Loading from "@/components/Loading";
 import Info from "@/components/alerts/Info";
 import { MdOutlineBadge } from "react-icons/md";
 import NetworkError from "../NetworkError";
+import { dateTime } from "@/utils/dateTime";
+import Stepper from "../Steppers";
 
 const KycVerify = () => {
   const { loading, error, refetchKycStatus } = useFetchKycStatus();
@@ -485,7 +487,7 @@ const KycVerify = () => {
   console.log("KYC Verification", verification);
 
   return (
-    <div className=" flex flex-col md:border border-neutral-800 w-full">
+    <div className="flex flex-col md:border border-neutral-800 w-full">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">KYC Verification</p>
       </div>
@@ -496,7 +498,7 @@ const KycVerify = () => {
         ) : (
           <div className="flex h-full w-full">
             {status?.state === null ? (
-              <NetworkError text={"KYC Verification"} />
+              <NetworkError />
             ) : (
               <div className="flex h-full w-full">
                 {status?.state === "not_submitted" ? (
@@ -513,7 +515,7 @@ const KycVerify = () => {
                         </p>
                       </div>
 
-                      <div className="flex flex-col h-full justify-between">
+                      <div className="flex flex-col h-full justify-between gap-[20px]">
                         <div className="flex flex-col gap-[10px]">
                           <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                             <div className="flex flex-col gap-[10px] w-full">
@@ -628,7 +630,7 @@ const KycVerify = () => {
                         </p>
                       </div>
 
-                      <div className="flex flex-col gap-[15px] h-full justify-between">
+                      <div className="flex flex-col h-full justify-between gap-[20px]">
                         <div className="flex flex-col gap-[10px]">
                           <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                             <div className="flex flex-col gap-[10px] w-full">
@@ -770,7 +772,7 @@ const KycVerify = () => {
                         </p>
                       </div>
 
-                      <div className="flex flex-col gap-[15px] h-full justify-between">
+                      <div className="flex flex-col gap-[20px] h-full justify-between">
                         <div className="flex flex-col gap-[10px]">
                           <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                             <div className="flex flex-col gap-[10px] w-full">
@@ -943,28 +945,28 @@ const KycVerify = () => {
                             you’ll be updated once the process is complete.
                           </p>
                         </div>
-                        <div className="flex flex-col bg-tradeAshLight border border-tradeAshLight rounded-[15px] w-full">
-                          <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAsh">
-                            <p className="text-[13px] font-medium text-tradeFadeWhite">
-                              Date Submitted
+                        <div className="flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] w-full">
+                          <div className="flex items-center justify-between gap-[10px] p-3 border-b border-tradeAshLight">
+                            <p className="text-[13px] font-semibold text-white">
+                              Date submitted
                             </p>
-                            <p className="text-[13px] font-medium text-white">
-                              13 April 2025
+                            <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                              {dateTime(status?.data?.submissionDate)}
                             </p>
                           </div>
 
-                          <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAsh">
-                            <p className="text-[13px] font-medium text-tradeFadeWhite">
-                              Estimated Approval
+                          <div className="flex items-center justify-between gap-[10px] p-3 border-b border-tradeAshLight">
+                            <p className="text-[13px] font-semibold text-white">
+                              Estimated approval
                             </p>
-                            <p className="text-[13px] font-medium text-white">
+                            <p className="text-tradeFadeWhite text-[13px] font-semibold">
                               17 April 2025
                             </p>
                           </div>
 
-                          <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAsh">
-                            <p className="text-[13px] font-medium text-tradeFadeWhite">
-                              Verification Status
+                          <div className="flex items-center justify-between gap-[10px] p-3 border-b border-tradeAshLight">
+                            <p className="text-[13px] font-semibold text-white">
+                              Verification status
                             </p>
                             <div>
                               {(() => {
@@ -972,7 +974,7 @@ const KycVerify = () => {
                                   return <NotSubmittedComponent />;
                                 } else if (status?.state === "pending") {
                                   return (
-                                    <p className="text-[13px] font-medium text-tradeOrange">
+                                    <p className="text-[13px] font-semibold text-tradeOrange">
                                       Pending
                                     </p>
                                   );
@@ -985,11 +987,11 @@ const KycVerify = () => {
                             </div>
                           </div>
 
-                          <div className="flex items-center justify-between gap-[10px] p-[8px]">
-                            <p className="text-[13px] font-medium text-tradeFadeWhite">
-                              Verification Fee
+                          <div className="flex items-center justify-between gap-[10px] p-3">
+                            <p className="text-[13px] font-semibold text-white">
+                              Verification fee
                             </p>
-                            <p className="text-[13px] font-medium text-white">
+                            <p className="text-tradeFadeWhite text-[13px] font-semibold">
                               NGN 0.00
                             </p>
                           </div>

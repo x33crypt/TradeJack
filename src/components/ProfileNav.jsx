@@ -26,7 +26,7 @@ const ProfileNav = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col  bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[350px] min-h-[400px]">
+            <div className="flex flex-col  bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[350px] ">
               <div className="flex justify-between items-center gap-[15px] px-[15px] py-[12.3px]  border-b border-tradeAshLight">
                 <div onClick={close}>
                   <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
@@ -35,11 +35,11 @@ const ProfileNav = () => {
 
               <div className="flex flex-1 flex-col justify-between gap-[25px] p-[15px]">
                 <div className="flex flex-col items-center justify-center gap-3 ">
-                  <div className="cursor-pointer w-[70px]">
+                  <div className="cursor-pointer w-[80px]">
                     <img src={landingImg4} alt="" className="rounded-full" />
                   </div>
 
-                  <p className="text-[13px] font-medium text-white leading-none">
+                  <p className="text-sm font-semibold text-white leading-none">
                     adeleke@gmail.com
                   </p>
                 </div>
@@ -51,11 +51,11 @@ const ProfileNav = () => {
                   >
                     Account
                   </p>
-                  <p className="p-[12px] hover:bg-tradeAshLight border border-tradeAshLight rounded-[10px] text-tradeFadeWhite hover:text-white text-sm font-medium transition-all duration-300 cursor-pointer">
-                    Settings
-                  </p>
-                  <p className="p-[12px] hover:bg-tradeAshLight border border-tradeAshLight rounded-[10px] text-tradeFadeWhite hover:text-white text-sm font-medium transition-all duration-300 cursor-pointer">
-                    Referals
+                  <p
+                    // onClick={toAccount}
+                    className="p-[12px] hover:bg-tradeAshLight border border-tradeAshLight rounded-[10px] text-tradeFadeWhite hover:text-white text-sm font-medium transition-all duration-300 cursor-pointer"
+                  >
+                    Help & Support
                   </p>
                   <p className="p-[12px] bg-red-600 text-white text-sm font-medium rounded-[10px] transition-all duration-300 cursor-pointer">
                     Log Out
