@@ -19,7 +19,7 @@ const CreateSummary = () => {
   const serviceTypeIcons = {
     "Online Wallet Transfer": IoWalletOutline,
     "Bank Transfer": CiBank,
-    "Gift Card Exchange": HiOutlineGift,
+    "Gift Cards Exchange": HiOutlineGift,
     "Card-Based Spending": IoCardOutline,
     "Crypto Trading": GiTwoCoins,
   };
@@ -81,211 +81,159 @@ const CreateSummary = () => {
           </p>
 
           <div className="flex flex-1 flex-col gap-[50px]">
-            <div className="flex flex-col">
-              <div className="flex gap-4 items-center bg-tradeAshLight border border-neutral-800 p-[15px]">
+            <div className="flex flex-col gap-[10px]">
+              <div className="flex flex-col gap-2 items-cente bg-tradeAshLight border rounded-[15px] border-neutral-800 p-[12px]">
                 <div>
                   {IconComponent && (
-                    <IconComponent className="text-tradeFadeWhite text-[36px]" />
+                    <IconComponent className="text-tradeFadeWhite text-[36px] leading-none" />
                   )}
                 </div>
 
                 <div className="flex flex-col gap-1">
-                  <p className="text-tradeOrange text-base font-bold">
-                    {offerDetails?.service || "-- --"}
+                  <p className="text-tradeOrange text-2xl font-bold leading-relaxed">
+                    {offerDetails?.service || "NA"}
                   </p>
-                  <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-white text-xs font-medium">
+
+                  <div className="px-[6px] py-0.5 bg-transparent border border-tradeAsh rounded-[4px] w-max">
+                    <p className="text-tradeFadeWhite text-xs font-medium ">
                       {offerDetails?.serviceType || "Service Type"}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-                <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    Accepted Currency
-                  </p>
-                </div>
-                <p className="text-tradeOrange text-sm font-[600]">
+              <div className="flex gap-2 items-center justify-between bg-tradeAsh border rounded-[15px] border-neutral-800 p-[12px]">
+                <p className="text-[13px] font-semibold text-white">Currency</p>
+                <p className="text-tradeFadeWhite text-[13px] font-semibold">
                   {offerDetails?.currency?.name
-                    ? `${offerDetails.currency.name} - ${offerDetails.currency.code}`
+                    ? `${offerDetails.currency.name}`
                     : "-- --"}
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-                <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    Trade Range Limit
+              <div className="flex flex-col gap-2 items-center justify-between bg-tradeAsh border rounded-[15px] border-neutral-800 p-[12px]">
+                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
+                    <p className="text-tradeGreen text-xs font-medium ">
+                      Purchase Limit
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between w-full">
+                  <p className="text-[13px] font-semibold text-white">
+                    Minimum
+                  </p>
+                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                    {offerDetails?.minimum !== "" &&
+                    offerDetails?.currency?.code
+                      ? `${Number(offerDetails.minimum).toLocaleString()} ${
+                          offerDetails.currency.code
+                        }`
+                      : "0.00"}
                   </p>
                 </div>
-
-                <div className="flex flex-col gap-1">
-                  <div className="grid grid-cols-2 ">
-                    <p className="text-tradeFadeWhite text-sm">
-                      Minimum Purchase
-                    </p>
-                    <p className="text-tradeLightGreen text-sm font-[600]">
-                      {offerDetails?.minimum !== undefined &&
-                      offerDetails?.currency?.code
-                        ? `${Number(offerDetails.minimum).toLocaleString()} ${
-                            offerDetails.currency.code
-                          }`
-                        : "N/A"}
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-2 ">
-                    <p className="text-tradeFadeWhite text-sm">
-                      Maximum Purchase
-                    </p>
-                    <p className="text-tradeLightGreen text-sm font-[600]">
-                      {offerDetails?.maximum !== undefined &&
-                      offerDetails?.currency?.code
-                        ? `${Number(offerDetails.maximum).toLocaleString()} ${
-                            offerDetails.currency.code
-                          }`
-                        : "N/A"}
-                    </p>
-                  </div>
+                <div className="flex items-center justify-between w-full">
+                  <p className="text-[13px] font-semibold text-white">
+                    Minimum
+                  </p>
+                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                    {offerDetails?.minimum !== "" &&
+                    offerDetails?.currency?.code
+                      ? `${Number(offerDetails.minimum).toLocaleString()} ${
+                          offerDetails.currency.code
+                        }`
+                      : "0.00"}
+                  </p>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-                <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
+              <div className="flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] w-full">
+                <div className="flex items-center justify-between gap-[10px] p-3 border- border-tradeAshLight">
+                  <p className="text-[13px] font-semibold text-white">
                     Profit Margin
                   </p>
-                </div>
-
-                <p className="text-white text-sm">
-                  You’ve set a profit margin of{" "}
-                  <span className="text-tradeGreen text-sm font-[600]">
+                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
                     {offerDetails?.margin !== undefined
                       ? `${offerDetails.margin} percent`
                       : "--"}
-                  </span>
-                  , which represents your expected earnings per successful
-                  transaction.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-                <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    Payment Window
-                  </p>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <p className="text-white text-sm">
-                    You’ve set a payment window of{" "}
-                    <span className="font-[600] text-sm text-tradeGreen">
-                      {offerDetails?.paymentWindow !== undefined
-                        ? `${offerDetails.paymentWindow} hour(s)`
-                        : "--"}
-                    </span>{" "}
-                    for sellers to complete their payment.
-                  </p>
-
-                  <p className="text-tradeFadeWhite text-sm">
-                    <span className="text-tradeOrange font-bold">Note: </span>{" "}
-                    If the payment is not made within this timeframe, the trade
-                    will be automatically canceled. If funds were sent but not
-                    confirmed, sellers may initiate a dispute.
                   </p>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-                <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    Confirmation Window
+              <div className="flex flex-col gap-2 items-center justify-between bg-tradeAsh border rounded-[15px] border-neutral-800 p-[12px]">
+                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
+                    <p className="text-tradeGreen text-xs font-medium ">
+                      Payment Window
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between w-full">
+                  <p className="text-[13px] font-semibold text-white">
+                    Yourself ( Vendor )
+                  </p>
+                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                    {offerDetails?.vendorPaymentWindow?.hours} hrs{" "}
+                    {offerDetails?.vendorPaymentWindow?.minutes} min
                   </p>
                 </div>
-
-                <div className="flex flex-col gap-2">
-                  <p className="text-white text-sm">
-                    You’ve agreed to confirm receipt of payment and release
-                    funds within{" "}
-                    <span className="font-[600] text-sm text-tradeGreen">
-                      {offerDetails?.confirmationTime !== undefined
-                        ? `${offerDetails.confirmationTime} hour(s)`
-                        : "--"}
-                    </span>{" "}
-                    after seller's marks the trade as paid.
+                <div className="flex items-center justify-between w-full">
+                  <p className="text-[13px] font-semibold text-white">
+                    Traders
                   </p>
-
-                  <p className="text-tradeFadeWhite text-sm">
-                    <span className="text-tradeOrange font-bold">Note: </span>
-                    Failure to respond within this window may result in the
-                    buyer escalating the trade through a dispute.
+                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                    {offerDetails?.tradersPaymentWindow?.hours} hrs{" "}
+                    {offerDetails?.tradersPaymentWindow?.minutes} min
                   </p>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-                <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    Offer Terms
-                  </p>
+              <div className="flex flex-col gap-2 items-center justify-between bg-tradeAsh border rounded-[15px] border-neutral-800 p-[12px]">
+                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
+                    <p className="text-tradeGreen text-xs font-medium ">
+                      Terms
+                    </p>
+                  </div>
                 </div>
-
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 w-full">
                   {offerDetails?.termTags?.length ? (
                     offerDetails.termTags.map((tag, index) => (
                       <div
                         key={index}
-                        className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight"
+                        className="flex w-max items-center gap-[8px] px-[8px] py-[2px] rounded-[6px] bg-tradeAshLight border border-tradeAshLight"
                       >
-                        <p className="text-sm font-medium text-tradeOrange">
+                        <p className="text-[13px] font-semibold text-tradeOrange">
                           {tag}
                         </p>
                       </div>
                     ))
                   ) : (
-                    <p className="text-tradeFadeWhite text-sm font-[500]">
+                    <p className="text-tradeFadeWhite text-[13px] font-semibold">
                       No terms specified
                     </p>
                   )}
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-                <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    Offer Instructions
-                  </p>
+              <div className="flex flex-col gap-2 items-center justify-between bg-tradeAsh border rounded-[15px] border-neutral-800 p-[12px]">
+                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
+                    <p className="text-tradeGreen text-xs font-medium ">
+                      Instructions
+                    </p>
+                  </div>
                 </div>
-
-                <div className="">
+                <div className="w-full">
                   {offerDetails?.instruction ? (
-                    <p className="text-white text-sm">
+                    <p className="text-white text-[13px] font-semibold">
                       {offerDetails?.instruction}
                     </p>
                   ) : (
-                    <p className="text-tradeFadeWhite text-sm font-[500]">
+                    <p className="text-tradeFadeWhite text-[13px] font-semibold">
                       No Instructions set yet
                     </p>
                   )}
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-3 p-[15px] bg-tradeAsh border border-t-0 border-tradeAshLight">
-                <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    Service Charge
-                  </p>
-                </div>
-
-                <div>
-                  <p className="text-white text-sm">
-                    <span className="font-semibold text-tradeOrange">
-                      Applied at time of trade
-                    </span>{" "}
-                    (typically ranges between 0.5% – 2%)
-                  </p>
                 </div>
               </div>
             </div>
