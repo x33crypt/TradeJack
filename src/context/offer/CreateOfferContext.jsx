@@ -9,7 +9,7 @@ export const CreateOfferProvider = ({ children }) => {
     serviceType: "Online Wallet Transfer",
     service: "",
     serviceId: "",
-    currency: { code: "", name: "" },
+    currency: { code: "USD", name: " United States dollar" },
     minimum: "",
     maximum: "",
     margin: 4,

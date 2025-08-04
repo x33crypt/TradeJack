@@ -642,7 +642,7 @@ const CreateOffer = () => {
                 <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                   <div className="flex flex-col gap-[10px] w-full">
                     <p className="text-tradeFadeWhite text-xs font-medium">
-                      Type
+                      Asset Type
                     </p>
                     <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
                       <input
@@ -739,6 +739,12 @@ const CreateOffer = () => {
                         <MdKeyboardArrowDown />
                       </div>
                     </div>
+
+                    <Info
+                      text={
+                        "Select the currency of the asset you want to trade. This defines the value of your offer and ensures accurate rate calculations for all transactions."
+                      }
+                    />
                   </div>
                 </div>
 
@@ -782,7 +788,15 @@ const CreateOffer = () => {
                       </div>
                     </div>
                     <Info
-                      text={`Set your minimum and maximum purchase limits. By default the minimum purchase limit is 50 ${offerDetails.currency.code} while your current maximum purchase limit is 1,000 ${offerDetails.currency.code}. Exceeding it will cause submission errors.`}
+                      text={`Set your minimum and maximum purchase limits. By default the minimum purchase limit is 10 ${
+                        offerDetails.currency.code === ""
+                          ? "USD"
+                          : offerDetails.currency.code
+                      } while your current maximum purchase limit is 1,000 ${
+                        offerDetails.currency.code
+                          ? "USD"
+                          : offerDetails.currency.code
+                      }. Exceeding it will cause submission errors.`}
                     />
                   </div>
                 </div>
@@ -877,7 +891,7 @@ const CreateOffer = () => {
                 <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                   <div className="flex flex-col gap-[10px] w-full">
                     <p className="text-tradeFadeWhite text-xs font-medium">
-                      Payment Window (Vendor)
+                      Payment Window (Yourself)
                     </p>
 
                     <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
@@ -931,7 +945,7 @@ const CreateOffer = () => {
 
                     <Info
                       text={
-                        "Set how long you’ll have to confirm the traders assets upon transfer and release their payment. Note that if no payment is made within this set period, the trade would result to dispute automatically and you will have to pay for it "
+                        "Set the time you’ll have to confirm the trader’s asset transfer and release payment. If you don’t act within this window, the trade will be automatically escalated to a dispute."
                       }
                     />
                   </div>
@@ -1000,7 +1014,7 @@ const CreateOffer = () => {
 
                     <Info
                       text={
-                        "Set how long the traders has to transfer theur assets after the trade begins. If no payment is made within this period, the trade will be cancelled automatically."
+                        "Set the time limit for traders to transfer assets after a trade begins. If they fail to do so within this window, the trade will be automatically cancelled."
                       }
                     />
                   </div>
