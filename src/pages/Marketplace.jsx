@@ -164,8 +164,8 @@ const Marketplace = () => {
   return (
     <>
       <InAppNav />
-      <div className="flex lg:flex-row flex-col min-h-svh bg-black lg:px-[2%] md:px-[2.5%] gap-[10px]">
-        <div className="lg:flex lg:sticky top-[-0px] max-h-svh pt-[64px] hidden w-[290px]">
+      <div className="flex gap-[5px] lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[60px]">
+        <div className="lg:flex hidden  h-full sticky md:top-[64px]">
           <OfferFilter
             handleFilterOffer={handleFilterOffer}
             setSelect={setSelect}
@@ -173,7 +173,7 @@ const Marketplace = () => {
           />
         </div>
 
-        <div className="flex-1 min-h-svh md:pt-[64px] pt-[60px]">
+        <div className="flex-1 min-h-svh ">
           <MarketMain
             promotedOffers={promotedOffers}
             unPromotedOffers={unPromotedOffers}

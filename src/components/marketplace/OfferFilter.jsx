@@ -128,8 +128,8 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
   }, [offerFilter.clearFilter]);
 
   return (
-    <div className="bg-black overflow-hidden w-full h-full flex flex-col md:border md:border-t-0 border-neutral-800">
-      <div className="flex  justify-between items-center lg:px-[15px] md:px-[2.5%] p-[15px] border-y border-neutral-800 ">
+    <div className="flex flex-1 md:w-[320px]  gap-[5px] flex-col bg-black md:border-x md:border-t-0 lg:border-b border-neutral-800">
+      <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-neutral-800 ">
         <p className="text-lg text-white font-[700] cursor-pointer">
           Filter Offers
         </p>
@@ -153,25 +153,18 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
         </button>
       </div>
 
-      <div className="flex flex-col  h-full overflow-auto custom-scrollbar">
-        <div className="flex flex-col justify-between ">
-          {/* Service Type field */}
-          <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-tradeAshLight">
-            <div>
-              <p className="text-tradeFadeWhite text-sm font-[500]">
-                Service Type
-              </p>
-            </div>
-
-            <div className="bg-tra relative w-full cursor-pointer ">
+      <div className="flex-1 flex flex-col justify-between p-[15px] gap-[35px]">
+        <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
+          <div className="flex flex-col gap-[10px] w-full">
+            <p className="text-tradeFadeWhite text-xs font-medium">
+              Asset Type
+            </p>
+            <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
               <input
-                className={` ${
-                  offerFilter?.serviceType
-                    ? "border-tradeAshExtraLight"
-                    : "border-tradeAshLight "
-                }  bg-tradeAsh mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
                 type="text"
                 readOnly
+                placeholder="Choose type"
                 value={
                   offerFilter?.serviceType === ""
                     ? "Default"
@@ -189,35 +182,19 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                   })
                 }
               />
-
               <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
                 <MdKeyboardArrowDown />
               </div>
             </div>
           </div>
 
-          {/* Service field */}
-          <div
-            className={`${
-              offerFilter?.serviceType ? "flex" : "hidden"
-            }  flex-col lg:px-[15px] md:px-[2.5%] p-[15px] gap-[20px] border-b border-tradeAshLight`}
-          >
-            <div>
-              <div>
-                <p className="text-tradeFadeWhite text-sm font-[500]">
-                  {serviceInputLabels[offerFilter.serviceType] ||
-                    "Select Service"}
-                </p>
-              </div>
-            </div>
-
-            <div className="relative w-full cursor-pointer ">
+          <div className="flex flex-col gap-[10px] w-full">
+            <p className="text-tradeFadeWhite text-xs font-medium">
+              {serviceInputLabels[offerFilter.serviceType] || "Select Service"}
+            </p>
+            <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
               <input
-                className={` ${
-                  offerFilter?.service
-                    ? "border-tradeAshExtraLight text-tradeGreen"
-                    : "border-tradeAshLight text-white"
-                } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
                 type="text"
                 readOnly
                 placeholder="-- --"
@@ -233,27 +210,16 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                   })
                 }
               />
-
               <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
                 <MdKeyboardArrowDown />
               </div>
             </div>
           </div>
 
-          {/* currency field */}
-          <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px] border-b border-tradeAshLight">
-            <div>
-              <p className="text-tradeFadeWhite text-sm font-[500]">
-                Select Currency
-              </p>
-            </div>
-
+          <div className="flex flex-col gap-[10px] w-full">
+            <p className="text-tradeFadeWhite text-xs font-medium">Currency</p>
             <div
-              className={` ${
-                offerFilter?.currency?.name
-                  ? "border-tradeAshExtraLight text-tradeGreen"
-                  : "border-tradeAshLight text-white"
-              } relative flex mt-[5px] text-sm placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full rounded-[10px] cursor-pointer`}
+              className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer"
               onClick={() =>
                 setSelect({
                   state: true,
@@ -266,17 +232,17 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
               }
             >
               <input
-                className="w-full p-[12px] outline-none bg-transparent text-tradeOrange text-sm font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                className="w-full p-[12px] outline-none bg-transparent text-white text-sm font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
                 placeholder="-- --"
                 type="text"
                 readOnly
                 value={offerFilter?.currency?.name}
               />
 
-              <div className=" absolute right-1.5 top-1/2 -translate-y-1/2  border  border-tradeAshLight flex justify-between items-center px-[10px] lg:h-[30px] h-[35px] rounded-[6px]">
+              <div className=" absolute right-1.5 top-1/2 -translate-y-1/2  border  border-tradeAsh flex justify-between items-center px-[5px] lg:h-[30px] h-[35px] rounded-[6px]">
                 <div>
                   <input
-                    className="w-[43px] text-sm  text-tradeOrange placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
+                    className="w-[43px] text-sm  text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
                     type="text"
                     value={offerFilter?.currency?.code}
                     readOnly
@@ -288,21 +254,12 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
             </div>
           </div>
 
-          {/* amount field */}
-          <div className="flex flex-col gap-[20px] lg:px-[15px] md:px-[2.5%] p-[15px]">
-            <div>
-              <p className="text-tradeFadeWhite text-sm font-[500]">
-                Enter Amount
-              </p>
-            </div>
+          <div className="flex flex-col gap-[10px] w-full">
+            <p className="text-tradeFadeWhite text-xs font-medium">Amount</p>
 
-            <div className="relative w-full cursor-pointer ">
+            <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
               <input
-                className={` ${
-                  offerFilter?.amount
-                    ? "border-tradeAshExtraLight text-white"
-                    : "border-tradeAshLight text-white"
-                } mt-[5px] text-sm  placeholder:text-tradeFadeWhite font-[600] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
+                className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                 type="text"
                 placeholder="00.00"
                 value={
@@ -315,25 +272,25 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="flex flex-col gap-[10px] border-t border-tradeAshLight  lg:px-[15px] py-[15px] md:px-[2.5%] p-[15px]">
-        <Button
-          onClick={handleFilterOffer}
-          variant="primary"
-          disabled={offerFilter?.isFiltering}
-        >
-          {offerFilter?.isFiltering ? "Filtering..." : "Apply Filter"}
-        </Button>
-
-        <div className="lg:hidden flex">
+        <div className="flex flex-col gap-[10px] border-t border-tradeAshLight  ">
           <Button
-            onClick={handleClearFilter}
-            variant="danger"
-            disabled={loading}
+            onClick={handleFilterOffer}
+            variant="primary"
+            disabled={offerFilter?.isFiltering}
           >
-            Clear Filter
+            Apply Filter
           </Button>
+
+          <div className="lg:hidden flex">
+            <Button
+              onClick={handleClearFilter}
+              variant="danger"
+              disabled={loading}
+            >
+              Clear Filter
+            </Button>
+          </div>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ import { useServices } from "@/hooks/useServices";
 import CreateSummary from "@/components/offer/myOffer/CreateSummary";
 import LockByScroll from "@/components/LockByScroll";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
-import { TiInfo } from "react-icons/ti";
+import { IoIosCheckmarkCircle } from "react-icons/io";
 
 const CreateOffer = () => {
   const { toast, setToast } = useToast();
@@ -617,6 +617,13 @@ const CreateOffer = () => {
     });
   };
 
+  const close = () => {
+    setOfferDetails((prev) => ({
+      ...prev,
+      success: false,
+    }));
+  };
+
   return (
     <>
       <InAppNav />
@@ -626,8 +633,6 @@ const CreateOffer = () => {
           <div className="flex flex-col px-[15px] py-[12px] border-b border-tradeAshLight">
             <p className="text-lg text-white font-semibold">Create Offer</p>
           </div>
-
-          {/* Note Fields */}
 
           <div className="flex flex-1 flex-col p-[15px] gap-[15px]">
             <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
@@ -1118,28 +1123,52 @@ const CreateOffer = () => {
           </div>
         </div>
 
-        {/* Offer Summary For Desktop */}
-        <div className="lg:flex hidden">
+        <div className="lg:flex hidden h-max">
           <CreateSummary />
         </div>
       </div>
 
-      {offerDetails?.submitSuccess && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 px-[50px]">
+      {offerDetails?.success && (
+        <div>
           <LockByScroll />
-          <div className="bg-tradeAsh flex flex-col items-center p-[12px] gap-4 rounded-[14px] w-[280px] text-center">
-            <IoCheckmarkDoneCircleOutline className="text-tradeAshExtraLight text-5xl lg:text-8xl" />
-            <p className="text-white font-bold text-2xl leading-none">
-              Great job!
-            </p>
-            <p className="text-[13px] text-tradeFadeWhite font-medium">
-              Your offer has been successfully created and published. You can
-              now view it, monitor its activity, or make changes from your
-              offers dashboard.
-            </p>
-            <Button onClick={handleViewOffers} variant="secondary">
-              See Offer Details
-            </Button>
+          <div className="fixed top-0 right-0 left-0 bottom-0 lg:px-[2%] md:px-[2.5%] px-[30px]  bg-black bg-opacity-80 flex items-center justify-center z-40">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[350px] min-h-[400px] ">
+              <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
+                <p className="text-lg font-[700] text-white ">
+                  Transfer Feedback
+                </p>
+
+                <div onClick={close}>
+                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
+                </div>
+              </div>
+
+              <div className="flex-1 flex flex-col justify-between py-[15px] gap-[30px]">
+                <div className="flex flex-col gap-[20px]">
+                  <div className="flex flex-col items-center justify-center gap-3">
+                    <div className="p-[6px] bg-tradeAshLight text-[45px] text-tradeGreen rounded-full">
+                      <IoIosCheckmarkCircle />
+                    </div>
+
+                    <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                      Offer Created
+                    </p>
+                  </div>
+
+                  <div className="mt-[15px] flex flex-col items-center gap-3  justify-center">
+                    <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed text-center">
+                      Your offer has been successfully created and published.
+                      You can now view it, monitor its activity, or make changes
+                      from your offers dashboard.
+                    </p>
+                  </div>
+                </div>
+
+                <Button onClick={handleViewOffers} variant="secondary">
+                  View All Offers
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       )}

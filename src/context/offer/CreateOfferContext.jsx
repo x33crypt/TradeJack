@@ -17,10 +17,8 @@ export const CreateOfferProvider = ({ children }) => {
     tradersPaymentWindow: { minutes: 0, hours: 0 },
     termTags: [],
     instruction: "",
-
-    // Additional fields for post offer creation
-    submitSuccess: false,
-    OfferId: "",
+    loading: false,
+    success: false,
   });
 
   return (

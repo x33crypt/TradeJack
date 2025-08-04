@@ -101,7 +101,7 @@ const SuccessTransfer = () => {
                     </p>
                   </div>
 
-                  <div className="flex flex-col bg-tradeAshLigh  borde border-tradeAshLight rounded-[15px]">
+                  < div className="flex flex-col bg-tradeAshLigh  borde border-tradeAshLight rounded-[15px]">
                     <div className="flex items-center justify-betwee justify-center gap-[10px] p-[8px border- border-tradeAsh">
                       <p className="text-[13px] font-medium text-tradeFadeWhite">
                         Reference -{" "}
@@ -112,6 +112,7 @@ const SuccessTransfer = () => {
                     </div>
                   </div>
                 </div>
+
                 <div className="flex flex-col gap-[10px]">
                   <Button
                     variant="Fadeout"

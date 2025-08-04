@@ -10,6 +10,8 @@ import { TbLayoutListFilled } from "react-icons/tb";
 import { TbFileInvoice } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import { RiGift2Fill } from "react-icons/ri";
+import { RiExchangeBoxLine } from "react-icons/ri";
+import { RiExchange2Fill } from "react-icons/ri";
 
 const DasHboardMenu = () => {
   const navigateTo = useNavigate();
@@ -51,11 +53,11 @@ const DasHboardMenu = () => {
           <p className="text-[13px] font-[500]"> Messages</p>
         </div>
         <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-          <TbLayoutListFilled className="text-[17px]" />
+          <RiExchange2Fill className="text-[17px]" />
           <p className="text-[13px] font-[500]">Trade history</p>
         </div>
         <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-          <TbLayoutListFilled className="text-[17px]" />
+          <RiExchangeBoxLine className="text-[17px]" />
           <p className="text-[13px] font-[500]">Transaction history</p>
         </div>
         <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">

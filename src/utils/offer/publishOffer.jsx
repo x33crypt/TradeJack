@@ -108,6 +108,7 @@ export async function publishOffer(offerDetails) {
       minimum,
       maximum,
     },
+
     margin_rate: {
       from: minimum,
       to: maximum,
@@ -115,9 +116,9 @@ export async function publishOffer(offerDetails) {
     },
 
     terms: termTags,
-    payment_window: paymentWindow,
-    confirmation_window: confirmationTime,
-    instructins: instruction,
+    vendorPaymentWindow: vendorPaymentWindow,
+    tradersPaymentWindow: tradersPaymentWindow,
+    instruction: instruction,
   };
 
   try {

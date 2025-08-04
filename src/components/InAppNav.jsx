@@ -22,6 +22,8 @@ import { useProfileNav } from "@/context/ProfileNavContext";
 import LockByScroll from "./LockByScroll";
 import { HiGiftTop } from "react-icons/hi2";
 import { RiExchangeBoxLine } from "react-icons/ri";
+import { HiOutlineGlobe } from "react-icons/hi";
+import { HiViewGridAdd } from "react-icons/hi";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -91,18 +93,19 @@ const InAppNav = () => {
           </div>
 
           <div
-            onClick={() => navigateTo("/offers/marketplace")}
+           onClick={() => navigateTo("/offers/create")}
             className="flex items-center gap-[8px] hover:bg-tradeAsh hover:text-white borde  border-black hover:border-tradeAshLight text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
-            <RiExchange2Fill className="lg:flex hidden text-[16px]" />
-            <p className="text-[13px] font-medium">Sell Assets</p>
+            <HiViewGridAdd className="lg:flex hidden text-[16px]" />
+            <p className="text-[13px] font-medium">Create Offer</p>
           </div>
           <div
-            onClick={() => navigateTo("/offers/create")}
+           
+              onClick={() => navigateTo("/offers/marketplace")}
             className="flex items-center gap-[8px] hover:bg-tradeAsh borde  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300"
           >
-            <RiExchangeBoxFill className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-medium">Buy Assets</p>
+            <HiOutlineGlobe className="lg:flex hidden text-[17px]" />
+            <p className="text-[13px] font-medium">Browse Offers</p>
           </div>
           <div className="flex items-center gap-[8px] hover:bg-tradeAsh border  border-black hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[5px] rounded-[7px] cursor-pointer transition-all duration-300">
             <FaUserFriends className="lg:flex hidden text-[17px]" />
@@ -243,7 +246,7 @@ const InAppNav = () => {
                     setIsNavOption(false);
                   }}
                 >
-                  Sell Asset
+                  Browse Offers
                 </Button>
 
                 <Button
@@ -253,7 +256,7 @@ const InAppNav = () => {
                     setIsNavOption(false);
                   }}
                 >
-                  Buy Asset
+                  Create Offer
                 </Button>
               </div>
             </div>

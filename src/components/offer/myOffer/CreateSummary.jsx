@@ -12,8 +12,6 @@ import Button from "@/components/buttons/Button";
 
 const CreateSummary = () => {
   const { offerDetails, setOfferDetails } = useCreateOfferDetails();
-  const [isUpdating, setIsUpdating] = useState(false);
-
   const { toast, setToast } = useToast();
 
   const serviceTypeIcons = {
@@ -30,28 +28,30 @@ const CreateSummary = () => {
   const navigateTo = useNavigate();
 
   const handlepublish = async () => {
-    setIsUpdating(true);
+    setOfferDetails((prev) => ({
+      ...prev,
+      loading: true,
+    }));
     const result = await publishOffer(offerDetails);
 
     console.log("Offer published:", result);
 
     if (result.success) {
-      setIsUpdating(false);
-
-      // setToast({
-      //   ...toast,
-      //   success: true,
-      //   successMessage: result.message,
-      // });
+      setOfferDetails((prev) => ({
+        ...prev,
+        loading: false,
+      }));
 
       setOfferDetails((prev) => ({
         ...prev,
         submitSuccess: true,
-        OfferId: result.offerId, // Assuming the API returns an offerId
       }));
     } else {
       console.error("Publish failed:", result.error);
-      setIsUpdating(false);
+      setOfferDetails((prev) => ({
+        ...prev,
+        loading: false,
+      }));
 
       setToast({
         ...toast,
@@ -82,10 +82,10 @@ const CreateSummary = () => {
 
           <div className="flex flex-1 flex-col gap-[50px]">
             <div className="flex flex-col gap-[10px]">
-              <div className="flex flex-col gap-3 items-cente bg- border rounded-[15px] border-neutral-800 p-[12px]">
+              <div className="flex flex-col gap-3 items-cente bg-tradeAsh border rounded-[15px] border-neutral-800 p-[12px]">
                 <div>
                   {IconComponent && (
-                    <IconComponent className="text-tradeFadeWhite text-[36px] leading-none" />
+                    <IconComponent className="text-tradeFadeWhite text-[45px] leading-none" />
                   )}
                 </div>
 
@@ -93,8 +93,8 @@ const CreateSummary = () => {
                   {offerDetails?.service || "NA"}
                 </p>
 
-                <div className="px-[6px] py-0.5 bg-transparent border border-tradeAsh rounded-[4px] w-max">
-                  <p className="text-tradeFadeWhite text-xs font-medium ">
+                <div className="px-[6px] py-0.5 bg-tradeAshLight border border-tradeAsh rounded-[6px] w-max">
+                  <p className="text-tradeFadeWhite text-[13px] font-medium ">
                     {offerDetails?.serviceType || "Service Type"}
                   </p>
                 </div>
@@ -132,12 +132,12 @@ const CreateSummary = () => {
                 </div>
                 <div className="flex items-center justify-between w-full">
                   <p className="text-[13px] font-semibold text-white">
-                    Minimum
+                    Maximum
                   </p>
                   <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                    {offerDetails?.minimum !== "" &&
+                    {offerDetails?.maximum !== "" &&
                     offerDetails?.currency?.code
-                      ? `${Number(offerDetails.minimum).toLocaleString()} ${
+                      ? `${Number(offerDetails.maximum).toLocaleString()} ${
                           offerDetails.currency.code
                         }`
                       : "0.00"}
@@ -152,7 +152,7 @@ const CreateSummary = () => {
                   </p>
                   <p className="text-tradeFadeWhite text-[13px] font-semibold">
                     {offerDetails?.margin !== undefined
-                      ? `${offerDetails.margin} percent`
+                      ? `${offerDetails.margin}%`
                       : "--"}{" "}
                     per trade
                   </p>
@@ -240,26 +240,21 @@ const CreateSummary = () => {
               <Button
                 onClick={handlepublish}
                 variant="primary"
-                disabled={isUpdating}
+                disabled={offerDetails?.loading}
               >
-                {isUpdating ? "Publishing..." : "Publish Offer"}
+                Publish Offer
               </Button>
 
-              <div className="hidden md:flex">
-                <Button
-                  onClick={handleDraft}
-                  variant="ghost"
-                  disabled={isUpdating}
-                >
-                  Save in Draft
-                </Button>
-              </div>
-
+              {/* 
               <Button
-                onClick={cancelButton}
-                variant="outline"
+                onClick={handleDraft}
+                variant="ghost"
                 disabled={isUpdating}
               >
+                Save in Draft
+              </Button> */}
+
+              <Button onClick={cancelButton} variant="outline">
                 Cancel
               </Button>
             </div>

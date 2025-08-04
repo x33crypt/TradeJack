@@ -70,101 +70,20 @@ const MarketMain = ({
   };
 
   return (
-    <div className="flex flex-col  h-full md:border-x md:border-t-0 lg:border-b border-neutral-800">
-      <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
-        <p className="text-lg text-white font-[700]">Secure P2P Marketplace</p>
-
-        <div className="text-white text-[25px]">
-          <RiColorFilterFill />
-        </div>
+    <div className="flex flex-col h-full md:border-x md:border-t-0 lg:border-b border-neutral-800 " >
+      <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
+        <p className="text-lg font-[700] text-white ">Secure P2P Marketplace</p>
       </div>
 
-      <div className="flex flex-col gap-[15px] ">
-        {/* <div className=" z-20 sticky top-[62px] flex flex-col gap-[5px] px-[15px] bg-black">
-          <div className="flex py-[15px] gap-2 md:justify-between overflow-x-hidden flex-shrink-0">
+      <div className="flex flex-col flex-1 ">
+        <div className="sticky md:top-[65px] top-[57px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
+          <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] ">
+            {/* Left group */}
             <div
-              onClick={handleShowOfferFilter}
-              className="flex flex-shrink-0 lg:hidden items-center gap-2 px-[12px] py-[4px] text-tradeOrange  text-sm font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+              className={`${
+                false ? "hidden" : "flex"
+              } flex items-center gap-[5px] bg-transparent flex-shrink-0 py-[1px]`}
             >
-              <BiSolidBinoculars className="lg:text-[17px] text-[18px]" />
-              <p>Filter</p>
-            </div>
-
-            <div className=" flex  flex-shrink-0 items-center gap-2 bg-transparent ">
-              <p
-                onClick={handleShowAllOffer}
-                className={`${
-                  offerFilter?.allOffers
-                    ? "text-white bg-tradeAsh border-tradeGreen"
-                    : "text-neutral-500 border-neutral-800 hover:text-white"
-                } shrink-0 inline-block px-[12px] py-[4px] text-sm font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-              >
-                All
-              </p>
-              <p
-                onClick={handleShowOnlineOffer}
-                className={`${
-                  offerFilter?.onlineOffers
-                    ? "text-white bg-tradeAsh border-tradeGreen"
-                    : "text-neutral-500 border-neutral-800 hover:text-white"
-                } shrink-0 inline-block px-[12px] py-[4px] text-sm font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-              >
-                Online
-              </p>
-              <p
-                onClick={handleShowBestMargins}
-                className={`${
-                  offerFilter?.bestMargin
-                    ? "text-white bg-tradeAsh border-tradeGreen"
-                    : "text-neutral-500 border-neutral-800 hover:text-white"
-                } shrink-0 inline-block px-[12px] py-[4px] text-sm font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-              >
-                Best Margins
-              </p>
-              <p
-                onClick={handleShowTopFeedBacks}
-                className={`${
-                  offerFilter?.topFeedBack
-                    ? "text-white bg-tradeAsh border-tradeGreen"
-                    : "text-neutral-500 border-neutral-800 hover:text-white"
-                } shrink-0 inline-block px-[12px] py-[4px] text-sm font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-              >
-                Top Feedback
-              </p>
-              <p
-                onClick={handleShowmostTrusted}
-                className={`${
-                  offerFilter?.mostTrusted
-                    ? "text-white bg-tradeAsh border-tradeGreen"
-                    : "text-neutral-500 border-neutral-800 hover:text-white"
-                } shrink-0 inline-block px-[12px] py-[4px] text-sm font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-              >
-                Most-Trusted
-              </p>
-            </div>
-
-            <div className=" gap-[5px] flex flex-shrink-0">
-              <div
-                onClick={handleShowOnlineOffer}
-                className="shrink-0 text-neutral-500 border-neutral-800  hover:text-white flex items-center justify-center gap-[4px] px-[12px] py-[4px] text-[15px] rounded-[6.5px] border cursor-default transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-              >
-                <FaMagnifyingGlass />
-                <span className="text-[11px] font-semibold text-tradeGreen">
-                  3
-                </span>
-              </div>
-
-              <div className=" flex-shrink-0 flex items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[13px] font-[600] rounded-[6.5px] border border-neutral-800 hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                <TbArrowGuide className="text-[17px]" />
-                <p>Guide Me</p>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
-        <div className="sticky top-[65px]  bg-black p-[15px] border-b border-dashed border-tradeAshLight overflow-x-auto">
-          <div className="flex justify-between min-w-max gap-[10px]">
-            <div className="flex items-center gap-2 bg-transparent">
               <div
                 onClick={handleShowOfferFilter}
                 className="flex flex-shrink-0 lg:hidden items-center gap-2 px-[12px] py-[4px] text-tradeOrange  text-sm font-[600] rounded-[6.5px] border border-tradeOrange hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
@@ -177,8 +96,8 @@ const MarketMain = ({
                 className={`${
                   offerFilter?.allOffers
                     ? "text-white bg-tradeAsh border-tradeGreen"
-                    : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block w-max px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                    : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 All
               </p>
@@ -187,28 +106,28 @@ const MarketMain = ({
                 className={`${
                   offerFilter?.onlineOffers
                     ? "text-white bg-tradeAsh border-tradeGreen"
-                    : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block w-max px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                    : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
-                Online
+                Active
               </p>
               <p
                 onClick={handleShowBestMargins}
                 className={`${
                   offerFilter?.bestMargin
                     ? "text-white bg-tradeAsh border-tradeGreen"
-                    : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block w-max px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                    : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
-                Best Margins
+                Best Margin
               </p>
               <p
                 onClick={handleShowTopFeedBacks}
                 className={`${
                   offerFilter?.topFeedBack
                     ? "text-white bg-tradeAsh border-tradeGreen"
-                    : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block w-max px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                    : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
                 Top Feedback
               </p>
@@ -217,27 +136,36 @@ const MarketMain = ({
                 className={`${
                   offerFilter?.mostTrusted
                     ? "text-white bg-tradeAsh border-tradeGreen"
-                    : "text-neutral-500 border-neutral-800 hover:text-white"
-                } inline-block w-max px-[12px] py-[4px] text-[13px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                    : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
-                Most-Trusted
+                Most Trusted
               </p>
             </div>
 
-            <div className=" gap-[5px] flex flex-shrink-0">
-              <div
-                onClick={handleShowOnlineOffer}
-                className="shrink-0 text-neutral-500 border-neutral-800  hover:text-white flex items-center justify-center gap-[4px] px-[12px] py-[4px] text-[15px] rounded-[6.5px] border cursor-default transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-              >
-                <FaMagnifyingGlass />
-                <span className="text-[11px] font-semibold text-tradeGreen">
-                  3
-                </span>
+            {/* Right group */}
+            <div
+              className={` flex justify-between items-center gap-[5px] bg-transparent flex-shrink-0 py-[1px]`}
+            >
+              <div className="flex gap-[5px] bg-transparent">
+                <div
+                  onClick={handleShowOnlineOffer}
+                  className="shrink-0 text-neutral-500 border-neutral-800  hover:text-white flex items-center justify-center gap-[4px] px-[12px] py-[4px] text-[15px] rounded-[6.5px] border cursor-default transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                >
+                  <FaMagnifyingGlass />
+                  <span className="text-[11px] font-semibold text-tradeGreen">
+                    3
+                  </span>
+                </div>
+
+                <div className=" flex-shrink-0 flex items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[13px] font-[600] rounded-[6.5px] border border-neutral-800 hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                  <TbArrowGuide className="text-[17px]" />
+                  <p>Guide Me</p>
+                </div>
               </div>
 
-              <div className=" flex-shrink-0 flex items-center gap-1 px-[12px] py-[4px] text-tradeOrange text-[13px] font-[600] rounded-[6.5px] border border-neutral-800 hover:border-tradeOrange cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                <TbArrowGuide className="text-[17px]" />
-                <p>Guide Me</p>
+              <div className=" bg-tradeGreen text-black font-semibold relative flex items-center gap-2 px-[12px] py-[4px] text-[13px] rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                <p>Create New</p>
               </div>
             </div>
           </div>
@@ -256,15 +184,8 @@ const MarketMain = ({
           />
         </div>
 
-        <div className="flex flex-col px-[15px] pb-[15px] gap-[15px]">
+        <div className="flex flex-col p-[15px] gap-[15px]">
           <div className="flex flex-col gap-[15px]">
-            <div className="z-10 sticky top-[125px] flex justify-between items-center px-4 py-2 bg-tradeOrange/80 shadow-sm">
-              <p className="text-black text-sm font-semibold">
-                Promoted Offers
-              </p>
-              <p className="text-black text-sm font-semibold">June 14, 2025</p>
-            </div>
-
             <div className="grid grid-cols-1 gap-1 md:gap-0  items-center border border-t-0 border-tradeAshLight">
               {promotedOffers?.map((offer, index) => (
                 <div key={index}>
@@ -289,7 +210,7 @@ const MarketMain = ({
             </div>
           </div>
 
-          <div className="flex flex-col gap-[15px]">
+          {/* <div className="flex flex-col gap-[15px]">
             <div className="z-10 sticky top-[125px] flex justify-between items-center px-4 py-2 bg-tradeAshLight/80 shadow-sm">
               <p className="text-white text-sm font-medium">Published On</p>
               <p className="text-tradeOrange text-sm font-medium">
@@ -319,7 +240,7 @@ const MarketMain = ({
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
