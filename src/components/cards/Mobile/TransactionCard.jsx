@@ -28,7 +28,7 @@ const TransactionCard = ({ transaction }) => {
             <MdGrid3X3 className="text-sm text-tradeAshExtraLight" />
           </div>
           <span className="font-semibold">
-            {shortenID(transaction?.transactionId || "")}
+            {shortenID(transaction?.reference || "")}
           </span>
         </div>
         <div className="flex items-center gap-1">

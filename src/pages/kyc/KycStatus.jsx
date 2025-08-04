@@ -55,7 +55,7 @@ const KycStatus = () => {
         <div className="flex-1 flex flex-col md:flex-row gap-[5px]">
           {/*Kyc Information */}
           <div className="flex flex-col flex-1 gap-[5px]">
-            <div className="flex flex-col flex-1 md:border border-neutral-800">
+            <div className="flex flex-col flex-1 md:border border-neutral-800 min-h-svh">
               <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
                   KYC Information
@@ -106,7 +106,7 @@ const KycStatus = () => {
                               </p>
                             </div>
 
-                            <div className="flex flex-col gap-[10px] h-full justify-between ">
+                            <div className="flex flex-col gap-[2] h-full justify-between ">
                               <div className="flex flex-col gap-[10px]">
                                 {/* Status */}
                                 <div className="flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] w-full">
@@ -228,7 +228,7 @@ const KycStatus = () => {
                                     navigateTo("/account/kyc/verification")
                                   }
                                 >
-                                  Submission Details
+                                  Submission Status
                                 </Button>
                               </div>
                             </div>

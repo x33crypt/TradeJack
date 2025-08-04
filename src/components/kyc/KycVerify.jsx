@@ -487,7 +487,7 @@ const KycVerify = () => {
   console.log("KYC Verification", verification);
 
   return (
-    <div className="flex flex-col md:border border-neutral-800 w-full">
+    <div className="flex flex-col md:border border-neutral-800 w-full min-h-svh">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">KYC Verification</p>
       </div>

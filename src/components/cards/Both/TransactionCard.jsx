@@ -30,7 +30,7 @@ const TransactionCard = ({ transaction }) => {
             </div>
             <p className="text-white  text-[13px] font-semibold">
               {transaction?.transactionId
-                ? shortenID(transaction.transactionId)
+                ? shortenID(transaction.reference)
                 : "No transaction ID"}
             </p>
           </div>
@@ -259,7 +259,7 @@ const TransactionCard = ({ transaction }) => {
               <MdGrid3X3 className="text-sm text-tradeAshExtraLight" />
             </div>
             <span className="font-semibold">
-              {shortenID(transaction?.transactionId || "")}
+              {shortenID(transaction?.reference || "")}
             </span>
           </div>
           <div className="flex items-center gap-1">
@@ -327,7 +327,7 @@ const TransactionCard = ({ transaction }) => {
                 </span>
               </div>
 
-              <span className="text-white text-[13px] font-semibold">
+              <span className="text-white text-[13px] font-bold">
                 {(() => {
                   const { senderUsername, recipientUsername, type } =
                     transaction || {};
@@ -371,18 +371,18 @@ const TransactionCard = ({ transaction }) => {
                 (type === "deposit" && senderUsername !== "Unknown")
               )
                 return (
-                  <p className="text-tradeGreen text-[13px] font-semibold">
+                  <p className="text-tradeGreen text-[13px] font-bold">
                     + #{toDecimal(amount?.ngn)}
                   </p>
                 );
               if (type === "transfer" && recipientUsername !== "Unknown")
                 return (
-                  <p className="text-red-600 text-[13px] font-semibold">
+                  <p className="text-red-600 text-[13px] font-bold">
                     - #{toDecimal(amount?.ngn)}
                   </p>
                 );
               return (
-                <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                <p className="text-tradeFadeWhite text-[13px] font-bold">
                   N/A
                 </p>
               );
