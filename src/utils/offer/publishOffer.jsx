@@ -34,8 +34,8 @@ export async function publishOffer(offerDetails) {
     maximum,
     margin,
     termTags,
-    paymentWindow,
-    confirmationTime,
+    vendorPaymentWindow,
+    tradersPaymentWindow,
     instruction,
   } = offerDetails;
 
@@ -73,15 +73,15 @@ export async function publishOffer(offerDetails) {
     };
   }
 
-  if (!paymentWindow) {
-    return { success: false, error: "Missing required field: Payment window" };
+  const isWindowValid = (window) =>
+    window && (Number(window?.hours) > 0 || Number(window?.minutes) > 0);
+
+  if (!isWindowValid(vendorPaymentWindow)) {
+    return showToast("Missing required field: Vendor payment window.");
   }
 
-  if (!confirmationTime) {
-    return {
-      success: false,
-      error: "Missing required field: Confirmation window",
-    };
+  if (!isWindowValid(tradersPaymentWindow)) {
+    return showToast("Missing required field: Trader payment window.");
   }
 
   if (!termTags || termTags.length === 0) {

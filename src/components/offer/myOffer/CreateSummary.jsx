@@ -82,23 +82,21 @@ const CreateSummary = () => {
 
           <div className="flex flex-1 flex-col gap-[50px]">
             <div className="flex flex-col gap-[10px]">
-              <div className="flex flex-col gap-2 items-cente bg-tradeAshLight border rounded-[15px] border-neutral-800 p-[12px]">
+              <div className="flex flex-col gap-4 items-cente bg- border rounded-[15px] border-neutral-800 p-[12px]">
                 <div>
                   {IconComponent && (
                     <IconComponent className="text-tradeFadeWhite text-[36px] leading-none" />
                   )}
                 </div>
 
-                <div className="flex flex-col gap-1">
-                  <p className="text-tradeOrange text-2xl font-bold leading-relaxed">
-                    {offerDetails?.service || "NA"}
-                  </p>
+                <p className="text-tradeOrange text-2xl font-bold leading-relaxed">
+                  {offerDetails?.service || "NA"}
+                </p>
 
-                  <div className="px-[6px] py-0.5 bg-transparent border border-tradeAsh rounded-[4px] w-max">
-                    <p className="text-tradeFadeWhite text-xs font-medium ">
-                      {offerDetails?.serviceType || "Service Type"}
-                    </p>
-                  </div>
+                <div className="px-[6px] py-0.5 bg-transparent border border-tradeAsh rounded-[4px] w-max">
+                  <p className="text-tradeFadeWhite text-xs font-medium ">
+                    {offerDetails?.serviceType || "Service Type"}
+                  </p>
                 </div>
               </div>
 
@@ -155,7 +153,8 @@ const CreateSummary = () => {
                   <p className="text-tradeFadeWhite text-[13px] font-semibold">
                     {offerDetails?.margin !== undefined
                       ? `${offerDetails.margin} percent`
-                      : "--"}
+                      : "--"}{" "}
+                    per trade
                   </p>
                 </div>
               </div>
@@ -170,7 +169,7 @@ const CreateSummary = () => {
                 </div>
                 <div className="flex items-center justify-between w-full">
                   <p className="text-[13px] font-semibold text-white">
-                    Yourself ( Vendor )
+                    Vendor ( You )
                   </p>
                   <p className="text-tradeFadeWhite text-[13px] font-semibold">
                     {offerDetails?.vendorPaymentWindow?.hours} hrs{" "}

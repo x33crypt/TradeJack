@@ -566,11 +566,11 @@ const CreateOffer = () => {
     }
 
     if (!isWindowValid(vendorPaymentWindow)) {
-      return showToast("Missing or invalid Vendor payment window.");
+      return showToast("Missing required field: Vendor payment window.");
     }
 
     if (!isWindowValid(tradersPaymentWindow)) {
-      return showToast("Missing or invalid Trader payment window.");
+      return showToast("Missing required field: Trader payment window.");
     }
 
     if (!termTags || termTags.length === 0) {
@@ -891,7 +891,7 @@ const CreateOffer = () => {
                 <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                   <div className="flex flex-col gap-[10px] w-full">
                     <p className="text-tradeFadeWhite text-xs font-medium">
-                      Payment Window (Yourself)
+                      Payment Window (Vendor)
                     </p>
 
                     <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
