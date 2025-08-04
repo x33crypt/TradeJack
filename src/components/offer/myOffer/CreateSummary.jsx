@@ -82,7 +82,7 @@ const CreateSummary = () => {
 
           <div className="flex flex-1 flex-col gap-[50px]">
             <div className="flex flex-col gap-[10px]">
-              <div className="flex flex-col gap-4 items-cente bg- border rounded-[15px] border-neutral-800 p-[12px]">
+              <div className="flex flex-col gap-3 items-cente bg- border rounded-[15px] border-neutral-800 p-[12px]">
                 <div>
                   {IconComponent && (
                     <IconComponent className="text-tradeFadeWhite text-[36px] leading-none" />
