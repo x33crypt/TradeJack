@@ -885,13 +885,7 @@ const CreateOffer = () => {
                         onClick={handleMinusVendorPaymentWindowHour}
                         className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
                       >
-                        <FaMinus /> <p>H</p>
-                      </div>
-                      <div
-                        onClick={handleMinusVendorPaymentWindowMinutes}
-                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                      >
-                        <FaMinus /> <p>M</p>
+                        <p>- Hr</p>
                       </div>
 
                       <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
@@ -899,7 +893,28 @@ const CreateOffer = () => {
                           <span className="font-bold text-white">
                             {offerDetails?.vendorPaymentWindow?.hours}
                           </span>{" "}
-                          hour&#40;s&#41;,{" "}
+                          hour&#40;s&#41;
+                        </p>
+                      </div>
+
+                      <div
+                        onClick={handleAddVendorPaymentWindowHour}
+                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <p>+ Hr</p>
+                      </div>
+                    </div>
+
+                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
+                      <div
+                        onClick={handleMinusVendorPaymentWindowMinutes}
+                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <p>- Min</p>
+                      </div>
+
+                      <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
+                        <p>
                           <span className="font-bold text-white">
                             {offerDetails?.vendorPaymentWindow?.minutes}
                           </span>{" "}
@@ -910,13 +925,7 @@ const CreateOffer = () => {
                         onClick={handleAddVendorPaymentWindowMinutes}
                         className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
                       >
-                        <FaPlus /> <p>M</p>
-                      </div>
-                      <div
-                        onClick={handleAddVendorPaymentWindowHour}
-                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                      >
-                        <FaPlus /> <p>H</p>
+                        <p>+ Min</p>
                       </div>
                     </div>
 
@@ -939,13 +948,7 @@ const CreateOffer = () => {
                         onClick={handleMinusTraderPaymentWindowHour}
                         className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
                       >
-                        <FaMinus /> <p>H</p>
-                      </div>
-                      <div
-                        onClick={handleMinusTraderPaymentWindowMinutes}
-                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                      >
-                        <FaMinus /> <p>M</p>
+                        - <p>Hr</p>
                       </div>
 
                       <div
@@ -956,7 +959,31 @@ const CreateOffer = () => {
                           <span className="font-bold text-white">
                             {offerDetails?.tradersPaymentWindow?.hours}
                           </span>{" "}
-                          hour&#40;s&#41;,{" "}
+                          hour&#40;s&#41;
+                        </p>
+                      </div>
+
+                      <div
+                        onClick={handleAddTraderPaymentWindowHour}
+                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        + <p>Hr</p>
+                      </div>
+                    </div>
+
+                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
+                      <div
+                        onClick={handleMinusTraderPaymentWindowMinutes}
+                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <p>- Min</p>
+                      </div>
+
+                      <div
+                        onClick={handleAddMargin}
+                        className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite"
+                      >
+                        <p>
                           <span className="font-bold text-white">
                             {offerDetails?.tradersPaymentWindow?.minutes}
                           </span>{" "}
@@ -967,13 +994,7 @@ const CreateOffer = () => {
                         onClick={handleAddTraderPaymentWindowMinutes}
                         className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
                       >
-                        <FaPlus /> <p>M</p>
-                      </div>
-                      <div
-                        onClick={handleAddTraderPaymentWindowHour}
-                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                      >
-                        <FaPlus /> <p>H</p>
+                        + <p>Min</p>
                       </div>
                     </div>
 
