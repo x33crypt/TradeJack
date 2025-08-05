@@ -627,7 +627,7 @@ const CreateOffer = () => {
   return (
     <>
       <InAppNav />
-      <div className="flex gap-[5px] lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[60px]">
+      <div className="flex gap-[5px] lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[57px]">
         {/* Main Page */}
         <div className="flex flex-col min-h-svh w-full md:border-x md:border-t-0 md:border-b border-neutral-800 ">
           <div className="flex flex-col px-[15px] py-[12px] border-b border-tradeAshLight">
