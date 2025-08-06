@@ -61,8 +61,8 @@ const Marketplace = () => {
   return (
     <>
       <InAppNav />
-      <div className="flex gap-[5px] lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[57px]">
-        <div className="lg:flex hidden h-[100%] sticky md:top-[64px] bottom-0">
+      <div className=" relative h-full flex gap-[5px] lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[57px]">
+        <div className="lg:flex hidden sticky top-[64px] h-[520px]">
           <OfferFilter />
         </div>
 

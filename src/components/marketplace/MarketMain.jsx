@@ -80,9 +80,16 @@ const MarketMain = ({
             Secure P2P Marketplace
           </p>
         </div>
+        <div className="px-[15px] py-[12px]">
+          <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+            Browse through over 10,000 active trade offers from verified users.
+            Use filters to quickly find the best rates, trusted traders, and
+            secure deals.
+          </p>
+        </div>
 
         <div className="flex flex-col flex-1 justify-between ">
-          <div className="sticky md:top-[62px] top-[57px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
+          <div className="sticky md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-y border-dashed border-tradeAshLight">
             <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] ">
               <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                 <div
@@ -110,7 +117,17 @@ const MarketMain = ({
                       : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
                   } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
-                  <p>Active</p>
+                  <p>Active Traders</p>
+                </div>
+                <div
+                  onClick={showBestMargins}
+                  className={`${
+                    filter?.bestMargin
+                      ? "text-white bg-tradeAsh border-tradeGreen"
+                      : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                  } flex items-center gap-1 w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                >
+                  <p>Verified Offers</p>
                 </div>
                 <div
                   onClick={showBestMargins}
@@ -148,7 +165,7 @@ const MarketMain = ({
                 <div
                   className={`bg-transparent border border-tradeAshLight text-tradeOrange inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
-                  <p>Guide Me</p>
+                  <p>Take Tour</p>
                 </div>
                 <div
                   onClick={() => navigateTo("/offers/create")}
@@ -225,11 +242,11 @@ const MarketMain = ({
           </div> */}
           </div>
 
-          <div className="bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+          <div className="bg-black lg:py-[15px] py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
             <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] ">
               <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                 <div
-                  className={` text-tradeFadeWhite border-tradeAshLight inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                  className={` md:flex hidden text-tradeFadeWhite border-tradeAshLight w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
                   <p>Date</p>
                 </div>
@@ -271,7 +288,7 @@ const MarketMain = ({
         <div>
           <LockByScroll />
           <div
-            className={`flex z-30 fixed top-[57px] md:top-[64px]  left-0 right-0 bottom-0 lg:hidden`}
+            className={`flex z-30 fixed top-[57px] md:top-[64px] left-0 right-0 bottom-0 lg:hidden`}
           >
             <OfferFilter
               handleFilterOffer={handleFilterOffer}
