@@ -10,6 +10,8 @@ import LockByScroll from "../LockByScroll";
 import { useExploreOffers } from "@/context/ExploreOffersContext";
 import { useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
+import { FaInfoCircle } from "react-icons/fa";
+import { RiFilter3Line } from "react-icons/ri";
 
 const MarketMain = ({
   promotedOffers,
@@ -94,9 +96,9 @@ const MarketMain = ({
               <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                 <div
                   onClick={showFilter}
-                  className={`flex lg:hidden gap-2 text-tradeOrange border-tradeOrange  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                  className={`flex lg:hidden  items-center  gap-2 text-tradeOrange border-tradeOrange  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
-                  <BiSolidBinoculars className="lg:text-[17px] text-[18px]" />
+                  <RiFilter3Line className=" text-[18px]" />
                   <p>Filter</p>
                 </div>
                 <div
@@ -163,9 +165,10 @@ const MarketMain = ({
 
               <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                 <div
-                  className={`bg-transparent border border-tradeAshLight text-tradeOrange inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                  className={`flex items-center gap-2 text-tradeOrange border-tradeOrange w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
-                  <p>Take Tour</p>
+                  <FaInfoCircle className="lg:text-[14px] text-[14px]" />
+                  <p>Explore</p>
                 </div>
                 <div
                   onClick={() => navigateTo("/offers/create")}
