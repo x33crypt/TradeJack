@@ -31,6 +31,7 @@ import { MdOutlineDateRange } from "react-icons/md";
 import { MdAccessTime } from "react-icons/md";
 import { FaBookmark } from "react-icons/fa";
 import { TbProgressCheck } from "react-icons/tb";
+import { FaInfoCircle } from "react-icons/fa";
 
 const MarketCard = ({ offer }) => {
   const navigateTo = useNavigate();
@@ -144,8 +145,8 @@ const MarketCard = ({ offer }) => {
           </div>
         </div>
       </div>
-{/* 
-      <div className="flex justify-between p-[12px] gap-5 bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
+
+      {/* <div className="flex justify-between p-[12px] gap-5 bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <div className="flex gap-[5px] items-center">
@@ -187,7 +188,6 @@ const MarketCard = ({ offer }) => {
               <p className="text-xs font-semibold text-tradeFadeWhite">
                 Verified
               </p>
-             
             </div>
           </div>
         </div>
@@ -312,9 +312,15 @@ const MarketCard = ({ offer }) => {
               </div>
             </div>
 
-            <p className="text-base font-bold text-white leading-none">
-              $50,000.00
-            </p>
+            <div className="flex items-center gap-1">
+              <p className="text-base font-bold text-white leading-none">
+                $50,000.00
+              </p>
+              <div className="text-tradeFadeWhite text-[14px]">
+                <FaInfoCircle />
+              </div>
+            </div>
+
             <div className="flex flex-col gap-1 items-end">
               <div className="flex gap-[5px] w-max">
                 <p className="text-xs font-semibold text-tradeFadeWhite">
