@@ -6,15 +6,14 @@ import OfferFilter from "@/components/marketplace/OfferFilter";
 import axios from "axios";
 import { useOfferFilter } from "@/context/OfferFilterContext";
 import { useSelectElement } from "@/context/SelectElementContext";
+import { useExploreOffers } from "@/context/ExploreOffersContext";
 
 const Marketplace = () => {
+  const { filter, setFilter } = useExploreOffers();
   const [offers, setOffers] = useState();
   const [promotedOffers, setPromotedOffers] = useState();
   const [unPromotedOffers, setUnPromotedOffers] = useState();
-  const { offerFilter, setOfferFilter } = useOfferFilter();
   const { select, setSelect } = useSelectElement();
-
-  const baseUrl = import.meta.env.BASE_URL;
 
   const getOffers = async () => {
     try {
@@ -59,125 +58,18 @@ const Marketplace = () => {
     getUnPromotedOffers();
   }, [offers]);
 
-  const handleFilterOffer = async () => {
-    // 📍 Step 1: Start filtering state
-    setOfferFilter((prev) => ({
-      ...prev,
-      isFiltering: true,
-    }));
-
-    try {
-      // ⏳ Step 2: Simulate loading delay for UX
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // 📦 Step 3: Fetch offers from mock data
-      const response = await axios.get(`/fakeData.json`);
-      let filteredOffers = response.data.offers;
-
-      // 🧠 Step 4: Filter by service type (skip if Default)
-      if (offerFilter?.serviceType && offerFilter.serviceType !== "") {
-        filteredOffers = filteredOffers.filter(
-          (offer) => offer.serviceType === offerFilter.serviceType
-        );
-      }
-
-      // 🧠 Step 5: Filter by service
-      if (offerFilter?.service) {
-        filteredOffers = filteredOffers.filter(
-          (offer) => offer.service === offerFilter.service
-        );
-      }
-
-      // 💱 Step 6: Filter by currency code OR name (accurate currency match)
-      if (offerFilter?.currency?.code || offerFilter?.currency?.name) {
-        const currencyCode = offerFilter.currency?.code;
-
-        filteredOffers = filteredOffers.filter((offer) => {
-          const offerCurrency = offer.currency?.code;
-          return offerCurrency === currencyCode;
-        });
-      }
-
-      // 💰 Step 7: Filter by transaction amount range
-      if (offerFilter?.amount) {
-        filteredOffers = filteredOffers.filter(
-          (offer) =>
-            offerFilter.amount >= offer.minimum ||
-            offerFilter.amount <= offer.maximum
-        );
-      }
-
-      // Filter by online status (must assign)
-      if (offerFilter?.onlineOffers) {
-        filteredOffers = filteredOffers.filter(
-          (offer) => offer.isOnline === true
-        );
-      }
-
-      if (offerFilter?.bestMargin) {
-        filteredOffers = filteredOffers.sort(
-          (a, b) => Number(a.margin) - Number(b.margin)
-        );
-      }
-
-      if (offerFilter?.topFeedBack) {
-        filteredOffers = filteredOffers.sort(
-          (a, b) => Number(b.positiveFeedback) - Number(a.positiveFeedback)
-        );
-      }
-
-      if (offerFilter?.mostTrusted) {
-        filteredOffers = filteredOffers.sort(
-          (a, b) => (Number(b.trustScore) || 0) - (Number(a.trustScore) || 0)
-        );
-      }
-
-      // ✅ Step 9: Update filtered offers
-      setOffers(filteredOffers);
-    } catch (error) {
-      console.error("Error fetching or filtering offers:", error);
-    } finally {
-      // 🛑 Step 10: End filtering state
-      setOfferFilter((prev) => ({
-        ...prev,
-        isFiltering: false,
-      }));
-    }
-  };
-
-  useEffect(() => {
-    handleFilterOffer();
-  }, [offerFilter.onlineOffers]);
-
-  useEffect(() => {
-    handleFilterOffer();
-  }, [offerFilter.mostTrusted]);
-
-  useEffect(() => {
-    handleFilterOffer();
-  }, [offerFilter.topFeedBack]);
-
-  useEffect(() => {
-    handleFilterOffer();
-  }, [offerFilter.bestMargin]);
-
   return (
     <>
       <InAppNav />
       <div className="flex gap-[5px] lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[57px]">
-        <div className="lg:flex hidden  h-full sticky md:top-[64px]">
-          <OfferFilter
-            handleFilterOffer={handleFilterOffer}
-            setSelect={setSelect}
-            select={select}
-          />
+        <div className="lg:flex hidden h-[100%] sticky md:top-[64px] bottom-0">
+          <OfferFilter />
         </div>
 
-        <div className="flex-1 min-h-svh ">
+        <div className="flex-1 min-h-full ">
           <MarketMain
             promotedOffers={promotedOffers}
             unPromotedOffers={unPromotedOffers}
-            handleFilterOffer={handleFilterOffer}
             setSelect={setSelect}
             select={select}
           />

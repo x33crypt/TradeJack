@@ -1,42 +1,40 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { useOfferFilter } from "@/context/OfferFilterContext";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import axios from "axios";
 import Button from "@/components/buttons/Button";
 import { useServices } from "@/hooks/useServices";
 import { currencies } from "@/hooks/useCurrencies";
 import { IoClose } from "react-icons/io5";
-import LockByScroll from "../LockByScroll";
+import { useSelectElement } from "@/context/SelectElementContext";
+import { useExploreOffers } from "@/context/ExploreOffersContext";
 
-const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
-  const { offerFilter, setOfferFilter } = useOfferFilter();
+const OfferFilter = () => {
+  const { filter, setFilter } = useExploreOffers();
   const { serviceTypes, fullData } = useServices();
-  const [loading, setLoading] = useState(false);
+  const { select, setSelect } = useSelectElement();
 
   // handling serviceType changes
   useEffect(() => {
     if (select?.page !== "offer filter" || !select?.pick) return;
 
     if (select.element === "service type") {
-      setOfferFilter((prevDetails) => ({
-        ...prevDetails,
-        serviceType: select.pick,
-        service: "", // Reset service when serviceType changes
+      setFilter((prev) => ({
+        ...prev,
+        assetType: select.pick,
+        asset: "", // Reset service when serviceType changes
       }));
     }
   }, [select]);
 
   // Get services under the selected serviceType
   const services = useMemo(() => {
-    if (!offerFilter?.serviceType || fullData.length === 0) return [];
+    if (!filter?.assetType || fullData.length === 0) return [];
 
     const selected = fullData.find(
-      (item) =>
-        item.name.toLowerCase() === offerFilter.serviceType.toLowerCase()
+      (item) => item.name.toLowerCase() === filter.assetType.toLowerCase()
     );
 
     return selected?.services.map((service) => service.name) || [];
-  }, [offerFilter?.serviceType, fullData]);
+  }, [filter?.assetType, fullData]);
 
   const serviceInputLabels = {
     "Online Wallet Transfer": "Select Online Wallet",
@@ -51,9 +49,9 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
     if (select?.page !== "offer filter" || !select?.pick) return;
 
     if (select.element === "service") {
-      setOfferFilter((prevDetails) => ({
-        ...prevDetails,
-        service: select.pick,
+      setFilter((prev) => ({
+        ...prev,
+        asset: select.pick,
       }));
     }
   }, [select]);
@@ -71,7 +69,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
         selectedCurrency.code &&
         selectedCurrency.name
       ) {
-        setOfferFilter((prev) => ({
+        setFilter((prev) => ({
           ...prev,
           currency: selectedCurrency,
         }));
@@ -79,55 +77,138 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
     }
   }, [select]);
 
-  // console.log("select element", select);
-  // console.log("offerFilter", offerFilter);
-
   const handleAmountChange = (e) => {
     const rawValue = e.target.value.replace(/,/g, ""); // Remove commas for processing
     if (!isNaN(rawValue)) {
-      setOfferFilter((prev) => ({
+      setFilter((prev) => ({
         ...prev,
         amount: rawValue,
       }));
     }
   };
 
-  const handleCloseFilter = () => {
-    setOfferFilter((prev) => ({
+  const closeFilter = () => {
+    setFilter((prev) => ({
       ...prev,
-      showFilter: false,
+      state: false,
     }));
   };
 
-  const handleClearFilter = () => {
-    setOfferFilter({
-      serviceType: "",
-      service: "",
+  const clearFilter = () => {
+    setFilter({
+      state: false,
+      loading: false,
+      assetType: "",
+      asset: "",
       currency: { code: "", name: "" },
       amount: "",
-      allOffers: true,
-      onlineOffers: false,
+      all: true,
+      active: false,
       bestMargin: false,
       topFeedBack: false,
       mostTrusted: false,
-      clearFilter: true,
-      showFilter: true,
-      isFiltering: true,
+      clearFilter: false,
     });
   };
 
-  useEffect(() => {
-    setLoading(true);
-    handleFilterOffer();
+  // useEffect(() => {
+  //   setLoading(true);
+  //   handleFilterOffer();
 
+  //   setOfferFilter((prev) => ({
+  //     ...prev,
+  //     clearFilter: false,
+  //     isFiltering: false,
+  //   }));
+
+  //   setLoading(false);
+  // }, [offerFilter.clearFilter]);
+
+  const handleFilterOffer = async () => {
+    // 📍 Step 1: Start filtering state
     setOfferFilter((prev) => ({
       ...prev,
-      clearFilter: false,
-      isFiltering: false,
+      isFiltering: true,
     }));
 
-    setLoading(false);
-  }, [offerFilter.clearFilter]);
+    try {
+      // ⏳ Step 2: Simulate loading delay for UX
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // 📦 Step 3: Fetch offers from mock data
+      const response = await axios.get(`/fakeData.json`);
+      let filteredOffers = response.data.offers;
+
+      // 🧠 Step 4: Filter by service type (skip if Default)
+      if (offerFilter?.serviceType && offerFilter.serviceType !== "") {
+        filteredOffers = filteredOffers.filter(
+          (offer) => offer.serviceType === offerFilter.serviceType
+        );
+      }
+
+      // 🧠 Step 5: Filter by service
+      if (offerFilter?.service) {
+        filteredOffers = filteredOffers.filter(
+          (offer) => offer.service === offerFilter.service
+        );
+      }
+
+      // 💱 Step 6: Filter by currency code OR name (accurate currency match)
+      if (offerFilter?.currency?.code || offerFilter?.currency?.name) {
+        const currencyCode = offerFilter.currency?.code;
+
+        filteredOffers = filteredOffers.filter((offer) => {
+          const offerCurrency = offer.currency?.code;
+          return offerCurrency === currencyCode;
+        });
+      }
+
+      // 💰 Step 7: Filter by transaction amount range
+      if (offerFilter?.amount) {
+        filteredOffers = filteredOffers.filter(
+          (offer) =>
+            offerFilter.amount >= offer.minimum ||
+            offerFilter.amount <= offer.maximum
+        );
+      }
+
+      // Filter by online status (must assign)
+      if (offerFilter?.onlineOffers) {
+        filteredOffers = filteredOffers.filter(
+          (offer) => offer.isOnline === true
+        );
+      }
+
+      if (offerFilter?.bestMargin) {
+        filteredOffers = filteredOffers.sort(
+          (a, b) => Number(a.margin) - Number(b.margin)
+        );
+      }
+
+      if (offerFilter?.topFeedBack) {
+        filteredOffers = filteredOffers.sort(
+          (a, b) => Number(b.positiveFeedback) - Number(a.positiveFeedback)
+        );
+      }
+
+      if (offerFilter?.mostTrusted) {
+        filteredOffers = filteredOffers.sort(
+          (a, b) => (Number(b.trustScore) || 0) - (Number(a.trustScore) || 0)
+        );
+      }
+
+      // ✅ Step 9: Update filtered offers
+      setOffers(filteredOffers);
+    } catch (error) {
+      console.error("Error fetching or filtering offers:", error);
+    } finally {
+      // 🛑 Step 10: End filtering state
+      setOfferFilter((prev) => ({
+        ...prev,
+        isFiltering: false,
+      }));
+    }
+  };
 
   return (
     <>
@@ -137,13 +218,13 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
             Filter Offers
           </p>
           <div
-            onClick={handleCloseFilter}
+            onClick={closeFilter}
             className="md:hidden flex text-tradeFadeWhite hover:text-white text-[25px]"
           >
             <IoClose />
           </div>
           <div
-            onClick={handleClearFilter}
+            onClick={clearFilter}
             className={`lg:flex hidden text-red-600 border border-tradeAshLight w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
           >
             <p>Clear Filter</p>
@@ -161,12 +242,8 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                   className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
                   type="text"
                   readOnly
-                  placeholder="Choose type"
-                  value={
-                    offerFilter?.serviceType === ""
-                      ? "Default"
-                      : offerFilter?.serviceType
-                  }
+                  placeholder="Default"
+                  value={filter?.assetType === "" ? "" : filter?.assetType}
                   onClick={() =>
                     setSelect({
                       state: true,
@@ -187,8 +264,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
 
             <div className="flex flex-col gap-[10px] w-full">
               <p className="text-tradeFadeWhite text-xs font-medium">
-                {serviceInputLabels[offerFilter.serviceType] ||
-                  "Select Service"}
+                {serviceInputLabels[filter.assetType] || "Select Asset"}
               </p>
               <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
                 <input
@@ -196,7 +272,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                   type="text"
                   readOnly
                   placeholder="-- --"
-                  value={offerFilter?.service}
+                  value={filter?.assetType}
                   onClick={() =>
                     setSelect({
                       state: true,
@@ -236,7 +312,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                   placeholder="-- --"
                   type="text"
                   readOnly
-                  value={offerFilter?.currency?.name}
+                  value={filter?.currency?.name}
                 />
 
                 <div className=" absolute right-1.5 top-1/2 -translate-y-1/2  border  border-tradeAsh flex justify-between items-center px-[5px] lg:h-[30px] h-[35px] rounded-[6px]">
@@ -244,7 +320,7 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                     <input
                       className="w-[43px] text-sm  text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
                       type="text"
-                      value={offerFilter?.currency?.code}
+                      value={filter?.currency?.code}
                       readOnly
                       placeholder="$€£"
                     />
@@ -263,8 +339,8 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
                   type="text"
                   placeholder="00.00"
                   value={
-                    offerFilter?.amount
-                      ? Number(offerFilter?.amount).toLocaleString()
+                    filter?.amount
+                      ? Number(filter?.amount).toLocaleString()
                       : ""
                   }
                   onChange={handleAmountChange}
@@ -273,21 +349,17 @@ const OfferFilter = ({ handleFilterOffer, select, setSelect }) => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-[10px] border-t border-tradeAshLight  ">
+          <div className="flex flex-col gap-[10px]">
             <Button
               onClick={handleFilterOffer}
               variant="primary"
-              disabled={offerFilter?.isFiltering}
+              disabled={filter?.loading}
             >
               Apply Filter
             </Button>
 
             <div className="lg:hidden flex">
-              <Button
-                onClick={handleClearFilter}
-                variant="danger"
-                disabled={loading}
-              >
+              <Button onClick={clearFilter} variant="danger">
                 Clear Filter
               </Button>
             </div>

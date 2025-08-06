@@ -9,16 +9,16 @@ import { useNavigate } from "react-router-dom";
 const ProfileNav = () => {
   const { show, setShow } = useProfileNav();
 
+  const toAccount = () => {
+    setShow(false);
+    navigateTo("/account");
+  };
+
   const close = () => {
     setShow(false);
   };
 
   const navigateTo = useNavigate();
-
-  const toAccount = () => {
-    setShow(false);
-    navigateTo("/account");
-  };
 
   return (
     <>
@@ -45,21 +45,14 @@ const ProfileNav = () => {
                 </div>
 
                 <div className="bg-tradeAsh p-[12px rounded-[15px] shadow-lg flex flex-col gap-[5px] borde border-tradeAshLight">
-                  <p
-                    onClick={toAccount}
-                    className="p-[12px] hover:bg-tradeAshLight border border-tradeAshLight rounded-[10px] text-tradeFadeWhite hover:text-white text-sm font-medium transition-all duration-300 cursor-pointer"
-                  >
+                  <Button variant="outline" onClick={toAccount}>
                     Account
-                  </p>
-                  <p
-                    // onClick={toAccount}
-                    className="p-[12px] hover:bg-tradeAshLight border border-tradeAshLight rounded-[10px] text-tradeFadeWhite hover:text-white text-sm font-medium transition-all duration-300 cursor-pointer"
-                  >
-                    Help & Support
-                  </p>
-                  <p className="p-[12px] bg-red-600 text-white text-sm font-medium rounded-[10px] transition-all duration-300 cursor-pointer">
+                  </Button>
+                  <Button variant="outline">Settings</Button>
+                  <Button variant="danger">Log Out</Button>
+                  {/* <p className="p-[12px] bg-red-600 text-white text-sm font-medium rounded-[10px] transition-all duration-300 cursor-pointer">
                     Log Out
-                  </p>
+                  </p> */}
                 </div>
 
                 <div className="flex items-center justify-center">

@@ -24,53 +24,56 @@ import { BalanceProvider } from "./context/BalanceContext";
 import { ProfileNavProvider } from "./context/ProfileNavContext";
 import { WithdrawProvider } from "./context/wallet/WithdrawContext";
 import { AccountProvider } from "./context/AccountContext";
+import { ExploreOffersProvider } from "./context/ExploreOffersContext";
 
 // Render MainApp into #root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <AccountProvider>
-        <ProfileNavProvider>
-          <BalanceProvider>
-            <LinkedAccountProvider>
-              <TransactionProvider>
-                <WithdrawProvider>
-                  <DepositProvider>
-                    <TransferProvider>
-                      <ProfileProvider>
-                        <AboutOfferProvider>
-                          <MyOfferProvider>
-                            <KycProvider>
-                              <AuthProvider>
-                                <DashboardProvider>
-                                  <ToastProvider>
-                                    <OfferFilterProvider>
-                                      <EditOfferProvider>
-                                        <CreateOfferProvider>
-                                          <SelectElementProvider>
-                                            <TradeAlertProvider>
-                                              <App />
-                                            </TradeAlertProvider>
-                                          </SelectElementProvider>
-                                        </CreateOfferProvider>
-                                      </EditOfferProvider>
-                                    </OfferFilterProvider>
-                                  </ToastProvider>
-                                </DashboardProvider>
-                              </AuthProvider>
-                            </KycProvider>
-                          </MyOfferProvider>
-                        </AboutOfferProvider>
-                      </ProfileProvider>
-                    </TransferProvider>
-                  </DepositProvider>
-                </WithdrawProvider>
-              </TransactionProvider>
-            </LinkedAccountProvider>
-          </BalanceProvider>
-        </ProfileNavProvider>
-      </AccountProvider>
+      <ExploreOffersProvider>
+        <AccountProvider>
+          <ProfileNavProvider>
+            <BalanceProvider>
+              <LinkedAccountProvider>
+                <TransactionProvider>
+                  <WithdrawProvider>
+                    <DepositProvider>
+                      <TransferProvider>
+                        <ProfileProvider>
+                          <AboutOfferProvider>
+                            <MyOfferProvider>
+                              <KycProvider>
+                                <AuthProvider>
+                                  <DashboardProvider>
+                                    <ToastProvider>
+                                      <OfferFilterProvider>
+                                        <EditOfferProvider>
+                                          <CreateOfferProvider>
+                                            <SelectElementProvider>
+                                              <TradeAlertProvider>
+                                                <App />
+                                              </TradeAlertProvider>
+                                            </SelectElementProvider>
+                                          </CreateOfferProvider>
+                                        </EditOfferProvider>
+                                      </OfferFilterProvider>
+                                    </ToastProvider>
+                                  </DashboardProvider>
+                                </AuthProvider>
+                              </KycProvider>
+                            </MyOfferProvider>
+                          </AboutOfferProvider>
+                        </ProfileProvider>
+                      </TransferProvider>
+                    </DepositProvider>
+                  </WithdrawProvider>
+                </TransactionProvider>
+              </LinkedAccountProvider>
+            </BalanceProvider>
+          </ProfileNavProvider>
+        </AccountProvider>
+      </ExploreOffersProvider>
     </BrowserRouter>
   </StrictMode>
 );

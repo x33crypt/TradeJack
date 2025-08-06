@@ -37,9 +37,9 @@ const Button = ({
 
     danger: `${
       disabled
-        ? "text-red-700 bg-transparent border border-red-600 hover:text-red-600 "
-        : "bg-red-600 text-white hover:bg-red-800"
-    } active:text-red-700 transition-colors duration-200`,
+        ? "text-red-600 bg-transparent border border-red-6 hover:text-red-600 "
+        : "bg-transparent border border-tradeAshLight text-red-600"
+    } active:text-red-800 hover:border-tradeAshExtraLight transition-colors duration-200`,
 
     ghost: `${
       disabled

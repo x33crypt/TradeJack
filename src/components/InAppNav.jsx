@@ -46,8 +46,6 @@ const InAppNav = () => {
 
   const navigateTo = useNavigate();
 
-  console.log("profile nav is active ", show);
-
   return (
     <>
       {/* Desktop Nav */}
@@ -68,7 +66,7 @@ const InAppNav = () => {
             className="flex items-center gap-[5px] cursor-pointer "
           >
             <RiExchangeFill className=" flex lg:text-2xl text-[20px] text-tradeGreen" />
-            <p className=" lg:text-xl md:text-[19px] text-[20px]  font-semibold text-tradeGreen">
+            <p className=" lg:text-xl md:text-[19px] text-[20px]  font-bold text-tradeGreen">
               Trade
               <span className="font-semibold text-white">Jack</span>
             </p>
