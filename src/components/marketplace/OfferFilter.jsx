@@ -235,9 +235,7 @@ const OfferFilter = () => {
           <div className="flex flex-col gap-[10px] ">
             <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
               <div className="flex flex-col gap-[10px] w-full">
-                <p className="text-tradeFadeWhite text-xs font-medium">
-                  {serviceInputLabels[filter.assetType] || "Select Asset"}
-                </p>
+                <p className="text-tradeFadeWhite text-xs font-medium">Asset</p>
                 <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
                   <input
                     className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"

@@ -32,6 +32,10 @@ import { MdAccessTime } from "react-icons/md";
 import { FaBookmark } from "react-icons/fa";
 import { TbProgressCheck } from "react-icons/tb";
 import { FaInfoCircle } from "react-icons/fa";
+import { VscVerifiedFilled } from "react-icons/vsc";
+import { FaCircle } from "react-icons/fa";
+import { IoMdArrowRoundUp } from "react-icons/io";
+import { HiArrowCircleUp } from "react-icons/hi";
 
 const MarketCard = ({ offer }) => {
   const navigateTo = useNavigate();
@@ -146,8 +150,8 @@ const MarketCard = ({ offer }) => {
         </div>
       </div>
 
-      {/* <div className="flex justify-between p-[12px] gap-5 bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
-        <div className="flex flex-col gap-4">
+      <div className="flex justify-between p-[12px] gap-5 bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
+        <div className="flex flex-col gap-4 justify-between">
           <div className="flex flex-col gap-2">
             <div className="flex gap-[5px] items-center">
               <div className="flex gap-1 items-center">
@@ -163,6 +167,42 @@ const MarketCard = ({ offer }) => {
                 </p>
               </div>
             </div>
+            <div className="flex gap-1 items-center">
+              <HiOutlineUserCircle className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+              <p className="text-xs font-medium text-white">Collins</p>
+            </div>
+
+            <div className="flex gap-[5px] items-center">
+              <div className="flex gap-1 items-center">
+                <FaCircle className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+                <p className="text-xs font-medium text-white">Online</p>
+              </div>
+
+              <div className="flex gap-1 items-center">
+                <IoMdThumbsUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <p className="text-xs font-medium text-tradeFadeWhite">546</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex  items-center gap-1">
+            <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+            <p className="text-xs font-semibold text-tradeFadeWhite">
+              <span className="text-white">+45 recent</span> trades
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
+            <div className="flex gap-[5px] items-center">
+              <div className="flex gap-1 items-center">
+                <VscVerifiedFilled className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <p className="text-xs font-medium text-tradeFadeWhite">
+                  Verified
+                </p>
+              </div>
+            </div>
 
             <p className="text-base font-bold text-tradeOrange leading-none">
               Cash App
@@ -172,39 +212,49 @@ const MarketCard = ({ offer }) => {
               <p className="text-xs font-semibold text-tradeFadeWhite">
                 United State Dollars
               </p>
-              <div className="flex  items-center gap-1">
-                <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-between items-end">
+          <div className="flex flex-col gap-2 items-end">
+            <div className="flex flex-col gap-1 items-end">
+              <div className="flex gap-1 items-center">
+                <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
-                  <span className="text-white">+45 recent</span> trades
+                  2Hrs 30Mins
+                </p>
+              </div>
+              <div className="flex gap-1 items-center">
+                <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <p className="text-xs font-semibold text-tradeFadeWhite">
+                  2Hrs 30Mins
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-2">
-            <div className="flex flex-col gap-1">
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Verified
+        <div className="flex flex-col gap-4 items-end justify-between">
+          <div className="flex flex-col gap-1 items-end">
+            <div className="flex items-center gap-1">
+              <p className="text-base font-bold text-white leading-none">
+                USD 50,000.00
               </p>
+              <div className="text-tradeOrange text-[12px]">
+                <FaInfoCircle />
+              </div>
+            </div>
+
+            <div className="flex gap-1 items-center">
+              <p className="text-xs font-semibold text-tradeFadeWhite">
+                0.22% above market price
+              </p>
+              <HiArrowCircleUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
             </div>
           </div>
-        </div>
 
-        <div className="flex flex-col justify-between items-end">
-          <div className="flex flex-col gap-2 items-end">
-            <div className="flex gap-[5px] items-center">
-              <div className="flex gap-1 items-center">
-                <IoMdThumbsUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-medium text-tradeFadeWhite">546</p>
-              </div>
-              <div className="flex gap-1 items-center">
-                <HiOutlineUserCircle className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-medium text-tradeGreen">Online</p>
-              </div>
-            </div>
-
+          <div className="flex gap-3 items-end">
             <div className="flex flex-col gap-1 items-end">
               <div className="flex gap-[5px] w-max">
                 <p className="text-xs font-semibold text-tradeFadeWhite">
@@ -217,48 +267,17 @@ const MarketCard = ({ offer }) => {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col justify-between items-end">
-          <div className="flex flex-col gap-2 items-end">
-            <div className="flex gap-[5px] items-center">
-              <div className="flex gap-1 items-center">
-                <IoMdThumbsUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-medium text-tradeFadeWhite">546</p>
+            <div className="flex gap-[5px]">
+              <div className="flex gap-1 items-center bg-tradeAshLight border border-tradeAshExtraLight w-max px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                <FaStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
               </div>
-              <div className="flex gap-1 items-center">
-                <HiOutlineUserCircle className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-medium text-tradeGreen">Online</p>
+              <div className="flex text-black bg-tradeGreen w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                <p>Trade</p>
               </div>
-            </div>
-
-            <p className="text-base font-bold text-white leading-none">
-              $50,000.00
-            </p>
-            <div className="flex flex-col gap-1 items-end">
-              <div className="flex gap-[5px] w-max">
-                <p className="text-xs font-semibold text-tradeFadeWhite">
-                  Min -- USD 383
-                </p>
-              </div>
-              <div className="flex gap-[5px] w-max">
-                <p className="text-xs font-semibold text-tradeFadeWhite">
-                  Max -- USD 5,000
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex gap-[5px]">
-            <div className="flex gap-1 items-center bg-tradeAshLight border border-tradeAshExtraLight w-max px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <FaStar className="flex text-tradeOrange text-[14px] flex-shrink-0" />
-            </div>
-            <div className="flex text-black bg-tradeGreen w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <p>Trade</p>
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
 
       <div className="md:hidden flex justify-between p-[12px] gap-5 bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
         <div className="flex flex-col gap-4">
@@ -294,8 +313,8 @@ const MarketCard = ({ offer }) => {
               </div>
             </div>
           </div>
-          <div className="flex text-tradeFadeWhite bg-tradeAshLight w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-            <p>More Details</p>
+          <div className="flex text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            <p>View Details</p>
           </div>
         </div>
 
@@ -316,7 +335,7 @@ const MarketCard = ({ offer }) => {
               <p className="text-base font-bold text-white leading-none">
                 $50,000.00
               </p>
-              <div className="text-tradeFadeWhite text-[14px]">
+              <div className="text-tradeOrange text-[12px]">
                 <FaInfoCircle />
               </div>
             </div>
@@ -336,7 +355,7 @@ const MarketCard = ({ offer }) => {
           </div>
           <div className="flex gap-[5px]">
             <div className="flex gap-1 items-center bg-tradeAshLight border border-tradeAshExtraLight w-max px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <FaStar className="flex text-tradeOrange text-[14px] flex-shrink-0" />
+              <FaStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
             </div>
             <div className="flex text-black bg-tradeGreen w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
               <p>Trade</p>

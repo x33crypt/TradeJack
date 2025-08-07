@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { FaInfoCircle } from "react-icons/fa";
 import { RiFilter3Line } from "react-icons/ri";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 const MarketMain = ({
   promotedOffers,
@@ -92,16 +93,16 @@ const MarketMain = ({
 
         <div className="flex flex-col flex-1 justify-between ">
           <div className="sticky md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-y border-dashed border-tradeAshLight">
-            <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] ">
+            <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] overflow-x-hidden ">
               <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                 <div
                   onClick={showFilter}
-                  className={`flex lg:hidden  items-center  gap-2 text-tradeOrange border-tradeOrange  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                  className={`flex lg:hidden  items-center  gap-2 bg-tradeOrange text-black border-tradeOrange  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
                   <RiFilter3Line className=" text-[18px]" />
                   <p>Filter</p>
                 </div>
-                <div
+                {/* <div
                   onClick={showAllOffers}
                   className={`${
                     filter?.all
@@ -110,7 +111,7 @@ const MarketMain = ({
                   } inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
                   <p>All</p>
-                </div>
+                </div> */}
                 <div
                   onClick={showActiveVendors}
                   className={`${
@@ -132,26 +133,6 @@ const MarketMain = ({
                   <p>Verified Offers</p>
                 </div>
                 <div
-                  onClick={showBestMargins}
-                  className={`${
-                    filter?.bestMargin
-                      ? "text-white bg-tradeAsh border-tradeGreen"
-                      : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                  } flex items-center gap-1 w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
-                  <p> Best Margin</p>
-                </div>
-                <div
-                  onClick={showTopFeedBacks}
-                  className={`${
-                    filter?.topFeedBack
-                      ? "text-white bg-tradeAsh border-tradeGreen"
-                      : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                  } flex items-center gap-1 w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
-                  <p>Top Feedback</p>
-                </div>
-                <div
                   onClick={showMostTrusted}
                   className={`${
                     filter?.mostTrusted
@@ -159,15 +140,44 @@ const MarketMain = ({
                       : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
                   } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
-                  <p>Most Trusted</p>
+                  <p>Top Picks</p>
                 </div>
               </div>
 
               <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                 <div
-                  className={`flex items-center gap-2 text-tradeOrange border-tradeOrange w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                  onClick={showBestMargins}
+                  className={`${
+                    filter?.bestMargin
+                      ? "text-white bg-tradeAsh border-tradeGreen"
+                      : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                  } flex items-center gap-1 w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
-                  <FaInfoCircle className="lg:text-[14px] text-[14px]" />
+                  <p>Sort by Rates</p>
+                  <div className="pointer-events-none text-white p-[1px] bg-tradeAshLight rounded-[4px]">
+                    <MdKeyboardArrowDown />
+                  </div>
+                </div>
+                <div
+                  onClick={showTopFeedBacks}
+                  className={`${
+                    filter?.topFeedBack
+                      ? "text-white bg-tradeAsh border-tradeGreen"
+                      : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
+                  } flex items-center gap-2 w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                >
+                  <p>Sort by Feedback</p>
+                  <div className="pointer-events-none text-white p-[1px] bg-tradeAshLight rounded-[4px]">
+                    <MdKeyboardArrowDown />
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
+                <div
+                  className={`flex items-center gap-2 bg-tradeAshLight text-tradeOrange border-tradeAshExtraLight w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                >
+                  <BiSolidBinoculars className="lg:text-[14px] text-[14px]" />
                   <p>Explore</p>
                 </div>
                 <div
@@ -272,7 +282,7 @@ const MarketMain = ({
 
               <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                 <div
-                  className={`text-tradeGreen cursor-pointer border-tradeAshLight inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                  className={`bg-tradeAshLight text-tradeGreen cursor-pointer border-tradeAshLight inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
                   <p>Load More</p>
                 </div>
