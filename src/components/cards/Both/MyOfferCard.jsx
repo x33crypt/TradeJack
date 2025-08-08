@@ -6,6 +6,22 @@ import { MdGrid3X3 } from "react-icons/md";
 import { MdDateRange } from "react-icons/md";
 import { RiRadioButtonLine } from "react-icons/ri";
 import { RiBankFill } from "react-icons/ri";
+import { IoMdThumbsUp } from "react-icons/io";
+import { HiOutlineUserCircle } from "react-icons/hi2";
+import { FaStar } from "react-icons/fa6";
+import { LuUsers } from "react-icons/lu";
+import { MdOutlineDateRange } from "react-icons/md";
+import { MdAccessTime } from "react-icons/md";
+import { FaInfoCircle } from "react-icons/fa";
+import { VscVerifiedFilled } from "react-icons/vsc";
+import { FaCircle } from "react-icons/fa";
+import { HiArrowCircleUp } from "react-icons/hi";
+import { FaBusinessTime } from "react-icons/fa6";
+import { PiClockCountdownBold } from "react-icons/pi";
+import { monthDate } from "@/utils/monthDate";
+import { time } from "@/utils/time";
+import { FaHashtag } from "react-icons/fa6";
+import { SlOptions } from "react-icons/sl";
 
 const MyOfferCard = ({ offer }) => {
   const navigateTo = useNavigate();
@@ -18,160 +34,224 @@ const MyOfferCard = ({ offer }) => {
 
   return (
     <>
-      <div
-        onClick={() => handleOfferClick(offer?.offerId)}
-        className="md:flex hidden p-[15px] gap-5 items-center bg-tradeAsh hover:bg-black transition-all duration-300 cursor-pointer"
-      >
-        <div className=" lg:w-[120px] flex-1 lg:flex-none flex flex-col gap-2">
-          <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
-            <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <MdGrid3X3 className="text-sm text-tradeAshExtraLight" />
+      <div className=" md:flex hidden justify-between p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
+        <div className="flex flex-col gap-4 justify-between w-[150px] ">
+          <div className="flex flex-col gap-2">
+            <div className="flex gap-[5px] items-center">
+              <div className="flex gap-1 items-center">
+                <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <p className="text-xs font-medium text-tradeFadeWhite">
+                  {monthDate(offer?.publishedOn)}
+                </p>
+              </div>
+              <div className="flex gap-1 items-center">
+                <MdAccessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <p className="text-xs font-medium text-tradeFadeWhite">
+                  {time(offer?.publishedOn)}
+                </p>
+              </div>
             </div>
-            <p className="text-white  text-[13px] font-semibold">
-              {offer?.offerId}
-            </p>
-          </div>
-          <div className="flex items-center gap-2 bg-transparent  rounded-[4px] w-max">
-            <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <MdDateRange className="text-sm text-tradeAshExtraLight" />
+            <div className="flex gap-1 items-center">
+              <FaHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+              <p className="text-xs font-medium text-tradeFadeWhite">
+                {offer?.offerId}
+              </p>
             </div>
-            <p className="text-white  text-[13px] font-semibold">
-              14, Feb, 2024{" "}
-            </p>
-          </div>
-        </div>
-        <div className="flex-1 flex gap-[10px] items-center">
-          <div className="lg:flex hidden text-tradeGreen p-3 text-base rounded-full bg-tradeAshLight">
-            <RiBankFill />
-          </div>
-          <div className="flex flex-col flex-1 gap-2">
-            <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <p className="text-tradeFadeWhite text-xs font-medium">Service</p>
-            </div>
-            <p className="text-white text-[13px] font-semibold md:w-[130px] truncate ">
-              {offer?.service}
-            </p>
-          </div>
-        </div>
-        <div className="lg:w-[150px] flex-1  lg:flex-none flex flex-col  gap-2">
-          <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-            <p className="text-tradeFadeWhite text-xs font-medium">Currency</p>
-          </div>
-          <div className="flex gap-1 items-center">
-            <p className="lg:flex hidden text-white text-[13px] font-semibold md:w-[130px] truncate">
-              {offer?.preferredCurrency?.name}
-            </p>
 
-            <p className="lg:hidden flex text-white text-[13px] font-semibold">
-              {offer?.preferredCurrency?.code}
-            </p>
-          </div>
-        </div>
-        <div className="lg:w-[150px] flex-1 lg:flex-none flex flex-col justify-center gap-2   ">
-          <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Purchase Limits
-            </p>
+            <div className="flex gap-[5px] items-center">
+              <div className="flex gap-1 items-center">
+                <FaCircle className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+                <p className="text-xs font-medium text-white">Active</p>
+              </div>
+
+              <div className="flex gap-1 items-center">
+                <IoMdThumbsUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <p className="text-xs font-medium text-tradeFadeWhite">
+                  {offer?.user?.userFeedback?.positiveFeedback}
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="flex gap-1 items-center">
-            <p className="text-[13px] font-bold text-white">
-              {toDecimal(offer?.marginRate?.from)} {""}
-            </p>
-            <p className="text-tradeFadeWhite">-</p>
-            <p className=" text-[13px] font-bold text-white">
-              {toDecimal(offer?.marginRate?.to)}{" "}
+          <div className="flex  items-center gap-1">
+            <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+            <p className="text-xs font-semibold text-tradeFadeWhite">
+              <span className="text-white">
+                +{offer?.user?.userTransactionCount} total
+              </span>{" "}
+              trades
             </p>
           </div>
         </div>
-        <div className="lg:w-[150px] flex-1 lg:flex-none flex flex-col justify-center gap-2   ">
-          <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-            <p className="text-tradeFadeWhite text-xs font-medium">
-              Profit Margin
-            </p>
+
+        <div className="flex flex-col gap-2 w-[200px]">
+          <div className=" flex gap-[5px] items-center">
+            <div className="flex gap-1 items-center">
+              <VscVerifiedFilled className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+              <p className="text-xs font-medium text-tradeFadeWhite">
+                Verified
+              </p>
+            </div>
           </div>
 
-          <div className="flex gap-1 items-center">
-            <p className="text-[13px] font-bold text-white">
-              {offer?.marginRate?.rate}
-            </p>
+          <p className="text-base font-bold text-tradeOrange truncate w-[200px] leading-none p-0">
+            {offer?.service}
+          </p>
+
+          <p className="text-xs font-semibold text-tradeFadeWhite">
+            {offer?.preferredCurrency?.name}
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-1 items-start w-[110px]">
+          <div className="flex gap-2 items-center">
+            <div className="flex gap-1 items-center">
+              <PiClockCountdownBold className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+              <p className="text-xs font-semibold text-tradeFadeWhite">
+                2Hrs 30Mins
+              </p>
+            </div>
+
+            <div className="text-tradeOrange text-[12px]">
+              <FaInfoCircle />
+            </div>
+          </div>
+          <div className="flex gap-2 items-center">
+            <div className="flex gap-1 items-center">
+              <FaBusinessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+              <p className="text-xs font-semibold text-tradeFadeWhite">
+                2Hrs 30Mins
+              </p>
+            </div>
+
+            <div className="text-tradeOrange text-[12px]">
+              <FaInfoCircle />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4 items-end justify-between w-[230px] ">
+          <div className="flex flex-col gap-1 items-end">
+            <div className="flex items-center gap-1">
+              <p className="text-base font-bold text-white leading-none">
+                {offer?.preferredCurrency?.code} 50,000.00
+              </p>
+              <div className="text-tradeOrange text-[12px]">
+                <FaInfoCircle />
+              </div>
+            </div>
+
+            <div className="flex gap-1 items-center">
+              <p className="text-xs font-semibold text-tradeFadeWhite">
+                0.22% above market price
+              </p>
+              <HiArrowCircleUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+            </div>
+          </div>
+
+          <div className="flex gap-3 items-end">
+            <div className="flex flex-col gap-1 items-end">
+              <div className="flex gap-[5px] w-max">
+                <p className="text-xs font-semibold text-tradeFadeWhite">
+                  Min -- USD 383
+                </p>
+              </div>
+              <div className="flex gap-[5px] w-max">
+                <p className="text-xs font-semibold text-tradeFadeWhite">
+                  Max -- USD 5,000
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-[5px]">
+              <div className="flex text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                <p>View Details</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-
-      <div
-        onClick={() => handleOfferClick(offer?.offerId)}
-        className="md:hidden flex flex-col p-[12px] bg-tradeAsh hover:bg-black transition-all duration-300 rounded-[15px] cursor-pointer gap-3 border border-tradeAshLight"
-      >
-        {/* Top Section: Offer ID and Date */}
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-              <MdGrid3X3 className="text-sm text-tradeAshExtraLight" />
-            </div>
-            <p className="text-xs text-tradeFadeWhite font-medium">
-              {offer?.offerId}
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className="text-xs px-2 py-0.5 rounded-[5px] bg-tradeGreen text-black font-medium">
-              Active
-            </span>
-            <div className="flex items-center gap-1">
-              <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                <MdDateRange className="text-sm text-tradeAshExtraLight" />
+      <div className="md:hidden p-[12px] gap-5 flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
+        <div className="flex justify-between ">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <div className="flex gap-[5px] items-center">
+                <div className="flex gap-1 items-center">
+                  <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-medium text-tradeFadeWhite">
+                    {monthDate(offer?.publishedOn)}
+                  </p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <MdAccessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-medium text-tradeFadeWhite">
+                    {time(offer?.publishedOn)}
+                  </p>
+                </div>
               </div>
-              <p className="text-tradeFadeWhite text-xs">14, Feb, 2024</p>
+
+              <p className="text-base font-bold text-tradeOrange leading-none">
+                {offer?.service}
+              </p>
+
+              <div className="flex flex-col gap-1">
+                <p className="text-xs font-semibold text-tradeFadeWhite">
+                  {offer?.preferredCurrency?.name}
+                </p>
+                <div className="flex  items-center gap-1">
+                  <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    <span className="text-white">
+                      +{offer?.user?.userTransactionCount} total
+                    </span>{" "}
+                    trades
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap- justify-between items-end">
+            <div className="flex flex-col gap-2 items-end">
+              <div className="flex gap-[5px] items-center">
+                <div className="flex gap-1 items-center">
+                  <FaCircle className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+                  <p className="text-xs font-medium text-white">Active</p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <IoMdThumbsUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-medium text-tradeFadeWhite">
+                    {offer?.user?.userFeedback?.positiveFeedback}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-1">
+                <p className="text-base font-bold text-white leading-none">
+                  $50,000.00
+                </p>
+                <div className="text-tradeOrange text-[12px]">
+                  <FaInfoCircle />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-1 items-end">
+                <div className="flex gap-[5px] w-max">
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    Min -- USD 383
+                  </p>
+                </div>
+                <div className="flex gap-[5px] w-max">
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    Max -- USD 5,000
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Service & Currency */}
-        <div className="flex justify-between items-center">
-          <div className="flex flex-col">
-            <span className="text-tradeFadeWhite text-[11px]">Service</span>
-            <p className="text-tradeGreen text-sm font-semibold">
-              {offer?.service}
-            </p>
-          </div>
-          <div className="flex flex-col items-end">
-            <span className="text-tradeFadeWhite text-[11px]">Currency</span>
-            <p className="text-tradeOrange text-sm font-semibold">
-              {offer?.preferredCurrency?.code}
-            </p>
-          </div>
-        </div>
-
-        {/* Purchase Limits */}
-        <div className="flex flex-col">
-          <span className="text-tradeFadeWhite text-[11px]">
-            Purchase Limits
-          </span>
-          <p className="text-white text-sm font-bold">
-            {offer?.preferredCurrency?.code}{" "}
-            {toDecimal(offer?.marginRate?.from)} -{" "}
-            {offer?.preferredCurrency?.code} {toDecimal(offer?.marginRate?.to)}
-          </p>
-        </div>
-
-        {/* Profit Margin */}
-        <div className="flex justify-between items-center">
-          <div className="flex flex-col">
-            <span className="text-tradeFadeWhite text-[11px]">
-              Profit Margin
-            </span>
-            <p className="text-white text-sm font-bold">
-              {offer?.marginRate?.rate} on every trade
-            </p>
-          </div>
-
-          <div>
-            <span className="text-xs px-4 py-2 rounded-[8px] bg-tradeAshExtraLight text-white font-semibold">
-              See Details
-            </span>
-          </div>
+        <div className="flex justify-center text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-full px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+          <p>View Details</p>
         </div>
       </div>
     </>

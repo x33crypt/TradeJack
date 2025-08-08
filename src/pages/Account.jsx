@@ -8,6 +8,7 @@ import { useFetchProfile } from "@/hooks/useFetchProfile";
 import { useAccount } from "@/context/AccountContext";
 import ViewOptions from "@/components/account/ViewOptions";
 import Stats from "@/components/account/Stats";
+import Feedbacks from "@/components/account/Feedbacks";
 
 const Account = () => {
   const { account, setAccount } = useAccount();
@@ -21,12 +22,12 @@ const Account = () => {
   return (
     <>
       <MarketTopNav />
-      <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
-        <div className="flex flex-col w-full min-h-svh md:border border-neutral-800">
+      <div className=" md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
+        <div className="flex-1 flex flex-col w-full min-h-svh md:border border-neutral-800">
           <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
             <p className="text-lg font-[700] text-white ">Account</p>
           </div>
-          <div className="flex flex-col flex-1">
+          <div className="flex flex-col flex-1 pb-[50px">
             <HeroEdit profile={profile} />
             <ViewOptions />
             <PersonalInfo profile={profile} view={view} />

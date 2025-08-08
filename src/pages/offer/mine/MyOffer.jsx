@@ -18,6 +18,8 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { SiTruenas } from "react-icons/si";
 import Info from "@/components/alerts/Info";
 import Loading from "@/components/Loading";
+import Feedbacks from "@/components/account/Feedbacks";
+import { FaSearch } from "react-icons/fa";
 
 const MyOffer = () => {
   const topRef = useRef(null);
@@ -183,71 +185,79 @@ const MyOffer = () => {
           ref={topRef}
           className="flex flex-col flex-1 md:border border-tradeAshLight"
         >
-          <div className="flex items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-            <p className="text-lg text-white font-[700]">My Offers</p>
+          <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
+            <p className="text-lg font-[700] text-white ">My Offers</p>
+          </div>
+
+          <div className="px-[15px] py-[12px]">
+            <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+              View, manage, and monitor every offer you’ve created, complete
+              with real-time status updates and key trade details to keep you in
+              control.
+            </p>
           </div>
 
           <div className="flex flex-col flex-1 ">
-            <div className="sticky md:top-[65px] top-[57px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
-              <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] ">
+            <div className="sticky md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-y border-dashed border-tradeAshLight">
+              <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] overflow-x-hidden ">
                 {/* Left group */}
                 <div
                   className={`${
                     Array.isArray(myOffers) && myOffers.length < 1
                       ? "hidden"
                       : "flex"
-                  } flex items-center gap-[5px] bg-transparent flex-shrink-0 py-[1px]`}
+                  } flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]`}
                 >
-                  <p
-                    onClick={handleShowAllOffers}
-                    className={`${
-                      offerFilter?.allOffers
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                    } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                  <div
+                    onClick={handleShowActiveOffers}
+                    className={`text-black bg-tradeOrange  hover:text-white flex items-center gap-1  w-max px-[8px] py-[4px] text-[20px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                   >
-                    All
-                  </p>
-                  <p
+                    <FaSearch />
+                  </div>
+
+                  <div
                     onClick={handleShowActiveOffers}
                     className={`${
                       offerFilter?.activeOffers
                         ? "text-white bg-tradeAsh border-tradeGreen"
                         : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                    } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                    } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                   >
-                    Active
-                  </p>
-                  <p
+                    <p> Active</p>
+                  </div>
+
+                  <div
                     onClick={handleShowActiveOffers}
                     className={`${
                       offerFilter?.activeOffers
                         ? "text-white bg-tradeAsh border-tradeGreen"
                         : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                    } inline-block w-max px-[12px] py-[4px] text-[14px] font-[600] rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                    } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                   >
-                    Paused
-                  </p>
-                  <p
-                    onClick={handleShowInActiveOffers}
+                    <p>Paused</p>
+                  </div>
+
+                  <div
+                    onClick={handleShowActiveOffers}
                     className={`${
-                      offerFilter?.inactiveOffers
+                      offerFilter?.activeOffers
                         ? "text-white bg-tradeAsh border-tradeGreen"
                         : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                    } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                    } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                   >
-                    Closed
-                  </p>
-                  <p
-                    onClick={handleShowInActiveOffers}
+                    <p>Suspended</p>
+                  </div>
+
+                  <div
+                    onClick={handleShowActiveOffers}
                     className={`${
-                      offerFilter?.inactiveOffers
+                      offerFilter?.activeOffers
                         ? "text-white bg-tradeAsh border-tradeGreen"
                         : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                    } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                    } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                   >
-                    Suspended
-                  </p>
+                    <p>Terminated</p>
+                  </div>
                 </div>
 
                 {/* Right group */}
@@ -256,34 +266,33 @@ const MyOffer = () => {
                     Array.isArray(myOffers) && myOffers.length < 1
                       ? "flex-1"
                       : null
-                  } flex justify-between items-center gap-[5px] bg-transparent flex-shrink-0 py-[1px]`}
+                  } flex justify-between items-center gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]`}
                 >
                   <div className="flex gap-[5px] bg-transparent">
-                    <div className="md:flex hidden text-black items-center gap-1 bg-tradeOrange px-[10px] py-[4px] text-sm font-medium rounded-[6.5px] w-max">
-                      <HiMiniCalendarDateRange />
-                    </div>
                     <div
                       className={`${
-                        offerFilter?.draftOffers
+                        false
                           ? "text-white bg-tradeAsh border-tradeGreen"
                           : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                      } relative flex items-center gap-2 px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                      } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                     >
                       <p>Month</p>
                     </div>
                     <div
                       className={`${
-                        offerFilter?.draftOffers
+                        false
                           ? "text-white bg-tradeAsh border-tradeGreen"
                           : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                      } relative flex items-center gap-2 px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                      } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                     >
                       <p>Year</p>
                     </div>
                   </div>
 
-                  <div className=" bg-tradeGreen text-black font-semibold relative flex items-center gap-2 px-[12px] py-[4px] text-[13px] rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <p>Create New</p>
+                  <div
+                    className={`bg-tradeGreen text-black inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                  >
+                    <p>Create Offer</p>
                   </div>
                 </div>
               </div>
@@ -303,16 +312,9 @@ const MyOffer = () => {
                   ) : (
                     <div className="flex flex-1">
                       {Array.isArray(myOffers) && myOffers.length > 0 ? (
-                        <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
+                        <div className="flex flex-col gap-[5px] w-full h-max">
                           {myOffers.map((offer, index) => (
-                            <div
-                              key={index}
-                              className={`${
-                                index !== myOffers.length - 1
-                                  ? "md:border-b border-tradeAshLight"
-                                  : ""
-                              }`}
-                            >
+                            <div key={index}>
                               <MyOfferCard offer={offer} />
                             </div>
                           ))}

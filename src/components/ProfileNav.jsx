@@ -26,7 +26,7 @@ const ProfileNav = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex flex-col gap-[10px] items-center justify-center z-40">
-            <div className="flex p-[12px] bg-tradeAsh border border-tradeAshLight items-center gap-3 rounded-[10px] w-[300px]">
+            <div className="flex p-[12px] bg-tradeAsh border border-tradeAshLight items-center gap-3 rounded-[15px] w-[300px]">
               <div className="cursor-pointer w-[40px]">
                 <img src={landingImg4} alt="" className="rounded-full" />
               </div>
