@@ -54,7 +54,7 @@ const SelectElement = () => {
             <div
               className={`${
                 select?.selectOne ? "flex" : "hidden"
-              } p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[350px]`}
+              } p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[330px]`}
             >
               <div
                 className={`${
@@ -74,7 +74,7 @@ const SelectElement = () => {
             <div
               className={`${
                 select?.selectTwo ? "flex" : "hidden"
-              } p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[350px]`}
+              } p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[330px]`}
             >
               <div
                 className={`${
@@ -91,7 +91,7 @@ const SelectElement = () => {
               </div>
             </div>
 
-            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[350px]">
+            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[330px]">
               {/* FIRST DIV — for string options */}
               <div
                 className={`${
@@ -194,7 +194,7 @@ const SelectElement = () => {
               </div>
             </div>
 
-            <div onClick={close} className=" w-[350px]">
+            <div onClick={close} className=" w-[330px]">
               <Button variant="Fadeout">Close</Button>
             </div>
           </div>
