@@ -171,87 +171,93 @@ const MyOfferCard = ({ offer }) => {
         </div>
       </div>
 
-      <div className="md:hidden p-[12px] gap-5 flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
-        <div className="flex justify-between ">
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
-              <div className="flex gap-[5px] items-center">
-                <div className="flex gap-1 items-center">
-                  <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                  <p className="text-xs font-medium text-tradeFadeWhite">
-                    {monthDate(offer?.publishedOn)}
-                  </p>
-                </div>
-                <div className="flex gap-1 items-center">
-                  <MdAccessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                  <p className="text-xs font-medium text-tradeFadeWhite">
-                    {time(offer?.publishedOn)}
-                  </p>
-                </div>
-              </div>
-
-              <p className="text-base font-bold text-tradeOrange leading-none">
-                {offer?.service}
-              </p>
-
-              <div className="flex flex-col gap-1">
-                <p className="text-xs font-semibold text-tradeFadeWhite">
-                  {offer?.preferredCurrency?.name}
+      <div className="md:hidden p-[12px] gap-5 flex justify-between  bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
+            <div className="flex gap-[5px] items-center">
+              <div className="flex gap-1 items-center">
+                <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <p className="text-xs font-medium text-tradeFadeWhite">
+                  {monthDate(offer?.publishedOn)}
                 </p>
-                <div className="flex  items-center gap-1">
-                  <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
-                  <p className="text-xs font-semibold text-tradeFadeWhite">
-                    <span className="text-white">
-                      +{offer?.user?.userTransactionCount} total
-                    </span>{" "}
-                    trades
-                  </p>
-                </div>
+              </div>
+              <div className="flex gap-1 items-center">
+                <MdAccessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <p className="text-xs font-medium text-tradeFadeWhite">
+                  {time(offer?.publishedOn)}
+                </p>
+              </div>
+            </div>
+
+            <p className="text-base font-bold text-tradeOrange leading-none">
+              {offer?.service}
+            </p>
+
+            <div className="flex flex-col gap-1">
+              <p className="text-xs font-semibold text-tradeFadeWhite">
+                {offer?.preferredCurrency?.name}
+              </p>
+              <div className="flex  items-center gap-1">
+                <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+                <p className="text-xs font-semibold text-tradeFadeWhite">
+                  <span className="text-white">
+                    +{offer?.user?.userTransactionCount} total
+                  </span>{" "}
+                  trades
+                </p>
               </div>
             </div>
           </div>
-
-          <div className="flex flex-col gap- justify-between items-end">
-            <div className="flex flex-col gap-2 items-end">
-              <div className="flex gap-[5px] items-center">
-                <div className="flex gap-1 items-center">
-                  <FaCircle className="flex text-tradeGreen text-[10px] flex-shrink-0" />
-                  <p className="text-xs font-medium text-white">Active</p>
-                </div>
-                <div className="flex gap-1 items-center">
-                  <IoMdThumbsUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                  <p className="text-xs font-medium text-tradeFadeWhite">
-                    {offer?.user?.userFeedback?.positiveFeedback}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-1">
-                <p className="text-base font-bold text-white leading-none">
-                  $50,000.00
-                </p>
-                <div className="text-tradeOrange text-[12px]">
-                  <FaInfoCircle />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-1 items-end">
-                <div className="flex gap-[5px] w-max">
-                  <p className="text-xs font-semibold text-tradeFadeWhite">
-                    Min -- USD 383
-                  </p>
-                </div>
-                <div className="flex gap-[5px] w-max">
-                  <p className="text-xs font-semibold text-tradeFadeWhite">
-                    Max -- USD 5,000
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="flex text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            <p>View Details</p>
           </div>
         </div>
-        <div className="flex justify-center text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-full px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-          <p>View Details</p>
+
+        <div className="flex flex-col gap-4 justify-between items-end">
+          <div className="flex flex-col gap-2 items-end">
+            <div className="flex gap-[5px] items-center">
+              <div className="flex gap-1 items-center">
+                <FaCircle className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+                <p className="text-xs font-semibold text-white">Active</p>
+              </div>
+              <div className="flex gap-1 items-center">
+                <IoMdThumbsUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <p className="text-xs font-semibold text-tradeFadeWhite">
+                  {offer?.user?.userFeedback?.positiveFeedback}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1">
+              <p className="text-base font-bold text-white leading-none">
+                $50,000.00
+              </p>
+              <div className="text-tradeOrange text-[12px]">
+                <FaInfoCircle />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1 items-end">
+              <div className="flex gap-[5px] w-max">
+                <p className="text-xs font-semibold text-tradeFadeWhite">
+                  Min -- USD 383
+                </p>
+              </div>
+              <div className="flex gap-[5px] w-max">
+                <p className="text-xs font-semibold text-tradeFadeWhite">
+                  Max -- USD 5,000
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex gap-[5px]">
+            <div className="flex gap-1 items-center bg-tradeAshLight border border-tradeAshExtraLight w-max px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <SlOptions className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+            </div>
+            <div className="flex text-black bg-tradeGreen w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <p>Edit</p>
+            </div>
+          </div>
         </div>
       </div>
     </>

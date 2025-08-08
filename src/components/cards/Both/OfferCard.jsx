@@ -213,14 +213,14 @@ const MarketCard = ({ offer }) => {
           <div className="flex flex-col gap-2 items-end">
             <div className="flex gap-[5px] items-center">
               <div className="flex gap-1 items-center">
-                <IoMdThumbsUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-medium text-tradeFadeWhite">
-                  {offer?.user?.userFeedback?.positiveFeedback}
-                </p>
+                <HiOutlineUserCircle className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+                <p className="text-xs font-semibold text-white">Online</p>
               </div>
               <div className="flex gap-1 items-center">
-                <HiOutlineUserCircle className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-medium text-tradeGreen">Online</p>
+                <IoMdThumbsUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <p className="text-xs font-semibold text-tradeFadeWhite">
+                  {offer?.user?.userFeedback?.positiveFeedback}
+                </p>
               </div>
             </div>
 
