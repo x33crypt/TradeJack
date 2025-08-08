@@ -25,7 +25,7 @@ const HeroEdit = () => {
 
   return (
     <div className="flex p-[15px] h-max border-neutral-800">
-      <div className="flex flex-1  p-[12px] bg-tradeAs borde border-tradeAshLight rounded-[15px]">
+      <div className="flex flex-1 bg-tradeAs borde border-tradeAshLight rounded-[15px]">
         {loading ? (
           <Loading />
         ) : (
@@ -34,7 +34,7 @@ const HeroEdit = () => {
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-row justify-between items- gap-[5px]">
-                <div className="text-white text-[18px] p-2 w-max h-max bg-tradeAshLight rounded-[10px]">
+                <div className="md:hidden text-white text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px]">
                   <RiShare2Fill />
                 </div>
 
@@ -105,10 +105,10 @@ const HeroEdit = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <div className="text-white text-[18px]  p-2 bg-tradeAshLight rounded-[10px]">
+                  <div className="text-white text-[20px]  p-2 bg-tradeAshLight rounded-[10px]">
                     <IoSettingsSharp />
                   </div>
-                  <div className="text-tradeOrange text-[18px]  p-2 bg-tradeAshLight rounded-[10px]">
+                  <div className="text-tradeOrange bg: text-[20px] p-2 bg-tradeOrange/20 rounded-[10px]">
                     <IoSettingsSharp />
                   </div>
                 </div>
