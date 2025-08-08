@@ -191,7 +191,7 @@ const MarketMain = ({ promotedOffers }) => {
           </div>
 
           <div className="flex-1 flex flex-col p-[15px] gap-[15px]">
-            {loading && Array.isArray(offers?.data).length < 0 ? (
+            {loading && offers === null ? (
               <Loading />
             ) : (
               <div className="flex flex-1">

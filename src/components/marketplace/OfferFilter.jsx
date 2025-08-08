@@ -44,6 +44,8 @@ const OfferFilter = () => {
     "Card-Based Spending": "Select Debit or Credit Card",
   };
 
+  const sortByOptions = ["Rate : Highest to lowest", "Rate : lowest to highest"];
+
   // handling service changes
   useEffect(() => {
     if (select?.page !== "offer filter" || !select?.pick) return;
