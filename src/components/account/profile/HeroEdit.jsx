@@ -87,7 +87,7 @@ const HeroEdit = () => {
                         </div>
                       </div>
                       <div className="flex gap-1 items-center ">
-                        <FaCalendarCheck className=" flex text-tradeAshExtraLight text-[12px] leading-none" />
+                        <FaCalendarCheck className=" lg:flex hidden text-tradeAshExtraLight text-[12px] leading-none" />
                         <p className=" text-[13px] font-medium text-tradeFadeWhite">
                           Joined{" "}
                           <span className="font-semibold text-white">
