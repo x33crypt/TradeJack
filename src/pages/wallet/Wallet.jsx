@@ -25,12 +25,7 @@ const Wallet = () => {
 
             <div className="flex flex-col gap-[5px] flex-1 md:flex-none md:w-[350px] lg:flex-none ">
               <Overview />
-              <div className="flex flex-col flex-1 md:border border-neutral-800">
-                <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-                  <p className="text-lg font-[700] text-white ">Events</p>
-                </div>
-                <div className="flex p-[15px] h-full"></div>
-              </div>
+             
             </div>
           </div>
           <RecentTransaction />

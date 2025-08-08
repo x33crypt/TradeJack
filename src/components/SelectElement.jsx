@@ -12,7 +12,7 @@ const SelectElement = () => {
   const [searchInput, setSearchInput] = useState("");
 
   const close = () => {
-    setSelect({ ...select, state: false });
+    setSelect({ ...select, state: false, options: [] });
   };
 
   const handleUpdate = (option) => {
@@ -96,101 +96,113 @@ const SelectElement = () => {
               <div
                 className={`${
                   select?.selectOne ? "flex" : "hidden"
-                } w-full flex-col  gap-[15px] rounded-[14px] md:h-[245px] h-[260px]`}
+                } w-full flex-col  gap-[15px] rounded-[14px] md:max-h-[245px] max-h-[260px]`}
               >
-                <div className="overflow-y-auto  custom-scrollbar w-full">
-                  {searchInput ? (
-                    <div className="flex flex-col gap-[5px] w-full">
-                      {filterStringOption.length ? (
-                        filterStringOption.map((option, index) => (
-                          <div
-                            key={index}
-                            onClick={() => handleUpdate(option)}
-                            className="p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300"
-                          >
-                            <p className="text-[13px]">{option}</p>
+                {select?.options?.lenght === 0 ? (
+                  <div className="overflow-y-auto  custom-scrollbar w-full">
+                    {searchInput ? (
+                      <div className="flex flex-col gap-[5px] w-full">
+                        {filterStringOption.length ? (
+                          filterStringOption.map((option, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleUpdate(option)}
+                              className="p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300"
+                            >
+                              <p className="text-[13px]">{option}</p>
+                            </div>
+                          ))
+                        ) : (
+                          <div className="p-[12px] text-[13px] text-tradeFadeWhite bg-tradeAsh border border-tradeAshLight rounded-[10px]">
+                            No matching results found
                           </div>
-                        ))
-                      ) : (
-                        <div className="p-[12px] text-[13px] text-tradeFadeWhite bg-tradeAsh border border-tradeAshLight rounded-[10px]">
-                          No matching results found
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <div className=" flex flex-col gap-[5px] w-full">
-                      {(select?.options || [])
-                        .filter((option) => typeof option === "string")
-                        .sort((a, b) => a.localeCompare(b))
-                        .map((option, index) => (
-                          <div
-                            key={index}
-                            onClick={() => handleUpdate(option)}
-                            className="p-[12px] font-medium  bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300"
-                          >
-                            <p className="text-[13px]">{option}</p>
-                          </div>
-                        ))}
-                    </div>
-                  )}
-                </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className=" flex flex-col gap-[5px] w-full">
+                        {(select?.options || [])
+                          .filter((option) => typeof option === "string")
+                          .sort((a, b) => a.localeCompare(b))
+                          .map((option, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleUpdate(option)}
+                              className="p-[12px] font-medium  bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300"
+                            >
+                              <p className="text-[13px]">{option}</p>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="p-[12px] text-[13px] text-tradeFadeWhite bg-tradeAsh border border-tradeAshLight rounded-[10px]">
+                    Options not available, please try again.
+                  </div>
+                )}
               </div>
 
               {/* SECOND DIV — for object options */}
               <div
                 className={`${
                   select?.selectTwo ? "flex" : "hidden"
-                } w-full flex-col  gap-[15px] rounded-[14px] md:h-[245px] h-[260px]`}
+                } w-full flex-col  gap-[15px] rounded-[14px] md:max-h-[245px] max-h-[260px]`}
               >
-                <div className="overflow-y-auto custom-scrollbar w-full">
-                  {searchInput ? (
-                    <div className="flex flex-col gap-[5px] w-full">
-                      {filterObjectOption.length ? (
-                        filterObjectOption.map(({ code, name }) => (
-                          <div
-                            key={code}
-                            onClick={() => handleUpdate({ code, name })}
-                            className="flex gap-[10px]"
-                          >
-                            <p className="flex-1 text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
-                              {name}
-                            </p>
-                            <p className="flex items-center justify-center w-[60px] text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
-                              {code}
-                            </p>
+                {select?.options?.lenght < 1 ? (
+                  <div className="overflow-y-auto custom-scrollbar w-full">
+                    {searchInput ? (
+                      <div className="flex flex-col gap-[5px] w-full">
+                        {filterObjectOption.length ? (
+                          filterObjectOption.map(({ code, name }) => (
+                            <div
+                              key={code}
+                              onClick={() => handleUpdate({ code, name })}
+                              className="flex gap-[10px]"
+                            >
+                              <p className="flex-1 text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
+                                {name}
+                              </p>
+                              <p className="flex items-center justify-center w-[60px] text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
+                                {code}
+                              </p>
+                            </div>
+                          ))
+                        ) : (
+                          <div className="p-[12px] text-[13px] text-tradeFadeWhite bg-tradeAsh border border-tradeAshLight rounded-[10px]">
+                            No matching results found
                           </div>
-                        ))
-                      ) : (
-                        <div className="p-[12px] text-[13px] text-tradeFadeWhite bg-tradeAsh border border-tradeAshLight rounded-[10px]">
-                          No matching results found
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <div className="flex flex-col gap-[5px] w-full">
-                      {select?.options
-                        ?.filter(
-                          (option) =>
-                            typeof option === "object" && option !== null
-                        )
-                        .sort((a, b) => a.name.localeCompare(b.name))
-                        .map(({ code, name }) => (
-                          <div
-                            key={code}
-                            onClick={() => handleUpdate({ code, name })}
-                            className="flex gap-[10px]"
-                          >
-                            <p className="flex-1 text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
-                              {name}
-                            </p>
-                            <p className="flex items-center justify-center w-[60px] text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
-                              {code}
-                            </p>
-                          </div>
-                        ))}
-                    </div>
-                  )}
-                </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="flex flex-col gap-[5px] w-full">
+                        {select?.options
+                          ?.filter(
+                            (option) =>
+                              typeof option === "object" && option !== null
+                          )
+                          .sort((a, b) => a.name.localeCompare(b.name))
+                          .map(({ code, name }) => (
+                            <div
+                              key={code}
+                              onClick={() => handleUpdate({ code, name })}
+                              className="flex gap-[10px]"
+                            >
+                              <p className="flex-1 text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
+                                {name}
+                              </p>
+                              <p className="flex items-center justify-center w-[60px] text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
+                                {code}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="p-[12px] text-[13px] text-tradeFadeWhite bg-tradeAsh border border-tradeAshLight rounded-[10px]">
+                    Options not available, please try again.
+                  </div>
+                )}
               </div>
             </div>
 

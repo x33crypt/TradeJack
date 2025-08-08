@@ -11,6 +11,8 @@ import Info from "../alerts/Info";
 import { LuCrown } from "react-icons/lu";
 import { LuFileX2 } from "react-icons/lu";
 import NetworkError from "../NetworkError";
+import { FaCheckDouble } from "react-icons/fa";
+import { TiPin } from "react-icons/ti";
 
 const LinkedAccount = () => {
   const { loading, error, refetch } = useFetchLinkedBanks();
@@ -27,8 +29,8 @@ const LinkedAccount = () => {
       </div>
 
       <div className="flex flex-col p-[15px] gap-[10px]">
-        <div className="flex min-h-[150px] w-full">
-          {loading ? (
+        <div className="flex min-h-[100px] w-full">
+          {false ? (
             <Loading />
           ) : (
             <div className="flex flex-1">
@@ -37,16 +39,16 @@ const LinkedAccount = () => {
               ) : (
                 <div className="flex flex-1">
                   {linkedAccounts?.length && linkedAccounts?.length !== 0 ? (
-                    <div className="flex flex-1 flex-col gap-[15px] justify-between">
+                    <div className="flex flex-1 flex-col gap-[10px] justify-between">
                       <div className="flex flex-col gap-[10px] h-full">
                         {linkedAccounts.map((account, index) => (
                           <div
                             key={index}
-                            className="flex items-center gap-[15px] px-[12px] py-[10px] bg-tradeAsh border border-tradeAshLight rounded-[12px]"
+                            className="flex items-center gap-[15px] p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px]"
                           >
                             <div className="p-[10px] bg-tradeAshLight rounded-[10px]">
                               <img
-                                className="w-[25px]"
+                                className="w-[30px]"
                                 src={account?.logo}
                                 alt=""
                               />
@@ -54,28 +56,21 @@ const LinkedAccount = () => {
 
                             <div className="flex w-full justify-between items-center">
                               <div className="flex flex-col gap-1">
-                                <p className="text-[15px] font-semibold text-white leading-relaxed">
+                                <div className="flex gap-1 items-center">
+                                  <FaCheckDouble className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                                  <p className="text-xs font-medium text-tradeFadeWhite">
+                                    Verified Account
+                                  </p>
+                                </div>
+
+                                <p className="text-[13px] font-semibold text-white leading-relaxed">
                                   {account?.bank_name}
                                 </p>
-
-                                <div className="flex items-center gap-1">
-                                  <p className="text-[13px] font-semibold text-tradeFadeWhite">
-                                    {account?.account_number}
-                                  </p>
-
-                                  <div className="bg-transparent px-[4px] py-0.2 border border-tradeAshExtraLight rounded-[4px] w-max">
-                                    <p className="text-white text-xs font-medium">
-                                      Verified Bank
-                                    </p>
-                                  </div>
-                                </div>
                               </div>
 
                               {account?.isDefault && (
-                                <div className="bg-transparent px-[5px] py-1 border border-tradeAshExtraLight rounded-[8px] w-max">
-                                  <div className="text-[22px] text-tradeOrange">
-                                    <LuCrown />
-                                  </div>
+                                <div className="flex items-center text-tradeFadeWhite border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px]">
+                                  <TiPin />
                                 </div>
                               )}
                             </div>

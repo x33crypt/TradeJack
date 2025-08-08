@@ -60,15 +60,18 @@ const HeroEdit = () => {
             <div className="flex flex-col gap-3 items-center md:items-start">
               <p className="mt-0 text-white lg:text-[40px] md:text-[30px] text-[25px] font-[900] leading-none ">
                 <span className="text-tradeFadeWhite">@</span>
-                {profile?.userName ? profile?.userName : "Username"}
+                {profile?.userName ? profile?.userName : "username"}
               </p>
-              <div className="flex gap-[4px] items-center w-max px-[6px] py-[1px] bg-tradeOrange/10 border border-tradeOrange rounded-[10px]">
-                <GiTopHat className="text-[14px] text-tradeOrange" />
-                <p className="text-xs text-tradeOrange font-semibold">5x</p>
-                <p className="text-xs font-semibold text-white">
-                  Master Trader
-                </p>
-              </div>
+
+              {profile && (
+                <div className="flex gap-[4px] items-center w-max px-[6px] py-[1px] bg-tradeOrange/10 border border-tradeOrange rounded-[10px]">
+                  <GiTopHat className="text-[14px] text-tradeOrange" />
+                  <p className="text-xs text-tradeOrange font-semibold">5x</p>
+                  <p className="text-xs font-semibold text-white">
+                    Master Trader
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="flex gap-1 flex-col items-center lg:items-start">
@@ -76,12 +79,22 @@ const HeroEdit = () => {
                 <div className="flex  gap-1 items-center ">
                   <HiLocationMarker className=" flex text-tradeFadeWhite text-[14px] leading-none" />
                   <p className=" text-[13px] font-semibold text-white">
-                    Nigeria
+                    {profile ? "Nigeria" : "Clouds"}
                   </p>
                 </div>
 
                 <div className="flex  gap-1 items-center ">
-                  <FaCircle className=" flex text-tradeGreen text-[11px] leading-none" />
+                  <FaCircle
+                    className={`${
+                      profile?.status === "online"
+                        ? "text-tradeGreen"
+                        : profile?.status === "offline"
+                        ? "text-tradeAshExtraLight"
+                        : profile?.status === "last seen"
+                        ? "text-tradeOrange"
+                        : "text-tradeAshExtraLight"
+                    } flex  text-[11px] leading-none`}
+                  />
                   <p className="mt-0 text-white text-[13px] font-semibold">
                     {profile?.status
                       ? capitalizeFirst(profile?.status)
@@ -104,7 +117,7 @@ const HeroEdit = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 md:justify-center justify-start">
           <div className="md:flex hidden text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px]">
             <RiShare2Fill />
           </div>

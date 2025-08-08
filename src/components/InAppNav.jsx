@@ -65,10 +65,11 @@ const InAppNav = () => {
             onClick={() => navigateTo("/dashboard")}
             className="flex items-center gap-[5px] cursor-pointer "
           >
-            <RiExchangeFill className=" flex lg:text-2xl text-[20px] text-tradeGreen" />
+            {/* <RiExchangeFill className=" flex lg:text-2xl text-[20px] text-tradeGreen" /> */}
             <p className=" lg:text-xl md:text-[19px] text-[20px]  font-bold text-tradeGreen">
-              Trade
-              <span className="font-semibold text-white">Jack</span>
+              Go
+              <span className="font-semibold text-tradeOrange">Get</span>
+              <span className="font-semibold text-white">Swap</span>
             </p>
           </div>
         </div>
