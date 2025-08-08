@@ -18,6 +18,8 @@ import NetworkError from "@/components/NetworkError";
 import { RiShare2Fill } from "react-icons/ri";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaCircle } from "react-icons/fa";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { MdOutlineUpdate } from "react-icons/md";
 
 const HeroEdit = () => {
   const { loading, error } = useFetchProfile();
@@ -68,23 +70,24 @@ const HeroEdit = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <div className="flex  gap-1 items-center ">
-                        <FaLocationDot className=" flex text-tradeOrange text-xs leading-none" />
-                        <p className=" text-[13px] font-semibold text-white">
-                          {profile?.kycDetails?.address?.country}
-                        </p>
-                      </div>
+                    <div className="flex gap-1 flex-col items-center lg:items-start">
+                      <div className="flex items-center gap-2">
+                        <div className="flex  gap-1 items-center ">
+                          <HiOutlineLocationMarker className=" flex text-tradeOrange text-[13px] leading-none" />
+                          <p className=" text-[13px] font-semibold text-white">
+                            Nigeria
+                          </p>
+                        </div>
 
-                      <div className="flex  gap-1 items-center ">
-                        <FaCircle className=" flex text-tradeGreen text-xs leading-none" />
-                        <p className="mt-0 text-white text-[13px] font-semibold">
-                          {capitalizeFirst(profile?.status)}
-                        </p>
+                        <div className="flex  gap-1 items-center ">
+                          <FaCircle className=" flex text-tradeGreen text-[10px] leading-none" />
+                          <p className="mt-0 text-white text-[13px] font-semibold">
+                            {capitalizeFirst(profile?.status)}
+                          </p>
+                        </div>
                       </div>
-
-                      {/* <div className="flex  gap-1 items-center ">
-                        <FaCalendarCheck className=" flex text-tradeAshExtraLight text-sm leading-none" />
+                      <div className="flex gap-1 items-center ">
+                        <FaCalendarCheck className=" flex text-tradeAshExtraLight text-[12px] leading-none" />
                         <p className=" text-[13px] font-medium text-tradeFadeWhite">
                           Joined{" "}
                           <span className="font-semibold text-white">
@@ -92,15 +95,8 @@ const HeroEdit = () => {
                           </span>{" "}
                           ago
                         </p>
-                      </div> */}
+                      </div>
                     </div>
-
-                    {/* <div className="flex gap-1 items-center ">
-                      <FaEdit className=" flex text-tradeAshExtraLight text-sm leading-none" />
-                      <p className=" text-[13px] font-semibold text-tradeFadeWhite">
-                        16th May, 2025 - 14:20:25
-                      </p>
-                    </div> */}
                   </div>
                 </div>
 
@@ -109,7 +105,7 @@ const HeroEdit = () => {
                     <IoSettingsSharp />
                   </div>
                   <div className="text-tradeOrange bg: text-[20px] p-2 bg-tradeOrange/20 rounded-[10px]">
-                    <IoSettingsSharp />
+                    <MdOutlineUpdate />
                   </div>
                 </div>
 
