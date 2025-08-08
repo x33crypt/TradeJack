@@ -15,14 +15,17 @@ import { useFetchProfile } from "@/hooks/useFetchProfile";
 import { useProfile } from "@/context/ProfileContext";
 import Loading from "@/components/Loading";
 import NetworkError from "@/components/NetworkError";
+import { RiShare2Fill } from "react-icons/ri";
+import { IoSettingsSharp } from "react-icons/io5";
+import { FaCircle } from "react-icons/fa";
 
 const HeroEdit = () => {
   const { loading, error } = useFetchProfile();
   const { profile, setProfile } = useProfile();
 
   return (
-    <div className="flex p-[15px] h-max border-b border-neutral-800">
-      <div className="flex flex-1 h-[360px] md:h-[200px] p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px]">
+    <div className="flex p-[15px] h-max border-neutral-800">
+      <div className="flex flex-1  p-[12px] bg-tradeAs borde border-tradeAshLight rounded-[15px]">
         {loading ? (
           <Loading />
         ) : (
@@ -30,9 +33,13 @@ const HeroEdit = () => {
             {profile === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1 md:flex-row flex-col justify-between items-center gap-[5px]">
-                <div className="flex flex-col md:flex-row gap-[15px] items-center">
-                  <div className="relative flex md:w-[180px] w-[150px] shrink-0 justify-center cursor-pointer">
+              <div className="flex flex-1 flex-row justify-between items- gap-[5px]">
+                <div className="text-white text-[18px] p-2 w-max h-max bg-tradeAshLight rounded-[10px]">
+                  <RiShare2Fill />
+                </div>
+
+                <div className="flex flex-col md:flex-row gap-[15px] items-center justify-center">
+                  <div className="relative flex md:w-[180px] w-[100px] shrink-0 justify-center items-center cursor-pointer">
                     <img
                       className="rounded-full w-full h-auto"
                       src={image}
@@ -61,7 +68,7 @@ const HeroEdit = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2">
                       <div className="flex  gap-1 items-center ">
                         <FaLocationDot className=" flex text-tradeOrange text-xs leading-none" />
                         <p className=" text-[13px] font-semibold text-white">
@@ -70,13 +77,13 @@ const HeroEdit = () => {
                       </div>
 
                       <div className="flex  gap-1 items-center ">
-                        <RiEye2Fill className=" flex text-tradeGreen text-xs leading-none" />
-                        <p className="mt-0 text-tradeGreen text-[13px] font-semibold">
+                        <FaCircle className=" flex text-tradeGreen text-xs leading-none" />
+                        <p className="mt-0 text-white text-[13px] font-semibold">
                           {capitalizeFirst(profile?.status)}
                         </p>
                       </div>
 
-                      <div className="flex  gap-1 items-center ">
+                      {/* <div className="flex  gap-1 items-center ">
                         <FaCalendarCheck className=" flex text-tradeAshExtraLight text-sm leading-none" />
                         <p className=" text-[13px] font-medium text-tradeFadeWhite">
                           Joined{" "}
@@ -85,18 +92,28 @@ const HeroEdit = () => {
                           </span>{" "}
                           ago
                         </p>
-                      </div>
+                      </div> */}
                     </div>
 
-                    <div className="flex gap-1 items-center ">
+                    {/* <div className="flex gap-1 items-center ">
                       <FaEdit className=" flex text-tradeAshExtraLight text-sm leading-none" />
                       <p className=" text-[13px] font-semibold text-tradeFadeWhite">
                         16th May, 2025 - 14:20:25
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
-                <div className="flex gap-[10px] md:p-[15px]">
+
+                <div className="flex flex-col gap-2">
+                  <div className="text-white text-[18px]  p-2 bg-tradeAshLight rounded-[10px]">
+                    <IoSettingsSharp />
+                  </div>
+                  <div className="text-tradeOrange text-[18px]  p-2 bg-tradeAshLight rounded-[10px]">
+                    <IoSettingsSharp />
+                  </div>
+                </div>
+
+                {/* <div className="flex gap-[10px] md:p-[15px]">
                   <div className="flex items-center text-black text-[25px]  gap-2 p-2  bg-tradeGreen rounded-full ">
                     <IoLink className=" " />
                   </div>
@@ -104,7 +121,7 @@ const HeroEdit = () => {
                   <div className="flex items-center text-black text-[25px]  gap-2 p-2  bg-tradeGreen rounded-full ">
                     <FiMoreHorizontal className=" " />
                   </div>
-                </div>
+                </div> */}
               </div>
             )}
           </div>

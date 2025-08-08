@@ -54,7 +54,7 @@ const SelectElement = () => {
             <div
               className={`${
                 select?.selectOne ? "flex" : "hidden"
-              } p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[330px]`}
+              } p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[300px]`}
             >
               <div
                 className={`${
@@ -74,7 +74,7 @@ const SelectElement = () => {
             <div
               className={`${
                 select?.selectTwo ? "flex" : "hidden"
-              } p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[330px]`}
+              } p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[300px]`}
             >
               <div
                 className={`${
@@ -91,12 +91,12 @@ const SelectElement = () => {
               </div>
             </div>
 
-            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[330px]">
+            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[300px]">
               {/* FIRST DIV — for string options */}
               <div
                 className={`${
                   select?.selectOne ? "flex" : "hidden"
-                } w-full flex-col  gap-[15px] rounded-[14px] h-[245px]`}
+                } w-full flex-col  gap-[15px] rounded-[14px] md:h-[245px] h-[260px]`}
               >
                 <div className="overflow-y-auto  custom-scrollbar w-full">
                   {searchInput ? (
@@ -140,7 +140,7 @@ const SelectElement = () => {
               <div
                 className={`${
                   select?.selectTwo ? "flex" : "hidden"
-                } w-full flex-col  gap-[15px] rounded-[14px] h-[245px]`}
+                } w-full flex-col  gap-[15px] rounded-[14px] md:h-[245px] h-[260px]`}
               >
                 <div className="overflow-y-auto custom-scrollbar w-full">
                   {searchInput ? (
@@ -194,7 +194,7 @@ const SelectElement = () => {
               </div>
             </div>
 
-            <div onClick={close} className=" w-[330px]">
+            <div onClick={close} className=" w-[300px]">
               <Button variant="Fadeout">Close</Button>
             </div>
           </div>

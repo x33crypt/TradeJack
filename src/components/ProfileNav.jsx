@@ -25,34 +25,30 @@ const ProfileNav = () => {
       {show && (
         <div>
           <LockByScroll />
-          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col  bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[350px] ">
-              <div className="flex justify-between items-center gap-[15px] px-[15px] py-[12.3px]  border-b border-tradeAshLight">
-                <div onClick={close}>
-                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
-                </div>
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex flex-col gap-[10px] items-center justify-center z-40">
+            <div className="flex p-[12px] bg-tradeAsh border border-tradeAshLight items-center gap-3 rounded-[10px] w-[300px]">
+              <div className="cursor-pointer w-[40px]">
+                <img src={landingImg4} alt="" className="rounded-full" />
               </div>
 
-              <div className="flex flex-1 flex-col justify-between gap-[25px] p-[15px]">
-                <div className="flex flex-col items-center justify-center gap-3 ">
-                  <div className="cursor-pointer w-[80px]">
-                    <img src={landingImg4} alt="" className="rounded-full" />
-                  </div>
+              <div className="flex flex-col gap-[5px] bg">
+                <p className="text-base leading-none text-white font-semibold">
+                  0xsanityy
+                </p>
+                <p className="text-xs font-semibold text-tradeFadeWhite leading-none">
+                  adeleke@gmail.com
+                </p>
+              </div>
+            </div>
 
-                  <p className="text-sm font-semibold text-white leading-none">
-                    adeleke@gmail.com
-                  </p>
-                </div>
-
+            <div className="flex flex-col  bg-tradeAsh border border-tradeAshLight rounded-[15px] shadow-lg w-[300px] ">
+              <div className="flex flex-1 flex-col justify-between gap-[15px] p-[12px]">
                 <div className="bg-tradeAsh p-[12px rounded-[15px] shadow-lg flex flex-col gap-[5px] borde border-tradeAshLight">
                   <Button variant="outline" onClick={toAccount}>
                     Account
                   </Button>
                   <Button variant="outline">Settings</Button>
                   <Button variant="danger">Log Out</Button>
-                  {/* <p className="p-[12px] bg-red-600 text-white text-sm font-medium rounded-[10px] transition-all duration-300 cursor-pointer">
-                    Log Out
-                  </p> */}
                 </div>
 
                 <div className="flex items-center justify-center">
@@ -61,6 +57,10 @@ const ProfileNav = () => {
                   </p>
                 </div>
               </div>
+            </div>
+
+            <div onClick={close} className=" w-[300px]">
+              <Button variant="Fadeout">Close</Button>
             </div>
           </div>
         </div>
