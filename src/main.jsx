@@ -8,7 +8,6 @@ import { TradeAlertProvider } from "./context/TradeAlertContext";
 import { SelectElementProvider } from "./context/SelectElementContext";
 import { CreateOfferProvider } from "./context/offer/CreateOfferContext";
 import { EditOfferProvider } from "./context/offer/EditOfferContext";
-import { OfferFilterProvider } from "./context/OfferFilterContext";
 import { ProfileProvider } from "./context/ProfileContext";
 import { ToastProvider } from "./context/ToastContext";
 import { DashboardProvider } from "./context/DashboardContext";
@@ -47,17 +46,15 @@ root.render(
                                 <AuthProvider>
                                   <DashboardProvider>
                                     <ToastProvider>
-                                      <OfferFilterProvider>
-                                        <EditOfferProvider>
-                                          <CreateOfferProvider>
-                                            <SelectElementProvider>
-                                              <TradeAlertProvider>
-                                                <App />
-                                              </TradeAlertProvider>
-                                            </SelectElementProvider>
-                                          </CreateOfferProvider>
-                                        </EditOfferProvider>
-                                      </OfferFilterProvider>
+                                      <EditOfferProvider>
+                                        <CreateOfferProvider>
+                                          <SelectElementProvider>
+                                            <TradeAlertProvider>
+                                              <App />
+                                            </TradeAlertProvider>
+                                          </SelectElementProvider>
+                                        </CreateOfferProvider>
+                                      </EditOfferProvider>
                                     </ToastProvider>
                                   </DashboardProvider>
                                 </AuthProvider>

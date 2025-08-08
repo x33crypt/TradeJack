@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import api from "@/utils/http/api";
-import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useExploreOffers } from "@/context/ExploreOffersContext";
 
-export function useFetchTransactions(initialPage = 1, limit = 10) {
-  const { setTransactions, filter, setFilter } = useTransaction();
+export function useFetchPublicOffers(initialPage = 1, limit = 10) {
+  const { setOffers, filter, setFilter } = useExploreOffers();
   const [page, setPage] = useState(initialPage);
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -13,6 +13,7 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
   // ─────────────────────────────────────────────────────────────
   // stable fetch helper (doesn't depend on `page`)
   // ─────────────────────────────────────────────────────────────
+
   const fetchPage = useCallback(
     async (pageToLoad) => {
       setLoading(true);
@@ -21,23 +22,35 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
       const buildUrl = () => {
         const params = new URLSearchParams();
 
-        if (filter?.type && filter.type !== "All types") {
-          params.append("type", filter.type.toLowerCase());
+        if (filter?.asset && filter.type !== "") {
+          params.append("asset", filter.type.toLowerCase());
         }
 
-        if (filter?.status && filter.status !== "All status") {
-          params.append("status", filter.status.toLowerCase());
+        if (filter?.currency && filter?.currency?.code !== "") {
+          params.append("currency", filter.currency.code.toLowerCase());
         }
 
-        if (filter?.date?.monthNo) {
-          params.append("month", filter.date.monthNo);
+        if (filter?.amount && filter?.amount !== "") {
+          params.append("amount", filter.amount);
         }
 
-        if (filter?.date?.year) {
-          params.append("year", filter.date.year);
+        if (filter?.sortBy && filter?.sortBy !== "") {
+          params.append("sort", filter.sortBy);
         }
 
-        return `/payment/wallet-history?${params.toString()}`;
+        if (filter?.activeTraders !== false) {
+          params.append("active", filter.activeTraders);
+        }
+
+        if (filter?.verifiedOffers !== false) {
+          params.append("verified", filter.verifiedOffers);
+        }
+
+        if (filter?.topPicks !== false) {
+          params.append("top-picks", filter.topPicks);
+        }
+
+        return `/service-provider/offers?page=${page}&limit=10?${params.toString()}`;
       };
 
       try {
@@ -52,10 +65,10 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
           const { data, pagination } = res.data;
 
           if (pageToLoad === 1) {
-            setTransactions(res.data);
+            setOffers(res.data);
             setDisplayedCount(data.length);
           } else {
-            setTransactions((prev) => ({
+            setOffers((prev) => ({
               ...res.data,
               data: [...prev.data, ...data],
             }));
@@ -75,16 +88,15 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
         setLoading(false);
       }
     },
-    [limit, filter, setTransactions]
+    [limit, filter, setOffers]
   );
 
   // first load – run once
-  useEffect(() => {
-    fetchPage(1); 
-  }, [filter, fetchPage]);
+  // useEffect(() => {
+  //   fetchPage(1);
+  // }, [filter, fetchPage]);
 
-  // 🔁 Refetch
-  const refetchTransactions = () => {
+  const fetchOffers = () => {
     fetchPage(1); // then fetch fresh with empty filter
   };
 
@@ -102,6 +114,6 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
     page,
     displayedCount, // how many txs are on screen
     next,
-    refetchTransactions,
+    fetchOffers,
   };
 }

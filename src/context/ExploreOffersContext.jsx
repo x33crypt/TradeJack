@@ -13,11 +13,10 @@ export const ExploreOffersProvider = ({ children }) => {
     asset: "",
     currency: { code: "", name: "" },
     amount: "",
-    all: true,
-    active: false,
-    bestMargin: false,
-    topFeedBack: false,
-    mostTrusted: false,
+    sortBy: "",
+    activeTraders: false,
+    verifiedOffers: false,
+    topPicks: false,
     clearFilter: false,
   });
 

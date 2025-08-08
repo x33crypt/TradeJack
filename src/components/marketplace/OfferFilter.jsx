@@ -102,11 +102,10 @@ const OfferFilter = () => {
       asset: "",
       currency: { code: "", name: "" },
       amount: "",
-      all: true,
-      active: false,
-      bestMargin: false,
-      topFeedBack: false,
-      mostTrusted: false,
+      sortBy: "",
+      activeTraders: false,
+      verifiedOffers: false,
+      topPicks: false,
       clearFilter: false,
     });
   };
@@ -322,10 +321,10 @@ const OfferFilter = () => {
               </div>
             </div>
 
-            {/* <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
+            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
               <div className="flex flex-col gap-[10px] w-full">
                 <p className="text-tradeFadeWhite text-xs font-medium">
-                  Recently active traders
+                  Sort By
                 </p>
                 <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
                   <input
@@ -351,36 +350,6 @@ const OfferFilter = () => {
                 </div>
               </div>
             </div>
-
-            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
-              <div className="flex flex-col gap-[10px] w-full">
-                <p className="text-tradeFadeWhite text-xs font-medium">
-                  Verified offers
-                </p>
-                <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
-                  <input
-                    className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
-                    type="text"
-                    readOnly
-                    placeholder="-- --"
-                    value={filter?.assetType}
-                    onClick={() =>
-                      setSelect({
-                        state: true,
-                        selectOne: true,
-                        selectTwo: false,
-                        page: "offer filter",
-                        element: "service",
-                        options: services,
-                      })
-                    }
-                  />
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                    <MdKeyboardArrowDown />
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </div>
 
           <div className="flex flex-col gap-[10px] ">

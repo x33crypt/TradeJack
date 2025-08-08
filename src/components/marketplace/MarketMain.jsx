@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import OfferCard from "../cards/Both/OfferCard";
-import { useOfferFilter } from "@/context/OfferFilterContext";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import OfferFilter from "./OfferFilter";
 import { BiSolidBinoculars } from "react-icons/bi";
@@ -13,15 +12,23 @@ import { IoClose } from "react-icons/io5";
 import { FaInfoCircle } from "react-icons/fa";
 import { RiFilter3Line } from "react-icons/ri";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { useFetchPublicOffers } from "@/hooks/useFetchPublicOffers";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import Loading from "../Loading";
+import NetworkError from "../NetworkError";
 
-const MarketMain = ({
-  promotedOffers,
-  unPromotedOffers,
-  handleFilterOffer,
-  select,
-  setSelect,
-}) => {
-  const { filter, setFilter } = useExploreOffers();
+const MarketMain = ({ promotedOffers }) => {
+  const topRef = useRef(null);
+  const { loading, fetchOffers, pagination, page, displayedCount, next } =
+    useFetchPublicOffers();
+  const { offers, filter, setFilter } = useExploreOffers();
+  const [triggerScroll, setTriggerScroll] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
+
+  console.log("Offers", offers);
+  console.log("Filter", filter);
+
+  const inputRef = useRef(null);
 
   const showFilter = () => {
     setFilter((prev) => ({
@@ -30,54 +37,86 @@ const MarketMain = ({
     }));
   };
 
-  const showAllOffers = () => {
+  const showActiveTraders = () => {
     setFilter((prev) => ({
       ...prev,
-      all: true,
-      active: false,
+      activeTraders: !prev.activeTraders,
+      verifiedOffers: false,
+      topPicks: false,
     }));
   };
 
-  const showActiveVendors = () => {
+  const showVerifiedOffers = () => {
     setFilter((prev) => ({
       ...prev,
-      active: !prev.active,
-      all: false,
+      activeTraders: false,
+      verifiedOffers: !prev.verifiedOffers,
+      topPicks: false,
     }));
   };
 
-  const showBestMargins = () => {
+  const showTopPicks = () => {
     setFilter((prev) => ({
       ...prev,
-      bestMargin: !prev.bestMargin,
-      topFeedBack: false,
-      mostTrusted: false,
-    }));
-  };
-
-  const showTopFeedBacks = () => {
-    setFilter((prev) => ({
-      ...prev,
-      topFeedBack: !prev.topFeedBack,
-      bestMargin: false,
-      mostTrusted: false,
-    }));
-  };
-
-  const showMostTrusted = () => {
-    setFilter((prev) => ({
-      ...prev,
-      mostTrusted: !prev.mostTrusted,
-      bestMargin: false,
-      topFeedBack: false,
+      activeTraders: false,
+      verifiedOffers: false,
+      topPicks: !prev.topPicks,
     }));
   };
 
   const navigateTo = useNavigate();
 
+  useEffect(() => {
+    setFilter({
+      state: false,
+      loading: false,
+      assetType: "",
+      asset: "",
+      currency: { code: "", name: "" },
+      amount: "",
+      sortBy: "",
+      activeTraders: false,
+      verifiedOffers: false,
+      topPicks: false,
+      clearFilter: false,
+    });
+
+    fetchOffers();
+  }, []);
+
+  // This Function handles Loading of transactions
+  // 👇 Scroll after page changes
+  useEffect(() => {
+    if (triggerScroll && transactionRef.current) {
+      transactionRef.current.scrollIntoView({ behavior: "smooth" });
+      setTriggerScroll(false); // reset flag
+    }
+  }, [page, triggerScroll]);
+
+  const scrollToTop = () => {
+    topRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
+
+  const handleNext = async () => {
+    setLoadingMore(true);
+    await next();
+    setLoadingMore(false);
+  };
+
+  const isEmpty = offers?.data?.length === 0;
+  const isEnd = pagination && !pagination.hasNextPage && !isEmpty;
+  const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
+
   return (
     <>
-      <div className="flex flex-col min-h-svh md:border-x md:border-t-0 lg:border-b border-neutral-800 ">
+      <div
+        ref={topRef}
+        className="flex flex-col min-h-svh md:border-x md:border-t-0 lg:border-b border-neutral-800 "
+      >
         <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
           <p className="text-lg font-[700] text-white ">
             Secure P2P Marketplace
@@ -102,20 +141,10 @@ const MarketMain = ({
                   <RiFilter3Line className=" text-[18px]" />
                   <p>Filter</p>
                 </div>
-                {/* <div
-                  onClick={showAllOffers}
-                  className={`${
-                    filter?.all
-                      ? "text-white bg-tradeAsh border-tradeGreen"
-                      : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                  } inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
-                  <p>All</p>
-                </div> */}
                 <div
-                  onClick={showActiveVendors}
+                  onClick={showActiveTraders}
                   className={`${
-                    filter?.active
+                    filter?.activeTraders
                       ? "text-white bg-tradeAsh border-tradeGreen"
                       : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
                   } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
@@ -123,9 +152,9 @@ const MarketMain = ({
                   <p>Active Traders</p>
                 </div>
                 <div
-                  onClick={showBestMargins}
+                  onClick={showVerifiedOffers}
                   className={`${
-                    filter?.bestMargin
+                    filter?.verifiedOffers
                       ? "text-white bg-tradeAsh border-tradeGreen"
                       : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
                   } flex items-center gap-1 w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
@@ -133,43 +162,14 @@ const MarketMain = ({
                   <p>Verified Offers</p>
                 </div>
                 <div
-                  onClick={showMostTrusted}
+                  onClick={showTopPicks}
                   className={`${
-                    filter?.mostTrusted
+                    filter?.topPicks
                       ? "text-white bg-tradeAsh border-tradeGreen"
                       : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
                   } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
                   <p>Top Picks</p>
-                </div>
-              </div>
-
-              <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
-                <div
-                  onClick={showBestMargins}
-                  className={`${
-                    filter?.bestMargin
-                      ? "text-white bg-tradeAsh border-tradeGreen"
-                      : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                  } flex items-center gap-1 w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
-                  <p>Sort by Rates</p>
-                  <div className="pointer-events-none text-white p-[1px] bg-tradeAshLight rounded-[4px]">
-                    <MdKeyboardArrowDown />
-                  </div>
-                </div>
-                <div
-                  onClick={showTopFeedBacks}
-                  className={`${
-                    filter?.topFeedBack
-                      ? "text-white bg-tradeAsh border-tradeGreen"
-                      : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                  } flex items-center gap-2 w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
-                  <p>Sort by Feedback</p>
-                  <div className="pointer-events-none text-white p-[1px] bg-tradeAshLight rounded-[4px]">
-                    <MdKeyboardArrowDown />
-                  </div>
                 </div>
               </div>
 
@@ -191,68 +191,43 @@ const MarketMain = ({
           </div>
 
           <div className="flex-1 flex flex-col p-[15px] gap-[15px]">
-            {/* <div className="flex flex-1 flex-col gap-1 md:gap-0 border border-t-0 border-tradeAshLight">
-              {promotedOffers?.map((offer, index) => (
-                <div key={index}>
-                  <OfferCard
-                    offerId={offer.offerId}
-                    isVerified={offer.isVerified}
-                    username={offer.username}
-                    isOnline={offer.isOnline}
-                    paymentWindow={offer.paymentWindow}
-                    service={offer.service}
-                    serviceType={offer.serviceType}
-                    minimum={offer.minimum}
-                    maximum={offer.maximum}
-                    positiveFeedback={offer.positiveFeedback}
-                    trustScore={offer.trustScore}
-                    currency={offer.currency}
-                    avgTradeTime={offer.avgTradeTime}
-                    margin={offer.margin}
-                  />
-                </div>
-              ))}
-            </div> */}
+            {loading && Array.isArray(offers?.data).length < 0 ? (
+              <Loading />
+            ) : (
+              <div className="flex flex-1">
+                {offers === null ? (
+                  <NetworkError />
+                ) : (
+                  <div className="flex flex-1">
+                    {Array.isArray(offers?.data) && offers?.data.length > 0 ? (
+                      <div className="flex flex-col gap-[5px] w-full h-max">
+                        {offers?.data?.map((offer, index) => (
+                          <div key={offer.id || index}>
+                            <OfferCard offer={offer} />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
+                        <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
+                          {/* <LuFileX2 /> */}
+                        </div>
 
-            <div className="flex flex-col gap-[5px] w-full h-max">
-              {promotedOffers?.map((offer, index) => (
-                <div key={offer.id || index}>
-                  <OfferCard offer={offer} />
-                </div>
-              ))}
-            </div>
+                        <p className="text-lg font-semibold text-white leading-none">
+                          No Transaction Record Found
+                        </p>
 
-            {/* <div className="flex flex-col gap-[15px]">
-            <div className="z-10 sticky top-[125px] flex justify-between items-center px-4 py-2 bg-tradeAshLight/80 shadow-sm">
-              <p className="text-white text-sm font-semibold">Published On</p>
-              <p className="text-tradeOrange text-sm font-semibold">
-                Saturday, Jun 24
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-1 md:gap-0 items-center border border-t-0 border-tradeAshLight">
-              {unPromotedOffers?.map((offer, index) => (
-                <div key={index}>
-                  <OfferCard
-                    offerId={offer.offerId}
-                    isVerified={offer.isVerified}
-                    username={offer.username}
-                    isOnline={offer.isOnline}
-                    paymentWindow={offer.paymentWindow}
-                    service={offer.service}
-                    serviceType={offer.serviceType}
-                    minimum={offer.minimum}
-                    maximum={offer.maximum}
-                    positiveFeedback={offer.positiveFeedback}
-                    trustScore={offer.trustScore}
-                    currency={offer.currency}
-                    avgTradeTime={offer.avgTradeTime}
-                    margin={offer.margin}
-                  />
-                </div>
-              ))}
-            </div>
-          </div> */}
+                        <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
+                          You haven’t made any transactions yet. When you do,
+                          your recent deposits activity will be shown here for
+                          easy tracking.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="bg-black lg:py-[15px] py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
@@ -266,7 +241,7 @@ const MarketMain = ({
                 <div
                   className={` text-tradeFadeWhite border-tradeAshLight inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
-                  <p>0</p>
+                  <p>{displayedCount}</p>
                 </div>
                 <div
                   className={` text-tradeFadeWhite border-tradeAshLight inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
@@ -276,17 +251,40 @@ const MarketMain = ({
                 <div
                   className={` text-tradeFadeWhite border-tradeAshLight inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
-                  <p>0</p>
+                  <p>{pagination?.totalItems ? pagination?.totalItems : "0"}</p>
                 </div>
               </div>
 
-              <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
-                <div
-                  className={`bg-tradeAshLight text-tradeGreen cursor-pointer border-tradeAshLight inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
-                  <p>Load More</p>
+              <div className="flex gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
+                <div className="flex">
+                  {pagination?.hasNextPage ? (
+                    <div
+                      onClick={handleNext}
+                      className={`flex items-center text-tradeFadeWhite hover:text-white cursor-pointer border-tradeAshLight  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                    >
+                      <p>
+                        {loadingMore ? (
+                          <AiOutlineLoading3Quarters className="animate-spin text-[15px]" />
+                        ) : (
+                          "Load more"
+                        )}
+                      </p>
+                    </div>
+                  ) : (
+                    (isEmpty || isEnd) && (
+                      <div
+                        className={`flex items-center text-tradeFadeWhite hover:text-white cursor-not-allowed border-tradeAshLight  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                      >
+                        <p className="text-[13px] font-semibold">{message}</p>
+                      </div>
+                    )
+                  )}
                 </div>
+
                 <div
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
                   className={` text-tradeFadeWhite hover:text-white cursor-pointer border-tradeAshLight inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
                   <p>Scroll to Top</p>
@@ -300,14 +298,8 @@ const MarketMain = ({
       {filter?.state && (
         <div>
           <LockByScroll />
-          <div
-            className={`flex z-30 fixed top-[57px] md:top-[64px] left-0 right-0 bottom-0 lg:hidden`}
-          >
-            <OfferFilter
-              handleFilterOffer={handleFilterOffer}
-              select={select}
-              setSelect={setSelect}
-            />
+          <div className="flex z-30 fixed top-[57px] md:top-[64px] left-0 right-0 bottom-0 lg:hidden">
+            <OfferFilter />
           </div>
         </div>
       )}

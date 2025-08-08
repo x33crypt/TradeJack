@@ -103,8 +103,6 @@ const TransactionHistory = () => {
     refetchTransactions();
   }, []);
 
-  console.log("recent transactions", transactions);
-
   const transactionStatus = [
     "All status",
     "Pending",

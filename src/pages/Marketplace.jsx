@@ -4,7 +4,6 @@ import MarketMain from "@/components/marketplace/MarketMain";
 import Footer from "@/components/Footer";
 import OfferFilter from "@/components/marketplace/OfferFilter";
 import axios from "axios";
-import { useOfferFilter } from "@/context/OfferFilterContext";
 import { useSelectElement } from "@/context/SelectElementContext";
 import { useExploreOffers } from "@/context/ExploreOffersContext";
 
