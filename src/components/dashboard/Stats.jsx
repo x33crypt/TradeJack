@@ -17,7 +17,7 @@ const Stats = ({ dashboard }) => {
       </div>
 
       <div className=" grid grid-cols-2 gap-[10px] rounded-[16px] p-[15px]">
-        <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[15px] p-[12px] rounded-2xl cursor-pointer hover:bg-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
+        <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-2xl cursor-pointer hover:bg-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
           <div className="flex items-center gap-2">
             <LuFileCheck2 className="text-base text-tradeGreen" />
 
@@ -27,7 +27,7 @@ const Stats = ({ dashboard }) => {
           </div>
 
           <div className="flex justify-between items-center">
-            <p className="text-white text-[24px] font-bold leading-tight">
+            <p className="text-white text-[13px] font-semibold leading-tight">
               {dashboard?.activitySummary?.successful_trades ?? "0"}
             </p>
             <span className="text-xs text-tradeGreen bg-tradeGreen/10 px-2 py-[2px] rounded-md font-medium">
@@ -36,7 +36,7 @@ const Stats = ({ dashboard }) => {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[15px] p-[12px] rounded-2xl cursor-pointer hover:bg-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
+        <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-2xl cursor-pointer hover:bg-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
           <div className="flex items-center gap-2">
             <LuFileX2 className="text-base text-red-600" />
             <p className="text-xs font-semibold text-tradeFadeWhite">
@@ -45,7 +45,7 @@ const Stats = ({ dashboard }) => {
           </div>
 
           <div className="flex justify-between items-center">
-            <p className="text-white text-[24px] font-bold leading-tight">
+            <p className="text-white text-[13px] font-semibold leading-tight">
               {dashboard?.activitySummary?.successful_trades
                 ? dashboard?.activitySummary?.successful_trades
                 : "0"}
@@ -53,7 +53,7 @@ const Stats = ({ dashboard }) => {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[15px] p-[12px] rounded-2xl cursor-pointer hover:bg-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
+        <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-2xl cursor-pointer hover:bg-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
           <div className="flex items-center gap-2">
             <LuFileClock className="text-base text-tradeOrange" />
             <p className="text-xs font-semibold text-tradeFadeWhite">
@@ -62,7 +62,7 @@ const Stats = ({ dashboard }) => {
           </div>
 
           <div className="flex justify-between items-center">
-            <p className="text-white text-[24px] font-bold leading-tight">
+            <p className="text-white text-[13px] font-semiboldleading-tight">
               {dashboard?.activitySummary?.pending_trades
                 ? dashboard?.activitySummary?.pending_trades
                 : "0"}
@@ -70,7 +70,7 @@ const Stats = ({ dashboard }) => {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[15px] p-[12px] rounded-2xl cursor-pointer hover:bg-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
+        <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-2xl cursor-pointer hover:bg-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
           <div className="flex items-center gap-2">
             <LuFileSearch className="text-base text-tradeFadeWhite" />
             <p className="text-xs font-semibold text-tradeFadeWhite">
@@ -79,7 +79,7 @@ const Stats = ({ dashboard }) => {
           </div>
 
           <div className="flex justify-between items-center">
-            <p className="text-white text-[24px] font-bold leading-tight">
+            <p className="text-white text-[13px] font-semibold leading-tight">
               {dashboard?.openDisputes ? dashboard?.openDisputes : "0"}
             </p>
           </div>

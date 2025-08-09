@@ -9,34 +9,32 @@ const Limits = ({ dashboard }) => {
         <p className="text-lg text-white font-semibold">Purchase Limits</p>
       </div>
       <div className="flex flex-col p-[15px] gap-[10px] h-full">
-        <div className="flex flex-col gap-[12.5px] ">
-          <div className="flex flex-col gap-[10px] p-[12px] rounded-[15px] bg-tradeAsh border border-tradeAshLight">
-            <div className="flex gap-1">
-              <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                <PiArrowDownFill className="text-tradeGreen text-sm" />
-              </div>
-              <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                <p className="text-tradeFadeWhite text-xs font-semibold">Min</p>
-              </div>
-            </div>
+        <div className="flex-1 flex flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+          <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+            <p className="text-[13px] text-tradeFadeWhite font-semibold">
+              Purchase Limits
+            </p>
 
-            <div className="flex-1 flex gap-[15px] items-center">
-              <p className=" text-white text-2xl font-semibold ">$50.00</p>
+            <div className="flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight bg-transparent  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
+              <p className="text-xs font-semibold">NGN</p>
             </div>
           </div>
-
-          <div className="flex flex-col gap-[10px] p-[12px] rounded-[15px] bg-tradeAsh border border-tradeAshLight ">
-            <div className="flex gap-1">
-              <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                <PiArrowUpFill className="text-tradeGreen text-sm" />
-              </div>
-              <div className="bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                <p className="text-tradeFadeWhite text-xs font-semibold">Max</p>
-              </div>
+          <div className="w-full flex flex-col gap-1">
+            <div className="flex items-center justify-between">
+              <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                Minimum
+              </p>
+              <p className="text-white text-[13px]  font-semibold">
+                #300,987.00
+              </p>
             </div>
-
-            <div className="flex-1 flex gap-[15px] items-center">
-              <p className=" text-white text-2xl font-semibold ">$50.00</p>
+            <div className="flex items-center justify-between">
+              <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                Maximum
+              </p>
+              <p className="text-white text-[13px] font-semibold">
+                #300,987.00
+              </p>
             </div>
           </div>
         </div>

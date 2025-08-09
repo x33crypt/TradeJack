@@ -22,7 +22,7 @@ const RecentWithdraw = () => {
         <p className="text-lg text-white font-semibold">Recent Withdraws</p>
       </div>
 
-      <div className="flex h-full min-h-[300px] p-[15px]">
+      <div className="flex md:h-full min-h-[120px] p-[15px]">
         {loading ? (
           <Loading />
         ) : (

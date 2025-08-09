@@ -28,13 +28,10 @@ const Dashboard = () => {
             <div className="flex lg:flex-row flex-col flex-1 md:p-0 gap-[5px]">
               <div className="flex flex-col flex-1 gap-[5px]">
                 <Balance dashboard={dashboard} />
-
                 <Stats dashboard={dashboard} />
-                <Ads />
               </div>
 
               <div className="lg:w-[350px] w-full flex flex-col gap-[5px]">
-                <Limits dashboard={dashboard} />
                 <Performance dashboard={dashboard} />
               </div>
             </div>

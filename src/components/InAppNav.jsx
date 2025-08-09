@@ -199,15 +199,9 @@ const InAppNav = () => {
                     Trade partners
                   </p>
                 </div>
-                <div
-                  className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
-                  onClick={() => {
-                    setIsNavOption(false);
-                  }}
-                >
+                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
                   <BsChatQuote className="text-[20px] text-tradeFadeWhite" />
                   <p className="text-white text-[13px]  font-medium ">
-                    {" "}
                     Messages
                   </p>
                 </div>
@@ -217,7 +211,13 @@ const InAppNav = () => {
                     Trade history
                   </p>
                 </div>
-                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                <div
+                  onClick={() => {
+                    navigateTo("/wallet/transactions");
+                    setIsNavOption(false);
+                  }}
+                  className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
+                >
                   <RiExchangeBoxLine className="text-[20px] text-tradeFadeWhite" />
                   <p className="text-white text-[13px]  font-medium ">
                     Transaction history

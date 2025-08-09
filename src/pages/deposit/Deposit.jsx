@@ -259,10 +259,10 @@ const Deposit = () => {
         <div className="flex-1 h-max flex flex-col md:flex-row md:gap-[5px] gap-[15px]">
           <div className="flex flex-col flex-1 md:border border-neutral-800">
             <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-              <p className="text-lg font-[700] text-white ">Add Funds</p>
+              <p className="text-lg font-[700] text-white ">Deposit Funds</p>
             </div>
 
-            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[10px] gap-[15px]">
+            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[10px] gap-[10px]">
               {/* Internal Deposit */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -313,9 +313,9 @@ const Deposit = () => {
                       onClick={selectNGN}
                       className={`${
                         depositDetails?.selectedCurrency === "NGN"
-                          ? "bg-tradeOrange"
-                          : "bg-transparent"
-                      } flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                          ? "bg-tradeOrange text-black"
+                          : "bg-transparent text-tradeFadeWhite"
+                      } flex items-center gap-1  border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                     >
                       <p className="text-xs font-semibold">NGN</p>
                     </div>
@@ -323,9 +323,9 @@ const Deposit = () => {
                       onClick={selectUSD}
                       className={`${
                         depositDetails?.selectedCurrency === "USD"
-                          ? "bg-tradeOrange"
-                          : "bg-transparent"
-                      } flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                          ? "bg-tradeOrange text-black"
+                          : "bg-transparent text-tradeFadeWhite"
+                      } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                     >
                       <p className="text-xs font-semibold">USD</p>
                     </div>
@@ -414,7 +414,7 @@ const Deposit = () => {
                 onClick={handleDeposit}
                 disabled={deposit?.loading}
               >
-                Add Cash Now
+                Proceed
               </Button>
 
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight h-[100px]">

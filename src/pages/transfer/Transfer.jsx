@@ -322,9 +322,9 @@ const Transfer = () => {
                       onClick={selectNGN}
                       className={`${
                         transfer?.currency === "NGN"
-                          ? "bg-tradeOrange"
-                          : "bg-transparent"
-                      } flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                          ? "bg-tradeOrange text-black"
+                          : "bg-transparent text-tradeFadeWhite"
+                      } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                     >
                       <p className="text-xs font-semibold">NGN</p>
                     </div>
@@ -332,9 +332,9 @@ const Transfer = () => {
                       onClick={selectUSD}
                       className={`${
                         transfer?.currency === "USD"
-                          ? "bg-tradeOrange"
-                          : "bg-transparent"
-                      } flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                          ? "bg-tradeOrange text-black"
+                          : "bg-transparent text-tradeFadeWhite"
+                      } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                     >
                       <p className="text-xs font-semibold">USD</p>
                     </div>
