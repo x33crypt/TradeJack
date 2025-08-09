@@ -14,6 +14,7 @@ import { useTransaction } from "@/context/wallet/TransactionContext";
 import { useBalance } from "@/context/BalanceContext";
 import { useFetchBalance } from "@/hooks/useFetchBalance";
 import { useFetchTransactions } from "@/hooks/useFetchTransactions";
+import { IoWalletOutline } from "react-icons/io5";
 
 const Transfer = () => {
   const { loading, error, refetch } = useFetchBalance();
@@ -267,15 +268,76 @@ const Transfer = () => {
         <div className="flex-1 h-max flex flex-col md:flex-row md:gap-[5px] gap-[15px]">
           <div className="flex flex-col flex-1 md:border border-neutral-800">
             <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-              <p className="text-lg font-[700] text-white ">
-                Transfer to Wallet
+              <p className="text-lg font-[700] text-white ">Transfer Funds</p>
+            </div>
+
+            <div className="px-[15px] pt-[12px]">
+              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                Move your funds securely between wallets, accounts, or trades
+                with real-time processing and complete transaction transparency.
               </p>
             </div>
 
             <div className="h-full flex flex-col justify-between p-[15px] md:gap-[10px] gap-[15px]">
-              {/* Event */}
-              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
-                <p className="text-sm">Event</p>
+              {/* Wallet Balance */}
+              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    From Wallet
+                  </p>
+
+                  <div className="flex gap-1 items-cente">
+                    <div
+                      onClick={selectNGN}
+                      className={`${
+                        transfer?.currency === "NGN"
+                          ? "bg-tradeOrange text-black"
+                          : "bg-transparent text-tradeFadeWhite"
+                      } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                    >
+                      <p className="text-xs font-semibold">NGN</p>
+                    </div>
+                    <div
+                      onClick={selectUSD}
+                      className={`${
+                        transfer?.currency === "USD"
+                          ? "bg-tradeOrange text-black"
+                          : "bg-transparent text-tradeFadeWhite"
+                      } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                    >
+                      <p className="text-xs font-semibold">USD</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-[10px] w-full border- border-tradeAshLight">
+                  <div className="p-[10px] bg-tradeAshLight w-max rounded-[10px]  border border-tradeAshExtraLight">
+                    <IoWalletOutline className="text-[30px] text-tradeWhite" />
+                  </div>
+                  <div className="flex flex-col gap-[3px]">
+                    <p className="text-tradeFadeWhite text-xs font-medium">
+                      Current balance
+                    </p>
+
+                    <div>
+                      {transfer?.currency === "NGN" ? (
+                        <p className="text-white text-[13px] font-semibold">
+                          NGN{" "}
+                          {balance?.available_balance?.NGN
+                            ? toDecimal(balance?.available_balance?.NGN)
+                            : "0.00"}
+                        </p>
+                      ) : (
+                        <p className="text-white text-[13px] font-semibold">
+                          USD{" "}
+                          {balance?.available_balance?.USD
+                            ? toDecimal(balance?.available_balance?.USD)
+                            : "0.00"}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Recipient Wallet */}

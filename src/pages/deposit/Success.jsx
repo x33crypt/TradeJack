@@ -12,7 +12,7 @@ import { BsCardText } from "react-icons/bs";
 import { RiBankLine } from "react-icons/ri";
 import { MdNotes } from "react-icons/md";
 
-const PendingDeposit = () => {
+const Success = () => {
   const { deposit, setDeposit } = useDepositContext();
   const { depositPending, depositReference, depositAmount } = deposit;
 
@@ -115,4 +115,4 @@ const PendingDeposit = () => {
   );
 };
 
-export default PendingDeposit;
+export default Success;

@@ -29,7 +29,7 @@ const LinkedAccount = () => {
       </div>
 
       <div className="flex flex-col p-[15px] gap-[10px]">
-        <div className="flex min-h-[125px] w-full">
+        <div className="flex min-h-[120px] w-full">
           {loading ? (
             <Loading />
           ) : (

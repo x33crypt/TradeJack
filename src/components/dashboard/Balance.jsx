@@ -26,9 +26,9 @@ const Balance = ({ dashboard }) => {
   return (
     <div className="flex flex-col md:border border-neutral-800">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-semibold text-tradeFadeWhite flex items-center gap-1">
+        <p className="text-lg font-medium text-tradeFadeWhite flex items-center gap-1">
           Welcome back,{" "}
-          <span className=" text-white ">
+          <span className=" text-white font-semibold ">
             {dashboard?.profile?.username || "User"}
           </span>
         </p>

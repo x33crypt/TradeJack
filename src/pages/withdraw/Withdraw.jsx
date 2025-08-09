@@ -285,6 +285,9 @@ const Withdraw = () => {
                   <p className="text-[13px] text-tradeFadeWhite font-semibold">
                     From Wallet
                   </p>
+
+
+                  
                 </div>
 
                 <div className="flex items-center gap-[10px] w-full border- border-tradeAshLight">
@@ -296,7 +299,10 @@ const Withdraw = () => {
                       Current balance
                     </p>
                     <p className="text-white text-[13px] font-semibold">
-                      NGN {toDecimal(balance?.available_balance?.NGN)}
+                      NGN{" "}
+                      {balance?.available_balance?.NGN
+                        ? toDecimal(balance?.available_balance?.NGN)
+                        : "0.00"}
                     </p>
                   </div>
                 </div>

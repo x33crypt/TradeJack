@@ -12,20 +12,10 @@ import { useBalance } from "@/context/BalanceContext";
 import { submitTransfer } from "@/utils/wallet/transfer";
 import { useToast } from "@/context/ToastContext";
 
-const ConfirmTransfer = () => {
+const Confirm = () => {
   const { balance } = useBalance();
   const { transfer, setTransfer } = useTransferContext();
-  const {
-    error,
-    confirm,
-    success,
-    loading,
-    username,
-    amount,
-    charges,
-    referenceId,
-    date,
-  } = transfer;
+  const { confirm, loading, username, amount } = transfer;
   const { setToast } = useToast();
 
   console.log("Balance in Withdraw:", balance?.available_balance);
@@ -57,7 +47,6 @@ const ConfirmTransfer = () => {
         confirm: false,
         success: true,
         loading: false,
-        currency: "NGN",
         charges: {
           USD: null,
           NGN: null,
@@ -83,8 +72,8 @@ const ConfirmTransfer = () => {
         <div>
           <LockByScroll />
           {/* Modal */}
-          <div className="fixed top-0 right-0 left-0 bottom-0 lg:px-[2%] md:px-[2.5%] px-[30px]  bg-black bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[350px] min-h-[400px] ">
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
                   Confirm Transfer
@@ -114,49 +103,30 @@ const ConfirmTransfer = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col bg-tradeAshLight  border border-tradeAshLight rounded-[15px]">
-                    <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAsh">
-                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                  <div className="w-full flex flex-col gap-1 bg-tradeAshLight p-[12px] rounded-[15px]">
+                    <div className="flex items-center justify-between">
+                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Amount
                       </p>
-
-                      <p className="text-[13px]  font-semibold text-white">
-                        NGN {toDecimal(amount?.NGN)}
-                      </p>
+                      <div>
+                        {transfer?.currency === "USD" ? (
+                          <p className="text-white text-[13px]  font-semibold">
+                            ${toDecimal(amount?.USD)}
+                          </p>
+                        ) : (
+                          <p className="text-white text-[13px]  font-semibold">
+                            #{toDecimal(amount?.NGN)}
+                          </p>
+                        )}
+                      </div>
                     </div>
-                    <div className="flex items-center justify-between gap-[10px] p-[8px] border-b border-tradeAsh">
-                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
-                        Current Balance
+                    <div className="flex items-center justify-between">
+                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                        Fee
                       </p>
-
-                      <p className="text-[13px]  font-semibold text-white">
-                        NGN {toDecimal(balance?.available_balance?.NGN)}
+                      <p className="text-white text-[13px] font-semibold">
+                        #0.00
                       </p>
-                    </div>
-                    <div className="flex items-center justify-between gap-[10px] p-[8px]">
-                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
-                        Service Charge
-                      </p>
-
-                      <p className="text-[13px]  font-semibold text-white">
-                        NGN 0.00
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
-                    <p className="text-tradeFadeWhite text-xs font-medium">
-                      Add a note
-                    </p>
-
-                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                      <input
-                        className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-[13px] font-semibold leading-none"
-                        type="text"
-                        placeholder="What's this for?"
-                        // onChange={handleUsernameChange}
-                        // value={transfer?.username}
-                      />
                     </div>
                   </div>
                 </div>
@@ -177,4 +147,4 @@ const ConfirmTransfer = () => {
   );
 };
 
-export default ConfirmTransfer;
+export default Confirm;
