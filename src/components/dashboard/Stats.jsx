@@ -13,7 +13,7 @@ const Stats = ({ dashboard }) => {
   return (
     <div className="flex flex-col md:border border-neutral-800">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">Trading Stats</p>
+        <p className="text-lg font-[700] text-white ">Trade Stats</p>
       </div>
 
       <div className=" grid grid-cols-2 gap-[10px] rounded-[16px] p-[15px]">
