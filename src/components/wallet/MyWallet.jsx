@@ -11,6 +11,9 @@ import toDecimal from "@/utils/toDecimal";
 import Info from "../alerts/Info";
 import { useBalance } from "@/context/BalanceContext";
 import { FaQuestionCircle } from "react-icons/fa";
+import { IoRefreshCircleOutline } from "react-icons/io5";
+import { MdOutlineRefresh } from "react-icons/md";
+import Loading from "../Loading";
 
 const MyWallet = () => {
   const { balance, setBalance } = useBalance();
@@ -66,10 +69,7 @@ const MyWallet = () => {
             </div>
 
             <div className="flex gap-1 items-cente">
-              <div
-                onClick={toggleBalanceVisibility}
-                className="flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight bg-transparent  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer"
-              >
+              <div className="flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight bg-transparent  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
                 <p className="text-xs font-semibold">NGN</p>
               </div>
 
@@ -83,53 +83,74 @@ const MyWallet = () => {
           </div>
 
           <div className="flex flex-col w-full gap-[20px]">
-            <div className="flex items-center w-full">
-              {balance?.available_balance.NGN ? (
-                <div className="flex flex-col gap-[15px]">
-                  <p
-                    className={`text-white md:text-[35px] text-[30px] font-semibold transition-all duration-300 ease-in-out transform ${
-                      showBalance
-                        ? "opacity-100 scale-100"
-                        : "opacity-50 scale-95"
-                    }`}
-                  >
-                    {showBalance
-                      ? `#${toDecimal(balance.available_balance.NGN)}`
-                      : "****"}
-                  </p>
-                </div>
+            <div className="flex md:h-[48px] h-[45px]">
+              {loading ? (
+                <Loading />
               ) : (
-                <div className="flex h-[35px] items-center">
-                  <Info text="Balance unavailable. Check your internet connection or refresh the page to try again." />
+                <div className="flex items-center w-full ">
+                  {balance?.available_balance.NGN ? (
+                    <div className="flex flex-col gap-[15px]">
+                      <p
+                        className={`text-white md:text-[35px] text-[30px] font-semibold transition-all duration-300 ease-in-out transform ${
+                          showBalance
+                            ? "opacity-100 scale-100"
+                            : "opacity-50 scale-95"
+                        }`}
+                      >
+                        {showBalance
+                          ? `#${toDecimal(balance.available_balance.NGN)}`
+                          : "****"}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center">
+                      <Info text="Balance unavailable. Check your internet connection or refresh the page to try again." />
+                    </div>
+                  )}
                 </div>
               )}
             </div>
 
-            <div className="flex gap-[10px] bg-tradeAs rounded-[15px] borde border-tradeAshLight">
-              <div
-                onClick={Deposit}
-                className="w-full md:w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-              >
-                <HiPlus className="text-[14px] text-tradeFadeWhite" />
-                <p className="text-white font-semibold  text-[13px]">Top up</p>
+            <div className="flex w-full justify-between items-center gap-[10px]">
+              <div className="flex gap-[10px] bg-tradeAs rounded-[15px] w-full">
+                <div
+                  onClick={Deposit}
+                  className="w-full md:w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                >
+                  <HiPlus className="text-[14px] text-tradeFadeWhite" />
+                  <p className="text-white font-semibold  text-[13px]">
+                    Top up
+                  </p>
+                </div>
+                <div
+                  onClick={Transfer}
+                  className="w-full md:w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight  px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                >
+                  <HiPlus className="text-[14px] text-tradeFadeWhite" />
+                  <p className="text-white font-semibold  text-[13px]">
+                    Transfer
+                  </p>
+                </div>
+                <div
+                  onClick={Withdraw}
+                  className=" w-full md:w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                >
+                  <HiPlus className="text-[14px] text-tradeFadeWhite" />
+                  <p className="text-white font-semibold  text-[13px]">
+                    Withdraw
+                  </p>
+                </div>
               </div>
+
               <div
-                onClick={Transfer}
-                className="w-full md:w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight  px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                onClick={refetch}
+                className="w-max flex gap-1 items-center justify-center bg-tradeOrange border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
               >
-                <HiPlus className="text-[14px] text-tradeFadeWhite" />
-                <p className="text-white font-semibold  text-[13px]">
-                  Transfer
-                </p>
-              </div>
-              <div
-                onClick={Withdraw}
-                className=" w-full md:w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-              >
-                <HiPlus className="text-[14px] text-tradeFadeWhite" />
-                <p className="text-white font-semibold  text-[13px]">
-                  Withdraw
-                </p>
+                <MdOutlineRefresh
+                  className={`${
+                    loading && "animate-spin"
+                  } text-[16px] text-black`}
+                />
               </div>
             </div>
           </div>

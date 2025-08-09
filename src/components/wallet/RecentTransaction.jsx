@@ -9,7 +9,7 @@ import Info from "../alerts/Info";
 import { LuFileX2 } from "react-icons/lu";
 import NetworkError from "../NetworkError";
 
-const RecentTransaction = () => {
+const RecentTransaction = ({ scrollToTop }) => {
   const { loading, refetchTransactions } = useFetchTransactions();
   const { transactions, setFilter } = useTransaction();
   const navigateTo = useNavigate();
@@ -27,21 +27,17 @@ const RecentTransaction = () => {
   console.log("recent transactions", transactions);
 
   return (
-    <div className="flex flex-col h-full  md:border border-neutral-800">
+    <div className="flex flex-col h-full md:border border-neutral-800">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Recent Transaction</p>
 
         <div
           onClick={() => navigateTo("/wallet/transactions")}
           className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
-        >
-          <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-            <p className="text-[13px] font-semibold">See More</p>
-          </div>
-        </div>
+        ></div>
       </div>
 
-      <div className="flex h-full min-h-[300px] p-[15px]">
+      <div className="flex h-full min-h-[125px] p-[15px]">
         {loading ? (
           <Loading />
         ) : (
@@ -52,19 +48,14 @@ const RecentTransaction = () => {
               <div className="flex flex-1">
                 {Array.isArray(transactions?.data) &&
                 transactions?.data.length > 0 ? (
-                  <div className="flex flex-col gap-[5px] md:gap-0 w-full md:overflow-hidden  md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
-                    {transactions?.data?.map((transaction, index) => (
-                      <div
-                        key={transaction.id || index}
-                        className={`${
-                          index !== transactions?.data?.length - 1
-                            ? "md:border-b border-tradeAshLight"
-                            : ""
-                        }`}
-                      >
-                        <TransactionCard transaction={transaction} />
-                      </div>
-                    ))}
+                  <div className="flex flex-col gap-[5px] w-full">
+                    {transactions?.data
+                      ?.slice(0, 5)
+                      ?.map((transaction, index) => (
+                        <div key={transaction.id || index}>
+                          <TransactionCard transaction={transaction} />
+                        </div>
+                      ))}
                   </div>
                 ) : (
                   <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
@@ -87,6 +78,45 @@ const RecentTransaction = () => {
             )}
           </div>
         )}
+      </div>
+
+      <div className="custom-x-scrollbar flex p-[15px] gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
+        <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
+          <div className="md:flex hidden items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+            <p className="text-[13px] font-semibold ">Data</p>
+          </div>
+          <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+            <p className="text-[13px] font-semibold">5</p>
+          </div>
+
+          <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+            <p className="text-[13px] font-semibold">of</p>
+          </div>
+
+          <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+            <p className="text-[13px] font-semibold">
+              {transactions?.pagination?.totalItems}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex gap-[5px] py-[1px]">
+          <div
+            onClick={() => navigateTo("/wallet/transactions")}
+            className="flex cursor-pointer items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max"
+          >
+            <p className="text-[13px] font-semibold">Load more</p>
+          </div>
+
+          <div
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
+          >
+            <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+              <p className="text-[13px] font-semibold">Scroll to Top</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

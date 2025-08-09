@@ -173,7 +173,7 @@ const MyOffer = () => {
   };
 
   useEffect(() => {
-    scrollToTop();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   return (
@@ -210,7 +210,7 @@ const MyOffer = () => {
                 >
                   <div
                     onClick={handleShowActiveOffers}
-                    className={`text-black bg-tradeOrange  hover:text-white flex items-center gap-1  w-max px-[8px] py-[4px] text-[20px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                    className={`text-black bg-tradeOrange  hover:text-white flex items-center gap-1  w-max px-[8px] py-[4px] text-[20px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                   >
                     <FaSearch />
                   </div>

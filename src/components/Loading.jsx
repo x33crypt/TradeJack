@@ -1,10 +1,10 @@
 import React from "react";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { MdOutlineRefresh } from "react-icons/md";
 
 const Loading = () => {
   return (
-    <div className="flex-1 flex items-center justify-center">
-      <AiOutlineLoading3Quarters className="animate-spin md:text-[22px] text-tradeFadeWhite" />
+    <div className="flex-1 flex items-center justify-center bg-tradeAsh rounded-[15px]">
+      <MdOutlineRefresh className="animate-spin md:text-[22px] text-tradeFadeWhite" />
     </div>
   );
 };

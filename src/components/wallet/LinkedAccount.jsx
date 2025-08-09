@@ -29,8 +29,8 @@ const LinkedAccount = () => {
       </div>
 
       <div className="flex flex-col p-[15px] gap-[10px]">
-        <div className="flex min-h-[100px] w-full">
-          {false ? (
+        <div className="flex min-h-[125px] w-full">
+          {loading ? (
             <Loading />
           ) : (
             <div className="flex flex-1">
@@ -39,7 +39,7 @@ const LinkedAccount = () => {
               ) : (
                 <div className="flex flex-1">
                   {linkedAccounts?.length && linkedAccounts?.length !== 0 ? (
-                    <div className="flex flex-1 flex-col gap-[10px] justify-between">
+                    <div className="flex flex-1 flex-col gap-[10px] justify-between ">
                       <div className="flex flex-col gap-[10px] h-full">
                         {linkedAccounts.map((account, index) => (
                           <div
@@ -69,8 +69,8 @@ const LinkedAccount = () => {
                               </div>
 
                               {account?.isDefault && (
-                                <div className="flex items-center text-tradeFadeWhite border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px]">
-                                  <TiPin />
+                                <div className="w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                                  <TiPin className="text-[16px] text-tradeFadeWhite" />
                                 </div>
                               )}
                             </div>
