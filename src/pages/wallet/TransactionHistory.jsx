@@ -291,16 +291,9 @@ const TransactionHistory = () => {
                     <div className="flex flex-1">
                       {Array.isArray(transactions?.data) &&
                       transactions?.data.length > 0 ? (
-                        <div className="flex flex-col gap-[5px] md:gap-0 w-full h-max md:overflow-hidden md:bg-tradeAsh md:rounded-[15px] md:border border-tradeAshLight">
+                        <div className="flex flex-col gap-[5px] w-full">
                           {transactions?.data?.map((transaction, index) => (
-                            <div
-                              key={transaction.id || index}
-                              className={`${
-                                index !== transactions?.data.length - 1
-                                  ? "md:border-b border-tradeAshLight"
-                                  : ""
-                              }`}
-                            >
+                            <div key={transaction.id || index}>
                               <TransactionCard transaction={transaction} />
                             </div>
                           ))}

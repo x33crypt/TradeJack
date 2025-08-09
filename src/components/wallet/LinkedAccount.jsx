@@ -46,7 +46,7 @@ const LinkedAccount = () => {
                             key={index}
                             className="flex items-center gap-[15px] p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px]"
                           >
-                            <div className="p-[10px] bg-tradeAshLight rounded-[10px]">
+                            <div className="p-[10px] bg-tradeAshLight rounded-[10px]  border border-tradeAshExtraLight">
                               <img
                                 className="w-[30px]"
                                 src={account?.logo}

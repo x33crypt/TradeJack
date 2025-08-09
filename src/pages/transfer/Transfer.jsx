@@ -281,11 +281,9 @@ const Transfer = () => {
               {/* Recipient Wallet */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-tradeGreen text-xs font-medium ">
-                      Transfer To
-                    </p>
-                  </div>
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    Transfer To
+                  </p>
                 </div>
 
                 <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
@@ -313,22 +311,22 @@ const Transfer = () => {
               {/* Amount */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-tradeGreen text-xs font-medium ">
+                  <div className="flex gap-1 items-center">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       Currency
                     </p>
                   </div>
 
-                  <div className="flex gap-1">
+                  <div className="flex gap-1 items-cente">
                     <div
                       onClick={selectNGN}
                       className={`${
                         transfer?.currency === "NGN"
                           ? "bg-tradeOrange"
                           : "bg-transparent"
-                      }  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                      } flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                     >
-                      <p className="text-white text-xs font-bold">NGN</p>
+                      <p className="text-xs font-semibold">NGN</p>
                     </div>
                     <div
                       onClick={selectUSD}
@@ -336,12 +334,13 @@ const Transfer = () => {
                         transfer?.currency === "USD"
                           ? "bg-tradeOrange"
                           : "bg-transparent"
-                      }  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                      } flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                     >
-                      <p className="text-white text-xs font-bold">USD</p>
+                      <p className="text-xs font-semibold">USD</p>
                     </div>
                   </div>
                 </div>
+
                 <div className="flex flex-col w-full">
                   {transfer?.currency === "NGN" ? (
                     // NGN

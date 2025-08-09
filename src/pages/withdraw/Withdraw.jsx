@@ -278,25 +278,24 @@ const Withdraw = () => {
             <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
               <p className="text-lg font-[700] text-white ">Withdraw Funds</p>
             </div>
-            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[10px] gap-[15px]">
+            <div className="h-full flex flex-col justify-between p-[15px] gap-[10px]">
               {/* Wallet */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-tradeGreen text-xs font-medium ">
-                      From Wallet
-                    </p>
-                  </div>
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    From Wallet
+                  </p>
                 </div>
+
                 <div className="flex items-center gap-[10px] w-full border- border-tradeAshLight">
-                  <div className="p-[10px] bg-tradeAshLight w-max rounded-[10px]">
-                    <IoWalletOutline className="text-[25px] text-tradeWhite" />
+                  <div className="p-[10px] bg-tradeAshLight w-max rounded-[10px]  border border-tradeAshExtraLight">
+                    <IoWalletOutline className="text-[30px] text-tradeWhite" />
                   </div>
                   <div className="flex flex-col gap-[3px]">
                     <p className="text-tradeFadeWhite text-xs font-medium">
                       Current balance
                     </p>
-                    <p className="text-white text-[15px] font-semibold">
+                    <p className="text-white text-[13px] font-semibold">
                       NGN {toDecimal(balance?.available_balance?.NGN)}
                     </p>
                   </div>
@@ -306,20 +305,18 @@ const Withdraw = () => {
               {/* Account */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-tradeGreen text-xs font-medium ">
-                      To Bank Account
-                    </p>
-                  </div>
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    To Bank Account
+                  </p>
 
                   <div className="flex gap-1">
                     <div
                       onClick={selectDefaultAccount}
-                      className={` ${
+                      className={`${
                         withdraw?.account === "Default"
                           ? "bg-tradeOrange"
                           : "bg-transparent"
-                      }  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                      } flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                     >
                       <p className="text-white text-xs font-bold">Default</p>
                     </div>
@@ -331,7 +328,7 @@ const Withdraw = () => {
                           withdraw?.account === "Alternative"
                             ? "bg-tradeOrange"
                             : "bg-transparent"
-                        } px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                        } flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                       >
                         <p className="text-white text-xs font-bold">
                           Alternative
@@ -340,11 +337,11 @@ const Withdraw = () => {
                     )}
                   </div>
                 </div>
-                <div className="flex items-center gap-[10px] w-full border- border-tradeAshLight">
-                  <div className="p-[10px] bg-tradeAshLight rounded-[10px]">
+                <div className="flex items-center gap-[10px] w-full ">
+                  <div className="p-[10px] bg-tradeAshLight rounded-[10px] border border-tradeAshExtraLight">
                     {withdraw?.bank?.logo ? (
                       <img
-                        className="w-[30px]"
+                        className="w-[30px] "
                         src={
                           withdraw?.bank?.logo ||
                           "/images/default-bank-logo.png"
@@ -359,7 +356,7 @@ const Withdraw = () => {
                     <p className="text-tradeFadeWhite text-xs font-medium">
                       {withdraw?.bank?.bank_name || "Bank Name"}
                     </p>
-                    <p className="text-white text-[15px] font-semibold">
+                    <p className="text-white text-[13px] font-semibold">
                       {withdraw?.bank?.account_number || "Account Number"}
                     </p>
                   </div>
@@ -369,22 +366,22 @@ const Withdraw = () => {
               {/* Amount */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <div className="px-[6px] py-0.5 bg-tradeGreen/20 borde border-tradeAshExtraLight rounded-[4px] w-max">
-                    <p className="text-tradeGreen text-xs font-medium ">
+                  <div className="flex gap-1 items-center">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       Currency
                     </p>
                   </div>
 
-                  <div className="flex gap-1">
+                  <div className="flex gap-1 items-cente">
                     <div
                       onClick={selectNGN}
                       className={`${
                         withdraw?.currency === "NGN"
                           ? "bg-tradeOrange"
                           : "bg-transparent"
-                      }  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                      } flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                     >
-                      <p className="text-white text-xs font-bold">NGN</p>
+                      <p className="text-xs font-semibold">NGN</p>
                     </div>
                     <div
                       onClick={selectUSD}
@@ -392,9 +389,9 @@ const Withdraw = () => {
                         withdraw?.currency === "USD"
                           ? "bg-tradeOrange"
                           : "bg-transparent"
-                      }  px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max cursor-pointer transition-all duration-300`}
+                      } flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                     >
-                      <p className="text-white text-xs font-bold">USD</p>
+                      <p className="text-xs font-semibold">USD</p>
                     </div>
                   </div>
                 </div>

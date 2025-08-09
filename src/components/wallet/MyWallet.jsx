@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import { FaInfoCircle } from "react-icons/fa";
-import { RiArrowRightUpFill } from "react-icons/ri";
-import { RiArrowUpFill } from "react-icons/ri";
 import { FaEye } from "react-icons/fa";
-import { HiPlus } from "react-icons/hi";
 import { FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useFetchBalance } from "@/hooks/useFetchBalance";
@@ -11,9 +7,11 @@ import toDecimal from "@/utils/toDecimal";
 import Info from "../alerts/Info";
 import { useBalance } from "@/context/BalanceContext";
 import { FaQuestionCircle } from "react-icons/fa";
-import { IoRefreshCircleOutline } from "react-icons/io5";
 import { MdOutlineRefresh } from "react-icons/md";
 import Loading from "../Loading";
+import { RiSendPlaneLine } from "react-icons/ri";
+import { FaArrowUp } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa6";
 
 const MyWallet = () => {
   const { balance, setBalance } = useBalance();
@@ -117,7 +115,7 @@ const MyWallet = () => {
                   onClick={Deposit}
                   className="w-full md:w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
                 >
-                  <HiPlus className="text-[14px] text-tradeFadeWhite" />
+                  <FaPlus className="text-[14px] text-tradeFadeWhite" />
                   <p className="text-white font-semibold  text-[13px]">
                     Top up
                   </p>
@@ -126,7 +124,7 @@ const MyWallet = () => {
                   onClick={Transfer}
                   className="w-full md:w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight  px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
                 >
-                  <HiPlus className="text-[14px] text-tradeFadeWhite" />
+                  <RiSendPlaneLine className="text-[14px] text-tradeFadeWhite" />
                   <p className="text-white font-semibold  text-[13px]">
                     Transfer
                   </p>
@@ -135,7 +133,7 @@ const MyWallet = () => {
                   onClick={Withdraw}
                   className=" w-full md:w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
                 >
-                  <HiPlus className="text-[14px] text-tradeFadeWhite" />
+                  <FaArrowUp className="text-[14px] text-tradeFadeWhite" />
                   <p className="text-white font-semibold  text-[13px]">
                     Withdraw
                   </p>

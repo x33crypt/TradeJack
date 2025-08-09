@@ -20,14 +20,6 @@ const RecentTransfer = () => {
     <div className=" md:w-[350px] flex flex-col md:border border-neutral-800">
       <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg text-white font-semibold">Recent Transfer</p>
-        <div
-          onClick={() => navigateTo("/wallet/transactions")}
-          className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
-        >
-          <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-            <p className="text-[13px] font-semibold">See More</p>
-          </div>
-        </div>
       </div>
 
       <div className="flex h-full min-h-[300px] p-[15px]">
@@ -43,7 +35,7 @@ const RecentTransfer = () => {
                 transactions?.data.length > 0 ? (
                   <div className="flex flex-col gap-[5px] w-full">
                     {transactions?.data
-                      ?.slice(0, 6)
+                      ?.slice(0, 4)
                       ?.map((transaction, index) => (
                         <div key={transaction.id || index}>
                           <TransactionCard transaction={transaction} />
@@ -71,6 +63,33 @@ const RecentTransfer = () => {
             )}
           </div>
         )}
+      </div>
+
+      <div className="custom-x-scrollbar flex p-[15px] gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
+        <div className="flex gap-[5px] transition-all duration-300 py-[1px">
+          <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+            <p className="text-[13px] font-semibold">5</p>
+          </div>
+
+          <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+            <p className="text-[13px] font-semibold">of</p>
+          </div>
+
+          <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+            <p className="text-[13px] font-semibold">
+              {transactions?.pagination?.totalItems}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex gap-[5px] py-[1px]">
+          <div
+            onClick={() => navigateTo("/wallet/transactions")}
+            className="flex cursor-pointer items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max"
+          >
+            <p className="text-[13px] font-semibold">Load more</p>
+          </div>
+        </div>
       </div>
     </div>
   );
