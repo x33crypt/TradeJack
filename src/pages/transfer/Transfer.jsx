@@ -273,7 +273,7 @@ const Transfer = () => {
               </p>
             </div>
 
-            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[25px] gap-[10px]">
+            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[25px] gap-[15px]">
               {/* Wallet Balance */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -486,7 +486,9 @@ const Transfer = () => {
               >
                 Proceed
               </Button>
+            </div>
 
+            <div className="px-[15px] py-[12px]">
               <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
                 <p className="text-sm">Event</p>
               </div>
