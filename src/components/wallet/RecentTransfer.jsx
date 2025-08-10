@@ -68,7 +68,9 @@ const RecentTransfer = () => {
       <div className="custom-x-scrollbar flex p-[15px] gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
         <div className="flex gap-[5px] transition-all duration-300 py-[1px">
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-            <p className="text-[13px] font-semibold">5</p>
+            <p className="text-[13px] font-semibold">
+              {transactions?.pagination?.totalItems ? "5" : "0"}
+            </p>
           </div>
 
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
@@ -77,7 +79,9 @@ const RecentTransfer = () => {
 
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
             <p className="text-[13px] font-semibold">
-              {transactions?.pagination?.totalItems}
+              {transactions?.pagination?.totalItems
+                ? transactions?.pagination?.totalItems
+                : "0"}
             </p>
           </div>
         </div>

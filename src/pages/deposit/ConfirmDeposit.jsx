@@ -9,7 +9,7 @@ import { IoArrowRedoCircle } from "react-icons/io5";
 
 const ConfirmDeposit = () => {
   const { deposit, setDeposit } = useDepositContext();
-  const { confirm, url, amount } = deposit;
+  const { loading, confirm, url, amount } = deposit;
 
   const close = () => {
     setDeposit((prev) => ({
@@ -47,15 +47,17 @@ const ConfirmDeposit = () => {
                   Confirm Deposit
                 </p>
 
-                <div onClick={close}>
-                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
-                </div>
+                {!loading && (
+                  <div onClick={close}>
+                    <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
+                  </div>
+                )}
               </div>
 
               <div className="flex-1 flex flex-col justify-between py-[15px] gap-[30px]">
                 <div className="flex flex-col gap-[20px]">
                   <div className="flex flex-col items-center justify-center gap-3">
-                    <div className="p-[2px] bg-tradeAshExtraLight text-[55px] text-tradeOrange rounded-full">
+                    <div className="p-[2px] bg-tradeAshExtraLight text-[55px] text-tradeAsh rounded-full">
                       <IoArrowRedoCircle />
                     </div>
 
@@ -64,9 +66,9 @@ const ConfirmDeposit = () => {
                         You'll be redirected to Paystack to choose your payment
                         method
                       </p>
-                      <p className="text-[13px] font-medium text-center text-white">
+                      {/* <p className="text-[13px] font-semibold text-center text-white">
                         (Card, Bank Transfer, or USSD)
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 

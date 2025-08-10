@@ -57,6 +57,10 @@ const TransactionCard = ({ transaction }) => {
               <div className="p-[10px] rounded-full bg-red-600/5 text-lg items-center justify-center">
                 <IoMdArrowRoundUp className="text-red-600 text-xl" />
               </div>
+            ) : transaction?.type === "withdrawal" ? (
+              <div className="p-[10px] rounded-full bg-red-600/5 text-lg items-center justify-center">
+                <IoMdArrowRoundUp className="text-red-600 text-xl" />
+              </div>
             ) : (
               <div className="p-[10px] rounded-full bg-tradeFadeWhite/5 text-lg items-center justify-center">
                 <MdOutlineQuestionMark className="text-tradeFadeWhite" />
@@ -65,29 +69,7 @@ const TransactionCard = ({ transaction }) => {
           </div>
           <div className="flex flex-col gap-1">
             <p className="text-xs font-semibold text-tradeFadeWhite">
-              {(() => {
-                const { senderUsername, recipientUsername, type } =
-                  transaction || {};
-                if (
-                  senderUsername === "Unknown" &&
-                  recipientUsername === "Unknown" &&
-                  type === "deposit"
-                )
-                  return "Deposit";
-                if (
-                  senderUsername !== "Unknown" &&
-                  recipientUsername === "Unknown" &&
-                  type === "deposit"
-                )
-                  return "Transfer";
-                if (
-                  senderUsername === "Unknown" &&
-                  recipientUsername !== "Unknown" &&
-                  type === "transfer"
-                )
-                  return "Transfer";
-                return "Unknown Type";
-              })()}
+              {capitalizeFirst(transaction?.type)}
             </p>
 
             <p className="text-[13px] font-semibold text-white">
@@ -112,6 +94,12 @@ const TransactionCard = ({ transaction }) => {
                   type === "transfer"
                 )
                   return `@${recipientUsername}`;
+                if (
+                  senderUsername === "Unknown" &&
+                  recipientUsername === null &&
+                  type === "withdrawal"
+                )
+                  return `Bank Account`;
                 return "N/A";
               })()}
             </p>
@@ -134,6 +122,15 @@ const TransactionCard = ({ transaction }) => {
                   </p>
                 );
               if (type === "transfer" && recipientUsername !== "Unknown")
+                return (
+                  <p className="text-red-600 text-[13px] font-semibold">
+                    - #{toDecimal(amount?.ngn)}
+                  </p>
+                );
+              if (
+                (type === "withdrawal" && senderUsername === "Unknown") ||
+                (type === "withdrawal" && recipientUsername === null)
+              )
                 return (
                   <p className="text-red-600 text-[13px] font-semibold">
                     - #{toDecimal(amount?.ngn)}
@@ -186,6 +183,10 @@ const TransactionCard = ({ transaction }) => {
                 <div className="p-[10px] rounded-full bg-red-600/5 text-lg items-center justify-center">
                   <IoMdArrowRoundUp className="text-red-600 text-xl" />
                 </div>
+              ) : transaction?.type === "withdrawal" ? (
+                <div className="p-[10px] rounded-full bg-red-600/5 text-lg items-center justify-center">
+                  <IoMdArrowRoundUp className="text-red-600 text-xl" />
+                </div>
               ) : (
                 <div className="p-[10px] rounded-full bg-tradeFadeWhite/5 text-lg items-center justify-center">
                   <MdOutlineQuestionMark className="text-tradeFadeWhite" />
@@ -194,29 +195,7 @@ const TransactionCard = ({ transaction }) => {
             </div>
             <div className="flex flex-col gap-1">
               <p className="text-xs font-semibold text-tradeFadeWhite">
-                {(() => {
-                  const { senderUsername, recipientUsername, type } =
-                    transaction || {};
-                  if (
-                    senderUsername === "Unknown" &&
-                    recipientUsername === "Unknown" &&
-                    type === "deposit"
-                  )
-                    return "Deposit";
-                  if (
-                    senderUsername !== "Unknown" &&
-                    recipientUsername === "Unknown" &&
-                    type === "deposit"
-                  )
-                    return "Transfer";
-                  if (
-                    senderUsername === "Unknown" &&
-                    recipientUsername !== "Unknown" &&
-                    type === "transfer"
-                  )
-                    return "Transfer";
-                  return "Unknown Type";
-                })()}
+                {capitalizeFirst(transaction?.type)}
               </p>
 
               <p className="text-[13px] font-semibold text-white">
@@ -241,6 +220,12 @@ const TransactionCard = ({ transaction }) => {
                     type === "transfer"
                   )
                     return `@${recipientUsername}`;
+                  if (
+                    senderUsername === "Unknown" &&
+                    recipientUsername === null &&
+                    type === "withdrawal"
+                  )
+                    return `Bank Account`;
                   return "N/A";
                 })()}
               </p>
@@ -264,6 +249,15 @@ const TransactionCard = ({ transaction }) => {
                     </p>
                   );
                 if (type === "transfer" && recipientUsername !== "Unknown")
+                  return (
+                    <p className="text-red-600 text-[13px] font-semibold">
+                      - #{toDecimal(amount?.ngn)}
+                    </p>
+                  );
+                if (
+                  (type === "withdrawal" && senderUsername === "Unknown") ||
+                  (type === "withdrawal" && recipientUsername === null)
+                )
                   return (
                     <p className="text-red-600 text-[13px] font-semibold">
                       - #{toDecimal(amount?.ngn)}

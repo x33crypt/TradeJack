@@ -27,6 +27,10 @@ const Transfer = () => {
   console.log("Transfer Context:", transfer);
   console.log("Balance in Transfer:", balance?.available_balance);
 
+  useEffect(() => {
+    refetch();
+  }, []);
+
   const handleUsernameChange = (e) => {
     setTransfer((prev) => ({
       ...prev,
@@ -277,7 +281,7 @@ const Transfer = () => {
               </p>
             </div>
 
-            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[10px] gap-[15px]">
+            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[25px] gap-[10px]">
               {/* Wallet Balance */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">

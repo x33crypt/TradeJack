@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import LockByScroll from "@/components/LockByScroll";
 import Button from "@/components/buttons/Button";
 import { RiWaterFlashFill } from "react-icons/ri";
@@ -7,28 +6,62 @@ import { toDecimal } from "@/utils/toDecimal";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { MdDateRange } from "react-icons/md";
 import { MdOutlinePending } from "react-icons/md";
-import { useDepositContext } from "@/context/wallet/DepositContext";
-import { BsCardText } from "react-icons/bs";
-import { RiBankLine } from "react-icons/ri";
-import { MdNotes } from "react-icons/md";
+import { useWithdrawContext } from "@/context/wallet/WithdrawContext";
 import { MdPending } from "react-icons/md";
+import { useTransaction } from "@/context/wallet/TransactionContext";
+import { IoIosCheckmarkCircle } from "react-icons/io";
 
-const SuccessDeposit = () => {
-  const { deposit, setDeposit } = useDepositContext();
-  const { success, currency, amount, referenceId } = deposit;
+const SuccessWithdraw = () => {
+  const { details, setDetails } = useTransaction();
+  const { withdraw, setWithdraw } = useWithdrawContext();
+  const { success, currency, amount, bank, referenceId } = withdraw;
 
-  const viewDetails = () => {};
+  const defaultDepositState = {
+    error: "",
+    proceed: false,
+    confirm: false,
+    success: false,
+    loading: false,
+    currency: "NGN",
+    amount: {
+      USD: null,
+      NGN: null,
+    },
+    account: "Default",
+    bank: {},
+    charges: {
+      USD: null,
+      NGN: null,
+    },
+    referenceId: null,
+  };
+
+  const viewDetails = (transactionId) => {
+    setDeposit({ ...defaultDepositState });
+
+    setDetails({
+      state: true,
+      transactionId,
+      data: {},
+    });
+  };
 
   const close = () => {
     setDeposit((prev) => ({
       ...prev,
       error: "",
-      loading: false,
+      proceed: false,
       confirm: false,
       success: false,
+      loading: false,
       currency: "NGN",
-      url: null,
       amount: {
+        USD: null,
+        NGN: null,
+      },
+      account: "Default",
+      bank: {},
+      charges: {
         USD: null,
         NGN: null,
       },
@@ -46,7 +79,7 @@ const SuccessDeposit = () => {
             <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
-                  Deposit Feedback
+                  Withdraw Feedback
                 </p>
 
                 <div onClick={close}>
@@ -57,29 +90,33 @@ const SuccessDeposit = () => {
               <div className="flex-1 flex flex-col justify-between py-[15px] gap-[30px]">
                 <div className="flex flex-col gap-[20px]">
                   <div className="flex flex-col items-center justify-center gap-3">
-                    <div className="p-[2px] bg-tradeAshExtraLight text-[55px] text-tradeOrange rounded-full">
-                      <MdPending />
+                    <div className="p-[2px] bg-tradeAshExtraLight text-[55px] text-tradeGreen rounded-full">
+                      <IoIosCheckmarkCircle />
                     </div>
 
                     <p className="text-[13px] font-semibold text-white">
-                      Deposit Received
+                      Withdrawal Initiated
                     </p>
                   </div>
 
                   <p className="text-[13px] font-medium text-tradeFadeWhite leading-relaxed text-center">
-                    We've received your deposit request of{" "}
-                    <span className="font-semibold text-white">
+                    We've received your Withdrawal request of{" "}
+                    <span className="font-bold text-white">
                       {currency}{" "}
                       {currency === "USD"
-                        ? ` ${amount?.USD}`
-                        : `${amount?.NGN}`}
+                        ? ` ${toDecimal(amount?.USD)}`
+                        : `${toDecimal(amount?.NGN)}`}
                     </span>{" "}
-                    . Your wallet will be updated once the payment is confirmed.
+                    to your account ending{" "}
+                    <span className="font-bold text-white">
+                      {bank?.account_number}
+                    </span>
+                    . You will receive the funds once processing is completed.
                   </p>
 
                   <div className="flex flex-col bg-tradeAshLigh  borde border-tradeAshLight rounded-[15px]">
                     <div className="flex items-center justify-betwee justify-center gap-[10px] p-[8px border- border-tradeAsh">
-                      <p className="text-xs font-medium text-tradeFadeWhite">
+                      <p className="text-[13px] font-medium text-tradeFadeWhite">
                         Reference -{" "}
                         <span className="font-semibold text-white">
                           {referenceId}
@@ -106,4 +143,4 @@ const SuccessDeposit = () => {
   );
 };
 
-export default SuccessDeposit;
+export default SuccessWithdraw;

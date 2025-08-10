@@ -8,10 +8,11 @@ import image from "../../assets/landingImg4.JPG";
 import { submitTransfer } from "@/utils/wallet/transfer";
 import { useToast } from "@/context/ToastContext";
 
-const Confirm = () => {
+const ConfirmTransfer = () => {
   const { transfer, setTransfer } = useTransferContext();
   const { confirm, loading, username, amount } = transfer;
   const { setToast } = useToast();
+  
 
   const close = () => {
     setTransfer((prev) => ({
@@ -72,9 +73,11 @@ const Confirm = () => {
                   Confirm Transfer
                 </p>
 
-                <div onClick={close}>
-                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
-                </div>
+                {!loading && (
+                  <div onClick={close}>
+                    <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
+                  </div>
+                )}
               </div>
 
               <div className="flex-1 flex flex-col justify-between py-[15px] gap-[30px]">
@@ -125,7 +128,7 @@ const Confirm = () => {
                 </div>
 
                 <Button
-                  variant="secondary"
+                  variant="outline"
                   onClick={initiateTransfer}
                   disabled={loading}
                 >
@@ -140,4 +143,4 @@ const Confirm = () => {
   );
 };
 
-export default Confirm;
+export default ConfirmTransfer;

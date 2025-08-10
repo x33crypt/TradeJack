@@ -35,7 +35,7 @@ const RecentWithdraw = () => {
                 transactions?.data.length > 0 ? (
                   <div className="flex flex-col gap-[5px] w-full">
                     {transactions?.data
-                      ?.slice(0, 4)
+                      ?.slice(0, 5)
                       ?.map((transaction, index) => (
                         <div key={transaction.id || index}>
                           <TransactionCard transaction={transaction} />
@@ -68,7 +68,9 @@ const RecentWithdraw = () => {
       <div className="custom-x-scrollbar flex p-[15px] gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
         <div className="flex gap-[5px] transition-all duration-300 py-[1px">
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-            <p className="text-[13px] font-semibold">5</p>
+            <p className="text-[13px] font-semibold">
+              {transactions?.pagination?.totalItems ? "5" : "0"}
+            </p>
           </div>
 
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
@@ -77,7 +79,9 @@ const RecentWithdraw = () => {
 
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
             <p className="text-[13px] font-semibold">
-              {transactions?.pagination?.totalItems}
+              {transactions?.pagination?.totalItems
+                ? transactions?.pagination?.totalItems
+                : "0"}
             </p>
           </div>
         </div>

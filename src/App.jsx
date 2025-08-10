@@ -29,9 +29,8 @@ import Wallet from "./pages/wallet/Wallet";
 import Settings from "./pages/Settings";
 import Transfer from "./pages/transfer/Transfer";
 import Deposit from "./pages/deposit/Deposit";
-import ConfirmTransfer from "./pages/transfer/Confirm";
-import SuccessTransfer from "./pages/transfer/Success";
-import PendingDeposit from "./pages/deposit/SuccessDeposit";
+import ConfirmTransfer from "./pages/transfer/ConfirmTransfer";
+import SuccessTransfer from "./pages/transfer/SuccessTransfer";
 import TransactionHistory from "./pages/wallet/TransactionHistory";
 import TransactionDetails from "./pages/wallet/TransactionDetails";
 import MyAccounts from "./pages/accounts/MyAccounts";
@@ -41,8 +40,9 @@ import Withdraw from "./pages/withdraw/Withdraw";
 import ConfirmWithdraw from "./pages/withdraw/ConfirmWithdraw";
 import KycStatus from "./pages/kyc/KycStatus";
 import KycVerification from "./pages/kyc/KycVerification";
-import Confirm from "./pages/deposit/ConfirmDeposit";
 import ConfirmDeposit from "./pages/deposit/ConfirmDeposit";
+import SuccessDeposit from "./pages/deposit/SuccessDeposit";
+import SuccessWithdraw from "./pages/withdraw/SuccessWithdraw";
 
 const App = () => {
   return (
@@ -51,13 +51,14 @@ const App = () => {
       <ToastSuccess />
       <ToastError />
       <TradeAlert />
-      <ConfirmWithdraw />
-      <ConfirmTransfer />
-      <SuccessTransfer />
-      <PendingDeposit />
       <TransactionDetails />
       <ProfileNav />
+      <ConfirmTransfer />
+      <SuccessTransfer />
       <ConfirmDeposit />
+      <SuccessDeposit />
+      <ConfirmWithdraw />
+      <SuccessWithdraw />
       <Routes>
         {/* Public */}
         <Route path="/" element={<Landing />} />

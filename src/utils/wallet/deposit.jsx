@@ -10,8 +10,6 @@ const sanitizeInput = (input) => {
 export async function submitDeposit(transferDetails) {
   console.log("Initiating Wallet Deposit...");
 
-  const baseUrl = import.meta.env.VITE_API_URL;
-
   if (!transferDetails) {
     return { success: false, error: "No deposit details provided." };
   }
