@@ -7,7 +7,7 @@ export function useFetchLinkedBanks() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchLinkedAccounts = useCallback(async () => {
+  const fetchLinkedBanks = useCallback(async () => {
     setLoading(true);
     setError(null);
 
@@ -30,8 +30,12 @@ export function useFetchLinkedBanks() {
   }, [setLinkedAccounts]);
 
   useEffect(() => {
-    fetchLinkedAccounts();
+    fetchLinkedBanks();
   }, []);
 
-  return { linkedAccounts, loading, error, refetch: fetchLinkedAccounts };
+  const refetchLinkedBanks = () => {
+    fetchLinkedBanks(); // then fetch fresh with empty filter
+  };
+
+  return { linkedAccounts, loading, error, refetchLinkedBanks };
 }

@@ -1,26 +1,23 @@
 import Footer from "@/components/Footer";
 import InAppNav from "@/components/InAppNav";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Button from "@/components/buttons/Button";
 import { toUSD } from "@/utils/toUSD";
 import { toNGN } from "@/utils/toNGN";
 import { toDecimal } from "@/utils/toDecimal";
-import image from "../../assets/landingImg4.JPG";
 import { useToast } from "@/context/ToastContext";
 import { useTransferContext } from "@/context/wallet/TransferContext";
 import RecentTransfer from "@/components/wallet/RecentTransfer";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
-import { useTransaction } from "@/context/wallet/TransactionContext";
 import { useBalance } from "@/context/BalanceContext";
 import { useFetchBalance } from "@/hooks/useFetchBalance";
-import { useFetchTransactions } from "@/hooks/useFetchTransactions";
 import { IoWalletOutline } from "react-icons/io5";
+import { useFetchTransferTxt } from "@/hooks/Transaction/useFetchTransferTxt";
 
 const Transfer = () => {
-  const { loading, error, refetch } = useFetchBalance();
+  const { refetchTransferTxt } = useFetchTransferTxt();
+  const { loading, refetch } = useFetchBalance();
   const { balance } = useBalance();
-  const { refetchTransactions } = useFetchTransactions();
-  const { transactions } = useTransaction();
   const { transfer, setTransfer } = useTransferContext();
   const { setToast } = useToast();
 
@@ -254,14 +251,9 @@ const Transfer = () => {
   // Refetch transactions after a successfull transfer
   useEffect(() => {
     if (transfer?.success) {
-      refetchTransactions();
+      refetchTransferTxt();
     }
   }, [transfer?.success]);
-
-  // Refetch transactions on page mount
-  useEffect(() => {
-    refetchTransactions();
-  }, []);
 
   return (
     <>
@@ -501,7 +493,7 @@ const Transfer = () => {
             </div>
           </div>
 
-          <RecentTransfer transactions={transactions} />
+          <RecentTransfer />
         </div>
       </div>
       <Footer />

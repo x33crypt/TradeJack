@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import api from "@/utils/http/api";
-import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useWithdrawContext } from "@/context/wallet/WithdrawContext";
 
-export function useFetchTransactions(initialPage = 1, limit = 10) {
-  const { setTransactions, filter, setFilter } = useTransaction();
+export function useFetchWithdrawTxt(initialPage = 1, limit = 10) {
+  const { withdraw, setWithdraw } = useWithdrawContext();
   const [page, setPage] = useState(initialPage);
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -18,30 +18,8 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
       setLoading(true);
       setError(null);
 
-      const buildUrl = () => {
-        const params = new URLSearchParams();
-
-        if (filter?.type && filter.type !== "All types") {
-          params.append("type", filter.type.toLowerCase());
-        }
-
-        if (filter?.status && filter.status !== "All status") {
-          params.append("status", filter.status.toLowerCase());
-        }
-
-        if (filter?.date?.monthNo) {
-          params.append("month", filter.date.monthNo);
-        }
-
-        if (filter?.date?.year) {
-          params.append("year", filter.date.year);
-        }
-
-        return `/payment/wallet-history?${params.toString()}`;
-      };
-
       try {
-        const url = buildUrl();
+        const url = "/payment/wallet-history?type=withdrawal";
         console.log(url);
 
         const res = await api.get(url, {
@@ -52,12 +30,15 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
           const { data, pagination } = res.data;
 
           if (pageToLoad === 1) {
-            setTransactions(res.data);
+            setWithdraw((prev) => ({
+              ...prev,
+              recentWithdraw: res.data, // or whatever change you want
+            }));
             setDisplayedCount(data.length);
           } else {
-            setTransactions((prev) => ({
-              ...res.data,
-              data: [...prev.data, ...data],
+            setWithdraw((prev) => ({
+              ...prev,
+              recentWithdraw: [...prev.data, ...data], // or whatever change you want
             }));
             setDisplayedCount((prev) => prev + data.length);
           }
@@ -75,16 +56,16 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
         setLoading(false);
       }
     },
-    [limit, filter, setTransactions]
+    [limit]
   );
 
   // first load – run once
   useEffect(() => {
-    fetchPage(1); 
-  }, [filter, fetchPage]);
+    fetchPage(1);
+  }, [fetchPage]);
 
   // 🔁 Refetch
-  const refetchTransactions = () => {
+  const refetchWithdrawTxt = () => {
     fetchPage(1); // then fetch fresh with empty filter
   };
 
@@ -100,8 +81,8 @@ export function useFetchTransactions(initialPage = 1, limit = 10) {
     error,
     pagination,
     page,
-    displayedCount, // how many txs are on screen
+    displayedCount,
     next,
-    refetchTransactions,
+    refetchWithdrawTxt,
   };
 }

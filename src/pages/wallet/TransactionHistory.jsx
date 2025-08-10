@@ -4,26 +4,25 @@ import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import React, { useRef, useEffect, useState } from "react";
 import TransactionCard from "@/components/cards/Both/TransactionCard";
 import { useTransaction } from "@/context/wallet/TransactionContext";
-import { useFetchTransactions } from "@/hooks/useFetchTransactions";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { HiMiniCalendarDateRange } from "react-icons/hi2";
 import { useSelectElement } from "@/context/SelectElementContext";
 import { date } from "@/utils/date";
 import Loading from "@/components/Loading";
 import Info from "@/components/alerts/Info";
-import { useLocation } from "react-router-dom";
 import { LuFileX2 } from "react-icons/lu";
+import { useFetchAllTransactions } from "@/hooks/Transaction/useFetchAllTransactions";
 
 const TransactionHistory = () => {
   const topRef = useRef(null);
   const {
     loading,
-    refetchTransactions,
+    refetchAllTransactions,
     pagination,
     page,
     displayedCount,
     next,
-  } = useFetchTransactions();
+  } = useFetchAllTransactions();
   const { transactions, filter, setFilter } = useTransaction();
   const [triggerScroll, setTriggerScroll] = useState(false);
   const [loadingNext, setLoadingNext] = useState(false);
@@ -100,7 +99,7 @@ const TransactionHistory = () => {
       status: null,
     });
 
-    refetchTransactions();
+    refetchAllTransactions();
   }, []);
 
   const transactionStatus = [

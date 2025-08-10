@@ -14,11 +14,13 @@ import { useBalance } from "@/context/BalanceContext";
 import { useFetchLinkedBanks } from "@/hooks/useFetchLinkedBanks";
 import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
 import { RiBankLine } from "react-icons/ri";
+import { useFetchWithdrawTxt } from "@/hooks/Transaction/useFetchWithdrawTxt";
 
 const Withdraw = () => {
+  const { refetchWithdrawTxt } = useFetchWithdrawTxt();
   const { balance } = useBalance();
   const { withdraw, setWithdraw } = useWithdrawContext();
-  const { loading, error, refetch } = useFetchLinkedBanks();
+  const { loading, error, refetchLinkedBanks } = useFetchLinkedBanks();
   const { linkedAccounts } = useLinkedAccount();
   const { setToast } = useToast();
 
@@ -27,7 +29,7 @@ const Withdraw = () => {
   console.log("Linked Accounts:", linkedAccounts);
 
   useEffect(() => {
-    refetch();
+    refetchLinkedBanks();
   }, []);
 
   const selectDefaultAccount = () => {
@@ -271,6 +273,13 @@ const Withdraw = () => {
       confirm: true,
     }));
   };
+
+  // Refetch transactions after a successfull transfer
+  useEffect(() => {
+    if (withdraw?.success) {
+      refetchWithdrawTxt();
+    }
+  }, [withdraw?.success]);
 
   return (
     <>

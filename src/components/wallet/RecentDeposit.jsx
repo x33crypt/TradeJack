@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import TransactionCard from "../cards/Mobile/TransactionCard";
 import { useNavigate } from "react-router-dom";
-import { useFetchTransactions } from "@/hooks/useFetchTransactions";
-import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useFetchDepositTxt } from "@/hooks/Transaction/useFetchDepositsTxt";
+import { useDepositContext } from "@/context/wallet/DepositContext";
 import Loading from "../Loading";
 import { LuFileX2 } from "react-icons/lu";
 import NetworkError from "../NetworkError";
-import { FaArrowRight } from "react-icons/fa";
 
 const RecentDeposit = () => {
-  const { loading, refetchTransactions } = useFetchTransactions();
-  const { transactions, setFilter } = useTransaction();
+  const { loading } = useFetchDepositTxt();
+  const { deposit } = useDepositContext();
+  const { recentDeposit } = deposit;
   const navigateTo = useNavigate();
 
-  console.log("recent deposits", transactions);
+  console.log("recent deposits", recentDeposit);
 
   return (
     <div className=" md:w-[350px] flex flex-col md:border border-neutral-800">
@@ -22,9 +22,9 @@ const RecentDeposit = () => {
 
         <div
           onClick={() => navigateTo("/wallet/transactions")}
-          className="flex items-center gap-1 bg-transparent text-[14px] text-tradeFadeWhite hover:text-white  px-[4px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max cursor-pointer duration-300 transition-all"
+          className="flex items-center gap-1 bg-transparent text-[14px] text-tradeFadeWhite hover:text-white  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max cursor-pointer duration-300 transition-all"
         >
-          <FaArrowRight />
+          <p className="text-[13px] font-semibold">See More</p>
         </div>
       </div>
 
@@ -33,14 +33,14 @@ const RecentDeposit = () => {
           <Loading />
         ) : (
           <div className="flex flex-1">
-            {transactions === null ? (
+            {recentDeposit === null ? (
               <NetworkError />
             ) : (
               <div className="flex flex-1">
-                {Array.isArray(transactions?.data) &&
-                transactions?.data.length > 0 ? (
+                {Array.isArray(recentDeposit?.data) &&
+                recentDeposit?.data.length > 0 ? (
                   <div className="flex flex-col gap-[5px] w-full">
-                    {transactions?.data
+                    {recentDeposit?.data
                       ?.slice(0, 5)
                       ?.map((transaction, index) => (
                         <div key={transaction.id || index}>
@@ -80,7 +80,7 @@ const RecentDeposit = () => {
         <div className="flex gap-[5px] transition-all duration-300 py-[1px">
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
             <p className="text-[13px] font-semibold">
-              {transactions?.pagination?.totalItems ? "5" : "0"}
+              {recentDeposit?.pagination?.totalItems ? "5" : "0"}
             </p>
           </div>
 
@@ -90,8 +90,8 @@ const RecentDeposit = () => {
 
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
             <p className="text-[13px] font-semibold">
-              {transactions?.pagination?.totalItems
-                ? transactions?.pagination?.totalItems
+              {recentDeposit?.pagination?.totalItems
+                ? recentDeposit?.pagination?.totalItems
                 : "0"}
             </p>
           </div>

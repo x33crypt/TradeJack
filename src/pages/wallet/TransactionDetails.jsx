@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import LockByScroll from "@/components/LockByScroll";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import { IoClose } from "react-icons/io5";
-import { useFetchTransactionsDetails } from "@/hooks/useFetchTransactionDetails";
+import { useFetchTransactionsDetails } from "@/hooks/Transaction/useFetchTransactionDetails";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoMdArrowRoundUp, IoMdArrowRoundDown } from "react-icons/io";
 import { MdOutlineQuestionMark } from "react-icons/md";

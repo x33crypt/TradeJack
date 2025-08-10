@@ -6,8 +6,6 @@ import LinkedAccount from "@/components/wallet/LinkedAccount";
 import MyWallet from "@/components/wallet/MyWallet";
 import Overview from "@/components/wallet/Overview";
 import RecentTransaction from "@/components/wallet/RecentTransaction";
-import { useTransaction } from "@/context/wallet/TransactionContext";
-import { useFetchTransactions } from "@/hooks/useFetchTransactions";
 import React, { useEffect, useState, useRef } from "react";
 
 const Wallet = () => {

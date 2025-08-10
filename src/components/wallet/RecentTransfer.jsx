@@ -1,21 +1,19 @@
-import React, { useEffect } from "react";
-// import TransactionCard from "@/components/cards/Both/TransactionCard";
-import { RiArrowRightFill } from "react-icons/ri";
+import React from "react";
 import TransactionCard from "../cards/Mobile/TransactionCard";
 import { useNavigate } from "react-router-dom";
-import { useFetchTransactions } from "@/hooks/useFetchTransactions";
-import { useTransaction } from "@/context/wallet/TransactionContext";
 import Loading from "../Loading";
 import NetworkError from "../NetworkError";
 import { LuFileX2 } from "react-icons/lu";
-import { FaArrowRight } from "react-icons/fa";
+import { useFetchTransferTxt } from "@/hooks/Transaction/useFetchTransferTxt";
+import { useTransferContext } from "@/context/wallet/TransferContext";
 
 const RecentTransfer = () => {
-  const { loading, refetchTransactions } = useFetchTransactions();
-  const { transactions, setFilter } = useTransaction();
+  const { loading } = useFetchTransferTxt();
+  const { transfer } = useTransferContext();
+  const { recentTransfer } = transfer;
   const navigateTo = useNavigate();
 
-  console.log("recent transfers", transactions);
+  console.log("recent transfers", recentTransfer);
 
   return (
     <div className=" md:w-[350px] flex flex-col md:border border-neutral-800">
@@ -24,9 +22,9 @@ const RecentTransfer = () => {
 
         <div
           onClick={() => navigateTo("/wallet/transactions")}
-          className="flex items-center gap-1 bg-transparent text-[14px] text-tradeFadeWhite hover:text-white  px-[4px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max cursor-pointer duration-300 transition-all"
+          className="flex items-center gap-1 bg-transparent text-[14px] text-tradeFadeWhite hover:text-white  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max cursor-pointer duration-300 transition-all"
         >
-          <FaArrowRight />
+          <p className="text-[13px] font-semibold">See More</p>
         </div>
       </div>
 
@@ -35,14 +33,14 @@ const RecentTransfer = () => {
           <Loading />
         ) : (
           <div className="flex flex-1">
-            {transactions === null ? (
+            {recentTransfer === null ? (
               <NetworkError />
             ) : (
               <div className="flex flex-1">
-                {Array.isArray(transactions?.data) &&
-                transactions?.data.length > 0 ? (
+                {Array.isArray(recentTransfer?.data) &&
+                recentTransfer?.data.length > 0 ? (
                   <div className="flex flex-col gap-[5px] w-full">
-                    {transactions?.data
+                    {recentTransfer?.data
                       ?.slice(0, 5)
                       ?.map((transaction, index) => (
                         <div key={transaction.id || index}>
@@ -82,7 +80,7 @@ const RecentTransfer = () => {
         <div className="flex gap-[5px] transition-all duration-300 py-[1px">
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
             <p className="text-[13px] font-semibold">
-              {transactions?.pagination?.totalItems ? "5" : "0"}
+              {recentTransfer?.pagination?.totalItems ? "5" : "0"}
             </p>
           </div>
 
@@ -92,8 +90,8 @@ const RecentTransfer = () => {
 
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
             <p className="text-[13px] font-semibold">
-              {transactions?.pagination?.totalItems
-                ? transactions?.pagination?.totalItems
+              {recentTransfer?.pagination?.totalItems
+                ? recentTransfer?.pagination?.totalItems
                 : "0"}
             </p>
           </div>

@@ -1,20 +1,20 @@
 import React, { useEffect } from "react";
-import { RiArrowRightFill } from "react-icons/ri";
 import TransactionCard from "../cards/Mobile/TransactionCard";
 import { useNavigate } from "react-router-dom";
-import { useFetchTransactions } from "@/hooks/useFetchTransactions";
-import { useTransaction } from "@/context/wallet/TransactionContext";
 import Loading from "../Loading";
 import { LuFileX2 } from "react-icons/lu";
 import NetworkError from "../NetworkError";
-import { FaArrowRight } from "react-icons/fa";
+
+import { useFetchWithdrawTxt } from "@/hooks/Transaction/useFetchWithdrawTxt";
+import { useWithdrawContext } from "@/context/wallet/WithdrawContext";
 
 const RecentWithdraw = () => {
-  const { loading, refetchTransactions } = useFetchTransactions();
-  const { transactions, setFilter } = useTransaction();
+  const { loading } = useFetchWithdrawTxt();
+  const { withdraw } = useWithdrawContext();
+  const { recentWithdraw } = withdraw;
   const navigateTo = useNavigate();
 
-  console.log("recent Withdraws", transactions);
+  console.log("recent Withdraws", recentWithdraw);
 
   return (
     <div className=" md:w-[350px] flex flex-col md:border border-neutral-800">
@@ -23,9 +23,9 @@ const RecentWithdraw = () => {
 
         <div
           onClick={() => navigateTo("/wallet/transactions")}
-          className="flex items-center gap-1 bg-transparent text-[14px] text-tradeFadeWhite hover:text-white  px-[4px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max cursor-pointer duration-300 transition-all"
+          className="flex items-center gap-1 bg-transparent text-[14px] text-tradeFadeWhite hover:text-white  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max cursor-pointer duration-300 transition-all"
         >
-          <FaArrowRight />
+          <p className="text-[13px] font-semibold">See More</p>
         </div>
       </div>
 
@@ -34,14 +34,14 @@ const RecentWithdraw = () => {
           <Loading />
         ) : (
           <div className="flex flex-1">
-            {transactions === null ? (
+            {recentWithdraw === null ? (
               <NetworkError />
             ) : (
               <div className="flex flex-1">
-                {Array.isArray(transactions?.data) &&
-                transactions?.data.length > 0 ? (
+                {Array.isArray(recentWithdraw?.data) &&
+                recentWithdraw?.data.length > 0 ? (
                   <div className="flex flex-col gap-[5px] w-full">
-                    {transactions?.data
+                    {recentWithdraw?.data
                       ?.slice(0, 5)
                       ?.map((transaction, index) => (
                         <div key={transaction.id || index}>
@@ -81,7 +81,7 @@ const RecentWithdraw = () => {
         <div className="flex gap-[5px] transition-all duration-300 py-[1px">
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
             <p className="text-[13px] font-semibold">
-              {transactions?.pagination?.totalItems ? "5" : "0"}
+              {recentWithdraw?.pagination?.totalItems ? "5" : "0"}
             </p>
           </div>
 
@@ -91,8 +91,8 @@ const RecentWithdraw = () => {
 
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
             <p className="text-[13px] font-semibold">
-              {transactions?.pagination?.totalItems
-                ? transactions?.pagination?.totalItems
+              {recentWithdraw?.pagination?.totalItems
+                ? recentWithdraw?.pagination?.totalItems
                 : "0"}
             </p>
           </div>
