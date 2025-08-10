@@ -40,8 +40,7 @@ export async function submitDeposit(transferDetails) {
 
     return {
       success: false,
-      error:
-        err?.response?.data?.errorMessage || err?.message || "Unknown error",
+      error: err?.data?.error?.details || err?.message || "Unknown error",
     };
   }
 }
