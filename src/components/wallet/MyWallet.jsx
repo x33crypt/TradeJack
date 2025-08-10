@@ -12,6 +12,7 @@ import Loading from "../Loading";
 import { RiSendPlaneLine } from "react-icons/ri";
 import { FaArrowUp } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
+import { SlOptions } from "react-icons/sl";
 
 const MyWallet = () => {
   const { balance, setBalance } = useBalance();
@@ -151,6 +152,36 @@ const MyWallet = () => {
                 />
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+          <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+            <div className="flex gap-1 items-center">
+              <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                Escrow balance
+              </p>
+
+              <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-transparent bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
+                <FaQuestionCircle className="text-sm text-tradeOrange" />
+              </div>
+            </div>
+
+            <div className="flex gap-1">
+              <div className="flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight bg-transparent  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
+                <p className="text-xs font-semibold">USD</p>
+              </div>
+              <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-transparent bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
+                <SlOptions className="text-sm text-tradeOrange" />
+              </div>
+            </div>
+          </div>
+          <div className="w-full">
+            <p className="text-white text-sm font-semibold">
+              {showBalance
+                ? `$${toDecimal(balance.available_balance.USD)}`
+                : "****"}
+            </p>
           </div>
         </div>
       </div>
