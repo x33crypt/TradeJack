@@ -9,9 +9,10 @@ export const TransactionProvider = ({ children }) => {
     type: null,
     status: null,
   });
+
   const [details, setDetails] = useState({
     state: false,
-    transactionId: "",
+    reference: "",
     data: {},
   });
 

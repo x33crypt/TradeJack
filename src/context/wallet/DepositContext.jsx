@@ -14,6 +14,7 @@ export const DepositProvider = ({ children }) => {
       NGN: null,
     },
     referenceId: null,
+    recentDeposit: null,
   });
 
   useEffect(() => {

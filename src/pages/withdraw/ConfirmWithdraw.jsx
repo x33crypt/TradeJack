@@ -67,7 +67,7 @@ const ConfirmWithdraw = () => {
             <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
-                  Confirm Withdraw
+                  Confirm Withdrawal
                 </p>
 
                 {!loading && (

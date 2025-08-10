@@ -12,12 +12,42 @@ import { BsCardText } from "react-icons/bs";
 import { RiBankLine } from "react-icons/ri";
 import { MdNotes } from "react-icons/md";
 import { MdPending } from "react-icons/md";
+import { useTransaction } from "@/context/wallet/TransactionContext";
 
 const SuccessDeposit = () => {
+  const { details, setDetails } = useTransaction();
   const { deposit, setDeposit } = useDepositContext();
   const { success, currency, amount, referenceId } = deposit;
 
-  const viewDetails = () => {};
+  const defaultDepositState = {
+    error: "",
+    loading: false,
+    confirm: false,
+    success: false,
+    currency: "NGN",
+    url: null,
+    amount: {
+      USD: null,
+      NGN: null,
+    },
+  };
+
+  const viewDetails = (id) => {
+    setDeposit({ ...defaultDepositState });
+
+    setDetails({
+      state: true,
+      reference: id,
+      data: {},
+    });
+
+    setTimeout(() => {
+      setDeposit((prev) => ({
+        ...prev,
+        referenceId: null, // or whatever change you want
+      }));
+    }, 20000);
+  };
 
   const close = () => {
     setDeposit((prev) => ({

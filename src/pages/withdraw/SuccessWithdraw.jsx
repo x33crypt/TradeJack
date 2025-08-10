@@ -16,7 +16,7 @@ const SuccessWithdraw = () => {
   const { withdraw, setWithdraw } = useWithdrawContext();
   const { success, currency, amount, bank, referenceId } = withdraw;
 
-  const defaultDepositState = {
+  const defaultWithdrawState = {
     error: "",
     proceed: false,
     confirm: false,
@@ -33,21 +33,27 @@ const SuccessWithdraw = () => {
       USD: null,
       NGN: null,
     },
-    referenceId: null,
   };
 
-  const viewDetails = (transactionId) => {
-    setDeposit({ ...defaultDepositState });
+  const viewDetails = (id) => {
+    setWithdraw({ ...defaultWithdrawState });
 
     setDetails({
       state: true,
-      transactionId,
+      reference: id,
       data: {},
     });
+
+    setTimeout(() => {
+      setDeposit((prev) => ({
+        ...prev,
+        referenceId: null, // or whatever change you want
+      }));
+    }, 20000);
   };
 
   const close = () => {
-    setDeposit((prev) => ({
+    setWithdraw((prev) => ({
       ...prev,
       error: "",
       proceed: false,
@@ -79,7 +85,7 @@ const SuccessWithdraw = () => {
             <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
-                  Withdraw Feedback
+                  Withdrawal Feedback
                 </p>
 
                 <div onClick={close}>
@@ -100,7 +106,7 @@ const SuccessWithdraw = () => {
                   </div>
 
                   <p className="text-[13px] font-medium text-tradeFadeWhite leading-relaxed text-center">
-                    We've received your Withdrawal request of{" "}
+                    We've received your withdrawal request of{" "}
                     <span className="font-bold text-white">
                       {currency}{" "}
                       {currency === "USD"

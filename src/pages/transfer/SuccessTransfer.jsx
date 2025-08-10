@@ -10,7 +10,42 @@ import { useNavigate } from "react-router-dom";
 const SuccessTransfer = () => {
   const { details, setDetails } = useTransaction();
   const { transfer, setTransfer } = useTransferContext();
-  const { success, username, amount, referenceId } = transfer;
+  const { success, username, currency, amount, referenceId } = transfer;
+
+  const defaultTransferState = {
+    error: "",
+    proceed: false,
+    confirm: false,
+    success: false,
+    loading: false,
+    username: "",
+    currency: "NGN",
+    amount: {
+      USD: null,
+      NGN: null,
+    },
+    charges: {
+      USD: null,
+      NGN: null,
+    },
+  };
+
+  const viewDetails = (id) => {
+    setTransfer({ ...defaultTransferState });
+
+    setDetails({
+      state: true,
+      reference: id,
+      data: {},
+    });
+
+    setTimeout(() => {
+      setTransfer((prev) => ({
+        ...prev,
+        referenceId: null, // or whatever change you want
+      }));
+    }, 20000);
+  };
 
   const close = () => {
     setTransfer((prev) => ({
@@ -24,34 +59,6 @@ const SuccessTransfer = () => {
       },
       referenceId: null,
     }));
-  };
-
-  const viewDetails = (id) => {
-    setDetails({ state: true, transactionId: id, data: {} });
-
-    setTransfer((prev) => ({
-      ...prev,
-      success: false,
-      username: "",
-      currency: "NGN",
-      amount: {
-        USD: null,
-        NGN: null,
-      },
-      referenceId: null,
-    }));
-  };
-
-  const navigateTo = useNavigate();
-
-  const viewBalance = () => {
-    setTransfer((prev) => ({
-      ...prev,
-      success: false,
-      referenceId: null,
-    }));
-
-    navigateTo("/wallet");
   };
 
   return (
@@ -85,7 +92,14 @@ const SuccessTransfer = () => {
                   </div>
 
                   <p className="text-[13px] font-medium text-tradeFadeWhite leading-relaxed text-center">
-                    Funds are now being processed.{" "}
+                    We've received your transfer request of{" "}
+                    <span className="font-semibold text-white">
+                      {currency}{" "}
+                      {currency === "USD"
+                        ? ` ${amount?.USD}`
+                        : `${amount?.NGN}`}
+                    </span>{" "}
+                    . Funds are now being processed.{" "}
                     <span className="font-semibold text-tradeOrange">
                       @{username}
                     </span>{" "}

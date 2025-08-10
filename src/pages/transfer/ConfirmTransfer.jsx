@@ -12,7 +12,6 @@ const ConfirmTransfer = () => {
   const { transfer, setTransfer } = useTransferContext();
   const { confirm, loading, username, amount } = transfer;
   const { setToast } = useToast();
-  
 
   const close = () => {
     setTransfer((prev) => ({
@@ -73,11 +72,9 @@ const ConfirmTransfer = () => {
                   Confirm Transfer
                 </p>
 
-                {!loading && (
-                  <div onClick={close}>
-                    <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
-                  </div>
-                )}
+                <div onClick={close}>
+                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
+                </div>
               </div>
 
               <div className="flex-1 flex flex-col justify-between py-[15px] gap-[30px]">

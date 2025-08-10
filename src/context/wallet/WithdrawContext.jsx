@@ -21,7 +21,7 @@ export const WithdrawProvider = ({ children }) => {
       NGN: null,
     },
     referenceId: null,
-    date: null,
+    recentWithdraw: null,
   });
 
   console.log(withdraw);

@@ -20,7 +20,7 @@ export const TransferProvider = ({ children }) => {
       NGN: null,
     },
     referenceId: null,
-    date: null,
+    recentTransfer: null,
   });
 
   console.log(transfer);
