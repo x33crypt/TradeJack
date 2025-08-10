@@ -14,7 +14,10 @@ export function useFetchBalance() {
     try {
       const res = await api.get("/user/balances");
       if (res?.status === 200 && res?.data?.success) {
-        setBalance(res.data.data);
+        setBalance((prev) => ({
+          ...prev,
+          ...res.data.data,
+        }));
       } else {
         setError(res?.data?.message || "Failed to fetch wallet balance.");
       }

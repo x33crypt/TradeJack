@@ -5,6 +5,7 @@ const BalanceContext = createContext();
 
 export const BalanceProvider = ({ children }) => {
   const [balance, setBalance] = useState({
+    currency: "NGN",
     available_balance: {
       USD: null,
       NGN: null,
