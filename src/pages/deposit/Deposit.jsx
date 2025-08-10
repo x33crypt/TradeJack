@@ -15,30 +15,32 @@ import { useEffect } from "react";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import { IoCopy } from "react-icons/io5";
+import { IoWalletOutline } from "react-icons/io5";
+import { useBalance } from "@/context/BalanceContext";
+import { useFetchBalance } from "@/hooks/useFetchBalance";
 
 const Deposit = () => {
+  const { loading, error, refetch } = useFetchBalance();
+  const { balance } = useBalance();
   const { transactions } = useTransaction();
   const { deposit, setDeposit } = useDepositContext();
-  const [depositDetails, setDepositDetails] = useState({
-    url: null,
-    selectedCurrency: "NGN",
-    amount: { NGN: null, USD: null },
-  });
   const { toast, setToast } = useToast();
   const [editingAmount, setEditingAmount] = useState(false);
 
   const selectUSD = () => {
-    setDepositDetails((prevDetails) => ({
+    setDeposit((prev) => ({
+      ...prev,
       url: null,
-      selectedCurrency: "USD",
+      currency: "USD",
       amount: { NGN: null, USD: null },
     }));
   };
 
   const selectNGN = () => {
-    setDepositDetails((prevDetails) => ({
+    setDeposit((prev) => ({
+      ...prev,
       url: null,
-      selectedCurrency: "NGN",
+      currency: "NGN",
       amount: { NGN: null, USD: null },
     }));
   };
@@ -52,10 +54,10 @@ const Deposit = () => {
       rawValue = parts[0] + "." + parts.slice(1).join("");
     }
 
-    setDepositDetails((prevDetails) => ({
-      ...prevDetails,
+    setDeposit((prev) => ({
+      ...prev,
       amount: {
-        ...prevDetails.amount,
+        ...prev.amount,
         USD: rawValue,
       },
     }));
@@ -69,12 +71,11 @@ const Deposit = () => {
     if (parts.length > 2) {
       rawValue = parts[0] + "." + parts.slice(1).join("");
     }
-
-    setDepositDetails((prevDetails) => ({
-      ...prevDetails,
+    setDeposit((prev) => ({
+      ...prev,
       amount: {
-        ...prevDetails.amount,
-        NGN: rawValue, // store the raw value
+        ...prev.amount,
+        NGN: rawValue,
       },
     }));
   };
@@ -92,19 +93,19 @@ const Deposit = () => {
   // Update NGN amount if user inputs USD (convert USD → NGN)
   useEffect(() => {
     if (
-      !depositDetails.amount?.USD || // check USD input, not NGN
-      depositDetails.selectedCurrency !== "USD"
+      !deposit?.amount?.USD || // check USD input, not NGN
+      deposit?.currency !== "USD"
     )
       return;
 
-    const currentUSD = depositDetails.amount.USD;
+    const currentUSD = deposit?.amount?.USD;
 
     const debounceTimeout = setTimeout(async () => {
       try {
         const { amount: ngnValue } = await toNGN(currentUSD); // convert USD to NGN
 
         // Only update if USD value hasn't changed during fetch
-        setDepositDetails((prev) => {
+        setDeposit((prev) => {
           if (prev.amount.USD !== currentUSD) return prev;
           return {
             ...prev,
@@ -120,28 +121,20 @@ const Deposit = () => {
     }, 700);
 
     return () => clearTimeout(debounceTimeout);
-  }, [
-    depositDetails.amount?.USD,
-    depositDetails.selectedCurrency,
-    editingAmount,
-  ]);
+  }, [deposit.amount?.USD, deposit?.currency, editingAmount]);
 
   // Update NGN amount if user inputs NGN (convert NGN → USD)
   useEffect(() => {
-    if (
-      !depositDetails.amount?.NGN ||
-      depositDetails.selectedCurrency !== "NGN"
-    )
-      return;
+    if (!deposit.amount?.NGN || deposit.currency !== "NGN") return;
 
-    const currentNGN = depositDetails.amount.NGN;
+    const currentNGN = deposit?.amount?.NGN;
 
     const debounceTimeout = setTimeout(async () => {
       try {
         const { amount: usdValue } = await toUSD(currentNGN);
 
         // Only update if NGN value hasn't changed during fetch
-        setDepositDetails((prev) => {
+        setDeposit((prev) => {
           if (prev.amount.NGN !== currentNGN) return prev;
           return {
             ...prev,
@@ -157,37 +150,17 @@ const Deposit = () => {
     }, 700); // ~700ms debounce
 
     return () => clearTimeout(debounceTimeout);
-  }, [
-    depositDetails.amount?.NGN,
-    depositDetails.selectedCurrency,
-    editingAmount,
-  ]);
+  }, [deposit.amount?.NGN, deposit?.currency, editingAmount]);
 
-  console.log(depositDetails?.amount);
+  console.log(deposit?.amount);
 
-  const handleCopy = (text) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        // Optionally show toast or feedback
-        setToast({
-          ...toast,
-          success: true,
-          successMessage: `Accound ID copied to clipboard`,
-        });
-      })
-      .catch((err) => {
-        console.error("Copy failed:", err);
-      });
-  };
-
-  const handleDeposit = async () => {
+  const proceed = async () => {
     setDeposit((prev) => ({
       ...prev,
       loading: true,
     }));
 
-    const amountNGN = depositDetails?.amount?.NGN;
+    const amountNGN = deposit?.amount?.NGN;
 
     if (!amountNGN || isNaN(amountNGN)) {
       setDeposit((prev) => ({
@@ -216,24 +189,22 @@ const Deposit = () => {
     }
 
     const payload = {
-      amount: depositDetails?.amount?.NGN,
+      amount: deposit?.amount?.NGN,
     };
 
-    console.log("Depost Amount :", payload);
+    console.log("Deposit Amount :", payload);
 
     // Submit deposit
     const result = await submitDeposit(payload);
-    console.log("Deposit:", result);
+    console.log("Deposit Response:", result);
 
     if (result?.success) {
       setDeposit((prev) => ({
         ...prev,
-        depositAmount: depositDetails?.amount,
-        depositReference: result?.reference,
-        loading: false,
+        confirm: true,
+        url: result?.redirectUrl,
+        referenceId: result?.reference,
       }));
-
-      window.location.href = result?.redirectUrl;
     } else {
       console.error("Deposit failed:", result.error);
       setDeposit((prev) => ({
@@ -248,8 +219,9 @@ const Deposit = () => {
     }
   };
 
-  console.log("Deposit Details:", depositDetails);
   console.log("editingAmount:", editingAmount);
+  console.log("Deposit Context:", deposit);
+  console.log("Balance in Transfer:", balance?.available_balance);
 
   return (
     <>
@@ -262,40 +234,72 @@ const Deposit = () => {
               <p className="text-lg font-[700] text-white ">Deposit Funds</p>
             </div>
 
-            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[10px] gap-[10px]">
-              {/* Internal Deposit */}
+            <div className="px-[15px] pt-[12px]">
+              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                Add funds to your account quickly and securely, ensuring you’re
+                ready for seamless trading anytime.
+              </p>
+            </div>
+
+            <div className="h-full flex flex-col justify-between p-[15px] gap-[10px]">
+              {/* Wallet Balance */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                   <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                    Internal Deposit
-                  </p>
-                </div>
-
-                <div className="flex flex-col gap-[10px] w-full">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    Username
+                    From Wallet
                   </p>
 
-                  <div className="flex justify-between items-center bg-tradePurpl p-[12px] bg-tradeAshLight border border-tradeAshLight rounded-[10px]">
-                    <p className="text-white font-semibold text-lg leading-none bg-tradeOrang">
-                      <span className="text-tradeFadeWhite">@</span>sane
-                    </p>
-
+                  <div className="flex gap-1 items-cente">
                     <div
-                      onClick={() => handleCopy("sane")}
-                      className={` bg-transparent text-sm text-white hover:text-tradeFadeWhite px-[6px] py-[4px] border border-tradeAshExtraLight rounded-[6px] w-max cursor-pointer transition-all duration-300`}
+                      onClick={selectNGN}
+                      className={`${
+                        deposit?.currency === "NGN"
+                          ? "bg-tradeOrange text-black"
+                          : "bg-transparent text-tradeFadeWhite"
+                      } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                     >
-                      <IoCopy className="" />
+                      <p className="text-xs font-semibold">NGN</p>
+                    </div>
+                    <div
+                      onClick={selectUSD}
+                      className={`${
+                        deposit?.currency === "USD"
+                          ? "bg-tradeOrange text-black"
+                          : "bg-transparent text-tradeFadeWhite"
+                      } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                    >
+                      <p className="text-xs font-semibold">USD</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-[10px] w-full">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    Your username serves as your internal account ID. Share it
-                    with friends or trade partners on this platform to receive
-                    payments and fund your wallet seamlessly.
-                  </p>
+                <div className="flex items-center gap-[10px] w-full border- border-tradeAshLight">
+                  <div className="p-[10px] bg-tradeAshLight w-max rounded-[10px]  border border-tradeAshExtraLight">
+                    <IoWalletOutline className="text-[30px] text-tradeWhite" />
+                  </div>
+                  <div className="flex flex-col gap-[3px]">
+                    <p className="text-tradeFadeWhite text-xs font-medium">
+                      Current balance
+                    </p>
+
+                    <div>
+                      {deposit?.currency === "NGN" ? (
+                        <p className="text-white text-[13px] font-semibold">
+                          NGN{" "}
+                          {balance?.available_balance?.NGN
+                            ? toDecimal(balance?.available_balance?.NGN)
+                            : "0.00"}
+                        </p>
+                      ) : (
+                        <p className="text-white text-[13px] font-semibold">
+                          USD{" "}
+                          {balance?.available_balance?.USD
+                            ? toDecimal(balance?.available_balance?.USD)
+                            : "0.00"}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -312,7 +316,7 @@ const Deposit = () => {
                     <div
                       onClick={selectNGN}
                       className={`${
-                        depositDetails?.selectedCurrency === "NGN"
+                        deposit?.currency === "NGN"
                           ? "bg-tradeOrange text-black"
                           : "bg-transparent text-tradeFadeWhite"
                       } flex items-center gap-1  border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
@@ -322,7 +326,7 @@ const Deposit = () => {
                     <div
                       onClick={selectUSD}
                       className={`${
-                        depositDetails?.selectedCurrency === "USD"
+                        deposit?.currency === "USD"
                           ? "bg-tradeOrange text-black"
                           : "bg-transparent text-tradeFadeWhite"
                       } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
@@ -333,7 +337,7 @@ const Deposit = () => {
                 </div>
 
                 <div>
-                  {depositDetails?.selectedCurrency === "NGN" ? (
+                  {deposit?.currency === "NGN" ? (
                     // NGN
                     <div className="flex flex-col gap-[10px]">
                       <div className="flex flex-col gap-[10px] w-full">
@@ -347,8 +351,8 @@ const Deposit = () => {
                             placeholder={`15,000.000 - 30,000,000.00`}
                             value={
                               editingAmount
-                                ? depositDetails?.amount?.NGN || ""
-                                : formatWithCommas(depositDetails?.amount?.NGN)
+                                ? deposit?.amount?.NGN || ""
+                                : formatWithCommas(deposit?.amount?.NGN)
                             }
                             onChange={handleNGNAmountChange}
                             onFocus={() => setEditingAmount(true)}
@@ -362,8 +366,8 @@ const Deposit = () => {
                           You're about to deposit the equivalent of{" "}
                           <span className="text-tradeOrange">
                             USD {""}
-                            {depositDetails?.amount?.USD
-                              ? toDecimal(depositDetails?.amount?.USD)
+                            {deposit?.amount?.USD
+                              ? toDecimal(deposit?.amount?.USD)
                               : "0.00"}
                           </span>
                         </p>
@@ -383,8 +387,8 @@ const Deposit = () => {
                             placeholder={`10.00 - 20,000.00`}
                             value={
                               editingAmount
-                                ? depositDetails?.amount?.USD || ""
-                                : formatWithCommas(depositDetails?.amount?.USD)
+                                ? deposit?.amount?.USD || ""
+                                : formatWithCommas(deposit?.amount?.USD)
                             }
                             onChange={handleUSDAmountChange}
                             onFocus={() => setEditingAmount(true)}
@@ -394,12 +398,12 @@ const Deposit = () => {
                       </div>
 
                       <div>
-                        <p className="text-tradeFadeWhite text-xs font-semibold">
+                        <p className="text-tradeFadeWhite text-xs font-medium">
                           You're about to deposit the equivalent of{" "}
-                          <span className="text-tradeOrange">
+                          <span className="text-tradeOrange font-semibold">
                             NGN {""}
-                            {depositDetails?.amount?.NGN
-                              ? toDecimal(depositDetails?.amount?.NGN)
+                            {deposit?.amount?.NGN
+                              ? toDecimal(deposit?.amount?.NGN)
                               : "0.00"}
                           </span>
                         </p>
@@ -411,14 +415,17 @@ const Deposit = () => {
 
               <Button
                 variant="primary"
-                onClick={handleDeposit}
+                onClick={proceed}
                 disabled={deposit?.loading}
               >
                 Proceed
               </Button>
 
-              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight h-[100px]">
+              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight h-[100px">
                 <div className="flex flex-col gap-[20px] bg-tradeOrang rounded-lg">
+                  <div className="w-full flex items-center justify-center">
+                    <img src={paystackLogo} className="w-[210px]" alt="" />
+                  </div>
                   <div className="flex flex-wrap lg:items-center text-xs text-tradeFadeWhite gap-1">
                     <p className="inline items-start gap-1">
                       <span className="text-white mr-[2px]">•</span>

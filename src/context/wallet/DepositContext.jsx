@@ -3,10 +3,17 @@ const DepositContext = createContext();
 
 export const DepositProvider = ({ children }) => {
   const [deposit, setDeposit] = useState({
-    depositAmount: null,
-    depositReference: null,
+    error: "",
     loading: false,
-    depositPending: false,
+    confirm: false,
+    success: false,
+    currency: "NGN",
+    url: null,
+    amount: {
+      USD: null,
+      NGN: null,
+    },
+    referenceId: null,
   });
 
   useEffect(() => {
@@ -14,11 +21,10 @@ export const DepositProvider = ({ children }) => {
     const trxref = params.get("trxref");
     const reference = params.get("reference");
 
-    if (trxref && reference && !deposit.depositPending) {
+    if (trxref && reference && !deposit.loading) {
       setDeposit((prev) => ({
         ...prev,
-        depositPending: true,
-        depositReference: reference,
+        success: true,
       }));
     }
   }, []);

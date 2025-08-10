@@ -35,7 +35,7 @@ const RecentDeposit = () => {
                 transactions?.data.length > 0 ? (
                   <div className="flex flex-col gap-[5px] w-full">
                     {transactions?.data
-                      ?.slice(0, 4)
+                      ?.slice(0, 5)
                       ?.map((transaction, index) => (
                         <div key={transaction.id || index}>
                           <TransactionCard transaction={transaction} />

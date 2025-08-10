@@ -1,62 +1,37 @@
 import React from "react";
-import { useTransferContext } from "@/context/wallet/TransferContext";
+import { useDepositContext } from "@/context/wallet/DepositContext";
 import LockByScroll from "@/components/LockByScroll";
 import Button from "@/components/buttons/Button";
 import { IoClose } from "react-icons/io5";
 import { toDecimal } from "@/utils/toDecimal";
 import image from "../../assets/landingImg4.JPG";
-import { submitTransfer } from "@/utils/wallet/transfer";
-import { useToast } from "@/context/ToastContext";
+import { IoArrowRedoCircle } from "react-icons/io5";
 
-const Confirm = () => {
-  const { transfer, setTransfer } = useTransferContext();
-  const { confirm, loading, username, amount } = transfer;
-  const { setToast } = useToast();
+const ConfirmDeposit = () => {
+  const { deposit, setDeposit } = useDepositContext();
+  const { confirm, url, amount } = deposit;
 
   const close = () => {
-    setTransfer((prev) => ({
-      ...prev,
-      proceed: false,
+    setDeposit((prev) => ({
+      error: "",
+      loading: false,
       confirm: false,
+      success: false,
+      currency: "NGN",
+      url: null,
+      amount: {
+        USD: null,
+        NGN: null,
+      },
+      referenceId: null,
     }));
   };
 
-  const initiateTransfer = async () => {
-    setTransfer((prev) => ({
-      ...prev,
-      loading: true,
+  const initiateDeposit = () => {
+    setDeposit((prev) => ({
+      loading: false,
     }));
-
-    const details = { username: username, amount: amount };
-
-    const result = await submitTransfer(details);
-    console.log("Transfer Result:", result);
-
-    if (result?.success) {
-      setTransfer((prev) => ({
-        ...prev,
-        error: "",
-        proceed: false,
-        confirm: false,
-        success: true,
-        loading: false,
-        charges: {
-          USD: null,
-          NGN: null,
-        },
-        referenceId: result?.reference,
-      }));
-    } else {
-      setToast({
-        error: true,
-        errorMessage: result.error,
-      });
-
-      setTransfer((prev) => ({
-        ...prev,
-        loading: false,
-      }));
-    }
+    window.location.href = url;
   };
 
   return (
@@ -69,7 +44,7 @@ const Confirm = () => {
             <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
-                  Confirm Transfer
+                  Confirm Deposit
                 </p>
 
                 <div onClick={close}>
@@ -80,18 +55,17 @@ const Confirm = () => {
               <div className="flex-1 flex flex-col justify-between py-[15px] gap-[30px]">
                 <div className="flex flex-col gap-[20px]">
                   <div className="flex flex-col items-center justify-center gap-3">
-                    <img
-                      src={image}
-                      className="p-[10px bg-tradeAshLight w-[65px] text-red-600 rounded-full"
-                      alt=""
-                    />
+                    <div className="p-[2px] bg-tradeAshExtraLight text-[55px] text-tradeOrange rounded-full">
+                      <IoArrowRedoCircle />
+                    </div>
 
-                    <div className="flex gap-1">
-                      <p className="text-[13px] font-semibold text-tradeFadeWhite">
-                        Recipient -
+                    <div className="flex flex-col gap-1">
+                      <p className="text-[13px] font-medium text-center text-tradeFadeWhite">
+                        You'll be redirected to Paystack to choose your payment
+                        method
                       </p>
-                      <p className="text-[13px] font-semibold text-white">
-                        @{username}
+                      <p className="text-[13px] font-medium text-center text-white">
+                        (Card, Bank Transfer, or USSD)
                       </p>
                     </div>
                   </div>
@@ -102,7 +76,7 @@ const Confirm = () => {
                         Amount
                       </p>
                       <div>
-                        {transfer?.currency === "USD" ? (
+                        {deposit?.currency === "USD" ? (
                           <p className="text-white text-[13px]  font-semibold">
                             ${toDecimal(amount?.USD)}
                           </p>
@@ -124,12 +98,8 @@ const Confirm = () => {
                   </div>
                 </div>
 
-                <Button
-                  variant="secondary"
-                  onClick={initiateTransfer}
-                  disabled={loading}
-                >
-                  Transfer
+                <Button variant="outline" onClick={initiateDeposit}>
+                  Continue to Paystack
                 </Button>
               </div>
             </div>
@@ -140,4 +110,4 @@ const Confirm = () => {
   );
 };
 
-export default Confirm;
+export default ConfirmDeposit;

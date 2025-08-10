@@ -1,23 +1,33 @@
-import React from "react";
-import { useTransferContext } from "@/context/wallet/TransferContext";
+import React, { useEffect, useState } from "react";
 import LockByScroll from "@/components/LockByScroll";
 import Button from "@/components/buttons/Button";
+import { RiWaterFlashFill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
-import { IoIosCheckmarkCircle } from "react-icons/io";
-import { useTransaction } from "@/context/wallet/TransactionContext";
-import { useNavigate } from "react-router-dom";
+import { toDecimal } from "@/utils/toDecimal";
+import { FaRegCircleCheck } from "react-icons/fa6";
+import { MdDateRange } from "react-icons/md";
+import { MdOutlinePending } from "react-icons/md";
+import { useDepositContext } from "@/context/wallet/DepositContext";
+import { BsCardText } from "react-icons/bs";
+import { RiBankLine } from "react-icons/ri";
+import { MdNotes } from "react-icons/md";
+import { MdPending } from "react-icons/md";
 
-const SuccessTransfer = () => {
-  const { details, setDetails } = useTransaction();
-  const { transfer, setTransfer } = useTransferContext();
-  const { success, username, amount, referenceId } = transfer;
+const SuccessDeposit = () => {
+  const { deposit, setDeposit } = useDepositContext();
+  const { success, currency, amount, referenceId } = deposit;
+
+  const viewDetails = () => {};
 
   const close = () => {
-    setTransfer((prev) => ({
+    setDeposit((prev) => ({
       ...prev,
+      error: "",
+      loading: false,
+      confirm: false,
       success: false,
-      username: "",
       currency: "NGN",
+      url: null,
       amount: {
         USD: null,
         NGN: null,
@@ -26,33 +36,7 @@ const SuccessTransfer = () => {
     }));
   };
 
-  const viewDetails = (id) => {
-    setDetails({ state: true, transactionId: id, data: {} });
-
-    setTransfer((prev) => ({
-      ...prev,
-      success: false,
-      username: "",
-      currency: "NGN",
-      amount: {
-        USD: null,
-        NGN: null,
-      },
-      referenceId: null,
-    }));
-  };
-
-  const navigateTo = useNavigate();
-
-  const viewBalance = () => {
-    setTransfer((prev) => ({
-      ...prev,
-      success: false,
-      referenceId: null,
-    }));
-
-    navigateTo("/wallet");
-  };
+  console.log(deposit);
 
   return (
     <div>
@@ -60,11 +44,11 @@ const SuccessTransfer = () => {
         <div>
           <LockByScroll />
           {/* Modal */}
-          <div className="fixed top-0 right-0 left-0 bottom-0 lg:px-[2%] md:px-[2.5%] px-[30px] bg-black bg-opacity-80 flex items-center justify-center z-40">
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
             <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
-                  Transfer Feedback
+                  Deposit Feedback
                 </p>
 
                 <div onClick={close}>
@@ -75,21 +59,24 @@ const SuccessTransfer = () => {
               <div className="flex-1 flex flex-col justify-between py-[15px] gap-[30px]">
                 <div className="flex flex-col gap-[20px]">
                   <div className="flex flex-col items-center justify-center gap-3">
-                    <div className="p-[2px] bg-tradeAshExtraLight text-[55px] text-tradeGreen rounded-full">
-                      <IoIosCheckmarkCircle />
+                    <div className="p-[2px] bg-tradeAshExtraLight text-[55px] text-tradeOrange rounded-full">
+                      <MdPending />
                     </div>
 
                     <p className="text-[13px] font-semibold text-white">
-                      Transfer Successful
+                      Deposit Received
                     </p>
                   </div>
 
                   <p className="text-[13px] font-medium text-tradeFadeWhite leading-relaxed text-center">
-                    Funds are now being processed.{" "}
-                    <span className="font-semibold text-tradeOrange">
-                      @{username}
+                    We've received your deposit request of{" "}
+                    <span className="font-semibold text-white">
+                      {currency}{" "}
+                      {currency === "USD"
+                        ? ` ${amount?.USD}`
+                        : `${amount?.NGN}`}
                     </span>{" "}
-                    will typically receive them within 1 to 3 minutes.
+                    . Your wallet will be updated once the payment is confirmed.
                   </p>
 
                   <div className="flex flex-col bg-tradeAshLigh  borde border-tradeAshLight rounded-[15px]">
@@ -121,4 +108,4 @@ const SuccessTransfer = () => {
   );
 };
 
-export default SuccessTransfer;
+export default SuccessDeposit;

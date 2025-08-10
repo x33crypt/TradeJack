@@ -37,7 +37,6 @@ const Transfer = () => {
   const selectUSD = () => {
     setTransfer((prev) => ({
       ...prev,
-
       currency: "USD",
       amount: { NGN: null, USD: null },
     }));
