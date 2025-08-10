@@ -6,6 +6,7 @@ import { IoClose } from "react-icons/io5";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import { useNavigate } from "react-router-dom";
+import { toDecimal } from "@/utils/toDecimal";
 
 const SuccessTransfer = () => {
   const { details, setDetails } = useTransaction();
@@ -92,23 +93,23 @@ const SuccessTransfer = () => {
                   </div>
 
                   <p className="text-[13px] font-medium text-tradeFadeWhite leading-relaxed text-center">
-                    We've received your transfer request of{" "}
+                    Processing your transfer of{" "}
                     <span className="font-semibold text-white">
                       {currency}{" "}
                       {currency === "USD"
-                        ? ` ${amount?.USD}`
-                        : `${amount?.NGN}`}
+                        ? ` ${toDecimal(amount?.USD)}`
+                        : `${toDecimal(amount?.NGN)}`}
                     </span>{" "}
-                    . Funds are now being processed.{" "}
+                    to{" "}
                     <span className="font-semibold text-tradeOrange">
                       @{username}
-                    </span>{" "}
-                    will typically receive them within 1 to 3 minutes.
+                    </span>
+                    . They’ll typically receive it within 1 to 3 minutes.
                   </p>
 
                   <div className="flex flex-col bg-tradeAshLigh  borde border-tradeAshLight rounded-[15px]">
                     <div className="flex items-center justify-betwee justify-center gap-[10px] p-[8px border- border-tradeAsh">
-                      <p className="text-xs font-medium text-tradeFadeWhite">
+                      <p className="text-[13px] font-medium text-tradeFadeWhite">
                         Reference -{" "}
                         <span className="font-semibold text-white">
                           {referenceId}

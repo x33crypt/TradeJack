@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
-import { RiArrowRightFill } from "react-icons/ri";
 import TransactionCard from "../cards/Mobile/TransactionCard";
 import { useNavigate } from "react-router-dom";
 import { useFetchTransactions } from "@/hooks/useFetchTransactions";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 import Loading from "../Loading";
-import Info from "../alerts/Info";
 import { LuFileX2 } from "react-icons/lu";
 import NetworkError from "../NetworkError";
+import { FaArrowRight } from "react-icons/fa";
 
 const RecentDeposit = () => {
   const { loading, refetchTransactions } = useFetchTransactions();
@@ -20,6 +19,13 @@ const RecentDeposit = () => {
     <div className=" md:w-[350px] flex flex-col md:border border-neutral-800">
       <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg text-white font-semibold">Recent Deposit</p>
+
+        <div
+          onClick={() => navigateTo("/wallet/transactions")}
+          className="flex items-center gap-1 bg-transparent text-[14px] text-tradeFadeWhite hover:text-white  px-[4px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max cursor-pointer duration-300 transition-all"
+        >
+          <FaArrowRight />
+        </div>
       </div>
 
       <div className="flex md:h-full min-h-[120px] p-[15px]">
@@ -66,6 +72,11 @@ const RecentDeposit = () => {
       </div>
 
       <div className="custom-x-scrollbar flex p-[15px] gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
+        <div className="flex gap-[5px] py-[1px]">
+          <div className="flex cursor-pointer items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+            <p className="text-[13px] font-semibold">Data</p>
+          </div>
+        </div>
         <div className="flex gap-[5px] transition-all duration-300 py-[1px">
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
             <p className="text-[13px] font-semibold">
@@ -83,15 +94,6 @@ const RecentDeposit = () => {
                 ? transactions?.pagination?.totalItems
                 : "0"}
             </p>
-          </div>
-        </div>
-
-        <div className="flex gap-[5px] py-[1px]">
-          <div
-            onClick={() => navigateTo("/wallet/transactions")}
-            className="flex cursor-pointer items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max"
-          >
-            <p className="text-[13px] font-semibold">Load more</p>
           </div>
         </div>
       </div>

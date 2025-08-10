@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import LockByScroll from "@/components/LockByScroll";
 import Button from "@/components/buttons/Button";
-import { RiWaterFlashFill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 import { toDecimal } from "@/utils/toDecimal";
-import { FaRegCircleCheck } from "react-icons/fa6";
-import { MdDateRange } from "react-icons/md";
-import { MdOutlinePending } from "react-icons/md";
 import { useDepositContext } from "@/context/wallet/DepositContext";
-import { BsCardText } from "react-icons/bs";
-import { RiBankLine } from "react-icons/ri";
-import { MdNotes } from "react-icons/md";
 import { MdPending } from "react-icons/md";
 import { useTransaction } from "@/context/wallet/TransactionContext";
 
@@ -97,14 +90,15 @@ const SuccessDeposit = () => {
                   </div>
 
                   <p className="text-[13px] font-medium text-tradeFadeWhite leading-relaxed text-center">
-                    We've received your deposit request of{" "}
+                    We’ve successfully received your deposit of{" "}
                     <span className="font-semibold text-white">
                       {currency}{" "}
                       {currency === "USD"
-                        ? ` ${amount?.USD}`
-                        : `${amount?.NGN}`}
-                    </span>{" "}
-                    . Your wallet will be updated once the payment is confirmed.
+                        ? toDecimal(amount?.USD)
+                        : toDecimal(amount?.NGN)}
+                    </span>
+                    . Your wallet balance will update automatically once the
+                    payment is confirmed.
                   </p>
 
                   <div className="flex flex-col bg-tradeAshLigh  borde border-tradeAshLight rounded-[15px]">
