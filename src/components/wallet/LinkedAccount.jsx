@@ -25,7 +25,7 @@ const LinkedAccount = () => {
   return (
     <div className="flex flex-col w-full md:border border-neutral-800 bg-tradeAs">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">Linked Account</p>
+        <p className="text-lg font-[700] text-white ">Linked Bank</p>
       </div>
 
       <div className="flex flex-col p-[15px] gap-[10px]">

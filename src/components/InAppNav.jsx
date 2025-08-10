@@ -121,7 +121,7 @@ const InAppNav = () => {
           </div>
         </div>
 
-        <div className="flex items-center lg:gap-[15px] gap-[15px]">
+        <div className="flex items-center  gap-[10px]">
           <div className="lg:flex hidden items-center bg-tradeAsh borde border-tradeAshLight px-[10px] py-[1px] gap-[8px] rounded-[8px]">
             <FaMagnifyingGlass className="text-neutral-500  text-[15px]" />
             <input
@@ -130,15 +130,16 @@ const InAppNav = () => {
               placeholder={searchplaceholder}
             />
           </div>
-          <div className="cursor-pointer lg:hidden flex">
-            <BiSupport
-              className={`text-tradeOrange hover:text-tradeFadeWhite text-[22px] transition-all duration-300 ${
-                animate ? "animate-zoomShake" : ""
-              }`}
-            />
+
+          <div
+            className={` ${
+              animate ? "animate-zoomShake" : ""
+            } w-max flex gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+          >
+            <BiSupport className="text-[16px] text-tradeOrange" />
           </div>
-          <div className="cursor-pointer flex">
-            <FaRegBell className="text-white hover:text-tradeGreen text-[22px] transition-all duration-300" />
+          <div className="w-max flex gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            <FaRegBell className="text-[16px] text-white" />
           </div>
           <div
             className="cursor-pointer lg:w-[32px] sm:w-[30px] w-[32px]"
@@ -167,6 +168,19 @@ const InAppNav = () => {
                   we help ?
                 </p>
               </div>
+
+              {/* <div
+                onClick={() => {
+                  navigateTo("/offers/marketplace");
+                  setIsNavOption(false);
+                }}
+                className="w-full md:w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+              >
+                <HiOutlineGlobe className="text-[14px] text-tradeFadeWhite" />
+                <p className="text-white font-semibold  text-[13px]">
+                  Browse Offers
+                </p>
+              </div> */}
 
               <div className="flex flex-col gap-[5px]">
                 <div
