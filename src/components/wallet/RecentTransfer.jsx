@@ -44,7 +44,7 @@ const RecentTransfer = () => {
               <div className="flex flex-1">
                 {Array.isArray(recentTransfer?.data) &&
                 recentTransfer?.data.length > 0 ? (
-                  <div className="flex flex-col gap-[5px] w-full">
+                  <div className="flex flex-col gap-[10px] w-full">
                     {recentTransfer?.data
                       ?.slice(0, 5)
                       ?.map((transaction, index) => (

@@ -7,14 +7,17 @@ import { useTransaction } from "@/context/wallet/TransactionContext";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 
 const TransactionCard = ({ transaction }) => {
-  const { details, setDetails } = useTransaction();
+  const { setDetails } = useTransaction();
 
   const viewDetails = (id) => {
-    setDetails({ state: true, transactionId: id, data: {} });
+    setDetails({ state: true, reference: id, data: {} });
   };
 
   return (
-    <div className="flex flex-col justify-between bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
+    <div
+      onClick={() => viewDetails(transaction.reference)}
+      className="flex flex-col justify-between bg-tradeAsh hover:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer "
+    >
       <div className="flex justify-between p-[12px] ">
         <div className="flex gap-2">
           <div>

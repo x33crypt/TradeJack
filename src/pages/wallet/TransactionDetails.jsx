@@ -4,8 +4,6 @@ import { useTransaction } from "@/context/wallet/TransactionContext";
 import { IoClose } from "react-icons/io5";
 import { useFetchTransactionsDetails } from "@/hooks/Transaction/useFetchTransactionDetails";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { IoMdArrowRoundUp, IoMdArrowRoundDown } from "react-icons/io";
-import { MdOutlineQuestionMark } from "react-icons/md";
 import { toDecimal } from "@/utils/toDecimal";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import { dateTime } from "@/utils/dateTime";

@@ -50,7 +50,7 @@ const RecentTransaction = ({ scrollToTop }) => {
               <div className="flex flex-1">
                 {Array.isArray(transactions?.data) &&
                 transactions?.data.length > 0 ? (
-                  <div className="flex flex-col gap-[5px] w-full">
+                  <div className="flex flex-col gap-[10px] w-full">
                     {transactions?.data
                       ?.slice(0, 5)
                       ?.map((transaction, index) => (

@@ -260,7 +260,7 @@ const Transfer = () => {
       <InAppNav />
       <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
         <DasHboardMenu />
-        <div className="flex-1 h-max flex flex-col md:flex-row md:gap-[5px] gap-[15px]">
+        <div className="flex-1 h-max flex flex-col md:flex-row md:gap-[5px] gap-[10px]">
           <div className="flex flex-col flex-1 md:border border-neutral-800">
             <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
               <p className="text-lg font-[700] text-white ">Transfer Funds</p>
@@ -273,7 +273,7 @@ const Transfer = () => {
               </p>
             </div>
 
-            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[25px] gap-[15px]">
+            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[25px] gap-[10px]">
               {/* Wallet Balance */}
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">

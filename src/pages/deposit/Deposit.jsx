@@ -232,7 +232,7 @@ const Deposit = () => {
       <InAppNav />
       <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
         <DasHboardMenu />
-        <div className="flex-1 h-max flex flex-col md:flex-row md:gap-[5px] gap-[15px]">
+        <div className="flex-1 h-max flex flex-col md:flex-row md:gap-[5px] gap-[10px]">
           <div className="flex flex-col flex-1 md:border border-neutral-800">
             <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
               <p className="text-lg font-[700] text-white ">Deposit Funds</p>
@@ -427,9 +427,9 @@ const Deposit = () => {
 
               <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight h-[100px">
                 <div className="flex flex-col gap-[20px] bg-tradeOrang rounded-lg">
-                  <div className="w-full flex items-center justify-center">
+                  {/* <div className="w-full flex items-center justify-center">
                     <img src={paystackLogo} className="w-[210px]" alt="" />
-                  </div>
+                  </div> */}
                   <div className="flex flex-wrap lg:items-center text-xs text-tradeFadeWhite gap-1">
                     <p className="inline items-start gap-1">
                       <span className="text-white mr-[2px]">•</span>
@@ -462,8 +462,9 @@ const Deposit = () => {
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Event */}
+            <div className="px-[15px] py-[12px]">
               <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
                 <p className="text-sm">Event</p>
               </div>

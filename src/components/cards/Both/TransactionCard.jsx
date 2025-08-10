@@ -13,18 +13,20 @@ import { time } from "@/utils/time";
 import { FaHashtag } from "react-icons/fa";
 
 const TransactionCard = ({ transaction }) => {
-  const { details, setDetails } = useTransaction();
+  const { setDetails } = useTransaction();
 
   const viewDetails = (id) => {
-    setDetails({ state: true, transactionId: id, data: {} });
+    setDetails({ state: true, reference: id, data: {} });
   };
 
   return (
     <>
       {/* Desktop Card */}
-
-      <div className=" md:flex hidden items-center gap-[10px]  p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
-        <div className="flex-1 flex flex-col gap-2">
+      <div
+        onClick={() => viewDetails(transaction.reference)}
+        className=" md:flex hidden items-center gap-[10px]  p-[12px] bg-tradeAsh hover:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer"
+      >
+        <div className="flex-1 flex flex-col gap-2 ">
           <div className="flex gap-[5px] items-center">
             <div className="flex gap-1 items-center">
               <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
@@ -171,7 +173,10 @@ const TransactionCard = ({ transaction }) => {
       </div>
 
       {/* Mobile Card */}
-      <div className="md:hidden flex flex-col justify-between bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
+      <div
+        onClick={() => viewDetails(transaction.reference)}
+        className="md:hidden flex flex-col justify-between bg-tradeAsh hover:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer"
+      >
         <div className="flex justify-between p-[12px] ">
           <div className="flex gap-2">
             <div>
