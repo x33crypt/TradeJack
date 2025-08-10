@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import TransactionCard from "../cards/Mobile/TransactionCard";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Loading";
@@ -8,12 +8,17 @@ import { useFetchTransferTxt } from "@/hooks/Transaction/useFetchTransferTxt";
 import { useTransferContext } from "@/context/wallet/TransferContext";
 
 const RecentTransfer = () => {
+  const topRef = useRef(null);
   const { loading } = useFetchTransferTxt();
   const { transfer } = useTransferContext();
   const { recentTransfer } = transfer;
   const navigateTo = useNavigate();
 
   console.log("recent transfers", recentTransfer);
+
+  const scrollToTop = () => {
+    topRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className=" md:w-[350px] flex flex-col md:border border-neutral-800">
@@ -72,12 +77,10 @@ const RecentTransfer = () => {
       </div>
 
       <div className="custom-x-scrollbar flex p-[15px] gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
-        <div className="flex gap-[5px] py-[1px">
-          <div className="flex cursor-pointer items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+        <div className="flex gap-[5px]">
+          <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
             <p className="text-[13px] font-semibold">Data</p>
           </div>
-        </div>
-        <div className="flex gap-[5px] transition-all duration-300 py-[1px">
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
             <p className="text-[13px] font-semibold">
               {recentTransfer?.pagination?.totalItems ? "5" : "0"}
@@ -94,6 +97,14 @@ const RecentTransfer = () => {
                 ? recentTransfer?.pagination?.totalItems
                 : "0"}
             </p>
+          </div>
+        </div>
+        <div className="flex gap-[5px] transition-all duration-300">
+          <div
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex items-center gap-1 bg-transparent text-[14px] text-tradeFadeWhite hover:text-white  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max cursor-pointer duration-300 transition-all"
+          >
+            <p className="text-[13px] font-semibold">Scroll to Top</p>
           </div>
         </div>
       </div>
