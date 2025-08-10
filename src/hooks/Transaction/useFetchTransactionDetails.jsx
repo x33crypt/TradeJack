@@ -4,20 +4,22 @@ import { useTransaction } from "@/context/wallet/TransactionContext";
 
 export function useFetchTransactionsDetails() {
   const { details, setDetails } = useTransaction();
-  const { state, transactionId } = details;
+  const { state, reference } = details;
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchDetails = useCallback(async () => {
-    if (!transactionId) return;
+    if (!reference) return;
 
     try {
       setLoading(true);
       setError(null);
-
-      const res = await api.get(`/payment/wallet/transaction/${transactionId}`);
-
-      setDetails((prev) => ({ ...prev, data: res.data }));
+      const res = await api.get(`/payment/wallet/transaction/${reference}`);
+      setDetails((prev) => ({
+        ...prev,
+        data: res.data.data,
+        user: res.data.userCurrency,
+      }));
     } catch (err) {
       setError(
         err.response?.data?.message || "Failed to fetch transaction details."
@@ -28,15 +30,15 @@ export function useFetchTransactionsDetails() {
     } finally {
       setLoading(false);
     }
-  }, [transactionId, setDetails]);
+  }, [reference, setDetails]);
 
   useEffect(() => {
     console.log("on details change", details);
 
-    if (transactionId && state === true) {
+    if (reference && state === true) {
       fetchDetails();
     }
-  }, [transactionId, state, fetchDetails]);
+  }, [reference, state, fetchDetails]);
 
   return {
     loading,

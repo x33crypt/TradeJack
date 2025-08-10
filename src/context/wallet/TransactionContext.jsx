@@ -14,6 +14,7 @@ export const TransactionProvider = ({ children }) => {
     state: false,
     reference: "",
     data: {},
+    user: {},
   });
 
   console.log("transactions Details :", details);
