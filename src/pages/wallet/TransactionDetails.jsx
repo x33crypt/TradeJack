@@ -15,6 +15,7 @@ import { useToast } from "@/context/ToastContext";
 import Loading from "@/components/Loading";
 import Button from "@/components/buttons/Button";
 import { shortenID } from "@/utils/shortenID";
+import { MdArrowRightAlt } from "react-icons/md";
 
 const TransactionDetails = () => {
   const { loading, error } = useFetchTransactionsDetails();
@@ -115,14 +116,6 @@ const TransactionDetails = () => {
                         </div>
                         <div className="flex items-center justify-between">
                           <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Amount
-                          </p>
-                          <p className="text-[13px] font-semibold text-white">
-                            #{toDecimal(data?.amount?.ngn)}
-                          </p>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
                             {data?.type === "transfer"
                               ? "Recipient"
                               : data?.type === "deposit"
@@ -160,6 +153,20 @@ const TransactionDetails = () => {
                             })()}
                           </p>
                         </div>
+                        <div className="flex items-center justify-between">
+                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                            Amount
+                          </p>
+                          <div className="flex items-center gap-1">
+                            <p className="text-[13px] font-semibold text-white">
+                              #{toDecimal(data?.amount?.ngn)}
+                            </p>
+                            <MdArrowRightAlt className="text-tradeFadeWhite " />
+                            <p className="text-[13px] font-semibold text-white">
+                              ${toDecimal(data?.amount?.usd)}
+                            </p>
+                          </div>
+                        </div>
                       </div>
 
                       <div className="w-full flex flex-col gap-1 bg-transparent border border-tradeAshLight border-dashed p-[12px] rounded-[15px]">
@@ -184,8 +191,9 @@ const TransactionDetails = () => {
 
                     <div>
                       <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed text-center">
-                        Transaction updates in real time. Contact support with
-                        your reference for any issues.
+                        Transaction updates in real time.{" "}
+                        <span className="text-tradeGreen">Contact support</span>{" "}
+                        with your reference for any issues.
                       </p>
                     </div>
                   </div>

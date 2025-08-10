@@ -88,7 +88,9 @@ const RecentTransaction = ({ scrollToTop }) => {
             <p className="text-[13px] font-semibold ">Data</p>
           </div>
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-            <p className="text-[13px] font-semibold">5</p>
+            <p className="text-[13px] font-semibold">
+              {transactions?.pagination?.totalItems ? "5" : "0"}
+            </p>
           </div>
 
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
@@ -97,7 +99,9 @@ const RecentTransaction = ({ scrollToTop }) => {
 
           <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
             <p className="text-[13px] font-semibold">
-              {transactions?.pagination?.totalItems}
+              {transactions?.pagination?.totalItems
+                ? transactions?.pagination?.totalItems
+                : "0"}
             </p>
           </div>
         </div>

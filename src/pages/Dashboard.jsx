@@ -7,10 +7,9 @@ import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import Performance from "@/components/dashboard/Performance";
 import { useDashboard } from "@/context/DashboardContext";
 import Balance from "@/components/dashboard/Balance";
-import Limits from "@/components/dashboard/Limits";
-import Ads from "@/components/dashboard/Ads";
 import Stats from "@/components/dashboard/Stats";
 import RecentTrades from "@/components/dashboard/RecentTrades";
+import TopPicks from "@/components/dashboard/TopPicks";
 
 const Dashboard = () => {
   const { dashboard } = useDashboard();
@@ -29,6 +28,7 @@ const Dashboard = () => {
               <div className="flex flex-col flex-1 gap-[5px]">
                 <Balance dashboard={dashboard} />
                 <Stats dashboard={dashboard} />
+                <TopPicks />
               </div>
 
               <div className="lg:w-[350px] w-full flex flex-col gap-[5px]">

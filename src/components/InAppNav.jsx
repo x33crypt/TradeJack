@@ -28,9 +28,19 @@ import { HiViewGridAdd } from "react-icons/hi";
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
   const { show, setShow } = useProfileNav();
+  const [animate, setAnimate] = useState(false);
 
   const placeholders = ["Search vendor's", "Search offer's"];
   const [searchplaceholder, setSearchplaceholder] = useState(placeholders[0]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimate(true);
+      setTimeout(() => setAnimate(false), 600);
+    }, 5000); // every 20s
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -120,8 +130,12 @@ const InAppNav = () => {
               placeholder={searchplaceholder}
             />
           </div>
-          <div className="cursor-pointer md:flex lg:hidden hidden">
-            <FiSearch className="text-white hover:text-tradeGreen text-[22px] transition-all duration-300" />
+          <div className="cursor-pointer lg:hidden flex">
+            <BiSupport
+              className={`text-tradeOrange hover:text-tradeFadeWhite text-[22px] transition-all duration-300 ${
+                animate ? "animate-zoomShake" : ""
+              }`}
+            />
           </div>
           <div className="cursor-pointer flex">
             <FaRegBell className="text-white hover:text-tradeGreen text-[22px] transition-all duration-300" />

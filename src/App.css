@@ -51,8 +51,6 @@
   -webkit-overflow-scrolling: touch;
 } */
 
-
-
 /* This CSS style works for the toast cards */
 @keyframes toastFadeInOut {
   0% {
@@ -73,4 +71,3 @@
 .toast-animate-fadeInOut {
   animation: toastFadeInOut 3s ease-in-out;
 }
-

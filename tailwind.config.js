@@ -34,9 +34,18 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      keyframes: {
+        zoomShake: {
+          "0%": { transform: "scale(1) rotate(0deg)" },
+          "20%": { transform: "scale(1.3) rotate(5deg)" },
+          "40%": { transform: "scale(1.3) rotate(-5deg)" },
+          "60%": { transform: "scale(1.3) rotate(5deg)" },
+          "80%": { transform: "scale(1.3) rotate(-5deg)" },
+          "100%": { transform: "scale(1) rotate(0deg)" },
+        },
+      },
       animation: {
-        "spin-slow": "spin 3s linear infinite", // medium-fast
-        "spin-faster": "spin 1s linear infinite", // even faster
+        zoomShake: "zoomShake 0.6s ease-in-out",
       },
     },
   },
