@@ -90,7 +90,7 @@ const SettingsNav = () => {
           <div className="flex flex-col p-[15px] border-neutral-800 gap-[10px]">
             <div className="flex w-full p-[12px] bg-tradeAsh border border-tradeAshLight items-center justify-between rounded-[15px]">
               <div className="flex items-center  gap-3 ">
-                <div className=" w-[50px] rounded-[10px] overflow-hidden border border-tradeAshExtraLight cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                <div className=" w-[60px] rounded-[10px] overflow-hidden border border-tradeAshExtraLight cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                   <img src={landingImg4} alt="" className="rounded-[10px]" />
                 </div>
 
@@ -168,6 +168,34 @@ const SettingsNav = () => {
                 // onClick={() => navigateTo("/settings/account/name")}
               >
                 <p className="text-[13px] font-semibold text-white">
+                  Notifications
+                </p>
+
+                <div className="text-white text-[22px]">
+                  <MdKeyboardArrowRight />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
+              {/* Username */}
+              <div
+                className="flex items-center justify-between gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
+                // onClick={() => navigateTo("/settings/account/name")}
+              >
+                <p className="text-[13px] font-semibold text-white">
+                  Account Management
+                </p>
+
+                <div className="text-white text-[22px]">
+                  <MdKeyboardArrowRight />
+                </div>
+              </div>
+              <div
+                className="flex items-center justify-between gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
+                // onClick={() => navigateTo("/settings/account/name")}
+              >
+                <p className="text-[13px] font-semibold text-white">
                   Linked Accounts
                 </p>
 
@@ -180,45 +208,22 @@ const SettingsNav = () => {
             <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
               {/* Username */}
               <div
-                className="flex items-center justify-between gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
-                // onClick={() => navigateTo("/settings/account/name")}
-              >
-                <p className="text-[13px] font-semibold text-white">
-                  Notifications
-                </p>
-
-                <div className="text-white text-[22px]">
-                  <MdKeyboardArrowRight />
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
-              {/* Username */}
-
-              <div
-                className="flex items-center justify-between gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
-                // onClick={() => navigateTo("/settings/account/name")}
-              >
-                <p className="text-[13px] font-semibold text-white">
-                  Account Management
-                </p>
-
-                <div className="text-white text-[22px]">
-                  <MdKeyboardArrowRight />
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
-              {/* Username */}
-              <div
-                className="flex items-center justify-between gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
+                className="flex items-center justify-between gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
                 // onClick={() => navigateTo("/settings/account/name")}
               >
                 <p className="text-[13px] font-semibold text-white">
                   Support & Help
                 </p>
+
+                <div className="text-white text-[22px]">
+                  <MdKeyboardArrowRight />
+                </div>
+              </div>
+              <div
+                className="flex items-center justify-between gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
+                // onClick={() => navigateTo("/settings/account/name")}
+              >
+                <p className="text-[13px] font-semibold text-white">FAQs</p>
 
                 <div className="text-white text-[22px]">
                   <MdKeyboardArrowRight />
