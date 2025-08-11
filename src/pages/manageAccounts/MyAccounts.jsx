@@ -148,10 +148,10 @@ const MyAccounts = () => {
     });
   };
 
-  useEffect(() => {
-    if (success === false) return;
-    refetchLinkedBanks();
-  }, [success]);
+  // useEffect(() => {
+  //   if (success === false) return;
+  //   refetchLinkedBanks();
+  // }, [success]);
 
   const navigateTo = useNavigate();
 
