@@ -8,17 +8,11 @@ const RecentTrades = () => {
       <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg text-white font-semibold">Recent Trades</p>
 
-
         <div
           // onClick={() => navigateTo("/wallet/transactions")}
-          className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
+          className="flex items-center gap-1 bg-transparent text-[14px] text-tradeFadeWhite hover:text-white  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max cursor-pointer duration-300 transition-all"
         >
-          {/* <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-            <RiArrowRightFill />
-          </div> */}
-          <div className="flex items-center gap-1 bg-tradeAsh px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-            <p className="text-[13px] font-semibold">See More</p>
-          </div>
+          <p className="text-[13px] font-semibold">See More</p>
         </div>
       </div>
 

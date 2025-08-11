@@ -4,10 +4,10 @@ const LinkedAccountContext = createContext();
 export const LinkedAccountProvider = ({ children }) => {
   const [linkedAccounts, setLinkedAccounts] = useState(null);
   const [linkAccount, setLinkAccount] = useState({
+    proceed: false,
     loading: false,
-    details: true,
     verified: false,
-    success: false,
+    success: true,
     bank: "",
     bankAccount: "",
     holdersName: null,

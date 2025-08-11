@@ -61,14 +61,22 @@ const InAppNav = () => {
       {/* Desktop Nav */}
       <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] px-[15px] h-[57px] md:h-[65px] flex justify-between items-center border-b border-neutral-800 ">
         <div className="flex items-center lg:gap-[30px] gap-[15px]">
-          <div
-            onClick={() => setIsNavOption((prev) => !prev)}
-            className="flex md:hidden items-center gap-1 bg-tradeAs text-white px-[5px] py-1 border border-tradeAshExtraLight rounded-[6px] w-max"
-          >
+          {/* <div className="flex md:hidden items-center gap-1 bg-tradeAs text-white px-[5px] py-1 border border-tradeAshExtraLight rounded-[6px] w-max">
             {isNavOption ? (
               <IoCloseSharp className="text-white text-lg" />
             ) : (
               <HiOutlineMenuAlt2 className="text-white text-lg" />
+            )}
+          </div> */}
+
+          <div
+            onClick={() => setIsNavOption((prev) => !prev)}
+            className="w-max flex md:hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+          >
+            {isNavOption ? (
+              <IoCloseSharp className="text-white text-[16px]" />
+            ) : (
+              <HiOutlineMenuAlt2 className="text-white text-[16px]" />
             )}
           </div>
           <div
@@ -266,7 +274,7 @@ const InAppNav = () => {
 
               <div className="w-full h-max flex flex-col gap-[8px]">
                 <Button
-                  variant="primary"
+                  variant="Fadeout"
                   onClick={() => {
                     navigateTo("/offers/marketplace");
                     setIsNavOption(false);
@@ -276,7 +284,7 @@ const InAppNav = () => {
                 </Button>
 
                 <Button
-                  variant="secondary"
+                  variant="Fadeout"
                   onClick={() => {
                     navigateTo("/offers/create");
                     setIsNavOption(false);

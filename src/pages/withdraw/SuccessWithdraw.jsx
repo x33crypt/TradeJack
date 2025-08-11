@@ -93,7 +93,7 @@ const SuccessWithdraw = () => {
                 </div>
               </div>
 
-              <div className="flex-1 flex flex-col justify-between py-[15px] gap-[30px]">
+              <div className="flex-1 flex flex-col justify-between py-[12.3px] gap-[30px]">
                 <div className="flex flex-col gap-[20px]">
                   <div className="flex flex-col items-center justify-center gap-3">
                     <div className="p-[2px] bg-tradeAshExtraLight text-[55px] text-tradeGreen rounded-full">

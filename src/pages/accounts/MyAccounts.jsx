@@ -176,7 +176,7 @@ const MyAccounts = () => {
           {/*Linked Account */}
           <div className="flex flex-col md:flex-1 h-full md:border border-neutral-800">
             <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-              <p className="text-lg font-[700] text-white ">My Accounts</p>
+              <p className="text-lg font-[700] text-white ">Manage Accounts</p>
             </div>
 
             <div className="flex flex-1">
@@ -195,38 +195,31 @@ const MyAccounts = () => {
                       </div>
 
                       <div className="flex flex-col gap-[30px] h-full justify-between ">
-                        <div className="flex flex-col gap-[15px]">
+                        <div className="flex flex-col gap-[10px]">
                           {/* Default Account */}
-                          <div className="flex flex-col gap-[10px] p-[12px bg-tradeAs rounded-[15px borde border-tradeAshLight">
-                            <div>
-                              {linkedAccounts
-                                ?.filter(
-                                  (account) => account?.isDefault === true
-                                )
-                                .map((account, index) => (
-                                  <AccountCard
-                                    key={index}
-                                    account={account}
-                                    index={index}
-                                  />
-                                ))}
-                            </div>
+                          <div>
+                            {linkedAccounts
+                              ?.filter((account) => account?.isDefault === true)
+                              .map((account, index) => (
+                                <AccountCard
+                                  key={index}
+                                  account={account}
+                                  index={index}
+                                />
+                              ))}
                           </div>
+
                           {/* Aternative Account */}
-                          <div className="flex flex-col gap-[10px] p-[12px bg-tradeAs rounded-[15px borde border-tradeAshLight">
-                            <div className="flex flex-col gap-[10px]">
-                              {linkedAccounts
-                                .filter(
-                                  (account) => account?.isDefault === false
-                                )
-                                .map((account, index) => (
-                                  <AccountCard
-                                    key={index}
-                                    account={account}
-                                    index={index}
-                                  />
-                                ))}
-                            </div>
+                          <div>
+                            {linkedAccounts
+                              .filter((account) => account?.isDefault === false)
+                              .map((account, index) => (
+                                <AccountCard
+                                  key={index}
+                                  account={account}
+                                  index={index}
+                                />
+                              ))}
                           </div>
                         </div>
 
@@ -244,7 +237,7 @@ const MyAccounts = () => {
                                 variant="outline"
                                 onClick={handleManageAccount}
                               >
-                                Edit Accounts
+                                Edit Banks
                               </Button>
                             )}
                           </div>
@@ -254,7 +247,7 @@ const MyAccounts = () => {
                               variant="primary"
                               onClick={() => navigateTo("/wallet/accounts/new")}
                             >
-                              Add New Account
+                              Add New Bank
                             </Button>
                           </div>
                         </div>
@@ -277,7 +270,7 @@ const MyAccounts = () => {
                           variant="primary"
                           onClick={() => navigateTo("/wallet/accounts/new")}
                         >
-                          Add New Account
+                          Add New Bank
                         </Button>
                       </div>
                     </div>

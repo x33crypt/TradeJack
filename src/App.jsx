@@ -43,6 +43,8 @@ import KycVerification from "./pages/kyc/KycVerification";
 import ConfirmDeposit from "./pages/deposit/ConfirmDeposit";
 import SuccessDeposit from "./pages/deposit/SuccessDeposit";
 import SuccessWithdraw from "./pages/withdraw/SuccessWithdraw";
+import ConfirmAccount from "./pages/accounts/ConfirmAccount";
+import SuccessAccount from "./pages/accounts/SuccessAccount";
 
 const App = () => {
   return (
@@ -53,6 +55,8 @@ const App = () => {
       <TradeAlert />
       <TransactionDetails />
       <ProfileNav />
+      <ConfirmAccount />
+      <SuccessAccount />
       <ConfirmTransfer />
       <SuccessTransfer />
       <ConfirmDeposit />

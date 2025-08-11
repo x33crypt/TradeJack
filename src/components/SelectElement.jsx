@@ -8,7 +8,7 @@ import { IoClose } from "react-icons/io5";
 
 const SelectElement = () => {
   const { select, setSelect } = useSelectElement();
-  const { state } = select;
+  const { state, options } = select;
   const [searchInput, setSearchInput] = useState("");
 
   const close = () => {
@@ -21,7 +21,7 @@ const SelectElement = () => {
       state: false,
       selectOne: false,
       selectTwo: false,
-      options: [],
+      options: null,
       pick: option,
     });
     setSearchInput("");
@@ -98,7 +98,7 @@ const SelectElement = () => {
                   select?.selectOne ? "flex" : "hidden"
                 } w-full flex-col  gap-[15px] rounded-[14px] md:max-h-[245px] max-h-[260px]`}
               >
-                {select?.options?.lenght === 0 ? (
+                {Array.isArray(options) && options.length > 0 ? (
                   <div className="overflow-y-auto  custom-scrollbar w-full">
                     {searchInput ? (
                       <div className="flex flex-col gap-[5px] w-full">
@@ -148,7 +148,7 @@ const SelectElement = () => {
                   select?.selectTwo ? "flex" : "hidden"
                 } w-full flex-col  gap-[15px] rounded-[14px] md:max-h-[245px] max-h-[260px]`}
               >
-                {select?.options?.lenght < 1 ? (
+                {Array.isArray(options) && options.length > 0 ? (
                   <div className="overflow-y-auto custom-scrollbar w-full">
                     {searchInput ? (
                       <div className="flex flex-col gap-[5px] w-full">

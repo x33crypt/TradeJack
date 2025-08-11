@@ -10,6 +10,7 @@ import Balance from "@/components/dashboard/Balance";
 import Stats from "@/components/dashboard/Stats";
 import RecentTrades from "@/components/dashboard/RecentTrades";
 import TopPicks from "@/components/dashboard/TopPicks";
+import Limits from "@/components/dashboard/Limits";
 
 const Dashboard = () => {
   const { dashboard } = useDashboard();
@@ -32,6 +33,7 @@ const Dashboard = () => {
               </div>
 
               <div className="lg:w-[350px] w-full flex flex-col gap-[5px]">
+                <Limits />
                 <Performance dashboard={dashboard} />
               </div>
             </div>

@@ -82,7 +82,7 @@ const LinkedAccount = () => {
                         variant="outline"
                         onClick={() => navigateTo("/wallet/accounts")}
                       >
-                        Manage Accounts
+                        Manage Banks
                       </Button>
                     </div>
                   ) : (

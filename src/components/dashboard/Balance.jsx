@@ -36,7 +36,7 @@ const Balance = ({ dashboard }) => {
       </div>
 
       <div className="flex flex-col gap-[10px] p-[15px]">
-        <div className="p-[12px] bg-tradeAsh h-[110px] rounded-[15px]"></div>
+        <div className="p-[12px] bg-tradeAsh h-[115px] rounded-[15px]"></div>
       </div>
     </div>
   );

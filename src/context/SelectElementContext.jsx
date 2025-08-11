@@ -11,7 +11,7 @@ export const SelectElementProvider = ({ children }) => {
     selectTwo: false,
     page: "",
     element: "",
-    options: [],
+    options: null,
     pick: "",
   });
 
