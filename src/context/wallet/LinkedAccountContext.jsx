@@ -12,6 +12,7 @@ export const LinkedAccountProvider = ({ children }) => {
     bankAccount: "",
     holdersName: null,
   });
+  
   const [manageAccount, setManageAccount] = useState({
     state: false,
     isDefault: false,
