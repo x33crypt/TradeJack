@@ -4,7 +4,6 @@ import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
 import { IoClose } from "react-icons/io5";
 import Button from "@/components/buttons/Button";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
 
 const SuccessAccount = () => {
   const { linkAccount, setLinkAccount } = useLinkedAccount();
@@ -20,11 +19,8 @@ const SuccessAccount = () => {
     holdersName: null,
   };
 
-  const navigateTo = useNavigate();
-
   const close = async () => {
     setLinkAccount({ ...defaultLinkAccountState });
-    navigateTo("/wallet/accounts");
   };
 
   return (

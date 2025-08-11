@@ -6,6 +6,7 @@ import { linkBankAccount } from "@/utils/wallet/linkBank";
 import { useToast } from "@/context/ToastContext";
 import Button from "@/components/buttons/Button";
 import { useFetchLinkedBanks } from "@/hooks/useFetchLinkedBanks";
+import { useNavigate } from "react-router-dom";
 
 const ConfirmAccount = () => {
   const { refetchLinkedBanks } = useFetchLinkedBanks();
@@ -20,6 +21,8 @@ const ConfirmAccount = () => {
       verified: false,
     }));
   };
+
+  const navigateTo = useNavigate();
 
   const handleLinkAccount = async () => {
     setLinkAccount((prev) => ({
@@ -58,6 +61,8 @@ const ConfirmAccount = () => {
         successMessage: "Bank account successfully linked",
       });
 
+      navigateTo("/wallet/accounts");
+      
       try {
         await refetchLinkedBanks();
       } catch (err) {
