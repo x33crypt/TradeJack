@@ -16,6 +16,7 @@ const ConfirmAccount = () => {
   const close = () => {
     setLinkAccount((prev) => ({
       ...prev,
+      proceed: false,
       verified: false,
     }));
   };

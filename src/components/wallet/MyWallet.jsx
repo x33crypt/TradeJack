@@ -107,9 +107,9 @@ const MyWallet = () => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-transparent bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
+              {/* <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-transparent bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
                 <FaQuestionCircle className="text-sm text-tradeOrange" />
-              </div>
+              </div> */}
             </div>
           </div>
 
