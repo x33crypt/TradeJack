@@ -31,7 +31,7 @@ const ProfileNav = () => {
             <div className="flex flex-col gap-[10px] w-[300px]">
               <div className="flex p-[12px] bg-tradeAsh border border-tradeAshLight items-center justify-between rounded-[15px]">
                 <div className="flex items-center  gap-3 ">
-                  <div className=" w-[40px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                  <div className=" w-[40px] rounded-[10px] overflow-hidden border border-tradeAshExtraLight cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     <img src={landingImg4} alt="" className="rounded-[10px]" />
                   </div>
 

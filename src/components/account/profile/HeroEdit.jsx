@@ -38,9 +38,9 @@ const HeroEdit = () => {
 
         <div className="flex flex-col md:flex-row gap-[15px] items-center justify-center">
           <div className="">
-            <div className="relative flex lg:w-[170px] lg:h-[170px] md:w-[160px] md:h-[160px] w-[120px] h-[120px] border-[2px] border-tradeAshExtraLight rounded-[20px] shrink-0 justify-center items-center cursor-pointer">
+            <div className="relative flex lg:w-[170px] lg:h-[165px] md:w-[160px] md:h-[155px] w-[120px] h-[115px] border-[2px] border-tradeAshExtraLight rounded-[20px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
               <div>
-                {loading ? (
+                {profile?.userName ? (
                   <img
                     className="rounded-[10px] w-full h-auto"
                     src={image}
@@ -50,7 +50,7 @@ const HeroEdit = () => {
                   <FaUserCircle className="text-tradeAshLight lg:text-[170px] md:text-[160px] text-[120px]" />
                 )}
               </div>
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-full">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-[20px]">
                 <TbCameraPlus className="text-white text-[40px]" />
               </div>
             </div>

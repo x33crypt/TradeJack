@@ -149,7 +149,7 @@ const InAppNav = () => {
             <FaRegBell className="text-[16px] text-white" />
           </div>
           <div
-            className="w-[32px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+            className="w-[34px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] border border-tradeAshExtraLight rounded-[10px]"
             onClick={() => setShow((prev) => !prev)}
           >
             <img className="rounded-[10px]" src={landingImg4} alt="" />
