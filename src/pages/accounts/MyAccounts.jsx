@@ -29,7 +29,7 @@ const MyAccounts = () => {
     });
   };
 
-  const closeEditAccounts = () => {
+  const closeEdit = () => {
     setManageAccount({
       state: false,
     });
@@ -135,7 +135,7 @@ const MyAccounts = () => {
     }
   };
 
-  const closeAccountSetting = () => {
+  const closeDelete = () => {
     setManageAccount({
       state: false,
       isDefault: false,
@@ -149,10 +149,14 @@ const MyAccounts = () => {
   };
 
   useEffect(() => {
-    refetchLinkedBanks();
+    if (success === true) {
+      refetchLinkedBanks();
+    }
   }, [success]);
 
   const navigateTo = useNavigate();
+
+  console.log(manageAccount);
 
   return (
     <>
@@ -215,7 +219,7 @@ const MyAccounts = () => {
                             {manageAccount.state ? (
                               <Button
                                 variant="outline"
-                                onClick={closeEditAccounts}
+                                onClick={closeEdit}
                               >
                                 Cancel
                               </Button>
@@ -279,34 +283,46 @@ const MyAccounts = () => {
       {isDelete ? (
         <div>
           <LockByScroll />
-          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-90 flex items-center justify-center z-40">
-            <div className="flex flex-col justify-between gap-[10px] bg-tradeAsh borde border-tradeAshLight p-[15px] rounded-[15px] shadow-lg lg:max-w-[350px] w-full">
-              <div className="flex justify-between items-start gap-[15px] pb-[15px] md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
-                <div className="flex flex-col gap-3">
-                  <p className="text-lg font-semibold text-white leading-none">
-                    Confirm Account Deletion
-                  </p>
-                </div>
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
+              <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
+                <p className="text-lg font-[700] text-white ">
+                  Confirm Deletion
+                </p>
 
-                <div onClick={closeAccountSetting}>
+                <div onClick={closeDelete}>
                   <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
                 </div>
               </div>
 
-              <div className="flex flex-col gap-[30px]">
-                <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed">
-                  Are you sure you want to delete your linked account {""}
-                  <span className="text-white font-semibold">
-                    {manageAccount?.bank}{" "}
-                  </span>{" "}
-                  ending in{" "}
-                  <span className="text-white font-semibold">
-                    {" "}
-                    {manageAccount?.last4digits}
-                  </span>{" "}
-                   ? Once removed, this account will no longer be available for
-                  transactions.
-                </p>
+              <div className="flex-1 flex flex-col justify-between py-[12.3px] gap-[30px]">
+                <div className="flex flex-col gap-[10px]">
+                  <div className="flex flex-col gap-1">
+                    <p className="text-[13px] font-medium text-cente text-tradeFadeWhite">
+                      Are you sure you want to unlink and remove this bank
+                      account ?
+                    </p>
+                  </div>
+
+                  <div className="w-full flex flex-col gap-1 bg-tradeAshLight p-[12px] rounded-[15px]">
+                    <div className="flex items-center justify-between">
+                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                        Account
+                      </p>
+                      <p className="text-[13px] font-semibold text-white">
+                        {manageAccount?.bank}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                        Account Number
+                      </p>
+                      <p className="text-[13px] font-semibold text-white">
+                        {manageAccount?.last4digits}
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
                 <Button
                   variant="danger"
@@ -324,33 +340,46 @@ const MyAccounts = () => {
       {isDefault ? (
         <div>
           <LockByScroll />
-          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-90 flex items-center justify-center z-40">
-            <div className="flex flex-col justify-between gap-[10px] bg-tradeAsh borde border-tradeAshLight p-[15px] rounded-[15px] shadow-lg lg:max-w-[350px] w-full">
-              <div className="flex justify-between items-start gap-[15px] pb-[15px] md:pt-0 md:p-[15px] lg:pb-[12px] lg:p-0 border-b border-tradeAshLight">
-                <div className="flex flex-col gap-3">
-                  <p className="text-lg font-semibold text-white leading-none">
-                    Confirm Default Account
-                  </p>
-                </div>
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
+              <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
+                <p className="text-lg font-[700] text-white ">
+                  Confirm Default
+                </p>
 
-                <div onClick={closeAccountSetting}>
+                <div onClick={closeEdit}>
                   <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
                 </div>
               </div>
 
-              <div className="flex flex-col gap-[30px]">
-                <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed">
-                  Are you sure you want to set{" "}
-                  <span className="text-white font-semibold">
-                    {manageAccount?.bank}
-                  </span>{" "}
-                  account ending in{" "}
-                  <span className="text-white font-semibold">
-                    {manageAccount?.last4digits}
-                  </span>{" "}
-                  as your default account? This will replace your current
-                  default for all future transactions.
-                </p>
+              <div className="flex-1 flex flex-col justify-between py-[12.3px] gap-[30px]">
+                <div className="flex flex-col gap-[10px]">
+                  <div className="flex flex-col gap-1">
+                    <p className="text-[13px] font-medium text-cente text-tradeFadeWhite">
+                      Are you sure you want to set this bank account as your
+                      default account ?
+                    </p>
+                  </div>
+
+                  <div className="w-full flex flex-col gap-1 bg-tradeAshLight p-[12px] rounded-[15px]">
+                    <div className="flex items-center justify-between">
+                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                        Account
+                      </p>
+                      <p className="text-[13px] font-semibold text-white">
+                        {manageAccount?.bank}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                        Account Number
+                      </p>
+                      <p className="text-[13px] font-semibold text-white">
+                        {manageAccount?.last4digits}
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
                 <Button
                   variant="secondary"

@@ -106,13 +106,13 @@ const ConfirmAccount = () => {
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Holder
                       </p>
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      <p className="text-[13px] text-white font-semibold">
                         {linkAccount?.data?.account_name}
                       </p>
                     </div>
                     <div className="flex items-center justify-between">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Bank Name
+                        Account
                       </p>
                       <p className="text-[13px] font-semibold text-white">
                         {linkAccount?.data?.bank_name}

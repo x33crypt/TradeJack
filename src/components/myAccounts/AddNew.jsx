@@ -51,7 +51,7 @@ const AddNew = () => {
     if (error) {
       setLinkAccount((prev) => ({
         ...prev,
-        loading: false,
+        proceed: false,
       }));
       setToast({
         ...toast,

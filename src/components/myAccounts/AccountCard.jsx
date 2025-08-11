@@ -103,7 +103,7 @@ const AccountCard = ({ account, index }) => {
                       selectSetDefault(
                         account?.bankId,
                         account?.bank_name,
-                        account?.account_number.slice(-4)
+                        account?.account_number
                       )
                     }
                     className="w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
@@ -117,7 +117,7 @@ const AccountCard = ({ account, index }) => {
                     selectDeleteAccount(
                       account?.bankId,
                       account?.bank_name,
-                      account?.account_number.slice(-4)
+                      account?.account_number
                     )
                   }
                   className="w-max flex gap-1 items-center justify-center bg-red-600/5 border border-red-600 p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
