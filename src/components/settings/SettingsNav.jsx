@@ -220,10 +220,22 @@ const SettingsNav = () => {
                 </div>
               </div>
               <div
-                className="flex items-center justify-between gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
+                className="flex items-center justify-between gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
                 // onClick={() => navigateTo("/settings/account/name")}
               >
                 <p className="text-[13px] font-semibold text-white">FAQs</p>
+
+                <div className="text-white text-[22px]">
+                  <MdKeyboardArrowRight />
+                </div>
+              </div>
+              <div
+                className="flex items-center justify-between gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
+                // onClick={() => navigateTo("/settings/account/name")}
+              >
+                <p className="text-[13px] font-semibold text-white">
+                  Feedbacks
+                </p>
 
                 <div className="text-white text-[22px]">
                   <MdKeyboardArrowRight />
