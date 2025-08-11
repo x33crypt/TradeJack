@@ -24,6 +24,7 @@ import { FaLocationPin } from "react-icons/fa6";
 import { HiLocationMarker } from "react-icons/hi";
 import { FaUserAlt } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
+import { FaUserCheck } from "react-icons/fa";
 
 const HeroEdit = () => {
   const { loading, error } = useFetchProfile();
@@ -125,8 +126,8 @@ const HeroEdit = () => {
             <div className="md:flex hidden text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px]">
               <RiShare2Fill />
             </div>
-            <div className="text-white text-[20px] border border-tradeAshExtraLight  p-2 bg-tradeAshLight rounded-[10px]">
-              <IoSettingsSharp />
+            <div className="flex items-center text-tradeGreen border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaUserCheck />
             </div>
             <div className="text-tradeOrange border border-tradeOrange text-[20px] p-2 bg-tradeOrange/20 rounded-[10px]">
               <MdOutlineUpdate />
