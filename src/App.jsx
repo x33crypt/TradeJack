@@ -55,8 +55,8 @@ const App = () => {
       <TradeAlert />
       <TransactionDetails />
       <ProfileNav />
-      {/* <ConfirmAccount />
-      <SuccessAccount /> */}
+      <ConfirmAccount />
+      <SuccessAccount />
       <ConfirmTransfer />
       <SuccessTransfer />
       <ConfirmDeposit />

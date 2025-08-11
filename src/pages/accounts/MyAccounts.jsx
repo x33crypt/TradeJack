@@ -176,7 +176,7 @@ const MyAccounts = () => {
                         </p>
                       </div>
 
-                      <div className="flex flex-col gap-[30px] h-full justify-between ">
+                      <div className="flex flex-col h-full justify-between ">
                         <div className="flex flex-col gap-[10px]">
                           {/* Default Account */}
                           <div>
