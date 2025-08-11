@@ -26,7 +26,6 @@ import ToastError from "./components/toastCards/ToastError";
 import AboutMyOffer from "./pages/offer/mine/AboutMyOffer";
 import SummaryMyOffer from "./pages/offer/mine/SummaryMyOffer";
 import Wallet from "./pages/wallet/Wallet";
-import Settings from "./pages/Settings";
 import Transfer from "./pages/transfer/Transfer";
 import Deposit from "./pages/deposit/Deposit";
 import ConfirmTransfer from "./pages/transfer/ConfirmTransfer";
@@ -45,6 +44,7 @@ import SuccessDeposit from "./pages/deposit/SuccessDeposit";
 import SuccessWithdraw from "./pages/withdraw/SuccessWithdraw";
 import ConfirmAccount from "./pages/manageAccounts/ConfirmAccount";
 import SuccessAccount from "./pages/manageAccounts/SuccessAccount";
+import Settings from "./pages/settings/Settings";
 
 const App = () => {
   return (
@@ -81,6 +81,7 @@ const App = () => {
         <Route path="/account/kyc/verification" element={<KycVerification />} />
 
         {/* Account Settings */}
+        <Route path="/settings" element={<Settings />} />
         <Route path="/settings/account/name" element={<EditFullname />} />
         <Route path="/settings/account/username" element={<EditUsername />} />
         <Route path="/settings/account/email" element={<EditEmail />} />

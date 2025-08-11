@@ -16,6 +16,11 @@ const ProfileNav = () => {
     navigateTo("/account");
   };
 
+  const toSettings = () => {
+    setShow(false);
+    navigateTo("/settings");
+  };
+
   const close = () => {
     setShow(false);
   };
@@ -35,11 +40,11 @@ const ProfileNav = () => {
                     <img src={landingImg4} alt="" className="rounded-[10px]" />
                   </div>
 
-                  <div className="flex flex-col gap-[5px] bg">
+                  <div className="flex flex-col gap-2">
                     <p className="text-base leading-none text-white font-semibold">
                       0xsanityy
                     </p>
-                    <p className="text-xs font-semibold text-tradeFadeWhite leading-none">
+                    <p className="text-xs font-medium text-tradeFadeWhite leading-none">
                       adeleke@gmail.com
                     </p>
                   </div>
@@ -56,13 +61,17 @@ const ProfileNav = () => {
                     <Button variant="outline" onClick={toAccount}>
                       Account
                     </Button>
-                    <Button variant="outline">Settings</Button>
+                    <div className="lg:hidden flex">
+                      <Button variant="outline" onClick={toSettings}>
+                        Settings
+                      </Button>
+                    </div>
                     <Button variant="danger">Log Out</Button>
                   </div>
 
                   <div className="flex items-center justify-center">
                     <p className="text-xs font-medium text-tradeFadeWhite">
-                      GoGetSwap V1.0
+                      GoGetSwap Version 1.0
                     </p>
                   </div>
                 </div>

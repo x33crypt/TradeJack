@@ -8,6 +8,7 @@ import { useFetchProfile } from "@/hooks/useFetchProfile";
 import { useAccount } from "@/context/AccountContext";
 import Stats from "@/components/account/Stats";
 import Achievements from "@/components/account/Achievements";
+import SettingsNav from "@/components/settings/SettingsNav";
 
 const Account = () => {
   const { account, setAccount } = useAccount();
@@ -22,15 +23,14 @@ const Account = () => {
     <>
       <MarketTopNav />
       <div className=" md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
-        <div className="flex flex-col flex-1 gap-[5px] ">
-          <div className="flex lg:flex-row flex-col gap-[5px]">
-            <HeroEdit profile={profile} />
-            <Stats profile={profile} />
-          </div>
-          <div className="flex lg:flex-row flex-col gap-[5px]">
-            <PersonalInfo profile={profile} />
-            <Achievements profile={profile} />
-          </div>
+        <div className="hidden lg:flex">
+          <SettingsNav />
+        </div>
+        <div className="flex-1 flex flex-col gap-[5px]">
+          <HeroEdit />
+          <Stats />
+          <PersonalInfo />
+          <Achievements />
         </div>
       </div>
       <Footer />

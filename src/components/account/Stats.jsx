@@ -14,8 +14,6 @@ import { RiDonutChartFill } from "react-icons/ri";
 const Stats = () => {
   const { loading, error } = useFetchProfile();
   const { profile, setProfile } = useProfile();
-  const { account, setAccount } = useAccount();
-  const { view } = account;
 
   return (
     <div className="flex-1 flex flex-col md:border border-neutral-800">

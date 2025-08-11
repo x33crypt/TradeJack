@@ -87,24 +87,6 @@ const Profile = () => {
 
             {/* Additional Info */}
             <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
-              {/* KYC */}
-              <div
-                className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-                onClick={() => navigateTo("/account/kyc/status")}
-              >
-                <div className="flex-1 flex justify-between gap-[2px]">
-                  <p className="text-[13px] font-semibold text-white">
-                    KYC Verification
-                  </p>
-                  <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                    {profile?.kycStatus || "-- --"}
-                  </p>
-                </div>
-                <div className="text-white text-[22px]">
-                  <MdKeyboardArrowRight />
-                </div>
-              </div>
-
               {/* Gender */}
               <div className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight transition-all duration-300">
                 <div className="flex-1 flex justify-between gap-[2px]">
