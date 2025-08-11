@@ -31,8 +31,8 @@ const ProfileNav = () => {
             <div className="flex flex-col gap-[10px] w-[300px]">
               <div className="flex p-[12px] bg-tradeAsh border border-tradeAshLight items-center justify-between rounded-[15px]">
                 <div className="flex items-center  gap-3 ">
-                  <div className="cursor-pointer w-[40px]">
-                    <img src={landingImg4} alt="" className="rounded-full" />
+                  <div className=" w-[40px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                    <img src={landingImg4} alt="" className="rounded-[10px]" />
                   </div>
 
                   <div className="flex flex-col gap-[5px] bg">
@@ -45,7 +45,7 @@ const ProfileNav = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center text-tradeGreen border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px]">
+                <div className="flex items-center text-tradeGreen border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                   <FaUserCheck />
                 </div>
               </div>
@@ -62,7 +62,7 @@ const ProfileNav = () => {
 
                   <div className="flex items-center justify-center">
                     <p className="text-xs font-medium text-tradeFadeWhite">
-                      TradeJack Version 1.0
+                      GoGetSwap V1.0
                     </p>
                   </div>
                 </div>

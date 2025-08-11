@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <div className="flex-1 bg-tradeGree flex flex-col md:flex-row md:gap-[20px] gap-[20px] items-center ">
       <div className="flex lg:w-[200px] md:w-[170px] w-[150px] shrink-0 justify-center cursor-pointer">
-        <img className="rounded-full w-full h-auto" src={image} alt="" />
+        <img className="rounded-[10px] w-full h-auto" src={image} alt="" />
       </div>
 
       <div className="flex w-full flex-col justify-center lg:gap-4 md:gap-[10px] gap-4 lg:border-r border-tradeAshLight">
