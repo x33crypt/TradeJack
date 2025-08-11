@@ -14,11 +14,10 @@ import LockByScroll from "@/components/LockByScroll";
 import { IoClose } from "react-icons/io5";
 import { useToast } from "@/context/ToastContext";
 import api from "@/utils/http/api";
-import Info from "@/components/alerts/Info";
 
 const MyAccounts = () => {
-  const { loading, error, refetch } = useFetchLinkedBanks();
-  const { linkAccount, linkedAccounts, manageAccount, setManageAccount } =
+  const { loading } = useFetchLinkedBanks();
+  const { linkedAccounts, manageAccount, setManageAccount } =
     useLinkedAccount();
   const { isDelete, isDefault, success } = manageAccount;
   const { setToast } = useToast();
@@ -147,23 +146,6 @@ const MyAccounts = () => {
       success: false,
     });
   };
-
-  // useEffect(() => {
-  //   if (success === true) {
-  //     setTimeout(() => {
-  //       setManageAccount({
-  //         state: false,
-  //         accountId: null,
-  //         loading: false,
-  //         success: false,
-  //       });
-  //       refetch();
-  //     });
-  //   }
-  // }, [success]);
-
-  console.log("Showing Link Account Details :", linkAccount);
-  console.log("Showing manage account details :", manageAccount);
 
   const navigateTo = useNavigate();
 
