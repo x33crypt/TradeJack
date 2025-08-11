@@ -176,7 +176,7 @@ const MyAccounts = () => {
                         </p>
                       </div>
 
-                      <div className="flex flex-col h-full justify-between ">
+                      <div className="flex-1 flex flex-col justify-between ">
                         <div className="flex flex-col gap-[10px]">
                           {/* Default Account */}
                           <div>
@@ -219,7 +219,7 @@ const MyAccounts = () => {
                                 variant="outline"
                                 onClick={handleManageAccount}
                               >
-                                Edit Banks
+                                Edit Accounts
                               </Button>
                             )}
                           </div>
@@ -229,7 +229,7 @@ const MyAccounts = () => {
                               variant="primary"
                               onClick={() => navigateTo("/wallet/accounts/new")}
                             >
-                              Add New Bank
+                              Add New Account
                             </Button>
                           </div>
                         </div>

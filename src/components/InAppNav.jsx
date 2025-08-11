@@ -83,7 +83,6 @@ const InAppNav = () => {
             onClick={() => navigateTo("/dashboard")}
             className="flex items-center gap-[5px] cursor-pointer "
           >
-            {/* <RiExchangeFill className=" flex lg:text-2xl text-[20px] text-tradeGreen" /> */}
             <p className=" lg:text-xl md:text-[19px] text-[20px]  font-bold text-tradeGreen">
               Go
               <span className="font-semibold text-tradeOrange">Get</span>
@@ -142,9 +141,9 @@ const InAppNav = () => {
           <div
             className={` ${
               animate ? "animate-zoomShake" : ""
-            } w-max flex gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+            } w-max flex gap-1 items-center justify-center bg-tradeOrange border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
           >
-            <BiSupport className="text-[16px] text-tradeOrange" />
+            <BiSupport className="text-[16px] text-black" />
           </div>
           <div className="w-max flex gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
             <FaRegBell className="text-[16px] text-white" />
