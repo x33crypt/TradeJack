@@ -145,13 +145,11 @@ const AddNew = () => {
               </div>
             </div>
 
-            <div className="mt-20px]">
-              <Info
-                text={
-                  "We never store your bank credentials. Your data is protected with end-to-end encryption to ensure it stays private and secure."
-                }
-              />
-            </div>
+            <Info
+              text={
+                "We never store your bank credentials. Your data is protected with advanced end-to-end encryption to ensure it always stays private and secure."
+              }
+            />
           </div>
 
           <div className="flex flex-col items-center gap-[10px]">

@@ -7,7 +7,7 @@ export const LinkedAccountProvider = ({ children }) => {
     proceed: false,
     loading: false,
     verified: false,
-    success: true,
+    success: false,
     bank: "",
     bankAccount: "",
     holdersName: null,
