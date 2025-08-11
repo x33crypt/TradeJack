@@ -10,16 +10,13 @@ import Button from "@/components/buttons/Button";
 import { useNavigate } from "react-router-dom";
 import StateHandler from "@/components/stateHandler/StateHandler";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
-import { TbInvoice } from "react-icons/tb";
-import { LuFileX2 } from "react-icons/lu";
-import { LuFileSearch } from "react-icons/lu";
-import { HiMiniCalendarDateRange } from "react-icons/hi2";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { SiTruenas } from "react-icons/si";
 import Info from "@/components/alerts/Info";
 import Loading from "@/components/Loading";
 import Feedbacks from "@/components/account/Feedbacks";
 import { FaSearch } from "react-icons/fa";
+import { PiMagnifyingGlassBold } from "react-icons/pi";
 
 const MyOffer = () => {
   const topRef = useRef(null);
@@ -209,10 +206,10 @@ const MyOffer = () => {
                   } flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]`}
                 >
                   <div
-                    onClick={handleShowActiveOffers}
-                    className={`text-black bg-tradeOrange flex items-center gap-1 w-max px-[8px] py-[4px] text-[20px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                    className={`flex items-center gap-2 bg-tradeAshLight text-tradeFadeWhite border-tradeAshExtraLight w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                   >
-                    <FaSearch />
+                    <PiMagnifyingGlassBold className="lg:text-[14px] text-[14px]" />
+                    <p>Search</p>
                   </div>
 
                   <div

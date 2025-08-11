@@ -43,21 +43,6 @@ const ViewOptions = () => {
             onClick={() =>
               setAccount((prev) => ({
                 ...prev,
-                view: "Promotions",
-              }))
-            }
-            className={`${
-              view === "Promotions"
-                ? "text-white bg-tradeAsh border-tradeGreen"
-                : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-            } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-          >
-            <p>Promotions</p>
-          </div>
-          <div
-            onClick={() =>
-              setAccount((prev) => ({
-                ...prev,
                 view: "Rewards",
               }))
             }

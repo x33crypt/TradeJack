@@ -16,35 +16,39 @@ const Stats = ({ dashboard }) => {
         <p className="text-lg font-[700] text-white ">Trade Stats</p>
       </div>
 
-      <div className=" grid grid-cols-2 gap-[10px] rounded-[16px] p-[15px]">
-        <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-2xl cursor-pointer hover:bg-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
-          <div className="flex items-center gap-2">
-            <LuFileCheck2 className="text-base text-tradeGreen" />
-
-            <p className="text-xs font-semibold text-tradeFadeWhite">
-              Successful Trades
-            </p>
-          </div>
+      <div className=" grid grid-cols-2 gap-[10px] rounded-[16px] p-[15px] ">
+        <div className="flex  flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+          <p className="text-xs font-semibold text-tradeFadeWhite">
+            Successful Trades
+          </p>
 
           <div className="flex justify-between items-center">
-            <p className="text-white text-[13px] font-semibold leading-tight">
-              {dashboard?.activitySummary?.successful_trades ?? "0"}
-            </p>
+            <div className="flex gap-1 items-center">
+              <div className="p-1  rounded-full bg-[#00de82]/5 ">
+                <LuFileCheck2 className="text-tradeGreen text-[13px] md:text-sm leading-none" />
+              </div>
+
+              <p className="text-white text-[13px] font-semibold leading-tight">
+                {dashboard?.activitySummary?.successful_trades ?? "0"}
+              </p>
+            </div>
+
             <span className="text-xs text-tradeGreen bg-tradeGreen/10 px-2 py-[2px] rounded-md font-medium">
               Great job!
             </span>
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-2xl cursor-pointer hover:bg-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
-          <div className="flex items-center gap-2">
-            <LuFileX2 className="text-base text-red-600" />
-            <p className="text-xs font-semibold text-tradeFadeWhite">
-              Unsuccessful Trades
-            </p>
-          </div>
+        <div className="flex  flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+          <p className="text-xs font-semibold text-tradeFadeWhite">
+            Unsuccessful Trades
+          </p>
 
-          <div className="flex justify-between items-center">
+          <div className="flex gap-1 items-center">
+            <div className="p-1  rounded-full bg-red-600/5 ">
+              <LuFileX2 className="text-red-600 text-[13px] md:text-sm leading-none" />
+            </div>
+
             <p className="text-white text-[13px] font-semibold leading-tight">
               {dashboard?.activitySummary?.successful_trades
                 ? dashboard?.activitySummary?.successful_trades
@@ -53,16 +57,17 @@ const Stats = ({ dashboard }) => {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-2xl cursor-pointer hover:bg-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
-          <div className="flex items-center gap-2">
-            <LuFileClock className="text-base text-tradeOrange" />
-            <p className="text-xs font-semibold text-tradeFadeWhite">
-              Pending Trades
-            </p>
-          </div>
+        <div className="flex  flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+          <p className="text-xs font-semibold text-tradeFadeWhite">
+            Pending Trades
+          </p>
 
-          <div className="flex justify-between items-center">
-            <p className="text-white text-[13px] font-semiboldleading-tight">
+          <div className="flex gap-1 items-center">
+            <div className="p-1  rounded-full bg-tradeOrange/5 ">
+              <LuFileClock className="text-tradeOrange text-[13px] md:text-sm leading-none" />
+            </div>
+
+            <p className="text-white text-[13px] font-semibold leading-tight">
               {dashboard?.activitySummary?.pending_trades
                 ? dashboard?.activitySummary?.pending_trades
                 : "0"}
@@ -70,17 +75,20 @@ const Stats = ({ dashboard }) => {
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-2xl cursor-pointer hover:bg-tradeAshLight transition-all duration-300 shadow-md hover:shadow-lg">
-          <div className="flex items-center gap-2">
-            <LuFileSearch className="text-base text-tradeFadeWhite" />
-            <p className="text-xs font-semibold text-tradeFadeWhite">
-              Disputed Trades
-            </p>
-          </div>
+        <div className="flex  flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+          <p className="text-xs font-semibold text-tradeFadeWhite">
+            Disputed Trades
+          </p>
 
-          <div className="flex justify-between items-center">
+          <div className="flex gap-1 items-center">
+            <div className="p-1  rounded-full bg-tradeAshExtraLight/5 ">
+              <LuFileSearch className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+            </div>
+
             <p className="text-white text-[13px] font-semibold leading-tight">
-              {dashboard?.openDisputes ? dashboard?.openDisputes : "0"}
+              {dashboard?.activitySummary?.pending_trades
+                ? dashboard?.activitySummary?.pending_trades
+                : "0"}
             </p>
           </div>
         </div>

@@ -149,10 +149,8 @@ const MyAccounts = () => {
   };
 
   useEffect(() => {
-    if (success === true) {
-      refetchLinkedBanks();
-    }
-  }, [success]);
+    refetchLinkedBanks();
+  }, [success === true]);
 
   const navigateTo = useNavigate();
 
@@ -217,10 +215,7 @@ const MyAccounts = () => {
                         <div className="flex flex-col gap-[10px] items-cente w-full mt-[0px]">
                           <div>
                             {manageAccount.state ? (
-                              <Button
-                                variant="outline"
-                                onClick={closeEdit}
-                              >
+                              <Button variant="outline" onClick={closeEdit}>
                                 Cancel
                               </Button>
                             ) : (

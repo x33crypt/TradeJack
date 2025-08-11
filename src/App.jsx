@@ -6,7 +6,7 @@ import Marketplace from "./pages/Marketplace";
 import AboutOffer from "./pages/offer/user/AboutOffer";
 import CreateOffer from "./pages/offer/user/CreateOffer";
 import Messages from "./pages/Messages";
-import Account from "./pages/Account";
+import Account from "./pages/settings/Account";
 import SignupUser from "./pages/SignupUser";
 import SignupSuccess from "./pages/SignupSuccess";
 import SigninUser from "./pages/SigninUser";
@@ -33,8 +33,8 @@ import ConfirmTransfer from "./pages/transfer/ConfirmTransfer";
 import SuccessTransfer from "./pages/transfer/SuccessTransfer";
 import TransactionHistory from "./pages/wallet/TransactionHistory";
 import TransactionDetails from "./pages/wallet/TransactionDetails";
-import MyAccounts from "./pages/accounts/MyAccounts";
-import AddNewAccount from "./pages/accounts/AddNewAccount";
+import MyAccounts from "./pages/manageAccounts/MyAccounts";
+import AddNewAccount from "./pages/manageAccounts/AddNewAccount";
 import ProfileNav from "./components/ProfileNav";
 import Withdraw from "./pages/withdraw/Withdraw";
 import ConfirmWithdraw from "./pages/withdraw/ConfirmWithdraw";
@@ -43,8 +43,8 @@ import KycVerification from "./pages/kyc/KycVerification";
 import ConfirmDeposit from "./pages/deposit/ConfirmDeposit";
 import SuccessDeposit from "./pages/deposit/SuccessDeposit";
 import SuccessWithdraw from "./pages/withdraw/SuccessWithdraw";
-import ConfirmAccount from "./pages/accounts/ConfirmAccount";
-import SuccessAccount from "./pages/accounts/SuccessAccount";
+import ConfirmAccount from "./pages/manageAccounts/ConfirmAccount";
+import SuccessAccount from "./pages/manageAccounts/SuccessAccount";
 
 const App = () => {
   return (

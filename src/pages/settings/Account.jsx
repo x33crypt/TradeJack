@@ -6,9 +6,8 @@ import HeroEdit from "@/components/account/profile/HeroEdit";
 import { useProfile } from "@/context/ProfileContext";
 import { useFetchProfile } from "@/hooks/useFetchProfile";
 import { useAccount } from "@/context/AccountContext";
-import ViewOptions from "@/components/account/ViewOptions";
 import Stats from "@/components/account/Stats";
-import Feedbacks from "@/components/account/Feedbacks";
+import Achievements from "@/components/account/Achievements";
 
 const Account = () => {
   const { account, setAccount } = useAccount();
@@ -23,15 +22,14 @@ const Account = () => {
     <>
       <MarketTopNav />
       <div className=" md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
-        <div className="flex-1 flex flex-col w-full min-h-svh md:border border-neutral-800">
-          <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-            <p className="text-lg font-[700] text-white ">Account</p>
-          </div>
-          <div className="flex flex-col flex-1 pb-[50px">
+        <div className="flex flex-col flex-1 gap-[5px] ">
+          <div className="flex lg:flex-row flex-col gap-[5px]">
             <HeroEdit profile={profile} />
-            <ViewOptions />
-            <PersonalInfo profile={profile} view={view} />
-            <Stats profile={profile} view={view} />
+            <Stats profile={profile} />
+          </div>
+          <div className="flex lg:flex-row flex-col gap-[5px]">
+            <PersonalInfo profile={profile} />
+            <Achievements profile={profile} />
           </div>
         </div>
       </div>
