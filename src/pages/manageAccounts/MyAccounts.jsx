@@ -16,7 +16,7 @@ import { useToast } from "@/context/ToastContext";
 import api from "@/utils/http/api";
 
 const MyAccounts = () => {
-  const { refetchLinkedBanks } = useFetchLinkedBanks();
+  // const { refetchLinkedBanks } = useFetchLinkedBanks();
   const { loading } = useFetchLinkedBanks();
   const { linkedAccounts, manageAccount, setManageAccount } =
     useLinkedAccount();
@@ -148,9 +148,9 @@ const MyAccounts = () => {
     });
   };
 
-  useEffect(() => {
-    refetchLinkedBanks();
-  }, [success === true]);
+  // useEffect(() => {
+  //   refetchLinkedBanks();
+  // }, [success === true]);
 
   const navigateTo = useNavigate();
 

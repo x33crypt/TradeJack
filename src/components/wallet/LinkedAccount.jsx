@@ -10,7 +10,7 @@ import { FaCheckDouble } from "react-icons/fa";
 import { TiPin } from "react-icons/ti";
 
 const LinkedAccount = () => {
-  const { loading, error, refetch } = useFetchLinkedBanks();
+  const { loading } = useFetchLinkedBanks();
   const { linkedAccounts } = useLinkedAccount();
 
   const navigateTo = useNavigate();
