@@ -136,9 +136,9 @@ const MarketMain = ({ promotedOffers }) => {
               <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                 <div
                   onClick={showFilter}
-                  className={`flex lg:hidden  items-center  gap-2 bg-tradeOrange text-black border-tradeOrange  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                  className={`flex lg:hidden items-center gap-2 bg-tradeAshLight text-tradeFadeWhite border-tradeAshExtraLight w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
-                  <RiFilter3Line className=" text-[18px]" />
+                  <RiFilter3Line className="lg:text-[14px] text-[14px]" />
                   <p>Filter</p>
                 </div>
                 <div
@@ -175,7 +175,7 @@ const MarketMain = ({ promotedOffers }) => {
 
               <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
                 <div
-                  className={`flex items-center gap-2 bg-tradeAshLight text-tradeOrange border-tradeAshExtraLight w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                  className={`flex items-center gap-2 bg-tradeAshLight text-tradeFadeWhite border-tradeAshExtraLight w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
                   <BiSolidBinoculars className="lg:text-[14px] text-[14px]" />
                   <p>Explore</p>
