@@ -14,8 +14,15 @@ export function useFetchLinkedBanks() {
     try {
       const res = await api.get("/payment/bank-accounts");
       if (res?.status === 200 && res?.data?.success) {
-        console.log("Server Linked Accounts Data:", res);
-        setLinkedAccounts(res.data.data || []);
+        const newAccounts = res.data.data || [];
+
+        // ✅ Only update if data changed
+        const isSame =
+          JSON.stringify(newAccounts) === JSON.stringify(linkedAccounts);
+
+        if (!isSame) {
+          setLinkedAccounts(newAccounts);
+        }
       } else {
         setError(res?.data?.message || "Failed to fetch linked accounts.");
       }
@@ -26,7 +33,7 @@ export function useFetchLinkedBanks() {
     } finally {
       setLoading(false);
     }
-  }, [setLinkedAccounts]);
+  }, [linkedAccounts, setLinkedAccounts]);
 
   useEffect(() => {
     fetchLinkedBanks();
@@ -36,5 +43,5 @@ export function useFetchLinkedBanks() {
     fetchLinkedBanks();
   }, [fetchLinkedBanks]);
 
-  return { linkedAccounts, loading, error, refetchLinkedBanks };
+  return { loading, error, refetchLinkedBanks };
 }
