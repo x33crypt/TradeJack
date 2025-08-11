@@ -269,7 +269,7 @@ const MyAccounts = () => {
         </div>
       </div>
 
-      <Footer big={"flex"} small={"hidden"} />
+      {/* <Footer big={"flex"} small={"hidden"} /> */}
 
       {isDelete ? (
         <div>
