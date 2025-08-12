@@ -1,19 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { LiaUserFriendsSolid } from "react-icons/lia";
-import { IoWalletOutline } from "react-icons/io5";
-import { TbDashboardFilled } from "react-icons/tb";
-import { TbFileLike } from "react-icons/tb";
-import { BsChatQuote } from "react-icons/bs";
-import { TbLayoutListFilled } from "react-icons/tb";
-import { TbFileInvoice } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
-import { RiGift2Fill } from "react-icons/ri";
-import { RiExchangeBoxLine } from "react-icons/ri";
-import { RiExchange2Fill } from "react-icons/ri";
-import { FaUserCheck } from "react-icons/fa";
 import landingImg4 from "../../assets/landingImg4.JPG";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
+import { PiPasswordBold } from "react-icons/pi";
+import { Si2Fas } from "react-icons/si";
+import { GrSecure } from "react-icons/gr";
+import { MdOutlinePrivacyTip } from "react-icons/md";
+import { IoNotifications } from "react-icons/io5";
+import { MdManageAccounts } from "react-icons/md";
+import { HiLink } from "react-icons/hi";
+import { FaQuestion } from "react-icons/fa";
+import { MdOutlineFeedback } from "react-icons/md";
 
 const SettingsNav = () => {
   const navigateTo = useNavigate();
@@ -29,7 +28,7 @@ const SettingsNav = () => {
             className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black  transition-all duration-300 cursor-pointer"
             onClick={() => navigateTo("/account")}
           >
-            <TbDashboardFilled className="text-[17px]" />
+            <FaUser className="text-[17px]" />
             <p className="text-[13px] font-[500]"> Account</p>
           </div>
 
@@ -37,7 +36,7 @@ const SettingsNav = () => {
             className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
             onClick={() => navigateTo("/wallet")}
           >
-            <IoWalletOutline className="text-[17px]" />
+            <PiPasswordBold className="text-[17px]" />
             <p className="text-[13px] font-[500]"> Change Password</p>
           </div>
 
@@ -45,38 +44,49 @@ const SettingsNav = () => {
             className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
             onClick={() => navigateTo("/offers/myoffers")}
           >
-            <TbFileInvoice className="text-[17px]" />
+            <Si2Fas className="text-[17px]" />
             <p className="text-[13px] font-[500]">Two-Factor Authentication</p>
           </div>
           <div
             className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
             onClick={() => navigateTo("/offers/mine")}
           >
-            <TbFileLike className="text-[17px]" />
+            <GrSecure className="text-[17px]" />
             <p className="text-[13px] font-[500]"> Transaction Pin</p>
           </div>
           <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <BsChatQuote className="text-[17px]" />
+            <MdOutlinePrivacyTip className="text-[17px]" />
             <p className="text-[13px] font-[500]"> Privacy & Permissions</p>
           </div>
           <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <RiExchange2Fill className="text-[17px]" />
-            <p className="text-[13px] font-[500]"> Linked Accounts</p>
-          </div>
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <RiGift2Fill className="text-[17px]" />
+            <IoNotifications className="text-[17px]" />
             <p className="text-[13px] font-[500]"> Notifications</p>
           </div>
 
           <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <RiGift2Fill className="text-[17px]" />
+            <MdManageAccounts className="text-[17px]" />
             <p className="text-[13px] font-[500]"> Account Management</p>
+          </div>
+          <div
+            onClick={() => navigateTo("/wallet/accounts")}
+            className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
+          >
+            <HiLink className="text-[17px]" />
+            <p className="text-[13px] font-[500]"> Linked Accounts</p>
           </div>
         </div>
         <div className="flex flex-col px-[15px] py-[12px] gap-[10px] border-t border-tradeAshLight">
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <LiaUserFriendsSolid className="text-[17px]" />
+          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border-b hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+            <BiSupport className="text-[17px]" />
             <p className="text-[13px] font-[500]"> Support & Help</p>
+          </div>{" "}
+          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border-b hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+            <FaQuestion className="text-[17px]" />
+            <p className="text-[13px] font-[500]">FAQs</p>
+          </div>
+          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+            <MdOutlineFeedback className="text-[17px]" />
+            <p className="text-[13px] font-[500]">Feedbacks</p>
           </div>
         </div>
       </div>
@@ -88,7 +98,10 @@ const SettingsNav = () => {
             <p className="text-lg font-[700] text-white ">Settings</p>
           </div>
           <div className="flex flex-col p-[15px] border-neutral-800 gap-[10px]">
-            <div className="flex w-full p-[12px] bg-tradeAsh border border-tradeAshLight items-center justify-between rounded-[15px]">
+            <div
+              onClick={() => navigateTo("/account")}
+              className="flex w-full p-[12px] bg-tradeAsh border border-tradeAshLight items-center justify-between rounded-[15px]"
+            >
               <div className="flex items-center  gap-3 ">
                 <div className=" w-[60px] rounded-[10px] overflow-hidden border border-tradeAshExtraLight cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                   <img src={landingImg4} alt="" className="rounded-[10px]" />
@@ -193,7 +206,7 @@ const SettingsNav = () => {
               </div>
               <div
                 className="flex items-center justify-between gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
-                // onClick={() => navigateTo("/settings/account/name")}
+                onClick={() => navigateTo("/wallet/accounts")}
               >
                 <p className="text-[13px] font-semibold text-white">
                   Linked Accounts

@@ -1,30 +1,19 @@
 import React from "react";
-import { FaLocationDot } from "react-icons/fa6";
-import { RiEye2Fill } from "react-icons/ri";
 import { GiTopHat } from "react-icons/gi";
 import { TbCameraPlus } from "react-icons/tb";
 import image from "../../../assets/landingImg4.JPG";
-import { FaUserFriends } from "react-icons/fa";
-import { IoLink } from "react-icons/io5";
-import { FiMoreHorizontal } from "react-icons/fi";
 import { FaCalendarCheck } from "react-icons/fa";
-import { BiSolidCalendarEdit } from "react-icons/bi";
-import { FaEdit } from "react-icons/fa";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import { useFetchProfile } from "@/hooks/useFetchProfile";
 import { useProfile } from "@/context/ProfileContext";
 import Loading from "@/components/Loading";
-import NetworkError from "@/components/NetworkError";
 import { RiShare2Fill } from "react-icons/ri";
-import { IoSettingsSharp } from "react-icons/io5";
 import { FaCircle } from "react-icons/fa";
-import { HiOutlineLocationMarker } from "react-icons/hi";
 import { MdOutlineUpdate } from "react-icons/md";
-import { FaLocationPin } from "react-icons/fa6";
 import { HiLocationMarker } from "react-icons/hi";
-import { FaUserAlt } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { FaUserCheck } from "react-icons/fa";
+import { FaUserXmark } from "react-icons/fa6";
 
 const HeroEdit = () => {
   const { loading, error } = useFetchProfile();
@@ -129,7 +118,7 @@ const HeroEdit = () => {
             <div className="flex items-center text-tradeGreen border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
               <FaUserCheck />
             </div>
-            <div className="text-tradeOrange border border-tradeOrange text-[20px] p-2 bg-tradeOrange/20 rounded-[10px]">
+            <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px]">
               <MdOutlineUpdate />
             </div>
           </div>

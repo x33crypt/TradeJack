@@ -50,9 +50,9 @@ const ProfileNav = () => {
                   </div>
                 </div>
 
-                {/* <div className="flex items-center text-tradeGreen border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                <div className="flex items-center text-tradeGreen border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                   <FaUserCheck />
-                </div> */}
+                </div>
               </div>
 
               <div className="flex flex-col  bg-tradeAsh border border-tradeAshLight rounded-[15px] shadow-lg">

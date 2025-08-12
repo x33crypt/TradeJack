@@ -86,6 +86,7 @@ const App = () => {
         <Route path="/settings/account/username" element={<EditUsername />} />
         <Route path="/settings/account/email" element={<EditEmail />} />
         <Route path="/settings/account/mobile" element={<EditMobile />} />
+        {/* <Route path="/settings/password" element={< />} /> */}
 
         {/* Wallet */}
         <Route path="/wallet" element={<Wallet />} />
