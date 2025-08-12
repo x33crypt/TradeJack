@@ -14,6 +14,7 @@ import { HiLocationMarker } from "react-icons/hi";
 import { FaUserCircle } from "react-icons/fa";
 import { FaUserCheck } from "react-icons/fa";
 import { FaUserXmark } from "react-icons/fa6";
+import { TbClockEdit } from "react-icons/tb";
 
 const HeroEdit = () => {
   const { loading, error } = useFetchProfile();
@@ -119,7 +120,7 @@ const HeroEdit = () => {
               <FaUserCheck />
             </div>
             <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px]">
-              <MdOutlineUpdate />
+              <TbClockEdit />
             </div>
           </div>
         </div>
