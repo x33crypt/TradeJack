@@ -24,6 +24,9 @@ import { HiGiftTop } from "react-icons/hi2";
 import { RiExchangeBoxLine } from "react-icons/ri";
 import { HiOutlineGlobe } from "react-icons/hi";
 import { HiViewGridAdd } from "react-icons/hi";
+import { TiFlashOutline } from "react-icons/ti";
+import { FiUserPlus } from "react-icons/fi";
+import { RiExchangeFundsLine } from "react-icons/ri";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -229,6 +232,12 @@ const InAppNav = () => {
                   <p className="text-white text-[13px] ">Favourite offers</p>
                 </div>
                 <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                  <TiFlashOutline className="text-[20px] text-tradeFadeWhite" />
+                  <p className="text-white text-[13px]  font-medium">
+                    Promoted Offer
+                  </p>
+                </div>
+                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
                   <FaUserFriends className="text-[20px] text-tradeFadeWhite" />
                   <p className="text-white text-[13px]  font-medium ">
                     Trade partners
@@ -253,21 +262,16 @@ const InAppNav = () => {
                   }}
                   className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
                 >
-                  <RiExchangeBoxLine className="text-[20px] text-tradeFadeWhite" />
+                  <RiExchangeFundsLine className="text-[20px] text-tradeFadeWhite" />
                   <p className="text-white text-[13px]  font-medium ">
                     Transaction history
                   </p>
                 </div>
                 <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
-                  <BiSupport className="text-[20px] text-tradeFadeWhite" />
+                  <FiUserPlus className="text-[20px] text-tradeFadeWhite" />
                   <p className="text-white text-[13px]  font-medium">
-                    {" "}
-                    Help & support
+                    Referrals
                   </p>
-                </div>
-                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
-                  <HiGiftTop className="text-[20px] text-tradeFadeWhite" />
-                  <p className="text-white text-[13px]  font-medium">Rewards</p>
                 </div>
               </div>
 
