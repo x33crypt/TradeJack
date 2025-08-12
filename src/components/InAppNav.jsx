@@ -64,24 +64,22 @@ const InAppNav = () => {
       {/* Desktop Nav */}
       <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] px-[15px] h-[57px] md:h-[65px] flex justify-between items-center border-b border-neutral-800 ">
         <div className="flex items-center lg:gap-[30px] gap-[15px]">
-          {/* <div className="flex md:hidden items-center gap-1 bg-tradeAs text-white px-[5px] py-1 border border-tradeAshExtraLight rounded-[6px] w-max">
-            {isNavOption ? (
-              <IoCloseSharp className="text-white text-lg" />
-            ) : (
-              <HiOutlineMenuAlt2 className="text-white text-lg" />
-            )}
-          </div> */}
-
-          <div
-            onClick={() => setIsNavOption((prev) => !prev)}
-            className="w-max flex md:hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-          >
-            {isNavOption ? (
-              <IoCloseSharp className="text-white text-[16px]" />
-            ) : (
+          {isNavOption === false ? (
+            <div
+              onClick={() => setIsNavOption((prev) => !prev)}
+              className="w-max flex md:hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+            >
               <HiOutlineMenuAlt2 className="text-white text-[16px]" />
-            )}
-          </div>
+            </div>
+          ) : (
+            <div
+              onClick={() => setIsNavOption((prev) => !prev)}
+              className="w-max flex md:hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] opacity-0"
+            >
+              <HiOutlineMenuAlt2 className="text-white text-[16px]" />
+            </div>
+          )}
+
           <div
             onClick={() => navigateTo("/dashboard")}
             className="flex items-center gap-[5px] cursor-pointer "
@@ -102,7 +100,6 @@ const InAppNav = () => {
             <TbDashboardFilled className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-medium">Dashboard</p>
           </div>
-
           <div
             onClick={() => navigateTo("/dashboard")}
             className="flex items-center gap-[8px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] transition-all duration-300 hover:shadow-md hover:scale-[1.03] cursor-pointer"
@@ -110,7 +107,6 @@ const InAppNav = () => {
             <IoWallet className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-medium">Wallet</p>
           </div>
-
           <div
             onClick={() => navigateTo("/offers/create")}
             className="flex items-center gap-[8px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] transition-all duration-300 hover:shadow-md hover:scale-[1.03] cursor-pointer"
@@ -140,7 +136,6 @@ const InAppNav = () => {
               placeholder={searchplaceholder}
             />
           </div>
-
           <div
             className={` ${
               animate ? "animate-zoomShake" : ""
@@ -168,133 +163,142 @@ const InAppNav = () => {
             <div
               className={`${
                 isNavOption ? "flex" : "hidden"
-              }  z-50 fixed right-0 left-0 top-[57px] bottom-0 bg-black p-[15px] pt-[13px] pb-[16px] lg:hidden flex-col justify-between`}
+              }  z-50 fixed right-0 left-0 top-0 bottom-0  lg:hidden flex-col `}
             >
-              <div className="flex gap-[8px] p-[12px] rounded-[10px] text-sm font-semibold items-center bg-tradeAsh border border-tradeAshExtraLight">
-                <FaMagnifyingGlass className="text-tradeFadeWhite text-[18px]" />
-
-                <p className=" text-tradeFadeWhite text-[13px] font-semibold">
-                  Hello, <span className="text-white">x33crypt.</span> How can
-                  we help ?
-                </p>
+              <div className="flex-1 flex items-center bg-transparent h-[57px] p-[15px] ">
+                {isNavOption === true ? (
+                  <div
+                    onClick={() => setIsNavOption((prev) => !prev)}
+                    className="w-max flex md:hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                  >
+                    <IoCloseSharp className="text-white text-[16px]" />
+                  </div>
+                ) : (
+                  <div
+                    onClick={() => setIsNavOption((prev) => !prev)}
+                    className="w-max flex md:hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] opacity-0"
+                  >
+                    <IoCloseSharp className="text-white text-[16px]" />
+                  </div>
+                )}
               </div>
 
-              {/* <div
-                onClick={() => {
-                  navigateTo("/offers/marketplace");
-                  setIsNavOption(false);
-                }}
-                className="w-full md:w-max flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-              >
-                <HiOutlineGlobe className="text-[14px] text-tradeFadeWhite" />
-                <p className="text-white font-semibold  text-[13px]">
-                  Browse Offers
-                </p>
-              </div> */}
+              <div className="flex flex-col justify-between p-[15px] bg-black ">
+                <div className="flex gap-[8px] p-[12px] rounded-[10px] text-sm font-semibold items-center bg-tradeAsh border border-tradeAshExtraLight">
+                  <FaMagnifyingGlass className="text-tradeFadeWhite text-[18px]" />
 
-              <div className="flex flex-col gap-[5px]">
-                <div
-                  onClick={() => {
-                    navigateTo("/dashboard");
-                    setIsNavOption(false);
-                  }}
-                  className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
-                >
-                  <TbDashboardFilled className="text-[20px] text-tradeFadeWhite" />
-                  <p className="text-white text-[13px] font-medium">
-                    Dashboard
+                  <p className=" text-tradeFadeWhite text-[13px] font-semibold">
+                    Hello, <span className="text-white">x33crypt.</span> How can
+                    we help ?
                   </p>
                 </div>
-                <div
-                  onClick={() => {
-                    navigateTo("/wallet");
-                    setIsNavOption(false);
-                  }}
-                  className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
-                >
-                  <IoWalletOutline className="text-[20px] text-tradeFadeWhite" />
-                  <p className="text-white text-[13px]  font-medium ">Wallet</p>
-                </div>
-                <div
-                  onClick={() => {
-                    navigateTo("/offers/myoffers");
-                    setIsNavOption(false);
-                  }}
-                  className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
-                >
-                  <TbFileInvoice className="text-[20px] text-tradeFadeWhite" />
-                  <p className="text-white text-[13px]  font-medium ">
-                    My offers
-                  </p>
-                </div>
-                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
-                  <TbFileLike className="text-[20px] text-tradeFadeWhite" />
-                  <p className="text-white text-[13px] ">Favourite offers</p>
-                </div>
-                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
-                  <TiFlashOutline className="text-[20px] text-tradeFadeWhite" />
-                  <p className="text-white text-[13px]  font-medium">
-                    Promoted Offer
-                  </p>
-                </div>
-                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
-                  <FaUserFriends className="text-[20px] text-tradeFadeWhite" />
-                  <p className="text-white text-[13px]  font-medium ">
-                    Trade partners
-                  </p>
-                </div>
-                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
-                  <BsChatQuote className="text-[20px] text-tradeFadeWhite" />
-                  <p className="text-white text-[13px]  font-medium ">
-                    Messages
-                  </p>
-                </div>
-                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
-                  <RiExchange2Fill className="text-[20px] text-tradeFadeWhite" />
-                  <p className="text-white text-[13px]  font-medium ">
-                    Trade history
-                  </p>
-                </div>
-                <div
-                  onClick={() => {
-                    navigateTo("/wallet/transactions");
-                    setIsNavOption(false);
-                  }}
-                  className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
-                >
-                  <RiExchangeFundsLine className="text-[20px] text-tradeFadeWhite" />
-                  <p className="text-white text-[13px]  font-medium ">
-                    Transaction history
-                  </p>
-                </div>
-                <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
-                  <FiUserPlus className="text-[20px] text-tradeFadeWhite" />
-                  <p className="text-white text-[13px]  font-medium">
-                    Referrals
-                  </p>
-                </div>
-              </div>
 
-              <div className="w-full h-max flex flex-col gap-[8px]">
-                <Button
-                  variant="Fadeout"
-                  onClick={() => {
-                    navigateTo("/offers/marketplace");
-                    setIsNavOption(false);
-                  }}
-                >
-                  Browse Offers
-                </Button>
+                <div className="flex flex-col gap-[5px]">
+                  <div
+                    onClick={() => {
+                      navigateTo("/dashboard");
+                      setIsNavOption(false);
+                    }}
+                    className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
+                  >
+                    <TbDashboardFilled className="text-[20px] text-tradeFadeWhite" />
+                    <p className="text-white text-[13px] font-medium">
+                      Dashboard
+                    </p>
+                  </div>
+                  <div
+                    onClick={() => {
+                      navigateTo("/wallet");
+                      setIsNavOption(false);
+                    }}
+                    className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
+                  >
+                    <IoWalletOutline className="text-[20px] text-tradeFadeWhite" />
+                    <p className="text-white text-[13px]  font-medium ">
+                      Wallet
+                    </p>
+                  </div>
+                  <div
+                    onClick={() => {
+                      navigateTo("/offers/myoffers");
+                      setIsNavOption(false);
+                    }}
+                    className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
+                  >
+                    <TbFileInvoice className="text-[20px] text-tradeFadeWhite" />
+                    <p className="text-white text-[13px]  font-medium ">
+                      My offers
+                    </p>
+                  </div>
+                  <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                    <TbFileLike className="text-[20px] text-tradeFadeWhite" />
+                    <p className="text-white text-[13px] ">Favourite offers</p>
+                  </div>
+                  <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                    <TiFlashOutline className="text-[20px] text-tradeFadeWhite" />
+                    <p className="text-white text-[13px]  font-medium">
+                      Promoted Offer
+                    </p>
+                  </div>
+                  <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                    <FaUserFriends className="text-[20px] text-tradeFadeWhite" />
+                    <p className="text-white text-[13px]  font-medium ">
+                      Trade partners
+                    </p>
+                  </div>
+                  <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                    <BsChatQuote className="text-[20px] text-tradeFadeWhite" />
+                    <p className="text-white text-[13px]  font-medium ">
+                      Messages
+                    </p>
+                  </div>
+                  <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                    <RiExchange2Fill className="text-[20px] text-tradeFadeWhite" />
+                    <p className="text-white text-[13px]  font-medium ">
+                      Trade history
+                    </p>
+                  </div>
+                  <div
+                    onClick={() => {
+                      navigateTo("/wallet/transactions");
+                      setIsNavOption(false);
+                    }}
+                    className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
+                  >
+                    <RiExchangeFundsLine className="text-[20px] text-tradeFadeWhite" />
+                    <p className="text-white text-[13px]  font-medium ">
+                      Transaction history
+                    </p>
+                  </div>
+                  <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                    <FiUserPlus className="text-[20px] text-tradeFadeWhite" />
+                    <p className="text-white text-[13px]  font-medium">
+                      Referrals
+                    </p>
+                  </div>
+                </div>
 
-                <Button
-                  variant="Fadeout"
-                  onClick={() => {
-                    navigateTo("/offers/create");
-                    setIsNavOption(false);
-                  }}
-                >
-                  Create Offer
-                </Button>
+                <div className="w-full h-max flex flex-col gap-[8px]">
+                  <Button
+                    variant="Fadeout"
+                    onClick={() => {
+                      navigateTo("/offers/marketplace");
+                      setIsNavOption(false);
+                    }}
+                  >
+                    Browse Offers
+                  </Button>
+
+                  <Button
+                    variant="Fadeout"
+                    onClick={() => {
+                      navigateTo("/offers/create");
+                      setIsNavOption(false);
+                    }}
+                  >
+                    Create Offer
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

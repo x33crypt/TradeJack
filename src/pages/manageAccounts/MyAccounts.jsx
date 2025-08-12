@@ -16,12 +16,15 @@ import { useToast } from "@/context/ToastContext";
 import api from "@/utils/http/api";
 
 const MyAccounts = () => {
-  // const { refetchLinkedBanks } = useFetchLinkedBanks();
-  const { loading } = useFetchLinkedBanks();
+  const { loading, refetchLinkedBanks } = useFetchLinkedBanks();
   const { linkedAccounts, manageAccount, setManageAccount } =
     useLinkedAccount();
   const { isDelete, isDefault, success } = manageAccount;
   const { setToast } = useToast();
+
+  useEffect(() => {
+    refetchLinkedBanks();
+  }, []);
 
   const handleManageAccount = () => {
     setManageAccount({
@@ -148,10 +151,10 @@ const MyAccounts = () => {
     });
   };
 
-  // useEffect(() => {
-  //   if (success === false) return;
-  //   refetchLinkedBanks();
-  // }, [success]);
+  useEffect(() => {
+    if (success === false) return;
+    refetchLinkedBanks();
+  }, [success]);
 
   const navigateTo = useNavigate();
 

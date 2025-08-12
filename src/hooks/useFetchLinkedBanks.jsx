@@ -35,10 +35,6 @@ export function useFetchLinkedBanks() {
     }
   }, [linkedAccounts, setLinkedAccounts]);
 
-  useEffect(() => {
-    fetchLinkedBanks();
-  }, [fetchLinkedBanks]);
-
   const refetchLinkedBanks = useCallback(() => {
     fetchLinkedBanks();
   }, [fetchLinkedBanks]);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { RiBankLine } from "react-icons/ri";
 import { useFetchLinkedBanks } from "@/hooks/useFetchLinkedBanks";
 import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
@@ -10,10 +10,14 @@ import { FaCheckDouble } from "react-icons/fa";
 import { TiPin } from "react-icons/ti";
 
 const LinkedAccount = () => {
-  const { loading } = useFetchLinkedBanks();
+  const { loading, refetchLinkedBanks } = useFetchLinkedBanks();
   const { linkedAccounts } = useLinkedAccount();
 
   const navigateTo = useNavigate();
+
+  useEffect(() => {
+    refetchLinkedBanks();
+  }, []);
 
   console.log("linked accounts", linkedAccounts);
 
