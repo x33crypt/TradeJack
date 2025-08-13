@@ -86,7 +86,7 @@ const LinkedAccount = () => {
                       </Button>
                     </div>
                   ) : (
-                    <div className="flex-1 flex flex-col items-center justify-center gap-[5px] bg-transparent">
+                    <div className="flex-1 flex flex-col items-center justify-center gap-[8px] bg-transparent">
                       <p className="text-[13px] font-semibold text-white leading-none">
                         No linked accounts
                       </p>
@@ -111,7 +111,7 @@ const LinkedAccount = () => {
                             variant="primary"
                             onClick={() => navigateTo("/wallet/accounts/new")}
                           >
-                            <p> Add New Account</p>
+                            <p>Link Account</p>
                           </SmallButton>
                         </div>
                       </div>
