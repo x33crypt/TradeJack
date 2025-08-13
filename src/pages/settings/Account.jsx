@@ -9,6 +9,7 @@ import { useAccount } from "@/context/AccountContext";
 import Stats from "@/components/account/Stats";
 import Achievements from "@/components/account/Achievements";
 import SettingsNav from "@/components/settings/SettingsNav";
+import Feedbacks from "@/components/account/Feedbacks";
 
 const Account = () => {
   const { account, setAccount } = useAccount();
@@ -31,6 +32,7 @@ const Account = () => {
           <Stats />
           <PersonalInfo />
           <Achievements />
+          <Feedbacks />
         </div>
       </div>
       <Footer />

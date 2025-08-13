@@ -33,7 +33,7 @@ const InAppNav = () => {
   const { show, setShow } = useProfileNav();
   const [animate, setAnimate] = useState(false);
 
-  const placeholders = ["Search vendor's", "Search offer's"];
+  const placeholders = ["Search traders"];
   const [searchplaceholder, setSearchplaceholder] = useState(placeholders[0]);
 
   useEffect(() => {
@@ -95,43 +95,46 @@ const InAppNav = () => {
         <div className=" md:flex hidden  gap-[8px] items-center">
           <div
             onClick={() => navigateTo("/dashboard")}
-            className="flex items-center gap-[8px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] transition-all duration-300 hover:shadow-md hover:scale-[1.03] cursor-pointer"
+            className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
           >
             <TbDashboardFilled className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-medium">Dashboard</p>
           </div>
           <div
-            onClick={() => navigateTo("/dashboard")}
-            className="flex items-center gap-[8px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] transition-all duration-300 hover:shadow-md hover:scale-[1.03] cursor-pointer"
+            onClick={() => navigateTo("/wallet")}
+            className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
           >
             <IoWallet className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-medium">Wallet</p>
           </div>
           <div
             onClick={() => navigateTo("/offers/create")}
-            className="flex items-center gap-[8px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] transition-all duration-300 hover:shadow-md hover:scale-[1.03] cursor-pointer"
+            className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
           >
             <HiViewGridAdd className="lg:flex hidden text-[16px]" />
             <p className="text-[13px] font-medium">Create Offer</p>
           </div>
           <div
             onClick={() => navigateTo("/offers/marketplace")}
-            className="flex items-center gap-[8px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] transition-all duration-300 hover:shadow-md hover:scale-[1.03] cursor-pointer"
+            className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
           >
             <HiOutlineGlobe className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-medium">Browse Offers</p>
           </div>
-          <div className="flex items-center gap-[8px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite px-[12px] py-[4px] rounded-[7px] transition-all duration-300 hover:shadow-md hover:scale-[1.03] cursor-pointer">
+          <div
+            onClick={() => navigateTo("/trade/partners")}
+            className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
+          >
             <FaUserFriends className="lg:flex hidden text-[17px]" />
             <p className="text-[13px] font-medium">Trade Partners</p>
           </div>
         </div>
 
         <div className="flex items-center  gap-[10px]">
-          <div className="lg:flex hidden items-center bg-tradeAsh borde border-tradeAshLight px-[10px] py-[1px] gap-[8px] rounded-[8px]">
+          <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight  p-2 gap-[10px] rounded-[8px]">
             <FaMagnifyingGlass className="text-neutral-500  text-[15px]" />
             <input
-              className=" bg-transparent outline-none h-[28px] w-[220px]  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
+              className=" bg-transparent outline-none h-max w-[220px]  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
               type="text"
               placeholder={searchplaceholder}
             />
@@ -143,8 +146,8 @@ const InAppNav = () => {
           >
             <BiSupport className="text-[16px] text-black" />
           </div>
-          <div className="w-max flex gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-            <FaRegBell className="text-[16px] text-white" />
+          <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            <FaRegBell className="text-[16px]" />
           </div>
           <div
             className="w-[34px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] border border-tradeAshExtraLight rounded-[10px]"
@@ -165,7 +168,7 @@ const InAppNav = () => {
                 isNavOption ? "flex" : "hidden"
               }  z-50 fixed right-0 left-0 top-0 bottom-0  lg:hidden flex-col `}
             >
-              <div className="flex-1 flex items-center bg-transparent h-[57px] p-[15px] ">
+              <div className="flex items-center bg-transparent h-[57px] p-[15px] ">
                 {isNavOption === true ? (
                   <div
                     onClick={() => setIsNavOption((prev) => !prev)}
@@ -184,13 +187,13 @@ const InAppNav = () => {
               </div>
 
               <div className="flex flex-col justify-between p-[15px] bg-black ">
-                <div className="flex gap-[8px] p-[12px] rounded-[10px] text-sm font-semibold items-center bg-tradeAsh border border-tradeAshExtraLight">
-                  <FaMagnifyingGlass className="text-tradeFadeWhite text-[18px]" />
-
-                  <p className=" text-tradeFadeWhite text-[13px] font-semibold">
-                    Hello, <span className="text-white">x33crypt.</span> How can
-                    we help ?
-                  </p>
+                <div className="flex items-center bg-tradeAsh border border-tradeAshLight  p-2 gap-[10px] rounded-[8px]">
+                  <FaMagnifyingGlass className="text-neutral-500  text-[15px]" />
+                  <input
+                    className=" bg-transparent outline-none h-max w-[220px]  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
+                    type="text"
+                    placeholder={searchplaceholder}
+                  />
                 </div>
 
                 <div className="flex flex-col gap-[5px]">
@@ -240,7 +243,14 @@ const InAppNav = () => {
                       Promoted Offer
                     </p>
                   </div>
-                  <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+
+                  <div
+                    onClick={() => {
+                      navigateTo("/trade/partners");
+                      setIsNavOption(false);
+                    }}
+                    className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
+                  >
                     <FaUserFriends className="text-[20px] text-tradeFadeWhite" />
                     <p className="text-white text-[13px]  font-medium ">
                       Trade partners

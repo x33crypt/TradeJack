@@ -67,19 +67,8 @@ const SettingsNav = () => {
             <MdManageAccounts className="text-[17px]" />
             <p className="text-[13px] font-[500]"> Account Management</p>
           </div>
-          <div
-            onClick={() => navigateTo("/wallet/accounts")}
-            className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
-          >
-            <HiLink className="text-[17px]" />
-            <p className="text-[13px] font-[500]"> Linked Accounts</p>
-          </div>
         </div>
         <div className="flex flex-col px-[15px] py-[12px] gap-[10px] border-t border-tradeAshLight">
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border-b hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <BiSupport className="text-[17px]" />
-            <p className="text-[13px] font-[500]"> Support & Help</p>
-          </div>{" "}
           <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border-b hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
             <FaQuestion className="text-[17px]" />
             <p className="text-[13px] font-[500]">FAQs</p>
@@ -91,7 +80,7 @@ const SettingsNav = () => {
         </div>
       </div>
 
-      {/* Mobile Nave */}
+      {/* Mobile Nav */}
       <div className="flex-1 flex lg:hidden flex-col gap-[10px]">
         <div className="flex-1 flex flex-col md:border border-neutral-800">
           <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">

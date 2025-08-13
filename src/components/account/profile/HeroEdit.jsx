@@ -15,6 +15,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { FaUserCheck } from "react-icons/fa";
 import { FaUserXmark } from "react-icons/fa6";
 import { TbClockEdit } from "react-icons/tb";
+import { FaUser } from "react-icons/fa";
 
 const HeroEdit = () => {
   const { loading, error } = useFetchProfile();
@@ -42,7 +43,7 @@ const HeroEdit = () => {
                       alt=""
                     />
                   ) : (
-                    <FaUserCircle className="text-tradeAshLight lg:text-[170px] md:text-[160px] text-[120px]" />
+                    <FaUser className="text-tradeAshLight  md:text-[120px] text-[100px]" />
                   )}
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-[20px]">
@@ -58,7 +59,7 @@ const HeroEdit = () => {
                   {profile?.userName ? profile?.userName : "username"}
                 </p>
 
-                {profile && (
+                {/* {profile && (
                   <div className="flex gap-[4px] items-center w-max px-[6px] py-[1px] bg-tradeOrange/10 border border-tradeOrange rounded-[10px]">
                     <GiTopHat className="text-[14px] text-tradeOrange" />
                     <p className="text-xs text-tradeOrange font-semibold">5x</p>
@@ -66,7 +67,7 @@ const HeroEdit = () => {
                       Master Trader
                     </p>
                   </div>
-                )}
+                )} */}
               </div>
 
               <div className="flex gap-1 flex-col items-center lg:items-start">

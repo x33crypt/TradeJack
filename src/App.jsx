@@ -45,6 +45,8 @@ import SuccessWithdraw from "./pages/withdraw/SuccessWithdraw";
 import ConfirmAccount from "./pages/manageAccounts/ConfirmAccount";
 import SuccessAccount from "./pages/manageAccounts/SuccessAccount";
 import Settings from "./pages/settings/Settings";
+import TradePartners from "./pages/tradePartners/TradePartners";
+import AboutTrader from "./pages/AboutTrader";
 
 const App = () => {
   return (
@@ -108,6 +110,10 @@ const App = () => {
           path="/offers/myoffers/:id/edit/summary"
           element={<SummaryMyOffer />}
         />
+
+        {/* Trade  */}
+        <Route path="trade/partners" element={<TradePartners />} />
+        <Route path="trade/partners/:username" element={<AboutTrader />} />
 
         <Route path="/offers/:id" element={<AboutOffer />} />
 
