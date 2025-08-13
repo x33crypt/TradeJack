@@ -13,7 +13,7 @@ const About = () => {
 
   return (
     <div className="flex-1 flex flex-col gap-[5px]">
-      <Hero Heading={"Partner Profile"} />
+      <Hero profile={profile} loading={loading} Heading={"Partner Profile"} />
       <Stats profile={profile} loading={loading} />
       <Achievements profile={profile} loading={loading} />
       <ActiveOffers profile={profile} loading={loading} />

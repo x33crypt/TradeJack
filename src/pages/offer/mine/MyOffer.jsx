@@ -17,6 +17,12 @@ import Loading from "@/components/Loading";
 import Feedbacks from "@/components/account/Feedbacks";
 import { FaSearch } from "react-icons/fa";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
+import SmallButton from "@/components/buttons/SmallButton";
+import { FaSort } from "react-icons/fa";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { RiLoader4Fill } from "react-icons/ri";
+import NetworkError from "@/components/NetworkError";
 
 const MyOffer = () => {
   const topRef = useRef(null);
@@ -186,7 +192,7 @@ const MyOffer = () => {
             <p className="text-lg font-[700] text-white ">My Offers</p>
           </div>
 
-          <div className="px-[15px] py-[12px]">
+          <div className="px-[15px] py-[12px] border-b border-dashed border-tradeAshLight">
             <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
               View, manage, and monitor every offer you’ve created, complete
               with real-time status updates and key trade details to keep you in
@@ -195,102 +201,34 @@ const MyOffer = () => {
           </div>
 
           <div className="flex flex-col flex-1 ">
-            <div className="sticky md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-y border-dashed border-tradeAshLight">
-              <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] overflow-x-hidden ">
-                {/* Left group */}
-                <div
-                  className={`${
-                    Array.isArray(myOffers) && myOffers.length < 1
-                      ? "hidden"
-                      : "flex"
-                  } flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]`}
-                >
-                  <div
-                    className={`flex items-center gap-2 bg-tradeAshLight text-tradeFadeWhite border-tradeAshExtraLight w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    <PiMagnifyingGlassBold className="lg:text-[14px] text-[14px]" />
-                    <p>Search</p>
+            <div className="sticky h-[55px] flex items-center w-full md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
+              <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-hidden p-[2px]">
+                <div className="flex gap-[5px]">
+                  <div className="flex gap-[5px]">
+                    <SmallButton variant="fadeout">
+                      <FaSort />
+                      <p>All Asset</p>
+                    </SmallButton>
                   </div>
-
-                  <div
-                    onClick={handleShowActiveOffers}
-                    className={`${
-                      offerFilter?.activeOffers
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                    } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    <p> Active</p>
-                  </div>
-
-                  <div
-                    onClick={handleShowActiveOffers}
-                    className={`${
-                      offerFilter?.activeOffers
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                    } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    <p>Paused</p>
-                  </div>
-
-                  <div
-                    onClick={handleShowActiveOffers}
-                    className={`${
-                      offerFilter?.activeOffers
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                    } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    <p>Suspended</p>
-                  </div>
-
-                  <div
-                    onClick={handleShowActiveOffers}
-                    className={`${
-                      offerFilter?.activeOffers
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                    } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    <p>Terminated</p>
+                  <div className="flex gap-[5px]">
+                    <SmallButton variant="fadeout">
+                      <FaSort />
+                      <p>All Status</p>
+                    </SmallButton>
                   </div>
                 </div>
 
-                {/* Right group */}
-                <div
-                  className={` ${
-                    Array.isArray(myOffers) && myOffers.length < 1
-                      ? "flex-1"
-                      : null
-                  } flex justify-between items-center gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]`}
-                >
-                  <div className="flex gap-[5px] bg-transparent">
-                    <div
-                      className={`${
-                        false
-                          ? "text-white bg-tradeAsh border-tradeGreen"
-                          : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                      } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                    >
-                      <p>Month</p>
-                    </div>
-                    <div
-                      className={`${
-                        false
-                          ? "text-white bg-tradeAsh border-tradeGreen"
-                          : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                      } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                    >
-                      <p>Year</p>
-                    </div>
-                  </div>
-
-                  <div
-                    className={`bg-tradeGreen text-black inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
+                <div className="flex gap-[5px]">
+                  <SmallButton variant="fadeout">
+                    <FaMagnifyingGlass />
+                  </SmallButton>
+                  <SmallButton variant="fadeout">
+                    <FaRegCalendarAlt />
+                    <p>Month, Year</p>
+                  </SmallButton>
+                  <SmallButton variant="primary">
                     <p>Create Offer</p>
-                  </div>
+                  </SmallButton>
                 </div>
               </div>
             </div>
@@ -301,11 +239,7 @@ const MyOffer = () => {
               ) : (
                 <div className="flex flex-1">
                   {myOffers === null ? (
-                    <div className="flex-1 flex items-center justify-center ">
-                      <div className="">
-                        <Info text="Unable to load your offers. Please check your internet connection or refresh the page to try again." />
-                      </div>
-                    </div>
+                    <NetworkError />
                   ) : (
                     <div className="flex flex-1">
                       {Array.isArray(myOffers) && myOffers.length > 0 ? (
@@ -327,69 +261,43 @@ const MyOffer = () => {
               )}
             </div>
 
-            <div className="custom-x-scrollbar flex p-[15px] h-max gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
-              <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
-                <div className="md:flex hidden items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                  <p className="text-[13px] font-semibold ">Data</p>
-                </div>
-                <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                  <p className="text-[13px] font-semibold">
-                    {/* {displayedCount} */}0
-                  </p>
+            <div className="md:sticky bottom-0 left-0 right-0 h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+              <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
+                <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
+                  <SmallButton variant="outline">
+                    <p>0</p>
+                  </SmallButton>
+                  <SmallButton variant="outline">
+                    <p>of</p>
+                  </SmallButton>
+                  <SmallButton variant="outline">
+                    <p>0</p>
+                  </SmallButton>
                 </div>
 
-                <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                  <p className="text-[13px] font-semibold">of</p>
-                </div>
-
-                <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                  <p className="text-[13px] font-semibold">
-                    {" "}
-                    {/* {pagination?.totalItems
-                            ? pagination?.totalItems
-                            : "0"} */}
-                    0
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-[5px] py-[1px]">
-                <div>
-                  {true ? (
-                    <div
-                      // onClick={handleNext}
-                      className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
-                    >
-                      <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                        <p className="text-[13px] font-semibold">
-                          {false ? (
-                            <AiOutlineLoading3Quarters className="animate-spin text-[19.5px] text-tradeFadeWhite" />
-                          ) : (
-                            "Load more"
-                          )}
-                        </p>
+                <div className="flex gap-[5px] py-[1px]">
+                  <SmallButton variant="outline">
+                    {true ? (
+                      <div>
+                        {false ? (
+                          <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                        ) : (
+                          <p>Load more</p>
+                        )}
                       </div>
-                    </div>
-                  ) : (
-                    (isEmpty || isEnd) && (
-                      <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                        <p className="text-[13px] font-semibold">
-                          {/* {message} */}
-                        </p>
-                      </div>
-                    )
-                  )}
-                </div>
+                    ) : (
+                      <div>{(isEmpty || isEnd) && <p>{message}</p>}</div>
+                    )}
+                  </SmallButton>
 
-                <div
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                  }
-                  className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
-                >
-                  <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                    <p className="text-[13px] font-semibold">Scroll to Top</p>
-                  </div>
+                  <SmallButton
+                    variant="outline"
+                    onClick={() =>
+                      window.scrollTo({ top: 0, behavior: "smooth" })
+                    }
+                  >
+                    <p>Scroll to Top</p>
+                  </SmallButton>
                 </div>
               </div>
             </div>

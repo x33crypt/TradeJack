@@ -6,6 +6,7 @@ import { TbActivityHeartbeat } from "react-icons/tb";
 import { MdOutlineSafetyCheck } from "react-icons/md";
 import { RiDonutChartFill } from "react-icons/ri";
 import { ImBlocked } from "react-icons/im";
+import NetworkError from "../NetworkError";
 
 const Stats = ({ loading, profile }) => {
   return (
@@ -17,136 +18,142 @@ const Stats = ({ loading, profile }) => {
         {loading ? (
           <Loading />
         ) : (
-          <div className="flex-wrap flex items-center gap-[10px] overflow-x-hidden ">
-            <div className="flex flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Positive Feedbacks
-              </p>
+          <div className="flex flex-1">
+            {profile === null ? (
+              <NetworkError />
+            ) : (
+              <div className="flex-wrap flex items-center gap-[10px] overflow-x-hidden ">
+                <div className="flex flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    Positive Feedbacks
+                  </p>
 
-              <div className="flex gap-1 items-center">
-                <div className="p-1  rounded-full bg-[#00de82]/5 ">
-                  <MdThumbUpAlt className="text-tradeGreen text-[13px] md:text-sm leading-none" />
+                  <div className="flex gap-1 items-center">
+                    <div className="p-1  rounded-full bg-[#00de82]/5 ">
+                      <MdThumbUpAlt className="text-tradeGreen text-[13px] md:text-sm leading-none" />
+                    </div>
+
+                    <p className="text-white text-[13px] font-semibold leading-tight">
+                      {profile?.feedback?.positive?.profile?.feedback
+                        ?.positive ?? "0"}
+                    </p>
+                  </div>
                 </div>
+                <div className="flex flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    Negative Feedbacks
+                  </p>
 
-                <p className="text-white text-[13px] font-semibold leading-tight">
-                  {profile?.feedback?.positive?.profile?.feedback?.positive ??
-                    "0"}
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Negative Feedbacks
-              </p>
+                  <div className="flex gap-1 items-center">
+                    <div className="p-1  rounded-full bg-red-600/5">
+                      <MdThumbDownAlt className="text-red-600 text-[13px] md:text-sm leading-none" />
+                    </div>
 
-              <div className="flex gap-1 items-center">
-                <div className="p-1  rounded-full bg-red-600/5">
-                  <MdThumbDownAlt className="text-red-600 text-[13px] md:text-sm leading-none" />
+                    <p className="text-white text-[13px] font-semibold leading-tight">
+                      {profile?.feedback?.negative
+                        ? profile?.feedback?.negative
+                        : "0"}
+                    </p>
+                  </div>
                 </div>
+                <div className="flex  flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    Trust Score
+                  </p>
 
-                <p className="text-white text-[13px] font-semibold leading-tight">
-                  {profile?.feedback?.negative
-                    ? profile?.feedback?.negative
-                    : "0"}
-                </p>
-              </div>
-            </div>
-            <div className="flex  flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Trust Score
-              </p>
+                  <div className="flex gap-1 items-center">
+                    <div className="p-1  rounded-full bg-tradeOrange/5">
+                      <MdOutlineSafetyCheck className="text-tradeOrange text-[13px] md:text-sm leading-none" />
+                    </div>
 
-              <div className="flex gap-1 items-center">
-                <div className="p-1  rounded-full bg-tradeOrange/5">
-                  <MdOutlineSafetyCheck className="text-tradeOrange text-[13px] md:text-sm leading-none" />
+                    <p className="text-white text-[13px] font-semiboldleading-tight">
+                      {profile?.trustScore ? profile?.trustScore : "0"}%
+                    </p>
+                  </div>
                 </div>
+                <div className="flex  flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    Trade Partners
+                  </p>
+                  <div className="flex gap-1 items-center">
+                    <div className="p-1 rounded-full bg-tradeAshExtraLight/5 ">
+                      <FaUserFriends className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+                    </div>
 
-                <p className="text-white text-[13px] font-semiboldleading-tight">
-                  {profile?.trustScore ? profile?.trustScore : "0"}%
-                </p>
-              </div>
-            </div>
-            <div className="flex  flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Trade Partners
-              </p>
-              <div className="flex gap-1 items-center">
-                <div className="p-1 rounded-full bg-tradeAshExtraLight/5 ">
-                  <FaUserFriends className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+                    <p className="text-white text-[13px] font-semibold leading-tight">
+                      {profile?.totalTradePartners
+                        ? profile?.totalTradePartners
+                        : "0"}
+                    </p>
+                  </div>
                 </div>
+                <div className="flex flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    Total Trades
+                  </p>
+                  <div className="flex gap-1 items-center">
+                    <div className="p-1 rounded-full bg-tradeAshExtraLight/5 ">
+                      <TbActivityHeartbeat className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+                    </div>
 
-                <p className="text-white text-[13px] font-semibold leading-tight">
-                  {profile?.totalTradePartners
-                    ? profile?.totalTradePartners
-                    : "0"}
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Total Trades
-              </p>
-              <div className="flex gap-1 items-center">
-                <div className="p-1 rounded-full bg-tradeAshExtraLight/5 ">
-                  <TbActivityHeartbeat className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+                    <p className="text-white text-[13px] font-semibold leading-tight">
+                      {profile?.totalTrades ? profile?.totalTrades : "0"}
+                    </p>
+                  </div>
                 </div>
+                <div className="flex min-w-[130px] flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    Trade Volume
+                  </p>
+                  <div className="flex gap-1 items-center">
+                    <div className="p-1 rounded-full bg-tradeAshExtraLight/5 ">
+                      <RiDonutChartFill className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+                    </div>
 
-                <p className="text-white text-[13px] font-semibold leading-tight">
-                  {profile?.totalTrades ? profile?.totalTrades : "0"}
-                </p>
-              </div>
-            </div>
-            <div className="flex min-w-[130px] flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Trade Volume
-              </p>
-              <div className="flex gap-1 items-center">
-                <div className="p-1 rounded-full bg-tradeAshExtraLight/5 ">
-                  <RiDonutChartFill className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+                    <p className="text-white text-[13px] font-semibold leading-tight">
+                      {profile?.totalTradeVolume?.currency
+                        ? profile?.totalTradeVolume?.currency
+                        : "USD"}{" "}
+                      {profile?.totalTradeVolume
+                        ? profile?.totalTradeVolume?.amount
+                        : "0.00"}
+                    </p>
+                  </div>
                 </div>
+                <div className="flex min-w-[130px] flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    Blocked by
+                  </p>
+                  <div className="flex gap-1 items-center">
+                    <div className="p-1 rounded-full bg-tradeAshExtraLight/5 ">
+                      <ImBlocked className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+                    </div>
 
-                <p className="text-white text-[13px] font-semibold leading-tight">
-                  {profile?.totalTradeVolume?.currency
-                    ? profile?.totalTradeVolume?.currency
-                    : "USD"}{" "}
-                  {profile?.totalTradeVolume
-                    ? profile?.totalTradeVolume?.amount
-                    : "0.00"}
-                </p>
-              </div>
-            </div>
-            <div className="flex min-w-[130px] flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Blocked by
-              </p>
-              <div className="flex gap-1 items-center">
-                <div className="p-1 rounded-full bg-tradeAshExtraLight/5 ">
-                  <ImBlocked className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+                    <p className="text-white text-[13px] font-semibold leading-tight">
+                      {profile?.totalTradeVolume
+                        ? profile?.totalTradeVolume?.amount
+                        : "0.00"}
+                    </p>
+                  </div>
                 </div>
+                <div className="flex min-w-[130px] flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    Has Blocked
+                  </p>
+                  <div className="flex gap-1 items-center">
+                    <div className="p-1 rounded-full bg-tradeAshExtraLight/5 ">
+                      <ImBlocked className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+                    </div>
 
-                <p className="text-white text-[13px] font-semibold leading-tight">
-                  {profile?.totalTradeVolume
-                    ? profile?.totalTradeVolume?.amount
-                    : "0.00"}
-                </p>
-              </div>
-            </div>
-            <div className="flex min-w-[130px] flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Has Blocked
-              </p>
-              <div className="flex gap-1 items-center">
-                <div className="p-1 rounded-full bg-tradeAshExtraLight/5 ">
-                  <ImBlocked className="text-tradeFadeWhite text-[13px] md:text-sm leading-none" />
+                    <p className="text-white text-[13px] font-semibold leading-tight">
+                      {profile?.totalTradeVolume
+                        ? profile?.totalTradeVolume?.amount
+                        : "0.00"}
+                    </p>
+                  </div>
                 </div>
-
-                <p className="text-white text-[13px] font-semibold leading-tight">
-                  {profile?.totalTradeVolume
-                    ? profile?.totalTradeVolume?.amount
-                    : "0.00"}
-                </p>
               </div>
-            </div>
+            )}
           </div>
         )}
       </div>

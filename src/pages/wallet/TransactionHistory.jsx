@@ -12,6 +12,12 @@ import Loading from "@/components/Loading";
 import Info from "@/components/alerts/Info";
 import { LuFileX2 } from "react-icons/lu";
 import { useFetchAllTransactions } from "@/hooks/Transaction/useFetchAllTransactions";
+import SmallButton from "@/components/buttons/SmallButton";
+import { FaSort } from "react-icons/fa";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { RiLoader4Fill } from "react-icons/ri";
+import NetworkError from "@/components/NetworkError";
 
 const TransactionHistory = () => {
   const topRef = useRef(null);
@@ -164,7 +170,7 @@ const TransactionHistory = () => {
     setLoadingNext(false);
   };
 
-  const isEmpty = transactions?.data?.length === 0;
+  const isEmpty = transactions?.data?.length === 0 || transactions === null;
   const isEnd = pagination && !pagination.hasNextPage && !isEmpty;
   const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
 
@@ -182,32 +188,20 @@ const TransactionHistory = () => {
               Transaction History
             </p>
           </div>
+          <div className="px-[15px] py-[12px] border-b border-dashed border-tradeAshLight">
+            <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+              View, manage, and monitor every offer you’ve created, complete
+              with real-time status updates and key trade details to keep you in
+              control.
+            </p>
+          </div>
           <div className="flex flex-col flex-1 ">
-            <div className="sticky md:top-[65px] top-[57px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
-              <div className="custom-x-scrollbar flex justify-between items-center gap-[10px] ">
-                <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
-                  <div
-                    onClick={() =>
-                      setSelect({
-                        ...select,
-                        state: true,
-                        selectOne: true,
-                        selectTwo: false,
-                        element: "transaction type",
-                        options: transactionTypes,
-                        pick: "",
-                        page: "transaction history",
-                      })
-                    }
-                    className={`${
-                      filter?.type
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                    } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    <p>{filter?.type ? filter?.type : "All types"}</p>
-                  </div>
-                  <div
+            <div className="sticky h-[55px] flex items-center w-full md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
+              <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-hidden p-[2px]">
+                <div className="flex gap-[5px]">
+                  <SmallButton
+                    variant="fadeout"
+                    disabled={filter?.status !== null}
                     onClick={() =>
                       setSelect({
                         ...select,
@@ -220,47 +214,48 @@ const TransactionHistory = () => {
                         page: "transaction history",
                       })
                     }
-                    className={`${
-                      filter?.status
-                        ? "text-white bg-tradeAsh border-tradeGreen"
-                        : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                    } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                   >
-                    <p>{filter?.status ? filter?.status : "All status"}</p>
-                  </div>
+                    <FaSort />
+                    <p>{filter?.status ? filter?.status : "All Status"}</p>
+                  </SmallButton>
+                  <SmallButton
+                    variant="fadeout"
+                    disabled={filter?.type !== null}
+                    onClick={() =>
+                      setSelect({
+                        ...select,
+                        state: true,
+                        selectOne: true,
+                        selectTwo: false,
+                        element: "transaction type",
+                        options: transactionTypes,
+                        pick: "",
+                        page: "transaction history",
+                      })
+                    }
+                  >
+                    <FaSort />
+                    <p>{filter?.type ? filter?.type : "All Types"}</p>
+                  </SmallButton>
                 </div>
 
-                <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
-                  <div className="md:flex hidden text-black items-center gap-1 bg-tradeOrange px-[10px] py-[4px] text-sm font-medium rounded-[6.5px] w-max">
-                    <HiMiniCalendarDateRange />
-                  </div>
-                  <div
+                <div className="flex gap-[5px]">
+                  <SmallButton variant="fadeout">
+                    <FaMagnifyingGlass />
+                  </SmallButton>
+                  <SmallButton
+                    variant="fadeout"
+                    disabled={filter.date?.monthName || filter.date?.year}
                     onClick={handleDateClick}
-                    className="flex gap-[5px] transition-all duration-300 hover:text-white"
                   >
-                    <div
-                      className={`${
-                        filter.date?.monthName
-                          ? "text-white bg-tradeAsh border-tradeGreen"
-                          : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                      } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                    >
-                      <p>
-                        {filter.date?.monthName
-                          ? filter.date?.monthName
-                          : "Month"}
-                      </p>
-                    </div>
-                    <div
-                      className={`${
-                        filter.date?.year
-                          ? "text-white bg-tradeAsh border-tradeGreen"
-                          : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                      } inline-block w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                    >
-                      <p>{filter.date?.year ? filter.date?.year : "Year"}</p>
-                    </div>
-                  </div>
+                    <FaRegCalendarAlt />
+                    <p>
+                      {filter.date?.monthName
+                        ? filter.date?.monthName
+                        : "Month"}
+                      , {filter.date?.year ? filter.date?.year : "Year"}
+                    </p>
+                  </SmallButton>
                   <div>
                     <input
                       type="month"
@@ -281,11 +276,7 @@ const TransactionHistory = () => {
               ) : (
                 <div className="flex flex-1">
                   {transactions === null ? (
-                    <div className="flex-1 flex items-center justify-center ">
-                      <div className="">
-                        <Info text="Unable to load your transactions history. Please check your internet connection or refresh the page to try again." />
-                      </div>
-                    </div>
+                    <NetworkError />
                   ) : (
                     <div className="flex flex-1">
                       {Array.isArray(transactions?.data) &&
@@ -320,61 +311,45 @@ const TransactionHistory = () => {
               )}
             </div>
 
-            <div className="custom-x-scrollbar flex p-[15px] h-max gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
-              <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
-                <div className="md:flex hidden items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                  <p className="text-[13px] font-semibold ">Data</p>
-                </div>
-                <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                  <p className="text-[13px] font-semibold">{displayedCount}</p>
+            <div className="md:sticky bottom-0 left-0 right-0 h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+              <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
+                <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
+                  <SmallButton variant="outline">
+                    <p>{displayedCount}</p>
+                  </SmallButton>
+                  <SmallButton variant="outline">
+                    <p>of</p>
+                  </SmallButton>
+                  <SmallButton variant="outline">
+                    <p>
+                      {pagination?.totalItems ? pagination?.totalItems : "0"}
+                    </p>
+                  </SmallButton>
                 </div>
 
-                <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                  <p className="text-[13px] font-semibold">of</p>
-                </div>
-
-                <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                  <p className="text-[13px] font-semibold">
-                    {pagination?.totalItems ? pagination?.totalItems : "0"}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-[5px] py-[1px]">
-                <div>
-                  {pagination?.hasNextPage ? (
-                    <div
-                      onClick={handleNext}
-                      className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
-                    >
-                      <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                        <p className="text-[13px] font-semibold">
-                          {loadingNext ? (
-                            <AiOutlineLoading3Quarters className="animate-spin text-[19.5px] text-tradeFadeWhite" />
-                          ) : (
-                            "Load more"
-                          )}
-                        </p>
+                <div className="flex gap-[5px] py-[1px]">
+                  <SmallButton variant="outline">
+                    {pagination?.hasNextPage ? (
+                      <div onClick={handleNext}>
+                        {loadingNext ? (
+                          <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                        ) : (
+                          <p>Load more</p>
+                        )}
                       </div>
-                    </div>
-                  ) : (
-                    (isEmpty || isEnd) && (
-                      <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                        <p className="text-[13px] font-semibold">{message}</p>
-                      </div>
-                    )
-                  )}
-                </div>
+                    ) : (
+                      <div>{(isEmpty || isEnd) && <p>{message}</p>}</div>
+                    )}
+                  </SmallButton>
 
-                <div
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                  }
-                  className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
-                >
-                  <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-                    <p className="text-[13px] font-semibold">Scroll to Top</p>
-                  </div>
+                  <SmallButton
+                    variant="outline"
+                    onClick={() =>
+                      window.scrollTo({ top: 0, behavior: "smooth" })
+                    }
+                  >
+                    <p>Scroll to Top</p>
+                  </SmallButton>
                 </div>
               </div>
             </div>

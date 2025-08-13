@@ -28,11 +28,11 @@ const Account = () => {
           <SettingsNav />
         </div>
         <div className="flex-1 flex flex-col gap-[5px]">
-          <HeroEdit />
-          <PersonalInfo />
-          <Stats />
-          <Achievements />
-          <Feedbacks />
+          <HeroEdit profile={profile} loading={loading} />
+          <PersonalInfo profile={profile} loading={loading} />
+          <Stats profile={profile} loading={loading} />
+          <Achievements profile={profile} loading={loading} />
+          <Feedbacks profile={profile} loading={loading} />
         </div>
       </div>
       <Footer />

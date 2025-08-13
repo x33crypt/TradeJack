@@ -6,6 +6,7 @@ import { useDepositContext } from "@/context/wallet/DepositContext";
 import Loading from "../Loading";
 import { LuFileX2 } from "react-icons/lu";
 import NetworkError from "../NetworkError";
+import SmallButton from "../buttons/SmallButton";
 
 const RecentDeposit = () => {
   const { loading } = useFetchDepositTxt();
@@ -20,12 +21,12 @@ const RecentDeposit = () => {
       <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg text-white font-semibold">Recent Deposit</p>
 
-        <div
+        <SmallButton
+          variant="fadeout"
           onClick={() => navigateTo("/wallet/transactions")}
-          className="flex items-center gap-1 bg-transparent text-[14px] text-tradeFadeWhite hover:text-white  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max cursor-pointer duration-300 transition-all"
         >
-          <p className="text-[13px] font-semibold">See More</p>
-        </div>
+          <p>See More</p>
+        </SmallButton>
       </div>
 
       <div className="flex md:h-full min-h-[120px] p-[15px]">
@@ -71,29 +72,28 @@ const RecentDeposit = () => {
         )}
       </div>
 
-      <div className="custom-x-scrollbar flex p-[15px] gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
-        <div className="flex gap-[5px] py-[1px]">
-          <div className="flex cursor-pointer items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-            <p className="text-[13px] font-semibold">Data</p>
-          </div>
-        </div>
-        <div className="flex gap-[5px] transition-all duration-300 py-[1px">
-          <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-            <p className="text-[13px] font-semibold">
-              {recentDeposit?.pagination?.totalItems ? "5" : "0"}
-            </p>
+      <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+        <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
+          <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
+            <SmallButton variant="outline">
+              <p>{recentDeposit?.pagination?.totalItems ? "5" : "0"}</p>
+            </SmallButton>
+            <SmallButton variant="outline">
+              <p>of</p>
+            </SmallButton>
+            <SmallButton variant="outline">
+              <p>
+                {recentDeposit?.pagination?.totalItems
+                  ? recentDeposit?.pagination?.totalItems
+                  : "0"}
+              </p>
+            </SmallButton>
           </div>
 
-          <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-            <p className="text-[13px] font-semibold">of</p>
-          </div>
-
-          <div className="flex items-center gap-1 bg-transparent text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-            <p className="text-[13px] font-semibold">
-              {recentDeposit?.pagination?.totalItems
-                ? recentDeposit?.pagination?.totalItems
-                : "0"}
-            </p>
+          <div className="flex gap-[5px] py-[1px]">
+            <SmallButton variant="outline">
+              <p>Scroll to Top</p>
+            </SmallButton>
           </div>
         </div>
       </div>
