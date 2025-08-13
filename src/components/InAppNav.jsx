@@ -185,8 +185,7 @@ const InAppNav = () => {
                   </div>
                 )}
               </div>
-
-              <div className="flex flex-col justify-between p-[15px] bg-black ">
+              <div className="flex-1 flex flex-col justify-between p-[15px] bg-black ">
                 <div className="flex items-center bg-tradeAsh border border-tradeAshLight  p-2 gap-[10px] rounded-[8px]">
                   <FaMagnifyingGlass className="text-neutral-500  text-[15px]" />
                   <input
