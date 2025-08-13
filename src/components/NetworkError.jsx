@@ -4,7 +4,7 @@ import { MdOutlineRefresh } from "react-icons/md";
 
 const NetworkError = ({ text }) => {
   return (
-    <div className="flex-1 flex flex-col items-center justify-center gap-[5px] bg-transparent rounded-[15px]">
+    <div className="flex-1 flex flex-col items-center justify-center gap-[5px] bg-transparent">
       <p className="text-[13px] font-semibold text-white leading-none">
         No internet connection
       </p>

@@ -86,7 +86,7 @@ const LinkedAccount = () => {
                       </Button>
                     </div>
                   ) : (
-                    <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-between">
+                    <div className="flex-1 flex flex-col items-center justify-center gap-[5px] bg-transparent">
                       <p className="text-[13px] font-semibold text-white leading-none">
                         No linked accounts
                       </p>
@@ -96,7 +96,7 @@ const LinkedAccount = () => {
                         your bank.
                       </p>
 
-                      <div className="w-full">
+                      <div className="">
                         <div className="md:flex hidden">
                           <SmallButton
                             variant="primary"
