@@ -29,9 +29,9 @@ const Account = () => {
         </div>
         <div className="flex-1 flex flex-col gap-[5px]">
           <HeroEdit />
-          <Stats />
           <PersonalInfo />
           <Achievements />
+          <Stats />
           <Feedbacks />
         </div>
       </div>

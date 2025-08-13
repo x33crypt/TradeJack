@@ -9,8 +9,8 @@ const About = () => {
   return (
     <div className="flex-1 flex flex-col gap-[5px]">
       <Hero />
-      <Stats />
       <Achievements />
+      <Stats />
       <ActiveOffers />
       <Feedbacks />
     </div>
