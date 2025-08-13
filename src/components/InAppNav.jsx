@@ -27,14 +27,14 @@ import { HiViewGridAdd } from "react-icons/hi";
 import { TiFlashOutline } from "react-icons/ti";
 import { FiUserPlus } from "react-icons/fi";
 import { RiExchangeFundsLine } from "react-icons/ri";
-
+import { MdOutlinePersonSearch } from "react-icons/md";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
   const { show, setShow } = useProfileNav();
   const [animate, setAnimate] = useState(false);
 
-  const placeholders = ["Search traders"];
+  const placeholders = ["Search Trader's"];
   const [searchplaceholder, setSearchplaceholder] = useState(placeholders[0]);
 
   useEffect(() => {
@@ -133,7 +133,7 @@ const InAppNav = () => {
 
         <div className="flex items-center  gap-[10px]">
           <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight  p-2 gap-[10px] rounded-[8px]">
-            <FaMagnifyingGlass className="text-neutral-500  text-[15px]" />
+            <MdOutlinePersonSearch className="text-tradeFadeWhite  text-[20px]" />
             <input
               className=" bg-transparent outline-none h-max w-[220px]  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
               type="text"
@@ -187,8 +187,8 @@ const InAppNav = () => {
                 )}
               </div>
               <div className="flex-1 flex flex-col justify-between p-[15px] bg-black ">
-                <div className="flex items-center bg-tradeAsh border border-tradeAshLight p-[12px] gap-[15px] rounded-[10px]">
-                  <FaMagnifyingGlass className="text-neutral-500  text-[15px]" />
+                <div className="flex w-full items-center bg-tradeAsh border border-tradeAshLight p-[12px] gap-[15px] rounded-[10px]">
+                  <MdOutlinePersonSearch className="text-tradeFadeWhite  text-[20px]" />
                   <input
                     className=" bg-transparent outline-none w-full  placeholder:text-tradeFadeWhite text-sm font-medium text-white"
                     type="text"

@@ -104,7 +104,7 @@ const Stats = () => {
                 </p>
               </div>
             </div>
-            <div className="flex  flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+            <div className="flex min-w-[130px] flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
               <p className="text-xs font-semibold text-tradeFadeWhite">
                 Trade Volume
               </p>
@@ -139,7 +139,7 @@ const Stats = () => {
                 </p>
               </div>
             </div>
-            <div className="flex  flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
+            <div className="flex min-w-[130px] flex-grow flex-shrink-0 flex-col border border-tradeAshLight bg-tradeAsh gap-[10px] p-[12px] rounded-[15px]">
               <p className="text-xs font-semibold text-tradeFadeWhite">
                 Has Blocked
               </p>
