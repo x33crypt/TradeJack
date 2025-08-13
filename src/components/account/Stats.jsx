@@ -1,21 +1,13 @@
-import React, { useRef, useEffect, useCallback } from "react";
+import React from "react";
 import { MdThumbUpAlt, MdThumbDownAlt, MdOutlineGppGood } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
-import { GiRoundKnob } from "react-icons/gi";
-import { useFetchProfile } from "@/hooks/useFetchProfile";
-import { useProfile } from "@/context/ProfileContext";
-import { useAccount } from "@/context/AccountContext";
 import Loading from "@/components/Loading";
-import NetworkError from "@/components/NetworkError";
 import { TbActivityHeartbeat } from "react-icons/tb";
 import { MdOutlineSafetyCheck } from "react-icons/md";
 import { RiDonutChartFill } from "react-icons/ri";
 import { ImBlocked } from "react-icons/im";
 
-const Stats = () => {
-  const { loading, error } = useFetchProfile();
-  const { profile, setProfile } = useProfile();
-
+const Stats = ({ loading, profile }) => {
   return (
     <div className="flex-1 flex flex-col md:border border-neutral-800">
       <div className="flex items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">

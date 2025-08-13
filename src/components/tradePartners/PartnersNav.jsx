@@ -6,16 +6,17 @@ import { RiFilter3Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { RiLoader4Fill } from "react-icons/ri";
 import { FaSort } from "react-icons/fa";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 const PartnersNav = () => {
   const navigateTo = useNavigate();
 
   return (
-    <div className="flex flex-1 md:sticky top-[64px] max-h-max md:border border-t-0 border-tradeAshLight w-full flex-col">
+    <div className="flex flex-1 md:sticky top-[64px] md:max-h-max max-h-svh md:border border-t-0 border-tradeAshLight w-full flex-col">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Trade Partners</p>
       </div>
-      <div className=" flex flex-col lg:h-[460px]">
+      <div className=" flex flex-col md:h-[460px] h-full">
         {/* Filter & Search */}
         <div className="sticky h-max w-full md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
           <div className="custom-x-scrollbar flex justify-between items-cente gap-[5px] overflow-x-hidden p-[1.5px] ">
@@ -45,33 +46,53 @@ const PartnersNav = () => {
         <div className="flex-1 flex flex-col py-[12px] px-[15px] gap-[10px]">
           <div
             onClick={() => navigateTo("/trade/partners/:username")}
-            className="flex gap-[10px] items-center h-max w-full p-[12px] rounded-[15px] border border-tradeAshExtraLight bg-tradeAsh"
+            className="flex gap-[10px] items-center h-max w-full p-[12px] rounded-[15px] border border-tradeAshExtraLight bg-tradeAsh hover:bg-tradeAshLight transition-all duration-300"
           >
             <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max rounded-[10px]">
               <FaUser className="text-tradeAshLight md:text-[15px] text-[20px]" />
             </div>
             <div className="flex flex-col gap-1 w-full">
-              <p className="text-white font-semibold text-sm">@Sane</p>
-              <p className="text-tradeFadeWhite font-semibold text-xs">
-                25 Trades
-              </p>
-            </div>
+              <div className="w-full flex justify-between items-center">
+                <p className="text-white font-semibold text-sm">@Sane</p>
+                <div className="flex gap-1 items-center">
+                  <FaCircle className="flex text-tradeGreen text-[8px] flex-shrink-0" />
+                  <p className="md:hidden text-xs font-medium text-white">
+                    Online
+                  </p>
+                </div>
+              </div>
 
-            <div className="flex gap-1 items-center">
-              <FaCircle className="flex text-tradeGreen text-[8px] flex-shrink-0" />
-              <p className="md:hidden text-xs font-medium text-white">Online</p>
+              <div className="w-full flex justify-between items-center">
+                <p className="text-tradeFadeWhite font-semibold text-xs">
+                  25 Trades
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="flex gap-[10px] items-center h-max w-full p-[12px] rounded-[15px] border border-tradeAshExtraLight bg-tradeAsh">
+          <div
+            onClick={() => navigateTo("/trade/partners/:username")}
+            className="flex gap-[10px] items-center h-max w-full p-[12px] rounded-[15px] border border-tradeAshExtraLight bg-tradeAsh hover:bg-tradeAshLight transition-all duration-300"
+          >
             <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max rounded-[10px]">
               <FaUser className="text-tradeAshLight md:text-[15px] text-[20px]" />
             </div>
             <div className="flex flex-col gap-1 w-full">
-              <p className="text-white font-semibold text-sm">@Sane</p>
-              <p className="text-tradeFadeWhite font-semibold text-xs">
-                25 Trades
-              </p>
+              <div className="w-full flex justify-between items-center">
+                <p className="text-white font-semibold text-sm">@Sane</p>
+                <div className="flex gap-1 items-center">
+                  <FaCircle className="flex text-tradeGreen text-[8px] flex-shrink-0" />
+                  <p className="md:hidden text-xs font-medium text-white">
+                    Online
+                  </p>
+                </div>
+              </div>
+
+              <div className="w-full flex justify-between items-center">
+                <p className="text-tradeFadeWhite font-semibold text-xs">
+                  25 Trades
+                </p>
+              </div>
             </div>
           </div>
         </div>

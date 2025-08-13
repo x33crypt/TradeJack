@@ -1,22 +1,10 @@
 import React from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { useFetchProfile } from "@/hooks/useFetchProfile";
-import { useProfile } from "@/context/ProfileContext";
-import { useAccount } from "@/context/AccountContext";
 import Loading from "@/components/Loading";
-import NetworkError from "@/components/NetworkError";
-import Stats from "./Stats";
-import { MdThumbUpAlt, MdThumbDownAlt, MdOutlineGppGood } from "react-icons/md";
-import { FaUserFriends } from "react-icons/fa";
-import { GiRoundKnob } from "react-icons/gi";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 
-const Profile = () => {
-  const { loading, error } = useFetchProfile();
-  const { profile, setProfile } = useProfile();
-  const { account, setAccount } = useAccount();
-  const { view } = account;
+const Profile = ({ loading, profile }) => {
   const navigateTo = useNavigate();
 
   return (

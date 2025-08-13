@@ -1,11 +1,6 @@
 import React from "react";
-import { useProfile } from "@/context/ProfileContext";
-import { useFetchProfile } from "@/hooks/useFetchProfile";
 
-const Achievements = () => {
-  const { loading, error } = useFetchProfile();
-  const { profile, setProfile } = useProfile();
-
+const Achievements = ({ loading, profile }) => {
   return (
     <div className="flex-1 flex flex-col md:border border-neutral-800">
       <div className="flex items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">

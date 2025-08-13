@@ -1,8 +1,8 @@
 import React from "react";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { RiLoader4Fill } from "react-icons/ri";
+import { FaSort } from "react-icons/fa";
 
-const ActiveOffers = () => {
+const ActiveOffers = ({ loading, profile }) => {
   return (
     <div className="flex-1 flex flex-col md:border border-neutral-800">
       <div className="flex items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
@@ -20,7 +20,7 @@ const ActiveOffers = () => {
                     : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
                 } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
               >
-                <MdKeyboardArrowDown />
+                <FaSort />
                 <p className="text-[13px]">All</p>
               </div>
             </div>
@@ -32,9 +32,6 @@ const ActiveOffers = () => {
         {/* Bottom Filter */}
         <div className="custom-x-scrollbar flex py-[12px] px-[15px] gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
           <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
-            <div className="md:flex hidden items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
-              <p className="text-[13px] font-semibold ">Data</p>
-            </div>
             <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
               <p className="text-[13px] font-semibold">12</p>
             </div>

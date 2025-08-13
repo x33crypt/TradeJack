@@ -1,16 +1,11 @@
 import React from "react";
-import { GiTopHat } from "react-icons/gi";
 import { TbCameraPlus } from "react-icons/tb";
 import image from "../../assets/landingImg4.JPG";
 import { FaCalendarCheck } from "react-icons/fa";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
-
-import Loading from "@/components/Loading";
 import { RiShare2Fill } from "react-icons/ri";
 import { FaCircle } from "react-icons/fa";
-import { MdOutlineUpdate } from "react-icons/md";
 import { HiLocationMarker } from "react-icons/hi";
-import { FaUserCircle } from "react-icons/fa";
 import { FaUserCheck } from "react-icons/fa";
 import { FaUserXmark } from "react-icons/fa6";
 import { TbClockEdit } from "react-icons/tb";
