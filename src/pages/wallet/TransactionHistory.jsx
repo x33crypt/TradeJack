@@ -271,7 +271,7 @@ const TransactionHistory = () => {
             </div>
 
             <div className="flex flex-1 p-[15px] ">
-              {loading && Array.isArray(transactions?.data).length < 0 ? (
+              {loading ? (
                 <Loading />
               ) : (
                 <div className="flex flex-1">

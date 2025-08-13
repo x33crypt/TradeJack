@@ -100,7 +100,12 @@ const PartnersNav = () => {
               </SmallButton>
 
               <div className="md:hidden">
-                <SmallButton variant="outline">
+                <SmallButton
+                  variant="outline"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
                   <p>Scroll to Top</p>
                 </SmallButton>
               </div>

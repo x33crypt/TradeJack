@@ -8,6 +8,7 @@ import Loading from "../Loading";
 import NetworkError from "../NetworkError";
 import { FaCheckDouble } from "react-icons/fa";
 import { TiPin } from "react-icons/ti";
+import SmallButton from "../buttons/SmallButton";
 
 const LinkedAccount = () => {
   const { loading, refetchLinkedBanks } = useFetchLinkedBanks();
@@ -86,36 +87,32 @@ const LinkedAccount = () => {
                     </div>
                   ) : (
                     <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-between">
-                      <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
-                        <RiBankLine />
-                      </div>
-
-                      <p className="text-lg font-semibold text-white leading-none">
-                        No Linked Account{" "}
+                      <p className="text-[13px] font-semibold text-white leading-none">
+                        No linked accounts
                       </p>
 
                       <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
-                        You haven't linked any bank account yet. Add one to
-                        enable secure and seamless withdraw to your bank.
+                        Connect one to enable secure and seamless withdraw to
+                        your bank.
                       </p>
 
                       <div className="w-full">
                         <div className="md:flex hidden">
-                          <Button
+                          <SmallButton
                             variant="primary"
                             onClick={() => navigateTo("/wallet/accounts")}
                           >
-                            Add New Account
-                          </Button>
+                            <p> Link Account</p>
+                          </SmallButton>
                         </div>
 
                         <div className="md:hidden flex">
-                          <Button
+                          <SmallButton
                             variant="primary"
                             onClick={() => navigateTo("/wallet/accounts/new")}
                           >
-                            Add New Account
-                          </Button>
+                            <p> Add New Account</p>
+                          </SmallButton>
                         </div>
                       </div>
                     </div>
