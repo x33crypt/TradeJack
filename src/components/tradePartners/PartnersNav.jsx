@@ -4,8 +4,10 @@ import { FaCircle } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { RiFilter3Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { RiLoader4Fill } from "react-icons/ri";
+import { FaSort } from "react-icons/fa";
 
-const Partners = () => {
+const PartnersNav = () => {
   const navigateTo = useNavigate();
 
   return (
@@ -16,7 +18,7 @@ const Partners = () => {
       <div className=" flex flex-col lg:h-[460px]">
         {/* Filter & Search */}
         <div className="sticky h-max w-full md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
-          <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] overflow-x-hidden p-[1.5px] ">
+          <div className="custom-x-scrollbar flex justify-between items-cente gap-[5px] overflow-x-hidden p-[1.5px] ">
             <div
               className={`${
                 false
@@ -25,7 +27,6 @@ const Partners = () => {
               } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
             >
               <FaMagnifyingGlass />
-              <p className="text-[13px]">Search</p>
             </div>
             <div
               className={`${
@@ -34,14 +35,14 @@ const Partners = () => {
                   : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
               } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
             >
-              <RiFilter3Line />
-              <p className="text-[13px]">Recent</p>
+              <FaSort />
+              <p className="text-[13px]">Recents</p>
             </div>
           </div>
         </div>
 
         {/* Partners */}
-        <div className="flex flex-col py-[12px] px-[15px] gap-[10px]">
+        <div className="flex-1 flex flex-col py-[12px] px-[15px] gap-[10px]">
           <div
             onClick={() => navigateTo("/trade/partners/:username")}
             className="flex gap-[10px] items-center h-max w-full p-[12px] rounded-[15px] border border-tradeAshExtraLight bg-tradeAsh"
@@ -74,9 +75,62 @@ const Partners = () => {
             </div>
           </div>
         </div>
+
+        {/* Bottom Filter */}
+        <div className="custom-x-scrollbar flex py-[12px] px-[15px] gap-[5px] justify-between w-full items-center overflow-x-auto border-t border-dashed border-tradeAshLight">
+          <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
+            <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+              <p className="text-[13px] font-semibold">12</p>
+            </div>
+
+            <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+              <p className="text-[13px] font-semibold">of</p>
+            </div>
+
+            <div className="flex items-center gap-1 text-tradeFadeWhite  px-[12px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+              <p className="text-[13px] font-semibold">200</p>
+            </div>
+          </div>
+
+          <div className="flex gap-[5px] py-[1px]">
+            <div>
+              {true ? (
+                <div
+                  // onClick={handleNext}
+                  className="flex gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
+                >
+                  <div className="flex items-center gap-1 text-tradeFadeWhite  px-[8px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+                    <p className="text-[13px] font-semibold">
+                      {true ? (
+                        <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                      ) : (
+                        "Load more"
+                      )}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                (isEmpty || isEnd) && (
+                  <div className="flex items-center gap-1 text-tradeFadeWhite  px-[8px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+                    <p className="text-[13px] font-semibold">{message}</p>
+                  </div>
+                )
+              )}
+            </div>
+
+            <div
+              // onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex md:hidden gap-[5px] text-tradeFadeWhite hover:text-white cursor-pointer transition-all duration-300"
+            >
+              <div className="flex items-center gap-1 text-tradeFadeWhite  px-[8px] py-[4px] font-medium rounded-[6.5px] border border-tradeAshExtraLight w-max">
+                <p className="text-[13px] font-semibold">Scroll to Top</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Partners;
+export default PartnersNav;

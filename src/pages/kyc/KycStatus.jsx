@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import InAppNav from "@/components/InAppNav";
 import Button from "@/components/buttons/Button";
 import Footer from "@/components/Footer";
-import SideNav from "@/components/account/nav/SideNav";
+import SideNav from "@/components/account/SideNav";
 import Loading from "@/components/Loading";
 import { LuFileX2 } from "react-icons/lu";
 import KycVerify from "@/components/kyc/KycVerify";

@@ -2,7 +2,7 @@ import React from "react";
 import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
 import SettingsNav from "@/components/settings/SettingsNav";
-import HeroEdit from "@/components/account/profile/HeroEdit";
+import HeroEdit from "@/components/account/HeroEdit";
 import Stats from "@/components/account/Stats";
 import Profile from "@/components/account/Profile";
 import Achievements from "@/components/account/Achievements";

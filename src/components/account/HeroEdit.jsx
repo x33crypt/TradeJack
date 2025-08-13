@@ -1,11 +1,10 @@
 import React from "react";
 import { GiTopHat } from "react-icons/gi";
 import { TbCameraPlus } from "react-icons/tb";
-import image from "../../../assets/landingImg4.JPG";
+import image from "../../assets/landingImg4.JPG";
 import { FaCalendarCheck } from "react-icons/fa";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
-import { useFetchProfile } from "@/hooks/useFetchProfile";
-import { useProfile } from "@/context/ProfileContext";
+
 import Loading from "@/components/Loading";
 import { RiShare2Fill } from "react-icons/ri";
 import { FaCircle } from "react-icons/fa";
@@ -17,10 +16,7 @@ import { FaUserXmark } from "react-icons/fa6";
 import { TbClockEdit } from "react-icons/tb";
 import { FaUser } from "react-icons/fa";
 
-const HeroEdit = () => {
-  const { loading, error } = useFetchProfile();
-  const { profile, setProfile } = useProfile();
-
+const HeroEdit = ({ loading, profile }) => {
   return (
     <div className="flex-1 flex flex-col md:border border-neutral-800">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">

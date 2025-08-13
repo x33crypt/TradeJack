@@ -9,7 +9,7 @@ import Stepper from "@/components/Steppers";
 import { useKyc } from "@/context/KycContext";
 import { useLocationData } from "@/hooks/useLocation";
 import Button from "@/components/buttons/Button";
-import SideNav from "@/components/account/nav/SideNav";
+import SideNav from "@/components/account/SideNav";
 import Footer from "@/components/Footer";
 
 const KycVerifyStep2 = () => {

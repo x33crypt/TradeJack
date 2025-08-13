@@ -11,7 +11,7 @@ import Warning from "@/components/alerts/Warning";
 import { RiFileUploadFill } from "react-icons/ri";
 import { kycVerify } from "@/utils/kyc/kycVerify";
 import Button from "@/components/buttons/Button";
-import SideNav from "@/components/account/nav/SideNav";
+import SideNav from "@/components/account/SideNav";
 import Footer from "@/components/Footer";
 
 const KycVerifyStep3 = () => {

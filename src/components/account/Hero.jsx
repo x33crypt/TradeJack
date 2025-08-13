@@ -1,29 +1,23 @@
 import React from "react";
-import { GiTopHat } from "react-icons/gi";
-import { TbCameraPlus } from "react-icons/tb";
-import image from "../../../assets/landingImg4.JPG";
+import image from "../../assets/landingImg4.JPG";
 import { FaCalendarCheck } from "react-icons/fa";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
-import { useFetchProfile } from "@/hooks/useFetchProfile";
-import { useProfile } from "@/context/ProfileContext";
 import Loading from "@/components/Loading";
 import { RiShare2Fill } from "react-icons/ri";
 import { FaCircle } from "react-icons/fa";
-import { MdOutlineUpdate } from "react-icons/md";
 import { HiLocationMarker } from "react-icons/hi";
-import { FaUserCircle } from "react-icons/fa";
 import { FaUserCheck } from "react-icons/fa";
 import { FaUserXmark } from "react-icons/fa6";
-import { TbClockEdit } from "react-icons/tb";
 import { FaUser } from "react-icons/fa";
+import { FiMoreVertical } from "react-icons/fi";
 
-const Hero = () => {
-  const { loading, error } = useFetchProfile();
-  const { profile, setProfile } = useProfile();
+const Hero = ({ Heading, loading, profile }) => {
   return (
     <div className="flex-1 flex flex-col md:border border-neutral-800">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">About Trader</p>
+        <p className="text-lg font-[700] text-white ">
+          {Heading ? Heading : "About"}
+        </p>
       </div>
       <div className="flex p-[15px] border-neutral-800">
         <div className="flex flex-1  flex-row justify-between gap-[5px">
@@ -110,11 +104,14 @@ const Hero = () => {
           </div>
 
           <div className="flex flex-col gap-2 md:justify-center justify-start">
-            <div className="md:flex hidden text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px]">
+            <div className="md:flex hidden text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
               <RiShare2Fill />
             </div>
             <div className="flex items-center text-tradeGreen border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
               <FaUserCheck />
+            </div>
+            <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FiMoreVertical />
             </div>
           </div>
         </div>

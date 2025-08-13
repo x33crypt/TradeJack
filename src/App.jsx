@@ -47,6 +47,7 @@ import SuccessAccount from "./pages/manageAccounts/SuccessAccount";
 import Settings from "./pages/settings/Settings";
 import TradePartners from "./pages/tradePartners/TradePartners";
 import AboutTrader from "./pages/AboutTrader";
+import PartnerProfile from "./pages/tradePartners/PartnerProfile";
 
 const App = () => {
   return (
@@ -113,7 +114,7 @@ const App = () => {
 
         {/* Trade  */}
         <Route path="trade/partners" element={<TradePartners />} />
-        <Route path="trade/partners/:username" element={<AboutTrader />} />
+        <Route path="trade/partners/:username" element={<PartnerProfile />} />
 
         <Route path="/offers/:id" element={<AboutOffer />} />
 

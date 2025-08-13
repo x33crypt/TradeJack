@@ -2,7 +2,7 @@ import Footer from "@/components/Footer";
 import MarketTopNav from "@/components/InAppNav";
 import React from "react";
 import PersonalInfo from "@/components/account/Profile";
-import HeroEdit from "@/components/account/profile/HeroEdit";
+import HeroEdit from "@/components/account/HeroEdit";
 import { useProfile } from "@/context/ProfileContext";
 import { useFetchProfile } from "@/hooks/useFetchProfile";
 import { useAccount } from "@/context/AccountContext";
@@ -30,8 +30,8 @@ const Account = () => {
         <div className="flex-1 flex flex-col gap-[5px]">
           <HeroEdit />
           <PersonalInfo />
-          <Achievements />
           <Stats />
+          <Achievements />
           <Feedbacks />
         </div>
       </div>

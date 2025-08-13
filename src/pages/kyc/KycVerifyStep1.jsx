@@ -8,7 +8,7 @@ import Stepper from "@/components/Steppers";
 import { useKyc } from "@/context/KycContext";
 import { useSelectElement } from "@/context/SelectElementContext";
 import Button from "@/components/buttons/Button";
-import SideNav from "@/components/account/nav/SideNav";
+import SideNav from "@/components/account/SideNav";
 import Footer from "@/components/Footer";
 
 const KycVerifyStep1 = () => {

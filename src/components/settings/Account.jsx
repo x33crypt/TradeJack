@@ -1,6 +1,6 @@
 import React from "react";
 import InAppNav from "../InAppNav";
-import SideNav from "../account/nav/SideNav";
+import SideNav from "../account/SideNav";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Footer from "../Footer";
