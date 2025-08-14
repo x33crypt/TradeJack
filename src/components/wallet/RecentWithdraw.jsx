@@ -7,6 +7,7 @@ import NetworkError from "../NetworkError";
 import SmallButton from "../buttons/SmallButton";
 import { useFetchWithdrawTxt } from "@/hooks/Transaction/useFetchWithdrawTxt";
 import { useWithdrawContext } from "@/context/wallet/WithdrawContext";
+import { BiFileBlank } from "react-icons/bi";
 
 const RecentWithdraw = () => {
   const { loading } = useFetchWithdrawTxt();
@@ -50,20 +51,16 @@ const RecentWithdraw = () => {
                       ))}
                   </div>
                 ) : (
-                  <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
-                    <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
-                      <LuFileX2 />
-                    </div>
-
-                    <p className="text-lg font-semibold text-white leading-none">
-                      No Recent withdrawals
+                  <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
+                    <p className="text-[13px] font-semibold text-white leading-none">
+                      No recent withdrawals.
                     </p>
 
                     <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
-                      You haven’t made any withdrawals yet. When you do, your
-                      recent withdrawal activity will be shown here for easy
-                      tracking.
+                      No recent withdrawals found in our system.
                     </p>
+
+                    <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
                   </div>
                 )}
               </div>
@@ -76,7 +73,14 @@ const RecentWithdraw = () => {
         <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
           <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
             <SmallButton variant="outline">
-              <p>{recentWithdraw?.pagination?.totalItems ? "5" : "0"}</p>
+              <p>
+                {recentWithdraw?.pagination?.totalItems
+                  ? recentWithdraw?.pagination?.totalItems &&
+                    recentWithdraw?.pagination?.totalItems >= 5
+                    ? "5"
+                    : recentWithdraw?.pagination?.totalItems
+                  : "0"}
+              </p>
             </SmallButton>
             <SmallButton variant="outline">
               <p>of</p>

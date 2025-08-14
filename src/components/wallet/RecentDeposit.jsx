@@ -7,6 +7,8 @@ import Loading from "../Loading";
 import { LuFileX2 } from "react-icons/lu";
 import NetworkError from "../NetworkError";
 import SmallButton from "../buttons/SmallButton";
+import { BiFileBlank } from "react-icons/bi";
+
 
 const RecentDeposit = () => {
   const { loading } = useFetchDepositTxt();
@@ -50,20 +52,16 @@ const RecentDeposit = () => {
                       ))}
                   </div>
                 ) : (
-                  <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
-                    <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
-                      <LuFileX2 />
-                    </div>
-
-                    <p className="text-lg font-semibold text-white leading-none">
-                      No Recent deposits
+                  <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
+                    <p className="text-[13px] font-semibold text-white leading-none">
+                      No recent deposits.
                     </p>
 
                     <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
-                      You haven’t made any deposits yet. When you do, your
-                      recent deposits activity will be shown here for easy
-                      tracking.
+                      No recent deposits found in our system.
                     </p>
+
+                    <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
                   </div>
                 )}
               </div>
@@ -84,7 +82,10 @@ const RecentDeposit = () => {
             <SmallButton variant="outline">
               <p>
                 {recentDeposit?.pagination?.totalItems
-                  ? recentDeposit?.pagination?.totalItems
+                  ? recentDeposit?.pagination?.totalItems &&
+                    recentDeposit?.pagination?.totalItems >= 5
+                    ? "5"
+                    : recentDeposit?.pagination?.totalItems
                   : "0"}
               </p>
             </SmallButton>

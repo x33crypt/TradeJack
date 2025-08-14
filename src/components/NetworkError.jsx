@@ -1,6 +1,7 @@
 import React from "react";
 import { TbFaceIdError } from "react-icons/tb";
 import { MdOutlineRefresh } from "react-icons/md";
+import { BiFileBlank } from "react-icons/bi";
 
 const NetworkError = ({ text }) => {
   return (
@@ -8,6 +9,7 @@ const NetworkError = ({ text }) => {
       <p className="text-[13px] font-semibold text-white leading-none">
         No internet connection
       </p>
+
       <p className="text-xs font-medium text-tradeFadeWhite text-center">
         Check your connection or refresh.
       </p>

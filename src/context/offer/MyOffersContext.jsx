@@ -6,8 +6,17 @@ const MyOfferContext = createContext();
 export const MyOfferProvider = ({ children }) => {
   const [myOffers, setMyOffers] = useState(null);
 
+  const [filter, setFilter] = useState({
+    date: { monthNo: null, monthName: null, year: null },
+    asset: null,
+    status: null,
+    search: null,
+  });
+
   return (
-    <MyOfferContext.Provider value={{ myOffers, setMyOffers }}>
+    <MyOfferContext.Provider
+      value={{ myOffers, setMyOffers, filter, setFilter }}
+    >
       {children}
     </MyOfferContext.Provider>
   );

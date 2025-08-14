@@ -23,65 +23,99 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { RiLoader4Fill } from "react-icons/ri";
 import NetworkError from "@/components/NetworkError";
+import { BiFileBlank } from "react-icons/bi";
 
 const MyOffer = () => {
-  const topRef = useRef(null);
   const { loading, error } = useFetchMyOffers();
-  const { myOffers, setMyOffers } = useMyOffer();
-  const [offerFilter, setOfferFilter] = useState({
-    loading: false,
-    allOffers: false,
-    activeOffers: false,
-    inactiveOffers: false,
-    dateOffer: { state: false, months: "", year: "" },
-    draftOffers: false,
-  });
-  const [offers, setOffers] = useState("");
+  const [triggerScroll, setTriggerScroll] = useState(false);
+  const { myOffers, filter, setFilter } = useMyOffer();
   const { select, setSelect } = useSelectElement();
 
-  console.log(myOffers);
+  const navigateTo = useNavigate();
 
-  const handleShowAllOffers = () => {
-    setOfferFilter((prev) => ({
-      ...prev,
-      allOffers: !prev.allOffers,
-      activeOffers: false,
-      inactiveOffers: false,
-      dateOffer: { day: "", months: "", year: "" },
-      draftOffers: false,
-    }));
+  const offerStatus = ["All status", "Active", "Paused", "Suspended", "Closed"];
+
+  // handling asset type change
+  useEffect(() => {
+    if (select?.page !== "my offer" || !select?.pick) return;
+
+    if (select.element === "asset type") {
+      const selectedStatus = select.pick === "All asset" ? null : select.pick;
+
+      setFilter((prev) => ({
+        ...prev,
+        asset: selectedStatus,
+      }));
+    }
+  }, [select]);
+
+  // handling offer status change
+  useEffect(() => {
+    if (select?.page !== "my offer" || !select?.pick) return;
+
+    if (select.element === "offer status") {
+      console.log("Offer status selected:", select.pick);
+      const selectedType = select.pick === "All status" ? null : select.pick;
+
+      setFilter((prev) => ({
+        ...prev,
+        status: selectedType,
+      }));
+    }
+  }, [select]);
+
+  const join = new Date();
+  const now = new Date();
+
+  const min = `${join.getFullYear()}-${String(join.getMonth() + 1).padStart(
+    2,
+    "0"
+  )}`;
+  const max = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(
+    2,
+    "0"
+  )}`;
+
+  const inputRef = useRef(null);
+  const handleDateClick = () => {
+    if (!inputRef.current) return;
+    if (inputRef.current.showPicker) {
+      // works in Chromium ≥ 111
+      inputRef.current.showPicker();
+    } else {
+      // fallback
+      inputRef.current.focus();
+    }
   };
 
-  const handleShowActiveOffers = () => {
-    setOfferFilter((prev) => ({
-      ...prev,
-      activeOffers: !prev.activeOffers,
-      allOffers: false,
-      inactiveOffers: false,
-      dateOffer: { day: "", months: "", year: "" },
-      draftOffers: false,
-    }));
-  };
+  const handleDateChange = (e) => {
+    const value = e.target.value; // format: "YYYY-MM"
 
-  const handleShowInActiveOffers = () => {
-    setOfferFilter((prev) => ({
-      ...prev,
-      inactiveOffers: !prev.activeOffers,
-      allOffers: false,
-      activeOffers: false,
-      dateOffer: { day: "", months: "", year: "" },
-      draftOffers: false,
-    }));
-  };
+    if (!value) {
+      // Clear the filter if input is cleared
+      setFilter((prev) => ({
+        ...prev,
+        date: { monthNo: null, monthName: null, year: null },
+      }));
+      return;
+    }
 
-  const handleShowDraftedOffers = () => {
-    setOfferFilter((prev) => ({
+    const [year, month] = value.split("-");
+    const monthNum = Number(month);
+    const monthName = new Date(`${year}-${month}-01`).toLocaleString(
+      "default",
+      {
+        month: "long",
+      }
+    );
+
+    setFilter((prev) => ({
       ...prev,
-      draftOffers: !prev.draftOffers,
-      allOffers: false,
-      activeOffers: false,
-      inactiveOffers: false,
-      dateOffer: { day: "", months: "", year: "" },
+      date: {
+        monthNo: monthNum,
+        monthName: monthName,
+        year: Number(year),
+      },
     }));
   };
 
@@ -149,45 +183,12 @@ const MyOffer = () => {
     }
   };
 
-  useEffect(() => {
-    handleFilterOffer();
-  }, [myOffers]);
-
-  useEffect(() => {
-    handleFilterOffer();
-  }, [offerFilter.allOffers]);
-
-  useEffect(() => {
-    handleFilterOffer();
-  }, [offerFilter.activeOffers]);
-
-  useEffect(() => {
-    handleFilterOffer();
-  }, [offerFilter?.dateOffer?.state]);
-
-  const navigateTo = useNavigate();
-
-  const handleToCreateOffer = () => {
-    navigateTo("/offers/create");
-  };
-
-  const scrollToTop = () => {
-    topRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
-
   return (
     <>
       <InAppNav />
       <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col gap-[5px] bg-black">
         <DasHboardMenu />
-        <div
-          ref={topRef}
-          className="flex flex-col flex-1 md:border border-tradeAshLight"
-        >
+        <div className="flex flex-col flex-1 md:border border-tradeAshLight">
           <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
             <p className="text-lg font-[700] text-white ">My Offers</p>
           </div>
@@ -205,15 +206,45 @@ const MyOffer = () => {
               <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-hidden p-[2px]">
                 <div className="flex gap-[5px]">
                   <div className="flex gap-[5px]">
-                    <SmallButton variant="fadeout">
+                    <SmallButton
+                      variant="fadeout"
+                      disabled={filter?.asset !== null}
+                      onClick={() =>
+                        setSelect({
+                          ...select,
+                          state: true,
+                          selectOne: true,
+                          selectTwo: false,
+                          element: "asset type",
+                          options: offerStatus,
+                          pick: "",
+                          page: "my offer",
+                        })
+                      }
+                    >
                       <FaSort />
-                      <p>All Asset</p>
+                      <p>{filter?.asset ? filter?.asset : "All Asset"}</p>
                     </SmallButton>
                   </div>
                   <div className="flex gap-[5px]">
-                    <SmallButton variant="fadeout">
+                    <SmallButton
+                      variant="fadeout"
+                      disabled={filter?.status !== null}
+                      onClick={() =>
+                        setSelect({
+                          ...select,
+                          state: true,
+                          selectOne: true,
+                          selectTwo: false,
+                          element: "offer status",
+                          options: offerStatus,
+                          pick: "",
+                          page: "my offer",
+                        })
+                      }
+                    >
                       <FaSort />
-                      <p>All Status</p>
+                      <p>{filter?.status ? filter?.status : "All Status"}</p>
                     </SmallButton>
                   </div>
                 </div>
@@ -222,13 +253,35 @@ const MyOffer = () => {
                   <SmallButton variant="fadeout">
                     <FaMagnifyingGlass />
                   </SmallButton>
-                  <SmallButton variant="fadeout">
+                  <SmallButton
+                    variant="fadeout"
+                    disabled={filter.date?.monthName || filter.date?.year}
+                    onClick={handleDateClick}
+                  >
                     <FaRegCalendarAlt />
-                    <p>Month, Year</p>
+                    <p>
+                      {filter.date?.monthName
+                        ? filter.date?.monthName
+                        : "Month"}
+                      , {filter.date?.year ? filter.date?.year : "Year"}
+                    </p>
                   </SmallButton>
-                  <SmallButton variant="primary">
+                  <SmallButton
+                    variant="primary"
+                    onClick={() => navigateTo("/offers/create")}
+                  >
                     <p>Create Offer</p>
                   </SmallButton>
+                  <div>
+                    <input
+                      type="month"
+                      min={min}
+                      max={max}
+                      onChange={handleDateChange}
+                      ref={inputRef}
+                      className="absolute opacity-0 w-0 h-0 pointer-events-none"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -251,8 +304,16 @@ const MyOffer = () => {
                           ))}
                         </div>
                       ) : (
-                        <div className="flex-1 flex items-center justify-center">
-                          <Info text="No active offers yet. Create your first offer to start trading and grow your activity." />
+                        <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
+                          <p className="text-[13px] font-semibold text-white leading-none">
+                            No offers yet.
+                          </p>
+
+                          <p className="text-xs font-medium text-tradeFadeWhite text-center">
+                            Your offers will apear here once you create one.
+                          </p>
+
+                          <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
                         </div>
                       )}
                     </div>

@@ -8,6 +8,7 @@ export const TransactionProvider = ({ children }) => {
     date: { monthNo: null, monthName: null, year: null },
     type: null,
     status: null,
+    search: null,
   });
 
   const [details, setDetails] = useState({

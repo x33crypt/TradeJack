@@ -9,6 +9,7 @@ import NetworkError from "../NetworkError";
 import { FaCheckDouble } from "react-icons/fa";
 import { TiPin } from "react-icons/ti";
 import SmallButton from "../buttons/SmallButton";
+import { LuFile } from "react-icons/lu";
 
 const LinkedAccount = () => {
   const { loading, refetchLinkedBanks } = useFetchLinkedBanks();
@@ -86,7 +87,7 @@ const LinkedAccount = () => {
                       </Button>
                     </div>
                   ) : (
-                    <div className="flex-1 flex flex-col items-center justify-center gap-[8px] bg-transparent">
+                    <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
                       <p className="text-[13px] font-semibold text-white leading-none">
                         No linked accounts
                       </p>

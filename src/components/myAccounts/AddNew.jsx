@@ -76,7 +76,7 @@ const AddNew = () => {
   return (
     <div className=" flex flex-col md:border border-neutral-800 w-full">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">Add New Account</p>
+        <p className="text-lg font-[700] text-white ">Link Account</p>
       </div>
 
       <div className="flex flex-col justify-between p-[15px] gap-[15px] h-full w-full">

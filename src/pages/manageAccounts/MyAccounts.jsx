@@ -253,7 +253,7 @@ const MyAccounts = () => {
                         </p>
                       </div>
                       <div className="flex-1 h-full flex items-center justify-center">
-                        <LuFileX2 className="text-[55px] text-tradeGreen" />
+                        <LuFileX2 className="text-[55px] text-tradeAshExtraLight" />
                       </div>
                       <div className="md:hidden flex w-full">
                         <Button

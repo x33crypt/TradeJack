@@ -18,6 +18,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { RiLoader4Fill } from "react-icons/ri";
 import NetworkError from "@/components/NetworkError";
+import { BiFileBlank } from "react-icons/bi";
 
 const TransactionHistory = () => {
   const topRef = useRef(null);
@@ -190,9 +191,9 @@ const TransactionHistory = () => {
           </div>
           <div className="px-[15px] py-[12px] border-b border-dashed border-tradeAshLight">
             <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-              View, manage, and monitor every offer you’ve created, complete
-              with real-time status updates and key trade details to keep you in
-              control.
+              Review and track all your transactions in detail, with real-time
+              status updates and clear records to help you stay informed and in
+              control of your activity.
             </p>
           </div>
           <div className="flex flex-col flex-1 ">
@@ -279,30 +280,43 @@ const TransactionHistory = () => {
                     <NetworkError />
                   ) : (
                     <div className="flex flex-1">
-                      {Array.isArray(transactions?.data) &&
-                      transactions?.data.length > 0 ? (
-                        <div className="flex flex-col gap-[5px] w-full">
-                          {transactions?.data?.map((transaction, index) => (
-                            <div key={transaction.id || index}>
-                              <TransactionCard transaction={transaction} />
+                      {Array.isArray(transactions?.data) ? (
+                        <div className="flex flex-1">
+                          {transactions?.data.length > 0 ? (
+                            <div className="flex flex-col gap-[5px] w-full">
+                              {transactions?.data?.map((transaction, index) => (
+                                <div key={transaction.id || index}>
+                                  <TransactionCard transaction={transaction} />
+                                </div>
+                              ))}
                             </div>
-                          ))}
+                          ) : (
+                            <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
+                              <p className="text-[13px] font-semibold text-white leading-none">
+                                No transaction found.
+                              </p>
+                              <p className="text-xs font-medium text-tradeFadeWhite text-center">
+                                {filter?.type ||
+                                filter?.status ||
+                                filter?.date?.monthName ||
+                                (filter?.search && filter.search.trim() !== "")
+                                  ? "Try adjusting your filter or search terms."
+                                  : "You haven’t made any transactions yet."}
+                              </p>
+
+                              <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
+                            </div>
+                          )}
                         </div>
                       ) : (
-                        <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
-                          <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
-                            <LuFileX2 />
-                          </div>
-
-                          <p className="text-lg font-semibold text-white leading-none">
-                            No Transaction Record Found
+                        <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
+                          <p className="text-[13px] font-semibold text-white leading-none">
+                            No transaction found.
                           </p>
-
-                          <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
-                            You haven’t made any transactions yet. When you do,
-                            your recent deposits activity will be shown here for
-                            easy tracking.
+                          <p className="text-xs font-medium text-tradeFadeWhite text-center">
+                            You haven’t made any transactions yet.
                           </p>
+                          <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
                         </div>
                       )}
                     </div>
