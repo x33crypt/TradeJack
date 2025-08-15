@@ -5,7 +5,7 @@ import Loading from "../Loading";
 import NetworkError from "../NetworkError";
 import { LuFileX2 } from "react-icons/lu";
 import { useFetchTransferTxt } from "@/hooks/Transaction/useFetchTransferTxt";
-import { useTransferContext } from "@/context/wallet/TransferContext";
+import { useTransferContext } from "@/context/userContext/TransferContext";
 import SmallButton from "../buttons/SmallButton";
 import { BiFileBlank } from "react-icons/bi";
 

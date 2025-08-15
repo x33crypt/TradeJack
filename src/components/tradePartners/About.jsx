@@ -5,7 +5,7 @@ import Hero from "../account/Hero";
 import TradeHistory from "../account/TradeHistory";
 import Achievements from "../account/Achievements";
 import { useFetchProfile } from "@/hooks/useFetchProfile";
-import { useProfile } from "@/context/ProfileContext";
+import { useProfile } from "@/context/userContext/ProfileContext";
 
 const About = () => {
   const { loading } = useFetchProfile();

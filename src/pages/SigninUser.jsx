@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { PiSignInBold } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import { signin } from "@/utils/auth/signin";
-import { useDashboard } from "@/context/DashboardContext";
+import { useDashboard } from "@/context/userContext/DashboardContext";
 import { useSearchParams } from "react-router-dom";
 import Button from "@/components/buttons/Button";
 

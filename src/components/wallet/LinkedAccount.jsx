@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { RiBankLine } from "react-icons/ri";
 import { useFetchLinkedBanks } from "@/hooks/useFetchLinkedBanks";
-import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
+import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import Button from "../buttons/Button";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Loading";

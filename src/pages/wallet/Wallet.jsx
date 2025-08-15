@@ -23,7 +23,7 @@ const Wallet = () => {
       <InAppNav />
       <div
         ref={topRef}
-        className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%]  min-h-svh flex gap-[5px] bg-black "
+        className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black "
       >
         <DasHboardMenu />
         <div className="flex-1 flex flex-col gap-[5px]">

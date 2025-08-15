@@ -3,9 +3,9 @@ import LockByScroll from "@/components/LockByScroll";
 import Button from "@/components/buttons/Button";
 import { IoClose } from "react-icons/io5";
 import { toDecimal } from "@/utils/toDecimal";
-import { useDepositContext } from "@/context/wallet/DepositContext";
+import { useDepositContext } from "@/context/userContext/DepositContext";
 import { MdPending } from "react-icons/md";
-import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useTransaction } from "@/context/userContext/TransactionContext";
 
 const SuccessDeposit = () => {
   const { details, setDetails } = useTransaction();

@@ -4,11 +4,11 @@ import MarketMain from "@/components/marketplace/MarketMain";
 import Footer from "@/components/Footer";
 import OfferFilter from "@/components/marketplace/OfferFilter";
 import axios from "axios";
-import { useSelectElement } from "@/context/SelectElementContext";
-import { useExploreOffers } from "@/context/ExploreOffersContext";
+import { useSelectElement } from "@/context/otherContext/SelectElementContext";
+import { usePublicOffers } from "@/context/publicContext/OffersContext";
 
 const Marketplace = () => {
-  const { filter, setFilter } = useExploreOffers();
+  const { filter, setFilter } = usePublicOffers();
   const [offers, setOffers] = useState();
   const [promotedOffers, setPromotedOffers] = useState();
   const [unPromotedOffers, setUnPromotedOffers] = useState();

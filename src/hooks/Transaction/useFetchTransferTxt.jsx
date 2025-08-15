@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import api from "@/utils/http/api";
-import { useTransferContext } from "@/context/wallet/TransferContext";
+import { useTransferContext } from "@/context/userContext/TransferContext";
 
 export function useFetchTransferTxt(initialPage = 1, limit = 10) {
   const { transfer, setTransfer } = useTransferContext();

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import TransactionCard from "../cards/Both/TransactionCard";
-import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useTransaction } from "@/context/userContext/TransactionContext";
 import { useNavigate } from "react-router-dom";
 import { RiArrowRightFill } from "react-icons/ri";
 import { useFetchAllTransactions } from "@/hooks/Transaction/useFetchAllTransactions";
@@ -51,7 +51,7 @@ const RecentTransaction = ({ scrollToTop }) => {
             ) : (
               <div className="flex flex-1">
                 {Array.isArray(transactions?.data) &&
-                transactions?.data.length > 0  ? (
+                transactions?.data.length > 0 ? (
                   <div className="flex flex-col gap-[10px] w-full">
                     {transactions?.data
                       ?.slice(0, 5)

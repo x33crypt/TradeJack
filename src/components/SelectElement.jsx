@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelectElement } from "@/context/SelectElementContext";
+import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import LockByScroll from "./LockByScroll";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import Button from "./buttons/Button";

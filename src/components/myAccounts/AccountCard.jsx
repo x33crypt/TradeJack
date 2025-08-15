@@ -1,7 +1,7 @@
 import React from "react";
 import { date } from "@/utils/date";
 import { AiOutlineDelete } from "react-icons/ai";
-import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
+import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { FaArrowUp } from "react-icons/fa";
 import { FaQuestionCircle } from "react-icons/fa";
 import { TiPin } from "react-icons/ti";

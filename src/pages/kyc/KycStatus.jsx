@@ -7,7 +7,7 @@ import SideNav from "@/components/account/SideNav";
 import Loading from "@/components/Loading";
 import { LuFileX2 } from "react-icons/lu";
 import KycVerify from "@/components/kyc/KycVerify";
-import { useKyc } from "@/context/KycContext";
+import { useKyc } from "@/context/userContext/KycContext";
 import { useFetchKycStatus } from "@/hooks/useFetchKycStatus";
 import KycBenefits from "@/components/kyc/KycBenefits";
 import NetworkError from "@/components/NetworkError";

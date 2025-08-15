@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import api from "@/utils/http/api";
-import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useTransaction } from "@/context/userContext/TransactionContext";
 
 export function useFetchTransactionsDetails() {
   const { details, setDetails } = useTransaction();

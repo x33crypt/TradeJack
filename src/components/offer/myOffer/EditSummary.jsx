@@ -5,14 +5,15 @@ import { IoWalletOutline } from "react-icons/io5";
 import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
-import { useToast } from "@/context/ToastContext";
-import { useEditOfferDetails } from "@/context/offer/EditOfferContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import Button from "@/components/buttons/Button";
-import { editOffer } from "@/utils/offer/editOffer";
+// import { editOffer } from "@/utils/offer/editOffer";
 import { closeOffer } from "@/utils/offer/closeOffer";
+import { useUserOffer } from "@/context/userContext/OffersContext";
 
 const EditSummary = () => {
-  const { offerDetails, setOfferDetails } = useEditOfferDetails();
+  const { editOffer, setEditOffer } = useUserOffer();
+
   const [loading, setLoading] = useState(false);
 
   const { toast, setToast } = useToast();
@@ -26,14 +27,14 @@ const EditSummary = () => {
   };
 
   // Get the icon component based on the full service type
-  const IconComponent = serviceTypeIcons[offerDetails?.serviceType];
+  const IconComponent = serviceTypeIcons[editOffer?.serviceType];
 
   const navigateTo = useNavigate();
 
   const handleEdit = async () => {
     setLoading(true);
 
-    const result = await editOffer(offerDetails);
+    const result = await editOffer(editOffer);
 
     if (result.success) {
       setLoading(false);
@@ -46,7 +47,7 @@ const EditSummary = () => {
       });
 
       navigateTo("/offers/marketplace");
-      setOfferDetails({
+      setEditOffer({
         serviceType: "Online Wallet Transfer",
         service: "",
         serviceId: "",
@@ -74,7 +75,7 @@ const EditSummary = () => {
   const handleClose = async () => {
     setLoading(true);
 
-    const result = await closeOffer(offerDetails?.offerId);
+    const result = await closeOffer(editOffer?.offerId);
 
     if (result.success) {
       setLoading(false);
@@ -87,7 +88,7 @@ const EditSummary = () => {
       });
 
       navigateTo("/offers/marketplace");
-      setOfferDetails({
+      setEditOffer({
         serviceType: "Online Wallet Transfer",
         service: "",
         serviceId: "",
@@ -140,11 +141,11 @@ const EditSummary = () => {
 
             <div className="flex flex-col gap-1">
               <p className="text-tradeOrange text-base font-bold">
-                {offerDetails?.service || "-- --"}
+                {editOffer?.service || "-- --"}
               </p>
               <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                 <p className="text-white text-xs font-medium">
-                  {offerDetails?.serviceType || "Service Type"}
+                  {editOffer?.serviceType || "Service Type"}
                 </p>
               </div>
             </div>
@@ -158,8 +159,8 @@ const EditSummary = () => {
             </div>
 
             <p className="text-tradeOrange text-sm font-[600]">
-              {offerDetails?.preferredCurrency?.name
-                ? `${offerDetails?.preferredCurrency?.name} - ${offerDetails?.preferredCurrency?.code}`
+              {editOffer?.preferredCurrency?.name
+                ? `${editOffer?.preferredCurrency?.name} - ${editOffer?.preferredCurrency?.code}`
                 : "-- --"}
             </p>
           </div>
@@ -175,13 +176,11 @@ const EditSummary = () => {
               <div className="grid grid-cols-2 ">
                 <p className="text-tradeFadeWhite text-sm">Minimum Purchase</p>
                 <p className="text-tradeLightGreen text-sm font-[600]">
-                  {offerDetails?.marginRate?.from !== undefined &&
-                  offerDetails?.preferredCurrency?.code
+                  {editOffer?.marginRate?.from !== undefined &&
+                  editOffer?.preferredCurrency?.code
                     ? `${Number(
-                        offerDetails?.marginRate?.from
-                      ).toLocaleString()} ${
-                        offerDetails?.preferredCurrency?.code
-                      }`
+                        editOffer?.marginRate?.from
+                      ).toLocaleString()} ${editOffer?.preferredCurrency?.code}`
                     : "N/A"}
                 </p>
               </div>
@@ -189,12 +188,10 @@ const EditSummary = () => {
               <div className="grid grid-cols-2 ">
                 <p className="text-tradeFadeWhite text-sm">Maximum Purchase</p>
                 <p className="text-tradeLightGreen text-sm font-[600]">
-                  {offerDetails?.marginRate?.to !== undefined &&
-                  offerDetails?.preferredCurrency?.code
-                    ? `${Number(
-                        offerDetails?.marginRate?.to
-                      ).toLocaleString()} ${
-                        offerDetails?.preferredCurrency?.code
+                  {editOffer?.marginRate?.to !== undefined &&
+                  editOffer?.preferredCurrency?.code
+                    ? `${Number(editOffer?.marginRate?.to).toLocaleString()} ${
+                        editOffer?.preferredCurrency?.code
                       }`
                     : "N/A"}
                 </p>
@@ -212,8 +209,8 @@ const EditSummary = () => {
             <p className="text-white text-sm">
               You’ve set a profit margin of{" "}
               <span className="text-tradeGreen text-sm font-[600]">
-                {offerDetails?.marginRate?.percent !== undefined
-                  ? `${offerDetails?.marginRate?.percent} percent`
+                {editOffer?.marginRate?.percent !== undefined
+                  ? `${editOffer?.marginRate?.percent} percent`
                   : "--"}
               </span>
               , which represents your expected earnings per successful
@@ -231,8 +228,8 @@ const EditSummary = () => {
               <p className="text-white text-sm">
                 You’ve set a payment window of{" "}
                 <span className="font-[600] text-sm text-tradeGreen">
-                  {offerDetails?.paymentWindow !== undefined
-                    ? `${offerDetails.paymentWindow} hour(s)`
+                  {editOffer?.paymentWindow !== undefined
+                    ? `${editOffer.paymentWindow} hour(s)`
                     : "--"}
                 </span>{" "}
                 for sellers to complete their payment.
@@ -259,8 +256,8 @@ const EditSummary = () => {
                 You’ve agreed to confirm receipt of payment and release funds
                 within{" "}
                 <span className="font-[600] text-sm text-tradeGreen">
-                  {offerDetails?.confirmationWindow !== undefined
-                    ? `${offerDetails.confirmationWindow} hour(s)`
+                  {editOffer?.confirmationWindow !== undefined
+                    ? `${editOffer.confirmationWindow} hour(s)`
                     : "--"}
                 </span>{" "}
                 after seller's marks the trade as paid.
@@ -281,8 +278,8 @@ const EditSummary = () => {
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
-              {offerDetails?.terms?.length ? (
-                offerDetails.terms.map((tag, index) => (
+              {editOffer?.terms?.length ? (
+                editOffer.terms.map((tag, index) => (
                   <div className="flex w-max items-center gap-[8px] px-[10px] py-[4px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight">
                     <p
                       key={index}
@@ -307,10 +304,8 @@ const EditSummary = () => {
               </p>
             </div>
             <div className="">
-              {offerDetails?.instruction ? (
-                <p className="text-white text-sm">
-                  {offerDetails?.instruction}
-                </p>
+              {editOffer?.instruction ? (
+                <p className="text-white text-sm">{editOffer?.instruction}</p>
               ) : (
                 <p className="text-tradeFadeWhite text-sm font-[500]">
                   No Instructions set yet

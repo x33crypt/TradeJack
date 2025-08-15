@@ -3,7 +3,7 @@ import InAppNav from "@/components/InAppNav";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import React, { useEffect } from "react";
 import Button from "@/components/buttons/Button";
-import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
+import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { useFetchLinkedBanks } from "@/hooks/useFetchLinkedBanks";
 import AccountCard from "@/components/myAccounts/AccountCard";
 import AddNew from "@/components/myAccounts/AddNew";
@@ -12,7 +12,7 @@ import Loading from "@/components/Loading";
 import { LuFileX2 } from "react-icons/lu";
 import LockByScroll from "@/components/LockByScroll";
 import { IoClose } from "react-icons/io5";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import api from "@/utils/http/api";
 
 const MyAccounts = () => {

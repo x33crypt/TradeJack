@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "@/utils/http/api";
-import { useDashboard } from "@/context/DashboardContext";
+import { useDashboard } from "@/context/userContext/DashboardContext";
 
 export function useFetchDashboard() {
   const { dashboard, setDashboard } = useDashboard();

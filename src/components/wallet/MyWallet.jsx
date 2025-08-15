@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useFetchBalance } from "@/hooks/useFetchBalance";
 import toDecimal from "@/utils/toDecimal";
 import Info from "../alerts/Info";
-import { useBalance } from "@/context/BalanceContext";
+import { useBalance } from "@/context/userContext/BalanceContext";
 import { FaQuestionCircle } from "react-icons/fa";
 import { MdOutlineRefresh } from "react-icons/md";
 import Loading from "../Loading";

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Button from "@/components/buttons/Button";
 import { useNavigate } from "react-router-dom";
-import { useKyc } from "@/context/KycContext";
-import { useSelectElement } from "@/context/SelectElementContext";
-import { useToast } from "@/context/ToastContext";
+import { useKyc } from "@/context/userContext/KycContext";
+import { useSelectElement } from "@/context/otherContext/SelectElementContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useLocationData } from "@/hooks/useLocation";
 import { RiFileUploadFill } from "react-icons/ri";

@@ -1,6 +1,6 @@
 import React from "react";
 import LockByScroll from "./LockByScroll";
-import { useProfileNav } from "../context/ProfileNavContext";
+import { useProfileNav } from "../context/otherContext/ProfileNavContext";
 import { IoClose } from "react-icons/io5";
 import landingImg4 from "./../assets/landingImg4.JPG";
 import Button from "./buttons/Button";
@@ -34,7 +34,7 @@ const ProfileNav = () => {
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
             <div className="flex flex-col gap-[10px] w-[300px]">
-              <div className="flex p-[12px] bg-tradeAsh border border-tradeAshLight items-center justify-between rounded-[15px]">
+              <div className="flex p-[12px] bg-tradeAsh  border border-tradeAshLight items-center justify-between rounded-[15px]">
                 <div className="flex items-center  gap-3 ">
                   <div className=" w-[40px] rounded-[10px] overflow-hidden border border-tradeAshExtraLight cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     <img src={landingImg4} alt="" className="rounded-[10px]" />
@@ -61,7 +61,10 @@ const ProfileNav = () => {
                     <Button variant="outline" onClick={toAccount}>
                       Account
                     </Button>
-                    <div className="lg:hidden flex">
+                    <div className="lg:hidden flex flex-col gap-[5px]">
+                      <Button variant="outline" onClick={toSettings}>
+                        Rewards
+                      </Button>
                       <Button variant="outline" onClick={toSettings}>
                         Settings
                       </Button>

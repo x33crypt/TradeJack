@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import signupImg from "../assets/signupImg.webp";
 import { useNavigate } from "react-router-dom";
 import { signup } from "@/utils/auth/signup";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 
 const SignupUser = () => {
   const [isSigningUp, setIsSigningUp] = useState(false);

@@ -1,10 +1,10 @@
 import React from "react";
-import { useTransferContext } from "@/context/wallet/TransferContext";
+import { useTransferContext } from "@/context/userContext/TransferContext";
 import LockByScroll from "@/components/LockByScroll";
 import Button from "@/components/buttons/Button";
 import { IoClose } from "react-icons/io5";
 import { IoIosCheckmarkCircle } from "react-icons/io";
-import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useTransaction } from "@/context/userContext/TransactionContext";
 import { useNavigate } from "react-router-dom";
 import { toDecimal } from "@/utils/toDecimal";
 

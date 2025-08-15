@@ -13,6 +13,8 @@ import { MdManageAccounts } from "react-icons/md";
 import { HiLink } from "react-icons/hi";
 import { FaQuestion } from "react-icons/fa";
 import { MdOutlineFeedback } from "react-icons/md";
+import { FaQuestionCircle } from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 
 const SettingsNav = () => {
   const navigateTo = useNavigate();
@@ -24,33 +26,24 @@ const SettingsNav = () => {
           <p className="text-lg font-[700] text-white ">Settings</p>
         </div>
         <div className="flex flex-col gap-[10px] px-[15px]">
-          <div
+          {/* <div
             className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black  transition-all duration-300 cursor-pointer"
             onClick={() => navigateTo("/account")}
           >
             <FaUser className="text-[17px]" />
             <p className="text-[13px] font-[500]"> Account</p>
-          </div>
+          </div> */}
 
-          <div
-            className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
-            onClick={() => navigateTo("/wallet")}
-          >
+          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
             <PiPasswordBold className="text-[17px]" />
             <p className="text-[13px] font-[500]"> Change Password</p>
           </div>
 
-          <div
-            className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
-            onClick={() => navigateTo("/offers/myoffers")}
-          >
+          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
             <Si2Fas className="text-[17px]" />
             <p className="text-[13px] font-[500]">Two-Factor Authentication</p>
           </div>
-          <div
-            className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
-            onClick={() => navigateTo("/offers/mine")}
-          >
+          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
             <GrSecure className="text-[17px]" />
             <p className="text-[13px] font-[500]"> Transaction Pin</p>
           </div>
@@ -67,10 +60,14 @@ const SettingsNav = () => {
             <MdManageAccounts className="text-[17px]" />
             <p className="text-[13px] font-[500]"> Account Management</p>
           </div>
+          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+            <FaLink className="text-[17px]" />
+            <p className="text-[13px] font-[500]">Linked Accounts</p>
+          </div>
         </div>
         <div className="flex flex-col px-[15px] py-[12px] gap-[10px] border-t border-tradeAshLight">
           <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border-b hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <FaQuestion className="text-[17px]" />
+            <FaQuestionCircle className="text-[17px]" />
             <p className="text-[13px] font-[500]">FAQs</p>
           </div>
           <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
@@ -92,7 +89,7 @@ const SettingsNav = () => {
               className="flex w-full p-[12px] bg-tradeAsh border border-tradeAshLight items-center justify-between rounded-[15px]"
             >
               <div className="flex items-center  gap-3 ">
-                <div className=" w-[60px] rounded-[10px] overflow-hidden border border-tradeAshExtraLight cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                <div className=" w-[45px] rounded-[10px] overflow-hidden border border-tradeAshExtraLight cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                   <img src={landingImg4} alt="" className="rounded-[10px]" />
                 </div>
 

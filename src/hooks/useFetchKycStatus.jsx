@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import api from "@/utils/http/api";
-import { useKyc } from "@/context/KycContext";
+import { useKyc } from "@/context/userContext/KycContext";
 
 export function useFetchKycStatus(autoFetch = true) {
   const [loading, setLoading] = useState(false);

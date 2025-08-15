@@ -1,5 +1,5 @@
 import React from "react";
-import { useBalance } from "@/context/BalanceContext";
+import { useBalance } from "@/context/userContext/BalanceContext";
 import { useFetchBalance } from "@/hooks/useFetchBalance";
 import { IoWalletOutline } from "react-icons/io5";
 import toDecimal from "@/utils/toDecimal";

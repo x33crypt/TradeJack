@@ -10,8 +10,10 @@ import OfferFeedback from "@/components/offer/global/OfferFeedback";
 import Button from "@/components/buttons/Button";
 import OfferInstruction from "@/components/offer/userOffer/OfferInstruction";
 import OfferTag from "@/components/offer/userOffer/OfferTag";
+import { useUserOffer } from "@/context/userContext/OffersContext";
 
 const AboutOffer = () => {
+  const { aboutOffer } = useUserOffer();
   const [offerDetails, setOfferDetails] = useState("");
   const [loading, setLoading] = useState(false);
   const { id } = useParams();

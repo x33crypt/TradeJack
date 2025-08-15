@@ -1,6 +1,6 @@
 import React from "react";
 import LockByScroll from "@/components/LockByScroll";
-import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
+import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { IoClose } from "react-icons/io5";
 import Button from "@/components/buttons/Button";
 import { IoIosCheckmarkCircle } from "react-icons/io";

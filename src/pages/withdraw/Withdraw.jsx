@@ -6,13 +6,13 @@ import RecentWithdraw from "@/components/wallet/RecentWithdraw";
 import Button from "@/components/buttons/Button";
 import { toUSD } from "@/utils/toUSD";
 import { toNGN } from "@/utils/toNGN";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import { toDecimal } from "@/utils/toDecimal";
-import { useWithdrawContext } from "@/context/wallet/WithdrawContext";
+import { useWithdrawContext } from "@/context/userContext/WithdrawContext";
 import { IoWalletOutline } from "react-icons/io5";
-import { useBalance } from "@/context/BalanceContext";
+import { useBalance } from "@/context/userContext/BalanceContext";
 import { useFetchLinkedBanks } from "@/hooks/useFetchLinkedBanks";
-import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
+import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { RiBankLine } from "react-icons/ri";
 import { useFetchWithdrawTxt } from "@/hooks/Transaction/useFetchWithdrawTxt";
 import WalletBalance from "@/components/wallet/WalletBalance";
@@ -312,29 +312,29 @@ const Withdraw = () => {
                   </p>
 
                   <div className="flex gap-1">
-                    <div
-                      onClick={selectDefaultAccount}
-                      className={`${
-                        withdraw?.account === "Default"
-                          ? "bg-tradeOrange"
-                          : "bg-transparent"
-                      } flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
-                    >
-                      <p className="text-black text-xs font-bold">Default</p>
-                    </div>
+                    {linkedAccounts?.length && (
+                      <div
+                        onClick={selectDefaultAccount}
+                        className={`${
+                          withdraw?.account === "Default"
+                            ? "bg-tradeOrange "
+                            : "bg-transparent text-tradeFadeWhite"
+                        } flex items-center gap-1 border border-tradeAshLight h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                      >
+                        <p className=" text-xs font-bold">Default</p>
+                      </div>
+                    )}
 
                     {linkedAccounts?.length > 1 && (
                       <div
                         onClick={selectAlternativeAccount}
                         className={`${
                           withdraw?.account === "Alternative"
-                            ? "bg-tradeOrange"
-                            : "bg-transparent"
-                        } flex items-center gap-1 text-tradeFadeWhite border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                            ? "bg-tradeOrange text-black"
+                            : "bg-transparent text-tradeFadeWhite"
+                        } flex items-center gap-1 border border-tradeAshLight h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                       >
-                        <p className="text-white text-xs font-bold">
-                          Alternative
-                        </p>
+                        <p className=" text-xs font-bold">Alternative</p>
                       </div>
                     )}
                   </div>

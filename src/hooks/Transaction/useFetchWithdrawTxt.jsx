@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import api from "@/utils/http/api";
-import { useWithdrawContext } from "@/context/wallet/WithdrawContext";
+import { useWithdrawContext } from "@/context/userContext/WithdrawContext";
 
 export function useFetchWithdrawTxt(initialPage = 1, limit = 10) {
   const { withdraw, setWithdraw } = useWithdrawContext();

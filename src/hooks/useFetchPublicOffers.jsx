@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import api from "@/utils/http/api";
-import { useExploreOffers } from "@/context/ExploreOffersContext";
+import { usePublicOffers } from "@/context/publicContext/OffersContext";
 
 export function useFetchPublicOffers(initialPage = 1, limit = 10) {
-  const { setOffers, filter, setFilter } = useExploreOffers();
+  const { setOffers, filter, setFilter } = usePublicOffers();
   const [page, setPage] = useState(initialPage);
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(false);

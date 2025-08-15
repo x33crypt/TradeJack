@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LockByScroll from "@/components/LockByScroll";
-import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useTransaction } from "@/context/userContext/TransactionContext";
 import { IoClose } from "react-icons/io5";
 import { useFetchTransactionsDetails } from "@/hooks/Transaction/useFetchTransactionDetails";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -11,7 +11,7 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 import { MdPending } from "react-icons/md";
 import { MdCancel } from "react-icons/md";
 import { FaCopy } from "react-icons/fa6";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import Loading from "@/components/Loading";
 import Button from "@/components/buttons/Button";
 import { shortenID } from "@/utils/shortenID";

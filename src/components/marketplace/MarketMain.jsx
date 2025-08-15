@@ -1,27 +1,21 @@
 import React, { useRef, useEffect, useState } from "react";
 import OfferCard from "../cards/Both/OfferCard";
-import { FaMagnifyingGlass } from "react-icons/fa6";
 import OfferFilter from "./OfferFilter";
 import { BiSolidBinoculars } from "react-icons/bi";
-import { TbArrowGuide } from "react-icons/tb";
-import { RiColorFilterFill } from "react-icons/ri";
 import LockByScroll from "../LockByScroll";
-import { useExploreOffers } from "@/context/ExploreOffersContext";
 import { useNavigate } from "react-router-dom";
-import { IoClose } from "react-icons/io5";
-import { FaInfoCircle } from "react-icons/fa";
 import { RiFilter3Line } from "react-icons/ri";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { useFetchPublicOffers } from "@/hooks/useFetchPublicOffers";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Loading from "../Loading";
 import NetworkError from "../NetworkError";
+import { usePublicOffers } from "@/context/publicContext/OffersContext";
 
-const MarketMain = ({ promotedOffers }) => {
+const MarketMain = () => {
   const topRef = useRef(null);
   const { loading, fetchOffers, pagination, page, displayedCount, next } =
     useFetchPublicOffers();
-  const { offers, filter, setFilter } = useExploreOffers();
+  const { offers, filter, setFilter } = usePublicOffers();
   const [triggerScroll, setTriggerScroll] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
 

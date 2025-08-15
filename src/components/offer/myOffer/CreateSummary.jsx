@@ -5,14 +5,16 @@ import { IoWalletOutline } from "react-icons/io5";
 import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import { publishOffer } from "@/utils/offer/publishOffer";
-import { useCreateOfferDetails } from "@/context/offer/CreateOfferContext";
 import Button from "@/components/buttons/Button";
+import { useUserOffer } from "@/context/userContext/OffersContext";
 
 const CreateSummary = () => {
-  const { offerDetails, setOfferDetails } = useCreateOfferDetails();
+  const { createOffer, setCreateOffer } = useUserOffer();
   const { toast, setToast } = useToast();
+
+  console.log(createOffer);
 
   const serviceTypeIcons = {
     "Online Wallet Transfer": IoWalletOutline,
@@ -23,32 +25,32 @@ const CreateSummary = () => {
   };
 
   // Get the icon component based on the full service type
-  const IconComponent = serviceTypeIcons[offerDetails?.serviceType];
+  const IconComponent = serviceTypeIcons[createOffer?.serviceType];
 
   const navigateTo = useNavigate();
 
   const handlepublish = async () => {
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       loading: true,
     }));
-    const result = await publishOffer(offerDetails);
+    const result = await publishOffer(createOffer);
 
     console.log("Offer published:", result);
 
     if (result.success) {
-      setOfferDetails((prev) => ({
+      setCreateOffer((prev) => ({
         ...prev,
         loading: false,
       }));
 
-      setOfferDetails((prev) => ({
+      setCreateOffer((prev) => ({
         ...prev,
         submitSuccess: true,
       }));
     } else {
       console.error("Publish failed:", result.error);
-      setOfferDetails((prev) => ({
+      setCreateOffer((prev) => ({
         ...prev,
         loading: false,
       }));
@@ -90,12 +92,12 @@ const CreateSummary = () => {
                 </div>
 
                 <p className="text-tradeOrange text-2xl font-bold leading-relaxed">
-                  {offerDetails?.service || "NA"}
+                  {createOffer?.service || "NA"}
                 </p>
 
                 <div className="px-[6px] py-0.5 bg-tradeAshLight border border-tradeAsh rounded-[6px] w-max">
                   <p className="text-tradeFadeWhite text-[13px] font-medium ">
-                    {offerDetails?.serviceType || "Service Type"}
+                    {createOffer?.serviceType || "Service Type"}
                   </p>
                 </div>
               </div>
@@ -103,8 +105,8 @@ const CreateSummary = () => {
               <div className="flex gap-2 items-center justify-between bg-tradeAsh border rounded-[15px] border-neutral-800 p-[12px]">
                 <p className="text-[13px] font-semibold text-white">Currency</p>
                 <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                  {offerDetails?.currency?.name
-                    ? `${offerDetails.currency.name}`
+                  {createOffer?.currency?.name
+                    ? `${createOffer.currency.name}`
                     : "-- --"}
                 </p>
               </div>
@@ -122,10 +124,9 @@ const CreateSummary = () => {
                     Minimum
                   </p>
                   <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                    {offerDetails?.minimum !== "" &&
-                    offerDetails?.currency?.code
-                      ? `${Number(offerDetails.minimum).toLocaleString()} ${
-                          offerDetails.currency.code
+                    {createOffer?.minimum !== "" && createOffer?.currency?.code
+                      ? `${Number(createOffer.minimum).toLocaleString()} ${
+                          createOffer.currency.code
                         }`
                       : "0.00"}
                   </p>
@@ -135,10 +136,9 @@ const CreateSummary = () => {
                     Maximum
                   </p>
                   <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                    {offerDetails?.maximum !== "" &&
-                    offerDetails?.currency?.code
-                      ? `${Number(offerDetails.maximum).toLocaleString()} ${
-                          offerDetails.currency.code
+                    {createOffer?.maximum !== "" && createOffer?.currency?.code
+                      ? `${Number(createOffer.maximum).toLocaleString()} ${
+                          createOffer.currency.code
                         }`
                       : "0.00"}
                   </p>
@@ -151,8 +151,8 @@ const CreateSummary = () => {
                     Profit Margin
                   </p>
                   <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                    {offerDetails?.margin !== undefined
-                      ? `${offerDetails.margin}%`
+                    {createOffer?.margin !== undefined
+                      ? `${createOffer.margin}%`
                       : "--"}{" "}
                     per trade
                   </p>
@@ -172,8 +172,8 @@ const CreateSummary = () => {
                     Vendor ( You )
                   </p>
                   <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                    {offerDetails?.vendorPaymentWindow?.hours} hrs{" "}
-                    {offerDetails?.vendorPaymentWindow?.minutes} min
+                    {createOffer?.vendorPaymentWindow?.hours} hrs{" "}
+                    {createOffer?.vendorPaymentWindow?.minutes} min
                   </p>
                 </div>
                 <div className="flex items-center justify-between w-full">
@@ -181,8 +181,8 @@ const CreateSummary = () => {
                     Traders
                   </p>
                   <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                    {offerDetails?.tradersPaymentWindow?.hours} hrs{" "}
-                    {offerDetails?.tradersPaymentWindow?.minutes} min
+                    {createOffer?.tradersPaymentWindow?.hours} hrs{" "}
+                    {createOffer?.tradersPaymentWindow?.minutes} min
                   </p>
                 </div>
               </div>
@@ -196,8 +196,8 @@ const CreateSummary = () => {
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2 w-full">
-                  {offerDetails?.termTags?.length ? (
-                    offerDetails.termTags.map((tag, index) => (
+                  {createOffer?.termTags?.length ? (
+                    createOffer.termTags.map((tag, index) => (
                       <div
                         key={index}
                         className="flex w-max items-center gap-[8px] px-[8px] py-[2px] rounded-[6px] bg-tradeAshLight border border-tradeAshLight"
@@ -224,9 +224,9 @@ const CreateSummary = () => {
                   </div>
                 </div>
                 <div className="w-full">
-                  {offerDetails?.instruction ? (
+                  {createOffer?.instruction ? (
                     <p className="text-white text-[13px] font-semibold">
-                      {offerDetails?.instruction}
+                      {createOffer?.instruction}
                     </p>
                   ) : (
                     <p className="text-tradeFadeWhite text-[13px] font-semibold">
@@ -240,7 +240,7 @@ const CreateSummary = () => {
               <Button
                 onClick={handlepublish}
                 variant="primary"
-                disabled={offerDetails?.loading}
+                disabled={createOffer?.loading}
               >
                 Publish Offer
               </Button>

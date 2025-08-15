@@ -5,8 +5,7 @@ import Info from "@/components/alerts/Info";
 import Warning from "@/components/alerts/Warning";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
-import { useSelectElement } from "@/context/SelectElementContext";
-import { useEditOfferDetails } from "@/context/offer/EditOfferContext";
+import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
@@ -18,27 +17,24 @@ import { GiTwoCoins } from "react-icons/gi";
 import EditSummary from "../../../components/offer/myOffer/EditSummary";
 import Button from "@/components/buttons/Button";
 import { useExchangeRate } from "@/hooks/useExchangeRate";
-import { FaInfoCircle } from "react-icons/fa";
-import { useAboutOffer } from "@/context/offer/AboutOfferContext";
-import { useToast } from "@/context/ToastContext";
-import { TiInfo } from "react-icons/ti";
+import { useToast } from "@/context/otherContext/ToastContext";
+import { useUserOffer } from "@/context/userContext/OffersContext";
 
-const EditMyOffer = (props) => {
-  const { aboutOffer, setAboutOffer } = useAboutOffer();
+const EditMyOffer = () => {
+  const { aboutOffer, editOffer, setEditOffer } = useUserOffer();
   const { select, setSelect } = useSelectElement();
   const { toast, setToast } = useToast();
   const [loading, setLoading] = useState(false);
-  const { offerDetails, setOfferDetails } = useEditOfferDetails();
   const { rateInfo } = useExchangeRate(
-    offerDetails?.preferredCurrency?.code
-      ? offerDetails?.preferredCurrency?.code
+    editOffer?.preferredCurrency?.code
+      ? editOffer?.preferredCurrency?.code
       : "USD",
     "NGN",
-    offerDetails?.marginRate?.percent
+    editOffer?.marginRate?.percent
   );
 
   useEffect(() => {
-    setOfferDetails(aboutOffer);
+    setEditOffer(aboutOffer);
   }, [aboutOffer]);
 
   // handling terms changes
@@ -53,7 +49,7 @@ const EditMyOffer = (props) => {
         const newTag = pickedTerm.trim();
         if (!newTag) return; // empty string guard
 
-        setOfferDetails((prev) => {
+        setEditOffer((prev) => {
           const currentTags = prev.terms || [];
 
           /* -------- Duplicate check -------- */
@@ -87,7 +83,7 @@ const EditMyOffer = (props) => {
   const handleMinLimitChange = (e) => {
     const rawValue = e.target.value.replace(/[^\d]/g, ""); // Remove all non-digit characters
 
-    setOfferDetails((prev) => ({
+    setEditOffer((prev) => ({
       ...prev,
       marginRate: {
         ...prev.marginRate,
@@ -99,7 +95,7 @@ const EditMyOffer = (props) => {
   const handleMaxLimitChange = (e) => {
     const rawValue = e.target.value.replace(/[^\d]/g, ""); // Remove all non-digit characters
 
-    setOfferDetails((prev) => ({
+    setEditOffer((prev) => ({
       ...prev,
       marginRate: {
         ...prev.marginRate,
@@ -109,7 +105,7 @@ const EditMyOffer = (props) => {
   };
 
   const handleAddMargin = () => {
-    setOfferDetails((prev) => {
+    setEditOffer((prev) => {
       const current = Number(prev.marginRate?.percent || 0);
       const next = current + 1;
       return {
@@ -123,7 +119,7 @@ const EditMyOffer = (props) => {
   };
 
   const handleMinusMargin = () => {
-    setOfferDetails((prev) => {
+    setEditOffer((prev) => {
       const current = Number(prev.marginRate?.percent || 0);
       const next = current - 1;
 
@@ -146,21 +142,21 @@ const EditMyOffer = (props) => {
   };
 
   const handleAddPaymentWindow = (e) => {
-    setOfferDetails((prev) => ({
+    setEditOffer((prev) => ({
       ...prev,
       paymentWindow: Math.min(24, Number(prev.paymentWindow || 0) + 1),
     }));
   };
 
   const handleMinusPaymentWindow = (e) => {
-    setOfferDetails((prev) => ({
+    setEditOffer((prev) => ({
       ...prev,
       paymentWindow: Math.max(1, Number(prev.paymentWindow || 0) - 1),
     }));
   };
 
   const handleAddConfirmationTime = (e) => {
-    setOfferDetails((prev) => ({
+    setEditOffer((prev) => ({
       ...prev,
       confirmationWindow: Math.min(
         24,
@@ -170,7 +166,7 @@ const EditMyOffer = (props) => {
   };
 
   const handleMinusConfirmationTime = (e) => {
-    setOfferDetails((prev) => ({
+    setEditOffer((prev) => ({
       ...prev,
       confirmationWindow: Math.max(1, Number(prev.confirmationWindow || 0) - 1),
     }));
@@ -205,7 +201,7 @@ const EditMyOffer = (props) => {
   ];
 
   const handleInstruction = (e) => {
-    setOfferDetails((prev) => ({
+    setEditOffer((prev) => ({
       ...prev,
       instruction: e.target.value,
     }));
@@ -221,7 +217,7 @@ const EditMyOffer = (props) => {
   };
 
   // Get the icon component based on the full service type
-  const IconComponent = serviceTypeIcons[offerDetails?.serviceType];
+  const IconComponent = serviceTypeIcons[editOffer?.serviceType];
 
   const navigateTo = useNavigate();
 
@@ -235,7 +231,7 @@ const EditMyOffer = (props) => {
       paymentWindow,
       confirmationWindow,
       instruction,
-    } = offerDetails || {};
+    } = editOffer || {};
 
     const { from, to, percent } = marginRate || {};
     const { name, code } = preferredCurrency || {};
@@ -291,11 +287,11 @@ const EditMyOffer = (props) => {
       return showToast("Missing required field: Trade instruction");
     }
 
-    if (!offerDetails?.offerId) {
+    if (!editOffer?.offerId) {
       return showToast("Missing offer ID. Cannot proceed.");
     }
 
-    navigateTo(`/offers/myoffers/${offerDetails?.offerId}/edit/summary`);
+    navigateTo(`/offers/myoffers/${editOffer?.offerId}/edit/summary`);
   };
 
   const handleClose = () => {};
@@ -361,7 +357,7 @@ const EditMyOffer = (props) => {
                       </div>
                       <div
                         className={`${
-                          offerDetails?.marginRate?.from
+                          editOffer?.marginRate?.from
                             ? "border-tradeAshExtraLight"
                             : "border-tradeAshLight"
                         } flex mt-[5px] bg-tradeAsh border outline-none w-full rounded-[10px] overflow-hidden cursor-pointer`}
@@ -371,9 +367,9 @@ const EditMyOffer = (props) => {
                           type="text"
                           placeholder="0.00"
                           value={
-                            offerDetails?.marginRate?.from
+                            editOffer?.marginRate?.from
                               ? Number(
-                                  offerDetails?.marginRate?.from
+                                  editOffer?.marginRate?.from
                                 ).toLocaleString()
                               : ""
                           }
@@ -381,9 +377,9 @@ const EditMyOffer = (props) => {
                         />
                         <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
                           <p className="text-[14px] text-white font-[700]">
-                            {offerDetails?.preferredCurrency?.code &&
-                            offerDetails?.preferredCurrency?.name
-                              ? `${offerDetails?.preferredCurrency?.code}`
+                            {editOffer?.preferredCurrency?.code &&
+                            editOffer?.preferredCurrency?.name
+                              ? `${editOffer?.preferredCurrency?.code}`
                               : "- -"}
                           </p>
                         </div>
@@ -398,7 +394,7 @@ const EditMyOffer = (props) => {
                       </div>
                       <div
                         className={`${
-                          offerDetails?.marginRate?.to
+                          editOffer?.marginRate?.to
                             ? "border-tradeAshExtraLight"
                             : "border-tradeAshLight"
                         } flex mt-[5px] bg-tradeAsh border outline-none w-full rounded-[10px] overflow-hidden cursor-pointer`}
@@ -408,9 +404,9 @@ const EditMyOffer = (props) => {
                           type="text"
                           placeholder="0.00"
                           value={
-                            offerDetails?.marginRate?.to
+                            editOffer?.marginRate?.to
                               ? Number(
-                                  offerDetails?.marginRate?.to
+                                  editOffer?.marginRate?.to
                                 ).toLocaleString()
                               : ""
                           }
@@ -418,9 +414,9 @@ const EditMyOffer = (props) => {
                         />
                         <div className="flex items-center justify-center w-[60px] border-l border-tradeAshLight">
                           <p className="text-[14px] text-white font-[700]">
-                            {offerDetails?.preferredCurrency?.code &&
-                            offerDetails?.preferredCurrency?.name
-                              ? `${offerDetails?.preferredCurrency?.code}`
+                            {editOffer?.preferredCurrency?.code &&
+                            editOffer?.preferredCurrency?.name
+                              ? `${editOffer?.preferredCurrency?.code}`
                               : "- -"}
                           </p>
                         </div>
@@ -430,7 +426,7 @@ const EditMyOffer = (props) => {
 
                   <div className="">
                     <Info
-                      text={`Set your minimum and maximum purchase limits. Minimum is 50 ${offerDetails?.preferredCurrency?.code}. Your current maximum purchase limit is 1,000 ${offerDetails?.preferredCurrency?.code}. Exceeding it will cause submission errors.`}
+                      text={`Set your minimum and maximum purchase limits. Minimum is 50 ${editOffer?.preferredCurrency?.code}. Your current maximum purchase limit is 1,000 ${editOffer?.preferredCurrency?.code}. Exceeding it will cause submission errors.`}
                     />
                   </div>
                 </div>
@@ -453,8 +449,8 @@ const EditMyOffer = (props) => {
                     <div className="bg-tradeAsh flex justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
                       <p className="text-white text-sm">
                         <span className="font-bold">
-                          {offerDetails?.marginRate?.percent > 0 ? "+" : ""}
-                          {offerDetails?.marginRate?.percent}%
+                          {editOffer?.marginRate?.percent > 0 ? "+" : ""}
+                          {editOffer?.marginRate?.percent}%
                         </span>{" "}
                         profit margin per trade
                       </p>
@@ -474,7 +470,7 @@ const EditMyOffer = (props) => {
                       <span className="align-middle"> Current</span>
                       <div className="flex items-center gap-1 bg-transparent px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                         <p className="text-white text-xs font-medium">
-                          {offerDetails?.preferredCurrency?.code}
+                          {editOffer?.preferredCurrency?.code}
                         </p>
                       </div>
                       <span className="align-middle">exchange rate in</span>
@@ -500,7 +496,7 @@ const EditMyOffer = (props) => {
 
                       <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                         <p className="text-tradeOrange text-xs font-medium">
-                          {offerDetails?.marginRate?.percent}% profit margin
+                          {editOffer?.marginRate?.percent}% profit margin
                         </p>
                       </div>
 
@@ -518,7 +514,7 @@ const EditMyOffer = (props) => {
 
                       <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                         <p className="text-white text-xs font-medium">
-                          1 {offerDetails?.preferredCurrency?.code}
+                          1 {editOffer?.preferredCurrency?.code}
                         </p>
                       </div>
 
@@ -534,7 +530,7 @@ const EditMyOffer = (props) => {
 
                       <div className="flex items-center gap-1 px-[6px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
                         <p className="text-white text-xs font-medium">
-                          1 {offerDetails?.preferredCurrency?.code}
+                          1 {editOffer?.preferredCurrency?.code}
                         </p>
                       </div>
 
@@ -576,7 +572,7 @@ const EditMyOffer = (props) => {
                     <div className="bg-tradeAsh flex  justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
                       <p className="text-white text-[14px]">
                         <span className="font-bold">
-                          {offerDetails?.paymentWindow}
+                          {editOffer?.paymentWindow}
                         </span>{" "}
                         hour&#40;s&#41;
                       </p>
@@ -615,7 +611,7 @@ const EditMyOffer = (props) => {
                     <div className="bg-tradeAsh flex  justify-center p-[12px] w-full rounded-[10px] border border-tradeAshLight">
                       <p className="text-white text-[14px]">
                         <span className="font-bold">
-                          {offerDetails?.confirmationWindow}
+                          {editOffer?.confirmationWindow}
                         </span>{" "}
                         hour&#40;s&#41;
                       </p>
@@ -662,7 +658,7 @@ const EditMyOffer = (props) => {
                     <div className="">
                       <input
                         className={`${
-                          offerDetails?.terms
+                          editOffer?.terms
                             ? "border-tradeAshLight"
                             : "border-tradeAshLight"
                         } mt-[5px] text-[14px] text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border hover:border-tradeAshExtraLight outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
@@ -679,10 +675,10 @@ const EditMyOffer = (props) => {
 
                   <div
                     className={`${
-                      offerDetails?.terms?.length == 0 ? "hidden" : "flex"
+                      editOffer?.terms?.length == 0 ? "hidden" : "flex"
                     } gap-[10px] flex-wrap`}
                   >
-                    {offerDetails?.terms?.map((tag, index) => (
+                    {editOffer?.terms?.map((tag, index) => (
                       <div
                         key={index}
                         className="flex w-max items-center gap-[8px] px-[12px] py-[5px] rounded-[6px] bg-tradeAshLight"
@@ -696,7 +692,7 @@ const EditMyOffer = (props) => {
                         <IoClose
                           className="text-white hover:text-tradeAshExtraLight text-[16px] cursor-pointer transition-all duration-300"
                           onClick={() => {
-                            setOfferDetails((prev) => ({
+                            setEditOffer((prev) => ({
                               ...prev,
                               terms: prev.terms.filter((_, i) => i !== index),
                             }));
@@ -756,7 +752,7 @@ const EditMyOffer = (props) => {
 
         {/* Offer Summary For Desktop */}
         <div className="lg:flex hidden lg:w-[500px]">
-          <EditSummary offerDetails={offerDetails} />
+          <EditSummary editOffer={editOffer} />
         </div>
       </div>
       <Footer />

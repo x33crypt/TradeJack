@@ -1,5 +1,5 @@
 import React from "react";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import { MdError } from "react-icons/md";
 
 const ToastError = () => {

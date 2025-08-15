@@ -1,9 +1,9 @@
 import React from "react";
 import LockByScroll from "@/components/LockByScroll";
-import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
+import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { IoClose } from "react-icons/io5";
 import { linkBankAccount } from "@/utils/wallet/linkBank";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import Button from "@/components/buttons/Button";
 import { useFetchLinkedBanks } from "@/hooks/useFetchLinkedBanks";
 import { useNavigate } from "react-router-dom";
@@ -62,7 +62,7 @@ const ConfirmAccount = () => {
       });
 
       navigateTo("/wallet/accounts");
-      
+
       try {
         await refetchLinkedBanks();
       } catch (err) {

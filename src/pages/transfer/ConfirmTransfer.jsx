@@ -1,12 +1,12 @@
 import React from "react";
-import { useTransferContext } from "@/context/wallet/TransferContext";
+import { useTransferContext } from "@/context/userContext/TransferContext";
 import LockByScroll from "@/components/LockByScroll";
 import Button from "@/components/buttons/Button";
 import { IoClose } from "react-icons/io5";
 import { toDecimal } from "@/utils/toDecimal";
 import image from "../../assets/landingImg4.JPG";
 import { submitTransfer } from "@/utils/wallet/transfer";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 
 const ConfirmTransfer = () => {
   const { transfer, setTransfer } = useTransferContext();

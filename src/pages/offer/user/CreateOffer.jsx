@@ -3,10 +3,8 @@ import { useLocation } from "react-router-dom";
 import InAppNav from "@/components/InAppNav";
 import Footer from "@/components/Footer";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { useSelectElement } from "@/context/SelectElementContext";
-import { useCreateOfferDetails } from "@/context/offer/CreateOfferContext";
+import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import Info from "@/components/alerts/Info";
-import Warning from "@/components/alerts/Warning";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
@@ -14,22 +12,22 @@ import { useNavigate } from "react-router-dom";
 import { currencies } from "@/hooks/useCurrencies";
 import { useExchangeRate } from "@/hooks/useExchangeRate";
 import Button from "@/components/buttons/Button";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import { useServices } from "@/hooks/useServices";
 import CreateSummary from "@/components/offer/myOffer/CreateSummary";
 import LockByScroll from "@/components/LockByScroll";
-import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 import { IoIosCheckmarkCircle } from "react-icons/io";
+import { useUserOffer } from "@/context/userContext/OffersContext";
 
 const CreateOffer = () => {
+  const { createOffer, setCreateOffer } = useUserOffer();
   const { toast, setToast } = useToast();
   const { select, setSelect } = useSelectElement();
   const { serviceTypes, fullData } = useServices();
-  const { offerDetails, setOfferDetails } = useCreateOfferDetails();
   const { rateInfo } = useExchangeRate(
-    offerDetails.currency.code ? offerDetails.currency.code : "USD",
+    createOffer.currency.code ? createOffer.currency.code : "USD",
     "NGN",
-    offerDetails?.margin
+    createOffer?.margin
   );
 
   // handling serviceType changes
@@ -37,7 +35,7 @@ const CreateOffer = () => {
     if (select?.page !== "create offer" || !select?.pick) return;
 
     if (select.element === "service type") {
-      setOfferDetails((prevDetails) => ({
+      setCreateOffer((prevDetails) => ({
         ...prevDetails,
         serviceType: select.pick,
         service: "", // Reset service when serviceType changes
@@ -48,22 +46,22 @@ const CreateOffer = () => {
 
   // Get services under the selected serviceType
   const services = useMemo(() => {
-    if (!offerDetails?.serviceType || fullData.length === 0) return [];
+    if (!createOffer?.serviceType || fullData.length === 0) return [];
 
     const selected = fullData.find(
       (item) =>
-        item.name.toLowerCase() === offerDetails.serviceType.toLowerCase()
+        item.name.toLowerCase() === createOffer.serviceType.toLowerCase()
     );
 
     return selected?.services.map((service) => service.name) || [];
-  }, [offerDetails?.serviceType, fullData]);
+  }, [createOffer?.serviceType, fullData]);
 
   // handling service changes
   useEffect(() => {
     if (select?.page !== "create offer" || !select?.pick) return;
 
     if (select.element === "service") {
-      setOfferDetails((prevDetails) => ({
+      setCreateOffer((prevDetails) => ({
         ...prevDetails,
         service: select.pick,
       }));
@@ -79,7 +77,7 @@ const CreateOffer = () => {
       );
 
       if (matchedService) {
-        setOfferDetails((prev) => ({
+        setCreateOffer((prev) => ({
           ...prev,
           serviceId: matchedService.id, // ✅ Update only the ID
         }));
@@ -89,10 +87,10 @@ const CreateOffer = () => {
   };
 
   useEffect(() => {
-    if (offerDetails?.service) {
-      updateServiceID(offerDetails.service);
+    if (createOffer?.service) {
+      updateServiceID(createOffer.service);
     }
-  }, [offerDetails?.service]);
+  }, [createOffer?.service]);
 
   // console.log(serviceTypes);
   // console.log(fullData);
@@ -111,7 +109,7 @@ const CreateOffer = () => {
         selectedCurrency.code &&
         selectedCurrency.name
       ) {
-        setOfferDetails((prev) => ({
+        setCreateOffer((prev) => ({
           ...prev,
           currency: selectedCurrency,
         }));
@@ -131,7 +129,7 @@ const CreateOffer = () => {
         const newTag = pickedTerm.trim();
         if (!newTag) return; // empty string guard
 
-        setOfferDetails((prev) => {
+        setCreateOffer((prev) => {
           const currentTags = prev.termTags || [];
 
           /* -------- Duplicate check -------- */
@@ -180,7 +178,7 @@ const CreateOffer = () => {
 
     // Only reset if the previous page was NOT the summary
     if (prevPath !== "/offers/create/summary") {
-      setOfferDetails(offerDetails);
+      setCreateOffer(createOffer);
     }
 
     // Always update the previous path
@@ -188,13 +186,13 @@ const CreateOffer = () => {
   }, [location.pathname]);
 
   // console.log("select details", select);
-  // console.log("offer details", offerDetails);
+  // console.log("offer details", createOffer);
   // console.log(currencies);
 
   const handleMinLimitChange = (e) => {
     const rawValue = e.target.value.replace(/[^\d]/g, ""); // Remove all non-digit characters
 
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       minimum: rawValue,
     }));
@@ -203,14 +201,14 @@ const CreateOffer = () => {
   const handleMaxLimitChange = (e) => {
     const rawValue = e.target.value.replace(/[^\d]/g, ""); // Remove all non-digit characters
 
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       maximum: rawValue,
     }));
   };
 
   const handleAddMargin = () => {
-    setOfferDetails((prev) => {
+    setCreateOffer((prev) => {
       const current = Number(prev.margin || 0);
       const next = current + 1;
       return {
@@ -221,7 +219,7 @@ const CreateOffer = () => {
   };
 
   const handleMinusMargin = () => {
-    setOfferDetails((prev) => {
+    setCreateOffer((prev) => {
       const current = Number(prev.margin || 0);
       const next = current - 1;
 
@@ -243,7 +241,7 @@ const CreateOffer = () => {
   // Payment Window Vendor
 
   const handleAddVendorPaymentWindowHour = () => {
-    const current = Number(offerDetails?.vendorPaymentWindow?.hours || 0);
+    const current = Number(createOffer?.vendorPaymentWindow?.hours || 0);
 
     if (current >= 48) {
       setToast({
@@ -254,7 +252,7 @@ const CreateOffer = () => {
       return;
     }
 
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       vendorPaymentWindow: {
         ...prev.vendorPaymentWindow,
@@ -264,7 +262,7 @@ const CreateOffer = () => {
   };
 
   const handleMinusVendorPaymentWindowHour = () => {
-    const current = Number(offerDetails?.vendorPaymentWindow?.hours || 0);
+    const current = Number(createOffer?.vendorPaymentWindow?.hours || 0);
 
     if (current <= 0) {
       setToast({
@@ -275,7 +273,7 @@ const CreateOffer = () => {
       return;
     }
 
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       vendorPaymentWindow: {
         ...prev.vendorPaymentWindow,
@@ -286,9 +284,9 @@ const CreateOffer = () => {
 
   const handleAddVendorPaymentWindowMinutes = () => {
     const currentMinutes = Number(
-      offerDetails?.vendorPaymentWindow?.minutes || 0
+      createOffer?.vendorPaymentWindow?.minutes || 0
     );
-    const currentHours = Number(offerDetails?.vendorPaymentWindow?.hours || 0);
+    const currentHours = Number(createOffer?.vendorPaymentWindow?.hours || 0);
 
     let newMinutes = currentMinutes + 10;
     let newHours = currentHours;
@@ -307,7 +305,7 @@ const CreateOffer = () => {
       return;
     }
 
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       vendorPaymentWindow: {
         ...prev.vendorPaymentWindow,
@@ -319,9 +317,9 @@ const CreateOffer = () => {
 
   const handleMinusVendorPaymentWindowMinutes = () => {
     const currentMinutes = Number(
-      offerDetails?.vendorPaymentWindow?.minutes || 0
+      createOffer?.vendorPaymentWindow?.minutes || 0
     );
-    const currentHours = Number(offerDetails?.vendorPaymentWindow?.hours || 0);
+    const currentHours = Number(createOffer?.vendorPaymentWindow?.hours || 0);
 
     let newMinutes = currentMinutes - 10;
     let newHours = currentHours;
@@ -340,7 +338,7 @@ const CreateOffer = () => {
       newMinutes = 50;
     }
 
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       vendorPaymentWindow: {
         ...prev.vendorPaymentWindow,
@@ -352,7 +350,7 @@ const CreateOffer = () => {
 
   // Payment Window Trader
   const handleAddTraderPaymentWindowHour = (e) => {
-    const current = Number(offerDetails?.tradersPaymentWindow?.hours || 0);
+    const current = Number(createOffer?.tradersPaymentWindow?.hours || 0);
 
     if (current >= 48) {
       setToast({
@@ -363,7 +361,7 @@ const CreateOffer = () => {
       return;
     }
 
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       tradersPaymentWindow: {
         ...prev.tradersPaymentWindow,
@@ -373,7 +371,7 @@ const CreateOffer = () => {
   };
 
   const handleMinusTraderPaymentWindowHour = (e) => {
-    const current = Number(offerDetails?.tradersPaymentWindow?.hours || 0);
+    const current = Number(createOffer?.tradersPaymentWindow?.hours || 0);
 
     if (current <= 0) {
       setToast({
@@ -384,7 +382,7 @@ const CreateOffer = () => {
       return;
     }
 
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       tradersPaymentWindow: {
         ...prev.tradersPaymentWindow,
@@ -395,9 +393,9 @@ const CreateOffer = () => {
 
   const handleAddTraderPaymentWindowMinutes = (e) => {
     const currentMinutes = Number(
-      offerDetails?.tradersPaymentWindow?.minutes || 0
+      createOffer?.tradersPaymentWindow?.minutes || 0
     );
-    const currentHours = Number(offerDetails?.tradersPaymentWindow?.hours || 0);
+    const currentHours = Number(createOffer?.tradersPaymentWindow?.hours || 0);
 
     let newMinutes = currentMinutes + 10;
     let newHours = currentHours;
@@ -416,7 +414,7 @@ const CreateOffer = () => {
       return;
     }
 
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       tradersPaymentWindow: {
         ...prev.tradersPaymentWindow,
@@ -428,9 +426,9 @@ const CreateOffer = () => {
 
   const handleMinusTraderPaymentWindowMinutes = () => {
     const currentMinutes = Number(
-      offerDetails?.tradersPaymentWindow?.minutes || 0
+      createOffer?.tradersPaymentWindow?.minutes || 0
     );
-    const currentHours = Number(offerDetails?.tradersPaymentWindow?.hours || 0);
+    const currentHours = Number(createOffer?.tradersPaymentWindow?.hours || 0);
 
     let newMinutes = currentMinutes - 10;
     let newHours = currentHours;
@@ -449,7 +447,7 @@ const CreateOffer = () => {
       newMinutes = 50;
     }
 
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       tradersPaymentWindow: {
         ...prev.tradersPaymentWindow,
@@ -460,7 +458,7 @@ const CreateOffer = () => {
   };
 
   const handleInstruction = (e) => {
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       instruction: e.target.value,
     }));
@@ -525,7 +523,7 @@ const CreateOffer = () => {
       vendorPaymentWindow,
       tradersPaymentWindow,
       instruction,
-    } = offerDetails;
+    } = createOffer;
 
     const showToast = (message) => {
       setToast({
@@ -589,7 +587,7 @@ const CreateOffer = () => {
   };
 
   const handleViewOffers = () => {
-    const id = offerDetails?.OfferId;
+    const id = createOffer?.OfferId;
 
     if (!id) {
       console.error("Offer ID is missing. Cannot navigate.");
@@ -600,7 +598,7 @@ const CreateOffer = () => {
     navigateTo(`/offers/myoffers/${id}`);
 
     // Then reset offer details
-    setOfferDetails({
+    setCreateOffer({
       serviceType: "Online Wallet Transfer",
       service: "",
       serviceId: "",
@@ -618,7 +616,7 @@ const CreateOffer = () => {
   };
 
   const close = () => {
-    setOfferDetails((prev) => ({
+    setCreateOffer((prev) => ({
       ...prev,
       success: false,
     }));
@@ -655,7 +653,7 @@ const CreateOffer = () => {
                         type="text"
                         readOnly
                         placeholder="Choose type"
-                        value={offerDetails?.serviceType}
+                        value={createOffer?.serviceType}
                         onClick={() =>
                           setSelect({
                             ...select,
@@ -680,7 +678,7 @@ const CreateOffer = () => {
                   <div className="flex flex-col gap-[10px] w-full">
                     <p className="text-tradeFadeWhite text-xs font-medium">
                       {" "}
-                      {serviceInputLabels[offerDetails.serviceType] ||
+                      {serviceInputLabels[createOffer.serviceType] ||
                         "Select Service"}
                     </p>
                     <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
@@ -689,7 +687,7 @@ const CreateOffer = () => {
                         type="text"
                         readOnly
                         placeholder="Choose wallet"
-                        value={offerDetails?.service}
+                        value={createOffer?.service}
                         onClick={() =>
                           setSelect({
                             ...select,
@@ -722,9 +720,8 @@ const CreateOffer = () => {
                         readOnly
                         placeholder="Choose a currency"
                         value={
-                          offerDetails.currency.code &&
-                          offerDetails.currency.name
-                            ? ` ${offerDetails.currency.name} - ${offerDetails.currency.code} `
+                          createOffer.currency.code && createOffer.currency.name
+                            ? ` ${createOffer.currency.name} - ${createOffer.currency.code} `
                             : ""
                         }
                         onClick={() =>
@@ -765,8 +762,8 @@ const CreateOffer = () => {
                         name="firstName"
                         placeholder="0.00"
                         value={
-                          offerDetails?.minimum
-                            ? Number(offerDetails?.minimum).toLocaleString()
+                          createOffer?.minimum
+                            ? Number(createOffer?.minimum).toLocaleString()
                             : ""
                         }
                         onChange={(e) => handleMinLimitChange(e)}
@@ -782,8 +779,8 @@ const CreateOffer = () => {
                         name="firstName"
                         placeholder="0.00"
                         value={
-                          offerDetails?.maximum
-                            ? Number(offerDetails?.maximum).toLocaleString()
+                          createOffer?.maximum
+                            ? Number(createOffer?.maximum).toLocaleString()
                             : ""
                         }
                         onChange={(e) => handleMaxLimitChange(e)}
@@ -794,13 +791,13 @@ const CreateOffer = () => {
                     </div>
                     <Info
                       text={`Set your minimum and maximum purchase limits. By default the minimum purchase limit is 10 ${
-                        offerDetails.currency.code === ""
+                        createOffer.currency.code === ""
                           ? "USD"
-                          : offerDetails.currency.code
+                          : createOffer.currency.code
                       } while your current maximum purchase limit is 1,000 ${
-                        offerDetails.currency.code
+                        createOffer.currency.code
                           ? "USD"
-                          : offerDetails.currency.code
+                          : createOffer.currency.code
                       }. Exceeding it will cause submission errors.`}
                     />
                   </div>
@@ -826,8 +823,8 @@ const CreateOffer = () => {
                       >
                         <p>
                           <span className="font-bold text-white">
-                            {offerDetails.margin > 0 ? "+" : ""}
-                            {offerDetails.margin}%
+                            {createOffer.margin > 0 ? "+" : ""}
+                            {createOffer.margin}%
                           </span>{" "}
                           profit margin
                         </p>
@@ -841,14 +838,14 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    {offerDetails?.currency?.code &&
-                      offerDetails?.minimum &&
-                      offerDetails?.maximum && (
+                    {createOffer?.currency?.code &&
+                      createOffer?.minimum &&
+                      createOffer?.maximum && (
                         <div className="flex flex-col gap-1">
                           <p className="text-[13px] text-white font-medium leading-relaxed">
                             Current{" "}
                             <span className="text-tradeGreen font-semibold">
-                              {offerDetails.currency.code}
+                              {createOffer.currency.code}
                             </span>{" "}
                             exchange rate is{" "}
                             <span className="text-tradeGreen font-semibold">
@@ -862,11 +859,11 @@ const CreateOffer = () => {
                           <p className="text-[13px] text-white font-medium leading-relaxed">
                             You’re offering a{" "}
                             <span className="text-tradeGreen font-semibold">
-                              {offerDetails?.margin}% profit margin
+                              {createOffer?.margin}% profit margin
                             </span>
                             . This means for every{" "}
                             <span className="text-tradeGreen font-semibold">
-                              1.00 {offerDetails.currency.code}
+                              1.00 {createOffer.currency.code}
                             </span>{" "}
                             you trade, your rate is{" "}
                             <span className="text-tradeGreen font-semibold">
@@ -874,7 +871,7 @@ const CreateOffer = () => {
                             </span>
                             , and you’ll earn about{" "}
                             <span className="text-tradeGreen font-semibold">
-                              {rateInfo.profit} {offerDetails.currency.code}
+                              {rateInfo.profit} {createOffer.currency.code}
                             </span>{" "}
                             which is equivalent to{" "}
                             <span className="text-tradeGreen font-semibold">
@@ -910,7 +907,7 @@ const CreateOffer = () => {
                       <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
                         <p>
                           <span className="font-bold text-white">
-                            {offerDetails?.vendorPaymentWindow?.hours}
+                            {createOffer?.vendorPaymentWindow?.hours}
                           </span>{" "}
                           hour&#40;s&#41;
                         </p>
@@ -935,7 +932,7 @@ const CreateOffer = () => {
                       <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
                         <p>
                           <span className="font-bold text-white">
-                            {offerDetails?.vendorPaymentWindow?.minutes}
+                            {createOffer?.vendorPaymentWindow?.minutes}
                           </span>{" "}
                           minutes
                         </p>
@@ -976,7 +973,7 @@ const CreateOffer = () => {
                       >
                         <p>
                           <span className="font-bold text-white">
-                            {offerDetails?.tradersPaymentWindow?.hours}
+                            {createOffer?.tradersPaymentWindow?.hours}
                           </span>{" "}
                           hour&#40;s&#41;
                         </p>
@@ -1004,7 +1001,7 @@ const CreateOffer = () => {
                       >
                         <p>
                           <span className="font-bold text-white">
-                            {offerDetails?.tradersPaymentWindow?.minutes}
+                            {createOffer?.tradersPaymentWindow?.minutes}
                           </span>{" "}
                           minutes
                         </p>
@@ -1054,9 +1051,9 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    {offerDetails?.termTags.length > 0 && (
+                    {createOffer?.termTags.length > 0 && (
                       <div className={`flex gap-[10px] flex-wrap`}>
-                        {offerDetails?.termTags.map((tag, index) => (
+                        {createOffer?.termTags.map((tag, index) => (
                           <div className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[6px] bg-tradeAshLight">
                             <p
                               key={index}
@@ -1067,7 +1064,7 @@ const CreateOffer = () => {
                             <IoClose
                               className="text-tradeFadeWhite hover:text-white text-[16px] cursor-pointer transition-all duration-300"
                               onClick={() => {
-                                setOfferDetails((prev) => ({
+                                setCreateOffer((prev) => ({
                                   ...prev,
                                   termTags: prev.termTags.filter(
                                     (_, i) => i !== index
@@ -1096,7 +1093,7 @@ const CreateOffer = () => {
                     <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
                       <textarea
                         onChange={handleInstruction}
-                        value={offerDetails?.instruction}
+                        value={createOffer?.instruction}
                         className="h-[150px] w-full bg-transparent border-none p-[12px] text-white text-sm font-medium placeholder-tradeFadeWhite focus:outline-none resize-none"
                         placeholder="Write your trade Instructions here."
                       ></textarea>
@@ -1128,7 +1125,7 @@ const CreateOffer = () => {
         </div>
       </div>
 
-      {offerDetails?.success && (
+      {createOffer?.success && (
         <div>
           <LockByScroll />
           <div className="fixed top-0 right-0 left-0 bottom-0 lg:px-[2%] md:px-[2.5%] px-[30px]  bg-black bg-opacity-80 flex items-center justify-center z-40">

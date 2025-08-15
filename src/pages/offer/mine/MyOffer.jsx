@@ -2,21 +2,12 @@ import MyOfferCard from "@/components/cards/Both/MyOfferCard";
 import Footer from "@/components/Footer";
 import InAppNav from "@/components/InAppNav";
 import React, { useEffect, useState, useRef } from "react";
-import { useFetchMyOffers } from "@/hooks/useFetchOffers";
-import { useMyOffer } from "@/context/offer/MyOffersContext";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { useSelectElement } from "@/context/SelectElementContext";
-import Button from "@/components/buttons/Button";
+import { useFetchUserOffers } from "@/hooks/useFetchOffers";
+import { useUserOffer } from "@/context/userContext/OffersContext";
+import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { useNavigate } from "react-router-dom";
-import StateHandler from "@/components/stateHandler/StateHandler";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { SiTruenas } from "react-icons/si";
-import Info from "@/components/alerts/Info";
 import Loading from "@/components/Loading";
-import Feedbacks from "@/components/account/Feedbacks";
-import { FaSearch } from "react-icons/fa";
-import { PiMagnifyingGlassBold } from "react-icons/pi";
 import SmallButton from "@/components/buttons/SmallButton";
 import { FaSort } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
@@ -26,13 +17,35 @@ import NetworkError from "@/components/NetworkError";
 import { BiFileBlank } from "react-icons/bi";
 
 const MyOffer = () => {
-  const { loading, error } = useFetchMyOffers();
+  const {
+    loading,
+    error,
+    pagination,
+    page,
+    displayedCount,
+    next,
+    refetchMyOffers,
+  } = useFetchUserOffers();
+  const { offers, filter, setFilter } = useUserOffer();
   const [triggerScroll, setTriggerScroll] = useState(false);
-  const { myOffers, filter, setFilter } = useMyOffer();
+  const [loadingNext, setLoadingNext] = useState(false);
   const { select, setSelect } = useSelectElement();
+  const [assets, setAssets] = useState(["All asset"]);
+
+  console.log("offers", offers);
+  console.log("Filter", filter);
+
+  useEffect(() => {
+    setFilter({
+      date: { monthNo: null, monthName: null, year: null },
+      asset: null,
+      status: null,
+    });
+
+    refetchMyOffers();
+  }, []);
 
   const navigateTo = useNavigate();
-
   const offerStatus = ["All status", "Active", "Paused", "Suspended", "Closed"];
 
   // handling asset type change
@@ -183,6 +196,29 @@ const MyOffer = () => {
     }
   };
 
+  // This Function handles Loading of transactions
+  // 👇 Scroll after page changes
+  useEffect(() => {
+    if (triggerScroll && transactionRef.current) {
+      transactionRef.current.scrollIntoView({ behavior: "smooth" });
+      setTriggerScroll(false); // reset flag
+    }
+  }, [page, triggerScroll]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  const handleNext = async () => {
+    setLoadingNext(true);
+    await next();
+    setLoadingNext(false);
+  };
+
+  const isEmpty = offers?.data?.length === 0 || offers === null;
+  const isEnd = pagination && !pagination.hasNextPage && !isEmpty;
+  const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
+
   return (
     <>
       <InAppNav />
@@ -216,7 +252,7 @@ const MyOffer = () => {
                           selectOne: true,
                           selectTwo: false,
                           element: "asset type",
-                          options: offerStatus,
+                          options: assets,
                           pick: "",
                           page: "my offer",
                         })
@@ -291,17 +327,37 @@ const MyOffer = () => {
                 <Loading />
               ) : (
                 <div className="flex flex-1">
-                  {myOffers === null ? (
+                  {offers === null ? (
                     <NetworkError />
                   ) : (
                     <div className="flex flex-1">
-                      {Array.isArray(myOffers) && myOffers.length > 0 ? (
-                        <div className="flex flex-col gap-[5px] w-full h-max">
-                          {myOffers.map((offer, index) => (
-                            <div key={index}>
-                              <MyOfferCard offer={offer} />
+                      {Array.isArray(offers?.data) ? (
+                        <div className="flex flex-1">
+                          {offers?.data.length > 0 ? (
+                            <div className="flex flex-col gap-[5px] w-full h-max">
+                              {offers?.data?.map((offer, index) => (
+                                <div key={index}>
+                                  <MyOfferCard offer={offer} />
+                                </div>
+                              ))}
                             </div>
-                          ))}
+                          ) : (
+                            <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
+                              <p className="text-[13px] font-semibold text-white leading-none">
+                                No transaction found.
+                              </p>
+                              <p className="text-xs font-medium text-tradeFadeWhite text-center">
+                                {filter?.type ||
+                                filter?.status ||
+                                filter?.date?.monthName ||
+                                (filter?.search && filter.search.trim() !== "")
+                                  ? "Try adjusting your filter or search terms."
+                                  : "You haven’t made any transactions yet."}
+                              </p>
+
+                              <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
+                            </div>
+                          )}
                         </div>
                       ) : (
                         <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
@@ -322,25 +378,27 @@ const MyOffer = () => {
               )}
             </div>
 
-            <div className="md:sticky bottom-0 left-0 right-0 h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+            <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
               <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
                 <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
                   <SmallButton variant="outline">
-                    <p>0</p>
+                    <p>{displayedCount}</p>
                   </SmallButton>
                   <SmallButton variant="outline">
                     <p>of</p>
                   </SmallButton>
                   <SmallButton variant="outline">
-                    <p>0</p>
+                    <p>
+                      {pagination?.totalItems ? pagination?.totalItems : "0"}
+                    </p>
                   </SmallButton>
                 </div>
 
                 <div className="flex gap-[5px] py-[1px]">
                   <SmallButton variant="outline">
-                    {true ? (
-                      <div>
-                        {false ? (
+                    {pagination?.hasNextPage ? (
+                      <div onClick={handleNext}>
+                        {loadingNext ? (
                           <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
                         ) : (
                           <p>Load more</p>

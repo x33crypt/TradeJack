@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import api from "@/utils/http/api";
-import { useAboutOffer } from "@/context/offer/AboutOfferContext";
+import { useUserOffer } from "@/context/userContext/OffersContext";
 
 export function useFetchAboutOffers(id) {
-  const { aboutOffer, setAboutOffer } = useAboutOffer();
+  const { aboutOffer, setAboutOffer } = useUserOffer();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const lastFetchedId = useRef(null);

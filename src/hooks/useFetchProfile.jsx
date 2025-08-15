@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "@/utils/http/api";
-import { useProfile } from "@/context/ProfileContext";
+import { useProfile } from "@/context/userContext/ProfileContext";
 
 export function useFetchProfile() {
   const { profile, setProfile } = useProfile();

@@ -1,7 +1,7 @@
 // hooks/useLocationData.js
 import { useState } from "react";
 import axios from "axios";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 
 const BASE_URL = "https://countriesnow.space/api/v0.1/countries";
 

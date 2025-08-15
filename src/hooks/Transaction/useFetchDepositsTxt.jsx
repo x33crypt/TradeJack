@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import api from "@/utils/http/api";
-import { useDepositContext } from "@/context/wallet/DepositContext";
+import { useDepositContext } from "@/context/userContext/DepositContext";
 
 export function useFetchDepositTxt(initialPage = 1, limit = 10) {
   const { deposit, setDeposit } = useDepositContext();

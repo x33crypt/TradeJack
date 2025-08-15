@@ -12,6 +12,9 @@ import { BiSupport } from "react-icons/bi";
 import { RiGift2Fill } from "react-icons/ri";
 import { RiExchangeBoxLine } from "react-icons/ri";
 import { RiExchange2Fill } from "react-icons/ri";
+import { TiFlashOutline } from "react-icons/ti";
+import { FiUserPlus } from "react-icons/fi";
+import { RiExchangeFundsLine } from "react-icons/ri";
 
 const DasHboardMenu = () => {
   const navigateTo = useNavigate();
@@ -49,6 +52,10 @@ const DasHboardMenu = () => {
           <p className="text-[13px] font-[500]">Favourite offers</p>
         </div>
         <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+          <TiFlashOutline className="text-[17px]" />
+          <p className="text-[13px] font-[500]">Promoted offers</p>
+        </div>
+        <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
           <BsChatQuote className="text-[17px]" />
           <p className="text-[13px] font-[500]"> Messages</p>
         </div>
@@ -57,22 +64,18 @@ const DasHboardMenu = () => {
           <p className="text-[13px] font-[500]">Trade history</p>
         </div>
         <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-          <RiExchangeBoxLine className="text-[17px]" />
+          <RiExchangeFundsLine className="text-[17px]" />
           <p className="text-[13px] font-[500]">Transaction history</p>
-        </div>
-        <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-          <RiGift2Fill className="text-[17px]" />
-          <p className="text-[13px] font-[500]">Rewards</p>
         </div>
       </div>
       <div className="flex flex-col pt-[10px] gap-[10px] border-t border-tradeAshLight">
         <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-          <LiaUserFriendsSolid className="text-[17px]" />
-          <p className="text-[13px] font-[500]">Invite a friend</p>
+          <FiUserPlus className="text-[17px]" />
+          <p className="text-[13px] font-[500]">Referrals</p>
         </div>
         <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-          <BiSupport className="text-[17px]" />
-          <p className="text-[13px] font-[500]"> Help & support</p>
+          <RiGift2Fill className="text-[17px]" />
+          <p className="text-[13px] font-[500]">Rewards</p>
         </div>
       </div>
     </div>

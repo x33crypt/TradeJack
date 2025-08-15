@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import api from "@/utils/http/api";
-import { useBalance } from "@/context/BalanceContext";
+import { useBalance } from "@/context/userContext/BalanceContext";
 
 export function useFetchBalance() {
   const { balance, setBalance } = useBalance();

@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import api from "@/utils/http/api";
-import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useTransaction } from "@/context/userContext/TransactionContext";
 
 export function useFetchAllTransactions(initialPage = 1, limit = 10) {
-  const { setTransactions, filter, setFilter } = useTransaction();
+  const { setTransactions, filter } = useTransaction();
   const [page, setPage] = useState(initialPage);
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(false);

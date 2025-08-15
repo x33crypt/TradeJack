@@ -1,5 +1,5 @@
 import React from "react";
-import { useDepositContext } from "@/context/wallet/DepositContext";
+import { useDepositContext } from "@/context/userContext/DepositContext";
 import LockByScroll from "@/components/LockByScroll";
 import Button from "@/components/buttons/Button";
 import { IoClose } from "react-icons/io5";

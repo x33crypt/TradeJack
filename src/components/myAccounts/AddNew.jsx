@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useLinkedAccount } from "@/context/wallet/LinkedAccountContext";
+import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import Button from "../buttons/Button";
-import { useSelectElement } from "@/context/SelectElementContext";
+import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { useFetchBanks } from "@/hooks/useFetchBanks";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Info from "../alerts/Info";
 import { verifyBankHolder } from "@/utils/wallet/verifyBankHolder";

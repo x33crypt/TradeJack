@@ -1,9 +1,5 @@
 import React from "react";
-import { HiMiniCalendarDateRange } from "react-icons/hi2";
 import FeedbackCard from "../cards/Both/FeedbackCard";
-import { useFetchProfile } from "@/hooks/useFetchProfile";
-import { useProfile } from "@/context/ProfileContext";
-import { useAccount } from "@/context/AccountContext";
 import Loading from "@/components/Loading";
 import NetworkError from "@/components/NetworkError";
 import { RiLoader4Fill } from "react-icons/ri";
@@ -59,7 +55,7 @@ const Feedbacks = ({ loading, profile }) => {
           </div>
         </div>
 
-        <div className="md:sticky bottom-0 left-0 right-0 h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+        <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
           <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
             <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
               <SmallButton variant="outline">

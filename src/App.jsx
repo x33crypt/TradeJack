@@ -17,7 +17,6 @@ import EditEmail from "./pages/EditEmail";
 import EditMobile from "./pages/EditMobile";
 import EditAddress from "./pages/EditAddress";
 import SelectElement from "./components/SelectElement";
-import TradeAlert from "./components/TradeAlert";
 import CreateOfferSummary from "./pages/offer/user/CreateOfferSummary";
 import MyOffer from "./pages/offer/mine/MyOffer";
 import EditMyOffer from "./pages/offer/mine/EditMyOffer";
@@ -55,7 +54,7 @@ const App = () => {
       <SelectElement />
       <ToastSuccess />
       <ToastError />
-      <TradeAlert />
+
       <TransactionDetails />
       <ProfileNav />
       <ConfirmAccount />

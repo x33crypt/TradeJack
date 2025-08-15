@@ -5,7 +5,7 @@ import { useFetchDashboard } from "@/hooks/useFetchDashboard";
 import StateHandler from "@/components/stateHandler/StateHandler";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import Performance from "@/components/dashboard/Performance";
-import { useDashboard } from "@/context/DashboardContext";
+import { useDashboard } from "@/context/userContext/DashboardContext";
 import Balance from "@/components/dashboard/Balance";
 import Stats from "@/components/dashboard/Stats";
 import RecentTrades from "@/components/dashboard/RecentTrades";

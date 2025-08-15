@@ -4,11 +4,11 @@ import Button from "@/components/buttons/Button";
 import { useServices } from "@/hooks/useServices";
 import { currencies } from "@/hooks/useCurrencies";
 import { IoClose } from "react-icons/io5";
-import { useSelectElement } from "@/context/SelectElementContext";
-import { useExploreOffers } from "@/context/ExploreOffersContext";
+import { useSelectElement } from "@/context/otherContext/SelectElementContext";
+import { usePublicOffers } from "@/context/publicContext/OffersContext";
 
 const OfferFilter = () => {
-  const { filter, setFilter } = useExploreOffers();
+  const { filter, setFilter } = usePublicOffers();
   const { serviceTypes, fullData } = useServices();
   const { select, setSelect } = useSelectElement();
 
@@ -44,7 +44,10 @@ const OfferFilter = () => {
     "Card-Based Spending": "Select Debit or Credit Card",
   };
 
-  const sortByOptions = ["Rate : Highest to lowest", "Rate : lowest to highest"];
+  const sortByOptions = [
+    "Rate : Highest to lowest",
+    "Rate : lowest to highest",
+  ];
 
   // handling service changes
   useEffect(() => {

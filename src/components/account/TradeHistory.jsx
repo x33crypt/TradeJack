@@ -41,7 +41,7 @@ const TradeHistory = ({ loading, profile }) => {
         </div>
 
         {/* Bottom Filter */}
-        <div className="md:sticky bottom-0 left-0 right-0 h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+        <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
           <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
             <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
               <SmallButton variant="outline">

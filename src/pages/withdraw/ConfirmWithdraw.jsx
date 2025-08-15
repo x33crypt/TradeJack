@@ -1,12 +1,12 @@
 import React from "react";
-import { useWithdrawContext } from "@/context/wallet/WithdrawContext";
+import { useWithdrawContext } from "@/context/userContext/WithdrawContext";
 import LockByScroll from "@/components/LockByScroll";
 import Button from "@/components/buttons/Button";
 import { IoClose } from "react-icons/io5";
 import { toDecimal } from "@/utils/toDecimal";
 import { PiHandWithdrawFill } from "react-icons/pi";
 import { submitWithdraw } from "@/utils/wallet/withdraw";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 
 const ConfirmWithdraw = () => {
   const { setToast } = useToast();

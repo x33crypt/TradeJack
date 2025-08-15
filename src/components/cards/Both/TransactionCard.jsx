@@ -4,7 +4,7 @@ import { date } from "@/utils/date";
 import { toDecimal } from "@/utils/toDecimal";
 import { shortenID } from "@/utils/shortenID";
 import { MdOutlineQuestionMark } from "react-icons/md";
-import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useTransaction } from "@/context/userContext/TransactionContext";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import { MdOutlineDateRange } from "react-icons/md";
 import { MdAccessTime } from "react-icons/md";

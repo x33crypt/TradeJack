@@ -5,7 +5,7 @@ import { FaInfoCircle } from "react-icons/fa";
 import { useFetchBalance } from "@/hooks/useFetchBalance";
 import { toDecimal } from "@/utils/toDecimal";
 import Info from "../alerts/Info";
-import { useBalance } from "@/context/BalanceContext";
+import { useBalance } from "@/context/userContext/BalanceContext";
 import Loading from "../Loading";
 import { FaQuestionCircle } from "react-icons/fa";
 import { SlOptions } from "react-icons/sl";

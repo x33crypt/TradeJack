@@ -18,7 +18,7 @@ import { BiSupport } from "react-icons/bi";
 import { TbFileInvoice } from "react-icons/tb";
 import Button from "./buttons/Button";
 import { IoWallet } from "react-icons/io5";
-import { useProfileNav } from "@/context/ProfileNavContext";
+import { useProfileNav } from "@/context/otherContext/ProfileNavContext";
 import LockByScroll from "./LockByScroll";
 import { HiGiftTop } from "react-icons/hi2";
 import { RiExchangeBoxLine } from "react-icons/ri";

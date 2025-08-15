@@ -6,9 +6,9 @@ import { toDecimal } from "@/utils/toDecimal";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { MdDateRange } from "react-icons/md";
 import { MdOutlinePending } from "react-icons/md";
-import { useWithdrawContext } from "@/context/wallet/WithdrawContext";
+import { useWithdrawContext } from "@/context/userContext/WithdrawContext";
 import { MdPending } from "react-icons/md";
-import { useTransaction } from "@/context/wallet/TransactionContext";
+import { useTransaction } from "@/context/userContext/TransactionContext";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 
 const SuccessWithdraw = () => {

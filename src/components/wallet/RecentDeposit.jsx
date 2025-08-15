@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import TransactionCard from "../cards/Mobile/TransactionCard";
 import { useNavigate } from "react-router-dom";
 import { useFetchDepositTxt } from "@/hooks/Transaction/useFetchDepositsTxt";
-import { useDepositContext } from "@/context/wallet/DepositContext";
+import { useDepositContext } from "@/context/userContext/DepositContext";
 import Loading from "../Loading";
 import { LuFileX2 } from "react-icons/lu";
 import NetworkError from "../NetworkError";
 import SmallButton from "../buttons/SmallButton";
 import { BiFileBlank } from "react-icons/bi";
-
 
 const RecentDeposit = () => {
   const { loading } = useFetchDepositTxt();
@@ -74,7 +73,14 @@ const RecentDeposit = () => {
         <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
           <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
             <SmallButton variant="outline">
-              <p>{recentDeposit?.pagination?.totalItems ? "5" : "0"}</p>
+              <p>
+                {recentDeposit?.pagination?.totalItems
+                  ? recentDeposit?.pagination?.totalItems &&
+                    recentDeposit?.pagination?.totalItems >= 5
+                    ? "5"
+                    : recentDeposit?.pagination?.totalItems
+                  : "0"}
+              </p>
             </SmallButton>
             <SmallButton variant="outline">
               <p>of</p>
@@ -82,10 +88,7 @@ const RecentDeposit = () => {
             <SmallButton variant="outline">
               <p>
                 {recentDeposit?.pagination?.totalItems
-                  ? recentDeposit?.pagination?.totalItems &&
-                    recentDeposit?.pagination?.totalItems >= 5
-                    ? "5"
-                    : recentDeposit?.pagination?.totalItems
+                  ? recentDeposit?.pagination?.totalItems
                   : "0"}
               </p>
             </SmallButton>

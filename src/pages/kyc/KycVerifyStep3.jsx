@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import InAppNav from "@/components/InAppNav";
-import { useSelectElement } from "@/context/SelectElementContext";
+import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import Stepper from "@/components/Steppers";
-import { useKyc } from "@/context/KycContext";
+import { useKyc } from "@/context/userContext/KycContext";
 import Warning from "@/components/alerts/Warning";
 import { RiFileUploadFill } from "react-icons/ri";
 import { kycVerify } from "@/utils/kyc/kycVerify";

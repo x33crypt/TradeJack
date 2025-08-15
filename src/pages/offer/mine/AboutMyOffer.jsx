@@ -11,14 +11,15 @@ import React, { useState } from "react";
 import Button from "@/components/buttons/Button";
 import { useParams } from "react-router-dom";
 import { useFetchAboutOffers } from "@/hooks/useFetchAboutOffer";
-import { useAboutOffer } from "@/context/offer/AboutOfferContext";
+import { useUserOffer } from "@/context/userContext/OffersContext";
 import StateHandler from "@/components/stateHandler/StateHandler";
 import { useNavigate } from "react-router-dom";
 
 const AboutMyOffer = () => {
   const { id } = useParams();
   const { loading, error } = useFetchAboutOffers(id);
-  const { aboutOffer, setAboutOffer } = useAboutOffer();
+
+  const { aboutOffer } = useUserOffer();
 
   const navigateTo = useNavigate();
 

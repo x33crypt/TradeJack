@@ -6,7 +6,7 @@ import { LuFileX2 } from "react-icons/lu";
 import NetworkError from "../NetworkError";
 import SmallButton from "../buttons/SmallButton";
 import { useFetchWithdrawTxt } from "@/hooks/Transaction/useFetchWithdrawTxt";
-import { useWithdrawContext } from "@/context/wallet/WithdrawContext";
+import { useWithdrawContext } from "@/context/userContext/WithdrawContext";
 import { BiFileBlank } from "react-icons/bi";
 
 const RecentWithdraw = () => {

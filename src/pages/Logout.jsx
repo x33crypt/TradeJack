@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import useSafeNavigate from "../components/SafeNavigation";
 import { IoLogInOutline } from "react-icons/io5";
 import { logout } from "@/utils/auth/logout";
-import { useToast } from "@/context/ToastContext";
+import { useToast } from "@/context/otherContext/ToastContext";
 import Button from "@/components/buttons/Button";
 
 const Logout = () => {

@@ -3,22 +3,18 @@ import MarketTopNav from "@/components/InAppNav";
 import React from "react";
 import PersonalInfo from "@/components/account/Profile";
 import HeroEdit from "@/components/account/HeroEdit";
-import { useProfile } from "@/context/ProfileContext";
+import { useProfile } from "@/context/userContext/ProfileContext";
 import { useFetchProfile } from "@/hooks/useFetchProfile";
-import { useAccount } from "@/context/AccountContext";
 import Stats from "@/components/account/Stats";
 import Achievements from "@/components/account/Achievements";
 import SettingsNav from "@/components/settings/SettingsNav";
 import Feedbacks from "@/components/account/Feedbacks";
 
 const Account = () => {
-  const { account, setAccount } = useAccount();
-  const { view } = account;
   const { loading, error } = useFetchProfile();
   const { profile, setProfile } = useProfile();
 
   console.log("Hero Edit", profile);
-  console.log("Page in View : ", view);
 
   return (
     <>
