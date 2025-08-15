@@ -23,34 +23,17 @@ const AboutOffer = () => {
   return (
     <>
       <MarketTopNav />
-
-      <div className="md:pt-[64px] pt-[60px] lg:px-[2%] md:px-[2.5%]  min-h-screen flex flex-col gap-[10px] bg-black ">
-        <div className="flex lg:flex-row flex-col gap-[10px] ">
-          <div className="flex-1 flex flex-col gap-[10px]">
-            <OfferDetails />
-            <AboutVendor />
-          </div>
-
+      <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex flex-col md:flex-row md:gap-[5px] gap-[5px] bg-black ">
+        <div className="flex-1 flex flex-col gap-[5px]">
+          <OfferDetails />
           <ExchangeCalculator offerDetails={offerDetails} />
-        </div>
-
-        <div className="px-[15px] md:p-[15px] lg:px-0 ">
-          <Button
-            onClick={handleInitiateTrade}
-            variant="primary"
-            disabled={loading}
-          >
-            {loading ? "Signing in..." : "Initiate Trade"}
-          </Button>
-        </div>
-
-        <div className="flex flex-col gap-[10px] ">
-          <div className=" flex md:flex-row flex-col gap-[10px]">
-            <OfferTag />
-            <OfferInstruction />
-          </div>
-
+          <AboutVendor />
           <OfferFeedback />
+        </div>
+        <div className=" md:w-[350px] flex flex-col md:border border-neutral-800">
+          <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
+            <p className="text-lg text-white font-semibold">Related Offers</p>
+          </div>
         </div>
       </div>
 

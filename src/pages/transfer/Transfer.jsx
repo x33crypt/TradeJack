@@ -437,7 +437,6 @@ const Transfer = () => {
               </div>
             </div>
           </div>
-
           <RecentTransfer />
         </div>
       </div>

@@ -61,35 +61,35 @@ const Footer = ({ show }) => {
   const tradingQuotes = [
     "Every trade is a step closer to your next big win.",
 
-    "Opportunities don’t wait — neither should you.",
+    "Opportunities don’t wait, neither should you.",
 
     "Small swaps lead to big gains.",
 
     "In every offer, there’s a golden chance waiting to be claimed.",
 
-    "The best traders aren’t lucky — they’re consistent.",
+    "The best traders aren’t lucky, they’re consistent.",
 
     "Your next profitable move is one click away.",
 
-    "Every trade tells a story — make yours worth reading.",
+    "Every trade tells a story, make yours worth reading.",
 
     "Markets reward the bold, not the hesitant.",
 
     "One great deal can change everything.",
 
-    "Don’t just watch the market — move it.",
+    "Don’t just watch the market, move it.",
 
     "Great traders see opportunities where others see risk.",
 
     "Every offer is a handshake with success.",
 
-    "Timing is everything — and now is your time.",
+    "Timing is everything, and now is your time.",
 
     "The faster you adapt, the faster you grow.",
 
     "Your future portfolio is built on the trades you make today.",
 
-    "Winning starts with showing up — and trading smart.",
+    "Winning starts with showing up, and trading smart.",
 
     "A smart trade today fuels your freedom tomorrow.",
 
@@ -113,8 +113,8 @@ const Footer = ({ show }) => {
   }, []);
 
   return (
-    <div className="pt-[5px] bg-black">
-      <div className="flex-1 bg-black lg:p-[2%] md:p-[2.5%] p-[15px]  flex flex-col gap-[30px] border-t mt-[5px border-tradeAshLight">
+    <div className="lg:pt-[5px] md:pt-[25px] pt-[50px] bg-black">
+      <div className="flex-1 bg-black lg:p-[2%] md:p-[2.5%] p-[15px] flex flex-col gap-[30px] border-t mt-[5px border-tradeAshLight">
         <div className="flex gap-[5px] flex-col w-full">
           <p className="  text-[13px]  font-bold text-tradeGreen">
             Go
@@ -122,15 +122,15 @@ const Footer = ({ show }) => {
             <span className="font-semibold text-white">Swap</span>
           </p>
 
-          <div className="w-full flex lg:flex-row flex-col lg:justify-between lg:items-center gap-[30px]">
+          <div className="w-full flex lg:flex-row flex-col lg:justify-between lg:items-center gap-[20px]">
             <div>
               <p className="text-2xl text-tradeFadeWhite font-semibold leading-tight">
                 {tradingQuotes[quoteIndex]}
               </p>
             </div>
-            <div className="flex gap-4 w-full md:w-max ">
+            <div className="flex gap-2 w-full md:w-max ">
+              <SmallButton variant="fadeout">Support & Help</SmallButton>
               <SmallButton variant="fadeout">FAQs</SmallButton>
-              <SmallButton variant="fadeout">Help Center</SmallButton>
               <SmallButton variant="fadeout">Community</SmallButton>
             </div>
           </div>
@@ -142,10 +142,10 @@ const Footer = ({ show }) => {
             </p>
 
             <div className="flex flex-col gap-1">
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 How it Works
               </p>
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Explore Offers
               </p>
             </div>
@@ -156,12 +156,14 @@ const Footer = ({ show }) => {
             </p>
 
             <div className="flex flex-col gap-1">
-              <p className="text-white font-semibold text-[13px]">Shop</p>
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
+                Shop
+              </p>
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Marketplace
               </p>
 
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Escrow Security
               </p>
             </div>
@@ -171,10 +173,10 @@ const Footer = ({ show }) => {
               Useful Tools
             </p>
             <div className="flex flex-col gap-1">
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Trade Tracker
               </p>
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Exchange Calculator
               </p>
             </div>
@@ -184,8 +186,12 @@ const Footer = ({ show }) => {
               Platform
             </p>
             <div className="flex flex-col gap-1">
-              <p className="text-white font-semibold text-[13px]">About us</p>
-              <p className="text-white font-semibold text-[13px]">Feedbacks</p>
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
+                About us
+              </p>
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
+                Feedbacks
+              </p>
             </div>
           </div>
           <div className="flex flex-1 flex-col gap-[10px]">
@@ -194,24 +200,24 @@ const Footer = ({ show }) => {
             </p>
 
             <div className="flex flex-col gap-1">
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Privacy Policy
               </p>
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Terms of Use
               </p>
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Cookie Statement
               </p>
             </div>
           </div>
         </div>
         <div className="flex md:hidden flex-col gap-[20px]">
-          <div
-            onClick={() => handleStarters()}
-            className="w-[full] cursor-pointer"
-          >
-            <div className="flex justify-between items-center ">
+          <div className="w-[full]">
+            <div
+              onClick={() => handleStarters()}
+              className="flex justify-between items-center"
+            >
               <p className="font-semibold text-[13px] text-tradeAshExtraLight">
                 Starters
               </p>
@@ -225,25 +231,25 @@ const Footer = ({ show }) => {
               </div>
             </div>
             <div
-              className={` flex flex-col gap-1 transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
+              className={` flex flex-col gap-[10px] transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
                 starters
                   ? "max-h-[500px] opacity-100 mt-[10px]"
                   : "max-h-0 opacity-0 mt-0"
               } `}
             >
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 How it Works
               </p>
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Explore Offers
               </p>
             </div>
           </div>
-          <div
-            onClick={() => handleProducs()}
-            className="w-[full] cursor-pointer"
-          >
-            <div className="flex justify-between items-center ">
+          <div className="w-[full]">
+            <div
+              onClick={() => handleProducs()}
+              className="flex justify-between items-center "
+            >
               <p className="font-semibold text-[13px] text-tradeAshExtraLight">
                 Products
               </p>
@@ -256,26 +262,28 @@ const Footer = ({ show }) => {
               </div>
             </div>
             <div
-              className={` flex flex-col gap-1 transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
+              className={` flex flex-col gap-[10px] transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
                 products
                   ? "max-h-[500px] opacity-100 mt-[10px]"
                   : "max-h-0 opacity-0 mt-0"
               } `}
             >
-              <p className="text-white font-semibold text-[13px]">Shop</p>
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
+                Shop
+              </p>
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Marketplace
               </p>
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Escrow Security
               </p>
             </div>
           </div>
-          <div
-            onClick={() => handleTools()}
-            className="w-[full] cursor-pointer"
-          >
-            <div className="flex justify-between items-center ">
+          <div className="w-[full]">
+            <div
+              onClick={() => handleTools()}
+              className="flex justify-between items-center "
+            >
               <p className="font-semibold text-[13px] text-tradeAshExtraLight">
                 Useful Tools
               </p>
@@ -288,25 +296,25 @@ const Footer = ({ show }) => {
               </div>
             </div>
             <div
-              className={` flex flex-col gap-1 transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
+              className={` flex flex-col gap-[10px] transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
                 tools
                   ? "max-h-[500px] opacity-100 mt-[10px]"
                   : "max-h-0 opacity-0 mt-0"
               } `}
             >
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Trade Tracker
               </p>
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Exchange Calculator
               </p>
             </div>
           </div>
-          <div
-            onClick={() => handlePlatform()}
-            className="w-[full] cursor-pointer"
-          >
-            <div className="flex justify-between items-center ">
+          <div className="w-[full]">
+            <div
+              onClick={() => handlePlatform()}
+              className="flex justify-between items-center "
+            >
               <p className="font-semibold text-[13px] text-tradeAshExtraLight">
                 Platform
               </p>
@@ -319,21 +327,25 @@ const Footer = ({ show }) => {
               </div>
             </div>
             <div
-              className={` flex flex-col gap-1 transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
+              className={` flex flex-col gap-[10px] transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
                 platform
                   ? "max-h-[500px] opacity-100 mt-[10px]"
                   : "max-h-0 opacity-0 mt-0"
               } `}
             >
-              <p className="text-white font-semibold text-[13px]">About us</p>
-              <p className="text-white font-semibold text-[13px]">Feedbacks</p>
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
+                About us
+              </p>
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
+                Feedbacks
+              </p>
             </div>
           </div>
-          <div
-            onClick={() => handleLegal()}
-            className="w-[full] cursor-pointer"
-          >
-            <div className="flex justify-between items-center ">
+          <div className="w-[full]">
+            <div
+              onClick={() => handleLegal()}
+              className="flex justify-between items-center "
+            >
               <p className="font-semibold text-[13px] text-tradeAshExtraLight">
                 Legal
               </p>
@@ -346,19 +358,19 @@ const Footer = ({ show }) => {
               </div>
             </div>
             <div
-              className={` flex flex-col gap-1 transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
+              className={` flex flex-col gap-[10px] transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
                 legal
                   ? "max-h-[500px] opacity-100 mt-[10px]"
                   : "max-h-0 opacity-0 mt-0"
               } `}
             >
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Privacy Policy
               </p>
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Terms of Use
               </p>
-              <p className="text-white font-semibold text-[13px]">
+              <p className="text-white hover:text-tradeOrange active:text-tradeOrange/50 font-semibold text-[13px] cursor-pointer transition-all duration-300">
                 Cookie Statement
               </p>
             </div>
@@ -381,10 +393,10 @@ const Footer = ({ show }) => {
         </div>
         <div className="flex justify-between items-center w-full  pt-[15px] border-t border-tradeAshLight">
           <p className="text-tradeAshExtraLight text-xs font-semibold">
-            GetGetSwap Inc, @{currentYear}
+            GoGetSwap Inc, @{currentYear}
           </p>
 
-          <div className="flex gap-3">
+          <div className="flex gap-2">
             <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
               <FaXTwitter className="text-[16px]" />
             </div>
