@@ -5,10 +5,58 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import SmallButton from "./buttons/SmallButton";
+import { LiaExchangeAltSolid } from "react-icons/lia";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Footer = ({ show }) => {
+  const [starters, setStarters] = useState(false);
+  const [products, setProducts] = useState(false);
+  const [tools, setTools] = useState(false);
+  const [platform, setPlatform] = useState(false);
+  const [legal, setLegal] = useState(false);
+
   const currentYear = new Date().getFullYear();
   const navigateTo = useNavigate();
+
+  const handleStarters = () => {
+    setStarters(!starters);
+    setProducts(false);
+    setTools(false);
+    setPlatform(false);
+    setLegal(false);
+  };
+
+  const handleProducs = () => {
+    setStarters(false);
+    setProducts(!products);
+    setTools(false);
+    setPlatform(false);
+    setLegal(false);
+  };
+
+  const handleTools = () => {
+    setStarters(false);
+    setProducts(false);
+    setTools(!tools);
+    setPlatform(false);
+    setLegal(false);
+  };
+
+  const handlePlatform = () => {
+    setStarters(false);
+    setProducts(false);
+    setTools(false);
+    setPlatform(!platform);
+    setLegal(false);
+  };
+
+  const handleLegal = () => {
+    setStarters(false);
+    setProducts(false);
+    setTools(false);
+    setPlatform(false);
+    setLegal(!legal);
+  };
 
   const tradingQuotes = [
     "Every trade is a step closer to your next big win.",
@@ -67,29 +115,27 @@ const Footer = ({ show }) => {
   return (
     <div className="pt-[5px] bg-black">
       <div className="flex-1 bg-black lg:p-[2%] md:p-[2.5%] p-[15px]  flex flex-col gap-[30px] border-t mt-[5px border-tradeAshLight">
-        <div className="flex gap-[30px] lg:flex-row flex-col justify-between items-center w-full bg-tradeAs">
-          <div className="flex flex-col gap-sm w-full">
-            <div className="flex justify-between items-center gap-[5px] cursor-pointer ">
-              <p className="  text-[13px]  font-bold text-tradeGreen">
-                Go
-                <span className="font-semibold text-tradeOrange">Get</span>
-                <span className="font-semibold text-white">Swap</span>
-              </p>
-            </div>
+        <div className="flex gap-[5px] flex-col w-full">
+          <p className="  text-[13px]  font-bold text-tradeGreen">
+            Go
+            <span className="font-semibold text-tradeOrange">Get</span>
+            <span className="font-semibold text-white">Swap</span>
+          </p>
 
+          <div className="w-full flex lg:flex-row flex-col lg:justify-between lg:items-center gap-[30px]">
             <div>
-              <p className="text-[25px] text-tradeFadeWhite font-semibold leading-relaxed">
+              <p className="text-2xl text-tradeFadeWhite font-semibold leading-tight">
                 {tradingQuotes[quoteIndex]}
               </p>
             </div>
-          </div>
-          <div className="flex gap-4 w-full md:w-max justify-center md:justify-normal">
-            <SmallButton variant="fadeout">FAQs</SmallButton>
-            <SmallButton variant="fadeout">Help Center</SmallButton>
-            <SmallButton variant="fadeout">Community</SmallButton>
+            <div className="flex gap-4 w-full md:w-max ">
+              <SmallButton variant="fadeout">FAQs</SmallButton>
+              <SmallButton variant="fadeout">Help Center</SmallButton>
+              <SmallButton variant="fadeout">Community</SmallButton>
+            </div>
           </div>
         </div>
-        <div className="grid lg:grid-cols-5 md:grid-cols-3 w-full gap-[20px]">
+        <div className="md:grid hidden lg:grid-cols-5 md:grid-cols-3 w-full gap-[20px]">
           <div className="flex flex-1 flex-col gap-[10px]">
             <p className="font-semibold text-[13px] text-tradeAshExtraLight">
               Starters
@@ -148,6 +194,164 @@ const Footer = ({ show }) => {
             </p>
 
             <div className="flex flex-col gap-1">
+              <p className="text-white font-semibold text-[13px]">
+                Privacy Policy
+              </p>
+              <p className="text-white font-semibold text-[13px]">
+                Terms of Use
+              </p>
+              <p className="text-white font-semibold text-[13px]">
+                Cookie Statement
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="flex md:hidden flex-col gap-[20px]">
+          <div
+            onClick={() => handleStarters()}
+            className="w-[full] cursor-pointer"
+          >
+            <div className="flex justify-between items-center ">
+              <p className="font-semibold text-[13px] text-tradeAshExtraLight">
+                Starters
+              </p>
+
+              <div
+                className={`text-white transform transition-transform duration-500 ${
+                  starters ? "rotate-180" : ""
+                }`}
+              >
+                <IoIosArrowDown />
+              </div>
+            </div>
+            <div
+              className={` flex flex-col gap-1 transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
+                starters
+                  ? "max-h-[500px] opacity-100 mt-[10px]"
+                  : "max-h-0 opacity-0 mt-0"
+              } `}
+            >
+              <p className="text-white font-semibold text-[13px]">
+                How it Works
+              </p>
+              <p className="text-white font-semibold text-[13px]">
+                Explore Offers
+              </p>
+            </div>
+          </div>
+          <div
+            onClick={() => handleProducs()}
+            className="w-[full] cursor-pointer"
+          >
+            <div className="flex justify-between items-center ">
+              <p className="font-semibold text-[13px] text-tradeAshExtraLight">
+                Products
+              </p>
+              <div
+                className={`text-white transform transition-transform duration-500 ${
+                  products ? "rotate-180" : ""
+                }`}
+              >
+                <IoIosArrowDown />
+              </div>
+            </div>
+            <div
+              className={` flex flex-col gap-1 transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
+                products
+                  ? "max-h-[500px] opacity-100 mt-[10px]"
+                  : "max-h-0 opacity-0 mt-0"
+              } `}
+            >
+              <p className="text-white font-semibold text-[13px]">Shop</p>
+              <p className="text-white font-semibold text-[13px]">
+                Marketplace
+              </p>
+              <p className="text-white font-semibold text-[13px]">
+                Escrow Security
+              </p>
+            </div>
+          </div>
+          <div
+            onClick={() => handleTools()}
+            className="w-[full] cursor-pointer"
+          >
+            <div className="flex justify-between items-center ">
+              <p className="font-semibold text-[13px] text-tradeAshExtraLight">
+                Useful Tools
+              </p>
+              <div
+                className={`text-white transform transition-transform duration-500 ${
+                  tools ? "rotate-180" : ""
+                }`}
+              >
+                <IoIosArrowDown />
+              </div>
+            </div>
+            <div
+              className={` flex flex-col gap-1 transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
+                tools
+                  ? "max-h-[500px] opacity-100 mt-[10px]"
+                  : "max-h-0 opacity-0 mt-0"
+              } `}
+            >
+              <p className="text-white font-semibold text-[13px]">
+                Trade Tracker
+              </p>
+              <p className="text-white font-semibold text-[13px]">
+                Exchange Calculator
+              </p>
+            </div>
+          </div>
+          <div
+            onClick={() => handlePlatform()}
+            className="w-[full] cursor-pointer"
+          >
+            <div className="flex justify-between items-center ">
+              <p className="font-semibold text-[13px] text-tradeAshExtraLight">
+                Platform
+              </p>
+              <div
+                className={`text-white transform transition-transform duration-500 ${
+                  platform ? "rotate-180" : ""
+                }`}
+              >
+                <IoIosArrowDown />
+              </div>
+            </div>
+            <div
+              className={` flex flex-col gap-1 transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
+                platform
+                  ? "max-h-[500px] opacity-100 mt-[10px]"
+                  : "max-h-0 opacity-0 mt-0"
+              } `}
+            >
+              <p className="text-white font-semibold text-[13px]">About us</p>
+              <p className="text-white font-semibold text-[13px]">Feedbacks</p>
+            </div>
+          </div>
+          <div
+            onClick={() => handleLegal()}
+            className="w-[full] cursor-pointer"
+          >
+            <div className="flex justify-between items-center ">
+              <p className="font-semibold text-[13px] text-tradeAshExtraLight">
+                Legal
+              </p>
+              <div
+                className={`text-white transform transition-transform duration-500 ${
+                  legal ? "rotate-180" : ""
+                }`}
+              >
+                <IoIosArrowDown />
+              </div>
+            </div>
+            <div
+              className={` flex flex-col gap-1 transition-[max-height, opacity, margin-top] ease-in-out duration-700 overflow-hidden ${
+                legal
+                  ? "max-h-[500px] opacity-100 mt-[10px]"
+                  : "max-h-0 opacity-0 mt-0"
+              } `}
+            >
               <p className="text-white font-semibold text-[13px]">
                 Privacy Policy
               </p>
