@@ -16,10 +16,8 @@ export const PublicOffersProvider = ({ children }) => {
     sortBy: null,
     activeTraders: false,
     verifiedOffers: false,
-    topPicks: false,
     clearFilter: false,
   });
-  
 
   console.log("Explore Offers :", offers);
   console.log("Explore filter :", filter);

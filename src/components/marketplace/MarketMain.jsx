@@ -4,15 +4,15 @@ import OfferFilter from "./OfferFilter";
 import { BiSolidBinoculars } from "react-icons/bi";
 import LockByScroll from "../LockByScroll";
 import { useNavigate } from "react-router-dom";
-import { RiFilter3Line } from "react-icons/ri";
 import { useFetchPublicOffers } from "@/hooks/useFetchPublicOffers";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Loading from "../Loading";
 import NetworkError from "../NetworkError";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import { FaSort } from "react-icons/fa";
 import SmallButton from "../buttons/SmallButton";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
+import { LiaFilterSolid } from "react-icons/lia";
+import { RiLoader4Fill } from "react-icons/ri";
 
 const MarketMain = () => {
   const topRef = useRef(null);
@@ -39,17 +39,14 @@ const MarketMain = () => {
     setFilter((prev) => ({
       ...prev,
       activeTraders: !prev.activeTraders,
-      verifiedOffers: false,
-      topPicks: false,
     }));
   };
 
   const showVerifiedOffers = () => {
     setFilter((prev) => ({
       ...prev,
-      activeTraders: false,
+
       verifiedOffers: !prev.verifiedOffers,
-      topPicks: false,
     }));
   };
 
@@ -105,7 +102,7 @@ const MarketMain = () => {
     setLoadingMore(false);
   };
 
-  const isEmpty = offers?.data?.length === 0;
+  const isEmpty = offers?.data?.length === 0 || offers === null;
   const isEnd = pagination && !pagination.hasNextPage && !isEmpty;
   const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
 
@@ -158,41 +155,11 @@ const MarketMain = () => {
             <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-hidden p-[2px]">
               <div className="flex gap-[5px]">
                 <div className="flex lg:hidden">
-                  <SmallButton variant="fadeoutPlus">
-                    <RiFilter3Line className="lg:text-[14px] text-[14px]" />
+                  <SmallButton variant="fadeout" onClick={showFilter}>
+                    <LiaFilterSolid className="lg:text-[14px] text-[14px]" />
                     <p>Filter</p>
                   </SmallButton>
                 </div>
-                {/* <div
-                  onClick={showActiveTraders}
-                  className={`${
-                    filter?.activeTraders
-                      ? "text-white bg-tradeAsh border-tradeGreen"
-                      : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                  } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
-                  <p>Active Traders</p>
-                </div>
-                <div
-                  onClick={showVerifiedOffers}
-                  className={`${
-                    filter?.verifiedOffers
-                      ? "text-white bg-tradeAsh border-tradeGreen"
-                      : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                  } flex items-center gap-1 w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
-                  <p>Verified Offers</p>
-                </div>
-                <div
-                  onClick={showTopPicks}
-                  className={`${
-                    filter?.topPicks
-                      ? "text-white bg-tradeAsh border-tradeGreen"
-                      : "text-tradeFadeWhite border-tradeAshLight hover:text-white"
-                  } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
-                  <p>Top Picks</p>
-                </div> */}
                 <SmallButton
                   variant="fadeout"
                   disabled={filter?.sortBy !== null}
@@ -269,65 +236,43 @@ const MarketMain = () => {
             )}
           </div>
 
-          <div className="bg-black lg:py-[15px] py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
-            <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] ">
-              <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
-                <div
-                  className={` md:flex hidden text-tradeFadeWhite border-tradeAshLight w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
-                  <p>Date</p>
-                </div>
-                <div
-                  className={` text-tradeFadeWhite border-tradeAshLight inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
+          <div className="md:sticky bottom-0 left-0 right-0 h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+            <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
+              <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
+                <SmallButton variant="outline">
                   <p>{displayedCount}</p>
-                </div>
-                <div
-                  className={` text-tradeFadeWhite border-tradeAshLight inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
+                </SmallButton>
+                <SmallButton variant="outline">
                   <p>of</p>
-                </div>
-                <div
-                  className={` text-tradeFadeWhite border-tradeAshLight inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
+                </SmallButton>
+                <SmallButton variant="outline">
                   <p>{pagination?.totalItems ? pagination?.totalItems : "0"}</p>
-                </div>
+                </SmallButton>
               </div>
 
-              <div className="flex gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
-                <div className="flex">
+              <div className="flex gap-[5px] py-[1px]">
+                <SmallButton variant="outline">
                   {pagination?.hasNextPage ? (
-                    <div
-                      onClick={handleNext}
-                      className={`flex items-center text-tradeFadeWhite hover:text-white cursor-pointer border-tradeAshLight  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                    >
-                      <p>
-                        {loadingMore ? (
-                          <AiOutlineLoading3Quarters className="animate-spin text-[15px]" />
-                        ) : (
-                          "Load more"
-                        )}
-                      </p>
+                    <div onClick={handleNext}>
+                      {loadingNext ? (
+                        <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                      ) : (
+                        <p>Load more</p>
+                      )}
                     </div>
                   ) : (
-                    (isEmpty || isEnd) && (
-                      <div
-                        className={`flex items-center text-tradeFadeWhite hover:text-white cursor-not-allowed border-tradeAshLight  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                      >
-                        <p className="text-[13px] font-semibold">{message}</p>
-                      </div>
-                    )
+                    <div>{(isEmpty || isEnd) && <p>{message}</p>}</div>
                   )}
-                </div>
+                </SmallButton>
 
-                <div
+                <SmallButton
+                  variant="outline"
                   onClick={() =>
                     window.scrollTo({ top: 0, behavior: "smooth" })
                   }
-                  className={` text-tradeFadeWhite hover:text-white cursor-pointer border-tradeAshLight inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
                   <p>Scroll to Top</p>
-                </div>
+                </SmallButton>
               </div>
             </div>
           </div>

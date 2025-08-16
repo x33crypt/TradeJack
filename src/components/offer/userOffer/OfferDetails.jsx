@@ -47,7 +47,7 @@ const OfferDetails = () => {
             </div>
             <div className="flex gap-1">
               <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                Exchange Rate :{" "}
+                Exchange rate :{" "}
                 <span className="text-tradeGreen">NGN1,250/USD </span>{" "}
                 {/* (+0.22%) */}
               </p>

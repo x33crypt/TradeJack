@@ -6,6 +6,9 @@ import { currencies } from "@/hooks/useCurrencies";
 import { IoClose } from "react-icons/io5";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
+import { PiToggleLeftFill } from "react-icons/pi";
+import { PiToggleRightFill } from "react-icons/pi";
+
 
 const OfferFilter = () => {
   const { filter, setFilter } = usePublicOffers();
@@ -214,9 +217,24 @@ const OfferFilter = () => {
     }
   };
 
+  const showActiveTraders = () => {
+    setFilter((prev) => ({
+      ...prev,
+      activeTraders: !prev.activeTraders,
+    }));
+  };
+
+  const showVerifiedOffers = () => {
+    setFilter((prev) => ({
+      ...prev,
+
+      verifiedOffers: !prev.verifiedOffers,
+    }));
+  };
+
   return (
     <>
-      <div className="flex flex-1 md:w-[320px] gap-[5px] flex-col bg-black md:border-x md:border-t-0 lg:border-b border-neutral-800">
+      <div className="flex flex-1 md:w-[300px] gap-[5px] flex-col bg-black md:border-x md:border-t-0 lg:border-b border-neutral-800">
         <div className="flex lg:hidden justify-between items-center px-[15px] py-[12px] border-b border-neutral-800 ">
           <p className="text-lg text-white font-[700] cursor-pointer">
             Filter Offers
@@ -235,8 +253,8 @@ const OfferFilter = () => {
           </div>
         </div>
 
-        <div className="flex-1 flex flex-col justify-between p-[15px] gap-[40px] ">
-          <div className="flex flex-col gap-[10px] ">
+        <div className="relative flex-1 flex flex-col justify-between p-[15px] gap-[20px] md:h-[480px] ">
+          <div className=" flex-1 flex flex-col lg:gap-[5px] gap-[10px] md:overflow-y-auto custom-scrollbar">
             <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
               <div className="flex flex-col gap-[10px] w-full">
                 <p className="text-tradeFadeWhite text-xs font-medium">Asset</p>
@@ -325,39 +343,41 @@ const OfferFilter = () => {
                 </div>
               </div>
             </div>
-
-            {/* <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
-              <div className="flex flex-col gap-[10px] w-full">
-                <p className="text-tradeFadeWhite text-xs font-medium">
-                  Sort By
+            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[10px]">
+              <div
+                onClick={showActiveTraders}
+                className="flex  justify-between items-center p-[12px] border border-dashed border-tradeAshLight text-tradeFadeWhite hover:text-white rounded-[15px] cursor-pointer transition-all duration-300"
+              >
+                <p className="font-semibold text-[13px]">
+                  Recently active traders
                 </p>
-                <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
-                  <input
-                    className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
-                    type="text"
-                    readOnly
-                    placeholder="-- --"
-                    value={filter?.assetType}
-                    onClick={() =>
-                      setSelect({
-                        state: true,
-                        selectOne: true,
-                        selectTwo: false,
-                        page: "offer filter",
-                        element: "service",
-                        options: services,
-                      })
-                    }
-                  />
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                    <MdKeyboardArrowDown />
-                  </div>
+
+                <div className="">
+                  {filter?.activeTraders ? (
+                    <PiToggleRightFill className="text-tradeGreen text-[25px]" />
+                  ) : (
+                    <PiToggleLeftFill className="text-tradeAshExtraLight text-[25px]" />
+                  )}
                 </div>
               </div>
-            </div> */}
+              <div
+                onClick={showVerifiedOffers}
+                className="flex  justify-between items-center p-[12px] border border-dashed border-tradeAshLight text-tradeFadeWhite hover:text-white rounded-[15px] cursor-pointer transition-all duration-300"
+              >
+                <p className="font-semibold text-[13px]">Verified offers</p>
+
+                <div className="">
+                  {filter?.verifiedOffers ? (
+                    <PiToggleRightFill className="text-tradeGreen text-[25px]" />
+                  ) : (
+                    <PiToggleLeftFill className="text-tradeAshExtraLight text-[25px]" />
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="flex flex-col gap-[10px] ">
+          <div className="flex flex-col gap-[10px] md:sticky bottom-0 left-0 right-0">
             <Button
               onClick={handleFilterOffer}
               variant="primary"

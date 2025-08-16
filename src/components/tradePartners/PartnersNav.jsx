@@ -37,7 +37,7 @@ const PartnersNav = () => {
         </div>
 
         {/* Partners */}
-        <div className="flex-1 flex flex-col py-[12px] px-[15px] gap-[10px]  md:overflow-y-auto custom-scrollbar">
+        <div className="flex-1 flex flex-col py-[12px] px-[15px] gap-[10px] md:overflow-y-auto custom-scrollbar">
           {Array.from({ length: 10 }).map((_, index) => (
             <div
               key={index}
