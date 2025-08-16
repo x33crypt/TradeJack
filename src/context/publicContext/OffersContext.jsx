@@ -13,12 +13,13 @@ export const PublicOffersProvider = ({ children }) => {
     asset: "",
     currency: { code: "", name: "" },
     amount: "",
-    sortBy: "",
+    sortBy: null,
     activeTraders: false,
     verifiedOffers: false,
     topPicks: false,
     clearFilter: false,
   });
+  
 
   console.log("Explore Offers :", offers);
   console.log("Explore filter :", filter);

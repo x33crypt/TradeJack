@@ -326,7 +326,7 @@ const OfferFilter = () => {
               </div>
             </div>
 
-            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
+            {/* <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
               <div className="flex flex-col gap-[10px] w-full">
                 <p className="text-tradeFadeWhite text-xs font-medium">
                   Sort By
@@ -354,7 +354,7 @@ const OfferFilter = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="flex flex-col gap-[10px] ">

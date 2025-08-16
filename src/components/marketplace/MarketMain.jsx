@@ -10,6 +10,9 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Loading from "../Loading";
 import NetworkError from "../NetworkError";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
+import { FaSort } from "react-icons/fa";
+import SmallButton from "../buttons/SmallButton";
+import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 
 const MarketMain = () => {
   const topRef = useRef(null);
@@ -18,6 +21,7 @@ const MarketMain = () => {
   const { offers, filter, setFilter } = usePublicOffers();
   const [triggerScroll, setTriggerScroll] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
+  const { select, setSelect } = useSelectElement();
 
   console.log("Offers", offers);
   console.log("Filter", filter);
@@ -68,7 +72,7 @@ const MarketMain = () => {
       asset: "",
       currency: { code: "", name: "" },
       amount: "",
-      sortBy: "",
+      sortBy: null,
       activeTraders: false,
       verifiedOffers: false,
       topPicks: false,
@@ -105,6 +109,31 @@ const MarketMain = () => {
   const isEnd = pagination && !pagination.hasNextPage && !isEmpty;
   const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
 
+  const sort = [
+    "All",
+    "Top Picks",
+    "Rate: Highest to Lowest",
+    "Rate: Lowest to Highest",
+    "Release Window: Fast to Slow",
+    "Release Window: Slow to Fast",
+    "Transfer Window: Fast to Slow",
+    "Transfer Window: Slow to Fast",
+  ];
+
+  // handling sort
+  useEffect(() => {
+    if (select?.page !== "explore offers" || !select?.pick) return;
+
+    if (select.element === "sort") {
+      const selectedStatus = select.pick === "All" ? null : select.pick;
+
+      setFilter((prev) => ({
+        ...prev,
+        sortBy: selectedStatus,
+      }));
+    }
+  }, [select]);
+
   return (
     <>
       <div
@@ -116,7 +145,7 @@ const MarketMain = () => {
             Secure P2P Marketplace
           </p>
         </div>
-        <div className="px-[15px] py-[12px]">
+        <div className="px-[15px] py-[12px] border-b border-dashed border-tradeAshLight">
           <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
             Browse through over 10,000 active trade offers from verified users.
             Use filters to quickly find the best rates, trusted traders, and
@@ -125,17 +154,16 @@ const MarketMain = () => {
         </div>
 
         <div className="flex flex-col flex-1 justify-between ">
-          <div className="sticky md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-y border-dashed border-tradeAshLight">
-            <div className="custom-x-scrollbar flex justify-between items-center gap-[5px] overflow-x-hidden ">
-              <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
-                <div
-                  onClick={showFilter}
-                  className={`flex lg:hidden items-center gap-2 bg-tradeAshLight text-tradeFadeWhite border-tradeAshExtraLight w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
-                  <RiFilter3Line className="lg:text-[14px] text-[14px]" />
-                  <p>Filter</p>
+          <div className="sticky h-[55px] flex items-center w-full md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
+            <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-hidden p-[2px]">
+              <div className="flex gap-[5px]">
+                <div className="flex lg:hidden">
+                  <SmallButton variant="fadeoutPlus">
+                    <RiFilter3Line className="lg:text-[14px] text-[14px]" />
+                    <p>Filter</p>
+                  </SmallButton>
                 </div>
-                <div
+                {/* <div
                   onClick={showActiveTraders}
                   className={`${
                     filter?.activeTraders
@@ -164,22 +192,39 @@ const MarketMain = () => {
                   } flex items-center gap-1  w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
                   <p>Top Picks</p>
-                </div>
+                </div> */}
+                <SmallButton
+                  variant="fadeout"
+                  disabled={filter?.sortBy !== null}
+                  onClick={() =>
+                    setSelect({
+                      ...select,
+                      state: true,
+                      selectOne: true,
+                      selectTwo: false,
+                      element: "sort",
+                      options: sort,
+                      pick: "",
+                      page: "explore offers",
+                    })
+                  }
+                >
+                  <FaSort />
+                  <p>{filter?.sortBy ? filter?.sortBy : "Sort by"}</p>
+                </SmallButton>
               </div>
 
-              <div className="flex items-cente gap-[5px] bg-transparent flex-shrink-0 py-[1px] px-[2px]">
-                <div
-                  className={`flex items-center gap-2 bg-tradeAshLight text-tradeFadeWhite border-tradeAshExtraLight w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] border cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                >
+              <div className="flex gap-[5px]">
+                <SmallButton variant="fadeoutPlus">
                   <BiSolidBinoculars className="lg:text-[14px] text-[14px]" />
                   <p>Explore</p>
-                </div>
-                <div
+                </SmallButton>
+                <SmallButton
+                  variant="primary"
                   onClick={() => navigateTo("/offers/user/create")}
-                  className={`bg-tradeGreen text-black inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
                   <p>Create Offer</p>
-                </div>
+                </SmallButton>
               </div>
             </div>
           </div>

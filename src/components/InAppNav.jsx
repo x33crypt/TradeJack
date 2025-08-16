@@ -120,7 +120,7 @@ const InAppNav = () => {
             className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
           >
             <HiOutlineGlobe className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-medium">Explore Offers</p>
+            <p className="text-[13px] font-medium">Browse Offers</p>
           </div>
           <div
             onClick={() => navigateTo("/partners")}
@@ -223,7 +223,7 @@ const InAppNav = () => {
                   </div>
                   <div
                     onClick={() => {
-                      navigateTo("/offers/myoffers");
+                      navigateTo("/offers/user");
                       setIsNavOption(false);
                     }}
                     className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
@@ -292,7 +292,7 @@ const InAppNav = () => {
                   <Button
                     variant="Fadeout"
                     onClick={() => {
-                      navigateTo("/offers/marketplace");
+                      navigateTo("/offers/explore");
                       setIsNavOption(false);
                     }}
                   >
@@ -302,7 +302,7 @@ const InAppNav = () => {
                   <Button
                     variant="Fadeout"
                     onClick={() => {
-                      navigateTo("/offers/create");
+                      navigateTo("/offers/user/create");
                       setIsNavOption(false);
                     }}
                   >
