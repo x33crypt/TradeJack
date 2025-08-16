@@ -159,8 +159,11 @@ const MarketCard = ({ offer }) => {
               <div className="flex gap-1 items-center bg-tradeAshLight border border-tradeAshExtraLight w-max px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                 <FaStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
               </div>
-              <div className="flex text-black bg-tradeGreen w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                <p>Trade</p>
+              <div
+                onClick={handleOfferClick}
+                className="flex text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+              >
+                <p>View Details</p>
               </div>
             </div>
           </div>
@@ -204,7 +207,10 @@ const MarketCard = ({ offer }) => {
               </div>
             </div>
           </div>
-          <div className="flex text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+          <div
+            onClick={handleOfferClick}
+            className="flex text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+          >
             <p>View Details</p>
           </div>
         </div>

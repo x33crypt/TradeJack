@@ -6,7 +6,7 @@ import { dateTime } from "@/utils/dateTime";
 
 const OfferDetails = ({ aboutOffer }) => {
   return (
-    <div className="flex flex-col flex-1  md:border border-neutral-800">
+    <div className="flex flex-col flex-1 md:border border-neutral-800">
       <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg text-white font-semibold">Offer Details</p>
       </div>

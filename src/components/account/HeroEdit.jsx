@@ -49,16 +49,6 @@ const HeroEdit = ({ loading, profile }) => {
                   <span className="text-tradeFadeWhite">@</span>
                   {profile?.userName ? profile?.userName : "username"}
                 </p>
-
-                {/* {profile && (
-                  <div className="flex gap-[4px] items-center w-max px-[6px] py-[1px] bg-tradeOrange/10 border border-tradeOrange rounded-[10px]">
-                    <GiTopHat className="text-[14px] text-tradeOrange" />
-                    <p className="text-xs text-tradeOrange font-semibold">5x</p>
-                    <p className="text-xs font-semibold text-white">
-                      Master Trader
-                    </p>
-                  </div>
-                )} */}
               </div>
 
               <div className="flex gap-1 flex-col items-center lg:items-start">

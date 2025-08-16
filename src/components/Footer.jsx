@@ -113,8 +113,8 @@ const Footer = ({ show }) => {
   }, []);
 
   return (
-    <div className="lg:pt-[5px] md:pt-[25px] pt-[50px] bg-black">
-      <div className="flex-1 bg-black lg:p-[2%] md:p-[2.5%] p-[15px] flex flex-col gap-[30px] border-t mt-[5px border-tradeAshLight">
+    <div className="lg:pt-[5px] md:pt-[20px] pt-[5px] bg-black">
+      <div className="flex-1 bg-black lg:p-[2%] md:p-[2.5%] p-[15px] flex flex-col gap-[40px] border-t mt-[5px border-tradeAshLight">
         <div className="flex gap-[5px] flex-col w-full">
           <p className="  text-[13px]  font-bold text-tradeGreen">
             Go
@@ -212,7 +212,7 @@ const Footer = ({ show }) => {
             </div>
           </div>
         </div>
-        <div className="flex md:hidden flex-col gap-[20px]">
+        <div className="flex md:hidden flex-col gap-[35px]">
           <div className="w-[full]">
             <div
               onClick={() => handleStarters()}

@@ -7,11 +7,13 @@ import { FaSort } from "react-icons/fa";
 import SmallButton from "../buttons/SmallButton";
 import { FaRegCalendarAlt } from "react-icons/fa";
 
-const Feedbacks = ({ loading, profile }) => {
+const Feedbacks = ({ loading, profile, heading }) => {
   return (
     <div className="flex-1 flex flex-col md:border border-neutral-800">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">Feedbacks</p>
+        <p className="text-lg font-[700] text-white ">
+          {heading ? heading : "Feedback"}
+        </p>
       </div>
 
       <div className="flex flex-col flex-1 ">

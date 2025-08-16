@@ -9,7 +9,7 @@ const TradePartners = () => {
     <>
       <InAppNav />
       <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black">
-        <div className="flex md:w-[280px] flex-1 md:flex-none">
+        <div className="flex md:w-[300px] flex-1 md:flex-none">
           <PartnersNav />
         </div>
         <div className="md:flex hidden flex-1 gap-[5px] ">

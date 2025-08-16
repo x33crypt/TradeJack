@@ -27,7 +27,8 @@ const MyOfferCard = ({ offer }) => {
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
-    navigateTo(`/offers/myoffers/${offerId}`);
+    navigateTo(`/offers/${offerId}`);
+
   };
 
   if (!offer) return null;
@@ -163,7 +164,10 @@ const MyOfferCard = ({ offer }) => {
               </div>
             </div>
             <div className="flex gap-[5px]">
-              <div className="flex text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <div
+                onClick={handleOfferClick}
+                className="flex text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+              >
                 <p>View Details</p>
               </div>
             </div>

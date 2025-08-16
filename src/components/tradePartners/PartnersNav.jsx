@@ -13,7 +13,7 @@ const PartnersNav = () => {
   const navigateTo = useNavigate();
 
   return (
-    <div className="flex flex-1 md:sticky top-[64px] md:max-h-max  md:border border-t-0 border-tradeAshLight w-full flex-col">
+    <div className="flex flex-1 md:sticky top-[64px] md:max-h-max  md:border border-t-0 border-tradeAshLight flex-col">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Trade Partners</p>
       </div>

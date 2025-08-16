@@ -6,7 +6,7 @@ const OfferFeedback = () => {
   return (
     <div className="flex-1 flex flex-col md:border border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">Feedback on this offer</p>
+        <p className="text-lg font-[700] text-white ">Offer Feedback</p>
       </div>
 
       <div className=" flex flex-row justify-between p-[15px] gap-[10px] border-b border-dashed border-tradeAshLight">
@@ -36,7 +36,7 @@ const OfferFeedback = () => {
         </div>
       </div>
 
-      <div className="p-[15px]">
+      <div className="p-[15px] min-h-[120px]">
         <div className="w-full px-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
           {[...Array(7)].map((_, index, array) => (
             <div

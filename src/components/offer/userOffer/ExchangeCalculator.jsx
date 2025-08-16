@@ -3,8 +3,8 @@ import { FaInfoCircle } from "react-icons/fa";
 
 const ExchangeCalculator = (prop) => {
   return (
-    <div className="lg:w-[400px] w-full flex justify-between flex-col bg-tradeOrang md:border border-neutral-800">
-      <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
+    <div className="w-full flex justify-between flex-col bg-tradeOrang md:border border-neutral-800">
+      <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Exchange Calculator</p>
       </div>
       <div className="flex h-full justify-between flex-col p-[15px]">
