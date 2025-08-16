@@ -9,13 +9,15 @@ import { MdAccessTime } from "react-icons/md";
 import { FaInfoCircle } from "react-icons/fa";
 import { monthDate } from "@/utils/monthDate";
 import { time } from "@/utils/time";
+import SmallButton from "@/components/buttons/SmallButton";
 
 const OfferCard = ({ offer }) => {
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
-    navigateTo(`/offers/${offerId}`);
+    navigateTo(`/offers/explore/${offerId}`);
   };
+
   return (
     <div className="flex flex-col  p-[12px] gap-5  bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
       <div className="flex justify-between ">
@@ -114,12 +116,12 @@ const OfferCard = ({ offer }) => {
         </div>
       </div>
       <div className="flex justify-between gap-4">
-        <div className="flex gap-1 items-center bg-tradeAshLight border border-tradeAshExtraLight w-max px-[8px] py-[5px] rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-          <FaStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-        </div>
-        <div className="flex text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+        <SmallButton variant="fadeoutPlus">
+          <FaStar className="" />
+        </SmallButton>
+        <SmallButton variant="fadeoutPlus" onClick={handleOfferClick}>
           <p>View Details</p>
-        </div>
+        </SmallButton>
       </div>
     </div>
   );

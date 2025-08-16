@@ -27,8 +27,7 @@ const MyOfferCard = ({ offer }) => {
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
-    navigateTo(`/offers/${offerId}`);
-
+    navigateTo(`/offers/user/${offerId}`);
   };
 
   if (!offer) return null;

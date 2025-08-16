@@ -175,7 +175,7 @@ const MarketMain = () => {
                   <p>Explore</p>
                 </div>
                 <div
-                  onClick={() => navigateTo("/offers/create")}
+                  onClick={() => navigateTo("/offers/user/create")}
                   className={`bg-tradeGreen text-black inline-block w-max px-[12px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                 >
                   <p>Create Offer</p>

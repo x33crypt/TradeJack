@@ -2,10 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
-import Marketplace from "./pages/Marketplace";
-import AboutOffer from "./pages/offer/user/AboutOffer";
+import Marketplace from "./pages/offer/public/Offers";
 import CreateOffer from "./pages/offer/user/CreateOffer";
-import Messages from "./pages/Messages";
 import Account from "./pages/settings/Account";
 import SignupUser from "./pages/SignupUser";
 import SignupSuccess from "./pages/SignupSuccess";
@@ -17,13 +15,12 @@ import EditEmail from "./pages/EditEmail";
 import EditMobile from "./pages/EditMobile";
 import EditAddress from "./pages/EditAddress";
 import SelectElement from "./components/SelectElement";
-import CreateOfferSummary from "./pages/offer/user/CreateOfferSummary";
-import MyOffer from "./pages/offer/mine/MyOffer";
-import EditMyOffer from "./pages/offer/mine/EditMyOffer";
+import CreateOfferSummary from "./pages/offer/user/CreateSummary";
+import MyOffer from "./pages/offer/user/Offers";
+import EditMyOffer from "./pages/offer/user/EditOffer";
 import ToastSuccess from "./components/toastCards/ToastSuccess";
 import ToastError from "./components/toastCards/ToastError";
-import AboutMyOffer from "./pages/offer/mine/AboutMyOffer";
-import SummaryMyOffer from "./pages/offer/mine/SummaryMyOffer";
+import SummaryMyOffer from "./pages/offer/user/EditSummary";
 import Wallet from "./pages/wallet/Wallet";
 import Transfer from "./pages/transfer/Transfer";
 import Deposit from "./pages/deposit/Deposit";
@@ -45,8 +42,9 @@ import ConfirmAccount from "./pages/manageAccounts/ConfirmAccount";
 import SuccessAccount from "./pages/manageAccounts/SuccessAccount";
 import Settings from "./pages/settings/Settings";
 import TradePartners from "./pages/tradePartners/TradePartners";
-import AboutTrader from "./pages/AboutTrader";
 import PartnerProfile from "./pages/tradePartners/PartnerProfile";
+import AboutPublicOffer from "./pages/offer/public/AboutPublicOffer";
+import AboutUserOffer from "./pages/offer/user/AboutUserOffer";
 
 const App = () => {
   return (
@@ -54,7 +52,6 @@ const App = () => {
       <SelectElement />
       <ToastSuccess />
       <ToastError />
-
       <TransactionDetails />
       <ProfileNav />
       <ConfirmAccount />
@@ -100,25 +97,18 @@ const App = () => {
         <Route path="/wallet/accounts/new" element={<AddNewAccount />} />
 
         {/* Marketplace & Offers */}
-        <Route path="/offers/marketplace" element={<Marketplace />} />
-        <Route path="/offers/create" element={<CreateOffer />} />
-        <Route path="/offers/create/summary" element={<CreateOfferSummary />} />
-        <Route path="/offers/myoffers" element={<MyOffer />} />
-        <Route path="/offers/myoffers/:id" element={<AboutMyOffer />} />
-        <Route path="/offers/myoffers/:id/edit" element={<EditMyOffer />} />
-        <Route
-          path="/offers/myoffers/:id/edit/summary"
-          element={<SummaryMyOffer />}
-        />
+        <Route path="/offers/explore" element={<Marketplace />} />
+        <Route path="/offers/explore/:id" element={<AboutPublicOffer />} />
+        <Route path="/offers/user" element={<MyOffer />} />
+        <Route path="/offers/user/:id" element={<AboutUserOffer />} />
+        <Route path="/offers/user/create" element={<CreateOffer />} />
+        <Route path="/offers/user/summary" element={<CreateOfferSummary />} />
+        <Route path="/offers/user/:id/edit" element={<EditMyOffer />} />
+        <Route path="/offers/user/:id/summary" element={<SummaryMyOffer />} />
 
         {/* Trade  */}
-        <Route path="trade/partners" element={<TradePartners />} />
-        <Route path="trade/partners/:username" element={<PartnerProfile />} />
-
-        <Route path="/offers/:id" element={<AboutOffer />} />
-
-        {/* Messaging */}
-        <Route path="/messages" element={<Messages />} />
+        <Route path="/partners" element={<TradePartners />} />
+        <Route path="/partners/:username" element={<PartnerProfile />} />
       </Routes>
     </>
   );

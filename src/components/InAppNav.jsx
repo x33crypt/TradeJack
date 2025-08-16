@@ -116,14 +116,14 @@ const InAppNav = () => {
             <p className="text-[13px] font-medium">Create Offer</p>
           </div>
           <div
-            onClick={() => navigateTo("/offers/marketplace")}
+            onClick={() => navigateTo("/offers/explore")}
             className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
           >
             <HiOutlineGlobe className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-medium">Browse Offers</p>
+            <p className="text-[13px] font-medium">Explore Offers</p>
           </div>
           <div
-            onClick={() => navigateTo("/trade/partners")}
+            onClick={() => navigateTo("/partners")}
             className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
           >
             <FaUserFriends className="lg:flex hidden text-[17px]" />
@@ -246,7 +246,7 @@ const InAppNav = () => {
 
                   <div
                     onClick={() => {
-                      navigateTo("/trade/partners");
+                      navigateTo("/partners");
                       setIsNavOption(false);
                     }}
                     className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "

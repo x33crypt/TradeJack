@@ -14,7 +14,7 @@ import { useUserOffer } from "@/context/userContext/OffersContext";
 import Feedbacks from "@/components/account/Feedbacks";
 import OfferCard from "@/components/cards/Mobile/OfferCard";
 
-const AboutOffer = () => {
+const AboutPublicOffer = () => {
   const { aboutOffer } = useUserOffer();
   const [offerDetails, setOfferDetails] = useState("");
   const [loading, setLoading] = useState(false);
@@ -47,4 +47,4 @@ const AboutOffer = () => {
   );
 };
 
-export default AboutOffer;
+export default AboutPublicOffer;

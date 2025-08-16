@@ -41,7 +41,7 @@ const PartnersNav = () => {
           {Array.from({ length: 10 }).map((_, index) => (
             <div
               key={index}
-              onClick={() => navigateTo(`/trade/partners/${"Sane"}`)} // Replace "Sane" with dynamic username
+              onClick={() => navigateTo(`/partners/${"Sane"}`)} // Replace "Sane" with dynamic username
               className="flex gap-[10px] items-center h-max w-full p-[12px] rounded-[15px] border border-tradeAshExtraLight bg-tradeAsh hover:bg-tradeAshLight transition-all duration-300 cursor-pointer"
             >
               <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max rounded-[10px]">

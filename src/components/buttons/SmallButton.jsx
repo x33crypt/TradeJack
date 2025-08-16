@@ -13,6 +13,12 @@ const SmallButton = ({
   const variants = {
     primary: ` ${"flex items-center gap-1 w-max px-[8px] py-[4px] text-[13px] text-black font-semibold bg-tradeGreen hover:bg-tradeGreen/80 active:bg-tradeGreen rounded-[6.5px] borde border-tradeAshExtraLight cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"}`,
 
+    fadeoutPlus: ` ${
+      disabled
+        ? "text-white active:text-tradeFadeWhite bg-tradeAshLight border  border-tradeGreen"
+        : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight  border border-tradeAshExtraLight "
+    }`,
+
     fadeout: ` ${
       disabled
         ? "text-white active:text-tradeFadeWhite bg-tradeAshLight border  border-tradeGreen"

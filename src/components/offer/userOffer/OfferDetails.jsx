@@ -42,16 +42,16 @@ const OfferDetails = () => {
                 50,568.89
               </p>
               <div className="flex items-center bg-tradeAsh text-tradeFadeWhite gap-1 border border-tradeAshExtraLight  h-max rounded-[8px] p-1 w-max cursor-pointer transition-all duration-300">
-                {/* <LiaChartLineSolid /> */}
-                <p className="text-xs font-semibold">
-                  0.22% above market price
-                </p>
+                <p className="text-xs font-semibold">+0.22% premium</p>
               </div>
             </div>
-            <p className="text-tradeFadeWhite text-[13px] font-semibold">
-              Exchange rate :{" "}
-              <span className="text-tradeGreen">NGN1,250/USD</span>
-            </p>
+            <div className="flex gap-1">
+              <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                Exchange Rate :{" "}
+                <span className="text-tradeGreen">NGN1,250/USD </span>{" "}
+                {/* (+0.22%) */}
+              </p>
+            </div>
           </div>
         </div>
         <div className="lg:min-w-[300px] flex flex-col gap-4 items-cente justify-between p-[15px] lg:border-l  border-t lg:border-t-0 border-tradeAshLight">
@@ -133,6 +133,29 @@ const OfferDetails = () => {
           <div className="flex flex-1 flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
             <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
               <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                Overview
+              </p>
+            </div>
+            <div className="w-full flex flex-col gap-1">
+              <div className="flex items-center justify-between">
+                <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                  Number of trades
+                </p>
+                <p className="text-white text-[13px]  font-semibold">1130</p>
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                  Trade Volume
+                </p>
+                <p className="text-white text-[13px] font-semibold">
+                  $34,000.00
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-1 flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+            <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+              <p className="text-[13px] text-tradeFadeWhite font-semibold">
                 Purchase limits
               </p>
             </div>
@@ -170,29 +193,6 @@ const OfferDetails = () => {
                 </p>
                 <p className="text-white text-[13px] font-semibold">
                   1Hrs 30Mins
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-1 flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
-            <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-              <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                Overview
-              </p>
-            </div>
-            <div className="w-full flex flex-col gap-1">
-              <div className="flex items-center justify-between">
-                <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                  Number of trades
-                </p>
-                <p className="text-white text-[13px]  font-semibold">1130</p>
-              </div>
-              <div className="flex items-center justify-between">
-                <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                  Trade Volume
-                </p>
-                <p className="text-white text-[13px] font-semibold">
-                  $34,000.00
                 </p>
               </div>
             </div>

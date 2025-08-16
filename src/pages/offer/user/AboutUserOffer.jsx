@@ -15,7 +15,7 @@ import { useUserOffer } from "@/context/userContext/OffersContext";
 import StateHandler from "@/components/stateHandler/StateHandler";
 import { useNavigate } from "react-router-dom";
 
-const AboutMyOffer = () => {
+const AboutUserOffer = () => {
   const { id } = useParams();
   const { loading, error } = useFetchAboutOffers(id);
 
@@ -33,40 +33,36 @@ const AboutMyOffer = () => {
 
     navigateTo(`/offers/myoffers/${id}/edit`);
   };
-
   console.log(aboutOffer);
-
   return (
     <>
       <InAppNav />
-      <StateHandler loading={loading} error={error}>
-        <div className="md:pt-[64px] pt-[60px] lg:px-[2%] md:px-[2.5%]  min-h-svh flex flex-col gap-[10px] bg-black ">
-          <div className="flex lg:flex-row flex-col gap-[10px] ">
-            <OfferDetails aboutOffer={aboutOffer} />
-            <LimitMargin aboutOffer={aboutOffer} />
-          </div>
-
-          <div className="flex-1 flex lg:flex-row flex-col gap-[10px]">
-            <OfferTag aboutOffer={aboutOffer} />
-            <OfferInstruction />
-            <OfferStats />
-          </div>
-
-          <div className="px-[15px] md:p-[15px] lg:px-0 ">
-            <Button onClick={handleEdit} variant="primary">
-              Edit Offer
-            </Button>
-          </div>
-
-          <div className="flex lg:flex-row flex-col gap-[10px] ">
-            <OfferPerformance />
-            <OfferFeedback />
-          </div>
+      <div className="md:pt-[64px] pt-[60px] lg:px-[2%] md:px-[2.5%]  min-h-svh flex flex-col gap-[10px] bg-black ">
+        <div className="flex lg:flex-row flex-col gap-[10px] ">
+          <OfferDetails aboutOffer={aboutOffer} />
+          <LimitMargin aboutOffer={aboutOffer} />
         </div>
-      </StateHandler>
+
+        <div className="flex-1 flex lg:flex-row flex-col gap-[10px]">
+          <OfferTag aboutOffer={aboutOffer} />
+          <OfferInstruction />
+          <OfferStats />
+        </div>
+
+        <div className="px-[15px] md:p-[15px] lg:px-0 ">
+          <Button onClick={handleEdit} variant="primary">
+            Edit Offer
+          </Button>
+        </div>
+
+        <div className="flex lg:flex-row flex-col gap-[10px] ">
+          <OfferPerformance />
+          <OfferFeedback />
+        </div>
+      </div>
       <Footer />
     </>
   );
 };
 
-export default AboutMyOffer;
+export default AboutUserOffer;

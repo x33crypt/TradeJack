@@ -14,6 +14,7 @@ import { FaBusinessTime } from "react-icons/fa6";
 import { PiClockCountdownBold } from "react-icons/pi";
 import { monthDate } from "@/utils/monthDate";
 import { time } from "@/utils/time";
+import SmallButton from "@/components/buttons/SmallButton";
 
 // verified user icon
 import { TiBusinessCard } from "react-icons/ti";
@@ -22,7 +23,7 @@ const MarketCard = ({ offer }) => {
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
-    navigateTo(`/offers/${offerId}`);
+    navigateTo(`/offers/explore/${offerId}`);
   };
 
   return (
@@ -136,7 +137,7 @@ const MarketCard = ({ offer }) => {
 
             <div className="flex gap-1 items-center">
               <p className="text-xs font-semibold text-tradeFadeWhite">
-                0.22% above market price
+                0.22% premium
               </p>
               <HiArrowCircleUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
             </div>
@@ -156,15 +157,13 @@ const MarketCard = ({ offer }) => {
               </div>
             </div>
             <div className="flex gap-[5px]">
-              <div className="flex gap-1 items-center bg-tradeAshLight border border-tradeAshExtraLight w-max px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                <FaStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-              </div>
-              <div
-                onClick={handleOfferClick}
-                className="flex text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-              >
-                <p>View Details</p>
-              </div>
+              <SmallButton variant="fadeoutPlus">
+                <FaStar className="" />
+              </SmallButton>
+
+              <SmallButton variant="fadeoutPlus" onClick={handleOfferClick}>
+                View Details
+              </SmallButton>
             </div>
           </div>
         </div>
@@ -207,12 +206,9 @@ const MarketCard = ({ offer }) => {
               </div>
             </div>
           </div>
-          <div
-            onClick={handleOfferClick}
-            className="flex text-tradeFadeWhite bg-tradeAshLight border border-tradeAshExtraLight w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-          >
+          <SmallButton variant="fadeoutPlus" onClick={handleOfferClick}>
             <p>View Details</p>
-          </div>
+          </SmallButton>
         </div>
 
         <div className="flex flex-col justify-between items-end">
@@ -253,12 +249,13 @@ const MarketCard = ({ offer }) => {
             </div>
           </div>
           <div className="flex gap-[5px]">
-            <div className="flex gap-1 items-center bg-tradeAshLight border border-tradeAshExtraLight w-max px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <FaStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-            </div>
-            <div className="flex text-black bg-tradeGreen w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <p>Trade</p>
-            </div>
+            <SmallButton variant="fadeoutPlus">
+              <FaStar className="" />
+            </SmallButton>
+
+            <SmallButton variant="primary">
+              <p>Initiate Trade</p>
+            </SmallButton>
           </div>
         </div>
       </div>
