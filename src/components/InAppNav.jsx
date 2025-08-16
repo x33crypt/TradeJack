@@ -109,7 +109,7 @@ const InAppNav = () => {
             <p className="text-[13px] font-medium">Wallet</p>
           </div>
           <div
-            onClick={() => navigateTo("/offers/create")}
+            onClick={() => navigateTo("/offers/user/create")}
             className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
           >
             <HiViewGridAdd className="lg:flex hidden text-[16px]" />

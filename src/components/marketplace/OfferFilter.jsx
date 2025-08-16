@@ -9,7 +9,6 @@ import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import { PiToggleLeftFill } from "react-icons/pi";
 import { PiToggleRightFill } from "react-icons/pi";
 
-
 const OfferFilter = () => {
   const { filter, setFilter } = usePublicOffers();
   const { serviceTypes, fullData } = useServices();
@@ -346,7 +345,9 @@ const OfferFilter = () => {
             <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[10px]">
               <div
                 onClick={showActiveTraders}
-                className="flex  justify-between items-center p-[12px] border border-dashed border-tradeAshLight text-tradeFadeWhite hover:text-white rounded-[15px] cursor-pointer transition-all duration-300"
+                className={`${
+                  filter?.activeTraders ? "text-white" : "text-tradeFadeWhite"
+                }  flex justify-between items-center p-[12px] border border-dashed border-tradeAshLight hover:text-white rounded-[15px] cursor-pointer transition-all duration-300`}
               >
                 <p className="font-semibold text-[13px]">
                   Recently active traders
@@ -362,7 +363,9 @@ const OfferFilter = () => {
               </div>
               <div
                 onClick={showVerifiedOffers}
-                className="flex  justify-between items-center p-[12px] border border-dashed border-tradeAshLight text-tradeFadeWhite hover:text-white rounded-[15px] cursor-pointer transition-all duration-300"
+                className={`${
+                  filter?.verifiedOffers ? "text-white" : "text-tradeFadeWhite"
+                }  flex justify-between items-center p-[12px] border border-dashed border-tradeAshLight hover:text-white rounded-[15px] cursor-pointer transition-all duration-300`}
               >
                 <p className="font-semibold text-[13px]">Verified offers</p>
 

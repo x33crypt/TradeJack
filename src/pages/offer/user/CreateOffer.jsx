@@ -893,7 +893,7 @@ const CreateOffer = () => {
                 <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                   <div className="flex flex-col gap-[10px] w-full">
                     <p className="text-tradeFadeWhite text-xs font-medium">
-                      Payment Window (Vendor)
+                      Release Window
                     </p>
 
                     <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
@@ -956,7 +956,7 @@ const CreateOffer = () => {
                 <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                   <div className="flex flex-col gap-[10px] w-full">
                     <p className="text-tradeFadeWhite text-xs font-medium">
-                      Payment Window (Traders)
+                      Transfer Window
                     </p>
 
                     <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">

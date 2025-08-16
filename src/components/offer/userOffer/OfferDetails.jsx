@@ -183,13 +183,13 @@ const OfferDetails = () => {
             <div className="w-full flex flex-col gap-1">
               <div className="flex items-center justify-between">
                 <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                  Sender
+                  Transfer
                 </p>
                 <p className="text-white text-[13px]  font-semibold">30Mins</p>
               </div>
               <div className="flex items-center justify-between">
                 <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                  Receiver
+                  Release
                 </p>
                 <p className="text-white text-[13px] font-semibold">
                   1Hrs 30Mins
