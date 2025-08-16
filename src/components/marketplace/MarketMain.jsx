@@ -4,7 +4,9 @@ import OfferFilter from "./OfferFilter";
 import { BiSolidBinoculars } from "react-icons/bi";
 import LockByScroll from "../LockByScroll";
 import { useNavigate } from "react-router-dom";
+import { RiFilter3Line } from "react-icons/ri";
 import { useFetchPublicOffers } from "@/hooks/useFetchPublicOffers";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Loading from "../Loading";
 import NetworkError from "../NetworkError";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
@@ -236,7 +238,7 @@ const MarketMain = () => {
             )}
           </div>
 
-          <div className="md:sticky bottom-0 left-0 right-0 h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+          <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
             <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
               <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
                 <SmallButton variant="outline">
@@ -254,7 +256,7 @@ const MarketMain = () => {
                 <SmallButton variant="outline">
                   {pagination?.hasNextPage ? (
                     <div onClick={handleNext}>
-                      {loadingNext ? (
+                      {loadingMore ? (
                         <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
                       ) : (
                         <p>Load more</p>
