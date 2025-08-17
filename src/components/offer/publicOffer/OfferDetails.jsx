@@ -35,11 +35,11 @@ const OfferDetails = ({ loading, aboutOffer }) => {
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px]">
                 <div className="flex lg:flex-row flex-col w-full border-b border-tradeAshLight">
-                  <div className="flex-1 flex p-[15px] w-full flex-col gap-[20px]">
+                  <div className="flex-1 flex p-[15px] w-full flex-col gap-[5px]">
                     <div className="flex ">
-                      <p className="text-white text-[13px] font-semibold">
+                      <p className="text-white text-sm font-semibold">
                         {offer?.serviceType} /{" "}
-                        <span className="text-tradeOrange text-[13px] font-semibold">
+                        <span className="text-tradeOrange">
                           {offer?.service}
                         </span>
                       </p>
