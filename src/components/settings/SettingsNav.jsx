@@ -21,58 +21,64 @@ const SettingsNav = () => {
   return (
     <>
       {/* Desktop Nav */}
-      <div className="hidden lg:flex  sticky top-[64px] max-h-max border border-t-0 border-tradeAshLight w-[280px] gap-[10px] flex-col">
+      <div className="lg:flex hidden flex-1 md:sticky top-[64px] md:max-h-max  md:border border-t-0 border-tradeAshLight flex-col">
         <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
           <p className="text-lg font-[700] text-white ">Settings</p>
         </div>
-        <div className="flex flex-col gap-[10px] px-[15px]">
-          {/* <div
-            className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black  transition-all duration-300 cursor-pointer"
-            onClick={() => navigateTo("/account")}
-          >
-            <FaUser className="text-[17px]" />
-            <p className="text-[13px] font-[500]"> Account</p>
-          </div> */}
 
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <PiPasswordBold className="text-[17px]" />
-            <p className="text-[13px] font-[500]"> Change Password</p>
-          </div>
+        <div className="relative gap-[10px] flex flex-col md:h-[450px] h-full md:overflow-y-auto custom-scrollbar">
+          <div className="flex flex-col gap-[10px] px-[15px] py-[12px]">
+            <div
+              className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black  transition-all duration-300 cursor-pointer"
+              onClick={() => navigateTo("/account")}
+            >
+              <FaUser className="text-[17px]" />
+              <p className="text-[13px] font-[500]"> Account</p>
+            </div>
+            <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+              <PiPasswordBold className="text-[17px]" />
+              <p className="text-[13px] font-[500]"> Change Password</p>
+            </div>
+            <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+              <Si2Fas className="text-[17px]" />
+              <p className="text-[13px] font-[500]">
+                Two-Factor Authentication
+              </p>
+            </div>
+            <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+              <GrSecure className="text-[17px]" />
+              <p className="text-[13px] font-[500]"> Transaction Pin</p>
+            </div>
+            <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+              <MdOutlinePrivacyTip className="text-[17px]" />
+              <p className="text-[13px] font-[500]"> Privacy & Permissions</p>
+            </div>
+            <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+              <IoNotifications className="text-[17px]" />
+              <p className="text-[13px] font-[500]"> Notifications</p>
+            </div>
+            <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+              <MdManageAccounts className="text-[17px]" />
+              <p className="text-[13px] font-[500]"> Account Management</p>
+            </div>
 
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <Si2Fas className="text-[17px]" />
-            <p className="text-[13px] font-[500]">Two-Factor Authentication</p>
+            <div
+              onClick={() => navigateTo("/wallet/accounts")}
+              className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
+            >
+              <FaLink className="text-[17px]" />
+              <p className="text-[13px] font-[500]">Linked Accounts</p>
+            </div>
           </div>
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <GrSecure className="text-[17px]" />
-            <p className="text-[13px] font-[500]"> Transaction Pin</p>
-          </div>
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <MdOutlinePrivacyTip className="text-[17px]" />
-            <p className="text-[13px] font-[500]"> Privacy & Permissions</p>
-          </div>
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <IoNotifications className="text-[17px]" />
-            <p className="text-[13px] font-[500]"> Notifications</p>
-          </div>
-
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <MdManageAccounts className="text-[17px]" />
-            <p className="text-[13px] font-[500]"> Account Management</p>
-          </div>
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <FaLink className="text-[17px]" />
-            <p className="text-[13px] font-[500]">Linked Accounts</p>
-          </div>
-        </div>
-        <div className="flex flex-col px-[15px] py-[12px] gap-[10px] border-t border-tradeAshLight">
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border-b hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <FaQuestionCircle className="text-[17px]" />
-            <p className="text-[13px] font-[500]">FAQs</p>
-          </div>
-          <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
-            <MdOutlineFeedback className="text-[17px]" />
-            <p className="text-[13px] font-[500]">Feedbacks</p>
+          <div className="flex flex-col px-[15px] py-[12px] gap-[10px] border-t border-tradeAshLight">
+            <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border-b hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+              <FaQuestionCircle className="text-[17px]" />
+              <p className="text-[13px] font-[500]">FAQs</p>
+            </div>
+            <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
+              <MdOutlineFeedback className="text-[17px]" />
+              <p className="text-[13px] font-[500]">Feedbacks</p>
+            </div>
           </div>
         </div>
       </div>

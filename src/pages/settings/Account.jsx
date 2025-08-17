@@ -20,7 +20,7 @@ const Account = () => {
     <>
       <MarketTopNav />
       <div className=" md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
-        <div className="hidden lg:flex">
+        <div className="hidden lg:flex lg:w-[300px]">
           <SettingsNav />
         </div>
         <div className="flex-1 flex flex-col gap-[5px]">

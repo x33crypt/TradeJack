@@ -45,7 +45,7 @@ const PartnersNav = () => {
               className="flex gap-[10px] items-center h-max w-full p-[12px] rounded-[15px] border border-tradeAshExtraLight bg-tradeAsh hover:bg-tradeAshLight transition-all duration-300 cursor-pointer"
             >
               <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max rounded-[10px]">
-                <FaUser className="text-tradeFadeWhite md:text-[15px] text-[20px]" />
+                <FaUser className="text-tradeFadeWhite md:text-[20px] text-[25px]" />
               </div>
 
               <div className="flex flex-col gap-1 w-full">
@@ -53,7 +53,7 @@ const PartnersNav = () => {
                   <p className="text-white font-semibold text-sm">@Sane</p>
                   <div className="flex gap-1 items-center">
                     <FaCircle className="flex text-tradeGreen text-[8px] flex-shrink-0" />
-                    <p className="md:hidden text-xs font-medium text-white">
+                    <p className=" text-xs font-medium text-white">
                       Online
                     </p>
                   </div>
@@ -63,6 +63,9 @@ const PartnersNav = () => {
                   <p className="text-tradeFadeWhite font-semibold text-xs">
                     25 Trades
                   </p>
+                  <p className="text-tradeFadeWhite font-semibold text-xs">
+                    13/2/2023
+                  </p>
                 </div>
               </div>
             </div>
@@ -70,7 +73,7 @@ const PartnersNav = () => {
         </div>
 
         {/* Bottom Filter */}
-        <div className="md:sticky bottom-0 left-0 right-0 h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+        <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
           <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
             <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
               <SmallButton variant="outline">

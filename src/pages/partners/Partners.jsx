@@ -4,21 +4,19 @@ import React from "react";
 import PartnersNav from "@/components/tradePartners/PartnersNav";
 import About from "@/components/tradePartners/About";
 
-const TradePartners = () => {
+const Partners = () => {
   return (
     <>
       <InAppNav />
       <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black">
-        <div className="flex md:w-[300px] flex-1 md:flex-none">
+        <div className="flex lg:w-[300px] w-full">
           <PartnersNav />
         </div>
-        <div className="md:flex hidden flex-1 gap-[5px] ">
-          <About />
-        </div>
+        <div className="md:flex hidden flex-1 gap-[5px]"></div>
       </div>
       <Footer />
     </>
   );
 };
 
-export default TradePartners;
+export default Partners;

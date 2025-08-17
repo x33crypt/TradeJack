@@ -4,7 +4,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { BsPinAngle } from "react-icons/bs";
 import { BsChatText } from "react-icons/bs";
 
-const MessageSideNav = () => {
+const MessageNav = () => {
   const navigateTo = useNavigate();
   return (
     <div className="lg:flex flex-col hidden w-[300px] max-h-svh pt-[60px]">
@@ -73,4 +73,4 @@ const MessageSideNav = () => {
   );
 };
 
-export default MessageSideNav;
+export default MessageNav;

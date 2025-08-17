@@ -12,11 +12,11 @@ import { MdOutlineStickyNote2 } from "react-icons/md";
 import { IoMdClose } from "react-icons/io";
 import { FaShieldAlt } from "react-icons/fa";
 import { BsExclamationTriangleFill } from "react-icons/bs";
-import MessageSideNav from "./MessageSideNav";
+import MessageSideNav from "./MessageNav";
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { RiShare2Line } from "react-icons/ri";
 
-const Messages = () => {
+const Message = () => {
   return (
     <>
       <InAppNav />
@@ -84,4 +84,4 @@ const Messages = () => {
   );
 };
 
-export default Messages;
+export default Message;

@@ -1,7 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Landing from "./pages/Landing";
-import Dashboard from "./pages/Dashboard";
 import Marketplace from "./pages/offer/public/Offers";
 import CreateOffer from "./pages/offer/user/CreateOffer";
 import Account from "./pages/settings/Account";
@@ -32,8 +30,6 @@ import SuccessWithdraw from "./pages/withdraw/SuccessWithdraw";
 import ConfirmAccount from "./pages/manageAccounts/ConfirmAccount";
 import SuccessAccount from "./pages/manageAccounts/SuccessAccount";
 import Settings from "./pages/settings/Settings";
-import TradePartners from "./pages/tradePartners/TradePartners";
-import PartnerProfile from "./pages/tradePartners/PartnerProfile";
 import AboutPublicOffer from "./pages/offer/public/AboutPublicOffer";
 import AboutUserOffer from "./pages/offer/user/AboutUserOffer";
 import Logout from "./pages/auth/Logout";
@@ -43,8 +39,12 @@ import EditUsername from "./pages/settings/EditUsername";
 import EditFullname from "./pages/settings/EditFullname";
 import SigninUser from "./pages/auth/SigninUser";
 import SignupUser from "./pages/auth/SignupUser";
-import SignupSuccess from "./pages/SignupSuccess";
 import SelectElement from "./components/others/SelectElement";
+import Landing from "./pages/landing/Landing";
+import Dashboard from "./pages/dashboard/Dashboard";
+import SignupSuccess from "./pages/auth/SignupSuccess";
+import Partners from "./pages/partners/Partners";
+import PartnersProfile from "./pages/partners/PartnersProfile";
 
 const App = () => {
   return (
@@ -107,8 +107,8 @@ const App = () => {
         <Route path="/offers/user/:id/summary" element={<SummaryMyOffer />} />
 
         {/* Trade  */}
-        <Route path="/partners" element={<TradePartners />} />
-        <Route path="/partners/:username" element={<PartnerProfile />} />
+        <Route path="/partners" element={<Partners />} />
+        <Route path="/partners/:username" element={<PartnersProfile />} />
       </Routes>
     </>
   );

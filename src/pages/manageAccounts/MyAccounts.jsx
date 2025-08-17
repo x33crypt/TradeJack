@@ -1,5 +1,6 @@
 import Footer from "@/components/others/Footer";
 import InAppNav from "@/components/others/InAppNav";
+import SettingsNav from "@/components/settings/SettingsNav";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import React, { useEffect } from "react";
 import Button from "@/components/buttons/Button";
@@ -164,12 +165,14 @@ const MyAccounts = () => {
     <>
       <InAppNav />
       <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
-        <DasHboardMenu />
+        <div className="hidden lg:flex lg:w-[300px]">
+          <SettingsNav />
+        </div>
         <div className="flex-1 flex flex-col md:flex-row gap-[5px]">
           {/*Linked Account */}
           <div className="flex flex-col md:flex-1 h-full md:border border-neutral-800">
             <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-              <p className="text-lg font-[700] text-white ">Manage Accounts</p>
+              <p className="text-lg font-[700] text-white ">Linked Accounts</p>
             </div>
 
             <div className="flex flex-1">
@@ -277,7 +280,7 @@ const MyAccounts = () => {
         </div>
       </div>
 
-      {/* <Footer big={"flex"} small={"hidden"} /> */}
+      <Footer />
 
       {isDelete ? (
         <div>

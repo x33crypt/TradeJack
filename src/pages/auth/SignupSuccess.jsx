@@ -1,9 +1,9 @@
 import React from "react";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import useSafeNavigate from "../components/others/SafeNavigation";
+import { useNavigate } from "react-router-dom";
 
 const SignupSuccess = () => {
-  const navigateTo = useSafeNavigate();
+  const navigateTo = useNavigate();
 
   return (
     <div className="z-50 fixed inset-0 bg-black min-h-svh flex p-[35px] justify-center items-center">

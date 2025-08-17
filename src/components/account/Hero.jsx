@@ -104,7 +104,7 @@ const Hero = ({ Heading, loading, profile }) => {
           </div>
 
           <div className="flex flex-col gap-2 md:justify-center justify-start">
-            <div className="md:flex hidden text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            <div className="md:flex hidden text-white text-[20px] p-2 w-max h-max bg-tradeAshLight border border-tradeAshExtraLight rounded-[10px]">
               <RiShare2Fill />
             </div>
             <div className="flex items-center text-tradeGreen border border-tradeAshExtraLight text-[20px] p-2 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
