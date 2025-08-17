@@ -1,48 +1,50 @@
 // utils/http/api.js
 import axios from "axios";
 
-// Create Axios instance
+// Create Axios instance with defaults
 const api = axios.create({
   baseURL:
     import.meta.env.VITE_API_URL || "https://tradejack.onrender.com/api/v1",
   withCredentials: true,
-  headers: {
-    "Content-Type": "application/json",
-  },
+  headers: { "Content-Type": "application/json" },
 });
 
-// Store CSRF token and redirect flag
-let csrfToken = null;
-let isRedirecting = false;
+// --- State ---
+let csrfToken = null; // Store CSRF token for safe requests
+let isRedirecting = false; // Prevent duplicate redirects
 
-// Helper: Fetch CSRF token from cookies
+// --- Helpers ---
+// Read CSRF token from cookie
 const getCsrfTokenFromCookies = () => {
   try {
-    const cookies = document.cookie.split(";");
-    for (let cookie of cookies) {
-      const [name, value] = cookie.trim().split("=");
-      if (name === "XSRF-TOKEN") return value;
-    }
-    return null;
-  } catch (error) {
-    console.error("Error reading XSRF-TOKEN cookie:", error);
+    return (
+      document.cookie
+        .split(";")
+        .map((c) => c.trim().split("="))
+        .find(([name]) => name === "XSRF-TOKEN")?.[1] || null
+    );
+  } catch {
     return null;
   }
 };
 
-// Helper: Clear session-related cookies
+// Clear all session data (but don’t clear localStorage because we need lastRoute)
 const clearSession = () => {
   csrfToken = null;
+
+  // Clear cookies
   document.cookie = "XSRF-TOKEN=; Max-Age=0; path=/;";
   document.cookie = "token=; Max-Age=0; path=/;";
-  localStorage.clear();
+
+  // Clear session storage
   sessionStorage.clear();
 };
 
-// ✅ Response Interceptor
+// --- Response Interceptor ---
+// Handle CSRF tokens, errors, and session expiration
 api.interceptors.response.use(
   (response) => {
-    // Store CSRF token from headers or cookies on GET
+    // If it's a GET, refresh CSRF token from headers/cookies
     if (response.config.method === "get") {
       const newCsrfToken =
         response.headers["x-csrf-token"] || getCsrfTokenFromCookies();
@@ -50,42 +52,58 @@ api.interceptors.response.use(
     }
     return response;
   },
-  (error) => {
+  async (error) => {
     const { response } = error;
 
     if (response) {
-      const { status, data } = response;
+      const { status, data, config } = response;
       let message = data?.error?.message || "An error occurred";
 
+      // --- Handle 401 Unauthorized ---
       if (status === 401 && !isRedirecting) {
-        isRedirecting = true;
-        clearSession();
+        if (!config.url.includes("/auth/refresh-token")) {
+          try {
+            // Try refresh first
+            await api.post("/auth/refresh-token");
+            return api(config); // retry original request
+          } catch {
+            // ❌ Refresh failed → session expired
+            isRedirecting = true;
 
-        const errorResponse = {
-          success: false,
-          status,
-          message: "Session expired. Please log in again.",
-        };
+            // ✅ Save last route before clearing session
+            const lastRoute = window.location.pathname + window.location.search;
+            localStorage.setItem("lastRoute", lastRoute);
 
-        setTimeout(() => {
-          window.location.href = "/signin?sessionExpired=true";
-        }, 100);
+            clearSession();
 
-        return Promise.reject(errorResponse);
-      } else if (status === 403 && data?.error?.code === "ERR_CSRF_MISSING") {
+            // ✅ Replace history so user can’t "back" to old route
+            window.history.replaceState({}, "", "/signin?sessionExpired=true");
+
+            // ✅ Redirect to signin
+            setTimeout(() => {
+              window.location.href = "/signin?sessionExpired=true";
+            }, 50);
+
+            return Promise.reject({
+              success: false,
+              status,
+              message: "Session expired. Please log in again.",
+            });
+          }
+        }
+      }
+
+      // --- Handle other errors ---
+      if (status === 403 && data?.error?.code === "ERR_CSRF_MISSING") {
         message = "CSRF token missing or invalid. Please refresh the page.";
       } else if (status === 429) {
         message = "Too many requests. Please slow down.";
       }
 
-      return Promise.reject({
-        success: false,
-        status,
-        message,
-        data,
-      });
+      return Promise.reject({ success: false, status, message, data });
     }
 
+    // --- Network error fallback ---
     return Promise.reject({
       success: false,
       message: "Network Error. Please check your connection.",
@@ -94,7 +112,8 @@ api.interceptors.response.use(
   }
 );
 
-// ✅ Request Interceptor
+// --- Request Interceptor ---
+// Add CSRF token to unsafe requests
 api.interceptors.request.use((config) => {
   const exemptRoutes = [
     "/api/v1/auth/login",

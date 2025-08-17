@@ -33,16 +33,32 @@ const SigninUser = () => {
   };
   const navigateTo = useNavigate();
 
+  // Example signin handler
   const handleSignin = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
+      // Call your signin API wrapper
       const result = await signin(signinDetails, setDashboard);
 
       if (result.success) {
         console.log("Signin successful:", result);
-        navigateTo("/dashboard");
+
+        // ✅ Check if there’s a saved lastRoute (from expired session)
+        const savedRoute = localStorage.getItem("lastRoute");
+
+        // Clear it after use (safe even if null)
+        localStorage.removeItem("lastRoute");
+
+        // ✅ Decide where to go
+        const redirectTo = savedRoute || "/dashboard"; // fresh login → dashboard
+
+        // Replace history so signin isn’t in backstack
+        window.history.replaceState({}, "", redirectTo);
+
+        // Navigate (depends on your router — Next.js/React Router)
+        navigateTo(redirectTo);
       } else {
         console.error("Signin error:", result.error);
         setToast({
