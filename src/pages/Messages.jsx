@@ -1,6 +1,6 @@
 import DashSideNav from "@/components/dashboard/DashSideNav";
 
-import InAppNav from "@/components/InAppNav";
+import InAppNav from "@/components/others/InAppNav";
 import React from "react";
 import landingImg4 from "./../assets/landingImg4.JPG";
 import { GoDotFill } from "react-icons/go";

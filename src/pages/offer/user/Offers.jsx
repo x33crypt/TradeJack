@@ -1,19 +1,19 @@
 import MyOfferCard from "@/components/cards/Both/MyOfferCard";
-import Footer from "@/components/Footer";
-import InAppNav from "@/components/InAppNav";
+import Footer from "@/components/others/Footer";
+import InAppNav from "@/components/others/InAppNav";
 import React, { useEffect, useState, useRef } from "react";
-import { useFetchUserOffers } from "@/hooks/useFetchOffers";
+import { useFetchUserOffers } from "@/hooks/others/useFetchOffers";
 import { useUserOffer } from "@/context/userContext/OffersContext";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { useNavigate } from "react-router-dom";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
-import Loading from "@/components/Loading";
+import Loading from "@/components/others/Loading";
 import SmallButton from "@/components/buttons/SmallButton";
 import { FaSort } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { RiLoader4Fill } from "react-icons/ri";
-import NetworkError from "@/components/NetworkError";
+import NetworkError from "@/components/others/NetworkError";
 import { BiFileBlank } from "react-icons/bi";
 
 const MyOffer = () => {

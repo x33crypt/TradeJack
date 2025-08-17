@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LockByScroll from "@/components/LockByScroll";
+import LockByScroll from "@/components/others/LockByScroll";
 import Button from "@/components/buttons/Button";
 import { IoClose } from "react-icons/io5";
 import { toDecimal } from "@/utils/toDecimal";

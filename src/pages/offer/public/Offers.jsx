@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import InAppNav from "@/components/InAppNav";
+import InAppNav from "@/components/others/InAppNav";
 import MarketMain from "@/components/marketplace/MarketMain";
-import Footer from "@/components/Footer";
+import Footer from "@/components/others/Footer";
 import OfferFilter from "@/components/marketplace/OfferFilter";
 import axios from "axios";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";

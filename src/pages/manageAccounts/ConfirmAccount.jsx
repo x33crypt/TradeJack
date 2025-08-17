@@ -1,11 +1,11 @@
 import React from "react";
-import LockByScroll from "@/components/LockByScroll";
+import LockByScroll from "@/components/others/LockByScroll";
 import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { IoClose } from "react-icons/io5";
 import { linkBankAccount } from "@/utils/wallet/linkBank";
 import { useToast } from "@/context/otherContext/ToastContext";
 import Button from "@/components/buttons/Button";
-import { useFetchLinkedBanks } from "@/hooks/useFetchLinkedBanks";
+import { useFetchLinkedBanks } from "@/hooks/userHooks/useFetchLinkedBanks";
 import { useNavigate } from "react-router-dom";
 
 const ConfirmAccount = () => {

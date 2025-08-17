@@ -1,10 +1,10 @@
-import Footer from "@/components/Footer";
-import MarketTopNav from "@/components/InAppNav";
+import Footer from "@/components/others/Footer";
+import MarketTopNav from "@/components/others/InAppNav";
 import React from "react";
 import PersonalInfo from "@/components/account/Profile";
 import HeroEdit from "@/components/account/HeroEdit";
 import { useProfile } from "@/context/userContext/ProfileContext";
-import { useFetchProfile } from "@/hooks/useFetchProfile";
+import { useFetchProfile } from "@/hooks/userHooks/useFetchProfile";
 import Stats from "@/components/account/Stats";
 import Achievements from "@/components/account/Achievements";
 import SettingsNav from "@/components/settings/SettingsNav";

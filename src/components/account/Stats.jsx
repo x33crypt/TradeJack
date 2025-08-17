@@ -1,12 +1,12 @@
 import React from "react";
 import { MdThumbUpAlt, MdThumbDownAlt, MdOutlineGppGood } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
-import Loading from "@/components/Loading";
+import Loading from "@/components/others/Loading";
 import { TbActivityHeartbeat } from "react-icons/tb";
 import { MdOutlineSafetyCheck } from "react-icons/md";
 import { RiDonutChartFill } from "react-icons/ri";
 import { ImBlocked } from "react-icons/im";
-import NetworkError from "../NetworkError";
+import NetworkError from "../others/NetworkError";
 
 const Stats = ({ loading, profile }) => {
   return (

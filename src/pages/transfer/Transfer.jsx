@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer";
-import InAppNav from "@/components/InAppNav";
+import Footer from "@/components/others/Footer";
+import InAppNav from "@/components/others/InAppNav";
 import React, { useEffect } from "react";
 import Button from "@/components/buttons/Button";
 import { toUSD } from "@/utils/toUSD";
@@ -10,9 +10,9 @@ import { useTransferContext } from "@/context/userContext/TransferContext";
 import RecentTransfer from "@/components/wallet/RecentTransfer";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import { useBalance } from "@/context/userContext/BalanceContext";
-import { useFetchBalance } from "@/hooks/useFetchBalance";
+import { useFetchBalance } from "@/hooks/userHooks/useFetchBalance";
 import { IoWalletOutline } from "react-icons/io5";
-import { useFetchTransferTxt } from "@/hooks/Transaction/useFetchTransferTxt";
+import { useFetchTransferTxt } from "@/hooks/userHooks/useFetchTransferTxt";
 import WalletBalance from "@/components/wallet/WalletBalance";
 
 const Transfer = () => {

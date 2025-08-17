@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import api from "@/utils/http/api";
-import { useUserOffer } from "@/context/userContext/OffersContext";
+import { usePublicOffers } from "@/context/publicContext/OffersContext";
 
-export function useFetchAboutOffers(id) {
-  const { aboutOffer, setAboutOffer } = useUserOffer();
+export function useFetchAboutOffers() {
+  const { aboutOffer, setAboutOffer } = usePublicOffers();
+  const { id } = aboutOffer;
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const lastFetchedId = useRef(null);
@@ -16,7 +17,10 @@ export function useFetchAboutOffers(id) {
       try {
         const response = await api.get(`/service-provider/offers/${id}`);
         if (response?.status === 200 && response?.data?.success) {
-          setAboutOffer(response.data.data);
+          setAboutOffer((prev) => ({
+            ...prev,
+            data: response.data.data,
+          }));
           lastFetchedId.current = id; // ✅ Update last fetched id
         } else {
           setError("Unexpected response format");
@@ -31,7 +35,7 @@ export function useFetchAboutOffers(id) {
     };
 
     fetchAboutOffers();
-  }, [id, aboutOffer]);
+  }, [id]);
 
   return { loading, error };
 }

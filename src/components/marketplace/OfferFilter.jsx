@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Button from "@/components/buttons/Button";
-import { useServices } from "@/hooks/useServices";
-import { currencies } from "@/hooks/useCurrencies";
+import { useServices } from "@/hooks/others/useServices";
+import { currencies } from "@/hooks/others/useCurrencies";
 import { IoClose } from "react-icons/io5";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";

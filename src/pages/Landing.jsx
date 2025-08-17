@@ -1,12 +1,12 @@
 import React from "react";
-import Nav from "../components/Nav";
+import Nav from "@/components/others/Nav";
 import Layer1 from "../components/landingPage/Layer1";
 import Layer2 from "../components/landingPage/Layer2";
 import Layer3 from "../components/landingPage/Layer3";
 import Layer4 from "../components/landingPage/Layer4";
 import Layer5 from "../components/landingPage/Layer5";
 import Layer6 from "../components/landingPage/Layer6";
-import Footer from "../components/Footer";
+import Footer from "../components/others/Footer";
 import AboutLayer from "../components/landingPage/AboutLayer";
 import TopLayer from "../components/landingPage/TopLayer";
 

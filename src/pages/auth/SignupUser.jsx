@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import signupImg from "../assets/signupImg.webp";
+import signupImg from "../../assets/signupImg.webp";
 import { useNavigate } from "react-router-dom";
 import { signup } from "@/utils/auth/signup";
 import { useToast } from "@/context/otherContext/ToastContext";

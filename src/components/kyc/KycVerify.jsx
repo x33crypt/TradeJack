@@ -5,16 +5,16 @@ import { useKyc } from "@/context/userContext/KycContext";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { useToast } from "@/context/otherContext/ToastContext";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { useLocationData } from "@/hooks/useLocation";
+import { useLocationData } from "@/hooks/others/useLocation";
 import { RiFileUploadFill } from "react-icons/ri";
 import { MdOutlineAccessTime } from "react-icons/md";
-import { useFetchKycStatus } from "@/hooks/useFetchKycStatus";
-import Loading from "@/components/Loading";
+import { useFetchKycStatus } from "@/hooks/userHooks/useFetchKycStatus";
+import Loading from "@/components/others/Loading";
 import Info from "@/components/alerts/Info";
 import { MdOutlineBadge } from "react-icons/md";
-import NetworkError from "../NetworkError";
+import NetworkError from "../others/NetworkError";
 import { dateTime } from "@/utils/dateTime";
-import Stepper from "../Steppers";
+import Stepper from "../others/Steppers";
 
 const KycVerify = () => {
   const { loading, error, refetchKycStatus } = useFetchKycStatus();

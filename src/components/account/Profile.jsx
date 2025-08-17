@@ -1,9 +1,9 @@
 import React from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import Loading from "@/components/Loading";
+import Loading from "@/components/others/Loading";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
-import NetworkError from "../NetworkError";
+import NetworkError from "../others/NetworkError";
 
 const Profile = ({ loading, profile }) => {
   const navigateTo = useNavigate();

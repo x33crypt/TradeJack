@@ -15,14 +15,19 @@ import { PiClockCountdownBold } from "react-icons/pi";
 import { monthDate } from "@/utils/monthDate";
 import { time } from "@/utils/time";
 import SmallButton from "@/components/buttons/SmallButton";
-
+import { usePublicOffers } from "@/context/publicContext/OffersContext";
 // verified user icon
 import { TiBusinessCard } from "react-icons/ti";
 
 const MarketCard = ({ offer }) => {
+  const { setAboutOffer } = usePublicOffers();
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
+    setAboutOffer((prev) => ({
+      ...prev,
+      id: offerId,
+    }));
     navigateTo(`/offers/explore/${offerId}`);
   };
 
@@ -161,7 +166,10 @@ const MarketCard = ({ offer }) => {
                 <FaStar className="" />
               </SmallButton>
 
-              <SmallButton variant="fadeoutPlus" onClick={handleOfferClick}>
+              <SmallButton
+                variant="fadeoutPlus"
+                onClick={() => handleOfferClick(offer?.offerId)}
+              >
                 View Details
               </SmallButton>
             </div>
@@ -206,7 +214,10 @@ const MarketCard = ({ offer }) => {
               </div>
             </div>
           </div>
-          <SmallButton variant="fadeoutPlus" onClick={handleOfferClick}>
+          <SmallButton
+            variant="fadeoutPlus"
+            onClick={() => handleOfferClick(offer?.offerId)}
+          >
             <p>View Details</p>
           </SmallButton>
         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import { useLocation } from "react-router-dom";
-import InAppNav from "@/components/InAppNav";
-import Footer from "@/components/Footer";
+import InAppNav from "@/components/others/InAppNav";
+import Footer from "@/components/others/Footer";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import Info from "@/components/alerts/Info";
@@ -9,13 +9,13 @@ import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { currencies } from "@/hooks/useCurrencies";
-import { useExchangeRate } from "@/hooks/useExchangeRate";
+import { currencies } from "@/hooks/others/useCurrencies";
+import { useExchangeRate } from "@/hooks/others/useExchangeRate";
 import Button from "@/components/buttons/Button";
 import { useToast } from "@/context/otherContext/ToastContext";
-import { useServices } from "@/hooks/useServices";
-import CreateSummary from "@/components/offer/myOffer/CreateSummary";
-import LockByScroll from "@/components/LockByScroll";
+import { useServices } from "@/hooks/others/useServices";
+import CreateSummary from "@/components/offer/userOffer/CreateSummary";
+import LockByScroll from "@/components/others/LockByScroll";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { useUserOffer } from "@/context/userContext/OffersContext";
 

@@ -44,10 +44,7 @@ const DasHboardMenu = () => {
           <TbFileInvoice className="text-[17px]" />
           <p className="text-[13px] font-[500]">My offers</p>
         </div>
-        <div
-          className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
-          onClick={() => navigateTo("/offers/mine")}
-        >
+        <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
           <TbFileLike className="text-[17px]" />
           <p className="text-[13px] font-[500]">Favourite offers</p>
         </div>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import InAppNav from "@/components/InAppNav";
+import InAppNav from "@/components/others/InAppNav";
 import Button from "@/components/buttons/Button";
 import KycVerify from "@/components/kyc/KycVerify";
-import Footer from "@/components/Footer";
+import Footer from "@/components/others/Footer";
 
 const KycVerification = () => {
   return (

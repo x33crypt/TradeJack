@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { useToast } from "@/context/otherContext/ToastContext";
+import InAppNav from "@/components/others/InAppNav";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import InAppNav from "@/components/InAppNav";
-import { editEmail } from "@/utils/auth/editEmail";
+import { editUsername } from "@/utils/auth/editUsername";
 import Button from "@/components/buttons/Button";
 
-const EditEmail = () => {
-  const [email, setEmail] = useState("");
+const EditUsername = () => {
+  const [username, setUsername] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
   const { toast, setToast } = useToast();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
   };
 
-  console.log(email);
+  console.log(username);
 
   const navigateTo = useNavigate();
 
-  const handleEditEmail = async (e) => {
+  const handleEditUsername = async (e) => {
     e.preventDefault();
     setIsUpdating(true);
 
     try {
-      const result = await editEmail(email);
+      const result = await editUsername(username);
 
       if (result.success) {
-        console.log("Email has been updated successfully:", result.data);
+        console.log("Username has been isUpdatingd successfully:", result.data);
         navigateTo("/account/profile");
         setToast({
           ...toast,
@@ -35,7 +35,7 @@ const EditEmail = () => {
           successMessage: result.message,
         });
       } else {
-        console.error("Error while updating email:", result.error);
+        console.error("Error while updating username:", result.error);
         setToast({
           ...toast,
           error: true,
@@ -68,26 +68,32 @@ const EditEmail = () => {
               onClick={() => navigateTo(location?.state?.from || -1)}
               className="text-tradeFadeWhite text-[20px] cursor-pointer"
             />
-            <p className="text-base text-white font-[700]">
-              Edit Email Address
-            </p>
+            <p className="  text-base text-white font-[700]">Edit Username</p>
           </div>
         </div>
 
         <div className="flex-1 mt-[70px] flex flex-col md:justify-center md:items-center">
           <div className="flex-1 md:flex-none flex flex-col justify-between md:justify-normal md:w-[400px] w-full h-full gap-[30px]">
             <div className=" flex flex-col w-full gap-[30px]">
-              <div className="flex flex-col gap-1">
-                <p className="text-sm font-[600] text-white">Email Address</p>
+              <div className="w-full flex flex-col gap-1 ">
+                <p className="text-sm font-[600] text-white">Username</p>
+
                 <input
                   className={`${
-                    email ? "border-tradeAshExtraLight" : "border-tradeAshLight"
+                    username
+                      ? "border-tradeAshExtraLight"
+                      : "border-tradeAshLight"
                   } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                   type="text"
-                  name="email"
-                  placeholder="eg. Johndoe@gmail.com"
-                  onChange={handleEmailChange}
+                  name="username"
+                  placeholder="Choose username"
+                  onChange={handleUsernameChange}
                 />
+
+                <p className="text-xs text-tradeFadeWhite mt-[5px]">
+                  Username can only have letters, numbers, or one hyphen ( - ).
+                  It cannot begin or end with a hyphen.
+                </p>
               </div>
 
               <div>
@@ -95,17 +101,8 @@ const EditEmail = () => {
                   Please note:
                 </p>
                 <ul className="list-disc list-inside text-white text-[13px] space-y-1 mt-1">
-                  <li>
-                    A verification link will be sent to your email address.
-                  </li>
-                  <li>
-                    Make sure the email is valid and accessible before
-                    proceeding.
-                  </li>
-                  <li>
-                    You won’t be able to update your email again for the next 30
-                    days.
-                  </li>
+                  <li>You can only isUpdating your username twice in total.</li>
+                  <li>Choose a unique and recognizable username.</li>
                 </ul>
               </div>
             </div>
@@ -120,7 +117,7 @@ const EditEmail = () => {
               </Button>
 
               <Button
-                onClick={handleEditEmail}
+                onClick={handleEditUsername}
                 variant="primary"
                 disabled={isUpdating}
               >
@@ -134,4 +131,4 @@ const EditEmail = () => {
   );
 };
 
-export default EditEmail;
+export default EditUsername;

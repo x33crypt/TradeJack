@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer";
-import InAppNav from "@/components/InAppNav";
+import Footer from "@/components/others/Footer";
+import InAppNav from "@/components/others/InAppNav";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import React, { useRef, useEffect, useState } from "react";
 import TransactionCard from "@/components/cards/Both/TransactionCard";
@@ -8,16 +8,16 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { HiMiniCalendarDateRange } from "react-icons/hi2";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { date } from "@/utils/date";
-import Loading from "@/components/Loading";
+import Loading from "@/components/others/Loading";
 import Info from "@/components/alerts/Info";
 import { LuFileX2 } from "react-icons/lu";
-import { useFetchAllTransactions } from "@/hooks/Transaction/useFetchAllTransactions";
+import { useFetchAllTransactions } from "@/hooks/userHooks/useFetchAllTransactions";
 import SmallButton from "@/components/buttons/SmallButton";
 import { FaSort } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { RiLoader4Fill } from "react-icons/ri";
-import NetworkError from "@/components/NetworkError";
+import NetworkError from "@/components/others/NetworkError";
 import { BiFileBlank } from "react-icons/bi";
 
 const TransactionHistory = () => {

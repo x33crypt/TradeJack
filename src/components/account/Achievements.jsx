@@ -1,6 +1,6 @@
 import React from "react";
-import Loading from "../Loading";
-import NetworkError from "../NetworkError";
+import Loading from "../others/Loading";
+import NetworkError from "../others/NetworkError";
 
 const Achievements = ({ loading, profile }) => {
   return (

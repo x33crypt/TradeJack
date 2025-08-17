@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { RiBankLine } from "react-icons/ri";
-import { useFetchLinkedBanks } from "@/hooks/useFetchLinkedBanks";
+import { useFetchLinkedBanks } from "@/hooks/userHooks/useFetchLinkedBanks";
 import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import Button from "../buttons/Button";
 import { useNavigate } from "react-router-dom";
-import Loading from "../Loading";
-import NetworkError from "../NetworkError";
+import Loading from "../others/Loading";
+import NetworkError from "../others/NetworkError";
 import { FaCheckDouble } from "react-icons/fa";
 import { TiPin } from "react-icons/ti";
 import SmallButton from "../buttons/SmallButton";

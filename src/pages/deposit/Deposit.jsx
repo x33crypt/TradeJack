@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer";
-import InAppNav from "@/components/InAppNav";
+import Footer from "@/components/others/Footer";
+import InAppNav from "@/components/others/InAppNav";
 import React, { useState } from "react";
 import Button from "@/components/buttons/Button";
 import RecentDeposit from "@/components/wallet/RecentDeposit";
@@ -17,7 +17,7 @@ import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import { IoCopy } from "react-icons/io5";
 import { IoWalletOutline } from "react-icons/io5";
 import { useBalance } from "@/context/userContext/BalanceContext";
-import { useFetchBalance } from "@/hooks/useFetchBalance";
+import { useFetchBalance } from "@/hooks/userHooks/useFetchBalance";
 import WalletBalance from "@/components/wallet/WalletBalance";
 
 const Deposit = () => {

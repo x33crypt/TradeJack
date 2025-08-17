@@ -1,5 +1,5 @@
 import React from "react";
-import LockByScroll from "@/components/LockByScroll";
+import LockByScroll from "@/components/others/LockByScroll";
 import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { IoClose } from "react-icons/io5";
 import Button from "@/components/buttons/Button";

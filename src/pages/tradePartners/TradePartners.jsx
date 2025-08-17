@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer";
-import InAppNav from "@/components/InAppNav";
+import Footer from "@/components/others/Footer";
+import InAppNav from "@/components/others/InAppNav";
 import React from "react";
 import PartnersNav from "@/components/tradePartners/PartnersNav";
 import About from "@/components/tradePartners/About";

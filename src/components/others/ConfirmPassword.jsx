@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Footer from "@/components/Footer";
-import InAppNav from "@/components/InAppNav";
+import Footer from "@/components/others/Footer";
+import InAppNav from "@/components/others/InAppNav";
 import axios from "axios";
 import DOMPurify from "dompurify";
 import { IoWarning } from "react-icons/io5";
-import UserProfileNav from "@/components/UserProfileNav";
+import UserProfileNav from "@/components/others/UserProfileNav";
 import useSafeNavigate from "../components/SafeNavigation";
 
 const ConfirmPassword = () => {

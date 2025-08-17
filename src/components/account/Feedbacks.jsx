@@ -1,7 +1,7 @@
 import React from "react";
 import FeedbackCard from "../cards/Both/FeedbackCard";
-import Loading from "@/components/Loading";
-import NetworkError from "@/components/NetworkError";
+import Loading from "@/components/others/Loading";
+import NetworkError from "@/components/others/NetworkError";
 import { RiLoader4Fill } from "react-icons/ri";
 import { FaSort } from "react-icons/fa";
 import SmallButton from "../buttons/SmallButton";

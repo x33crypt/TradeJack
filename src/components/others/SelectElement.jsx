@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import LockByScroll from "./LockByScroll";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import Button from "./buttons/Button";
+import Button from "../buttons/Button";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import { IoClose } from "react-icons/io5";
 

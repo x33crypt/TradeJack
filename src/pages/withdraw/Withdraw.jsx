@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import InAppNav from "@/components/InAppNav";
-import Footer from "@/components/Footer";
+import InAppNav from "@/components/others/InAppNav";
+import Footer from "@/components/others/Footer";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import RecentWithdraw from "@/components/wallet/RecentWithdraw";
 import Button from "@/components/buttons/Button";
@@ -11,10 +11,10 @@ import { toDecimal } from "@/utils/toDecimal";
 import { useWithdrawContext } from "@/context/userContext/WithdrawContext";
 import { IoWalletOutline } from "react-icons/io5";
 import { useBalance } from "@/context/userContext/BalanceContext";
-import { useFetchLinkedBanks } from "@/hooks/useFetchLinkedBanks";
+import { useFetchLinkedBanks } from "@/hooks/userHooks/useFetchLinkedBanks";
 import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { RiBankLine } from "react-icons/ri";
-import { useFetchWithdrawTxt } from "@/hooks/Transaction/useFetchWithdrawTxt";
+import { useFetchWithdrawTxt } from "@/hooks/userHooks/useFetchWithdrawTxt";
 import WalletBalance from "@/components/wallet/WalletBalance";
 
 const Withdraw = () => {

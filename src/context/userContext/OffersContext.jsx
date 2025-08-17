@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const userOfferContext = createContext();
 
@@ -29,7 +30,18 @@ export const UserOfferProvider = ({ children }) => {
     success: false,
   });
 
-  const [aboutOffer, setAboutOffer] = useState(null);
+  const [aboutOffer, setAboutOffer] = useState({ id: null, data: null });
+
+  const { id: urlId } = useParams();
+
+  useEffect(() => {
+    if (urlId && !aboutOffer.id) {
+      setAboutOffer((prev) => ({
+        ...prev,
+        id: urlId,
+      }));
+    }
+  }, [urlId, aboutOffer.id]);
 
   const [editOffer, setEditOffer] = useState({
     offerId: "",

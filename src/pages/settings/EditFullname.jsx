@@ -1,33 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { useToast } from "@/context/otherContext/ToastContext";
-import InAppNav from "@/components/InAppNav";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { editUsername } from "@/utils/auth/editUsername";
+import InAppNav from "@/components/others/InAppNav";
+import { editFullname } from "@/utils/auth/editFullname";
 import Button from "@/components/buttons/Button";
 
-const EditUsername = () => {
-  const [username, setUsername] = useState("");
+const EditFullname = () => {
+  const [nameDetails, setNameDetails] = useState({
+    firstname: "",
+    lastname: "",
+  });
   const [isUpdating, setIsUpdating] = useState(false);
   const { toast, setToast } = useToast();
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
+  const handleFirstnameChange = (e) => {
+    setNameDetails((prevDetails) => ({
+      ...prevDetails,
+      [e.target.name]: e.target.value,
+    }));
   };
 
-  console.log(username);
+  const handleLastnameChange = (e) => {
+    setNameDetails((prevDetails) => ({
+      ...prevDetails,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  console.log(nameDetails);
 
   const navigateTo = useNavigate();
 
-  const handleEditUsername = async (e) => {
+  const handleEditFullname = async (e) => {
     e.preventDefault();
     setIsUpdating(true);
 
     try {
-      const result = await editUsername(username);
+      const result = await editFullname(nameDetails);
 
       if (result.success) {
-        console.log("Username has been isUpdatingd successfully:", result.data);
+        console.log("Fullname has been isUpdatingd successfully:", result.data);
         navigateTo("/account/profile");
         setToast({
           ...toast,
@@ -35,7 +48,7 @@ const EditUsername = () => {
           successMessage: result.message,
         });
       } else {
-        console.error("Error while updating username:", result.error);
+        console.error("Error while updating full name:", result.error);
         setToast({
           ...toast,
           error: true,
@@ -68,32 +81,42 @@ const EditUsername = () => {
               onClick={() => navigateTo(location?.state?.from || -1)}
               className="text-tradeFadeWhite text-[20px] cursor-pointer"
             />
-            <p className="  text-base text-white font-[700]">Edit Username</p>
+            <p className="  text-base text-white font-[700]">Edit Full Name</p>
           </div>
         </div>
 
         <div className="flex-1 mt-[70px] flex flex-col md:justify-center md:items-center">
           <div className="flex-1 md:flex-none flex flex-col justify-between md:justify-normal md:w-[400px] w-full h-full gap-[30px]">
-            <div className=" flex flex-col w-full gap-[30px]">
-              <div className="w-full flex flex-col gap-1 ">
-                <p className="text-sm font-[600] text-white">Username</p>
-
-                <input
-                  className={`${
-                    username
-                      ? "border-tradeAshExtraLight"
-                      : "border-tradeAshLight"
-                  } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
-                  type="text"
-                  name="username"
-                  placeholder="Choose username"
-                  onChange={handleUsernameChange}
-                />
-
-                <p className="text-xs text-tradeFadeWhite mt-[5px]">
-                  Username can only have letters, numbers, or one hyphen ( - ).
-                  It cannot begin or end with a hyphen.
-                </p>
+            <div className=" flex flex-col w-full gap-[30px] ">
+              <div className="flex flex-col gap-[30px]">
+                <div className="flex flex-col gap-1">
+                  <p className="text-sm font-[600] text-white">First Name</p>
+                  <input
+                    className={`${
+                      nameDetails.firstname
+                        ? "border-tradeAshExtraLight"
+                        : "border-tradeAshLight"
+                    } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                    type="text"
+                    name="firstname"
+                    placeholder="eg. John"
+                    onChange={handleFirstnameChange}
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <p className="text-sm text-white font-[600]">Last Name</p>
+                  <input
+                    className={`${
+                      nameDetails.lastname
+                        ? "border-tradeAshExtraLight"
+                        : "border-tradeAshLight"
+                    } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
+                    type="text"
+                    name="lastname"
+                    placeholder="eg. Doe"
+                    onChange={handleLastnameChange}
+                  />
+                </div>
               </div>
 
               <div>
@@ -101,8 +124,10 @@ const EditUsername = () => {
                   Please note:
                 </p>
                 <ul className="list-disc list-inside text-white text-[13px] space-y-1 mt-1">
-                  <li>You can only isUpdating your username twice in total.</li>
-                  <li>Choose a unique and recognizable username.</li>
+                  <li>You can only change your name once.</li>
+                  <li>Ensure the new name matches your legal identity.</li>
+                  <li>Once changed, this action cannot be undone.</li>
+                  <li>A password confirmation will be required to proceed.</li>
                 </ul>
               </div>
             </div>
@@ -117,7 +142,7 @@ const EditUsername = () => {
               </Button>
 
               <Button
-                onClick={handleEditUsername}
+                onClick={handleEditFullname}
                 variant="primary"
                 disabled={isUpdating}
               >
@@ -131,4 +156,4 @@ const EditUsername = () => {
   );
 };
 
-export default EditUsername;
+export default EditFullname;

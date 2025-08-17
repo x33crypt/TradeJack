@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import LockByScroll from "./LockByScroll";
-import { useProfileNav } from "../context/otherContext/ProfileNavContext";
+import { useProfileNav } from "../../context/otherContext/ProfileNavContext";
 import { IoClose } from "react-icons/io5";
-import landingImg4 from "./../assets/landingImg4.JPG";
-import Button from "./buttons/Button";
+import landingImg4 from "../../assets/landingImg4.JPG";
+import Button from "../buttons/Button";
 import { useNavigate } from "react-router-dom";
 import { RiShieldUserFill } from "react-icons/ri";
 import { FaUserCheck } from "react-icons/fa";
+import { logout } from "@/utils/auth/logout";
+import { useToast } from "@/context/otherContext/ToastContext";
 
 const ProfileNav = () => {
   const { show, setShow } = useProfileNav();
+  const [loading, setLoading] = useState(false);
+  const { toast, setToast } = useToast();
 
   const toAccount = () => {
     setShow(false);
@@ -23,6 +27,40 @@ const ProfileNav = () => {
 
   const close = () => {
     setShow(false);
+  };
+
+  const handleLogout = async () => {
+    setLoading(true);
+
+    try {
+      const result = await logout();
+
+      if (result.success) {
+        console.log("Logout successful:", result);
+        navigateTo("/");
+        setToast({
+          ...toast,
+          success: true,
+          successMessage: "You've been logged out successfully.",
+        });
+      } else {
+        console.error("Signin error:", result.error);
+        setToast({
+          ...toast,
+          error: true,
+          errorMessage: result?.error,
+        });
+      }
+    } catch (err) {
+      console.error("Unexpected error:", err.message || err);
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: "An unexpected error occurred. Please try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const navigateTo = useNavigate();
@@ -69,7 +107,13 @@ const ProfileNav = () => {
                         Settings
                       </Button>
                     </div>
-                    <Button variant="danger">Log Out</Button>
+                    <Button
+                      variant="danger"
+                      onClick={handleLogout}
+                      disabled={loading}
+                    >
+                      Log Out
+                    </Button>
                   </div>
 
                   <div className="flex items-center justify-center">

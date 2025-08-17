@@ -1,8 +1,10 @@
 import React from "react";
 
 const OfferTag = ({ aboutOffer }) => {
+  console.log(aboutOffer?.terms);
+
   return (
-    <div className="flex flex-col flex-1 md:border border-neutral-800">
+    <div className="flex-1 flex flex-col md:border border-neutral-800">
       <div className="flex  items-center justify-between p-[15px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Offer Tags</p>
       </div>

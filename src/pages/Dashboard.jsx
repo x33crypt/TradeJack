@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Footer from "@/components/Footer";
-import InAppNav from "@/components/InAppNav";
-import { useFetchDashboard } from "@/hooks/useFetchDashboard";
+import Footer from "@/components/others/Footer";
+import InAppNav from "@/components/others/InAppNav";
+import { useFetchDashboard } from "@/hooks/userHooks/useFetchDashboard";
 import StateHandler from "@/components/stateHandler/StateHandler";
 import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import Performance from "@/components/dashboard/Performance";

@@ -3,11 +3,11 @@ import TransactionCard from "../cards/Both/TransactionCard";
 import { useTransaction } from "@/context/userContext/TransactionContext";
 import { useNavigate } from "react-router-dom";
 import { RiArrowRightFill } from "react-icons/ri";
-import { useFetchAllTransactions } from "@/hooks/Transaction/useFetchAllTransactions";
-import Loading from "../Loading";
+import { useFetchAllTransactions } from "@/hooks/userHooks/useFetchAllTransactions";
+import Loading from "../others/Loading";
 import Info from "../alerts/Info";
 import { LuFileX2 } from "react-icons/lu";
-import NetworkError from "../NetworkError";
+import NetworkError from "../others/NetworkError";
 import SmallButton from "../buttons/SmallButton";
 import { BiFileBlank } from "react-icons/bi";
 

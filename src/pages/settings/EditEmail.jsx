@@ -2,63 +2,32 @@ import React, { useState, useEffect } from "react";
 import { useToast } from "@/context/otherContext/ToastContext";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import InAppNav from "@/components/InAppNav";
-import { editMobile } from "@/utils/auth/editMobile";
-import { useSelectElement } from "@/context/otherContext/SelectElementContext";
-import { useCountryCodes } from "@/hooks/useCountryCodes";
+import InAppNav from "@/components/others/InAppNav";
+import { editEmail } from "@/utils/auth/editEmail";
 import Button from "@/components/buttons/Button";
 
-const EditMobile = () => {
-  const { select, setSelect } = useSelectElement();
-  const [mobileDetails, setMobileDetails] = useState({
-    code: null,
-    number: null,
-  });
-  const { countryCodes } = useCountryCodes();
+const EditEmail = () => {
+  const [email, setEmail] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
   const { toast, setToast } = useToast();
 
-  const handleNumberChange = (e) => {
-    setMobileDetails((prevDetails) => ({
-      ...prevDetails,
-      [e.target.name]: e.target.value,
-    }));
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
-  // handling code change
-  useEffect(() => {
-    if (
-      select?.page !== "edit mobile number" ||
-      !select?.element ||
-      !select?.pick
-    )
-      return;
-
-    const pick = select.pick;
-
-    setMobileDetails((prev) => ({
-      ...prev,
-      code: pick?.code,
-    }));
-  }, [select]);
-
-  console.log(mobileDetails);
+  console.log(email);
 
   const navigateTo = useNavigate();
 
-  const handleEditMobile = async (e) => {
+  const handleEditEmail = async (e) => {
     e.preventDefault();
     setIsUpdating(true);
 
     try {
-      const result = await editMobile(mobileDetails);
+      const result = await editEmail(email);
 
       if (result.success) {
-        console.log(
-          "Mobile number has been updated successfully:",
-          result.data
-        );
+        console.log("Email has been updated successfully:", result.data);
         navigateTo("/account/profile");
         setToast({
           ...toast,
@@ -99,8 +68,8 @@ const EditMobile = () => {
               onClick={() => navigateTo(location?.state?.from || -1)}
               className="text-tradeFadeWhite text-[20px] cursor-pointer"
             />
-            <p className="  text-base text-white font-[700]">
-              Edit Mobile Number
+            <p className="text-base text-white font-[700]">
+              Edit Email Address
             </p>
           </div>
         </div>
@@ -109,53 +78,15 @@ const EditMobile = () => {
           <div className="flex-1 md:flex-none flex flex-col justify-between md:justify-normal md:w-[400px] w-full h-full gap-[30px]">
             <div className=" flex flex-col w-full gap-[30px]">
               <div className="flex flex-col gap-1">
-                <p className="text-sm text-white font-[600]">Country code</p>
-
-                <div className="relative w-full cursor-pointer ">
-                  <input
-                    className={`${
-                      mobileDetails?.code
-                        ? "border-tradeAshExtraLight"
-                        : "border-tradeAshLight"
-                    } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite text-font-[700] placeholder:font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px] cursor-pointer`}
-                    type="text"
-                    readOnly
-                    placeholder="Select Country Code"
-                    value={
-                      mobileDetails?.code ? `+ ${mobileDetails?.code}` : ""
-                    }
-                    onClick={() =>
-                      setSelect({
-                        ...select,
-                        state: true,
-                        selectOne: false,
-                        selectTwo: true,
-                        element: "country code",
-                        options: countryCodes,
-                        pick: "",
-                        page: "edit mobile number",
-                      })
-                    }
-                  />
-
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                    <MdKeyboardArrowDown />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <p className="text-sm font-[600] text-white">Mobile number</p>
+                <p className="text-sm font-[600] text-white">Email Address</p>
                 <input
                   className={`${
-                    mobileDetails.number
-                      ? "border-tradeAshExtraLight"
-                      : "border-tradeAshLight"
+                    email ? "border-tradeAshExtraLight" : "border-tradeAshLight"
                   } mt-[5px] text-sm text-white placeholder:text-tradeFadeWhite font-[500] bg-tradeAsh border outline-none w-full p-[12px] rounded-[10px]`}
                   type="text"
-                  name="number"
-                  placeholder="Enter your mobile number"
-                  onChange={handleNumberChange}
+                  name="email"
+                  placeholder="eg. Johndoe@gmail.com"
+                  onChange={handleEmailChange}
                 />
               </div>
 
@@ -165,15 +96,15 @@ const EditMobile = () => {
                 </p>
                 <ul className="list-disc list-inside text-white text-[13px] space-y-1 mt-1">
                   <li>
-                    A verification code will be sent to your phone number.
+                    A verification link will be sent to your email address.
                   </li>
                   <li>
-                    Ensure the number is active and accessible before
+                    Make sure the email is valid and accessible before
                     proceeding.
                   </li>
                   <li>
-                    You won’t be able to update your phone number again for the
-                    next 30 days.
+                    You won’t be able to update your email again for the next 30
+                    days.
                   </li>
                 </ul>
               </div>
@@ -189,7 +120,7 @@ const EditMobile = () => {
               </Button>
 
               <Button
-                onClick={handleEditMobile}
+                onClick={handleEditEmail}
                 variant="primary"
                 disabled={isUpdating}
               >
@@ -203,4 +134,4 @@ const EditMobile = () => {
   );
 };
 
-export default EditMobile;
+export default EditEmail;

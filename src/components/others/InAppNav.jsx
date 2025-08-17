@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaRegBell } from "react-icons/fa";
-import landingImg4 from "./../assets/landingImg4.JPG";
+import landingImg4 from "../../assets/landingImg4.JPG";
 import { FiSearch } from "react-icons/fi";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { IoCloseSharp } from "react-icons/io5";
@@ -16,7 +16,7 @@ import { TbFileLike } from "react-icons/tb";
 import { BsChatQuote } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
 import { TbFileInvoice } from "react-icons/tb";
-import Button from "./buttons/Button";
+import Button from "../buttons/Button";
 import { IoWallet } from "react-icons/io5";
 import { useProfileNav } from "@/context/otherContext/ProfileNavContext";
 import LockByScroll from "./LockByScroll";

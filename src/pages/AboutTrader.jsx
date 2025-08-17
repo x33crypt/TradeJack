@@ -1,6 +1,6 @@
 import About from "@/components/aboutTrader/About";
-import Footer from "@/components/Footer";
-import InAppNav from "@/components/InAppNav";
+import Footer from "@/components/others/Footer";
+import InAppNav from "@/components/others/InAppNav";
 import React from "react";
 
 const AboutTrader = () => {

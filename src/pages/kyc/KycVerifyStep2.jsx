@@ -3,14 +3,14 @@ import { useToast } from "@/context/otherContext/ToastContext";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import InAppNav from "@/components/InAppNav";
+import InAppNav from "@/components/others/InAppNav";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
-import Stepper from "@/components/Steppers";
+import Stepper from "@/components/others/Steppers";
 import { useKyc } from "@/context/userContext/KycContext";
-import { useLocationData } from "@/hooks/useLocation";
+import { useLocationData } from "@/hooks/others/useLocation";
 import Button from "@/components/buttons/Button";
 import SideNav from "@/components/account/SideNav";
-import Footer from "@/components/Footer";
+import Footer from "@/components/others/Footer";
 
 const KycVerifyStep2 = () => {
   const { select, setSelect } = useSelectElement();

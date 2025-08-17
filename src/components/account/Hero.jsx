@@ -2,7 +2,7 @@ import React from "react";
 import image from "../../assets/landingImg4.JPG";
 import { FaCalendarCheck } from "react-icons/fa";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
-import Loading from "@/components/Loading";
+import Loading from "@/components/others/Loading";
 import { RiShare2Fill } from "react-icons/ri";
 import { FaCircle } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";

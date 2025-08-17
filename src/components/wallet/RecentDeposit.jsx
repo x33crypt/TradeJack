@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import TransactionCard from "../cards/Mobile/TransactionCard";
 import { useNavigate } from "react-router-dom";
-import { useFetchDepositTxt } from "@/hooks/Transaction/useFetchDepositsTxt";
+import { useFetchDepositTxt } from "@/hooks/userHooks/useFetchDepositsTxt";
 import { useDepositContext } from "@/context/userContext/DepositContext";
-import Loading from "../Loading";
+import Loading from "../others/Loading";
 import { LuFileX2 } from "react-icons/lu";
-import NetworkError from "../NetworkError";
+import NetworkError from "../others/NetworkError";
 import SmallButton from "../buttons/SmallButton";
 import { BiFileBlank } from "react-icons/bi";
 

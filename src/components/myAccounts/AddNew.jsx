@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import Button from "../buttons/Button";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
-import { useFetchBanks } from "@/hooks/useFetchBanks";
+import { useFetchBanks } from "@/hooks/others/useFetchBanks";
 import { useToast } from "@/context/otherContext/ToastContext";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Info from "../alerts/Info";

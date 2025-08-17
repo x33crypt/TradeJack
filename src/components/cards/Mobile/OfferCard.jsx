@@ -10,11 +10,17 @@ import { FaInfoCircle } from "react-icons/fa";
 import { monthDate } from "@/utils/monthDate";
 import { time } from "@/utils/time";
 import SmallButton from "@/components/buttons/SmallButton";
+import { usePublicOffers } from "@/context/publicContext/OffersContext";
 
 const OfferCard = ({ offer }) => {
+  const { setAboutOffer } = usePublicOffers();
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
+    setAboutOffer((prev) => ({
+      ...prev,
+      id: offerId,
+    }));
     navigateTo(`/offers/explore/${offerId}`);
   };
 
@@ -119,7 +125,10 @@ const OfferCard = ({ offer }) => {
         <SmallButton variant="fadeoutPlus">
           <FaStar className="" />
         </SmallButton>
-        <SmallButton variant="fadeoutPlus" onClick={handleOfferClick}>
+        <SmallButton
+          variant="fadeoutPlus"
+          onClick={() => handleOfferClick(offer?.offerId)}
+        >
           <p>View Details</p>
         </SmallButton>
       </div>

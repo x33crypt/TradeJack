@@ -1,9 +1,9 @@
 import React from "react";
-import InAppNav from "../InAppNav";
+import InAppNav from "../others/InAppNav";
 import SideNav from "../account/SideNav";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import Footer from "../Footer";
+import Footer from "../others/Footer";
 
 const Account = () => {
   return (

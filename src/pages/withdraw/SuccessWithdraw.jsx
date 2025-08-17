@@ -1,4 +1,4 @@
-import LockByScroll from "@/components/LockByScroll";
+import LockByScroll from "@/components/others/LockByScroll";
 import Button from "@/components/buttons/Button";
 import { RiWaterFlashFill } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";

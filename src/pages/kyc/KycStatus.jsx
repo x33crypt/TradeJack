@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import InAppNav from "@/components/InAppNav";
+import InAppNav from "@/components/others/InAppNav";
 import Button from "@/components/buttons/Button";
-import Footer from "@/components/Footer";
+import Footer from "@/components/others/Footer";
 import SideNav from "@/components/account/SideNav";
-import Loading from "@/components/Loading";
+import Loading from "@/components/others/Loading";
 import { LuFileX2 } from "react-icons/lu";
 import KycVerify from "@/components/kyc/KycVerify";
 import { useKyc } from "@/context/userContext/KycContext";
-import { useFetchKycStatus } from "@/hooks/useFetchKycStatus";
+import { useFetchKycStatus } from "@/hooks/userHooks/useFetchKycStatus";
 import KycBenefits from "@/components/kyc/KycBenefits";
-import NetworkError from "@/components/NetworkError";
+import NetworkError from "@/components/others/NetworkError";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 
 const KycStatus = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import Footer from "@/components/Footer";
-import InAppNav from "@/components/InAppNav";
+import Footer from "@/components/others/Footer";
+import InAppNav from "@/components/others/InAppNav";
 import Info from "@/components/alerts/Info";
 import Warning from "@/components/alerts/Warning";
 import { FaPlus } from "react-icons/fa6";
@@ -14,9 +14,9 @@ import { IoWalletOutline } from "react-icons/io5";
 import { HiOutlineGift } from "react-icons/hi2";
 import { IoCardOutline } from "react-icons/io5";
 import { GiTwoCoins } from "react-icons/gi";
-import EditSummary from "../../../components/offer/myOffer/EditSummary";
+import EditSummary from "../../../components/offer/userOffer/EditSummary";
 import Button from "@/components/buttons/Button";
-import { useExchangeRate } from "@/hooks/useExchangeRate";
+import { useExchangeRate } from "@/hooks/others/useExchangeRate";
 import { useToast } from "@/context/otherContext/ToastContext";
 import { useUserOffer } from "@/context/userContext/OffersContext";
 

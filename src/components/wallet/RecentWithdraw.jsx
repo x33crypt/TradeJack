@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import TransactionCard from "../cards/Mobile/TransactionCard";
 import { useNavigate } from "react-router-dom";
-import Loading from "../Loading";
+import Loading from "../others/Loading";
 import { LuFileX2 } from "react-icons/lu";
-import NetworkError from "../NetworkError";
+import NetworkError from "../others/NetworkError";
 import SmallButton from "../buttons/SmallButton";
-import { useFetchWithdrawTxt } from "@/hooks/Transaction/useFetchWithdrawTxt";
+import { useFetchWithdrawTxt } from "@/hooks/userHooks/useFetchWithdrawTxt";
 import { useWithdrawContext } from "@/context/userContext/WithdrawContext";
 import { BiFileBlank } from "react-icons/bi";
 

@@ -3,7 +3,7 @@ import { useToast } from "@/context/otherContext/ToastContext";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import InAppNav from "@/components/InAppNav";
+import InAppNav from "@/components/others/InAppNav";
 import { editAddress } from "@/utils/auth/editAddress";
 import Button from "@/components/buttons/Button";
 

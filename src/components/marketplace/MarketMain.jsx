@@ -2,13 +2,13 @@ import React, { useRef, useEffect, useState } from "react";
 import OfferCard from "../cards/Both/OfferCard";
 import OfferFilter from "./OfferFilter";
 import { BiSolidBinoculars } from "react-icons/bi";
-import LockByScroll from "../LockByScroll";
+import LockByScroll from "../others/LockByScroll";
 import { useNavigate } from "react-router-dom";
 import { RiFilter3Line } from "react-icons/ri";
-import { useFetchPublicOffers } from "@/hooks/useFetchPublicOffers";
+import { useFetchPublicOffers } from "@/hooks/publicHooks/useFetchPublicOffers";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import Loading from "../Loading";
-import NetworkError from "../NetworkError";
+import Loading from "../others/Loading";
+import NetworkError from "../others/NetworkError";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import { FaSort } from "react-icons/fa";
 import SmallButton from "../buttons/SmallButton";
@@ -18,6 +18,7 @@ import { RiLoader4Fill } from "react-icons/ri";
 
 const MarketMain = () => {
   const topRef = useRef(null);
+
   const { loading, fetchOffers, pagination, page, displayedCount, next } =
     useFetchPublicOffers();
   const { offers, filter, setFilter } = usePublicOffers();
@@ -94,9 +95,9 @@ const MarketMain = () => {
     topRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(() => {
-    scrollToTop();
-  }, []);
+  // useEffect(() => {
+  //   scrollToTop();
+  // }, []);
 
   const handleNext = async () => {
     setLoadingMore(true);

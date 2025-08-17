@@ -1,6 +1,6 @@
 import React from "react";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import useSafeNavigate from "../components/SafeNavigation";
+import useSafeNavigate from "../components/others/SafeNavigation";
 
 const SignupSuccess = () => {
   const navigateTo = useSafeNavigate();

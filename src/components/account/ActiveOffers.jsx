@@ -3,8 +3,8 @@ import { RiLoader4Fill } from "react-icons/ri";
 import { FaSort } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import SmallButton from "../buttons/SmallButton";
-import Loading from "../Loading";
-import NetworkError from "../NetworkError";
+import Loading from "../others/Loading";
+import NetworkError from "../others/NetworkError";
 
 const ActiveOffers = ({ loading, profile }) => {
   return (

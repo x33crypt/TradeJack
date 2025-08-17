@@ -3,16 +3,16 @@ import { useToast } from "@/context/otherContext/ToastContext";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import InAppNav from "@/components/InAppNav";
+import InAppNav from "@/components/others/InAppNav";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
-import Stepper from "@/components/Steppers";
+import Stepper from "@/components/others/Steppers";
 import { useKyc } from "@/context/userContext/KycContext";
 import Warning from "@/components/alerts/Warning";
 import { RiFileUploadFill } from "react-icons/ri";
 import { kycVerify } from "@/utils/kyc/kycVerify";
 import Button from "@/components/buttons/Button";
 import SideNav from "@/components/account/SideNav";
-import Footer from "@/components/Footer";
+import Footer from "@/components/others/Footer";
 
 const KycVerifyStep3 = () => {
   const { select, setSelect } = useSelectElement();

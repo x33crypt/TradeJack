@@ -4,7 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import SmallButton from "./buttons/SmallButton";
+import SmallButton from "../buttons/SmallButton";
 import { LiaExchangeAltSolid } from "react-icons/lia";
 import { IoIosArrowDown } from "react-icons/io";
 

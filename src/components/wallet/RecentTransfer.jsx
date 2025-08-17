@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import TransactionCard from "../cards/Mobile/TransactionCard";
 import { useNavigate } from "react-router-dom";
-import Loading from "../Loading";
-import NetworkError from "../NetworkError";
+import Loading from "../others/Loading";
+import NetworkError from "../others/NetworkError";
 import { LuFileX2 } from "react-icons/lu";
-import { useFetchTransferTxt } from "@/hooks/Transaction/useFetchTransferTxt";
+import { useFetchTransferTxt } from "@/hooks/userHooks/useFetchTransferTxt";
 import { useTransferContext } from "@/context/userContext/TransferContext";
 import SmallButton from "../buttons/SmallButton";
 import { BiFileBlank } from "react-icons/bi";
