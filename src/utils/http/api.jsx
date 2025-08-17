@@ -1,7 +1,7 @@
 // utils/http/api.js
 import axios from "axios";
 
-// Create Axios instance with defaults
+// --- Axios instance ---
 const api = axios.create({
   baseURL:
     import.meta.env.VITE_API_URL || "https://tradejack.onrender.com/api/v1",
@@ -10,11 +10,10 @@ const api = axios.create({
 });
 
 // --- State ---
-let csrfToken = null; // Store CSRF token for safe requests
+let csrfToken = null; // CSRF token for unsafe requests
 let isRedirecting = false; // Prevent duplicate redirects
 
 // --- Helpers ---
-// Read CSRF token from cookie
 const getCsrfTokenFromCookies = () => {
   try {
     return (
@@ -28,23 +27,17 @@ const getCsrfTokenFromCookies = () => {
   }
 };
 
-// Clear all session data (but don’t clear localStorage because we need lastRoute)
 const clearSession = () => {
   csrfToken = null;
-
-  // Clear cookies
   document.cookie = "XSRF-TOKEN=; Max-Age=0; path=/;";
   document.cookie = "token=; Max-Age=0; path=/;";
-
-  // Clear session storage
   sessionStorage.clear();
 };
 
 // --- Response Interceptor ---
-// Handle CSRF tokens, errors, and session expiration
 api.interceptors.response.use(
   (response) => {
-    // If it's a GET, refresh CSRF token from headers/cookies
+    // Refresh CSRF token on GET requests
     if (response.config.method === "get") {
       const newCsrfToken =
         response.headers["x-csrf-token"] || getCsrfTokenFromCookies();
@@ -53,33 +46,49 @@ api.interceptors.response.use(
     return response;
   },
   async (error) => {
-    const { response } = error;
+    const { response, config } = error;
 
     if (response) {
-      const { status, data, config } = response;
+      const { status, data } = response;
       let message = data?.error?.message || "An error occurred";
 
       // --- Handle 401 Unauthorized ---
       if (status === 401 && !isRedirecting) {
+        // Exempt auth routes from session-expired logic
+        const exempt401Routes = [
+          "/api/v1/auth/login",
+          "/api/v1/auth/signup",
+          "/api/v1/auth/refresh-token",
+          "/api/v1/auth/logout",
+        ];
+
+        if (exempt401Routes.some((route) => config.url.includes(route))) {
+          return Promise.reject({
+            success: false,
+            status,
+            message: data?.error?.message || "Authentication failed",
+          });
+        }
+
+        // Try refresh first for other protected routes
         if (!config.url.includes("/auth/refresh-token")) {
           try {
-            // Try refresh first
             await api.post("/auth/refresh-token");
             return api(config); // retry original request
           } catch {
             // ❌ Refresh failed → session expired
             isRedirecting = true;
 
-            // ✅ Save last route before clearing session
+            // Save last route before clearing session
             const lastRoute = window.location.pathname + window.location.search;
             localStorage.setItem("lastRoute", lastRoute);
 
             clearSession();
 
-            // ✅ Replace history so user can’t "back" to old route
+            // Replace history to prevent back-navigation to expired pages
             window.history.replaceState({}, "", "/signin?sessionExpired=true");
 
-            // ✅ Redirect to signin
+            // Redirect to signin
             setTimeout(() => {
               window.location.href = "/signin?sessionExpired=true";
             }, 50);
@@ -113,7 +122,7 @@ api.interceptors.response.use(
 );
 
 // --- Request Interceptor ---
-// Add CSRF token to unsafe requests
+// Attach CSRF token to unsafe requests
 api.interceptors.request.use((config) => {
   const exemptRoutes = [
     "/api/v1/auth/login",

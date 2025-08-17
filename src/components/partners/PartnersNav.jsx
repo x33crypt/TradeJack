@@ -2,11 +2,9 @@ import React from "react";
 import { FaUser } from "react-icons/fa";
 import { FaCircle } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-import { RiFilter3Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { RiLoader4Fill } from "react-icons/ri";
 import { FaSort } from "react-icons/fa";
-import { MdKeyboardArrowRight } from "react-icons/md";
 import SmallButton from "../buttons/SmallButton";
 
 const PartnersNav = () => {
@@ -42,9 +40,9 @@ const PartnersNav = () => {
             <div
               key={index}
               onClick={() => navigateTo(`/partners/${"Sane"}`)} // Replace "Sane" with dynamic username
-              className="flex gap-[10px] items-center h-max w-full p-[12px] rounded-[15px] border border-tradeAshExtraLight bg-tradeAsh hover:bg-tradeAshLight transition-all duration-300 cursor-pointer"
+              className="flex gap-[10px] items-center h-max w-full p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh hover:bg-tradeAshLight transition-all duration-300 cursor-pointer"
             >
-              <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-2 w-max h-max rounded-[10px]">
+              <div className="flex text-white border border-tradeAshLight text-[20px] p-2 w-max h-max rounded-[10px]">
                 <FaUser className="text-tradeFadeWhite md:text-[20px] text-[25px]" />
               </div>
 

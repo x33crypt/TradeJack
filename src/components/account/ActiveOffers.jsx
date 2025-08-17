@@ -8,11 +8,11 @@ import NetworkError from "../others/NetworkError";
 
 const ActiveOffers = ({ loading, profile }) => {
   return (
-    <div className="flex-1 flex flex-col md:border border-neutral-800">
+    <div className="flex flex-1 md:sticky top-[64px] md:max-h-max  md:border border-t-0 border-tradeAshLight flex-col">
       <div className="flex items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Active Offers</p>
       </div>
-      <div className="flex flex-col flex-1 min-h-[120px]">
+      <div className="relative flex flex-col md:h-[460px] h-full">
         <div className="sticky h-[55px] flex items-center w-full md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
           <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-hidden p-[2px]">
             <div className="flex gap-[5px]">
@@ -29,7 +29,7 @@ const ActiveOffers = ({ loading, profile }) => {
           </div>
         </div>
 
-        <div className="flex flex-1 p-[15px] min-h-[120px]">
+        <div className="flex flex-1 p-[15px] min-h-[123px] md:overflow-y-auto custom-scrollbar">
           {loading ? (
             <Loading />
           ) : (

@@ -1,15 +1,14 @@
 import Footer from "@/components/others/Footer";
 import InAppNav from "@/components/others/InAppNav";
 import React from "react";
-import PartnersNav from "@/components/tradePartners/PartnersNav";
-import About from "@/components/tradePartners/About";
+import PartnersNav from "@/components/partners/PartnersNav";
 
 const Partners = () => {
   return (
     <>
       <InAppNav />
       <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black">
-        <div className="flex lg:w-[300px] w-full">
+        <div className="flex lg:w-[320px] w-full">
           <PartnersNav />
         </div>
         <div className="md:flex hidden flex-1 gap-[5px]"></div>

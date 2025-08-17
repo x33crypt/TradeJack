@@ -4,16 +4,17 @@ import { useNavigate } from "react-router-dom";
 import Loading from "@/components/others/Loading";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import NetworkError from "../others/NetworkError";
+import { shortenEmail } from "@/utils/shortenEmail";
 
 const Profile = ({ loading, profile }) => {
   const navigateTo = useNavigate();
 
   return (
-    <div className="flex-1 flex flex-col md:border border-neutral-800">
+    <div className="flex flex-1 md:sticky top-[64px] md:max-h-max  md:border border-t-0 border-tradeAshLight flex-col">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Profile Information</p>
       </div>
-      <div className="flex flex-1 p-[15px] min-h-[120px]">
+      <div className="relative flex flex-col md:h-[460px] h-full">
         {loading ? (
           <Loading />
         ) : (
@@ -21,7 +22,7 @@ const Profile = ({ loading, profile }) => {
             {profile === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1 flex-col gap-[10px]">
+              <div className="flex flex-1 flex-col gap-[10px] md:gap-[5px] p-[15px] ">
                 {/* Basic Info */}
                 <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
                   {/* Username */}
@@ -68,10 +69,10 @@ const Profile = ({ loading, profile }) => {
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
-                        Email address
+                        Email Address
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {profile?.email || "-- --"}
+                        {shortenEmail(profile?.email) || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -151,20 +152,32 @@ const Profile = ({ loading, profile }) => {
 
                 {/* KYC */}
                 <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
-                  {/* KYC */}
                   <div
-                    className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
+                    className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
                     onClick={() => navigateTo("/account/kyc/status")}
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
-                        KYC Verification Status
+                        KYC Status
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
                         {capitalizeFirst(profile?.kycStatus) || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
+                      <MdKeyboardArrowRight />
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300">
+                    <div className="flex-1 flex justify-between gap-[2px]">
+                      <p className="text-[13px] font-semibold text-white">
+                        Document Type
+                      </p>
+                      <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                        {capitalizeFirst(profile?.kycStatus) || "-- --"}
+                      </p>
+                    </div>
+                    <div className="text-white text-[22px] opacity-0">
                       <MdKeyboardArrowRight />
                     </div>
                   </div>
