@@ -37,6 +37,7 @@ const ProfileNav = () => {
 
       if (result.success) {
         console.log("Logout successful:", result);
+        setShow(false);
         navigateTo("/");
         setToast({
           ...toast,
