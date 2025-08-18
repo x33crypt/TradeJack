@@ -3,13 +3,13 @@ import { FaQuestionCircle } from "react-icons/fa";
 
 const Performance = () => {
   return (
-    <div className="flex-1 h-full md:border border-tradeAshLight flex flex-col">
+    <div className="flex-1 md:border border-tradeAshLight flex flex-col">
       <div className="flex px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg text-white font-[700]">Performance</p>
       </div>
 
-      <div className="flex h-full p-[15px] flex-col gap-[10px]">
-        <div className="flex-1 flex flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+      <div className="flex p-[15px] flex-col gap-[10px] min-h-[340px] h-full">
+        <div className="flex-1 flex flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh ">
           <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
             <p className="text-[13px] text-tradeFadeWhite font-semibold">
               Trade report

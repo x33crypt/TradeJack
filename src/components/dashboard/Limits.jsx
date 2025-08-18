@@ -3,7 +3,7 @@ import { FaQuestionCircle } from "react-icons/fa";
 
 const Limits = ({ dashboard }) => {
   return (
-    <div className="h-max md:border border-tradeAshLight flex flex-col">
+    <div className="h-ma flex-1 md:border border-tradeAshLight flex flex-col">
       <div className="flex px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg text-white font-semibold">Limits</p>
       </div>

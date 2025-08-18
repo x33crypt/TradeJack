@@ -233,7 +233,7 @@ const OfferFilter = () => {
 
   return (
     <>
-      <div className="flex flex-1 md:w-[300px] gap-[5px] flex-col bg-black md:border-x md:border-t-0 lg:border-b border-neutral-800">
+      <div className="flex flex-1 md:w-[320px] gap-[5px] flex-col bg-black md:border-x md:border-t-0 lg:border-b border-neutral-800">
         <div className="flex lg:hidden justify-between items-center px-[15px] py-[12px] border-b border-neutral-800 ">
           <p className="text-lg text-white font-[700] cursor-pointer">
             Filter Offers
@@ -345,9 +345,7 @@ const OfferFilter = () => {
             <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[10px]">
               <div
                 onClick={showActiveTraders}
-                className={`${
-                  filter?.activeTraders ? "text-white" : "text-tradeFadeWhite"
-                }  flex justify-between items-center p-[12px] border border-dashed border-tradeAshLight hover:text-white rounded-[15px] cursor-pointer transition-all duration-300`}
+                className="flex justify-between items-center p-[12px] border border-dashed border-tradeAshLight text-white rounded-[15px] cursor-pointer"
               >
                 <p className="font-semibold text-[13px]">
                   Recently active traders
@@ -355,25 +353,23 @@ const OfferFilter = () => {
 
                 <div className="">
                   {filter?.activeTraders ? (
-                    <PiToggleRightFill className="text-tradeGreen text-[25px]" />
+                    <PiToggleRightFill className="text-tradeGreen text-[25px] hover:text-tradeGreen/50 transition-all duration-300" />
                   ) : (
-                    <PiToggleLeftFill className="text-tradeAshExtraLight text-[25px]" />
+                    <PiToggleLeftFill className="text-tradeAshExtraLight text-[25px] hover:text-tradeAshLight transition-all duration-300" />
                   )}
                 </div>
               </div>
               <div
                 onClick={showVerifiedOffers}
-                className={`${
-                  filter?.verifiedOffers ? "text-white" : "text-tradeFadeWhite"
-                }  flex justify-between items-center p-[12px] border border-dashed border-tradeAshLight hover:text-white rounded-[15px] cursor-pointer transition-all duration-300`}
+                className="flex justify-between items-center p-[12px] border border-dashed border-tradeAshLight text-white rounded-[15px] cursor-pointer"
               >
                 <p className="font-semibold text-[13px]">Verified offers</p>
 
                 <div className="">
                   {filter?.verifiedOffers ? (
-                    <PiToggleRightFill className="text-tradeGreen text-[25px]" />
+                    <PiToggleRightFill className="text-tradeGreen text-[25px] hover:text-tradeGreen/50 transition-all duration-300" />
                   ) : (
-                    <PiToggleLeftFill className="text-tradeAshExtraLight text-[25px]" />
+                    <PiToggleLeftFill className="text-tradeAshExtraLight text-[25px] hover:text-tradeAshLight transition-all duration-300" />
                   )}
                 </div>
               </div>

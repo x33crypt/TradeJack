@@ -15,28 +15,18 @@ import { RiExchange2Fill } from "react-icons/ri";
 import { TiFlashOutline } from "react-icons/ti";
 import { FiUserPlus } from "react-icons/fi";
 import { RiExchangeFundsLine } from "react-icons/ri";
+import { useDashboard } from "@/context/userContext/DashboardContext";
+import { LuFileCheck2 } from "react-icons/lu";
+import { LuFileX2 } from "react-icons/lu";
+import { LuFileClock } from "react-icons/lu";
+import { LuFileSearch } from "react-icons/lu";
 
 const DasHboardMenu = () => {
+  const { dashboard } = useDashboard();
   const navigateTo = useNavigate();
   return (
-    <div className="hidden lg:flex px-[15px] py-[12px] sticky top-[64px] max-h-max border border-t-0 border-tradeAshLight w-[280px] gap-[10px] flex-col">
+    <div className="hidden lg:flex px-[15px] py-[12px] sticky top-[64px] h-max border border-t-0 border-tradeAshLight w-[280px] gap-[10px] flex-col">
       <div className="flex flex-col gap-[10px]">
-        <div
-          className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black  transition-all duration-300 cursor-pointer"
-          onClick={() => navigateTo("/dashboard")}
-        >
-          <TbDashboardFilled className="text-[17px]" />
-          <p className="text-[13px] font-[500]"> Dashboard</p>
-        </div>
-
-        <div
-          className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
-          onClick={() => navigateTo("/wallet")}
-        >
-          <IoWalletOutline className="text-[17px]" />
-          <p className="text-[13px] font-[500]">Wallet</p>
-        </div>
-
         <div
           className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
           onClick={() => navigateTo("/offers/user")}
@@ -74,6 +64,9 @@ const DasHboardMenu = () => {
           <RiGift2Fill className="text-[17px]" />
           <p className="text-[13px] font-[500]">Rewards</p>
         </div>
+      </div>
+      <div className="bg-tradeAsh p-[12px] rounded-[15px] rounded-br-none h-[100px]">
+        <p>Hello</p>
       </div>
     </div>
   );

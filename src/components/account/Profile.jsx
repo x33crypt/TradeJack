@@ -14,7 +14,7 @@ const Profile = ({ loading, profile }) => {
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Profile Information</p>
       </div>
-      <div className="relative flex flex-col md:h-[460px] h-full">
+      <div className="relative flex flex-col md:h-[460px] min-h-[120px] h-full">
         {loading ? (
           <Loading />
         ) : (

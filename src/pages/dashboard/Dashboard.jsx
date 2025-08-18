@@ -21,19 +21,20 @@ const Dashboard = () => {
   return (
     <>
       <InAppNav />
-
       <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col gap-[5px] bg-black">
         <DasHboardMenu />
-        <div className="flex-1 flex flex-col gap-[5px] ">
-          <div className="flex lg:flex-row flex-col flex-1 md:p-0 gap-[5px]">
-            <div className="flex flex-col flex-1 gap-[5px]">
+        <div className="flex flex-1 flex-col gap-[5px]">
+          <div className="flex md:flex-ro flex-col gap-[5px]">
+            <div className="flex-1 flex flex-col md:flex-row gap-[5px] ">
               <Balance dashboard={dashboard} />
-              <Stats dashboard={dashboard} />
-              <TopPicks />
+              <div className="flex md:w-[320px]">
+                <Limits />
+              </div>
             </div>
+            <Stats dashboard={dashboard} />
 
-            <div className="lg:w-[350px] w-full flex flex-col gap-[5px]">
-              <Limits />
+            <div className="flex flex-col md:flex-row gap-[5px]">
+              <TopPicks dashboard={dashboard} loading={loading} />
               <Performance dashboard={dashboard} />
             </div>
           </div>
