@@ -24,13 +24,13 @@ const LinkedAccount = () => {
   console.log("linked accounts", linkedAccounts);
 
   return (
-    <div className="flex flex-col w-full md:border border-neutral-800 bg-tradeAs">
+    <div className="flex flex-1 flex-col md:border border-neutral-800 ">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Linked Accounts</p>
       </div>
 
-      <div className="flex flex-col p-[15px] gap-[10px]">
-        <div className="flex min-h-[120px] w-full">
+      <div className="flex flex-1 flex-col p-[15px] gap-[10px]">
+        <div className="flex min-h-[120px] flex-1 w-full">
           {loading ? (
             <Loading />
           ) : (

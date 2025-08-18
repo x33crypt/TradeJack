@@ -5,7 +5,7 @@ const Performance = () => {
   return (
     <div className="flex-1 md:border border-tradeAshLight flex flex-col">
       <div className="flex px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg text-white font-[700]">Performance</p>
+        <p className="text-lg text-white font-[700]">Overview</p>
       </div>
 
       <div className="flex p-[15px] flex-col gap-[10px] min-h-[340px] h-full">

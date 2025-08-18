@@ -32,7 +32,6 @@ const Dashboard = () => {
               </div>
             </div>
             <Stats dashboard={dashboard} />
-
             <div className="flex flex-col md:flex-row gap-[5px]">
               <TopPicks dashboard={dashboard} loading={loading} />
               <Performance dashboard={dashboard} />

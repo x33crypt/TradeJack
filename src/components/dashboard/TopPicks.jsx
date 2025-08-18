@@ -5,7 +5,7 @@ import NetworkError from "../others/NetworkError";
 
 const TopPicks = ({ loading, dashboard }) => {
   return (
-    <div className="flex  md:w-[320px] flex-col md:border border-neutral-800">
+    <div className="flex w-full md:w-[320px] flex-col md:border border-neutral-800">
       <div className="flex items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Top Offers</p>
       </div>

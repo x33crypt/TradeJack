@@ -3,7 +3,7 @@ import { FaQuestionCircle } from "react-icons/fa";
 
 const Overview = () => {
   return (
-    <div className="flex flex-col lg:w-[350px] flex-1 md:border border-neutral-800">
+    <div className="flex flex-col flex-1 md:border border-neutral-800">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Overview</p>
       </div>
