@@ -233,7 +233,7 @@ const OfferFilter = () => {
 
   return (
     <>
-      <div className="flex flex-1 md:w-[320px] gap-[5px] flex-col bg-black md:border-x md:border-t-0 lg:border-b border-neutral-800">
+      <div className="flex flex-1 md:w-[300px] gap-[5px] flex-col bg-black md:border-x md:border-t-0 lg:border-b border-neutral-800">
         <div className="flex lg:hidden justify-between items-center px-[15px] py-[12px] border-b border-neutral-800 ">
           <p className="text-lg text-white font-[700] cursor-pointer">
             Filter Offers

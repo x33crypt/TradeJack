@@ -26,15 +26,15 @@ const SettingsNav = () => {
           <p className="text-lg font-[700] text-white ">Settings</p>
         </div>
 
-        <div className="relative gap-[10px] flex flex-col md:h-[450px] h-full md:overflow-y-auto custom-scrollbar">
+        <div className="relative gap-[10px flex flex-col md:h-[450px] h-full md:overflow-y-auto custom-scrollbar">
           <div className="flex flex-col gap-[10px] px-[15px] py-[12px]">
-            <div
+            {/* <div
               className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black  transition-all duration-300 cursor-pointer"
               onClick={() => navigateTo("/account")}
             >
               <FaUser className="text-[17px]" />
               <p className="text-[13px] font-[500]"> Account</p>
-            </div>
+            </div> */}
             <div className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer">
               <PiPasswordBold className="text-[17px]" />
               <p className="text-[13px] font-[500]"> Change Password</p>

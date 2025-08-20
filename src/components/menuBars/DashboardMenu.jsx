@@ -1,31 +1,20 @@
 import React from "react";
-import { IoSettingsOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { LiaUserFriendsSolid } from "react-icons/lia";
-import { IoWalletOutline } from "react-icons/io5";
-import { TbDashboardFilled } from "react-icons/tb";
 import { TbFileLike } from "react-icons/tb";
 import { BsChatQuote } from "react-icons/bs";
-import { TbLayoutListFilled } from "react-icons/tb";
 import { TbFileInvoice } from "react-icons/tb";
-import { BiSupport } from "react-icons/bi";
 import { RiGift2Fill } from "react-icons/ri";
-import { RiExchangeBoxLine } from "react-icons/ri";
 import { RiExchange2Fill } from "react-icons/ri";
 import { TiFlashOutline } from "react-icons/ti";
 import { FiUserPlus } from "react-icons/fi";
 import { RiExchangeFundsLine } from "react-icons/ri";
 import { useDashboard } from "@/context/userContext/DashboardContext";
-import { LuFileCheck2 } from "react-icons/lu";
-import { LuFileX2 } from "react-icons/lu";
-import { LuFileClock } from "react-icons/lu";
-import { LuFileSearch } from "react-icons/lu";
 
 const DasHboardMenu = () => {
   const { dashboard } = useDashboard();
   const navigateTo = useNavigate();
   return (
-    <div className="hidden lg:flex px-[15px] py-[12px] sticky top-[64px] h-max border border-t-0 border-tradeAshLight w-[280px] gap-[10px] flex-col">
+    <div className="hidden lg:flex px-[15px] py-[12px] sticky top-[64px] h-max border border-t-0 border-tradeAshLight w-[300px] gap-[10px] flex-col">
       <div className="flex flex-col gap-[10px]">
         <div
           className="p-[8px] flex items-center gap-[10px] rounded-[10px] hover:bg-tradeAsh text-tradeFadeWhite hover:text-white border hover:border-tradeAshLight border-black transition-all duration-300 cursor-pointer"
@@ -65,9 +54,7 @@ const DasHboardMenu = () => {
           <p className="text-[13px] font-[500]">Rewards</p>
         </div>
       </div>
-      <div className="bg-tradeAsh p-[12px] rounded-[15px] rounded-br-none h-[100px] border border-tradeAshLight">
-        {/* <p>Hello</p> */}
-      </div>
+      <div className="bg-tradeAsh p-[12px] rounded-[15px] rounded-br-none h-[100px] border border-tradeAshLight"></div>
     </div>
   );
 };

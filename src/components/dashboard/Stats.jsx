@@ -26,8 +26,8 @@ const Stats = ({ dashboard }) => {
 
           <div className="flex flex-col gap-1 items-start">
             <p className="text-xs font-medium text-tradeFadeWhite">Completed</p>
-            <p className="text-white text-lg font-bold leading-none">
-              {dashboard?.activitySummary?.successful_trades ?? "5,790"}
+            <p className="text-white text-sm font-bold leading-none">
+              {dashboard?.activitySummary?.successful_trades ?? "0"}
             </p>
           </div>
         </div>
@@ -39,7 +39,7 @@ const Stats = ({ dashboard }) => {
 
           <div className="flex flex-col gap-1 items-start">
             <p className="text-xs font-medium text-tradeFadeWhite">Declined</p>
-            <p className="text-white text-lg font-bold leading-none">
+            <p className="text-white text-sm font-bold leading-none">
               {dashboard?.activitySummary?.successful_trades
                 ? dashboard?.activitySummary?.successful_trades
                 : "0"}
@@ -56,7 +56,7 @@ const Stats = ({ dashboard }) => {
             <p className="text-xs font-medium text-tradeFadeWhite">
               In Progress
             </p>
-            <p className="text-white text-lg font-bold leading-none">
+            <p className="text-white text-sm font-bold leading-none">
               {dashboard?.activitySummary?.pending_trades
                 ? dashboard?.activitySummary?.pending_trades
                 : "0"}
@@ -73,7 +73,7 @@ const Stats = ({ dashboard }) => {
             <p className="text-xs font-medium text-tradeFadeWhite">
               Under Review
             </p>
-            <p className="text-white text-lg font-bold leading-none">
+            <p className="text-white text-sm font-bold leading-none">
               {dashboard?.activitySummary?.pending_trades
                 ? dashboard?.activitySummary?.pending_trades
                 : "0"}

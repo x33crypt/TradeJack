@@ -15,9 +15,23 @@ import SmallButton from "@/components/buttons/SmallButton";
 import Button from "@/components/buttons/Button";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
+import { useNavigate } from "react-router-dom";
+import { useTraderProfile } from "@/context/publicContext/ProfileContext";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
+  const { setProfile } = useTraderProfile();
+
   const offer = aboutOffer?.data;
+
+  const navigateTo = useNavigate();
+
+  const handleTraderClick = (username) => {
+    setProfile((prev) => ({
+      ...prev,
+      username: username,
+    }));
+    navigateTo(`/user/${username}`);
+  };
 
   return (
     <div className="flex flex-col md:border border-neutral-800">
@@ -85,7 +99,12 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         </div>
                       </div>
                       <div className="flex flex-col gap-1">
-                        <p className="text-lg text-tradeFadeWhite font-bold leading-none">
+                        <p
+                          onClick={() =>
+                            handleTraderClick(offer?.user?.userName)
+                          }
+                          className="text-lg text-tradeFadeWhite font-bold leading-none cursor-pointer"
+                        >
                           @
                           <span className="text-white">
                             {offer?.user?.userName}

@@ -1,4 +1,3 @@
-// utils/http/api.js
 import axios from "axios";
 
 // --- Axios instance ---
@@ -54,7 +53,7 @@ api.interceptors.response.use(
 
       // --- Handle 401 Unauthorized ---
       if (status === 401 && !isRedirecting) {
-        // Exempt auth routes from session-expired logic
+        // Exempt auth routes
         const exempt401Routes = [
           "/api/v1/auth/login",
           "/api/v1/auth/signup",
@@ -70,28 +69,28 @@ api.interceptors.response.use(
           });
         }
 
-        // Try refresh first for other protected routes
+        // Try refresh first
         if (!config.url.includes("/auth/refresh-token")) {
           try {
             await api.post("/auth/refresh-token");
-            return api(config); // retry original request
+            return api(config); // retry request
           } catch {
             // ❌ Refresh failed → session expired
             isRedirecting = true;
 
-            // Save last route before clearing session
+            // ✅ Save last route before clearing session
             const lastRoute = window.location.pathname + window.location.search;
             localStorage.setItem("lastRoute", lastRoute);
 
             clearSession();
 
-            // Replace history to prevent back-navigation to expired pages
-            window.history.replaceState({}, "", "/signin?sessionExpired=true");
+            // ✅ Replace history so back button won’t reopen expired pages
+            window.location.replace("/signin?sessionExpired=true");
 
-            // Redirect to signin
-            setTimeout(() => {
-              window.location.href = "/signin?sessionExpired=true";
-            }, 50);
+            // ✅ Block further back navigation
+            window.addEventListener("popstate", () => {
+              window.history.pushState(null, "", "/signin?sessionExpired=true");
+            });
 
             return Promise.reject({
               success: false,
@@ -122,7 +121,6 @@ api.interceptors.response.use(
 );
 
 // --- Request Interceptor ---
-// Attach CSRF token to unsafe requests
 api.interceptors.request.use((config) => {
   const exemptRoutes = [
     "/api/v1/auth/login",

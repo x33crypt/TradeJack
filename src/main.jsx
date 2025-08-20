@@ -18,41 +18,47 @@ import { BalanceProvider } from "./context/userContext/BalanceContext";
 import { ProfileNavProvider } from "./context/otherContext/ProfileNavContext";
 import { WithdrawProvider } from "./context/userContext/WithdrawContext";
 import { PublicOffersProvider } from "./context/publicContext/OffersContext";
+import { TraderProfileProvider } from "./context/publicContext/ProfileContext";
+import { PasswordProvider } from "./context/otherContext/PasswordContext";
 
 // Render MainApp into #root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <UserOfferProvider>
-        <PublicOffersProvider>
-          <ProfileNavProvider>
-            <BalanceProvider>
-              <LinkedAccountProvider>
-                <TransactionProvider>
-                  <WithdrawProvider>
-                    <DepositProvider>
-                      <TransferProvider>
-                        <ProfileProvider>
-                          <KycProvider>
-                            <DashboardProvider>
-                              <ToastProvider>
-                                <SelectElementProvider>
-                                  <App />
-                                </SelectElementProvider>
-                              </ToastProvider>
-                            </DashboardProvider>
-                          </KycProvider>
-                        </ProfileProvider>
-                      </TransferProvider>
-                    </DepositProvider>
-                  </WithdrawProvider>
-                </TransactionProvider>
-              </LinkedAccountProvider>
-            </BalanceProvider>
-          </ProfileNavProvider>
-        </PublicOffersProvider>
-      </UserOfferProvider>
+      <PasswordProvider>
+        <UserOfferProvider>
+          <TraderProfileProvider>
+            <PublicOffersProvider>
+              <ProfileNavProvider>
+                <BalanceProvider>
+                  <LinkedAccountProvider>
+                    <TransactionProvider>
+                      <WithdrawProvider>
+                        <DepositProvider>
+                          <TransferProvider>
+                            <ProfileProvider>
+                              <KycProvider>
+                                <DashboardProvider>
+                                  <ToastProvider>
+                                    <SelectElementProvider>
+                                      <App />
+                                    </SelectElementProvider>
+                                  </ToastProvider>
+                                </DashboardProvider>
+                              </KycProvider>
+                            </ProfileProvider>
+                          </TransferProvider>
+                        </DepositProvider>
+                      </WithdrawProvider>
+                    </TransactionProvider>
+                  </LinkedAccountProvider>
+                </BalanceProvider>
+              </ProfileNavProvider>
+            </PublicOffersProvider>
+          </TraderProfileProvider>
+        </UserOfferProvider>
+      </PasswordProvider>
     </BrowserRouter>
   </StrictMode>
 );

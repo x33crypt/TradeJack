@@ -274,7 +274,7 @@ const MyAccounts = () => {
           </div>
 
           {/*Add New Account */}
-          <div className="sticky top-[64px] md:flex hidden md:w-[350px] min-h-[600px] ">
+          <div className=" md:flex hidden md:w-[320px]">
             <AddNew />
           </div>
         </div>

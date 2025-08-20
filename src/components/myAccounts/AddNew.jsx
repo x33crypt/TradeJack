@@ -74,12 +74,12 @@ const AddNew = () => {
   };
 
   return (
-    <div className=" flex flex-col md:border border-neutral-800 w-full">
+    <div className="flex flex-1 md:sticky top-[64px] md:max-h-max  md:border border-t-0 border-tradeAshLight flex-col">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Link Account</p>
       </div>
 
-      <div className="flex flex-col justify-between p-[15px] gap-[15px] h-full w-full">
+      <div className="flex flex-col justify-between p-[15px] gap-[15px] md:h-[450px] h-full md:overflow-y-auto custom-scrollbar">
         <div className="">
           <p className="text-xs text-tradeFadeWhite font-medium">
             To ensure the security of your funds, only bank accounts bearing the
@@ -87,7 +87,7 @@ const AddNew = () => {
           </p>
         </div>
 
-        <div className="flex flex-col gap-[15px] h-full justify-between">
+        <div className="flex flex-col gap-[20px] h-full justify-between ">
           <div className="flex flex-col gap-[10px]">
             <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
               <div className="flex flex-col gap-[10px] w-full">
@@ -145,11 +145,11 @@ const AddNew = () => {
               </div>
             </div>
 
-            <Info
+            {/* <Info
               text={
                 "We never store your bank credentials. Your data is protected with advanced end-to-end encryption to ensure it always stays private and secure."
               }
-            />
+            /> */}
           </div>
 
           <div className="flex flex-col items-center gap-[10px]">

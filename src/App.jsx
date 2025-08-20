@@ -45,10 +45,14 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import SignupSuccess from "./pages/auth/SignupSuccess";
 import Partners from "./pages/partners/Partners";
 import PartnersProfile from "./pages/partners/PartnersProfile";
+import AboutTrader from "./pages/traders/AboutTrader";
+import ConfirmPassword from "./pages/auth/ConfirmPassword";
+import SensitiveRoute from "./utils/sensitiveRoutes";
 
 const App = () => {
   return (
     <>
+      <ConfirmPassword />
       <SelectElement />
       <ToastSuccess />
       <ToastError />
@@ -81,11 +85,12 @@ const App = () => {
 
         {/* Account Settings */}
         <Route path="/settings" element={<Settings />} />
-        <Route path="/settings/account/name" element={<EditFullname />} />
-        <Route path="/settings/account/username" element={<EditUsername />} />
-        <Route path="/settings/account/email" element={<EditEmail />} />
-        <Route path="/settings/account/mobile" element={<EditMobile />} />
-        {/* <Route path="/settings/password" element={< />} /> */}
+        <Route element={<SensitiveRoute />}>
+          <Route path="/settings/account/name" element={<EditFullname />} />
+          <Route path="/settings/account/username" element={<EditUsername />} />
+          <Route path="/settings/account/email" element={<EditEmail />} />
+          <Route path="/settings/account/mobile" element={<EditMobile />} />
+        </Route>
 
         {/* Wallet */}
         <Route path="/wallet" element={<Wallet />} />
@@ -106,9 +111,12 @@ const App = () => {
         <Route path="/offers/user/:id/edit" element={<EditMyOffer />} />
         <Route path="/offers/user/:id/summary" element={<SummaryMyOffer />} />
 
-        {/* Trade  */}
+        {/* partners  */}
         <Route path="/partners" element={<Partners />} />
         <Route path="/partners/:username" element={<PartnersProfile />} />
+
+        {/* users  */}
+        <Route path="/user/:username" element={<AboutTrader />} />
       </Routes>
     </>
   );

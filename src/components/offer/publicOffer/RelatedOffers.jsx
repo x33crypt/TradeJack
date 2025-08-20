@@ -10,7 +10,7 @@ const RelatedOffers = ({ loading, aboutOffer }) => {
         <p className="text-lg text-white font-semibold">Related Offers</p>
       </div>
 
-      <div className="flex min-h-[120px] p-[15px]">
+      <div className="flex min-h-[120px] h-full p-[15px]">
         {loading ? (
           <Loading />
         ) : (

@@ -97,10 +97,10 @@ const ProfileNav = () => {
               <div className="flex flex-col  bg-tradeAsh border border-tradeAshLight rounded-[15px] shadow-lg">
                 <div className="flex flex-1 flex-col justify-between gap-[15px] p-[12px]">
                   <div className="bg-tradeAsh p-[12px rounded-[15px] shadow-lg flex flex-col gap-[5px] borde border-tradeAshLight">
+                    <Button variant="outline" onClick={toAccount}>
+                      Account
+                    </Button>
                     <div className="lg:hidden flex flex-col gap-[5px]">
-                      <Button variant="outline" onClick={toAccount}>
-                        Account
-                      </Button>
                       <Button variant="outline" onClick={toSettings}>
                         Rewards
                       </Button>
