@@ -4,7 +4,7 @@ const PasswordContext = createContext();
 
 export const PasswordProvider = ({ children }) => {
   const [password, setPassword] = useState({
-    state: true,
+    state: false,
     loading: false,
     Password: "",
   });

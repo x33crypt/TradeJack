@@ -87,7 +87,7 @@ const ConfirmPassword = () => {
       Password: "",
     }));
   };
-
+  
   return (
     <div>
       {state && (
