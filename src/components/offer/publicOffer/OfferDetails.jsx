@@ -54,12 +54,6 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                 <div className="flex lg:flex-row flex-col w-full gap-[10px]">
                   <div className="flex min-w-[200px] flex-1 flex-col gap-[5px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAs">
                     <div className="flex flex-col gap-1">
-                      <div className="flex gap-1 items-center">
-                        {/* <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" /> */}
-                        <p className="text-xs font-medium text-tradeFadeWhite">
-                          {dateTime(offer?.publishedOn)}
-                        </p>
-                      </div>
                       <p className="text-white text-xs font-semibold">
                         {offer?.serviceType}
                       </p>
@@ -76,7 +70,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         <p className="text-white text-3xl font-bold leading-none">
                           $50,568.89
                         </p>
-                        <div className="flex items-center bg-tradeAsh text-tradeFadeWhite gap-1 borde border-tradeAshExtraLight  h-max rounded-[8px p- w-max cursor-pointer transition-all duration-300">
+                        <div className="flex items-center bg-tradeAsh text-tradeFadeWhite gap-1 border border-tradeAshExtraLight  h-max rounded-[8px] p-1 w-max cursor-pointer transition-all duration-300">
                           <p className="text-xs font-semibold">
                             +0.22% premium
                           </p>
@@ -165,7 +159,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       <SmallButton variant="fadeout">
                         <MdOutlineSafetyCheck className="text-tradeOrange text-sm" />
                         <p className="text-[13px] font-semibold text-white">
-                          %{offer?.user?.trustScore}
+                          {offer?.user?.trustScore}%
                         </p>
                       </SmallButton>
 
