@@ -18,6 +18,7 @@ import SmallButton from "@/components/buttons/SmallButton";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 // verified user icon
 import { TiBusinessCard } from "react-icons/ti";
+import { date } from "@/utils/date";
 
 const MarketCard = ({ offer }) => {
   const { setAboutOffer } = usePublicOffers();
@@ -40,19 +41,19 @@ const MarketCard = ({ offer }) => {
               <div className="flex gap-1 items-center">
                 <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                 <p className="text-xs font-medium text-tradeFadeWhite">
-                  {monthDate(offer?.publishedOn)}
+                  {date(offer?.publishedOn)}
                 </p>
               </div>
-              <div className="flex gap-1 items-center">
+              {/* <div className="flex gap-1 items-center">
                 <MdAccessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                 <p className="text-xs font-medium text-tradeFadeWhite">
                   {time(offer?.publishedOn)}
                 </p>
-              </div>
+              </div> */}
             </div>
             <div className="flex gap-1 items-center">
               <HiOutlineUserCircle className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-              <p className="text-xs font-medium text-white">
+              <p className="text-xs font-semibold text-white">
                 {offer?.user?.userName}
               </p>
             </div>
@@ -184,15 +185,15 @@ const MarketCard = ({ offer }) => {
               <div className="flex gap-1 items-center">
                 <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                 <p className="text-xs font-medium text-tradeFadeWhite">
-                  {monthDate(offer?.publishedOn)}
+                  {date(offer?.publishedOn)}
                 </p>
               </div>
-              <div className="flex gap-1 items-center">
+              {/* <div className="flex gap-1 items-center">
                 <MdAccessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                 <p className="text-xs font-medium text-tradeFadeWhite">
                   {time(offer?.publishedOn)}
                 </p>
-              </div>
+              </div> */}
             </div>
 
             <p className="text-base font-bold text-tradeOrange leading-none">
@@ -265,7 +266,7 @@ const MarketCard = ({ offer }) => {
             </SmallButton>
 
             <SmallButton variant="primary">
-              <p>Initiate Trade</p>
+              <p>Trade</p>
             </SmallButton>
           </div>
         </div>

@@ -17,6 +17,8 @@ import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
 import { useNavigate } from "react-router-dom";
 import { useTraderProfile } from "@/context/publicContext/ProfileContext";
+import { MdOutlineDateRange } from "react-icons/md";
+import { date } from "@/utils/date";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -47,10 +49,16 @@ const OfferDetails = ({ loading, aboutOffer }) => {
             {aboutOffer === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1 flex-col min-h-[120px]">
-                <div className="flex lg:flex-row flex-col w-full border-b border-tradeAshLight">
-                  <div className="flex-1 flex p-[15px] w-full flex-col gap-[5px]">
-                    <div className="flex ">
+              <div className="flex flex-1 flex-col min-h-[120px] p-[15px] gap-[10px]">
+                <div className="flex lg:flex-row flex-col w-full gap-[10px]">
+                  <div className="flex min-w-[200px] flex-1 flex-col gap-[5px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+                    <div className="flex flex-col gap-1">
+                      <div className="flex gap-1 items-center">
+                        <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          {date(offer?.publishedOn)}
+                        </p>
+                      </div>
                       <p className="text-white text-sm font-semibold">
                         {offer?.serviceType} /{" "}
                         <span className="text-tradeOrange">
@@ -65,10 +73,9 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </p>
                       <div className="flex items-center gap-2">
                         <p className="text-white text-3xl font-bold">
-                          <span className="text-tradeFadeWhite">$</span>
-                          50,568.89
+                          $50,568.89
                         </p>
-                        <div className="flex items-center bg-tradeAsh text-tradeFadeWhite gap-1 border border-tradeAshExtraLight  h-max rounded-[8px] p-1 w-max cursor-pointer transition-all duration-300">
+                        <div className="flex items-center bg-tradeAsh text-tradeFadeWhite gap-1 borde border-tradeAshExtraLight  h-max rounded-[8px p- w-max cursor-pointer transition-all duration-300">
                           <p className="text-xs font-semibold">
                             +0.22% premium
                           </p>
@@ -83,9 +90,9 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="lg:min-w-[300px] flex flex-col gap-4 items-cente justify-between p-[15px] lg:border-l  border-t lg:border-t-0 border-tradeAshLight">
+                  <div className="lg:min-w-[300px] flex justify-between flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
                     <div className="flex items-center gap-[10px]">
-                      <div className="flex  w-[60px] h-[60px] border-[2px] border-tradeAshExtraLight rounded-[15px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
+                      <div className="flex  md:w-[50px] w-[50px] md:h-[50px] h-[50px] border-[2px] border-tradeAshExtraLight rounded-[15px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
                         <div>
                           {false ? (
                             <img
@@ -94,16 +101,16 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                               alt=""
                             />
                           ) : (
-                            <FaUser className="text-tradeAshLight text-[40px]" />
+                            <FaUser className="text-tradeAshLight md:text-[30px] text-[30px]" />
                           )}
                         </div>
                       </div>
-                      <div className="flex flex-col gap-1">
+                      <div className="flex flex-col gap-2">
                         <p
                           onClick={() =>
                             handleTraderClick(offer?.user?.userName)
                           }
-                          className="text-lg text-tradeFadeWhite font-bold leading-none cursor-pointer"
+                          className="textbase text-tradeFadeWhite font-semibold leading-none cursor-pointer"
                         >
                           @
                           <span className="text-white">
@@ -170,10 +177,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
                 </div>
-                <div className="p-[15px] border-b border-tradeAshLight">
-                  <Button>Initiate Trade</Button>
-                </div>
-                <div className="flex flex-1 flex-col p-[15px] gap-[10px]">
+
+                <div className="flex flex-1 flex-col gap-[10px]">
                   <div className="flex-1 flex md:flex-row flex-col flex-wrap flex-grow gap-[10px]">
                     <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
                       <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -279,6 +284,10 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
                     </div>
                   </div>
+                </div>
+
+                <div className="mt-[20px]">
+                  <Button>Initiate Trade</Button>
                 </div>
               </div>
             )}

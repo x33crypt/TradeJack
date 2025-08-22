@@ -15,6 +15,7 @@ import SmallButton from "../buttons/SmallButton";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { LiaFilterSolid } from "react-icons/lia";
 import { RiLoader4Fill } from "react-icons/ri";
+import { PiMagnifyingGlassBold } from "react-icons/pi";
 
 const MarketMain = () => {
   const topRef = useRef(null);
@@ -111,13 +112,13 @@ const MarketMain = () => {
 
   const sort = [
     "All",
-    "Top Picks",
+    "Recent",
     "Rate: Highest to Lowest",
     "Rate: Lowest to Highest",
-    "Release Window: Fast to Slow",
-    "Release Window: Slow to Fast",
-    "Transfer Window: Fast to Slow",
-    "Transfer Window: Slow to Fast",
+    "Release: Fast to Slow",
+    "Release: Slow to Fast",
+    "Transfer: Fast to Slow",
+    "Transfer: Slow to Fast",
   ];
 
   // handling sort
@@ -157,12 +158,6 @@ const MarketMain = () => {
           <div className="sticky h-[55px] flex items-center w-full md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
             <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-hidden p-[2px]">
               <div className="flex gap-[5px]">
-                <div className="flex lg:hidden">
-                  <SmallButton variant="fadeout" onClick={showFilter}>
-                    <LiaFilterSolid className="lg:text-[14px] text-[14px]" />
-                    <p>Filter</p>
-                  </SmallButton>
-                </div>
                 <SmallButton
                   variant="fadeout"
                   disabled={filter?.sortBy !== null}
@@ -182,6 +177,12 @@ const MarketMain = () => {
                   <FaSort />
                   <p>{filter?.sortBy ? filter?.sortBy : "Sort by"}</p>
                 </SmallButton>
+                <div className="flex lg:hidden">
+                  <SmallButton variant="fadeout" onClick={showFilter}>
+                    <PiMagnifyingGlassBold className="lg:text-[14px] text-[14px]" />
+                    <p>Filter</p>
+                  </SmallButton>
+                </div>
               </div>
 
               <div className="flex gap-[5px]">

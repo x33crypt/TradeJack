@@ -9,6 +9,7 @@ import Feedbacks from "@/components/account/Feedbacks";
 import { useFetchAboutOffers } from "@/hooks/publicHooks/useFetchAboutOffer";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import RelatedOffers from "@/components/offer/publicOffer/RelatedOffers";
+import Button from "@/components/buttons/Button";
 
 const AboutPublicOffer = () => {
   const topRef = useRef(null);

@@ -211,7 +211,7 @@ const KycStatus = () => {
                                 </div>
                                 <div className="flex items-center justify-between gap-[10px] p-3 border-b border-tradeAshLight">
                                   <p className="text-[13px] font-semibold text-white">
-                                    Date submitted
+                                    Submitted On
                                   </p>
                                   <p className="text-tradeFadeWhite text-[13px] font-semibold">
                                     {date(status?.data?.submissionDate)}
