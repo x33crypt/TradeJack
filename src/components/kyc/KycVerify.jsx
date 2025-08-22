@@ -944,48 +944,7 @@ const KycVerify = () => {
                         </p>
                       </div>
                       <div className="flex-1 flex items-center justify-center">
-                        <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] w-full">
-                          <div className="flex items-center justify-between gap-[10px] p-3 border-b border-tradeAshLight">
-                            <p className="text-[13px] font-semibold text-white">
-                              Date submitted
-                            </p>
-                            <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                              {date(status?.data?.submissionDate)}
-                            </p>
-                          </div>
-
-                          <div className="flex items-center justify-between gap-[10px] p-3 border-b border-tradeAshLight">
-                            <p className="text-[13px] font-semibold text-white">
-                              Estimated approval
-                            </p>
-                            <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                              17 April 2025
-                            </p>
-                          </div>
-
-                          <div className="flex items-center justify-between gap-[10px] p-3 border- border-tradeAshLight">
-                            <p className="text-[13px] font-semibold text-white">
-                              Verification status
-                            </p>
-                            <div>
-                              {(() => {
-                                if (status?.state === "not_submitted") {
-                                  return <NotSubmittedComponent />;
-                                } else if (status?.state === "pending") {
-                                  return (
-                                    <p className="text-[13px] font-semibold text-tradeOrange">
-                                      Pending
-                                    </p>
-                                  );
-                                } else if (status?.state === "verified") {
-                                  return <VerifiedComponent />;
-                                } else {
-                                  return <UnknownStateComponent />;
-                                }
-                              })()}
-                            </div>
-                          </div>
-                        </div>
+                       
                       </div>
                     </div>
                   </div>
