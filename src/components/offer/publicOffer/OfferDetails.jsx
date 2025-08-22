@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { useTraderProfile } from "@/context/publicContext/ProfileContext";
 import { MdOutlineDateRange } from "react-icons/md";
 import { date } from "@/utils/date";
+import { dateTime } from "@/utils/dateTime";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -51,26 +52,26 @@ const OfferDetails = ({ loading, aboutOffer }) => {
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px] p-[15px] gap-[10px]">
                 <div className="flex lg:flex-row flex-col w-full gap-[10px]">
-                  <div className="flex min-w-[200px] flex-1 flex-col gap-[5px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+                  <div className="flex min-w-[200px] flex-1 flex-col gap-[5px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAs">
                     <div className="flex flex-col gap-1">
                       <div className="flex gap-1 items-center">
                         <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                         <p className="text-xs font-medium text-tradeFadeWhite">
-                          {date(offer?.publishedOn)}
+                          {dateTime(offer?.publishedOn)}
                         </p>
                       </div>
-                      <p className="text-white text-sm font-semibold">
-                        {offer?.serviceType} /{" "}
-                        <span className="text-tradeOrange">
-                          {offer?.service}
-                        </span>
+                      <p className="text-white text-[13px] font-semibold">
+                        {offer?.serviceType}
+                      </p>
+                      <p className="text-tradeOrange text-lg font-semibold leading-none">
+                        {offer?.service}
                       </p>
                     </div>
 
                     <div className="flex flex-col gap-1">
-                      <p className="text-tradeFadeWhite text-xs font-semibold">
+                      {/* <p className="text-tradeFadeWhite text-xs font-semibold">
                         Rate value
-                      </p>
+                      </p> */}
                       <div className="flex items-center gap-2">
                         <p className="text-white text-3xl font-bold">
                           $50,568.89
@@ -84,13 +85,13 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       <div className="flex gap-1">
                         <p className="text-tradeFadeWhite text-[13px] font-semibold">
                           Exchange rate :{" "}
-                          <span className="text-tradeGreen">NGN1,250/USD </span>{" "}
+                          <span className="text-tradeGreen">#1,250/USD </span>{" "}
                           {/* (+0.22%) */}
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="lg:min-w-[300px] flex justify-between flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+                  <div className="lg:min-w-[300px] flex justify-between flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAs">
                     <div className="flex items-center gap-[10px]">
                       <div className="flex  md:w-[50px] w-[50px] md:h-[50px] h-[50px] border-[2px] border-tradeAshExtraLight rounded-[15px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
                         <div>
