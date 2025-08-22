@@ -23,7 +23,7 @@ const Stats = ({ loading, profile }) => {
               <NetworkError />
             ) : (
               <div className="flex-wrap flex items-center gap-[10px] overflow-x-hidden ">
-                <div className="flex min-w-[250px] flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
+                <div className="flex min-w-[250px] md:min-w-0 flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
                   <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
                     <MdThumbUpAlt className="text-lg text-tradeGreen" />
                   </div>
@@ -38,7 +38,7 @@ const Stats = ({ loading, profile }) => {
                     </p>
                   </div>
                 </div>
-                <div className="flex min-w-[250px] flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
+                <div className="flex min-w-[250px] md:min-w-0 flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
                   <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
                     <MdThumbDownAlt className="text-lg text-red-600" />
                   </div>

@@ -7,6 +7,7 @@ export const PasswordProvider = ({ children }) => {
     state: false,
     loading: false,
     Password: "",
+    redirectTo: null,
   });
 
   return (

@@ -1,30 +1,18 @@
 import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
-import { useConfirmPassword } from "@/context/otherContext/PasswordContext";
+import { Outlet, Navigate } from "react-router-dom";
 
 /**
- * SensitiveRoute - protects sensitive pages
- * If password was confirmed in the last 10 minutes, allows access.
- * Otherwise, redirects to /confirm-password and saves intended route.
+ * SensitiveRoute:
+ * If password confirmed in last 10 mins → allow access.
+ * Otherwise → redirect to error page (or show an error component).
  */
-
 const SensitiveRoute = () => {
-  const { setPassword } = useConfirmPassword();
-
   const lastConfirm = localStorage.getItem("lastPasswordConfirm");
   const confirmed =
     lastConfirm && Date.now() - parseInt(lastConfirm, 10) < 10 * 60 * 1000;
 
-  if (confirmed) {
-    return <Outlet />; // render the nested route
-  } else {
-    // Save intended sensitive route
-    localStorage.setItem("sensitiveRedirect", window.location.pathname);
-    return setPassword((prev) => ({
-      ...prev,
-      state: true,
-    }));
-  }
+  // remember to replace with your error component or page
+  return confirmed ? <Outlet /> : <Navigate to="/error-no-access" replace />;
 };
 
 export default SensitiveRoute;

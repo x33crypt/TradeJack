@@ -7,6 +7,7 @@ import { IoClose } from "react-icons/io5";
 import Button from "@/components/buttons/Button";
 import { confirmPassword } from "@/utils/auth/confirmPassword";
 import { useToast } from "@/context/otherContext/ToastContext";
+import InAppNav from "@/components/others/InAppNav";
 
 const ConfirmPassword = () => {
   const { password, setPassword } = useConfirmPassword();
@@ -84,12 +85,13 @@ const ConfirmPassword = () => {
       ...prev,
       state: false,
       loading: false,
-      Password: "",
+      password: "",
     }));
   };
-  
+
   return (
     <div>
+      {/* <InAppNav /> */}
       {state && (
         <div>
           <LockByScroll />
@@ -98,7 +100,7 @@ const ConfirmPassword = () => {
             <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
-                  Confirm Your Password
+                  Confirm Password
                 </p>
 
                 <div onClick={close}>
@@ -109,12 +111,12 @@ const ConfirmPassword = () => {
               <div className="flex-1 flex flex-col justify-between py-[12.3px] gap-[30px]">
                 <div className="flex flex-col gap-[10px]">
                   <div className="flex flex-col gap-1">
-                    <p className="text-[13px] font-medium text-cente text-tradeFadeWhite">
-                      Enter your password to continue.
+                    <p className="text-[13px] font-medium text-tradeFadeWhite">
+                      Please confirm your password to access this section.
                     </p>
                   </div>
 
-                  <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
+                  <div className="bg-tradeAsh rounded-[10px] flex flex-col gap-[15px]">
                     <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
                       <input
                         className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"

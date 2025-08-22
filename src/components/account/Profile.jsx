@@ -5,9 +5,11 @@ import Loading from "@/components/others/Loading";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import NetworkError from "../others/NetworkError";
 import { shortenEmail } from "@/utils/shortenEmail";
+import { useSensitiveNavigation } from "@/utils/navigateSensitive";
 
 const Profile = ({ loading, profile }) => {
   const navigateTo = useNavigate();
+  const navigateSensitive = useSensitiveNavigation();
 
   return (
     <div className="flex flex-1 md:sticky top-[64px] md:max-h-max  md:border border-t-0 border-tradeAshLight flex-col">
@@ -28,7 +30,7 @@ const Profile = ({ loading, profile }) => {
                   {/* Username */}
                   <div
                     className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-                    onClick={() => navigateTo("/settings/account/name")}
+                    onClick={() => navigateSensitive("/settings/account/name")}
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
@@ -65,7 +67,7 @@ const Profile = ({ loading, profile }) => {
                   {/* Email */}
                   <div
                     className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
-                    onClick={() => navigateTo("/settings/account/email")}
+                    onClick={() => navigateSensitive("/settings/account/email")}
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
@@ -116,7 +118,9 @@ const Profile = ({ loading, profile }) => {
                   {/* Mobile */}
                   <div
                     className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-                    onClick={() => navigateTo("/settings/account/mobile")}
+                    onClick={() =>
+                      navigateSensitive("/settings/account/mobile")
+                    }
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
@@ -140,9 +144,6 @@ const Profile = ({ loading, profile }) => {
                       <p className="text-[13px] font-semibold text-white">
                         Address
                       </p>
-                      {/* <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                {profile?.address || "-- --"}
-              </p> */}
                     </div>
                     <div className="text-white text-[22px]">
                       <MdKeyboardArrowRight />
