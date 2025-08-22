@@ -15,6 +15,7 @@ import { MdOutlineBadge } from "react-icons/md";
 import NetworkError from "../others/NetworkError";
 import { dateTime } from "@/utils/dateTime";
 import Stepper from "../others/Steppers";
+import { date } from "@/utils/date";
 
 const KycVerify = () => {
   const { loading, error, refetchKycStatus } = useFetchKycStatus();
@@ -924,34 +925,32 @@ const KycVerify = () => {
                   </div>
                 ) : status?.state === "pending" ? (
                   <div className=" h-full w-full">
-                    <div
-                      className={`flex flex-col justify-between gap-[15px] h-full w-full`}
-                    >
-                      <div className="flex flex-col h-full justify-between">
-                        <div className="flex flex-col gap-[15px] items-center justify-center">
-                          <div className="flex items-center">
-                            <div className="text-[60px] text-tradeGreen leading-none">
-                              <MdOutlineBadge />
-                            </div>
+                    <div className={`flex flex-col h-full w-full`}>
+                      <div className="flex flex-col gap-[15px] items-center justify-center">
+                        <div className="flex items-center">
+                          <div className="text-[60px] text-tradeGreen leading-none">
+                            <MdOutlineBadge />
                           </div>
-
-                          <p className="text-white text-lg font-semibold ">
-                            We're verifying your identity
-                          </p>
-
-                          <p className="text-xs text-tradeFadeWhite font-medium text-center">
-                            Your verification details have been submitted
-                            successfully. We’re reviewing your information, and
-                            you’ll be updated once the process is complete.
-                          </p>
                         </div>
-                        <div className="flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] w-full">
+
+                        <p className="text-white text-lg font-semibold ">
+                          We're verifying your identity
+                        </p>
+
+                        <p className="text-xs text-tradeFadeWhite font-medium text-center">
+                          Your verification details have been submitted
+                          successfully. We’re reviewing your information, and
+                          you’ll be updated once the process is complete.
+                        </p>
+                      </div>
+                      <div className="flex-1 flex items-center justify-center">
+                        <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] w-full">
                           <div className="flex items-center justify-between gap-[10px] p-3 border-b border-tradeAshLight">
                             <p className="text-[13px] font-semibold text-white">
                               Date submitted
                             </p>
                             <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                              {dateTime(status?.data?.submissionDate)}
+                              {date(status?.data?.submissionDate)}
                             </p>
                           </div>
 
@@ -964,7 +963,7 @@ const KycVerify = () => {
                             </p>
                           </div>
 
-                          <div className="flex items-center justify-between gap-[10px] p-3 border-b border-tradeAshLight">
+                          <div className="flex items-center justify-between gap-[10px] p-3 border- border-tradeAshLight">
                             <p className="text-[13px] font-semibold text-white">
                               Verification status
                             </p>
@@ -986,23 +985,6 @@ const KycVerify = () => {
                               })()}
                             </div>
                           </div>
-
-                          <div className="flex items-center justify-between gap-[10px] p-3">
-                            <p className="text-[13px] font-semibold text-white">
-                              Verification fee
-                            </p>
-                            <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                              NGN 0.00
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex flex-col items-center gap-[10px]">
-                          <Button
-                            variant="primary"
-                            onClick={() => navigateTo("/dashboard")}
-                          >
-                            Return to Dashboard
-                          </Button>
                         </div>
                       </div>
                     </div>

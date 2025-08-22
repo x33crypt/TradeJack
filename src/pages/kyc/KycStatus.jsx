@@ -12,6 +12,7 @@ import { useFetchKycStatus } from "@/hooks/userHooks/useFetchKycStatus";
 import KycBenefits from "@/components/kyc/KycBenefits";
 import NetworkError from "@/components/others/NetworkError";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
+import { date } from "@/utils/date";
 
 const KycStatus = () => {
   const { loading, error } = useFetchKycStatus();
@@ -99,7 +100,7 @@ const KycStatus = () => {
                           <div className="h-full flex flex-col p-[15px] gap-[25px]">
                             <div className="">
                               <p className="text-xs text-tradeFadeWhite font-medium">
-                                Your KYC details have been submitted and are
+                                Your details have been submitted and are
                                 currently under review. While updates aren’t
                                 allowed during this process, you’ll be able to
                                 resubmit if your verification is declined.
@@ -109,7 +110,7 @@ const KycStatus = () => {
                             <div className="flex flex-col gap-[2] h-full justify-between ">
                               <div className="flex flex-col gap-[10px]">
                                 {/* Status */}
-                                <div className="flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] w-full">
+                                {/* <div className="flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] w-full">
                                   <div className="flex items-center justify-between gap-[10px] p-3 border- border-tradeAshLight">
                                     <p className="text-[13px] font-semibold text-white">
                                       Verification status
@@ -136,7 +137,7 @@ const KycStatus = () => {
                                       })()}
                                     </div>
                                   </div>
-                                </div>
+                                </div> */}
 
                                 {/* Profile Information */}
                                 <div className="flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] w-full">
@@ -220,17 +221,6 @@ const KycStatus = () => {
                                   </div>
                                 </div>
                               </div>
-
-                              <div className="md:hidden flex w-full">
-                                <Button
-                                  variant="primary"
-                                  onClick={() =>
-                                    navigateTo("/account/kyc/verification")
-                                  }
-                                >
-                                  Submission Status
-                                </Button>
-                              </div>
                             </div>
                           </div>
                         )}
@@ -244,7 +234,7 @@ const KycStatus = () => {
             {/* <KycBenefits /> */}
           </div>
 
-          <div className=" md:flex hidden md:w-[350px] ">
+          <div className=" md:flex hidden md:w-[320px] ">
             <KycVerify />
           </div>
         </div>
