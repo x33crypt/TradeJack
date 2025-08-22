@@ -63,9 +63,9 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
 
                     <div className="flex flex-col gap-1">
-                      {/* <p className="text-tradeFadeWhite text-xs font-semibold">
+                      <p className="text-tradeFadeWhite text-xs font-semibold">
                         Rate value
-                      </p> */}
+                      </p>
                       <div className="flex items-center gap-2">
                         <p className="text-white text-3xl font-bold leading-none">
                           $50,568.89
@@ -79,8 +79,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       <div className="flex gap-1">
                         <p className="text-tradeFadeWhite text-[13px] font-semibold">
                           Exchange rate :{" "}
-                          <span className="text-tradeGreen">#1,250/USD </span>{" "}
-                          {/* (+0.22%) */}
+                          <span className="text-tradeGreen">NGN1,250/USD </span>
                         </p>
                       </div>
                     </div>
