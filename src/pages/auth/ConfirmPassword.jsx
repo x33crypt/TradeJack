@@ -129,7 +129,7 @@ const ConfirmPassword = () => {
                   </div>
                 </div>
                 <Button
-                  variant="Fadeout"
+                  variant="outline"
                   disabled={loading}
                   onClick={handleConfirm}
                 >
