@@ -55,12 +55,12 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   <div className="flex min-w-[200px] flex-1 flex-col gap-[5px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAs">
                     <div className="flex flex-col gap-1">
                       <div className="flex gap-1 items-center">
-                        <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        {/* <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" /> */}
                         <p className="text-xs font-medium text-tradeFadeWhite">
                           {dateTime(offer?.publishedOn)}
                         </p>
                       </div>
-                      <p className="text-white text-[13px] font-semibold">
+                      <p className="text-white text-xs font-semibold">
                         {offer?.serviceType}
                       </p>
                       <p className="text-tradeOrange text-lg font-semibold leading-none">
@@ -73,7 +73,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         Rate value
                       </p> */}
                       <div className="flex items-center gap-2">
-                        <p className="text-white text-3xl font-bold">
+                        <p className="text-white text-3xl font-bold leading-none">
                           $50,568.89
                         </p>
                         <div className="flex items-center bg-tradeAsh text-tradeFadeWhite gap-1 borde border-tradeAshExtraLight  h-max rounded-[8px p- w-max cursor-pointer transition-all duration-300">
@@ -91,7 +91,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="lg:min-w-[300px] flex justify-between flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAs">
+                  <div className="lg:min-w-[300px] flex justify-between flex-col gap-[15px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAs">
                     <div className="flex items-center gap-[10px]">
                       <div className="flex  md:w-[50px] w-[50px] md:h-[50px] h-[50px] border-[2px] border-tradeAshExtraLight rounded-[15px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
                         <div>
