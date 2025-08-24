@@ -23,6 +23,8 @@ import { dateTime } from "@/utils/dateTime";
 import { FaCheckDouble } from "react-icons/fa";
 import { time } from "@/utils/time";
 import { FaCalendarDay } from "react-icons/fa";
+import { MdOutlineShowChart } from "react-icons/md";
+import { TiChartLine } from "react-icons/ti";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -56,8 +58,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px]  gap-[10px] p-[15px]">
-                <div className="flex lg:flex-row flex-col gap-[10px] w-full border- border-tradeAshLight  md:bg-tradeAsh">
-                  <div className="flex flex-col min-w-[200px] flex-1 justify-between gap-[10px] border- md:border-0 rounded-[15px border-neutral-800 p-[12px] bg-tradeAsh">
+                <div className="flex lg:flex-row flex-col gap-[10px] w-full ">
+                  <div className="flex flex-col min-w-[200px] flex-1 justify-between gap-[10px] border border-tradeAshLight  rounded-[15px] p-[12px] bg-tradeAsh">
                     <div className="flex flex-co gap-3 pb-[10px]">
                       <div className="flex gap-1 items-center">
                         <FaCalendarDay className="flex text-white text-[10px] flex-shrink-0" />
@@ -74,26 +76,31 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
 
                     <div className="flex flex-col gap-1">
-                      <p className="text-white text-[13px] font-semibold">
-                        {offer?.serviceType}
-                      </p>
                       <p className="text-tradeOrange text-lg font-semibold leading-none">
                         {offer?.service}
+                      </p>
+                      <p className="text-white text-xs font-semibold">
+                        {offer?.serviceType}
                       </p>
                     </div>
 
                     <div className="flex flex-col gap-1">
-                      <p className="text-tradeFadeWhite text-xs font-semibold">
+                      {/* <p className="text-tradeFadeWhite text-xs font-semibold">
                         Exchange Rate
-                      </p>
-                      <div className="flex items-center gap-2">
+                      </p> */}
+                      <div className="flex items-center gap-4">
                         <p className="text-white text-2xl font-semibold leading-none">
-                          1,250/$
+                          #1,250/$
                         </p>
-                        <div className="flex items-center bg-tradeAsh text-tradeFadeWhite gap-1 border border-tradeAshExtraLight  h-max rounded-[8px] p-1 w-max cursor-pointer transition-all duration-300">
-                          <p className="text-xs font-semibold">
-                            +0.22% premium
+                        <div className="flex items-center gap-2  h-max  cursor-pointer transition-all duration-300">
+                          <p className="text-xs font-semibold text-tradeFadeWhite ">
+                            Today
                           </p>
+
+                          <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeGreen text-black p-1 w-max">
+                            <TiChartLine className="text-[15px] flex-shrink-0" />
+                            <p>0.22%</p>
+                          </div>
                         </div>
                       </div>
                       {/* <div className="flex gap-1">
@@ -105,12 +112,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
 
-                  <div className="flex-1 flex justify-between flex-col gap-[10px] borde rounded-[15px md:border-l border-neutral-800 p-[12px] bg-tradeAsh">
-                    <div className="flex pb-[10px]">
-                      <p className="text-[13px] text-white font-semibold">
-                        Profile
-                      </p>
-                    </div>
+                  <div className="flex-1 flex justify-between flex-col gap-[10px] borde rounded-[15px] border border-tradeAshLight p-[12px] bg-tradeAsh">
                     <div className="flex items-center gap-[10px]">
                       <div className="flex  md:w-[40px] w-[40px] md:h-[40px] h-[40px] border-[2px] border-tradeAshExtraLight rounded-[15px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
                         <div>
@@ -193,8 +195,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
 
-                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] borde rounded-[15px md:border-l border-neutral-800 p-[12px] bg-tradeAsh">
-                    <div className="flex pb-[10px]">
+                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] md:border- border-neutral-800 p-[12px] bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                       <p className="text-[13px] text-white font-semibold">
                         Overview
                       </p>
@@ -205,13 +207,15 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         <p className="text-tradeFadeWhite text-[13px]  font-semibold">
                           Trade Count
                         </p>
-                        <p className="text-lg text-white font-semibold">1133</p>
+                        <p className="text-[13px] text-white font-semibold">
+                          1133
+                        </p>
                       </div>
                       <div className="flex items-center justify-between">
                         <p className="text-tradeFadeWhite text-[13px]  font-semibold">
                           Trade Volume
                         </p>
-                        <p className="text-lg text-white font-semibold">
+                        <p className="text-[13px] text-white font-semibold">
                           $34,000.00
                         </p>
                       </div>
@@ -219,10 +223,10 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                 </div>
 
-                <div className="flex-1 flex md:flex-row flex-col flex-wrap flex-grow gap-[10px">
-                  <div className="flex-1 flex justify-between flex-col gap-[15px] borde  border- md:border-t-0 border-neutral-800 p-[12px] bg-tradeAsh">
+                <div className="flex-1 flex md:flex-row flex-col flex-wrap flex-grow gap-[10px]">
+                  <div className="flex-1 flex justify-between flex-col gap-[15px] border rounded-[15px]  border- md:border-t-0 border-neutral-800 p-[12px] bg-tradeAsh">
                     <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      <p className="text-[13px] text-white font-semibold">
                         Tags
                       </p>
                     </div>
@@ -236,79 +240,77 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                 </div>
 
-                <div className="flex flex-1 flex-col gap-[10px] bg-tradeAsh">
-                  <div className="flex-1 flex md:flex-row flex-col flex-wrap flex-grow gap-[10px">
-                    <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] borde rounded-[15px border-neutral-800 p-[12px] bg-tradeAsh">
-                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                        <p className="text-[13px] text-white font-semibold">
-                          Purchase limits
-                        </p>
-                      </div>
-
-                      <div className="w-full flex flex-col gap-1">
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Minimum
-                          </p>
-
-                          <p className="text-white text-[13px]  font-semibold">
-                            100 CAD
-                          </p>
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Maximum
-                          </p>
-
-                          <p className="text-white text-[13px] font-semibold">
-                            500 CAD
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] borde rounded-[15px border-neutral-800 p-[12px] bg-tradeAsh">
-                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                        <p className="text-[13px] text-white font-semibold">
-                          Payment Window
-                        </p>
-                      </div>
-
-                      <div className="w-full flex flex-col gap-1">
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Transfer
-                          </p>
-
-                          <p className="text-white text-[13px]  font-semibold">
-                            30Mins
-                          </p>
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Release
-                          </p>
-
-                          <p className="text-white text-[13px] font-semibold">
-                            1Hrs 30Mins
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] borde rounded-[15px border-neutral-800 p-[12px] bg-tradeAsh">
-                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                        <p className="text-[13px] text-white font-semibold">
-                          Instructions
-                        </p>
-                      </div>
-
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Ah, you’re probably referring to the sliders-style icon
-                        (like the one used for music equalizers or filter
-                        adjustments). Here are the best ones from React Icons:
+                <div className="flex-1 flex md:flex-row flex-col flex-wrap flex-grow gap-[10px] ">
+                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Purchase limits
                       </p>
                     </div>
+
+                    <div className="w-full flex flex-col gap-1">
+                      <div className="flex items-center justify-between">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Minimum
+                        </p>
+
+                        <p className="text-white text-[13px]  font-semibold">
+                          100 CAD
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Maximum
+                        </p>
+
+                        <p className="text-white text-[13px] font-semibold">
+                          500 CAD
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Payment Window
+                      </p>
+                    </div>
+
+                    <div className="w-full flex flex-col gap-1">
+                      <div className="flex items-center justify-between">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Transfer
+                        </p>
+
+                        <p className="text-white text-[13px]  font-semibold">
+                          30Mins
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Release
+                        </p>
+
+                        <p className="text-white text-[13px] font-semibold">
+                          1Hrs 30Mins
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Instructions
+                      </p>
+                    </div>
+
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Ah, you’re probably referring to the sliders-style icon
+                      (like the one used for music equalizers or filter
+                      adjustments). Here are the best ones from React Icons:
+                    </p>
                   </div>
                 </div>
 
