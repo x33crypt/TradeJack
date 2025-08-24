@@ -47,7 +47,7 @@ const AboutPublicOffer = () => {
             loading={loading}
           />
         </div>
-        <RelatedOffers aboutOffer={aboutOffer} loading={loading} />
+        {/* <RelatedOffers aboutOffer={aboutOffer} loading={loading} /> */}
       </div>
 
       <Footer />

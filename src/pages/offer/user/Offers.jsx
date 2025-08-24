@@ -300,12 +300,12 @@ const MyOffer = () => {
                       , {filter.date?.year ? filter.date?.year : "Year"}
                     </p>
                   </SmallButton>
-                  <SmallButton
+                  {/* <SmallButton
                     variant="primary"
                     onClick={() => navigateTo("/offers/create")}
                   >
                     <p>Create Offer</p>
-                  </SmallButton>
+                  </SmallButton> */}
                   <div>
                     <input
                       type="month"
