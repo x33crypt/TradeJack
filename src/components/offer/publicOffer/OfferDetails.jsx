@@ -55,64 +55,66 @@ const OfferDetails = ({ loading, aboutOffer }) => {
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px]  gap-[10px">
-                <div className="flex lg:flex-row flex-col w-full gap-[50px] border-b border-tradeAshLight p-[15px] bg-tradeAsh">
-                  <div className="flex min-w-[200px] flex-1 justify-between gap-[15px] borde rounded-[15px] border-neutral-800 p-[12px bg-tradeAs">
-                    <div className="flex flex-col gap-3 justify-between">
-                      <div className="flex flex-co gap-3">
-                        <div className="flex gap-1 items-center">
-                          <FaCheckDouble className="flex text-white text-[10px] flex-shrink-0" />
-                          <p className="text-xs font-semibold text-tradeFadeWhite">
-                            {date(offer?.publishedOn)}
-                          </p>
-                        </div>
-                        <div className="flex gap-1 items-center">
-                          <FaCheckDouble className="flex text-tradeGreen text-[10px] flex-shrink-0" />
-                          <p className="text-xs font-medium text-tradeFadeWhite">
-                            Active Offer
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex flex-col gap-1">
-                        <p className="text-white text-[13px] font-semibold">
-                          {offer?.serviceType}
-                        </p>
-                        <p className="text-tradeOrange text-lg font-semibold leading-none">
-                          {offer?.service}
+                <div className="flex lg:flex-row flex-col w-full border- border-tradeAshLight  md:bg-tradeAsh">
+                  <div className="flex flex-col min-w-[200px] flex-1 justify-between gap-[15px] border-b md:border-0 rounded-[15px border-neutral-800 p-[15px] bg-tradeAsh">
+                    <div className="flex flex-co gap-3">
+                      <div className="flex gap-1 items-center">
+                        <FaCheckDouble className="flex text-white text-[10px] flex-shrink-0" />
+                        <p className="text-xs font-semibold text-tradeFadeWhite">
+                          {date(offer?.publishedOn)}
                         </p>
                       </div>
+                      <div className="flex gap-1 items-center">
+                        <FaCheckDouble className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          Active Offer
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <p className="text-white text-[13px] font-semibold">
+                        {offer?.serviceType}
+                      </p>
+                      <p className="text-tradeOrange text-lg font-semibold leading-none">
+                        {offer?.service}
+                      </p>
+                    </div>
 
-                      <div className="flex flex-col gap-1">
-                        {/* <p className="text-tradeFadeWhite text-xs font-semibold">
+                    <div className="flex flex-col gap-1">
+                      {/* <p className="text-tradeFadeWhite text-xs font-semibold">
                           Exchange Rate
                         </p> */}
-                        <div className="flex items-center gap-2">
-                          <p className="text-white text-3xl font-bold leading-none">
-                            1,250/$
+                      <div className="flex items-center gap-2">
+                        <p className="text-white text-3xl font-bold leading-none">
+                          1,250/$
+                        </p>
+                        <div className="flex items-center bg-tradeAsh text-tradeFadeWhite gap-1 border border-tradeAshExtraLight  h-max rounded-[8px] p-1 w-max cursor-pointer transition-all duration-300">
+                          <p className="text-xs font-semibold">
+                            +0.22% premium
                           </p>
-                          <div className="flex items-center bg-tradeAsh text-tradeFadeWhite gap-1 border border-tradeAshExtraLight  h-max rounded-[8px] p-1 w-max cursor-pointer transition-all duration-300">
-                            <p className="text-xs font-semibold">
-                              +0.22% premium
-                            </p>
-                          </div>
                         </div>
-                        {/* <div className="flex gap-1">
+                      </div>
+                      {/* <div className="flex gap-1">
                         <p className="text-tradeFadeWhite text-[13px] font-semibold">
                           Exchange rate :{" "}
                           <span className="text-tradeGreen">NGN1,250/USD </span>
                         </p>
                       </div> */}
-                      </div>
                     </div>
-                    {/* <div className="flex gap- flex-col items-end">
-                      <p className="text-xs font-semibold text-tradeFadeWhite">
-                        {date(offer?.publishedOn)}
-                      </p>
-                      <p className="text-xs font-semibold text-tradeFadeWhite">
-                        {time(offer?.publishedOn)}
-                      </p>
-                    </div> */}
                   </div>
-                  <div className="flex-1 flex justify-between flex-col gap-[15px] borde rounded-[15px md:border-l border-neutral-800 md:pl-[12px] bg-tradeAs">
+
+                  <div className="flex-1 flex justify-between flex-col gap-[15px] borde rounded-[15px md:border-l border- md:border-t-0 border-neutral-800 p-[15px] bg-tradeAsh">
+                    <p className="text-xs font-medium text-white">Offer tags</p>
+                    <div className="w-full flex gap-2 flex-grow flex-wrap">
+                      {offer?.terms?.map((term, index) => (
+                        <p className="text-[13px] w-max h-max text-tradeGreen font-semibold py-[4px] px-[10px] border border-tradeAshLight bg-tradeAshLight rounded-[10px]">
+                          {term}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* <div className="flex-1 flex justify-between flex-col gap-[15px] borde rounded-[15px md:border-l border-neutral-800 p-[15px] bg-tradeAsh">
                     <p className="text-xs font-medium text-white">
                       Traders Profile
                     </p>
@@ -197,21 +199,10 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         </p>
                       </SmallButton>
                     </div>
-                  </div>
-
-                  <div className="flex-1 flex justify-between flex-col gap-[15px] borde rounded-[15px md:border-l border-neutral-800 md:pl-[12px] bg-tradeAs">
-                    <p className="text-xs font-medium text-white">Offer tags</p>
-                    <div className="w-full flex gap-2 flex-grow flex-wrap">
-                      {offer?.terms?.map((term, index) => (
-                        <p className="text-[13px] w-max h-max text-tradeOrange font-semibold py-[4px] px-[10px] border border-tradeAshLight bg-tradeAshLight rounded-[10px]">
-                          {term}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
+                  </div> */}
                 </div>
 
-                <div className="flex flex-1 flex-col gap-[10px] p-[15px] bg-tradeAsh">
+                <div className="flex flex-1 flex-col gap-[10px] p-[15px] bg-tradeAs">
                   <div className="flex-1 flex md:flex-row flex-col flex-wrap flex-grow gap-[10px]">
                     <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
                       <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -309,7 +300,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       <div>
                         <p className="text-[13px] text-white font-semibold">
                           {offer?.instruction ||
-                            "Ah, you’re probably referring to the sliders-style icon (like the one used for music equalizers or filter adjustments)."}
+                            "Ah, you’re probably referring to the sliders-style icon (like the one used for "}
                         </p>
                       </div>
                     </div>
