@@ -8,6 +8,7 @@ import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import { PiToggleLeftFill } from "react-icons/pi";
 import { PiToggleRightFill } from "react-icons/pi";
+import SmallButton from "../buttons/SmallButton";
 
 const OfferFilter = () => {
   const { filter, setFilter } = usePublicOffers();
@@ -233,145 +234,149 @@ const OfferFilter = () => {
 
   return (
     <>
-      <div className="flex flex-1 md:w-[300px] gap-[5px] flex-col bg-black md:border-x md:border-t-0 lg:border-b border-neutral-800">
-        <div className="flex lg:hidden justify-between items-center px-[15px] py-[12px] border-b border-neutral-800 ">
+      <div className="flex flex-col bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg min-w-[300px]  px-[15px]">
+        <div className="flex justify-between items-center border-b border-neutral-800 py-[12px]">
           <p className="text-lg text-white font-[700] cursor-pointer">
             Filter Offers
           </p>
-          <div
-            onClick={closeFilter}
-            className="md:hidden flex text-tradeFadeWhite hover:text-white text-[25px]"
-          >
-            <IoClose />
-          </div>
-          <div
-            onClick={clearFilter}
-            className={`lg:flex hidden text-red-600 border border-tradeAshLight w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-          >
-            <p>Clear Filter</p>
-          </div>
+
+          <SmallButton variant="outline" onClick={closeFilter}>
+            <IoClose className="text-[16px]" />
+          </SmallButton>
         </div>
 
-        <div className="relative flex-1 flex flex-col justify-between p-[15px] gap-[20px] md:h-[480px] ">
-          <div className=" flex-1 flex flex-col lg:gap-[5px] gap-[10px] md:overflow-y-auto custom-scrollbar">
-            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
-              <div className="flex flex-col gap-[10px] w-full">
-                <p className="text-tradeFadeWhite text-xs font-medium">Asset</p>
-                <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
-                  <input
-                    className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
-                    type="text"
-                    readOnly
-                    placeholder="-- --"
-                    value={filter?.assetType}
-                    onClick={() =>
-                      setSelect({
-                        state: true,
-                        selectOne: true,
-                        selectTwo: false,
-                        page: "offer filter",
-                        element: "service",
-                        options: services,
-                      })
-                    }
-                  />
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                    <MdKeyboardArrowDown />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
-              <div className="flex flex-col gap-[10px] w-full">
-                <p className="text-tradeFadeWhite text-xs font-medium">
-                  Currency
-                </p>
-                <div
-                  className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer"
+        <div className="relative flex-1 flex flex-col justify-between gap-[20px] py-[12px]">
+          <div className="grid md:grid-cols-3 grid-cols-1 flex-col items-end gap-[15px] md:overflow-y-auto custom-scrollbar ">
+            <div className="flex flex-col gap-[10px] w-full">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Asset type
+              </p>
+              <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
+                <input
+                  className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
+                  type="text"
+                  readOnly
+                  placeholder="-- --"
+                  value={filter?.assetType}
                   onClick={() =>
                     setSelect({
                       state: true,
-                      selectOne: false,
-                      selectTwo: true,
+                      selectOne: true,
+                      selectTwo: false,
                       page: "offer filter",
-                      element: "currency",
-                      options: currencies,
+                      element: "service",
+                      options: services,
                     })
                   }
-                >
-                  <input
-                    className="w-full p-[12px] outline-none bg-transparent text-white text-sm font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
-                    placeholder="-- --"
-                    type="text"
-                    readOnly
-                    value={filter?.currency?.name}
-                  />
-
-                  <div className=" absolute right-1.5 top-1/2 -translate-y-1/2  border  border-tradeAsh flex justify-between items-center px-[5px] lg:h-[30px] h-[35px] rounded-[6px]">
-                    <div>
-                      <input
-                        className="w-[43px] text-sm  text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
-                        type="text"
-                        value={filter?.currency?.code}
-                        readOnly
-                        placeholder="$€£"
-                      />
-                    </div>
-                    <MdKeyboardArrowDown className="text-[17px] text-white" />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-[10px] w-full">
-                <p className="text-tradeFadeWhite text-xs font-medium">
-                  Amount
-                </p>
-
-                <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
-                  <input
-                    className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                    type="text"
-                    placeholder="00.00"
-                    value={
-                      filter?.amount
-                        ? Number(filter?.amount).toLocaleString()
-                        : ""
-                    }
-                    onChange={handleAmountChange}
-                  />
+                />
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                  <MdKeyboardArrowDown />
                 </div>
               </div>
             </div>
-            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[10px]">
-              <div
-                onClick={showActiveTraders}
-                className="flex justify-between items-center p-[12px] border border-dashed border-tradeAshLight text-white rounded-[15px] cursor-pointer"
-              >
-                <p className="font-semibold text-[13px]">
-                  Recently active traders
-                </p>
 
-                <div className="">
-                  {filter?.activeTraders ? (
-                    <PiToggleRightFill className="text-tradeGreen text-[25px] hover:text-tradeGreen/50 transition-all duration-300" />
-                  ) : (
-                    <PiToggleLeftFill className="text-tradeAshExtraLight text-[25px] hover:text-tradeAshLight transition-all duration-300" />
-                  )}
+            <div className="flex flex-col gap-[10px] w-full">
+              <p className="text-tradeFadeWhite text-xs font-medium">Asset</p>
+              <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
+                <input
+                  className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
+                  type="text"
+                  readOnly
+                  placeholder="-- --"
+                  value={filter?.assetType}
+                  onClick={() =>
+                    setSelect({
+                      state: true,
+                      selectOne: true,
+                      selectTwo: false,
+                      page: "offer filter",
+                      element: "service",
+                      options: services,
+                    })
+                  }
+                />
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                  <MdKeyboardArrowDown />
                 </div>
               </div>
-              <div
-                onClick={showVerifiedOffers}
-                className="flex justify-between items-center p-[12px] border border-dashed border-tradeAshLight text-white rounded-[15px] cursor-pointer"
-              >
-                <p className="font-semibold text-[13px]">Verified offers</p>
+            </div>
 
-                <div className="">
-                  {filter?.verifiedOffers ? (
-                    <PiToggleRightFill className="text-tradeGreen text-[25px] hover:text-tradeGreen/50 transition-all duration-300" />
-                  ) : (
-                    <PiToggleLeftFill className="text-tradeAshExtraLight text-[25px] hover:text-tradeAshLight transition-all duration-300" />
-                  )}
+            <div className="flex flex-col gap-[10px] w-full">
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Currency
+              </p>
+              <div
+                className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer"
+                onClick={() =>
+                  setSelect({
+                    state: true,
+                    selectOne: false,
+                    selectTwo: true,
+                    page: "offer filter",
+                    element: "currency",
+                    options: currencies,
+                  })
+                }
+              >
+                <input
+                  className="w-full p-[12px] outline-none bg-transparent text-white text-sm font-[500] placeholder:text-tradeFadeWhite cursor-pointer"
+                  placeholder="-- --"
+                  type="text"
+                  readOnly
+                  value={filter?.currency?.code}
+                />
+
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                  <MdKeyboardArrowDown />
                 </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-[10px] w-full">
+              <p className="text-tradeFadeWhite text-xs font-medium">Amount</p>
+
+              <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
+                <input
+                  className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                  type="text"
+                  placeholder="00.00"
+                  value={
+                    filter?.amount
+                      ? Number(filter?.amount).toLocaleString()
+                      : ""
+                  }
+                  onChange={handleAmountChange}
+                />
+              </div>
+            </div>
+
+            <div
+              onClick={showActiveTraders}
+              className="flex justify-between items-center p-[12px] h-max border border-dashed border-tradeAshLight text-white rounded-[15px] cursor-pointer"
+            >
+              <p className="font-semibold text-[13px]">Active traders</p>
+
+              <div className="">
+                {filter?.activeTraders ? (
+                  <PiToggleRightFill className="text-tradeGreen text-[25px] hover:text-tradeGreen/50 transition-all duration-300" />
+                ) : (
+                  <PiToggleLeftFill className="text-tradeAshExtraLight text-[25px] hover:text-tradeAshLight transition-all duration-300" />
+                )}
+              </div>
+            </div>
+
+            <div
+              onClick={showVerifiedOffers}
+              className="flex justify-between items-center p-[12px] h-max border border-dashed border-tradeAshLight text-white rounded-[15px] cursor-pointer"
+            >
+              <p className="font-semibold text-[13px]">Verified offers</p>
+
+              <div className="">
+                {filter?.verifiedOffers ? (
+                  <PiToggleRightFill className="text-tradeGreen text-[25px] hover:text-tradeGreen/50 transition-all duration-300" />
+                ) : (
+                  <PiToggleLeftFill className="text-tradeAshExtraLight text-[25px] hover:text-tradeAshLight transition-all duration-300" />
+                )}
               </div>
             </div>
           </div>
@@ -385,11 +390,11 @@ const OfferFilter = () => {
               Apply Filter
             </Button>
 
-            <div className="lg:hidden flex">
+            {/* <div className="lg:hidden flex">
               <Button onClick={clearFilter} variant="danger">
                 Clear Filter
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

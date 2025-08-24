@@ -28,6 +28,8 @@ import { TiFlashOutline } from "react-icons/ti";
 import { FiUserPlus } from "react-icons/fi";
 import { RiExchangeFundsLine } from "react-icons/ri";
 import { MdOutlinePersonSearch } from "react-icons/md";
+import SmallButton from "../buttons/SmallButton";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -64,7 +66,7 @@ const InAppNav = () => {
     <>
       {/* Desktop Nav */}
       <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] px-[15px] h-[57px] md:h-[65px] flex justify-between items-center border-b border-neutral-800 ">
-        <div className="flex items-center lg:gap-[30px] gap-[15px]">
+        <div className="flex items-center lg:gap-[30px] gap-[10px]">
           {isNavOption === false ? (
             <div
               onClick={() => setIsNavOption((prev) => !prev)}
@@ -94,58 +96,71 @@ const InAppNav = () => {
         </div>
 
         <div className=" md:flex hidden  gap-[8px] items-center">
-          <div
-            onClick={() => navigateTo("/dashboard")}
-            className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
-          >
+          {/* <div className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"></div> */}
+
+          <SmallButton variant="ghost" onClick={() => navigateTo("/dashboard")}>
             <TbDashboardFilled className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-medium">Dashboard</p>
-          </div>
-          <div
-            onClick={() => navigateTo("/wallet")}
-            className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
-          >
+            <p>Dashboard</p>
+          </SmallButton>
+          <SmallButton variant="ghost" onClick={() => navigateTo("/wallet")}>
             <IoWallet className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-medium">Wallet</p>
-          </div>
-          <div
+            <p>Wallet</p>
+          </SmallButton>
+          <SmallButton
+            variant="ghost"
             onClick={() => navigateTo("/offers/user/create")}
-            className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
           >
-            <HiViewGridAdd className="lg:flex hidden text-[16px]" />
-            <p className="text-[13px] font-medium">Create Offer</p>
-          </div>
-          <div
+            <HiViewGridAdd className="lg:flex hidden text-[17px]" />
+            <p>Create Offer</p>
+          </SmallButton>
+          <SmallButton
+            variant="ghost"
             onClick={() => navigateTo("/offers/explore")}
-            className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
           >
             <HiOutlineGlobe className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-medium">Browse Offers</p>
-          </div>
-          <div
-            onClick={() => navigateTo("/partners")}
-            className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"
-          >
+            <p>Browse Offer</p>
+          </SmallButton>
+          <SmallButton variant="ghost" onClick={() => navigateTo("/partners")}>
             <FaUserFriends className="lg:flex hidden text-[17px]" />
-            <p className="text-[13px] font-medium">Trade Partners</p>
-          </div>
+            <p>Partners</p>
+          </SmallButton>
         </div>
 
         <div className="flex items-center  gap-[10px]">
-          <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight  p-2 gap-[10px] rounded-[8px]">
+          {/* <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight  p-2 gap-[10px] rounded-[8px]">
             <MdOutlinePersonSearch className="text-tradeFadeWhite  text-[20px]" />
             <input
               className=" bg-transparent outline-none h-max w-[220px]  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
               type="text"
               placeholder={searchplaceholder}
             />
+          </div> */}
+          <div className="lg:flex hidden relative items-center bg-tradeGree gap-2 w-[180px] cursor-pointer">
+            <div className="w-max md:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <IoWallet className="text-[16px]" />
+            </div>
+            <div className="flex flex-col gap-1 ">
+              <p className="text-xs font-medium text-tradeFadeWhite">
+                Available balance
+              </p>
+              <p className="text-[13px] font-semibold leading-none text-white ">
+                $500,211.00
+              </p>
+            </div>
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+              <MdKeyboardArrowDown />
+            </div>
           </div>
+
           <div
             className={` ${
               animate ? "animate-zoomShake" : ""
             } w-max flex gap-1 items-center justify-center bg-tradeOrange border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
           >
             <BiSupport className="text-[16px] text-black" />
+          </div>
+          <div className="w-max md:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            <FiSearch className="text-[16px]" />
           </div>
           <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
             <FaRegBell className="text-[16px]" />

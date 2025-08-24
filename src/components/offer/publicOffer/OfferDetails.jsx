@@ -168,17 +168,15 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                     <div className="flex gap-[10px] h-full">
                       <div className="flex  w-[40px] h-[40px] border-[2px] border-tradeAshExtraLight rounded-[10px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
-                        <div>
-                          {false ? (
-                            <img
-                              className="rounded-[10px] w-full h-auto"
-                              src={image}
-                              alt=""
-                            />
-                          ) : (
-                            <FaUser className="text-tradeAshLight text-[20px]" />
-                          )}
-                        </div>
+                        {false ? (
+                          <img
+                            className="rounded-[10px] w-full h-auto"
+                            src={image}
+                            alt=""
+                          />
+                        ) : (
+                          <FaUser className="text-tradeAshLight text-[20px]" />
+                        )}
                       </div>
                       <div className="flex flex-col justify-between gap-[10px] h-full flex-1">
                         <div className="flex flex-col gap-1">

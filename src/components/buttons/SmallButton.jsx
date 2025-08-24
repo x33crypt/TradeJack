@@ -11,7 +11,7 @@ const SmallButton = ({
     "flex items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]";
 
   const variants = {
-    primary: ` ${"flex items-center gap-1 w-max px-[8px] py-[4px] text-[13px] text-black font-semibold bg-tradeGreen hover:bg-tradeGreen/80 active:bg-tradeGreen rounded-[6.5px] borde border-tradeAshExtraLight cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"}`,
+    primary: ` ${"flex items-center gap-1 w-max px-[8px] py-[4px] text-[13px] text-black font-semibold bg-tradeGreen hover:bg-tradeGreen/80 active:bg-tradeGreen rounded-[6.5px] borde border-tradeAshExtraLight"}`,
 
     fadeoutPlus: ` ${
       disabled
@@ -25,7 +25,9 @@ const SmallButton = ({
         : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAsh border border-tradeAshLight "
     }`,
 
-    outline: `${"flex items-center gap-1 w-max px-[8px] py-[4px] text-[13px] text-tradeFadeWhite font-semibold  hover:text-white active:text-tradeFadeWhite rounded-[6.5px] border border-tradeAshExtraLight cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"}`,
+    outline: `${"flex items-center gap-1 w-max px-[8px] py-[4px] text-[13px] text-tradeFadeWhite font-semibold  hover:text-white active:text-tradeFadeWhite rounded-[6.5px] border border-tradeAshExtraLight "}`,
+
+    ghost: `${"flex items-center gap-1 w-max px-[8px] py-[4px] text-[13px] text-tradeFadeWhite font-semibold  hover:text-white active:text-tradeFadeWhite rounded-[6.5px] border border-transparent hover:border-tradeAshLight "}`,
   };
 
   return (

@@ -112,7 +112,6 @@ const MarketMain = () => {
   const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
 
   const sort = [
-    "All",
     "Rate: Highest to Lowest",
     "Rate: Lowest to Highest",
     "Release: Fast to Slow",
@@ -204,7 +203,7 @@ const MarketMain = () => {
                     <div className="flex flex-1">
                       {Array.isArray(offers?.data) &&
                       offers?.data.length > 0 ? (
-                        <div className="flex flex-col gap-[5px] w-full h-max">
+                        <div className="flex flex-col gap-[10px] w-full h-max">
                           {offers?.data?.map((offer, index) => (
                             <div key={offer.id || index}>
                               <OfferCard offer={offer} />
@@ -404,7 +403,7 @@ const MarketMain = () => {
       {filter?.state && (
         <div>
           <LockByScroll />
-          <div className="flex z-30 fixed top-[57px] md:top-[64px] left-0 right-0 bottom-0 lg:hidden">
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
             <OfferFilter />
           </div>
         </div>
