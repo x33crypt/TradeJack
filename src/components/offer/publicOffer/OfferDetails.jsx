@@ -25,6 +25,7 @@ import { time } from "@/utils/time";
 import { FaCalendarDay } from "react-icons/fa";
 import { MdOutlineShowChart } from "react-icons/md";
 import { TiChartLine } from "react-icons/ti";
+import { VscVerifiedFilled } from "react-icons/vsc";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -67,26 +68,42 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           Active Offer
                         </p>
                       </div>
-                      <div className="flex gap-1 items-center">
+                      {/* <div className="flex gap-1 items-center">
                         <p className="text-[13px] font-semibold text-white">
                           Posted :
                         </p>
                         <div className="flex gap-1 items-center">
-                          {/* <FaCalendarDay className="flex text-white text-[10px] flex-shrink-0" /> */}
+                          <FaCalendarDay className="flex text-white text-[10px] flex-shrink-0" />
                           <p className="text-[13px] font-semibold text-tradeFadeWhite">
                             {date(offer?.publishedOn)}
                           </p>
                         </div>
+                      </div> */}
+                      <div className="flex gap-1 items-center">
+                        <VscVerifiedFilled className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <p className="text-[13px] font-medium text-tradeFadeWhite">
+                          Verified
+                        </p>
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1">
                       <p className="text-tradeOrange text-lg font-semibold leading-none">
                         {offer?.service}
                       </p>
                       <p className="text-white text-xs font-semibold">
                         {offer?.serviceType}
                       </p>
+
+                      <div className="flex items-center gap-1">
+                        {/* <p className="text-xs text-white font-semibold">
+                          Currency -{" "}
+                        </p> */}
+                        <p className="text-tradeFadeWhite text-xs font-semibold">
+                          {offer?.preferredCurrency?.name} -{" "}
+                          {offer?.preferredCurrency?.code}
+                        </p>
+                      </div>
                     </div>
 
                     <div className="flex flex-col gap-1">
@@ -116,14 +133,40 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div> */}
                     </div>
                   </div>
-                  <div className="flex-1 flex justify-between flex-col gap-[10px] borde rounded-[15px] border border-tradeAshLight p-[12px] bg-tradeAsh">
+                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] md:border- border-neutral-800 p-[12px] bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Overview
+                      </p>
+                    </div>
+
+                    <div className="w-full flex flex-col gap-1">
+                      <div className="flex items-center justify-between">
+                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                          Trade Count
+                        </p>
+                        <p className="text-[13px] text-white font-semibold">
+                          1133
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                          Trade Volume
+                        </p>
+                        <p className="text-[13px] text-white font-semibold">
+                          $34,000.00
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 flex flex-col gap-[10px] borde rounded-[15px] border border-tradeAshLight p-[12px] bg-tradeAsh">
                     <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                       <p className="text-[13px] text-white font-semibold">
                         Trader Profile
                       </p>
                     </div>
 
-                    <div className="flex gap-[10px]">
+                    <div className="flex gap-[10px] h-full">
                       <div className="flex  w-[40px] h-[40px] border-[2px] border-tradeAshExtraLight rounded-[10px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
                         <div>
                           {false ? (
@@ -137,7 +180,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           )}
                         </div>
                       </div>
-                      <div className="flex flex-col justify-between gap-[10px]">
+                      <div className="flex flex-col justify-between gap-[10px] h-full flex-1">
                         <div className="flex flex-col gap-1">
                           <p
                             onClick={() =>
@@ -203,32 +246,6 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                             </p>
                           </SmallButton>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] md:border- border-neutral-800 p-[12px] bg-tradeAsh">
-                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                      <p className="text-[13px] text-white font-semibold">
-                        Overview
-                      </p>
-                    </div>
-
-                    <div className="w-full flex flex-col gap-1">
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Trade Count
-                        </p>
-                        <p className="text-[13px] text-white font-semibold">
-                          1133
-                        </p>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Trade Volume
-                        </p>
-                        <p className="text-[13px] text-white font-semibold">
-                          $34,000.00
-                        </p>
                       </div>
                     </div>
                   </div>
