@@ -41,6 +41,9 @@ const AboutPublicOffer = () => {
       >
         <div className="flex-1 flex flex-col gap-[5px]">
           <OfferDetails aboutOffer={aboutOffer} loading={loading} />
+          <div className="py-[15px] md:px-0 px-[15px]">
+            <Button>Initiate Trade</Button>
+          </div>
           <Feedbacks
             heading={"Offer feedback"}
             profile={aboutOffer}

@@ -59,23 +59,28 @@ const OfferDetails = ({ loading, aboutOffer }) => {
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px]  gap-[10px] p-[15px]">
                 <div className="flex lg:flex-row flex-col gap-[10px] w-full ">
-                  <div className="flex flex-col min-w-[200px] flex-1 justify-between gap-[10px] border border-tradeAshLight  rounded-[15px] p-[12px] bg-tradeAsh">
-                    <div className="flex flex-co gap-3 pb-[10px]">
+                  <div className="flex flex-col min-w-[200px flex-1 justify-between gap-[10px] border border-tradeAshLight  rounded-[15px] p-[12px] bg-tradeAsh">
+                    <div className="flex justify-between gap-3 pb-[10px] border-b border-tradeAshLight ">
                       <div className="flex gap-1 items-center">
-                        <FaCalendarDay className="flex text-white text-[10px] flex-shrink-0" />
-                        <p className="text-xs font-semibold text-tradeFadeWhite">
-                          {date(offer?.publishedOn)}
+                        <FaCheckDouble className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+                        <p className="text-[13px] font-medium text-white">
+                          Active Offer
                         </p>
                       </div>
                       <div className="flex gap-1 items-center">
-                        <FaCheckDouble className="flex text-tradeGreen text-[10px] flex-shrink-0" />
-                        <p className="text-xs font-medium text-tradeFadeWhite">
-                          Active
+                        <p className="text-[13px] font-semibold text-white">
+                          Posted :
                         </p>
+                        <div className="flex gap-1 items-center">
+                          {/* <FaCalendarDay className="flex text-white text-[10px] flex-shrink-0" /> */}
+                          <p className="text-[13px] font-semibold text-tradeFadeWhite">
+                            {date(offer?.publishedOn)}
+                          </p>
+                        </div>
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-2">
                       <p className="text-tradeOrange text-lg font-semibold leading-none">
                         {offer?.service}
                       </p>
@@ -88,16 +93,16 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       {/* <p className="text-tradeFadeWhite text-xs font-semibold">
                         Exchange Rate
                       </p> */}
-                      <div className="flex items-center gap-4">
-                        <p className="text-white text-2xl font-semibold leading-none">
-                          #1,250/$
+                      <div className="flex items-center gap-2">
+                        <p className="text-white text-xl font-bold leading-none">
+                          1,250/USD
                         </p>
                         <div className="flex items-center gap-2  h-max  cursor-pointer transition-all duration-300">
-                          <p className="text-xs font-semibold text-tradeFadeWhite ">
+                          {/* <p className="text-xs font-semibold text-tradeFadeWhite ">
                             Today
-                          </p>
+                          </p> */}
 
-                          <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeGreen text-black p-1 w-max">
+                          <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeGreen text-black p-[2px] w-max">
                             <TiChartLine className="text-[15px] flex-shrink-0" />
                             <p>0.22%</p>
                           </div>
@@ -111,10 +116,15 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div> */}
                     </div>
                   </div>
-
                   <div className="flex-1 flex justify-between flex-col gap-[10px] borde rounded-[15px] border border-tradeAshLight p-[12px] bg-tradeAsh">
-                    <div className="flex items-center gap-[10px]">
-                      <div className="flex  md:w-[40px] w-[40px] md:h-[40px] h-[40px] border-[2px] border-tradeAshExtraLight rounded-[15px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Trader Profile
+                      </p>
+                    </div>
+
+                    <div className="flex gap-[10px]">
+                      <div className="flex  w-[40px] h-[40px] border-[2px] border-tradeAshExtraLight rounded-[10px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
                         <div>
                           {false ? (
                             <img
@@ -123,78 +133,79 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                               alt=""
                             />
                           ) : (
-                            <FaUser className="text-tradeAshLight md:text-[20px] text-[20px]" />
+                            <FaUser className="text-tradeAshLight text-[20px]" />
                           )}
                         </div>
                       </div>
-                      <div className="flex flex-col gap-2">
-                        <p
-                          onClick={() =>
-                            handleTraderClick(offer?.user?.userName)
-                          }
-                          className="text-sm text-white font-semibold leading-none cursor-pointer"
-                        >
-                          @{offer?.user?.userName}
-                        </p>
+                      <div className="flex flex-col justify-between gap-[10px]">
+                        <div className="flex flex-col gap-1">
+                          <p
+                            onClick={() =>
+                              handleTraderClick(offer?.user?.userName)
+                            }
+                            className=" flex gap-1 items-center text-white font-semibold leading-none cursor-pointer w-max hover:underline transition-all duration-300"
+                          >
+                            @{offer?.user?.userName}
+                          </p>
 
-                        <div className="flex items-center gap-2">
-                          <div className="flex  gap-1 items-center ">
-                            <HiLocationMarker className=" flex text-tradeFadeWhite text-xs leading-none" />
-                            <p className="text-[12px] font-semibold text-white">
-                              {false ? "Nigeria" : "Clouds"}
-                            </p>
-                          </div>
+                          <div className="flex items-center gap-2">
+                            <div className="flex  gap-1 items-center ">
+                              <HiLocationMarker className=" flex text-tradeFadeWhite text-xs leading-none" />
+                              <p className="text-[12px] font-semibold text-white">
+                                {false ? "Nigeria" : "Clouds"}
+                              </p>
+                            </div>
 
-                          <div className="flex  gap-1 items-center ">
-                            <FaCircle
-                              className={`${
-                                false === "online"
-                                  ? "text-tradeGreen"
-                                  : true === "offline"
-                                  ? "text-tradeAshExtraLight"
-                                  : false === "last seen"
-                                  ? "text-tradeOrange"
-                                  : "text-tradeAshExtraLight"
-                              } flex  text-[8px] leading-none`}
-                            />
-                            <p className="mt-0 text-white text-xs font-semibold">
-                              {false
-                                ? capitalizeFirst(offer?.user?.status)
-                                : "Offline"}
-                            </p>
+                            <div className="flex  gap-1 items-center ">
+                              <FaCircle
+                                className={`${
+                                  false === "online"
+                                    ? "text-tradeGreen"
+                                    : true === "offline"
+                                    ? "text-tradeAshExtraLight"
+                                    : false === "last seen"
+                                    ? "text-tradeOrange"
+                                    : "text-tradeAshExtraLight"
+                                } flex  text-[8px] leading-none`}
+                              />
+                              <p className="mt-0 text-white text-[13px] font-semibold">
+                                {false
+                                  ? capitalizeFirst(offer?.user?.status)
+                                  : "Offline"}
+                              </p>
+                            </div>
                           </div>
+                        </div>
+                        <div className="flex gap-2 items-center">
+                          <SmallButton variant="fadeout">
+                            <MdThumbUpAlt className="text-tradeGreen text-xs" />
+                            <p className="text-xs font-semibold text-white">
+                              {offer?.user?.userFeedback?.positiveFeedback}
+                            </p>
+                          </SmallButton>
+                          <SmallButton variant="fadeout">
+                            <MdThumbDownAlt className="text-red-600 text-sm" />
+                            <p className="text-xs font-semibold text-white">
+                              {offer?.user?.userFeedback?.negativeFeedback}
+                            </p>
+                          </SmallButton>
+                          <SmallButton variant="fadeout">
+                            <MdOutlineSafetyCheck className="text-tradeOrange text-sm" />
+                            <p className="text-[13px] font-semibold text-white">
+                              {offer?.user?.trustScore}%
+                            </p>
+                          </SmallButton>
+
+                          <SmallButton variant="fadeout">
+                            <FaUserCheck className="text-tradeGreen text-sm" />
+                            <p className="text-[13px] font-semibold text-white">
+                              Verified
+                            </p>
+                          </SmallButton>
                         </div>
                       </div>
                     </div>
-                    <div className="flex gap-2 items-center">
-                      <SmallButton variant="fadeout">
-                        <MdThumbUpAlt className="text-tradeGreen text-sm" />
-                        <p className="text-[13px] font-semibold text-white">
-                          {offer?.user?.userFeedback?.positiveFeedback}
-                        </p>
-                      </SmallButton>
-                      <SmallButton variant="fadeout">
-                        <MdThumbDownAlt className="text-red-600 text-sm" />
-                        <p className="text-[13px] font-semibold text-white">
-                          {offer?.user?.userFeedback?.negativeFeedback}
-                        </p>
-                      </SmallButton>
-                      <SmallButton variant="fadeout">
-                        <MdOutlineSafetyCheck className="text-tradeOrange text-sm" />
-                        <p className="text-[13px] font-semibold text-white">
-                          {offer?.user?.trustScore}%
-                        </p>
-                      </SmallButton>
-
-                      <SmallButton variant="fadeout">
-                        <FaUserCheck className="text-tradeGreen text-sm" />
-                        <p className="text-[13px] font-semibold text-white">
-                          Verified
-                        </p>
-                      </SmallButton>
-                    </div>
                   </div>
-
                   <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] md:border- border-neutral-800 p-[12px] bg-tradeAsh">
                     <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                       <p className="text-[13px] text-white font-semibold">
@@ -309,14 +320,10 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       Ah, you’re probably referring to the sliders-style icon
                       (like the one used for music equalizers or filter
-                      adjustments). Here are the best ones from React Icons:
+                      adjustments).
                     </p>
                   </div>
                 </div>
-
-                {/* <div className="mt-[20px]">
-                  <Button>Initiate Trade</Button>
-                </div> */}
               </div>
             )}
           </div>
