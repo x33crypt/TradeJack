@@ -20,6 +20,8 @@ import { useTraderProfile } from "@/context/publicContext/ProfileContext";
 import { MdOutlineDateRange } from "react-icons/md";
 import { date } from "@/utils/date";
 import { dateTime } from "@/utils/dateTime";
+import { FaCheckDouble } from "react-icons/fa";
+import { time } from "@/utils/time";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -42,6 +44,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
         <p className="text-lg text-white font-semibold">Offer Details</p>
       </div>
 
+      {/* <div className="h-[50px] bg-"></div> */}
+
       <div className="flex flex-col min-h-[120px]">
         {loading ? (
           <Loading />
@@ -50,43 +54,70 @@ const OfferDetails = ({ loading, aboutOffer }) => {
             {aboutOffer === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1 flex-col min-h-[120px] p-[15px] gap-[10px]">
-                <div className="flex lg:flex-row flex-col w-full gap-[10px]">
-                  <div className="flex min-w-[200px] flex-1 flex-col gap-[5px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAs">
-                    <div className="flex flex-col gap-1">
-                      <p className="text-white text-xs font-semibold">
-                        {offer?.serviceType}
-                      </p>
-                      <p className="text-tradeOrange text-lg font-semibold leading-none">
-                        {offer?.service}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-col gap-1">
-                      <p className="text-tradeFadeWhite text-xs font-semibold">
-                        Rate value
-                      </p>
-                      <div className="flex items-center gap-2">
-                        <p className="text-white text-3xl font-bold leading-none">
-                          $50,568.89
-                        </p>
-                        <div className="flex items-center bg-tradeAsh text-tradeFadeWhite gap-1 border border-tradeAshExtraLight  h-max rounded-[8px] p-1 w-max cursor-pointer transition-all duration-300">
-                          <p className="text-xs font-semibold">
-                            +0.22% premium
+              <div className="flex flex-1 flex-col min-h-[120px]  gap-[10px">
+                <div className="flex lg:flex-row flex-col w-full gap-[50px] border-b border-tradeAshLight p-[15px] bg-tradeAsh">
+                  <div className="flex min-w-[200px] flex-1 justify-between gap-[15px] borde rounded-[15px] border-neutral-800 p-[12px bg-tradeAs">
+                    <div className="flex flex-col gap-3 justify-between">
+                      <div className="flex flex-co gap-3">
+                        <div className="flex gap-1 items-center">
+                          <FaCheckDouble className="flex text-white text-[10px] flex-shrink-0" />
+                          <p className="text-xs font-semibold text-tradeFadeWhite">
+                            {date(offer?.publishedOn)}
+                          </p>
+                        </div>
+                        <div className="flex gap-1 items-center">
+                          <FaCheckDouble className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+                          <p className="text-xs font-medium text-tradeFadeWhite">
+                            Active Offer
                           </p>
                         </div>
                       </div>
-                      <div className="flex gap-1">
+                      <div className="flex flex-col gap-1">
+                        <p className="text-white text-[13px] font-semibold">
+                          {offer?.serviceType}
+                        </p>
+                        <p className="text-tradeOrange text-lg font-semibold leading-none">
+                          {offer?.service}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col gap-1">
+                        {/* <p className="text-tradeFadeWhite text-xs font-semibold">
+                          Exchange Rate
+                        </p> */}
+                        <div className="flex items-center gap-2">
+                          <p className="text-white text-3xl font-bold leading-none">
+                            1,250/$
+                          </p>
+                          <div className="flex items-center bg-tradeAsh text-tradeFadeWhite gap-1 border border-tradeAshExtraLight  h-max rounded-[8px] p-1 w-max cursor-pointer transition-all duration-300">
+                            <p className="text-xs font-semibold">
+                              +0.22% premium
+                            </p>
+                          </div>
+                        </div>
+                        {/* <div className="flex gap-1">
                         <p className="text-tradeFadeWhite text-[13px] font-semibold">
                           Exchange rate :{" "}
                           <span className="text-tradeGreen">NGN1,250/USD </span>
                         </p>
+                      </div> */}
                       </div>
                     </div>
+                    {/* <div className="flex gap- flex-col items-end">
+                      <p className="text-xs font-semibold text-tradeFadeWhite">
+                        {date(offer?.publishedOn)}
+                      </p>
+                      <p className="text-xs font-semibold text-tradeFadeWhite">
+                        {time(offer?.publishedOn)}
+                      </p>
+                    </div> */}
                   </div>
-                  <div className="lg:min-w-[300px] flex justify-between flex-col gap-[15px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAs">
+                  <div className="flex-1 flex justify-between flex-col gap-[15px] borde rounded-[15px md:border-l border-neutral-800 md:pl-[12px] bg-tradeAs">
+                    <p className="text-xs font-medium text-white">
+                      Traders Profile
+                    </p>
                     <div className="flex items-center gap-[10px]">
-                      <div className="flex  md:w-[50px] w-[50px] md:h-[50px] h-[50px] border-[2px] border-tradeAshExtraLight rounded-[15px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
+                      <div className="flex  md:w-[40px] w-[40px] md:h-[40px] h-[40px] border-[2px] border-tradeAshExtraLight rounded-[15px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
                         <div>
                           {false ? (
                             <img
@@ -95,7 +126,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                               alt=""
                             />
                           ) : (
-                            <FaUser className="text-tradeAshLight md:text-[30px] text-[30px]" />
+                            <FaUser className="text-tradeAshLight md:text-[20px] text-[20px]" />
                           )}
                         </div>
                       </div>
@@ -104,12 +135,9 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           onClick={() =>
                             handleTraderClick(offer?.user?.userName)
                           }
-                          className="textbase text-tradeFadeWhite font-semibold leading-none cursor-pointer"
+                          className="text-sm text-white font-semibold leading-none cursor-pointer"
                         >
-                          @
-                          <span className="text-white">
-                            {offer?.user?.userName}
-                          </span>
+                          @{offer?.user?.userName}
                         </p>
 
                         <div className="flex items-center gap-2">
@@ -170,9 +198,20 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </SmallButton>
                     </div>
                   </div>
+
+                  <div className="flex-1 flex justify-between flex-col gap-[15px] borde rounded-[15px md:border-l border-neutral-800 md:pl-[12px] bg-tradeAs">
+                    <p className="text-xs font-medium text-white">Offer tags</p>
+                    <div className="w-full flex gap-2 flex-grow flex-wrap">
+                      {offer?.terms?.map((term, index) => (
+                        <p className="text-[13px] w-max h-max text-tradeOrange font-semibold py-[4px] px-[10px] border border-tradeAshLight bg-tradeAshLight rounded-[10px]">
+                          {term}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-                <div className="flex flex-1 flex-col gap-[10px]">
+                <div className="flex flex-1 flex-col gap-[10px] p-[15px] bg-tradeAsh">
                   <div className="flex-1 flex md:flex-row flex-col flex-wrap flex-grow gap-[10px]">
                     <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
                       <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -261,28 +300,25 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex-1 flex md:flex-row flex-col gap-[10px]">
-                    <div className="flex flex-1 flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+                    <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
                       <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                         <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Offer tags
+                          Offer Instruction
                         </p>
                       </div>
-                      <div className="w-full flex gap-2 flex-grow flex-wrap">
-                        {offer?.terms?.map((term, index) => (
-                          <p className="text-[13px] w-max text-tradeOrange font-semibold py-[4px] px-[10px] border border-tradeAshLight bg-tradeAshLight rounded-[10px]">
-                            {term}
-                          </p>
-                        ))}
+                      <div>
+                        <p className="text-[13px] text-white font-semibold">
+                          {offer?.instruction ||
+                            "Ah, you’re probably referring to the sliders-style icon (like the one used for music equalizers or filter adjustments)."}
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-[20px]">
+                {/* <div className="mt-[20px]">
                   <Button>Initiate Trade</Button>
-                </div>
+                </div> */}
               </div>
             )}
           </div>

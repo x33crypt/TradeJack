@@ -193,7 +193,7 @@ const MarketMain = () => {
               </div>
             </div>
 
-            <div className="flex-1 flex flex-col p-[15px] gap-[15px]">
+            <div className="flex-1 flex flex-col p-[15px] gap-[15px] min-h-[120px]">
               {loading && offers === null ? (
                 <Loading />
               ) : (
@@ -314,7 +314,7 @@ const MarketMain = () => {
               </div>
             </div>
 
-            <div className="flex-1 flex flex-col p-[15px] gap-[15px]">
+            <div className="flex-1 flex flex-col p-[15px] gap-[15px] min-h-[120px]">
               {loading && offers === null ? (
                 <Loading />
               ) : (

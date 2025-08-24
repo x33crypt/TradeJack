@@ -8,6 +8,7 @@ import { LuFileCheck2 } from "react-icons/lu";
 import { LuFileX2 } from "react-icons/lu";
 import { LuFileClock } from "react-icons/lu";
 import { LuFileSearch } from "react-icons/lu";
+import { LuFileChartColumn } from "react-icons/lu";
 
 const Stats = ({ dashboard }) => {
   return (
@@ -21,7 +22,7 @@ const Stats = ({ dashboard }) => {
       <div className="p-[15px] flex flex-col gap-[10px]">
         <div className="flex w-full md:min-w-[400px] flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
           <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-            <LuFileCheck2 className="text-lg text-tradeGreen" />
+            <LuFileChartColumn className="text-lg text-tradeFadeWhite" />
           </div>
 
           <div className="flex flex-col gap-1 items-start">
