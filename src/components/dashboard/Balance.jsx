@@ -14,7 +14,7 @@ const Balance = ({ dashboard, loading }) => {
         </p>
       </div>
 
-      <div className="flex flex-1 min-h-[120px] p-[15px]">
+      <div className="flex flex-1 min-h-[144.5px] p-[15px]">
         {loading ? (
           <Loading />
         ) : (

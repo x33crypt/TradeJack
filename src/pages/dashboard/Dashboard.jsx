@@ -24,19 +24,18 @@ const Dashboard = () => {
       <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex lg:flex-row flex-col gap-[5px] bg-black">
         <DasHboardMenu />
         <div className="flex flex-1 flex-col gap-[5px]">
-          <div className="flex md:flex-ro flex-col gap-[5px]">
-            <div className="flex-1 flex flex-col md:flex-row gap-[5px] ">
+          <div className="flex flex-1 flex-col md:flex-row gap-[5px]">
+            <div className="flex-1 flex flex-col gap-[5px] ">
               <Balance dashboard={dashboard} />
-              <div className="flex md:w-[320px]">
-                <Limits />
-              </div>
+              <Stats dashboard={dashboard} />
             </div>
-            <Stats dashboard={dashboard} />
-            <div className="flex flex-col md:flex-row gap-[5px]">
+            <div className="flex flex-col md:w-[320px] gap-[5px]">
+              <Limits />
               <TopPicks dashboard={dashboard} loading={loading} />
-              <Performance dashboard={dashboard} />
             </div>
           </div>
+
+          <Performance dashboard={dashboard} />
           <RecentTrades />
         </div>
       </div>

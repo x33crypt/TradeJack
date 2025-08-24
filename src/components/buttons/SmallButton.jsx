@@ -21,8 +21,8 @@ const SmallButton = ({
 
     fadeout: ` ${
       disabled
-        ? "text-tradeGreen active:text-tradeFadeWhite bg-tradeAshLight border  border-tradeAshLight"
-        : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg- border border-tradeAshLight "
+        ? "text-black active:text-black/50 bg-tradeGreen border  border-tradeAshLight"
+        : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAsh border border-tradeAshLight "
     }`,
 
     outline: `${"flex items-center gap-1 w-max px-[8px] py-[4px] text-[13px] text-tradeFadeWhite font-semibold  hover:text-white active:text-tradeFadeWhite rounded-[6.5px] border border-tradeAshExtraLight cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"}`,

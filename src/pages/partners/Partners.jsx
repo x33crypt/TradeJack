@@ -14,7 +14,7 @@ const Partners = () => {
         </div>
         <div className="lg:flex hidden items-center justify-center flex-1 gap-[5px]">
           <div className="flex flex-col gap-[10px] items-center">
-            <FaUserFriends className="text-tradeGreen text-[40px]" />
+            <FaUserFriends className="text-tradeFadeWhite text-[40px]" />
             <p className="text-white font-semibold text-lg leading-none">
               Trade Partners
             </p>

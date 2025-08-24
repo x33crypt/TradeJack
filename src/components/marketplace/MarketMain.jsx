@@ -16,6 +16,7 @@ import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { LiaFilterSolid } from "react-icons/lia";
 import { RiLoader4Fill } from "react-icons/ri";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
+import { PiSlidersHorizontalBold } from "react-icons/pi";
 
 const MarketMain = () => {
   const topRef = useRef(null);
@@ -112,7 +113,6 @@ const MarketMain = () => {
 
   const sort = [
     "All",
-    "Recent",
     "Rate: Highest to Lowest",
     "Rate: Lowest to Highest",
     "Release: Fast to Slow",
@@ -139,144 +139,262 @@ const MarketMain = () => {
     <>
       <div
         ref={topRef}
-        className="flex flex-col min-h-svh md:border-x md:border-t-0 lg:border-b border-neutral-800 "
+        className="flex flex-col min-h-svh md:border-x md:border-t-0 lg:border-b border-neutral-800  gap-[15px "
       >
-        <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-          <p className="text-lg font-[700] text-white ">
-            Secure P2P Marketplace
-          </p>
-        </div>
-        <div className="px-[15px] py-[12px] border-b border-dashed border-tradeAshLight">
-          <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-            Browse through over 10,000 active trade offers from verified users.
-            Use filters to quickly find the best rates, trusted traders, and
-            secure deals.
-          </p>
+        <div>
+          <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
+            <p className="text-lg font-[700] text-white ">
+              Secure P2P Marketplace
+            </p>
+          </div>
+          <div className="px-[15px] py-[12px]">
+            <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+              Browse through over 10,000 active trade offers from verified
+              users. Use filters to quickly find the best rates, trusted
+              traders, and secure deals.
+            </p>
+          </div>
         </div>
 
-        <div className="flex flex-col flex-1 justify-between ">
-          <div className="sticky h-[55px] flex items-center w-full md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
-            <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-hidden p-[2px]">
-              <div className="flex gap-[5px]">
-                <SmallButton
-                  variant="fadeout"
-                  disabled={filter?.sortBy !== null}
-                  onClick={() =>
-                    setSelect({
-                      ...select,
-                      state: true,
-                      selectOne: true,
-                      selectTwo: false,
-                      element: "sort",
-                      options: sort,
-                      pick: "",
-                      page: "explore offers",
-                    })
-                  }
-                >
-                  <FaSort />
-                  <p>{filter?.sortBy ? filter?.sortBy : "Sort by"}</p>
-                </SmallButton>
-                <div className="flex lg:hidden">
+        <div className="flex flex-col gap-[40px]">
+          <div className="flex flex-col flex-1 justify-between ">
+            <div className="sticky flex flex-col items-cente w-full md:top-[62px] top-[56px] bg-black  border-y border-dashed border-tradeAshLight gap-[5px]">
+              <div className="flex  items-center justify-between py-[12px] px-[15px] bg-tradeAs gap-[20px] overflow-x-hidden custom-x-scrollbar">
+                <p className="text-base font-semibold text-white shrink-0 ">
+                  Top Offers
+                </p>
+
+                <div className="flex gap-[5px]">
                   <SmallButton variant="fadeout" onClick={showFilter}>
-                    <PiMagnifyingGlassBold className="lg:text-[14px] text-[14px]" />
+                    <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" />
                     <p>Filter</p>
+                  </SmallButton>
+
+                  <SmallButton
+                    variant="fadeout"
+                    disabled={filter?.sortBy !== null}
+                    onClick={() =>
+                      setSelect({
+                        ...select,
+                        state: true,
+                        selectOne: true,
+                        selectTwo: false,
+                        element: "sort",
+                        options: sort,
+                        pick: "",
+                        page: "explore offers",
+                      })
+                    }
+                  >
+                    <FaSort />
+                    <p>{filter?.sortBy ? filter?.sortBy : "Sort by"}</p>
                   </SmallButton>
                 </div>
               </div>
+            </div>
 
-              <div className="flex gap-[5px]">
-                <SmallButton variant="fadeoutPlus">
-                  <BiSolidBinoculars className="lg:text-[14px] text-[14px]" />
-                  <p>Explore</p>
-                </SmallButton>
-                <SmallButton
-                  variant="primary"
-                  onClick={() => navigateTo("/offers/user/create")}
-                >
-                  <p>Create Offer</p>
-                </SmallButton>
+            <div className="flex-1 flex flex-col p-[15px] gap-[15px]">
+              {loading && offers === null ? (
+                <Loading />
+              ) : (
+                <div className="flex flex-1">
+                  {offers === null ? (
+                    <NetworkError />
+                  ) : (
+                    <div className="flex flex-1">
+                      {Array.isArray(offers?.data) &&
+                      offers?.data.length > 0 ? (
+                        <div className="flex flex-col gap-[5px] w-full h-max">
+                          {offers?.data?.map((offer, index) => (
+                            <div key={offer.id || index}>
+                              <OfferCard offer={offer} />
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
+                          <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
+                            {/* <LuFileX2 /> */}
+                          </div>
+
+                          <p className="text-lg font-semibold text-white leading-none">
+                            No Transaction Record Found
+                          </p>
+
+                          <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
+                            You haven’t made any transactions yet. When you do,
+                            your recent deposits activity will be shown here for
+                            easy tracking.
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+              <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
+                <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
+                  <SmallButton variant="outline">
+                    <p>{displayedCount}</p>
+                  </SmallButton>
+                  <SmallButton variant="outline">
+                    <p>of</p>
+                  </SmallButton>
+                  <SmallButton variant="outline">
+                    <p>
+                      {pagination?.totalItems ? pagination?.totalItems : "0"}
+                    </p>
+                  </SmallButton>
+                </div>
+
+                <div className="flex gap-[5px] py-[1px]">
+                  <SmallButton variant="outline">
+                    {pagination?.hasNextPage ? (
+                      <div onClick={handleNext}>
+                        {loadingMore ? (
+                          <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                        ) : (
+                          <p>Load more</p>
+                        )}
+                      </div>
+                    ) : (
+                      <div>{(isEmpty || isEnd) && <p>{message}</p>}</div>
+                    )}
+                  </SmallButton>
+
+                  <SmallButton
+                    variant="outline"
+                    onClick={() =>
+                      window.scrollTo({ top: 0, behavior: "smooth" })
+                    }
+                  >
+                    <p>Scroll to Top</p>
+                  </SmallButton>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="flex-1 flex flex-col p-[15px] gap-[15px]">
-            {loading && offers === null ? (
-              <Loading />
-            ) : (
-              <div className="flex flex-1">
-                {offers === null ? (
-                  <NetworkError />
-                ) : (
-                  <div className="flex flex-1">
-                    {Array.isArray(offers?.data) && offers?.data.length > 0 ? (
-                      <div className="flex flex-col gap-[5px] w-full h-max">
-                        {offers?.data?.map((offer, index) => (
-                          <div key={offer.id || index}>
-                            <OfferCard offer={offer} />
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
-                        <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
-                          {/* <LuFileX2 /> */}
+          <div className="flex flex-col flex-1 justify-between ">
+            <div className="sticky flex flex-col items-cente w-full md:top-[62px] top-[56px] bg-black  border-y border-dashed border-tradeAshLight gap-[5px]">
+              <div className="flex  items-center justify-between py-[12px] px-[15px] bg-tradeAs gap-[20px] overflow-x-hidden custom-x-scrollbar">
+                <p className="text-base font-semibold text-white shrink-0 ">
+                  Recent Offers
+                </p>
+
+                <div className="flex gap-[5px]">
+                  <SmallButton variant="fadeout" onClick={showFilter}>
+                    <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" />
+                    <p>Filter</p>
+                  </SmallButton>
+
+                  <SmallButton
+                    variant="fadeout"
+                    disabled={filter?.sortBy !== null}
+                    onClick={() =>
+                      setSelect({
+                        ...select,
+                        state: true,
+                        selectOne: true,
+                        selectTwo: false,
+                        element: "sort",
+                        options: sort,
+                        pick: "",
+                        page: "explore offers",
+                      })
+                    }
+                  >
+                    <FaSort />
+                    <p>{filter?.sortBy ? filter?.sortBy : "Sort by"}</p>
+                  </SmallButton>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex-1 flex flex-col p-[15px] gap-[15px]">
+              {loading && offers === null ? (
+                <Loading />
+              ) : (
+                <div className="flex flex-1">
+                  {offers === null ? (
+                    <NetworkError />
+                  ) : (
+                    <div className="flex flex-1">
+                      {Array.isArray(offers?.data) &&
+                      offers?.data.length > 0 ? (
+                        <div className="flex flex-col gap-[5px] w-full h-max">
+                          {offers?.data?.map((offer, index) => (
+                            <div key={offer.id || index}>
+                              <OfferCard offer={offer} />
+                            </div>
+                          ))}
                         </div>
-
-                        <p className="text-lg font-semibold text-white leading-none">
-                          No Transaction Record Found
-                        </p>
-
-                        <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
-                          You haven’t made any transactions yet. When you do,
-                          your recent deposits activity will be shown here for
-                          easy tracking.
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-
-          <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
-            <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
-              <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
-                <SmallButton variant="outline">
-                  <p>{displayedCount}</p>
-                </SmallButton>
-                <SmallButton variant="outline">
-                  <p>of</p>
-                </SmallButton>
-                <SmallButton variant="outline">
-                  <p>{pagination?.totalItems ? pagination?.totalItems : "0"}</p>
-                </SmallButton>
-              </div>
-
-              <div className="flex gap-[5px] py-[1px]">
-                <SmallButton variant="outline">
-                  {pagination?.hasNextPage ? (
-                    <div onClick={handleNext}>
-                      {loadingMore ? (
-                        <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
                       ) : (
-                        <p>Load more</p>
+                        <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
+                          <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
+                            {/* <LuFileX2 /> */}
+                          </div>
+
+                          <p className="text-lg font-semibold text-white leading-none">
+                            No Transaction Record Found
+                          </p>
+
+                          <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
+                            You haven’t made any transactions yet. When you do,
+                            your recent deposits activity will be shown here for
+                            easy tracking.
+                          </p>
+                        </div>
                       )}
                     </div>
-                  ) : (
-                    <div>{(isEmpty || isEnd) && <p>{message}</p>}</div>
                   )}
-                </SmallButton>
+                </div>
+              )}
+            </div>
 
-                <SmallButton
-                  variant="outline"
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                  }
-                >
-                  <p>Scroll to Top</p>
-                </SmallButton>
+            <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+              <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
+                <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
+                  <SmallButton variant="outline">
+                    <p>{displayedCount}</p>
+                  </SmallButton>
+                  <SmallButton variant="outline">
+                    <p>of</p>
+                  </SmallButton>
+                  <SmallButton variant="outline">
+                    <p>
+                      {pagination?.totalItems ? pagination?.totalItems : "0"}
+                    </p>
+                  </SmallButton>
+                </div>
+
+                <div className="flex gap-[5px] py-[1px]">
+                  <SmallButton variant="outline">
+                    {pagination?.hasNextPage ? (
+                      <div onClick={handleNext}>
+                        {loadingMore ? (
+                          <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                        ) : (
+                          <p>Load more</p>
+                        )}
+                      </div>
+                    ) : (
+                      <div>{(isEmpty || isEnd) && <p>{message}</p>}</div>
+                    )}
+                  </SmallButton>
+
+                  <SmallButton
+                    variant="outline"
+                    onClick={() =>
+                      window.scrollTo({ top: 0, behavior: "smooth" })
+                    }
+                  >
+                    <p>Scroll to Top</p>
+                  </SmallButton>
+                </div>
               </div>
             </div>
           </div>

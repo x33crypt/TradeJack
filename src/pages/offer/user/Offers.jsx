@@ -15,6 +15,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import { RiLoader4Fill } from "react-icons/ri";
 import NetworkError from "@/components/others/NetworkError";
 import { BiFileBlank } from "react-icons/bi";
+import { FaCalendarDay } from "react-icons/fa6";
 
 const MyOffer = () => {
   const {
@@ -286,15 +287,12 @@ const MyOffer = () => {
                 </div>
 
                 <div className="flex gap-[5px]">
-                  <SmallButton variant="fadeout">
-                    <FaMagnifyingGlass />
-                  </SmallButton>
                   <SmallButton
                     variant="fadeout"
                     disabled={filter.date?.monthName || filter.date?.year}
                     onClick={handleDateClick}
                   >
-                    <FaRegCalendarAlt />
+                    <FaCalendarDay className="text-[12px]" />
                     <p>
                       {filter.date?.monthName
                         ? filter.date?.monthName
