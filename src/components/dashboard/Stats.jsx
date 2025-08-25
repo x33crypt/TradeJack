@@ -30,7 +30,7 @@ const Stats = ({ dashboard }) => {
               Total Trades
             </p>
             <p className="text-white text-sm font-bold leading-none">
-              {dashboard?.activitySummary?.successful_trades ?? "0"}
+              {dashboard?.tradeStats?.total ?? "0"}
             </p>
           </div>
         </div>
@@ -46,7 +46,7 @@ const Stats = ({ dashboard }) => {
                 Completed
               </p>
               <p className="text-white text-sm font-bold leading-none">
-                {dashboard?.activitySummary?.successful_trades ?? "0"}
+                {dashboard?.tradeStats?.completed ?? "0"}
               </p>
             </div>
           </div>
@@ -61,9 +61,7 @@ const Stats = ({ dashboard }) => {
                 Cancelled
               </p>
               <p className="text-white text-sm font-bold leading-none">
-                {dashboard?.activitySummary?.successful_trades
-                  ? dashboard?.activitySummary?.successful_trades
-                  : "0"}
+                {dashboard?.tradeStats?.cancelled ?? "0"}
               </p>
             </div>
           </div>
@@ -78,9 +76,7 @@ const Stats = ({ dashboard }) => {
                 In Progress
               </p>
               <p className="text-white text-sm font-bold leading-none">
-                {dashboard?.activitySummary?.pending_trades
-                  ? dashboard?.activitySummary?.pending_trades
-                  : "0"}
+                {dashboard?.tradeStats?.active ?? "0"}
               </p>
             </div>
           </div>
@@ -92,12 +88,10 @@ const Stats = ({ dashboard }) => {
 
             <div className="flex flex-col gap-1 items-start">
               <p className="text-xs font-medium text-tradeFadeWhite">
-                Under Review
+                Disputed
               </p>
               <p className="text-white text-sm font-bold leading-none">
-                {dashboard?.activitySummary?.pending_trades
-                  ? dashboard?.activitySummary?.pending_trades
-                  : "0"}
+                {dashboard?.tradeStats?.disputed ?? "0"}
               </p>
             </div>
           </div>

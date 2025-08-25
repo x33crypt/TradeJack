@@ -68,17 +68,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           Active Offer
                         </p>
                       </div>
-                      {/* <div className="flex gap-1 items-center">
-                        <p className="text-[13px] font-semibold text-white">
-                          Posted :
-                        </p>
-                        <div className="flex gap-1 items-center">
-                          <FaCalendarDay className="flex text-white text-[10px] flex-shrink-0" />
-                          <p className="text-[13px] font-semibold text-tradeFadeWhite">
-                            {date(offer?.publishedOn)}
-                          </p>
-                        </div>
-                      </div> */}
+
                       <div className="flex gap-1 items-center">
                         <VscVerifiedFilled className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                         <p className="text-[13px] font-medium text-tradeFadeWhite">
@@ -87,18 +77,15 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-2">
                       <p className="text-tradeOrange text-lg font-semibold leading-none">
                         {offer?.service}
                       </p>
-                      <p className="text-white text-xs font-semibold">
+                      <p className="text-white text-[13px] font-semibold leading-none">
                         {offer?.serviceType}
                       </p>
 
                       <div className="flex items-center gap-1">
-                        {/* <p className="text-xs text-white font-semibold">
-                          Currency -{" "}
-                        </p> */}
                         <p className="text-tradeFadeWhite text-xs font-semibold">
                           {offer?.preferredCurrency?.name} -{" "}
                           {offer?.preferredCurrency?.code}
@@ -107,30 +94,17 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
 
                     <div className="flex flex-col gap-1">
-                      {/* <p className="text-tradeFadeWhite text-xs font-semibold">
-                        Exchange Rate
-                      </p> */}
                       <div className="flex items-center gap-2">
                         <p className="text-white text-xl font-bold leading-none">
                           1,250/USD
                         </p>
                         <div className="flex items-center gap-2  h-max  cursor-pointer transition-all duration-300">
-                          {/* <p className="text-xs font-semibold text-tradeFadeWhite ">
-                            Today
-                          </p> */}
-
                           <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeGreen text-black p-[2px] w-max">
                             <TiChartLine className="text-[15px] flex-shrink-0" />
                             <p>0.22%</p>
                           </div>
                         </div>
                       </div>
-                      {/* <div className="flex gap-1">
-                        <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                          Exchange rate :{" "}
-                          <span className="text-tradeGreen">NGN1,250/USD </span>
-                        </p>
-                      </div> */}
                     </div>
                   </div>
                   <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] md:border- border-neutral-800 p-[12px] bg-tradeAsh">

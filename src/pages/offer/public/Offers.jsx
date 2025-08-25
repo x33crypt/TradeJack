@@ -61,6 +61,9 @@ const Marketplace = () => {
     <>
       <InAppNav />
       <div className=" relative h-full flex gap-[5px] lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[57px]">
+        <div className="lg:flex hidden sticky top-[64px] h-[520px]">
+          <OfferFilter />
+        </div>
         <div className="flex-1 min-h-full ">
           <MarketMain
             promotedOffers={promotedOffers}
@@ -68,9 +71,6 @@ const Marketplace = () => {
             setSelect={setSelect}
             select={select}
           />
-        </div>
-        <div className="lg:flex hidden sticky top-[64px] h-[520px] w-[300px]">
-          {/* <OfferFilter /> */}
         </div>
       </div>
       <Footer />

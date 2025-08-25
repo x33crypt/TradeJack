@@ -191,7 +191,6 @@ const MarketMain = () => {
                 </div>
               </div>
             </div>
-
             <div className="flex-1 flex flex-col p-[15px] gap-[15px] min-h-[120px]">
               {loading && offers === null ? (
                 <Loading />
@@ -232,7 +231,6 @@ const MarketMain = () => {
                 </div>
               )}
             </div>
-
             <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
               <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
                 <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
@@ -324,7 +322,7 @@ const MarketMain = () => {
                     <div className="flex flex-1">
                       {Array.isArray(offers?.data) &&
                       offers?.data.length > 0 ? (
-                        <div className="flex flex-col gap-[5px] w-full h-max">
+                        <div className="flex flex-col gap-[10px] w-full h-max">
                           {offers?.data?.map((offer, index) => (
                             <div key={offer.id || index}>
                               <OfferCard offer={offer} />

@@ -9,7 +9,7 @@ const Balance = ({ dashboard, loading }) => {
         <p className="text-lg font-semibold text-tradeFadeWhite flex items-center gap-1">
           Welcome back,{" "}
           <span className=" text-white">
-            {dashboard?.profile?.username || "User"}
+            {dashboard?.profile?.userName || "User"}
           </span>
         </p>
       </div>
