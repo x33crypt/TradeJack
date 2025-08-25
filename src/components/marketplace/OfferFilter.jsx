@@ -234,8 +234,8 @@ const OfferFilter = () => {
 
   return (
     <>
-      <div className="flex flex-1 md:w-[300px] flex-col md:border-x md:border-t-0 lg:border-b border-neutral-800 bg-tradeA">
-        <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-neutral-800 bg-black">
+      <div className="flex flex-1 md:w-[300px] flex-col md:border-x md:border-t-0 lg:border-b border-neutral-800 rounded-[15px] lg:rounded-none px-[15px] bg-tradeAsh ">
+        <div className="flex justify-between items-center py-[12px] border-b border-neutral-800 ">
           <p className="text-lg text-white font-[700] cursor-pointer">Filter</p>
           <div
             onClick={closeFilter}
@@ -243,19 +243,16 @@ const OfferFilter = () => {
           >
             <IoClose />
           </div>
-          <SmallButton variant="fadeout" onClick={clearFilter}>
-            {/* <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" /> */}
-            <p>Reset filter</p>
-          </SmallButton>
-          {/* <div
-            onClick={clearFilter}
-            className={`lg:flex hidden text-red-600 border border-tradeAshLight w-max px-[12px] py-[4px] text-[13px] font-medium rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-          >
-            <p>Clear Filter</p>
-          </div> */}
+
+          <div className="lg:flex hidden">
+            <SmallButton variant="fadeout" onClick={clearFilter}>
+              {/* <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" /> */}
+              <p>Reset filter</p>
+            </SmallButton>
+          </div>
         </div>
 
-        <div className="relative flex-1 flex flex-col justify-between p-[15px] gap-[20px] md:h-[480px] bg-tradeAsh">
+        <div className="relative flex-1 flex flex-col justify-between py-[12px] gap-[20px] md:h-[480px]">
           <div className=" flex-1 flex flex-col gap-[15px] md:overflow-y-auto custom-scrollbar">
             <div className="flex flex-col gap-[10px] w-full">
               <p className="text-tradeFadeWhite text-xs font-medium">Asset</p>
@@ -383,8 +380,8 @@ const OfferFilter = () => {
             </Button>
 
             <div className="lg:hidden flex">
-              <Button onClick={clearFilter} variant="danger">
-                Clear Filter
+              <Button onClick={clearFilter} variant="outline">
+                Reset Filter
               </Button>
             </div>
           </div>
