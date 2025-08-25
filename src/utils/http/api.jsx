@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// --- Axios instance ---
 const api = axios.create({
   baseURL:
     import.meta.env.VITE_API_URL || "https://tradejack.onrender.com/api/v1",
@@ -9,18 +8,17 @@ const api = axios.create({
 });
 
 // --- State ---
-let csrfToken = null; // CSRF token for unsafe requests
-let isRedirecting = false; // Prevent duplicate redirects
+let csrfToken = null;
+let refreshing = false;
 
 // --- Helpers ---
-const getCsrfTokenFromCookies = () => {
+const getCsrfFromCookies = () => {
   try {
-    return (
-      document.cookie
-        .split(";")
-        .map((c) => c.trim().split("="))
-        .find(([name]) => name === "XSRF-TOKEN")?.[1] || null
-    );
+    const token = document.cookie
+      .split(";")
+      .map((c) => c.trim().split("="))
+      .find(([name]) => name === "XSRF-TOKEN")?.[1];
+    return token || null;
   } catch {
     return null;
   }
@@ -33,111 +31,114 @@ const clearSession = () => {
   sessionStorage.clear();
 };
 
-// --- Response Interceptor ---
-api.interceptors.response.use(
-  (response) => {
-    // Refresh CSRF token on GET requests
-    if (response.config.method === "get") {
-      const newCsrfToken =
-        response.headers["x-csrf-token"] || getCsrfTokenFromCookies();
-      if (newCsrfToken) csrfToken = newCsrfToken;
-    }
-    return response;
-  },
-  async (error) => {
-    const { response, config } = error;
-
-    if (response) {
-      const { status, data } = response;
-      let message = data?.error?.message || "An error occurred";
-
-      // --- Handle 401 Unauthorized ---
-      if (status === 401 && !isRedirecting) {
-        // Exempt auth routes
-        const exempt401Routes = [
-          "/api/v1/auth/login",
-          "/api/v1/auth/signup",
-          "/api/v1/auth/refresh-token",
-          "/api/v1/auth/logout",
-        ];
-
-        if (exempt401Routes.some((route) => config.url.includes(route))) {
-          return Promise.reject({
-            success: false,
-            status,
-            message: data?.error?.message || "Authentication failed",
-          });
-        }
-
-        // Try refresh first
-        if (!config.url.includes("/auth/refresh-token")) {
-          try {
-            await api.post("/auth/refresh-token");
-            return api(config); // retry request
-          } catch {
-            // ❌ Refresh failed → session expired
-            isRedirecting = true;
-
-            // ✅ Save last route before clearing session
-            const lastRoute = window.location.pathname + window.location.search;
-            localStorage.setItem("lastRoute", lastRoute);
-
-            clearSession();
-
-            // ✅ Replace history so back button won’t reopen expired pages
-            window.location.replace("/signin?sessionExpired=true");
-
-            // ✅ Block further back navigation
-            window.addEventListener("popstate", () => {
-              window.history.pushState(null, "", "/signin?sessionExpired=true");
-            });
-
-            return Promise.reject({
-              success: false,
-              status,
-              message: "Session expired. Please log in again.",
-            });
-          }
-        }
-      }
-
-      // --- Handle other errors ---
-      if (status === 403 && data?.error?.code === "ERR_CSRF_MISSING") {
-        message = "CSRF token missing or invalid. Please refresh the page.";
-      } else if (status === 429) {
-        message = "Too many requests. Please slow down.";
-      }
-
-      return Promise.reject({ success: false, status, message, data });
-    }
-
-    // --- Network error fallback ---
-    return Promise.reject({
-      success: false,
-      message: "Network Error. Please check your connection.",
-      error: error.message,
-    });
+// --- Refresh Token Logic ---
+const refreshToken = async () => {
+  if (refreshing) return false; // Prevent multiple refresh calls
+  refreshing = true;
+  try {
+    await api.post("/auth/refresh-token");
+    refreshing = false;
+    return true;
+  } catch {
+    refreshing = false;
+    return false;
   }
-);
+};
 
 // --- Request Interceptor ---
 api.interceptors.request.use((config) => {
   const exemptRoutes = [
-    "/api/v1/auth/login",
-    "/api/v1/auth/signup",
-    "/api/v1/auth/refresh-token",
-    "/api/v1/auth/logout",
+    "/auth/login",
+    "/auth/signup",
+    "/auth/refresh-token",
+    "/auth/logout",
   ];
 
   if (
     ["post", "put", "delete", "patch"].includes(config.method.toLowerCase()) &&
     csrfToken &&
-    !exemptRoutes.includes(config.url)
+    !exemptRoutes.some((route) => config.url.includes(route))
   ) {
     config.headers["X-CSRF-Token"] = csrfToken;
   }
 
   return config;
 });
+
+// --- Response Interceptor ---
+api.interceptors.response.use(
+  (response) => {
+    if (response.config.method === "get") {
+      const newToken = response.headers["x-csrf-token"] || getCsrfFromCookies();
+      if (newToken) csrfToken = newToken;
+    }
+    return response;
+  },
+  async (error) => {
+    const { response, config } = error;
+
+    if (!response) {
+      return Promise.reject({
+        success: false,
+        message: "Network error. Please check your connection.",
+      });
+    }
+
+    const { status, data } = response;
+
+    // --- Handle 401 Unauthorized ---
+    if (status === 401) {
+      const exempt = ["/auth/login", "/auth/signup", "/auth/logout"];
+      if (exempt.some((route) => config.url.includes(route))) {
+        return Promise.reject({
+          success: false,
+          status,
+          message: data?.error?.message || "Authentication failed",
+        });
+      }
+
+      const refreshed = await refreshToken();
+      if (refreshed) {
+        return api(config); // Retry original request
+      }
+
+      // Refresh failed → clear session and redirect
+      const lastRoute = window.location.pathname + window.location.search;
+      localStorage.setItem("lastRoute", lastRoute);
+      clearSession();
+      window.location.replace("/signin?sessionExpired=true");
+
+      return Promise.reject({
+        success: false,
+        status,
+        message: "Session expired. Please sign in again.",
+      });
+    }
+
+    // --- CSRF Missing ---
+    if (status === 403 && data?.error?.code === "ERR_CSRF_MISSING") {
+      return Promise.reject({
+        success: false,
+        status,
+        message: "CSRF token missing or invalid. Refresh the page.",
+      });
+    }
+
+    // --- Too many requests ---
+    if (status === 429) {
+      return Promise.reject({
+        success: false,
+        status,
+        message: "Too many requests. Please slow down.",
+      });
+    }
+
+    return Promise.reject({
+      success: false,
+      status,
+      message: data?.error?.message || "An error occurred",
+    });
+  }
+);
 
 export default api;
