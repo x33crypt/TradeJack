@@ -27,6 +27,8 @@ import { MdOutlineShowChart } from "react-icons/md";
 import { TiChartLine } from "react-icons/ti";
 import { VscVerifiedFilled } from "react-icons/vsc";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import toDecimal from "@/utils/toDecimal";
+import lastSeen from "@/utils/lastSeen";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -34,6 +36,10 @@ const OfferDetails = ({ loading, aboutOffer }) => {
   const offer = aboutOffer?.data;
 
   const navigateTo = useNavigate();
+
+  const seen = lastSeen(offer?.user?.lastSeen);
+
+  console.log("last seen :", seen);
 
   const handleTraderClick = (username) => {
     setProfile((prev) => ({
@@ -91,15 +97,12 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           @{offer?.user?.userName}
                         </p>
 
-                        <p className="text-white text-[13px] font-semibold">
-                          <span className="text-tradeFadeWhite">
-                            {" "}
-                            Last seen :
-                          </span>{" "}
-                          {false
-                            ? capitalizeFirst(offer?.user?.status)
-                            : "Offline"}
-                        </p>
+                        {seen && (
+                          <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                            Last seen:{" "}
+                            <span className={seen.className}>{seen.text}</span>
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -128,15 +131,15 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         </p>
 
                         <p className="text-[13px] text-tradeGreen font-semibold">
-                          Active
+                          {capitalizeFirst(offer?.status) || "Inactive"}
                         </p>
                       </div>
                       <div className="flex items-center justify-between">
                         <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Created
+                          Created on
                         </p>
                         <p className="text-[13px] text-white font-semibold">
-                          3 days ago
+                          {date(offer?.publishedOn) || "N/A"}
                         </p>
                       </div>
                     </div>
@@ -161,7 +164,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           Margin
                         </p>
                         <div className="flex items-center gap-[2px] text-[13px] font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
-                          <p>0.22% </p>
+                          <p>{offer?.marginRate?.rate || "N/A"}</p>
                         </div>
                       </div>
 
@@ -190,7 +193,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         </p>
 
                         <p className="text-white text-[13px]  font-semibold">
-                          100 CAD
+                          {toDecimal(offer?.marginRate?.from) || "N/A"}{" "}
+                          {offer?.preferredCurrency?.code || "N/A"}
                         </p>
                       </div>
                       <div className="flex items-center justify-between">
@@ -199,7 +203,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         </p>
 
                         <p className="text-white text-[13px] font-semibold">
-                          500 CAD
+                          {toDecimal(offer?.marginRate?.to) || "N/A"}{" "}
+                          {offer?.preferredCurrency?.code || "N/A"}
                         </p>
                       </div>
                     </div>
@@ -219,7 +224,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         </p>
 
                         <p className="text-white text-[13px]  font-semibold">
-                          30Mins
+                          {offer?.transferWindow?.hours || "N/A"}Hrs{" "}
+                          {offer?.transferWindow?.minutes || "N/A"}Mins
                         </p>
                       </div>
 
@@ -229,7 +235,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         </p>
 
                         <p className="text-white text-[13px] font-semibold">
-                          1Hrs 30Mins
+                          {offer?.releaseWindow?.hours || "N/A"}Hrs{" "}
+                          {offer?.releaseWindow?.minutes || "N/A"}Mins
                         </p>
                       </div>
                     </div>
@@ -257,10 +264,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </p>
                     </div>
 
-                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Ah, you’re probably referring to the sliders-style icon
-                      (like the one used for music equalizers or filter
-                      adjustments).
+                    <p className="text-[13px] text-white font-semibold">
+                      {offer?.instructions || "N/A"}
                     </p>
                   </div>
                 </div>
