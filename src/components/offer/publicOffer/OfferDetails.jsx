@@ -61,36 +61,46 @@ const OfferDetails = ({ loading, aboutOffer }) => {
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px]  gap-[10px] p-[15px]">
-                <div className="flex min-h-[150px] flex-col gap-[15px] py-[12px] mb-[40px]">
-                  <div className="flex gap-[10px] items-center bg-tradeAsh p-[12px] rounded-[15px] border border-tradeAshLight">
-                    <div className="flex  w-[25px] md:w-[30px] h-[25px] md:h-[30px] border-[2px] border-tradeAshExtraLight rounded-[8px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
-                      {false ? (
-                        <img
-                          className="rounded-[10px] w-full h-auto"
-                          src={image}
-                          alt=""
-                        />
-                      ) : (
-                        <FaUser className="text-tradeAshLight text-[15px] md:text-[20px]" />
-                      )}
+                <div className="flex min-h-[150px] flex-col gap-[15px] pb-[12px] mb-[20px">
+                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] border-tradeAshLight p-[12px] bg-tradeAshLight">
+                    <div className="flex justify-between border-b border-black w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Trader Info
+                      </p>
                     </div>
-                    <div className="flex gap-1 w-full justify-between items-center">
-                      <p
-                        onClick={() => handleTraderClick(offer?.user?.userName)}
-                        className=" flex text-sm gap-1 items-center text-white font-semibold leading-none cursor-pointer w-max hover:underline transition-all duration-300"
-                      >
-                        @{offer?.user?.userName}
-                      </p>
 
-                      <p className="text-white text-[13px] font-semibold">
-                        <span className="text-tradeFadeWhite">
-                          {" "}
-                          Last seen :
-                        </span>{" "}
-                        {false
-                          ? capitalizeFirst(offer?.user?.status)
-                          : "Offline"}
-                      </p>
+                    <div className="flex gap-[10px] items-center">
+                      <div className="flex  w-[25px] md:w-[30px] h-[25px] md:h-[30px] border-[2px] border-tradeAshExtraLight rounded-[8px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
+                        {false ? (
+                          <img
+                            className="rounded-[10px] w-full h-auto"
+                            src={image}
+                            alt=""
+                          />
+                        ) : (
+                          <FaUser className="text-black text-[14px] md:text-[17px]" />
+                        )}
+                      </div>
+                      <div className="flex gap-1 w-full justify-between items-center">
+                        <p
+                          onClick={() =>
+                            handleTraderClick(offer?.user?.userName)
+                          }
+                          className=" flex text-sm gap-1 items-center text-white font-semibold leading-none cursor-pointer w-max hover:underline transition-all duration-300"
+                        >
+                          @{offer?.user?.userName}
+                        </p>
+
+                        <p className="text-white text-[13px] font-semibold">
+                          <span className="text-tradeFadeWhite">
+                            {" "}
+                            Last seen :
+                          </span>{" "}
+                          {false
+                            ? capitalizeFirst(offer?.user?.status)
+                            : "Offline"}
+                        </p>
+                      </div>
                     </div>
                   </div>
                   <div className="flex flex-col gap-[10px] ">
@@ -104,7 +114,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                 </div>
 
                 <div className="flex lg:flex-row flex-col gap-[10px] w-full ">
-                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+                  <div className="flex min-w-[200px] flex-1 flex-col  justify-between gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
                     <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                       <p className="text-[13px] text-white font-semibold">
                         Details
@@ -116,7 +126,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         <p className="text-tradeFadeWhite text-[13px]  font-semibold">
                           Status
                         </p>
-                        <p className="text-[13px] text-white font-semibold">
+
+                        <p className="text-[13px] text-tradeGreen font-semibold">
                           Active
                         </p>
                       </div>
@@ -131,7 +142,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                  <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                     <div className="flex items-center justify-between w-full mt-[1px]">
                       <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                         <p className="text-[13px] text-white font-semibold">
@@ -165,7 +176,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
 
-                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                  <div className="flex min-w-[200px] flex-1 flex-col justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                     <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                       <p className="text-[13px] text-white font-semibold">
                         Purchase limits
@@ -194,7 +205,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
 
-                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                  <div className="flex min-w-[200px] flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                     <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                       <p className="text-[13px] text-white font-semibold">
                         Payment Window
