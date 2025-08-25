@@ -154,7 +154,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
 
                       <p className="text-white text-3xl font-semibold leading-none">
-                        1,250/USD
+                        1,250/{offer?.preferredCurrency?.code || "N/A"}
                       </p>
                     </div>
 
@@ -224,8 +224,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         </p>
 
                         <p className="text-white text-[13px]  font-semibold">
-                          {offer?.transferWindow?.hours || "N/A"}Hrs{" "}
-                          {offer?.transferWindow?.minutes || "N/A"}Mins
+                          {offer?.transferWindow?.hours || "0"}Hrs{" "}
+                          {offer?.transferWindow?.minutes || "0"}Mins
                         </p>
                       </div>
 
@@ -235,8 +235,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         </p>
 
                         <p className="text-white text-[13px] font-semibold">
-                          {offer?.releaseWindow?.hours || "N/A"}Hrs{" "}
-                          {offer?.releaseWindow?.minutes || "N/A"}Mins
+                          {offer?.releaseWindow?.hours || "0"}Hrs{" "}
+                          {offer?.releaseWindow?.minutes || "0"}Mins
                         </p>
                       </div>
                     </div>
