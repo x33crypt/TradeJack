@@ -61,69 +61,48 @@ const OfferDetails = ({ loading, aboutOffer }) => {
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px]  gap-[10px] p-[15px]">
-                <div className="flex flex-col flex-1 justify-between gap-[10px] borde border-tradeAshLight  rounded-[15px] py-[12px] bg-tradeAs">
-                  <div className="flex flex-col gap-[10px]">
-                    <div className="flex gap-[10px] items-center">
-                      <div className="flex  w-[40px] h-[40px] border-[2px] border-tradeAshExtraLight rounded-[10px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
-                        {false ? (
-                          <img
-                            className="rounded-[10px] w-full h-auto"
-                            src={image}
-                            alt=""
-                          />
-                        ) : (
-                          <FaUser className="text-tradeAshLight text-[20px]" />
-                        )}
-                      </div>
-                      <div className="flex flex-col gap-1">
-                        <p
-                          onClick={() =>
-                            handleTraderClick(offer?.user?.userName)
-                          }
-                          className=" flex text-base gap-1 items-center text-white font-semibold leading-none cursor-pointer w-max hover:underline transition-all duration-300"
-                        >
-                          @{offer?.user?.userName}
-                        </p>
-
-                        <div className="flex items-center gap-2">
-                          {/* <div className="flex  gap-1 items-center ">
-                            <HiLocationMarker className=" flex text-tradeFadeWhite text-xs leading-none" />
-                            <p className="text-[12px] font-semibold text-white">
-                              {false ? "Nigeria" : "Clouds"}
-                            </p>
-                          </div> */}
-
-                          <div className="flex  gap-1 items-center ">
-                            <FaCircle
-                              className={`${
-                                true === "online"
-                                  ? "text-tradeGreen"
-                                  : true === "offline"
-                                  ? "text-tradeAshExtraLight"
-                                  : false === "last seen"
-                                  ? "text-tradeOrange"
-                                  : "text-tradeAshExtraLight"
-                              } flex  text-[8px] leading-none`}
-                            />
-                            <p className="text-white text-xs font-semibold">
-                              {false
-                                ? capitalizeFirst(offer?.user?.status)
-                                : "Offline"}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                <div className="flex min-h-[150px] flex-col gap-[15px] py-[12px] mb-[40px]">
+                  <div className="flex gap-[10px] items-center bg-tradeAsh p-[12px] rounded-[15px] border border-tradeAshLight">
+                    <div className="flex  w-[25px] md:w-[30px] h-[25px] md:h-[30px] border-[2px] border-tradeAshExtraLight rounded-[8px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
+                      {false ? (
+                        <img
+                          className="rounded-[10px] w-full h-auto"
+                          src={image}
+                          alt=""
+                        />
+                      ) : (
+                        <FaUser className="text-tradeAshLight text-[15px] md:text-[20px]" />
+                      )}
                     </div>
-                    <div className="flex flex-col gap-[10px] ">
-                      <p className="text-tradeOrange text-2xl font-semibold leading-none">
-                        {offer?.service}
+                    <div className="flex gap-1 w-full justify-between items-center">
+                      <p
+                        onClick={() => handleTraderClick(offer?.user?.userName)}
+                        className=" flex text-sm gap-1 items-center text-white font-semibold leading-none cursor-pointer w-max hover:underline transition-all duration-300"
+                      >
+                        @{offer?.user?.userName}
                       </p>
-                      <p className="text-white text-[13px] font-semibold leading-none">
-                        {offer?.serviceType}
+
+                      <p className="text-white text-[13px] font-semibold">
+                        <span className="text-tradeFadeWhite">
+                          {" "}
+                          Last seen :
+                        </span>{" "}
+                        {false
+                          ? capitalizeFirst(offer?.user?.status)
+                          : "Offline"}
                       </p>
                     </div>
                   </div>
+                  <div className="flex flex-col gap-[10px] ">
+                    <p className="text-tradeOrange text-3xl font-semibold md:w-max w-[200px] leading-snug ">
+                      {offer?.service}
+                    </p>
+                    <p className="text-white text-[13px] font-semibold leading-none">
+                      {offer?.serviceType}
+                    </p>
+                  </div>
                 </div>
+
                 <div className="flex lg:flex-row flex-col gap-[10px] w-full ">
                   <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
                     <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -149,14 +128,6 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           3 days ago
                         </p>
                       </div>
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Margin
-                        </p>
-                        <div className="flex items-center gap-[2px] text-[13px] font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
-                          <p>0.22% </p>
-                        </div>
-                      </div>
                     </div>
                   </div>
 
@@ -175,22 +146,20 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                     <div className="w-full flex flex-col gap-1">
                       <div className="flex items-center justify-between">
-                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Transfer window
+                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                          Margin
                         </p>
-
-                        <p className="text-white text-[13px]  font-semibold">
-                          30Mins
-                        </p>
+                        <div className="flex items-center gap-[2px] text-[13px] font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
+                          <p>0.22% </p>
+                        </div>
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Release window
+                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                          Currency
                         </p>
-
-                        <p className="text-white text-[13px] font-semibold">
-                          1Hrs 30Mins
+                        <p className="text-[13px] text-white font-semibold">
+                          {offer?.preferredCurrency?.name}
                         </p>
                       </div>
                     </div>
@@ -204,14 +173,6 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
 
                     <div className="w-full flex flex-col gap-1">
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Currency
-                        </p>
-                        <p className="text-[13px] text-white font-semibold">
-                          {offer?.preferredCurrency?.name}
-                        </p>
-                      </div>
                       <div className="flex items-center justify-between">
                         <p className="text-[13px] text-tradeFadeWhite font-semibold">
                           Minimum
@@ -228,6 +189,36 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                         <p className="text-white text-[13px] font-semibold">
                           500 CAD
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Payment Window
+                      </p>
+                    </div>
+
+                    <div className="w-full flex flex-col gap-1">
+                      <div className="flex items-center justify-between">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Transfer
+                        </p>
+
+                        <p className="text-white text-[13px]  font-semibold">
+                          30Mins
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Release
+                        </p>
+
+                        <p className="text-white text-[13px] font-semibold">
+                          1Hrs 30Mins
                         </p>
                       </div>
                     </div>
