@@ -58,7 +58,9 @@ const SigninUser = () => {
         window.history.replaceState({}, "", redirectTo);
 
         // Navigate (depends on your router — Next.js/React Router)
-        navigateTo(redirectTo);
+        setTimeout(() => {
+          navigateTo(redirectTo);
+        }, 300);
       } else {
         console.error("Signin error:", result.error);
         setToast({

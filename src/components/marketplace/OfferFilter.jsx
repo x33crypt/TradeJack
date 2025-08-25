@@ -302,20 +302,11 @@ const OfferFilter = () => {
                   placeholder="-- --"
                   type="text"
                   readOnly
-                  value={filter?.currency?.name}
+                  value={filter?.currency?.code || ""}
                 />
 
-                <div className=" absolute right-1.5 top-1/2 -translate-y-1/2  border  border-tradeAsh flex justify-between items-center px-[5px] lg:h-[30px] h-[35px] rounded-[6px]">
-                  <div>
-                    <input
-                      className="w-[43px] text-sm  text-white placeholder:text-tradeFadeWhite font-[500] bg-transparent outline-none cursor-pointer"
-                      type="text"
-                      value={filter?.currency?.code}
-                      readOnly
-                      placeholder="$€£"
-                    />
-                  </div>
-                  <MdKeyboardArrowDown className="text-[17px] text-white" />
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                  <MdKeyboardArrowDown />
                 </div>
               </div>
             </div>

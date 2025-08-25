@@ -136,7 +136,8 @@ const MarketCard = ({ offer }) => {
               <div className="flex gap-1 items-center">
                 <PiClockCountdownBold className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
-                  2Hrs 30Mins
+                  {offer?.transferWindow?.hours}Hrs{" "}
+                  {offer?.transferWindow?.minutes}Mins
                 </p>
               </div>
 
@@ -148,7 +149,8 @@ const MarketCard = ({ offer }) => {
               <div className="flex gap-1 items-center">
                 <FaBusinessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
-                  2Hrs 30Mins
+                  {offer?.releaseWindow?.hours}Hrs{" "}
+                  {offer?.releaseWindow?.minutes}Mins
                 </p>
               </div>
 

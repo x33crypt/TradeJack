@@ -116,9 +116,15 @@ export async function publishOffer(offerDetails) {
     },
 
     terms: termTags,
-    vendorPaymentWindow: vendorPaymentWindow,
-    tradersPaymentWindow: tradersPaymentWindow,
-    instruction: instruction,
+    release_window: {
+      hours: vendorPaymentWindow.hours,
+      minutes: vendorPaymentWindow.minutes,
+    },
+    transfer_window: {
+      hours: tradersPaymentWindow.hours,
+      minutes: tradersPaymentWindow.minutes,
+    },
+    instructions: instruction,
   };
 
   try {

@@ -34,6 +34,9 @@ const CreateSummary = () => {
       ...prev,
       loading: true,
     }));
+
+    console.log("Publishing offer at summary:", createOffer);
+
     const result = await publishOffer(createOffer);
 
     console.log("Offer published:", result);
