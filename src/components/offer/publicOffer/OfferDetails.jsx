@@ -29,6 +29,7 @@ import { VscVerifiedFilled } from "react-icons/vsc";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import toDecimal from "@/utils/toDecimal";
 import lastSeen from "@/utils/lastSeen";
+import { MdVerifiedUser } from "react-icons/md";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -88,14 +89,20 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         )}
                       </div>
                       <div className="flex gap-1 w-full justify-between items-center">
-                        <p
-                          onClick={() =>
-                            handleTraderClick(offer?.user?.userName)
-                          }
-                          className=" flex text-sm gap-1 items-center text-white font-semibold leading-none cursor-pointer w-max hover:underline transition-all duration-300"
-                        >
-                          @{offer?.user?.userName}
-                        </p>
+                        <div className="flex gap-1 items-center">
+                          <p
+                            onClick={() =>
+                              handleTraderClick(offer?.user?.userName)
+                            }
+                            className=" flex text-sm gap-1 items-center text-white font-semibold leading-none cursor-pointer w-max hover:underline transition-all duration-300"
+                          >
+                            @{offer?.user?.userName}
+                          </p>
+
+                          <div className="text-base text-tradeGreen">
+                            <MdVerifiedUser />
+                          </div>
+                        </div>
 
                         {seen && (
                           <p className="text-tradeFadeWhite text-[13px] font-semibold">
@@ -113,6 +120,12 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     <p className="text-white text-[13px] font-semibold leading-none">
                       {offer?.serviceType}
                     </p>
+                    <div className="flex gap-1 items-center">
+                      <VscVerifiedFilled className="flex text-tradeFadeWhite text-base flex-shrink-0" />
+                      <p className="text-xs font-semibold text-tradeFadeWhite">
+                        Verified Offer
+                      </p>
+                    </div>
                   </div>
                 </div>
 
@@ -132,6 +145,14 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                         <p className="text-[13px] text-tradeGreen font-semibold">
                           {capitalizeFirst(offer?.status) || "Inactive"}
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                          Trade Count
+                        </p>
+                        <p className="text-[13px] text-white font-semibold">
+                          0
                         </p>
                       </div>
                       <div className="flex items-center justify-between">
@@ -164,7 +185,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           Margin
                         </p>
                         <div className="flex items-center gap-[2px] text-[13px] font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
-                          <p>{offer?.marginRate?.rate || "N/A"}</p>
+                          <p>{offer?.marginRate?.rate || "N/A"}%</p>
                         </div>
                       </div>
 

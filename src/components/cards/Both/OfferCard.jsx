@@ -125,8 +125,8 @@ const MarketCard = ({ offer }) => {
               </p>
             </div>
 
-            <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeGreen text-black p-[2px] w-max">
-              <TiChartLine className="text-[15px] flex-shrink-0" />
+            <div className="flex items-center gap-[2px] text-[13px] font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
+              {/* <TiChartLine className="text-[15px] flex-shrink-0" /> */}
               <p>0.22% </p>
             </div>
           </div>
