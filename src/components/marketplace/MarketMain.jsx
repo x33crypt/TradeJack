@@ -112,8 +112,8 @@ const MarketMain = () => {
   const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
 
   const sort = [
-    "Rate: Highest to Lowest",
-    "Rate: Lowest to Highest",
+    "Rate: High to Low",
+    "Rate: Low to High",
     "Release: Fast to Slow",
     "Release: Slow to Fast",
     "Transfer: Fast to Slow",
