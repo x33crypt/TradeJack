@@ -36,30 +36,6 @@ const InAppNav = () => {
   const { show, setShow } = useProfileNav();
   const [animate, setAnimate] = useState(false);
 
-  const placeholders = ["Search Trader's"];
-  const [searchplaceholder, setSearchplaceholder] = useState(placeholders[0]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimate(true);
-      setTimeout(() => setAnimate(false), 600);
-    }, 5000); // every 20s
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSearchplaceholder((prev) => {
-        const nextIndex =
-          (placeholders.indexOf(prev) + 1) % placeholders.length;
-        return placeholders[nextIndex];
-      });
-    }, 10000); // Change every 10 seconds
-
-    return () => clearInterval(interval);
-  }, [placeholders]);
-
   const navigateTo = useNavigate();
 
   return (
@@ -96,8 +72,6 @@ const InAppNav = () => {
         </div>
 
         <div className=" md:flex hidden  gap-[8px] items-center">
-          {/* <div className="flex items-center gap-[10px] border border-transparent hover:border-tradeAshLight hover:text-white text-tradeFadeWhite p-2 rounded-[7px] transition-all duration-300 hover:shadow-md cursor-pointer"></div> */}
-
           <SmallButton variant="ghost" onClick={() => navigateTo("/dashboard")}>
             <TbDashboardFilled className="lg:flex hidden text-[17px]" />
             <p>Dashboard</p>
@@ -127,40 +101,22 @@ const InAppNav = () => {
         </div>
 
         <div className="flex items-center  gap-[10px]">
-          {/* <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight  p-2 gap-[10px] rounded-[8px]">
-            <MdOutlinePersonSearch className="text-tradeFadeWhite  text-[20px]" />
+          <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight  p-2 gap-[10px] rounded-[10px]">
             <input
               className=" bg-transparent outline-none h-max w-[220px]  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
               type="text"
-              placeholder={searchplaceholder}
+              placeholder="Search Trader"
             />
-          </div> */}
-          <div className="lg:flex hidden relative items-center bg-tradeGree gap-2 w-[180px] cursor-pointer">
-            <div className="w-max md:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <IoWallet className="text-[16px]" />
-            </div>
-            <div className="flex flex-col gap-1 ">
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                Available balance
-              </p>
-              <p className="text-[13px] font-semibold leading-none text-white ">
-                $500,211.00
-              </p>
-            </div>
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-              <MdKeyboardArrowDown />
-            </div>
           </div>
-
+          <div className="w-max md:flex hidden text-white hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            <p className="text-xs font-semibold ">ENG</p>
+          </div>
           <div
             className={` ${
               animate ? "animate-zoomShake" : ""
             } w-max flex gap-1 items-center justify-center bg-tradeOrange border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
           >
             <BiSupport className="text-[16px] text-black" />
-          </div>
-          <div className="w-max md:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-            <FiSearch className="text-[16px]" />
           </div>
           <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
             <FaRegBell className="text-[16px]" />

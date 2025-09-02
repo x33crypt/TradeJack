@@ -146,18 +146,18 @@ const MarketMain = () => {
               Secure P2P Marketplace
             </p>
           </div>
-          <div className="px-[15px] py-[12px]">
+          {/* <div className="px-[15px] py-[12px]">
             <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
               Browse through over 10,000 active trade offers from verified
               users. Use filters to quickly find the best rates, trusted
               traders, and secure deals.
             </p>
-          </div>
+          </div> */}
         </div>
 
         <div className="flex flex-col gap-[40px]">
           <div className="flex flex-col flex-1 justify-between ">
-            <div className="sticky flex flex-col items-cente w-full md:top-[62px] top-[56px] bg-black  border-y border-dashed border-tradeAshLight gap-[5px]">
+            <div className="sticky flex flex-col items-cente w-full md:top-[62px] top-[56px] bg-black  border-b border-dashed border-tradeAshLight gap-[5px]">
               <div className="flex  items-center justify-between py-[12px] px-[15px] bg-tradeAs gap-[20px] overflow-x-hidden custom-x-scrollbar">
                 <p className="text-base font-semibold text-white shrink-0 ">
                   Top Offers
@@ -401,7 +401,7 @@ const MarketMain = () => {
       {filter?.state && (
         <div>
           <LockByScroll />
-          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-tradeAshLight bg-opacity-70 flex items-center justify-center z-40">
             <OfferFilter />
           </div>
         </div>

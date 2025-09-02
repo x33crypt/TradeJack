@@ -11,6 +11,7 @@ import Stats from "@/components/dashboard/Stats";
 import RecentTrades from "@/components/dashboard/RecentTrades";
 import TopPicks from "@/components/dashboard/TopPicks";
 import Limits from "@/components/dashboard/Limits";
+import TodaysGoal from "@/components/dashboard/TodaysGoal";
 
 const Dashboard = () => {
   const { dashboard } = useDashboard();
@@ -27,16 +28,18 @@ const Dashboard = () => {
           <div className="flex flex-1 flex-col md:flex-row gap-[5px]">
             <div className="flex-1 flex flex-col gap-[5px] ">
               <Balance dashboard={dashboard} />
+              {/* <Limits /> */}
               <Stats dashboard={dashboard} />
             </div>
             <div className="flex flex-col md:w-[320px] gap-[5px]">
-              <Limits />
-              <TopPicks dashboard={dashboard} loading={loading} />
+              {/* <TopPicks dashboard={dashboard} loading={loading} /> */}
+              <TodaysGoal dashboard={dashboard} loading={loading} />
             </div>
           </div>
 
           <Performance dashboard={dashboard} />
           <RecentTrades />
+          {/* <TopPicks dashboard={dashboard} loading={loading} /> */}
         </div>
       </div>
 

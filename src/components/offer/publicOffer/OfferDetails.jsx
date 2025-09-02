@@ -54,9 +54,6 @@ const OfferDetails = ({ loading, aboutOffer }) => {
     <div className="flex flex-col md:border border-neutral-800">
       <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg text-white font-semibold">Offer Details</p>
-        {/* <SmallButton variant="fadeout">
-          <FaArrowLeftLong className="text-base" />
-        </SmallButton> */}
       </div>
 
       <div className="flex flex-col min-h-[120px]">
@@ -68,7 +65,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px]  gap-[10px] p-[15px]">
-                <div className="flex min-h-[150px] flex-col gap-[15px] pb-[12px] mb-[20px">
+                <div className="flex min-h-[150px] flex-col gap-[15px] pb-[12px]">
                   <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] border-tradeAshLight p-[12px] bg-tradeAshLight">
                     <div className="flex justify-between border-b border-black w-full pb-[10px]">
                       <p className="text-[13px] text-white font-semibold">
@@ -270,7 +267,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                   <div className="w-full flex gap-2 flex-grow flex-wrap">
                     {offer?.terms?.map((term, index) => (
-                      <p className="text-[13px] w-max h-max text-tradeGreen font-semibold py-[4px] px-[10px] border border-tradeAshLight bg-tradeAshLight rounded-[10px]">
+                      <p className="text-[13px] w-max h-max text-tradeOrange font-semibold py-[4px] px-[10px] border border-tradeAshLight bg-tradeAshLight rounded-[10px]">
                         {term}
                       </p>
                     ))}

@@ -3,11 +3,11 @@ import OfferCard from "../cards/Mobile/OfferCard";
 import Loading from "../others/Loading";
 import NetworkError from "../others/NetworkError";
 
-const TopPicks = ({ loading, dashboard }) => {
+const TodaysGoal = ({ loading, dashboard }) => {
   return (
     <div className="flex flex-1 flex-col md:border border-neutral-800">
       <div className="flex items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">Popular Offers</p>
+        <p className="text-lg font-[700] text-white ">Todays Goals</p>
       </div>
 
       <div className="flex flex-1 min-h-[120px] p-[15px]">
@@ -27,4 +27,4 @@ const TopPicks = ({ loading, dashboard }) => {
   );
 };
 
-export default TopPicks;
+export default TodaysGoal;

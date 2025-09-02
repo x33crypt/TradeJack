@@ -22,10 +22,14 @@ import { date } from "@/utils/date";
 import { FaCheckDouble } from "react-icons/fa";
 import { TiChartLine } from "react-icons/ti";
 import { FaUser } from "react-icons/fa";
+import lastSeen from "@/utils/lastSeen";
+import toDecimal from "@/utils/toDecimal";
 
 const MarketCard = ({ offer }) => {
   const { setAboutOffer } = usePublicOffers();
   const navigateTo = useNavigate();
+
+  const seen = lastSeen(offer?.user?.lastSeen);
 
   const handleOfferClick = (offerId) => {
     setAboutOffer((prev) => ({
@@ -64,12 +68,11 @@ const MarketCard = ({ offer }) => {
           </div>
 
           <div className="flex gap-[5px] items-center">
-            <div className="flex gap-1 items-center">
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                Last seen:
+            {seen && (
+              <p className="text-tradeFadeWhite text-xs font-medium">
+                Last seen: <span className={seen.className}>{seen.text}</span>
               </p>
-              <p className="text-xs font-medium text-tradeGreen">Online</p>
-            </div>
+            )}
           </div>
         </div>
 
@@ -96,12 +99,14 @@ const MarketCard = ({ offer }) => {
           <div className="flex flex-col gap-1">
             <div className="flex gap-[5px] w-max">
               <p className="text-xs font-semibold text-tradeFadeWhite">
-                Minimum -- USD 383
+                Minimum -- {offer?.preferredCurrency?.code}{" "}
+                {toDecimal(offer?.marginRate?.from) || "N/A"}
               </p>
             </div>
             <div className="flex gap-[5px] w-max">
               <p className="text-xs font-semibold text-tradeFadeWhite">
-                Maximum -- USD 5,000
+                Maximum -- {offer?.preferredCurrency?.code}{" "}
+                {toDecimal(offer?.marginRate?.to) || "N/A"}
               </p>
             </div>
           </div>
@@ -125,9 +130,8 @@ const MarketCard = ({ offer }) => {
               </p>
             </div>
 
-            <div className="flex items-center gap-[2px] text-[13px] font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
-              {/* <TiChartLine className="text-[15px] flex-shrink-0" /> */}
-              <p>0.22% </p>
+            <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
+              <p>{offer?.marginRate?.percent || "N/A"}%</p>
             </div>
           </div>
 
@@ -207,12 +211,11 @@ const MarketCard = ({ offer }) => {
 
           <div className="flex flex-col justify-between items-end">
             <div className="flex flex-col gap-2 items-end">
-              <div className="flex gap-1 items-center">
-                <p className="text-xs font-medium text-tradeFadeWhite">
-                  Last seen:
+              {seen && (
+                <p className="text-tradeFadeWhite text-xs font-medium">
+                  Last seen: <span className={seen.className}>{seen.text}</span>
                 </p>
-                <p className="text-xs font-medium text-white">20 mins ago</p>
-              </div>
+              )}
 
               <div className="flex items-center gap-1">
                 <p className="text-base font-bold text-white leading-none">
@@ -226,12 +229,14 @@ const MarketCard = ({ offer }) => {
               <div className="flex flex-col gap-1 items-end">
                 <div className="flex gap-[5px] w-max">
                   <p className="text-xs font-semibold text-tradeFadeWhite">
-                    Min -- USD 383
+                    Min -- {offer?.preferredCurrency?.code}{" "}
+                    {toDecimal(offer?.marginRate?.from) || "N/A"}
                   </p>
                 </div>
                 <div className="flex gap-[5px] w-max">
                   <p className="text-xs font-semibold text-tradeFadeWhite">
-                    Max -- USD 5,000
+                    Max -- {offer?.preferredCurrency?.code}{" "}
+                    {toDecimal(offer?.marginRate?.to) || "N/A"}
                   </p>
                 </div>
               </div>

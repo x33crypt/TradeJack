@@ -89,6 +89,7 @@ const SelectElement = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                 />
               </div>
+              
             </div>
 
             <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[300px]">
@@ -157,7 +158,7 @@ const SelectElement = () => {
                             <div
                               key={code}
                               onClick={() => handleUpdate({ code, name })}
-                              className="flex gap-[10px]"
+                              className="flex gap-[5px]"
                             >
                               <p className="flex-1 text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
                                 {name}
@@ -185,7 +186,7 @@ const SelectElement = () => {
                             <div
                               key={code}
                               onClick={() => handleUpdate({ code, name })}
-                              className="flex gap-[10px]"
+                              className="flex gap-[5px]"
                             >
                               <p className="flex-1 text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
                                 {name}
