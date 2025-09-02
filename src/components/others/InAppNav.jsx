@@ -36,6 +36,15 @@ const InAppNav = () => {
   const { show, setShow } = useProfileNav();
   const [animate, setAnimate] = useState(false);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimate(true);
+      setTimeout(() => setAnimate(false), 600);
+    }, 5000); // every 20s
+
+    return () => clearInterval(interval);
+  }, []);
+
   const navigateTo = useNavigate();
 
   return (
@@ -108,6 +117,7 @@ const InAppNav = () => {
               placeholder="Search Trader"
             />
           </div>
+
           <div className="w-max md:flex hidden text-white hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
             <p className="text-xs font-semibold ">ENG</p>
           </div>
@@ -118,6 +128,7 @@ const InAppNav = () => {
           >
             <BiSupport className="text-[16px] text-black" />
           </div>
+
           <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
             <FaRegBell className="text-[16px]" />
           </div>
@@ -161,9 +172,9 @@ const InAppNav = () => {
                 <div className="flex w-full items-center bg-tradeAsh border border-tradeAshLight p-[12px] gap-[15px] rounded-[10px]">
                   <MdOutlinePersonSearch className="text-tradeFadeWhite  text-[20px]" />
                   <input
-                    className=" bg-transparent outline-none w-full  placeholder:text-tradeFadeWhite text-sm font-medium text-white"
+                    className=" bg-transparent outline-none h-max w-full  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
                     type="text"
-                    placeholder={searchplaceholder}
+                    placeholder="Search Trader"
                   />
                 </div>
 

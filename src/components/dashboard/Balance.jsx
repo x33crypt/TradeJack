@@ -6,10 +6,10 @@ const Balance = ({ dashboard, loading }) => {
   return (
     <div className="flex flex-1 flex-col md:border border-neutral-800">
       <div className="flex md:flex-row flex-col px-[15px] py-[12px] md:border-b border-tradeAshLight gap-[2px] ">
-        <p className="md:text-lg text-xl  font-semibold text-tradeFadeWhite flex items-center">
+        <p className="md:text-lg text-2xl  font-semibold text-tradeFadeWhite flex items-center">
           Welcome Back,{" "}
         </p>
-        <p className="md:text-lg text-xl font-semibold text-white flex items-center">
+        <p className="md:text-lg text-2xl font-semibold text-white flex items-center">
           {dashboard?.profile?.userName || "User"}.
         </p>
       </div>

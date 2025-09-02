@@ -72,7 +72,7 @@ const ProfileNav = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col gap-[10px] items-cente w-[300px]">
+            <div className="flex flex-col gap-[40px] items-cente w-[300px]">
               <div className="grid grid-cols-3 gap-[10px]">
                 {/* <div className="flex flex-1 flex-col justify-between gap-[15px] p-[12px]">
                   <div className="bg-tradeAsh p-[12px rounded-[15px] shadow-lg flex flex-col gap-[5px] borde border-tradeAshLight">
@@ -136,8 +136,16 @@ const ProfileNav = () => {
                 </div>
               </div>
 
-              <div onClick={close} className="">
+              {/* <div onClick={close} className="">
                 <Button variant="Fadeout">Close</Button>
+              </div> */}
+              <div className="flex w-full justify-center">
+                <div
+                  onClick={close}
+                  className="w-max flex text-white hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                >
+                  <IoClose className="text-[16px]" />
+                </div>
               </div>
 
               {/* <div className="p-2 border border-tradeAshLight">
