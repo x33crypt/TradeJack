@@ -173,23 +173,26 @@ const MarketCard = ({ offer }) => {
         <div className="flex justify-between w-full ">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              {seen && (
-                <div className="flex gap-[5px] items-center">
-                  <div className="flex gap-1 items-center">
-                    <HiOutlineUserCircle className="flex text-white text-[16px] flex-shrink-0" />
-                    <p className="text-tradeFadeWhite text-xs font-medium">
-                      <span className={seen.className}>{seen.text}</span>
-                    </p>
-                  </div>
+              <div className="flex gap-2 items-center">
+                <div className="flex gap-1 items-center">
+                  <HiOutlineUserCircle className="flex text-white text-[16px] flex-shrink-0" />
+                  <p className="text-tradeFadeWhite text-xs font-medium">
+                    <span className={seen.className}>{seen.text}</span>
+                  </p>
                 </div>
-              )}
+
+                <div className="flex gap-1 items-center">
+                  <VscVerifiedFilled className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-medium text-white">Verified</p>
+                </div>
+              </div>
 
               <p className="text-base font-bold text-tradeOrange leading-none">
                 {offer?.service}
               </p>
 
               <div className="flex flex-col gap-1">
-                <div className="flex gap-3 items-center">
+                {/* <div className="flex gap-3 items-center">
                   <div className="flex gap-1 items-center">
                     <VscVerifiedFilled className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                     <p className="text-xs font-medium text-white">
@@ -203,7 +206,12 @@ const MarketCard = ({ offer }) => {
                       {offer?.user?.userFeedback?.positiveFeedback}
                     </p>
                   </div>
-                </div>
+                </div> */}
+
+                <p className="text-xs font-semibold text-tradeFadeWhite">
+                  {offer?.preferredCurrency?.name}
+                </p>
+
                 <div className="flex  items-center gap-1">
                   <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
                   <p className="text-xs font-semibold text-white">
@@ -216,16 +224,25 @@ const MarketCard = ({ offer }) => {
 
           <div className="flex flex-col justify-between items-end">
             <div className="flex flex-col gap-2 items-end">
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                {offer?.preferredCurrency?.name}
-              </p>
-
               <div className="flex items-center gap-1">
                 <p className="text-base font-bold text-white leading-none">
                   1,200.00/$
                 </p>
                 <div className="text-tradeOrange text-[12px]">
                   <FaInfoCircle />
+                </div>
+              </div>
+
+              <div className="flex gap-3 items-center">
+                <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
+                  <p>{offer?.marginRate?.percent || "N/A"}% Margin</p>
+                </div>
+
+                <div className="flex gap-1 items-center">
+                  <IoMdThumbsUp className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-semibold text-white">
+                    {offer?.user?.userFeedback?.positiveFeedback}
+                  </p>
                 </div>
               </div>
 

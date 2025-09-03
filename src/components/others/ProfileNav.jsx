@@ -99,37 +99,37 @@ const ProfileNav = () => {
                 </div> */}
 
                 <div className="flex flex-col items-center gap-1">
-                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     <FaUserCheck className="text-2xl" />
                   </div>
                   <p className="text-white text-[13px]">Profile</p>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     <FaUserCheck className="text-2xl" />
                   </div>
                   <p className="text-white text-[13px]">Limits</p>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     <FaUserCheck className="text-2xl" />
                   </div>
                   <p className="text-white text-[13px]">Settings</p>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     <FaUserCheck className="text-2xl" />
                   </div>
                   <p className="text-white text-[13px]">Rewards</p>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     <FaUserCheck className="text-2xl" />
                   </div>
                   <p className="text-white text-[13px]">Rate us</p>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     <FaUserCheck className="text-2xl" />
                   </div>
                   <p className="text-white text-[13px]">Log Out</p>
