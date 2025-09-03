@@ -10,6 +10,8 @@ import { useFetchAboutOffers } from "@/hooks/publicHooks/useFetchAboutOffer";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import RelatedOffers from "@/components/offer/publicOffer/RelatedOffers";
 import Button from "@/components/buttons/Button";
+import Loading from "@/components/others/Loading";
+import NetworkError from "@/components/others/NetworkError";
 
 const AboutPublicOffer = () => {
   const topRef = useRef(null);
@@ -39,18 +41,29 @@ const AboutPublicOffer = () => {
         ref={topRef}
         className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex flex-col md:flex-row md:gap-[5px] gap-[5px] bg-black "
       >
-        <div className="flex-1 flex flex-col gap-[5px]">
-          <OfferDetails aboutOffer={aboutOffer} loading={loading} />
-          <div className="py-[15px] md:px-0 px-[15px]">
-            <Button>Initiate Trade</Button>
-          </div>
-          <Feedbacks
-            heading={"Offer feedback"}
-            profile={aboutOffer}
-            loading={loading}
-          />
+        <div className="flex flex-col flex-1 ">
+          {loading ? (
+            <Loading />
+          ) : (
+            <div className="flex flex-1">
+              {aboutOffer === null ? (
+                <NetworkError />
+              ) : (
+                <div className="flex-1 flex flex-col gap-[5px]">
+                  <OfferDetails aboutOffer={aboutOffer} loading={loading} />
+                  <div className="py-[15px] md:px-0 px-[15px]">
+                    <Button>Initiate Trade</Button>
+                  </div>
+                  <Feedbacks
+                    heading={"Offer feedback"}
+                    profile={aboutOffer}
+                    loading={loading}
+                  />
+                </div>
+              )}
+            </div>
+          )}
         </div>
-        {/* <RelatedOffers aboutOffer={aboutOffer} loading={loading} /> */}
       </div>
 
       <Footer />

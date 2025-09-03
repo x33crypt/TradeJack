@@ -68,11 +68,9 @@ const MarketCard = ({ offer }) => {
           </div>
 
           <div className="flex gap-[5px] items-center">
-            {seen && (
-              <p className="text-tradeFadeWhite text-xs font-medium">
-                Last seen: <span className={seen.className}>{seen.text}</span>
-              </p>
-            )}
+            <p className="text-white text-xs font-medium">
+              Last seen: <span className={seen.className}>{seen.text}</span>
+            </p>
           </div>
         </div>
 
@@ -99,13 +97,15 @@ const MarketCard = ({ offer }) => {
           <div className="flex flex-col gap-1">
             <div className="flex gap-[5px] w-max">
               <p className="text-xs font-semibold text-tradeFadeWhite">
-                Minimum -- {offer?.preferredCurrency?.code}{" "}
+                <span className="text-white">Minimum --</span>{" "}
+                {offer?.preferredCurrency?.code}{" "}
                 {toDecimal(offer?.marginRate?.from) || "N/A"}
               </p>
             </div>
             <div className="flex gap-[5px] w-max">
               <p className="text-xs font-semibold text-tradeFadeWhite">
-                Maximum -- {offer?.preferredCurrency?.code}{" "}
+                <span className="text-white">Maximum --</span>{" "}
+                {offer?.preferredCurrency?.code}{" "}
                 {toDecimal(offer?.marginRate?.to) || "N/A"}
               </p>
             </div>
@@ -113,11 +113,8 @@ const MarketCard = ({ offer }) => {
 
           <div className="flex  items-center gap-1">
             <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
-            <p className="text-xs font-semibold text-tradeFadeWhite">
-              <span className="text-white">
-                +{offer?.user?.userTransactionCount} recent
-              </span>{" "}
-              trades
+            <p className="text-xs font-semibold text-white">
+              +{offer?.user?.userTransactionCount} recent trades
             </p>
           </div>
         </div>
@@ -139,7 +136,7 @@ const MarketCard = ({ offer }) => {
             <div className="flex gap-2 items-center">
               <div className="flex gap-1 items-center">
                 <PiClockCountdownBold className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-semibold text-tradeFadeWhite">
+                <p className="text-xs font-semibold text-white">
                   {offer?.transferWindow?.hours}Hrs{" "}
                   {offer?.transferWindow?.minutes}Mins
                 </p>
@@ -152,7 +149,7 @@ const MarketCard = ({ offer }) => {
             <div className="flex gap-2 items-center">
               <div className="flex gap-1 items-center">
                 <FaBusinessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-semibold text-tradeFadeWhite">
+                <p className="text-xs font-semibold text-white">
                   {offer?.releaseWindow?.hours}Hrs{" "}
                   {offer?.releaseWindow?.minutes}Mins
                 </p>
@@ -173,7 +170,7 @@ const MarketCard = ({ offer }) => {
         <div className="flex justify-between w-full ">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              <div className="flex gap-2 items-center">
+              <div className="flex gap-1 items-center">
                 <div className="flex gap-1 items-center">
                   <HiOutlineUserCircle className="flex text-white text-[16px] flex-shrink-0" />
                   <p className="text-tradeFadeWhite text-xs font-medium">
@@ -183,31 +180,19 @@ const MarketCard = ({ offer }) => {
 
                 <div className="flex gap-1 items-center">
                   <VscVerifiedFilled className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                  <p className="text-xs font-medium text-white">Verified</p>
+                  <p className="text-xs font-medium text-tradeFadeWhite">
+                    Verified
+                  </p>
                 </div>
               </div>
 
-              <p className="text-base font-bold text-tradeOrange leading-none">
-                {offer?.service}
-              </p>
+              <div className="flex gap-1 items-center">
+                <p className="text-base font-bold text-tradeOrange leading-none">
+                  {offer?.service}
+                </p>
+              </div>
 
               <div className="flex flex-col gap-1">
-                {/* <div className="flex gap-3 items-center">
-                  <div className="flex gap-1 items-center">
-                    <VscVerifiedFilled className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                    <p className="text-xs font-medium text-white">
-                      Verified offer
-                    </p>
-                  </div>
-
-                  <div className="flex gap-1 items-center">
-                    <IoMdThumbsUp className="flex text-tradeGreen text-[14px] flex-shrink-0" />
-                    <p className="text-xs font-semibold text-white">
-                      {offer?.user?.userFeedback?.positiveFeedback}
-                    </p>
-                  </div>
-                </div> */}
-
                 <p className="text-xs font-semibold text-tradeFadeWhite">
                   {offer?.preferredCurrency?.name}
                 </p>
@@ -228,37 +213,45 @@ const MarketCard = ({ offer }) => {
                 <p className="text-base font-bold text-white leading-none">
                   1,200.00/$
                 </p>
-                <div className="text-tradeOrange text-[12px]">
-                  <FaInfoCircle />
-                </div>
-              </div>
-
-              <div className="flex gap-3 items-center">
                 <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
-                  <p>{offer?.marginRate?.percent || "N/A"}% Margin</p>
-                </div>
-
-                <div className="flex gap-1 items-center">
-                  <IoMdThumbsUp className="flex text-tradeGreen text-[14px] flex-shrink-0" />
-                  <p className="text-xs font-semibold text-white">
-                    {offer?.user?.userFeedback?.positiveFeedback}
-                  </p>
+                  <p>{offer?.marginRate?.percent || "N/A"}%</p>
                 </div>
               </div>
 
               <div className="flex flex-col gap-1 items-end">
                 <div className="flex gap-[5px] w-max">
                   <p className="text-xs font-semibold text-tradeFadeWhite">
-                    Min -- {offer?.preferredCurrency?.code}{" "}
+                    <span className="text-white">Min --</span>{" "}
+                    {offer?.preferredCurrency?.code}{" "}
                     {toDecimal(offer?.marginRate?.from) || "N/A"}
                   </p>
                 </div>
                 <div className="flex gap-[5px] w-max">
                   <p className="text-xs font-semibold text-tradeFadeWhite">
-                    Max -- {offer?.preferredCurrency?.code}{" "}
+                    <span className="text-white"> Max --</span>{" "}
+                    {offer?.preferredCurrency?.code}{" "}
                     {toDecimal(offer?.marginRate?.to) || "N/A"}
                   </p>
                 </div>
+              </div>
+
+              <div className="flex gap-2 items-center">
+                <div className="flex gap-1 items-center">
+                  <PiClockCountdownBold className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-semibold text-white">48 Mins</p>
+                </div>
+
+                <div className="flex gap-1 items-center">
+                  <FaBusinessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-semibold text-white">48 Mins</p>
+                </div>
+
+                {/* <div className="flex gap-1 items-center">
+                  <IoMdThumbsUp className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-semibold text-white">
+                    {offer?.user?.userFeedback?.positiveFeedback}
+                  </p>
+                </div> */}
               </div>
             </div>
           </div>

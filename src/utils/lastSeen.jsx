@@ -29,7 +29,7 @@ export function lastSeen(lastSeen) {
   }
 
   // ✅ Over 24h → just Offline
-  return { text: "Offline", className: "white" };
+  return { text: "Offline", className: "text-tradeFadeWhite" };
 }
 
 export default lastSeen;

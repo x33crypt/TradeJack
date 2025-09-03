@@ -9,6 +9,12 @@ import { RiShieldUserFill } from "react-icons/ri";
 import { FaUserCheck } from "react-icons/fa";
 import { logout } from "@/utils/auth/logout";
 import { useToast } from "@/context/otherContext/ToastContext";
+import { FaUser } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
+import { BsFillGiftFill } from "react-icons/bs";
+import { RiStarSmileFill } from "react-icons/ri";
+import { MdOutlineLogin } from "react-icons/md";
+import { RiDashboard3Fill } from "react-icons/ri";
 
 const ProfileNav = () => {
   const { show, setShow } = useProfileNav();
@@ -99,38 +105,47 @@ const ProfileNav = () => {
                 </div> */}
 
                 <div className="flex flex-col items-center gap-1">
-                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <FaUserCheck className="text-2xl" />
+                  <div
+                    onClick={toAccount}
+                    className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                  >
+                    <FaUser className="text-2xl" />
                   </div>
                   <p className="text-white text-[13px]">Profile</p>
                 </div>
                 <div className="flex flex-col items-center gap-1">
                   <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <FaUserCheck className="text-2xl" />
+                    <RiDashboard3Fill className="text-2xl" />
                   </div>
                   <p className="text-white text-[13px]">Limits</p>
                 </div>
-                <div className="flex flex-col items-center gap-1">
+                <div
+                  onClick={toSettings}
+                  className="flex flex-col items-center gap-1"
+                >
                   <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <FaUserCheck className="text-2xl" />
+                    <IoMdSettings className="text-2xl" />
                   </div>
                   <p className="text-white text-[13px]">Settings</p>
                 </div>
                 <div className="flex flex-col items-center gap-1">
                   <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <FaUserCheck className="text-2xl" />
+                    <BsFillGiftFill className="text-2xl" />
                   </div>
                   <p className="text-white text-[13px]">Rewards</p>
                 </div>
                 <div className="flex flex-col items-center gap-1">
                   <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <FaUserCheck className="text-2xl" />
+                    <RiStarSmileFill className="text-2xl" />
                   </div>
                   <p className="text-white text-[13px]">Rate us</p>
                 </div>
-                <div className="flex flex-col items-center gap-1">
+                <div
+                  onClick={handleLogout}
+                  className="flex flex-col items-center gap-1 "
+                >
                   <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <FaUserCheck className="text-2xl" />
+                    <MdOutlineLogin className="text-2xl" />
                   </div>
                   <p className="text-white text-[13px]">Log Out</p>
                 </div>

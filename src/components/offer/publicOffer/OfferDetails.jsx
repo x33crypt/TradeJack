@@ -75,30 +75,39 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
 
                     <div className="flex gap-[10px] items-center">
-                      <div className="flex  w-[25px] md:w-[30px] h-[25px] md:h-[30px] border-[2px] border-tradeFadeWhite rounded-[8px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
-                        {false ? (
-                          <img
-                            className="rounded-[10px] w-full h-auto"
-                            src={image}
-                            alt=""
-                          />
-                        ) : (
-                          <FaUser className="text-tradeFadeWhite text-[14px] md:text-[17px]" />
-                        )}
+                      <div className="flex gap-2 items-center">
+                        <div className="flex  w-[25px] md:w-[30px] h-[25px] md:h-[30px] border-[2px] border-tradeFadeWhite rounded-[8px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
+                          {false ? (
+                            <img
+                              className="rounded-[10px] w-full h-auto"
+                              src={image}
+                              alt=""
+                            />
+                          ) : (
+                            <FaUser className="text-tradeFadeWhite text-[14px] md:text-[17px]" />
+                          )}
+                        </div>
+                        <p
+                          onClick={() =>
+                            handleTraderClick(offer?.user?.userName)
+                          }
+                          className=" flex text-sm gap-1 items-center text-white font-semibold leading-none cursor-pointer w-max hover:underline transition-all duration-300"
+                        >
+                          @{offer?.user?.userName}
+                        </p>
                       </div>
+
                       <div className="flex gap-1 w-full justify-between items-center">
                         <div className="flex gap-1 items-center">
-                          <p
-                            onClick={() =>
-                              handleTraderClick(offer?.user?.userName)
-                            }
-                            className=" flex text-sm gap-1 items-center text-white font-semibold leading-none cursor-pointer w-max hover:underline transition-all duration-300"
-                          >
-                            @{offer?.user?.userName}
-                          </p>
-
-                          <div className="text-base text-tradeGreen">
-                            <MdVerifiedUser />
+                          <div className="flex gap-1 items-center  px-1 border-x border-tradeAshLight">
+                            <div className="text-base text-tradeGreen">
+                              <MdVerifiedUser />
+                            </div>
+                          </div>
+                          <div className="flex gap-1 items-center  pl-1 ">
+                            <p className="text-[13px] text-white font-semibold">
+                              Nigeria
+                            </p>
                           </div>
                         </div>
 
