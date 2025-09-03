@@ -173,19 +173,37 @@ const MarketCard = ({ offer }) => {
         <div className="flex justify-between w-full ">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              <div className="flex gap-1 items-center">
-                <VscVerifiedFilled className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-medium text-white">Verified offer</p>
-              </div>
+              {seen && (
+                <div className="flex gap-[5px] items-center">
+                  <div className="flex gap-1 items-center">
+                    <HiOutlineUserCircle className="flex text-white text-[16px] flex-shrink-0" />
+                    <p className="text-tradeFadeWhite text-xs font-medium">
+                      <span className={seen.className}>{seen.text}</span>
+                    </p>
+                  </div>
+                </div>
+              )}
 
               <p className="text-base font-bold text-tradeOrange leading-none">
                 {offer?.service}
               </p>
 
               <div className="flex flex-col gap-1">
-                <p className="text-xs font-semibold text-tradeFadeWhite">
-                  {offer?.preferredCurrency?.name}
-                </p>
+                <div className="flex gap-3 items-center">
+                  <div className="flex gap-1 items-center">
+                    <VscVerifiedFilled className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                    <p className="text-xs font-medium text-white">
+                      Verified offer
+                    </p>
+                  </div>
+
+                  <div className="flex gap-1 items-center">
+                    <IoMdThumbsUp className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+                    <p className="text-xs font-semibold text-white">
+                      {offer?.user?.userFeedback?.positiveFeedback}
+                    </p>
+                  </div>
+                </div>
                 <div className="flex  items-center gap-1">
                   <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
                   <p className="text-xs font-semibold text-white">
@@ -198,6 +216,10 @@ const MarketCard = ({ offer }) => {
 
           <div className="flex flex-col justify-between items-end">
             <div className="flex flex-col gap-2 items-end">
+              <p className="text-xs font-semibold text-tradeFadeWhite">
+                {offer?.preferredCurrency?.name}
+              </p>
+
               <div className="flex items-center gap-1">
                 <p className="text-base font-bold text-white leading-none">
                   1,200.00/$
@@ -221,24 +243,6 @@ const MarketCard = ({ offer }) => {
                   </p>
                 </div>
               </div>
-
-              {seen && (
-                <div className="flex gap-[5px] items-center">
-                  <div className="flex gap-1 items-center">
-                    <HiOutlineUserCircle className="flex text-white text-[14px] flex-shrink-0" />
-                    <p className="text-tradeFadeWhite text-xs font-medium">
-                      <span className={seen.className}>{seen.text}</span>
-                    </p>
-                  </div>
-
-                  <div className="flex gap-1 items-center">
-                    <IoMdThumbsUp className="flex text-tradeGreen text-[14px] flex-shrink-0" />
-                    <p className="text-xs font-semibold text-white">
-                      {offer?.user?.userFeedback?.positiveFeedback}
-                    </p>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>

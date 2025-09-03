@@ -105,21 +105,18 @@ const InAppNav = () => {
           </SmallButton>
           <SmallButton variant="ghost" onClick={() => navigateTo("/partners")}>
             <FaUserFriends className="lg:flex hidden text-[17px]" />
-            <p>Partners</p>
+            <p>Trade Partners</p>
           </SmallButton>
         </div>
 
         <div className="flex items-center  gap-[10px]">
-          <div className="lg:flex hidden items-center bg-tradeAsh border border-tradeAshLight  p-2 gap-[10px] rounded-[10px]">
+          <div className="lg:flex hidden w-full items-center bg-tradeAsh border border-tradeAshLight p-2  gap-[15px] rounded-[10px]">
+            <FiSearch className="text-tradeFadeWhite text-[20px]" />
             <input
               className=" bg-transparent outline-none h-max w-[220px]  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
               type="text"
-              placeholder="Search Trader"
+              placeholder="Search trader"
             />
-          </div>
-
-          <div className="w-max md:flex hidden text-white hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-            <p className="text-xs font-semibold ">ENG</p>
           </div>
           <div
             className={` ${
@@ -128,12 +125,11 @@ const InAppNav = () => {
           >
             <BiSupport className="text-[16px] text-black" />
           </div>
-
           <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
             <FaRegBell className="text-[16px]" />
           </div>
           <div
-            className="w-[34px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] border border-tradeAshExtraLight rounded-[10px]"
+            className=" flex-shrink-0 w-[34px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] border border-tradeAshExtraLight rounded-[10px]"
             onClick={() => setShow((prev) => !prev)}
           >
             <img className="rounded-[10px]" src={landingImg4} alt="" />
@@ -169,12 +165,12 @@ const InAppNav = () => {
                 )}
               </div>
               <div className="flex-1 flex flex-col justify-between p-[15px] bg-black ">
-                <div className="flex w-full items-center bg-tradeAsh border border-tradeAshLight p-[12px] gap-[15px] rounded-[10px]">
-                  <MdOutlinePersonSearch className="text-tradeFadeWhite  text-[20px]" />
+                <div className="flex w-full items-center bg-tradeAsh border border-tradeAshLight py-[12px] px-2  gap-[15px] rounded-[10px]">
+                  <FiSearch className="text-tradeFadeWhite text-[20px]" />
                   <input
                     className=" bg-transparent outline-none h-max w-full  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
                     type="text"
-                    placeholder="Search Trader"
+                    placeholder="Search trader"
                   />
                 </div>
 
@@ -184,7 +180,7 @@ const InAppNav = () => {
                       navigateTo("/dashboard");
                       setIsNavOption(false);
                     }}
-                    className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
+                    className=" flex gap-[15px] items-center p-2 h-max  border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
                   >
                     <TbDashboardFilled className="text-[20px] text-tradeFadeWhite" />
                     <p className="text-white text-[13px] font-medium">
@@ -196,7 +192,7 @@ const InAppNav = () => {
                       navigateTo("/wallet");
                       setIsNavOption(false);
                     }}
-                    className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
+                    className=" flex gap-[15px] items-center p-2 h-max  border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
                   >
                     <IoWalletOutline className="text-[20px] text-tradeFadeWhite" />
                     <p className="text-white text-[13px]  font-medium ">
@@ -208,21 +204,21 @@ const InAppNav = () => {
                       navigateTo("/offers/user");
                       setIsNavOption(false);
                     }}
-                    className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
+                    className=" flex gap-[15px] items-center p-2 h-max  border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
                   >
                     <TbFileInvoice className="text-[20px] text-tradeFadeWhite" />
                     <p className="text-white text-[13px]  font-medium ">
                       My offers
                     </p>
                   </div>
-                  <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                  <div className=" flex gap-[15px] items-center p-2 h-max  border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
                     <TbFileLike className="text-[20px] text-tradeFadeWhite" />
                     <p className="text-white text-[13px] ">Favourite offers</p>
                   </div>
-                  <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                  <div className=" flex gap-[15px] items-center p-2 h-max  border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
                     <TiFlashOutline className="text-[20px] text-tradeFadeWhite" />
                     <p className="text-white text-[13px]  font-medium">
-                      Promoted Offer
+                      Promoted offer
                     </p>
                   </div>
 
@@ -231,20 +227,20 @@ const InAppNav = () => {
                       navigateTo("/partners");
                       setIsNavOption(false);
                     }}
-                    className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
+                    className=" flex gap-[15px] items-center p-2 h-max  border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
                   >
                     <FaUserFriends className="text-[20px] text-tradeFadeWhite" />
                     <p className="text-white text-[13px]  font-medium ">
                       Trade partners
                     </p>
                   </div>
-                  <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                  <div className=" flex gap-[15px] items-center p-2 h-max  border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
                     <BsChatQuote className="text-[20px] text-tradeFadeWhite" />
                     <p className="text-white text-[13px]  font-medium ">
                       Messages
                     </p>
                   </div>
-                  <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                  <div className=" flex gap-[15px] items-center p-2 h-max  border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
                     <RiExchange2Fill className="text-[20px] text-tradeFadeWhite" />
                     <p className="text-white text-[13px]  font-medium ">
                       Trade history
@@ -255,14 +251,14 @@ const InAppNav = () => {
                       navigateTo("/wallet/transactions");
                       setIsNavOption(false);
                     }}
-                    className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
+                    className=" flex gap-[15px] items-center p-2 h-max  border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
                   >
                     <RiExchangeFundsLine className="text-[20px] text-tradeFadeWhite" />
                     <p className="text-white text-[13px]  font-medium ">
                       Transaction history
                     </p>
                   </div>
-                  <div className=" flex gap-[15px] items-center px-[6px] py-[10px] border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
+                  <div className=" flex gap-[15px] items-center p-2 h-max  border border-transparent hover:border-tradeAshExtraLight rounded-[10px] ">
                     <FiUserPlus className="text-[20px] text-tradeFadeWhite" />
                     <p className="text-white text-[13px]  font-medium">
                       Referrals
