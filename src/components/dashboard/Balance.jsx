@@ -5,13 +5,19 @@ import NetworkError from "../others/NetworkError";
 const Balance = ({ dashboard, loading }) => {
   return (
     <div className="flex flex-1 flex-col md:border border-neutral-800">
-      <div className="flex md:flex-row flex-col px-[15px] py-[12px] md:border-b border-tradeAshLight gap-[2px] ">
-        <p className="md:text-lg text-2xl  font-semibold text-tradeFadeWhite flex items-center">
-          Welcome Back,{" "}
-        </p>
-        <p className="md:text-lg text-2xl font-semibold text-white flex items-center">
-          {dashboard?.profile?.userName || "User"}.
-        </p>
+      <div className="flex flex-col md:flex-row px-[15px] py-[12px] md:border-b border-tradeAshLight gap-[2px]">
+        <div className="flex flex-col md:flex-row gap-[2px]">
+          <p className="md:text-lg text-2xl font-semibold text-tradeFadeWhite">
+            Welcome Back,
+          </p>
+          <p className="md:text-lg text-2xl font-semibold text-white">
+            {dashboard?.profile?.userName || "User"}.
+          </p>
+
+          <p className="text-2xl font-semibold text-tradeFadeWhite md:hidden flex ">
+            Your account at a glance.
+          </p>
+        </div>
       </div>
 
       <div className="flex flex-1 min-h-[144.5px] p-[15px]">
