@@ -24,6 +24,7 @@ import { TiChartLine } from "react-icons/ti";
 import { FaUser } from "react-icons/fa";
 import lastSeen from "@/utils/lastSeen";
 import toDecimal from "@/utils/toDecimal";
+import { FiMapPin } from "react-icons/fi";
 
 const MarketCard = ({ offer }) => {
   const { setAboutOffer } = usePublicOffers();
@@ -37,6 +38,26 @@ const MarketCard = ({ offer }) => {
       id: offerId,
     }));
     navigateTo(`/offers/explore/${offerId}`);
+  };
+
+  const formatTimeHybrid = (hours = 0, minutes = 0) => {
+    const totalMinutes = hours * 60 + minutes;
+
+    if (totalMinutes < 60) {
+      return `${totalMinutes} ${totalMinutes === 1 ? "Min" : "Mins"}`;
+    }
+
+    const displayHours = Math.floor(totalMinutes / 60);
+    const remainingMinutes = totalMinutes % 60;
+
+    let result = `${displayHours} ${displayHours === 1 ? "Hr" : "Hrs"}`;
+    if (remainingMinutes > 0) {
+      result += ` ${remainingMinutes} ${
+        remainingMinutes === 1 ? "Min" : "Mins"
+      }`;
+    }
+
+    return result;
   };
 
   return (
@@ -163,97 +184,134 @@ const MarketCard = ({ offer }) => {
         </div>
       </div>
 
-      <div
-        onClick={() => handleOfferClick(offer?.offerId)}
-        className="md:hidden flex flex-col justify-between p-[12px] gap-5  bg-tradeAsh active:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 "
-      >
-        <div className="flex justify-between w-full ">
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
-              <div className="flex gap-1 items-center">
-                <div className="flex gap-1 items-center">
-                  <HiOutlineUserCircle className="flex text-white text-[16px] flex-shrink-0" />
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    <span className={seen.className}>{seen.text}</span>
-                  </p>
-                </div>
-
-                <div className="flex gap-1 items-center">
-                  <VscVerifiedFilled className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                  <p className="text-xs font-medium text-tradeFadeWhite">
-                    Verified
-                  </p>
-                </div>
+      <div className="md:hidden flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
+        <div className="flex flex-col  gap-3 ">
+          <div className="flex justify-between w-full items-center">
+            <div className="flex gap-1 items-center w-full ">
+              <div>
+                <HiOutlineUserCircle className="flex text-white text-2xl flex-shrink-0" />
               </div>
-
-              <div className="flex gap-1 items-center">
-                <p className="text-base font-bold text-tradeOrange leading-none">
-                  {offer?.service}
+              <div>
+                <p className="text-sm font-semibold text-white">
+                  {offer?.user?.userName}
+                </p>
+                <p className="text-tradeFadeWhite text-[10px] font-medium">
+                  <span className={seen.className}>{seen.text}</span>
                 </p>
               </div>
+            </div>
 
-              <div className="flex flex-col gap-1">
+            <div className="flex flex-col items-end gap-1 justify-betwee w-full">
+              <div className="flex gap-1 items-center">
+                <VscVerifiedFilled className="flex text-tradeAshLight text-[16px] flex-shrink-0" />
+                <p className="text-xs font-medium text-tradeFadeWhite">Verified offer</p>
+              </div>
+
+              <div className="flex  items-center gap-1">
+                <LuUsers className="flex text-tradeAshLight text-[14px] flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
-                  {offer?.preferredCurrency?.name}
+                  +{offer?.user?.userTransactionCount} recent trades
                 </p>
-
-                <div className="flex  items-center gap-1">
-                  <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
-                  <p className="text-xs font-semibold text-white">
-                    +{offer?.user?.userTransactionCount} recent trades
-                  </p>
-                </div>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col justify-between items-end">
-            <div className="flex flex-col gap-2 items-end">
+          <div className="flex justify-between w-full">
+            <div className="flex flex-col gap-1">
+              <p className="text-base font-semibold text-tradeOrange leading-none">
+                {offer?.service}
+              </p>
+              <p className="text-xs font-semibold text-tradeFadeWhite">
+                {offer?.preferredCurrency?.name}
+              </p>
+
+              {/* <div className="flex  items-center gap-1">
+              <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+              <p className="text-xs font-semibold text-white">
+                +{offer?.user?.userTransactionCount} recent trades
+              </p>
+            </div> */}
+            </div>
+
+            <div className="flex flex-col gap-1 items-end">
               <div className="flex items-center gap-1">
-                <p className="text-base font-bold text-white leading-none">
+                <p className="text-base font-semibold text-white leading-none">
                   1,200.00/$
                 </p>
-                <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
+                <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeAshLight text-tradeGreen px-[5px] py-[1px] w-max">
                   <p>{offer?.marginRate?.percent || "N/A"}%</p>
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1 items-end">
+              <div className="flex gap-1 items-end">
                 <div className="flex gap-[5px] w-max">
                   <p className="text-xs font-semibold text-tradeFadeWhite">
-                    <span className="text-white">Min --</span>{" "}
-                    {offer?.preferredCurrency?.code}{" "}
                     {toDecimal(offer?.marginRate?.from) || "N/A"}
                   </p>
                 </div>
+                <p className="text-xs font-semibold text-tradeFadeWhite">--</p>
                 <div className="flex gap-[5px] w-max">
                   <p className="text-xs font-semibold text-tradeFadeWhite">
-                    <span className="text-white"> Max --</span>{" "}
-                    {offer?.preferredCurrency?.code}{" "}
                     {toDecimal(offer?.marginRate?.to) || "N/A"}
                   </p>
                 </div>
+                <p className="text-xs font-semibold text-tradeFadeWhite">
+                  {offer?.preferredCurrency?.code}
+                </p>
               </div>
 
-              <div className="flex gap-2 items-center">
-                <div className="flex gap-1 items-center">
-                  <PiClockCountdownBold className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                  <p className="text-xs font-semibold text-white">48 Mins</p>
-                </div>
-
-                <div className="flex gap-1 items-center">
-                  <FaBusinessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                  <p className="text-xs font-semibold text-white">48 Mins</p>
-                </div>
-
-                {/* <div className="flex gap-1 items-center">
-                  <IoMdThumbsUp className="flex text-tradeGreen text-[14px] flex-shrink-0" />
-                  <p className="text-xs font-semibold text-white">
-                    {offer?.user?.userFeedback?.positiveFeedback}
-                  </p>
-                </div> */}
+              {/* <div className="flex gap-2 items-center">
+              <div className="flex gap-1 items-center">
+                <PiClockCountdownBold className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <p className="text-xs font-semibold text-white">48 Mins</p>
               </div>
+
+              <div className="flex gap-1 items-center">
+                <FaBusinessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <p className="text-xs font-semibold text-white">48 Mins</p>
+              </div>
+            </div> */}
+
+              {/* <div className="flex items-end gap-2 justify-between w-full">
+              <div className="flex gap-1 items-center">
+                <VscVerifiedFilled className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
+                <p className="text-xs font-medium text-tradeFadeWhite">
+                  Verified offer
+                </p>
+              </div>
+
+              <div className="flex gap-1 items-center">
+                <IoMdThumbsUp className="flex text-tradeGreen text-[16px] flex-shrink-0" />
+                <p className="text-xs font-semibold text-white">
+                  {offer?.user?.userFeedback?.positiveFeedback}
+                </p>
+              </div>
+            </div> */}
             </div>
+          </div>
+        </div>
+        <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
+          <div className="flex flex-col">
+            <p className="text-xs font-semibold text-white whitespace-nowrap">
+              {formatTimeHybrid(
+                offer?.transferWindow?.hours,
+                offer?.transferWindow?.minutes
+              )}
+            </p>
+            <p className="text-xs font-medium text-tradeFadeWhite">
+              Transfer window
+            </p>
+          </div>
+          <div className="flex flex-col items-end">
+            <p className="text-xs font-semibold text-white whitespace-nowrap">
+              {formatTimeHybrid(
+                offer?.releaseWindow?.hours,
+                offer?.releaseWindow?.minutes
+              )}
+            </p>
+            <p className="text-xs font-medium text-tradeFadeWhite">
+              Release window
+            </p>
           </div>
         </div>
       </div>
