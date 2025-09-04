@@ -5,7 +5,7 @@ const DashboardContext = createContext();
 
 // Create the provider
 export const DashboardProvider = ({ children }) => {
-  const [dashboard, setDashboard] = useState("");
+  const [dashboard, setDashboard] = useState(null);
 
   return (
     <DashboardContext.Provider value={{ dashboard, setDashboard }}>
