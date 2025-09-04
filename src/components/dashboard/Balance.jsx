@@ -17,7 +17,7 @@ const Balance = ({ dashboard, loading }) => {
           </div>
 
           <p className="text-[13px] font-medium text-tradeFadeWhite md:hidden flex ">
-            Here’s an overview of your dashboard
+            You're back to take control of the market and make winning moves.
           </p>
         </div>
       </div>
