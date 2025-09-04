@@ -28,18 +28,14 @@ const Dashboard = () => {
           <div className="flex flex-1 flex-col md:flex-row gap-[5px]">
             <div className="flex-1 flex flex-col gap-[5px] ">
               <Balance dashboard={dashboard} />
-              {/* <Limits /> */}
               <Stats dashboard={dashboard} />
             </div>
             <div className="flex flex-col md:w-[320px] gap-[5px]">
-              {/* <TopPicks dashboard={dashboard} loading={loading} /> */}
               <TodaysGoal dashboard={dashboard} loading={loading} />
             </div>
           </div>
-
           <Performance dashboard={dashboard} />
           <RecentTrades />
-          {/* <TopPicks dashboard={dashboard} loading={loading} /> */}
         </div>
       </div>
 
