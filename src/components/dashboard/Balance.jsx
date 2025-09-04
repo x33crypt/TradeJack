@@ -4,21 +4,20 @@ import NetworkError from "../others/NetworkError";
 
 const Balance = ({ dashboard, loading }) => {
   return (
-    <div className="flex flex-1 flex-col md:border border-neutral-800">
+    <div className="flex flex-1 flex-col md:border border-neutral-800 gap-[20px]">
       <div className="flex flex-col md:flex-row px-[15px] py-[12px] md:border-b border-tradeAshLight gap-[2px]">
-        <div className="flex  md:flex-row flex-col gap-[2px]">
-          <div className="flex  md:flex-row gap-[2px]">
-            <p className="md:text-lg text-lg font-semibold text-white">
-              Welcome Back,
-            </p>
-            <p className="md:text-lg text-lg font-semibold text-white">
+        <div className="flex gap-[2px] justify-between ">
+          <div className="flex md:flex-row flex-col gap-[2px] md:text-lg text-2xl">
+            <p className=" font-semibold text-white">Welcome Back,</p>
+            <p className="font-semibold text-white">
               {dashboard?.profile?.userName || "User"}
             </p>
           </div>
 
-          <p className="text-[13px] font-medium text-tradeFadeWhite md:hidden flex ">
-            You're back to take control of the market and make winning moves.
-          </p>
+          <div className="flex md:hidden flex-col gap-[2px] text-sm items-end">
+            <p className=" font-semibold text-tradeFadeWhite">14 - JULY</p>
+            <p className="font-semibold text-tradeFadeWhite">11:45 AM</p>
+          </div>
         </div>
       </div>
 
