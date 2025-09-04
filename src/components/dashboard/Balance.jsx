@@ -4,7 +4,7 @@ import NetworkError from "../others/NetworkError";
 
 const Balance = ({ dashboard, loading }) => {
   return (
-    <div className="flex flex-1 flex-col md:border border-neutral-800 gap-[20px]">
+    <div className="flex flex-1 flex-col md:border border-neutral-800 gap-[20px">
       <div className="flex flex-col md:flex-row px-[15px] py-[12px] md:border-b border-tradeAshLight gap-[2px]">
         <div className="flex gap-[2px] justify-between w-full items-center ">
           <div className="flex md:flex-row flex-col gap-[2px] md:text-lg text-2xl">
