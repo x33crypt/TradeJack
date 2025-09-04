@@ -6,16 +6,18 @@ const Balance = ({ dashboard, loading }) => {
   return (
     <div className="flex flex-1 flex-col md:border border-neutral-800">
       <div className="flex flex-col md:flex-row px-[15px] py-[12px] md:border-b border-tradeAshLight gap-[2px]">
-        <div className="flex flex-col md:flex-row gap-[2px]">
-          <p className="md:text-lg text-2xl font-semibold text-white">
-            Welcome Back,
-          </p>
-          <p className="md:text-lg text-2xl font-semibold text-white">
-            {dashboard?.profile?.userName || "User"}.
-          </p>
+        <div className="flex  md:flex-row flex-col gap-[2px]">
+          <div className="flex  md:flex-row gap-[2px]">
+            <p className="md:text-lg text-lg font-semibold text-white">
+              Welcome Back,
+            </p>
+            <p className="md:text-lg text-lg font-semibold text-white">
+              {dashboard?.profile?.userName || "User"}
+            </p>
+          </div>
 
-          <p className="text-base font-semibold text-tradeFadeWhite md:hidden flex ">
-            Your account at a glance.
+          <p className="text-[13px] font-medium text-tradeFadeWhite md:hidden flex ">
+            Here’s an overview of your dashboard
           </p>
         </div>
       </div>
