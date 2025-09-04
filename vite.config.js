@@ -6,6 +6,7 @@ import autoprefixer from "autoprefixer";
 
 export default defineConfig({
   plugins: [react()],
+  base: "/", // IMPORTANT for Vercel
   assetsInclude: ["**/*.JPG"],
   resolve: {
     alias: {
