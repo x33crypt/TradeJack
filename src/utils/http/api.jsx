@@ -47,12 +47,7 @@ const refreshToken = async () => {
 
 // --- Request Interceptor ---
 api.interceptors.request.use((config) => {
-  const exemptRoutes = [
-    "/auth/login",
-    "/auth/signup",
-    "/auth/refresh-token",
-    "/auth/logout",
-  ];
+  const exemptRoutes = ["/signin", "/signup", "/logout"];
 
   if (
     ["post", "put", "delete", "patch"].includes(config.method.toLowerCase()) &&
