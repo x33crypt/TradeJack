@@ -165,7 +165,7 @@ const MarketMain = () => {
                 </p>
 
                 <div className="flex gap-[5px]">
-                  <div className="md:hidden flex ">
+                  <div className="lg:hidden flex">
                     <SmallButton variant="fadeout" onClick={showFilter}>
                       <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" />
                       <p>Filter</p>
@@ -271,7 +271,7 @@ const MarketMain = () => {
                 </p>
 
                 <div className="flex gap-[5px]">
-                  <div className="lg:hidden flex ">
+                  <div className="lg:hidden flex">
                     <SmallButton variant="fadeout" onClick={showFilter}>
                       <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" />
                       <p>Filter</p>
@@ -376,12 +376,12 @@ const MarketMain = () => {
       {filter?.state && (
         <div>
           <LockByScroll />
-          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-40">
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-40">
             <OfferFilter />
 
-            <div>
+            {/* <div>
               <SmallButton>Reset filter</SmallButton>
-            </div>
+            </div> */}
           </div>
         </div>
       )}

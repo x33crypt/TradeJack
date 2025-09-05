@@ -99,9 +99,9 @@ const MarketCard = ({ offer }) => {
             </div>
           </div>
 
-          <div className="flex items-center w-full">
+          <div className="flex  items-center w-full">
             <div className="flex-1 flex flex-col gap-1">
-              <p className="text-base font-semibold text-tradeOrange leading-none">
+              <p className="text-base font-semibold text-tradeOrange md:max-w-[120px] lg:max-w-[140px] leading-normal">
                 {offer?.service}
               </p>
               <p className="text-xs font-semibold text-tradeFadeWhite">
@@ -149,11 +149,11 @@ const MarketCard = ({ offer }) => {
               </p>
             </div>
 
-            <div className="flex- flex flex-col gap-2">
-              <p className="text-base font-semibold text-white leading-none">
+            <div className="flex flex-col gap-1">
+              <p className="text-base font-semibold text-white leading-norma">
                 1,200.00/$
               </p>
-              <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeAshLight text-tradeGreen px-[5px] py-[1px] w-max">
+              <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeAshLight text-tradeGreen px-[5px] py-[1px w-max">
                 <p>{offer?.marginRate?.percent || "N/A"}% above market price</p>
               </div>
             </div>
@@ -198,9 +198,9 @@ const MarketCard = ({ offer }) => {
             </div>
           </div>
 
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between w-full items-start">
             <div className="flex flex-col gap-1">
-              <p className="text-base font-semibold text-tradeOrange leading-none">
+              <p className="text-base font-semibold text-tradeOrange max-w-[150px] leading-normal">
                 {offer?.service}
               </p>
               <p className="text-xs font-semibold text-tradeFadeWhite">
@@ -210,7 +210,7 @@ const MarketCard = ({ offer }) => {
 
             <div className="flex flex-col gap-1 items-end">
               <div className="flex items-center gap-1">
-                <p className="text-base font-semibold text-white leading-none">
+                <p className="text-base font-semibold text-white leading-normal">
                   1,200.00/$
                 </p>
                 <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeAshLight text-tradeGreen px-[5px] py-[1px] w-max">

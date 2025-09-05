@@ -1,56 +1,38 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import Button from "@/components/buttons/Button";
 import { useServices } from "@/hooks/others/useServices";
-import { currencies } from "@/hooks/others/useCurrencies";
 import { IoClose } from "react-icons/io5";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
-import { PiToggleLeftFill } from "react-icons/pi";
-import { PiToggleRightFill } from "react-icons/pi";
 import SmallButton from "../buttons/SmallButton";
 
 const OfferFilter = () => {
   const { filter, setFilter } = usePublicOffers();
   const { serviceTypes, fullData } = useServices();
   const { select, setSelect } = useSelectElement();
-
-  // handling serviceType changes
-  useEffect(() => {
-    if (select?.page !== "offer filter" || !select?.pick) return;
-
-    if (select.element === "service type") {
-      setFilter((prev) => ({
-        ...prev,
-        assetType: select.pick,
-        asset: "", // Reset service when serviceType changes
-      }));
-    }
-  }, [select]);
-
-  // Get services under the selected serviceType
-  const services = useMemo(() => {
-    if (!filter?.assetType || fullData.length === 0) return [];
-
-    const selected = fullData.find(
-      (item) => item.name.toLowerCase() === filter.assetType.toLowerCase()
-    );
-
-    return selected?.services.map((service) => service.name) || [];
-  }, [filter?.assetType, fullData]);
-
-  const serviceInputLabels = {
-    "Online Wallet Transfer": "Select Online Wallet",
-    "Bank Transfer": "Select Bank Account",
-    "Gift Cards Exchange": "Select Gift Card",
-    "Crypto Trading": "Select Crypto Asset",
-    "Card-Based Spending": "Select Debit or Credit Card",
-  };
-
-  const sortByOptions = [
-    "Rate : Highest to lowest",
-    "Rate : lowest to highest",
-  ];
+  const [assetsList, setAssetsList] = useState([
+    "Zelle",
+    "CashApp",
+    "eBay Gift Card",
+    "Chase Bank",
+    "More",
+  ]);
+  const [currenciesList, setCurrenciesList] = useState([
+    "USD",
+    "EUR",
+    "GBP",
+    "JPY",
+    "AUD",
+    "CAD",
+    "More",
+  ]);
+  const [sortByList, setSortByList] = useState([
+    "Recently active traders",
+    "Top picks",
+    "Verified offers",
+    "Rate: High to Low",
+    "More",
+  ]);
 
   // handling service changes
   useEffect(() => {
@@ -117,19 +99,6 @@ const OfferFilter = () => {
       clearFilter: false,
     });
   };
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   handleFilterOffer();
-
-  //   setOfferFilter((prev) => ({
-  //     ...prev,
-  //     clearFilter: false,
-  //     isFiltering: false,
-  //   }));
-
-  //   setLoading(false);
-  // }, [offerFilter.clearFilter]);
 
   const handleFilterOffer = async () => {
     // 📍 Step 1: Start filtering state
@@ -217,51 +186,48 @@ const OfferFilter = () => {
     }
   };
 
-  const showActiveTraders = () => {
+  let amountList = ["50", "100", "500", "Enter amount"];
+
+  const handleAssetChange = (asset) => {
     setFilter((prev) => ({
       ...prev,
-      activeTraders: !prev.activeTraders,
+      asset: asset,
     }));
   };
 
-  const showVerifiedOffers = () => {
-    setFilter((prev) => ({
-      ...prev,
+  // handling asset changes if clicks more
+  useEffect(() => {
+    if (
+      select?.page === "offer filter" &&
+      select?.element === "assets" &&
+      select?.pick
+    ) {
+      setAssetsList((prevList) => {
+        if (prevList.includes(select.pick)) {
+          return prevList; // Already exists
+        }
 
-      verifiedOffers: !prev.verifiedOffers,
-    }));
-  };
+        const moreIndex = prevList.indexOf("More");
+        if (moreIndex > 0) {
+          const newList = [...prevList];
+          newList[moreIndex - 1] = select.pick; // Replace before "More"
+          return newList;
+        }
 
-  const assetsList = [
-    "Zelle",
-    "CashApp",
-    "eBay Gift Card",
-    "Chase Bank",
-    "More assets",
-  ];
-  const currenciesList = [
-    "USD",
-    "EUR",
-    "GBP",
-    "JPY",
-    "AUD",
-    "CAD",
-    "More currencies",
-  ];
-  const sortByList = [
-    "Recently active traders",
-    "Top picks",
-    "Verified offers",
-    "Rate: High to Low",
-    "Release: Slow to Fast",
-    "More sorts",
-  ];
-  const amountList = ["50", "100", "500", "Enter amount"];
+        return prevList; // If "More" not found
+      });
+
+      setFilter((prev) => ({
+        ...prev,
+        asset: select.pick,
+      }));
+    }
+  }, [select]);
 
   return (
     <>
-      <div className="flex flex-1 md:w-[300px] h-max flex-col md:border-x md:border-t-0 lg:border-b border-neutral-800 rounded-[15px] lg:rounded-none px-[15px] bg-tradeAsh lg:bg-transparent  ">
-        <div className="flex justify-between items-center py-[12px] border-b border-neutral-800 ">
+      <div className="flex flex- md:w-[300px] h-max flex-col md:border-x md:border-t-0 lg:border-b border-neutral-800 rounded-[15px] lg:rounded-none px-[15px] bg-tradeAsh lg:bg-transparent  ">
+        <div className="flex lg:hidden justify-between items-center py-[12px] border-b border-neutral-800 ">
           <p className="text-lg text-white font-[700] cursor-pointer">Filter</p>
 
           <div
@@ -273,7 +239,6 @@ const OfferFilter = () => {
 
           <div className="lg:flex hidden">
             <SmallButton onClick={clearFilter}>
-              {/* <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" /> */}
               <p>Reset filter</p>
             </SmallButton>
           </div>
@@ -285,14 +250,31 @@ const OfferFilter = () => {
               <p className="text-white text-[13px] font-semibold">Asset</p>
               <div className="flex gap-[10px] flex-wrap">
                 <div className="flex gap-[10px] flex-wrap">
-                  {assetsList.map((currency, index) => (
-                    <SmallButton
+                  {assetsList.map((asset, index) => (
+                    <button
                       key={index}
                       variant="fadeoutPlus"
-                      onClick={() => handleSort(currency)}
+                      onClick={
+                        asset !== "More"
+                          ? () => handleAssetChange(asset)
+                          : () =>
+                              setSelect({
+                                state: true,
+                                selectOne: true,
+                                selectTwo: false,
+                                page: "offer filter",
+                                element: "assets",
+                                options: assetsList,
+                              })
+                      }
+                      className={`${
+                        asset === filter?.asset
+                          ? "text-black bg-tradeGreen"
+                          : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight "
+                      } flex border border-tradeAshExtraLight items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                     >
-                      {currency}
-                    </SmallButton>
+                      {asset}
+                    </button>
                   ))}
                 </div>
 
@@ -397,24 +379,22 @@ const OfferFilter = () => {
             </div>
           </div>
 
-          {/* <div className="flex flex-col gap-[10px] md:fixed bottom-0 left-0 right-0">
-            <Button
+          <div className="flex flex-col gap-[10px] bottom-0 left-0 right-0">
+            {/* <Button
               onClick={handleFilterOffer}
               variant="primary"
               disabled={filter?.loading}
             >
               Apply Filter
-            </Button>
+            </Button> */}
 
-            <div className="lg:hidden flex">
+            <div className="lg: flex">
               <Button onClick={clearFilter} variant="outline">
                 Reset Filter
               </Button>
             </div>
-          </div> */}
+          </div>
         </div>
-
-        
       </div>
     </>
   );

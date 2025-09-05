@@ -5,6 +5,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import Button from "../buttons/Button";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import { IoClose } from "react-icons/io5";
+import SmallButton from "../buttons/SmallButton";
 
 const SelectElement = () => {
   const { select, setSelect } = useSelectElement();
@@ -50,49 +51,50 @@ const SelectElement = () => {
       {state && (
         <div>
           <LockByScroll />
-          <div className="fixed inset-0 lg:px-[15px] md:px-[2.5%] p-[35px]  bg-black bg-opacity-80 flex flex-col gap-[10px] items-center justify-center z-50">
-            <div
-              className={`${
-                select?.selectOne ? "flex" : "hidden"
-              } p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[300px]`}
-            >
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-50">
+            <div className="flex flex- md:w-[300px] h-max flex-col rounded-[15px] p-[15px] gap-[15px] bg-tradeAsh">
+              {/* FIRST Search — for string options */}
               <div
                 className={`${
-                  select?.options?.length > 5 ? "flex" : "flex"
-                }  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer`}
+                  select?.selectOne && options?.length > 15 ? "flex" : "hidden"
+                } rounded-[15px] flex flex-col gap-[15px] `}
               >
-                <input
-                  className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
-                  type="text"
-                  placeholder={`Search ${select?.element}`}
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                />
+                <div
+                  className={`${
+                    select?.options?.length > 5 ? "flex" : "flex"
+                  }  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer`}
+                >
+                  <input
+                    className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
+                    type="text"
+                    placeholder={`Search ${select?.element}`}
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div
-              className={`${
-                select?.selectTwo ? "flex" : "hidden"
-              } p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[300px]`}
-            >
+              {/* SECOND Search — for string options */}
               <div
                 className={`${
-                  select?.options?.length > 5 ? "flex" : "flex"
-                }  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer`}
+                  select?.selectTwo && options?.length > 10 ? "flex" : "hidden"
+                }  flex flex-col gap-[15px]`}
               >
-                <input
-                  className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
-                  type="text"
-                  placeholder={`Search ${select?.element}`}
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                />
+                <div
+                  className={`${
+                    select?.options?.length > 5 ? "flex" : "flex"
+                  }  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer`}
+                >
+                  <input
+                    className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
+                    type="text"
+                    placeholder={`Search ${select?.element}`}
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                  />
+                </div>
               </div>
-              
-            </div>
 
-            <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px] w-[300px]">
               {/* FIRST DIV — for string options */}
               <div
                 className={`${
@@ -105,39 +107,39 @@ const SelectElement = () => {
                       <div className="flex flex-col gap-[5px] w-full">
                         {filterStringOption.length ? (
                           filterStringOption.map((option, index) => (
-                            <div
+                            <SmallButton
                               key={index}
+                              variant="fadeoutPlus"
                               onClick={() => handleUpdate(option)}
-                              className="p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="text-[13px]">{option}</p>
-                            </div>
+                              {option}
+                            </SmallButton>
                           ))
                         ) : (
-                          <div className="p-[12px] text-[13px] text-tradeFadeWhite bg-tradeAsh border border-tradeAshLight rounded-[10px]">
+                          <div className=" text-[13px] text-tradeFadeWhite">
                             No matching results found
                           </div>
                         )}
                       </div>
                     ) : (
-                      <div className=" flex flex-col gap-[5px] w-full">
+                      <div className=" flex flex-wrap gap-[10px] w-full">
                         {(select?.options || [])
                           .filter((option) => typeof option === "string")
-                          .sort((a, b) => a.localeCompare(b))
+                          // .sort((a, b) => a.localeCompare(b))
                           .map((option, index) => (
-                            <div
+                            <SmallButton
                               key={index}
+                              variant="fadeoutPlus"
                               onClick={() => handleUpdate(option)}
-                              className="p-[12px] font-medium  bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300"
                             >
-                              <p className="text-[13px]">{option}</p>
-                            </div>
+                              {option}
+                            </SmallButton>
                           ))}
                       </div>
                     )}
                   </div>
                 ) : (
-                  <div className="p-[12px] text-[13px] text-tradeFadeWhite bg-tradeAsh border border-tradeAshLight rounded-[10px]">
+                  <div className="text-[13px] text-tradeFadeWhite">
                     Options not available, please try again.
                   </div>
                 )}
@@ -152,30 +154,31 @@ const SelectElement = () => {
                 {Array.isArray(options) && options.length > 0 ? (
                   <div className="overflow-y-auto custom-scrollbar w-full">
                     {searchInput ? (
-                      <div className="flex flex-col gap-[5px] w-full">
+                      <div className=" flex flex-wrap gap-[10px] w-full">
                         {filterObjectOption.length ? (
                           filterObjectOption.map(({ code, name }) => (
                             <div
                               key={code}
                               onClick={() => handleUpdate({ code, name })}
-                              className="flex gap-[5px]"
+                              className="flex w-full justify-between items-center"
                             >
-                              <p className="flex-1 text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
+                              <SmallButton variant="fadeoutPlus">
                                 {name}
-                              </p>
-                              <p className="flex items-center justify-center w-[60px] text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
+                              </SmallButton>
+
+                              <SmallButton variant="fadeoutPlus">
                                 {code}
-                              </p>
+                              </SmallButton>
                             </div>
                           ))
                         ) : (
-                          <div className="p-[12px] text-[13px] text-tradeFadeWhite bg-tradeAsh border border-tradeAshLight rounded-[10px]">
+                          <div className=" text-[13px] text-tradeFadeWhite ">
                             No matching results found
                           </div>
                         )}
                       </div>
                     ) : (
-                      <div className="flex flex-col gap-[5px] w-full">
+                      <div className="flex flex-col gap-[10px] w-full overflow-hidden">
                         {select?.options
                           ?.filter(
                             (option) =>
@@ -186,29 +189,35 @@ const SelectElement = () => {
                             <div
                               key={code}
                               onClick={() => handleUpdate({ code, name })}
-                              className="flex gap-[5px]"
+                              className="flex w-full justify-between items-center gap-[10px]"
                             >
-                              <p className="flex-1 text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
+                              <SmallButton variant="fadeoutPlus">
                                 {name}
-                              </p>
-                              <p className="flex items-center justify-center w-[60px] text-[13px] p-[12px] font-medium bg-tradeAsh hover:bg-tradeAshLight text-tradeFadeWhite hover:text-white border border-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300">
+                              </SmallButton>
+
+                              <SmallButton variant="fadeoutPlus">
                                 {code}
-                              </p>
+                              </SmallButton>
                             </div>
                           ))}
                       </div>
                     )}
                   </div>
                 ) : (
-                  <div className="p-[12px] text-[13px] text-tradeFadeWhite bg-tradeAsh border border-tradeAshLight rounded-[10px]">
+                  <div className=" text-[13px] text-tradeFadeWhite">
                     Options not available, please try again.
                   </div>
                 )}
               </div>
             </div>
 
-            <div onClick={close} className=" w-[300px]">
-              <Button variant="Fadeout">Close</Button>
+            <div className="flex w-full justify-center">
+              <div
+                onClick={close}
+                className="w-max flex text-white hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+              >
+                <IoClose className="text-[16px]" />
+              </div>
             </div>
           </div>
         </div>

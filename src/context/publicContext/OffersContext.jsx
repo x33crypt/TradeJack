@@ -10,13 +10,10 @@ export const PublicOffersProvider = ({ children }) => {
   const [filter, setFilter] = useState({
     state: false,
     loading: false,
-    assetType: "",
     asset: "",
     currency: { code: "", name: "" },
     amount: "",
     sortBy: null,
-    activeTraders: false,
-    verifiedOffers: false,
     clearFilter: false,
   });
 
