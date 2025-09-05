@@ -17,6 +17,7 @@ import { LiaFilterSolid } from "react-icons/lia";
 import { RiLoader4Fill } from "react-icons/ri";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { PiSlidersHorizontalBold } from "react-icons/pi";
+import { FcLineChart } from "react-icons/fc";
 
 const MarketMain = () => {
   const topRef = useRef(null);
@@ -164,29 +165,16 @@ const MarketMain = () => {
                 </p>
 
                 <div className="flex gap-[5px]">
-                  <SmallButton variant="fadeout" onClick={showFilter}>
-                    <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" />
-                    <p>Filter</p>
-                  </SmallButton>
+                  <div className="md:hidden flex ">
+                    <SmallButton variant="fadeout" onClick={showFilter}>
+                      <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" />
+                      <p>Filter</p>
+                    </SmallButton>
+                  </div>
 
-                  <SmallButton
-                    variant="fadeout"
-                    disabled={filter?.sortBy !== null}
-                    onClick={() =>
-                      setSelect({
-                        ...select,
-                        state: true,
-                        selectOne: true,
-                        selectTwo: false,
-                        element: "sort",
-                        options: sort,
-                        pick: "",
-                        page: "explore offers",
-                      })
-                    }
-                  >
-                    <FaSort />
-                    <p>{filter?.sortBy ? filter?.sortBy : "Sort by"}</p>
+                  <SmallButton variant="fadeout">
+                    <FcLineChart />
+                    <p>Live Stats</p>
                   </SmallButton>
                 </div>
               </div>
@@ -283,29 +271,16 @@ const MarketMain = () => {
                 </p>
 
                 <div className="flex gap-[5px]">
-                  <SmallButton variant="fadeout" onClick={showFilter}>
-                    <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" />
-                    <p>Filter</p>
-                  </SmallButton>
+                  <div className="md:hidden flex ">
+                    <SmallButton variant="fadeout" onClick={showFilter}>
+                      <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" />
+                      <p>Filter</p>
+                    </SmallButton>
+                  </div>
 
-                  <SmallButton
-                    variant="fadeout"
-                    disabled={filter?.sortBy !== null}
-                    onClick={() =>
-                      setSelect({
-                        ...select,
-                        state: true,
-                        selectOne: true,
-                        selectTwo: false,
-                        element: "sort",
-                        options: sort,
-                        pick: "",
-                        page: "explore offers",
-                      })
-                    }
-                  >
-                    <FaSort />
-                    <p>{filter?.sortBy ? filter?.sortBy : "Sort by"}</p>
+                  <SmallButton variant="fadeout">
+                    <FcLineChart />
+                    <p>Live Stats</p>
                   </SmallButton>
                 </div>
               </div>
