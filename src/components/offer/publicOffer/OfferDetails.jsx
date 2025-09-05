@@ -98,19 +98,6 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
 
                       <div className="flex gap-1 w-full justify-between items-center">
-                        <div className="flex gap-1 items-center">
-                          <div className="flex gap-1 items-center  px-1 border-x border-tradeAshLight">
-                            <div className="text-base text-tradeGreen">
-                              <MdVerifiedUser />
-                            </div>
-                          </div>
-                          <div className="flex gap-1 items-center  pl-1 ">
-                            <p className="text-[13px] text-white font-semibold">
-                              Nigeria
-                            </p>
-                          </div>
-                        </div>
-
                         {seen && (
                           <p className="text-tradeFadeWhite text-[13px] font-semibold">
                             <span className={seen.className}>{seen.text}</span>
