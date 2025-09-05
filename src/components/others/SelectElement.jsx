@@ -99,7 +99,7 @@ const SelectElement = () => {
               <div
                 className={`${
                   select?.selectOne ? "flex" : "hidden"
-                } w-full flex-col  gap-[15px] rounded-[14px] md:max-h-[245px] max-h-[260px]`}
+                } w-full flex-col  gap-[15px] rounded-[14px] md:max-h-[245px] max-h-[300px]`}
               >
                 {Array.isArray(options) && options.length > 0 ? (
                   <div className="overflow-y-auto  custom-scrollbar w-full">
@@ -149,7 +149,7 @@ const SelectElement = () => {
               <div
                 className={`${
                   select?.selectTwo ? "flex" : "hidden"
-                } w-full flex-col  gap-[15px] rounded-[14px] md:max-h-[245px] max-h-[260px]`}
+                } w-full flex-col  gap-[15px] rounded-[14px] md:max-h-[245px] max-h-[300px]`}
               >
                 {Array.isArray(options) && options.length > 0 ? (
                   <div className="overflow-y-auto custom-scrollbar w-full">
