@@ -31,6 +31,7 @@ import toDecimal from "@/utils/toDecimal";
 import lastSeen from "@/utils/lastSeen";
 import { MdVerifiedUser } from "react-icons/md";
 import { LuUsers } from "react-icons/lu";
+import { HiOutlineUserCircle } from "react-icons/hi2";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -74,17 +75,19 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </p>
                     </div>
 
-                    <div className="flex gap-[10px] items-center">
-                      <div className="flex gap-2 items-center">
-                        <div className="flex  w-[25px] md:w-[30px] h-[25px] md:h-[30px] border-[2px] border-tradeFadeWhite rounded-[8px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
+                    <div className="flex gap-[10px] items-center justify-between md:justify-normal w-full">
+                      <div className="flex gap-1 items-center">
+                        <div className="flex   cursor-pointer">
                           {false ? (
-                            <img
-                              className="rounded-[10px] w-full h-auto"
-                              src={image}
-                              alt=""
-                            />
+                            <div className="w-[25px] md:w-[30px] h-[25px] md:h-[30px] border-[2px] border-tradeFadeWhite rounded-[8px] overflow-hidden shrink-0 justify-center items-center">
+                              <img
+                                className="rounded-[10px] w-full h-auto"
+                                src={image}
+                                alt=""
+                              />
+                            </div>
                           ) : (
-                            <FaUser className="text-tradeFadeWhite text-[14px] md:text-[17px]" />
+                            <HiOutlineUserCircle className="flex text-white text-xl flex-shrink-0" />
                           )}
                         </div>
                         <p
@@ -97,9 +100,9 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         </p>
                       </div>
 
-                      <div className="flex gap-1 w-full justify-between items-center">
+                      <div className="flex gap-1 ">
                         {seen && (
-                          <p className="text-tradeFadeWhite text-[13px] font-semibold">
+                          <p className="text-tradeFadeWhite text-sm font-semibold">
                             <span className={seen.className}>{seen.text}</span>
                           </p>
                         )}

@@ -260,7 +260,7 @@ const OfferFilter = () => {
 
   return (
     <>
-      <div className="flex flex-1 md:w-[300px] flex-col md:border-x md:border-t-0 lg:border-b border-neutral-800 rounded-[15px] lg:rounded-none px-[15px] bg-tradeAsh lg:bg-transparent  ">
+      <div className="flex flex-1 md:w-[300px] h-max flex-col md:border-x md:border-t-0 lg:border-b border-neutral-800 rounded-[15px] lg:rounded-none px-[15px] bg-tradeAsh lg:bg-transparent  ">
         <div className="flex justify-between items-center py-[12px] border-b border-neutral-800 ">
           <p className="text-lg text-white font-[700] cursor-pointer">Filter</p>
 
@@ -272,7 +272,7 @@ const OfferFilter = () => {
           </div>
 
           <div className="lg:flex hidden">
-            <SmallButton variant="fadeout" onClick={clearFilter}>
+            <SmallButton onClick={clearFilter}>
               {/* <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" /> */}
               <p>Reset filter</p>
             </SmallButton>

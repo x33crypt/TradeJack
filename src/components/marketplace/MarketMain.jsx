@@ -271,7 +271,7 @@ const MarketMain = () => {
                 </p>
 
                 <div className="flex gap-[5px]">
-                  <div className="md:hidden flex ">
+                  <div className="lg:hidden flex ">
                     <SmallButton variant="fadeout" onClick={showFilter}>
                       <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" />
                       <p>Filter</p>
