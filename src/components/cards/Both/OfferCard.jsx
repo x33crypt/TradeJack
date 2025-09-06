@@ -234,34 +234,6 @@ const MarketCard = ({ offer }) => {
                   {offer?.preferredCurrency?.code}
                 </p>
               </div>
-
-              {/* <div className="flex gap-2 items-center">
-              <div className="flex gap-1 items-center">
-                <PiClockCountdownBold className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-semibold text-white">48 Mins</p>
-              </div>
-
-              <div className="flex gap-1 items-center">
-                <FaBusinessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-semibold text-white">48 Mins</p>
-              </div>
-            </div> */}
-
-              {/* <div className="flex items-end gap-2 justify-between w-full">
-              <div className="flex gap-1 items-center">
-                <VscVerifiedFilled className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
-                <p className="text-xs font-medium text-tradeFadeWhite">
-                  Verified offer
-                </p>
-              </div>
-
-              <div className="flex gap-1 items-center">
-                <IoMdThumbsUp className="flex text-tradeGreen text-[16px] flex-shrink-0" />
-                <p className="text-xs font-semibold text-white">
-                  {offer?.user?.userFeedback?.positiveFeedback}
-                </p>
-              </div>
-            </div> */}
             </div>
           </div>
         </div>
