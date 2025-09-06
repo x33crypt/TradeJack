@@ -292,8 +292,11 @@ const MyAccounts = () => {
                   Confirm Deletion
                 </p>
 
-                <div onClick={closeDelete}>
-                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
+                <div
+                  onClick={closeDelete}
+                  className="w-max flex text-white hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                >
+                  <IoClose className="text-[16px]" />
                 </div>
               </div>
 
@@ -349,8 +352,11 @@ const MyAccounts = () => {
                   Confirm Default
                 </p>
 
-                <div onClick={closeEdit}>
-                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
+                <div
+                  onClick={closeEdit}
+                  className="w-max flex text-white hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                >
+                  <IoClose className="text-[16px]" />
                 </div>
               </div>
 

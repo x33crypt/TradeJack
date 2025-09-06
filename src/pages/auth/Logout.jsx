@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { IoLogInOutline } from "react-icons/io5";
 import { logout } from "@/utils/auth/logout";
-import { useToast } from "@/context/otherContext/ToastContext";
 import Button from "@/components/buttons/Button";
+import { useLogOut } from "@/context/userContext/LogOutContext";
+import LockByScroll from "@/components/others/LockByScroll";
+import { useNavigate } from "react-router-dom";
+import { IoClose } from "react-icons/io5";
 
 const Logout = () => {
-  const { toast, setToast } = useToast();
   const [loading, setLoading] = useState(false);
+  const { state, setState } = useLogOut();
 
-  const navigateTo = useSafeNavigate();
-  const location = useLocation();
+  const navigateTo = useNavigate();
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -18,62 +18,62 @@ const Logout = () => {
 
     try {
       const result = await logout();
-
       if (result.success) {
-        console.log("Logout successful:", result);
         navigateTo("/");
-        setToast({
-          ...toast,
-          success: true,
-          successMessage: result.message,
-        });
-      } else {
-        console.error("Signin error:", result.error);
-        setToast({
-          ...toast,
-          error: true,
-          errorMessage: result?.error,
-        });
       }
     } catch (err) {
       console.error("Unexpected error:", err.message || err);
-      setToast({
-        ...toast,
-        error: true,
-        errorMessage: "An unexpected error occurred. Please try again.",
-      });
     } finally {
       setLoading(false);
+      setState(false);
     }
   };
 
-  const cancelButton = (e) => {
-    navigateTo(location?.state?.from || -1);
+  const close = () => {
+    setState(false);
   };
 
   return (
-    <div className="z-50 fixed inset-0 bg-black min-h-svh flex px-[35px] justify-center items-center">
-      <div className="flex flex-col items-center lg:p-[20px] p-[15px] md:gap-[30px] gap-[30px] bg- borde border-tradeAshExtraLight ">
-        <div className="w-full flex flex-col items-center gap-[5px]">
-          <div className="w-full flex items-center justify-center  text-white text-[100px]">
-            <IoLogInOutline />
+    <>
+      {state && (
+        <div>
+          <LockByScroll />
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
+            <div className="flex md:w-[300px] h-max flex-col rounded-[15px] px-[15px] bg-tradeAsh  ">
+              <div className="flex justify-between items-center py-[12px] border-b border-neutral-800 ">
+                <p className="text-lg text-white font-[700] cursor-pointer">
+                  Confirm Logout
+                </p>
+
+                <div
+                  onClick={close}
+                  className="w-max flex text-white hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                >
+                  <IoClose className="text-[16px]" />
+                </div>
+              </div>
+
+              <div className="flex-1 flex flex-col justify-between py-[12px] gap-[20px]">
+                <div className="flex flex-col gap-1">
+                  <p className="text-[13px] font-medium text-cente text-tradeFadeWhite">
+                    You’re about to log out. Do you want to continue ?
+                  </p>
+                </div>
+                <div className="flex flex-col gap-[10px] w-full">
+                  <Button
+                    onClick={handleLogout}
+                    variant="danger"
+                    disabled={loading}
+                  >
+                    {loading ? "loggin you out..." : "Yes, log me out"}
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <p className="text-tradeFadeWhite text-[13px] sm:w-[250px] text-center font-[500]">
-            You’re about to log out. Do you want to continue ?
-          </p>
         </div>
-        <div className="flex flex-col gap-[10px] w-full">
-          <Button onClick={handleLogout} variant="primary" disabled={loading}>
-            {loading ? "loggin you out..." : "Yes, log me out"}
-          </Button>
-
-          <Button onClick={cancelButton} variant="outline">
-            Cancel
-          </Button>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

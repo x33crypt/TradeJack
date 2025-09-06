@@ -52,6 +52,7 @@ import SensitiveRoute from "./utils/sensitiveRoutes";
 const App = () => {
   return (
     <>
+      <Logout />
       <ConfirmPassword />
       <SelectElement />
       <ToastSuccess />
