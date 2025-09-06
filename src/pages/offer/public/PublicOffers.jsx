@@ -13,6 +13,7 @@ import { RiLoader4Fill } from "react-icons/ri";
 import { PiSlidersHorizontalBold } from "react-icons/pi";
 import { FcLineChart } from "react-icons/fc";
 import { IoClose } from "react-icons/io5";
+import withComma from "@/utils/withComma";
 
 const PublicOffers = () => {
   const topRef = useRef(null);
@@ -372,7 +373,7 @@ const PublicOffers = () => {
                   className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
                   type="text"
                   placeholder="Enter amount"
-                  value={filter?.amount || ""}
+                  value={withComma(filter?.amount) || ""}
                   onChange={(e) => {
                     const val = e.target.value.replace(/[^\d.-]/g, "");
                     const newAmount = val === "" ? "" : Number(val);

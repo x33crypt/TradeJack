@@ -12,6 +12,7 @@ import { useCalculator } from "@/context/publicContext/CalculatorContext";
 import LockByScroll from "@/components/others/LockByScroll";
 import { IoClose } from "react-icons/io5";
 import toDecimal from "@/utils/toDecimal";
+import withComma from "@/utils/withComma";
 
 const AboutPublicOffer = () => {
   const topRef = useRef(null);
@@ -45,16 +46,6 @@ const AboutPublicOffer = () => {
       state: false,
       loading: false,
     }));
-  };
-
-  const formatWithCommas = (value) => {
-    if (!value) return "";
-    const num = parseFloat(value);
-    if (isNaN(num)) return value;
-    return num.toLocaleString("en-US", {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 2,
-    });
   };
 
   const handleAmountChange = (e) => {
@@ -129,7 +120,7 @@ const AboutPublicOffer = () => {
                           className="flex-1 bg-transparent p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
                           type="text"
                           placeholder="Enter amount"
-                          value={formatWithCommas(calculator?.amount)}
+                          value={withComma(calculator?.amount)}
                           onChange={handleAmountChange}
                         />
                       </div>

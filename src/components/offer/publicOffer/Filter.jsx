@@ -5,6 +5,7 @@ import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import SmallButton from "../../buttons/SmallButton";
 import { currencies } from "@/hooks/others/useCurrencies";
+import withComma from "@/utils/withComma";
 
 const Filter = () => {
   const { filter, setFilter } = usePublicOffers();
@@ -303,7 +304,7 @@ const Filter = () => {
                           : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight"
                       } flex border border-tradeAshExtraLight items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                     >
-                      {amount}
+                      {withComma(amount)}
                     </button>
                   ))}
                 </div>
