@@ -1,13 +1,9 @@
 import React from "react";
-import OfferCard from "../cards/Mobile/OfferCard";
 import Loading from "../others/Loading";
 import NetworkError from "../others/NetworkError";
 import SmallButton from "../buttons/SmallButton";
-import { LuUsers } from "react-icons/lu";
-import { FaUser } from "react-icons/fa";
 import Button from "../buttons/Button";
 import { FaUserCheck } from "react-icons/fa6";
-import { MdLeaderboard } from "react-icons/md";
 import { BsFillGiftFill } from "react-icons/bs";
 
 const TodaysGoal = ({ loading, dashboard }) => {
@@ -32,32 +28,12 @@ const TodaysGoal = ({ loading, dashboard }) => {
                       key={index}
                       className="flex flex-col p-[12px] bg-tradeAsh rounded-[15px] gap-[10px] border border-tradeAshLight"
                     >
-                      <div className="flex justify-between items-center">
-                        <div className="flex gap-1">
-                          <div className="text-tradeFadeWhite text-xs font-semibold flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                            <p>Week</p>
-                          </div>
-                        </div>
-
-                        <div className="flex  items-center gap-1">
-                          <p className="text-xs font-semibold text-tradeFadeWhite">
-                            6,307
-                          </p>
-                          <FaUserCheck className="flex text-tradeGreen text-[14px] flex-shrink-0" />
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="text-white font-semibold text-[13px]">
-                          Explore 3 new offers from other traders
-                        </p>
-                      </div>
-
-                      <div className="flex items-center gap-2 justify-between">
-                        <div className="flex  items-center gap-1">
-                          <p className="text-xs font-semibold text-tradeFadeWhite">
-                            Pending
-                          </p>
+                      <div className="flex justify-between items-center border- border-dashed border-tradeAshLight pb-[10px ">
+                        <div
+                          className="
+                            bg-transparent text-tradeFadeWhite flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer"
+                        >
+                          <p className="text-xs font-semibold">Week's task</p>
                         </div>
 
                         <div className="flex items-center gap-1">
@@ -66,6 +42,27 @@ const TodaysGoal = ({ loading, dashboard }) => {
                           <p className="text-xs font-semibold text-tradeFadeWhite">
                             5 Credit
                           </p>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-start ">
+                        <div>
+                          <p className="text-white font-semibold text-sm leading-normal">
+                            Complete a trade within 45 minutes
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 justify-between">
+                        <div className="flex  items-center gap-1">
+                          <p className="text-xs font-semibold text-tradeFadeWhite">
+                            2 completed, 1 more to go
+                          </p>
+                        </div>
+
+                        <div className="flex  items-center gap-1">
+                          <p className="text-xs font-semibold text-tradeFadeWhite">
+                            6,307
+                          </p>
+                          <FaUserCheck className="flex text-tradeGreen text-[14px] flex-shrink-0" />
                         </div>
                       </div>
                     </div>
