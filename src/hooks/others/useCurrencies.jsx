@@ -9,7 +9,6 @@ export const currencies = [
   { code: "AUD", name: "Australian dollar" },
   { code: "AWG", name: "Aruban florin" },
   { code: "AZN", name: "Azerbaijani manat" },
-  { code: "BAM", name: "Bosnia and Herzegovina convertible mark" },
   { code: "BBD", name: "Barbadian dollar" },
   { code: "BDT", name: "Bangladeshi taka" },
   { code: "BGN", name: "Bulgarian lev" },

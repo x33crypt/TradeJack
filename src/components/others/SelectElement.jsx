@@ -74,11 +74,11 @@ const SelectElement = () => {
                 </div>
               </div>
 
-              {/* SECOND Search — for string options */}
+              {/* SECOND Search — for object options */}
               <div
                 className={`${
                   select?.selectTwo && options?.length > 10 ? "flex" : "hidden"
-                }  flex flex-col gap-[15px]`}
+                } flex-col gap-[15px]`}
               >
                 <div
                   className={`${
@@ -99,7 +99,7 @@ const SelectElement = () => {
               <div
                 className={`${
                   select?.selectOne ? "flex" : "hidden"
-                } w-full flex-col  gap-[15px] rounded-[14px] md:max-h-[245px] max-h-[300px]`}
+                } w-full flex-col gap-[15px] rounded-[15px] md:max-h-[245px] max-h-[300px]`}
               >
                 {Array.isArray(options) && options.length > 0 ? (
                   <div className="overflow-y-auto  custom-scrollbar w-full">
@@ -149,18 +149,18 @@ const SelectElement = () => {
               <div
                 className={`${
                   select?.selectTwo ? "flex" : "hidden"
-                } w-full flex-col  gap-[15px] rounded-[14px] md:max-h-[245px] max-h-[300px]`}
+                }  flex-col gap-[15px] rounded-[15px] w-full md:max-h-[245px] max-h-[300px]`}
               >
                 {Array.isArray(options) && options.length > 0 ? (
-                  <div className="overflow-y-auto custom-scrollbar w-full">
+                  <div className="overflow-y-auto custom-scrollbar  ">
                     {searchInput ? (
-                      <div className=" flex w-full flex-wrap gap-[10px]">
+                      <div className="flex flex-col gap-[10px] ">
                         {filterObjectOption.length ? (
                           filterObjectOption.map(({ code, name }) => (
                             <div
                               key={code}
                               onClick={() => handleUpdate({ code, name })}
-                              className="flex justify-between items-center"
+                              className="flex justify-between items-center w-full"
                             >
                               <SmallButton variant="fadeoutPlus">
                                 {name}
@@ -178,7 +178,7 @@ const SelectElement = () => {
                         )}
                       </div>
                     ) : (
-                      <div className="flex flex-col gap-[10px] w-full overflow-hidden">
+                      <div className="flex flex-col gap-[10px] ">
                         {select?.options
                           ?.filter(
                             (option) =>
@@ -189,7 +189,7 @@ const SelectElement = () => {
                             <div
                               key={code}
                               onClick={() => handleUpdate({ code, name })}
-                              className="flex justify-between items-center gap-[10px]"
+                              className="flex flex-wrap items-center gap-[10px] w-full"
                             >
                               <SmallButton variant="fadeoutPlus">
                                 {name}
