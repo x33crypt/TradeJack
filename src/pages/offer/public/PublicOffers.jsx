@@ -22,38 +22,8 @@ const PublicOffers = () => {
   const [loadingMore, setLoadingMore] = useState(false);
   const [backupAmount, setBackupAmount] = useState("200");
 
-  console.log("Offers", offers);
-  console.log("Filter", filter);
-
-  const showFilter = () => {
-    setFilter((prev) => ({
-      ...prev,
-      state: true,
-    }));
-  };
-
   useEffect(() => {
-    setFilter({
-      state: false,
-      loading: false,
-      asset: "",
-      currency: "",
-      enterAmount: false,
-      amount: "",
-      amountList: ["50", "100", "200", "Enter amount"],
-      sortBy: "",
-      clearFilter: false,
-    });
-
-    fetchOffers();
-  }, []);
-
-  const scrollToTop = () => {
     topRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToTop();
   }, []);
 
   const handleNext = async () => {
@@ -68,7 +38,6 @@ const PublicOffers = () => {
 
   const adds = ["+20", "+50", "+100", "+200", "+500"];
 
-  // helper: robustly parse different formats ("50", "+50", "1,200", 50, etc.)
   const toNumber = (v) => {
     const n = Number(String(v ?? "").replace(/[^\d.-]/g, ""));
     return Number.isNaN(n) ? 0 : n;
@@ -120,7 +89,12 @@ const PublicOffers = () => {
     });
   };
 
-  console.log(filter?.amount);
+  const showFilter = () => {
+    setFilter((prev) => ({
+      ...prev,
+      state: true,
+    }));
+  };
 
   const closeEnterAmount = () => {
     setFilter((prev) => ({
@@ -377,7 +351,7 @@ const PublicOffers = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-40">
-            <OfferFilter />
+            <Filter />
           </div>
         </div>
       )}
