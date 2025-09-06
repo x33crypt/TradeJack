@@ -52,7 +52,7 @@ const SelectElement = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-50">
-            <div className="flex flex- md:w-[320px] h-max flex-col rounded-[15px] p-[15px] gap-[15px] bg-tradeAsh">
+            <div className="flex md:w-[320px] h-max flex-col rounded-[15px] p-[15px] gap-[15px] bg-tradeAsh">
               {/* FIRST Search — for string options */}
               <div
                 className={`${
@@ -154,13 +154,13 @@ const SelectElement = () => {
                 {Array.isArray(options) && options.length > 0 ? (
                   <div className="overflow-y-auto custom-scrollbar w-full">
                     {searchInput ? (
-                      <div className=" flex flex-wrap gap-[10px] w-full">
+                      <div className=" flex w-full flex-wrap gap-[10px]">
                         {filterObjectOption.length ? (
                           filterObjectOption.map(({ code, name }) => (
                             <div
                               key={code}
                               onClick={() => handleUpdate({ code, name })}
-                              className="flex w-full justify-between items-center"
+                              className="flex justify-between items-center"
                             >
                               <SmallButton variant="fadeoutPlus">
                                 {name}
@@ -189,7 +189,7 @@ const SelectElement = () => {
                             <div
                               key={code}
                               onClick={() => handleUpdate({ code, name })}
-                              className="flex w-full justify-between items-center gap-[10px]"
+                              className="flex justify-between items-center gap-[10px]"
                             >
                               <SmallButton variant="fadeoutPlus">
                                 {name}

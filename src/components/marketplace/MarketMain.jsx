@@ -174,7 +174,7 @@ const MarketMain = () => {
 
                   <SmallButton variant="fadeout">
                     <FcLineChart />
-                    <p>Live Stats</p>
+                    <p>Stats</p>
                   </SmallButton>
                 </div>
               </div>
@@ -280,7 +280,7 @@ const MarketMain = () => {
 
                   <SmallButton variant="fadeout">
                     <FcLineChart />
-                    <p>Live Stats</p>
+                    <p>Stats</p>
                   </SmallButton>
                 </div>
               </div>
