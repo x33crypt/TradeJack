@@ -5,10 +5,22 @@ import { IoClose } from "react-icons/io5";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import SmallButton from "../buttons/SmallButton";
+import { currencies } from "@/hooks/others/useCurrencies";
 
 const OfferFilter = () => {
   const { filter, setFilter } = usePublicOffers();
   const { serviceTypes, fullData } = useServices();
+  const [sorts] = useState([
+    "Recently active traders",
+    "Top picks",
+    "Verified offers",
+    "Rate: High to Low",
+    "Rate: Low to High",
+    "Release: Fast to Slow",
+    "Release: Slow to Fast",
+    "Transfer: Fast to Slow",
+    "Transfer: Slow to Fast",
+  ]);
   const { select, setSelect } = useSelectElement();
   const [assetsList, setAssetsList] = useState([
     "Zelle",
@@ -33,49 +45,6 @@ const OfferFilter = () => {
     "Rate: High to Low",
     "More",
   ]);
-
-  // handling service changes
-  useEffect(() => {
-    if (select?.page !== "offer filter" || !select?.pick) return;
-
-    if (select.element === "service") {
-      setFilter((prev) => ({
-        ...prev,
-        asset: select.pick,
-      }));
-    }
-  }, [select]);
-
-  // handling currency changes
-  useEffect(() => {
-    if (select?.page !== "offer filter" || !select?.pick) return;
-
-    if (select.element === "currency") {
-      console.log("Currency selected:", select.pick);
-      const selectedCurrency = select.pick; // ✅ correct scope
-
-      if (
-        typeof selectedCurrency === "object" &&
-        selectedCurrency.code &&
-        selectedCurrency.name
-      ) {
-        setFilter((prev) => ({
-          ...prev,
-          currency: selectedCurrency,
-        }));
-      }
-    }
-  }, [select]);
-
-  const handleAmountChange = (e) => {
-    const rawValue = e.target.value.replace(/,/g, ""); // Remove commas for processing
-    if (!isNaN(rawValue)) {
-      setFilter((prev) => ({
-        ...prev,
-        amount: rawValue,
-      }));
-    }
-  };
 
   const close = () => {
     setFilter((prev) => ({
@@ -186,8 +155,9 @@ const OfferFilter = () => {
     }
   };
 
-  let amountList = ["50", "100", "500", "Enter amount"];
+  let amountList = ["100", "200", "500", "Enter amount"];
 
+  // handling asset changes if clicks visible assets
   const handleAssetChange = (asset) => {
     setFilter((prev) => ({
       ...prev,
@@ -220,6 +190,99 @@ const OfferFilter = () => {
       setFilter((prev) => ({
         ...prev,
         asset: select.pick,
+      }));
+    }
+  }, [select]);
+
+  // hadling currency changes if clicks visible currencies
+  const handleCurrencyChange = (code) => {
+    setFilter((prev) => ({
+      ...prev,
+      currency: code,
+    }));
+  };
+
+  // handling currency changes if clicks more
+  useEffect(() => {
+    if (
+      select?.page === "offer filter" &&
+      select?.element === "currency" &&
+      select?.pick
+    ) {
+      const selectedCurrency = select.pick; // ✅ correct scope
+
+      if (
+        typeof selectedCurrency === "object" &&
+        selectedCurrency.code &&
+        selectedCurrency.name
+      ) {
+        setCurrenciesList((prevList) => {
+          if (prevList.includes(selectedCurrency.code)) {
+            return prevList; // Already exists
+          }
+
+          const moreIndex = prevList.indexOf("More");
+          if (moreIndex > 0) {
+            const newList = [...prevList];
+            newList[moreIndex - 1] = selectedCurrency.code; // Replace before "More"
+            return newList;
+          }
+
+          return prevList; // If "More" not found
+        });
+
+        setFilter((prev) => ({
+          ...prev,
+          currency: selectedCurrency.code,
+        }));
+      }
+    }
+  }, [select]);
+
+  // handling amount changes if clicks visible amount
+  const handleAmountChange = (e) => {
+    const rawValue = e.target.value.replace(/,/g, ""); // Remove commas for processing
+    if (!isNaN(rawValue)) {
+      setFilter((prev) => ({
+        ...prev,
+        amount: rawValue,
+      }));
+    }
+  };
+
+  // handling sort changes if clicks visible sort
+  const handleSortChange = (sort) => {
+    setFilter((prev) => ({
+      ...prev,
+      sortBy: sort,
+    }));
+  };
+
+  // handling sort changes if clicks more
+  useEffect(() => {
+    if (
+      select?.page === "offer filter" &&
+      select?.element === "sort by" &&
+      select?.pick
+    ) {
+      setSortByList((prevList) => {
+        if (prevList.includes(select.pick)) {
+          return prevList; // Already exists
+        }
+
+        const moreIndex = prevList.indexOf("More");
+        if (moreIndex > 0) {
+          const newList = [...prevList];
+          newList[moreIndex - 1] = select.pick; // Replace before "More"
+          return newList;
+        }
+
+        return prevList; // If "More" not found
+      });
+
+      setFilter((prev) => ({
+        ...prev,
+        sortBy: select?.pick,
       }));
     }
   }, [select]);
@@ -277,55 +340,39 @@ const OfferFilter = () => {
                     </button>
                   ))}
                 </div>
-
-                {/* <SmallButton
-                  variant="fadeoutPlus"
-                  onClick={() =>
-                    setSelect({
-                      state: true,
-                      selectOne: true,
-                      selectTwo: false,
-                      page: "offer filter",
-                      element: "service",
-                      options: services,
-                    })
-                  }
-                >
-                  More assets
-                </SmallButton> */}
               </div>
             </div>
 
             <div className="flex flex-col gap-[10px] w-full">
               <p className="text-white text-[13px] font-semibold">Currency</p>
-              <div className="flex gap-[10px] flex-wrap">
-                <div className="flex gap-[10px] flex-wrap">
-                  {currenciesList.map((currency, index) => (
-                    <SmallButton
-                      key={index}
-                      variant="fadeoutPlus"
-                      onClick={() => handleSort(currency)}
-                    >
-                      {currency}
-                    </SmallButton>
-                  ))}
-                </div>
 
-                {/* <SmallButton
-                  variant="fadeoutPlus"
-                  onClick={() =>
-                    setSelect({
-                      state: true,
-                      selectOne: false,
-                      selectTwo: true,
-                      page: "offer filter",
-                      element: "currency",
-                      options: currencies,
-                    })
-                  }
-                >
-                  More
-                </SmallButton> */}
+              <div className="flex gap-[10px] flex-wrap">
+                {currenciesList.map((currency, index) => (
+                  <button
+                    key={index}
+                    variant="fadeoutPlus"
+                    onClick={
+                      currency !== "More"
+                        ? () => handleCurrencyChange(currency)
+                        : () =>
+                            setSelect({
+                              state: true,
+                              selectOne: false,
+                              selectTwo: true,
+                              page: "offer filter",
+                              element: "currency",
+                              options: currencies,
+                            })
+                    }
+                    className={`${
+                      currency === filter?.currency
+                        ? "text-black bg-tradeGreen"
+                        : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight "
+                    } flex border border-tradeAshExtraLight items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                  >
+                    {currency}
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -367,13 +414,30 @@ const OfferFilter = () => {
 
               <div className="flex gap-[10px] flex-wrap">
                 {sortByList.map((sort, index) => (
-                  <SmallButton
+                  <button
                     key={index}
                     variant="fadeoutPlus"
-                    onClick={() => handleSort(sort)}
+                    onClick={
+                      sort !== "More"
+                        ? () => handleSortChange(sort)
+                        : () =>
+                            setSelect({
+                              state: true,
+                              selectOne: true,
+                              selectTwo: false,
+                              page: "offer filter",
+                              element: "sort by",
+                              options: sorts,
+                            })
+                    }
+                    className={`${
+                      sort === filter?.sortBy
+                        ? "text-black bg-tradeGreen"
+                        : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight "
+                    } flex border border-tradeAshExtraLight items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                   >
                     {sort}
-                  </SmallButton>
+                  </button>
                 ))}
               </div>
             </div>

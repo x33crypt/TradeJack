@@ -11,9 +11,9 @@ export const PublicOffersProvider = ({ children }) => {
     state: false,
     loading: false,
     asset: "",
-    currency: { code: "", name: "" },
+    currency: "",
     amount: "",
-    sortBy: null,
+    sortBy: "",
     clearFilter: false,
   });
 
