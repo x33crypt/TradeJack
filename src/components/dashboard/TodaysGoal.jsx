@@ -30,7 +30,7 @@ const TodaysGoal = ({ loading, dashboard }) => {
                       key={index}
                       className="flex flex-col p-[12px] bg-tradeAsh rounded-[15px] gap-[10px] lg:gap-[10px] border border-tradeAshLight"
                     >
-                      <div className="flex justify-between items-center border-b lg:border-0 border-dashed border-tradeAshLight pb-[10px] lg:pb-0 ">
+                      <div className="flex justify-between items-center border-b md:border-0 border-dashed border-tradeAshLight pb-[10px] md:pb-0 ">
                         <div
                           className="
                             bg-transparent text-tradeFadeWhite flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer"
@@ -62,7 +62,7 @@ const TodaysGoal = ({ loading, dashboard }) => {
                           </p>
                         </div>
                       </div>
-                      <div className="hidden lg:flex items-center gap-2 justify-between">
+                      <div className="hidden md:flex items-center gap-2 justify-between">
                         <div className="flex  items-center gap-1">
                           <p className="text-xs font-semibold text-tradeFadeWhite">
                             2 completed, 1 more to go
@@ -71,7 +71,7 @@ const TodaysGoal = ({ loading, dashboard }) => {
 
                         <MdPending className="text-sm text-tradeFadeWhite" />
                       </div>
-                      <div className="flex lg:hidden items-center gap-2 justify-between">
+                      <div className="flex md:hidden items-center gap-2 justify-between">
                         <div className="flex  items-center gap-1">
                           <p className="text-xs font-semibold text-tradeFadeWhite">
                             2 completed, 1 more to go

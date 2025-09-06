@@ -56,7 +56,7 @@ const Logout = () => {
               <div className="flex-1 flex flex-col justify-between py-[12px] gap-[20px]">
                 <div className="flex flex-col gap-1">
                   <p className="text-[13px] font-medium text-cente text-tradeFadeWhite">
-                    You’re about to log out. Do you want to continue ?
+                    Are you sure you want to log out now ? Trades are happening !
                   </p>
                 </div>
                 <div className="flex flex-col gap-[10px] w-full">

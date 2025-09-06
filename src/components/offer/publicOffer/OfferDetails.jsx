@@ -102,7 +102,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                       <div className="flex gap-1 ">
                         {seen && (
-                          <p className="text-tradeFadeWhite text-sm font-semibold">
+                          <p className="text-tradeFadeWhite text-xs font-semibold">
                             <span className={seen.className}>{seen.text}</span>
                           </p>
                         )}
@@ -135,42 +135,6 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                 </div>
 
                 <div className="flex lg:flex-row flex-col gap-[10px] w-full ">
-                  {/* <div className="flex min-w-[200px] flex-1 flex-col  justify-between gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
-                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                      <p className="text-[13px] text-white font-semibold">
-                        Details
-                      </p>
-                    </div>
-
-                    <div className="w-full flex flex-col gap-1">
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Status
-                        </p>
-
-                        <p className="text-[13px] text-tradeGreen font-semibold">
-                          {capitalizeFirst(offer?.status) || "Inactive"}
-                        </p>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Trade Count
-                        </p>
-                        <p className="text-[13px] text-white font-semibold">
-                          0
-                        </p>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Created on
-                        </p>
-                        <p className="text-[13px] text-white font-semibold">
-                          {date(offer?.publishedOn) || "N/A"}
-                        </p>
-                      </div>
-                    </div>
-                  </div> */}
-
                   <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                     <div className="flex items-center justify-between w-full mt-[1px]">
                       <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -190,7 +154,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           Margin
                         </p>
                         <div className="flex items-center gap-[2px] text-[13px] font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
-                          <p>{offer?.marginRate?.rate || "N/A"}%</p>
+                          <p>{offer?.marginRate?.percent || "N/A"}%</p>
                         </div>
                       </div>
 
