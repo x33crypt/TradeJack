@@ -23,6 +23,10 @@ const PublicOffers = () => {
   const [backupAmount, setBackupAmount] = useState("200");
 
   useEffect(() => {
+    fetchOffers();
+  }, []);
+
+  useEffect(() => {
     topRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
