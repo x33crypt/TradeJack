@@ -52,7 +52,7 @@ const SelectElement = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-50">
-            <div className="flex md:w-[320px] h-max flex-col rounded-[15px] p-[15px] gap-[15px] bg-tradeAsh">
+            <div className="flex md:w-[320px] w-full h-max flex-col rounded-[15px] p-[15px] gap-[15px] bg-tradeAsh">
               {/* FIRST Search — for string options */}
               <div
                 className={`${

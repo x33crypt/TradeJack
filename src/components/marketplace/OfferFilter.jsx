@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Button from "@/components/buttons/Button";
-import { useServices } from "@/hooks/others/useServices";
 import { IoClose } from "react-icons/io5";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
@@ -9,7 +8,6 @@ import { currencies } from "@/hooks/others/useCurrencies";
 
 const OfferFilter = () => {
   const { filter, setFilter } = usePublicOffers();
-  const { serviceTypes, fullData } = useServices();
   const [sorts] = useState([
     "Recently active traders",
     "Top picks",
@@ -46,6 +44,8 @@ const OfferFilter = () => {
     "More",
   ]);
 
+  let amountList = ["100", "200", "500", "Enter amount"];
+
   const close = () => {
     setFilter((prev) => ({
       ...prev,
@@ -55,107 +55,15 @@ const OfferFilter = () => {
 
   const clearFilter = () => {
     setFilter({
-      state: false,
       loading: false,
       assetType: "",
       asset: "",
-      currency: { code: "", name: "" },
+      currency: "",
       amount: "",
-      sortBy: null,
-      activeTraders: false,
-      verifiedOffers: false,
-      topPicks: false,
+      sortBy: "",
       clearFilter: false,
     });
   };
-
-  const handleFilterOffer = async () => {
-    // 📍 Step 1: Start filtering state
-    setOfferFilter((prev) => ({
-      ...prev,
-      isFiltering: true,
-    }));
-
-    try {
-      // ⏳ Step 2: Simulate loading delay for UX
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // 📦 Step 3: Fetch offers from mock data
-      const response = await axios.get(`/fakeData.json`);
-      let filteredOffers = response.data.offers;
-
-      // 🧠 Step 4: Filter by service type (skip if Default)
-      if (offerFilter?.serviceType && offerFilter.serviceType !== "") {
-        filteredOffers = filteredOffers.filter(
-          (offer) => offer.serviceType === offerFilter.serviceType
-        );
-      }
-
-      // 🧠 Step 5: Filter by service
-      if (offerFilter?.service) {
-        filteredOffers = filteredOffers.filter(
-          (offer) => offer.service === offerFilter.service
-        );
-      }
-
-      // 💱 Step 6: Filter by currency code OR name (accurate currency match)
-      if (offerFilter?.currency?.code || offerFilter?.currency?.name) {
-        const currencyCode = offerFilter.currency?.code;
-
-        filteredOffers = filteredOffers.filter((offer) => {
-          const offerCurrency = offer.currency?.code;
-          return offerCurrency === currencyCode;
-        });
-      }
-
-      // 💰 Step 7: Filter by transaction amount range
-      if (offerFilter?.amount) {
-        filteredOffers = filteredOffers.filter(
-          (offer) =>
-            offerFilter.amount >= offer.minimum ||
-            offerFilter.amount <= offer.maximum
-        );
-      }
-
-      // Filter by online status (must assign)
-      if (offerFilter?.onlineOffers) {
-        filteredOffers = filteredOffers.filter(
-          (offer) => offer.isOnline === true
-        );
-      }
-
-      if (offerFilter?.bestMargin) {
-        filteredOffers = filteredOffers.sort(
-          (a, b) => Number(a.margin) - Number(b.margin)
-        );
-      }
-
-      if (offerFilter?.topFeedBack) {
-        filteredOffers = filteredOffers.sort(
-          (a, b) => Number(b.positiveFeedback) - Number(a.positiveFeedback)
-        );
-      }
-
-      if (offerFilter?.mostTrusted) {
-        filteredOffers = filteredOffers.sort(
-          (a, b) => (Number(b.trustScore) || 0) - (Number(a.trustScore) || 0)
-        );
-      }
-
-      // ✅ Step 9: Update filtered offers
-      setOffers(filteredOffers);
-    } catch (error) {
-      console.error("Error fetching or filtering offers:", error);
-    } finally {
-      // 🛑 Step 10: End filtering state
-      setOfferFilter((prev) => ({
-        ...prev,
-        isFiltering: false,
-      }));
-    }
-  };
-
-  let amountList = ["100", "200", "500", "Enter amount"];
 
   // handling asset changes if clicks visible assets
   const handleAssetChange = (asset) => {
@@ -290,7 +198,7 @@ const OfferFilter = () => {
   return (
     <>
       <div className="flex flex- md:w-[300px] h-max flex-col md:border-x md:border-t-0 lg:border-b border-neutral-800 rounded-[15px] lg:rounded-none px-[15px] bg-tradeAsh lg:bg-transparent  ">
-        <div className="flex lg:hidden justify-between items-center py-[12px] border-b border-neutral-800 ">
+        <div className="flex md:hidden justify-between items-center py-[12px] border-b border-neutral-800 ">
           <p className="text-lg text-white font-[700] cursor-pointer">Filter</p>
 
           <div

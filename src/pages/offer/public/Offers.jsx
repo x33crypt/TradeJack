@@ -65,12 +65,7 @@ const Marketplace = () => {
           <OfferFilter />
         </div>
         <div className="flex-1 min-h-full ">
-          <MarketMain
-            promotedOffers={promotedOffers}
-            unPromotedOffers={unPromotedOffers}
-            setSelect={setSelect}
-            select={select}
-          />
+          <MarketMain />
         </div>
       </div>
       <Footer />

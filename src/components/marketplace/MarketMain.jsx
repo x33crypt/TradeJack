@@ -21,18 +21,13 @@ import { FcLineChart } from "react-icons/fc";
 
 const MarketMain = () => {
   const topRef = useRef(null);
-
   const { loading, fetchOffers, pagination, page, displayedCount, next } =
     useFetchPublicOffers();
   const { offers, filter, setFilter } = usePublicOffers();
-  const [triggerScroll, setTriggerScroll] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
-  const { select, setSelect } = useSelectElement();
 
   console.log("Offers", offers);
   console.log("Filter", filter);
-
-  const inputRef = useRef(null);
 
   const showFilter = () => {
     setFilter((prev) => ({
@@ -41,66 +36,27 @@ const MarketMain = () => {
     }));
   };
 
-  const showActiveTraders = () => {
-    setFilter((prev) => ({
-      ...prev,
-      activeTraders: !prev.activeTraders,
-    }));
-  };
-
-  const showVerifiedOffers = () => {
-    setFilter((prev) => ({
-      ...prev,
-
-      verifiedOffers: !prev.verifiedOffers,
-    }));
-  };
-
-  const showTopPicks = () => {
-    setFilter((prev) => ({
-      ...prev,
-      activeTraders: false,
-      verifiedOffers: false,
-      topPicks: !prev.topPicks,
-    }));
-  };
-
-  const navigateTo = useNavigate();
-
   useEffect(() => {
     setFilter({
       state: false,
       loading: false,
-      assetType: "",
       asset: "",
-      currency: { code: "", name: "" },
+      currency: "",
       amount: "",
-      sortBy: null,
-      activeTraders: false,
-      verifiedOffers: false,
-      topPicks: false,
+      sortBy: "",
       clearFilter: false,
     });
 
     fetchOffers();
   }, []);
 
-  // This Function handles Loading of transactions
-  // 👇 Scroll after page changes
-  useEffect(() => {
-    if (triggerScroll && transactionRef.current) {
-      transactionRef.current.scrollIntoView({ behavior: "smooth" });
-      setTriggerScroll(false); // reset flag
-    }
-  }, [page, triggerScroll]);
-
   const scrollToTop = () => {
     topRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // useEffect(() => {
-  //   scrollToTop();
-  // }, []);
+  useEffect(() => {
+    scrollToTop();
+  }, []);
 
   const handleNext = async () => {
     setLoadingMore(true);
@@ -112,48 +68,16 @@ const MarketMain = () => {
   const isEnd = pagination && !pagination.hasNextPage && !isEmpty;
   const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
 
-  const sort = [
-    "Rate: High to Low",
-    "Rate: Low to High",
-    "Release: Fast to Slow",
-    "Release: Slow to Fast",
-    "Transfer: Fast to Slow",
-    "Transfer: Slow to Fast",
-  ];
-
-  // handling sort
-  useEffect(() => {
-    if (select?.page !== "explore offers" || !select?.pick) return;
-
-    if (select.element === "sort") {
-      const selectedStatus = select.pick === "All" ? null : select.pick;
-
-      setFilter((prev) => ({
-        ...prev,
-        sortBy: selectedStatus,
-      }));
-    }
-  }, [select]);
-
   return (
     <>
       <div
         ref={topRef}
         className="flex flex-col min-h-svh md:border-x md:border-t-0 lg:border-b border-neutral-800  gap-[15px "
       >
-        <div>
-          <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-            <p className="text-lg font-[700] text-white ">
-              Secure P2P Marketplace
-            </p>
-          </div>
-          {/* <div className="px-[15px] py-[12px]">
-            <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-              Browse through over 10,000 active trade offers from verified
-              users. Use filters to quickly find the best rates, trusted
-              traders, and secure deals.
-            </p>
-          </div> */}
+        <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
+          <p className="text-lg font-[700] text-white ">
+            Secure P2P Marketplace
+          </p>
         </div>
 
         <div className="flex flex-col gap-[40px]">
