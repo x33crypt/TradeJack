@@ -5,6 +5,7 @@ import SmallButton from "../buttons/SmallButton";
 import Button from "../buttons/Button";
 import { FaUserCheck } from "react-icons/fa6";
 import { BsFillGiftFill } from "react-icons/bs";
+import { MdOutlinePending } from "react-icons/md";
 
 const TodaysGoal = ({ loading, dashboard }) => {
   return (
@@ -26,9 +27,9 @@ const TodaysGoal = ({ loading, dashboard }) => {
                   {Array.from({ length: 3 }).map((_, index) => (
                     <div
                       key={index}
-                      className="flex flex-col p-[12px] bg-tradeAsh rounded-[15px] gap-[10px] border border-tradeAshLight"
+                      className="flex flex-col p-[12px] bg-tradeAsh rounded-[15px] gap-[10px] lg:gap-[10px] border border-tradeAshLight"
                     >
-                      <div className="flex justify-between items-center border- border-dashed border-tradeAshLight pb-[10px ">
+                      <div className="flex justify-between items-center border-b lg:border-0 border-dashed border-tradeAshLight pb-[10px] lg:pb-0 ">
                         <div
                           className="
                             bg-transparent text-tradeFadeWhite flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer"
@@ -36,12 +37,21 @@ const TodaysGoal = ({ loading, dashboard }) => {
                           <p className="text-xs font-semibold">Week's task</p>
                         </div>
 
-                        <div className="flex items-center gap-1">
-                          <BsFillGiftFill className="text-sm text-tradeOrange" />
+                        <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-1">
+                            <BsFillGiftFill className="text-sm text-tradeOrange" />
 
-                          <p className="text-xs font-semibold text-tradeFadeWhite">
-                            5 Credit
-                          </p>
+                            <p className="text-xs font-semibold text-tradeFadeWhite">
+                              5 Credit
+                            </p>
+                          </div>
+
+                          <div className="flex  items-center gap-1">
+                            <p className="text-xs font-semibold text-tradeFadeWhite">
+                              6,307
+                            </p>
+                            <FaUserCheck className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+                          </div>
                         </div>
                       </div>
                       <div className="flex justify-between items-start ">
@@ -51,25 +61,29 @@ const TodaysGoal = ({ loading, dashboard }) => {
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2 justify-between">
+                      <div className="hidden lg:flex items-center gap-2 justify-between">
+                        <div className="flex  items-center gap-1">
+                          <p className="text-xs font-semibold text-tradeFadeWhite">
+                            2 completed, 1 more to go
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex lg:hidden items-center gap-2 justify-between">
                         <div className="flex  items-center gap-1">
                           <p className="text-xs font-semibold text-tradeFadeWhite">
                             2 completed, 1 more to go
                           </p>
                         </div>
 
-                        <div className="flex  items-center gap-1">
-                          <p className="text-xs font-semibold text-tradeFadeWhite">
-                            6,307
-                          </p>
-                          <FaUserCheck className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+                        <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
+                          <MdOutlinePending className="text-sm text-tradeFadeWhite" />
                         </div>
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <Button>
+                <Button variant="outline">
                   <p>Leaderboard</p>
                 </Button>
               </div>
