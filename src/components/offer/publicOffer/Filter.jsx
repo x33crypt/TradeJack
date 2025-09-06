@@ -54,12 +54,12 @@ const Filter = () => {
   const clearFilter = () => {
     setFilter({
       loading: false,
-      assetType: "",
       asset: "",
       currency: "",
+      enterAmount: false,
       amount: "",
+      amountList: ["50", "100", "200", "Enter amount"],
       sortBy: "",
-      clearFilter: false,
     });
   };
 

@@ -451,7 +451,28 @@ const PublicOffers = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-40">
-            <div className="flex md:w-[300px] h-max flex-col border-neutral-800 rounded-[15px] p-[15px] gap-[10px] bg-tradeAsh"></div>
+            <div className="flex items-center md:w-[300px] h-max flex-col border-neutral-800 rounded-[15px] p-[15px] gap-[20px] bg-tradeAs">
+              <div className="flex flex-col items-center gap-1">
+                <p className="font-semibold text-white text-4xl">5,068</p>
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
+                  Active Offers
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center gap-1">
+                <p className="font-semibold text-white text-4xl"> 2,580 </p>
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
+                  Online Traders
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center gap-1">
+                <p className="font-semibold text-white text-4xl">599</p>
+                <p className="text-tradeFadeWhite text-[13px] font-medium">
+                  Active Trades
+                </p>
+              </div>
+            </div>
 
             <div className="flex w-full justify-center">
               <div
