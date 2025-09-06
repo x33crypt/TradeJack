@@ -3,10 +3,10 @@ import Button from "@/components/buttons/Button";
 import { IoClose } from "react-icons/io5";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
-import SmallButton from "../buttons/SmallButton";
+import SmallButton from "../../buttons/SmallButton";
 import { currencies } from "@/hooks/others/useCurrencies";
 
-const OfferFilter = () => {
+const Filter = () => {
   const { filter, setFilter } = usePublicOffers();
   const [sorts] = useState([
     "Recently active traders",
@@ -43,8 +43,6 @@ const OfferFilter = () => {
     "Rate: High to Low",
     "More",
   ]);
-
-  let amountList = ["100", "200", "500", "Enter amount"];
 
   const close = () => {
     setFilter((prev) => ({
@@ -148,14 +146,11 @@ const OfferFilter = () => {
   }, [select]);
 
   // handling amount changes if clicks visible amount
-  const handleAmountChange = (e) => {
-    const rawValue = e.target.value.replace(/,/g, ""); // Remove commas for processing
-    if (!isNaN(rawValue)) {
-      setFilter((prev) => ({
-        ...prev,
-        amount: rawValue,
-      }));
-    }
+  const handleAmountChange = (amount) => {
+    setFilter((prev) => ({
+      ...prev,
+      amount: amount,
+    }));
   };
 
   // handling sort changes if clicks visible sort
@@ -288,32 +283,30 @@ const OfferFilter = () => {
               <p className="text-white text-[13px] font-semibold">Amount</p>
               <div className="flex gap-[10px] flex-wrap">
                 <div className="flex gap-[10px] flex-wrap">
-                  {amountList.map((amount, index) => (
-                    <SmallButton
+                  {filter?.amountList?.map((amount, index) => (
+                    <button
                       key={index}
                       variant="fadeoutPlus"
-                      onClick={() => handleSort(amount)}
+                      onClick={
+                        amount !== "Enter amount"
+                          ? () => handleAmountChange(amount)
+                          : () =>
+                              setFilter((prev) => ({
+                                ...prev,
+                                enterAmount: true,
+                              }))
+                      }
+                      className={`${
+                        Number(amount) === Number(filter?.amount) &&
+                        amount !== "Enter amount"
+                          ? "text-black bg-tradeGreen"
+                          : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight"
+                      } flex border border-tradeAshExtraLight items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                     >
                       {amount}
-                    </SmallButton>
+                    </button>
                   ))}
                 </div>
-
-                {/* <SmallButton
-                  variant="fadeoutPlus"
-                  onClick={() =>
-                    setSelect({
-                      state: true,
-                      selectOne: false,
-                      selectTwo: true,
-                      page: "offer filter",
-                      element: "currency",
-                      options: currencies,
-                    })
-                  }
-                >
-                  More
-                </SmallButton> */}
               </div>
             </div>
 
@@ -372,4 +365,4 @@ const OfferFilter = () => {
   );
 };
 
-export default OfferFilter;
+export default Filter;

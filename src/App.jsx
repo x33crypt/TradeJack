@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Marketplace from "./pages/offer/public/Offers";
+import Marketplace from "./pages/offer/public/PublicOffers";
 import CreateOffer from "./pages/offer/user/CreateOffer";
 import Account from "./pages/settings/Account";
 import EditAddress from "./pages/settings/EditAddress";

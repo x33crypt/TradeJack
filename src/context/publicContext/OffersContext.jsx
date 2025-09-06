@@ -7,12 +7,15 @@ const PublicOffersContext = createContext();
 // Create the provider
 export const PublicOffersProvider = ({ children }) => {
   const [offers, setOffers] = useState(null);
+  const [stats, setStats] = useState(false);
   const [filter, setFilter] = useState({
     state: false,
     loading: false,
     asset: "",
     currency: "",
+    enterAmount: false,
     amount: "",
+    amountList: ["50", "100", "200", "Enter amount"],
     sortBy: "",
     clearFilter: false,
   });
@@ -37,6 +40,8 @@ export const PublicOffersProvider = ({ children }) => {
       value={{
         offers,
         setOffers,
+        stats,
+        setStats,
         filter,
         setFilter,
         aboutOffer,
