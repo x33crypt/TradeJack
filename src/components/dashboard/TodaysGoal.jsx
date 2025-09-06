@@ -6,6 +6,7 @@ import Button from "../buttons/Button";
 import { FaUserCheck } from "react-icons/fa6";
 import { BsFillGiftFill } from "react-icons/bs";
 import { MdOutlinePending } from "react-icons/md";
+import { MdPending } from "react-icons/md";
 
 const TodaysGoal = ({ loading, dashboard }) => {
   return (
@@ -67,6 +68,8 @@ const TodaysGoal = ({ loading, dashboard }) => {
                             2 completed, 1 more to go
                           </p>
                         </div>
+
+                        <MdPending className="text-sm text-tradeFadeWhite" />
                       </div>
                       <div className="flex lg:hidden items-center gap-2 justify-between">
                         <div className="flex  items-center gap-1">
@@ -76,7 +79,7 @@ const TodaysGoal = ({ loading, dashboard }) => {
                         </div>
 
                         <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                          <MdOutlinePending className="text-sm text-tradeFadeWhite" />
+                          <MdPending className="text-sm text-tradeFadeWhite" />
                         </div>
                       </div>
                     </div>
