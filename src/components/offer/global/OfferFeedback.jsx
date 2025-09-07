@@ -43,7 +43,7 @@ const OfferFeedback = () => {
                 {false ? (
                   <NetworkError />
                 ) : (
-                  <div className="flex flex-col gap-[5px] w-full h-max">
+                  <div className="flex flex-col gap-[10px] w-full h-max">
                     {[...Array(10)].map((_, index, array) => (
                       <div key={index}>
                         <FeedbackCard />
