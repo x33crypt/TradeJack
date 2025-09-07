@@ -171,16 +171,16 @@ const PreTradeCheck = () => {
                     <MdSafetyCheck className="text-7xl text-tradeFadeWhite" />
                   </div>
 
-                  <div className="flex justify-center text-xl font-bold text-tradeOrange">
+                  {/* <div className="flex justify-center text-xl font-bold text-tradeOrange">
                     {countdownTime}
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="flex flex-col gap-[10px]">
                   <div className="flex-1 flex flex-col justify-between gap-[10px]">
                     <p className="text-white text-[13px] font-semibold leading-normal">
                       Your trade is secure. Waiting for vendor to accept your
-                      request...
+                      request... <span className="text-tradeOrange">{countdownTime}</span>
                     </p>
                   </div>
                   <div className="flex-1 flex flex-col justify-between gap-[10px]">
