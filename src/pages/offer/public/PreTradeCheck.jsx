@@ -9,6 +9,7 @@ import { MdPending } from "react-icons/md";
 import { useTrade } from "@/context/publicContext/TradeContext";
 import Button from "@/components/buttons/Button";
 import { GrSecure } from "react-icons/gr";
+import { MdSafetyCheck } from "react-icons/md";
 
 const PreTradeCheck = () => {
   const { aboutOffer, setAboutOffer } = usePublicOffers();
@@ -158,7 +159,7 @@ const PreTradeCheck = () => {
                 </p>
 
                 {/* <div
-                  // onClick={close}
+                
                   className="w-max flex text-tradeGreen hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
                 >
                   <GrSecure className="text-[16px]" />
@@ -166,24 +167,29 @@ const PreTradeCheck = () => {
               </div>
 
               <div className="flex-1 flex flex-col justify-between py-[12px] gap-[15px]">
-                {/* <div className="flex items-center justify-center">
-                  <GrSecure className="text-4xl" />
-                </div> */}
-                <div className="flex justify-center text-2xl font-bold text-tradeOrange">
-                  {countdownTime}
-                </div>
-                <div className="flex-1 flex flex-col justify-between gap-[10px]">
-                  <p className="text-white text-[13px] font-semibold leading-normal">
-                    Your trade is secure. Waiting for vendor to accept your
-                    request...
-                  </p>
+                <div className="flex flex-col gap-[10px]">
+                  <div className="flex items-center justify-center">
+                    <MdSafetyCheck className="text-6xl text-tradeFadeWhite" />
+                  </div>
+
+                  <div className="flex justify-center text-2xl font-bold text-tradeOrange">
+                    {countdownTime}
+                  </div>
                 </div>
 
-                <div className="flex-1 flex flex-col justify-between gap-[10px]">
-                  <p className="text-tradeFadeWhite font-medium text-xs">
-                    If the vendor doesn’t respond in time, you can cancel and
-                    try another offer.
-                  </p>
+                <div className="flex flex-col gap-[10px]">
+                  <div className="flex-1 flex flex-col justify-between gap-[10px]">
+                    <p className="text-white text-[13px] font-semibold leading-normal">
+                      Your trade is secure. Waiting for vendor to accept your
+                      request...
+                    </p>
+                  </div>
+                  <div className="flex-1 flex flex-col justify-between gap-[10px]">
+                    <p className="text-tradeFadeWhite font-medium text-xs">
+                      If the vendor doesn’t respond in time, you can cancel and
+                      try another offer.
+                    </p>
+                  </div>
                 </div>
 
                 <div>
