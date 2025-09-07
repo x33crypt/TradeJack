@@ -11,17 +11,18 @@ import Button from "@/components/buttons/Button";
 import { GrSecure } from "react-icons/gr";
 import { MdSafetyCheck } from "react-icons/md";
 import Info from "@/components/alerts/Info";
+import { LuMinimize } from "react-icons/lu";
 
 const PreTradeCheck = () => {
   const { aboutOffer, setAboutOffer } = usePublicOffers();
   const { preTradeCheck, setPreTradeCheck } = useTrade();
   const { calculator, setCalculator } = useCalculator();
-  const [countdownTime, setCountdownTime] = useState("03:00");
+  const [countdownTime, setCountdownTime] = useState("05:00");
 
   const offer = aboutOffer?.data;
 
   useEffect(() => {
-    let time = 180; // 3 minutes
+    let time = 300; // 3 minutes
     if (preTradeCheck?.success === true) {
       const interval = setInterval(() => {
         time--;
@@ -156,15 +157,12 @@ const PreTradeCheck = () => {
             <div className="flex md:w-[300px] w-full h-max flex-col rounded-[15px] px-[15px] bg-tradeAsh">
               <div className="flex justify-between items-center py-[12px] border-b border-neutral-800 ">
                 <p className="text-lg text-white font-[700] cursor-pointer">
-                  Pre-Trade Checks Passed
+                  Checks Complete
                 </p>
 
-                {/* <div
-                
-                  className="w-max flex text-tradeGreen hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-                >
-                  <GrSecure className="text-[16px]" />
-                </div> */}
+                <div className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                  <LuMinimize className="text-[16px]" />
+                </div>
               </div>
 
               <div className="flex-1 flex flex-col justify-between py-[12px] gap-[15px]">
@@ -202,7 +200,7 @@ const PreTradeCheck = () => {
                 <div>
                   <Button
                     onClick={handleCancelTrade}
-                    variant="outline"
+                    variant="Fadeout"
                     // disabled={loading}
                   >
                     Cancel Trade
