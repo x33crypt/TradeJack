@@ -12,7 +12,7 @@ const Profile = ({ Heading, profile, loading }) => {
       <div className="flex-1 flex flex-col gap-[5px]">
         <Hero profile={profile} loading={loading} Heading={Heading} />
         <Stats profile={profile} loading={loading} />
-        <Achievements profile={profile} loading={loading} />
+        {/* <Achievements profile={profile} loading={loading} /> */}
         <div className="md:hidden flex">
           <ActiveOffers profile={profile} loading={loading} />
         </div>

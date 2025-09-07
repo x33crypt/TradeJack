@@ -25,7 +25,7 @@ const Account = () => {
             <PersonalInfo profile={profile} loading={loading} />
           </div>
           <Stats profile={profile} loading={loading} />
-          <Achievements profile={profile} loading={loading} />
+          {/* <Achievements profile={profile} loading={loading} /> */}
           <Feedbacks profile={profile} loading={loading} />
         </div>
         <div className="md:flex hidden md:w-[320px]">

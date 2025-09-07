@@ -2,7 +2,6 @@ import MarketTopNav from "@/components/others/InAppNav";
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "@/components/others/Footer";
 import OfferDetails from "@/components/offer/publicOffer/OfferDetails";
-import Feedbacks from "@/components/account/Feedbacks";
 import { useFetchAboutOffers } from "@/hooks/publicHooks/useFetchAboutOffer";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import Button from "@/components/buttons/Button";
@@ -13,6 +12,7 @@ import LockByScroll from "@/components/others/LockByScroll";
 import { IoClose } from "react-icons/io5";
 import toDecimal from "@/utils/toDecimal";
 import withComma from "@/utils/withComma";
+import OfferFeedback from "@/components/offer/global/OfferFeedback";
 
 const AboutPublicOffer = () => {
   const topRef = useRef(null);
@@ -45,6 +45,8 @@ const AboutPublicOffer = () => {
       ...prev,
       state: false,
       loading: false,
+      amount: "",
+      receive: "",
     }));
   };
 
@@ -76,7 +78,7 @@ const AboutPublicOffer = () => {
                   <div className="py-[15px] md:px-0 px-[15px]">
                     <Button onClick={initiateTrade}>Initiate Swap</Button>
                   </div>
-                  <Feedbacks
+                  <OfferFeedback
                     heading={"Offer feedback"}
                     profile={aboutOffer}
                     loading={loading}

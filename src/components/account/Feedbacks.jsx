@@ -22,14 +22,15 @@ const Feedbacks = ({ loading, profile, heading }) => {
             <div className="flex gap-[5px]">
               <SmallButton variant="fadeout">
                 <FaSort />
-                <p>All</p>
+                <p>Recent</p>
               </SmallButton>
             </div>
-
             <div className="flex gap-[5px]">
               <SmallButton variant="fadeout">
-                <FaRegCalendarAlt />
-                <p>Month, Year</p>
+                <p>Positive</p>
+              </SmallButton>
+              <SmallButton variant="fadeout">
+                <p>Negative</p>
               </SmallButton>
             </div>
           </div>
