@@ -134,129 +134,133 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                 </div>
 
-                <div className="flex lg:flex-row flex-col gap-[10px] w-full ">
-                  <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                    <div className="flex items-center justify-between w-full mt-[1px]">
-                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                        <p className="text-[13px] text-white font-semibold">
-                          Exchange rate
+                <div className="flex flex-1 flex-col min-h-[120px]  gap-[10px]">
+                  <div className="flex lg:flex-row flex-col gap-[10px] w-full ">
+                    <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                      <div className="flex items-center justify-between w-full mt-[1px]">
+                        <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                          <p className="text-[13px] text-white font-semibold">
+                            Rate
+                          </p>
+                        </div>
+
+                        <p className="text-white text-2xl font-semibold leading-none">
+                          1,250/{offer?.preferredCurrency?.code || "N/A"}
                         </p>
                       </div>
 
-                      <p className="text-white text-2xl font-semibold leading-none">
-                        1,250/{offer?.preferredCurrency?.code || "N/A"}
-                      </p>
-                    </div>
+                      <div className="w-full flex flex-col gap-1">
+                        <div className="flex items-center justify-between">
+                          <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                            Margin
+                          </p>
+                          <div className="flex items-center gap-[2px] text-[13px] font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
+                            <p>{offer?.marginRate?.percent || "N/A"}%</p>
+                          </div>
+                        </div>
 
-                    <div className="w-full flex flex-col gap-1">
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Margin
-                        </p>
-                        <div className="flex items-center gap-[2px] text-[13px] font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
-                          <p>{offer?.marginRate?.percent || "N/A"}%</p>
+                        <div className="flex items-center justify-between">
+                          <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                            Currency
+                          </p>
+                          <p className="text-[13px] text-white font-semibold">
+                            {offer?.preferredCurrency?.name}
+                          </p>
                         </div>
                       </div>
+                    </div>
 
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Currency
-                        </p>
+                    <div className="flex min-w-[200px] flex-1 flex-col justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                         <p className="text-[13px] text-white font-semibold">
-                          {offer?.preferredCurrency?.name}
+                          Purchase limits
                         </p>
+                      </div>
+
+                      <div className="w-full flex flex-col gap-1">
+                        <div className="flex items-center justify-between">
+                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                            Minimum
+                          </p>
+
+                          <p className="text-white text-[13px]  font-semibold">
+                            {toDecimal(offer?.marginRate?.from) || "N/A"}{" "}
+                            {offer?.preferredCurrency?.code || "N/A"}
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                            Maximum
+                          </p>
+
+                          <p className="text-white text-[13px] font-semibold">
+                            {toDecimal(offer?.marginRate?.to) || "N/A"}{" "}
+                            {offer?.preferredCurrency?.code || "N/A"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex min-w-[200px] flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                        <p className="text-[13px] text-white font-semibold">
+                          Payment Window
+                        </p>
+                      </div>
+
+                      <div className="w-full flex flex-col gap-1">
+                        <div className="flex items-center justify-between">
+                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                            Transfer
+                          </p>
+
+                          <p className="text-white text-[13px]  font-semibold">
+                            {offer?.transferWindow?.hours || "0"}Hrs{" "}
+                            {offer?.transferWindow?.minutes || "0"}Mins
+                          </p>
+                        </div>
+
+                        <div className="flex items-center justify-between">
+                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                            Release
+                          </p>
+
+                          <p className="text-white text-[13px] font-semibold">
+                            {offer?.releaseWindow?.hours || "0"}Hrs{" "}
+                            {offer?.releaseWindow?.minutes || "0"}Mins
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex min-w-[200px] flex-1 flex-col justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                      <p className="text-[13px] text-white font-semibold">
-                        Purchase limits
-                      </p>
-                    </div>
-
-                    <div className="w-full flex flex-col gap-1">
-                      <div className="flex items-center justify-between">
-                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Minimum
-                        </p>
-
-                        <p className="text-white text-[13px]  font-semibold">
-                          {toDecimal(offer?.marginRate?.from) || "N/A"}{" "}
-                          {offer?.preferredCurrency?.code || "N/A"}
-                        </p>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Maximum
-                        </p>
-
-                        <p className="text-white text-[13px] font-semibold">
-                          {toDecimal(offer?.marginRate?.to) || "N/A"}{" "}
-                          {offer?.preferredCurrency?.code || "N/A"}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex min-w-[200px] flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                      <p className="text-[13px] text-white font-semibold">
-                        Payment Window
-                      </p>
-                    </div>
-
-                    <div className="w-full flex flex-col gap-1">
-                      <div className="flex items-center justify-between">
-                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Transfer
-                        </p>
-
-                        <p className="text-white text-[13px]  font-semibold">
-                          {offer?.transferWindow?.hours || "0"}Hrs{" "}
-                          {offer?.transferWindow?.minutes || "0"}Mins
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Release
-                        </p>
-
-                        <p className="text-white text-[13px] font-semibold">
-                          {offer?.releaseWindow?.hours || "0"}Hrs{" "}
-                          {offer?.releaseWindow?.minutes || "0"}Mins
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                  <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                    <p className="text-[13px] text-white font-semibold">Tags</p>
-                  </div>
-                  <div className="w-full flex gap-2 flex-grow flex-wrap">
-                    {offer?.terms?.map((term, index) => (
-                      <p className="text-[13px] w-max h-max text-tradeOrange font-semibold py-[4px] px-[10px] border border-tradeAshLight bg-tradeAshLight rounded-[10px]">
-                        {term}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex-1 flex md:flex-row flex-col flex-wrap flex-grow gap-[10px] ">
                   <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                     <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                       <p className="text-[13px] text-white font-semibold">
-                        Instructions
+                        Tags
                       </p>
                     </div>
+                    <div className="w-full flex gap-2 flex-grow flex-wrap">
+                      {offer?.terms?.map((term, index) => (
+                        <p className="text-[13px] w-max h-max text-tradeOrange font-semibold py-[4px] px-[10px] border border-tradeAshLight bg-tradeAshLight rounded-[10px]">
+                          {term}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
 
-                    <p className="text-[13px] text-white font-semibold">
-                      {offer?.instructions || "N/A"}
-                    </p>
+                  <div className="flex-1 flex md:flex-row flex-col flex-wrap flex-grow gap-[10px] ">
+                    <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                        <p className="text-[13px] text-white font-semibold">
+                          Instructions
+                        </p>
+                      </div>
+
+                      <p className="text-[13px] text-white font-semibold">
+                        {offer?.instructions || "N/A"}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

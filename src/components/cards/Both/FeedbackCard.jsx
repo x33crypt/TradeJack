@@ -19,12 +19,15 @@ import { RiExchange2Fill } from "react-icons/ri";
 import { CgArrowsExchange } from "react-icons/cg";
 import { FaHashtag } from "react-icons/fa6";
 import { FaExchangeAlt } from "react-icons/fa";
+import image from "../../../assets/landingImg4.JPG"
+import { FaLocationArrow } from "react-icons/fa";
+import { MdThumbDownAlt } from "react-icons/md";
 
 const FeedbackCard = () => {
   return (
     <>
       {/* Desktop Card */}
-      {/* <div className=" md:flex hidden justify-between p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
+      <div className=" md:flex hidden justify-between p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
         <div className="flex flex-col gap-4 justify-between w-[200px] ">
           <div className="flex flex-col gap-2">
             <div className="flex gap-1 items-center">
@@ -105,10 +108,10 @@ const FeedbackCard = () => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
 
       {/* Mobile Card */}
-      {/* <div className="md:hidden flex flex-col p-[12px] bg-tradeAsh hover:bg-black transition-all duration-300 rounded-[15px] cursor-pointer gap-3 border border-tradeAshLight">
+      <div className="md:hidden flex flex-col p-[12px] bg-tradeAsh hover:bg-black transition-all duration-300 rounded-[15px] cursor-pointer gap-3 border border-tradeAshLight">
         <div className="flex w-full items-center justify-between">
           <div className="flex items-center gap-[15px]">
             <div className="flex-shrink-0 relative flex w-[45px]">
@@ -148,7 +151,7 @@ const FeedbackCard = () => {
           </div>
           <p className="text-white text-xs font-semibold">Trade(s)</p>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

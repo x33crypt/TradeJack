@@ -13,6 +13,9 @@ import { IoClose } from "react-icons/io5";
 import toDecimal from "@/utils/toDecimal";
 import withComma from "@/utils/withComma";
 import OfferFeedback from "@/components/offer/global/OfferFeedback";
+import { VscVerifiedFilled } from "react-icons/vsc";
+import { PiNetworkBold } from "react-icons/pi";
+import { RiExchange2Fill } from "react-icons/ri";
 
 const AboutPublicOffer = () => {
   const topRef = useRef(null);
@@ -143,6 +146,34 @@ const AboutPublicOffer = () => {
                           : "0.00"
                       )}
                     </p>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex justify-between items-center">
+                    <div className="flex gap-2 items-center">
+                      <RiExchange2Fill className="flex text-tradeFadeWhite text-base flex-shrink-0" />
+                      <p className="text-xs font-semibold text-tradeFadeWhite">
+                        Rate
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-white">
+                        1 {offer?.preferredCurrency?.code} = NGN 1,239
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <div className="flex gap-2 items-center">
+                      <PiNetworkBold className="flex text-tradeFadeWhite text-base flex-shrink-0" />
+                      <p className="text-xs font-semibold text-tradeFadeWhite">
+                        Network Fee
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-white">
+                        NGN 50.00
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div className="flex flex-col gap-[10px] w-full">
