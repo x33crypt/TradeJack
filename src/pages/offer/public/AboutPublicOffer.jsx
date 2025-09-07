@@ -19,7 +19,8 @@ import { RiExchange2Fill } from "react-icons/ri";
 
 const AboutPublicOffer = () => {
   const topRef = useRef(null);
-  const { aboutOffer, setAboutOffer } = usePublicOffers();
+  const { aboutOffer, setAboutOffer, preTradeCheck, setPreTradeCheck } =
+    usePublicOffers();
   const { loading } = useFetchAboutOffers();
   const { calculator, setCalculator } = useCalculator();
 
@@ -41,6 +42,18 @@ const AboutPublicOffer = () => {
       state: true,
     }));
     scrollToTop();
+  };
+
+  const handlePreTradeCheck = () => {
+    setCalculator((prev) => ({
+      ...prev,
+      state: false,
+    }));
+
+    setPreTradeCheck((prev) => ({
+      ...prev,
+      state: true,
+    }));
   };
 
   const close = () => {
@@ -178,7 +191,7 @@ const AboutPublicOffer = () => {
                 </div>
                 <div className="flex flex-col gap-[10px] w-full">
                   <Button
-                    // onClick={handleLogout}
+                    onClick={handlePreTradeCheck}
                     variant="Fadeout"
                     disabled={calculator?.loading}
                   >

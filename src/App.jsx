@@ -48,10 +48,12 @@ import PartnersProfile from "./pages/partners/PartnersProfile";
 import AboutTrader from "./pages/traders/AboutTrader";
 import ConfirmPassword from "./pages/auth/ConfirmPassword";
 import SensitiveRoute from "./utils/sensitiveRoutes";
+import PreTradeCheck from "./pages/offer/public/PreTradeCheck";
 
 const App = () => {
   return (
     <>
+      <PreTradeCheck />
       <Logout />
       <ConfirmPassword />
       <SelectElement />

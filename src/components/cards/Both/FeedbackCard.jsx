@@ -1,26 +1,7 @@
 import React from "react";
-import { IoMdThumbsUp } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
-import { HiOutlineUserCircle } from "react-icons/hi2";
-import { FaStar } from "react-icons/fa6";
-import { LuUsers } from "react-icons/lu";
-import { MdOutlineDateRange } from "react-icons/md";
-import { MdAccessTime } from "react-icons/md";
-import { FaInfoCircle } from "react-icons/fa";
-import { VscVerifiedFilled } from "react-icons/vsc";
-import { FaCircle } from "react-icons/fa";
-import { HiArrowCircleUp } from "react-icons/hi";
-import { FaBusinessTime } from "react-icons/fa6";
-import { PiClockCountdownBold } from "react-icons/pi";
-import { monthDate } from "@/utils/monthDate";
-import { time } from "@/utils/time";
-import { HiLocationMarker } from "react-icons/hi";
-import { RiExchange2Fill } from "react-icons/ri";
-import { CgArrowsExchange } from "react-icons/cg";
-import { FaHashtag } from "react-icons/fa6";
-import { FaExchangeAlt } from "react-icons/fa";
+
 import image from "../../../assets/landingImg4.JPG";
-import { FaLocationArrow } from "react-icons/fa";
+
 import { MdThumbDownAlt } from "react-icons/md";
 import { FaMapPin } from "react-icons/fa";
 
@@ -54,7 +35,7 @@ const FeedbackCard = () => {
           <p className="text-xs text-tradeFadeWhite font-semibold">Amount</p>
         </div>
 
-        <div className=" w-[200px] flex flex-col gap-2">
+        <div className=" w-[200px] flex  items-center gap-2">
           <div className="p-1  rounded-full bg-red-600/30 w-max">
             <MdThumbDownAlt className="text-red-600 text-xs leading-none" />
           </div>
@@ -62,10 +43,9 @@ const FeedbackCard = () => {
         </div>
 
         <div className="flex-1 flex flex-col gap-2 ">
-          <p className="text-white md:text-xs text-[13px] font-semibold leading-relaxed ">
+          <p className="text-white md:text-xs text-[13px] font-semibold leading-normal w-[300px]">
             Absolutely great experience working with you!
           </p>
-          <p className="text-xs text-tradeFadeWhite font-semibold">Note</p>
         </div>
 
         <div className="flex flex-col gap-2 items-cente">
