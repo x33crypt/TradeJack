@@ -10,6 +10,7 @@ import { useTrade } from "@/context/publicContext/TradeContext";
 import Button from "@/components/buttons/Button";
 import { GrSecure } from "react-icons/gr";
 import { MdSafetyCheck } from "react-icons/md";
+import Info from "@/components/alerts/Info";
 
 const PreTradeCheck = () => {
   const { aboutOffer, setAboutOffer } = usePublicOffers();
@@ -169,10 +170,10 @@ const PreTradeCheck = () => {
               <div className="flex-1 flex flex-col justify-between py-[12px] gap-[15px]">
                 <div className="flex flex-col gap-[10px]">
                   <div className="flex items-center justify-center">
-                    <MdSafetyCheck className="text-6xl text-tradeFadeWhite" />
+                    <MdSafetyCheck className="text-7xl text-tradeFadeWhite" />
                   </div>
 
-                  <div className="flex justify-center text-2xl font-bold text-tradeOrange">
+                  <div className="flex justify-center text-xl font-bold text-tradeOrange">
                     {countdownTime}
                   </div>
                 </div>
@@ -185,9 +186,15 @@ const PreTradeCheck = () => {
                     </p>
                   </div>
                   <div className="flex-1 flex flex-col justify-between gap-[10px]">
+                    {/* <p className="text-tradeFadeWhite font-medium text-xs">
+                      If the vendor doesn’t respond within the time limit, you
+                      can cancel and try initiating the trade again, or select a
+                      different offer.
+                    </p> */}
+
                     <p className="text-tradeFadeWhite font-medium text-xs">
                       If the vendor doesn’t respond in time, you can cancel and
-                      try another offer.
+                      retry, or choose another offer.
                     </p>
                   </div>
                 </div>
