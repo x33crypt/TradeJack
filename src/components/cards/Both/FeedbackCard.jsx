@@ -6,6 +6,15 @@ import { MdThumbDownAlt } from "react-icons/md";
 import { FaMapPin } from "react-icons/fa";
 
 const FeedbackCard = () => {
+  const formatApprox = (amount) => {
+    const value = parseFloat(amount);
+    if (isNaN(value)) return "";
+
+    if (value >= 1000) return `$${Math.floor(value / 1000)}K+`;
+    if (value >= 100) return `$${Math.floor(value / 100) * 100}+`;
+    return `$${Math.floor(value / 10) * 10}+`;
+  };
+
   return (
     <>
       {/* Desktop Card */}

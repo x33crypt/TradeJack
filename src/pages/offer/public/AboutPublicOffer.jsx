@@ -16,11 +16,12 @@ import OfferFeedback from "@/components/offer/global/OfferFeedback";
 import { VscVerifiedFilled } from "react-icons/vsc";
 import { PiNetworkBold } from "react-icons/pi";
 import { RiExchange2Fill } from "react-icons/ri";
+import { useTrade } from "@/context/publicContext/TradeContext";
 
 const AboutPublicOffer = () => {
   const topRef = useRef(null);
-  const { aboutOffer, setAboutOffer, preTradeCheck, setPreTradeCheck } =
-    usePublicOffers();
+  const { aboutOffer, setAboutOffer } = usePublicOffers();
+  const { preTradeCheck, setPreTradeCheck } = useTrade();
   const { loading } = useFetchAboutOffers();
   const { calculator, setCalculator } = useCalculator();
 

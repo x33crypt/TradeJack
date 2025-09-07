@@ -18,7 +18,6 @@ export const PublicOffersProvider = ({ children }) => {
     amountList: ["50", "100", "200", "Enter amount"],
     sortBy: "",
   });
-  const [preTradeCheck, setPreTradeCheck] = useState({ state: false });
   const [aboutOffer, setAboutOffer] = useState({ id: null, data: null });
   const { id: urlId } = useParams();
 
@@ -45,8 +44,6 @@ export const PublicOffersProvider = ({ children }) => {
         setFilter,
         aboutOffer,
         setAboutOffer,
-        preTradeCheck,
-        setPreTradeCheck,
       }}
     >
       {children}
