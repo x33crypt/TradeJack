@@ -116,7 +116,7 @@ const AboutPublicOffer = () => {
                 <div className=" flex flex-col gap-4">
                   <div className="flex flex-col gap-2">
                     <p className="text-[13px] font-medium text-tradeFadeWhite">
-                      How much do you want to trade ?
+                      How much would you like to trade?
                     </p>
 
                     <div className="flex gap-[10px] items-center bg-tradeGree">

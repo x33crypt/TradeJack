@@ -19,9 +19,10 @@ import { RiExchange2Fill } from "react-icons/ri";
 import { CgArrowsExchange } from "react-icons/cg";
 import { FaHashtag } from "react-icons/fa6";
 import { FaExchangeAlt } from "react-icons/fa";
-import image from "../../../assets/landingImg4.JPG"
+import image from "../../../assets/landingImg4.JPG";
 import { FaLocationArrow } from "react-icons/fa";
 import { MdThumbDownAlt } from "react-icons/md";
+import { FaMapPin } from "react-icons/fa";
 
 const FeedbackCard = () => {
   return (
@@ -112,21 +113,20 @@ const FeedbackCard = () => {
 
       {/* Mobile Card */}
       <div className="md:hidden flex flex-col p-[12px] bg-tradeAsh hover:bg-black transition-all duration-300 rounded-[15px] cursor-pointer gap-3 border border-tradeAshLight">
-        <div className="flex w-full items-center justify-between">
+        <div className="flex w-full items-start justify-between">
           <div className="flex items-center gap-[15px]">
-            <div className="flex-shrink-0 relative flex w-[45px]">
+            <div className="flex-shrink-0 flex w-[45px]">
               <img className="rounded-full" src={image} alt="" />
             </div>
             <div className="flex flex-col gap-2">
               <p className="text-white text-[13px] font-bold leading-none ">
-                ChocoMillo
+                0xSanityy
               </p>
 
               <div className="flex gap-1">
-                <div className="flex items-center gap-1 bg-transparent px-[4px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-                  <FaLocationArrow className=" flex text-tradeOrange text-xs leading-none" />
+                <div className="flex items-center gap-1 w-max cursor-pointer">
+                  <FaMapPin className="text-xs text-tradeOrange" />
                 </div>
-
                 <p className="text-tradeFadeWhite text-xs font-semibold">
                   Nigeria
                 </p>
@@ -140,16 +140,23 @@ const FeedbackCard = () => {
             <p className="text-white text-xs font-semibold">Negative</p>
           </div>
         </div>
-        <div className="flex text-white text-xs font-semibold">
+        <div className="flex text-white text-[13px] font-semibold">
           <p className="leading-relaxed ">
             Absolutely great experience working with you!
           </p>
         </div>
-        <div className="flex w-full items-center gap-1">
-          <div className="bg-transparent px-[8px] py-0.5 border border-tradeAshExtraLight rounded-[4px] w-max">
-            <p className="text-tradeGreen text-xs font-bold">2 </p>
+        <div className="flex  justify-between">
+          <div className="flex items-center gap-1 borde border-tradeAshExtraLight bg-tradeAshLigh rounded-[8px] p- w-max cursor-pointer">
+            <p className="text-xs text-tradeFadeWhite font-semibold">
+              Amount :
+            </p>
+            <p className="text-xs text-white font-semibold">$500+</p>
           </div>
-          <p className="text-white text-xs font-semibold">Trade(s)</p>
+          <div className="flex gap-1 items-center">
+            <p className="text-xs text-tradeFadeWhite font-semibold">
+              August 15, 2025
+            </p>
+          </div>
         </div>
       </div>
     </>
