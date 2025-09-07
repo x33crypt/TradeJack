@@ -28,91 +28,55 @@ const FeedbackCard = () => {
   return (
     <>
       {/* Desktop Card */}
-      <div className=" md:flex hidden justify-between p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
-        <div className="flex flex-col gap-4 justify-between w-[200px] ">
+      <div className=" lg:flex items-center hidden justify-between p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
+        <div className="w-[280px] flex items-center gap-[15px]">
+          <div className="flex-shrink-0 flex w-[45px]">
+            <img className="rounded-full" src={image} alt="" />
+          </div>
           <div className="flex flex-col gap-2">
-            <div className="flex gap-1 items-center">
-              <FaHashtag className="flex text-tradeFadeWhite text-[12px] flex-shrink-0" />
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                8bnsvxjvw61s1
-              </p>
-            </div>
-
-            <div className="flex gap-[5px] items-center">
-              <div className="flex gap-1 items-center">
-                <HiOutlineUserCircle className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-medium text-white">Sane</p>
-              </div>
-
-              <div className="flex gap-1 items-center">
-                <HiLocationMarker className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-medium text-tradeFadeWhite">
-                  Nigeria
-                </p>
-              </div>
-            </div>
-
-            <div className="flex  items-center gap-1">
-              <FaExchangeAlt className="flex text-tradeGreen text-[12px] flex-shrink-0" />
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                <span className="text-white">5</span> Trades
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2 w-[200px]">
-          <div className=" flex gap-[5px] items-center">
-            <div className="flex gap-1 items-center">
-              <VscVerifiedFilled className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                Verified
-              </p>
-            </div>
-          </div>
-
-          <p className="text-base font-bold text-tradeOrange truncate w-[200px] leading-none p-0">
-            Cash App
-          </p>
-
-          <p className="text-xs font-semibold text-tradeFadeWhite">
-            United States dollar
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-1 items-start w-[200px]">
-          <div className="flex gap-1 items-center">
-            <HiOutlineUserCircle className="flex text-tradeGreen text-[14px] flex-shrink-0" />
-            <p className="text-xs font-medium text-white">Positive Feedback </p>
-          </div>
-          <div className="flex gap-1 items-center">
-            <p className="text-xs font-semibold text-tradeFadeWhite">
-              Here’s a refined desktop and tablet version of your card. I’ve
-              spread out the information
+            <p className="text-white text-[13px] font-bold leading-none ">
+              0xSanityy
             </p>
+
+            <div className="flex gap-1">
+              <div className="flex items-center gap-1 w-max cursor-pointer">
+                <FaMapPin className="text-xs text-tradeOrange" />
+              </div>
+              <p className="text-tradeFadeWhite text-xs font-semibold">
+                Nigeria
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 items-end justify-between w-[230px] ">
-          <div className="flex flex-col gap-1 items-end">
-            <div className="flex flex-col gap-1 items-end">
-              <div className="flex gap-[5px] w-max">
-                <p className="text-xs font-semibold text-tradeFadeWhite">
-                  Min -- USD 383
-                </p>
-              </div>
-            </div>
+        <div className="w-[200px] flex flex-col gap-2 borde border-tradeAshExtraLight bg-tradeAshLigh rounded-[8px] cursor-pointer">
+          <p className="text-xs text-white font-semibold">$500+</p>
+          <p className="text-xs text-tradeFadeWhite font-semibold">Amount</p>
+        </div>
+
+        <div className=" w-[200px] flex flex-col gap-2">
+          <div className="p-1  rounded-full bg-red-600/30 w-max">
+            <MdThumbDownAlt className="text-red-600 text-xs leading-none" />
           </div>
-          <div className="flex gap-[5px]">
-            <div className="flex text-black bg-tradeGreen w-max px-[12px] py-[5px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <p>View Details</p>
-            </div>
-          </div>
+          <p className="text-white text-xs font-semibold">Negative Feedback</p>
+        </div>
+
+        <div className="flex-1 flex flex-col gap-2 ">
+          <p className="text-white md:text-xs text-[13px] font-semibold leading-relaxed ">
+            Absolutely great experience working with you!
+          </p>
+          <p className="text-xs text-tradeFadeWhite font-semibold">Note</p>
+        </div>
+
+        <div className="flex flex-col gap-2 items-cente">
+          <p className="text-xs text-white font-semibold">August 15, 2025</p>
+
+          <p className="text-xs text-tradeFadeWhite font-semibold">Date</p>
         </div>
       </div>
 
       {/* Mobile Card */}
-      <div className="md:hidden flex flex-col p-[12px] bg-tradeAsh hover:bg-black transition-all duration-300 rounded-[15px] cursor-pointer gap-3 border border-tradeAshLight">
+      <div className="lg:hidden flex flex-col p-[12px] bg-tradeAsh hover:bg-black transition-all duration-300 rounded-[15px] cursor-pointer gap-4 border border-tradeAshLight">
         <div className="flex w-full items-start justify-between">
           <div className="flex items-center gap-[15px]">
             <div className="flex-shrink-0 flex w-[45px]">
