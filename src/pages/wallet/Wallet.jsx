@@ -26,7 +26,7 @@ const Wallet = () => {
         ref={topRef}
         className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex md:flex-row flex-col gap-[5px] bg-black "
       >
-        <div className="flex flex-col md:w-[320px]">
+        <div className="flex flex-col md:w-[320px] w-full">
           <MyWallet />
         </div>
 

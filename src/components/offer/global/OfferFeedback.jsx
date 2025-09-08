@@ -18,12 +18,8 @@ const OfferFeedback = () => {
           <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-hidden p-[2px]">
             <div className="flex gap-[5px]">
               <SmallButton variant="fadeout">
-                <FaSort />
-                <p>Recent</p>
+                <p>All</p>
               </SmallButton>
-            </div>
-
-            <div className="flex gap-[5px]">
               <SmallButton variant="fadeout">
                 <p>Positive</p>
               </SmallButton>
@@ -31,6 +27,13 @@ const OfferFeedback = () => {
                 <p>Negative</p>
               </SmallButton>
             </div>
+
+            {/* <div className="flex gap-[5px]">
+              <SmallButton variant="fadeout">
+                <FaSort />
+                <p>Recent</p>
+              </SmallButton>
+            </div> */}
           </div>
         </div>
 

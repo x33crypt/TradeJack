@@ -30,7 +30,7 @@ const Stats = ({ dashboard }) => {
               Total Trades
             </p>
             <p className="text-white text-sm font-bold leading-none">
-              {dashboard?.tradeStats?.total ?? "0"}
+              {dashboard?.tradeStats?.totalTrades ?? "0"}
             </p>
           </div>
         </div>
@@ -46,7 +46,7 @@ const Stats = ({ dashboard }) => {
                 Completed
               </p>
               <p className="text-white text-sm font-bold leading-none">
-                {dashboard?.tradeStats?.completed ?? "0"}
+                {dashboard?.tradeStats?.completedTrades ?? "0"}
               </p>
             </div>
           </div>
@@ -61,7 +61,7 @@ const Stats = ({ dashboard }) => {
                 Cancelled
               </p>
               <p className="text-white text-sm font-bold leading-none">
-                {dashboard?.tradeStats?.cancelled ?? "0"}
+                {dashboard?.tradeStats?.cancelledTrades ?? "0"}
               </p>
             </div>
           </div>
@@ -76,7 +76,7 @@ const Stats = ({ dashboard }) => {
                 In Progress
               </p>
               <p className="text-white text-sm font-bold leading-none">
-                {dashboard?.tradeStats?.active ?? "0"}
+                {dashboard?.tradeStats?.inProgressTrades ?? "0"}
               </p>
             </div>
           </div>
@@ -91,7 +91,7 @@ const Stats = ({ dashboard }) => {
                 Disputed
               </p>
               <p className="text-white text-sm font-bold leading-none">
-                {dashboard?.tradeStats?.disputed ?? "0"}
+                {dashboard?.tradeStats?.disputedTrades ?? "0"}
               </p>
             </div>
           </div>

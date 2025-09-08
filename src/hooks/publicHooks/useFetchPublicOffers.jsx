@@ -3,74 +3,51 @@ import api from "@/utils/http/api";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 
 export function useFetchPublicOffers(initialPage = 1, limit = 10) {
-  const { setOffers, filter, setFilter } = usePublicOffers();
+  const { setOffers, filter } = usePublicOffers();
   const [page, setPage] = useState(initialPage);
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [displayedCount, setDisplayedCount] = useState(0);
 
-  // ─────────────────────────────────────────────────────────────
-  // stable fetch helper (doesn't depend on `page`)
-  // ─────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────
+  // Build URL dynamically (corrected `?` issue)
+  // ─────────────────────────────────────────────
+  const buildUrl = (pageToLoad) => {
+    const params = new URLSearchParams();
 
+    if (filter?.asset) params.append("asset", filter.asset);
+    if (filter?.currency) params.append("currency", filter.currency);
+    if (filter?.amount) params.append("amount", filter.amount);
+    if (filter?.sortBy) params.append("sort", filter.sortBy);
+
+    return `/service-provider/offers?${params.toString()}&page=${pageToLoad}&limit=${limit}`;
+  };
+
+  // ─────────────────────────────────────────────
+  // Fetch data helper
+  // ─────────────────────────────────────────────
   const fetchPage = useCallback(
-    async (pageToLoad) => {
+    async (pageToLoad = 1) => {
       setLoading(true);
       setError(null);
 
-      const buildUrl = () => {
-        const params = new URLSearchParams();
-
-        if (filter?.asset && filter.type !== "") {
-          params.append("asset", filter.type.toLowerCase());
-        }
-
-        if (filter?.currency && filter?.currency?.code !== "") {
-          params.append("currency", filter.currency.code.toLowerCase());
-        }
-
-        if (filter?.amount && filter?.amount !== "") {
-          params.append("amount", filter.amount);
-        }
-
-        if (filter?.sortBy && filter?.sortBy !== "") {
-          params.append("sort", filter.sortBy);
-        }
-
-        if (filter?.activeTraders !== false) {
-          params.append("active", filter.activeTraders);
-        }
-
-        if (filter?.verifiedOffers !== false) {
-          params.append("verified", filter.verifiedOffers);
-        }
-
-        if (filter?.topPicks !== false) {
-          params.append("top-picks", filter.topPicks);
-        }
-
-        return `/service-provider/offers?page=${page}&limit=10?${params.toString()}`;
-      };
-
       try {
-        const url = buildUrl();
-        console.log(url);
+        const url = buildUrl(pageToLoad);
+        console.log("Fetching:", url);
 
-        const res = await api.get(url, {
-          params: { page: pageToLoad, limit },
-        });
+        const res = await api.get(url);
 
         if (res.status === 200 && res.data?.success) {
           const { data, pagination } = res.data;
 
           if (pageToLoad === 1) {
-            setOffers(res.data);
+            setOffers(res.data); // Replace
             setDisplayedCount(data.length);
           } else {
             setOffers((prev) => ({
               ...res.data,
-              data: [...prev.data, ...data],
+              data: [...prev.data, ...data], // Append
             }));
             setDisplayedCount((prev) => prev + data.length);
           }
@@ -88,19 +65,22 @@ export function useFetchPublicOffers(initialPage = 1, limit = 10) {
         setLoading(false);
       }
     },
-    [limit, filter, setOffers]
+    [filter, limit, setOffers] // dependency on filter
   );
 
-  // first load – run once
-  // useEffect(() => {
-  //   fetchPage(1);
-  // }, [filter, fetchPage]);
+  // ─────────────────────────────────────────────
+  // Refetch when filter changes
+  // ─────────────────────────────────────────────
+  useEffect(() => {
+    fetchPage(1);
+  }, [filter, fetchPage]);
 
+  // Manual fetch for reset or refresh
   const fetchOffers = () => {
-    fetchPage(1); // then fetch fresh with empty filter
+    fetchPage(1);
   };
 
-  // ───────────── helper for “Next” (Prev removed) ─────────────
+  // Load next page
   const next = async () => {
     if (pagination?.hasNextPage) {
       await fetchPage(page + 1);
@@ -112,7 +92,7 @@ export function useFetchPublicOffers(initialPage = 1, limit = 10) {
     error,
     pagination,
     page,
-    displayedCount, // how many txs are on screen
+    displayedCount,
     next,
     fetchOffers,
   };

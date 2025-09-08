@@ -59,7 +59,7 @@ const MyWallet = () => {
   };
 
   return (
-    <div className="flex flex-1 md:sticky top-[64px] md:max-h-max  md:border border-t-0 border-tradeAshLight flex-col">
+    <div className="flex w-full md:sticky top-[64px] md:max-h-max  md:border border-t-0 border-tradeAshLight flex-col">
       <div className="flex items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">Wallet</p>
       </div>
@@ -73,7 +73,7 @@ const MyWallet = () => {
               {balance?.available_balance?.USD == null ? (
                 <NetworkError />
               ) : (
-                <div className="flex flex-col gap-[20px]">
+                <div className="flex flex-1 flex-col gap-[20px]">
                   <div className="flex flex-col gap-[10px] h-full">
                     <div className="flex flex-col gap-[10px] items-center border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
                       <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -185,13 +185,13 @@ const MyWallet = () => {
                           </p>
                         </div>
 
-                        <SmallButton onClick={refetch}>
+                        {/* <SmallButton onClick={refetch}>
                           <MdOutlineRefresh
                             className={`${
                               loading && "animate-spin"
                             } text-[16px] text-black`}
                           />
-                        </SmallButton>
+                        </SmallButton> */}
                       </div>
                     </div>
 

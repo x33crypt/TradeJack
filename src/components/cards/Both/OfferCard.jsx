@@ -25,6 +25,7 @@ import { FaUser } from "react-icons/fa";
 import lastSeen from "@/utils/lastSeen";
 import toDecimal from "@/utils/toDecimal";
 import { FiMapPin } from "react-icons/fi";
+import { windowFormat } from "@/utils/windowFormat";
 
 const MarketCard = ({ offer }) => {
   const { setAboutOffer } = usePublicOffers();
@@ -127,7 +128,7 @@ const MarketCard = ({ offer }) => {
 
             <div className="flex-1 flex flex-col gap-1">
               <p className="text-xs font-semibold text-white leading-none">
-                {formatTimeHybrid(
+                {windowFormat(
                   offer?.transferWindow?.hours,
                   offer?.transferWindow?.minutes
                 )}
@@ -139,7 +140,7 @@ const MarketCard = ({ offer }) => {
 
             <div className="flex flex-col gap-1 flex-1">
               <p className="text-xs font-semibold text-white whitespace-nowrap">
-                {formatTimeHybrid(
+                {windowFormat(
                   offer?.releaseWindow?.hours,
                   offer?.releaseWindow?.minutes
                 )}
@@ -240,7 +241,7 @@ const MarketCard = ({ offer }) => {
         <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
           <div className="flex flex-col">
             <p className="text-xs font-semibold text-white whitespace-nowrap">
-              {formatTimeHybrid(
+              {windowFormat(
                 offer?.transferWindow?.hours,
                 offer?.transferWindow?.minutes
               )}
@@ -251,7 +252,7 @@ const MarketCard = ({ offer }) => {
           </div>
           <div className="flex flex-col items-end">
             <p className="text-xs font-semibold text-white whitespace-nowrap">
-              {formatTimeHybrid(
+              {windowFormat(
                 offer?.releaseWindow?.hours,
                 offer?.releaseWindow?.minutes
               )}

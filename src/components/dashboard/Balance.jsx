@@ -42,7 +42,7 @@ const Balance = ({ dashboard, loading }) => {
           <div className="flex md:flex-row flex-col gap-[2px] md:text-lg text-2xl">
             <p className=" font-semibold text-white">Welcome Back,</p>
             <p className="font-semibold text-white">
-              {dashboard?.profile?.userName || "User"}
+              {dashboard?.userProfile?.userName || "User"}
             </p>
           </div>
 
