@@ -266,174 +266,181 @@ const Transfer = () => {
             <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
               <p className="text-lg font-[700] text-white ">Transfer Funds</p>
             </div>
-
-            <div className="px-[15px] pt-[12px]">
-              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                Move your funds securely between wallets, accounts, or trades
-                with real-time processing and complete transaction transparency.
-              </p>
-            </div>
-
-            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[25px] gap-[10px]">
-              {/* Wallet Balance */}
-              <WalletBalance />
-
-              {/* Recipient Wallet */}
-              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                    Transfer To
-                  </p>
-                </div>
-
-                <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
-                  <p className="text-tradeFadeWhite text-xs font-medium">
-                    Recipient Wallet
-                  </p>
-
-                  <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                    <input
-                      className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                      type="text"
-                      placeholder="Username"
-                      onChange={handleUsernameChange}
-                      value={transfer?.username}
-                    />
-                  </div>
-                </div>
-
-                <p className="text-tradeFadeWhite text-xs font-medium">
-                  Please confirm the recipient’s username before proceeding with
-                  the transfer. Transfers to the wrong user cannot be reversed.
+            <div className="flex flex-col p-[15px] gap-[10px]">
+              <div className="">
+                <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                  Move your funds securely between wallets, accounts, or trades
+                  with real-time processing and complete transaction
+                  transparency.
                 </p>
               </div>
 
-              {/* Amount */}
-              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <div className="flex gap-1 items-center">
+              <div className="h-full flex flex-col justify-between  gap-[10px]">
+                {/* Wallet Balance */}
+                <WalletBalance />
+
+                {/* Recipient Wallet */}
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Currency
+                      Transfer To
                     </p>
                   </div>
 
-                  <div className="flex gap-1 items-cente">
-                    <div
-                      onClick={selectNGN}
-                      className={`${
-                        transfer?.currency === "NGN"
-                          ? "bg-tradeOrange text-black"
-                          : "bg-transparent text-tradeFadeWhite"
-                      } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
-                    >
-                      <p className="text-xs font-semibold">NGN</p>
+                  <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
+                    <p className="text-tradeFadeWhite text-xs font-medium">
+                      Recipient Wallet
+                    </p>
+
+                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                      <input
+                        className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                        type="text"
+                        placeholder="Username"
+                        onChange={handleUsernameChange}
+                        value={transfer?.username}
+                      />
                     </div>
-                    <div
-                      onClick={selectUSD}
-                      className={`${
-                        transfer?.currency === "USD"
-                          ? "bg-tradeOrange text-black"
-                          : "bg-transparent text-tradeFadeWhite"
-                      } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
-                    >
-                      <p className="text-xs font-semibold">USD</p>
+                  </div>
+
+                  <p className="text-tradeFadeWhite text-xs font-medium">
+                    Please confirm the recipient’s username before proceeding
+                    with the transfer. Transfers to the wrong user cannot be
+                    reversed.
+                  </p>
+                </div>
+
+                {/* Amount */}
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                    <div className="flex gap-1 items-center">
+                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                        Currency
+                      </p>
                     </div>
+
+                    <div className="flex gap-1 items-cente">
+                      <div
+                        onClick={selectNGN}
+                        className={`${
+                          transfer?.currency === "NGN"
+                            ? "bg-tradeOrange text-black"
+                            : "bg-transparent text-tradeFadeWhite"
+                        } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                      >
+                        <p className="text-xs font-semibold">NGN</p>
+                      </div>
+                      <div
+                        onClick={selectUSD}
+                        className={`${
+                          transfer?.currency === "USD"
+                            ? "bg-tradeOrange text-black"
+                            : "bg-transparent text-tradeFadeWhite"
+                        } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                      >
+                        <p className="text-xs font-semibold">USD</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col w-full">
+                    {transfer?.currency === "NGN" ? (
+                      // NGN
+                      <div className="flex flex-col gap-[10px]">
+                        <div className="flex flex-col gap-[10px] w-full">
+                          <p className="text-tradeFadeWhite text-xs font-medium">
+                            Enter Amount in NGN
+                          </p>
+                          <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                            <input
+                              className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                              type="text"
+                              placeholder={`15,000.000 - 30,000,000.00`}
+                              value={formatWithCommas(transfer?.amount?.NGN)}
+                              onChange={handleNGNAmountChange}
+                              onFocus={(e) =>
+                                (e.target.value = transfer?.amount?.NGN || "")
+                              } // show raw when editing
+                              onBlur={(e) =>
+                                (e.target.value = formatWithCommas(
+                                  transfer?.amount?.NGN
+                                ))
+                              } // format on blur
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <p className="text-tradeFadeWhite text-xs font-semibold">
+                            You're about to transfer the equivalent of{" "}
+                            <span className="text-tradeOrange">
+                              USD {""}
+                              {transfer?.amount?.USD
+                                ? toDecimal(transfer?.amount?.USD)
+                                : "0.00"}
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    ) : (
+                      // USD
+                      <div className="flex flex-col gap-[10px]">
+                        <div className="flex flex-col gap-[10px] w-full">
+                          <p className="text-tradeFadeWhite text-xs font-medium">
+                            Enter Amount in USD
+                          </p>
+                          <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                            <input
+                              className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                              type="text"
+                              placeholder={`10.00 - 20,000.00`}
+                              value={formatWithCommas(transfer?.amount?.USD)}
+                              onChange={handleUSDAmountChange}
+                              onFocus={(e) =>
+                                (e.target.value = transfer?.amount?.USD || "")
+                              } // show raw when editing
+                              onBlur={(e) =>
+                                (e.target.value = formatWithCommas(
+                                  transfer?.amount?.USD
+                                ))
+                              } // format on blur
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <p className="text-tradeFadeWhite text-xs font-semibold">
+                            You're about to transfer the equivalent of{" "}
+                            <span className="text-tradeOrange">
+                              NGN {""}
+                              {transfer?.amount?.NGN
+                                ? toDecimal(transfer?.amount?.NGN)
+                                : "0.00"}
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                <div className="flex flex-col w-full">
-                  {transfer?.currency === "NGN" ? (
-                    // NGN
-                    <div className="flex flex-col gap-[10px]">
-                      <div className="flex flex-col gap-[10px] w-full">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          Enter Amount in NGN
-                        </p>
-                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                          <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                            type="text"
-                            placeholder={`15,000.000 - 30,000,000.00`}
-                            value={formatWithCommas(transfer?.amount?.NGN)}
-                            onChange={handleNGNAmountChange}
-                            onFocus={(e) =>
-                              (e.target.value = transfer?.amount?.NGN || "")
-                            } // show raw when editing
-                            onBlur={(e) =>
-                              (e.target.value = formatWithCommas(
-                                transfer?.amount?.NGN
-                              ))
-                            } // format on blur
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="text-tradeFadeWhite text-xs font-semibold">
-                          You're about to transfer the equivalent of{" "}
-                          <span className="text-tradeOrange">
-                            USD {""}
-                            {transfer?.amount?.USD
-                              ? toDecimal(transfer?.amount?.USD)
-                              : "0.00"}
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-                  ) : (
-                    // USD
-                    <div className="flex flex-col gap-[10px]">
-                      <div className="flex flex-col gap-[10px] w-full">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          Enter Amount in USD
-                        </p>
-                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                          <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                            type="text"
-                            placeholder={`10.00 - 20,000.00`}
-                            value={formatWithCommas(transfer?.amount?.USD)}
-                            onChange={handleUSDAmountChange}
-                            onFocus={(e) =>
-                              (e.target.value = transfer?.amount?.USD || "")
-                            } // show raw when editing
-                            onBlur={(e) =>
-                              (e.target.value = formatWithCommas(
-                                transfer?.amount?.USD
-                              ))
-                            } // format on blur
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="text-tradeFadeWhite text-xs font-semibold">
-                          You're about to transfer the equivalent of{" "}
-                          <span className="text-tradeOrange">
-                            NGN {""}
-                            {transfer?.amount?.NGN
-                              ? toDecimal(transfer?.amount?.NGN)
-                              : "0.00"}
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                <Button
+                  variant="primary"
+                  onClick={handleProceed}
+                  disabled={transfer?.proceed}
+                >
+                  Proceed
+                </Button>
               </div>
-
-              <Button
-                variant="primary"
-                onClick={handleProceed}
-                disabled={transfer?.proceed}
-              >
-                Proceed
-              </Button>
             </div>
-
-            <div className="px-[15px] py-[12px]">
-              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
-                <p className="text-sm">Event</p>
+            <div className=" px-[15px]">
+              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeAsh">
+                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    Events
+                  </p>
+                </div>
+                <div></div>
               </div>
             </div>
           </div>

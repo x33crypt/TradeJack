@@ -70,43 +70,31 @@ const FeedbackCard = () => {
       </div>
 
       {/* Mobile Card */}
-      <div className="lg:hidde flex flex-col items-start p-[12px] gap-4 bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+      <div className="lg:hidde flex flex-col items-start p-[12px] gap-2 bg-tradeAsh rounded-[15px] border border-tradeAshLight">
         <div className="flex w-full items-start justify-between">
           <div className="flex-1 flex items-center gap-[10px]">
-            <div className="flex-shrink-0 flex ">
+            <div className="flex-shrink-0 flex  cursor-pointer">
               <img className="rounded-full w-10" src={image} alt="" />
             </div>
-            <div className="flex flex-col gap-2">
-              <p className="text-white text-sm font-semibold leading-none ">
-                0xSanityy
-              </p>
-
-              <div className="flex gap-1">
-                <div className="flex items-center gap-1 w-max cursor-pointer">
-                  <FaMapPin className="text-xs text-tradeOrange" />
-                </div>
-                <p className="text-tradeFadeWhite text-xs font-semibold">
-                  Nigeria
-                </p>
+            <div className="flex flex-col gap-1">
+              <div className="bg-transparent text-tradeFadeWhite flex items-center gap-1 border border-tradeAshExtraLight h-max bg-tradeAshLight rounded-[8px] p-1 w-max">
+                <p className="text-xs font-semibold">Low Amount</p>
               </div>
+
+              <p className="flex text-tradeFadeWhite text-xs font-semibold leading-normal">
+                August 15, 2025
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-2 ">
-            <div className="bg-transparent text-tradeFadeWhite flex items-center gap-1 border border-tradeAshExtraLight h-max bg-tradeAshLight rounded-[8px] p-1 w-max">
-              <p className="text-xs font-semibold">Low Amount</p>
-            </div>
             <div className="p-1 rounded-full bg-red-600/30">
               <MdThumbDownAlt className="text-red-600 text-sm leading-none" />
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-2 w-full">
+        <div className="flex w-full justify-between border-t border-dashed border-tradeAshLight pt-2">
           <p className="flex text-white text-[13px] font-semibold leading-normal">
             Absolutely great experience working with you!
-          </p>
-
-          <p className="flex text-tradeFadeWhite text-xs font-semibold leading-normal">
-            August 15, 2025
           </p>
         </div>
       </div>

@@ -54,8 +54,8 @@ const WalletBalance = () => {
       </div>
 
       <div className="flex items-center gap-[10px] w-full border- border-tradeAshLight">
-        <div className="p-[10px] bg-tradeAshLight w-max rounded-[10px]  border border-tradeAshExtraLight">
-          <IoWalletOutline className="text-[30px] text-tradeWhite" />
+        <div className="p-2 bg-tradeAshLight w-max rounded-[10px]  border border-tradeAshExtraLight">
+          <IoWalletOutline className="text-xl text-tradeWhite" />
         </div>
         <div className="flex flex-col gap-[3px]">
           <p className="text-tradeFadeWhite text-xs font-medium">

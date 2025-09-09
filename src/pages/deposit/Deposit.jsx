@@ -239,177 +239,182 @@ const Deposit = () => {
               <p className="text-lg font-[700] text-white ">Deposit Funds</p>
             </div>
 
-            <div className="px-[15px] pt-[12px]">
-              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                Add funds to your account quickly and securely, ensuring you’re
-                ready for seamless trading anytime.
-              </p>
-            </div>
+            <div className="flex flex-col p-[15px] gap-[10px]">
+              <div className="">
+                <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                  Add funds to your account quickly and securely, ensuring
+                  you’re ready for seamless trading anytime.
+                </p>
+              </div>
 
-            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[25px] gap-[10px]">
-              {/* Wallet Balance */}
-              <WalletBalance />
+              <div className="h-full flex flex-col justify-between gap-[10px]">
+                {/* Wallet Balance */}
+                <WalletBalance />
 
-              {/* External Deposit */}
-              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                {/* External Deposit */}
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                    <div className="flex gap-1 items-center">
+                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                        External Deposit
+                      </p>
+                    </div>
+
+                    <div className="flex gap-1 items-cente">
+                      <div
+                        onClick={selectNGN}
+                        className={`${
+                          deposit?.currency === "NGN"
+                            ? "bg-tradeOrange text-black"
+                            : "bg-transparent text-tradeFadeWhite"
+                        } flex items-center gap-1  border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                      >
+                        <p className="text-xs font-semibold">NGN</p>
+                      </div>
+                      <div
+                        onClick={selectUSD}
+                        className={`${
+                          deposit?.currency === "USD"
+                            ? "bg-tradeOrange text-black"
+                            : "bg-transparent text-tradeFadeWhite"
+                        } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                      >
+                        <p className="text-xs font-semibold">USD</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    {deposit?.currency === "NGN" ? (
+                      // NGN
+                      <div className="flex flex-col gap-[10px]">
+                        <div className="flex flex-col gap-[10px] w-full">
+                          <p className="text-tradeFadeWhite text-xs font-medium">
+                            Enter Amount in NGN
+                          </p>
+                          <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                            <input
+                              className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                              type="text"
+                              placeholder={`15,000.000 - 30,000,000.00`}
+                              value={
+                                editingAmount
+                                  ? deposit?.amount?.NGN || ""
+                                  : formatWithCommas(deposit?.amount?.NGN)
+                              }
+                              onChange={handleNGNAmountChange}
+                              onFocus={() => setEditingAmount(true)}
+                              onBlur={() => setEditingAmount(false)}
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <p className="text-tradeFadeWhite text-xs font-semibold">
+                            You're about to deposit the equivalent of{" "}
+                            <span className="text-tradeOrange">
+                              USD {""}
+                              {deposit?.amount?.USD
+                                ? toDecimal(deposit?.amount?.USD)
+                                : "0.00"}
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    ) : (
+                      // USD
+                      <div className="flex flex-col gap-[10px]">
+                        <div className="flex flex-col gap-[10px] w-full">
+                          <p className="text-tradeFadeWhite text-xs font-medium">
+                            Enter Amount in USD
+                          </p>
+                          <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                            <input
+                              className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                              type="text"
+                              placeholder={`10.00 - 20,000.00`}
+                              value={
+                                editingAmount
+                                  ? deposit?.amount?.USD || ""
+                                  : formatWithCommas(deposit?.amount?.USD)
+                              }
+                              onChange={handleUSDAmountChange}
+                              onFocus={() => setEditingAmount(true)}
+                              onBlur={() => setEditingAmount(false)}
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <p className="text-tradeFadeWhite text-xs font-medium">
+                            You're about to deposit the equivalent of{" "}
+                            <span className="text-tradeOrange font-semibold">
+                              NGN {""}
+                              {deposit?.amount?.NGN
+                                ? toDecimal(deposit?.amount?.NGN)
+                                : "0.00"}
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <Button
+                  variant="primary"
+                  onClick={proceed}
+                  disabled={deposit?.loading}
+                >
+                  Proceed
+                </Button>
+
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight h-[100px">
+                  <div className="flex flex-col gap-[20px] bg-tradeOrang rounded-lg">
+                    <div className="w-full flex items-center justify-center">
+                      <img src={paystackLogo} className="w-[210px]" alt="" />
+                    </div>
+                    <div className="flex flex-wrap lg:items-center text-xs text-tradeFadeWhite gap-1">
+                      <p className="inline items-start gap-1">
+                        <span className="text-white mr-[2px]">•</span>
+                        Your payment is{" "}
+                        <span className="font-semibold text-white">
+                          secured by Paystack
+                        </span>
+                      </p>
+                      <p className=" inline items-start gap-1">
+                        <span className="text-white mr-[2px]">•</span>
+                        You’ll be{" "}
+                        <span className="font-semibold text-white">
+                          redirected
+                        </span>{" "}
+                        to Paystack to complete your deposit
+                      </p>
+                      <p className="inline items-start gap-1">
+                        <span className="text-white mr-[2px]">•</span>
+                        <span className="font-semibold text-white">
+                          Do not close
+                        </span>{" "}
+                        this tab or navigate away during the process
+                      </p>
+                      <p className="inline items-start gap-1">
+                        <span className="text-white mr-[2px]">•</span>
+                        Deposits are{" "}
+                        <span className="font-semibold text-white">free</span> —
+                        no transaction or processing fees
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeAsh">
                 <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <div className="flex gap-1 items-center">
-                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      External Deposit
-                    </p>
-                  </div>
-
-                  <div className="flex gap-1 items-cente">
-                    <div
-                      onClick={selectNGN}
-                      className={`${
-                        deposit?.currency === "NGN"
-                          ? "bg-tradeOrange text-black"
-                          : "bg-transparent text-tradeFadeWhite"
-                      } flex items-center gap-1  border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
-                    >
-                      <p className="text-xs font-semibold">NGN</p>
-                    </div>
-                    <div
-                      onClick={selectUSD}
-                      className={`${
-                        deposit?.currency === "USD"
-                          ? "bg-tradeOrange text-black"
-                          : "bg-transparent text-tradeFadeWhite"
-                      } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
-                    >
-                      <p className="text-xs font-semibold">USD</p>
-                    </div>
-                  </div>
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    Events
+                  </p>
                 </div>
-
-                <div>
-                  {deposit?.currency === "NGN" ? (
-                    // NGN
-                    <div className="flex flex-col gap-[10px]">
-                      <div className="flex flex-col gap-[10px] w-full">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          Enter Amount in NGN
-                        </p>
-                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                          <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                            type="text"
-                            placeholder={`15,000.000 - 30,000,000.00`}
-                            value={
-                              editingAmount
-                                ? deposit?.amount?.NGN || ""
-                                : formatWithCommas(deposit?.amount?.NGN)
-                            }
-                            onChange={handleNGNAmountChange}
-                            onFocus={() => setEditingAmount(true)}
-                            onBlur={() => setEditingAmount(false)}
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="text-tradeFadeWhite text-xs font-semibold">
-                          You're about to deposit the equivalent of{" "}
-                          <span className="text-tradeOrange">
-                            USD {""}
-                            {deposit?.amount?.USD
-                              ? toDecimal(deposit?.amount?.USD)
-                              : "0.00"}
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-                  ) : (
-                    // USD
-                    <div className="flex flex-col gap-[10px]">
-                      <div className="flex flex-col gap-[10px] w-full">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          Enter Amount in USD
-                        </p>
-                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                          <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                            type="text"
-                            placeholder={`10.00 - 20,000.00`}
-                            value={
-                              editingAmount
-                                ? deposit?.amount?.USD || ""
-                                : formatWithCommas(deposit?.amount?.USD)
-                            }
-                            onChange={handleUSDAmountChange}
-                            onFocus={() => setEditingAmount(true)}
-                            onBlur={() => setEditingAmount(false)}
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          You're about to deposit the equivalent of{" "}
-                          <span className="text-tradeOrange font-semibold">
-                            NGN {""}
-                            {deposit?.amount?.NGN
-                              ? toDecimal(deposit?.amount?.NGN)
-                              : "0.00"}
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <Button
-                variant="primary"
-                onClick={proceed}
-                disabled={deposit?.loading}
-              >
-                Proceed
-              </Button>
-
-              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight h-[100px">
-                <div className="flex flex-col gap-[20px] bg-tradeOrang rounded-lg">
-                  {/* <div className="w-full flex items-center justify-center">
-                    <img src={paystackLogo} className="w-[210px]" alt="" />
-                  </div> */}
-                  <div className="flex flex-wrap lg:items-center text-xs text-tradeFadeWhite gap-1">
-                    <p className="inline items-start gap-1">
-                      <span className="text-white mr-[2px]">•</span>
-                      Your payment is{" "}
-                      <span className="font-semibold text-white">
-                        secured by Paystack
-                      </span>
-                    </p>
-                    <p className=" inline items-start gap-1">
-                      <span className="text-white mr-[2px]">•</span>
-                      You’ll be{" "}
-                      <span className="font-semibold text-white">
-                        redirected
-                      </span>{" "}
-                      to Paystack to complete your deposit
-                    </p>
-                    <p className="inline items-start gap-1">
-                      <span className="text-white mr-[2px]">•</span>
-                      <span className="font-semibold text-white">
-                        Do not close
-                      </span>{" "}
-                      this tab or navigate away during the process
-                    </p>
-                    <p className="inline items-start gap-1">
-                      <span className="text-white mr-[2px]">•</span>
-                      Deposits are{" "}
-                      <span className="font-semibold text-white">free</span> —
-                      no transaction or processing fees
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="px-[15px] py-[12px]">
-              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
-                <p className="text-sm">Event</p>
+                <div></div>
               </div>
             </div>
           </div>

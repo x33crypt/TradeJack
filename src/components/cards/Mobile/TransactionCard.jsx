@@ -5,6 +5,7 @@ import { toDecimal } from "@/utils/toDecimal";
 import { MdOutlineQuestionMark } from "react-icons/md";
 import { useTransaction } from "@/context/userContext/TransactionContext";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
+import { shortenID } from "@/utils/shortenID";
 
 const TransactionCard = ({ transaction }) => {
   const { setDetails } = useTransaction();
@@ -16,9 +17,9 @@ const TransactionCard = ({ transaction }) => {
   return (
     <div
       onClick={() => viewDetails(transaction.reference)}
-      className="flex flex-col justify-between bg-tradeAsh hover:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer "
+      className="md:hidde flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer"
     >
-      <div className="flex justify-between p-[12px] ">
+      <div className="flex justify-between  ">
         <div className="flex gap-2">
           <div>
             {transaction?.type === "deposit" ? (
@@ -40,7 +41,7 @@ const TransactionCard = ({ transaction }) => {
             )}
           </div>
           <div className="flex flex-col gap-1">
-            <p className="text-xs font-semibold text-tradeFadeWhite">
+            <p className="text-xs font-medium text-tradeFadeWhite">
               {capitalizeFirst(transaction?.type)}
             </p>
 
@@ -60,6 +61,12 @@ const TransactionCard = ({ transaction }) => {
                   type === "deposit"
                 )
                   return `@${senderUsername}`;
+                if (
+                  senderUsername === "Unknown" &&
+                  recipientUsername !== "Unknown" &&
+                  type === "transfer"
+                )
+                  return `@${recipientUsername}`;
                 if (
                   senderUsername === "Unknown" &&
                   recipientUsername === null &&
@@ -90,7 +97,7 @@ const TransactionCard = ({ transaction }) => {
                 );
               if (type === "transfer" && recipientUsername !== "Unknown")
                 return (
-                  <p className="text-red-600 text-[13px] font-semibold">
+                  <p className="text-white text-[13px] font-semibold">
                     - #{toDecimal(amount?.ngn)}
                   </p>
                 );
@@ -99,7 +106,7 @@ const TransactionCard = ({ transaction }) => {
                 (type === "withdrawal" && recipientUsername === null)
               )
                 return (
-                  <p className="text-red-600 text-[13px] font-semibold">
+                  <p className="text-white text-[13px] font-semibold">
                     - #{toDecimal(amount?.ngn)}
                   </p>
                 );
@@ -112,15 +119,16 @@ const TransactionCard = ({ transaction }) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between p-[12px] gap-5 border-t border-dashed border-tradeAshLight">
+      <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
         <div className="flex flex-col gap-1">
-          <p className="text-xs font-medium text-tradeFadeWhite">Reference</p>
-          <p className="text-xs font-semibold text-white">
-            {transaction?.reference}
+          <p className="text-xs font-medium text-white">
+            {shortenID(transaction?.reference)}
+          </p>
+          <p className="text-xs font-medium text-tradeFadeWhite">
+            Reference ID
           </p>
         </div>
-        <div className="flex flex-col gap-1">
-          <p className="text-xs font-medium text-tradeFadeWhite">Status</p>
+        <div className="flex flex-col gap-1 items-end">
           <p
             className={`text-xs font-semibold ${
               transaction?.status === "pending"
@@ -134,6 +142,7 @@ const TransactionCard = ({ transaction }) => {
           >
             {capitalizeFirst(transaction?.status) || "Unknown"}
           </p>
+          <p className="text-xs font-medium text-tradeFadeWhite">Status</p>
         </div>
       </div>
     </div>

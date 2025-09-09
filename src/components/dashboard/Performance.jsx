@@ -1,16 +1,23 @@
 import React from "react";
 import { FaQuestionCircle } from "react-icons/fa";
+import SmallButton from "../buttons/SmallButton";
+import { FaSort } from "react-icons/fa";
 
 const Performance = () => {
   return (
     <div className="flex-1 md:border border-tradeAshLight flex flex-col">
-      <div className="flex px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg text-white font-[700]">Performance</p>
+      <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
+        <p className="text-lg text-white font-[700]">Trade Result</p>
+
+        <SmallButton variant="fadeout">
+          <FaSort />
+          <p>This week</p>
+        </SmallButton>
       </div>
 
-      <div className="flex p-[15px] flex-col gap-[10px] min-h-[340px] h-full">
+      <div className="flex p-[15px] flex-col gap-[10px] min-h-[300px] h-full">
         <div className="flex-1 flex flex-col gap-[10px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh ">
-          <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+          {/* <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
             <p className="text-[13px] text-tradeFadeWhite font-semibold">
               Trade report
             </p>
@@ -62,7 +69,7 @@ const Performance = () => {
                 #300,987.00
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -11,7 +11,6 @@ const Filter = () => {
   const { filter, setFilter } = usePublicOffers();
   const [sorts] = useState([
     "Recently active traders",
-    "Top picks",
     "Verified offers",
     "Rate: High to Low",
     "Rate: Low to High",
@@ -42,7 +41,6 @@ const Filter = () => {
   ]);
   const [sortByList, setSortByList] = useState([
     "Recently active traders",
-    "Top picks",
     "Verified offers",
     "Rate: High to Low",
     "More",

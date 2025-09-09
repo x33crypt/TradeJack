@@ -16,6 +16,7 @@ import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { RiBankLine } from "react-icons/ri";
 import { useFetchWithdrawTxt } from "@/hooks/userHooks/useFetchWithdrawTxt";
 import WalletBalance from "@/components/wallet/WalletBalance";
+import Info from "@/components/alerts/Info";
 
 const Withdraw = () => {
   const { refetchWithdrawTxt } = useFetchWithdrawTxt();
@@ -293,205 +294,218 @@ const Withdraw = () => {
               <p className="text-lg font-[700] text-white ">Withdraw Funds</p>
             </div>
 
-            <div className="px-[15px] pt-[12px]">
-              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                Withdraw your funds securely and on your terms, with fast
-                processing and trusted payment channels.
-              </p>
-            </div>
+            <div className="flex flex-col p-[15px] gap-[10px]">
+              <div className="">
+                <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                  Withdraw your funds securely and on your terms, with fast
+                  processing and trusted payment channels.
+                </p>
+              </div>
 
-            <div className="h-full flex flex-col justify-between p-[15px] md:gap-[25px] gap-[10px]">
-              {/* Wallet Balance */}
-              <WalletBalance />
+              <div className="h-full flex flex-col justify-between gap-[10px]">
+                {/* Wallet Balance */}
+                <WalletBalance />
 
-              {/* Account */}
-              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                    To Bank Account
-                  </p>
+                {/* Account */}
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      To Bank Account
+                    </p>
 
-                  <div className="flex gap-1">
-                    {linkedAccounts?.length && (
+                    <div className="flex gap-1">
+                      {linkedAccounts?.length && (
+                        <div
+                          onClick={selectDefaultAccount}
+                          className={`${
+                            withdraw?.account === "Default"
+                              ? "bg-tradeOrange "
+                              : "bg-transparent text-tradeFadeWhite"
+                          } flex items-center gap-1 border border-tradeAshLight h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                        >
+                          <p className=" text-xs font-bold">Default</p>
+                        </div>
+                      )}
+
+                      {linkedAccounts?.length > 1 && (
+                        <div
+                          onClick={selectAlternativeAccount}
+                          className={`${
+                            withdraw?.account === "Alternative"
+                              ? "bg-tradeOrange text-black"
+                              : "bg-transparent text-tradeFadeWhite"
+                          } flex items-center gap-1 border border-tradeAshLight h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                        >
+                          <p className=" text-xs font-bold">Alternative</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-[10px] w-full ">
+                    <div className="p-[10px] bg-tradeAshLight rounded-[10px] border border-tradeAshExtraLight">
+                      {withdraw?.bank?.logo ? (
+                        <img
+                          className="w-[30px] "
+                          src={
+                            withdraw?.bank?.logo ||
+                            "/images/default-bank-logo.png"
+                          }
+                          alt=""
+                        />
+                      ) : (
+                        <RiBankLine className="text-[25px] text-tradeWhite" />
+                      )}
+                    </div>
+                    <div className="flex flex-col gap-[3px]">
+                      <p className="text-tradeFadeWhite text-xs font-medium">
+                        {withdraw?.bank?.bank_name || "Bank Name"}
+                      </p>
+                      <p className="text-white text-[13px] font-semibold">
+                        {withdraw?.bank?.account_number || "Account Number"}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Amount */}
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                    <div className="flex gap-1 items-center">
+                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                        Currency
+                      </p>
+                    </div>
+
+                    <div className="flex gap-1 items-cente">
                       <div
-                        onClick={selectDefaultAccount}
+                        onClick={selectNGN}
                         className={`${
-                          withdraw?.account === "Default"
-                            ? "bg-tradeOrange "
-                            : "bg-transparent text-tradeFadeWhite"
-                        } flex items-center gap-1 border border-tradeAshLight h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
-                      >
-                        <p className=" text-xs font-bold">Default</p>
-                      </div>
-                    )}
-
-                    {linkedAccounts?.length > 1 && (
-                      <div
-                        onClick={selectAlternativeAccount}
-                        className={`${
-                          withdraw?.account === "Alternative"
+                          withdraw?.currency === "NGN"
                             ? "bg-tradeOrange text-black"
                             : "bg-transparent text-tradeFadeWhite"
-                        } flex items-center gap-1 border border-tradeAshLight h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                        } flex items-center gap-1  border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
                       >
-                        <p className=" text-xs font-bold">Alternative</p>
+                        <p className="text-xs font-semibold">NGN</p>
                       </div>
-                    )}
+                      <div
+                        onClick={selectUSD}
+                        className={`${
+                          withdraw?.currency === "USD"
+                            ? "bg-tradeOrange text-black"
+                            : "bg-transparent text-tradeFadeWhite"
+                        } flex items-center gap-1  border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                      >
+                        <p className="text-xs font-semibold">USD</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center gap-[10px] w-full ">
-                  <div className="p-[10px] bg-tradeAshLight rounded-[10px] border border-tradeAshExtraLight">
-                    {withdraw?.bank?.logo ? (
-                      <img
-                        className="w-[30px] "
-                        src={
-                          withdraw?.bank?.logo ||
-                          "/images/default-bank-logo.png"
-                        }
-                        alt=""
-                      />
+
+                  <div className="flex flex-col w-full">
+                    {withdraw?.currency === "NGN" ? (
+                      // NGN
+                      <div className="flex flex-col gap-[10px]">
+                        <div className="flex flex-col gap-[10px] w-full">
+                          <p className="text-tradeFadeWhite text-xs font-medium">
+                            Enter Amount in NGN
+                          </p>
+                          <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                            <input
+                              className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                              type="text"
+                              placeholder={`15,000.000 - 30,000,000.00`}
+                              value={formatWithCommas(withdraw?.amount?.NGN)}
+                              onChange={handleNGNAmountChange}
+                              onFocus={(e) =>
+                                (e.target.value = withdraw?.amount?.NGN || "")
+                              } // show raw when editing
+                              onBlur={(e) =>
+                                (e.target.value = formatWithCommas(
+                                  withdraw?.amount?.NGN
+                                ))
+                              } // format on blur
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <p className="text-tradeFadeWhite text-xs font-semibold">
+                            You're about to deposit the equivalent of{" "}
+                            <span className="text-tradeOrange">
+                              USD {""}
+                              {withdraw?.amount?.USD
+                                ? toDecimal(withdraw?.amount?.USD)
+                                : "0.00"}
+                            </span>
+                          </p>
+                        </div>
+                      </div>
                     ) : (
-                      <RiBankLine className="text-[25px] text-tradeWhite" />
+                      // USD
+                      <div className="flex flex-col gap-[10px]">
+                        <div className="flex flex-col gap-[10px] w-full">
+                          <p className="text-tradeFadeWhite text-xs font-medium">
+                            Enter Amount in USD
+                          </p>
+                          <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                            <input
+                              className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                              type="text"
+                              placeholder={`10.00 - 20,000.00`}
+                              value={formatWithCommas(withdraw?.amount?.USD)}
+                              onChange={handleUSDAmountChange}
+                              onFocus={(e) =>
+                                (e.target.value = withdraw?.amount?.USD || "")
+                              } // show raw when editing
+                              onBlur={(e) =>
+                                (e.target.value = formatWithCommas(
+                                  withdraw?.amount?.USD
+                                ))
+                              } // format on blur
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <p className="text-tradeFadeWhite text-xs font-semibold">
+                            You're about to deposit the equivalent of{" "}
+                            <span className="text-tradeOrange">
+                              NGN {""}
+                              {withdraw?.amount?.NGN
+                                ? toDecimal(withdraw?.amount?.NGN)
+                                : "0.00"}
+                            </span>
+                          </p>
+                        </div>
+                      </div>
                     )}
                   </div>
-                  <div className="flex flex-col gap-[3px]">
-                    <p className="text-tradeFadeWhite text-xs font-medium">
-                      {withdraw?.bank?.bank_name || "Bank Name"}
-                    </p>
-                    <p className="text-white text-[13px] font-semibold">
-                      {withdraw?.bank?.account_number || "Account Number"}
-                    </p>
-                  </div>
+                </div>
+
+                <Button
+                  variant="primary"
+                  onClick={handleProceed}
+                  disabled={withdraw?.proceed}
+                >
+                  Proceed
+                </Button>
+
+                <div className=" border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeAsh">
+                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                    Instant, Zero Issues, Free
+                  </p>
                 </div>
               </div>
 
-              {/* Amount */}
-              <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <div className="flex gap-1 items-center">
+              {/* Event */}
+              <div className="">
+                <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeAsh">
+                  <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Currency
+                      Events
                     </p>
                   </div>
-
-                  <div className="flex gap-1 items-cente">
-                    <div
-                      onClick={selectNGN}
-                      className={`${
-                        withdraw?.currency === "NGN"
-                          ? "bg-tradeOrange text-black"
-                          : "bg-transparent text-tradeFadeWhite"
-                      } flex items-center gap-1  border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
-                    >
-                      <p className="text-xs font-semibold">NGN</p>
-                    </div>
-                    <div
-                      onClick={selectUSD}
-                      className={`${
-                        withdraw?.currency === "USD"
-                          ? "bg-tradeOrange text-black"
-                          : "bg-transparent text-tradeFadeWhite"
-                      } flex items-center gap-1  border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
-                    >
-                      <p className="text-xs font-semibold">USD</p>
-                    </div>
-                  </div>
+                  <div></div>
                 </div>
-
-                <div className="flex flex-col w-full">
-                  {withdraw?.currency === "NGN" ? (
-                    // NGN
-                    <div className="flex flex-col gap-[10px]">
-                      <div className="flex flex-col gap-[10px] w-full">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          Enter Amount in NGN
-                        </p>
-                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                          <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                            type="text"
-                            placeholder={`15,000.000 - 30,000,000.00`}
-                            value={formatWithCommas(withdraw?.amount?.NGN)}
-                            onChange={handleNGNAmountChange}
-                            onFocus={(e) =>
-                              (e.target.value = withdraw?.amount?.NGN || "")
-                            } // show raw when editing
-                            onBlur={(e) =>
-                              (e.target.value = formatWithCommas(
-                                withdraw?.amount?.NGN
-                              ))
-                            } // format on blur
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="text-tradeFadeWhite text-xs font-semibold">
-                          You're about to deposit the equivalent of{" "}
-                          <span className="text-tradeOrange">
-                            USD {""}
-                            {withdraw?.amount?.USD
-                              ? toDecimal(withdraw?.amount?.USD)
-                              : "0.00"}
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-                  ) : (
-                    // USD
-                    <div className="flex flex-col gap-[10px]">
-                      <div className="flex flex-col gap-[10px] w-full">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          Enter Amount in USD
-                        </p>
-                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                          <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                            type="text"
-                            placeholder={`10.00 - 20,000.00`}
-                            value={formatWithCommas(withdraw?.amount?.USD)}
-                            onChange={handleUSDAmountChange}
-                            onFocus={(e) =>
-                              (e.target.value = withdraw?.amount?.USD || "")
-                            } // show raw when editing
-                            onBlur={(e) =>
-                              (e.target.value = formatWithCommas(
-                                withdraw?.amount?.USD
-                              ))
-                            } // format on blur
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <p className="text-tradeFadeWhite text-xs font-semibold">
-                          You're about to deposit the equivalent of{" "}
-                          <span className="text-tradeOrange">
-                            NGN {""}
-                            {withdraw?.amount?.NGN
-                              ? toDecimal(withdraw?.amount?.NGN)
-                              : "0.00"}
-                          </span>
-                        </p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <Button
-                variant="primary"
-                onClick={handleProceed}
-                disabled={withdraw?.proceed}
-              >
-                Proceed
-              </Button>
-            </div>
-
-            {/* Event */}
-            <div className="px-[15px] py-[12px]">
-              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeFadeWhite">
-                <p className="text-sm">Event</p>
               </div>
             </div>
           </div>
