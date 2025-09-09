@@ -7,6 +7,8 @@ import { FaUserCheck } from "react-icons/fa6";
 import { BsFillGiftFill } from "react-icons/bs";
 import { MdOutlinePending } from "react-icons/md";
 import { MdPending } from "react-icons/md";
+import { MdOutlineAccessTimeFilled } from "react-icons/md";
+import { CiViewTimeline } from "react-icons/ci";
 
 const TodaysGoal = ({ loading, dashboard }) => {
   return (
@@ -24,62 +26,53 @@ const TodaysGoal = ({ loading, dashboard }) => {
               <NetworkError />
             ) : (
               <div className="flex-1 flex flex-col justify-between lg:gap-0 gap-[40px]">
-                <div className="flex flex-1  flex-col gap-[10px]">
+                <div className="flex flex-col gap-[10px]">
                   {Array.from({ length: 3 }).map((_, index) => (
                     <div
                       key={index}
-                      className="flex flex-col p-[12px] bg-tradeAsh rounded-[15px] gap-[10px] lg:gap-[10px] border border-tradeAshLight"
+                      className="flex items-center w-full h-max flex-grow  gap-[10px] border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]"
                     >
-                      <div className="flex justify-between items-center border-b md:border-0 border-dashed border-tradeAshLight pb-[10px] md:pb-0 ">
-                        <div
-                          className="
-                            bg-transparent text-tradeFadeWhite flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer"
-                        >
-                          <p className="text-xs font-semibold">Week's task</p>
+                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
+                        <MdOutlineAccessTimeFilled className="text-xl text-tradeFadeWhite" />
+                      </div>
+
+                      <div className="flex flex-1 flex-col gap-2 items-start">
+                        <div className="flex items-center gap-1">
+                          {/* <CiViewTimeline className="text-[13px] text-tradeFadeWhite" /> */}
+
+                          <p className="text-xs font-semibold text-tradeFadeWhite">
+                            Today's
+                          </p>
                         </div>
 
-                        <div className="flex items-center gap-3">
+                        <p className="text-[13px] font-semibold text-white">
+                         Complete a trade within 45 minutes
+                        </p>
+
+                        <div className="flex w-full justify-between items-center border- md:border-0 border-dashed border-tradeAshLight  ">
                           <div className="flex items-center gap-1">
-                            <BsFillGiftFill className="text-sm text-tradeOrange" />
+                            <BsFillGiftFill className="text-[13px] text-tradeOrange" />
 
                             <p className="text-xs font-semibold text-tradeFadeWhite">
                               5 Credit
                             </p>
                           </div>
+                          <div className="flex items-center gap-3">
+                            <div className="flex  items-center gap-1">
+                              <p className="text-xs font-semibold text-tradeFadeWhite">
+                                6,307
+                              </p>
+                              <FaUserCheck className="flex text-tradeGreen text-sm flex-shrink-0" />
+                            </div>
 
-                          <div className="flex  items-center gap-1">
-                            <p className="text-xs font-semibold text-tradeFadeWhite">
-                              6,307
-                            </p>
-                            <FaUserCheck className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+                            {/* <div className="flex items-center gap-1">
+                              <MdOutlineAccessTimeFilled className="text-[13px] text-tradeFadeWhite" />
+
+                              <p className="text-xs font-semibold text-tradeFadeWhite">
+                                Pending
+                              </p>
+                            </div> */}
                           </div>
-                        </div>
-                      </div>
-                      <div className="flex justify-between items-start ">
-                        <div>
-                          <p className="text-white font-semibold text-sm leading-normal">
-                            Complete a trade within 45 minutes
-                          </p>
-                        </div>
-                      </div>
-                      <div className="hidden md:flex items-center gap-2 justify-between">
-                        <div className="flex  items-center gap-1">
-                          <p className="text-xs font-semibold text-tradeFadeWhite">
-                            2 completed, 1 more to go
-                          </p>
-                        </div>
-
-                        <MdPending className="text-sm text-tradeFadeWhite" />
-                      </div>
-                      <div className="flex md:hidden items-center gap-2 justify-between">
-                        <div className="flex  items-center gap-1">
-                          <p className="text-xs font-semibold text-tradeFadeWhite">
-                            2 completed, 1 more to go
-                          </p>
-                        </div>
-
-                        <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                          <MdPending className="text-sm text-tradeFadeWhite" />
                         </div>
                       </div>
                     </div>
