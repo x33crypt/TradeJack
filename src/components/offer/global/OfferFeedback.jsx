@@ -28,12 +28,12 @@ const OfferFeedback = () => {
               </SmallButton>
             </div>
 
-            {/* <div className="flex gap-[5px]">
+            <div className="flex gap-[5px]">
               <SmallButton variant="fadeout">
                 <FaSort />
                 <p>Recent</p>
               </SmallButton>
-            </div> */}
+            </div>
           </div>
         </div>
 
