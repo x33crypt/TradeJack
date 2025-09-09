@@ -235,14 +235,18 @@ const MyAccounts = () => {
                             )}
                           </div>
 
-                          <div className="md:hidden flex w-full">
-                            <Button
-                              variant="primary"
-                              onClick={() => navigateTo("/wallet/accounts/new")}
-                            >
-                              Add New Account
-                            </Button>
-                          </div>
+                          {linkedAccounts?.length < 2 && (
+                            <div className="md:hidden flex w-full">
+                              <Button
+                                variant="primary"
+                                onClick={() =>
+                                  navigateTo("/wallet/accounts/new")
+                                }
+                              >
+                                Add New Account
+                              </Button>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>

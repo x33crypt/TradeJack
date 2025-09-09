@@ -25,7 +25,9 @@ import { FaUser } from "react-icons/fa";
 import lastSeen from "@/utils/lastSeen";
 import toDecimal from "@/utils/toDecimal";
 import { FiMapPin } from "react-icons/fi";
-import { windowFormat } from "@/utils/windowFormat";
+import { IoMdTime } from "react-icons/io";
+import { windowFormatHour } from "@/utils/windowFormatHour";
+import { windowFormatMinutes } from "@/utils/windowFormatM";
 
 const MarketCard = ({ offer }) => {
   const { setAboutOffer } = usePublicOffers();
@@ -39,26 +41,6 @@ const MarketCard = ({ offer }) => {
       id: offerId,
     }));
     navigateTo(`/offers/explore/${offerId}`);
-  };
-
-  const formatTimeHybrid = (hours = 0, minutes = 0) => {
-    const totalMinutes = hours * 60 + minutes;
-
-    if (totalMinutes < 60) {
-      return `${totalMinutes} ${totalMinutes === 1 ? "Min" : "Mins"}`;
-    }
-
-    const displayHours = Math.floor(totalMinutes / 60);
-    const remainingMinutes = totalMinutes % 60;
-
-    let result = `${displayHours} ${displayHours === 1 ? "Hr" : "Hrs"}`;
-    if (remainingMinutes > 0) {
-      result += ` ${remainingMinutes} ${
-        remainingMinutes === 1 ? "Min" : "Mins"
-      }`;
-    }
-
-    return result;
   };
 
   return (
@@ -120,31 +102,38 @@ const MarketCard = ({ offer }) => {
 
               <div className="flex gap-[5px] w-max">
                 <p className="text-xs font-semibold text-tradeFadeWhite">
-                  <span>Max-- </span>{" "}
+                  <span>Maximum-- </span>{" "}
                   {toDecimal(offer?.marginRate?.to) || "N/A"}
                 </p>
               </div>
             </div>
 
             <div className="flex-1 flex flex-col gap-1">
-              <p className="text-xs font-semibold text-white leading-none">
-                {windowFormat(
-                  offer?.transferWindow?.hours,
-                  offer?.transferWindow?.minutes
-                )}
-              </p>
+              <div className="flex gap-1 items-center">
+                <IoMdTime className="text-sm text-tradeFadeWhite" />
+                <p className="text-xs font-semibold text-white leading-none">
+                  {windowFormatHour(
+                    offer?.transferWindow?.hours,
+                    offer?.transferWindow?.minutes
+                  )}
+                </p>
+              </div>
               <p className="text-xs font-medium text-tradeFadeWhite">
                 Transfer window
               </p>
             </div>
 
             <div className="flex flex-col gap-1 flex-1">
-              <p className="text-xs font-semibold text-white whitespace-nowrap">
-                {windowFormat(
-                  offer?.releaseWindow?.hours,
-                  offer?.releaseWindow?.minutes
-                )}
-              </p>
+              <div className="flex gap-1 items-center">
+                <IoMdTime className="text-sm text-tradeFadeWhite" />
+                <p className="text-xs font-semibold text-white whitespace-nowrap">
+                  {windowFormatHour(
+                    offer?.releaseWindow?.hours,
+                    offer?.releaseWindow?.minutes
+                  )}
+                </p>
+              </div>
+
               <p className="text-xs font-medium text-tradeFadeWhite">
                 Release window
               </p>
@@ -239,26 +228,24 @@ const MarketCard = ({ offer }) => {
           </div>
         </div>
         <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
-          <div className="flex flex-col">
+          <div className="flex gap-1 items-center">
+            <IoMdTime className="text-sm text-tradeFadeWhite" />
+            <p className="text-xs font-medium text-tradeFadeWhite">Transfer:</p>
             <p className="text-xs font-semibold text-white whitespace-nowrap">
-              {windowFormat(
+              {windowFormatMinutes(
                 offer?.transferWindow?.hours,
                 offer?.transferWindow?.minutes
               )}
             </p>
-            <p className="text-xs font-medium text-tradeFadeWhite">
-              Transfer window
-            </p>
           </div>
-          <div className="flex flex-col items-end">
+          <div className="flex gap-1 items-center">
+            <IoMdTime className="text-sm text-tradeFadeWhite" />
+            <p className="text-xs font-medium text-tradeFadeWhite">Release:</p>
             <p className="text-xs font-semibold text-white whitespace-nowrap">
-              {windowFormat(
+              {windowFormatMinutes(
                 offer?.releaseWindow?.hours,
                 offer?.releaseWindow?.minutes
               )}
-            </p>
-            <p className="text-xs font-medium text-tradeFadeWhite">
-              Release window
             </p>
           </div>
         </div>

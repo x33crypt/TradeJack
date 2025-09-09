@@ -16,11 +16,13 @@ import { FaRegClock } from "react-icons/fa";
 import SmallButton from "../buttons/SmallButton";
 import Button from "../buttons/Button";
 import NetworkError from "../others/NetworkError";
+import { RiSafe2Fill } from "react-icons/ri";
+import { MdMoreVert } from "react-icons/md";
 
 const MyWallet = () => {
   const { balance, setBalance } = useBalance();
   const { loading, error, refetch } = useFetchBalance();
-  const [showBalance, setShowBalance] = useState(false);
+  const [showBalance, setShowBalance] = useState(true);
 
   console.log("Balance:", balance);
 
@@ -79,10 +81,10 @@ const MyWallet = () => {
                       <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                         <div className="flex gap-1 items-center">
                           <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Available balance
+                            Available Balance
                           </p>
 
-                          <div
+                          {/* <div
                             onClick={toggleBalanceVisibility}
                             className="flex items-center gap-1 border border-tradeAshExtraLight bg-transparent  h-max bg-red-500 rounded-[8px] p-1 w-max cursor-pointer"
                           >
@@ -91,7 +93,7 @@ const MyWallet = () => {
                             ) : (
                               <FaEyeSlash className="text-sm text-tradeFadeWhite" />
                             )}
-                          </div>
+                          </div> */}
                         </div>
 
                         <div className="flex gap-1 items-cente">
@@ -155,55 +157,15 @@ const MyWallet = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-[10px] items-center border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
-                      <div className="flex flex-row flex-wrap w-full items-cente gap-[10px]">
-                        <div
-                          onClick={Deposit}
-                          className="flex-1 flex-grow flex-shrink-0 flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-                        >
-                          <FaPlus className="text-[14px] text-tradeFadeWhite" />
-                          <p className="text-white font-semibold  text-[13px]">
-                            Deposit
-                          </p>
-                        </div>
-                        <div
-                          onClick={Transfer}
-                          className="flex-1 flex-grow flex-shrink-0 flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-                        >
-                          <RiSendPlaneLine className="text-[14px] text-tradeFadeWhite" />
-                          <p className="text-white font-semibold  text-[13px]">
-                            Transfer
-                          </p>
-                        </div>
-                        <div
-                          onClick={Withdraw}
-                          className="flex-1 flex-grow flex-shrink-0 flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-                        >
-                          <FaArrowUp className="text-[14px] text-tradeFadeWhite" />
-                          <p className="text-white font-semibold  text-[13px]">
-                            Withdraw
-                          </p>
-                        </div>
-
-                        {/* <SmallButton onClick={refetch}>
-                          <MdOutlineRefresh
-                            className={`${
-                              loading && "animate-spin"
-                            } text-[16px] text-black`}
-                          />
-                        </SmallButton> */}
-                      </div>
-                    </div>
-
                     <div className="flex flex-col gap-[10px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeAsh">
                       <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                         <div className="flex gap-1 items-center">
                           <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Escrow balance
+                            Escrow Balance
                           </p>
-                          <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-transparent  h-max bg-red-500 rounded-[8px] p-1 w-max ">
+                          {/* <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-transparent  h-max bg-red-500 rounded-[8px] p-1 w-max ">
                             <FaRegClock className="text-sm text-tradeFadeWhite" />
-                          </div>
+                          </div> */}
                         </div>
 
                         <div className="flex gap-1">
@@ -242,6 +204,95 @@ const MyWallet = () => {
                               : "****"}
                           </p>
                         )}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-[10px] items-center border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+                      <div className="flex flex-row flex-wrap w-full items-center justify-between gap-[10px]">
+                        {/* <div
+                          onClick={Deposit}
+                          className="flex-1 flex-grow flex-shrink-0 flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                        >
+                          <FaPlus className="text-[14px] text-tradeFadeWhite" />
+                          <p className="text-white font-semibold  text-[13px]">
+                            Deposit
+                          </p>
+                        </div> */}
+
+                        <div
+                          onClick={Deposit}
+                          className="flex flex-col items-center gap-1"
+                        >
+                          <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                            <FaPlus className="text-base" />
+                          </div>
+                          <p className="text-white text-[13px] font-medium">
+                            Deposit
+                          </p>
+                        </div>
+
+                        {/* <div
+                          onClick={Transfer}
+                          className="flex-1 flex-grow flex-shrink-0 flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                        >
+                          <RiSendPlaneLine className="text-[14px] text-tradeFadeWhite" />
+                          <p className="text-white font-semibold  text-[13px]">
+                            Transfer
+                          </p>
+                        </div> */}
+                        <div
+                          onClick={Transfer}
+                          className="flex flex-col items-center gap-1"
+                        >
+                          <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                            <RiSendPlaneLine className="text-base" />
+                          </div>
+                          <p className="text-white text-[13px] font-medium">
+                            Transfer
+                          </p>
+                        </div>
+
+                        <div
+                          onClick={Withdraw}
+                          className="flex flex-col items-center gap-1"
+                        >
+                          <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                            <FaArrowUp className="text-base" />
+                          </div>
+                          <p className="text-white text-[13px] font-medium">
+                            Withdraw
+                          </p>
+                        </div>
+
+                        {/* <div
+                          onClick={Withdraw}
+                          className="flex-1 flex-grow flex-shrink-0 flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                        >
+                          <FaArrowUp className="text-[14px] text-tradeFadeWhite" />
+                          <p className="text-white font-semibold  text-[13px]">
+                            Withdraw
+                          </p>
+                        </div> */}
+
+                        {/* <SmallButton onClick={refetch}>
+                          <MdOutlineRefresh
+                            className={`${
+                              loading && "animate-spin"
+                            } text-[16px] text-black`}
+                          />
+                        </SmallButton> */}
+
+                        <div
+                          onClick={refetch}
+                          className="flex flex-col items-center gap-1"
+                        >
+                          <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                            <MdOutlineRefresh className="text-base" />
+                          </div>
+                          <p className="text-white text-[13px] font-medium">
+                            Refresh
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>

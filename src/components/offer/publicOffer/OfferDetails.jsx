@@ -32,7 +32,7 @@ import lastSeen from "@/utils/lastSeen";
 import { MdVerifiedUser } from "react-icons/md";
 import { LuUsers } from "react-icons/lu";
 import { HiOutlineUserCircle } from "react-icons/hi2";
-import { windowFormat } from "@/utils/windowFormat";
+import { windowFormatHour } from "@/utils/windowFormatHour";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -216,7 +216,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           </p>
 
                           <p className="text-white text-[13px]  font-semibold">
-                            {windowFormat(
+                            {windowFormatHour(
                               offer?.transferWindow?.hours,
                               offer?.transferWindow?.minutes
                             )}
@@ -229,7 +229,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           </p>
 
                           <p className="text-white text-[13px] font-semibold">
-                            {windowFormat(
+                            {windowFormatHour(
                               offer?.releaseWindow?.hours,
                               offer?.releaseWindow?.minutes
                             )}

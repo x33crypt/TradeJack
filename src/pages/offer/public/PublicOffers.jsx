@@ -283,9 +283,7 @@ const PublicOffers = () => {
                           </div>
                         ) : (
                           <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
-                            <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
-                              {/* <LuFileX2 /> */}
-                            </div>
+                            <div className=" flex justify-center items-center text-[55px] text-tradeAshLight"></div>
 
                             <p className="text-lg font-semibold text-white leading-none">
                               No Transaction Record Found

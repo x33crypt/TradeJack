@@ -26,6 +26,8 @@ const Filter = () => {
     "CashApp",
     "eBay Gift Card",
     "Chase Bank",
+    "Apple Pay",
+
     "More",
   ]);
   const [currenciesList, setCurrenciesList] = useState([
@@ -35,6 +37,7 @@ const Filter = () => {
     "JPY",
     "AUD",
     "CAD",
+    "ARS",
     "More",
   ]);
   const [sortByList, setSortByList] = useState([
@@ -193,8 +196,8 @@ const Filter = () => {
 
   return (
     <>
-      <div className="flex flex- md:w-[300px] h-max flex-col md:border-x md:border-t-0 lg:border-b border-neutral-800 rounded-[15px] lg:rounded-none px-[15px] bg-tradeAsh lg:bg-transparent  ">
-        <div className="flex md:hidden justify-between items-center py-[12px] border-b border-neutral-800 ">
+      <div className="flex flex- md:w-[300px] h-max flex-col md:border-x md:border-t-0 lg:border-b border-neutral-800 rounded-[15px] lg:rounded-none px-[15px] bg-tradeAsh lg:bg-transparent">
+        <div className="flex md:hidden justify-between items-center py-[12px] border-b border-neutral-800">
           <p className="text-lg text-white font-[700] cursor-pointer">Filter</p>
 
           <div
@@ -211,7 +214,7 @@ const Filter = () => {
           </div>
         </div>
 
-        <div className="relative flex-1 flex flex-col justify-between py-[12px] gap-[20px] md:h-[480px]">
+        <div className="relative flex-1 flex flex-col justify-between py-[12px] gap-[16px] md:h-[480px]">
           <div className=" flex-1 flex flex-col gap-[15px] md:overflow-y-auto custom-scrollbar">
             <div className="flex flex-col gap-[10px] w-full">
               <p className="text-white text-[13px] font-semibold">Asset</p>

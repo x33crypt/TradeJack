@@ -189,13 +189,13 @@ const TransactionHistory = () => {
               Transaction History
             </p>
           </div>
-          <div className="px-[15px] py-[12px] border-b border-dashed border-tradeAshLight">
+          {/* <div className="px-[15px] py-[12px] border-b border-dashed border-tradeAshLight">
             <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
               Review and track all your transactions in detail, with real-time
               status updates and clear records to help you stay informed and in
               control of your activity.
             </p>
-          </div>
+          </div> */}
           <div className="flex flex-col flex-1 ">
             <div className="sticky h-[55px] flex items-center w-full md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
               <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-hidden p-[2px]">
@@ -241,9 +241,7 @@ const TransactionHistory = () => {
                 </div>
 
                 <div className="flex gap-[5px]">
-                  <SmallButton variant="fadeout">
-                    <FaMagnifyingGlass />
-                  </SmallButton>
+               
                   <SmallButton
                     variant="fadeout"
                     disabled={filter.date?.monthName || filter.date?.year}
@@ -283,7 +281,7 @@ const TransactionHistory = () => {
                       {Array.isArray(transactions?.data) ? (
                         <div className="flex flex-1">
                           {transactions?.data.length > 0 ? (
-                            <div className="flex flex-col gap-[5px] w-full">
+                            <div className="flex flex-col gap-[10px] w-full">
                               {transactions?.data?.map((transaction, index) => (
                                 <div key={transaction.id || index}>
                                   <TransactionCard transaction={transaction} />

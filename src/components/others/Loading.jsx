@@ -1,5 +1,7 @@
 import React from "react";
 import { MdOutlineRefresh } from "react-icons/md";
+import { LuLoader } from "react-icons/lu";
+
 
 const Loading = () => {
   return (
