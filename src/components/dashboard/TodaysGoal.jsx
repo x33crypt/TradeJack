@@ -5,10 +5,8 @@ import SmallButton from "../buttons/SmallButton";
 import Button from "../buttons/Button";
 import { FaUserCheck } from "react-icons/fa6";
 import { BsFillGiftFill } from "react-icons/bs";
-import { MdOutlinePending } from "react-icons/md";
-import { MdPending } from "react-icons/md";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
-import { CiViewTimeline } from "react-icons/ci";
+import { MdTimelapse } from "react-icons/md";
 
 const TodaysGoal = ({ loading, dashboard }) => {
   return (
@@ -33,25 +31,23 @@ const TodaysGoal = ({ loading, dashboard }) => {
                       className="flex items-center w-full h-max flex-grow  gap-[10px] border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]"
                     >
                       <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                        <MdOutlineAccessTimeFilled className="text-xl text-tradeFadeWhite" />
+                        <MdTimelapse className="text-lg text-tradeFadeWhite" />
                       </div>
 
                       <div className="flex flex-1 flex-col gap-2 items-start">
                         <div className="flex items-center gap-1">
-                          {/* <CiViewTimeline className="text-[13px] text-tradeFadeWhite" /> */}
-
                           <p className="text-xs font-semibold text-tradeFadeWhite">
                             Today's
                           </p>
                         </div>
 
                         <p className="text-[13px] font-semibold text-white">
-                         Complete a trade within 45 minutes
+                          Complete a trade within 45 minutes
                         </p>
 
-                        <div className="flex w-full justify-between items-center border- md:border-0 border-dashed border-tradeAshLight  ">
+                        <div className="flex w-full justify-between items-center">
                           <div className="flex items-center gap-1">
-                            <BsFillGiftFill className="text-[13px] text-tradeOrange" />
+                            <BsFillGiftFill className="text-xs text-tradeOrange" />
 
                             <p className="text-xs font-semibold text-tradeFadeWhite">
                               5 Credit
@@ -64,14 +60,6 @@ const TodaysGoal = ({ loading, dashboard }) => {
                               </p>
                               <FaUserCheck className="flex text-tradeGreen text-sm flex-shrink-0" />
                             </div>
-
-                            {/* <div className="flex items-center gap-1">
-                              <MdOutlineAccessTimeFilled className="text-[13px] text-tradeFadeWhite" />
-
-                              <p className="text-xs font-semibold text-tradeFadeWhite">
-                                Pending
-                              </p>
-                            </div> */}
                           </div>
                         </div>
                       </div>
