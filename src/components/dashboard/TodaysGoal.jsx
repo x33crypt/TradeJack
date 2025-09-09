@@ -30,8 +30,8 @@ const TodaysGoal = ({ loading, dashboard }) => {
                       key={index}
                       className="flex items-center w-full h-max flex-grow  gap-[10px] border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]"
                     >
-                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                        <MdTimelapse className="text-lg text-tradeFadeWhite" />
+                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[10px] p-1 w-max cursor-pointer">
+                        <MdOutlineAccessTimeFilled className="text-xl text-tradeFadeWhite" />
                       </div>
 
                       <div className="flex flex-1 flex-col gap-2 items-start">
