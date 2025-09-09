@@ -60,25 +60,27 @@ const AccountCard = ({ account, index }) => {
           </div>
         </div>
         {/* Bank Logo and Info */}
-        <div className="flex items-center gap-4">
-          <div className="p-2.5 bg-tradeAshLight border border-tradeAshExtraLight rounded-xl">
-            <img
-              className="w-[30px] h-[30px] object-contain"
-              src={account?.logo}
-              alt=""
-            />
-          </div>
-          <div className="flex flex-col gap-0.5">
-            <p className="text-white text-sm font-semibold">
-              {account?.bank_name}
-            </p>
-            <p className="text-tradeFadeWhite text-xs font-medium tracking-wide">
-              {account?.account_number}
-            </p>
+        <div className="flex w-full justify-between ">
+          <div className="flex items-center gap-4">
+            <div className="p-2.5 bg-tradeAshLight border border-tradeAshExtraLight rounded-xl">
+              <img
+                className="w-[30px] h-[30px] object-contain"
+                src={account?.logo}
+                alt=""
+              />
+            </div>
+            <div className="flex flex-col gap-0.5">
+              <p className="text-white text-sm font-semibold">
+                {account?.bank_name}
+              </p>
+              <p className="text-tradeFadeWhite text-xs font-medium tracking-wide">
+                {account?.account_number}
+              </p>
+            </div>
           </div>
         </div>
         {/* Account Holder and Actions */}
-        <div className="flex items-center justify-between">
+        {/* <div className="flex items-center justify-between">
           <div className="flex flex-col gap-1">
             <p className="text-white text-xs font-semibold">
               {account?.account_holder_name}
@@ -127,7 +129,7 @@ const AccountCard = ({ account, index }) => {
               </div>
             )}
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
