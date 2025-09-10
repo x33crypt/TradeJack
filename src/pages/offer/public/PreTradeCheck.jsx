@@ -8,6 +8,7 @@ import { useTrade } from "@/context/publicContext/TradeContext";
 import Button from "@/components/buttons/Button";
 import { LuMinimize } from "react-icons/lu";
 import { HiOutlineUserCircle } from "react-icons/hi2";
+import Info from "@/components/alerts/Info";
 
 const PreTradeCheck = () => {
   const { aboutOffer, setAboutOffer } = usePublicOffers();
@@ -161,19 +162,19 @@ const PreTradeCheck = () => {
               </div>
 
               <div className="flex-1 flex flex-col justify-between py-[12px] gap-[15px]">
-                <div className="flex flex-col gap-2 ">
+                <div className="flex flex-col gap-4 ">
                   <div className="flex gap-[10px] justify-between">
                     <div className="flex flex-col gap-[10px]">
                       <p className="text-xs font-semibold text-tradeFadeWhite">
                         Gift Cards Exchange
                       </p>
-                      <div className=" sm:w-full md:w-full">
-                        <p className="text-lg font-semibold flex-wrap text-white leading-none">
-                          Zalando Gift Card
-                        </p>
-                      </div>
+
+                      <p className="text-xl font-semibold flex-wrap text-tradeOrange leading-none max-w-[200px]">
+                        Zalando Gift Card
+                      </p>
+
                       <p className="text-white font-semibold text-2xl leading-none">
-                        $500.00
+                        1,000.00 USD
                       </p>
                     </div>
 
@@ -182,10 +183,16 @@ const PreTradeCheck = () => {
                     </div>
                   </div>
 
+                  <Info
+                    text={
+                      "Please send the exact amount shown. Sending more or less may cause unnecessary disputes or processing delays"
+                    }
+                  />
+
                   <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
                     <p className="text-tradeFadeWhite font-medium text-xs">
-                      If the vendor doesn’t respond in time, you can cancel and
-                      retry, or choose another offer.
+                      The trade will auto-cancel if the vendor doesn’t respond.
+                      You can explore other offers or start a new trade.
                     </p>
                   </div>
                 </div>
