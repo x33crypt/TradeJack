@@ -170,8 +170,8 @@ const PreTradeCheck = () => {
                       <p className="text-xl font-semibold text-tradeOrange leading-none">
                         Zalando Gift Card
                       </p>
-                      <p className="text-white font-semibold text-base leading-none">
-                        500.00 USD
+                      <p className="text-white font-semibold text-xl leading-none">
+                        $500.00 
                       </p>
                     </div>
 
