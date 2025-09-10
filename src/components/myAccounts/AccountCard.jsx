@@ -80,7 +80,7 @@ const AccountCard = ({ account, index }) => {
           </div>
         </div>
         {/* Account Holder and Actions */}
-        {/* <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <div className="flex flex-col gap-1">
             <p className="text-white text-xs font-semibold">
               {account?.account_holder_name}
@@ -129,7 +129,7 @@ const AccountCard = ({ account, index }) => {
               </div>
             )}
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );

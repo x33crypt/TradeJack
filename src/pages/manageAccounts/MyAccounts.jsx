@@ -153,7 +153,7 @@ const MyAccounts = () => {
   };
 
   useEffect(() => {
-    if (success === false) return;
+    if (success === true) return;
     refetchLinkedBanks();
   }, [success]);
 

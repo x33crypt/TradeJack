@@ -1,30 +1,11 @@
 import React from "react";
-import { IoMdThumbsUp } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { HiOutlineUserCircle } from "react-icons/hi2";
-import { FaStar } from "react-icons/fa6";
 import { LuUsers } from "react-icons/lu";
-import { MdOutlineDateRange } from "react-icons/md";
-import { MdAccessTime } from "react-icons/md";
-import { FaInfoCircle } from "react-icons/fa";
 import { VscVerifiedFilled } from "react-icons/vsc";
-import { FaCircle } from "react-icons/fa";
-import { HiArrowCircleUp } from "react-icons/hi";
-import { FaBusinessTime } from "react-icons/fa6";
-import { PiClockCountdownBold } from "react-icons/pi";
-import { monthDate } from "@/utils/monthDate";
-import { time } from "@/utils/time";
-import SmallButton from "@/components/buttons/SmallButton";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
-// verified user icon
-import { TiBusinessCard } from "react-icons/ti";
-import { date } from "@/utils/date";
-import { FaCheckDouble } from "react-icons/fa";
-import { TiChartLine } from "react-icons/ti";
-import { FaUser } from "react-icons/fa";
 import lastSeen from "@/utils/lastSeen";
 import toDecimal from "@/utils/toDecimal";
-import { FiMapPin } from "react-icons/fi";
 import { IoMdTime } from "react-icons/io";
 import { windowFormatHour } from "@/utils/windowFormatHour";
 import { windowFormatMinutes } from "@/utils/windowFormatM";
@@ -232,7 +213,7 @@ const MarketCard = ({ offer }) => {
             <IoMdTime className="text-sm text-tradeFadeWhite" />
             <p className="text-xs font-medium text-tradeFadeWhite">Transfer:</p>
             <p className="text-xs font-semibold text-white whitespace-nowrap">
-              {windowFormatMinutes(
+              {windowFormatHour(
                 offer?.transferWindow?.hours,
                 offer?.transferWindow?.minutes
               )}
@@ -242,7 +223,7 @@ const MarketCard = ({ offer }) => {
             <IoMdTime className="text-sm text-tradeFadeWhite" />
             <p className="text-xs font-medium text-tradeFadeWhite">Release:</p>
             <p className="text-xs font-semibold text-white whitespace-nowrap">
-              {windowFormatMinutes(
+              {windowFormatHour(
                 offer?.releaseWindow?.hours,
                 offer?.releaseWindow?.minutes
               )}
