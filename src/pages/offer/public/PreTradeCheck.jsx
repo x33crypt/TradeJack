@@ -1,28 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
-import { useCalculator } from "@/context/publicContext/CalculatorContext";
 import LockByScroll from "@/components/others/LockByScroll";
 import { PiSpinnerGapBold } from "react-icons/pi";
 import { GoDotFill } from "react-icons/go";
 import { IoMdCheckmarkCircle } from "react-icons/io";
-import { MdPending } from "react-icons/md";
 import { useTrade } from "@/context/publicContext/TradeContext";
 import Button from "@/components/buttons/Button";
-import { GrSecure } from "react-icons/gr";
-import { MdSafetyCheck } from "react-icons/md";
-import Info from "@/components/alerts/Info";
 import { LuMinimize } from "react-icons/lu";
+import { HiOutlineUserCircle } from "react-icons/hi2";
 
 const PreTradeCheck = () => {
   const { aboutOffer, setAboutOffer } = usePublicOffers();
   const { preTradeCheck, setPreTradeCheck } = useTrade();
-  const { calculator, setCalculator } = useCalculator();
-  const [countdownTime, setCountdownTime] = useState("05:00");
+  const [countdownTime, setCountdownTime] = useState("03:00");
 
   const offer = aboutOffer?.data;
 
   useEffect(() => {
-    let time = 300; // 3 minutes
+    let time = 180;
     if (preTradeCheck?.success === true) {
       const interval = setInterval(() => {
         time--;
@@ -157,7 +152,7 @@ const PreTradeCheck = () => {
             <div className="flex md:w-[300px] w-full h-max flex-col rounded-[15px] px-[15px] bg-tradeAsh">
               <div className="flex justify-between items-center py-[12px] border-b border-neutral-800 ">
                 <p className="text-lg text-white font-[700] cursor-pointer">
-                  Checks Complete
+                  Awaiting Vendor
                 </p>
 
                 <div className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
@@ -166,30 +161,26 @@ const PreTradeCheck = () => {
               </div>
 
               <div className="flex-1 flex flex-col justify-between py-[12px] gap-[15px]">
-                <div className="flex flex-col gap-[10px]">
-                  <div className="flex items-center justify-center">
-                    <MdSafetyCheck className="text-7xl text-tradeFadeWhite" />
+                <div className="flex flex-col gap-2 ">
+                  <div className="flex gap-[10px] justify-between">
+                    <div className="flex flex-col gap-2">
+                      <p className="text-xs font-semibold text-tradeFadeWhite">
+                        Gift Cards Exchange
+                      </p>
+                      <p className="text-xl font-semibold text-tradeOrange leading-none">
+                        Zalando Gift Card
+                      </p>
+                      <p className="text-white font-semibold text-base leading-none">
+                        500.00 USD
+                      </p>
+                    </div>
+
+                    <div>
+                      <HiOutlineUserCircle className="flex text-white text-4xl flex-shrink-0" />
+                    </div>
                   </div>
 
-                  {/* <div className="flex justify-center text-xl font-bold text-tradeOrange">
-                    {countdownTime}
-                  </div> */}
-                </div>
-
-                <div className="flex flex-col gap-[10px]">
-                  <div className="flex-1 flex flex-col justify-between gap-[10px]">
-                    <p className="text-white text-[13px] font-semibold leading-normal">
-                      Your trade is secure. Waiting for vendor to accept your
-                      request... <span className="text-tradeOrange">{countdownTime}</span>
-                    </p>
-                  </div>
-                  <div className="flex-1 flex flex-col justify-between gap-[10px]">
-                    {/* <p className="text-tradeFadeWhite font-medium text-xs">
-                      If the vendor doesn’t respond within the time limit, you
-                      can cancel and try initiating the trade again, or select a
-                      different offer.
-                    </p> */}
-
+                  <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
                     <p className="text-tradeFadeWhite font-medium text-xs">
                       If the vendor doesn’t respond in time, you can cancel and
                       retry, or choose another offer.
@@ -198,13 +189,17 @@ const PreTradeCheck = () => {
                 </div>
 
                 <div>
-                  <Button
-                    onClick={handleCancelTrade}
-                    variant="Fadeout"
-                    // disabled={loading}
-                  >
-                    Cancel Trade
-                  </Button>
+                  {countdownTime !== "00:00" ? (
+                    <Button variant="Fadeout">{countdownTime}</Button>
+                  ) : (
+                    <Button
+                      onClick={handleCancelTrade}
+                      variant="Fadeout"
+                      // disabled={loading}
+                    >
+                      <p> Cancel Trade</p>
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>
