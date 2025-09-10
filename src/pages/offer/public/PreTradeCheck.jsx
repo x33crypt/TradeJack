@@ -163,15 +163,17 @@ const PreTradeCheck = () => {
               <div className="flex-1 flex flex-col justify-between py-[12px] gap-[15px]">
                 <div className="flex flex-col gap-2 ">
                   <div className="flex gap-[10px] justify-between">
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-[10px]">
                       <p className="text-xs font-semibold text-tradeFadeWhite">
                         Gift Cards Exchange
                       </p>
-                      <p className="text-xl font-semibold text-tradeOrange leading-none">
-                        Zalando Gift Card
-                      </p>
-                      <p className="text-white font-semibold text-xl leading-none">
-                        $500.00 
+                      <div className=" sm:w-full md:w-full">
+                        <p className="text-lg font-semibold flex-wrap text-white leading-none">
+                          Zalando Gift Card
+                        </p>
+                      </div>
+                      <p className="text-white font-semibold text-2xl leading-none">
+                        $500.00
                       </p>
                     </div>
 

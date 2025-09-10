@@ -111,17 +111,17 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
                   <div className="flex flex-col gap-[10px] ">
-                    <p className="text-tradeOrange text-3xl font-semibold md:w-max w-[200px] leading-snug ">
+                    <p className="text-white text-3xl font-semibold md:w-max w-[200px] leading-snug ">
                       {offer?.service}
                     </p>
-                    <p className="text-white text-[13px] font-semibold leading-none">
+                    <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
                       {offer?.serviceType}
                     </p>
 
                     <div className="flex gap-4 flex-wrap">
                       <div className="flex gap-1 items-center">
                         <VscVerifiedFilled className="flex text-tradeFadeWhite text-base flex-shrink-0" />
-                        <p className="text-xs font-semibold text-tradeFadeWhite">
+                        <p className="text-xs font-semibold text-white">
                           Verified Offer
                         </p>
                       </div>

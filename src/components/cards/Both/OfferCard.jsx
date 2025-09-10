@@ -65,7 +65,7 @@ const MarketCard = ({ offer }) => {
 
           <div className="flex  items-center w-full">
             <div className="flex-1 flex flex-col gap-1">
-              <p className="text-base font-semibold text-tradeOrange md:max-w-[120px] lg:max-w-[140px] leading-normal">
+              <p className="text-base font-semibold text-white md:max-w-[120px] lg:max-w-[140px] leading-normal">
                 {offer?.service}
               </p>
               <p className="text-xs font-semibold text-tradeFadeWhite">
@@ -143,7 +143,7 @@ const MarketCard = ({ offer }) => {
                 <HiOutlineUserCircle className="flex text-white text-3xl flex-shrink-0" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-white">
+                <p className="text-[13px] font-semibold text-white">
                   {offer?.user?.userName}
                 </p>
                 <p className="text-tradeFadeWhite text-xs font-medium">
@@ -161,7 +161,7 @@ const MarketCard = ({ offer }) => {
               </div>
 
               <div className="flex  items-center gap-1">
-                <LuUsers className="flex text-tradeOrange text-[14px] flex-shrink-0" />
+                <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
                   +{offer?.user?.userTransactionCount} recent trades
                 </p>
@@ -171,7 +171,7 @@ const MarketCard = ({ offer }) => {
 
           <div className="flex justify-between w-full items-start">
             <div className="flex flex-col gap-1">
-              <p className="text-base font-semibold text-tradeOrange max-w-[150px] leading-normal">
+              <p className="text-base font-semibold text-white max-w-[150px] leading-normal">
                 {offer?.service}
               </p>
               <p className="text-xs font-semibold text-tradeFadeWhite">
