@@ -30,7 +30,7 @@ export function lastSeen(lastSeen) {
   }
 
   // ✅ Recently Active (< 24h)
-  if (diffHours < 24) {
+  if (diffHours < 1) {
     if (diffHours < 1) {
       const unit = diffMinutes === 1 ? "min" : "mins";
       return {

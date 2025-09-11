@@ -192,7 +192,7 @@ const PreTradeCheck = () => {
                   <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
                     <p className="text-tradeFadeWhite font-medium text-xs">
                       The trade will auto-cancel if the vendor doesn’t respond.
-                      You can explore other offers or start a new trade.
+                      You can re-initiate this trade or explore other offers.
                     </p>
                   </div>
                 </div>

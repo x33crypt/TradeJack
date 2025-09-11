@@ -42,6 +42,8 @@ const MarketCard = ({ offer }) => {
                 </p>
                 <p className="text-tradeFadeWhite text-xs font-medium">
                   <span className={seen.className}>{seen.dot}</span>
+                  {/* Show both dot and text */}
+                 
                 </p>
               </div>
             </div>
