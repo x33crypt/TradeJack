@@ -17,31 +17,60 @@ import withComma from "@/utils/withComma";
 
 const PublicOffers = () => {
   const topRef = useRef(null);
-  const { loading, fetchOffers, pagination, page, displayedCount, next } =
-    useFetchPublicOffers();
+  const {
+    initialLoading,
+    recentLoading,
+    fetchRecent,
+    recentPagination,
+    recentDisplayedCount,
+    nextRecent,
+    topLoading,
+    fetchTop,
+    topPagination,
+    topDisplayedCount,
+    nextTop,
+  } = useFetchPublicOffers();
   const { offers, stats, setStats, filter, setFilter } = usePublicOffers();
-  const [loadingMore, setLoadingMore] = useState(false);
+  const [loadingOffers, setLoadingOffers] = useState(false);
   const [backupAmount, setBackupAmount] = useState("200");
+  const adds = ["+20", "+50", "+100", "+200", "+500"];
 
-  useEffect(() => {
-    fetchOffers();
-  }, []);
+  // useEffect(() => {
+  //   setLoadingOffers(true);
+  //   fetchRecent();
+  //   fetchTop();
+  //   setLoadingOffers(false);
+  // }, []);
 
   useEffect(() => {
     topRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  const handleNext = async () => {
-    setLoadingMore(true);
-    await next();
-    setLoadingMore(false);
+  // helper to check empty/end state for a section (recent or top)
+  const getSectionStatus = (section) => {
+    const isEmpty = !section?.data || section.data.length === 0;
+    const isEnd =
+      !isEmpty &&
+      section?.pagination &&
+      (!section.pagination.hasNextPage ||
+        section.data.length >= (section.pagination.totalItems || 0));
+
+    let message = null;
+    if (isEmpty) {
+      message = "No activity yet";
+    } else if (isEnd) {
+      message = "End of list";
+    }
+
+    return {
+      isEmpty, // true if no data
+      isEnd, // true if reached end of pagination
+      message, // null if neither, avoids React "object as child" error
+    };
   };
 
-  const isEmpty = offers?.data?.length === 0 || offers === null;
-  const isEnd = pagination && !pagination.hasNextPage && !isEmpty;
-  const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
-
-  const adds = ["+20", "+50", "+100", "+200", "+500"];
+  const recentStatus = getSectionStatus(offers?.recent);
+  const topStatus = getSectionStatus(offers?.top);
 
   const toNumber = (v) => {
     const n = Number(String(v ?? "").replace(/[^\d.-]/g, ""));
@@ -157,37 +186,32 @@ const PublicOffers = () => {
                 </div>
               </div>
               <div className="flex-1 flex flex-col p-[15px] gap-[15px] min-h-[120px]">
-                {loading && offers === null ? (
+                {initialLoading && offers?.top === null ? (
                   <Loading />
                 ) : (
                   <div className="flex flex-1">
-                    {offers === null ? (
+                    {offers?.top === null ? (
                       <NetworkError />
                     ) : (
                       <div className="flex flex-1">
-                        {Array.isArray(offers?.data) &&
-                        offers?.data.length > 0 ? (
+                        {Array.isArray(offers?.top?.data) &&
+                        offers?.top?.data?.length > 0 ? (
                           <div className="flex flex-col gap-[10px] w-full h-max">
-                            {offers?.data?.map((offer, index) => (
+                            {offers?.top?.data?.map((offer, index) => (
                               <div key={offer.id || index}>
                                 <OfferCard offer={offer} />
                               </div>
                             ))}
                           </div>
                         ) : (
-                          <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
-                            <div className=" flex justify-center items-center text-[55px] text-tradeAshLight">
-                              {/* <LuFileX2 /> */}
-                            </div>
-
-                            <p className="text-lg font-semibold text-white leading-none">
-                              No Transaction Record Found
+                          <div className="flex-1 min-h-[150px] flex flex-col gap-[10px] items-center justify-center">
+                            <p className="text-[13px] font-semibold text-white leading-none">
+                              No Offers Found
                             </p>
 
                             <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
-                              You haven’t made any transactions yet. When you
-                              do, your recent deposits activity will be shown
-                              here for easy tracking.
+                              Try adjusting your filters or search criteria to
+                              see more offers.
                             </p>
                           </div>
                         )}
@@ -200,30 +224,34 @@ const PublicOffers = () => {
                 <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
                   <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
                     <SmallButton variant="outline">
-                      <p>{displayedCount}</p>
+                      <p>{topDisplayedCount}</p>
                     </SmallButton>
                     <SmallButton variant="outline">
                       <p>of</p>
                     </SmallButton>
                     <SmallButton variant="outline">
                       <p>
-                        {pagination?.totalItems ? pagination?.totalItems : "0"}
+                        {topPagination?.totalItems
+                          ? topPagination?.totalItems
+                          : "0"}
                       </p>
                     </SmallButton>
                   </div>
 
                   <div className="flex gap-[5px] py-[1px]">
                     <SmallButton variant="outline">
-                      {pagination?.hasNextPage ? (
-                        <div onClick={handleNext}>
-                          {loadingMore ? (
+                      {topPagination?.hasNextPage ? (
+                        <div onClick={nextTop}>
+                          {topLoading ? (
                             <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
                           ) : (
                             <p>Load more</p>
                           )}
                         </div>
                       ) : (
-                        <div>{(isEmpty || isEnd) && <p>{message}</p>}</div>
+                        <div>
+                          <p>{topStatus?.message}</p>
+                        </div>
                       )}
                     </SmallButton>
 
@@ -262,37 +290,33 @@ const PublicOffers = () => {
                   </div>
                 </div>
               </div>
-
               <div className="flex-1 flex flex-col p-[15px] gap-[15px] min-h-[120px]">
-                {loading && offers === null ? (
+                {initialLoading && offers?.recent === null ? (
                   <Loading />
                 ) : (
                   <div className="flex flex-1">
-                    {offers === null ? (
+                    {offers?.recent === null ? (
                       <NetworkError />
                     ) : (
                       <div className="flex flex-1">
-                        {Array.isArray(offers?.data) &&
-                        offers?.data.length > 0 ? (
+                        {Array.isArray(offers?.recent?.data) &&
+                        offers?.recent?.data.length > 0 ? (
                           <div className="flex flex-col gap-[10px] w-full h-max">
-                            {offers?.data?.map((offer, index) => (
+                            {offers?.recent?.data?.map((offer, index) => (
                               <div key={offer.id || index}>
                                 <OfferCard offer={offer} />
                               </div>
                             ))}
                           </div>
                         ) : (
-                          <div className="flex-1 min-h-[150px] flex flex-col gap-[15px] items-center justify-center">
-                            <div className=" flex justify-center items-center text-[55px] text-tradeAshLight"></div>
-
-                            <p className="text-lg font-semibold text-white leading-none">
-                              No Transaction Record Found
+                          <div className="flex-1 min-h-[150px] flex flex-col gap-[10px] items-center justify-center">
+                            <p className="text-[13px] font-semibold text-white leading-none">
+                              No Offers Found
                             </p>
 
                             <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
-                              You haven’t made any transactions yet. When you
-                              do, your recent deposits activity will be shown
-                              here for easy tracking.
+                              Try adjusting your filters or search criteria to
+                              see more offers.
                             </p>
                           </div>
                         )}
@@ -301,35 +325,38 @@ const PublicOffers = () => {
                   </div>
                 )}
               </div>
-
               <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
                 <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
                   <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
                     <SmallButton variant="outline">
-                      <p>{displayedCount}</p>
+                      <p>{recentDisplayedCount}</p>
                     </SmallButton>
                     <SmallButton variant="outline">
                       <p>of</p>
                     </SmallButton>
                     <SmallButton variant="outline">
                       <p>
-                        {pagination?.totalItems ? pagination?.totalItems : "0"}
+                        {recentPagination?.totalItems
+                          ? recentPagination?.totalItems
+                          : "0"}
                       </p>
                     </SmallButton>
                   </div>
 
                   <div className="flex gap-[5px] py-[1px]">
                     <SmallButton variant="outline">
-                      {pagination?.hasNextPage ? (
-                        <div onClick={handleNext}>
-                          {loadingMore ? (
+                      {recentPagination?.hasNextPage ? (
+                        <div onClick={nextRecent}>
+                          {recentLoading ? (
                             <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
                           ) : (
                             <p>Load more</p>
                           )}
                         </div>
                       ) : (
-                        <div>{(isEmpty || isEnd) && <p>{message}</p>}</div>
+                        <div>
+                          <p>{recentStatus?.message}</p>
+                        </div>
                       )}
                     </SmallButton>
 

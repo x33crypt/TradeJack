@@ -2,18 +2,33 @@ import { useState, useEffect, useCallback } from "react";
 import api from "@/utils/http/api";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 
-export function useFetchPublicOffers(initialPage = 1, limit = 10) {
+export function useFetchPublicOffers() {
   const { setOffers, filter } = usePublicOffers();
-  const [page, setPage] = useState(initialPage);
-  const [pagination, setPagination] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [displayedCount, setDisplayedCount] = useState(0);
+
+  // initial loading state (only on mount/refetch all)
+  const [initialLoading, setInitialLoading] = useState(true);
+
+  // recent states
+  const [recentPage, setRecentPage] = useState(1);
+  const [recentPagination, setRecentPagination] = useState(null);
+  const [recentDisplayedCount, setRecentDisplayedCount] = useState(0);
+  const [recentLoading, setRecentLoading] = useState(false);
+
+  // top states
+  const [topPage, setTopPage] = useState(1);
+  const [topPagination, setTopPagination] = useState(null);
+  const [topDisplayedCount, setTopDisplayedCount] = useState(0);
+  const [topLoading, setTopLoading] = useState(false);
+
+  // limits
+  const RECENT_LIMIT = 10;
+  const TOP_LIMIT = 5;
 
   // ─────────────────────────────────────────────
-  // Build URL dynamically (corrected `?` issue)
+  // Build URL dynamically
   // ─────────────────────────────────────────────
-  const buildUrl = (pageToLoad) => {
+  const buildUrl = (pageToLoad, limit) => {
     const params = new URLSearchParams();
 
     if (filter?.asset) params.append("asset", filter.asset);
@@ -21,39 +36,80 @@ export function useFetchPublicOffers(initialPage = 1, limit = 10) {
     if (filter?.amount) params.append("amount", filter.amount);
     if (filter?.sortBy) params.append("sort", filter.sortBy);
 
-    return `/service-provider/offers?${params.toString()}&page=${pageToLoad}&limit=${limit}`;
+    return `/service-provider/explore-offers?${params.toString()}&page=${pageToLoad}&limit=${limit}`;
   };
 
   // ─────────────────────────────────────────────
   // Fetch data helper
   // ─────────────────────────────────────────────
   const fetchPage = useCallback(
-    async (pageToLoad = 1) => {
-      setLoading(true);
+    async ({ type = "recent", pageToLoad = 1 }) => {
       setError(null);
 
+      if (type === "recent") setRecentLoading(true);
+      if (type === "top") setTopLoading(true);
+
       try {
-        const url = buildUrl(pageToLoad);
-        console.log("Fetching:", url);
+        const url =
+          type === "recent"
+            ? buildUrl(pageToLoad, RECENT_LIMIT)
+            : buildUrl(pageToLoad, TOP_LIMIT);
+
+        console.log(url);
 
         const res = await api.get(url);
 
         if (res.status === 200 && res.data?.success) {
-          const { data, pagination } = res.data;
+          const { recentOffers, topOffers } = res.data.data;
 
-          if (pageToLoad === 1) {
-            setOffers(res.data); // Replace
-            setDisplayedCount(data.length);
+          setOffers((prev) => ({
+            ...prev,
+            recent:
+              type === "recent"
+                ? {
+                    data:
+                      pageToLoad === 1
+                        ? recentOffers.data
+                        : [...(prev.recent?.data || []), ...recentOffers.data],
+                    pagination: recentOffers.pagination,
+                  }
+                : prev.recent,
+            top:
+              type === "top"
+                ? {
+                    data:
+                      pageToLoad === 1
+                        ? topOffers.data
+                        : [...(prev.top?.data || []), ...topOffers.data],
+                    pagination: topOffers.pagination,
+                  }
+                : prev.top,
+          }));
+
+          // update pagination + counters
+          if (type === "recent") {
+            setRecentPage(pageToLoad);
+            setRecentPagination(recentOffers.pagination);
+
+            setRecentDisplayedCount((prev) => {
+              const newCount =
+                pageToLoad === 1
+                  ? recentOffers.data.length
+                  : prev + recentOffers.data.length;
+              return Math.min(newCount, recentOffers.pagination.totalItems);
+            });
           } else {
-            setOffers((prev) => ({
-              ...res.data,
-              data: [...prev.data, ...data], // Append
-            }));
-            setDisplayedCount((prev) => prev + data.length);
-          }
+            setTopPage(pageToLoad);
+            setTopPagination(topOffers.pagination);
 
-          setPagination(pagination);
-          setPage(pageToLoad);
+            setTopDisplayedCount((prev) => {
+              const newCount =
+                pageToLoad === 1
+                  ? topOffers.data.length
+                  : prev + topOffers.data.length;
+              return Math.min(newCount, topOffers.pagination.totalItems);
+            });
+          }
         } else {
           throw new Error("Unexpected response format");
         }
@@ -62,38 +118,76 @@ export function useFetchPublicOffers(initialPage = 1, limit = 10) {
           err?.response?.data?.errorMessage || err?.message || "Unknown error"
         );
       } finally {
-        setLoading(false);
+        if (type === "recent") setRecentLoading(false);
+        if (type === "top") setTopLoading(false);
       }
     },
-    [filter, limit, setOffers] // dependency on filter
+    [filter, setOffers]
   );
 
   // ─────────────────────────────────────────────
-  // Refetch when filter changes
+  // First load: fetch both (sets global loading)
   // ─────────────────────────────────────────────
   useEffect(() => {
-    fetchPage(1);
+    let mounted = true;
+
+    async function loadBoth() {
+      setInitialLoading(true);
+      await Promise.all([
+        fetchPage({ type: "recent", pageToLoad: 1 }),
+        fetchPage({ type: "top", pageToLoad: 1 }),
+      ]);
+      if (mounted) setInitialLoading(false);
+    }
+
+    loadBoth();
+
+    return () => {
+      mounted = false;
+    };
   }, [filter, fetchPage]);
 
-  // Manual fetch for reset or refresh
-  const fetchOffers = () => {
-    fetchPage(1);
+  // ─────────────────────────────────────────────
+  // Helpers for manual fetch / pagination
+  // ─────────────────────────────────────────────
+  const fetchRecent = () => fetchPage({ type: "recent", pageToLoad: 1 });
+  const fetchTop = () => fetchPage({ type: "top", pageToLoad: 1 });
+
+  const nextRecent = async () => {
+    if (
+      recentPagination?.hasNextPage &&
+      recentDisplayedCount < (recentPagination?.totalItems || 0)
+    ) {
+      await fetchPage({ type: "recent", pageToLoad: recentPage + 1 });
+    }
   };
 
-  // Load next page
-  const next = async () => {
-    if (pagination?.hasNextPage) {
-      await fetchPage(page + 1);
+  const nextTop = async () => {
+    if (
+      topPagination?.hasNextPage &&
+      topDisplayedCount < (topPagination?.totalItems || 0)
+    ) {
+      await fetchPage({ type: "top", pageToLoad: topPage + 1 });
     }
   };
 
   return {
-    loading,
     error,
-    pagination,
-    page,
-    displayedCount,
-    next,
-    fetchOffers,
+    // global loading
+    initialLoading,
+    // recent
+    recentPage,
+    recentPagination,
+    recentDisplayedCount,
+    recentLoading,
+    fetchRecent,
+    nextRecent,
+    // top
+    topPage,
+    topPagination,
+    topDisplayedCount,
+    topLoading,
+    fetchTop,
+    nextTop,
   };
 }

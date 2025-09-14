@@ -6,7 +6,10 @@ const PublicOffersContext = createContext();
 
 // Create the provider
 export const PublicOffersProvider = ({ children }) => {
-  const [offers, setOffers] = useState(null);
+  const [offers, setOffers] = useState({
+    top: null,
+    recent: null,
+  });
   const [stats, setStats] = useState(false);
   const [filter, setFilter] = useState({
     state: false,

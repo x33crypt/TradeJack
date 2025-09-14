@@ -54,7 +54,7 @@ const DasHboardMenu = () => {
           <p className="text-[13px] font-[500]">Rewards</p>
         </div>
       </div>
-      <div className="bg-tradeAsh p-[12px] rounded-[15px] rounded-br-none h-[100px] border border-tradeAshLight"></div>
+      <div className="bg-tradeAsh p-[12px] rounded-[15px] h-[100px] border border-tradeAshLight"></div>
     </div>
   );
 };

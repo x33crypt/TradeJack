@@ -8,13 +8,14 @@ import lastSeen from "@/utils/lastSeen";
 import toDecimal from "@/utils/toDecimal";
 import { IoMdTime } from "react-icons/io";
 import { windowFormatHour } from "@/utils/windowFormatHour";
-import { windowFormatMinutes } from "@/utils/windowFormatM";
+import { BsStars } from "react-icons/bs";
+import { WiStars } from "react-icons/wi";
 
 const MarketCard = ({ offer }) => {
   const { setAboutOffer } = usePublicOffers();
   const navigateTo = useNavigate();
 
-  const seen = lastSeen(offer?.user?.lastSeen);
+  const seen = lastSeen(offer?.lastSeen);
 
   const handleOfferClick = (offerId) => {
     setAboutOffer((prev) => ({
@@ -38,28 +39,39 @@ const MarketCard = ({ offer }) => {
               </div>
               <div className="flex items-center gap-1">
                 <p className="text-[13px] font-semibold text-white">
-                  {offer?.user?.userName}
+                  {offer?.Username}
                 </p>
                 <p className="text-tradeFadeWhite text-xs font-medium">
-                  <span className={seen.className}>{seen.dot}</span>
+                  <span className={seen?.className}>{seen.dot}</span>
                   {/* Show both dot and text */}
-                 
                 </p>
               </div>
             </div>
 
-            <div className="flex  gap-2">
-              <div className="flex gap-1 items-center">
-                <VscVerifiedFilled className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
-                <p className="text-xs font-medium text-tradeFadeWhite">
-                  Verified offer
-                </p>
+            <div className="flex gap-3">
+              <div className="">
+                {offer?.isVerified ? (
+                  <div className="flex gap-1 items-center">
+                    <VscVerifiedFilled className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
+                    <p className="text-xs font-medium text-tradeFadeWhite">
+                      Verified offer
+                    </p>
+                  </div>
+                ) : (
+                  <div className="flex gap-1 items-center">
+                    <BsStars className="flex text-white text-[16px] flex-shrink-0" />
+                    <p className="text-xs font-medium text-tradeFadeWhite">
+                      New offer
+                    </p>
+                  </div>
+                )}
               </div>
 
               <div className="flex items-center gap-1">
                 <LuUsers className="flex text-tradeOrange text-[14px] flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
-                  +{offer?.user?.userTransactionCount} recent trades
+                  <span className="text-white">+{offer?.completedTrades}</span>{" "}
+                  recent trades
                 </p>
               </div>
             </div>
@@ -70,23 +82,23 @@ const MarketCard = ({ offer }) => {
               <p className="text-base font-semibold text-tradeOrange md:max-w-[120px] lg:max-w-[140px] leading-normal">
                 {offer?.service}
               </p>
-              <p className="text-xs font-semibold text-tradeFadeWhite">
+              <p className="text-xs font-semibold text-white">
                 {offer?.preferredCurrency?.name}
               </p>
             </div>
 
             <div className="flex flex-col gap-1 flex-1 ">
               <div className="flex gap-[5px] w-max">
-                <p className="text-xs font-semibold text-tradeFadeWhite">
-                  <span>Minimum -- </span>{" "}
-                  {toDecimal(offer?.marginRate?.from) || "N/A"}
+                <p className="text-xs font-semibold text-white">
+                  <span className="text-tradeFadeWhite">Minimum -- </span>{" "}
+                  {toDecimal(offer?.purchaseLimits?.minimum) || "N/A"}
                 </p>
               </div>
 
               <div className="flex gap-[5px] w-max">
-                <p className="text-xs font-semibold text-tradeFadeWhite">
-                  <span>Maximum-- </span>{" "}
-                  {toDecimal(offer?.marginRate?.to) || "N/A"}
+                <p className="text-xs font-semibold text-white">
+                  <span className="text-tradeFadeWhite">Maximum -- </span>{" "}
+                  {toDecimal(offer?.purchaseLimits?.maximum) || "N/A"}
                 </p>
               </div>
             </div>
@@ -124,10 +136,16 @@ const MarketCard = ({ offer }) => {
 
             <div className="flex flex-col gap-1">
               <p className="text-base font-semibold text-white leading-norma">
-                1,200.00/$
+                {toDecimal(offer?.marginRate?.ratePrice) || "N/A"}/
+                {offer?.preferredCurrency?.code}
               </p>
-              <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeAshLight text-tradeGreen px-[5px] py-[1px w-max">
-                <p>{offer?.marginRate?.percent || "N/A"}% above market price</p>
+              <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeAshLigh text-tradeFadeWhite px-[5px py-[1px w-max">
+                <p>
+                  <span className="text-red-60">
+                    {offer?.marginRate?.ratePercent || "N/A"}%
+                  </span>{" "}
+                  below market price
+                </p>
               </div>
             </div>
           </div>
@@ -146,7 +164,7 @@ const MarketCard = ({ offer }) => {
               </div>
               <div>
                 <p className="text-[13px] font-semibold text-white">
-                  {offer?.user?.userName}
+                  {offer?.Username}
                 </p>
                 <p className="text-tradeFadeWhite text-xs font-medium">
                   <span className={seen.className}>{seen.text}</span>
@@ -155,17 +173,27 @@ const MarketCard = ({ offer }) => {
             </div>
 
             <div className="flex flex-col items-end gap-1 justify-betwee w-full">
-              <div className="flex gap-1 items-center">
-                <VscVerifiedFilled className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
-                <p className="text-xs font-medium text-tradeFadeWhite">
-                  Verified offer
-                </p>
-              </div>
+              {offer?.isVerified ? (
+                <div className="flex gap-1 items-center">
+                  <VscVerifiedFilled className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
+                  <p className="text-xs font-medium text-tradeFadeWhite">
+                    Verified offer
+                  </p>
+                </div>
+              ) : (
+                <div className="flex gap-1 items-center">
+                  <BsStars className="flex text-white text-[16px] flex-shrink-0" />
+                  <p className="text-xs font-medium text-tradeFadeWhite">
+                    New offer
+                  </p>
+                </div>
+              )}
 
               <div className="flex  items-center gap-1">
                 <LuUsers className="flex text-tradeOrange text-[14px] flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
-                  +{offer?.user?.userTransactionCount} recent trades
+                  <span className="text-white">+{offer?.completedTrades}</span>{" "}
+                  recent trades
                 </p>
               </div>
             </div>
@@ -176,7 +204,7 @@ const MarketCard = ({ offer }) => {
               <p className="text-base font-semibold text-tradeOrange max-w-[150px] leading-normal">
                 {offer?.service}
               </p>
-              <p className="text-xs font-semibold text-tradeFadeWhite">
+              <p className="text-xs font-semibold text-white">
                 {offer?.preferredCurrency?.name}
               </p>
             </div>
@@ -184,23 +212,24 @@ const MarketCard = ({ offer }) => {
             <div className="flex flex-col gap-1 items-end">
               <div className="flex items-center gap-1">
                 <p className="text-base font-semibold text-white leading-normal">
-                  1,200.00/$
+                  {toDecimal(offer?.marginRate?.ratePrice) || "N/A"}/
+                  {/* {offer?.preferredCurrency?.code} */}$
                 </p>
-                <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeAshLight text-tradeGreen px-[5px] py-[1px] w-max">
-                  <p>{offer?.marginRate?.percent || "N/A"}%</p>
+                <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeAshLight text-tradeFadeWhite px-[5px] py-[1px] w-max">
+                  <p>-{offer?.marginRate?.ratePercent || "N/A"}%</p>
                 </div>
               </div>
 
               <div className="flex gap-1 items-end">
                 <div className="flex gap-[5px] w-max">
-                  <p className="text-xs font-semibold text-tradeFadeWhite">
-                    {toDecimal(offer?.marginRate?.from) || "N/A"}
+                  <p className="text-xs font-semibold text-white">
+                    {toDecimal(offer?.purchaseLimits?.minimum) || "N/A"}
                   </p>
                 </div>
                 <p className="text-xs font-semibold text-tradeFadeWhite">--</p>
                 <div className="flex gap-[5px] w-max">
-                  <p className="text-xs font-semibold text-tradeFadeWhite">
-                    {toDecimal(offer?.marginRate?.to) || "N/A"}
+                  <p className="text-xs font-semibold text-white">
+                    {toDecimal(offer?.purchaseLimits?.maximum) || "N/A"}
                   </p>
                 </div>
                 <p className="text-xs font-semibold text-tradeFadeWhite">
