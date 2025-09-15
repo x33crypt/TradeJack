@@ -3,19 +3,19 @@ import api from "@/utils/http/api";
 import { useProfile } from "@/context/userContext/ProfileContext";
 
 export function useFetchProfile() {
-  const { profile, setProfile } = useProfile();
+  const { setProfile, setFeedbacks } = useProfile();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const FetchProfile = async () => {
       try {
-        const response = await api.get("/user");
+        const response = await api.get("/profile/me");
 
         console.log("Profile response:", response); // Log the response for debugging
 
         if (response?.status === 200 && response?.data?.success) {
-          setProfile(response?.data?.data?.user);
+          setProfile(response?.data?.data);
         } else {
           setError("Unexpected response format");
         }

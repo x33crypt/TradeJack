@@ -8,7 +8,7 @@ import { RiDonutChartFill } from "react-icons/ri";
 import { ImBlocked } from "react-icons/im";
 import NetworkError from "../others/NetworkError";
 
-const Stats = ({ loading, profile }) => {
+const Stats = ({ loading, activityStats }) => {
   return (
     <div className="flex-1 flex flex-col md:border border-neutral-800">
       <div className="flex items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
@@ -19,7 +19,7 @@ const Stats = ({ loading, profile }) => {
           <Loading />
         ) : (
           <div className="flex flex-1">
-            {profile === null ? (
+            {activityStats === null ? (
               <NetworkError />
             ) : (
               <div className="flex-wrap flex items-center gap-[10px] overflow-x-hidden ">
@@ -33,8 +33,7 @@ const Stats = ({ loading, profile }) => {
                       Positive Feedbacks
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {profile?.feedback?.positive?.profile?.feedback
-                        ?.positive ?? "0"}
+                      {activityStats?.positiveFeedbacks ?? "1"}
                     </p>
                   </div>
                 </div>
@@ -48,9 +47,7 @@ const Stats = ({ loading, profile }) => {
                       Negative Feedbacks
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {profile?.feedback?.negative
-                        ? profile?.feedback?.negative
-                        : "0"}
+                      {activityStats?.negativeFeedbacks ?? "0"}
                     </p>
                   </div>
                 </div>
@@ -64,7 +61,7 @@ const Stats = ({ loading, profile }) => {
                       Trust Score
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {profile?.trustScore ? profile?.trustScore : "0"}%
+                      {activityStats?.trustScore ?? "0"}%
                     </p>
                   </div>
                 </div>
@@ -78,9 +75,7 @@ const Stats = ({ loading, profile }) => {
                       Trade Partners
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {profile?.totalTradePartners
-                        ? profile?.totalTradePartners
-                        : "0"}
+                      {activityStats?.tradePartners ?? "0"}
                     </p>
                   </div>
                 </div>
@@ -94,7 +89,7 @@ const Stats = ({ loading, profile }) => {
                       Total Trades
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {profile?.totalTrades ? profile?.totalTrades : "0"}
+                      {activityStats?.totalTrades ?? "0"}
                     </p>
                   </div>
                 </div>
@@ -108,12 +103,8 @@ const Stats = ({ loading, profile }) => {
                       Trade Volume
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {profile?.totalTradeVolume?.currency
-                        ? profile?.totalTradeVolume?.currency
-                        : "USD"}{" "}
-                      {profile?.totalTradeVolume
-                        ? profile?.totalTradeVolume?.amount
-                        : "0.00"}
+                      {activityStats?.tradeVolume?.currency ?? "USD"}{" "}
+                      {activityStats?.tradeVolume?.amount ?? "0.00"}
                     </p>
                   </div>
                 </div>
@@ -127,7 +118,7 @@ const Stats = ({ loading, profile }) => {
                       Blocked by
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      0
+                      {activityStats?.blockedBy ?? "0"}
                     </p>
                   </div>
                 </div>
@@ -141,7 +132,7 @@ const Stats = ({ loading, profile }) => {
                       Has Blocked
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      0
+                      {activityStats?.hasBlocked ?? "0"}
                     </p>
                   </div>
                 </div>

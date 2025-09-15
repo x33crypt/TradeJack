@@ -5,14 +5,45 @@ import NetworkError from "@/components/others/NetworkError";
 import { RiLoader4Fill } from "react-icons/ri";
 import { FaSort } from "react-icons/fa";
 import SmallButton from "../buttons/SmallButton";
-import { FaRegCalendarAlt } from "react-icons/fa";
 
-const Feedbacks = ({ loading, profile, heading }) => {
+const Feedbacks = ({
+  loading,
+  feedback,
+  heading,
+  loadingMore,
+  pagination,
+  displayedCount,
+  nextPage,
+}) => {
+  const getSectionStatus = (section) => {
+    const isEmpty = !section?.data || section.data.length === 0;
+    const isEnd =
+      !isEmpty &&
+      section?.pagination &&
+      (!section.pagination.hasNextPage ||
+        section.data.length >= (section.pagination.totalItems || 0));
+
+    let message = null;
+    if (isEmpty) {
+      message = "No activity yet";
+    } else if (isEnd) {
+      message = "End of list";
+    }
+
+    return {
+      isEmpty, // true if no data
+      isEnd, // true if reached end of pagination
+      message, // null if neither, avoids React "object as child" error
+    };
+  };
+
+  const feedbackStatus = getSectionStatus(feedback?.data);
+
   return (
     <div className="flex-1 flex flex-col md:border border-neutral-800">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
         <p className="text-lg font-[700] text-white ">
-          {heading ? heading : "Feedback"}
+          {heading ?? "Feedback"}
         </p>
       </div>
 
@@ -42,15 +73,30 @@ const Feedbacks = ({ loading, profile, heading }) => {
               <Loading />
             ) : (
               <div className="flex flex-1">
-                {profile === null ? (
+                {feedback?.data === null ? (
                   <NetworkError />
                 ) : (
-                  <div className="flex flex-col gap-[5px] w-full h-max">
-                    {[...Array(10)].map((_, index, array) => (
-                      <div key={index}>
-                        <FeedbackCard />
+                  <div className="flex flex-1">
+                    {Array.isArray(feedback?.data) &&
+                    feedback?.data?.length > 0 ? (
+                      <div className="flex flex-col gap-[10px] w-full h-max">
+                        {feedback?.data?.map((feed, index) => (
+                          <div key={feed.id || index}>
+                            <FeedbackCard offer={feed} />
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    ) : (
+                      <div className="flex-1 min-h-[150px] flex flex-col gap-[10px] items-center justify-center">
+                        <p className="text-[13px] font-semibold text-white leading-none">
+                          No Feedbacks Found
+                        </p>
+
+                        <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
+                          Start trading to collect feedback from other users.
+                        </p>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -62,28 +108,30 @@ const Feedbacks = ({ loading, profile, heading }) => {
           <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
             <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
               <SmallButton variant="outline">
-                <p>0</p>
+                <p>{displayedCount}</p>
               </SmallButton>
               <SmallButton variant="outline">
                 <p>of</p>
               </SmallButton>
               <SmallButton variant="outline">
-                <p>0</p>
+                <p>{pagination?.totalItems ? pagination?.totalItems : "0"}</p>
               </SmallButton>
             </div>
 
             <div className="flex gap-[5px] py-[1px]">
               <SmallButton variant="outline">
-                {true ? (
-                  <div>
-                    {false ? (
+                {pagination?.hasNextPage ? (
+                  <div onClick={nextPage}>
+                    {loadingMore ? (
                       <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
                     ) : (
                       <p>Load more</p>
                     )}
                   </div>
                 ) : (
-                  <div>{(isEmpty || isEnd) && <p>{message}</p>}</div>
+                  <div>
+                    <p>{feedbackStatus?.message}</p>
+                  </div>
                 )}
               </SmallButton>
               <SmallButton

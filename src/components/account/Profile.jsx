@@ -7,21 +7,23 @@ import NetworkError from "../others/NetworkError";
 import { shortenEmail } from "@/utils/shortenEmail";
 import { useSensitiveNavigation } from "@/utils/navigateSensitive";
 
-const Profile = ({ loading, profile }) => {
+const Profile = ({ loading, personalInfo }) => {
   const navigateTo = useNavigate();
   const navigateSensitive = useSensitiveNavigation();
+
+  console.log(personalInfo);
 
   return (
     <div className="flex flex-1 md:sticky top-[64px] md:max-h-max  md:border border-t-0 border-tradeAshLight flex-col">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">Profile Information</p>
+        <p className="text-lg font-[700] text-white ">Personal Information</p>
       </div>
       <div className="relative flex flex-col md:h-[460px] min-h-[120px] h-full">
         {loading ? (
           <Loading />
         ) : (
           <div className="flex flex-1">
-            {profile === null ? (
+            {personalInfo === null ? (
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col gap-[10px] md:gap-[5px] p-[15px] ">
@@ -37,7 +39,7 @@ const Profile = ({ loading, profile }) => {
                         Username
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {profile?.userName || "-- --"}
+                        {personalInfo?.username || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -52,9 +54,9 @@ const Profile = ({ loading, profile }) => {
                         Full name
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {profile?.lastName || profile?.firstName
-                          ? `${profile?.lastName || ""} ${
-                              profile?.firstName || ""
+                        {personalInfo?.lastName || personalInfo?.firstName
+                          ? `${personalInfo?.lastName || ""} ${
+                              personalInfo?.firstName || ""
                             }`.trim()
                           : "-- --"}
                       </p>
@@ -74,7 +76,7 @@ const Profile = ({ loading, profile }) => {
                         Email Address
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {shortenEmail(profile?.email) || "-- --"}
+                        {shortenEmail(personalInfo?.email) || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -92,7 +94,7 @@ const Profile = ({ loading, profile }) => {
                         Gender
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {profile?.gender || "-- --"}
+                        {personalInfo?.gender || "-- --"}
                       </p>
                     </div>
                     <div className="text-tradeAsh text-[22px] opacity-0">
@@ -107,7 +109,7 @@ const Profile = ({ loading, profile }) => {
                         Date of birth
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {profile?.dateOfBirth || "-- --"}
+                        {personalInfo?.dateOfBirth || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px] opacity-0">
@@ -127,7 +129,7 @@ const Profile = ({ loading, profile }) => {
                         Mobile number
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {profile?.phone || "-- --"}
+                        {personalInfo?.phone || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -162,7 +164,7 @@ const Profile = ({ loading, profile }) => {
                         KYC Status
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {capitalizeFirst(profile?.kycStatus) || "-- --"}
+                        {capitalizeFirst(personalInfo?.kycStatus) || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -175,7 +177,7 @@ const Profile = ({ loading, profile }) => {
                         Document Type
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {capitalizeFirst(profile?.kycStatus) || "-- --"}
+                        {capitalizeFirst(personalInfo?.documentType) || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px] opacity-0">

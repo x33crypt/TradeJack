@@ -12,7 +12,7 @@ export function useFetchBalance() {
     setError(null);
 
     try {
-      const res = await api.get("/user/balances");
+      const res = await api.get("/profile/balances");
       if (res?.status === 200 && res?.data?.success) {
         setBalance((prev) => ({
           ...prev,

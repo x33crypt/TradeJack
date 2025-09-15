@@ -11,7 +11,9 @@ import { FaUserXmark } from "react-icons/fa6";
 import { TbClockEdit } from "react-icons/tb";
 import { FaUser } from "react-icons/fa";
 
-const HeroEdit = ({ loading, profile }) => {
+const HeroEdit = ({ account }) => {
+  console.log(account);
+
   return (
     <div className="flex-1 flex flex-col md:border border-neutral-800">
       <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
@@ -27,7 +29,7 @@ const HeroEdit = ({ loading, profile }) => {
             <div className="">
               <div className="relative flex md:w-[150px] md:h-[145px]  w-[120px] h-[115px] border-[2px] border-tradeAshExtraLight rounded-[20px] overflow-hidden shrink-0 justify-center items-center cursor-pointer">
                 <div>
-                  {profile?.userName ? (
+                  {account?.username ? (
                     <img
                       className="rounded-[10px] w-full h-auto"
                       src={image}
@@ -47,7 +49,7 @@ const HeroEdit = ({ loading, profile }) => {
               <div className="flex flex-col gap-3 items-center md:items-start">
                 <p className="mt-0 text-white lg:text-[35px] md:text-[30px] text-[25px] font-[900] leading-none ">
                   <span className="text-tradeFadeWhite">@</span>
-                  {profile?.userName ? profile?.userName : "username"}
+                  {account?.username ?? "username"}
                 </p>
               </div>
 
@@ -56,25 +58,25 @@ const HeroEdit = ({ loading, profile }) => {
                   <div className="flex  gap-1 items-center ">
                     <HiLocationMarker className=" flex text-tradeFadeWhite text-[14px] leading-none" />
                     <p className=" text-[13px] font-semibold text-white">
-                      {profile ? "Nigeria" : "Clouds"}
+                      {account?.country ?? "Clouds"}
                     </p>
                   </div>
 
                   <div className="flex  gap-1 items-center ">
                     <FaCircle
                       className={`${
-                        profile?.status === "online"
+                        account?.status === "online"
                           ? "text-tradeGreen"
-                          : profile?.status === "offline"
+                          : account?.status === "offline"
                           ? "text-tradeAshExtraLight"
-                          : profile?.status === "last seen"
+                          : account?.status === "last seen"
                           ? "text-tradeOrange"
                           : "text-tradeAshExtraLight"
                       } flex  text-[11px] leading-none`}
                     />
                     <p className="mt-0 text-white text-[13px] font-semibold">
-                      {profile?.status
-                        ? capitalizeFirst(profile?.status)
+                      {account?.status
+                        ? capitalizeFirst(account?.status)
                         : "Offline"}
                     </p>
                   </div>
@@ -84,8 +86,7 @@ const HeroEdit = ({ loading, profile }) => {
                   <p className=" text-[13px] font-medium text-tradeFadeWhite">
                     Joined{" "}
                     <span className="font-semibold text-white">
-                      {profile?.accAgeInMonths ? profile?.accAgeInMonths : "0"}{" "}
-                      month
+                      {account?.memberSinceMonths ?? "0"} month(s)
                     </span>{" "}
                     ago
                   </p>

@@ -26,9 +26,9 @@ export function useFetchPublicOffers() {
   const TOP_LIMIT = 5;
 
   // ─────────────────────────────────────────────
-  // Build URL dynamically
+  // Build URL dynamically (separate keys for top/recent)
   // ─────────────────────────────────────────────
-  const buildUrl = (pageToLoad, limit) => {
+  const buildUrl = (type, pageToLoad) => {
     const params = new URLSearchParams();
 
     if (filter?.asset) params.append("asset", filter.asset);
@@ -36,7 +36,15 @@ export function useFetchPublicOffers() {
     if (filter?.amount) params.append("amount", filter.amount);
     if (filter?.sortBy) params.append("sort", filter.sortBy);
 
-    return `/service-provider/explore-offers?${params.toString()}&page=${pageToLoad}&limit=${limit}`;
+    if (type === "recent") {
+      params.append("recent_page", pageToLoad);
+      params.append("recent_limit", RECENT_LIMIT);
+    } else {
+      params.append("top_page", pageToLoad);
+      params.append("top_limit", TOP_LIMIT);
+    }
+
+    return `/service-provider/explore-offers?${params.toString()}`;
   };
 
   // ─────────────────────────────────────────────
@@ -50,12 +58,8 @@ export function useFetchPublicOffers() {
       if (type === "top") setTopLoading(true);
 
       try {
-        const url =
-          type === "recent"
-            ? buildUrl(pageToLoad, RECENT_LIMIT)
-            : buildUrl(pageToLoad, TOP_LIMIT);
-
-        console.log(url);
+        const url = buildUrl(type, pageToLoad);
+        console.log("Fetching:", url);
 
         const res = await api.get(url);
 
@@ -126,19 +130,27 @@ export function useFetchPublicOffers() {
   );
 
   // ─────────────────────────────────────────────
-  // First load: fetch both (sets global loading)
+  // First load & when filters change
   // ─────────────────────────────────────────────
   useEffect(() => {
     let mounted = true;
 
-    async function loadBoth() {
+    const loadBoth = async () => {
+      // always reset to true at the start
       setInitialLoading(true);
-      await Promise.all([
-        fetchPage({ type: "recent", pageToLoad: 1 }),
-        fetchPage({ type: "top", pageToLoad: 1 }),
-      ]);
-      if (mounted) setInitialLoading(false);
-    }
+
+      try {
+        await Promise.all([
+          fetchPage({ type: "recent", pageToLoad: 1 }),
+          fetchPage({ type: "top", pageToLoad: 1 }),
+        ]);
+      } finally {
+        if (mounted) {
+          // only reset when results are back
+          setInitialLoading(false);
+        }
+      }
+    };
 
     loadBoth();
 
