@@ -15,6 +15,7 @@ export const UserOfferProvider = ({ children }) => {
   });
 
   const [createOffer, setCreateOffer] = useState({
+    step: 1,
     serviceType: "Online Wallet Transfer",
     service: "",
     serviceId: "",

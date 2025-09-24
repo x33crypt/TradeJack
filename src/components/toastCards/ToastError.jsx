@@ -8,7 +8,7 @@ const ToastError = () => {
   return (
     <div
       className="fixed z-50 w-full px-[15px] md:px-[2.5%] lg:px-0 
-             top-[70px] lg:top-[73px] left-1/2 transform -translate-x-1/2 
+             top-[63px] lg:top-[70px] left-1/2 transform -translate-x-1/2 
              flex justify-center pointer-events-none 
               "
     >
