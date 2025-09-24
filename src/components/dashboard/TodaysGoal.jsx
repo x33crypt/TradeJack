@@ -9,6 +9,11 @@ import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import { MdTimelapse } from "react-icons/md";
 import { RiCopperCoinLine } from "react-icons/ri";
 import ProgressBar from "../others/ProgressBar";
+import { MdPending } from "react-icons/md";
+import { LuBatteryCharging } from "react-icons/lu";
+import { BiSolidBatteryCharging } from "react-icons/bi";
+import { IoFlash } from "react-icons/io5";
+import { PiCoinVerticalBold } from "react-icons/pi";
 
 const TodaysGoal = ({ loading, dashboard }) => {
   const [value, setValue] = useState(20);
@@ -38,17 +43,24 @@ const TodaysGoal = ({ loading, dashboard }) => {
                         <MdOutlineAccessTimeFilled className="text-xl text-tradeFadeWhite" />
                       </div> */}
 
-                      <div className="flex flex-1 flex-col gap-2 items-start">
+                      <div className="flex flex-1 flex-col gap-4 items-start">
                         <div className="flex justify-between items-center gap-1 w-full">
-                          <div className="bg-tradeAshLight text-tradeFadeWhite flex items-center gap-1 border border-tradeAshExtraLight h-max rounded-[8px] p-1 w-max cursor-pointer">
-                            <p className="text-xs font-semibold">
-                              Today's task
+                          <div className="flex items-center gap-1">
+                            <div className="bg-tradeGree text-tradeGreen text-xs flex items-center gap-1 borde border-tradeAshExtraLight h-max rounded-[8px] p- w-max cursor-pointer">
+                              <PiCoinVerticalBold />
+                            </div>
+                            <p className="text-xs text-tradeFadeWhite font-medium">
+                              50 Points
                             </p>
                           </div>
 
-                          <div className="bg-tradeAshLight text-tradeFadeWhite flex items-center gap-1 border border-tradeAshExtraLight h-max rounded-[8px] p-1 w-max cursor-pointer">
-                            <RiCopperCoinLine className="text-xs text-tradeOrange" />
-                            <p className="text-xs font-semibold">50</p>
+                          <div className="flex items-center gap-1">
+                            <div className="bg-tradeGree text-tradeOrange text-xs flex items-center gap-1 borde border-tradeAshExtraLight h-max rounded-[8px] p- w-max cursor-pointer">
+                              <IoFlash />
+                            </div>
+                            <p className="text-xs text-tradeFadeWhite font-medium">
+                              1h 30m left
+                            </p>
                           </div>
                         </div>
 
@@ -56,7 +68,9 @@ const TodaysGoal = ({ loading, dashboard }) => {
                           Complete a trade within 45 minutes
                         </p>
 
-                        <ProgressBar value={10} />
+                        <div className="flex justify-between items-center gap-1 w-full">
+                          <ProgressBar value={80} />
+                        </div>
                       </div>
                     </div>
                   ))}

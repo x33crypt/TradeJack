@@ -15,6 +15,8 @@ const ConfirmPassword = () => {
   const { toast, setToast } = useToast();
   const navigate = useNavigate();
 
+  console.log(password);
+
   const handlePasswordChange = (e) => {
     const rawValue = e.target.value;
     setPassword((prev) => ({
@@ -25,58 +27,48 @@ const ConfirmPassword = () => {
 
   const handleConfirm = async (e) => {
     e.preventDefault();
-    setPassword((prev) => ({
-      ...prev,
-      loading: true,
-    }));
+
+    setPassword((prev) => ({ ...prev, loading: true }));
 
     try {
-      // 1️⃣ Call API to confirm password
+      // 1️⃣ Call API
       const response = await confirmPassword(password);
 
-      if (response.data?.success) {
-        // 2️⃣ Save timestamp of successful confirmation
-        localStorage.setItem("lastPasswordConfirm", Date.now().toString());
+      console.log("response", response);
 
-        // 3️⃣ Redirect to saved sensitive route or default
-        const redirectTo =
-          localStorage.getItem("sensitiveRedirect") || "/dashboard";
-        localStorage.removeItem("sensitiveRedirect"); // clear after use
+      if (response?.success) {
+        // 2️⃣ Compute next state in one go
+        const redirectTo = password?.redirectTo || "/account";
+
+        console.log("redirect to", redirectTo);
 
         setPassword((prev) => ({
           ...prev,
           state: false,
           loading: false,
-          Password: "",
+          password: "",
+          redirectTo: null,
+          lastConfirmed: Date.now().toString(),
         }));
 
-        setToast({
-          ...toast,
-          success: true,
-          errorSuccess: "Password Confirmed",
-        });
-
-        navigate(redirectTo, { replace: true });
+        // 3️⃣ Navigate only after state update
+        navigate(redirectTo);
       } else {
         setToast({
-          ...toast,
           error: true,
           errorMessage:
-            response.data?.message || "Password confirmation failed.",
+            response?.data?.message || "Password confirmation failed.",
         });
       }
     } catch (err) {
       console.error(err);
       setToast({
-        ...toast,
         error: true,
         errorMessage: "An unexpected error occurred. Please try again.",
       });
     } finally {
-      setPassword((prev) => ({
-        ...prev,
-        loading: false,
-      }));
+      // ✅ Ensure loading is false if still true
+      setPassword((prev) => ({ ...prev, loading: false }));
     }
   };
 

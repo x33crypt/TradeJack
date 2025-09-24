@@ -19,7 +19,7 @@ export default function ProgressBar({ value = 0 }) {
         }}
       />
 
-      <p className="text-tradeFadeWhite text-xs font-semibold">{value}%</p>
+      {/* <p className="text-tradeFadeWhite text-xs font-semibold">{value}%</p> */}
     </div>
   );
 }

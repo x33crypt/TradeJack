@@ -124,7 +124,7 @@ const Footer = ({ show }) => {
 
           <div className="w-full flex lg:flex-row flex-col lg:justify-between lg:items-center gap-[20px]">
             <div>
-              <p className="text-2xl text-tradeFadeWhite font-semibold leading-tight">
+              <p className="md:text-2xl text-2xl text-tradeFadeWhite font-semibold leading-tight">
                 {tradingQuotes[quoteIndex]}
               </p>
             </div>
@@ -377,18 +377,13 @@ const Footer = ({ show }) => {
           </div>
         </div>
         <div>
-          <p className="text-xs text-tradeFadeWhite font-medium">
-            "GoGetSwap" is an independent platform and is not affiliated with
-            any of the payment services mentioned below. "GoGetSwap" is a
-            registered trademark of GoGetSwap, Inc., © 2025 GoGetSwap, Inc. All
-            Rights Reserved. GoGetSwap has no relationship with, and is not
-            endorsed by MoneyGram, Western Union, Payoneer, WorldRemit, Paxum,
-            PayPal, Cash App, Amazon, OkPay, Payza, Walmart, Reloadit, Perfect
-            Money, WebMoney, Google Wallet, BlueBird, Serve, Square Cash,
-            NetSpend, Chase QuickPay, Skrill, Vanilla, MyVanilla, OneVanilla,
-            Neteller, Venmo, Apple, ChimpChange, or any other payment method.
-            All respective trademarks, wordmarks, and brand names belong to
-            their rightful owners.
+          <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+            GoGetSwap operates as an independent exchange platform. We are
+            neither affiliated with nor endorsed by MoneyGram, Western Union,
+            Payoneer, PayPal, Amazon, Cash App, or any other financial or
+            payment provider referenced on our site. All company names, logos,
+            and trademarks are the property of their respective owners. © 2025
+            GoGetSwap, Inc. All rights reserved.
           </p>
         </div>
         <div className="flex justify-between items-center w-full  pt-[15px] border-t border-tradeAshLight">

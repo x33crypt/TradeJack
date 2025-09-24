@@ -8,6 +8,7 @@ export const PasswordProvider = ({ children }) => {
     loading: false,
     Password: "",
     redirectTo: null,
+    lastConfirmed: null,
   });
 
   return (

@@ -3,25 +3,25 @@ import { useConfirmPassword } from "@/context/otherContext/PasswordContext";
 import { useNavigate } from "react-router-dom";
 
 export const useSensitiveNavigation = () => {
-  const { setPassword } = useConfirmPassword();
+  const { password, setPassword } = useConfirmPassword();
   const navigate = useNavigate();
 
   const navigateSensitive = (url) => {
-    const lastConfirm = localStorage.getItem("lastPasswordConfirm");
+    console.log("password", password);
+
+    const lastConfirm = password?.lastConfirmed;
     const confirmed =
-      lastConfirm && Date.now() - parseInt(lastConfirm, 10) < 10 * 60 * 1000;
+      lastConfirm && Date.now() - Number(lastConfirm) < 2 * 60 * 1000; // 2 minutes
 
     if (confirmed) {
-      // ✅ Already confirmed password in the last 10 mins → navigate directly
-      navigate(url);
+      // ✅ Already confirmed within last 2 mins → navigate directly
+      navigate(url, { replace: true });
     } else {
-      // ✅ Show modal for password confirmation
-      localStorage.setItem("sensitiveRedirect", url);
-
-      // Open confirm password modal
+      // 🔒 Ask for confirmation
       setPassword((prev) => ({
         ...prev,
-        state: true,
+        state: true, // open modal
+        redirectTo: url,
       }));
     }
   };
