@@ -382,8 +382,8 @@ const Footer = ({ show }) => {
             neither affiliated with nor endorsed by MoneyGram, Western Union,
             Payoneer, PayPal, Amazon, Cash App, or any other financial or
             payment provider referenced on our site. All company names, logos,
-            and trademarks are the property of their respective owners. © 2025
-            GoGetSwap, Inc. All rights reserved.
+            and trademarks are the property of their respective owners. ©{" "}
+            {currentYear} GoGetSwap, Inc. All rights reserved.
           </p>
         </div>
         <div className="flex justify-between items-center w-full  pt-[15px] border-t border-tradeAshLight">
