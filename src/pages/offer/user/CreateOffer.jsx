@@ -21,6 +21,9 @@ import { useUserOffer } from "@/context/userContext/OffersContext";
 import Stepper from "@/components/others/Steppers";
 import MarketDepth from "@/components/offer/global/MarketDepth";
 import { publishOffer } from "@/utils/offer/publishOffer";
+import { CiDiscount1 } from "react-icons/ci";
+import { IoDiscOutline } from "react-icons/io5";
+import { BiTargetLock } from "react-icons/bi";
 
 const CreateOffer = () => {
   const topRef = useRef(null);
@@ -741,8 +744,23 @@ const CreateOffer = () => {
           <MarketDepth />
         </div>
         <div className="flex flex-col min-h-svh w-full md:border-x md:border-t-0 md:border-b border-neutral-800 ">
-          <div className="flex flex-col px-[15px] py-[12px] border-b border-tradeAshLight">
+          {/* <div className="flex flex-col px-[15px] py-[12px] border-b border-tradeAshLight">
             <p className="text-lg text-white font-semibold">Create Offer</p>
+          </div> */}
+
+          <div className="flex flex-col md:flex-row px-[15px] py-[12px] lg:border-b border-tradeAshLight">
+            <div className="flex gap-[2px] justify-between w-full items-center ">
+              <div className="flex lg:flex-row flex-col md:justify-between gap-[2px] lg:text-lg text-2xl w-full">
+                <p className=" font-semibold text-white">Create a New Offer</p>
+                <p className=" font-semibold text-tradeFadeWhite">Step 1</p>
+              </div>
+
+              <div className="flex items-cente md:hidden h-full flex-row md:gap-2 gap-1 items-en">
+                <div className="text-tradeGreen text-5xl fade-pulse">
+                  <BiTargetLock />
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-1 flex-col gap-[50px] p-[15px]">
@@ -752,7 +770,7 @@ const CreateOffer = () => {
                 createOffer?.step === 1 ? "flex" : "hidden"
               } flex-col gap-[40px] h-full justify-between`}
             >
-              <div className="flex flex-col gap-[15px]">
+              <div className="flex flex-col gap-[25px]">
                 <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
                   Start by setting the core details of your offer. Select the
                   asset type you want to trade, choose the specific asset,
@@ -925,7 +943,7 @@ const CreateOffer = () => {
               </div>
 
               <Button onClick={stepTwo} variant="primary">
-                Next Step
+                Proceed
               </Button>
             </div>
 
@@ -1306,7 +1324,7 @@ const CreateOffer = () => {
         </div>
       </div>
 
-      { createOffer?.success && (
+      {createOffer?.success && (
         <div>
           <LockByScroll />
 
