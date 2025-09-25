@@ -82,23 +82,23 @@ const CreateSummary = () => {
           <p className="text-lg text-white font-[700]">Offer Summary</p>
         </div>
 
-        <div className="flex flex-1 flex-col p-[15px] gap-[15px]">
+        <div className="flex flex-1 flex-col p-[15px] gap-[25px]">
           <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-            Double-check that all details, terms, and instructions are accurate
-            and clearly explained before posting.
+            Double-check all details, terms, and instructions are accurate and clear
+            before posting.
           </p>
 
           <div className="flex flex-1 flex-col gap-[50px]">
             <div className="flex flex-col gap-[20px]">
-              <div className="flex flex-col gap-[10px] items-cente bg-tradeAs borde rounded-[15px] border-neutral-800 py-[12px">
+              <div className="flex flex-co gap-[10px] items-cente bg-tradeAs borde rounded-[15px] border-neutral-800 py-[12px">
                 <div>
                   {IconComponent && (
-                    <IconComponent className="text-tradeFadeWhite text-[40px] leading-none" />
+                    <IconComponent className="text-tradeFadeWhite text-[50px] leading-none" />
                   )}
                 </div>
 
-                <div className="flex flex-col gap-[10px]">
-                  <p className="text-tradeOrange text-2xl font-semibold md:w-max w-[200px] leading-snug">
+                <div className="flex flex-col gap-[5px]">
+                  <p className="text-tradeOrange text-lg font-semibold md:w-max w-[200px] leading-snug">
                     {createOffer?.service || "NA"}
                   </p>
 
@@ -214,9 +214,9 @@ const CreateSummary = () => {
                       createOffer.termTags.map((tag, index) => (
                         <div
                           key={index}
-                          className="flex w-max items-center gap-[8px] px-[8px] py-[2px] rounded-[6px] bg-tradeAshLight border border-tradeAshLight"
+                          className="flex w-max items-center gap-[8px] px-[8px] py-[2px] rounded-[8px] bg-tradeAshLight border border-tradeAshLight"
                         >
-                          <p className="text-[13px] font-semibold text-tradeOrange">
+                          <p className="text-[13px] font-semibold text-tradeFadeWhite">
                             {tag}
                           </p>
                         </div>

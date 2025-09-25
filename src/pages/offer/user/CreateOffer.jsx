@@ -1234,31 +1234,33 @@ const CreateOffer = () => {
                         </div>
                       </div>
 
-                      {createOffer?.termTags.length > 0 && (
-                        <div className={`flex gap-[10px] flex-wrap`}>
-                          {createOffer?.termTags.map((tag, index) => (
-                            <div className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[6px] bg-tradeAshLight">
-                              <p
-                                key={index}
-                                className="text-[13px] font-medium text-tradeGreen"
-                              >
-                                {tag}
-                              </p>
-                              <IoClose
-                                className="text-tradeFadeWhite hover:text-white text-[16px] cursor-pointer transition-all duration-300"
-                                onClick={() => {
-                                  setCreateOffer((prev) => ({
-                                    ...prev,
-                                    termTags: prev.termTags.filter(
-                                      (_, i) => i !== index
-                                    ),
-                                  }));
-                                }}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                      <div className="flex p-[8px] border-dashed border border-tradeAshLight rounded-[10px] ">
+                        {createOffer?.termTags.length > 0 && (
+                          <div className={`flex gap-[5px] flex-wrap`}>
+                            {createOffer?.termTags.map((tag, index) => (
+                              <div className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight">
+                                <p
+                                  key={index}
+                                  className="text-[13px] font-semibold text-tradeFadeWhite"
+                                >
+                                  {tag}
+                                </p>
+                                <IoClose
+                                  className="text-tradeFadeWhite hover:text-white text-[16px] cursor-pointer transition-all duration-300"
+                                  onClick={() => {
+                                    setCreateOffer((prev) => ({
+                                      ...prev,
+                                      termTags: prev.termTags.filter(
+                                        (_, i) => i !== index
+                                      ),
+                                    }));
+                                  }}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
 
                       <Info
                         text={
