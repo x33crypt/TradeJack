@@ -29,6 +29,7 @@ export const UserOfferProvider = ({ children }) => {
     instruction: "",
     loading: false,
     success: false,
+    offerId: "",
   });
 
   const [aboutOffer, setAboutOffer] = useState({ id: null, data: null });

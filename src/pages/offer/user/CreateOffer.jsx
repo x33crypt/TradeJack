@@ -20,6 +20,7 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 import { useUserOffer } from "@/context/userContext/OffersContext";
 import Stepper from "@/components/others/Steppers";
 import MarketDepth from "@/components/offer/global/MarketDepth";
+import { publishOffer } from "@/utils/offer/publishOffer";
 
 const CreateOffer = () => {
   const topRef = useRef(null);
@@ -569,14 +570,9 @@ const CreateOffer = () => {
       setCreateOffer((prev) => ({
         ...prev,
         loading: false,
-      }));
-
-      setCreateOffer((prev) => ({
-        ...prev,
-        submitSuccess: true,
+        success: true,
       }));
     } else {
-      console.error("Publish failed:", result.error);
       setCreateOffer((prev) => ({
         ...prev,
         loading: false,
@@ -598,10 +594,6 @@ const CreateOffer = () => {
     scrollToTop();
   }, []);
 
-  const cancel = () => {
-    navigateTo(location?.state?.from || -1);
-  };
-
   const handleViewOffers = () => {
     const id = createOffer?.OfferId;
 
@@ -611,31 +603,46 @@ const CreateOffer = () => {
     }
 
     // Navigate first
-    navigateTo(`/offers/myoffers/${id}`);
+    navigateTo(`/offers/user/${id}/summary`);
 
     // Then reset offer details
     setCreateOffer({
+      step: 1,
       serviceType: "Online Wallet Transfer",
       service: "",
       serviceId: "",
-      currency: { code: "", name: "" },
+      currency: { code: "USD", name: " United States dollar" },
       minimum: "",
       maximum: "",
       margin: 4,
-      paymentWindow: 1,
-      confirmationTime: 1,
+      vendorPaymentWindow: { minutes: 0, hours: 0 },
+      tradersPaymentWindow: { minutes: 0, hours: 0 },
       termTags: [],
       instruction: "",
-      submitSuccess: false,
-      OfferId: "",
+      loading: false,
+      success: false,
+      offerId: "",
     });
   };
 
   const close = () => {
-    setCreateOffer((prev) => ({
-      ...prev,
+    setCreateOffer({
+      step: 1,
+      serviceType: "Online Wallet Transfer",
+      service: "",
+      serviceId: "",
+      currency: { code: "USD", name: " United States dollar" },
+      minimum: "",
+      maximum: "",
+      margin: 4,
+      vendorPaymentWindow: { minutes: 0, hours: 0 },
+      tradersPaymentWindow: { minutes: 0, hours: 0 },
+      termTags: [],
+      instruction: "",
+      loading: false,
       success: false,
-    }));
+      offerId: "",
+    });
   };
 
   const stepOne = () => {
@@ -1299,15 +1306,14 @@ const CreateOffer = () => {
         </div>
       </div>
 
-      {createOffer?.success && (
+      { createOffer?.success && (
         <div>
           <LockByScroll />
-          <div className="fixed top-0 right-0 left-0 bottom-0 lg:px-[2%] md:px-[2.5%] px-[30px]  bg-black bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[350px] min-h-[400px] ">
+
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
-                <p className="text-lg font-[700] text-white ">
-                  Transfer Feedback
-                </p>
+                <p className="text-lg font-[700] text-white ">Offer Created</p>
 
                 <div onClick={close}>
                   <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
@@ -1315,28 +1321,27 @@ const CreateOffer = () => {
               </div>
 
               <div className="flex-1 flex flex-col justify-between py-[15px] gap-[30px]">
-                <div className="flex flex-col gap-[20px]">
+                <div className="flex flex-col gap-[10px]">
                   <div className="flex flex-col items-center justify-center gap-3">
                     <div className="p-[6px] bg-tradeAshLight text-[45px] text-tradeGreen rounded-full">
                       <IoIosCheckmarkCircle />
                     </div>
 
-                    <p className="text-[13px] font-semibold text-tradeFadeWhite">
-                      Offer Created
+                    <p className="text-[13px] font-semibold text-white">
+                      Your offer is live!
                     </p>
                   </div>
 
-                  <div className="mt-[15px] flex flex-col items-center gap-3  justify-center">
+                  <div className="w-full flex flex-col gap-1 bg-tradeAshLigh rounded-[15px]">
                     <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed text-center">
-                      Your offer has been successfully created and published.
-                      You can now view it, monitor its activity, or make changes
-                      from your offers dashboard.
+                      Manage, edit, or pause it whenever you need, giving you
+                      full control over how and when your offer is available.
                     </p>
                   </div>
                 </div>
 
-                <Button onClick={handleViewOffers} variant="secondary">
-                  View All Offers
+                <Button onClick={handleViewOffers} variant="outline">
+                  View Details
                 </Button>
               </div>
             </div>
