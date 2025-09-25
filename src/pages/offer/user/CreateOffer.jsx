@@ -532,7 +532,7 @@ const CreateOffer = () => {
       return showToast("Missing required field: Trade instruction");
     }
 
-    navigateTo("/offers/create/summary");
+    navigateTo("/offers/user/summary");
   };
 
   const handlepublish = async () => {
@@ -930,7 +930,7 @@ const CreateOffer = () => {
               <div className="flex flex-col gap-[15px]">
                 <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
                   In this step, you’ll define your offer’s timing and pricing
-                  structure. Use payment and release windows to set clear
+                  structure. Use transfer and release windows to set clear
                   expectations for both parties, and fine-tune your margin to
                   control profitability.
                 </p>

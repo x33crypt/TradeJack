@@ -66,10 +66,13 @@ const CreateSummary = () => {
     }
   };
 
-  const handleDraft = () => {};
+  const previous = () => {
+    setCreateOffer((prev) => ({
+      ...prev,
+      step: 3,
+    }));
 
-  const cancelButton = () => {
-    navigateTo(location?.state?.from || -1);
+    navigateTo("/offers/user/create");
   };
 
   return (
@@ -246,7 +249,7 @@ const CreateSummary = () => {
                 </div>
               </div>
             </div>
-            {/* <div className="flex flex-col gap-[10px] justify-center items-center">
+            <div className="lg:hidden flex flex-col gap-[10px] justify-center items-center">
               <Button
                 onClick={handlepublish}
                 variant="primary"
@@ -255,10 +258,10 @@ const CreateSummary = () => {
                 Publish Offer
               </Button>
 
-              <Button onClick={cancelButton} variant="outline">
-                Cancel
+              <Button onClick={previous} variant="outline">
+                Previous
               </Button>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
