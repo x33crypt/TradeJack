@@ -69,7 +69,7 @@ const CreateSummary = () => {
   const previous = () => {
     setCreateOffer((prev) => ({
       ...prev,
-      step: 3,
+      step: 1,
     }));
 
     navigateTo("/offers/user/create");
@@ -255,11 +255,11 @@ const CreateSummary = () => {
                 variant="primary"
                 disabled={createOffer?.loading}
               >
-                Publish Offer
+                Go Live
               </Button>
 
               <Button onClick={previous} variant="outline">
-                Previous
+                Make Changes
               </Button>
             </div>
           </div>

@@ -744,15 +744,13 @@ const CreateOffer = () => {
           <MarketDepth />
         </div>
         <div className="flex flex-col min-h-svh w-full md:border-x md:border-t-0 md:border-b border-neutral-800 ">
-          {/* <div className="flex flex-col px-[15px] py-[12px] border-b border-tradeAshLight">
-            <p className="text-lg text-white font-semibold">Create Offer</p>
-          </div> */}
-
           <div className="flex flex-col md:flex-row px-[15px] py-[12px] lg:border-b border-tradeAshLight">
             <div className="flex gap-[2px] justify-between w-full items-center ">
               <div className="flex lg:flex-row flex-col md:justify-between gap-[2px] lg:text-lg text-2xl w-full">
                 <p className=" font-semibold text-white">Create a New Offer</p>
-                <p className=" font-semibold text-tradeFadeWhite">Step 1</p>
+                <p className=" font-semibold text-tradeFadeWhite">
+                  Step {createOffer?.step}
+                </p>
               </div>
 
               <div className="flex items-cente md:hidden h-full flex-row md:gap-2 gap-1 items-en">
@@ -952,7 +950,7 @@ const CreateOffer = () => {
                 createOffer?.step === 2 ? "flex" : "hidden"
               } flex-col gap-[40px] h-full justify-between`}
             >
-              <div className="flex flex-col gap-[15px]">
+              <div className="flex flex-col gap-[25px]">
                 <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
                   In this step, you’ll define your offer’s timing and pricing
                   structure. Use transfer and release windows to set clear
@@ -995,49 +993,51 @@ const CreateOffer = () => {
                         </div>
                       </div>
 
-                      {createOffer?.currency?.code &&
-                        createOffer?.minimum &&
-                        createOffer?.maximum && (
-                          <div className="flex flex-col gap-1">
-                            <p className="text-[13px] text-white font-medium leading-relaxed">
-                              Current{" "}
-                              <span className="text-tradeGreen font-semibold">
-                                {createOffer.currency.code}
-                              </span>{" "}
-                              exchange rate is{" "}
-                              <span className="text-tradeGreen font-semibold">
-                                {rateInfo.baseRate === 0
-                                  ? "0.00"
-                                  : rateInfo.baseRate}
-                                / USD
-                              </span>{" "}
-                            </p>
+                      <div className="flex p-[12px] border-dashed border border-tradeAshLight rounded-[10px] ">
+                        {createOffer?.currency?.code &&
+                          createOffer?.minimum &&
+                          createOffer?.maximum && (
+                            <div className="flex flex-col gap-1">
+                              <p className="text-[13px] text-white font-medium leading-relaxed">
+                                Current{" "}
+                                <span className="text-tradeGreen font-semibold">
+                                  {createOffer.currency.code}
+                                </span>{" "}
+                                exchange rate is{" "}
+                                <span className="text-tradeGreen font-semibold">
+                                  {rateInfo.baseRate === 0
+                                    ? "0.00"
+                                    : rateInfo.baseRate}
+                                  / USD
+                                </span>{" "}
+                              </p>
 
-                            <p className="text-[13px] text-white font-medium leading-relaxed">
-                              You’re offering a{" "}
-                              <span className="text-tradeGreen font-semibold">
-                                {createOffer?.margin}% profit margin
-                              </span>
-                              . This means for every{" "}
-                              <span className="text-tradeGreen font-semibold">
-                                1.00 {createOffer.currency.code}
-                              </span>{" "}
-                              you trade, your rate is{" "}
-                              <span className="text-tradeGreen font-semibold">
-                                {rateInfo.finalRate}/USD
-                              </span>
-                              , and you’ll earn about{" "}
-                              <span className="text-tradeGreen font-semibold">
-                                {rateInfo.profit} {createOffer.currency.code}
-                              </span>{" "}
-                              which is equivalent to{" "}
-                              <span className="text-tradeGreen font-semibold">
-                                0.00 USD
-                              </span>{" "}
-                              as profit.
-                            </p>
-                          </div>
-                        )}
+                              <p className="text-[13px] text-white font-medium leading-relaxed">
+                                You’re offering a{" "}
+                                <span className="text-tradeGreen font-semibold">
+                                  {createOffer?.margin}% profit margin
+                                </span>
+                                . This means for every{" "}
+                                <span className="text-tradeGreen font-semibold">
+                                  1.00 {createOffer.currency.code}
+                                </span>{" "}
+                                you trade, your rate is{" "}
+                                <span className="text-tradeGreen font-semibold">
+                                  {rateInfo.finalRate}/USD
+                                </span>
+                                , and you’ll earn about{" "}
+                                <span className="text-tradeGreen font-semibold">
+                                  {rateInfo.profit} {createOffer.currency.code}
+                                </span>{" "}
+                                which is equivalent to{" "}
+                                <span className="text-tradeGreen font-semibold">
+                                  0.00 USD
+                                </span>{" "}
+                                as profit.
+                              </p>
+                            </div>
+                          )}
+                      </div>
 
                       <Info
                         text={
@@ -1183,7 +1183,7 @@ const CreateOffer = () => {
 
               <div className="flex flex-col gap-[10px]">
                 <Button onClick={stepThree} variant="primary">
-                  Next Step
+                  Proceed
                 </Button>
 
                 <Button onClick={stepOne} variant="outline">
@@ -1197,7 +1197,7 @@ const CreateOffer = () => {
                 createOffer?.step === 3 ? "flex" : "hidden"
               } flex-col gap-[40px] h-full justify-between`}
             >
-              <div className="flex flex-col gap-[15px]">
+              <div className="flex flex-col gap-[25px]">
                 <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
                   This final step shapes the trading experience. Use terms to
                   communicate any specific conditions and instructions to guide
@@ -1277,7 +1277,7 @@ const CreateOffer = () => {
                         <textarea
                           onChange={handleInstruction}
                           value={createOffer?.instruction}
-                          className="h-[150px] w-full bg-transparent border-none p-[12px] text-white text-sm font-medium placeholder-tradeFadeWhite focus:outline-none resize-none"
+                          className=" min-h-[45px] w-full bg-transparent border-none p-[12px] text-white text-sm font-medium placeholder-tradeFadeWhite focus:outline-none resize-non"
                           placeholder="Write your trade Instructions here."
                         ></textarea>
                       </div>
@@ -1299,19 +1299,19 @@ const CreateOffer = () => {
                     disabled={createOffer?.loading}
                     variant="primary"
                   >
-                    Publish Offer
+                    Go Live
                   </Button>
                 </div>
 
                 <div className="flex lg:hidden">
                   <Button onClick={proceedToSummary} variant="primary">
-                    Proceed to Summary
+                    Preview Offer
                   </Button>
                 </div>
 
                 <div className={`${createOffer?.loading ? "hidden" : "flex"}`}>
                   <Button onClick={stepTwo} variant="outline">
-                    Previous
+                    Make Changes
                   </Button>
                 </div>
               </div>
