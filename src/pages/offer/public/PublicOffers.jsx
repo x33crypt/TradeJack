@@ -169,8 +169,8 @@ const PublicOffers = () => {
             <div className="flex gap-[2px] justify-between w-full items-center ">
               <div className="flex lg:flex-row flex-col md:justify-between gap-[2px] lg:text-lg text-2xl w-full">
                 <p className=" font-semibold text-white">Explore Offers</p>
-                <p className=" font-semibold text-tradeFadeWhite md:w-max w-[300px]">
-                  Secure, Seamless P2P Marketplace
+                <p className=" font-semibold text-tradeFadeWhite md:w-max w-[260px]">
+                  Seamless & Secure P2P Marketplace.
                 </p>
               </div>
 
