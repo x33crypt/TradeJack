@@ -182,7 +182,7 @@ const MarketCard = ({ offer }) => {
                 </div>
               ) : (
                 <div className="flex gap-1 items-center">
-                  <BsStars className="flex text-white text-[16px] flex-shrink-0" />
+                  <BsStars className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
                   <p className="text-xs font-medium text-tradeFadeWhite">
                     New offer
                   </p>
@@ -190,7 +190,7 @@ const MarketCard = ({ offer }) => {
               )}
 
               <div className="flex  items-center gap-1">
-                <LuUsers className="flex text-tradeOrange text-[14px] flex-shrink-0" />
+                <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
                   <span className="text-white">+{offer?.completedTrades}</span>{" "}
                   recent trades
@@ -204,7 +204,7 @@ const MarketCard = ({ offer }) => {
               <p className="text-base font-semibold text-tradeOrange max-w-[150px] leading-normal">
                 {offer?.service}
               </p>
-              <p className="text-xs font-semibold text-white">
+              <p className="text-xs font-semibold text-tradeFadeWhite">
                 {offer?.preferredCurrency?.name}
               </p>
             </div>

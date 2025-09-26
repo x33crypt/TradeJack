@@ -14,6 +14,8 @@ import { PiSlidersHorizontalBold } from "react-icons/pi";
 import { FcLineChart } from "react-icons/fc";
 import { IoClose } from "react-icons/io5";
 import withComma from "@/utils/withComma";
+import { BiStats } from "react-icons/bi";
+import { IoScanCircleSharp } from "react-icons/io5";
 
 const PublicOffers = () => {
   const topRef = useRef(null);
@@ -156,10 +158,30 @@ const PublicOffers = () => {
           <Filter />
         </div>
         <div className="flex flex-1 flex-col min-h-svh md:border-x md:border-t-0 lg:border-b border-neutral-800  gap-[15px ">
-          <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
+          {/* <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
             <p className="text-lg font-[700] text-white ">
               Secure P2P Marketplace
             </p>
+          </div> */}
+
+          <div className="flex flex-col md:flex-row px-[15px] py-[12px] lg:border-b border-tradeAshLight">
+            <div className="flex gap-[2px] justify-between w-full items-center ">
+              <div className="flex lg:flex-row flex-col md:justify-between gap-[2px] lg:text-lg text-2xl w-full">
+                <p className=" font-semibold text-white">Explore Offers</p>
+                <p className=" font-semibold text-tradeFadeWhite md:w-full w-[300px]">
+                  Secure, Seamless P2P Marketplace
+                </p>
+              </div>
+
+              <div className="flex items-cente md:hidden h-full flex-row md:gap-2 gap-1 items-en">
+                <div
+                  onClick={showStats}
+                  className="text-tradeGreen text-5xl fade-pulse cursor-pointer"
+                >
+                  <IoScanCircleSharp />
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col gap-[40px]">
@@ -178,10 +200,10 @@ const PublicOffers = () => {
                       </SmallButton>
                     </div>
 
-                    <SmallButton variant="fadeout" onClick={showStats}>
+                    {/* <SmallButton variant="fadeout" onClick={showStats}>
                       <FcLineChart />
                       <p>Stats</p>
-                    </SmallButton>
+                    </SmallButton> */}
                   </div>
                 </div>
               </div>
@@ -283,10 +305,10 @@ const PublicOffers = () => {
                       </SmallButton>
                     </div>
 
-                    <SmallButton variant="fadeout" onClick={showStats}>
+                    {/* <SmallButton variant="fadeout" onClick={showStats}>
                       <FcLineChart />
                       <p>Stats</p>
-                    </SmallButton>
+                    </SmallButton> */}
                   </div>
                 </div>
               </div>
