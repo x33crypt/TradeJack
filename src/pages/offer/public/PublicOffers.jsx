@@ -16,6 +16,7 @@ import { IoClose } from "react-icons/io5";
 import withComma from "@/utils/withComma";
 import { BiStats } from "react-icons/bi";
 import { IoScanCircleSharp } from "react-icons/io5";
+import { TbBinocularsFilled } from "react-icons/tb";
 
 const PublicOffers = () => {
   const topRef = useRef(null);
@@ -168,7 +169,7 @@ const PublicOffers = () => {
             <div className="flex gap-[2px] justify-between w-full items-center ">
               <div className="flex lg:flex-row flex-col md:justify-between gap-[2px] lg:text-lg text-2xl w-full">
                 <p className=" font-semibold text-white">Explore Offers</p>
-                <p className=" font-semibold text-tradeFadeWhite md:w-full w-[300px]">
+                <p className=" font-semibold text-tradeFadeWhite md:w-max w-[300px]">
                   Secure, Seamless P2P Marketplace
                 </p>
               </div>
@@ -176,9 +177,9 @@ const PublicOffers = () => {
               <div className="flex items-cente md:hidden h-full flex-row md:gap-2 gap-1 items-en">
                 <div
                   onClick={showStats}
-                  className="text-tradeGreen text-5xl fade-pulse cursor-pointer"
+                  className="text-tradeGreen text-6xl fade-pulse cursor-pointer"
                 >
-                  <IoScanCircleSharp />
+                  <TbBinocularsFilled />
                 </div>
               </div>
             </div>
