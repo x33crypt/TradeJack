@@ -570,7 +570,9 @@ const CreateOffer = () => {
     console.log("Offer published:", result);
 
     if (result.success) {
-      const offerId = result.data.data.offerId;
+      const offerId = result.offerId;
+
+      console.log("Offer ID:", offerId);
 
       setCreateOffer((prev) => ({
         ...prev,
@@ -601,7 +603,7 @@ const CreateOffer = () => {
   }, []);
 
   const handleViewOffers = () => {
-    const id = createOffer?.OfferId;
+    const id = createOffer?.offerId;
 
     if (!id) {
       console.error("Offer ID is missing. Cannot navigate.");
@@ -609,7 +611,7 @@ const CreateOffer = () => {
     }
 
     // Navigate first
-    navigateTo(`/offers/user/${id}/summary`);
+    navigateTo(`/offers/user/${id}`);
 
     // Then reset offer details
     setCreateOffer({

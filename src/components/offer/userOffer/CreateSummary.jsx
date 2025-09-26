@@ -42,10 +42,13 @@ const CreateSummary = () => {
     console.log("Offer published:", result);
 
     if (result.success) {
-      const offerId = result.data.data.offerId;
+      const offerId = result.offerId;
+
+      navigateTo("/offers/user/create");
 
       setCreateOffer((prev) => ({
         ...prev,
+        step: 1,
         loading: false,
         success: true,
         offerId: offerId,
