@@ -42,17 +42,15 @@ const CreateSummary = () => {
     console.log("Offer published:", result);
 
     if (result.success) {
-      setCreateOffer((prev) => ({
-        ...prev,
-        loading: false,
-      }));
+      const offerId = result.data.data.offerId;
 
       setCreateOffer((prev) => ({
         ...prev,
-        submitSuccess: true,
+        loading: false,
+        success: true,
+        offerId: offerId,
       }));
     } else {
-      console.error("Publish failed:", result.error);
       setCreateOffer((prev) => ({
         ...prev,
         loading: false,
@@ -84,8 +82,8 @@ const CreateSummary = () => {
 
         <div className="flex flex-1 flex-col p-[15px] gap-[25px]">
           <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-            Double-check all details, terms, and instructions are accurate and clear
-            before posting.
+            Double-check all details, terms, and instructions are accurate and
+            clear before posting.
           </p>
 
           <div className="flex flex-1 flex-col gap-[50px]">
@@ -93,12 +91,12 @@ const CreateSummary = () => {
               <div className="flex flex-co gap-[10px] items-cente bg-tradeAs borde rounded-[15px] border-neutral-800 py-[12px">
                 <div>
                   {IconComponent && (
-                    <IconComponent className="text-tradeFadeWhite text-[50px] leading-none" />
+                    <IconComponent className="text-white text-[50px] leading-none" />
                   )}
                 </div>
 
-                <div className="flex flex-col gap-[5px]">
-                  <p className="text-tradeOrange text-lg font-semibold md:w-max w-[200px] leading-snug">
+                <div className="flex flex-col gap-[10px]">
+                  <p className="text-tradeOrange text-xl font-semibold leading-snug">
                     {createOffer?.service || "NA"}
                   </p>
 

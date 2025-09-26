@@ -570,10 +570,13 @@ const CreateOffer = () => {
     console.log("Offer published:", result);
 
     if (result.success) {
+      const offerId = result.data.data.offerId;
+
       setCreateOffer((prev) => ({
         ...prev,
         loading: false,
         success: true,
+        offerId: offerId,
       }));
     } else {
       setCreateOffer((prev) => ({
@@ -1235,7 +1238,7 @@ const CreateOffer = () => {
                       </div>
 
                       <div className="flex p-[8px] border-dashed border border-tradeAshLight rounded-[10px] ">
-                        {createOffer?.termTags.length > 0 && (
+                        {createOffer?.termTags.length > 0 ? (
                           <div className={`flex gap-[5px] flex-wrap`}>
                             {createOffer?.termTags.map((tag, index) => (
                               <div className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight">
@@ -1246,7 +1249,7 @@ const CreateOffer = () => {
                                   {tag}
                                 </p>
                                 <IoClose
-                                  className="text-tradeFadeWhite hover:text-white text-[16px] cursor-pointer transition-all duration-300"
+                                  className="text-tradeFadeWhite hover:text-red-600 text-[16px] cursor-pointer transition-all duration-300"
                                   onClick={() => {
                                     setCreateOffer((prev) => ({
                                       ...prev,
@@ -1258,6 +1261,12 @@ const CreateOffer = () => {
                                 />
                               </div>
                             ))}
+                          </div>
+                        ) : (
+                          <div>
+                            <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                              No terms selected. Click above to add some.
+                            </p>
                           </div>
                         )}
                       </div>
