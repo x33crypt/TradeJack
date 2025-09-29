@@ -43,6 +43,7 @@ const AboutPublicOffer = () => {
     scrollToTop();
   };
 
+  // Handle proceed pre trade check from calculator
   const handlePreTradeCheck = () => {
     setCalculator((prev) => ({
       ...prev,
@@ -51,7 +52,7 @@ const AboutPublicOffer = () => {
 
     setPreTradeCheck((prev) => ({
       ...prev,
-      state: true,
+      checking: true,
     }));
   };
 
@@ -178,8 +179,21 @@ const AboutPublicOffer = () => {
                     </div>
                     <div>
                       <p className="text-xs font-semibold  text-white">
-                        <span className="text-tradeOrange">1,239 NGN</span> / 1{" "}
+                        <span className="text-white">1,239 NGN</span> / 1{" "}
                         {offer?.preferredCurrency?.code ?? "USD"}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <div className="flex gap-1 items-center">
+                      {/* <RiExchange2Fill className="flex text-tradeFadeWhite text-base flex-shrink-0" /> */}
+                      <p className="text-xs font-semibold text-tradeFadeWhite">
+                        Service fee
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold  text-white">
+                        0.00 NGN
                       </p>
                     </div>
                   </div>

@@ -19,7 +19,7 @@ const OfferFeedback = () => {
             <div className="flex gap-[5px]">
               <SmallButton variant="fadeout">
                 <FaSort />
-                <p>Resent </p>
+                <p>Recent </p>
               </SmallButton>
             </div>
             <div className="flex gap-[5px]">
@@ -48,8 +48,8 @@ const OfferFeedback = () => {
                   <div className="flex gap-[20px] flex-1 flex-col">
                     <div>
                       <p className="flex text-xs text-tradeFadeWhite font-medium">
-                       Feedbacks are carefully verified and provided by real
-                        users who have successfully traded with this vendor.
+                        Feedbacks are carefully verified and provided by users
+                        who have successfully traded with this vendor.
                       </p>
                     </div>
                     <div className="flex flex-col gap-[10px] w-full h-max">
