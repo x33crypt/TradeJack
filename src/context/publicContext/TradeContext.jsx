@@ -12,6 +12,7 @@ export const TradeProvider = ({ children }) => {
     isEscrowSecured: false,
     isStatusVerified: false,
     success: false,
+    countdown: "03:00",
   });
 
   const [trade, setTrade] = useState({

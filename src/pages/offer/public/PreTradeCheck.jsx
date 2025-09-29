@@ -163,9 +163,13 @@ const PreTradeCheck = () => {
 
               <div className="flex-1 flex flex-col justify-between py-[12px] gap-[15px]">
                 <div className="flex flex-col gap-4 ">
-                  <div className="flex gap-[10px] justify-between">
-                    <div className="flex flex-col gap-[10px]">
-                      <p className="text-xs font-semibold text-tradeFadeWhite">
+                  <div className="flex justify-center items">
+                    <HiOutlineUserCircle className="flex text-white text-6xl flex-shrink-0" />
+                    {/* <p className="text-white font-semibold">{countdownTime}</p> */}
+                  </div>
+                  <div className="flex gap-[10px] justify-center">
+                    <div className="flex flex-col gap-[10px] justify-center items-center">
+                      <p className="text-xs font-semibold text-tradeFadeWhite leading-none">
                         Gift Cards Exchange
                       </p>
 
@@ -178,36 +182,49 @@ const PreTradeCheck = () => {
                       </p>
                     </div>
 
-                    <div>
+                    {/* <div>
                       <HiOutlineUserCircle className="flex text-white text-4xl flex-shrink-0" />
-                    </div>
+                    </div> */}
                   </div>
 
-                  <Info
+                  {/* <Info
                     text={
                       "Please send the exact amount shown. Sending more or less may cause unnecessary disputes or processing delays"
                     }
-                  />
+                  /> */}
 
                   <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
                     <p className="text-tradeFadeWhite font-medium text-xs">
-                      The trade will auto-cancel if the vendor doesn’t respond.
-                      You can re-initiate this trade or explore other offers.
+                      Note : This trade will auto-cancel if{" "}
+                      <span className="text-white font-semibold">@sane</span>{" "}
+                      refuses to accept or respond. You can re-initiate the
+                      trade or explore other offers.
                     </p>
                   </div>
                 </div>
 
                 <div>
                   {countdownTime !== "00:00" ? (
-                    <Button variant="Fadeout">{countdownTime}</Button>
+                    <div className="flex flex-col gap-[10px]">
+                      <Button variant="Fadeout"> {countdownTime}</Button>
+                    </div>
                   ) : (
-                    <Button
-                      onClick={handleCancelTrade}
-                      variant="Fadeout"
-                      // disabled={loading}
-                    >
-                      <p> Cancel Trade</p>
-                    </Button>
+                    <div className="flex flex-col gap-[10px]">
+                      <Button
+                        onClick={handleCancelTrade}
+                        variant="Fadeout"
+                        // disabled={loading}
+                      >
+                        <p>Re-initiate this trade</p>
+                      </Button>
+                      <Button
+                        onClick={handleCancelTrade}
+                        variant="Fadeout"
+                        // disabled={loading}
+                      >
+                        <p>See ralated offers</p>
+                      </Button>
+                    </div>
                   )}
                 </div>
               </div>

@@ -19,7 +19,7 @@ const OfferFeedback = () => {
             <div className="flex gap-[5px]">
               <SmallButton variant="fadeout">
                 <FaSort />
-                <p>Recent</p>
+                <p>Most Recent</p>
               </SmallButton>
             </div>
             <div className="flex gap-[5px]">
@@ -45,12 +45,20 @@ const OfferFeedback = () => {
                 {false ? (
                   <NetworkError />
                 ) : (
-                  <div className="flex flex-col gap-[10px] w-full h-max">
-                    {[...Array(5)].map((_, index, array) => (
-                      <div key={index}>
-                        <FeedbackCard />
-                      </div>
-                    ))}
+                  <div className="flex gap-[20px] flex-1 flex-col">
+                    <div>
+                      <p className="flex text-xs text-tradeFadeWhite font-medium">
+                        All feedback is carefully verified and provided by real
+                        users who have successfully traded with this vendor.
+                      </p>
+                    </div>
+                    <div className="flex flex-col gap-[10px] w-full h-max">
+                      {[...Array(5)].map((_, index, array) => (
+                        <div key={index}>
+                          <FeedbackCard />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

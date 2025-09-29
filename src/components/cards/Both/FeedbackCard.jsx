@@ -77,7 +77,7 @@ const FeedbackCard = () => {
               <img className="rounded-full w-10" src={image} alt="" />
             </div>
             <div className="flex flex-col gap-1">
-              <div className="bg-transparent text-tradeFadeWhite flex items-center gap-1 border border-tradeAshExtraLight h-max bg-tradeAshLight rounded-[8px] p-1 w-max">
+              <div className="bg-transparent text-white flex items-center gap-1 border border-tradeAshExtraLight h-max bg-tradeAshLight rounded-[8px] p-1 w-max">
                 <p className="text-xs font-semibold">Low Amount</p>
               </div>
 
@@ -93,7 +93,7 @@ const FeedbackCard = () => {
           </div>
         </div>
         <div className="flex w-full justify-between border-t border-dashed border-tradeAshLight pt-2">
-          <p className="flex text-white text-[13px] font-semibold leading-normal">
+          <p className="flex text-tradeFadeWhite text-[13px] font-semibold leading-normal">
             Absolutely great experience working with you!
           </p>
         </div>

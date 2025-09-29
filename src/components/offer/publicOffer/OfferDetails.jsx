@@ -33,15 +33,21 @@ import { MdVerifiedUser } from "react-icons/md";
 import { LuUsers } from "react-icons/lu";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { windowFormatHour } from "@/utils/windowFormatHour";
+import { BsStars } from "react-icons/bs";
+
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
 
-  const offer = aboutOffer?.data;
+  console.log("offer details :", aboutOffer);
 
   const navigateTo = useNavigate();
 
-  const seen = lastSeen(offer?.user?.lastSeen);
+  const offer = aboutOffer?.data?.offerDetails;
+  const user = aboutOffer?.data?.traderInfo;
+  const feedback = aboutOffer?.data?.offerFeedback?.data;
+
+  const seen = lastSeen(user?.lastSeen);
 
   console.log("last seen :", seen);
 
@@ -64,7 +70,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
           <Loading />
         ) : (
           <div className="flex flex-1">
-            {aboutOffer === null ? (
+            {aboutOffer?.data === null ? (
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px]  gap-[20px] p-[15px]">
@@ -76,7 +82,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </p>
                     </div>
 
-                    <div className="flex gap-[10px] items-center justify-between md:justify-normal w-full">
+                    <div className="flex gap-[10px] items-center justify-between  w-full">
                       <div className="flex gap-1 items-center">
                         <div className="flex   cursor-pointer">
                           {false ? (
@@ -92,43 +98,62 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           )}
                         </div>
                         <p
-                          onClick={() =>
-                            handleTraderClick(offer?.user?.userName)
-                          }
-                          className=" flex text-sm gap-1 items-center text-white font-semibold leading-none cursor-pointer w-max hover:underline transition-all duration-300"
+                          onClick={() => handleTraderClick(user?.username)}
+                          className=" flex text-[13px] gap-1 items-center text-white font-semibold leading-none cursor-pointer w-max hover:underline transition-all duration-300"
                         >
-                          @{offer?.user?.userName}
+                          @{user?.username}
                         </p>
                       </div>
 
                       <div className="flex gap-1 ">
                         {seen && (
-                          <p className="text-tradeFadeWhite text-xs font-semibold">
+                          <p className="text-white text-[13px] font-semibold">
+                            Last seen :{" "}
                             <span className={seen.className}>{seen.text}</span>
                           </p>
                         )}
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-[10px] ">
-                    <p className="text-tradeOrange text-3xl font-semibold md:w-max w-[200px] leading-snug ">
-                      {offer?.service}
-                    </p>
-                    <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
-                      {offer?.serviceType}
-                    </p>
+                  <div className="flex flex-col gap-[20px] ">
+                    <div className="flex flex-col gap-[10px] ">
+                      <p className="text-white text-3xl font-semibold md:w-max w-[200px] leading-none ">
+                        {offer?.serviceName || "N/A"}
+                      </p>
+                      <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
+                        {offer?.serviceType || "N/A"}
+                      </p>
+                    </div>
 
-                    <div className="flex gap-4 flex-wrap">
-                      <div className="flex gap-1 items-center">
-                        <VscVerifiedFilled className="flex text-tradeFadeWhite text-base flex-shrink-0" />
-                        <p className="text-xs font-semibold text-white">
-                          Verified Offer
-                        </p>
+                    <div className="flex flex-col gap-[10px]">
+                      <div className="flex gap-4 flex-wrap">
+                        {offer?.isVerifiedOffer ? (
+                          <div className="flex gap-1 items-center">
+                            <VscVerifiedFilled className="flex text-tradeFadeWhite text-base flex-shrink-0" />
+                            <p className="text-xs font-semibold text-white">
+                              Verified Offer
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="flex gap-1 items-center">
+                            <BsStars className="flex text-tradeFadeWhite text-base flex-shrink-0" />
+                            <p className="text-xs font-semibold text-white">
+                              New Offer
+                            </p>
+                          </div>
+                        )}
+                        <div className="flex  items-center gap-1">
+                          <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+                          <p className="text-xs font-semibold text-white">
+                            +{offer?.completedTrades ?? "0"} Recent Trades
+                          </p>
+                        </div>
                       </div>
-                      <div className="flex  items-center gap-1">
-                        <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+
+                      <div className="flex gap-1 items-center">
+                        <FaCalendarDay className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
-                          +{offer?.user?.userTransactionCount} recent trades
+                          Last Updated 31 Aug, 2025
                         </p>
                       </div>
                     </div>
@@ -145,8 +170,9 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           </p>
                         </div>
 
-                        <p className="text-white text-2xl font-semibold leading-none">
-                          1,250/{offer?.preferredCurrency?.code || "N/A"}
+                        <p className="text-white text-xl font-semibold leading-none">
+                          {offer?.marginRate?.ratePrice}/
+                          {offer?.preferredCurrency?.code || "N/A"}
                         </p>
                       </div>
 
@@ -156,7 +182,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                             Margin
                           </p>
                           <div className="flex items-center gap-[2px] text-[13px] font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
-                            <p>{offer?.marginRate?.percent || "N/A"}%</p>
+                            <p>{offer?.marginRate?.ratePercent || "N/A"}%</p>
                           </div>
                         </div>
 
@@ -185,7 +211,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           </p>
 
                           <p className="text-white text-[13px]  font-semibold">
-                            {toDecimal(offer?.marginRate?.from) || "N/A"}{" "}
+                            {toDecimal(offer?.purchaseLimit?.minimum) || "N/A"}{" "}
                             {offer?.preferredCurrency?.code || "N/A"}
                           </p>
                         </div>
@@ -195,7 +221,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           </p>
 
                           <p className="text-white text-[13px] font-semibold">
-                            {toDecimal(offer?.marginRate?.to) || "N/A"}{" "}
+                            {toDecimal(offer?.purchaseLimit?.maximum) || "N/A"}{" "}
                             {offer?.preferredCurrency?.code || "N/A"}
                           </p>
                         </div>
@@ -217,8 +243,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                           <p className="text-white text-[13px]  font-semibold">
                             {windowFormatHour(
-                              offer?.transferWindow?.hours,
-                              offer?.transferWindow?.minutes
+                              offer?.paymentWindow?.transfer?.hours,
+                              offer?.paymentWindow?.transfer?.minutes
                             )}
                           </p>
                         </div>
@@ -230,8 +256,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                           <p className="text-white text-[13px] font-semibold">
                             {windowFormatHour(
-                              offer?.releaseWindow?.hours,
-                              offer?.releaseWindow?.minutes
+                              offer?.paymentWindow?.release?.hours,
+                              offer?.paymentWindow?.release?.minutes
                             )}
                           </p>
                         </div>
@@ -246,11 +272,17 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </p>
                     </div>
                     <div className="w-full flex gap-2 flex-grow flex-wrap">
-                      {offer?.terms?.map((term, index) => (
-                        <p className="text-[13px] w-max h-max text-tradeOrange font-semibold py-[4px] px-[10px] border border-tradeAshLight bg-tradeAshLight rounded-[10px]">
-                          {term}
+                      {offer?.tags ? (
+                        offer?.tags?.map((term, index) => (
+                          <p className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight text-[13px] font-semibold text-white">
+                            {term}
+                          </p>
+                        ))
+                      ) : (
+                        <p className="text-[13px] font-semibold text-white">
+                          N/A
                         </p>
-                      ))}
+                      )}
                     </div>
                   </div>
 

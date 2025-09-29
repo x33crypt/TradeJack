@@ -29,7 +29,7 @@ const MarketCard = ({ offer }) => {
     <>
       <div
         onClick={() => handleOfferClick(offer?.offerId)}
-        className="hidden md:flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 "
+        className="hidden md:flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer "
       >
         <div className="flex flex-col gap-3">
           <div className="flex justify-between w-full items-center border-b border-dashed border-tradeAshLight pb-2">
@@ -59,7 +59,7 @@ const MarketCard = ({ offer }) => {
                   </div>
                 ) : (
                   <div className="flex gap-1 items-center">
-                    <BsStars className="flex text-white text-[16px] flex-shrink-0" />
+                    <BsStars className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
                     <p className="text-xs font-medium text-tradeFadeWhite">
                       New offer
                     </p>
@@ -68,7 +68,7 @@ const MarketCard = ({ offer }) => {
               </div>
 
               <div className="flex items-center gap-1">
-                <LuUsers className="flex text-tradeOrange text-[14px] flex-shrink-0" />
+                <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
                   <span className="text-white">+{offer?.completedTrades}</span>{" "}
                   recent trades
@@ -154,7 +154,7 @@ const MarketCard = ({ offer }) => {
 
       <div
         onClick={() => handleOfferClick(offer?.offerId)}
-        className="md:hidden flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 "
+        className="md:hidden flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-[15px] border border-tradeAshLight transition-all duration-300 "
       >
         <div className="flex flex-col gap-3">
           <div className="flex justify-between w-full items-center">

@@ -167,17 +167,18 @@ const PublicOffers = () => {
 
           <div className="flex flex-col md:flex-row px-[15px] py-[12px] lg:border-b border-tradeAshLight">
             <div className="flex gap-[2px] justify-between w-full items-center ">
-              <div className="flex lg:flex-row flex-col md:justify-between gap-[2px] lg:text-lg text-2xl w-full">
+              <div className="flex lg:flex-row flex-col md:justify-betwee lg:gap-2 gap-1 lg:text-lg text-2xl w-full">
                 <p className=" font-semibold text-white">Explore Offers</p>
+                <p className=" lg:flex hidden font-semibold text-white">-</p>
                 <p className=" font-semibold text-tradeFadeWhite md:w-max w-[260px]">
-                  Seamless & Secure P2P Marketplace.
+                  Seamless & Secure P2P Marketplace
                 </p>
               </div>
 
-              <div className="flex items-cente md:hidden h-full flex-row md:gap-2 gap-1 items-en">
+              <div className="flex items-cente  h-full flex-row md:gap-2 gap-1 items-en">
                 <div
                   onClick={showStats}
-                  className="text-tradeGreen text-6xl fade-pulse cursor-pointer"
+                  className="text-tradeGreen text-6xl lg:text-3xl fade-pulse cursor-pointer"
                 >
                   <TbBinocularsFilled />
                 </div>
@@ -185,7 +186,7 @@ const PublicOffers = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-[40px]">
+          <div className="flex flex-col gap-[20px]">
             <div className="flex flex-col flex-1 justify-between ">
               <div className="sticky flex flex-col items-cente w-full md:top-[62px] top-[56px] bg-black  border-b border-dashed border-tradeAshLight gap-[5px]">
                 <div className="flex  items-center justify-between py-[12px] px-[15px] bg-tradeAs gap-[20px] overflow-x-hidden custom-x-scrollbar">
@@ -273,7 +274,11 @@ const PublicOffers = () => {
                         </div>
                       ) : (
                         <div>
-                          <p>{topStatus?.message}</p>
+                          {topStatus?.message === null ? (
+                            <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                          ) : (
+                            <p>{topStatus?.message}</p>
+                          )}
                         </div>
                       )}
                     </SmallButton>
@@ -292,7 +297,7 @@ const PublicOffers = () => {
             </div>
 
             <div className="flex flex-col flex-1 justify-between ">
-              <div className="sticky flex flex-col items-cente w-full md:top-[62px] top-[56px] bg-black  border-y border-dashed border-tradeAshLight gap-[5px]">
+              <div className="sticky flex flex-col items-cente w-full md:top-[62px] top-[56px] bg-black  border-b border-dashed border-tradeAshLight gap-[5px]">
                 <div className="flex  items-center justify-between py-[12px] px-[15px] bg-tradeAs gap-[20px] overflow-x-hidden custom-x-scrollbar">
                   <p className="text-base font-semibold text-white shrink-0 ">
                     Recent Offers
@@ -378,7 +383,11 @@ const PublicOffers = () => {
                         </div>
                       ) : (
                         <div>
-                          <p>{recentStatus?.message}</p>
+                          {recentStatus?.message === null ? (
+                            <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                          ) : (
+                            <p>{recentStatus?.message}</p>
+                          )}
                         </div>
                       )}
                     </SmallButton>
