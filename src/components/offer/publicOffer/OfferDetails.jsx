@@ -35,7 +35,6 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 import { windowFormatHour } from "@/utils/windowFormatHour";
 import { BsStars } from "react-icons/bs";
 
-
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
 
@@ -117,7 +116,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                   <div className="flex flex-col gap-[20px] ">
                     <div className="flex flex-col gap-[10px] ">
-                      <p className="text-white text-3xl font-semibold md:w-max w-[200px] leading-none ">
+                      <p className="text-white text-3xl font-semibold md:w-max w-[200px leading-normal">
                         {offer?.serviceName || "N/A"}
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
