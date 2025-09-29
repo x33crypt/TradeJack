@@ -25,6 +25,8 @@ const AboutPublicOffer = () => {
   const { loading } = useFetchAboutOffers();
   const { calculator, setCalculator } = useCalculator();
 
+  const offer = aboutOffer?.data?.offerDetails;
+
   const scrollToTop = () => {
     topRef.current?.scrollIntoView({ behavior: "smooth" });
   };
