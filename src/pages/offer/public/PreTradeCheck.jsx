@@ -302,12 +302,13 @@ const PreTradeCheck = () => {
                   <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
                     <p className="text-tradeFadeWhite font-medium text-xs">
                       <span className="text-white">Note:</span> This trade will
-                      cancel automatically if{" "}
+                      auto cancel if{" "}
                       <span className="text-white font-semibold">
                         @{user?.username}
                       </span>{" "}
-                      declines or doesn’t respond. You can also cancel or
-                      minimize the trade to explore other offers while waiting.
+                      declines or doesn’t respond. If the wait is too long, you
+                      can cancel the trade or minimize it to browse other offers
+                      while waiting.
                     </p>
                   </div>
                 </div>
@@ -450,26 +451,89 @@ const PreTradeCheck = () => {
                   </div>
 
                   <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
-                    <Warning
-                      text={
-                        "This trade cannot proceed as the trader has not met certain key requirements. Click ‘Details’ below for more information and available actions."
-                      }
-                    />
+                    {preTradeCheck?.result?.limitEligible === false ? (
+                      <Warning text="This trade amount exceeds the vendor’s limit. You’ll need to cancel and choose another offer that supports your desired amount." />
+                    ) : preTradeCheck?.result?.collacteralSecured === false ? (
+                      <Warning text="The trader doesn’t have enough collateral to start this trade. You can cancel now or give them 3 more minutes to fund their wallet." />
+                    ) : preTradeCheck?.result?.kycCompliant === false ? (
+                      <Warning text="This trader hasn’t completed identity verification. You can cancel the trade or continue if you’re comfortable proceeding." />
+                    ) : (
+                      <Warning text="The trader is currently offline. You can wait 2 minutes while we notify them to come online, or cancel and trade with someone who’s available now." />
+                    )}
                   </div>
                 </div>
-                <div className="flex flex-col gap-[10px]">
-                  <Button
-                    onClick={showErrorDetails}
-                    variant="Fadeout"
-                    // disabled={loading}
-                  >
-                    <p>Details</p>
-                  </Button>
+
+                <div>
+                  {preTradeCheck?.result?.limitEligible === false ? (
+                    <div className="flex flex-col gap-[10px]">
+                      <Button
+                        variant="Fadeout"
+                        onClick={handleCancelTrade}
+                        // disabled={loading}
+                      >
+                        <p>Cancel Trade</p>
+                      </Button>
+                    </div>
+                  ) : preTradeCheck?.result?.collacteralSecured === false ? (
+                    <div className="flex flex-col gap-[10px]">
+                      <Button
+                        variant="Fadeout"
+                        // disabled={loading}
+                        onClick={collacteralWait}
+                      >
+                        <p>Wait 2 Minutes</p>
+                      </Button>
+
+                      <Button
+                        variant="Fadeout"
+                        onClick={handleCancelTrade}
+                        // disabled={loading}
+                      >
+                        <p>Cancel Trade</p>
+                      </Button>
+                    </div>
+                  ) : preTradeCheck?.result?.kycCompliant === false ? (
+                    <div className="flex flex-col gap-[10px]">
+                      <Button
+                        variant="Fadeout"
+                        // disabled={loading}
+                        onClick={kycContinue}
+                      >
+                        <p>Continue</p>
+                      </Button>
+
+                      <Button
+                        variant="Fadeout"
+                        onClick={handleCancelTrade}
+                        // disabled={loading}
+                      >
+                        <p>Cancel Trade</p>
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col gap-[10px]">
+                      <Button
+                        variant="Fadeout"
+                        // disabled={loading}
+                        onClick={inActiveWait}
+                      >
+                        <p>Wait 2 minutes</p>
+                      </Button>
+
+                      <Button
+                        variant="Fadeout"
+                        onClick={handleCancelTrade}
+                        // disabled={loading}
+                      >
+                        <p>Cancel trade</p>
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Details */}
-              <div className={`${preTradeCheck?.details ? "flex" : "hidden"}`}>
+              {/* <div className={`${preTradeCheck?.details ? "flex" : "hidden"}`}>
                 {preTradeCheck?.result?.limitEligible === false ? (
                   // Limit Eligible Failed
                   <div className="flex flex-1 flex-col justify-between gap-[15px] ">
@@ -612,7 +676,7 @@ const PreTradeCheck = () => {
                     </div>
                   </div>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -736,12 +800,13 @@ const PreTradeCheck = () => {
                   <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
                     <p className="text-tradeFadeWhite font-medium text-xs">
                       <span className="text-white">Note:</span> This trade will
-                      cancel automatically if{" "}
+                      auto cancel if{" "}
                       <span className="text-white font-semibold">
                         @{user?.username}
                       </span>{" "}
-                      declines or doesn’t respond. You can also cancel or
-                      minimize the trade to explore other offers while waiting.
+                      declines or doesn’t respond. If the wait is too long, you
+                      can cancel the trade or minimize it to browse other offers
+                      while waiting.
                     </p>
                   </div>
                 </div>
