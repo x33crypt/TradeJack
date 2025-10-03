@@ -100,7 +100,7 @@ const PreTradeCheck = () => {
   const collacteralWait = () => {
     setPreTradeCheck((prev) => ({
       ...prev,
-      time: 120, // reset countdown to 2:00
+      time: 180, // reset countdown to 2:00
       isCounting: true, // ensure countdown restarts
       success: false,
       details: false,
@@ -116,7 +116,7 @@ const PreTradeCheck = () => {
   const inActiveWait = () => {
     setPreTradeCheck((prev) => ({
       ...prev,
-      time: 120, // reset countdown to 2:00
+      time: 180, // reset countdown to 2:00
       isCounting: true, // ensure countdown restarts
       success: false,
       details: false,
@@ -189,9 +189,12 @@ const PreTradeCheck = () => {
                   Trade Secured
                 </p>
 
-                <div className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                {/* <div className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                   <LuMinimize className="text-[16px]" />
-                </div>
+                </div> */}
+                <p className="text-lg text-tradeFadeWhite font-[700] cursor-pointer">
+                  {formattedTime}
+                </p>
               </div>
 
               <div className="flex-1 flex flex-col justify-between py-[12px] gap-[15px]">
@@ -302,23 +305,26 @@ const PreTradeCheck = () => {
                       <span className="text-white font-semibold">
                         @{user?.username}
                       </span>{" "}
-                      declines or doesn’t respond within{" "}
-                      <span className="font-semibold text-white">
-                        {formattedTime}
-                      </span>
-                      . You can also cancel or minimize the trade to explore
-                      other offers while waiting.
+                      declines or doesn’t respond. You can also cancel or
+                      minimize the trade to explore other offers while waiting.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-[10px]">
                   <Button
+                    // onClick={handleCancelTrade}
+                    variant="Fadeout"
+                    // disabled={loading}
+                  >
+                    <p>Minimize</p>
+                  </Button>
+                  <Button
                     onClick={handleCancelTrade}
                     variant="Fadeout"
                     // disabled={loading}
                   >
-                    <p>Cancel Trade</p>
+                    <p>Cancel trade</p>
                   </Button>
                 </div>
               </div>
@@ -622,9 +628,9 @@ const PreTradeCheck = () => {
                   Awaiting Trader
                 </p>
 
-                <div className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                  <LuMinimize className="text-[16px]" />
-                </div>
+                <p className="text-lg text-tradeFadeWhite font-[700] cursor-pointer">
+                  {formattedTime}
+                </p>
               </div>
 
               <div className="flex-1 flex flex-col justify-between py-[12px] gap-[15px]">
@@ -733,17 +739,20 @@ const PreTradeCheck = () => {
                       <span className="text-white font-semibold">
                         @{user?.username}
                       </span>{" "}
-                      declines or doesn’t respond within{" "}
-                      <span className="font-semibold text-white">
-                        {formattedTime}
-                      </span>
-                      . You can also cancel or minimize the trade to explore
-                      other offers while waiting.
+                      declines or doesn’t respond. You can also cancel or
+                      minimize the trade to explore other offers while waiting.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-[10px]">
+                  <Button
+                    // onClick={handleCancelTrade}
+                    variant="Fadeout"
+                    // disabled={loading}
+                  >
+                    <p>Minimize</p>
+                  </Button>
                   <Button
                     onClick={handleCancelTrade}
                     variant="Fadeout"

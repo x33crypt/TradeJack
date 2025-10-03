@@ -7,7 +7,7 @@ const TradeContext = createContext();
 // Create the provider
 export const TradeProvider = ({ children }) => {
   const [preTradeCheck, setPreTradeCheck] = useState({
-    time: 120,
+    time: 300,
     isCounting: false,
     checking: false,
     result: {
