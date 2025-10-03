@@ -113,6 +113,22 @@ const PreTradeCheck = () => {
     }));
   };
 
+  const inActiveWait = () => {
+    setPreTradeCheck((prev) => ({
+      ...prev,
+      time: 120, // reset countdown to 2:00
+      isCounting: true, // ensure countdown restarts
+      success: false,
+      details: false,
+      failed: false,
+      waiting: true,
+      result: {
+        ...prev.result,
+        activeNow: null,
+      },
+    }));
+  };
+
   const kycContinue = () => {
     setPreTradeCheck((prev) => ({
       ...prev,
@@ -573,7 +589,7 @@ const PreTradeCheck = () => {
                         <Button
                           variant="Fadeout"
                           // disabled={loading}
-                          onClick={collacteralWait}
+                          onClick={inActiveWait}
                         >
                           <p>Wait 2 minutes</p>
                         </Button>
@@ -595,7 +611,7 @@ const PreTradeCheck = () => {
         </div>
       )}
 
-      {/* Collateral Waiting */}
+      {/* Waiting */}
       {preTradeCheck?.waiting && (
         <div>
           <LockByScroll />
