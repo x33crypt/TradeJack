@@ -11,6 +11,7 @@ import RecentTrades from "@/components/dashboard/RecentTrades";
 import TodaysGoal from "@/components/dashboard/TodaysGoal";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
+import FloatingTradeButton from "@/components/others/FloatingTradeButton";
 
 const Dashboard = () => {
   const { dashboard } = useDashboard();
@@ -51,7 +52,7 @@ const Dashboard = () => {
           )}
         </div>
       </div>
-
+      <FloatingTradeButton />
       <Footer />
     </>
   );

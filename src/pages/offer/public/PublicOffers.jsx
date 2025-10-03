@@ -17,6 +17,11 @@ import withComma from "@/utils/withComma";
 import { BiStats } from "react-icons/bi";
 import { IoScanCircleSharp } from "react-icons/io5";
 import { TbBinocularsFilled } from "react-icons/tb";
+import { GiBombingRun } from "react-icons/gi";
+import { LuBinoculars } from "react-icons/lu";
+import { IoScanCircle } from "react-icons/io5";
+import { TbScan } from "react-icons/tb";
+import FloatingTradeButton from "@/components/others/FloatingTradeButton";
 
 const PublicOffers = () => {
   const topRef = useRef(null);
@@ -180,7 +185,7 @@ const PublicOffers = () => {
                   onClick={showStats}
                   className="text-tradeGreen text-6xl lg:text-3xl fade-pulse cursor-pointer"
                 >
-                  <TbBinocularsFilled />
+                  <TbScan />
                 </div>
               </div>
             </div>
@@ -407,6 +412,7 @@ const PublicOffers = () => {
           </div>
         </div>
       </div>
+      <FloatingTradeButton />
       <Footer />
 
       {filter?.state && (

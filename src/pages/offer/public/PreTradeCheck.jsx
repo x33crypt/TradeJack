@@ -56,15 +56,6 @@ const PreTradeCheck = () => {
     "0"
   )}:${String(time % 60).padStart(2, "0")}`;
 
-  // 🔘 Button to restart countdown
-  const handleGiveExtraTime = () => {
-    setPreTradeCheck((prev) => ({
-      ...prev,
-      time: 120, // reset countdown to 2:00
-      isCounting: true, // ensure countdown restarts
-    }));
-  };
-
   const handleCancelTrade = () => {
     setPreTradeCheck((prev) => ({
       ...prev,
@@ -80,20 +71,6 @@ const PreTradeCheck = () => {
         kycCompliant: null,
         activeNow: null,
       },
-    }));
-  };
-
-  const showErrorDetails = () => {
-    setPreTradeCheck((prev) => ({
-      ...prev,
-      details: true,
-    }));
-  };
-
-  const closeErrorDetails = () => {
-    setPreTradeCheck((prev) => ({
-      ...prev,
-      details: false,
     }));
   };
 
@@ -179,20 +156,17 @@ const PreTradeCheck = () => {
         </div>
       )}
 
-      {/* Success */}
-      {preTradeCheck?.success && (
+      {/* Waiting */}
+      {preTradeCheck?.waiting && (
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
             <div className="flex md:w-[300px] w-full h-max flex-col rounded-[15px] px-[15px] bg-tradeAsh">
               <div className="flex justify-between items-center py-[12px] border-b border-neutral-800 ">
                 <p className="text-lg text-white font-[700] cursor-pointer">
-                  Trade Secured
+                  Awaiting Trader
                 </p>
 
-                {/* <div className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                  <LuMinimize className="text-[16px]" />
-                </div> */}
                 <p className="text-lg text-tradeFadeWhite font-[700] cursor-pointer">
                   {formattedTime}
                 </p>
@@ -224,7 +198,6 @@ const PreTradeCheck = () => {
                     </div>
                   </div>
 
-                  {/* Check result */}
                   <div className="flex gap-1 border-t border-dashed border-tradeAshLight pt-2">
                     <div className="flex-1 flex flex-col gap-2">
                       <div className="flex gap-1 items-center">
@@ -298,7 +271,6 @@ const PreTradeCheck = () => {
                     </div>
                   </div>
 
-                  {/* Note */}
                   <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
                     <p className="text-tradeFadeWhite font-medium text-xs">
                       <span className="text-white">Note:</span> This trade will
@@ -682,17 +654,20 @@ const PreTradeCheck = () => {
         </div>
       )}
 
-      {/* Waiting */}
-      {preTradeCheck?.waiting && (
+      {/* Success */}
+      {preTradeCheck?.success && (
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
             <div className="flex md:w-[300px] w-full h-max flex-col rounded-[15px] px-[15px] bg-tradeAsh">
               <div className="flex justify-between items-center py-[12px] border-b border-neutral-800 ">
                 <p className="text-lg text-white font-[700] cursor-pointer">
-                  Awaiting Trader
+                  Trade Secured
                 </p>
 
+                {/* <div className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                  <LuMinimize className="text-[16px]" />
+                </div> */}
                 <p className="text-lg text-tradeFadeWhite font-[700] cursor-pointer">
                   {formattedTime}
                 </p>
@@ -724,6 +699,7 @@ const PreTradeCheck = () => {
                     </div>
                   </div>
 
+                  {/* Check result */}
                   <div className="flex gap-1 border-t border-dashed border-tradeAshLight pt-2">
                     <div className="flex-1 flex flex-col gap-2">
                       <div className="flex gap-1 items-center">
@@ -797,6 +773,7 @@ const PreTradeCheck = () => {
                     </div>
                   </div>
 
+                  {/* Note */}
                   <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
                     <p className="text-tradeFadeWhite font-medium text-xs">
                       <span className="text-white">Note:</span> This trade will
@@ -832,6 +809,10 @@ const PreTradeCheck = () => {
           </div>
         </div>
       )}
+
+      {/* Declined */}
+
+      {/* Cancelled */}
     </>
   );
 };

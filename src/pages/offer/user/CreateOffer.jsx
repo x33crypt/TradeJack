@@ -24,6 +24,7 @@ import { publishOffer } from "@/utils/offer/publishOffer";
 import { CiDiscount1 } from "react-icons/ci";
 import { IoDiscOutline } from "react-icons/io5";
 import { BiTargetLock } from "react-icons/bi";
+import { TbTextScan2 } from "react-icons/tb";
 
 const CreateOffer = () => {
   const topRef = useRef(null);
@@ -760,7 +761,7 @@ const CreateOffer = () => {
 
               <div className="flex items-cente md:hidden h-full flex-row md:gap-2 gap-1 items-en">
                 <div className="text-tradeGreen text-5xl fade-pulse">
-                  <BiTargetLock />
+                  <TbTextScan2 />
                 </div>
               </div>
             </div>
