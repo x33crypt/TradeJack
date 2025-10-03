@@ -44,6 +44,7 @@ const AboutPublicOffer = () => {
   };
 
   // Handle proceed pre trade check from calculator
+
   const handlePreTradeCheck = () => {
     setCalculator((prev) => ({ ...prev, state: false }));
     setPreTradeCheck((prev) => ({ ...prev, checking: true }));
@@ -74,6 +75,8 @@ const AboutPublicOffer = () => {
       setPreTradeCheck((prev) => ({
         ...prev,
         checking: false,
+        failed: true,
+        details: false,
         result,
       }));
     }, 1500);

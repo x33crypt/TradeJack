@@ -360,7 +360,7 @@ const PreTradeCheck = () => {
                           <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
                         ) : (
                           <div>
-                            {preTradeCheck?.kycCompliant ? (
+                            {preTradeCheck?.result?.limitEligible ? (
                               <BsCheck className="text-tradeGreen text-base" />
                             ) : (
                               <IoClose className="text-red-600 text-base" />
@@ -377,7 +377,7 @@ const PreTradeCheck = () => {
                           <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
                         ) : (
                           <div>
-                            {preTradeCheck?.kycCompliant ? (
+                            {preTradeCheck?.result?.collacteralSecured ? (
                               <BsCheck className="text-tradeGreen text-base" />
                             ) : (
                               <IoClose className="text-red-600 text-base" />
@@ -396,7 +396,7 @@ const PreTradeCheck = () => {
                           <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
                         ) : (
                           <div>
-                            {preTradeCheck?.kycCompliant ? (
+                            {preTradeCheck?.result?.kycCompliant ? (
                               <BsCheck className="text-tradeGreen text-base" />
                             ) : (
                               <IoClose className="text-red-600 text-base" />
@@ -412,7 +412,7 @@ const PreTradeCheck = () => {
                           <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
                         ) : (
                           <div>
-                            {preTradeCheck?.kycCompliant ? (
+                            {preTradeCheck?.result?.activeNow ? (
                               <BsCheck className="text-tradeGreen text-base" />
                             ) : (
                               <IoClose className="text-red-600 text-base" />
