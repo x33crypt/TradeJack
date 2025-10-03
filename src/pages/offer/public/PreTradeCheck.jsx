@@ -2,72 +2,137 @@ import React, { useEffect, useState } from "react";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import LockByScroll from "@/components/others/LockByScroll";
 import { PiSpinnerGapBold } from "react-icons/pi";
-
 import { IoMdCheckmarkCircle } from "react-icons/io";
 import { useTrade } from "@/context/publicContext/TradeContext";
 import Button from "@/components/buttons/Button";
 import { LuMinimize } from "react-icons/lu";
 import { HiOutlineUserCircle } from "react-icons/hi2";
+import { BsCheck } from "react-icons/bs";
+import { BiLoaderCircle } from "react-icons/bi";
+import { IoClose } from "react-icons/io5";
+import Warning from "@/components/alerts/Warning";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { FaInfoCircle } from "react-icons/fa";
+import Info from "@/components/alerts/Info";
 
 const PreTradeCheck = () => {
   const { aboutOffer, setAboutOffer } = usePublicOffers();
   const { preTradeCheck, setPreTradeCheck } = useTrade();
-  const [countdownTime, setCountdownTime] = useState("03:00");
 
   const offer = aboutOffer?.data?.offerDetails;
   const user = aboutOffer?.data?.traderInfo;
 
-  console.log("offer in pre trade check :", offer);
-  console.log("user in pre trade check :", user);
-
+  // Start countdown when preTradeCheck passes
   useEffect(() => {
-    let time = 180;
-    if (preTradeCheck?.success === true) {
-      const interval = setInterval(() => {
-        time--;
-        const minutes = Math.floor(time / 60);
-        const seconds = time % 60;
-        setCountdownTime(
-          `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
-            2,
-            "0"
-          )}`
-        );
-        if (time <= 0) clearInterval(interval);
-      }, 1000);
-      return () => clearInterval(interval);
+    if (preTradeCheck?.success) {
+      setPreTradeCheck((prev) => ({
+        ...prev,
+        isCounting: true,
+      }));
     }
   }, [preTradeCheck?.success]);
 
-  const updateChecksSequentially = (setState) => {
-    setTimeout(() => {
-      setState((prev) => ({
-        ...prev,
-        checking: false,
-        success: true,
-        failed: false,
-      }));
-    }, 3000); // after 300ms
-  };
-
+  // 🕐 Countdown logic
   useEffect(() => {
-    if (preTradeCheck?.checking === true)
-      updateChecksSequentially(setPreTradeCheck);
-  }, [preTradeCheck?.checking]);
+    if (!preTradeCheck?.isCounting) return;
+
+    const interval = setInterval(() => {
+      setPreTradeCheck((prev) => {
+        if (prev.time <= 0) {
+          clearInterval(interval);
+          return { ...prev, time: 0, isCounting: false };
+        }
+        return { ...prev, time: prev.time - 1 };
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [preTradeCheck?.isCounting]); // 👈 Only runs when countdown starts/stops
+
+  // 📍 Format the time
+  const time = Number(preTradeCheck?.time) || 0;
+  const formattedTime = `${String(Math.floor(time / 60)).padStart(
+    2,
+    "0"
+  )}:${String(time % 60).padStart(2, "0")}`;
+
+  // 🔘 Button to restart countdown
+  const handleGiveExtraTime = () => {
+    setPreTradeCheck((prev) => ({
+      ...prev,
+      time: 120, // reset countdown to 2:00
+      isCounting: true, // ensure countdown restarts
+    }));
+  };
 
   const handleCancelTrade = () => {
     setPreTradeCheck((prev) => ({
       ...prev,
-      state: false,
-      isLimitVerified: false,
-      isEscrowSecured: false,
-      isStatusVerified: false,
+      countdown: "03:00",
+      checking: false,
       success: false,
+      failed: false,
+      details: false,
+      waiting: false,
+      result: {
+        limitEligible: null,
+        collacteralSecured: null,
+        kycCompliant: null,
+        activeNow: null,
+      },
     }));
   };
 
+  const showErrorDetails = () => {
+    setPreTradeCheck((prev) => ({
+      ...prev,
+      details: true,
+    }));
+  };
+
+  const closeErrorDetails = () => {
+    setPreTradeCheck((prev) => ({
+      ...prev,
+      details: false,
+    }));
+  };
+
+  const collacteralWait = () => {
+    setPreTradeCheck((prev) => ({
+      ...prev,
+      time: 120, // reset countdown to 2:00
+      isCounting: true, // ensure countdown restarts
+      success: false,
+      details: false,
+      failed: false,
+      waiting: true,
+      result: {
+        ...prev.result,
+        collacteralSecured: null,
+      },
+    }));
+  };
+
+  const kycContinue = () => {
+    setPreTradeCheck((prev) => ({
+      ...prev,
+      isCounting: true, // ensure countdown restarts
+      success: true,
+      details: false,
+      failed: false,
+      waiting: false,
+      result: {
+        ...prev.result,
+        kycCompliant: false,
+      },
+    }));
+  };
+
+  console.log(preTradeCheck);
+
   return (
     <>
+      {/* Checking */}
       {preTradeCheck?.checking && (
         <div>
           <LockByScroll />
@@ -97,6 +162,7 @@ const PreTradeCheck = () => {
         </div>
       )}
 
+      {/* Success */}
       {preTradeCheck?.success && (
         <div>
           <LockByScroll />
@@ -104,7 +170,7 @@ const PreTradeCheck = () => {
             <div className="flex md:w-[300px] w-full h-max flex-col rounded-[15px] px-[15px] bg-tradeAsh">
               <div className="flex justify-between items-center py-[12px] border-b border-neutral-800 ">
                 <p className="text-lg text-white font-[700] cursor-pointer">
-                  Awaiting Vendor
+                  Trade Secured
                 </p>
 
                 <div className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
@@ -116,7 +182,7 @@ const PreTradeCheck = () => {
                 <div className="flex flex-col gap-4 ">
                   <div className="flex gap-[10px] justify-between items-start">
                     <div className="flex flex-col gap-[10px] justify-center ">
-                      <p className="text-lg font-semibold flex-wrap text-white leading-none max-w-[200px]">
+                      <p className="text-xl font-semibold flex-wrap text-tradeOrange leading-none max-w-[200px]">
                         {offer?.serviceName || "N/A"}
                       </p>
 
@@ -138,48 +204,106 @@ const PreTradeCheck = () => {
                     </div>
                   </div>
 
-                  {/* <Info
-                    text={
-                      "Please send the exact amount shown. Sending more or less may cause unnecessary disputes or processing delays"
-                    }
-                  /> */}
+                  {/* Chekc result */}
+                  <div className="flex gap-1 border-t border-dashed border-tradeAshLight pt-2">
+                    <div className="flex-1 flex flex-col gap-2">
+                      <div className="flex gap-1 items-center">
+                        {preTradeCheck?.result?.limitEligible === null ? (
+                          <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
+                        ) : (
+                          <div>
+                            {preTradeCheck?.result?.limitEligible ? (
+                              <BsCheck className="text-tradeGreen text-base" />
+                            ) : (
+                              <IoClose className="text-red-600 text-base" />
+                            )}
+                          </div>
+                        )}
 
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          Limit Eligible
+                        </p>
+                      </div>
+                      <div className="flex gap-1 items-center">
+                        {preTradeCheck?.result?.collacteralSecured === null ? (
+                          <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
+                        ) : (
+                          <div>
+                            {preTradeCheck?.result?.collacteralSecured ? (
+                              <BsCheck className="text-tradeGreen text-base" />
+                            ) : (
+                              <IoClose className="text-red-600 text-base" />
+                            )}
+                          </div>
+                        )}
+
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          Collateral Secured
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex-1 flex flex-col gap-2">
+                      <div className="flex gap-1 items-center">
+                        {preTradeCheck?.result?.kycCompliant === null ? (
+                          <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
+                        ) : (
+                          <div>
+                            {preTradeCheck?.result?.kycCompliant ? (
+                              <BsCheck className="text-tradeGreen text-base" />
+                            ) : (
+                              <IoClose className="text-red-600 text-base" />
+                            )}
+                          </div>
+                        )}
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          KYC Compliants
+                        </p>
+                      </div>
+                      <div className="flex gap-1 items-center">
+                        {preTradeCheck?.result?.activeNow === null ? (
+                          <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
+                        ) : (
+                          <div>
+                            {preTradeCheck?.result?.activeNow ? (
+                              <BsCheck className="text-tradeGreen text-base" />
+                            ) : (
+                              <IoClose className="text-red-600 text-base" />
+                            )}
+                          </div>
+                        )}
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          Ready to Trade
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Note */}
                   <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
                     <p className="text-tradeFadeWhite font-medium text-xs">
-                      <span className="text-white">Note</span> : This trade will
-                      auto-cancel if{" "}
-                      <span className="text-tradeGreen font-semibold">
+                      <span className="text-white">Note:</span> This trade will
+                      cancel automatically if{" "}
+                      <span className="text-white font-semibold">
                         @{user?.username}
                       </span>{" "}
-                      declines or fails to respond. Once canceled, you can retry
-                      or browse and engage with other available offers.
+                      declines or doesn’t respond within{" "}
+                      <span className="font-semibold text-white">
+                        {formattedTime}
+                      </span>
+                      . You can also cancel or minimize the trade to explore
+                      other offers while waiting.
                     </p>
                   </div>
                 </div>
 
-                <div>
-                  {countdownTime !== "00:00" ? (
-                    <div className="flex flex-col gap-[10px]">
-                      <Button variant="Fadeout"> {countdownTime}</Button>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col gap-[10px]">
-                      <Button
-                        onClick={handleCancelTrade}
-                        variant="Fadeout"
-                        // disabled={loading}
-                      >
-                        <p>Re-initiate this trade</p>
-                      </Button>
-                      <Button
-                        onClick={handleCancelTrade}
-                        variant="Fadeout"
-                        // disabled={loading}
-                      >
-                        <p>Cancel</p>
-                      </Button>
-                    </div>
-                  )}
+                <div className="flex flex-col gap-[10px]">
+                  <Button
+                    onClick={handleCancelTrade}
+                    variant="Fadeout"
+                    // disabled={loading}
+                  >
+                    <p>Cancel Trade</p>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -187,14 +311,299 @@ const PreTradeCheck = () => {
         </div>
       )}
 
+      {/* Failed*/}
       {preTradeCheck?.failed && (
+        <div>
+          <LockByScroll />
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
+            <div className="flex md:w-[300px] w-full h-max flex-col rounded-[15px] p-[15px] bg-tradeAsh">
+              {/* Primary */}
+              <div
+                className={`${
+                  preTradeCheck?.details ? "hidden" : "flex"
+                } flex-1 flex-col justify-between gap-[15px] `}
+              >
+                <div className="flex justify-between items-center pb-[12px] border-b border-neutral-800 ">
+                  <p className="text-lg text-white font-[700] cursor-pointer">
+                    Trade on Hold
+                  </p>
+
+                  <div className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                    <LuMinimize className="text-[16px]" />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4 ">
+                  <div className="flex gap-[10px] justify-between items-start">
+                    <div className="flex flex-col gap-[10px] justify-center ">
+                      <p className="text-xl font-semibold flex-wrap text-tradeOrange leading-none max-w-[200px]">
+                        {offer?.serviceName || "N/A"}
+                      </p>
+
+                      <p className="text-xs font-semibold text-tradeFadeWhite leading-none">
+                        {offer?.serviceType || "N/A"}
+                      </p>
+
+                      <p className="text-white font-semibold text-lg leading-none">
+                        500.00 USD
+                      </p>
+                    </div>
+
+                    <div className="flex justify-center items">
+                      <HiOutlineUserCircle className="flex text-white text-6xl flex-shrink-0" />
+                    </div>
+                  </div>
+
+                  <div className="flex gap-1 border-t border-dashed border-tradeAshLight pt-2">
+                    <div className="flex-1 flex flex-col gap-2">
+                      <div className="flex gap-1 items-center">
+                        {preTradeCheck?.result?.limitEligible === null ? (
+                          <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
+                        ) : (
+                          <div>
+                            {preTradeCheck?.kycCompliant ? (
+                              <BsCheck className="text-tradeGreen text-base" />
+                            ) : (
+                              <IoClose className="text-red-600 text-base" />
+                            )}
+                          </div>
+                        )}
+
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          Limit Eligible
+                        </p>
+                      </div>
+                      <div className="flex gap-1 items-center">
+                        {preTradeCheck?.result?.collacteralSecured === null ? (
+                          <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
+                        ) : (
+                          <div>
+                            {preTradeCheck?.kycCompliant ? (
+                              <BsCheck className="text-tradeGreen text-base" />
+                            ) : (
+                              <IoClose className="text-red-600 text-base" />
+                            )}
+                          </div>
+                        )}
+
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          Collateral Secured
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex-1 flex flex-col gap-2">
+                      <div className="flex gap-1 items-center">
+                        {preTradeCheck?.result?.kycCompliant === null ? (
+                          <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
+                        ) : (
+                          <div>
+                            {preTradeCheck?.kycCompliant ? (
+                              <BsCheck className="text-tradeGreen text-base" />
+                            ) : (
+                              <IoClose className="text-red-600 text-base" />
+                            )}
+                          </div>
+                        )}
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          KYC Compliants
+                        </p>
+                      </div>
+                      <div className="flex gap-1 items-center">
+                        {preTradeCheck?.result?.activeNow === null ? (
+                          <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
+                        ) : (
+                          <div>
+                            {preTradeCheck?.kycCompliant ? (
+                              <BsCheck className="text-tradeGreen text-base" />
+                            ) : (
+                              <IoClose className="text-red-600 text-base" />
+                            )}
+                          </div>
+                        )}
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          Ready to Trade
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
+                    <Warning
+                      text={
+                        "This trade cannot proceed as the trader has not met certain key requirements. Click ‘Details’ below for more information and available actions."
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col gap-[10px]">
+                  <Button
+                    onClick={showErrorDetails}
+                    variant="Fadeout"
+                    // disabled={loading}
+                  >
+                    <p>Details</p>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Details */}
+              <div className={`${preTradeCheck?.details ? "flex" : "hidden"}`}>
+                {preTradeCheck?.result?.limitEligible === false ? (
+                  // Limit Eligible Failed
+                  <div className="flex flex-1 flex-col justify-between gap-[15px] ">
+                    <div className="flex justify-between items-center pb-[12px] border-b border-neutral-800 ">
+                      <p className="text-lg text-white font-[700] cursor-pointer">
+                        Trade Limit Exceeded
+                      </p>
+
+                      <div
+                        onClick={closeErrorDetails}
+                        className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                      >
+                        <IoMdArrowRoundBack className="text-[16px]" />
+                      </div>
+                    </div>
+                    <div className="flex flex-col justify-between gap-[15px] ">
+                      <Info text="This trader’s limit does not cover the amount you’re trying to trade. You can cancel this trade and explore other offers that match your desired amount." />
+
+                      <div className="flex flex-col gap-[10px]">
+                        <Button
+                          variant="Fadeout"
+                          onClick={handleCancelTrade}
+                          // disabled={loading}
+                        >
+                          <p>Cancel Trade</p>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ) : preTradeCheck?.result?.collacteralSecured === false ? (
+                  // Collateral Not Secured
+                  <div className="flex flex-1 flex-col justify-between gap-[15px] ">
+                    <div className="flex justify-between items-center pb-[12px] border-b border-neutral-800 ">
+                      <p className="text-lg text-white font-[700] cursor-pointer">
+                        Insufficient Collateral
+                      </p>
+
+                      <div
+                        onClick={closeErrorDetails}
+                        className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                      >
+                        <IoMdArrowRoundBack className="text-[16px]" />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col justify-between gap-[15px] ">
+                      <Info text="This trader doesn’t have enough collateral at the moment. You have two options: cancel the trade now or wait 2 minutes for them to add funds to their wallet." />
+
+                      <div className="flex flex-col gap-[10px]">
+                        <Button
+                          variant="Fadeout"
+                          // disabled={loading}
+                          onClick={collacteralWait}
+                        >
+                          <p>Wait 2 Minutes</p>
+                        </Button>
+
+                        <Button
+                          variant="Fadeout"
+                          onClick={handleCancelTrade}
+                          // disabled={loading}
+                        >
+                          <p>Cancel Trade</p>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ) : preTradeCheck?.result?.kycCompliant === false ? (
+                  // KYC Failed
+                  <div className="flex flex-1 flex-col justify-between gap-[15px] ">
+                    <div className="flex justify-between items-center pb-[12px] border-b border-neutral-800 ">
+                      <p className="text-lg text-white font-[700] cursor-pointer">
+                        Trader Not KYC-Compliant
+                      </p>
+
+                      <div
+                        onClick={closeErrorDetails}
+                        className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                      >
+                        <IoMdArrowRoundBack className="text-[16px]" />
+                      </div>
+                    </div>
+                    <div className="flex flex-col justify-between gap-[15px] ">
+                      <Info text="This trader hasn’t completed KYC verification. You can cancel the trade if that’s a concern, or continue if you’re comfortable proceeding." />
+
+                      <div className="flex flex-col gap-[10px]">
+                        <Button
+                          variant="Fadeout"
+                          // disabled={loading}
+                          onClick={kycContinue}
+                        >
+                          <p>Continue</p>
+                        </Button>
+
+                        <Button
+                          variant="Fadeout"
+                          onClick={handleCancelTrade}
+                          // disabled={loading}
+                        >
+                          <p>Cancel Trade</p>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  // Active Now Failed
+                  <div className="flex flex-1 flex-col justify-between gap-[15px] ">
+                    <div className="flex justify-between items-center pb-[12px] border-b border-neutral-800 ">
+                      <p className="text-lg text-white font-[700] cursor-pointer">
+                        Trader Currently Offline
+                      </p>
+
+                      <div
+                        onClick={closeErrorDetails}
+                        className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                      >
+                        <IoMdArrowRoundBack className="text-[16px]" />
+                      </div>
+                    </div>
+                    <div className="flex flex-col justify-between gap-[15px] ">
+                      <Info text="This trader is offline. You can wait 2 minutes while we notify them to come online, or cancel and trade with an active vendor." />
+
+                      <div className="flex flex-col gap-[10px]">
+                        <Button
+                          variant="Fadeout"
+                          // disabled={loading}
+                          onClick={collacteralWait}
+                        >
+                          <p>Wait 2 minutes</p>
+                        </Button>
+
+                        <Button
+                          variant="Fadeout"
+                          onClick={handleCancelTrade}
+                          // disabled={loading}
+                        >
+                          <p>Cancel trade</p>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Collateral Waiting */}
+      {preTradeCheck?.waiting && (
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
             <div className="flex md:w-[300px] w-full h-max flex-col rounded-[15px] px-[15px] bg-tradeAsh">
               <div className="flex justify-between items-center py-[12px] border-b border-neutral-800 ">
                 <p className="text-lg text-white font-[700] cursor-pointer">
-                  Awaiting Vendor
+                  Awaiting Trader
                 </p>
 
                 <div className="w-max flex text-tradeFadeWhite hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
@@ -206,7 +615,7 @@ const PreTradeCheck = () => {
                 <div className="flex flex-col gap-4 ">
                   <div className="flex gap-[10px] justify-between items-start">
                     <div className="flex flex-col gap-[10px] justify-center ">
-                      <p className="text-lg font-semibold flex-wrap text-white leading-none max-w-[200px]">
+                      <p className="text-xl font-semibold flex-wrap text-tradeOrange leading-none max-w-[200px]">
                         {offer?.serviceName || "N/A"}
                       </p>
 
@@ -228,48 +637,104 @@ const PreTradeCheck = () => {
                     </div>
                   </div>
 
-                  {/* <Info
-                    text={
-                      "Please send the exact amount shown. Sending more or less may cause unnecessary disputes or processing delays"
-                    }
-                  /> */}
+                  <div className="flex gap-1 border-t border-dashed border-tradeAshLight pt-2">
+                    <div className="flex-1 flex flex-col gap-2">
+                      <div className="flex gap-1 items-center">
+                        {preTradeCheck?.result?.limitEligible === null ? (
+                          <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
+                        ) : (
+                          <div>
+                            {preTradeCheck?.result?.limitEligible ? (
+                              <BsCheck className="text-tradeGreen text-base" />
+                            ) : (
+                              <IoClose className="text-red-600 text-base" />
+                            )}
+                          </div>
+                        )}
+
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          Limit Eligible
+                        </p>
+                      </div>
+                      <div className="flex gap-1 items-center">
+                        {preTradeCheck?.result?.collacteralSecured === null ? (
+                          <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
+                        ) : (
+                          <div>
+                            {preTradeCheck?.result?.collacteralSecured ? (
+                              <BsCheck className="text-tradeGreen text-base" />
+                            ) : (
+                              <IoClose className="text-red-600 text-base" />
+                            )}
+                          </div>
+                        )}
+
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          Collateral Secured
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex-1 flex flex-col gap-2">
+                      <div className="flex gap-1 items-center">
+                        {preTradeCheck?.result?.kycCompliant === null ? (
+                          <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
+                        ) : (
+                          <div>
+                            {preTradeCheck?.result?.kycCompliant ? (
+                              <BsCheck className="text-tradeGreen text-base" />
+                            ) : (
+                              <IoClose className="text-red-600 text-base" />
+                            )}
+                          </div>
+                        )}
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          KYC Compliants
+                        </p>
+                      </div>
+                      <div className="flex gap-1 items-center">
+                        {preTradeCheck?.result?.activeNow === null ? (
+                          <BiLoaderCircle className="text-tradeFadeWhite text-base animate-spin" />
+                        ) : (
+                          <div>
+                            {preTradeCheck?.result?.activeNow ? (
+                              <BsCheck className="text-tradeGreen text-base" />
+                            ) : (
+                              <IoClose className="text-red-600 text-base" />
+                            )}
+                          </div>
+                        )}
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          Ready to Trade
+                        </p>
+                      </div>
+                    </div>
+                  </div>
 
                   <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
                     <p className="text-tradeFadeWhite font-medium text-xs">
-                      <span className="text-white">Note</span> : This trade will
-                      auto-cancel if{" "}
-                      <span className="text-tradeGreen font-semibold">
+                      <span className="text-white">Note:</span> This trade will
+                      cancel automatically if{" "}
+                      <span className="text-white font-semibold">
                         @{user?.username}
                       </span>{" "}
-                      declines or fails to respond. Once canceled, you can retry
-                      or browse and engage with other available offers.
+                      declines or doesn’t respond within{" "}
+                      <span className="font-semibold text-white">
+                        {formattedTime}
+                      </span>
+                      . You can also cancel or minimize the trade to explore
+                      other offers while waiting.
                     </p>
                   </div>
                 </div>
 
-                <div>
-                  {countdownTime !== "00:00" ? (
-                    <div className="flex flex-col gap-[10px]">
-                      <Button variant="Fadeout"> {countdownTime}</Button>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col gap-[10px]">
-                      <Button
-                        onClick={handleCancelTrade}
-                        variant="Fadeout"
-                        // disabled={loading}
-                      >
-                        <p>Re-initiate this trade</p>
-                      </Button>
-                      <Button
-                        onClick={handleCancelTrade}
-                        variant="Fadeout"
-                        // disabled={loading}
-                      >
-                        <p>Cancel</p>
-                      </Button>
-                    </div>
-                  )}
+                <div className="flex flex-col gap-[10px]">
+                  <Button
+                    onClick={handleCancelTrade}
+                    variant="Fadeout"
+                    // disabled={loading}
+                  >
+                    <p>Cancel trade</p>
+                  </Button>
                 </div>
               </div>
             </div>

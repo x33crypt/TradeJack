@@ -45,15 +45,38 @@ const AboutPublicOffer = () => {
 
   // Handle proceed pre trade check from calculator
   const handlePreTradeCheck = () => {
-    setCalculator((prev) => ({
-      ...prev,
-      state: false,
-    }));
+    setCalculator((prev) => ({ ...prev, state: false }));
+    setPreTradeCheck((prev) => ({ ...prev, checking: true }));
 
-    setPreTradeCheck((prev) => ({
-      ...prev,
-      checking: true,
-    }));
+    // Simulate async check (optional delay)
+    setTimeout(() => {
+      const keys = [
+        "limitEligible",
+        "activeNow",
+        "collacteralSecured",
+        "kycCompliant",
+      ];
+      let result = {};
+
+      // 30% chance everything passes ✅
+      const allPass = Math.random() < 0.3;
+
+      if (allPass) {
+        keys.forEach((key) => (result[key] = true));
+      } else {
+        const failKey = keys[Math.floor(Math.random() * keys.length)];
+        result = keys.reduce((acc, key) => {
+          acc[key] = key === failKey ? false : true;
+          return acc;
+        }, {});
+      }
+
+      setPreTradeCheck((prev) => ({
+        ...prev,
+        checking: false,
+        result,
+      }));
+    }, 1500);
   };
 
   const close = () => {

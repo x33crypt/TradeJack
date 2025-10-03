@@ -1,11 +1,14 @@
 import React from "react";
 import { TiWarning } from "react-icons/ti";
+import { MdCancel } from "react-icons/md";
 
 const Warning = (prop) => {
   return (
-    <div className="w-full flex items-center p-[10px] gap-[10px] rounded-[10px] border border-red-400 bg-red-100">
-      <TiWarning className="text-black text-[18px] flex-shrink-0" />
-      <p className="text-[13px] m-0 leading-normal text-black w-full break-words">
+    <div className="w-full flex items-center p-[10px] gap-[10px] rounded-[10px] bg-red-600">
+      <div className="text-2xl text-white">
+        <MdCancel />
+      </div>
+      <p className="text-xs m-0 leading-normal text-white w-full break-words">
         {prop?.text}
       </p>
     </div>

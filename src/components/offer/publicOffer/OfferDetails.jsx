@@ -116,7 +116,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                   <div className="flex flex-col gap-[20px] ">
                     <div className="flex flex-col gap-[10px] ">
-                      <p className="text-white text-3xl font-semibold md:w-max w-[200px leading-normal">
+                      <p className="text-tradeOrange text-3xl font-semibold md:w-max w-[200px leading-normal">
                         {offer?.serviceName || "N/A"}
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
