@@ -57,6 +57,7 @@ const AboutPublicOffer = () => {
         "collacteralSecured",
         "kycCompliant",
       ];
+
       let result = {};
 
       // 30% chance everything passes ✅
@@ -72,13 +73,24 @@ const AboutPublicOffer = () => {
         }, {});
       }
 
-      setPreTradeCheck((prev) => ({
-        ...prev,
-        checking: false,
-        failed: true,
-        details: false,
-        result,
-      }));
+      if (allPass) {
+        setPreTradeCheck((prev) => ({
+          ...prev,
+          time: 300,
+          isCounting: true,
+          checking: false,
+          success: true,
+          result,
+        }));
+      } else {
+        setPreTradeCheck((prev) => ({
+          ...prev,
+          checking: false,
+          failed: true,
+          details: false,
+          result,
+        }));
+      }
     }, 1500);
   };
 

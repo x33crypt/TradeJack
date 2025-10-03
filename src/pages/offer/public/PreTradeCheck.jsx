@@ -132,6 +132,7 @@ const PreTradeCheck = () => {
   const kycContinue = () => {
     setPreTradeCheck((prev) => ({
       ...prev,
+      time: 300,
       isCounting: true, // ensure countdown restarts
       success: true,
       details: false,
@@ -223,7 +224,7 @@ const PreTradeCheck = () => {
                     </div>
                   </div>
 
-                  {/* Chekc result */}
+                  {/* Check result */}
                   <div className="flex gap-1 border-t border-dashed border-tradeAshLight pt-2">
                     <div className="flex-1 flex flex-col gap-2">
                       <div className="flex gap-1 items-center">
