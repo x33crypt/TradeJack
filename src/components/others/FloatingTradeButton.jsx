@@ -21,7 +21,7 @@ const FloatingTradeButton = () => {
       )}
 
       <button onClick={handleClick}>
-        <RiExchange2Fill className="text-4xl" />
+        <RiExchange2Fill className="text-5xl" />
       </button>
     </div>
   );
