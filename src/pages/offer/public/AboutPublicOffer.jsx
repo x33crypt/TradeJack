@@ -17,6 +17,7 @@ import { VscVerifiedFilled } from "react-icons/vsc";
 import { PiNetworkBold } from "react-icons/pi";
 import { RiExchange2Fill } from "react-icons/ri";
 import { useTrade } from "@/context/publicContext/TradeContext";
+import FloatingTradeButton from "@/components/others/FloatingTradeButton";
 
 const AboutPublicOffer = () => {
   const topRef = useRef(null);
@@ -143,6 +144,7 @@ const AboutPublicOffer = () => {
           )}
         </div>
       </div>
+      <FloatingTradeButton />
       <Footer />
 
       {calculator?.state && (
