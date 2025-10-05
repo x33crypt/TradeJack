@@ -175,15 +175,15 @@ const PublicOffers = () => {
               <div className="flex lg:flex-row flex-col md:justify-betwee lg:gap-2 gap-1 lg:text-lg text-2xl w-full">
                 <p className=" font-semibold text-white">Explore Offers</p>
                 <p className=" lg:flex hidden font-semibold text-white">-</p>
-                <p className=" font-semibold text-tradeFadeWhite md:w-max w-[260px]">
-                  Seamless & Secure P2P Marketplace
+                <p className=" font-semibold text-tradeFadeWhite md:w-max w-[260px">
+                  Secure P2P Trading
                 </p>
               </div>
 
               <div className="flex items-cente  h-full flex-row md:gap-2 gap-1 items-en">
                 <div
                   onClick={showStats}
-                  className="text-tradeGreen text-6xl lg:text-3xl fade-pulse cursor-pointer"
+                  className="text-tradeGreen text-5xl lg:text-3xl fade-pulse cursor-pointer"
                 >
                   <TbScan />
                 </div>

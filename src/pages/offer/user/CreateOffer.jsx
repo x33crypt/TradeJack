@@ -658,6 +658,7 @@ const CreateOffer = () => {
     setCreateOffer((prev) => ({
       ...prev,
       step: 1,
+      title: "Basics",
     }));
 
     scrollToTop();
@@ -698,6 +699,7 @@ const CreateOffer = () => {
     setCreateOffer((prev) => ({
       ...prev,
       step: 2,
+      title: "Rates & Time",
     }));
 
     scrollToTop();
@@ -734,6 +736,7 @@ const CreateOffer = () => {
     setCreateOffer((prev) => ({
       ...prev,
       step: 3,
+      title: "Guidelines",
     }));
 
     scrollToTop();
@@ -755,7 +758,7 @@ const CreateOffer = () => {
               <div className="flex lg:flex-row flex-col md:justify-between gap-[2px] lg:text-lg text-2xl w-full">
                 <p className=" font-semibold text-white">Create a New Offer</p>
                 <p className=" font-semibold text-tradeFadeWhite">
-                  Step {createOffer?.step}
+                  Step {createOffer?.step} - {createOffer?.title}
                 </p>
               </div>
 
@@ -999,8 +1002,8 @@ const CreateOffer = () => {
                         </div>
                       </div>
 
-                      <div className="flex p-[12px] border-dashed border border-tradeAshLight rounded-[10px] ">
-                        {createOffer?.currency?.code &&
+                      <div className="flex justify-around p-[12px] border-dashed border border-tradeAshLight rounded-[10px] ">
+                        {/* {createOffer?.currency?.code &&
                           createOffer?.minimum &&
                           createOffer?.maximum && (
                             <div className="flex flex-col gap-1">
@@ -1042,7 +1045,32 @@ const CreateOffer = () => {
                                 as profit.
                               </p>
                             </div>
-                          )}
+                          )} */}
+
+                        <div className="flex-1  flex items-center flex-col gap-1 border-r border-dashed border-tradeAshLight">
+                          <p className="text-white text-[13px] font-semibold leading-none">
+                            1500.00 / $
+                          </p>
+                          <p className="text-tradeFadeWhite text-xs font-medium">
+                            Live Rate
+                          </p>
+                        </div>
+                        <div className="flex-1 flex items-center flex-col gap-1 border-r border-dashed border-tradeAshLight">
+                          <p className="text-white text-[13px] font-semibold leading-none">
+                            1500.00 / $
+                          </p>
+                          <p className="text-tradeFadeWhite text-xs font-medium">
+                            Your Rate
+                          </p>
+                        </div>
+                        <div className="flex-1 flex items-center flex-col gap-1">
+                          <p className="text-white text-[13px] font-semibold leading-none">
+                            1500.00 / $
+                          </p>
+                          <p className="text-tradeFadeWhite text-xs font-medium">
+                            Profit / USD
+                          </p>
+                        </div>
                       </div>
 
                       <Info
