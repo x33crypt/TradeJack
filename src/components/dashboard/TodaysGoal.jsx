@@ -14,6 +14,8 @@ import { LuBatteryCharging } from "react-icons/lu";
 import { BiSolidBatteryCharging } from "react-icons/bi";
 import { IoFlash } from "react-icons/io5";
 import { PiCoinVerticalBold } from "react-icons/pi";
+import { IoMdFlash } from "react-icons/io";
+import { MdHourglassTop } from "react-icons/md";
 
 const TodaysGoal = ({ loading, dashboard }) => {
   const [value, setValue] = useState(20);
@@ -35,42 +37,64 @@ const TodaysGoal = ({ loading, dashboard }) => {
               <div className="flex-1 flex flex-col justify-between lg:gap-0 gap-[40px]">
                 <div className="flex flex-col gap-[10px]">
                   {Array.from({ length: 3 }).map((_, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center w-full h-max flex-grow  gap-[10px] border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]"
-                    >
-                      {/* <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[10px] p-1 w-max cursor-pointer">
-                        <MdOutlineAccessTimeFilled className="text-xl text-tradeFadeWhite" />
-                      </div> */}
+                    // <div
+                    //   key={index}
+                    //   className="flex items-center w-full h-max flex-grow  gap-[10px] border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]"
+                    // >
+                    //   <div className="flex flex-1 flex-col gap-4 items-start">
+                    //     <div className="flex justify-between items-center gap-1 w-full">
+                    //       <div className="flex items-center gap-1">
+                    //         <div className="bg-tradeGree text-tradeGreen text-xs flex items-center gap-1 borde border-tradeAshExtraLight h-max rounded-[8px] p- w-max cursor-pointer">
+                    //           <PiCoinVerticalBold />
+                    //         </div>
+                    //         <p className="text-xs text-tradeFadeWhite font-medium">
+                    //           50 Points
+                    //         </p>
+                    //       </div>
 
-                      <div className="flex flex-1 flex-col gap-4 items-start">
-                        <div className="flex justify-between items-center gap-1 w-full">
-                          <div className="flex items-center gap-1">
-                            <div className="bg-tradeGree text-tradeGreen text-xs flex items-center gap-1 borde border-tradeAshExtraLight h-max rounded-[8px] p- w-max cursor-pointer">
-                              <PiCoinVerticalBold />
-                            </div>
-                            <p className="text-xs text-tradeFadeWhite font-medium">
-                              50 Points
-                            </p>
-                          </div>
+                    //       <div className="flex items-center gap-1">
+                    //         <div className="bg-tradeGree text-tradeOrange text-xs flex items-center gap-1 borde border-tradeAshExtraLight h-max rounded-[8px] p- w-max cursor-pointer">
+                    //           <IoFlash />
+                    //         </div>
+                    //         <p className="text-xs text-tradeFadeWhite font-medium">
+                    //           1h 30m left
+                    //         </p>
+                    //       </div>
+                    //     </div>
 
-                          <div className="flex items-center gap-1">
-                            <div className="bg-tradeGree text-tradeOrange text-xs flex items-center gap-1 borde border-tradeAshExtraLight h-max rounded-[8px] p- w-max cursor-pointer">
-                              <IoFlash />
-                            </div>
-                            <p className="text-xs text-tradeFadeWhite font-medium">
-                              1h 30m left
-                            </p>
-                          </div>
-                        </div>
+                    //     <p className="text-[13px] font-semibold text-white">
+                    //       Complete a trade within 45 minutes
+                    //     </p>
 
+                    //     <div className="flex justify-between items-center gap-1 w-full">
+                    //       <ProgressBar value={80} />
+                    //     </div>
+                    //   </div>
+                    // </div>
+
+                    <div className="flex items-center w-full h-max flex-grow  gap-[10px] border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
+                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
+                        <IoMdFlash className="text-lg text-tradeOrange" />
+                      </div>
+                      <div className="flex-1 flex flex-col gap-1">
                         <p className="text-[13px] font-semibold text-white">
-                          Complete a trade within 45 minutes
+                          Complete a trade in 45 minutes
                         </p>
+                        <div className="flex gap-2">
+                          <div className="flex gap-[2px] items-center">
+                            <p className="text-xs text-tradeFadeWhite font-semibold">
+                              50
+                            </p>
+                            <PiCoinVerticalBold className="text-sm text-tradeGreen" />
+                          </div>
 
-                        <div className="flex justify-between items-center gap-1 w-full">
-                          <ProgressBar value={80} />
+                          <p className="text-xs text-tradeFadeWhite font-semibold">
+                            1h 30m left
+                          </p>
                         </div>
+                      </div>
+                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
+                        <MdHourglassTop className="text-lg text-tradeFadeWhite" />
                       </div>
                     </div>
                   ))}
