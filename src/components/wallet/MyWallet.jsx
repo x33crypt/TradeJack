@@ -208,7 +208,7 @@ const MyWallet = () => {
                     </div>
 
                     <div className="flex flex-col gap-[10px] items-center border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
-                      <div className="flex flex-row flex-wrap w-full items-center justify-between gap-[10px]">
+                      <div className="flex flex-row flex-wrap w-full items-center justify-around gap-[10px]">
                         {/* <div
                           onClick={Deposit}
                           className="flex-1 flex-grow flex-shrink-0 flex gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight px-[8px] py-[5px]  rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"

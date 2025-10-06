@@ -92,8 +92,8 @@ const FeedbackCard = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full justify-between border-t border-dashed border-tradeAshLight pt-2">
-          <p className="flex text-tradeFadeWhite text-[13px] font-semibold leading-normal">
+        <div className="flex w-full justify-between border- border-dashed border-tradeAshLight pt-2">
+          <p className="flex text-white text-[13px] font-semibold leading-normal">
             Absolutely great experience working with you!
           </p>
         </div>

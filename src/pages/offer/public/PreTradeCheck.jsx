@@ -14,6 +14,7 @@ import Warning from "@/components/alerts/Warning";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { FaInfoCircle } from "react-icons/fa";
 import Info from "@/components/alerts/Info";
+import ProgressBar from "@/components/others/ProgressBar";
 
 const PreTradeCheck = () => {
   const { aboutOffer, setAboutOffer } = usePublicOffers();
@@ -131,23 +132,23 @@ const PreTradeCheck = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex md:w-[300px] gap-[20px] w-full h-max flex-col rounded-[15px] p-[15px] bg-tradeAs">
-              <div className="flex justify-center items-center gap-2">
-                {preTradeCheck?.isLimitVerified ? (
-                  <IoMdCheckmarkCircle className="text-base text-tradeGreen" />
-                ) : (
-                  <PiSpinnerGapBold className="text-4xl animate-spin text-white" />
-                )}
+            <div className="flex md:w-[300px] gap-2 w-full h-max flex-col rounded-[15px] p-[15px] bg-tradeAsh">
+              <div className="flex-1 flex justify-between items-center gap-[10px]">
+                <div className="flex items-center gap-[10px]">
+                  {/* <PiSpinnerGapBold className="text-lg animate-spin text-white" /> */}
+                  <p className="text-[13px] text-white leading-none font-semibold cursor-pointer">
+                    Running pre-trade checks...
+                  </p>
+                </div>
+                <div className="flex items-center gap-[5px]">
+                  <PiSpinnerGapBold className="text-lg animate-spin text-white" />
+                  <p className="text-[13px] text-white leading-none font-semibold cursor-pointer">
+                    40%
+                  </p>
+                </div>
               </div>
-
-              <div className="flex-1 flex flex-col items-center gap-[10px]">
-                <p className="text-xl text-white leading-none font-[700] cursor-pointer">
-                  Running Pre-Trade Checks
-                </p>
-                <p className="text-tradeFadeWhite text-xs text-center font-semibold leading-normal">
-                  Hang tight, we’re verifying all details to ensure your trade
-                  is secure.
-                </p>
+              <div>
+                <ProgressBar value={40} />
               </div>
 
               {/* <Button variant="Fadeout">Cancel</Button> */}
