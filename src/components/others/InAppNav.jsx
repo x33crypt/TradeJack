@@ -314,7 +314,7 @@ const InAppNav = () => {
                   <Button
                     variant="Fadeout"
                     onClick={() => {
-                      navigateTo("/offers/user/create");
+                      navigateTo("/offer/create");
                       setIsNavOption(false);
                     }}
                   >
