@@ -12,6 +12,7 @@ import TodaysGoal from "@/components/dashboard/TodaysGoal";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
 import FloatingTradeButton from "@/components/others/FloatingTradeButton";
+import RecentTransaction from "@/components/wallet/RecentTransaction";
 
 const Dashboard = () => {
   const { dashboard } = useDashboard();
@@ -38,7 +39,7 @@ const Dashboard = () => {
                     <Balance dashboard={dashboard} />
                     <Stats dashboard={dashboard} />
                     <TodaysGoal dashboard={dashboard} loading={loading} />
-                    <RecentTrades />
+                    <RecentTransaction />
                   </div>
                 </div>
               )}

@@ -13,15 +13,15 @@ import { LuFileChartColumn } from "react-icons/lu";
 const Stats = ({ dashboard }) => {
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
-      <div className="flex  items-center justify-between">
+      <div className="flex  items-center justify-between ">
         <p className="text-sm font-semibold text-white flex items-center gap-1">
           TRADE STATS
         </p>
       </div>
 
       <div className="flex flex-col gap-[10px]">
-        <div className="flex w-full md:min-w-[400px] flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-sm">
-          <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-sm p-1 w-max cursor-pointer">
+        <div className="flex w-full md:min-w-[400px] flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
+          <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
             <LuFileChartColumn className="text-lg text-tradeFadeWhite" />
           </div>
 
@@ -36,8 +36,8 @@ const Stats = ({ dashboard }) => {
         </div>
 
         <div className="grid grid-cols-2 gap-[10px]">
-          <div className="flex min-w-[150px md:min-w-[200px] flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-sm">
-            <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-sm p-1 w-max cursor-pointer">
+          <div className="flex min-w-[150px md:min-w-[200px] flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
+            <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
               <LuFileCheck2 className="text-lg text-tradeGreen" />
             </div>
 
@@ -51,8 +51,8 @@ const Stats = ({ dashboard }) => {
             </div>
           </div>
 
-          <div className="flex min-w-[150px md:min-w-[200px] flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-sm">
-            <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-sm p-1 w-max cursor-pointer">
+          <div className="flex min-w-[150px md:min-w-[200px] flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
+            <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
               <LuFileX2 className="text-lg text-red-600" />
             </div>
 
@@ -66,8 +66,8 @@ const Stats = ({ dashboard }) => {
             </div>
           </div>
 
-          <div className="flex min-w-[150px md:min-w-[200px] flex-grow flex-shrink-0  gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-sm">
-            <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-sm p-1 w-max cursor-pointer">
+          <div className="flex min-w-[150px md:min-w-[200px] flex-grow flex-shrink-0  gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
+            <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
               <LuFileClock className="text-lg text-tradeOrange" />
             </div>
 
@@ -81,8 +81,8 @@ const Stats = ({ dashboard }) => {
             </div>
           </div>
 
-          <div className="flex min-w-[150px md:min-w-[200px] flex-grow flex-shrink-0  gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-sm">
-            <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-sm p-1 w-max cursor-pointer">
+          <div className="flex min-w-[150px md:min-w-[200px] flex-grow flex-shrink-0  gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
+            <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
               <LuFileSearch className="text-lg text-tradeFadeWhite" />
             </div>
 

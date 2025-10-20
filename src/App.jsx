@@ -45,10 +45,10 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import SignupSuccess from "./pages/auth/SignupSuccess";
 import Partners from "./pages/partners/Partners";
 import PartnersProfile from "./pages/partners/PartnersProfile";
-import AboutTrader from "./pages/traders/AboutTrader";
 import ConfirmPassword from "./pages/auth/ConfirmPassword";
 import SensitiveRoute from "./utils/sensitiveRoutes";
 import PreTradeCheck from "./pages/offer/public/PreTradeCheck";
+import PublicProfile from "./pages/profile/PublicProfile";
 
 const App = () => {
   return (
@@ -107,19 +107,18 @@ const App = () => {
         {/* Marketplace & Offers */}
         <Route path="/offers/explore" element={<Marketplace />} />
         <Route path="/offers/explore/:id" element={<AboutPublicOffer />} />
-        <Route path="/offers/user" element={<MyOffer />} />
-        <Route path="/offers/user/:id" element={<AboutUserOffer />} />
-        <Route path="/offers/user/create" element={<CreateOffer />} />
-        <Route path="/offers/user/summary" element={<CreateOfferSummary />} />
-        <Route path="/offers/user/:id/edit" element={<EditMyOffer />} />
-        <Route path="/offers/user/:id/summary" element={<SummaryMyOffer />} />
+        <Route path="/offers" element={<MyOffer />} />
+        <Route path="/offer/:id" element={<AboutUserOffer />} />
+        <Route path="/offer/create" element={<CreateOffer />} />
+        <Route path="/offer/create/preview" element={<CreateOfferSummary />} />
+        <Route path="/offer/:id/edit" element={<EditMyOffer />} />
+        <Route path="/offers/:id/edit/preview" element={<SummaryMyOffer />} />
 
         {/* partners  */}
         <Route path="/partners" element={<Partners />} />
-        <Route path="/partners/:username" element={<PartnersProfile />} />
 
         {/* users  */}
-        <Route path="/user/:username" element={<AboutTrader />} />
+        <Route path="/profile/:username" element={<PublicProfile />} />
       </Routes>
     </>
   );

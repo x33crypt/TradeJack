@@ -103,7 +103,7 @@ const InAppNav = () => {
           </div>
 
           <div
-            onClick={() => navigateTo("/offers/user/create")}
+            onClick={() => navigateTo("/offer/create")}
             className="flex flex-col items-center gap-1"
           >
             {/* <IoMdArrowDropdown className="text-lg text-tradeFadeWhite" /> */}

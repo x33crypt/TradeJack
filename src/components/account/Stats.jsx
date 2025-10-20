@@ -10,11 +10,14 @@ import NetworkError from "../others/NetworkError";
 
 const Stats = ({ loading, activityStats }) => {
   return (
-    <div className="flex-1 flex flex-col md:border border-neutral-800">
-      <div className="flex items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">Activity Stats</p>
+    <div className="flex flex-1 flex-col gap-[20px]">
+      <div className="flex  items-center justify-between ">
+        <p className="text-sm font-semibold text-white flex items-center gap-1">
+          ACTIVITY STATS
+        </p>
       </div>
-      <div className="flex flex-1 p-[15px] min-h-[120px]">
+
+      <div className="flex flex-1 min-h-[120px]">
         {loading ? (
           <Loading />
         ) : (
