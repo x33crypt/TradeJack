@@ -21,12 +21,14 @@ const TodaysGoal = ({ loading, dashboard }) => {
   const [value, setValue] = useState(20);
 
   return (
-    <div className="flex flex-1 flex-col md:border border-neutral-800">
-      <div className="flex items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">Let's Go!</p>
+    <div className="flex flex-1 flex-col gap-[20px]">
+      <div className="flex  items-center justify-between">
+        <p className="text-sm font-semibold text-white flex items-center gap-1">
+          LET'S GO
+        </p>
       </div>
 
-      <div className="flex flex-1 min-h-[120px] p-[15px]">
+      <div className="flex flex-col gap-[10px]">
         {loading ? (
           <Loading />
         ) : (
@@ -34,46 +36,29 @@ const TodaysGoal = ({ loading, dashboard }) => {
             {dashboard === null ? (
               <NetworkError />
             ) : (
-              <div className="flex-1 flex flex-col justify-between lg:gap-0 gap-[40px]">
+              <div className="flex-1 flex flex-col justify-between gap-[25px]">
+                <div className="flex flex-1 items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <p className="text-[11px] font-bold text-tradeOrange leading-none p-1 hover:bg-tradeOrange/20 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      TODAY
+                    </p>
+
+                    <p className="text-[11px] font-bold text-tradeOrange leading-none p-1 hover:bg-tradeOrange/20 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      WEEK
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-[11px] font-bold text-tradeOrange leading-none p-1 hover:bg-tradeOrange/20 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      LEADERBOARD
+                    </p>
+                  </div>
+                </div>
+
                 <div className="flex flex-col gap-[10px]">
                   {Array.from({ length: 3 }).map((_, index) => (
-                    // <div
-                    //   key={index}
-                    //   className="flex items-center w-full h-max flex-grow  gap-[10px] border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]"
-                    // >
-                    //   <div className="flex flex-1 flex-col gap-4 items-start">
-                    //     <div className="flex justify-between items-center gap-1 w-full">
-                    //       <div className="flex items-center gap-1">
-                    //         <div className="bg-tradeGree text-tradeGreen text-xs flex items-center gap-1 borde border-tradeAshExtraLight h-max rounded-[8px] p- w-max cursor-pointer">
-                    //           <PiCoinVerticalBold />
-                    //         </div>
-                    //         <p className="text-xs text-tradeFadeWhite font-medium">
-                    //           50 Points
-                    //         </p>
-                    //       </div>
-
-                    //       <div className="flex items-center gap-1">
-                    //         <div className="bg-tradeGree text-tradeOrange text-xs flex items-center gap-1 borde border-tradeAshExtraLight h-max rounded-[8px] p- w-max cursor-pointer">
-                    //           <IoFlash />
-                    //         </div>
-                    //         <p className="text-xs text-tradeFadeWhite font-medium">
-                    //           1h 30m left
-                    //         </p>
-                    //       </div>
-                    //     </div>
-
-                    //     <p className="text-[13px] font-semibold text-white">
-                    //       Complete a trade within 45 minutes
-                    //     </p>
-
-                    //     <div className="flex justify-between items-center gap-1 w-full">
-                    //       <ProgressBar value={80} />
-                    //     </div>
-                    //   </div>
-                    // </div>
-
-                    <div className="flex items-center w-full h-max flex-grow  gap-[10px] border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
-                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
+                    <div className="flex items-center w-full h-max flex-grow  gap-[10px] border border-tradeAshLight bg-tradeAsh p-[12px] rounded-sm">
+                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-sm p-1 w-max cursor-pointer">
                         <IoMdFlash className="text-lg text-tradeOrange" />
                       </div>
                       <div className="flex-1 flex flex-col gap-1">
@@ -93,16 +78,12 @@ const TodaysGoal = ({ loading, dashboard }) => {
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
+                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-sm p-1 w-max cursor-pointer">
                         <MdHourglassTop className="text-lg text-tradeFadeWhite" />
                       </div>
                     </div>
                   ))}
                 </div>
-
-                <Button variant="outline">
-                  <p>Leaderboard</p>
-                </Button>
               </div>
             )}
           </div>

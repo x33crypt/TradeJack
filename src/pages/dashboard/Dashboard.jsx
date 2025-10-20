@@ -22,28 +22,22 @@ const Dashboard = () => {
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black">
+      <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[10px] min-h-svh flex bg-black">
         <div className="flex flex-col flex-1">
           {loading ? (
             <Loading />
           ) : (
             <div className="flex flex-1">
-              {dashboard === null ? (
+              {/* dashboard === null ? */}
+              {false ? (
                 <NetworkError />
               ) : (
-                <div className="flex flex-1 lg:flex-row flex-col gap-[5px]">
+                <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
                   <DasHboardMenu />
-                  <div className="flex flex-1 flex-col gap-[5px]">
-                    <div className="flex flex-1 flex-col md:flex-row gap-[5px]">
-                      <div className="flex-1 flex flex-col gap-[5px] ">
-                        <Balance dashboard={dashboard} />
-                        <Stats dashboard={dashboard} />
-                      </div>
-                      <div className="flex flex-col md:w-[320px] gap-[5px]">
-                        <TodaysGoal dashboard={dashboard} loading={loading} />
-                      </div>
-                    </div>
-                    <Performance dashboard={dashboard} />
+                  <div className="flex flex-1 flex-col gap-[40px] lg:mr-[12%] p-[15px]">
+                    <Balance dashboard={dashboard} />
+                    <Stats dashboard={dashboard} />
+                    <TodaysGoal dashboard={dashboard} loading={loading} />
                     <RecentTrades />
                   </div>
                 </div>

@@ -27,19 +27,14 @@ const RecentTransaction = ({ scrollToTop }) => {
   console.log("recent transactions", transactions);
 
   return (
-    <div className="flex flex-col h-full md:border border-neutral-800">
-      <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">Recent Transaction</p>
-
-        <SmallButton
-          variant="fadeout"
-          onClick={() => navigateTo("/wallet/transactions")}
-        >
-          <p>See More</p>
-        </SmallButton>
+    <div className="flex flex-1 flex-col gap-[20px]">
+      <div className="flex  items-center justify-between">
+        <p className="text-sm font-semibold text-white flex items-center gap-1">
+          RECENT TRANSACTION
+        </p>
       </div>
 
-      <div className="flex h-full min-h-[125px] p-[15px]">
+      <div className="flex h-full min-h-[125px] ">
         {loading ? (
           <Loading />
         ) : (
@@ -47,71 +42,75 @@ const RecentTransaction = ({ scrollToTop }) => {
             {transactions === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1">
-                {Array.isArray(transactions?.data) &&
-                transactions?.data.length > 0 ? (
-                  <div className="flex flex-col gap-[10px] w-full">
-                    {transactions?.data
-                      ?.slice(0, 5)
-                      ?.map((transaction, index) => (
-                        <div key={transaction.id || index}>
-                          <TransactionCard transaction={transaction} />
-                        </div>
-                      ))}
-                  </div>
-                ) : (
-                  <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
-                    <p className="text-[13px] font-semibold text-white leading-none">
-                      No recent transaction.
-                    </p>
+              <div className="flex flex-1 flex-col bg-tradeAsh border border-tradeAshLight rounded-sm">
+                <div className="flex flex-1 p-[15px]">
+                  {Array.isArray(transactions?.data) &&
+                  transactions?.data.length > 0 ? (
+                    <div className="flex flex-col gap-[10px] w-full">
+                      {transactions?.data
+                        ?.slice(0, 5)
+                        ?.map((transaction, index) => (
+                          <div key={transaction.id || index}>
+                            <TransactionCard transaction={transaction} />
+                          </div>
+                        ))}
+                    </div>
+                  ) : (
+                    <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
+                      <p className="text-[13px] font-semibold text-white leading-none">
+                        No recent transaction.
+                      </p>
 
-                    <p className="text-xs font-medium text-tradeFadeWhite text-center">
-                      No recent transaction found in our system.
-                    </p>
+                      <p className="text-xs font-medium text-tradeFadeWhite text-center">
+                        No recent transaction found in our system.
+                      </p>
 
-                    <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
+                      <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
+                    </div>
+                  )}
+                </div>
+
+                <div className=" h-[55px] w-full flex items-center py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
+                  <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
+                    <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
+                      <SmallButton variant="outline">
+                        <p>
+                          {transactions?.pagination?.totalItems
+                            ? transactions?.pagination?.totalItems &&
+                              transactions?.pagination?.totalItems >= 5
+                              ? "5"
+                              : transactions?.pagination?.totalItems
+                            : "0"}
+                        </p>
+                      </SmallButton>
+                      <SmallButton variant="outline">
+                        <p>of</p>
+                      </SmallButton>
+                      <SmallButton variant="outline">
+                        <p>
+                          {transactions?.pagination?.totalItems
+                            ? transactions?.pagination?.totalItems
+                            : "0"}
+                        </p>
+                      </SmallButton>
+                    </div>
+
+                    <div className="flex gap-[5px] py-[1px]">
+                      <SmallButton
+                        variant="outline"
+                        onClick={() =>
+                          window.scrollTo({ top: 0, behavior: "smooth" })
+                        }
+                      >
+                        <p>Scroll to Top</p>
+                      </SmallButton>
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             )}
           </div>
         )}
-      </div>
-
-      <div className=" h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
-        <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
-          <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
-            <SmallButton variant="outline">
-              <p>
-                {transactions?.pagination?.totalItems
-                  ? transactions?.pagination?.totalItems &&
-                    transactions?.pagination?.totalItems >= 5
-                    ? "5"
-                    : transactions?.pagination?.totalItems
-                  : "0"}
-              </p>
-            </SmallButton>
-            <SmallButton variant="outline">
-              <p>of</p>
-            </SmallButton>
-            <SmallButton variant="outline">
-              <p>
-                {transactions?.pagination?.totalItems
-                  ? transactions?.pagination?.totalItems
-                  : "0"}
-              </p>
-            </SmallButton>
-          </div>
-
-          <div className="flex gap-[5px] py-[1px]">
-            <SmallButton
-              variant="outline"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            >
-              <p>Scroll to Top</p>
-            </SmallButton>
-          </div>
-        </div>
       </div>
     </div>
   );

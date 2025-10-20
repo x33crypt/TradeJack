@@ -30,6 +30,7 @@ import { RiExchangeFundsLine } from "react-icons/ri";
 import { MdOutlinePersonSearch } from "react-icons/md";
 import SmallButton from "../buttons/SmallButton";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -50,19 +51,19 @@ const InAppNav = () => {
   return (
     <>
       {/* Desktop Nav */}
-      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] px-[15px] h-[57px] md:h-[65px] flex justify-between items-center border-b border-neutral-800 ">
+      <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] px-[15px] h-[57px] md:h-[65px] flex justify-between items-center  border-neutral-800 ">
         <div className="flex items-center lg:gap-[30px] gap-[10px]">
           {isNavOption === false ? (
             <div
               onClick={() => setIsNavOption((prev) => !prev)}
-              className="w-max flex md:hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+              className="w-max flex lg:hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
             >
               <HiOutlineMenuAlt2 className="text-white text-[16px]" />
             </div>
           ) : (
             <div
               onClick={() => setIsNavOption((prev) => !prev)}
-              className="w-max flex md:hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] opacity-0"
+              className="w-max flex lg:hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] opacity-0"
             >
               <HiOutlineMenuAlt2 className="text-white text-[16px]" />
             </div>
@@ -72,56 +73,89 @@ const InAppNav = () => {
             onClick={() => navigateTo("/dashboard")}
             className="flex items-center gap-[5px] cursor-pointer "
           >
-            <p className=" lg:text-xl md:text-[19px] text-[20px]  font-bold text-tradeGreen">
-              Go
-              <span className="font-semibold text-tradeOrange">Get</span>
-              <span className="font-semibold text-white">Swap</span>
+            <p className=" lg:text-xl md:text-[19px] text-[18px]  font-bold text-tradeGreen">
+              GO
+              <span className="font-semibold text-tradeOrange">GET</span>
+              <span className="font-semibold text-white">SWAP</span>
             </p>
           </div>
         </div>
 
-        <div className=" md:flex hidden  gap-[8px] items-center">
-          <SmallButton variant="ghost" onClick={() => navigateTo("/dashboard")}>
-            <TbDashboardFilled className="lg:flex hidden text-[17px]" />
-            <p>Dashboard</p>
-          </SmallButton>
-          <SmallButton variant="ghost" onClick={() => navigateTo("/wallet")}>
-            <IoWallet className="lg:flex hidden text-[17px]" />
-            <p>Wallet</p>
-          </SmallButton>
-          <SmallButton
-            variant="ghost"
+        <div className=" lg:flex hidden  gap-8 items-end">
+          <div
+            onClick={() => navigateTo("/dashboard")}
+            className="flex flex-col items-center gap-1 "
+          >
+            {/* <IoMdArrowDropdown className="text-lg text-tradeFadeWhite" /> */}
+            <p className="text-xs font-semibold text-tradeFadeWhite hover:text-white  leading-none cursor-pointer  transition-all duration-300">
+              DASHBOARD
+            </p>
+          </div>
+
+          <div
+            onClick={() => navigateTo("/wallet")}
+            className="flex flex-col items-center gap-1"
+          >
+            {/* <IoMdArrowDropdown className="text-lg text-tradeFadeWhite" /> */}
+            <p className="text-xs font-semibold text-tradeFadeWhite hover:text-white  leading-none cursor-pointer  transition-all duration-300">
+              WALLET
+            </p>
+          </div>
+
+          <div
             onClick={() => navigateTo("/offers/user/create")}
+            className="flex flex-col items-center gap-1"
           >
-            <HiViewGridAdd className="lg:flex hidden text-[17px]" />
-            <p>Create Offer</p>
-          </SmallButton>
-          <SmallButton
-            variant="ghost"
+            {/* <IoMdArrowDropdown className="text-lg text-tradeFadeWhite" /> */}
+            <p className="text-xs font-semibold text-tradeFadeWhite hover:text-white  leading-none cursor-pointer  transition-all duration-300">
+              CREATE OFFER
+            </p>
+          </div>
+
+          <div
             onClick={() => navigateTo("/offers/explore")}
+            className="flex flex-col items-center gap-1"
           >
-            <HiOutlineGlobe className="lg:flex hidden text-[17px]" />
-            <p>Browse Offer</p>
-          </SmallButton>
-          <SmallButton variant="ghost" onClick={() => navigateTo("/partners")}>
-            <FaUserFriends className="lg:flex hidden text-[17px]" />
-            <p>Trade Partners</p>
-          </SmallButton>
+            {/* <IoMdArrowDropdown className="text-lg text-tradeFadeWhite" /> */}
+            <p className="text-xs font-semibold text-tradeFadeWhite hover:text-white  leading-none cursor-pointer  transition-all duration-300">
+              BROWSE OFFER
+            </p>
+          </div>
+
+          <div
+            onClick={() => navigateTo("/partners")}
+            className="flex flex-col items-center gap-1"
+          >
+            {/* <IoMdArrowDropdown className="text-lg text-tradeFadeWhite" /> */}
+            <p className="text-xs font-semibold text-tradeFadeWhite hover:text-white  leading-none cursor-pointer  transition-all duration-300">
+              TRADE PARTNERS
+            </p>
+          </div>
+
+          <div
+            onClick={() => navigateTo("/partners")}
+            className="flex flex-col items-center gap-1"
+          >
+            {/* <IoMdArrowDropdown className="text-lg text-tradeFadeWhite" /> */}
+            <p className="text-xs font-semibold text-tradeFadeWhite hover:text-white  leading-none cursor-pointer  transition-all duration-300">
+              TOOLS BOX 0.5
+            </p>
+          </div>
         </div>
 
         <div className="flex items-center  gap-[10px]">
-          <div className="lg:flex hidden w-full items-center bg-tradeAsh border border-tradeAshLight p-2  gap-[15px] rounded-[10px]">
+          {/* <div className="lg:flex hidden w-full items-center bg-tradeAsh border border-tradeAshLight p-2  gap-[15px] rounded-[10px]">
             <FiSearch className="text-tradeFadeWhite text-[20px]" />
             <input
               className=" bg-transparent outline-none h-max w-[220px]  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
               type="text"
               placeholder="Search trader"
             />
-          </div>
+          </div> */}
           <div
             className={` ${
               animate ? "animate-zoomShake" : ""
-            } w-max flex gap-1 items-center justify-center bg-tradeOrange border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+            } w-max md:flex hidden gap-1 items-center justify-center bg-tradeOrange border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
           >
             <BiSupport className="text-[16px] text-black" />
           </div>

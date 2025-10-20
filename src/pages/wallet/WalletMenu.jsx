@@ -13,7 +13,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { IoCloseSharp } from "react-icons/io5";
 
-const DasHboardMenu = () => {
+const WalletMenu = () => {
   const { dashboard } = useDashboard();
   const navigateTo = useNavigate();
   return (
@@ -35,38 +35,34 @@ const DasHboardMenu = () => {
           </div>
         </div>
         <div className="flex flex-col gap-[15px]">
-          <div
-            onClick={() => navigateTo("/offers/user")}
-            className="flex items-center gap-2"
-          >
+          <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              MY OFFERS
+              TRANSFER
             </p>
           </div>
           <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              BOOKMARKS
+              DEPOSIT
             </p>
           </div>
           <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              TRADES
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              REFERRALS
+              WITHDRAWAL
             </p>
           </div>
           <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              REWARDS
+              LINKED ACCOUNT
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              TRANSACTIONS
             </p>
           </div>
         </div>
@@ -77,4 +73,4 @@ const DasHboardMenu = () => {
   );
 };
 
-export default DasHboardMenu;
+export default WalletMenu;

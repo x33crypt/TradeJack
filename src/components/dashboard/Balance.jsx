@@ -36,8 +36,13 @@ const Balance = ({ dashboard, loading }) => {
   }, []);
 
   return (
-    <div className="flex flex-1 flex-col md:border border-neutral-800 gap-[20px">
-      <div className="flex flex-col md:flex-row px-[15px] py-[12px] md:border-b border-tradeAshLight gap-[2px]">
+    <div className="flex flex-1 flex-col gap-[20px]">
+      <div className="flex  items-center justify-between ">
+        <p className="text-lg font-semibold text-white flex items-center gap-1">
+          DASHBOARD
+        </p>
+      </div>
+      {/* <div className="flex flex-col md:flex-row px-[15px] py-[12px] md:border-b border-tradeAshLight gap-[2px]">
         <div className="flex gap-[2px] justify-between w-full items-center ">
           <div className="flex md:flex-row flex-col gap-[2px] md:text-lg text-2xl">
             <p className=" font-semibold text-white">Welcome Back,</p>
@@ -51,9 +56,9 @@ const Balance = ({ dashboard, loading }) => {
             <p className="font-semibold text-tradeFadeWhite">{dateTime.time}</p>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="flex flex-1 min-h-[144.5px] p-[15px]">
+      <div className="flex flex-1 min-h-[125px]">
         {loading ? (
           <Loading />
         ) : (
@@ -61,7 +66,7 @@ const Balance = ({ dashboard, loading }) => {
             {dashboard === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1 flex-col gap-[10px] bg-tradeAsh rounded-[15px] border border-tradeAshLight p-[12px]"></div>
+              <div className="flex flex-1 flex-col gap-[10px] bg-tradeAsh rounded-sm border border-tradeAshLight p-[12px]"></div>
             )}
           </div>
         )}

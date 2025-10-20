@@ -46,12 +46,12 @@ const OfferFeedback = () => {
                   <NetworkError />
                 ) : (
                   <div className="flex gap-[20px] flex-1 flex-col">
-                    <div>
+                    {/* <div>
                       <p className="flex text-xs text-tradeFadeWhite font-medium">
                         Feedbacks are carefully verified and provided by users
                         who have successfully traded with this vendor.
                       </p>
-                    </div>
+                    </div> */}
                     <div className="flex flex-col gap-[10px] w-full h-max">
                       {[...Array(5)].map((_, index, array) => (
                         <div key={index}>
