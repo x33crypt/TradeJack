@@ -1,6 +1,11 @@
 import React from "react";
 import NetworkError from "@/components/others/NetworkError";
 import toDecimal from "@/utils/toDecimal";
+import { FaLock } from "react-icons/fa";
+import { FaLockOpen } from "react-icons/fa";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { HiMiniArrowLongRight } from "react-icons/hi2";
+import { CgArrowLongRight } from "react-icons/cg";
 
 const EscrowActivity = () => {
   const excrow = [
@@ -17,6 +22,8 @@ const EscrowActivity = () => {
         <p className="text-sm font-semibold text-white flex items-center gap-1">
           ESCROW ACTIVITY
         </p>
+
+        <CgArrowLongRight className="text-tradeFadeWhite text-[30px] leading-none" />
       </div>
 
       <div className="flex h-full min-h-[125px] ">
@@ -33,10 +40,12 @@ const EscrowActivity = () => {
               <div className="flex custom-x-scrollbar overflow-x-auto gap-[10px]">
                 {excrow?.slice(0, 2).map((ex, index) => (
                   <div className="flex flex-col justify-between bg-tradeAsh border border-tradeAshLight min-w-[140px] h-max p-[12px] rounded-sm  gap-1 ">
-                    <div className="flex flex-col gap-1">
+                    <div className="flex items-center justify-between gap-1">
                       <p className="text-white text-xs font-medium leading-none">
                         NGN
                       </p>
+
+                      <FaLock className="text-[14px] text-tradeOrange" />
                     </div>
 
                     <p className="md:text-2xl text-lg font-semibold text-white">

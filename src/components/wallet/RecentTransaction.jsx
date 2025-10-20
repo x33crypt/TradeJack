@@ -8,6 +8,7 @@ import Loading from "../others/Loading";
 import NetworkError from "../others/NetworkError";
 import SmallButton from "../buttons/SmallButton";
 import { BiFileBlank } from "react-icons/bi";
+import { CgArrowLongRight } from "react-icons/cg";
 
 const RecentTransaction = ({ scrollToTop }) => {
   const { loading, refetchAllTransactions } = useFetchAllTransactions();
@@ -32,6 +33,8 @@ const RecentTransaction = ({ scrollToTop }) => {
         <p className="text-sm font-semibold text-white flex items-center gap-1">
           RECENT TRANSACTION
         </p>
+
+        <CgArrowLongRight className="text-tradeFadeWhite text-[30px] leading-none" />
       </div>
 
       <div className="flex h-full min-h-[125px] ">
@@ -70,7 +73,7 @@ const RecentTransaction = ({ scrollToTop }) => {
                   )}
                 </div>
 
-                <div className=" h-[55px] w-full flex items-center pt-[10px] border-t border-dashed border-tradeAshLight">
+                <div className=" h-[55px w-full flex items-center pt-[10px]">
                   <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-auto p-[2px]">
                     <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
                       <SmallButton variant="outline">

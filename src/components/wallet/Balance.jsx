@@ -143,7 +143,7 @@ const Balance = () => {
                   <div className="flex flex-row flex-wrap w-full items-center justify-around gap-[10px]">
                     <div
                       onClick={Deposit}
-                      className="flex flex-col items-center gap-1"
+                      className="flex flex-col items-center gap-2"
                     >
                       <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-sm cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                         <FaPlus className="text-base" />
@@ -155,7 +155,7 @@ const Balance = () => {
 
                     <div
                       onClick={Transfer}
-                      className="flex flex-col items-center gap-1"
+                      className="flex flex-col items-center gap-2"
                     >
                       <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max  rounded-sm cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                         <RiSendPlaneLine className="text-base" />
@@ -167,7 +167,7 @@ const Balance = () => {
 
                     <div
                       onClick={Withdraw}
-                      className="flex flex-col items-center gap-1"
+                      className="flex flex-col items-center gap-2"
                     >
                       <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max  rounded-sm cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                         <FaArrowUp className="text-base" />
@@ -179,7 +179,7 @@ const Balance = () => {
 
                     <div
                       onClick={refetch}
-                      className="flex flex-col items-center gap-1"
+                      className="flex flex-col items-center gap-2"
                     >
                       <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max  rounded-sm cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                         <MdOutlineRefresh className="text-base" />
