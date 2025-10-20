@@ -155,7 +155,7 @@ const InAppNav = () => {
           <div
             className={` ${
               animate ? "animate-zoomShake" : ""
-            } w-max md:flex hidden gap-1 items-center justify-center bg-tradeOrange border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+            } w-max flex gap-1 items-center justify-center bg-tradeOrange border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
           >
             <BiSupport className="text-[16px] text-black" />
           </div>

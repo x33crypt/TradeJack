@@ -42,8 +42,8 @@ const RecentTransaction = ({ scrollToTop }) => {
             {transactions === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1 flex-col bg-tradeAsh border border-tradeAshLight rounded-sm">
-                <div className="flex flex-1 p-[15px]">
+              <div className="flex flex-1 flex-col gap-[10px] borde border-tradeAshLight rounded-sm">
+                <div className="flex flex-1">
                   {Array.isArray(transactions?.data) &&
                   transactions?.data.length > 0 ? (
                     <div className="flex flex-col gap-[10px] w-full">
@@ -70,8 +70,8 @@ const RecentTransaction = ({ scrollToTop }) => {
                   )}
                 </div>
 
-                <div className=" h-[55px] w-full flex items-center py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
-                  <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
+                <div className=" h-[55px] w-full flex items-center pt-[10px] border-t border-dashed border-tradeAshLight">
+                  <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-auto p-[2px]">
                     <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
                       <SmallButton variant="outline">
                         <p>
