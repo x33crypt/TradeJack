@@ -172,7 +172,7 @@ const TransactionCard = ({ transaction }) => {
       >
         <div className="flex justify-between items-center  ">
           <div className="flex gap-2">
-            <div>
+            <div className=" flex items-center">
               {transaction?.type === "deposit" ? (
                 <div className="p-[10px] rounded-full bg-tradeGreen/5 text-lg items-center justify-center">
                   <IoMdArrowRoundDown className="text-tradeGreen" />

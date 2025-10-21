@@ -3,30 +3,32 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import Loading from "@/components/others/Loading";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
-import NetworkError from "../others/NetworkError";
+import NetworkError from "@/components/others/NetworkError";
 import { shortenEmail } from "@/utils/shortenEmail";
 import { useSensitiveNavigation } from "@/utils/navigateSensitive";
 
-const Profile = ({ loading, personalInfo }) => {
+const Info = ({ loading, profile }) => {
   const navigateTo = useNavigate();
   const navigateSensitive = useSensitiveNavigation();
 
-  console.log(personalInfo);
+  console.log(profile);
 
   return (
-    <div className="flex flex-1 md:sticky top-[64px] md:max-h-max  md:border border-t-0 border-tradeAshLight flex-col">
-      <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg font-[700] text-white ">Personal Information</p>
+    <div className="flex flex-1 flex-col gap-[20px]">
+      <div className="flex  items-center justify-between ">
+        <p className="text-sm font-semibold text-white flex items-center gap-1">
+          PROFILE
+        </p>
       </div>
-      <div className="relative flex flex-col md:h-[460px] min-h-[120px] h-full">
+      <div className="flex flex-1  min-h-[120px]">
         {loading ? (
           <Loading />
         ) : (
           <div className="flex flex-1">
-            {personalInfo === null ? (
+            {profile === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1 flex-col gap-[10px] md:gap-[5px] p-[15px] ">
+              <div className="flex flex-1 flex-col gap-[10px] md:gap-[5px] ">
                 {/* Basic Info */}
                 <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
                   {/* Username */}
@@ -39,7 +41,7 @@ const Profile = ({ loading, personalInfo }) => {
                         Username
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {personalInfo?.username || "-- --"}
+                        {profile?.username || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -54,9 +56,9 @@ const Profile = ({ loading, personalInfo }) => {
                         Full name
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {personalInfo?.lastName || personalInfo?.firstName
-                          ? `${personalInfo?.lastName || ""} ${
-                              personalInfo?.firstName || ""
+                        {profile?.lastName || profile?.firstName
+                          ? `${profile?.lastName || ""} ${
+                              profile?.firstName || ""
                             }`.trim()
                           : "-- --"}
                       </p>
@@ -76,7 +78,7 @@ const Profile = ({ loading, personalInfo }) => {
                         Email Address
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {shortenEmail(personalInfo?.email) || "-- --"}
+                        {shortenEmail(profile?.email) || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -94,7 +96,7 @@ const Profile = ({ loading, personalInfo }) => {
                         Gender
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {personalInfo?.gender || "-- --"}
+                        {profile?.gender || "-- --"}
                       </p>
                     </div>
                     <div className="text-tradeAsh text-[22px] opacity-0">
@@ -109,7 +111,7 @@ const Profile = ({ loading, personalInfo }) => {
                         Date of birth
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {personalInfo?.dateOfBirth || "-- --"}
+                        {profile?.dateOfBirth || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px] opacity-0">
@@ -129,7 +131,7 @@ const Profile = ({ loading, personalInfo }) => {
                         Mobile number
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {personalInfo?.phone || "-- --"}
+                        {profile?.phone || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -164,7 +166,7 @@ const Profile = ({ loading, personalInfo }) => {
                         KYC Status
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {capitalizeFirst(personalInfo?.kycStatus) || "-- --"}
+                        {capitalizeFirst(profile?.kycStatus) || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -177,7 +179,7 @@ const Profile = ({ loading, personalInfo }) => {
                         Document Type
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {capitalizeFirst(personalInfo?.documentType) || "-- --"}
+                        {capitalizeFirst(profile?.documentType) || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px] opacity-0">
@@ -194,4 +196,4 @@ const Profile = ({ loading, personalInfo }) => {
   );
 };
 
-export default Profile;
+export default Info;

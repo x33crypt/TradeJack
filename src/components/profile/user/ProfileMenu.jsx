@@ -1,21 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { TbFileLike } from "react-icons/tb";
-import { BsChatQuote } from "react-icons/bs";
-import { TbFileInvoice } from "react-icons/tb";
-import { RiGift2Fill } from "react-icons/ri";
-import { RiExchange2Fill } from "react-icons/ri";
-import { TiFlashOutline } from "react-icons/ti";
-import { FiUserPlus } from "react-icons/fi";
-import { RiExchangeFundsLine } from "react-icons/ri";
-import { useDashboard } from "@/context/userContext/DashboardContext";
-import { IoMdArrowDropright } from "react-icons/io";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { IoCloseSharp } from "react-icons/io5";
+import { IoMdArrowDropright } from "react-icons/io";
 
-const DasHboardMenu = () => {
-  const { dashboard } = useDashboard();
+const ProfileMenu = () => {
   const navigateTo = useNavigate();
+
   return (
     <div className="hidden lg:flex sticky top-[70px] h-max w-[250px] gap-[10px] flex-col ">
       <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-sm border border-tradeAsh">
@@ -35,38 +26,22 @@ const DasHboardMenu = () => {
           </div>
         </div>
         <div className="flex flex-col gap-[15px]">
-          <div
-            onClick={() => navigateTo("/offers")}
-            className="flex items-center gap-2"
-          >
+          <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              MY OFFERS
+              PROFILE
             </p>
           </div>
           <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              BOOKMARKS
+              ACTIVITY STATS
             </p>
           </div>
           <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              TRADES
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              REFERRALS
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              REWARDS
+              FEEDBACKS
             </p>
           </div>
         </div>
@@ -77,4 +52,4 @@ const DasHboardMenu = () => {
   );
 };
 
-export default DasHboardMenu;
+export default ProfileMenu;

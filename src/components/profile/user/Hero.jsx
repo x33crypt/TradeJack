@@ -1,18 +1,14 @@
 import React from "react";
-import image from "../../assets/landingImg4.JPG";
-import { FaCalendarCheck } from "react-icons/fa";
+import image from "../../../assets/landingImg4.JPG";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import Loading from "@/components/others/Loading";
 import { RiShare2Fill } from "react-icons/ri";
 import { FaCircle } from "react-icons/fa";
-import { HiLocationMarker } from "react-icons/hi";
-import { FaUserCheck } from "react-icons/fa";
-import { FaUserXmark } from "react-icons/fa6";
-import { FaUser } from "react-icons/fa";
 import { FiMoreVertical } from "react-icons/fi";
 import { MdOutlineShareLocation } from "react-icons/md";
 import { LuCalendarClock } from "react-icons/lu";
 import { BsPatchCheckFill } from "react-icons/bs";
+import { TbCameraPlus } from "react-icons/tb";
 
 const Hero = ({ Heading, loading, profile }) => {
   return (
@@ -41,6 +37,9 @@ const Hero = ({ Heading, loading, profile }) => {
                     <img src={image} alt="" className="" />
                   </div>
                 )}
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-[20px]">
+                <TbCameraPlus className="text-white text-[40px]" />
               </div>
             </div>
 
@@ -103,7 +102,7 @@ const Hero = ({ Heading, loading, profile }) => {
             <div className="flex items-center text-tradeGreen border border-tradeAshExtraLight text-[20px] p-1 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
               <BsPatchCheckFill />
             </div>
-            <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-1 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            <div className="flex lg:hidden text-white border border-tradeAshExtraLight text-[20px] p-1 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
               <FiMoreVertical />
             </div>
           </div>

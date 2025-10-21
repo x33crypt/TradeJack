@@ -16,6 +16,7 @@ import { IoFlash } from "react-icons/io5";
 import { PiCoinVerticalBold } from "react-icons/pi";
 import { IoMdFlash } from "react-icons/io";
 import { MdHourglassTop } from "react-icons/md";
+import { MdLeaderboard } from "react-icons/md";
 
 const TodaysGoal = ({ loading, dashboard }) => {
   const [value, setValue] = useState(20);
@@ -37,21 +38,23 @@ const TodaysGoal = ({ loading, dashboard }) => {
               <NetworkError />
             ) : (
               <div className="flex-1 flex flex-col justify-between gap-[25px]">
-                <div className="flex flex-1 items-center justify-between">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <p className="text-[11px] font-bold text-tradeOrange leading-none p-1 hover:bg-tradeOrange/20 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      TODAY
+                    <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      RECENT
                     </p>
 
-                    <p className="text-[11px] font-bold text-tradeOrange leading-none p-1 hover:bg-tradeOrange/20 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      WEEK
+                    <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      OLDER
                     </p>
                   </div>
 
-                  <div>
-                    <p className="text-[11px] font-bold text-tradeOrange leading-none p-1 hover:bg-tradeOrange/20 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white ">
+                    <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                       LEADERBOARD
                     </p>
+
+                    <MdLeaderboard />
                   </div>
                 </div>
 

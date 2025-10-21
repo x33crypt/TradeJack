@@ -29,7 +29,7 @@ const ProfileMenu = () => {
           <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              STATS & FEEDBACKS
+              ACTIVITY STATS
             </p>
           </div>
           <div className="flex items-center gap-2">

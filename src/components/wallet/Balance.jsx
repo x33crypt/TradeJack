@@ -98,11 +98,11 @@ const Balance = () => {
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <p className="text-[11px] font-bold text-tradeOrange leading-none p-1 hover:bg-tradeOrange/20 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
                         USD
                       </p>
 
-                      <p className="text-[11px] font-bold text-tradeOrange leading-none p-1 hover:bg-tradeOrange/20 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
                         NGN
                       </p>
                     </div>

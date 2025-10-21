@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import InAppNav from "@/components/others/InAppNav";
 import Button from "@/components/buttons/Button";
 import Footer from "@/components/others/Footer";
-import SideNav from "@/components/account/SideNav";
+
 import Loading from "@/components/others/Loading";
 import { LuFileX2 } from "react-icons/lu";
 import KycVerify from "@/components/kyc/KycVerify";
@@ -52,7 +52,7 @@ const KycStatus = () => {
     <>
       <InAppNav />
       <div className="md:pt-[64px] pt-[60px] lg:px-[2%] md:px-[2.5%] min-h-sv flex gap-[5px] bg-black ">
-        <SideNav />
+        {/* <SideNav /> */}
         <div className="flex-1 flex flex-col md:flex-row gap-[5px]">
           {/*Kyc Information */}
           <div className="flex flex-col flex-1 md:border border-neutral-800 min-h-svh">

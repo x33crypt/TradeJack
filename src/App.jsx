@@ -2,7 +2,6 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Marketplace from "./pages/offer/public/PublicOffers";
 import CreateOffer from "./pages/offer/user/CreateOffer";
-import Account from "./pages/settings/Account";
 import EditAddress from "./pages/settings/EditAddress";
 import CreateOfferSummary from "./pages/offer/user/CreateSummary";
 import MyOffer from "./pages/offer/user/Offers";
@@ -49,6 +48,7 @@ import ConfirmPassword from "./pages/auth/ConfirmPassword";
 import SensitiveRoute from "./utils/sensitiveRoutes";
 import PreTradeCheck from "./pages/offer/public/PreTradeCheck";
 import PublicProfile from "./pages/profile/PublicProfile";
+import UserProfile from "./pages/profile/UserProfile";
 
 const App = () => {
   return (
@@ -81,7 +81,7 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
 
         {/* User Account */}
-        <Route path="/account" element={<Account />} />
+        <Route path="/account" element={<UserProfile />} />
         <Route path="/account/address" element={<EditAddress />} />
         <Route path="/account/kyc/status" element={<KycStatus />} />
         <Route path="/account/kyc/verification" element={<KycVerification />} />

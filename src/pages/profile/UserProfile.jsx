@@ -1,16 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import InAppNav from "@/components/others/InAppNav";
 import Footer from "@/components/others/Footer";
 import NetworkError from "@/components/others/NetworkError";
 import Loading from "@/components/others/Loading";
-import ProfileMenu from "@/components/profile/public/ProfileMenu";
-import Hero from "@/components/profile/public/Hero";
+import ProfileMenu from "@/components/profile/user/ProfileMenu";
+import Hero from "@/components/profile/user/Hero";
 import Stats from "@/components/profile/Stats";
 import Feedbacks from "@/components/profile/Feedbacks";
-import ActiveOffers from "@/components/profile/ActiveOffers";
-import TradeHistory from "@/components/profile/TradeHistory";
+import Info from "@/components/profile/user/Info";
 
-const PublicProfile = ({ Heading, profile, loading }) => {
+const UserProfile = ({ Heading, profile, loading }) => {
   return (
     <>
       <InAppNav />
@@ -31,9 +31,9 @@ const PublicProfile = ({ Heading, profile, loading }) => {
                       loading={loading}
                       Heading={Heading}
                     />
+
+                    <Info profile={profile} loading={loading} />
                     <Stats profile={profile} loading={loading} />
-                    <ActiveOffers />
-                    <TradeHistory profile={profile} loading={loading} />
                     <Feedbacks />
                   </div>
                 </div>
@@ -47,4 +47,4 @@ const PublicProfile = ({ Heading, profile, loading }) => {
   );
 };
 
-export default PublicProfile;
+export default UserProfile;
