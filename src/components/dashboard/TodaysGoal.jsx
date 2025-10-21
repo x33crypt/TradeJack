@@ -41,27 +41,26 @@ const TodaysGoal = ({ loading, dashboard }) => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      RECENT
+                      TODAY
                     </p>
 
                     <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      OLDER
+                      WEEK
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white ">
+                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                     <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                       LEADERBOARD
                     </p>
-
                     <MdLeaderboard />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-[10px]">
                   {Array.from({ length: 3 }).map((_, index) => (
-                    <div className="flex items-center w-full h-max flex-grow  gap-[10px] border border-tradeAshLight bg-tradeAsh p-[12px] rounded-sm">
-                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-sm p-1 w-max cursor-pointer">
+                    <div className="flex items-center w-full h-max flex-grow  gap-[10px] border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
+                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
                         <IoMdFlash className="text-lg text-tradeOrange" />
                       </div>
                       <div className="flex-1 flex flex-col gap-1">
@@ -81,7 +80,7 @@ const TodaysGoal = ({ loading, dashboard }) => {
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-sm p-1 w-max cursor-pointer">
+                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
                         <MdHourglassTop className="text-lg text-tradeFadeWhite" />
                       </div>
                     </div>

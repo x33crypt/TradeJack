@@ -18,6 +18,7 @@ import Button from "../buttons/Button";
 import NetworkError from "../others/NetworkError";
 import { RiSafe2Fill } from "react-icons/ri";
 import { MdMoreVert } from "react-icons/md";
+import { FaLink } from "react-icons/fa6";
 
 const Balance = () => {
   const { balance, setBalance } = useBalance();
@@ -78,7 +79,7 @@ const Balance = () => {
               <NetworkError />
             ) : (
               <div className="flex-1 flex flex-col justify-between gap-[25px]">
-                <div className="flex flex-col gap-[15px] items-cente border rounded-sm border-neutral-800 p-[12px] bg-tradeAsh">
+                <div className="flex flex-col gap-[15px] items-cente border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
                   <div className="flex flex-1 items-center justify-between">
                     <div className="flex items-center gap-2">
                       <p className="text-[11px] font-bold text-tradeFadeWhite leading-none p-1 hover:bg-tradeOrange/20 g-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
@@ -145,7 +146,7 @@ const Balance = () => {
                       onClick={Deposit}
                       className="flex flex-col items-center gap-2"
                     >
-                      <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-sm cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                      <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                         <FaPlus className="text-base" />
                       </div>
                       <p className="text-white text-[13px] font-medium">
@@ -157,7 +158,7 @@ const Balance = () => {
                       onClick={Transfer}
                       className="flex flex-col items-center gap-2"
                     >
-                      <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max  rounded-sm cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                      <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max  rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                         <RiSendPlaneLine className="text-base" />
                       </div>
                       <p className="text-white text-[13px] font-medium">
@@ -169,7 +170,7 @@ const Balance = () => {
                       onClick={Withdraw}
                       className="flex flex-col items-center gap-2"
                     >
-                      <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max  rounded-sm cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                      <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max  rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                         <FaArrowUp className="text-base" />
                       </div>
                       <p className="text-white text-[13px] font-medium">
@@ -178,14 +179,14 @@ const Balance = () => {
                     </div>
 
                     <div
-                      onClick={refetch}
+                      // onClick={refetch}
                       className="flex flex-col items-center gap-2"
                     >
-                      <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max  rounded-sm cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                        <MdOutlineRefresh className="text-base" />
+                      <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                        <FaLink className="text-base" />
                       </div>
                       <p className="text-white text-[13px] font-medium">
-                        Refresh
+                        Accounts
                       </p>
                     </div>
                   </div>

@@ -791,7 +791,7 @@ const CreateOffer = () => {
                   </p>
 
                   <div className="flex flex-col gap-[10px]">
-                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-sm flex flex-col gap-[15px]">
+                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                       <div className="flex flex-col gap-[10px] w-full">
                         <p className="text-tradeFadeWhite text-xs font-medium">
                           Asset Type
@@ -823,7 +823,7 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-sm flex flex-col gap-[15px]">
+                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                       <div className="flex flex-col gap-[10px] w-full">
                         <p className="text-tradeFadeWhite text-xs font-medium">
                           {" "}
@@ -857,7 +857,7 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-sm flex flex-col gap-[15px]">
+                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                       <div className="flex flex-col gap-[10px] w-full">
                         <p className="text-tradeFadeWhite text-xs font-medium">
                           Currency
@@ -900,7 +900,7 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-sm flex flex-col gap-[15px]">
+                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                       <div className="flex flex-col gap-[10px] w-full">
                         <p className="text-tradeFadeWhite text-xs font-medium">
                           Purchase Limit
@@ -973,7 +973,7 @@ const CreateOffer = () => {
                     control profitability.
                   </p>
                   <div className="flex flex-col gap-[10px]">
-                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-sm flex flex-col gap-[15px]">
+                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                       <div className="flex flex-col gap-[10px] w-full">
                         <p className="text-tradeFadeWhite text-xs font-medium">
                           Profit Margin
@@ -1043,7 +1043,7 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-sm flex flex-col gap-[15px]">
+                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                       <div className="flex flex-col gap-[10px] w-full">
                         <p className="text-tradeFadeWhite text-xs font-medium">
                           Transfer Window
@@ -1112,7 +1112,7 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-sm flex flex-col gap-[15px]">
+                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                       <div className="flex flex-col gap-[10px] w-full">
                         <p className="text-tradeFadeWhite text-xs font-medium">
                           Release Window
@@ -1201,7 +1201,7 @@ const CreateOffer = () => {
                   </p>
 
                   <div className="flex flex-col gap-[10px]">
-                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-sm flex flex-col gap-[15px]">
+                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                       <div className="flex flex-col gap-[10px] w-full">
                         <p className="text-tradeFadeWhite text-xs font-medium">
                           Terms
@@ -1272,7 +1272,7 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-sm flex flex-col gap-[15px]">
+                    <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
                       <div className="flex flex-col gap-[10px] w-full">
                         <p className="text-tradeFadeWhite text-xs font-medium">
                           Instructions

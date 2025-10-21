@@ -6,6 +6,9 @@ import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import SmallButton from "../../buttons/SmallButton";
 import { currencies } from "@/hooks/others/useCurrencies";
 import withComma from "@/utils/withComma";
+import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
+import { IoCloseSharp } from "react-icons/io5";
+import { IoMdArrowDropright } from "react-icons/io";
 
 const Filter = () => {
   const { filter, setFilter } = usePublicOffers();
@@ -23,10 +26,8 @@ const Filter = () => {
   const [assetsList, setAssetsList] = useState([
     "Zelle",
     "CashApp",
+    "Chime",
     "eBay Gift Card",
-    "Chase Bank",
-    "Apple Pay",
-
     "More",
   ]);
   const [currenciesList, setCurrenciesList] = useState([
@@ -60,7 +61,7 @@ const Filter = () => {
       currency: "",
       enterAmount: false,
       amount: "",
-      amountList: ["50", "100", "200", "Enter amount"],
+      amountList: ["50", "100", "200", "More"],
       sortBy: "",
     });
   };
@@ -194,173 +195,125 @@ const Filter = () => {
 
   return (
     <>
-      <div className="flex flex- md:w-[300px] h-max flex-col md:border-x md:border-t-0 lg:border-b border-neutral-800 rounded-[15px] lg:rounded-none px-[15px] bg-tradeAsh lg:bg-transparent">
-        <div className="flex md:hidden justify-between items-center py-[12px] border-b border-neutral-800">
-          <p className="text-lg text-white font-[700] cursor-pointer">Filter</p>
-
-          <div
-            onClick={close}
-            className="w-max flex lg:hidden text-white hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-          >
-            <IoClose className="text-[16px]" />
-          </div>
-
-          <div className="lg:flex hidden">
-            <SmallButton onClick={clearFilter}>
-              <p>Reset filter</p>
-            </SmallButton>
+      <div className="flex sticky top-[70px] h-max w-[250px] gap-[10px] flex-col lg:mb-[15px]">
+        <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
+          <div className="flex flex-col gap-[15px]">
+            <div className="flex items-center gap-2">
+              <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+              <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+                ASSET
+              </p>
+            </div>
+            <div className="flex gap-[10px] flex-wrap">
+              {assetsList.map((asset, index) => (
+                <button
+                  key={index}
+                  variant="fadeoutPlus"
+                  onClick={
+                    asset !== "More"
+                      ? () => handleAssetChange(asset)
+                      : () =>
+                          setSelect({
+                            state: true,
+                            selectOne: true,
+                            selectTwo: false,
+                            page: "offer filter",
+                            element: "assets",
+                            options: assetsList,
+                          })
+                  }
+                  className={`${
+                    asset === filter?.asset
+                      ? "text-black bg-tradeOrange"
+                      : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight "
+                  } flex border border-tradeAshExtraLight items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                >
+                  {asset}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="relative flex-1 flex flex-col justify-between py-[12px] gap-[16px] md:h-[480px]">
-          <div className=" flex-1 flex flex-col gap-[15px] md:overflow-y-auto custom-scrollbar">
-            <div className="flex flex-col gap-[10px] w-full">
-              <p className="text-white text-[13px] font-semibold">Asset</p>
-              <div className="flex gap-[10px] flex-wrap">
-                <div className="flex gap-[10px] flex-wrap">
-                  {assetsList.map((asset, index) => (
-                    <button
-                      key={index}
-                      variant="fadeoutPlus"
-                      onClick={
-                        asset !== "More"
-                          ? () => handleAssetChange(asset)
-                          : () =>
-                              setSelect({
-                                state: true,
-                                selectOne: true,
-                                selectTwo: false,
-                                page: "offer filter",
-                                element: "assets",
-                                options: assetsList,
-                              })
-                      }
-                      className={`${
-                        asset === filter?.asset
-                          ? "text-black bg-tradeGreen"
-                          : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight "
-                      } flex border border-tradeAshExtraLight items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                    >
-                      {asset}
-                    </button>
-                  ))}
-                </div>
-              </div>
+        <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
+          <div className="flex flex-col gap-[15px]">
+            <div className="flex items-center gap-2">
+              <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+              <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+                CURRENCY
+              </p>
             </div>
+            <div className="flex gap-[10px] flex-wrap">
+              {currenciesList.map((currency, index) => (
+                <button
+                  key={index}
+                  variant="fadeoutPlus"
+                  onClick={
+                    currency !== "More"
+                      ? () => handleCurrencyChange(currency)
+                      : () =>
+                          setSelect({
+                            state: true,
+                            selectOne: false,
+                            selectTwo: true,
+                            page: "offer filter",
+                            element: "currency",
+                            options: currencies,
+                          })
+                  }
+                  className={`${
+                    currency === filter?.currency
+                      ? "text-black bg-tradeOrange"
+                      : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight "
+                  } flex border border-tradeAshExtraLight items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
+                >
+                  {currency}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
 
-            <div className="flex flex-col gap-[10px] w-full">
-              <p className="text-white text-[13px] font-semibold">Currency</p>
-
+        <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
+          <div className="flex flex-col gap-[15px]">
+            <div className="flex items-center gap-2">
+              <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+              <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+                AMOUNT
+              </p>
+            </div>
+            <div className="flex gap-[10px] flex-wrap">
               <div className="flex gap-[10px] flex-wrap">
-                {currenciesList.map((currency, index) => (
+                {filter?.amountList?.map((amount, index) => (
                   <button
                     key={index}
                     variant="fadeoutPlus"
                     onClick={
-                      currency !== "More"
-                        ? () => handleCurrencyChange(currency)
+                      amount !== "Enter amount"
+                        ? () => handleAmountChange(amount)
                         : () =>
-                            setSelect({
-                              state: true,
-                              selectOne: false,
-                              selectTwo: true,
-                              page: "offer filter",
-                              element: "currency",
-                              options: currencies,
-                            })
+                            setFilter((prev) => ({
+                              ...prev,
+                              enterAmount: true,
+                            }))
                     }
                     className={`${
-                      currency === filter?.currency
-                        ? "text-black bg-tradeGreen"
-                        : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight "
+                      Number(amount) === Number(filter?.amount) &&
+                      amount !== "Enter amount"
+                        ? "text-black bg-tradeOrange"
+                        : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight"
                     } flex border border-tradeAshExtraLight items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
                   >
-                    {currency}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-[10px] w-full">
-              <p className="text-white text-[13px] font-semibold">Amount</p>
-              <div className="flex gap-[10px] flex-wrap">
-                <div className="flex gap-[10px] flex-wrap">
-                  {filter?.amountList?.map((amount, index) => (
-                    <button
-                      key={index}
-                      variant="fadeoutPlus"
-                      onClick={
-                        amount !== "Enter amount"
-                          ? () => handleAmountChange(amount)
-                          : () =>
-                              setFilter((prev) => ({
-                                ...prev,
-                                enterAmount: true,
-                              }))
-                      }
-                      className={`${
-                        Number(amount) === Number(filter?.amount) &&
-                        amount !== "Enter amount"
-                          ? "text-black bg-tradeGreen"
-                          : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight"
-                      } flex border border-tradeAshExtraLight items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                    >
-                      {withComma(amount)}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-[10px] w-full">
-              <p className="text-white text-[13px] font-semibold">Sort By</p>
-
-              <div className="flex gap-[10px] flex-wrap">
-                {sortByList.map((sort, index) => (
-                  <button
-                    key={index}
-                    variant="fadeoutPlus"
-                    onClick={
-                      sort !== "More"
-                        ? () => handleSortChange(sort)
-                        : () =>
-                            setSelect({
-                              state: true,
-                              selectOne: true,
-                              selectTwo: false,
-                              page: "offer filter",
-                              element: "sort by",
-                              options: sorts,
-                            })
-                    }
-                    className={`${
-                      sort === filter?.sortBy
-                        ? "text-black bg-tradeGreen"
-                        : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight "
-                    } flex border border-tradeAshExtraLight items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
-                  >
-                    {sort}
+                    {withComma(amount)}
                   </button>
                 ))}
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="flex flex-col gap-[10px] bottom-0 left-0 right-0">
-            {/* <Button
-              onClick={handleFilterOffer}
-              variant="primary"
-              disabled={filter?.loading}
-            >
-              Apply Filter
-            </Button> */}
-
-            <div className="lg: flex">
-              <Button onClick={clearFilter} variant="outline">
-                Reset Filter
-              </Button>
-            </div>
-          </div>
+        <div onClick={close} className="flex lg:hidden">
+          <Button>Close</Button>
         </div>
       </div>
     </>

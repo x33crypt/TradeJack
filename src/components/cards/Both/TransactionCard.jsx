@@ -168,7 +168,7 @@ const TransactionCard = ({ transaction }) => {
       {/* Mobile Card */}
       <div
         onClick={() => viewDetails(transaction.reference)}
-        className="md:hidde flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight rounded-sm border border-tradeAshLight transition-all duration-300 cursor-pointer"
+        className="md:hidde flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer"
       >
         <div className="flex justify-between items-center  ">
           <div className="flex gap-2">

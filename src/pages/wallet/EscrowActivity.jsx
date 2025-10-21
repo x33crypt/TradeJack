@@ -26,7 +26,7 @@ const EscrowActivity = () => {
         <CgArrowLongRight className="text-tradeFadeWhite text-[30px] leading-none" />
       </div>
 
-      <div className="flex h-full min-h-[125px] ">
+      <div className="flex h-full ">
         {/* loading */}
         {false ? (
           <Loading />
@@ -38,17 +38,23 @@ const EscrowActivity = () => {
               <NetworkError />
             ) : (
               <div className="flex custom-x-scrollbar overflow-x-auto gap-[10px]">
-                {excrow?.slice(0, 2).map((ex, index) => (
-                  <div className="flex flex-col justify-between bg-tradeAsh border border-tradeAshLight min-w-[140px] h-max p-[12px] rounded-sm  gap-1 ">
+                {excrow?.slice(0, 3).map((ex, index) => (
+                  <div className="flex flex-col justify-between bg-tradeAsh border border-tradeAshLight min-w-[140px] h-max p-[12px] rounded-[15px]  gap-1 ">
                     <div className="flex items-center justify-between gap-1">
                       <p className="text-white text-xs font-medium leading-none">
                         NGN
                       </p>
 
-                      <FaLock className="text-[14px] text-tradeOrange" />
+                      <div>
+                        {ex.status === "Locked" ? (
+                          <FaLock className="text-[12px] text-tradeOrange" />
+                        ) : (
+                          <FaLockOpen className="text-[12px] text-tradeFadeWhite" />
+                        )}
+                      </div>
                     </div>
 
-                    <p className="md:text-2xl text-lg font-semibold text-white">
+                    <p className="text-lg font-semibold text-white">
                       {toDecimal(ex?.amount)}
                     </p>
 

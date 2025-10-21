@@ -18,7 +18,7 @@ export const PublicOffersProvider = ({ children }) => {
     currency: "",
     enterAmount: false,
     amount: "",
-    amountList: ["50", "100", "200", "Enter amount"],
+    amountList: ["50", "100", "200", "500", "1000", "2000", "More"],
     sortBy: "",
   });
   const [aboutOffer, setAboutOffer] = useState({ id: null, data: null });

@@ -56,10 +56,6 @@ const Partners = () => {
                             OLDER
                           </p>
                         </div>
-
-                        <div className="text-lg text-tradeFadeWhite hover:text-white leading-nonerounded-sm transition-all duration-300 cursor-pointer">
-                          <HiOutlineMagnifyingGlass />
-                        </div>
                       </div>
 
                       <div className="flex flex-wrap gap-x-4 md:gap-x-6  gap-y-12">

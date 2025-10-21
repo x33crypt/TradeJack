@@ -22,6 +22,8 @@ import { LuBinoculars } from "react-icons/lu";
 import { IoScanCircle } from "react-icons/io5";
 import { TbScan } from "react-icons/tb";
 import FloatingTradeButton from "@/components/others/FloatingTradeButton";
+import { TbArrowsSort } from "react-icons/tb";
+import { IoNuclearSharp } from "react-icons/io5";
 
 const PublicOffers = () => {
   const topRef = useRef(null);
@@ -138,6 +140,18 @@ const PublicOffers = () => {
     }));
   };
 
+  const clearFilter = () => {
+    setFilter({
+      loading: false,
+      asset: "",
+      currency: "",
+      enterAmount: false,
+      amount: "",
+      amountList: ["50", "100", "200", "500", "1000", "2000", "More"],
+      sortBy: "",
+    });
+  };
+
   const closeEnterAmount = () => {
     setFilter((prev) => ({
       ...prev,
@@ -156,263 +170,255 @@ const PublicOffers = () => {
   return (
     <>
       <InAppNav />
-      <div
-        ref={topRef}
-        className=" relative h-full flex gap-[5px] lg:flex-row flex-col bg-black lg:px-[2%] md:px-[2.5%] md:pt-[64px] pt-[57px]"
-      >
-        <div className="lg:flex hidden sticky top-[64px] h-[520px]">
-          <Filter />
-        </div>
-        <div className="flex flex-1 flex-col min-h-svh md:border-x md:border-t-0 lg:border-b border-neutral-800  gap-[15px ">
-          {/* <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-            <p className="text-lg font-[700] text-white ">
-              Secure P2P Marketplace
-            </p>
-          </div> */}
 
-          <div className="flex flex-col md:flex-row px-[15px] py-[12px] lg:border-b border-tradeAshLight">
-            <div className="flex gap-[2px] justify-between w-full items-center ">
-              <div className="flex lg:flex-row flex-col md:justify-betwee lg:gap-2 gap-1 lg:text-lg text-2xl w-full">
-                <p className=" font-semibold text-white">Explore Offers</p>
-                <p className=" lg:flex hidden font-semibold text-white">-</p>
-                <p className=" font-semibold text-tradeFadeWhite md:w-max w-[260px">
-                  Secure P2P Trading
+      <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black">
+        <div
+          ref={topRef}
+          className="flex flex-1 lg:flex-row flex-col gap-[25px] "
+        >
+          <div className="lg:flex hidden">
+            <Filter />
+          </div>
+          <div className="flex flex-1 flex-col gap-[20px] lg:mr-[12%] p-[15px]">
+            <div className="flex items-center justify-between ">
+              <p className="text-lg font-semibold text-white flex items-center gap-1">
+                SECURE P2P TRADING
+              </p>
+
+              <div
+                onClick={showStats}
+                className="text-tradeFadeWhite text-3xl fade-pulse cursor-pointer"
+              >
+                <TbScan />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                <TbArrowsSort />
+                <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                  RECENT
                 </p>
               </div>
 
-              <div className="flex items-cente  h-full flex-row md:gap-2 gap-1 items-en">
+              <div className="flex items-center gap-2">
                 <div
-                  onClick={showStats}
-                  className="text-tradeGreen text-5xl lg:text-3xl fade-pulse cursor-pointer"
+                  onClick={showFilter}
+                  className="flex lg:hidden items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
                 >
-                  <TbScan />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-[20px]">
-            <div className="flex flex-col flex-1 justify-between ">
-              <div className="sticky flex flex-col items-cente w-full md:top-[62px] top-[56px] bg-black  border-b border-dashed border-tradeAshLight gap-[5px]">
-                <div className="flex  items-center justify-between py-[12px] px-[15px] bg-tradeAs gap-[20px] overflow-x-hidden custom-x-scrollbar">
-                  <p className="text-base font-semibold text-white shrink-0 ">
-                    Top Offers
+                  <PiSlidersHorizontalBold />
+                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    FILTER
                   </p>
-
-                  <div className="flex gap-[5px]">
-                    <div className="lg:hidden flex">
-                      <SmallButton variant="fadeout" onClick={showFilter}>
-                        <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" />
-                        <p>Filter</p>
-                      </SmallButton>
-                    </div>
-
-                    {/* <SmallButton variant="fadeout" onClick={showStats}>
-                      <FcLineChart />
-                      <p>Stats</p>
-                    </SmallButton> */}
-                  </div>
                 </div>
-              </div>
-              <div className="flex-1 flex flex-col p-[15px] gap-[15px] min-h-[120px]">
-                {initialLoading && offers?.top === null ? (
-                  <Loading />
-                ) : (
-                  <div className="flex flex-1">
-                    {offers?.top === null ? (
-                      <NetworkError />
-                    ) : (
-                      <div className="flex flex-1">
-                        {Array.isArray(offers?.top?.data) &&
-                        offers?.top?.data?.length > 0 ? (
-                          <div className="flex flex-col gap-[10px] w-full h-max">
-                            {offers?.top?.data?.map((offer, index) => (
-                              <div key={offer.id || index}>
-                                <OfferCard offer={offer} />
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <div className="flex-1 min-h-[150px] flex flex-col gap-[10px] items-center justify-center">
-                            <p className="text-[13px] font-semibold text-white leading-none">
-                              No Offers Found
-                            </p>
 
-                            <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
-                              Try adjusting your filters or search criteria to
-                              see more offers.
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-              <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
-                <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
-                  <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
-                    <SmallButton variant="outline">
-                      <p>{topDisplayedCount}</p>
-                    </SmallButton>
-                    <SmallButton variant="outline">
-                      <p>of</p>
-                    </SmallButton>
-                    <SmallButton variant="outline">
-                      <p>
-                        {topPagination?.totalItems
-                          ? topPagination?.totalItems
-                          : "0"}
-                      </p>
-                    </SmallButton>
-                  </div>
-
-                  <div className="flex gap-[5px] py-[1px]">
-                    <SmallButton variant="outline">
-                      {topPagination?.hasNextPage ? (
-                        <div onClick={nextTop}>
-                          {topLoading ? (
-                            <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
-                          ) : (
-                            <p>Load more</p>
-                          )}
-                        </div>
-                      ) : (
-                        <div>
-                          {topStatus?.message === null ? (
-                            <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
-                          ) : (
-                            <p>{topStatus?.message}</p>
-                          )}
-                        </div>
-                      )}
-                    </SmallButton>
-
-                    <SmallButton
-                      variant="outline"
-                      onClick={() =>
-                        window.scrollTo({ top: 0, behavior: "smooth" })
-                      }
-                    >
-                      <p>Scroll to Top</p>
-                    </SmallButton>
-                  </div>
+                <div
+                  onClick={clearFilter}
+                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                >
+                  <IoNuclearSharp />
+                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    RESET
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col flex-1 justify-between ">
-              <div className="sticky flex flex-col items-cente w-full md:top-[62px] top-[56px] bg-black  border-b border-dashed border-tradeAshLight gap-[5px]">
-                <div className="flex  items-center justify-between py-[12px] px-[15px] bg-tradeAs gap-[20px] overflow-x-hidden custom-x-scrollbar">
-                  <p className="text-base font-semibold text-white shrink-0 ">
-                    Recent Offers
+            <div className="flex flex-col gap-[40px]">
+              <div className="flex flex-col flex-1 justify-between gap-[20px]">
+                <div className="flex  items-center justify-between">
+                  <p className="text-sm font-semibold text-white flex items-center gap-1">
+                    TOP OFFERS
                   </p>
-
-                  <div className="flex gap-[5px]">
-                    <div className="lg:hidden flex">
-                      <SmallButton variant="fadeout" onClick={showFilter}>
-                        <PiSlidersHorizontalBold className="lg:text-[14px] text-[14px]" />
-                        <p>Filter</p>
-                      </SmallButton>
-                    </div>
-
-                    {/* <SmallButton variant="fadeout" onClick={showStats}>
-                      <FcLineChart />
-                      <p>Stats</p>
-                    </SmallButton> */}
-                  </div>
                 </div>
-              </div>
-              <div className="flex-1 flex flex-col p-[15px] gap-[15px] min-h-[120px]">
-                {initialLoading && offers?.recent === null ? (
-                  <Loading />
-                ) : (
-                  <div className="flex flex-1">
-                    {offers?.recent === null ? (
-                      <NetworkError />
-                    ) : (
-                      <div className="flex flex-1">
-                        {Array.isArray(offers?.recent?.data) &&
-                        offers?.recent?.data.length > 0 ? (
-                          <div className="flex flex-col gap-[10px] w-full h-max">
-                            {offers?.recent?.data?.map((offer, index) => (
-                              <div key={offer.id || index}>
-                                <OfferCard offer={offer} />
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <div className="flex-1 min-h-[150px] flex flex-col gap-[10px] items-center justify-center">
-                            <p className="text-[13px] font-semibold text-white leading-none">
-                              No Offers Found
-                            </p>
 
-                            <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
-                              Try adjusting your filters or search criteria to
-                              see more offers.
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-              <div className="h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
-                <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
-                  <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
-                    <SmallButton variant="outline">
-                      <p>{recentDisplayedCount}</p>
-                    </SmallButton>
-                    <SmallButton variant="outline">
-                      <p>of</p>
-                    </SmallButton>
-                    <SmallButton variant="outline">
-                      <p>
-                        {recentPagination?.totalItems
-                          ? recentPagination?.totalItems
-                          : "0"}
-                      </p>
-                    </SmallButton>
-                  </div>
-
-                  <div className="flex gap-[5px] py-[1px]">
-                    <SmallButton variant="outline">
-                      {recentPagination?.hasNextPage ? (
-                        <div onClick={nextRecent}>
-                          {recentLoading ? (
-                            <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
-                          ) : (
-                            <p>Load more</p>
-                          )}
-                        </div>
+                <div className="flex-1 flex flex-col gap-[15px] min-h-[120px]">
+                  {initialLoading && offers?.top === null ? (
+                    <Loading />
+                  ) : (
+                    <div className="flex flex-1">
+                      {offers?.top === null ? (
+                        <NetworkError />
                       ) : (
-                        <div>
-                          {recentStatus?.message === null ? (
-                            <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                        <div className="flex flex-1">
+                          {Array.isArray(offers?.top?.data) &&
+                          offers?.top?.data?.length > 0 ? (
+                            <div className="flex flex-col gap-[10px] w-full h-max">
+                              {offers?.top?.data?.map((offer, index) => (
+                                <div key={offer.id || index}>
+                                  <OfferCard offer={offer} />
+                                </div>
+                              ))}
+                            </div>
                           ) : (
-                            <p>{recentStatus?.message}</p>
+                            <div className="flex-1 min-h-[150px] flex flex-col gap-[10px] items-center justify-center">
+                              <p className="text-[13px] font-semibold text-white leading-none">
+                                No Offers Found
+                              </p>
+
+                              <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
+                                Try adjusting your filters or search criteria to
+                                see more offers.
+                              </p>
+                            </div>
                           )}
                         </div>
                       )}
-                    </SmallButton>
+                    </div>
+                  )}
+                </div>
 
-                    <SmallButton
-                      variant="outline"
-                      onClick={() =>
-                        window.scrollTo({ top: 0, behavior: "smooth" })
-                      }
-                    >
-                      <p>Scroll to Top</p>
-                    </SmallButton>
+                <div className=" w-full flex items-center pt-[10px]">
+                  <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
+                    <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
+                      <SmallButton variant="outline">
+                        <p>{topDisplayedCount}</p>
+                      </SmallButton>
+                      <SmallButton variant="outline">
+                        <p>of</p>
+                      </SmallButton>
+                      <SmallButton variant="outline">
+                        <p>
+                          {topPagination?.totalItems
+                            ? topPagination?.totalItems
+                            : "0"}
+                        </p>
+                      </SmallButton>
+                    </div>
+
+                    <div className="flex gap-[5px] py-[1px]">
+                      <SmallButton variant="outline">
+                        {topPagination?.hasNextPage ? (
+                          <div onClick={nextTop}>
+                            {topLoading ? (
+                              <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                            ) : (
+                              <p>Load more</p>
+                            )}
+                          </div>
+                        ) : (
+                          <div>
+                            {topStatus?.message === null ? (
+                              <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                            ) : (
+                              <p>{topStatus?.message}</p>
+                            )}
+                          </div>
+                        )}
+                      </SmallButton>
+
+                      <SmallButton
+                        variant="outline"
+                        onClick={() =>
+                          window.scrollTo({ top: 0, behavior: "smooth" })
+                        }
+                      >
+                        <p>Scroll to Top</p>
+                      </SmallButton>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col flex-1 justify-between gap-[20px] ">
+                <div className="flex items-center justify-between ">
+                  <p className="text-sm font-semibold text-white flex items-center gap-1">
+                    NEW OFFERS
+                  </p>
+                </div>
+
+                <div className="flex-1 flex flex-col gap-[15px] min-h-[120px]">
+                  {initialLoading && offers?.recent === null ? (
+                    <Loading />
+                  ) : (
+                    <div className="flex flex-1">
+                      {offers?.recent === null ? (
+                        <NetworkError />
+                      ) : (
+                        <div className="flex flex-1">
+                          {Array.isArray(offers?.recent?.data) &&
+                          offers?.recent?.data.length > 0 ? (
+                            <div className="flex flex-col gap-[10px] w-full h-max">
+                              {offers?.recent?.data?.map((offer, index) => (
+                                <div key={offer.id || index}>
+                                  <OfferCard offer={offer} />
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <div className="flex-1 min-h-[150px] flex flex-col gap-[10px] items-center justify-center">
+                              <p className="text-[13px] font-semibold text-white leading-none">
+                                No Offers Found
+                              </p>
+
+                              <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
+                                Try adjusting your filters or search criteria to
+                                see more offers.
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <div className=" w-full flex items-center pt-[10px]">
+                  <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
+                    <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
+                      <SmallButton variant="outline">
+                        <p>{recentDisplayedCount}</p>
+                      </SmallButton>
+                      <SmallButton variant="outline">
+                        <p>of</p>
+                      </SmallButton>
+                      <SmallButton variant="outline">
+                        <p>
+                          {recentPagination?.totalItems
+                            ? recentPagination?.totalItems
+                            : "0"}
+                        </p>
+                      </SmallButton>
+                    </div>
+
+                    <div className="flex gap-[5px] py-[1px]">
+                      <SmallButton variant="outline">
+                        {recentPagination?.hasNextPage ? (
+                          <div onClick={nextRecent}>
+                            {recentLoading ? (
+                              <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                            ) : (
+                              <p>Load more</p>
+                            )}
+                          </div>
+                        ) : (
+                          <div>
+                            {recentStatus?.message === null ? (
+                              <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                            ) : (
+                              <p>{recentStatus?.message}</p>
+                            )}
+                          </div>
+                        )}
+                      </SmallButton>
+
+                      <SmallButton
+                        variant="outline"
+                        onClick={() =>
+                          window.scrollTo({ top: 0, behavior: "smooth" })
+                        }
+                      >
+                        <p>Scroll to Top</p>
+                      </SmallButton>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <FloatingTradeButton />
       </div>
-      <FloatingTradeButton />
       <Footer />
 
       {filter?.state && (

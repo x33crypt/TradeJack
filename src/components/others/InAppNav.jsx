@@ -73,10 +73,10 @@ const InAppNav = () => {
             onClick={() => navigateTo("/dashboard")}
             className="flex items-center gap-[5px] cursor-pointer "
           >
-            <p className=" lg:text-xl md:text-[19px] text-[18px]  font-bold text-tradeGreen">
-              GO
-              <span className="font-semibold text-tradeOrange">GET</span>
-              <span className="font-semibold text-white">SWAP</span>
+            <p className=" lg:text-xl md:text-[19px] text-[18px]  font-bold text-tradeOrange">
+              00000000
+              {/* <span className="font-semibold text-tradeOrange">GET</span>
+              <span className="font-semibold text-white">SWAP</span> */}
             </p>
           </div>
         </div>

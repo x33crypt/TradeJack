@@ -66,7 +66,7 @@ const Balance = ({ dashboard, loading }) => {
             {dashboard === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1 flex-col gap-[10px] bg-tradeAsh rounded-sm border border-tradeAshLight p-[12px]"></div>
+              <div className="flex flex-1 flex-col gap-[10px] bg-tradeAsh rounded-[15px] border border-tradeAshLight p-[12px]"></div>
             )}
           </div>
         )}
