@@ -43,7 +43,6 @@ import Landing from "./pages/landing/Landing";
 import Dashboard from "./pages/dashboard/Dashboard";
 import SignupSuccess from "./pages/auth/SignupSuccess";
 import Partners from "./pages/partners/Partners";
-import PartnersProfile from "./pages/partners/PartnersProfile";
 import ConfirmPassword from "./pages/auth/ConfirmPassword";
 import SensitiveRoute from "./utils/sensitiveRoutes";
 import PreTradeCheck from "./pages/offer/public/PreTradeCheck";
