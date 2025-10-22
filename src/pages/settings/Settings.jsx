@@ -1,26 +1,114 @@
 import React from "react";
 import InAppNav from "@/components/others/InAppNav";
 import Footer from "@/components/others/Footer";
-import SettingsNav from "@/components/settings/SettingsNav";
-import { RiUserSettingsFill } from "react-icons/ri";
+import SettingMenu from "@/components/settings/SettingMenu";
+import { IoMdSettings } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { useDashboard } from "@/context/userContext/DashboardContext";
+import { IoMdArrowDropright } from "react-icons/io";
 
 const Settings = () => {
+  const navigateTo = useNavigate();
   return (
     <>
       <InAppNav />
       <div className=" md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
-        <div className="flex lg:w-[300px] w-full">
-          <SettingsNav />
-        </div>
-        <div className="lg:flex hidden items-center justify-center flex-1 gap-[5px]">
-          <div className="flex flex-col gap-[10px] items-center">
-            <RiUserSettingsFill className="text-tradeGreen text-[40px]" />
-            <p className="text-white font-semibold text-lg leading-none">
-              Settings
-            </p>
-            <p className="text-tradeFadeWhite font-semibold text-[13px]">
-              Select a setting from the menu to get started.
-            </p>
+        <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
+          <SettingMenu />
+          {/* Desktop */}
+          <div className="lg:flex hidden flex-1 flex-col gap-[20px] lg:mr-[12%] p-[15px]">
+            <div className="flex items-center justify-between ">
+              <p className="text-lg font-semibold text-white flex items-center gap-1">
+                SETTINGS
+              </p>
+            </div>
+            <div className="flex-1 flex flex-col items-center justify-center gap-[10px]">
+              <IoMdSettings className="md:text-[22px] text-tradeFadeWhite" />
+              <div className="flex flex-col gap-[5px] items-center justify-center ">
+                <p className="text-[13px] font-semibold text-white leading-none">
+                  NO INTERNET
+                </p>
+                <p className="text-xs font-medium text-tradeFadeWhite text-center">
+                  SELECT FROM MENU TO GET STARTED
+                </p>
+              </div>
+            </div>
+          </div>
+          {/* Mobile */}
+          <div className="lg:hidden flex flex-1 flex-col gap-[20px] lg:mr-[12%] p-[15px]">
+            <div className="flex items-center justify-between ">
+              <p className="text-lg font-semibold text-white flex items-center gap-1">
+                SETTINGS
+              </p>
+            </div>
+            <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
+              <div className="flex flex-col gap-[15px]">
+                <div
+                  onClick={() => navigateTo("/offers")}
+                  className="flex items-center gap-2"
+                >
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-sm font-bold transition-all duration-300 cursor-pointer">
+                    PROFILE
+                  </p>
+                </div>
+                <div
+                  onClick={() => navigateTo("/offers")}
+                  className="flex items-center gap-2"
+                >
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-sm font-bold transition-all duration-300 cursor-pointer">
+                    LINKED ACCOUNTS
+                  </p>
+                </div>
+                <div
+                  onClick={() => navigateTo("/offers")}
+                  className="flex items-center gap-2"
+                >
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-sm font-bold transition-all duration-300 cursor-pointer">
+                    CHANGE PASSWORD
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-sm font-bold transition-all duration-300 cursor-pointer">
+                    2FA AUTHENTICATION
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-sm font-bold transition-all duration-300 cursor-pointer">
+                    CHANGE PIN
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-sm font-bold transition-all duration-300 cursor-pointer">
+                    PRIVACY & PERMISSION
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-sm font-bold transition-all duration-300 cursor-pointer">
+                    NOTIFICATION
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-sm font-bold transition-all duration-300 cursor-pointer">
+                    FAQ
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-sm font-bold transition-all duration-300 cursor-pointer">
+                    ABOUT
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

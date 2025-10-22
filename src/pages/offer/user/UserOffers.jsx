@@ -336,40 +336,30 @@ const MyOffer = () => {
                       <NetworkError />
                     ) : (
                       <div className="flex flex-1">
-                        {Array.isArray(offers?.data) ? (
-                          <div className="flex flex-1">
-                            {offers?.data.length > 0 ? (
-                              <div className="flex flex-col gap-[5px] w-full h-max">
-                                {offers?.data?.map((offer, index) => (
-                                  <div key={index}>
-                                    <MyOfferCard offer={offer} />
-                                  </div>
-                                ))}
+                        {Array.isArray(offers?.data) &&
+                        offers?.data.length > 0 ? (
+                          <div className="flex flex-col gap-[5px] w-full h-max">
+                            {offers?.data?.map((offer, index) => (
+                              <div key={index}>
+                                <MyOfferCard offer={offer} />
                               </div>
-                            ) : (
-                              <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
-                                <p className="text-[13px] font-semibold text-white leading-none">
-                                  No transaction found.
-                                </p>
-                                <p className="text-xs font-medium text-tradeFadeWhite text-center">
-                                  {filter?.type ||
-                                  filter?.status ||
-                                  filter?.date?.monthName ||
-                                  (filter?.search &&
-                                    filter.search.trim() !== "")
-                                    ? "Try adjusting your filter or search terms."
-                                    : "You haven’t made any transactions yet."}
-                                </p>
-
-                                <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
-                              </div>
-                            )}
+                            ))}
                           </div>
                         ) : (
                           <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
                             <p className="text-[13px] font-semibold text-white leading-none">
-                              NO OFFER MATCH GIVEN CRITERIA
+                              No transaction found.
                             </p>
+                            <p className="text-xs font-medium text-tradeFadeWhite text-center">
+                              {filter?.type ||
+                              filter?.status ||
+                              filter?.date?.monthName ||
+                              (filter?.search && filter.search.trim() !== "")
+                                ? "NO OFFER MATCH THE GIVEN CRITERIA"
+                                : "NO OFFER FOUND"}
+                            </p>
+
+                            <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
                           </div>
                         )}
                       </div>

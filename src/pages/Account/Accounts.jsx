@@ -6,8 +6,7 @@ import React, { useEffect } from "react";
 import Button from "@/components/buttons/Button";
 import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { useFetchLinkedBanks } from "@/hooks/userHooks/useFetchLinkedBanks";
-import AccountCard from "@/components/myAccounts/AccountCard";
-import AddNew from "@/components/myAccounts/AddNew";
+import AccountCard from "@/components/Account/AccountCard";
 import { useNavigate } from "react-router-dom";
 import Loading from "@/components/others/Loading";
 import { LuFileX2 } from "react-icons/lu";
@@ -15,6 +14,9 @@ import LockByScroll from "@/components/others/LockByScroll";
 import { IoClose } from "react-icons/io5";
 import { useToast } from "@/context/otherContext/ToastContext";
 import api from "@/utils/http/api";
+import AccountMenu from "@/components/settings/SettingMenu";
+import NetworkError from "@/components/others/NetworkError";
+import { RiAddCircleFill } from "react-icons/ri";
 
 const MyAccounts = () => {
   const { loading, refetchLinkedBanks } = useFetchLinkedBanks();
@@ -164,122 +166,120 @@ const MyAccounts = () => {
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
-        <div className="hidden lg:flex lg:w-[300px]">
-          <SettingsNav />
-        </div>
-        <div className="flex-1 flex flex-col md:flex-row gap-[5px]">
-          {/*Linked Account */}
-          <div className="flex flex-col md:flex-1 h-full md:border border-neutral-800">
-            <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-              <p className="text-lg font-[700] text-white ">Linked Accounts</p>
-            </div>
+      <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black">
+        <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
+          <AccountMenu />
 
-            <div className="flex flex-1">
+          <div className="flex flex-1 flex-col gap-[20px] lg:mr-[12%] p-[15px]">
+            <div className="flex items-center justify-between ">
+              <p className="text-lg font-semibold text-white flex items-center gap-1">
+                ACCOUNTS
+              </p>
+            </div>
+            <div className="flex-1 flex">
               {loading ? (
                 <Loading />
               ) : (
-                <div className="w-full h-full">
-                  {linkedAccounts?.length > 0 ? (
-                    <div className="h-full flex flex-col p-[15px] gap-[25px]">
-                      <div className="">
-                        <p className="text-xs text-tradeFadeWhite font-medium">
-                          Manage your linked accounts with ease. To update
-                          details, simply remove an account and add a new one
-                          for hassle-free withdrawals.
-                        </p>
-                      </div>
-
-                      <div className="flex-1 flex flex-col justify-between ">
-                        <div className="flex flex-col gap-[10px]">
-                          {/* Default Account */}
-                          <div>
-                            {linkedAccounts
-                              ?.filter((account) => account?.isDefault === true)
-                              .map((account, index) => (
-                                <AccountCard
-                                  key={index}
-                                  account={account}
-                                  index={index}
-                                />
-                              ))}
-                          </div>
-
-                          {/* Aternative Account */}
-                          <div>
-                            {linkedAccounts
-                              .filter((account) => account?.isDefault === false)
-                              .map((account, index) => (
-                                <AccountCard
-                                  key={index}
-                                  account={account}
-                                  index={index}
-                                />
-                              ))}
-                          </div>
-                        </div>
-
-                        <div className="flex flex-col gap-[10px] items-cente w-full mt-[0px]">
-                          <div>
-                            {manageAccount.state ? (
-                              <Button variant="outline" onClick={closeEdit}>
-                                Cancel
-                              </Button>
-                            ) : (
-                              <Button
-                                variant="outline"
-                                onClick={handleManageAccount}
-                              >
-                                Edit Accounts
-                              </Button>
-                            )}
-                          </div>
-
-                          {linkedAccounts?.length < 2 && (
-                            <div className="md:hidden flex w-full">
-                              <Button
-                                variant="primary"
-                                onClick={() =>
-                                  navigateTo("/wallet/accounts/new")
-                                }
-                              >
-                                Add New Account
-                              </Button>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
+                <div className="flex flex-1">
+                  {linkedAccounts === null ? (
+                    <NetworkError />
                   ) : (
-                    <div className="h-full flex flex-col p-[15px] gap-[25px]">
-                      <div className="">
-                        <p className="text-xs text-tradeFadeWhite font-medium">
-                          Your linked accounts will show up here once added. You
-                          don’t have any yet, so add one now to start making
-                          secure and seamless withdrawals.
-                        </p>
-                      </div>
-                      <div className="flex-1 h-full flex items-center justify-center">
-                        <LuFileX2 className="text-[55px] text-tradeAshExtraLight" />
-                      </div>
-                      <div className="md:hidden flex w-full">
-                        <Button
-                          variant="primary"
-                          onClick={() => navigateTo("/wallet/accounts/new")}
-                        >
-                          Add New Bank
-                        </Button>
-                      </div>
+                    <div className="flex flex-1">
+                      {Array.isArray(linkedAccounts) &&
+                      linkedAccounts?.length > 0 ? (
+                        <div className="h-full flex flex-col gap-[20px]">
+                          <div
+                            onClick={() => navigateTo("/wallet/accounts/new")}
+                            className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
+                          >
+                            <RiAddCircleFill className="text-sm" />
+                            <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                              ADD NEW
+                            </p>
+                          </div>
+
+                          <p className="text-xs text-tradeFadeWhite font-medium">
+                            Effortlessly manage your linked accounts. Update
+                            details, connect or disconnect accounts, and
+                            withdraw funds without hassle.
+                          </p>
+
+                          <div className="flex-1 flex flex-col gap-[20px]">
+                            <div className="flex flex-col md:flex-row md:gap-[10px] gap-[30px]">
+                              {/* Default Account */}
+                              <div className="flex-1">
+                                {linkedAccounts
+                                  ?.filter(
+                                    (account) => account?.isDefault === true
+                                  )
+                                  .map((account, index) => (
+                                    <AccountCard
+                                      key={index}
+                                      account={account}
+                                      index={index}
+                                    />
+                                  ))}
+                              </div>
+
+                              {/* Aternative Account */}
+                              <div className="flex-1">
+                                {linkedAccounts
+                                  .filter(
+                                    (account) => account?.isDefault === false
+                                  )
+                                  .map((account, index) => (
+                                    <AccountCard
+                                      key={index}
+                                      account={account}
+                                      index={index}
+                                    />
+                                  ))}
+                              </div>
+                            </div>
+
+                            <div>
+                              {manageAccount.state ? (
+                                <Button variant="outline" onClick={closeEdit}>
+                                  CANCEL
+                                </Button>
+                              ) : (
+                                <Button
+                                  variant="outline"
+                                  onClick={handleManageAccount}
+                                >
+                                  EDIT ACCOUNTS
+                                </Button>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="h-full flex flex-col p-[15px] gap-[25px]">
+                          <div className="">
+                            <p className="text-xs text-tradeFadeWhite font-medium">
+                              Your linked accounts will show up here once added.
+                              You don’t have any yet, so add one now to start
+                              making secure and seamless withdrawals.
+                            </p>
+                          </div>
+                          <div className="flex-1 h-full flex items-center justify-center">
+                            <LuFileX2 className="text-[55px] text-tradeAshExtraLight" />
+                          </div>
+                          <div className="md:hidden flex w-full">
+                            <Button
+                              variant="primary"
+                              onClick={() => navigateTo("/wallet/accounts/new")}
+                            >
+                              Add New Bank
+                            </Button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
               )}
             </div>
-          </div>
-
-          {/*Add New Account */}
-          <div className=" md:flex hidden md:w-[320px]">
-            <AddNew />
           </div>
         </div>
       </div>

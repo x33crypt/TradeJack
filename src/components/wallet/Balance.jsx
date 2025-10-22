@@ -181,7 +181,7 @@ const Balance = () => {
                     </div>
 
                     <div
-                      // onClick={refetch}
+                      onClick={() => navigateTo("/wallet/accounts")}
                       className="flex flex-col items-center gap-2"
                     >
                       <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">

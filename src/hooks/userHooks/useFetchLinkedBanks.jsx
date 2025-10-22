@@ -33,7 +33,7 @@ export function useFetchLinkedBanks() {
     } finally {
       setLoading(false);
     }
-  }, [linkedAccounts, setLinkedAccounts]);
+  }, [linkedAccounts]);
 
   const refetchLinkedBanks = useCallback(() => {
     fetchLinkedBanks();
