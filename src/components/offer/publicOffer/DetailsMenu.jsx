@@ -1,9 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useDashboard } from "@/context/userContext/DashboardContext";
 import { IoMdArrowDropright } from "react-icons/io";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { IoCloseSharp } from "react-icons/io5";
+import { FaShareAlt } from "react-icons/fa";
+import { GoBookmarkFill } from "react-icons/go";
+import { MdReport } from "react-icons/md";
 
 const DetailsMenu = () => {
   return (
@@ -11,13 +10,13 @@ const DetailsMenu = () => {
       <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
         <div className="flex flex-col gap-[15px]">
           <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <GoBookmarkFill className="text-xs text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               BOOKMARK
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <FaShareAlt className="text-xs text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               SHARE
             </p>
@@ -27,7 +26,7 @@ const DetailsMenu = () => {
       <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
         <div className="flex flex-col gap-[15px]">
           <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <MdReport className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               REPORT
             </p>

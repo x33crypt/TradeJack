@@ -4,44 +4,114 @@ import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
 import { useNavigate } from "react-router-dom";
 import { useTraderProfile } from "@/context/publicContext/ProfileContext";
-import { FaCalendarDay } from "react-icons/fa";
-import { VscVerifiedFilled } from "react-icons/vsc";
 import toDecimal from "@/utils/toDecimal";
 import lastSeen from "@/utils/lastSeen";
 import { LuUsers } from "react-icons/lu";
-import { HiOutlineUserCircle } from "react-icons/hi2";
 import { windowFormatHour } from "@/utils/windowFormatHour";
-import { BsStars } from "react-icons/bs";
-import { TbCardboards } from "react-icons/tb";
-import { FiMoreVertical } from "react-icons/fi";
 import { IoMdArrowDropright } from "react-icons/io";
 import Button from "@/components/buttons/Button";
 import withComma from "@/utils/withComma";
+import { useCalculator } from "@/context/publicContext/CalculatorContext";
+import { LuCalendarClock } from "react-icons/lu";
+import { useTrade } from "@/context/publicContext/TradeContext";
+import { FaShareAlt } from "react-icons/fa";
+import { GoBookmarkFill } from "react-icons/go";
+import { MdReport } from "react-icons/md";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
+  const { calculator, setCalculator } = useCalculator();
+  const { setPreTradeCheck } = useTrade();
 
   console.log("offer details :", aboutOffer);
+  console.log("calculator :", calculator);
 
   const navigateTo = useNavigate();
 
   const offer = aboutOffer?.data?.offerDetails;
   const user = aboutOffer?.data?.traderInfo;
-  const feedback = aboutOffer?.data?.offerFeedback?.data;
-
   const seen = lastSeen(user?.lastSeen);
 
   console.log("last seen :", seen);
 
-  const handleTraderClick = (username) => {
+  const viewProfile = (username) => {
     setProfile((prev) => ({
       ...prev,
       username: username,
     }));
-    navigateTo(`/user/${username}`);
+    navigateTo(`/profile/${username}`);
   };
 
-  const amountList = ["100", "200", "500", "800", "1000"];
+  const amountChange = (e) => {
+    const val = e.target.value.replace(/[^\d.-]/g, "");
+    setCalculator((prev) => ({
+      ...prev,
+      amount: val,
+    }));
+  };
+
+  const amountClick = (a) => {
+    const amount = Number(a); // convert input to number
+
+    setCalculator((prev) => {
+      const prevAmount = Number(prev?.amount ?? 0); // also convert previous amount
+      return {
+        ...prev,
+        amount: prevAmount + amount, // now both are numbers
+      };
+    });
+  };
+
+  const preTradeCheck = () => {
+    setCalculator((prev) => ({ ...prev, state: false }));
+    setPreTradeCheck((prev) => ({ ...prev, checking: true }));
+
+    // Simulate async check (optional delay)
+    setTimeout(() => {
+      const keys = [
+        "limitEligible",
+        "activeNow",
+        "collacteralSecured",
+        "kycCompliant",
+      ];
+
+      let result = {};
+
+      // 30% chance everything passes ✅
+      const allPass = Math.random() < 0.3;
+
+      if (allPass) {
+        keys.forEach((key) => (result[key] = true));
+      } else {
+        const failKey = keys[Math.floor(Math.random() * keys.length)];
+        result = keys.reduce((acc, key) => {
+          acc[key] = key === failKey ? false : true;
+          return acc;
+        }, {});
+      }
+
+      if (allPass) {
+        setPreTradeCheck((prev) => ({
+          ...prev,
+          time: 300,
+          isCounting: true,
+          checking: false,
+          success: true,
+          result,
+        }));
+      } else {
+        setPreTradeCheck((prev) => ({
+          ...prev,
+          checking: false,
+          failed: true,
+          details: false,
+          result,
+        }));
+      }
+    }, 1500);
+  };
+
+  const amountList = ["50", "100", "200", "500", "1000"];
 
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
@@ -59,52 +129,46 @@ const OfferDetails = ({ loading, aboutOffer }) => {
             {aboutOffer?.data === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1 flex-col min-h-[120px] gap-[20px]">
-                <div className="flex justify-between">
-                  <div className="flex flex-col gap-[30px] pb-[12px]">
-                    <div className="flex items-center gap-2">
-                      <div className="flex cursor-pointer">
-                        {false ? (
-                          <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
-                            <img src={image} alt="" className="" />
-                          </div>
-                        ) : (
-                          <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
-                            <img src={image} alt="" className="" />
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="flex flex-col gap-[5px] ">
-                        <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-normal">
-                          {offer?.serviceName || "N/A"}
-                        </p>
-                        <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
-                          {offer?.serviceType || "N/A"}
-                        </p>
-                      </div>
+              <div className="flex flex-1 flex-col min-h-[120px] gap-[30px]">
+                <div className="flex flex-col gap-[30px] pb-[12px]">
+                  <div className="flex items-center gap-2">
+                    <div onClick={viewProfile} className="flex cursor-pointer">
+                      {false ? (
+                        <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                          <img src={image} alt="" className="" />
+                        </div>
+                      ) : (
+                        <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                          <img src={image} alt="" className="" />
+                        </div>
+                      )}
                     </div>
 
-                    <div className="flex flex-col gap-[10px]">
-                      <div className="flex  items-center gap-1">
-                        <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                        <p className="text-xs font-semibold text-white">
-                          +{offer?.completedTrades ?? "0"} Recent Trades
-                        </p>
-                      </div>
-
-                      <div className="flex gap-1 items-center">
-                        <FaCalendarDay className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                        <p className="text-xs font-semibold text-white">
-                          Last Updated 31 Aug, 2025
-                        </p>
-                      </div>
+                    <div className="flex flex-col gap-[5px] ">
+                      <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-normal">
+                        {offer?.serviceName || "N/A"}
+                      </p>
+                      <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
+                        {offer?.serviceType || "N/A"}
+                      </p>
                     </div>
                   </div>
 
-                  {/* <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-1 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <FiMoreVertical />
-                  </div> */}
+                  <div className="flex flex-col gap-[10px]">
+                    <div className="flex  items-center gap-1">
+                      <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                      <p className="text-xs font-semibold text-white">
+                        +{offer?.completedTrades ?? "0"} Recent Trades
+                      </p>
+                    </div>
+
+                    <div className="flex gap-1 items-center">
+                      <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                      <p className="text-xs font-semibold text-white">
+                        Last Updated 31 Aug, 2025
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="flex lg:hidde gap-[10px] flex-col">
@@ -123,6 +187,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                             <input
                               type="text"
                               placeholder="00.00"
+                              value={withComma(calculator?.amount)}
+                              onChange={amountChange}
                               className="bg-transparent w-full text-sm font-semibold outline-none text-white placeholder:text-tradeFadeWhite"
                             />
                           </div>
@@ -135,15 +201,15 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         </div>
                       </div>
 
-                      <div className="flex gap-[15px]">
+                      <div className="flex gap-[5px]">
                         {amountList?.map((amount, index) => (
-                          <button
+                          <p
                             key={index}
-                            variant="fadeoutPlus"
-                            className="text-[13px] text-white font-semibold"
+                            onClick={() => amountClick(amount)}
+                            className="text-[13px] font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshExtraLight w-max rounded-sm transition-all duration-300 cursor-pointer"
                           >
                             + {withComma(amount)}
-                          </button>
+                          </p>
                         ))}
                       </div>
                     </div>
@@ -163,13 +229,14 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                               type="text"
                               readOnly
                               placeholder="00.00"
+                              value={toDecimal(calculator?.receive)}
                               className="bg-transparent w-full text-sm font-semibold outline-none text-white placeholder:text-tradeFadeWhite cursor-auto"
                             />
                           </div>
 
                           <div className="flex border border-tradeAshExtraLight px-1.5 py-1.5 gap-2 items-center justify-between bg-transparent rounded-[10px] ">
                             <div className="text-[13px] font-semibold text-tradeFadeWhite">
-                              <p>{offer?.preferredCurrency?.code ?? "USD"}</p>
+                              <p>{offer?.preferredCurrency?.code ?? "NGN"}</p>
                             </div>
                           </div>
                         </div>
@@ -184,7 +251,37 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
 
-                  <Button>SWAP</Button>
+                  <Button
+                    onClick={preTradeCheck}
+                    disabled={calculator?.amount === ""}
+                  >
+                    SWAP
+                  </Button>
+
+                  <div className="flex lg:hidden items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        <GoBookmarkFill />
+                        <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                          BOOKMARK
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        <FaShareAlt />
+                        <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                          SHARE
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <MdReport />
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        REPORT
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="flex flex-1 flex-col min-h-[120px]  gap-[10px]">

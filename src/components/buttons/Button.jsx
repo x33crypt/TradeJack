@@ -14,8 +14,8 @@ const Button = ({
 
   const variants = {
     primary: ` ${
-      disabled ? "bg-tradeAsh text-tradeGreen" : "bg-tradeGreen text-black"
-    } hover:bg-tradeGreen/80 active:bg-tradeAsh active:text-tradeGreen transition-colors duration-200`,
+      disabled ? "bg-tradeGreen/90" : "bg-tradeGreen "
+    } text-black hover:bg-tradeGreen/80 active:bg-tradeAsh active:text-tradeGreen transition-colors duration-200`,
 
     secondary: ` ${
       disabled
@@ -57,11 +57,7 @@ const Button = ({
         disabled ? "opacity-50 cursor-not-allowed" : ""
       }`}
     >
-      {disabled ? (
-        <AiOutlineLoading3Quarters className="animate-spin text-[16px]" />
-      ) : (
-        children
-      )}
+      {children}
     </button>
   );
 };

@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Button from "@/components/buttons/Button";
-import { IoClose } from "react-icons/io5";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
-import SmallButton from "../../buttons/SmallButton";
 import { currencies } from "@/hooks/others/useCurrencies";
 import withComma from "@/utils/withComma";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { IoCloseSharp } from "react-icons/io5";
 import { IoMdArrowDropright } from "react-icons/io";
 
 const Filter = () => {
   const { filter, setFilter } = usePublicOffers();
+
   const [sorts] = useState([
     "Recently active traders",
     "Verified offers",
@@ -22,7 +19,9 @@ const Filter = () => {
     "Transfer: Fast to Slow",
     "Transfer: Slow to Fast",
   ]);
+
   const { select, setSelect } = useSelectElement();
+
   const [assetsList, setAssetsList] = useState([
     "Zelle",
     "CashApp",
@@ -30,6 +29,7 @@ const Filter = () => {
     "eBay Gift Card",
     "More",
   ]);
+
   const [currenciesList, setCurrenciesList] = useState([
     "USD",
     "EUR",
@@ -40,6 +40,7 @@ const Filter = () => {
     "ARS",
     "More",
   ]);
+
   const [sortByList, setSortByList] = useState([
     "Recently active traders",
     "Verified offers",
@@ -289,7 +290,7 @@ const Filter = () => {
                     key={index}
                     variant="fadeoutPlus"
                     onClick={
-                      amount !== "Enter amount"
+                      amount !== "More"
                         ? () => handleAmountChange(amount)
                         : () =>
                             setFilter((prev) => ({
@@ -299,7 +300,7 @@ const Filter = () => {
                     }
                     className={`${
                       Number(amount) === Number(filter?.amount) &&
-                      amount !== "Enter amount"
+                      amount !== "More"
                         ? "text-black bg-tradeOrange"
                         : "text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite bg-tradeAshLight"
                     } flex border border-tradeAshExtraLight items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]`}
@@ -313,7 +314,7 @@ const Filter = () => {
         </div>
 
         <div onClick={close} className="flex lg:hidden">
-          <Button>Close</Button>
+          <Button>APPLY</Button>
         </div>
       </div>
     </>
