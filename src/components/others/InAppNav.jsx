@@ -32,6 +32,7 @@ import SmallButton from "../buttons/SmallButton";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropright } from "react-icons/io";
+import { FaRegUser } from "react-icons/fa";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -201,16 +202,36 @@ const InAppNav = () => {
               </div>
 
               <div className="flex-1 flex flex-col justify-between p-[15px] bg-black ">
-                <div className="flex w-full items-center bg-tradeAsh border border-tradeAshLight py-[12px] px-2  gap-[15px] rounded-[10px]">
-                  <FiSearch className="text-tradeFadeWhite text-[20px]" />
-                  <input
-                    className=" bg-transparent outline-none h-max w-full  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
-                    type="text"
-                    placeholder="Search trader"
-                  />
+                <div className="flex flex-col p-[12px] bg-tradeAsh gap-[10px] rounded-[15px] border border-tradeAsh">
+                  <div className="flex items-center justify-between">
+                    <p className="text-white font-semibold text-base">
+                      Tier 1 Account
+                    </p>
+
+                    <div>
+                      <FaRegUser className="text-white" />
+                    </div>
+                  </div>
+
+                  <p className="text-tradeFadeWhite font-semibold text-xs">
+                    Remaing Limits : ${" "}
+                    <span className="text-white">250,000.00</span>
+                  </p>
                 </div>
 
                 <div className="flex flex-col gap-[15px]">
+                  <div
+                    onClick={() => {
+                      navigateTo("/dashboard");
+                      setIsNavOption(false);
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      SEARCH
+                    </p>
+                  </div>
                   <div
                     onClick={() => {
                       navigateTo("/dashboard");
