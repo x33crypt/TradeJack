@@ -202,21 +202,28 @@ const InAppNav = () => {
               </div>
 
               <div className="flex-1 flex flex-col justify-between p-[15px] bg-black ">
-                <div className="flex flex-col p-[12px] bg-tradeAshLight gap-[10px] rounded-[15px] border border-tradeAsh">
+                <div className="flex flex-col p-[12px bg-tradeAshLigh gap-[10px] rounded-[15px] borde border-tradeAsh">
                   <div className="flex items-center justify-between">
                     <p className="text-white font-semibold text-base">
                       PREMIUM ACCOUNT
                     </p>
 
-                    <div>
-                      <FaRegUser className="text-white" />
+                    <div className="md:hidden text-tradeFadeWhite text-[15px] p-1 w-max h-max bg-transparent border border-tradeAshExtraLight rounded-[10px]">
+                      <FaRegUser />
                     </div>
                   </div>
 
-                  <p className="text-tradeFadeWhite font-semibold text-xs">
+                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      Remaing Limits : #{" "}
+                      <span className="text-white">1,000,000.00</span>
+                    </p>
+                  </div>
+
+                  {/* <p className="text-tradeFadeWhite font-semibold text-xs">
                     Remaing Limits : #{" "}
                     <span className="text-white">1,000,000.00</span>
-                  </p>
+                  </p> */}
                 </div>
 
                 <div className="flex flex-col gap-[15px]">
