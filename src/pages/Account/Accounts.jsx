@@ -283,13 +283,12 @@ const MyAccounts = () => {
           </div>
         </div>
       </div>
-
       <Footer />
 
       {isDelete ? (
         <div>
           <LockByScroll />
-          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
             <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
@@ -307,27 +306,28 @@ const MyAccounts = () => {
               <div className="flex-1 flex flex-col justify-between py-[12.3px] gap-[30px]">
                 <div className="flex flex-col gap-[10px]">
                   <div className="flex flex-col gap-1">
-                    <p className="text-[13px] font-medium text-cente text-tradeFadeWhite">
+                    <p className="text-xs font-medium text-cente text-tradeFadeWhite">
                       Are you sure you want to unlink and remove this bank
                       account ?
                     </p>
                   </div>
 
-                  <div className="w-full flex flex-col gap-1 bg-tradeAshLight p-[12px] rounded-[15px]">
-                    <div className="flex items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Account
-                      </p>
-                      <p className="text-[13px] font-semibold text-white">
-                        {manageAccount?.bank}
+                  <div className="w-full flex flex-col gap-1 bg-tradeAshLight p-[12px] rounded-[10px]">
+                    <div className="flex items-center gap-1">
+                      <p className="text-xs text-tradeFadeWhite font-semibold leading-normal">
+                        ACCOUNT :{" "}
+                        <span className="text-xs text-white font-semibold">
+                          {manageAccount?.bank}
+                        </span>
                       </p>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Account Number
-                      </p>
-                      <p className="text-[13px] font-semibold text-white">
-                        {manageAccount?.last4digits}
+
+                    <div className="flex items-center gap-1">
+                      <p className="text-xs text-tradeFadeWhite font-semibold leading-normal">
+                        ACCOUNT NO :{" "}
+                        <span className="text-xs text-white font-semibold">
+                          {manageAccount?.last4digits}
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -338,7 +338,7 @@ const MyAccounts = () => {
                   disabled={manageAccount?.loading}
                   onClick={deleteAccount}
                 >
-                  Yes, Unlink & Delete
+                  DELETE ACCOUNT
                 </Button>
               </div>
             </div>
@@ -349,7 +349,7 @@ const MyAccounts = () => {
       {isDefault ? (
         <div>
           <LockByScroll />
-          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
             <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
@@ -367,27 +367,27 @@ const MyAccounts = () => {
               <div className="flex-1 flex flex-col justify-between py-[12.3px] gap-[30px]">
                 <div className="flex flex-col gap-[10px]">
                   <div className="flex flex-col gap-1">
-                    <p className="text-[13px] font-medium text-cente text-tradeFadeWhite">
+                    <p className="text-xs font-medium text-cente text-tradeFadeWhite">
                       Are you sure you want to set this bank account as your
                       default account ?
                     </p>
                   </div>
 
-                  <div className="w-full flex flex-col gap-1 bg-tradeAshLight p-[12px] rounded-[15px]">
-                    <div className="flex items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Account
-                      </p>
-                      <p className="text-[13px] font-semibold text-white">
-                        {manageAccount?.bank}
+                  <div className="w-full flex flex-col gap-1 bg-tradeAshLight p-[12px] rounded-[10px]">
+                    <div className="flex items-center gap-1">
+                      <p className="text-xs text-tradeFadeWhite font-semibold leading-normal">
+                        ACCOUNT :{" "}
+                        <span className="text-xs text-white font-semibold">
+                          {manageAccount?.bank}
+                        </span>
                       </p>
                     </div>
-                    <div className="flex items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Account Number
-                      </p>
-                      <p className="text-[13px] font-semibold text-white">
-                        {manageAccount?.last4digits}
+                    <div className="flex items-center gap-1">
+                      <p className="text-xs text-tradeFadeWhite font-semibold leading-normal">
+                        ACCOUNT NO :{" "}
+                        <span className="text-xs text-white font-semibold">
+                          {manageAccount?.last4digits}
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -398,7 +398,7 @@ const MyAccounts = () => {
                   disabled={manageAccount?.loading}
                   onClick={setDefaultAccount}
                 >
-                  Yes, Set as Default
+                  SET AS DEFAULT
                 </Button>
               </div>
             </div>
