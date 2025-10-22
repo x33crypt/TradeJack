@@ -1,13 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { TbFileLike } from "react-icons/tb";
-import { BsChatQuote } from "react-icons/bs";
-import { TbFileInvoice } from "react-icons/tb";
-import { RiGift2Fill } from "react-icons/ri";
-import { RiExchange2Fill } from "react-icons/ri";
-import { TiFlashOutline } from "react-icons/ti";
-import { FiUserPlus } from "react-icons/fi";
-import { RiExchangeFundsLine } from "react-icons/ri";
 import { useDashboard } from "@/context/userContext/DashboardContext";
 import { IoMdArrowDropright } from "react-icons/io";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";

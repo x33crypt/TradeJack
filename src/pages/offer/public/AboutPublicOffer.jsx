@@ -13,16 +13,14 @@ import { IoClose } from "react-icons/io5";
 import toDecimal from "@/utils/toDecimal";
 import withComma from "@/utils/withComma";
 import OfferFeedback from "@/components/offer/global/OfferFeedback";
-import { VscVerifiedFilled } from "react-icons/vsc";
-import { PiNetworkBold } from "react-icons/pi";
-import { RiExchange2Fill } from "react-icons/ri";
 import { useTrade } from "@/context/publicContext/TradeContext";
 import FloatingTradeButton from "@/components/others/FloatingTradeButton";
+import DetailsMenu from "@/components/offer/publicOffer/DetailsMenu";
 
 const AboutPublicOffer = () => {
   const topRef = useRef(null);
   const { aboutOffer, setAboutOffer } = usePublicOffers();
-  const { preTradeCheck, setPreTradeCheck } = useTrade();
+  const { setPreTradeCheck } = useTrade();
   const { loading } = useFetchAboutOffers();
   const { calculator, setCalculator } = useCalculator();
 
@@ -116,11 +114,8 @@ const AboutPublicOffer = () => {
   return (
     <>
       <MarketTopNav />
-      <div
-        ref={topRef}
-        className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex flex-col md:flex-row md:gap-[5px] gap-[5px] bg-black "
-      >
-        <div className="flex flex-col flex-1 ">
+      <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[10px] min-h-svh flex bg-black">
+        <div className="flex flex-col flex-1">
           {loading ? (
             <Loading />
           ) : (
@@ -128,23 +123,23 @@ const AboutPublicOffer = () => {
               {aboutOffer === null ? (
                 <NetworkError />
               ) : (
-                <div className="flex-1 flex flex-col gap-[5px]">
-                  <OfferDetails aboutOffer={aboutOffer} loading={loading} />
-                  <div className="py-[15px] md:px-0 px-[15px]">
-                    <Button onClick={initiateTrade}>Initiate Trade</Button>
+                <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
+                  <DetailsMenu />
+                  <div className="flex flex-1 flex-col gap-[40px] lg:mr-[12%] p-[15px]">
+                    <OfferDetails aboutOffer={aboutOffer} loading={loading} />
+                    <OfferFeedback
+                      heading={"Offer feedback"}
+                      profile={aboutOffer}
+                      loading={loading}
+                    />
                   </div>
-                  <OfferFeedback
-                    heading={"Offer feedback"}
-                    profile={aboutOffer}
-                    loading={loading}
-                  />
                 </div>
               )}
             </div>
           )}
         </div>
       </div>
-      <FloatingTradeButton />
+      {/* <FloatingTradeButton /> */}
       <Footer />
 
       {calculator?.state && (

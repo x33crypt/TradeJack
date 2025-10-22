@@ -42,21 +42,6 @@ const Balance = ({ dashboard, loading }) => {
           DASHBOARD
         </p>
       </div>
-      {/* <div className="flex flex-col md:flex-row px-[15px] py-[12px] md:border-b border-tradeAshLight gap-[2px]">
-        <div className="flex gap-[2px] justify-between w-full items-center ">
-          <div className="flex md:flex-row flex-col gap-[2px] md:text-lg text-2xl">
-            <p className=" font-semibold text-white">Welcome Back,</p>
-            <p className="font-semibold text-white">
-              {dashboard?.userProfile?.userName || "User"}
-            </p>
-          </div>
-
-          <div className="flex flex-col md:flex-row md:gap-2 gap-1 text-sm items-end">
-            <p className="font-semibold text-white">{dateTime.date}</p>
-            <p className="font-semibold text-tradeFadeWhite">{dateTime.time}</p>
-          </div>
-        </div>
-      </div> */}
 
       <div className="flex flex-1 min-h-[125px]">
         {loading ? (

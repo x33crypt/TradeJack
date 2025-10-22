@@ -16,22 +16,6 @@ const ActiveOffers = ({ loading, profile }) => {
       </div>
 
       <div className="flex flex-col flex-1 ">
-        {/* <div className="sticky h-[55px] flex items-center w-full md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
-          <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-hidden p-[2px]">
-            <div className="flex gap-[5px]">
-              <SmallButton variant="fadeout">
-                <FaSort />
-                <p>All</p>
-              </SmallButton>
-            </div>
-            <div className="flex gap-[5px]">
-              <SmallButton variant="fadeout">
-                <FaMagnifyingGlass />
-              </SmallButton>
-            </div>
-          </div>
-        </div> */}
-
         <div className="flex flex-1 p-[15px] min-h-[120px]">
           <div className="flex flex-1">
             {loading ? (

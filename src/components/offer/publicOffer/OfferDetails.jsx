@@ -1,39 +1,19 @@
 import React from "react";
 import image from "../../../assets/landingImg4.JPG";
-import { FaUser } from "react-icons/fa";
-import { HiLocationMarker } from "react-icons/hi";
-import { FaCircle } from "react-icons/fa";
-import { FaCalendarCheck } from "react-icons/fa";
-import { capitalizeFirst } from "@/utils/capitalizeFirst";
-import { RiShare2Fill } from "react-icons/ri";
-import { FaUserCheck } from "react-icons/fa";
-import { FaUserXmark } from "react-icons/fa6";
-import { TbClockEdit } from "react-icons/tb";
-import { MdThumbUpAlt, MdThumbDownAlt } from "react-icons/md";
-import { MdOutlineSafetyCheck } from "react-icons/md";
-import SmallButton from "@/components/buttons/SmallButton";
-import Button from "@/components/buttons/Button";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
 import { useNavigate } from "react-router-dom";
 import { useTraderProfile } from "@/context/publicContext/ProfileContext";
-import { MdOutlineDateRange } from "react-icons/md";
-import { date } from "@/utils/date";
-import { dateTime } from "@/utils/dateTime";
-import { FaCheckDouble } from "react-icons/fa";
-import { time } from "@/utils/time";
 import { FaCalendarDay } from "react-icons/fa";
-import { MdOutlineShowChart } from "react-icons/md";
-import { TiChartLine } from "react-icons/ti";
 import { VscVerifiedFilled } from "react-icons/vsc";
-import { FaArrowLeftLong } from "react-icons/fa6";
 import toDecimal from "@/utils/toDecimal";
 import lastSeen from "@/utils/lastSeen";
-import { MdVerifiedUser } from "react-icons/md";
 import { LuUsers } from "react-icons/lu";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { windowFormatHour } from "@/utils/windowFormatHour";
 import { BsStars } from "react-icons/bs";
+import { TbCardboards } from "react-icons/tb";
+import { FiMoreVertical } from "react-icons/fi";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -59,9 +39,11 @@ const OfferDetails = ({ loading, aboutOffer }) => {
   };
 
   return (
-    <div className="flex flex-col md:border border-neutral-800">
-      <div className="flex justify-between items-center px-[15px] py-[12px] border-b border-tradeAshLight">
-        <p className="text-lg text-white font-semibold">Offer Details</p>
+    <div className="flex flex-1 flex-col gap-[20px]">
+      <div className="flex  items-center justify-between ">
+        <p className="text-lg font-semibold text-white flex items-center gap-1">
+          OFFER DETAILS
+        </p>
       </div>
 
       <div className="flex flex-col min-h-[120px]">
@@ -72,81 +54,38 @@ const OfferDetails = ({ loading, aboutOffer }) => {
             {aboutOffer?.data === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1 flex-col min-h-[120px]  gap-[20px] p-[15px]">
-                <div className="flex min-h-[150px] flex-col gap-[15px] pb-[12px]">
-                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] border rounded-[15px] border-tradeAshLight p-[12px] bg-tradeAsh">
-                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                      <p className="text-[13px] text-white font-semibold">
-                        Trader Info
-                      </p>
-                    </div>
-
-                    <div className="flex gap-[10px] items-center justify-between  w-full">
-                      <div className="flex gap-1 items-center">
-                        <div className="flex   cursor-pointer">
-                          {false ? (
-                            <div className="w-[25px] md:w-[30px] h-[25px] md:h-[30px] border-[2px] border-tradeFadeWhite rounded-[8px] overflow-hidden shrink-0 justify-center items-center">
-                              <img
-                                className="rounded-[10px] w-full h-auto"
-                                src={image}
-                                alt=""
-                              />
-                            </div>
-                          ) : (
-                            <HiOutlineUserCircle className="flex text-white text-xl flex-shrink-0" />
-                          )}
-                        </div>
-                        <p
-                          onClick={() => handleTraderClick(user?.username)}
-                          className=" flex text-[13px] gap-1 items-center text-white font-semibold leading-none cursor-pointer w-max hover:underline transition-all duration-300"
-                        >
-                          @{user?.username}
-                        </p>
-                      </div>
-
-                      <div className="flex gap-1 ">
-                        {seen && (
-                          <p className="text-white text-[13px] font-semibold">
-                            Last seen :{" "}
-                            <span className={seen.className}>{seen.text}</span>
-                          </p>
+              <div className="flex flex-1 flex-col min-h-[120px] gap-[20px]">
+                <div className="flex justify-between">
+                  <div className="flex flex-col gap-[30px] pb-[12px]">
+                    <div className="flex items-center gap-2">
+                      <div className="flex cursor-pointer">
+                        {false ? (
+                          <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                            <img src={image} alt="" className="" />
+                          </div>
+                        ) : (
+                          <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                            <img src={image} alt="" className="" />
+                          </div>
                         )}
                       </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-[20px] ">
-                    <div className="flex flex-col gap-[10px] ">
-                      <p className="text-tradeOrange text-3xl font-semibold md:w-max w-[200px leading-normal">
-                        {offer?.serviceName || "N/A"}
-                      </p>
-                      <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
-                        {offer?.serviceType || "N/A"}
-                      </p>
+
+                      <div className="flex flex-col gap-[5px] ">
+                        <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-normal">
+                          {offer?.serviceName || "N/A"}
+                        </p>
+                        <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
+                          {offer?.serviceType || "N/A"}
+                        </p>
+                      </div>
                     </div>
 
                     <div className="flex flex-col gap-[10px]">
-                      <div className="flex gap-4 flex-wrap">
-                        {offer?.isVerifiedOffer ? (
-                          <div className="flex gap-1 items-center">
-                            <VscVerifiedFilled className="flex text-tradeFadeWhite text-base flex-shrink-0" />
-                            <p className="text-xs font-semibold text-white">
-                              Verified Offer
-                            </p>
-                          </div>
-                        ) : (
-                          <div className="flex gap-1 items-center">
-                            <BsStars className="flex text-tradeFadeWhite text-base flex-shrink-0" />
-                            <p className="text-xs font-semibold text-white">
-                              New Offer
-                            </p>
-                          </div>
-                        )}
-                        <div className="flex  items-center gap-1">
-                          <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
-                          <p className="text-xs font-semibold text-white">
-                            +{offer?.completedTrades ?? "0"} Recent Trades
-                          </p>
-                        </div>
+                      <div className="flex  items-center gap-1">
+                        <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <p className="text-xs font-semibold text-white">
+                          +{offer?.completedTrades ?? "0"} Recent Trades
+                        </p>
                       </div>
 
                       <div className="flex gap-1 items-center">
@@ -157,10 +96,14 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
                     </div>
                   </div>
+
+                  <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-1 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                    <FiMoreVertical />
+                  </div>
                 </div>
 
                 <div className="flex flex-1 flex-col min-h-[120px]  gap-[10px]">
-                  <div className="flex lg:flex-row flex-col gap-[10px] w-full ">
+                  <div className="flex flex-col gap-[10px] w-full ">
                     <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                       <div className="flex items-center justify-between w-full mt-[1px]">
                         <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -169,7 +112,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           </p>
                         </div>
 
-                        <p className="text-white text-xl font-semibold leading-none">
+                        <p className="text-white text-sm font-semibold leading-none">
                           {offer?.marginRate?.ratePrice}/
                           {offer?.preferredCurrency?.code || "N/A"}
                         </p>
@@ -180,9 +123,10 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           <p className="text-tradeFadeWhite text-[13px]  font-semibold">
                             Margin
                           </p>
-                          <div className="flex items-center gap-[2px] text-[13px] font-semibold rounded-[5px] bg-tradeGreen text-black px-[5px] py-[1px] w-max">
-                            <p>{offer?.marginRate?.ratePercent || "N/A"}%</p>
-                          </div>
+
+                          <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                            {offer?.marginRate?.ratePercent || "N/A"}% MARGIN
+                          </p>
                         </div>
 
                         <div className="flex items-center justify-between">

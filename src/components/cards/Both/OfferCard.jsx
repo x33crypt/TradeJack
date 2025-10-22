@@ -49,7 +49,7 @@ const MarketCard = ({ offer }) => {
             </div>
 
             <div className="flex gap-3">
-              <div className="">
+              {/* <div className="">
                 {offer?.isVerified ? (
                   <div className="flex gap-1 items-center">
                     <VscVerifiedFilled className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
@@ -65,10 +65,10 @@ const MarketCard = ({ offer }) => {
                     </p>
                   </div>
                 )}
-              </div>
+              </div> */}
 
               <div className="flex items-center gap-1">
-                <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+                <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
                   <span className="text-white">+{offer?.completedTrades}</span>{" "}
                   recent trades
@@ -144,7 +144,7 @@ const MarketCard = ({ offer }) => {
                   <span className="text-red-60">
                     {offer?.marginRate?.ratePercent || "N/A"}%
                   </span>{" "}
-                  below market price
+                  Margin
                 </p>
               </div>
             </div>
@@ -160,20 +160,20 @@ const MarketCard = ({ offer }) => {
           <div className="flex justify-between w-full items-center">
             <div className="flex gap-1 items-center w-full ">
               <div>
-                <HiOutlineUserCircle className="flex text-white text-2xl flex-shrink-0" />
+                <HiOutlineUserCircle className="flex text-white text-lg flex-shrink-0" />
               </div>
               <div>
                 <p className="text-[13px] font-semibold text-white">
                   {offer?.Username}
                 </p>
-                <p className="text-tradeFadeWhite text-xs font-medium">
+                {/* <p className="text-tradeFadeWhite text-xs font-medium">
                   <span className={seen.className}>{seen.text}</span>
-                </p>
+                </p> */}
               </div>
             </div>
 
             <div className="flex flex-col items-end gap-1 justify-betwee w-full">
-              {offer?.isVerified ? (
+              {/* {offer?.isVerified ? (
                 <div className="flex gap-1 items-center">
                   <VscVerifiedFilled className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
                   <p className="text-xs font-medium text-tradeFadeWhite">
@@ -187,10 +187,10 @@ const MarketCard = ({ offer }) => {
                     New offer
                   </p>
                 </div>
-              )}
+              )} */}
 
               <div className="flex  items-center gap-1">
-                <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+                <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
                   <span className="text-white">+{offer?.completedTrades}</span>{" "}
                   recent trades
@@ -215,9 +215,10 @@ const MarketCard = ({ offer }) => {
                   {toDecimal(offer?.marginRate?.ratePrice) || "N/A"}/
                   {/* {offer?.preferredCurrency?.code} */}$
                 </p>
-                <div className="flex items-center gap-[2px] text-xs font-semibold rounded-[5px] bg-tradeAshLight text-tradeFadeWhite px-[5px] py-[1px] w-max">
-                  <p>-{offer?.marginRate?.ratePercent || "N/A"}%</p>
-                </div>
+
+                <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                  {offer?.marginRate?.ratePercent || "N/A"}% M
+                </p>
               </div>
 
               <div className="flex gap-1 items-end">

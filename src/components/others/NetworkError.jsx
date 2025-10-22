@@ -2,11 +2,12 @@ import React from "react";
 import { TbFaceIdError } from "react-icons/tb";
 import { MdOutlineRefresh } from "react-icons/md";
 import { BiFileBlank } from "react-icons/bi";
+import { TbCardboardsFilled } from "react-icons/tb";
 
 const NetworkError = ({ text }) => {
   return (
     <div className="flex-1 flex flex-col items-center justify-center gap-[10px] min-h-[125px]">
-      <MdOutlineRefresh className="md:text-[22px] text-tradeFadeWhite" />
+      <TbCardboardsFilled className="md:text-[22px] text-tradeFadeWhite" />
       <div className="flex flex-col gap-[5px] items-center justify-center ">
         <p className="text-[13px] font-semibold text-white leading-none">
           NO INTERNET
