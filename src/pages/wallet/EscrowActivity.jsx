@@ -38,7 +38,7 @@ const EscrowActivity = () => {
               <NetworkError />
             ) : (
               <div className="flex custom-x-scrollbar overflow-x-auto gap-[10px]">
-                {excrow?.slice(0, 3).map((ex, index) => (
+                {excrow?.slice(0, 2).map((ex, index) => (
                   <div className="flex flex-col justify-between bg-tradeAsh border border-tradeAshLight min-w-[140px] h-max p-[12px] rounded-[15px]  gap-1 ">
                     <div className="flex items-center justify-between gap-1">
                       <p className="text-white text-xs font-medium leading-none">

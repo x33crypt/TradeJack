@@ -4,7 +4,7 @@ import Marketplace from "./pages/offer/public/PublicOffers";
 import CreateOffer from "./pages/offer/user/CreateOffer";
 import EditAddress from "./pages/settings/EditAddress";
 import CreateOfferSummary from "./pages/offer/user/CreateSummary";
-import MyOffer from "./pages/offer/user/Offers";
+import MyOffer from "./pages/offer/user/UserOffers";
 import EditMyOffer from "./pages/offer/user/EditOffer";
 import ToastSuccess from "./components/toastCards/ToastSuccess";
 import ToastError from "./components/toastCards/ToastError";

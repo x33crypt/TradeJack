@@ -171,11 +171,11 @@ const PublicOffers = () => {
     <>
       <InAppNav />
 
-      <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black">
-        <div
-          ref={topRef}
-          className="flex flex-1 lg:flex-row flex-col gap-[25px] "
-        >
+      <div
+        ref={topRef}
+        className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black"
+      >
+        <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
           <div className="lg:flex hidden">
             <Filter />
           </div>
@@ -224,7 +224,7 @@ const PublicOffers = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-[40px]">
+            <div className="flex flex-1 flex-col gap-[40px]">
               <div className="flex flex-col flex-1 justify-between gap-[20px]">
                 <div className="flex  items-center justify-between">
                   <p className="text-sm font-semibold text-white flex items-center gap-1">
@@ -232,7 +232,7 @@ const PublicOffers = () => {
                   </p>
                 </div>
 
-                <div className="flex-1 flex flex-col gap-[15px] min-h-[120px]">
+                <div className="flex-1 flex flex-col gap-[15px]">
                   {initialLoading && offers?.top === null ? (
                     <Loading />
                   ) : (
@@ -251,14 +251,9 @@ const PublicOffers = () => {
                               ))}
                             </div>
                           ) : (
-                            <div className="flex-1 min-h-[150px] flex flex-col gap-[10px] items-center justify-center">
+                            <div className="flex-1 flex flex-col gap-[10px] items-center justify-center">
                               <p className="text-[13px] font-semibold text-white leading-none">
-                                No Offers Found
-                              </p>
-
-                              <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
-                                Try adjusting your filters or search criteria to
-                                see more offers.
+                                NO OFFER FOUND
                               </p>
                             </div>
                           )}
@@ -323,11 +318,11 @@ const PublicOffers = () => {
               <div className="flex flex-col flex-1 justify-between gap-[20px] ">
                 <div className="flex items-center justify-between ">
                   <p className="text-sm font-semibold text-white flex items-center gap-1">
-                    NEW OFFERS
+                    OTHER OFFERS
                   </p>
                 </div>
 
-                <div className="flex-1 flex flex-col gap-[15px] min-h-[120px]">
+                <div className="flex-1 flex flex-col gap-[15px]">
                   {initialLoading && offers?.recent === null ? (
                     <Loading />
                   ) : (

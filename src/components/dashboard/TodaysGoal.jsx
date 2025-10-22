@@ -17,6 +17,7 @@ import { PiCoinVerticalBold } from "react-icons/pi";
 import { IoMdFlash } from "react-icons/io";
 import { MdHourglassTop } from "react-icons/md";
 import { MdLeaderboard } from "react-icons/md";
+import { RiCopperCoinFill } from "react-icons/ri";
 
 const TodaysGoal = ({ loading, dashboard }) => {
   const [value, setValue] = useState(20);
@@ -49,39 +50,28 @@ const TodaysGoal = ({ loading, dashboard }) => {
                     </p>
                   </div>
 
-                  {/* <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                     <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                       LEADERBOARD
                     </p>
                     <MdLeaderboard />
-                  </div> */}
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-[10px]">
                   {Array.from({ length: 3 }).map((_, index) => (
                     <div className="flex items-center w-full h-max flex-grow  gap-[10px] border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
-                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                        <IoMdFlash className="text-lg text-tradeOrange" />
+                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[15px] p-2 w-max cursor-pointer">
+                        <RiCopperCoinFill className="text-xl text-white" />
                       </div>
                       <div className="flex-1 flex flex-col gap-1">
                         <p className="text-[13px] font-semibold text-white">
                           Complete a trade in 45 minutes
                         </p>
-                        <div className="flex gap-2">
-                          <div className="flex gap-[2px] items-center">
-                            <p className="text-xs text-tradeFadeWhite font-semibold">
-                              50
-                            </p>
-                            <PiCoinVerticalBold className="text-sm text-tradeGreen" />
-                          </div>
 
-                          <p className="text-xs text-tradeFadeWhite font-semibold">
-                            1h 30m left
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                        <MdHourglassTop className="text-lg text-tradeFadeWhite" />
+                        <p className="text-xs text-tradeFadeWhite font-semibold">
+                          50 Points
+                        </p>
                       </div>
                     </div>
                   ))}
