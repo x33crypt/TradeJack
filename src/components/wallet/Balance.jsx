@@ -79,7 +79,7 @@ const Balance = () => {
               <NetworkError />
             ) : (
               <div className="flex-1 flex flex-col justify-between gap-[25px] ">
-                <div className="flex flex-col gap-[10px] bg-tradeAsh p-[12px] rounded-[15px] border border-tradeAshLight">
+                <div className="flex flex-col gap-[15px] bg-tradeAsh p-[12px] rounded-[15px] border border-tradeAshLight">
                   <div className="flex flex-1 items-center justify-between">
                     <div className="flex items-center gap-2">
                       <p className="text-[12px] font-semibold text-tradeFadeWhite leading-none p-1 hover:bg-tradeOrange/20 g-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">

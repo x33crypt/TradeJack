@@ -249,7 +249,7 @@ const MyOffer = () => {
               </p>
             </div>
 
-            <div className="flex lg:hidden items-center justify-between">
+            <div className="flex lg:hidden items-center gap-2 justify-between">
               <div className="flex items-center gap-2">
                 <div
                   onClick={() =>
@@ -288,7 +288,7 @@ const MyOffer = () => {
                 >
                   <TbArrowsSort />
                   <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    {filter?.status ? filter?.status : "STATUS"}
+                    {filter?.status ? filter?.status : " STATUS"}
                   </p>
                 </div>
               </div>
@@ -314,7 +314,7 @@ const MyOffer = () => {
                   className="absolute opacity-0 w-0 h-0 pointer-events-none"
                 />
 
-                <div
+                {/* <div
                   onClick={handleClearFilter}
                   className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
                 >
@@ -322,7 +322,7 @@ const MyOffer = () => {
                   <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                     RESET
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
 
