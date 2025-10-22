@@ -202,10 +202,10 @@ const InAppNav = () => {
               </div>
 
               <div className="flex-1 flex flex-col justify-between p-[15px] bg-black ">
-                <div className="flex flex-col p-[12px] bg-tradeAsh gap-[10px] rounded-[15px] border border-tradeAsh">
+                <div className="flex flex-col p-[12px] bg-tradeAshLight gap-[10px] rounded-[15px] border border-tradeAsh">
                   <div className="flex items-center justify-between">
                     <p className="text-white font-semibold text-base">
-                      Tier 1 Account
+                      PREMIUM ACCOUNT
                     </p>
 
                     <div>
@@ -214,8 +214,8 @@ const InAppNav = () => {
                   </div>
 
                   <p className="text-tradeFadeWhite font-semibold text-xs">
-                    Remaing Limits : ${" "}
-                    <span className="text-white">250,000.00</span>
+                    Remaing Limits : #{" "}
+                    <span className="text-white">1,000,000.00</span>
                   </p>
                 </div>
 
