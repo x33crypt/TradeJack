@@ -17,6 +17,7 @@ import api from "@/utils/http/api";
 import AccountMenu from "@/components/settings/SettingMenu";
 import NetworkError from "@/components/others/NetworkError";
 import { RiAddCircleFill } from "react-icons/ri";
+import { BiSad } from "react-icons/bi";
 
 const MyAccounts = () => {
   const { loading, refetchLinkedBanks } = useFetchLinkedBanks();
@@ -63,6 +64,8 @@ const MyAccounts = () => {
           loading: false,
           success: true,
         });
+
+        refetchLinkedBanks();
 
         setToast({
           success: true,
@@ -254,24 +257,22 @@ const MyAccounts = () => {
                           </div>
                         </div>
                       ) : (
-                        <div className="h-full flex flex-col p-[15px] gap-[25px]">
-                          <div className="">
-                            <p className="text-xs text-tradeFadeWhite font-medium">
-                              Your linked accounts will show up here once added.
-                              You don’t have any yet, so add one now to start
-                              making secure and seamless withdrawals.
+                        <div className="h-full flex flex-col gap-[20px]">
+                          <div
+                            onClick={() => navigateTo("/wallet/accounts/new")}
+                            className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
+                          >
+                            <RiAddCircleFill className="text-sm" />
+                            <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                              ADD NEW
                             </p>
                           </div>
-                          <div className="flex-1 h-full flex items-center justify-center">
-                            <LuFileX2 className="text-[55px] text-tradeAshExtraLight" />
-                          </div>
-                          <div className="md:hidden flex w-full">
-                            <Button
-                              variant="primary"
-                              onClick={() => navigateTo("/wallet/accounts/new")}
-                            >
-                              Add New Bank
-                            </Button>
+
+                          <div className="">
+                            <p className="text-xs text-tradeFadeWhite font-medium">
+                              You don’t have any linked accounts yet. Link one
+                              now for quick, secure withdrawals.
+                            </p>
                           </div>
                         </div>
                       )}
