@@ -150,10 +150,6 @@ const DetailsMenu = () => {
             <p className="text-[13px] text-tradeFadeWhite font-semibold">
               Service Fee : <span className="text-white">23.00</span> USD
             </p>
-            <p className="text-[13px] text-tradeFadeWhite font-semibold">
-              1 USD = #234,000.78 (<span className="text-white">23.00</span>{" "}
-              USD)
-            </p>
           </div>
         </div>
       </div>

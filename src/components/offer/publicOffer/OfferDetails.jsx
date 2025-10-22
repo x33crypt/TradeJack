@@ -108,7 +108,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh">
                     <div className="flex items-center gap-2">
                       <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                      <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+                      <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
                         AMOUNT
                       </p>
                     </div>
@@ -136,7 +136,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     <div className="flex flex-col gap-[15px]">
                       <div className="flex items-center gap-2">
                         <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                        <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+                        <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
                           RETURN
                         </p>
                       </div>
@@ -167,10 +167,10 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           Service Fee :{" "}
                           <span className="text-white">23.00</span> USD
                         </p>
-                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                        {/* <p className="text-[13px] text-tradeFadeWhite font-semibold">
                           1 USD = #234,000.78 (
                           <span className="text-white">23.00</span> USD)
-                        </p>
+                        </p> */}
                       </div>
                     </div>
                   </div>
@@ -182,15 +182,15 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   <div className="flex flex-col gap-[10px] w-full ">
                     <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                       <div className="flex items-center justify-between w-full mt-[1px]">
-                        <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                        <div className="flex justify-between border-b border-tradeAshLight flex-1 pb-[10px]">
                           <p className="text-[13px] text-white font-semibold">
                             Rate
                           </p>
                         </div>
 
                         <p className="text-white text-sm font-semibold leading-none">
-                          {offer?.marginRate?.ratePrice}/
-                          {offer?.preferredCurrency?.code || "N/A"}
+                          1 {offer?.preferredCurrency?.code || "N/A"} = #
+                          {offer?.marginRate?.ratePrice}
                         </p>
                       </div>
 
