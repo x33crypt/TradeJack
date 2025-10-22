@@ -14,6 +14,8 @@ import { windowFormatHour } from "@/utils/windowFormatHour";
 import { BsStars } from "react-icons/bs";
 import { TbCardboards } from "react-icons/tb";
 import { FiMoreVertical } from "react-icons/fi";
+import { IoMdArrowDropright } from "react-icons/io";
+import Button from "@/components/buttons/Button";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -97,9 +99,83 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
 
-                  <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-1 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                  {/* <div className="flex text-white border border-tradeAshExtraLight text-[20px] p-1 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     <FiMoreVertical />
+                  </div> */}
+                </div>
+
+                <div className="flex lg:hidden gap-[10px] flex-col">
+                  <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh">
+                    <div className="flex items-center gap-2">
+                      <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                      <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+                        AMOUNT
+                      </p>
+                    </div>
+
+                    <div className="flex gap-[10px]">
+                      <div className="flex-1 flex px-2.5 py-1.5 gap-2 items-center justify-between bg-tradeAsh  border border-tradeAshExtraLight rounded-[10px] ">
+                        <div>
+                          <input
+                            type="text"
+                            placeholder="00.00"
+                            className="bg-transparent w-[150px] h-full text-[13px] font-semibold outline-none text-white placeholder:text-tradeFadeWhite"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="flex border border-tradeAshExtraLight px-1.5 py-1.5 gap-2 items-center justify-between bg-transparent rounded-[10px] ">
+                        <div className="text-[13px] font-semibold text-tradeFadeWhite">
+                          <p>{offer?.preferredCurrency?.code ?? "USD"}</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+
+                  <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh">
+                    <div className="flex flex-col gap-[15px]">
+                      <div className="flex items-center gap-2">
+                        <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                        <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+                          RETURN
+                        </p>
+                      </div>
+
+                      <div className="flex justify-between items-center gap-[10px]">
+                        <div className="flex px-2.5 py-1.5 gap-2 items-center justify-between bg-tradeAsh border border-tradeAshExtraLight flex-1 rounded-[10px] ">
+                          <div>
+                            <input
+                              type="text"
+                              readOnly
+                              placeholder="00.00"
+                              className="bg-transparent w-[150px] h-full text-[13px] font-semibold outline-none text-white placeholder:text-tradeFadeWhite cursor-default"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="flex border border-tradeAshExtraLight px-1.5 py-1.5 gap-2 items-center justify-between bg-transparent rounded-[10px] ">
+                          <div className="text-[13px] font-semibold text-tradeFadeWhite">
+                            <p>{offer?.preferredCurrency?.code ?? "USD"}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div className="flex flex-col gap-1">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Service Fee :{" "}
+                          <span className="text-white">23.00</span> USD
+                        </p>
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          1 USD = #234,000.78 (
+                          <span className="text-white">23.00</span> USD)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <Button>SWAP</Button>
                 </div>
 
                 <div className="flex flex-1 flex-col min-h-[120px]  gap-[10px]">

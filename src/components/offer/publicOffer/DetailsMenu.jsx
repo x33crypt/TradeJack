@@ -1,11 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useDashboard } from "@/context/userContext/DashboardContext";
 import { IoMdArrowDropright } from "react-icons/io";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { IoCloseSharp } from "react-icons/io5";
-import toDecimal from "@/utils/toDecimal";
-import withComma from "@/utils/withComma";
 import Button from "@/components/buttons/Button";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import { useFetchAboutOffers } from "@/hooks/publicHooks/useFetchAboutOffer";
@@ -15,8 +9,6 @@ import { useTrade } from "@/context/publicContext/TradeContext";
 const DetailsMenu = () => {
   const { aboutOffer, setAboutOffer } = usePublicOffers();
   const { setPreTradeCheck } = useTrade();
-  const { loading } = useFetchAboutOffers();
-  const { calculator, setCalculator } = useCalculator();
 
   const offer = aboutOffer?.data?.offerDetails;
 
