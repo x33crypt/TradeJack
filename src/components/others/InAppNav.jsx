@@ -218,8 +218,8 @@ const InAppNav = () => {
                     }}
                     className="flex items-center gap-2"
                   >
-                    <IoMdArrowDropright className="text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       DASHBOARD
                     </p>
                   </div>
@@ -231,9 +231,22 @@ const InAppNav = () => {
                     }}
                     className="flex items-center gap-2"
                   >
-                    <IoMdArrowDropright className="text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       WALLET
+                    </p>
+                  </div>
+
+                  <div
+                    onClick={() => {
+                      // navigateTo("/wallet");
+                      setIsNavOption(false);
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      TOOLS BOX
                     </p>
                   </div>
 
@@ -244,8 +257,8 @@ const InAppNav = () => {
                     }}
                     className="flex items-center gap-2"
                   >
-                    <IoMdArrowDropright className="text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       MY OFFERS
                     </p>
                   </div>
@@ -257,8 +270,8 @@ const InAppNav = () => {
                     }}
                     className="flex items-center gap-2"
                   >
-                    <IoMdArrowDropright className="text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       BOOKMARKS
                     </p>
                   </div>
@@ -270,9 +283,9 @@ const InAppNav = () => {
                     }}
                     className="flex items-center gap-2"
                   >
-                    <IoMdArrowDropright className="text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
-                      PROMO
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      PROMOTED OFFERS
                     </p>
                   </div>
 
@@ -283,8 +296,8 @@ const InAppNav = () => {
                     }}
                     className="flex items-center gap-2"
                   >
-                    <IoMdArrowDropright className="text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       TRADE PARTNERS
                     </p>
                   </div>
@@ -296,8 +309,8 @@ const InAppNav = () => {
                     }}
                     className="flex items-center gap-2"
                   >
-                    <IoMdArrowDropright className="text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       TRADE HISTORY
                     </p>
                   </div>
@@ -309,8 +322,8 @@ const InAppNav = () => {
                     }}
                     className="flex items-center gap-2"
                   >
-                    <IoMdArrowDropright className="text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       TRANSACTION HISTORY
                     </p>
                   </div>
@@ -322,8 +335,8 @@ const InAppNav = () => {
                     }}
                     className="flex items-center gap-2"
                   >
-                    <IoMdArrowDropright className="text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       REFERRALS
                     </p>
                   </div>
