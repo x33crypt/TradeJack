@@ -79,12 +79,23 @@ const Balance = () => {
               <NetworkError />
             ) : (
               <div className="flex-1 flex flex-col justify-between gap-[25px] ">
-                <div className="flex flex-col gap-[10px]">
+                <div className="flex flex-col gap-[10px] bg-tradeAsh p-[12px] rounded-[15px] border border-tradeAshLight">
                   <div className="flex flex-1 items-center justify-between">
                     <div className="flex items-center gap-2">
                       <p className="text-[12px] font-semibold text-tradeFadeWhite leading-none p-1 hover:bg-tradeOrange/20 g-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
                         Available Asset
                       </p>
+
+                      <div
+                        onClick={toggleBalanceVisibility}
+                        className="flex items-center bg-transparent   w-max cursor-pointer"
+                      >
+                        {showBalance ? (
+                          <FaEye className="text-lg text-tradeFadeWhite" />
+                        ) : (
+                          <FaEyeSlash className="text-lg text-tradeFadeWhite" />
+                        )}
+                      </div>
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -98,7 +109,7 @@ const Balance = () => {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 items-center justify-between w-full h-[45px] bg-tradeGree">
+                  <div className="flex gap-3 items-center justify-between w-full h-[45px]">
                     <div className="flex items-center ">
                       {balance?.currency === "USD" ? (
                         <p
@@ -126,17 +137,6 @@ const Balance = () => {
                             ? `${toDecimal(balance.available_balance.NGN)}`
                             : "****"}
                         </p>
-                      )}
-                    </div>
-
-                    <div
-                      onClick={toggleBalanceVisibility}
-                      className="flex items-center bg-transparent   w-max cursor-pointer"
-                    >
-                      {showBalance ? (
-                        <FaEye className="text-lg text-tradeFadeWhite" />
-                      ) : (
-                        <FaEyeSlash className="text-lg text-tradeFadeWhite" />
                       )}
                     </div>
                   </div>

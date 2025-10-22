@@ -235,7 +235,7 @@ const InAppNav = () => {
                   </div>
                   <div
                     onClick={() => {
-                      navigateTo("/offers/user");
+                      navigateTo("/offers");
                       setIsNavOption(false);
                     }}
                     className=" flex gap-[15px] items-center p-2 h-max  border border-transparent hover:border-tradeAshExtraLight rounded-[10px] "
