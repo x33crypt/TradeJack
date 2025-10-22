@@ -77,51 +77,53 @@ const AccountCard = ({ account, index }) => {
           </div>
         </div>
         <div className="flex flex-col gap-[10px] justify-between w-full px-1">
-          <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-            <FaLink className="xs" />
-            <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-              {date(account?.createdAt)}
-            </p>
+          <div className="flex w-full items-center justify-between">
+            <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+              <FaLink className="xs" />
+              <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                {date(account?.createdAt)}
+              </p>
+            </div>
+
+            {state && (
+              <div
+                onClick={() =>
+                  selectDeleteAccount(
+                    account?.bankId,
+                    account?.bank_name,
+                    account?.account_number
+                  )
+                }
+                className="flex items-center gap-2 hover:bg-red-600/30 bg-red-600 p-1  text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+              >
+                <AiFillDelete className="xs" />
+                <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                  Delete
+                </p>
+              </div>
+            )}
           </div>
 
           <div className="flex flex-1">
             {state && (
-              <div className="flex w-full items-center justify-between">
-                <div>
-                  {account?.isDefault === false && (
-                    <div
-                      onClick={() =>
-                        selectSetDefault(
-                          account?.bankId,
-                          account?.bank_name,
-                          account?.account_number
-                        )
-                      }
-                      className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
-                    >
-                      <TiPinOutline className="xs" />
-                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        Set as Default Account
-                      </p>
-                    </div>
-                  )}
-                </div>
-
-                <div
-                  onClick={() =>
-                    selectDeleteAccount(
-                      account?.bankId,
-                      account?.bank_name,
-                      account?.account_number
-                    )
-                  }
-                  className="flex items-center gap-2 hover:bg-red-600/30 bg-red-600 p-1  text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
-                >
-                  <AiFillDelete className="xs" />
-                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    Delete Account
-                  </p>
-                </div>
+              <div>
+                {account?.isDefault === false && (
+                  <div
+                    onClick={() =>
+                      selectSetDefault(
+                        account?.bankId,
+                        account?.bank_name,
+                        account?.account_number
+                      )
+                    }
+                    className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
+                  >
+                    <TiPinOutline className="xs" />
+                    <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      Set as Default Account
+                    </p>
+                  </div>
+                )}
               </div>
             )}
           </div>

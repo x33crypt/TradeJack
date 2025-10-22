@@ -154,11 +154,11 @@ const AddNewAccount = () => {
               </div>
 
               <Button
-                variant="primary"
+                variant="secondary"
                 disabled={linkAccount?.proceed}
                 onClick={handleVerifyBank}
               >
-                Verify Account
+                VERIFY
               </Button>
             </div>
           </div>
