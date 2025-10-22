@@ -4,10 +4,12 @@ import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { IoClose } from "react-icons/io5";
 import Button from "@/components/buttons/Button";
 import { IoIosCheckmarkCircle } from "react-icons/io";
+import { useFetchLinkedBanks } from "@/hooks/userHooks/useFetchLinkedBanks";
 
 const SuccessAccount = () => {
   const { linkAccount, setLinkAccount } = useLinkedAccount();
   const { success } = linkAccount;
+  const { refetchLinkedBanks } = useFetchLinkedBanks();
 
   const defaultLinkAccountState = {
     proceed: false,
@@ -21,6 +23,7 @@ const SuccessAccount = () => {
 
   const close = async () => {
     setLinkAccount({ ...defaultLinkAccountState });
+    refetchLinkedBanks();
   };
 
   return (

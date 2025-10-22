@@ -118,6 +118,8 @@ const MyAccounts = () => {
           success: true,
         });
 
+        refetchLinkedBanks();
+
         setToast({
           success: true,
           successMessage: "Account has been set as default.",
@@ -157,10 +159,10 @@ const MyAccounts = () => {
     });
   };
 
-  useEffect(() => {
-    if (success === true) return;
-    refetchLinkedBanks();
-  }, [success]);
+  // useEffect(() => {
+  //   if (success === true) return;
+  //   refetchLinkedBanks();
+  // }, [success]);
 
   const navigateTo = useNavigate();
 
