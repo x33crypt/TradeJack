@@ -248,18 +248,6 @@ const InAppNav = () => {
                   >
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      SEARCH
-                    </p>
-                  </div>
-                  <div
-                    onClick={() => {
-                      navigateTo("/dashboard");
-                      setIsNavOption(false);
-                    }}
-                    className="flex items-center gap-2"
-                  >
-                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       DASHBOARD
                     </p>
                   </div>
@@ -312,7 +300,7 @@ const InAppNav = () => {
                   >
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      BOOKMARKS
+                      ADS
                     </p>
                   </div>
 
@@ -325,7 +313,20 @@ const InAppNav = () => {
                   >
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      PROMOTED OFFERS
+                      BOOKMARKS
+                    </p>
+                  </div>
+
+                  <div
+                    onClick={() => {
+                      navigateTo("/dashboard");
+                      setIsNavOption(false);
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      CHATS
                     </p>
                   </div>
 
