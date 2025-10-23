@@ -8,17 +8,15 @@ import { useToast } from "@/context/otherContext/ToastContext";
 import { submitDeposit } from "@/utils/wallet/deposit";
 import { useDepositContext } from "@/context/userContext/DepositContext";
 import paystackLogo from "../../assets/logos-paystack.png";
-import { IoIosLock } from "react-icons/io";
 import { toUSD } from "@/utils/toUSD";
 import { toNGN } from "@/utils/toNGN";
 import { useEffect } from "react";
 import { useTransaction } from "@/context/userContext/TransactionContext";
 import DasHboardMenu from "@/components/dashboard/DashboardMenu";
-import { IoCopy } from "react-icons/io5";
-import { IoWalletOutline } from "react-icons/io5";
 import { useBalance } from "@/context/userContext/BalanceContext";
 import { useFetchBalance } from "@/hooks/userHooks/useFetchBalance";
 import WalletBalance from "@/components/wallet/WalletBalance";
+import WalletMenu from "@/components/wallet/WalletMenu";
 
 const Deposit = () => {
   const { loading, error, refetch } = useFetchBalance();
@@ -231,56 +229,51 @@ const Deposit = () => {
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
-        <DasHboardMenu />
-        <div className="flex-1 h-max flex flex-col md:flex-row md:gap-[5px] gap-[10px]">
-          <div className="flex flex-col flex-1 md:border border-neutral-800">
-            <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-              <p className="text-lg font-[700] text-white ">Deposit Funds</p>
-            </div>
+      <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black">
+        <div className="flex flex-1 lg:flex-row flex-col gap-[25px]">
+          <WalletMenu />
 
-            <div className="flex flex-col p-[15px] gap-[10px]">
-              <div className="">
-                <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                  Add funds to your account quickly and securely, ensuring
-                  you’re ready for seamless trading anytime.
+          <div className="flex flex-1 flex-col gap-[40px] lg:mr-[12%] p-[15px]">
+            <div className="flex flex-1 flex-col gap-[20px]">
+              <div className="flex  items-center justify-between ">
+                <p className="text-lg font-semibold text-white flex items-center gap-1">
+                  DEPOSIT
                 </p>
               </div>
 
-              <div className="h-full flex flex-col justify-between gap-[10px]">
+              <div className="flex flex-col  gap-[10px]">
                 {/* Wallet Balance */}
                 <WalletBalance />
 
                 {/* External Deposit */}
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                  <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                    <div className="flex gap-1 items-center">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        External Deposit
-                      </p>
-                    </div>
+                  <div className="flex flex-1 items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Enter Amount
+                    </p>
 
-                    <div className="flex gap-1 items-cente">
-                      <div
+                    <div className="flex items-center gap-2">
+                      <p
                         onClick={selectNGN}
                         className={`${
                           deposit?.currency === "NGN"
                             ? "bg-tradeOrange text-black"
-                            : "bg-transparent text-tradeFadeWhite"
-                        } flex items-center gap-1  border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                            : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
+                        } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
                       >
-                        <p className="text-xs font-semibold">NGN</p>
-                      </div>
-                      <div
+                        NGN
+                      </p>
+
+                      <p
                         onClick={selectUSD}
                         className={`${
                           deposit?.currency === "USD"
                             ? "bg-tradeOrange text-black"
-                            : "bg-transparent text-tradeFadeWhite"
-                        } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                            : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
+                        } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
                       >
-                        <p className="text-xs font-semibold">USD</p>
-                      </div>
+                        USD
+                      </p>
                     </div>
                   </div>
 
@@ -288,25 +281,20 @@ const Deposit = () => {
                     {deposit?.currency === "NGN" ? (
                       // NGN
                       <div className="flex flex-col gap-[10px]">
-                        <div className="flex flex-col gap-[10px] w-full">
-                          <p className="text-tradeFadeWhite text-xs font-medium">
-                            Enter Amount in NGN
-                          </p>
-                          <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                            <input
-                              className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                              type="text"
-                              placeholder={`15,000.000 - 30,000,000.00`}
-                              value={
-                                editingAmount
-                                  ? deposit?.amount?.NGN || ""
-                                  : formatWithCommas(deposit?.amount?.NGN)
-                              }
-                              onChange={handleNGNAmountChange}
-                              onFocus={() => setEditingAmount(true)}
-                              onBlur={() => setEditingAmount(false)}
-                            />
-                          </div>
+                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                          <input
+                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                            type="text"
+                            placeholder={`15,000.000 - 30,000,000.00`}
+                            value={
+                              editingAmount
+                                ? deposit?.amount?.NGN || ""
+                                : formatWithCommas(deposit?.amount?.NGN)
+                            }
+                            onChange={handleNGNAmountChange}
+                            onFocus={() => setEditingAmount(true)}
+                            onBlur={() => setEditingAmount(false)}
+                          />
                         </div>
 
                         <div>
@@ -324,25 +312,20 @@ const Deposit = () => {
                     ) : (
                       // USD
                       <div className="flex flex-col gap-[10px]">
-                        <div className="flex flex-col gap-[10px] w-full">
-                          <p className="text-tradeFadeWhite text-xs font-medium">
-                            Enter Amount in USD
-                          </p>
-                          <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                            <input
-                              className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                              type="text"
-                              placeholder={`10.00 - 20,000.00`}
-                              value={
-                                editingAmount
-                                  ? deposit?.amount?.USD || ""
-                                  : formatWithCommas(deposit?.amount?.USD)
-                              }
-                              onChange={handleUSDAmountChange}
-                              onFocus={() => setEditingAmount(true)}
-                              onBlur={() => setEditingAmount(false)}
-                            />
-                          </div>
+                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                          <input
+                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                            type="text"
+                            placeholder={`10.00 - 20,000.00`}
+                            value={
+                              editingAmount
+                                ? deposit?.amount?.USD || ""
+                                : formatWithCommas(deposit?.amount?.USD)
+                            }
+                            onChange={handleUSDAmountChange}
+                            onFocus={() => setEditingAmount(true)}
+                            onBlur={() => setEditingAmount(false)}
+                          />
                         </div>
 
                         <div>
@@ -362,64 +345,17 @@ const Deposit = () => {
                 </div>
 
                 <Button
-                  variant="primary"
+                  variant="secondary"
                   onClick={proceed}
                   disabled={deposit?.loading}
                 >
                   Proceed
                 </Button>
-
-                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight h-[100px">
-                  <div className="flex flex-col gap-[20px] bg-tradeOrang rounded-lg">
-                    <div className="w-full flex items-center justify-center">
-                      <img src={paystackLogo} className="w-[210px]" alt="" />
-                    </div>
-                    <div className="flex flex-wrap lg:items-center text-xs text-tradeFadeWhite gap-1">
-                      <p className="inline items-start gap-1">
-                        <span className="text-white mr-[2px]">•</span>
-                        Your payment is{" "}
-                        <span className="font-semibold text-white">
-                          secured by Paystack
-                        </span>
-                      </p>
-                      <p className=" inline items-start gap-1">
-                        <span className="text-white mr-[2px]">•</span>
-                        You’ll be{" "}
-                        <span className="font-semibold text-white">
-                          redirected
-                        </span>{" "}
-                        to Paystack to complete your deposit
-                      </p>
-                      <p className="inline items-start gap-1">
-                        <span className="text-white mr-[2px]">•</span>
-                        <span className="font-semibold text-white">
-                          Do not close
-                        </span>{" "}
-                        this tab or navigate away during the process
-                      </p>
-                      <p className="inline items-start gap-1">
-                        <span className="text-white mr-[2px]">•</span>
-                        Deposits are{" "}
-                        <span className="font-semibold text-white">free</span> —
-                        no transaction or processing fees
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeAsh">
-                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                    Events
-                  </p>
-                </div>
-                <div></div>
               </div>
             </div>
-          </div>
 
-          <RecentDeposit transactions={transactions} />
+            <RecentDeposit transactions={transactions} />
+          </div>
         </div>
       </div>
       <Footer />

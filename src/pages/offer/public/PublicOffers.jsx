@@ -343,12 +343,7 @@ const PublicOffers = () => {
                           ) : (
                             <div className="flex-1 min-h-[150px] flex flex-col gap-[10px] items-center justify-center">
                               <p className="text-[13px] font-semibold text-white leading-none">
-                                No Offers Found
-                              </p>
-
-                              <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
-                                Try adjusting your filters or search criteria to
-                                see more offers.
+                                NO OFFER FOUND
                               </p>
                             </div>
                           )}

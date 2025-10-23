@@ -33,11 +33,9 @@ const RecentTransaction = ({ scrollToTop }) => {
         <p className="text-sm font-semibold text-white flex items-center gap-1">
           RECENT TRANSACTION
         </p>
-
-        {/* <CgArrowLongRight className="text-tradeFadeWhite text-[30px] leading-none" /> */}
       </div>
 
-      <div className="flex h-full min-h-[125px] ">
+      <div className="flex h-full ">
         {loading ? (
           <Loading />
         ) : (
@@ -45,7 +43,7 @@ const RecentTransaction = ({ scrollToTop }) => {
             {transactions === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1 flex-col gap-[10px] borde border-tradeAshLight rounded-sm">
+              <div className="flex flex-1 flex-col gap-[10px]">
                 <div className="flex flex-1">
                   {Array.isArray(transactions?.data) &&
                   transactions?.data.length > 0 ? (

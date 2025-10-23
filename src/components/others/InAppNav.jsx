@@ -283,7 +283,7 @@ const InAppNav = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div
-                        onClick={() =>
+                        onClick={() => {
                           setSelect({
                             state: true,
                             selectOne: false,
@@ -291,8 +291,9 @@ const InAppNav = () => {
                             page: "InAppNav",
                             element: "default currency",
                             options: defaultCurrencies,
-                          })
-                        }
+                          });
+                          setIsNavOption(false);
+                        }}
                         className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
                       >
                         <TbArrowsSort className="text-[16px]" />

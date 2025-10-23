@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { useBalance } from "@/context/userContext/BalanceContext";
 import { useFetchBalance } from "@/hooks/userHooks/useFetchBalance";
 import { IoWalletOutline } from "react-icons/io5";
 import toDecimal from "@/utils/toDecimal";
+import { HiRefresh } from "react-icons/hi";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const WalletBalance = () => {
   const { balance, setBalance } = useBalance();
-  const { loading } = useFetchBalance();
+  const { loading, refetch } = useFetchBalance();
+  const [showBalance, setShowBalance] = useState(true);
+
+  const toggleBalanceVisibility = () => {
+    setShowBalance((prev) => !prev);
+  };
 
   const selectUSD = () => {
     setBalance((prev) => ({
@@ -24,62 +32,55 @@ const WalletBalance = () => {
 
   return (
     <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-        <p className="text-[13px] text-tradeFadeWhite font-semibold">
-          From Wallet
-        </p>
-
-        <div className="flex gap-1 items-cente">
-          <div
-            onClick={selectNGN}
-            className={`${
-              balance?.currency === "NGN"
-                ? "bg-tradeOrange text-black"
-                : "bg-transparent text-tradeFadeWhite"
-            } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
-          >
-            <p className="text-xs font-semibold">NGN</p>
-          </div>
-          <div
-            onClick={selectUSD}
-            className={`${
-              balance?.currency === "USD"
-                ? "bg-tradeOrange text-black"
-                : "bg-transparent text-tradeFadeWhite"
-            } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
-          >
-            <p className="text-xs font-semibold">USD</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex items-center gap-[10px] w-full border- border-tradeAshLight">
-        <div className="p-2 bg-tradeAshLight w-max rounded-[10px]  border border-tradeAshExtraLight">
-          <IoWalletOutline className="text-xl text-tradeWhite" />
-        </div>
-        <div className="flex flex-col gap-[3px]">
-          <p className="text-tradeFadeWhite text-xs font-medium">
-            Current balance
+      <div className="flex flex-1 items-center justify-between">
+        <div className="flex items-center gap-1">
+          <p className="text-xs font-semibold text-tradeFadeWhite leading-none p-1 hover:bg-tradeOrange/20 g-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+            AVAILABLE ASSET
           </p>
-
-          <div>
-            {balance?.currency === "NGN" ? (
-              <p className="text-white text-[13px] font-semibold">
-                NGN{" "}
-                {balance?.available_balance?.NGN
-                  ? toDecimal(balance?.available_balance?.NGN)
-                  : "0.00"}
-              </p>
+          <div
+            onClick={toggleBalanceVisibility}
+            className="flex items-center bg-transparent   w-max cursor-pointer"
+          >
+            {showBalance ? (
+              <FaEye className="text-base text-tradeFadeWhite" />
             ) : (
-              <p className="text-white text-[13px] font-semibold">
-                USD{" "}
-                {balance?.available_balance?.USD
-                  ? toDecimal(balance?.available_balance?.USD)
-                  : "0.00"}
-              </p>
+              <FaEyeSlash className="text-base text-tradeFadeWhite" />
             )}
           </div>
         </div>
+
+        <div
+          onClick={refetch}
+          className="flex items-center bg-transparent w-max cursor-pointer"
+        >
+          <HiRefresh className="text-lg text-tradeFadeWhite" />
+        </div>
+      </div>
+
+      <div className="flex items-center ">
+        {balance?.currency === "USD" ? (
+          <p
+            className={`text-white text-base  font-semibold transition-all duration-300 ease-in-out transform ${
+              showBalance ? "opacity-100 scale-100" : "opacity-50 scale-95"
+            }`}
+          >
+            <span className="text-tradeFadeWhite">$</span>{" "}
+            {showBalance
+              ? `${toDecimal(balance.available_balance.USD)}`
+              : "****"}
+          </p>
+        ) : (
+          <p
+            className={`text-white text-base font-semibold transition-all duration-300 ease-in-out transform ${
+              showBalance ? "opacity-100 scale-100" : "opacity-50 scale-95"
+            } `}
+          >
+            <span className="text-tradeFadeWhite">#</span>{" "}
+            {showBalance
+              ? `${toDecimal(balance.available_balance.NGN)}`
+              : "****"}
+          </p>
+        )}
       </div>
     </div>
   );

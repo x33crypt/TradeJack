@@ -61,12 +61,13 @@ const SuccessDeposit = () => {
 
   return (
     <div>
+      {/* success */}
       {success && (
         <div>
           <LockByScroll />
           {/* Modal */}
-          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[250px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
                   Deposit Feedback
@@ -89,27 +90,25 @@ const SuccessDeposit = () => {
                     </p>
                   </div>
 
-                  <p className="text-[13px] font-medium text-tradeFadeWhite leading-relaxed text-center">
-                    We’ve successfully received your deposit of{" "}
-                    <span className="font-semibold text-white">
-                      {currency}{" "}
-                      {currency === "USD"
-                        ? toDecimal(amount?.USD)
-                        : toDecimal(amount?.NGN)}
-                    </span>
-                    . Your wallet balance will update automatically once the
-                    payment is confirmed.
-                  </p>
+                  <div className="flex flex-col gap-2 items-center">
+                    <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed text-center">
+                      Deposit of{" "}
+                      <span className="font-semibold text-white">
+                        {currency}{" "}
+                        {currency === "USD"
+                          ? toDecimal(amount?.USD)
+                          : toDecimal(amount?.NGN)}
+                      </span>{" "}
+                      received. Your wallet will update once payment is
+                      confirmed.
+                    </p>
 
-                  <div className="flex flex-col bg-tradeAshLigh  borde border-tradeAshLight rounded-[15px]">
-                    <div className="flex items-center justify-betwee justify-center gap-[10px] p-[8px border- border-tradeAsh">
-                      <p className="text-xs font-medium text-tradeFadeWhite">
-                        Reference -{" "}
-                        <span className="font-semibold text-white">
-                          {referenceId}
-                        </span>
-                      </p>
-                    </div>
+                    <p className="text-xs font-medium text-tradeFadeWhite">
+                      Reference -{" "}
+                      <span className="font-semibold text-white">
+                        {referenceId}
+                      </span>
+                    </p>
                   </div>
                 </div>
 

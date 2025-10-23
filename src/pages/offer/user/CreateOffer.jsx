@@ -955,7 +955,7 @@ const CreateOffer = () => {
                   </div>
                 </div>
 
-                <Button onClick={stepTwo} variant="primary">
+                <Button onClick={stepTwo} variant="secondary">
                   Proceed
                 </Button>
               </div>
@@ -1178,7 +1178,7 @@ const CreateOffer = () => {
                 </div>
 
                 <div className="flex flex-col gap-[10px]">
-                  <Button onClick={stepThree} variant="primary">
+                  <Button onClick={stepThree} variant="secondary">
                     Proceed
                   </Button>
 
@@ -1301,14 +1301,14 @@ const CreateOffer = () => {
                     <Button
                       onClick={handlepublish}
                       disabled={createOffer?.loading}
-                      variant="primary"
+                      variant="secondary"
                     >
                       Go Live
                     </Button>
                   </div>
 
                   <div className="flex lg:hidden">
-                    <Button onClick={proceedToSummary} variant="primary">
+                    <Button onClick={proceedToSummary} variant="secondary">
                       Preview Offer
                     </Button>
                   </div>
