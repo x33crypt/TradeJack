@@ -45,10 +45,10 @@ import SensitiveRoute from "./utils/sensitiveRoutes";
 import PreTradeCheck from "./pages/offer/public/PreTradeCheck";
 import PublicProfile from "./pages/profile/PublicProfile";
 import UserProfile from "./pages/profile/UserProfile";
-import Accounts from "./pages/account/Accounts";
-import NewAccount from "./pages/account/NewAccount";
-import ConfirmAccount from "./pages/account/ConfirmAccount";
-import SuccessAccount from "./pages/account/SuccessAccount";
+import Accounts from "./pages/accounts/Accounts";
+import NewAccount from "./pages/accounts/NewAccount";
+import ConfirmAccount from "./pages/accounts/ConfirmAccount";
+import SuccessAccount from "./pages/accounts/SuccessAccount";
 
 const App = () => {
   return (
