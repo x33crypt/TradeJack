@@ -128,7 +128,6 @@ const Settings = () => {
                     TERM OF USE
                   </p>
                 </div>
-
                 <div className="flex lg:flex-row flex-col gap-[15px] mt-5">
                   <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     <FaXTwitter className="text-[16px]" />
