@@ -213,11 +213,19 @@ const InAppNav = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      Remaing Limits : #{" "}
-                      <span className="text-white">1,000,000.00</span>
-                    </p>
+                  <div className="flex  justify-between items-center">
+                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        My Limit : #{" "}
+                        <span className="text-white">1,000,000.00</span>
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        Increase Limit
+                      </p>
+                    </div>
                   </div>
 
                   {/* <p className="text-tradeFadeWhite font-semibold text-xs">
