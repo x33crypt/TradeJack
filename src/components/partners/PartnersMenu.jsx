@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoMdArrowDropright } from "react-icons/io";
+import { IoGrid } from "react-icons/io5";
 
 const PartnersMenu = () => {
   const navigateTo = useNavigate();
@@ -29,13 +30,7 @@ const PartnersMenu = () => {
           <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              TODAY
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              YESTERDAY
+              RECENT
             </p>
           </div>
           <div className="flex items-center gap-2">

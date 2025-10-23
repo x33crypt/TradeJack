@@ -11,7 +11,7 @@ const DasHboardMenu = () => {
   return (
     <div className="hidden lg:flex sticky top-[70px] h-max w-[250px] gap-[10px] flex-col lg:mb-[15px] ">
       <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
-        <div className="flex px-2.5 py-1.5 gap-2 items-center bg-tradeAsh flex-1 rounded-sm ">
+        {/* <div className="flex px-2.5 py-1.5 gap-2 items-center bg-tradeAsh flex-1 rounded-sm ">
           <div className="text-lg text-tradeFadeWhite">
             <HiOutlineMagnifyingGlass />
           </div>
@@ -25,7 +25,7 @@ const DasHboardMenu = () => {
           <div className="text-lg text-tradeFadeWhite">
             <IoCloseSharp />
           </div>
-        </div>
+        </div> */}
         <div className="flex flex-col gap-[15px]">
           <div
             onClick={() => navigateTo("/offers")}
@@ -45,7 +45,19 @@ const DasHboardMenu = () => {
           <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              TRADES
+              ADS
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              CHATS
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              TRADE HISTORY
             </p>
           </div>
 
@@ -53,12 +65,6 @@ const DasHboardMenu = () => {
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               REFERRALS
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              REWARDS
             </p>
           </div>
         </div>

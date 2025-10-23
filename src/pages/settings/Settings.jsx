@@ -29,7 +29,7 @@ const Settings = () => {
               <IoMdSettings className="md:text-[22px] text-tradeFadeWhite" />
               <div className="flex flex-col gap-[5px] items-center justify-center ">
                 <p className="text-[13px] font-semibold text-white leading-none">
-                  NO INTERNET
+                  NOTHING HERE YET
                 </p>
                 <p className="text-xs font-medium text-tradeFadeWhite text-center">
                   SELECT FROM MENU TO GET STARTED

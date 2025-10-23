@@ -78,9 +78,9 @@ const InAppNav = () => {
             className="flex items-center gap-[5px] cursor-pointer "
           >
             <p className=" lg:text-xl md:text-[19px] text-[18px]  font-bold text-tradeOrange">
-              00000000
-              {/* <span className="font-semibold text-tradeOrange">GET</span>
-              <span className="font-semibold text-white">SWAP</span> */}
+              GO
+              <span className="font-semibold text-tradeOrange">GET</span>
+              <span className="font-semibold text-white">SWAP</span>
             </p>
           </div>
         </div>
@@ -142,7 +142,7 @@ const InAppNav = () => {
           >
             {/* <IoMdArrowDropdown className="text-lg text-tradeFadeWhite" /> */}
             <p className="text-xs font-bold text-tradeFadeWhite hover:text-white  leading-none cursor-pointer  transition-all duration-300">
-              TOOLS BOX 0.5
+              TOOLS BOX
             </p>
           </div>
         </div>

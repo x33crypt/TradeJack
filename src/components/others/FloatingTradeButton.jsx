@@ -3,6 +3,7 @@ import { RiExchangeFundsFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { MdDataExploration } from "react-icons/md";
 import { RiExchange2Fill } from "react-icons/ri";
+import { IoChatbubbles } from "react-icons/io5";
 
 const FloatingTradeButton = () => {
   const navigateTo = useNavigate();
@@ -12,7 +13,7 @@ const FloatingTradeButton = () => {
   };
 
   return (
-    <div className="fixed bottom-12 right-6 shadow-lg z-20 w-max flex gap-1 items-center justify-center bg-tradeGreen border border-tradeAshExtraLight p-2 h-max rounded-full cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+    <div className="fixed bottom-28 right-6 shadow-lg z-20 w-max flex gap-1 items-center justify-center bg-tradeAshExtraLight border border-tradeAshExtraLight p-2 h-max rounded-full cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
       {/* Badge */}
       {true > 0 && (
         <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-semibold px-2 py-[2px] rounded-full shadow-md">
@@ -21,7 +22,7 @@ const FloatingTradeButton = () => {
       )}
 
       <button onClick={handleClick}>
-        <RiExchange2Fill className="text-[40px]" />
+        <IoChatbubbles className="text-[40px] text-tradeFadeWhite" />
       </button>
     </div>
   );
