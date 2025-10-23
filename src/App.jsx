@@ -45,7 +45,7 @@ import SensitiveRoute from "./utils/sensitiveRoutes";
 import PreTradeCheck from "./pages/offer/public/PreTradeCheck";
 import PublicProfile from "./pages/profile/PublicProfile";
 import UserProfile from "./pages/profile/UserProfile";
-import Accounts from "./pages/account/Accounts";
+import LinkedAccounts from "./pages/account/LinkedAccounts";
 import NewAccount from "./pages/account/NewAccount";
 import ConfirmAccount from "./pages/account/ConfirmAccount";
 import SuccessAccount from "./pages/account/SuccessAccount";
@@ -93,7 +93,7 @@ const App = () => {
           <Route path="/settings/username" element={<EditUsername />} />
           <Route path="/settings/email" element={<EditEmail />} />
           <Route path="/settings/mobile" element={<EditMobile />} />
-          <Route path="/settings/accounts" element={<Accounts />} />
+          <Route path="/settings/accounts" element={<LinkedAccounts />} />
           <Route path="/settings/accounts/new" element={<NewAccount />} />
         </Route>
 

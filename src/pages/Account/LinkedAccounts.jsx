@@ -15,7 +15,7 @@ import AccountMenu from "@/components/settings/SettingMenu";
 import NetworkError from "@/components/others/NetworkError";
 import { RiAddCircleFill } from "react-icons/ri";
 
-const Accounts = () => {
+const LinkedAccounts = () => {
   const { loading, refetchLinkedBanks } = useFetchLinkedBanks();
   const { linkedAccounts, manageAccount, setManageAccount } =
     useLinkedAccount();
@@ -408,4 +408,4 @@ const Accounts = () => {
   );
 };
 
-export default Accounts;
+export default LinkedAccounts;
