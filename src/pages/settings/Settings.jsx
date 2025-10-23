@@ -125,7 +125,7 @@ const Settings = () => {
                 >
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                    ABOUT US
+                    TERM OF USE
                   </p>
                 </div>
 

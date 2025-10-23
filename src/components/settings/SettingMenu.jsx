@@ -89,19 +89,19 @@ const SettingMenu = () => {
           <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              ABOUT US
+              TERM OF USE
             </p>
           </div>
 
-          <div className="flex lg:flex-row flex-col gap-[15px] mt-5">
-            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <FaXTwitter className="text-[16px]" />
+          <div className="flex lg:flex-row flex-col gap-2 mt-5">
+            <div className=" text-white text-base p-1 w-max h-max bg-transparent border border-tradeAshExtraLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaXTwitter />
             </div>
-            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <FaTelegramPlane className="text-[16px]" />
+            <div className=" text-white text-base p-1 w-max h-max bg-transparent border border-tradeAshExtraLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaTelegramPlane />
             </div>
-            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <FaInstagram className="text-[16px]" />
+            <div className=" text-white text-base p-1 w-max h-max bg-transparent border border-tradeAshExtraLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaInstagram />
             </div>
           </div>
         </div>

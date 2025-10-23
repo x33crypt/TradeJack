@@ -376,30 +376,21 @@ const Footer = ({ show }) => {
             </div>
           </div>
         </div> */}
-        {/* <div>
-          <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-            GoGetSwap operates as an independent exchange platform. We are
-            neither affiliated with nor endorsed by MoneyGram, Western Union,
-            Payoneer, PayPal, Amazon, Cash App, or any other financial or
-            payment provider referenced on our site. All company names, logos,
-            and trademarks are the property of their respective owners. ©{" "}
-            {currentYear} GoGetSwap, Inc. All rights reserved.
-          </p>
-        </div> */}
-        <div className="flex justify-between items-center w-full  pt-[15px] border-t border-tradeAshLight">
+     
+        <div className="flex justify-between items-center w-full  pt-[15px] border- border-tradeAshLight">
           <p className="text-tradeAshExtraLight text-xs font-semibold">
-            GoGetSwap Inc, @{currentYear}
+            GOGETSWAP INC, @{currentYear}
           </p>
 
           <div className="flex gap-2">
-            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <FaXTwitter className="text-[16px]" />
+            <div className=" text-white text-base p-1 w-max h-max bg-transparent border border-tradeAshExtraLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaXTwitter />
             </div>
-            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <FaTelegramPlane className="text-[16px]" />
+            <div className=" text-white text-base p-1 w-max h-max bg-transparent border border-tradeAshExtraLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaTelegramPlane />
             </div>
-            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-              <FaInstagram className="text-[16px]" />
+            <div className=" text-white text-base p-1 w-max h-max bg-transparent border border-tradeAshExtraLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaInstagram />
             </div>
           </div>
         </div>
