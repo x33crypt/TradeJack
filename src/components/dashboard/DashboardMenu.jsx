@@ -5,7 +5,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { IoCloseSharp } from "react-icons/io5";
 
-const DasHboardMenu = () => {
+const DashboardMenu = () => {
   const { dashboard } = useDashboard();
   const navigateTo = useNavigate();
   return (
@@ -73,4 +73,4 @@ const DasHboardMenu = () => {
   );
 };
 
-export default DasHboardMenu;
+export default DashboardMenu;

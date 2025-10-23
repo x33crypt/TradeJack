@@ -53,7 +53,7 @@ const SelectElement = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-50">
-            <div className="flex  w-[250px] h-max flex-col rounded-[15px] gap-[10px]">
+            <div className="flex w-[250px] h-max flex-col rounded-[15px] gap-[10px]">
               {/* FIRST Search — for string options */}
               <div
                 className={`${
@@ -63,7 +63,7 @@ const SelectElement = () => {
                 <div
                   className={`${
                     select?.options?.length > 5 ? "flex" : "flex"
-                  }  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[15px] cursor-pointer`}
+                  }  flex-1 bg-tradeAshLight relative border border-tradeAsh rounded-[15px] cursor-pointer`}
                 >
                   <input
                     className="bg-transparent flex-1 p-[15px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
@@ -84,7 +84,7 @@ const SelectElement = () => {
                 <div
                   className={`${
                     select?.options?.length > 5 ? "flex" : "flex"
-                  }  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[15px] cursor-pointer`}
+                  }  flex-1 bg-tradeAshLight relative border border-tradeAsh rounded-[15px] cursor-pointer`}
                 >
                   <input
                     className="bg-transparent flex-1 p-[15px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
@@ -126,8 +126,8 @@ const SelectElement = () => {
                               </SmallButton>
                             ))
                           ) : (
-                            <div className=" text-[13px] text-tradeFadeWhite">
-                              No matching results found
+                            <div className=" text-xs text-tradeFadeWhite">
+                              NO MATCHING RESULT FOUND
                             </div>
                           )}
                         </div>
@@ -157,7 +157,6 @@ const SelectElement = () => {
               </div>
 
               {/* SECOND DIV — for object options */}
-
               <div
                 className={` ${
                   select?.selectTwo ? "flex" : "hidden"
@@ -181,7 +180,7 @@ const SelectElement = () => {
                               <div
                                 key={code}
                                 onClick={() => handleUpdate({ code, name })}
-                                className="flex justify-between items-center w-full"
+                                className="flex flex-wrap items-center gap-[5px] w-full"
                               >
                                 <SmallButton variant="fadeoutPlus">
                                   {name}
@@ -193,8 +192,8 @@ const SelectElement = () => {
                               </div>
                             ))
                           ) : (
-                            <div className=" text-[13px] text-tradeFadeWhite ">
-                              No matching results found
+                            <div className=" text-xs text-tradeFadeWhite ">
+                              NO MATCHING RESULT FOUND
                             </div>
                           )}
                         </div>
@@ -210,7 +209,7 @@ const SelectElement = () => {
                               <div
                                 key={code}
                                 onClick={() => handleUpdate({ code, name })}
-                                className="flex flex-wrap items-center gap-[10px] w-full"
+                                className="flex flex-wrap items-center gap-[5px] w-full"
                               >
                                 <SmallButton variant="fadeoutPlus">
                                   {name}
@@ -225,7 +224,7 @@ const SelectElement = () => {
                       )}
                     </div>
                   ) : (
-                    <div className=" text-[13px] text-tradeFadeWhite">
+                    <div className=" text-xs text-tradeFadeWhite">
                       OPTIONS NOT FOUND
                     </div>
                   )}
@@ -236,12 +235,6 @@ const SelectElement = () => {
                 CLOSE
               </Button>
             </div>
-
-            {/* <div className="flex w-full justify-center">
-              <div className="w-max flex text-white hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                <IoClose className="text-[16px]" />
-              </div>
-            </div> */}
           </div>
         </div>
       )}

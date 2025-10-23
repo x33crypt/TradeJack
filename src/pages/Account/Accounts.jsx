@@ -1,15 +1,12 @@
 import Footer from "@/components/others/Footer";
 import InAppNav from "@/components/others/InAppNav";
-import SettingsNav from "@/components/settings/SettingsNav";
-import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import React, { useEffect } from "react";
 import Button from "@/components/buttons/Button";
 import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { useFetchLinkedBanks } from "@/hooks/userHooks/useFetchLinkedBanks";
-import AccountCard from "@/components/Account/AccountCard";
+import AccountCard from "@/components/account/AccountCard";
 import { useNavigate } from "react-router-dom";
 import Loading from "@/components/others/Loading";
-import { LuFileX2 } from "react-icons/lu";
 import LockByScroll from "@/components/others/LockByScroll";
 import { IoClose } from "react-icons/io5";
 import { useToast } from "@/context/otherContext/ToastContext";
@@ -17,7 +14,6 @@ import api from "@/utils/http/api";
 import AccountMenu from "@/components/settings/SettingMenu";
 import NetworkError from "@/components/others/NetworkError";
 import { RiAddCircleFill } from "react-icons/ri";
-import { BiSad } from "react-icons/bi";
 
 const MyAccounts = () => {
   const { loading, refetchLinkedBanks } = useFetchLinkedBanks();

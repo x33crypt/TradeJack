@@ -75,8 +75,8 @@ const Balance = () => {
           <Loading />
         ) : (
           <div className="flex flex-1">
-            {/* balance?.available_balance?.USD == null */}
-            {false ? (
+            {balance?.available_balance?.NGN == null &&
+            balance?.available_balance?.USD == null ? (
               <NetworkError />
             ) : (
               <div className="flex-1 flex flex-col justify-between gap-[25px] ">

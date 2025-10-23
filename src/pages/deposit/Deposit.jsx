@@ -13,7 +13,7 @@ import { toUSD } from "@/utils/toUSD";
 import { toNGN } from "@/utils/toNGN";
 import { useEffect } from "react";
 import { useTransaction } from "@/context/userContext/TransactionContext";
-import DasHboardMenu from "@/components/menuBars/DashboardMenu";
+import DasHboardMenu from "@/components/dashboard/DashboardMenu";
 import { IoCopy } from "react-icons/io5";
 import { IoWalletOutline } from "react-icons/io5";
 import { useBalance } from "@/context/userContext/BalanceContext";

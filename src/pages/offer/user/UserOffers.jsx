@@ -6,7 +6,7 @@ import { useFetchUserOffers } from "@/hooks/others/useFetchOffers";
 import { useUserOffer } from "@/context/userContext/OffersContext";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { useNavigate } from "react-router-dom";
-import DasHboardMenu from "@/components/menuBars/DashboardMenu";
+import DasHboardMenu from "@/components/dashboard/DashboardMenu";
 import Loading from "@/components/others/Loading";
 import SmallButton from "@/components/buttons/SmallButton";
 import { FaSort } from "react-icons/fa";

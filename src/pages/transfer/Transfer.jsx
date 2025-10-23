@@ -8,7 +8,7 @@ import { toDecimal } from "@/utils/toDecimal";
 import { useToast } from "@/context/otherContext/ToastContext";
 import { useTransferContext } from "@/context/userContext/TransferContext";
 import RecentTransfer from "@/components/wallet/RecentTransfer";
-import DasHboardMenu from "@/components/menuBars/DashboardMenu";
+import DasHboardMenu from "@/components/dashboard/DashboardMenu";
 import { useBalance } from "@/context/userContext/BalanceContext";
 import { useFetchBalance } from "@/hooks/userHooks/useFetchBalance";
 import { IoWalletOutline } from "react-icons/io5";

@@ -19,7 +19,7 @@ import { MdHourglassTop } from "react-icons/md";
 import { MdLeaderboard } from "react-icons/md";
 import { RiCopperCoinFill } from "react-icons/ri";
 
-const TodaysGoal = ({ loading, dashboard }) => {
+const Task = ({ loading, dashboard }) => {
   const [value, setValue] = useState(20);
 
   return (
@@ -85,4 +85,4 @@ const TodaysGoal = ({ loading, dashboard }) => {
   );
 };
 
-export default TodaysGoal;
+export default Task;

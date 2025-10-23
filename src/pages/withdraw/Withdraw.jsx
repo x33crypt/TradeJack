@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import InAppNav from "@/components/others/InAppNav";
 import Footer from "@/components/others/Footer";
-import DasHboardMenu from "@/components/menuBars/DashboardMenu";
+import DasHboardMenu from "@/components/dashboard/DashboardMenu";
 import RecentWithdraw from "@/components/wallet/RecentWithdraw";
 import Button from "@/components/buttons/Button";
 import { toUSD } from "@/utils/toUSD";

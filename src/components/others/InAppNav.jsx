@@ -44,6 +44,7 @@ const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
   const { show, setShow } = useProfileNav();
   const [animate, setAnimate] = useState(false);
+  const [animateSoon, setAnimateSoon] = useState(false);
   const [defaultCurrencies, setDefaultCurrencies] = useState([
     { code: "NGN", name: "Nigeria naira" },
     { code: "USD", name: "United States dollar " },
@@ -56,6 +57,15 @@ const InAppNav = () => {
       setAnimate(true);
       setTimeout(() => setAnimate(false), 600);
     }, 5000); // every 20s
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimateSoon(true);
+      setTimeout(() => setAnimateSoon(false), 600);
+    }, 8000); // every 20s
 
     return () => clearInterval(interval);
   }, []);
@@ -173,7 +183,11 @@ const InAppNav = () => {
               TOOLS BOX
             </p>
 
-            <div className="flex items-center gap-1 text-white p-0.5 bg-red-600 rounded-sm">
+            <div
+              className={` ${
+                animateSoon ? "animate-zoomShake" : ""
+              } flex items-center gap-1 text-white p-0.5 bg-red-600 rounded-sm`}
+            >
               <p className="text-[10px] font-bold">Soon</p>
               <FaRegSmileWink className="text-white text-sm" />
             </div>
@@ -340,8 +354,11 @@ const InAppNav = () => {
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       TOOLS BOX
                     </p>
-
-                    <div className="flex items-center gap-1 text-white p-0.5 bg-red-600 rounded-sm">
+                    <div
+                      className={` ${
+                        animateSoon ? "animate-zoomShake" : ""
+                      } flex items-center gap-1 text-white p-0.5 bg-red-600 rounded-sm`}
+                    >
                       <p className="text-[10px] font-bold">Soon</p>
                       <FaRegSmileWink className="text-white text-sm" />
                     </div>
