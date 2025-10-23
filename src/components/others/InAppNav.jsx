@@ -33,6 +33,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropright } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
+import { RiCopperCoinFill } from "react-icons/ri";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -213,25 +214,28 @@ const InAppNav = () => {
                     </div>
                   </div>
 
-                  <div className="flex  justify-between items-center">
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                       <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        My Limit : #{" "}
-                        <span className="text-white">1,000,000.00</span>
+                        Limit :
+                      </p>
+
+                      <p className="text-xs text-white font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        <span className="text-tradeFadeWhite">#</span>{" "}
+                        1,530,000.00
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                       <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        Increase Limit
+                        Points :
+                      </p>
+                      <RiCopperCoinFill className="text-tradeFadeWhite text-sm" />
+                      <p className="text-xs text-white font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        2,530
                       </p>
                     </div>
                   </div>
-
-                  {/* <p className="text-tradeFadeWhite font-semibold text-xs">
-                    Remaing Limits : #{" "}
-                    <span className="text-white">1,000,000.00</span>
-                  </p> */}
                 </div>
 
                 <div className="flex flex-col gap-[15px]">
