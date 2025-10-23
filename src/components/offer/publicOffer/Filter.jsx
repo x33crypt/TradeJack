@@ -314,7 +314,7 @@ const Filter = () => {
         </div>
 
         <div onClick={close} className="flex lg:hidden">
-          <Button>APPLY</Button>
+          <Button variant="secondary">APPLY</Button>
         </div>
       </div>
     </>

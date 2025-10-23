@@ -36,11 +36,20 @@ import { FaRegUser } from "react-icons/fa";
 import { RiCopperCoinFill } from "react-icons/ri";
 import { PiFlagCheckeredBold } from "react-icons/pi";
 import { TbArrowsSort } from "react-icons/tb";
+import { FaRegSmileWink } from "react-icons/fa";
+import { useSelectElement } from "@/context/otherContext/SelectElementContext";
+import { useBalance } from "@/context/userContext/BalanceContext";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
   const { show, setShow } = useProfileNav();
   const [animate, setAnimate] = useState(false);
+  const [currencies, setCurrencies] = useState([
+    { code: "NGN", name: "Nigeria naira" },
+    { code: "USD", name: "United States dollar " },
+  ]);
+  const { select, setSelect } = useSelectElement();
+  const { balance, setBalance } = useBalance();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -51,13 +60,35 @@ const InAppNav = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // handling currency changes if clicks more
+  useEffect(() => {
+    if (
+      select?.page === "InAppNav" &&
+      select?.element === "currency" &&
+      select?.pick
+    ) {
+      const selectedCurrency = select.pick; // ✅ correct scope
+
+      if (
+        typeof selectedCurrency === "object" &&
+        selectedCurrency.code &&
+        selectedCurrency.name
+      ) {
+        setBalance((prev) => ({
+          ...prev,
+          currency: selectedCurrency.code,
+        }));
+      }
+    }
+  }, [select]);
+
   const navigateTo = useNavigate();
 
   return (
     <>
       {/* Desktop Nav */}
       <div className="z-30 fixed right-0 left-0 bg-black  lg:p-[2%] md:p-[2.5%] px-[15px] h-[57px] md:h-[65px] flex justify-between items-center  border-neutral-800 ">
-        <div className="flex items-center lg:gap-[30px] gap-[10px]">
+        <div className="flex items-center lg:gap-[30px] gap-[10px] ">
           {isNavOption === false ? (
             <div
               onClick={() => setIsNavOption((prev) => !prev)}
@@ -86,7 +117,7 @@ const InAppNav = () => {
           </div>
         </div>
 
-        <div className=" lg:flex hidden  gap-8 items-end">
+        <div className=" lg:flex hidden items-center gap-8">
           <div
             onClick={() => navigateTo("/dashboard")}
             className="flex flex-col items-center gap-1 "
@@ -139,24 +170,43 @@ const InAppNav = () => {
 
           <div
             onClick={() => navigateTo("/partners")}
-            className="flex flex-col items-center gap-1"
+            className="flex  items-center gap-2"
           >
-            {/* <IoMdArrowDropdown className="text-lg text-tradeFadeWhite" /> */}
             <p className="text-xs font-bold text-tradeFadeWhite hover:text-white  leading-none cursor-pointer  transition-all duration-300">
               TOOLS BOX
             </p>
+
+            <div className="flex items-center gap-1 text-white p-0.5 bg-red-600 rounded-sm">
+              <p className="text-[10px] font-bold">Soon</p>
+              <FaRegSmileWink className="text-white text-sm" />
+            </div>
           </div>
         </div>
 
         <div className="flex items-center  gap-[10px]">
-          {/* <div className="lg:flex hidden w-full items-center bg-tradeAsh border border-tradeAshLight p-2  gap-[15px] rounded-[10px]">
-            <FiSearch className="text-tradeFadeWhite text-[20px]" />
-            <input
-              className=" bg-transparent outline-none h-max w-[220px]  placeholder:text-tradeFadeWhite text-[13px] font-medium text-white"
-              type="text"
-              placeholder="Search trader"
-            />
-          </div> */}
+          <div
+            onClick={() =>
+              setSelect({
+                state: true,
+                selectOne: false,
+                selectTwo: true,
+                page: "InAppNav",
+                element: "currency",
+                options: currencies,
+              })
+            }
+            className="w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+          >
+            <p className="text-xs text-white font-semibold">
+              {balance?.currency}
+            </p>
+            <TbArrowsSort className="text-[16px]" />
+          </div>
+
+          <div className="w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            <p className="text-xs text-white font-semibold">2,530</p>
+            <RiCopperCoinFill className="text-[16px]" />
+          </div>
           <div
             className={` ${
               animate ? "animate-zoomShake" : ""
@@ -186,25 +236,25 @@ const InAppNav = () => {
                 isNavOption ? "flex" : "hidden"
               }  z-50 fixed right-0 left-0 top-0 bottom-0  lg:hidden flex-col `}
             >
-              <div className="flex items-center bg-transparent h-[57px] p-[15px] ">
+              <div className="flex items-center bg-transparent h-[57px] lg:px-[2%] md:px-[20px] p-[15px] ">
                 {isNavOption === true ? (
                   <div
                     onClick={() => setIsNavOption((prev) => !prev)}
-                    className="w-max flex md:hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                    className="w-max flex  gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
                   >
                     <IoCloseSharp className="text-white text-[16px]" />
                   </div>
                 ) : (
                   <div
                     onClick={() => setIsNavOption((prev) => !prev)}
-                    className="w-max flex md:hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] opacity-0"
+                    className="w-max flex gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] opacity-0"
                   >
                     <IoCloseSharp className="text-white text-[16px]" />
                   </div>
                 )}
               </div>
 
-              <div className="flex-1 flex flex-col justify-between p-[15px] bg-black ">
+              <div className="flex-1 flex flex-col justify-between lg:px-[2%] md:px-[20px] p-[15px]  bg-black ">
                 <div className="flex flex-col p-[12px bg-tradeAshLigh gap-[20px] rounded-[15px] borde border-tradeAsh">
                   <div className="flex items-center justify-between">
                     <p className="text-lg font-semibold text-white flex items-center gap-1">
@@ -218,10 +268,23 @@ const InAppNav = () => {
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <div
+                        onClick={() => {
+                          setSelect({
+                            state: true,
+                            selectOne: false,
+                            selectTwo: true,
+                            page: "InAppNav",
+                            element: "currency",
+                            options: currencies,
+                          });
+                          setIsNavOption(false);
+                        }}
+                        className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                      >
                         <TbArrowsSort className="text-tradeFadeWhite text-sm" />
                         <p className="text-xs text-white font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                          NGN
+                          {balance?.currency}
                         </p>
                       </div>
                       <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
@@ -286,6 +349,11 @@ const InAppNav = () => {
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       TOOLS BOX
                     </p>
+
+                    <div className="flex items-center gap-1 text-white p-0.5 bg-red-600 rounded-sm">
+                      <p className="text-[10px] font-bold">Soon</p>
+                      <FaRegSmileWink className="text-white text-sm" />
+                    </div>
                   </div>
 
                   <div

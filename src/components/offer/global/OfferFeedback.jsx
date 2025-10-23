@@ -1,10 +1,9 @@
 import React from "react";
 import FeedbackCard from "../../cards/Both/FeedbackCard";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import SmallButton from "@/components/buttons/SmallButton";
-import { FaSort } from "react-icons/fa";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
+import { TbArrowsSort } from "react-icons/tb";
 
 const OfferFeedback = () => {
   return (
@@ -17,13 +16,10 @@ const OfferFeedback = () => {
 
       <div className="flex flex-col flex-1 ">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+          <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+            <TbArrowsSort />
+            <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
               RECENT
-            </p>
-
-            <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-              OLDER
             </p>
           </div>
 

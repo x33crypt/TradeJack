@@ -6,6 +6,7 @@ import Button from "../buttons/Button";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import { IoClose } from "react-icons/io5";
 import SmallButton from "../buttons/SmallButton";
+import { IoMdArrowDropright } from "react-icons/io";
 
 const SelectElement = () => {
   const { select, setSelect } = useSelectElement();
@@ -52,7 +53,7 @@ const SelectElement = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-50">
-            <div className="flex md:w-[320px] w-full h-max flex-col rounded-[15px] p-[15px] gap-[15px] bg-tradeAsh">
+            <div className="flex  w-[250px] h-max flex-col rounded-[15px] gap-[10px]">
               {/* FIRST Search — for string options */}
               <div
                 className={`${
@@ -62,12 +63,12 @@ const SelectElement = () => {
                 <div
                   className={`${
                     select?.options?.length > 5 ? "flex" : "flex"
-                  }  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer`}
+                  }  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[15px] cursor-pointer`}
                 >
                   <input
-                    className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
+                    className="bg-transparent flex-1 p-[15px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
                     type="text"
-                    placeholder={`Search ${select?.element}`}
+                    placeholder="Search"
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                   />
@@ -83,12 +84,12 @@ const SelectElement = () => {
                 <div
                   className={`${
                     select?.options?.length > 5 ? "flex" : "flex"
-                  }  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer`}
+                  }  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[15px] cursor-pointer`}
                 >
                   <input
-                    className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
+                    className="bg-transparent flex-1 p-[15px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
                     type="text"
-                    placeholder={`Search ${select?.element}`}
+                    placeholder="Search"
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                   />
@@ -97,128 +98,150 @@ const SelectElement = () => {
 
               {/* FIRST DIV — for string options */}
               <div
-                className={`${
+                className={` ${
                   select?.selectOne ? "flex" : "hidden"
-                } w-full flex-col gap-[15px] rounded-[15px] md:max-h-[245px] max-h-[300px]`}
+                }  flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh`}
               >
-                {Array.isArray(options) && options.length > 0 ? (
-                  <div className="overflow-y-auto  custom-scrollbar w-full">
-                    {searchInput ? (
-                      <div className="flex flex-col gap-[5px] w-full">
-                        {filterStringOption.length ? (
-                          filterStringOption.map((option, index) => (
-                            <SmallButton
-                              key={index}
-                              variant="fadeoutPlus"
-                              onClick={() => handleUpdate(option)}
-                            >
-                              {option}
-                            </SmallButton>
-                          ))
-                        ) : (
-                          <div className=" text-[13px] text-tradeFadeWhite">
-                            No matching results found
-                          </div>
-                        )}
-                      </div>
-                    ) : (
-                      <div className=" flex flex-wrap gap-[10px] w-full">
-                        {(select?.options || [])
-                          .filter((option) => typeof option === "string")
-                          // .sort((a, b) => a.localeCompare(b))
-                          .map((option, index) => (
-                            <SmallButton
-                              key={index}
-                              variant="fadeoutPlus"
-                              onClick={() => handleUpdate(option)}
-                            >
-                              {option}
-                            </SmallButton>
-                          ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="text-[13px] text-tradeFadeWhite">
-                    Options not available, please try again.
-                  </div>
-                )}
+                <div className="flex items-center gap-2">
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+                    {select?.element.toUpperCase()}
+                  </p>
+                </div>
+                <div
+                  className={`flex w-full flex-col gap-[15px] rounded-[15px] md:max-h-[245px] max-h-[300px]`}
+                >
+                  {Array.isArray(options) && options.length > 0 ? (
+                    <div className="overflow-y-auto custom-scrollbar w-full">
+                      {searchInput ? (
+                        <div className="flex flex-wrap gap-[10px] p-1 w-full">
+                          {filterStringOption.length ? (
+                            filterStringOption.map((option, index) => (
+                              <SmallButton
+                                key={index}
+                                variant="fadeoutPlus"
+                                onClick={() => handleUpdate(option)}
+                              >
+                                {option}
+                              </SmallButton>
+                            ))
+                          ) : (
+                            <div className=" text-[13px] text-tradeFadeWhite">
+                              No matching results found
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <div className=" flex flex-wrap gap-[10px] p-1 w-full">
+                          {(select?.options || [])
+                            .filter((option) => typeof option === "string")
+                            // .sort((a, b) => a.localeCompare(b))
+                            .map((option, index) => (
+                              <SmallButton
+                                key={index}
+                                variant="fadeoutPlus"
+                                onClick={() => handleUpdate(option)}
+                              >
+                                {option}
+                              </SmallButton>
+                            ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="text-xs font-medium text-tradeFadeWhite">
+                      OPTIONS NOT FOUND
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* SECOND DIV — for object options */}
+
               <div
-                className={`${
+                className={` ${
                   select?.selectTwo ? "flex" : "hidden"
-                }  flex-col gap-[15px] rounded-[15px] w-full md:max-h-[245px] max-h-[300px]`}
+                }  flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh`}
               >
-                {Array.isArray(options) && options.length > 0 ? (
-                  <div className="overflow-y-auto custom-scrollbar  ">
-                    {searchInput ? (
-                      <div className="flex flex-col gap-[10px] ">
-                        {filterObjectOption.length ? (
-                          filterObjectOption.map(({ code, name }) => (
-                            <div
-                              key={code}
-                              onClick={() => handleUpdate({ code, name })}
-                              className="flex justify-between items-center w-full"
-                            >
-                              <SmallButton variant="fadeoutPlus">
-                                {name}
-                              </SmallButton>
+                <div className="flex items-center gap-2">
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+                    {select?.element.toUpperCase()}
+                  </p>
+                </div>
+                <div
+                  className={`flex flex-col gap-[15px] rounded-[15px] w-full md:max-h-[245px] max-h-[300px]`}
+                >
+                  {Array.isArray(options) && options.length > 0 ? (
+                    <div className="overflow-y-auto custom-scrollbar  ">
+                      {searchInput ? (
+                        <div className="flex flex-col gap-[10px] p-1  ">
+                          {filterObjectOption.length ? (
+                            filterObjectOption.map(({ code, name }) => (
+                              <div
+                                key={code}
+                                onClick={() => handleUpdate({ code, name })}
+                                className="flex justify-between items-center w-full"
+                              >
+                                <SmallButton variant="fadeoutPlus">
+                                  {name}
+                                </SmallButton>
 
-                              <SmallButton variant="fadeoutPlus">
-                                {code}
-                              </SmallButton>
+                                <SmallButton variant="fadeoutPlus">
+                                  {code}
+                                </SmallButton>
+                              </div>
+                            ))
+                          ) : (
+                            <div className=" text-[13px] text-tradeFadeWhite ">
+                              No matching results found
                             </div>
-                          ))
-                        ) : (
-                          <div className=" text-[13px] text-tradeFadeWhite ">
-                            No matching results found
-                          </div>
-                        )}
-                      </div>
-                    ) : (
-                      <div className="flex flex-col gap-[10px] ">
-                        {select?.options
-                          ?.filter(
-                            (option) =>
-                              typeof option === "object" && option !== null
-                          )
-                          .sort((a, b) => a.name.localeCompare(b.name))
-                          .map(({ code, name }) => (
-                            <div
-                              key={code}
-                              onClick={() => handleUpdate({ code, name })}
-                              className="flex flex-wrap items-center gap-[10px] w-full"
-                            >
-                              <SmallButton variant="fadeoutPlus">
-                                {name}
-                              </SmallButton>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="flex flex-col gap-[10px] p-1 ">
+                          {select?.options
+                            ?.filter(
+                              (option) =>
+                                typeof option === "object" && option !== null
+                            )
+                            .sort((a, b) => a.name.localeCompare(b.name))
+                            .map(({ code, name }) => (
+                              <div
+                                key={code}
+                                onClick={() => handleUpdate({ code, name })}
+                                className="flex flex-wrap items-center gap-[10px] w-full"
+                              >
+                                <SmallButton variant="fadeoutPlus">
+                                  {name}
+                                </SmallButton>
 
-                              <SmallButton variant="fadeoutPlus">
-                                {code}
-                              </SmallButton>
-                            </div>
-                          ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className=" text-[13px] text-tradeFadeWhite">
-                    Options not available, please try again.
-                  </div>
-                )}
+                                <SmallButton variant="fadeoutPlus">
+                                  {code}
+                                </SmallButton>
+                              </div>
+                            ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className=" text-[13px] text-tradeFadeWhite">
+                      OPTIONS NOT FOUND
+                    </div>
+                  )}
+                </div>
               </div>
+
+              <Button variant="secondary" onClick={close}>
+                CLOSE
+              </Button>
             </div>
 
-            <div className="flex w-full justify-center">
-              <div
-                onClick={close}
-                className="w-max flex text-white hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-              >
+            {/* <div className="flex w-full justify-center">
+              <div className="w-max flex text-white hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                 <IoClose className="text-[16px]" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
