@@ -8,7 +8,7 @@ import Overview from "@/components/wallet/Overview";
 import RecentTransaction from "@/components/wallet/RecentTransaction";
 import React, { useEffect, useState, useRef } from "react";
 import TopPicks from "@/components/dashboard/TopPicks";
-import WalletMenu from "./WalletMenu";
+import WalletMenu from "../../components/wallet/WalletMenu";
 import Balance from "@/components/wallet/Balance";
 import EscrowActivity from "./EscrowActivity";
 

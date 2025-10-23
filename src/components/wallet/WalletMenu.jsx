@@ -26,26 +26,35 @@ const WalletMenu = () => {
           </div>
         </div> */}
         <div className="flex flex-col gap-[15px]">
-          <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              TRANSFER
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
+          <div
+            onClick={() => navigateTo("/wallet/deposit")}
+            className="flex items-center gap-2"
+          >
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               DEPOSIT
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div
+            onClick={() => navigateTo("/wallet/transfer")}
+            className="flex items-center gap-2"
+          >
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              TRANSFER
+            </p>
+          </div>
+          <div
+            onClick={() => navigateTo("/wallet/withdraw")}
+            className="flex items-center gap-2"
+          >
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               WITHDRAWAL
             </p>
           </div>
           <div
-            onClick={() => navigateTo("/wallet/accounts")}
+            onClick={() => navigateTo("/settings/accounts")}
             className="flex items-center gap-2"
           >
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
@@ -53,10 +62,17 @@ const WalletMenu = () => {
               ACCOUNTS
             </p>
           </div>
+          <div
+            onClick={() => navigateTo("/wallet/transactions")}
+            className="flex items-center gap-2"
+          >
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              TRANSACTION HISTORY
+            </p>
+          </div>
         </div>
       </div>
-
-      <div></div>
     </div>
   );
 };

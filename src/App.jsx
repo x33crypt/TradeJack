@@ -88,10 +88,11 @@ const App = () => {
         {/* Account Settings */}
         <Route path="/settings" element={<Settings />} />
         <Route element={<SensitiveRoute />}>
-          <Route path="/settings/account/name" element={<EditFullname />} />
-          <Route path="/settings/account/username" element={<EditUsername />} />
-          <Route path="/settings/account/email" element={<EditEmail />} />
-          <Route path="/settings/account/mobile" element={<EditMobile />} />
+          <Route path="/settings/name" element={<EditFullname />} />
+          <Route path="/settings/username" element={<EditUsername />} />
+          <Route path="/settings/email" element={<EditEmail />} />
+          <Route path="/settings/mobile" element={<EditMobile />} />
+          <Route path="/settings/accounts" element={<MyAccounts />} />
         </Route>
 
         {/* Wallet */}
@@ -100,7 +101,6 @@ const App = () => {
         <Route path="/wallet/deposit" element={<Deposit />} />
         <Route path="/wallet/withdraw" element={<Withdraw />} />
         <Route path="/wallet/transactions" element={<TransactionHistory />} />
-        <Route path="/wallet/accounts" element={<MyAccounts />} />
         <Route path="/wallet/accounts/new" element={<AddNewAccount />} />
 
         {/* Marketplace & Offers */}

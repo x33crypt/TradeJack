@@ -44,7 +44,7 @@ const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
   const { show, setShow } = useProfileNav();
   const [animate, setAnimate] = useState(false);
-  const [currencies, setCurrencies] = useState([
+  const [defaultCurrencies, setDefaultCurrencies] = useState([
     { code: "NGN", name: "Nigeria naira" },
     { code: "USD", name: "United States dollar " },
   ]);
@@ -64,7 +64,7 @@ const InAppNav = () => {
   useEffect(() => {
     if (
       select?.page === "InAppNav" &&
-      select?.element === "currency" &&
+      select?.element === "default currency" &&
       select?.pick
     ) {
       const selectedCurrency = select.pick; // ✅ correct scope
@@ -168,10 +168,7 @@ const InAppNav = () => {
             </p>
           </div>
 
-          <div
-            onClick={() => navigateTo("/partners")}
-            className="flex  items-center gap-2"
-          >
+          <div className="flex  items-center gap-2">
             <p className="text-xs font-bold text-tradeFadeWhite hover:text-white  leading-none cursor-pointer  transition-all duration-300">
               TOOLS BOX
             </p>
@@ -191,8 +188,8 @@ const InAppNav = () => {
                 selectOne: false,
                 selectTwo: true,
                 page: "InAppNav",
-                element: "currency",
-                options: currencies,
+                element: "default currency",
+                options: defaultCurrencies,
               })
             }
             className="w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
@@ -258,7 +255,7 @@ const InAppNav = () => {
                 <div className="flex flex-col p-[12px bg-tradeAshLigh gap-[20px] rounded-[15px] borde border-tradeAsh">
                   <div className="flex items-center justify-between">
                     <p className="text-lg font-semibold text-white flex items-center gap-1">
-                      PREMIUM ACCOUNT
+                      MENU
                     </p>
 
                     <div className="text-tradeFadeWhite text-3xl fade-pulse cursor-pointer">
@@ -275,8 +272,8 @@ const InAppNav = () => {
                             selectOne: false,
                             selectTwo: true,
                             page: "InAppNav",
-                            element: "currency",
-                            options: currencies,
+                            element: "default currency",
+                            options: defaultCurrencies,
                           });
                           setIsNavOption(false);
                         }}
@@ -338,13 +335,7 @@ const InAppNav = () => {
                     </p>
                   </div>
 
-                  <div
-                    onClick={() => {
-                      // navigateTo("/wallet");
-                      setIsNavOption(false);
-                    }}
-                    className="flex items-center gap-2"
-                  >
+                  <div className="flex items-center gap-2">
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       TOOLS BOX
@@ -369,39 +360,21 @@ const InAppNav = () => {
                     </p>
                   </div>
 
-                  <div
-                    onClick={() => {
-                      // navigateTo("/wallet");
-                      setIsNavOption(false);
-                    }}
-                    className="flex items-center gap-2"
-                  >
+                  <div className="flex items-center gap-2">
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       ADS
                     </p>
                   </div>
 
-                  <div
-                    onClick={() => {
-                      // navigateTo("/wallet");
-                      setIsNavOption(false);
-                    }}
-                    className="flex items-center gap-2"
-                  >
+                  <div className="flex items-center gap-2">
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       BOOKMARKS
                     </p>
                   </div>
 
-                  <div
-                    onClick={() => {
-                      navigateTo("/dashboard");
-                      setIsNavOption(false);
-                    }}
-                    className="flex items-center gap-2"
-                  >
+                  <div className="flex items-center gap-2">
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       CHATS
@@ -421,13 +394,7 @@ const InAppNav = () => {
                     </p>
                   </div>
 
-                  <div
-                    onClick={() => {
-                      navigateTo("/partners");
-                      setIsNavOption(false);
-                    }}
-                    className="flex items-center gap-2"
-                  >
+                  <div className="flex items-center gap-2">
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       TRADE HISTORY
@@ -447,13 +414,7 @@ const InAppNav = () => {
                     </p>
                   </div>
 
-                  <div
-                    onClick={() => {
-                      navigateTo("/wallet/transactions");
-                      setIsNavOption(false);
-                    }}
-                    className="flex items-center gap-2"
-                  >
+                  <div className="flex items-center gap-2">
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       REFERRALS

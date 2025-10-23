@@ -1,24 +1,19 @@
 import Footer from "@/components/others/Footer";
 import InAppNav from "@/components/others/InAppNav";
-import DasHboardMenu from "@/components/menuBars/DashboardMenu";
 import React, { useRef, useEffect, useState } from "react";
 import TransactionCard from "@/components/cards/Both/TransactionCard";
 import { useTransaction } from "@/context/userContext/TransactionContext";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { HiMiniCalendarDateRange } from "react-icons/hi2";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { date } from "@/utils/date";
 import Loading from "@/components/others/Loading";
-import Info from "@/components/alerts/Info";
-import { LuFileX2 } from "react-icons/lu";
 import { useFetchAllTransactions } from "@/hooks/userHooks/useFetchAllTransactions";
 import SmallButton from "@/components/buttons/SmallButton";
-import { FaSort } from "react-icons/fa";
-import { FaMagnifyingGlass } from "react-icons/fa6";
-import { FaRegCalendarAlt } from "react-icons/fa";
 import { RiLoader4Fill } from "react-icons/ri";
 import NetworkError from "@/components/others/NetworkError";
 import { BiFileBlank } from "react-icons/bi";
+import TransactionMenu from "@/components/wallet/TransactionMenu";
+import { TbArrowsSort } from "react-icons/tb";
+import { LuCalendarClock } from "react-icons/lu";
 
 const TransactionHistory = () => {
   const topRef = useRef(null);
@@ -123,7 +118,7 @@ const TransactionHistory = () => {
   useEffect(() => {
     if (select?.page !== "transaction history" || !select?.pick) return;
 
-    if (select.element === "transaction type") {
+    if (select.element === "type") {
       console.log("Transaction type selected:", select.pick);
       const selectedType = select.pick === "All types" ? null : select.pick;
 
@@ -138,7 +133,7 @@ const TransactionHistory = () => {
   useEffect(() => {
     if (select?.page !== "transaction history" || !select?.pick) return;
 
-    if (select.element === "transaction status") {
+    if (select.element === " status") {
       const selectedStatus = select.pick === "All status" ? null : select.pick;
 
       setFilter((prev) => ({
@@ -178,190 +173,179 @@ const TransactionHistory = () => {
   return (
     <>
       <InAppNav />
+
       <div
         ref={topRef}
-        className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%]  min-h-svh flex gap-[5px] bg-black "
+        className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black"
       >
-        <DasHboardMenu />
-        <div className="flex-1 flex flex-col md:border border-neutral-800">
-          <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-            <p className="text-lg font-[700] text-white ">
-              Transaction History
-            </p>
-          </div>
-          {/* <div className="px-[15px] py-[12px] border-b border-dashed border-tradeAshLight">
-            <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-              Review and track all your transactions in detail, with real-time
-              status updates and clear records to help you stay informed and in
-              control of your activity.
-            </p>
-          </div> */}
-          <div className="flex flex-col flex-1 ">
-            <div className="sticky h-[55px] flex items-center w-full md:top-[62px] top-[56px] bg-black py-[12px] px-[15px] border-b border-dashed border-tradeAshLight">
-              <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-hidden p-[2px]">
-                <div className="flex gap-[5px]">
-                  <SmallButton
-                    variant="fadeout"
-                    disabled={filter?.status !== null}
-                    onClick={() =>
-                      setSelect({
-                        ...select,
-                        state: true,
-                        selectOne: true,
-                        selectTwo: false,
-                        element: "transaction status",
-                        options: transactionStatus,
-                        pick: "",
-                        page: "transaction history",
-                      })
-                    }
-                  >
-                    <FaSort />
-                    <p>{filter?.status ? filter?.status : "All Status"}</p>
-                  </SmallButton>
-                  <SmallButton
-                    variant="fadeout"
-                    disabled={filter?.type !== null}
-                    onClick={() =>
-                      setSelect({
-                        ...select,
-                        state: true,
-                        selectOne: true,
-                        selectTwo: false,
-                        element: "transaction type",
-                        options: transactionTypes,
-                        pick: "",
-                        page: "transaction history",
-                      })
-                    }
-                  >
-                    <FaSort />
-                    <p>{filter?.type ? filter?.type : "All Types"}</p>
-                  </SmallButton>
+        <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
+          <TransactionMenu />
+          <div className="flex flex-1 flex-col gap-[20px] lg:mr-[12%] p-[15px]">
+            <div className="flex items-center justify-between ">
+              <p className="text-lg font-semibold text-white flex items-center gap-1">
+                TRANSACTION HISTORY
+              </p>
+            </div>
+
+            <div className="flex lg:hidden items-center gap-2 justify-between">
+              <div className="flex items-center gap-2">
+                <div
+                  onClick={() =>
+                    setSelect({
+                      ...select,
+                      state: true,
+                      selectOne: true,
+                      selectTwo: false,
+                      element: "type",
+                      options: transactionTypes,
+                      pick: "",
+                      page: "transaction history",
+                    })
+                  }
+                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                >
+                  <TbArrowsSort />
+                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    <p>{filter?.type ? filter?.type : "TYPE"}</p>
+                  </p>
+                </div>
+                <div
+                  onClick={() =>
+                    setSelect({
+                      ...select,
+                      state: true,
+                      selectOne: true,
+                      selectTwo: false,
+                      element: "status",
+                      options: transactionStatus,
+                      pick: "",
+                      page: "transaction history",
+                    })
+                  }
+                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                >
+                  <TbArrowsSort />
+                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    <p>{filter?.status ? filter?.status : " STATUS"}</p>
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative flex items-center gap-2">
+                <div
+                  onClick={handleDateClick}
+                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                >
+                  <LuCalendarClock />
+                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    {filter.date?.monthName ? filter.date?.monthName : "MONTH"},{" "}
+                    {filter.date?.year ? filter.date?.year : "YEAR"}
+                  </p>
                 </div>
 
-                <div className="flex gap-[5px]">
-               
-                  <SmallButton
-                    variant="fadeout"
-                    disabled={filter.date?.monthName || filter.date?.year}
-                    onClick={handleDateClick}
-                  >
-                    <FaRegCalendarAlt />
-                    <p>
-                      {filter.date?.monthName
-                        ? filter.date?.monthName
-                        : "Month"}
-                      , {filter.date?.year ? filter.date?.year : "Year"}
-                    </p>
-                  </SmallButton>
-                  <div>
-                    <input
-                      type="month"
-                      min={min}
-                      max={max}
-                      onChange={handleDateChange}
-                      ref={inputRef}
-                      className="absolute opacity-0 w-0 h-0 pointer-events-none"
-                    />
-                  </div>
-                </div>
+                <input
+                  type="month"
+                  min={min}
+                  max={max}
+                  onChange={handleDateChange}
+                  ref={inputRef}
+                  className="absolute opacity-0 w-0 h-0 pointer-events-none"
+                />
+
+                {/* <div
+                  onClick={handleClearFilter}
+                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                >
+                  <IoNuclearSharp />
+                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    RESET
+                  </p>
+                </div> */}
               </div>
             </div>
 
-            <div className="flex flex-1 p-[15px] ">
-              {loading ? (
-                <Loading />
-              ) : (
-                <div className="flex flex-1">
-                  {transactions === null ? (
-                    <NetworkError />
-                  ) : (
-                    <div className="flex flex-1">
-                      {Array.isArray(transactions?.data) ? (
-                        <div className="flex flex-1">
-                          {transactions?.data.length > 0 ? (
-                            <div className="flex flex-col gap-[10px] w-full">
-                              {transactions?.data?.map((transaction, index) => (
-                                <div key={transaction.id || index}>
-                                  <TransactionCard transaction={transaction} />
-                                </div>
-                              ))}
-                            </div>
-                          ) : (
-                            <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
-                              <p className="text-[13px] font-semibold text-white leading-none">
-                                No transaction found.
-                              </p>
-                              <p className="text-xs font-medium text-tradeFadeWhite text-center">
-                                {filter?.type ||
-                                filter?.status ||
-                                filter?.date?.monthName ||
-                                (filter?.search && filter.search.trim() !== "")
-                                  ? "Try adjusting your filter or search terms."
-                                  : "You haven’t made any transactions yet."}
-                              </p>
+            <div className="flex flex-col flex-1 justify-between gap-[20px]">
+              <div className="flex-1 flex flex-col gap-[15px]">
+                {loading ? (
+                  <Loading />
+                ) : (
+                  <div className="flex flex-1">
+                    {transactions === null ? (
+                      <NetworkError />
+                    ) : (
+                      <div className="flex flex-1">
+                        {Array.isArray(transactions?.data) &&
+                        transactions?.data?.length > 0 ? (
+                          <div className="flex flex-col gap-[5px] w-full h-max">
+                            {transactions?.data?.map((transaction, index) => (
+                              <div key={index}>
+                                <TransactionCard transaction={transaction} />
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
+                            <p className="text-[13px] font-semibold text-white leading-none">
+                              NO TRANSACTION FOUND
+                            </p>
+                            <p className="text-xs font-medium text-tradeFadeWhite text-center">
+                              {filter?.type ||
+                              filter?.status ||
+                              filter?.date?.monthName ||
+                              (filter?.search && filter.search.trim() !== "")
+                                ? "NO TRANSACTION MATCH THE GIVEN CRITERIA"
+                                : "NO TRANSACTION FOUND"}
+                            </p>
 
-                              <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
-                            </div>
+                            <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              <div className=" w-full flex items-center pt-[10px]">
+                <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
+                  <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
+                    <SmallButton variant="outline">
+                      <p>{displayedCount}</p>
+                    </SmallButton>
+                    <SmallButton variant="outline">
+                      <p>of</p>
+                    </SmallButton>
+                    <SmallButton variant="outline">
+                      <p>
+                        {pagination?.totalItems ? pagination?.totalItems : "0"}
+                      </p>
+                    </SmallButton>
+                  </div>
+
+                  <div className="flex gap-[5px] py-[1px]">
+                    <SmallButton variant="outline">
+                      {pagination?.hasNextPage ? (
+                        <div onClick={handleNext}>
+                          {loadingNext ? (
+                            <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
+                          ) : (
+                            <p>Load more</p>
                           )}
                         </div>
                       ) : (
-                        <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
-                          <p className="text-[13px] font-semibold text-white leading-none">
-                            No transaction found.
-                          </p>
-                          <p className="text-xs font-medium text-tradeFadeWhite text-center">
-                            You haven’t made any transactions yet.
-                          </p>
-                          <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
-                        </div>
+                        <div>{(isEmpty || isEnd) && <p>{message}</p>}</div>
                       )}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
+                    </SmallButton>
 
-            <div className=" h-[55px] w-full flex items-center bg-black py-[12px] px-[15px] border-t border-dashed border-tradeAshLight">
-              <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
-                <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
-                  <SmallButton variant="outline">
-                    <p>{displayedCount}</p>
-                  </SmallButton>
-                  <SmallButton variant="outline">
-                    <p>of</p>
-                  </SmallButton>
-                  <SmallButton variant="outline">
-                    <p>
-                      {pagination?.totalItems ? pagination?.totalItems : "0"}
-                    </p>
-                  </SmallButton>
-                </div>
-
-                <div className="flex gap-[5px] py-[1px]">
-                  <SmallButton variant="outline">
-                    {pagination?.hasNextPage ? (
-                      <div onClick={handleNext}>
-                        {loadingNext ? (
-                          <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
-                        ) : (
-                          <p>Load more</p>
-                        )}
-                      </div>
-                    ) : (
-                      <div>{(isEmpty || isEnd) && <p>{message}</p>}</div>
-                    )}
-                  </SmallButton>
-
-                  <SmallButton
-                    variant="outline"
-                    onClick={() =>
-                      window.scrollTo({ top: 0, behavior: "smooth" })
-                    }
-                  >
-                    <p>Scroll to Top</p>
-                  </SmallButton>
+                    <SmallButton
+                      variant="outline"
+                      onClick={() =>
+                        window.scrollTo({ top: 0, behavior: "smooth" })
+                      }
+                    >
+                      <p>Scroll to Top</p>
+                    </SmallButton>
+                  </div>
                 </div>
               </div>
             </div>
