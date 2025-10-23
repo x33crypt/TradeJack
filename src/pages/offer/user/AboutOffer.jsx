@@ -12,13 +12,14 @@ import Button from "@/components/buttons/Button";
 import { useParams } from "react-router-dom";
 import { useFetchAboutOffers } from "@/hooks/userHooks/useFetchAboutOffer";
 import { useUserOffer } from "@/context/userContext/OffersContext";
-import StateHandler from "@/components/stateHandler/StateHandler";
 import { useNavigate } from "react-router-dom";
+import Loading from "@/components/others/Loading";
+import NetworkError from "@/components/others/NetworkError";
+import AboutMenu from "@/components/offer/userOffer/AboutMenu";
 
-const AboutUserOffer = () => {
+const AboutOffer = () => {
   const { id } = useParams();
   const { loading, error } = useFetchAboutOffers(id);
-
   const { aboutOffer } = useUserOffer();
 
   const navigateTo = useNavigate();
@@ -33,31 +34,25 @@ const AboutUserOffer = () => {
 
     navigateTo(`/offers/myoffers/${id}/edit`);
   };
+
   console.log(aboutOffer);
+
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[64px] pt-[60px] lg:px-[2%] md:px-[2.5%]  min-h-svh flex flex-col gap-[10px] bg-black ">
-        <div className="flex lg:flex-row flex-col gap-[10px] ">
-          <OfferDetails aboutOffer={aboutOffer} />
-          <LimitMargin aboutOffer={aboutOffer} />
-        </div>
-
-        <div className="flex-1 flex lg:flex-row flex-col gap-[10px]">
-          <OfferTag aboutOffer={aboutOffer} />
-          <OfferInstruction />
-          <OfferStats />
-        </div>
-
-        <div className="px-[15px] md:p-[15px] lg:px-0 ">
-          <Button onClick={handleEdit} variant="primary">
-            Edit Offer
-          </Button>
-        </div>
-
-        <div className="flex lg:flex-row flex-col gap-[10px] ">
-          <OfferPerformance />
-          <OfferFeedback />
+      <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[10px] min-h-svh flex bg-black">
+        <div className="flex flex-1">
+          {aboutOffer === null ? (
+            <NetworkError />
+          ) : (
+            <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
+              <AboutMenu />
+              <div className="flex flex-1 flex-col gap-[40px] lg:mr-[12%] p-[15px]">
+                <OfferDetails aboutOffer={aboutOffer} />
+                <OfferFeedback />
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <Footer />
@@ -65,4 +60,4 @@ const AboutUserOffer = () => {
   );
 };
 
-export default AboutUserOffer;
+export default AboutOffer;

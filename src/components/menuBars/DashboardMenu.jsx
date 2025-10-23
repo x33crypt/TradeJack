@@ -69,8 +69,6 @@ const DasHboardMenu = () => {
           </div>
         </div>
       </div>
-
-      <div></div>
     </div>
   );
 };

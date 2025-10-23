@@ -35,6 +35,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { RiCopperCoinFill } from "react-icons/ri";
 import { PiFlagCheckeredBold } from "react-icons/pi";
+import { TbArrowsSort } from "react-icons/tb";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -216,14 +217,23 @@ const InAppNav = () => {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        AVAILABLE LIMIT :
-                      </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        <TbArrowsSort className="text-tradeFadeWhite text-sm" />
+                        <p className="text-xs text-white font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                          NGN
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                          LIMIT :
+                        </p>
 
-                      <p className="text-xs text-white font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        <span className="text-tradeFadeWhite">#</span> 2,530,000
-                      </p>
+                        <p className="text-xs text-white font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                          <span className="text-tradeFadeWhite">#</span>{" "}
+                          2,530,000
+                        </p>
+                      </div>
                     </div>
 
                     <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">

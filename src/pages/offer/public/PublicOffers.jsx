@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import InAppNav from "@/components/others/InAppNav";
 import Footer from "@/components/others/Footer";
 import Filter from "@/components/offer/publicOffer/Filter";
-import OfferCard from "@/components/cards/Both/OfferCard";
+import OfferCard from "@/components/offer/publicOffer/OfferCard";
 import LockByScroll from "@/components/others/LockByScroll";
 import { useFetchPublicOffers } from "@/hooks/publicHooks/useFetchPublicOffers";
 import Loading from "@/components/others/Loading";

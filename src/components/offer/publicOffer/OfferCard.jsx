@@ -11,7 +11,7 @@ import { windowFormatHour } from "@/utils/windowFormatHour";
 import { BsStars } from "react-icons/bs";
 import { WiStars } from "react-icons/wi";
 
-const MarketCard = ({ offer }) => {
+const OfferCard = ({ offer }) => {
   const { setAboutOffer } = usePublicOffers();
   const navigateTo = useNavigate();
 
@@ -267,4 +267,4 @@ const MarketCard = ({ offer }) => {
   );
 };
 
-export default MarketCard;
+export default OfferCard;

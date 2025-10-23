@@ -26,104 +26,114 @@ const OfferCard = ({ offer }) => {
   };
 
   return (
-    <div className="flex justify-between p-[12px] gap-5  bg-tradeAsh rounded-[15px] border border-tradeAshLight transition-all duration-300 ">
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-2">
-          <div className="flex gap-[5px] items-center">
-            <div className="flex gap-1 items-center">
-              <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                {date(offer?.publishedOn)}
-              </p>
+    <div
+      onClick={() => handleOfferClick(offer?.offerId)}
+      className=" flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-[15px] border border-tradeAshLight transition-all duration-300 "
+    >
+      <div className="flex flex-col gap-3">
+        <div className="flex justify-between w-full items-center">
+          <div className="flex gap-1 items-center w-full ">
+            <div>
+              <HiOutlineUserCircle className="flex text-white text-lg flex-shrink-0" />
             </div>
-            {/* <div className="flex gap-1 items-center">
-                   <MdAccessTime className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                   <p className="text-xs font-medium text-tradeFadeWhite">
-                     {time(offer?.publishedOn)}
-                   </p>
-                 </div> */}
+            <div>
+              <p className="text-[13px] font-semibold text-white">
+                {offer?.Username}
+              </p>
+              {/* <p className="text-tradeFadeWhite text-xs font-medium">
+                     <span className={seen.className}>{seen.text}</span>
+                   </p> */}
+            </div>
           </div>
 
-          <p className="text-base font-bold text-tradeOrange leading-none">
-            {offer?.service ? offer?.service : "No title provided"}
-          </p>
+          <div className="flex flex-col items-end gap-1 justify-betwee w-full">
+            {/* {offer?.isVerified ? (
+                   <div className="flex gap-1 items-center">
+                     <VscVerifiedFilled className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
+                     <p className="text-xs font-medium text-tradeFadeWhite">
+                       Verified offer
+                     </p>
+                   </div>
+                 ) : (
+                   <div className="flex gap-1 items-center">
+                     <BsStars className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
+                     <p className="text-xs font-medium text-tradeFadeWhite">
+                       New offer
+                     </p>
+                   </div>
+                 )} */}
 
-          <div className="flex flex-col gap-1">
-            <p className="text-xs font-semibold text-tradeFadeWhite">
-              {offer?.preferredCurrency?.name
-                ? offer?.preferredCurrency?.name
-                : "USD"}
-            </p>
             <div className="flex  items-center gap-1">
-              <LuUsers className="flex text-tradeGreen text-[14px] flex-shrink-0" />
+              <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
               <p className="text-xs font-semibold text-tradeFadeWhite">
-                <span className="text-white">
-                  +
-                  {offer?.user?.userTransactionCount
-                    ? offer?.user?.userTransactionCount
-                    : "0"}{" "}
-                  recent
-                </span>{" "}
-                trades
+                <span className="text-white">+{offer?.completedTrades}</span>{" "}
+                recent trades
               </p>
             </div>
           </div>
         </div>
-        <SmallButton
-          variant="fadeoutPlus"
-          onClick={() => handleOfferClick(offer?.offerId)}
-        >
-          <p>View Details</p>
-        </SmallButton>
-      </div>
 
-      <div className="flex flex-col justify-between items-end">
-        <div className="flex flex-col gap-2 items-end">
-          <div className="flex gap-[5px] items-center">
-            <div className="flex gap-1 items-center">
-              <HiOutlineUserCircle className="flex text-tradeGreen text-[14px] flex-shrink-0" />
-              <p className="text-xs font-semibold text-white">Online</p>
-            </div>
-            <div className="flex gap-1 items-center">
-              <IoMdThumbsUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                {offer?.user?.userFeedback?.positiveFeedback
-                  ? offer?.user?.userFeedback?.positiveFeedback
-                  : 0}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-1">
-            <p className="text-base font-bold text-white leading-none">
-              $50,000.00
+        <div className="flex justify-between w-full items-start">
+          <div className="flex flex-col gap-1">
+            <p className="text-sm font-semibold text-tradeOrange max-w-[150px] leading-normal">
+              {offer?.service}
             </p>
-            <div className="text-tradeOrange text-[12px]">
-              <FaInfoCircle />
-            </div>
+            <p className="text-xs font-semibold text-tradeFadeWhite">
+              {offer?.preferredCurrency?.name}
+            </p>
           </div>
 
           <div className="flex flex-col gap-1 items-end">
-            <div className="flex gap-[5px] w-max">
-              <p className="text-xs font-semibold text-tradeFadeWhite">
-                Min -- USD 383
+            <div className="flex items-center gap-1">
+              <p className="text-sm font-semibold text-white leading-normal">
+                {toDecimal(offer?.marginRate?.ratePrice) || "N/A"}/
+                {/* {offer?.preferredCurrency?.code} */}$
+              </p>
+
+              <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                {offer?.marginRate?.ratePercent || "N/A"}% M
               </p>
             </div>
-            <div className="flex gap-[5px] w-max">
+
+            <div className="flex gap-1 items-end">
+              <div className="flex gap-[5px] w-max">
+                <p className="text-xs font-semibold text-white">
+                  {toDecimal(offer?.purchaseLimits?.minimum) || "N/A"}
+                </p>
+              </div>
+              <p className="text-xs font-semibold text-tradeFadeWhite">--</p>
+              <div className="flex gap-[5px] w-max">
+                <p className="text-xs font-semibold text-white">
+                  {toDecimal(offer?.purchaseLimits?.maximum) || "N/A"}
+                </p>
+              </div>
               <p className="text-xs font-semibold text-tradeFadeWhite">
-                Max -- USD 5,000
+                {offer?.preferredCurrency?.code}
               </p>
             </div>
           </div>
         </div>
-        <div className="flex gap-[5px]">
-          <SmallButton variant="fadeoutPlus">
-            <FaStar className="" />
-          </SmallButton>
-
-          <SmallButton variant="primary">
-            <p>Trade</p>
-          </SmallButton>
+      </div>
+      <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
+        <div className="flex gap-1 items-center">
+          <IoMdTime className="text-sm text-tradeFadeWhite" />
+          <p className="text-xs font-medium text-tradeFadeWhite">Transfer:</p>
+          <p className="text-xs font-semibold text-white whitespace-nowrap">
+            {windowFormatHour(
+              offer?.transferWindow?.hours,
+              offer?.transferWindow?.minutes
+            )}
+          </p>
+        </div>
+        <div className="flex gap-1 items-center">
+          <IoMdTime className="text-sm text-tradeFadeWhite" />
+          <p className="text-xs font-medium text-tradeFadeWhite">Release:</p>
+          <p className="text-xs font-semibold text-white whitespace-nowrap">
+            {windowFormatHour(
+              offer?.releaseWindow?.hours,
+              offer?.releaseWindow?.minutes
+            )}
+          </p>
         </div>
       </div>
     </div>

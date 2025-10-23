@@ -5,60 +5,61 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { IoCloseSharp } from "react-icons/io5";
 
-const WalletMenu = () => {
+const AboutMenu = () => {
   const navigateTo = useNavigate();
   return (
-    <div className="hidden lg:flex sticky top-[70px] h-max w-[250px] gap-[10px] flex-col ">
+    <div className="hidden lg:flex sticky top-[70px] h-max w-[250px] gap-[10px] flex-col lg:mb-[15px] ">
       <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
-        {/* <div className="flex px-2.5 py-1.5 gap-2 items-center bg-tradeAsh flex-1 rounded-sm ">
-          <div className="text-lg text-tradeFadeWhite">
-            <HiOutlineMagnifyingGlass />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Search"
-              className="bg-transparent w-[150px] h-full text-[13px] font-medium outline-none text-white placeholder:text-tradeFadeWhite"
-            />
-          </div>
-          <div className="text-lg text-tradeFadeWhite">
-            <IoCloseSharp />
-          </div>
-        </div> */}
         <div className="flex flex-col gap-[15px]">
-          <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              TRANSFER
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              DEPOSIT
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              WITHDRAWAL
-            </p>
-          </div>
           <div
-            onClick={() => navigateTo("/wallet/accounts")}
+            onClick={() => navigateTo("/offers")}
             className="flex items-center gap-2"
           >
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              ACCOUNTS
+              EDIT
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              PAUSE
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              DELETE
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              MANAGE ADS
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              VIEW CHATS
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              TRADE HISTORY
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              SHARE
             </p>
           </div>
         </div>
       </div>
-
-      <div></div>
     </div>
   );
 };
 
-export default WalletMenu;
+export default AboutMenu;

@@ -19,6 +19,7 @@ import NetworkError from "../others/NetworkError";
 import { RiSafe2Fill } from "react-icons/ri";
 import { MdMoreVert } from "react-icons/md";
 import { FaLink } from "react-icons/fa6";
+import { HiRefresh } from "react-icons/hi";
 
 const Balance = () => {
   const { balance, setBalance } = useBalance();
@@ -83,7 +84,7 @@ const Balance = () => {
                   <div className="flex flex-1 items-center justify-between">
                     <div className="flex items-center gap-2">
                       <p className="text-[12px] font-semibold text-tradeFadeWhite leading-none p-1 hover:bg-tradeOrange/20 g-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        Available Asset
+                        AVAILABLE ASSET
                       </p>
 
                       <div
@@ -98,13 +99,13 @@ const Balance = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        USD
-                      </p>
-
-                      <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        NGN
+                    <div
+                      onClick={refetch}
+                      className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                    >
+                      <HiRefresh />
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        REFRESH
                       </p>
                     </div>
                   </div>
