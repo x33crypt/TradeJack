@@ -34,6 +34,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropright } from "react-icons/io";
 import { FaRegUser } from "react-icons/fa";
 import { RiCopperCoinFill } from "react-icons/ri";
+import { PiFlagCheckeredBold } from "react-icons/pi";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -203,14 +204,14 @@ const InAppNav = () => {
               </div>
 
               <div className="flex-1 flex flex-col justify-between p-[15px] bg-black ">
-                <div className="flex flex-col p-[12px bg-tradeAshLigh gap-[10px] rounded-[15px] borde border-tradeAsh">
+                <div className="flex flex-col p-[12px bg-tradeAshLigh gap-[20px] rounded-[15px] borde border-tradeAsh">
                   <div className="flex items-center justify-between">
-                    <p className="text-white font-semibold text-base">
+                    <p className="text-lg font-semibold text-white flex items-center gap-1">
                       PREMIUM ACCOUNT
                     </p>
 
-                    <div className="md:hidden text-tradeFadeWhite text-[15px] p-1 w-max h-max bg-transparent border border-tradeAshExtraLight rounded-[10px]">
-                      <FaRegUser />
+                    <div className="text-tradeFadeWhite text-3xl fade-pulse cursor-pointer">
+                      <PiFlagCheckeredBold />
                     </div>
                   </div>
 
