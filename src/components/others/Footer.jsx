@@ -113,9 +113,9 @@ const Footer = ({ show }) => {
   }, []);
 
   return (
-    <div className="lg:pt-[5px] md:pt-[20px] pt-[5px] bg-black">
-      <div className="flex-1 bg-black lg:p-[2%] md:p-[2.5%] p-[15px] flex flex-col gap-[40px] border-t mt-[5px border-tradeAshLight">
-        <div className="flex gap-[5px] flex-col w-full">
+    <div className="lg:pt-[0px] md:pt-[20px] pt-[5px] bg-black">
+      <div className="flex-1 bg-black lg:p-[2%] md:p-[2.5%] p-[15px] flex flex-col gap-[40px]">
+        {/* <div className="flex gap-[5px] flex-col w-full">
           <p className="  text-[13px]  font-bold text-tradeGreen">
             Go
             <span className="font-semibold text-tradeOrange">Get</span>
@@ -134,8 +134,8 @@ const Footer = ({ show }) => {
               <SmallButton variant="fadeout">Community</SmallButton>
             </div>
           </div>
-        </div>
-        <div className="md:grid hidden lg:grid-cols-5 md:grid-cols-3 w-full gap-[20px]">
+        </div> */}
+        {/* <div className="md:grid hidden lg:grid-cols-5 md:grid-cols-3 w-full gap-[20px]">
           <div className="flex flex-1 flex-col gap-[10px]">
             <p className="font-semibold text-[13px] text-tradeAshExtraLight">
               Starters
@@ -375,8 +375,8 @@ const Footer = ({ show }) => {
               </p>
             </div>
           </div>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
             GoGetSwap operates as an independent exchange platform. We are
             neither affiliated with nor endorsed by MoneyGram, Western Union,
@@ -385,7 +385,7 @@ const Footer = ({ show }) => {
             and trademarks are the property of their respective owners. ©{" "}
             {currentYear} GoGetSwap, Inc. All rights reserved.
           </p>
-        </div>
+        </div> */}
         <div className="flex justify-between items-center w-full  pt-[15px] border-t border-tradeAshLight">
           <p className="text-tradeAshExtraLight text-xs font-semibold">
             GoGetSwap Inc, @{currentYear}

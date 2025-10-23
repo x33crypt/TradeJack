@@ -2,6 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDashboard } from "@/context/userContext/DashboardContext";
 import { IoMdArrowDropright } from "react-icons/io";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaTelegramPlane } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 const SettingMenu = () => {
   const { dashboard } = useDashboard();
@@ -86,8 +89,20 @@ const SettingMenu = () => {
           <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              ABOUT
+              ABOUT US
             </p>
+          </div>
+
+          <div className="flex lg:flex-row flex-col gap-[15px] mt-5">
+            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaXTwitter className="text-[16px]" />
+            </div>
+            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaTelegramPlane className="text-[16px]" />
+            </div>
+            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaInstagram className="text-[16px]" />
+            </div>
           </div>
         </div>
       </div>
