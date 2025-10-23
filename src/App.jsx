@@ -88,14 +88,13 @@ const App = () => {
 
         {/* Account Settings */}
         <Route path="/settings" element={<Settings />} />
-        <Route element={<SensitiveRoute />}>
-          <Route path="/settings/name" element={<EditFullname />} />
-          <Route path="/settings/username" element={<EditUsername />} />
-          <Route path="/settings/email" element={<EditEmail />} />
-          <Route path="/settings/mobile" element={<EditMobile />} />
-          <Route path="/settings/accounts" element={<Accounts />} />
-          <Route path="/settings/accounts/new" element={<NewAccount />} />
-        </Route>
+        {/* <Route element={<SensitiveRoute />}> </Route> */}
+        <Route path="/settings/name" element={<EditFullname />} />
+        <Route path="/settings/username" element={<EditUsername />} />
+        <Route path="/settings/email" element={<EditEmail />} />
+        <Route path="/settings/mobile" element={<EditMobile />} />
+        <Route path="/settings/accounts" element={<Accounts />} />
+        <Route path="/settings/accounts/new" element={<NewAccount />} />
 
         {/* Wallet */}
         <Route path="/wallet" element={<Wallet />} />

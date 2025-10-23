@@ -61,7 +61,7 @@ const ConfirmAccount = () => {
         successMessage: "Bank account successfully linked",
       });
 
-      navigateTo("/wallet/accounts");
+      navigateTo("/settings/accounts");
 
       try {
         await refetchLinkedBanks();
