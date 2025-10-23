@@ -101,12 +101,9 @@ const Balance = () => {
 
                     <div
                       onClick={refetch}
-                      className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                      className="flex items-center bg-transparent w-max cursor-pointer"
                     >
-                      <HiRefresh />
-                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        REFRESH
-                      </p>
+                      <HiRefresh className="text-lg text-tradeFadeWhite" />
                     </div>
                   </div>
 

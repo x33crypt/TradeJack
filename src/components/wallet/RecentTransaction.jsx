@@ -34,7 +34,7 @@ const RecentTransaction = ({ scrollToTop }) => {
           RECENT TRANSACTION
         </p>
 
-        <CgArrowLongRight className="text-tradeFadeWhite text-[30px] leading-none" />
+        {/* <CgArrowLongRight className="text-tradeFadeWhite text-[30px] leading-none" /> */}
       </div>
 
       <div className="flex h-full min-h-[125px] ">

@@ -23,7 +23,7 @@ const EscrowActivity = () => {
           ESCROW ACTIVITY
         </p>
 
-        <CgArrowLongRight className="text-tradeFadeWhite text-[30px] leading-none" />
+        <CgArrowLongRight className="text-tradeFadeWhite hover:text-tradeOrange text-[30px] leading-none cursor-pointer" />
       </div>
 
       <div className="flex h-full ">

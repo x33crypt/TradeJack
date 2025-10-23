@@ -24,7 +24,7 @@ const Stats = ({ loading, dashboard }) => {
             {dashboard === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-col gap-[10px]">
+              <div className="flex flex-col gap-[10px] flex-1">
                 <div className="flex w-full md:min-w-[400px] flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
                   <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
                     <LuFileChartColumn className="text-lg text-tradeFadeWhite" />

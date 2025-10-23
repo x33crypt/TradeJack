@@ -39,6 +39,7 @@ import { TbArrowsSort } from "react-icons/tb";
 import { FaRegSmileWink } from "react-icons/fa";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { useBalance } from "@/context/userContext/BalanceContext";
+import { MdLabelImportantOutline } from "react-icons/md";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -213,7 +214,6 @@ const InAppNav = () => {
             </p>
             <TbArrowsSort className="text-[16px]" />
           </div>
-
           <div className="w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
             <p className="text-xs text-white font-semibold">2,530</p>
             <RiCopperCoinFill className="text-[16px]" />
@@ -225,8 +225,11 @@ const InAppNav = () => {
           >
             <BiSupport className="text-[16px] text-black" />
           </div>
-          <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+          <div className="relative w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
             <FaRegBell className="text-[16px]" />
+            <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-semibold p-1 py-[0px] rounded-full shadow-md">
+              0
+            </span>
           </div>
           <div
             className=" flex-shrink-0 w-[34px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] border border-tradeAshExtraLight rounded-[10px]"
@@ -280,7 +283,7 @@ const InAppNav = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div
-                        onClick={() => {
+                        onClick={() =>
                           setSelect({
                             state: true,
                             selectOne: false,
@@ -288,36 +291,28 @@ const InAppNav = () => {
                             page: "InAppNav",
                             element: "default currency",
                             options: defaultCurrencies,
-                          });
-                          setIsNavOption(false);
-                        }}
-                        className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                          })
+                        }
+                        className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
                       >
-                        <TbArrowsSort className="text-tradeFadeWhite text-sm" />
-                        <p className="text-xs text-white font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        <TbArrowsSort className="text-[16px]" />
+
+                        <p className="text-xs text-white font-semibold">
                           {balance?.currency}
                         </p>
                       </div>
-                      <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                          LIMIT :
-                        </p>
-
-                        <p className="text-xs text-white font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                          <span className="text-tradeFadeWhite">#</span>{" "}
+                      <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                        <p className="text-xs text-white font-semibold">
+                          <span className="text-tradeFadeWhite">LIMIT : $</span>{" "}
                           2,530,000
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        POINTS :
-                      </p>
-                      <RiCopperCoinFill className="text-tradeFadeWhite text-sm" />
-                      <p className="text-xs text-white font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        2,530
-                      </p>
+                    <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                      <RiCopperCoinFill className="text-[16px]" />
+
+                      <p className="text-xs text-white font-semibold">2,530</p>
                     </div>
                   </div>
                 </div>
@@ -431,12 +426,12 @@ const InAppNav = () => {
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  {/* <div className="flex items-center gap-2">
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                       REFERRALS
                     </p>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="w-full h-max flex flex-col gap-[8px]">
