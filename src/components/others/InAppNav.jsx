@@ -218,7 +218,7 @@ const InAppNav = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                       <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        Limit :
+                        LIMIT :
                       </p>
 
                       <p className="text-xs text-white font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
@@ -229,7 +229,7 @@ const InAppNav = () => {
 
                     <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                       <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        Points :
+                        POINTS :
                       </p>
                       <RiCopperCoinFill className="text-tradeFadeWhite text-sm" />
                       <p className="text-xs text-white font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
