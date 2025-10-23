@@ -24,8 +24,7 @@ import KycVerification from "./pages/kyc/KycVerification";
 import ConfirmDeposit from "./pages/deposit/ConfirmDeposit";
 import SuccessDeposit from "./pages/deposit/SuccessDeposit";
 import SuccessWithdraw from "./pages/withdraw/SuccessWithdraw";
-import ConfirmAccount from "./pages/account/ConfirmAccount";
-import SuccessAccount from "./pages/account/SuccessAccount";
+
 import Settings from "./pages/settings/Settings";
 import AboutPublicOffer from "./pages/offer/public/AboutOffer";
 import AboutUserOffer from "./pages/offer/user/AboutOffer";
@@ -48,6 +47,8 @@ import PublicProfile from "./pages/profile/PublicProfile";
 import UserProfile from "./pages/profile/UserProfile";
 import Accounts from "./pages/account/Accounts";
 import NewAccount from "./pages/account/NewAccount";
+import ConfirmAccount from "./pages/account/ConfirmAccount";
+import SuccessAccount from "./pages/account/SuccessAccount";
 
 const App = () => {
   return (
