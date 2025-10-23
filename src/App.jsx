@@ -62,7 +62,7 @@ const App = () => {
       <ProfileNav />
       <ConfirmAccount />
       <SuccessAccount />
-      <ConfirmAccount />
+      <ConfirmTransfer />
       <SuccessTransfer />
       <ConfirmDeposit />
       <SuccessDeposit />
