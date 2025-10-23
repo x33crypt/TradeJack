@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import Button from "@/components/buttons/Button";
 import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
 import { useFetchLinkedBanks } from "@/hooks/userHooks/useFetchLinkedBanks";
-import AccountCard from "@/components/account/AccountCard";
+import AccountCard from "@/components/cards/Both/AccountCard";
 import { useNavigate } from "react-router-dom";
 import Loading from "@/components/others/Loading";
 import LockByScroll from "@/components/others/LockByScroll";
