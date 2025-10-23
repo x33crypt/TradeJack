@@ -15,7 +15,7 @@ import AccountMenu from "@/components/settings/SettingMenu";
 import NetworkError from "@/components/others/NetworkError";
 import { RiAddCircleFill } from "react-icons/ri";
 
-const MyAccounts = () => {
+const Accounts = () => {
   const { loading, refetchLinkedBanks } = useFetchLinkedBanks();
   const { linkedAccounts, manageAccount, setManageAccount } =
     useLinkedAccount();
@@ -190,7 +190,7 @@ const MyAccounts = () => {
                       linkedAccounts?.length > 0 ? (
                         <div className="h-full flex flex-col gap-[20px]">
                           <div
-                            onClick={() => navigateTo("/wallet/accounts/new")}
+                            onClick={() => navigateTo("/settings/accounts/new")}
                             className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
                           >
                             <RiAddCircleFill className="text-sm" />
@@ -257,7 +257,7 @@ const MyAccounts = () => {
                       ) : (
                         <div className="h-full flex flex-col gap-[20px]">
                           <div
-                            onClick={() => navigateTo("/wallet/accounts/new")}
+                            onClick={() => navigateTo("/settings/accounts/new")}
                             className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
                           >
                             <RiAddCircleFill className="text-sm" />
@@ -408,4 +408,4 @@ const MyAccounts = () => {
   );
 };
 
-export default MyAccounts;
+export default Accounts;

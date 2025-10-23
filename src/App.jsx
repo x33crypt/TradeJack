@@ -16,8 +16,6 @@ import ConfirmTransfer from "./pages/transfer/ConfirmTransfer";
 import SuccessTransfer from "./pages/transfer/SuccessTransfer";
 import TransactionHistory from "./pages/wallet/TransactionHistory";
 import TransactionDetails from "./pages/wallet/TransactionDetails";
-import MyAccounts from "./pages/account/Accounts";
-import AddNewAccount from "./pages/account/AddNew";
 import ProfileNav from "./components/others/ProfileNav";
 import Withdraw from "./pages/withdraw/Withdraw";
 import ConfirmWithdraw from "./pages/withdraw/ConfirmWithdraw";
@@ -48,6 +46,8 @@ import SensitiveRoute from "./utils/sensitiveRoutes";
 import PreTradeCheck from "./pages/offer/public/PreTradeCheck";
 import PublicProfile from "./pages/profile/PublicProfile";
 import UserProfile from "./pages/profile/UserProfile";
+import Accounts from "./pages/account/Accounts";
+import NewAccount from "./pages/account/NewAccount";
 
 const App = () => {
   return (
@@ -92,7 +92,8 @@ const App = () => {
           <Route path="/settings/username" element={<EditUsername />} />
           <Route path="/settings/email" element={<EditEmail />} />
           <Route path="/settings/mobile" element={<EditMobile />} />
-          <Route path="/settings/accounts" element={<MyAccounts />} />
+          <Route path="/settings/accounts" element={<Accounts />} />
+          <Route path="/settings/accounts/new" element={<NewAccount />} />
         </Route>
 
         {/* Wallet */}
@@ -101,7 +102,6 @@ const App = () => {
         <Route path="/wallet/deposit" element={<Deposit />} />
         <Route path="/wallet/withdraw" element={<Withdraw />} />
         <Route path="/wallet/transactions" element={<TransactionHistory />} />
-        <Route path="/wallet/accounts/new" element={<AddNewAccount />} />
 
         {/* Marketplace & Offers */}
         <Route path="/offers/explore" element={<Marketplace />} />

@@ -10,7 +10,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { verifyBankHolder } from "@/utils/wallet/verifyBankHolder";
 import Button from "@/components/buttons/Button";
 
-const AddNewAccount = () => {
+const NewAccount = () => {
   const { linkAccount, setLinkAccount } = useLinkedAccount();
   const { select, setSelect } = useSelectElement();
   const { banks } = useFetchBanks();
@@ -169,4 +169,4 @@ const AddNewAccount = () => {
   );
 };
 
-export default AddNewAccount;
+export default NewAccount;
