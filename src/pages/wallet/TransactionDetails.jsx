@@ -205,7 +205,7 @@ const TransactionDetails = () => {
                         <div>
                           <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed text-center">
                             Transaction updates in real time.{" "}
-                            <span className="text-tradeGreen">
+                            <span className="text-tradeOrange">
                               Contact support
                             </span>{" "}
                             with your reference for any issues.
