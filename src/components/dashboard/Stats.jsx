@@ -43,7 +43,7 @@ const Stats = ({ loading, dashboard }) => {
                 <div className="grid grid-cols-2 gap-[10px]">
                   <div className="flex min-w-[150px md:min-w-[200px] flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
                     <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                      <LuFileCheck2 className="text-lg text-tradeGreen" />
+                      <LuFileCheck2 className="text-lg text-tradeFadeWhite" />
                     </div>
 
                     <div className="flex flex-col gap-1 items-start">
@@ -58,7 +58,7 @@ const Stats = ({ loading, dashboard }) => {
 
                   <div className="flex min-w-[150px md:min-w-[200px] flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
                     <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                      <LuFileX2 className="text-lg text-red-600" />
+                      <LuFileX2 className="text-lg text-tradeFadeWhite" />
                     </div>
 
                     <div className="flex flex-col gap-1 items-start">
@@ -73,7 +73,7 @@ const Stats = ({ loading, dashboard }) => {
 
                   <div className="flex min-w-[150px md:min-w-[200px] flex-grow flex-shrink-0  gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
                     <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                      <LuFileClock className="text-lg text-tradeOrange" />
+                      <LuFileClock className="text-lg text-tradeFadeWhite" />
                     </div>
 
                     <div className="flex flex-col gap-1 items-start">
