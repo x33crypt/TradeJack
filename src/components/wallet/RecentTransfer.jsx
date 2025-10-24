@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import TransactionCard from "../cards/Mobile/TransactionCard";
+import TransactionCard from "../cards/TransactionCard";
 import { useNavigate } from "react-router-dom";
 import Loading from "../others/Loading";
 import NetworkError from "../others/NetworkError";

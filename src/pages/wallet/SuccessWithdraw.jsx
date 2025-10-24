@@ -77,15 +77,16 @@ const SuccessWithdraw = () => {
 
   return (
     <div>
+      {/* success */}
       {success && (
         <div>
           <LockByScroll />
           {/* Modal */}
-          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[250px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
-                  Withdrawal Feedback
+                  Withdrawal Status
                 </p>
 
                 <div onClick={close}>
@@ -93,7 +94,7 @@ const SuccessWithdraw = () => {
                 </div>
               </div>
 
-              <div className="flex-1 flex flex-col justify-between py-[12.3px] gap-[30px]">
+              <div className="flex-1 flex flex-col justify-between py-[12.3px] gap-[20px]">
                 <div className="flex flex-col gap-[20px]">
                   <div className="flex flex-col items-center justify-center gap-3">
                     <div className="p-[2px] bg-tradeAshExtraLight text-[55px] text-tradeGreen rounded-full">
@@ -105,30 +106,28 @@ const SuccessWithdraw = () => {
                     </p>
                   </div>
 
-                  <p className="text-[13px] font-medium text-tradeFadeWhite leading-relaxed text-center">
-                    We've received your withdrawal request of{" "}
-                    <span className="font-bold text-white">
-                      {currency}{" "}
-                      {currency === "USD"
-                        ? ` ${toDecimal(amount?.USD)}`
-                        : `${toDecimal(amount?.NGN)}`}
-                    </span>{" "}
-                    to your account ending{" "}
-                    <span className="font-bold text-white">
-                      {bank?.account_number}
-                    </span>
-                    . You will receive the funds once processing is completed.
-                  </p>
+                  <div className="flex flex-col items-center gap-2">
+                    <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed text-center">
+                      We've received your withdrawal request of{" "}
+                      <span className="font-bold text-white">
+                        {currency}{" "}
+                        {currency === "USD"
+                          ? ` ${toDecimal(amount?.USD)}`
+                          : `${toDecimal(amount?.NGN)}`}
+                      </span>{" "}
+                      to your account ending{" "}
+                      <span className="font-bold text-white">
+                        {bank?.account_number}
+                      </span>
+                      . You will receive the funds once processing is completed.
+                    </p>
 
-                  <div className="flex flex-col bg-tradeAshLigh  borde border-tradeAshLight rounded-[15px]">
-                    <div className="flex items-center justify-betwee justify-center gap-[10px] p-[8px border- border-tradeAsh">
-                      <p className="text-[13px] font-medium text-tradeFadeWhite">
-                        Reference -{" "}
-                        <span className="font-semibold text-white">
-                          {referenceId}
-                        </span>
-                      </p>
-                    </div>
+                    <p className="text-xs font-medium text-tradeFadeWhite">
+                      Reference -{" "}
+                      <span className="font-semibold text-white">
+                        {referenceId}
+                      </span>
+                    </p>
                   </div>
                 </div>
 

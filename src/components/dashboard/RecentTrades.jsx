@@ -1,5 +1,5 @@
 import React from "react";
-import TradeCard from "../cards/Both/TradeCard";
+import TradeCard from "../cards/TradeCard";
 import { RiArrowRightFill } from "react-icons/ri";
 
 const RecentTrades = () => {

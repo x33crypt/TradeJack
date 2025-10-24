@@ -1,7 +1,7 @@
 import Footer from "@/components/others/Footer";
 import InAppNav from "@/components/others/InAppNav";
 import React, { useRef, useEffect, useState } from "react";
-import TransactionCard from "@/components/cards/Both/TransactionCard";
+import TransactionCard from "@/components/cards/TransactionCard";
 import { useTransaction } from "@/context/userContext/TransactionContext";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { date } from "@/utils/date";

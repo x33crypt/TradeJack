@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import TransactionCard from "../cards/Both/TransactionCard";
+import TransactionCard from "../cards/TransactionCard";
 import { useTransaction } from "@/context/userContext/TransactionContext";
 import { useNavigate } from "react-router-dom";
 import { RiArrowRightFill } from "react-icons/ri";

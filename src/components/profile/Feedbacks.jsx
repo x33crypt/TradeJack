@@ -1,5 +1,5 @@
 import React from "react";
-import FeedbackCard from "../cards/Both/FeedbackCard";
+import FeedbackCard from "../cards/FeedbackCard";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
 import { RiLoader4Fill } from "react-icons/ri";

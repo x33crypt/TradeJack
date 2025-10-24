@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../../../assets/landingImg4.JPG";
+import image from "./../../assets/landingImg4.JPG";
 import { MdThumbDownAlt } from "react-icons/md";
 import { FaMapPin } from "react-icons/fa";
 

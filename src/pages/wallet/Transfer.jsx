@@ -1,79 +1,52 @@
-import React, { useEffect } from "react";
-import InAppNav from "@/components/others/InAppNav";
 import Footer from "@/components/others/Footer";
-import DasHboardMenu from "@/components/dashboard/DashboardMenu";
-import RecentWithdraw from "@/components/wallet/RecentWithdraw";
+import InAppNav from "@/components/others/InAppNav";
+import React, { useEffect } from "react";
 import Button from "@/components/buttons/Button";
 import { toUSD } from "@/utils/toUSD";
 import { toNGN } from "@/utils/toNGN";
-import { useToast } from "@/context/otherContext/ToastContext";
 import { toDecimal } from "@/utils/toDecimal";
-import { useWithdrawContext } from "@/context/userContext/WithdrawContext";
-import { IoWalletOutline } from "react-icons/io5";
+import { useToast } from "@/context/otherContext/ToastContext";
+import { useTransferContext } from "@/context/userContext/TransferContext";
+import RecentTransfer from "@/components/wallet/RecentTransfer";
+import DasHboardMenu from "@/components/dashboard/DashboardMenu";
 import { useBalance } from "@/context/userContext/BalanceContext";
-import { useFetchLinkedBanks } from "@/hooks/userHooks/useFetchLinkedBanks";
-import { useLinkedAccount } from "@/context/userContext/LinkedAccountContext";
-import { RiBankLine } from "react-icons/ri";
-import { useFetchWithdrawTxt } from "@/hooks/userHooks/useFetchWithdrawTxt";
+import { useFetchBalance } from "@/hooks/userHooks/useFetchBalance";
+import { IoWalletOutline } from "react-icons/io5";
+import { useFetchTransferTxt } from "@/hooks/userHooks/useFetchTransferTxt";
 import WalletBalance from "@/components/wallet/WalletBalance";
-import Info from "@/components/alerts/Info";
 import WalletMenu from "@/components/wallet/WalletMenu";
 
-const Withdraw = () => {
-  const { refetchWithdrawTxt } = useFetchWithdrawTxt();
+const Transfer = () => {
+  const { refetchTransferTxt } = useFetchTransferTxt();
+  const { loading, refetch } = useFetchBalance();
   const { balance } = useBalance();
-  const { withdraw, setWithdraw } = useWithdrawContext();
-  const { loading, error, refetchLinkedBanks } = useFetchLinkedBanks();
-  const { linkedAccounts } = useLinkedAccount();
+  const { transfer, setTransfer } = useTransferContext();
   const { setToast } = useToast();
 
-  console.log("Withdraw Context:", withdraw);
-  console.log("Balance in Withdraw:", balance?.available_balance);
-  console.log("Linked Accounts:", linkedAccounts);
+  console.log("Transfer Context:", transfer);
+  console.log("Balance in Transfer:", balance?.available_balance);
 
   useEffect(() => {
-    refetchLinkedBanks();
+    refetch();
   }, []);
 
-  const selectDefaultAccount = () => {
-    setWithdraw((prev) => ({
+  const handleUsernameChange = (e) => {
+    setTransfer((prev) => ({
       ...prev,
-      account: "Default",
-    }));
-  };
-
-  useEffect(() => {
-    if (withdraw?.account === "Default") {
-      setWithdraw((prev) => ({
-        ...prev,
-        bank: linkedAccounts?.find((account) => account?.isDefault === true),
-      }));
-    } else if (withdraw?.account === "Alternative") {
-      setWithdraw((prev) => ({
-        ...prev,
-        bank: linkedAccounts?.find((account) => account?.isDefault === false),
-      }));
-    }
-  }, [withdraw?.account, linkedAccounts]);
-
-  const selectAlternativeAccount = () => {
-    setWithdraw((prev) => ({
-      ...prev,
-      account: "Alternative",
+      username: e.target.value,
     }));
   };
 
   const selectUSD = () => {
-    setWithdraw((prev) => ({
+    setTransfer((prev) => ({
       ...prev,
-
       currency: "USD",
       amount: { NGN: null, USD: null },
     }));
   };
 
   const selectNGN = () => {
-    setWithdraw((prev) => ({
+    setTransfer((prev) => ({
       ...prev,
       currency: "NGN",
       amount: { NGN: null, USD: null },
@@ -89,7 +62,7 @@ const Withdraw = () => {
       rawValue = parts[0] + "." + parts.slice(1).join("");
     }
 
-    setWithdraw((prev) => ({
+    setTransfer((prev) => ({
       ...prev,
       amount: {
         ...prev.amount,
@@ -107,7 +80,7 @@ const Withdraw = () => {
       rawValue = parts[0] + "." + parts.slice(1).join("");
     }
 
-    setWithdraw((prev) => ({
+    setTransfer((prev) => ({
       ...prev,
       amount: {
         ...prev.amount,
@@ -128,16 +101,16 @@ const Withdraw = () => {
 
   // update NGN amount if user input USD
   useEffect(() => {
-    if (!withdraw?.amount?.USD || withdraw?.currency !== "USD") return;
+    if (!transfer?.amount?.USD || transfer?.currency !== "USD") return;
 
     const debounceTimeout = setTimeout(async () => {
       try {
-        const result = await toNGN(withdraw?.amount?.USD);
+        const result = await toNGN(transfer?.amount?.USD);
 
         if (result && result.amount) {
           console.log("Converted NGN Value:", result.amount);
 
-          setWithdraw((prev) => ({
+          setTransfer((prev) => ({
             ...prev,
             amount: {
               ...prev.amount,
@@ -153,22 +126,22 @@ const Withdraw = () => {
     }, 2000); // 2 seconds delay
 
     return () => clearTimeout(debounceTimeout); // Clear previous timeout on new input
-  }, [withdraw?.amount?.USD, withdraw?.currency]);
+  }, [transfer?.amount?.USD, transfer?.currency]);
 
   // update USD amount if user input NGN
   useEffect(() => {
-    if (!withdraw?.amount?.NGN || withdraw?.currency !== "NGN") return;
+    if (!transfer?.amount?.NGN || transfer?.currency !== "NGN") return;
 
-    console.log("Converting NGN to USD:", withdraw?.amount?.NGN);
+    console.log("Converting NGN to USD:", transfer?.amount?.NGN);
 
     const debounceTimeout = setTimeout(async () => {
       try {
-        const result = await toUSD(withdraw?.amount?.NGN);
+        const result = await toUSD(transfer?.amount?.NGN);
 
         if (result && result.amount) {
           console.log("Converted USD Value:", result.amount);
 
-          setWithdraw((prev) => ({
+          setTransfer((prev) => ({
             ...prev,
             amount: {
               ...prev.amount,
@@ -184,10 +157,19 @@ const Withdraw = () => {
     }, 2000); // 2 second delay
 
     return () => clearTimeout(debounceTimeout); // Clear on new keystroke
-  }, [withdraw?.amount?.NGN, withdraw?.currency]);
+  }, [transfer?.amount?.NGN, transfer?.currency]);
 
   const handleProceed = () => {
-    const { currency, amount, bank } = withdraw;
+    const { username, currency, amount } = transfer;
+
+    // Validate username
+    if (!username?.trim()) {
+      setToast({
+        error: true,
+        errorMessage: "Missing required field: Recipient Wallet",
+      });
+      return;
+    }
 
     // Validate amount in NGN
     if (currency === "NGN") {
@@ -216,8 +198,7 @@ const Withdraw = () => {
 
       // Validate balance
       if (
-        Number(toDecimal(amount?.NGN) || 0) >
-        Number(toDecimal(balance?.available_balance?.NGN) || 0)
+        Number(amount?.NGN || 0) > Number(balance?.available_balance?.NGN || 0)
       ) {
         setToast({
           error: true,
@@ -261,16 +242,8 @@ const Withdraw = () => {
       }
     }
 
-    if (!bank?.bankId) {
-      setToast({
-        error: true,
-        errorMessage: "Missing required field: Recipient Wallet",
-      });
-      return;
-    }
-
     // Proceed
-    setWithdraw((prev) => ({
+    setTransfer((prev) => ({
       ...prev,
       proceed: true,
       confirm: true,
@@ -279,10 +252,10 @@ const Withdraw = () => {
 
   // Refetch transactions after a successfull transfer
   useEffect(() => {
-    if (withdraw?.success) {
-      refetchWithdrawTxt();
+    if (transfer?.success) {
+      refetchTransferTxt();
     }
-  }, [withdraw?.success]);
+  }, [transfer?.success]);
 
   return (
     <>
@@ -294,7 +267,7 @@ const Withdraw = () => {
             <div className="flex flex-1 flex-col gap-[20px]">
               <div className="flex  items-center justify-between ">
                 <p className="text-lg font-semibold text-white flex items-center gap-1">
-                  WITHDRAW
+                  TRANSFER
                 </p>
               </div>
 
@@ -302,65 +275,27 @@ const Withdraw = () => {
                 {/* Wallet Balance */}
                 <WalletBalance />
 
-                {/* Account */}
+                {/* Recipient Wallet */}
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                   <div className="flex flex-1 items-center justify-between">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Select Account
+                      Recipient Wallet
                     </p>
-
-                    <div className="flex gap-1">
-                      {linkedAccounts?.length && (
-                        <p
-                          onClick={selectDefaultAccount}
-                          className={`${
-                            withdraw?.account === "Default"
-                              ? "bg-tradeOrange text-black"
-                              : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
-                          } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
-                        >
-                          Default
-                        </p>
-                      )}
-
-                      {linkedAccounts?.length > 1 && (
-                        <p
-                          onClick={selectAlternativeAccount}
-                          className={`${
-                            withdraw?.account === "Alternative"
-                              ? "bg-tradeOrange text-black"
-                              : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
-                          } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
-                        >
-                          Alternative
-                        </p>
-                      )}
-                    </div>
                   </div>
-                  <div className="flex items-center gap-[10px] w-full ">
-                    <div className="p-2.5 bg-tradeAshLight border border-tradeAshExtraLight rounded-xl">
-                      {withdraw?.bank?.logo ? (
-                        <img
-                          className="w-[20px] h-[20px] object-contain"
-                          src={
-                            withdraw?.bank?.logo ||
-                            "/images/default-bank-logo.png"
-                          }
-                          alt=""
-                        />
-                      ) : (
-                        <RiBankLine className="text-[25px] text-tradeWhite" />
-                      )}
-                    </div>
-                    <div className="flex flex-col gap-[3px]">
-                      <p className="text-white text-[13px] font-semibold">
-                        {withdraw?.bank?.bank_name || "Bank Name"}
-                      </p>
-                      <p className="text-tradeFadeWhite text-xs font-medium tracking-wide">
-                        {withdraw?.bank?.account_number || "Account Number"}
-                      </p>
-                    </div>
+
+                  <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                    <input
+                      className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                      type="text"
+                      placeholder="Username"
+                      onChange={handleUsernameChange}
+                      value={transfer?.username}
+                    />
                   </div>
+
+                  <p className="text-tradeFadeWhite text-xs font-medium">
+                    Verify the recipient’s username, transfers are irreversible.
+                  </p>
                 </div>
 
                 {/* Amount */}
@@ -374,7 +309,7 @@ const Withdraw = () => {
                       <p
                         onClick={selectNGN}
                         className={`${
-                          withdraw?.currency === "NGN"
+                          transfer?.currency === "NGN"
                             ? "bg-tradeOrange text-black"
                             : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
                         } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
@@ -385,7 +320,7 @@ const Withdraw = () => {
                       <p
                         onClick={selectUSD}
                         className={`${
-                          withdraw?.currency === "USD"
+                          transfer?.currency === "USD"
                             ? "bg-tradeOrange text-black"
                             : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
                         } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
@@ -396,7 +331,7 @@ const Withdraw = () => {
                   </div>
 
                   <div className="flex flex-col w-full">
-                    {withdraw?.currency === "NGN" ? (
+                    {transfer?.currency === "NGN" ? (
                       // NGN
                       <div className="flex flex-col gap-[10px]">
                         <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
@@ -404,14 +339,14 @@ const Withdraw = () => {
                             className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                             type="text"
                             placeholder={`15,000.000 - 30,000,000.00`}
-                            value={formatWithCommas(withdraw?.amount?.NGN)}
+                            value={formatWithCommas(transfer?.amount?.NGN)}
                             onChange={handleNGNAmountChange}
                             onFocus={(e) =>
-                              (e.target.value = withdraw?.amount?.NGN || "")
+                              (e.target.value = transfer?.amount?.NGN || "")
                             } // show raw when editing
                             onBlur={(e) =>
                               (e.target.value = formatWithCommas(
-                                withdraw?.amount?.NGN
+                                transfer?.amount?.NGN
                               ))
                             } // format on blur
                           />
@@ -419,11 +354,11 @@ const Withdraw = () => {
 
                         <div>
                           <p className="text-tradeFadeWhite text-xs font-semibold">
-                            You're about to deposit the equivalent of{" "}
+                            You're about to transfer the equivalent of{" "}
                             <span className="text-tradeOrange">
                               USD {""}
-                              {withdraw?.amount?.USD
-                                ? toDecimal(withdraw?.amount?.USD)
+                              {transfer?.amount?.USD
+                                ? toDecimal(transfer?.amount?.USD)
                                 : "0.00"}
                             </span>
                           </p>
@@ -437,14 +372,14 @@ const Withdraw = () => {
                             className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                             type="text"
                             placeholder={`10.00 - 20,000.00`}
-                            value={formatWithCommas(withdraw?.amount?.USD)}
+                            value={formatWithCommas(transfer?.amount?.USD)}
                             onChange={handleUSDAmountChange}
                             onFocus={(e) =>
-                              (e.target.value = withdraw?.amount?.USD || "")
+                              (e.target.value = transfer?.amount?.USD || "")
                             } // show raw when editing
                             onBlur={(e) =>
                               (e.target.value = formatWithCommas(
-                                withdraw?.amount?.USD
+                                transfer?.amount?.USD
                               ))
                             } // format on blur
                           />
@@ -452,11 +387,11 @@ const Withdraw = () => {
 
                         <div>
                           <p className="text-tradeFadeWhite text-xs font-semibold">
-                            You're about to deposit the equivalent of{" "}
+                            You're about to transfer the equivalent of{" "}
                             <span className="text-tradeOrange">
                               NGN {""}
-                              {withdraw?.amount?.NGN
-                                ? toDecimal(withdraw?.amount?.NGN)
+                              {transfer?.amount?.NGN
+                                ? toDecimal(transfer?.amount?.NGN)
                                 : "0.00"}
                             </span>
                           </p>
@@ -469,14 +404,13 @@ const Withdraw = () => {
                 <Button
                   variant="secondary"
                   onClick={handleProceed}
-                  disabled={withdraw?.proceed}
+                  disabled={transfer?.proceed}
                 >
                   Proceed
                 </Button>
               </div>
             </div>
-
-            <RecentWithdraw />
+            <RecentTransfer />
           </div>
         </div>
       </div>
@@ -485,4 +419,4 @@ const Withdraw = () => {
   );
 };
 
-export default Withdraw;
+export default Transfer;

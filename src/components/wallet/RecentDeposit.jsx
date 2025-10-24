@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import TransactionCard from "../cards/Mobile/TransactionCard";
+import TransactionCard from "../cards/TransactionCard";
 import { useNavigate } from "react-router-dom";
 import { useFetchDepositTxt } from "@/hooks/userHooks/useFetchDepositsTxt";
 import { useDepositContext } from "@/context/userContext/DepositContext";
@@ -23,8 +23,6 @@ const RecentDeposit = () => {
         <p className="text-sm font-semibold text-white flex items-center gap-1">
           RECENT DEPOSIT
         </p>
-
-        {/* <CgArrowLongRight className="text-tradeFadeWhite text-[30px] leading-none" /> */}
       </div>
 
       <div className="flex h-full ">
