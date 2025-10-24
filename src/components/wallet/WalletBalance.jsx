@@ -70,7 +70,11 @@ const WalletBalance = () => {
           >
             <span className="text-tradeFadeWhite">$</span>{" "}
             {showBalance
-              ? `${toDecimal(balance.available_balance.USD)}`
+              ? `${
+                  balance.available_balance.USD
+                    ? toDecimal(balance.available_balance.USD)
+                    : "0.00"
+                }`
               : "****"}
           </p>
         ) : (
@@ -81,7 +85,11 @@ const WalletBalance = () => {
           >
             <span className="text-tradeFadeWhite">#</span>{" "}
             {showBalance
-              ? `${toDecimal(balance.available_balance.NGN)}`
+              ? `${
+                  balance.available_balance.NGN
+                    ? toDecimal(balance.available_balance.NGN)
+                    : "0.00"
+                }`
               : "****"}
           </p>
         )}

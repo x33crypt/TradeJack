@@ -51,14 +51,8 @@ const RecentDeposit = () => {
                   ) : (
                     <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
                       <p className="text-[13px] font-semibold text-white leading-none">
-                        No recent deposits.
+                        NO RECENT DEPOSITS
                       </p>
-
-                      <p className="text-xs text-center w-[300px] font-medium text-tradeFadeWhite">
-                        No recent deposits found in our system.
-                      </p>
-
-                      <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
                     </div>
                   )}
                 </div>

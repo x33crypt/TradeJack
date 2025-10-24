@@ -14,6 +14,7 @@ import { useFetchBalance } from "@/hooks/userHooks/useFetchBalance";
 import { IoWalletOutline } from "react-icons/io5";
 import { useFetchTransferTxt } from "@/hooks/userHooks/useFetchTransferTxt";
 import WalletBalance from "@/components/wallet/WalletBalance";
+import WalletMenu from "@/components/wallet/WalletMenu";
 
 const Transfer = () => {
   const { refetchTransferTxt } = useFetchTransferTxt();
@@ -259,48 +260,37 @@ const Transfer = () => {
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[64px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex gap-[5px] bg-black ">
-        <DasHboardMenu />
-        <div className="flex-1 h-max flex flex-col md:flex-row md:gap-[5px] gap-[10px]">
-          <div className="flex flex-col flex-1 md:border border-neutral-800">
-            <div className="flex  items-center justify-between px-[15px] py-[12px] border-b border-tradeAshLight">
-              <p className="text-lg font-[700] text-white ">Transfer Funds</p>
-            </div>
-            <div className="flex flex-col p-[15px] gap-[10px]">
-              <div className="">
-                <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                  Move your funds securely between wallets, accounts, or trades
-                  with real-time processing and complete transaction
-                  transparency.
+      <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black">
+        <div className="flex flex-1 lg:flex-row flex-col gap-[25px]">
+          <WalletMenu />
+          <div className="flex flex-1 flex-col gap-[40px] lg:mr-[12%] p-[15px]">
+            <div className="flex flex-1 flex-col gap-[20px]">
+              <div className="flex  items-center justify-between ">
+                <p className="text-lg font-semibold text-white flex items-center gap-1">
+                  TRANSFER
                 </p>
               </div>
 
-              <div className="h-full flex flex-col justify-between  gap-[10px]">
+              <div className="flex flex-col  gap-[10px]">
                 {/* Wallet Balance */}
                 <WalletBalance />
 
                 {/* Recipient Wallet */}
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                  <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <div className="flex flex-1 items-center justify-between">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Transfer To
+                      Recipient Wallet
                     </p>
                   </div>
 
-                  <div className="flex flex-col pb-[5px gap-[10px] w-full border- border-tradeAshLight">
-                    <p className="text-tradeFadeWhite text-xs font-medium">
-                      Recipient Wallet
-                    </p>
-
-                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                      <input
-                        className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                        type="text"
-                        placeholder="Username"
-                        onChange={handleUsernameChange}
-                        value={transfer?.username}
-                      />
-                    </div>
+                  <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                    <input
+                      className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                      type="text"
+                      placeholder="Username"
+                      onChange={handleUsernameChange}
+                      value={transfer?.username}
+                    />
                   </div>
 
                   <p className="text-tradeFadeWhite text-xs font-medium">
@@ -312,34 +302,33 @@ const Transfer = () => {
 
                 {/* Amount */}
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                  <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                    <div className="flex gap-1 items-center">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Currency
-                      </p>
-                    </div>
+                  <div className="flex flex-1 items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Enter Amount
+                    </p>
 
-                    <div className="flex gap-1 items-cente">
-                      <div
+                    <div className="flex items-center gap-2">
+                      <p
                         onClick={selectNGN}
                         className={`${
                           transfer?.currency === "NGN"
                             ? "bg-tradeOrange text-black"
-                            : "bg-transparent text-tradeFadeWhite"
-                        } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                            : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
+                        } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
                       >
-                        <p className="text-xs font-semibold">NGN</p>
-                      </div>
-                      <div
+                        NGN
+                      </p>
+
+                      <p
                         onClick={selectUSD}
                         className={`${
                           transfer?.currency === "USD"
                             ? "bg-tradeOrange text-black"
-                            : "bg-transparent text-tradeFadeWhite"
-                        } flex items-center gap-1 border border-tradeAshExtraLight  h-max bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer`}
+                            : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
+                        } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
                       >
-                        <p className="text-xs font-semibold">USD</p>
-                      </div>
+                        USD
+                      </p>
                     </div>
                   </div>
 
@@ -347,27 +336,22 @@ const Transfer = () => {
                     {transfer?.currency === "NGN" ? (
                       // NGN
                       <div className="flex flex-col gap-[10px]">
-                        <div className="flex flex-col gap-[10px] w-full">
-                          <p className="text-tradeFadeWhite text-xs font-medium">
-                            Enter Amount in NGN
-                          </p>
-                          <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                            <input
-                              className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                              type="text"
-                              placeholder={`15,000.000 - 30,000,000.00`}
-                              value={formatWithCommas(transfer?.amount?.NGN)}
-                              onChange={handleNGNAmountChange}
-                              onFocus={(e) =>
-                                (e.target.value = transfer?.amount?.NGN || "")
-                              } // show raw when editing
-                              onBlur={(e) =>
-                                (e.target.value = formatWithCommas(
-                                  transfer?.amount?.NGN
-                                ))
-                              } // format on blur
-                            />
-                          </div>
+                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                          <input
+                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                            type="text"
+                            placeholder={`15,000.000 - 30,000,000.00`}
+                            value={formatWithCommas(transfer?.amount?.NGN)}
+                            onChange={handleNGNAmountChange}
+                            onFocus={(e) =>
+                              (e.target.value = transfer?.amount?.NGN || "")
+                            } // show raw when editing
+                            onBlur={(e) =>
+                              (e.target.value = formatWithCommas(
+                                transfer?.amount?.NGN
+                              ))
+                            } // format on blur
+                          />
                         </div>
 
                         <div>
@@ -385,27 +369,22 @@ const Transfer = () => {
                     ) : (
                       // USD
                       <div className="flex flex-col gap-[10px]">
-                        <div className="flex flex-col gap-[10px] w-full">
-                          <p className="text-tradeFadeWhite text-xs font-medium">
-                            Enter Amount in USD
-                          </p>
-                          <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
-                            <input
-                              className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                              type="text"
-                              placeholder={`10.00 - 20,000.00`}
-                              value={formatWithCommas(transfer?.amount?.USD)}
-                              onChange={handleUSDAmountChange}
-                              onFocus={(e) =>
-                                (e.target.value = transfer?.amount?.USD || "")
-                              } // show raw when editing
-                              onBlur={(e) =>
-                                (e.target.value = formatWithCommas(
-                                  transfer?.amount?.USD
-                                ))
-                              } // format on blur
-                            />
-                          </div>
+                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                          <input
+                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                            type="text"
+                            placeholder={`10.00 - 20,000.00`}
+                            value={formatWithCommas(transfer?.amount?.USD)}
+                            onChange={handleUSDAmountChange}
+                            onFocus={(e) =>
+                              (e.target.value = transfer?.amount?.USD || "")
+                            } // show raw when editing
+                            onBlur={(e) =>
+                              (e.target.value = formatWithCommas(
+                                transfer?.amount?.USD
+                              ))
+                            } // format on blur
+                          />
                         </div>
 
                         <div>
@@ -425,7 +404,7 @@ const Transfer = () => {
                 </div>
 
                 <Button
-                  variant="primary"
+                  variant="secondary"
                   onClick={handleProceed}
                   disabled={transfer?.proceed}
                 >
@@ -433,18 +412,8 @@ const Transfer = () => {
                 </Button>
               </div>
             </div>
-            <div className=" px-[15px]">
-              <div className="h-[100px] border border-tradeAshLight rounded-[15px] p-[12px] bg-tradeAsh">
-                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                  <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                    Events
-                  </p>
-                </div>
-                <div></div>
-              </div>
-            </div>
+            <RecentTransfer />
           </div>
-          <RecentTransfer />
         </div>
       </div>
       <Footer />

@@ -32,19 +32,19 @@ const TransactionCard = ({ transaction }) => {
             <div>
               {transaction?.type === "deposit" ? (
                 <div className="p-[10px] rounded-full bg-tradeAshLight text-lg items-center justify-center">
-                  <IoMdArrowRoundDown className="text-tradeFadeWhite" />
+                  <IoMdArrowRoundDown className="text-white" />
                 </div>
               ) : transaction?.type === "transfer" ? (
                 <div className="p-[10px] rounded-full bg-tradeAshLight text-lg items-center justify-center">
-                  <IoMdArrowRoundUp className="text-tradeFadeWhite text-xl" />
+                  <IoMdArrowRoundUp className="text-white text-xl" />
                 </div>
               ) : transaction?.type === "withdrawal" ? (
                 <div className="p-[10px] rounded-full bg-tradeAshLight text-lg items-center justify-center">
-                  <IoMdArrowRoundUp className="text-tradeFadeWhite text-xl" />
+                  <IoMdArrowRoundUp className="text-white text-xl" />
                 </div>
               ) : (
                 <div className="p-[10px] rounded-full bg-tradeAshLight text-lg items-center justify-center">
-                  <MdOutlineQuestionMark className="text-tradeFadeWhite" />
+                  <MdOutlineQuestionMark className="text-white" />
                 </div>
               )}
             </div>
