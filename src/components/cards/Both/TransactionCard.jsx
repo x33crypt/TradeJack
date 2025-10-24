@@ -22,171 +22,28 @@ const TransactionCard = ({ transaction }) => {
 
   return (
     <>
-      {/* Desktop Card */}
-      <div
-        onClick={() => viewDetails(transaction.reference)}
-        className=" md:fle hidden items-center gap-[10px]  p-[12px] bg-tradeAsh hover:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer"
-      >
-        <div className="flex-1 flex flex-col gap-2 ">
-          <div className="flex gap-[5px] items-center">
-            <div className="flex gap-1 items-center">
-              <MdOutlineDateRange className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-              <p className="text-xs font-medium text-tradeFadeWhite">
-                {date(transaction?.createdAt)}
-              </p>
-            </div>
-          </div>
-          <div className="flex gap-1 items-center">
-            <FaHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-            <p className="text-xs font-medium text-tradeFadeWhite">
-              {shortenID(transaction.reference)}
-            </p>
-          </div>
-        </div>
-
-        <div className="flex-1 flex gap-2">
-          <div>
-            {transaction?.type === "deposit" ? (
-              <div className="p-[10px] rounded-full bg-tradeGreen/5 text-lg items-center justify-center">
-                <IoMdArrowRoundDown className="text-tradeGreen" />
-              </div>
-            ) : transaction?.type === "transfer" ? (
-              <div className="p-[10px] rounded-full bg-red-600/5 text-lg items-center justify-center">
-                <IoMdArrowRoundUp className="text-red-600 text-xl" />
-              </div>
-            ) : transaction?.type === "withdrawal" ? (
-              <div className="p-[10px] rounded-full bg-red-600/5 text-lg items-center justify-center">
-                <IoMdArrowRoundUp className="text-red-600 text-xl" />
-              </div>
-            ) : (
-              <div className="p-[10px] rounded-full bg-tradeFadeWhite/5 text-lg items-center justify-center">
-                <MdOutlineQuestionMark className="text-tradeFadeWhite" />
-              </div>
-            )}
-          </div>
-          <div className="flex flex-col gap-1">
-            <p className="text-xs font-medium text-tradeFadeWhite">
-              {capitalizeFirst(transaction?.type)}
-            </p>
-
-            <p className="text-[13px] font-semibold text-white">
-              {(() => {
-                const { senderUsername, recipientUsername, type } =
-                  transaction || {};
-                if (
-                  senderUsername === "Unknown" &&
-                  recipientUsername === "Unknown" &&
-                  type === "deposit"
-                )
-                  return "Wallet Funding";
-                if (
-                  senderUsername !== "Unknown" &&
-                  recipientUsername === "Unknown" &&
-                  type === "deposit"
-                )
-                  return `@${senderUsername}`;
-                if (
-                  senderUsername === "Unknown" &&
-                  recipientUsername !== "Unknown" &&
-                  type === "transfer"
-                )
-                  return `@${recipientUsername}`;
-                if (
-                  senderUsername === "Unknown" &&
-                  recipientUsername === null &&
-                  type === "withdrawal"
-                )
-                  return `Bank Account`;
-                return "N/A";
-              })()}
-            </p>
-          </div>
-        </div>
-
-        <div className="flex-1 flex flex-col gap-2">
-          <p className="text-xs font-medium text-tradeFadeWhite">Amount</p>
-          <div>
-            {(() => {
-              const { senderUsername, recipientUsername, type, amount } =
-                transaction || {};
-              if (
-                (type === "deposit" && senderUsername === "Unknown") ||
-                (type === "deposit" && senderUsername !== "Unknown")
-              )
-                return (
-                  <p className="text-tradeGreen text-[13px] font-semibold">
-                    + #{toDecimal(amount?.ngn)}
-                  </p>
-                );
-              if (type === "transfer" && recipientUsername !== "Unknown")
-                return (
-                  <p className="text-white text-[13px] font-semibold">
-                    - #{toDecimal(amount?.ngn)}
-                  </p>
-                );
-              if (
-                (type === "withdrawal" && senderUsername === "Unknown") ||
-                (type === "withdrawal" && recipientUsername === null)
-              )
-                return (
-                  <p className="text-white text-[13px] font-semibold">
-                    - #{toDecimal(amount?.ngn)}
-                  </p>
-                );
-              return (
-                <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                  N/A
-                </p>
-              );
-            })()}
-          </div>
-        </div>
-
-        <div className="w-[130px] flex flex-col gap-2">
-          <p className="text-xs font-medium text-tradeFadeWhite">Service Fee</p>
-          <p className="text-[13px] font-semibold text-tradeFadeWhite">#0.00</p>
-        </div>
-
-        <div className="w-[120px] flex flex-col gap-2">
-          <p className="text-xs font-medium text-tradeFadeWhite">Status</p>
-          <p
-            className={`text-xs font-semibold ${
-              transaction?.status === "pending"
-                ? "text-tradeOrange"
-                : transaction?.status === "successful"
-                ? "text-tradeGreen"
-                : transaction?.status === "failed"
-                ? "text-red-600"
-                : "text-tradeAshDark"
-            } `}
-          >
-            {capitalizeFirst(transaction?.status) || "Unknown"}
-          </p>
-        </div>
-      </div>
-
       {/* Mobile Card */}
       <div
         onClick={() => viewDetails(transaction.reference)}
         className="md:hidde flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer"
       >
-        <div className="flex justify-between items-center  ">
+        <div className="flex justify-between  ">
           <div className="flex gap-2">
-            <div className=" flex items-center">
+            <div>
               {transaction?.type === "deposit" ? (
-                <div className="p-[10px] rounded-full bg-tradeGreen/5 text-lg items-center justify-center">
-                  <IoMdArrowRoundDown className="text-tradeGreen" />
+                <div className="p-[10px] rounded-full bg-tradeAshLight text-lg items-center justify-center">
+                  <IoMdArrowRoundDown className="text-tradeFadeWhite" />
                 </div>
               ) : transaction?.type === "transfer" ? (
-                <div className="p-[10px] rounded-full bg-red-600/5 text-lg items-center justify-center">
-                  <IoMdArrowRoundUp className="text-red-600 text-xl" />
+                <div className="p-[10px] rounded-full bg-tradeAshLight text-lg items-center justify-center">
+                  <IoMdArrowRoundUp className="text-tradeFadeWhite text-xl" />
                 </div>
               ) : transaction?.type === "withdrawal" ? (
-                <div className="p-[10px] rounded-full bg-red-600/5 text-lg items-center justify-center">
-                  <IoMdArrowRoundUp className="text-red-600 text-xl" />
+                <div className="p-[10px] rounded-full bg-tradeAshLight text-lg items-center justify-center">
+                  <IoMdArrowRoundUp className="text-tradeFadeWhite text-xl" />
                 </div>
               ) : (
-                <div className="p-[10px] rounded-full bg-tradeFadeWhite/5 text-lg items-center justify-center">
+                <div className="p-[10px] rounded-full bg-tradeAshLight text-lg items-center justify-center">
                   <MdOutlineQuestionMark className="text-tradeFadeWhite" />
                 </div>
               )}
@@ -227,10 +84,6 @@ const TransactionCard = ({ transaction }) => {
                   return "N/A";
                 })()}
               </p>
-
-              <p className="text-xs font-medium text-white">
-                {shortenID(transaction?.reference)}
-              </p>
             </div>
           </div>
           <div className="flex flex-col gap-1 items-end">
@@ -246,7 +99,7 @@ const TransactionCard = ({ transaction }) => {
                   (type === "deposit" && senderUsername !== "Unknown")
                 )
                   return (
-                    <p className="text-tradeGreen text-[13px] font-semibold">
+                    <p className="text-white text-[13px] font-semibold">
                       + #{toDecimal(amount?.ngn)}
                     </p>
                   );
@@ -272,22 +125,9 @@ const TransactionCard = ({ transaction }) => {
                 );
               })()}
             </div>
-            <p
-              className={`text-xs font-semibold ${
-                transaction?.status === "pending"
-                  ? "text-tradeOrange"
-                  : transaction?.status === "successful"
-                  ? "text-tradeGreen"
-                  : transaction?.status === "failed"
-                  ? "text-red-600"
-                  : "text-tradeAshDark"
-              } `}
-            >
-              {capitalizeFirst(transaction?.status) || "Unknown"}
-            </p>
           </div>
         </div>
-        {/* <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
+        <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
           <div className="flex flex-col gap-1">
             <p className="text-xs font-medium text-white">
               {shortenID(transaction?.reference)}
@@ -312,7 +152,7 @@ const TransactionCard = ({ transaction }) => {
             </p>
             <p className="text-xs font-medium text-tradeFadeWhite">Status</p>
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );

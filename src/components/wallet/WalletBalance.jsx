@@ -50,10 +50,14 @@ const WalletBalance = () => {
         </div>
 
         <div
-          onClick={refetch}
+          onClick={() => refetch()}
           className="flex items-center bg-transparent w-max cursor-pointer"
         >
-          <HiRefresh className="text-lg text-tradeFadeWhite" />
+          <HiRefresh
+            className={`${
+              loading ? "animate-spin" : null
+            } text-lg text-tradeFadeWhite`}
+          />
         </div>
       </div>
 

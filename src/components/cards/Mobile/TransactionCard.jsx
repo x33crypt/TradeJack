@@ -23,19 +23,19 @@ const TransactionCard = ({ transaction }) => {
         <div className="flex gap-2">
           <div>
             {transaction?.type === "deposit" ? (
-              <div className="p-[10px] rounded-full bg-tradeGreen/5 text-lg items-center justify-center">
-                <IoMdArrowRoundDown className="text-tradeGreen" />
+              <div className="p-[10px] rounded-full bg-tradeAshLight text-lg items-center justify-center">
+                <IoMdArrowRoundDown className="text-tradeFadeWhite" />
               </div>
             ) : transaction?.type === "transfer" ? (
-              <div className="p-[10px] rounded-full bg-red-600/5 text-lg items-center justify-center">
-                <IoMdArrowRoundUp className="text-red-600 text-xl" />
+              <div className="p-[10px] rounded-full bg-tradeAshLight text-lg items-center justify-center">
+                <IoMdArrowRoundUp className="text-tradeFadeWhite text-xl" />
               </div>
             ) : transaction?.type === "withdrawal" ? (
-              <div className="p-[10px] rounded-full bg-red-600/5 text-lg items-center justify-center">
-                <IoMdArrowRoundUp className="text-red-600 text-xl" />
+              <div className="p-[10px] rounded-full bg-tradeAshLight text-lg items-center justify-center">
+                <IoMdArrowRoundUp className="text-tradeFadeWhite text-xl" />
               </div>
             ) : (
-              <div className="p-[10px] rounded-full bg-tradeFadeWhite/5 text-lg items-center justify-center">
+              <div className="p-[10px] rounded-full bg-tradeAshLight text-lg items-center justify-center">
                 <MdOutlineQuestionMark className="text-tradeFadeWhite" />
               </div>
             )}
@@ -91,7 +91,7 @@ const TransactionCard = ({ transaction }) => {
                 (type === "deposit" && senderUsername !== "Unknown")
               )
                 return (
-                  <p className="text-tradeGreen text-[13px] font-semibold">
+                  <p className="text-white text-[13px] font-semibold">
                     + #{toDecimal(amount?.ngn)}
                   </p>
                 );
