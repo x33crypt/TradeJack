@@ -4,7 +4,7 @@ import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoMdArrowDropright } from "react-icons/io";
 
-const CreateMenu = () => {
+const CreateMenu = ({ stepOne, stepTwo, stepThree, preview }) => {
   const navigateTo = useNavigate();
 
   return (
@@ -26,25 +26,25 @@ const CreateMenu = () => {
           </div>
         </div> */}
         <div className="flex flex-col gap-[15px]">
-          <div className="flex items-center gap-2">
+          <div onClick={stepOne} className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               STEP 1
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div onClick={stepTwo} className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               STEP 2
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div onClick={stepThree} className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               STEP 3
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div onClick={preview} className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               PREVIEW

@@ -6,17 +6,17 @@ const Stepper = ({ totalSteps = 3, currentStep = 1 }) => {
   return (
     <div className="flex flex-col gap-2 w-full">
       {/* Labels Row */}
-      <div className="flex justify-between items-center w-full px-1 bg-tradeOrang">
+      <div className="flex justify-between items-center w-full px- bg-tradeOrang">
         {steps.map((step, index) => (
           <div
             key={step}
             className={`text-sm font-bold ${
               index === steps.length - 1
-                ? "text-tradeOrange"
+                ? "text-tradeFadeWhite"
                 : "text-tradeFadeWhite"
             }`}
           >
-            {index === steps.length - 1 ? "Finish" : `Step ${step}`}
+            {index === steps.length - 1 ? "PREVIEW" : `STEP ${step}`}
           </div>
         ))}
       </div>

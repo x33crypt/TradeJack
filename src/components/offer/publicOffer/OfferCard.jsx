@@ -22,7 +22,7 @@ const OfferCard = ({ offer }) => {
       ...prev,
       id: offerId,
     }));
-    navigateTo(`/offers/explore/${offerId}`);
+    navigateTo(`/offer/explore/${offerId}`);
   };
 
   return (

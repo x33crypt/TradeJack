@@ -29,7 +29,7 @@ const SettingMenu = () => {
         </div> */}
         <div className="flex flex-col gap-[15px]">
           <div
-            onClick={() => navigateTo("/account")}
+            onClick={() => navigateTo("/profile")}
             className="flex items-center gap-2"
           >
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />

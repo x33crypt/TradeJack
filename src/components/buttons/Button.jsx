@@ -57,7 +57,7 @@ const Button = ({
         disabled ? "opacity-50 cursor-not-allowed" : ""
       }`}
     >
-      {children}
+      {children.toUpperCase()}
     </button>
   );
 };

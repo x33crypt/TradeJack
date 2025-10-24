@@ -1,45 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaRegBell } from "react-icons/fa";
 import landingImg4 from "../../assets/landingImg4.JPG";
-import { FiSearch } from "react-icons/fi";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { IoCloseSharp } from "react-icons/io5";
-import { IoWalletOutline } from "react-icons/io5";
-import { RiExchangeFill } from "react-icons/ri";
-import { RiExchange2Fill } from "react-icons/ri";
-import { FaUserFriends } from "react-icons/fa";
-import { TbDashboardFilled } from "react-icons/tb";
-import { RiExchangeBoxFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-import { TbFileLike } from "react-icons/tb";
-import { BsChatQuote } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
-import { TbFileInvoice } from "react-icons/tb";
 import Button from "../buttons/Button";
-import { IoWallet } from "react-icons/io5";
 import { useProfileNav } from "@/context/otherContext/ProfileNavContext";
 import LockByScroll from "./LockByScroll";
-import { HiGiftTop } from "react-icons/hi2";
-import { RiExchangeBoxLine } from "react-icons/ri";
-import { HiOutlineGlobe } from "react-icons/hi";
-import { HiViewGridAdd } from "react-icons/hi";
-import { TiFlashOutline } from "react-icons/ti";
-import { FiUserPlus } from "react-icons/fi";
-import { RiExchangeFundsLine } from "react-icons/ri";
-import { MdOutlinePersonSearch } from "react-icons/md";
-import SmallButton from "../buttons/SmallButton";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropright } from "react-icons/io";
-import { FaRegUser } from "react-icons/fa";
 import { RiCopperCoinFill } from "react-icons/ri";
 import { PiFlagCheckeredBold } from "react-icons/pi";
 import { TbArrowsSort } from "react-icons/tb";
 import { FaRegSmileWink } from "react-icons/fa";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { useBalance } from "@/context/userContext/BalanceContext";
-import { MdLabelImportantOutline } from "react-icons/md";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -66,7 +41,7 @@ const InAppNav = () => {
     const interval = setInterval(() => {
       setAnimateSoon(true);
       setTimeout(() => setAnimateSoon(false), 600);
-    }, 8000); // every 20s
+    }, 10000); // every 20s
 
     return () => clearInterval(interval);
   }, []);
@@ -169,16 +144,6 @@ const InAppNav = () => {
             </p>
           </div>
 
-          <div
-            onClick={() => navigateTo("/partners")}
-            className="flex flex-col items-center gap-1"
-          >
-            {/* <IoMdArrowDropdown className="text-lg text-tradeFadeWhite" /> */}
-            <p className="text-xs font-bold text-tradeFadeWhite hover:text-white  leading-none cursor-pointer  transition-all duration-300">
-              TRADE PARTNERS
-            </p>
-          </div>
-
           <div className="flex  items-center gap-2">
             <p className="text-xs font-bold text-tradeFadeWhite hover:text-white  leading-none cursor-pointer  transition-all duration-300">
               TOOLS BOX
@@ -213,6 +178,11 @@ const InAppNav = () => {
               {balance?.currency}
             </p>
             <TbArrowsSort className="text-[16px]" />
+          </div>
+          <div className=" w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            <p className="text-xs text-white font-semibold">
+              <span className="text-tradeFadeWhite">LIMIT : $</span> 2,530,000
+            </p>
           </div>
           <div className="w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
             <p className="text-xs text-white font-semibold">2,530</p>

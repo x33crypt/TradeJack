@@ -2,27 +2,26 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { IoMdArrowDropright } from "react-icons/io";
 
-
-const WalletMenu = () => {
+const KycMenu = () => {
   const navigateTo = useNavigate();
   return (
     <div className="hidden lg:flex sticky top-[70px] h-max w-[250px] gap-[10px] flex-col ">
       <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
         {/* <div className="flex px-2.5 py-1.5 gap-2 items-center bg-tradeAsh flex-1 rounded-sm ">
-          <div className="text-lg text-tradeFadeWhite">
-            <HiOutlineMagnifyingGlass />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Search"
-              className="bg-transparent w-[150px] h-full text-[13px] font-medium outline-none text-white placeholder:text-tradeFadeWhite"
-            />
-          </div>
-          <div className="text-lg text-tradeFadeWhite">
-            <IoCloseSharp />
-          </div>
-        </div> */}
+            <div className="text-lg text-tradeFadeWhite">
+              <HiOutlineMagnifyingGlass />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Search"
+                className="bg-transparent w-[150px] h-full text-[13px] font-medium outline-none text-white placeholder:text-tradeFadeWhite"
+              />
+            </div>
+            <div className="text-lg text-tradeFadeWhite">
+              <IoCloseSharp />
+            </div>
+          </div> */}
         <div className="flex flex-col gap-[15px]">
           <div
             onClick={() => navigateTo("/wallet/deposit")}
@@ -75,4 +74,4 @@ const WalletMenu = () => {
   );
 };
 
-export default WalletMenu;
+export default KycMenu;

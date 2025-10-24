@@ -38,7 +38,7 @@ const Settings = () => {
             </div>
           </div>
           {/* Mobile */}
-          <div className="lg:hidden flex flex-1 flex-col gap-[20px] lg:mr-[12%] p-[15px]">
+          <div className="lg:hidden flex flex-1 flex-col gap-[20px] lg:mr-[12%] p-[15px]">s
             <div className="flex items-center justify-between ">
               <p className="text-lg font-semibold text-white flex items-center gap-1">
                 SETTINGS
@@ -47,7 +47,7 @@ const Settings = () => {
             <div className="flex flex-col gap-[20px] ">
               <div className="flex flex-col gap-[15px]">
                 <div
-                  onClick={() => navigateTo("/account")}
+                  onClick={() => navigateTo("/profile")}
                   className="flex items-center gap-2"
                 >
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />

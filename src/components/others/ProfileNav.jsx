@@ -1,37 +1,14 @@
 import React, { useState } from "react";
 import LockByScroll from "./LockByScroll";
 import { useProfileNav } from "../../context/otherContext/ProfileNavContext";
-import { IoClose } from "react-icons/io5";
-import landingImg4 from "../../assets/landingImg4.JPG";
 import Button from "../buttons/Button";
 import { useNavigate } from "react-router-dom";
-import { RiShieldUserFill } from "react-icons/ri";
-import { FaUserCheck } from "react-icons/fa";
-import { logout } from "@/utils/auth/logout";
-import { useToast } from "@/context/otherContext/ToastContext";
-import { FaUser } from "react-icons/fa";
-import { IoMdSettings } from "react-icons/io";
-import { BsFillGiftFill } from "react-icons/bs";
-import { RiStarSmileFill } from "react-icons/ri";
-import { MdOutlineLogin } from "react-icons/md";
-import { RiDashboard3Fill } from "react-icons/ri";
 import { useLogOut } from "@/context/userContext/LogOutContext";
+import { IoMdArrowDropright } from "react-icons/io";
 
 const ProfileNav = () => {
   const { show, setShow } = useProfileNav();
-  const [loading, setLoading] = useState(false);
   const { state, setState } = useLogOut();
-  const { toast, setToast } = useToast();
-
-  const toAccount = () => {
-    setShow(false);
-    navigateTo("/account");
-  };
-
-  const toSettings = () => {
-    setShow(false);
-    navigateTo("/settings");
-  };
 
   const close = () => {
     setShow(false);
@@ -49,64 +26,80 @@ const ProfileNav = () => {
       {show && (
         <div>
           <LockByScroll />
-          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col gap-[40px] items-cente w-[300px">
-              <div className="grid grid-cols-3  gap-[15px]">
-                <div className="flex flex-col items-center gap-1">
-                  <div
-                    onClick={toAccount}
-                    className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-                  >
-                    <FaUser className="text-2xl" />
-                  </div>
-                  <p className="text-white text-[13px]">Profile</p>
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <RiDashboard3Fill className="text-2xl" />
-                  </div>
-                  <p className="text-white text-[13px]">Limits</p>
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[15px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
+            <div className="flex flex-col gap-[20px] w-[250px]">
+              <div className="flex flex-col gap-[15px]">
+                <div
+                  onClick={() => {
+                    navigateTo("/profile");
+                    setShow(false);
+                  }}
+                  className="flex items-center gap-2"
+                >
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                    PROFILE
+                  </p>
                 </div>
                 <div
-                  onClick={toSettings}
-                  className="flex flex-col items-center gap-1"
+                  onClick={() => {
+                    navigateTo("/kyc/levels");
+                    setShow(false);
+                  }}
+                  className="flex items-center gap-2"
                 >
-                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <IoMdSettings className="text-2xl" />
-                  </div>
-                  <p className="text-white text-[13px]">Settings</p>
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <BsFillGiftFill className="text-2xl" />
-                  </div>
-                  <p className="text-white text-[13px]">Rewards</p>
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <RiStarSmileFill className="text-2xl" />
-                  </div>
-                  <p className="text-white text-[13px]">Rate us</p>
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                    KYC LEVELS
+                  </p>
                 </div>
                 <div
-                  onClick={handleLogout}
-                  className="flex flex-col items-center gap-1 "
+                  onClick={() => {
+                    navigateTo("/settings");
+                    setShow(false);
+                  }}
+                  className="flex items-center gap-2"
                 >
-                  <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAsh border border-tradeAshExtraLight p-[15px] h-max rounded-[15px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <MdOutlineLogin className="text-2xl" />
-                  </div>
-                  <p className="text-white text-[13px]">Log Out</p>
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                    SETTINGS
+                  </p>
+                </div>
+                <div
+                  // onClick={() => {
+                  //   navigateTo("/settings");
+                  //   setShow(false);
+                  // }}
+                  className="flex items-center gap-2"
+                >
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                    REWARDS
+                  </p>
+                </div>
+                <div
+                  // onClick={() => {
+                  //   navigateTo("/settings");
+                  //   setShow(false);
+                  // }}
+                  className="flex items-center gap-2"
+                >
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                    REFERALS
+                  </p>
+                </div>
+                <div onClick={handleLogout} className="flex items-center gap-2">
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-red-600 hover:text-red-600/60 text-base font-bold transition-all duration-300 cursor-pointer">
+                    LOG OUT
+                  </p>
                 </div>
               </div>
 
-              <div className="flex w-full justify-center">
-                <div
-                  onClick={close}
-                  className="w-max flex text-white hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-                >
-                  <IoClose className="text-[16px]" />
-                </div>
-              </div>
+              <Button onClick={close} variant="outline">
+                CLOSE
+              </Button>
             </div>
           </div>
         </div>

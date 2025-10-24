@@ -171,7 +171,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                 </div>
 
-                <div className="flex lg:hidde gap-[10px] flex-col">
+                <div className="flex gap-[10px] flex-col">
                   <div className="flex flex-col lg:flex-row gap-[10px]">
                     <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh">
                       <div className="flex flex-col gap-[15px]">
@@ -284,7 +284,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                 </div>
 
-                <div className="flex flex-1 flex-col min-h-[120px]  gap-[10px]">
+                <div className="flex flex-1 flex-col min-h-[120px] gap-[10px]">
                   <div className="flex flex-col gap-[10px] w-full ">
                     <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                       <div className="flex items-center justify-between w-full mt-[1px]">
@@ -397,7 +397,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </p>
                     </div>
                     <div className="w-full flex gap-2 flex-grow flex-wrap">
-                      {offer?.tags ? (
+                      {offer?.tags?.length > 0 ? (
                         offer?.tags?.map((term, index) => (
                           <p className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight text-[13px] font-semibold text-white">
                             {term}
@@ -420,7 +420,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
 
                       <p className="text-[13px] text-white font-semibold">
-                        {offer?.instructions || "N/A"}
+                        {offer?.instructions ? offer?.instructions : "N/A"}
                       </p>
                     </div>
                   </div>

@@ -10,7 +10,6 @@ import { FaMinus } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { currencies } from "@/hooks/others/useCurrencies";
-import { useExchangeRate } from "@/hooks/others/useExchangeRate";
 import Button from "@/components/buttons/Button";
 import { useToast } from "@/context/otherContext/ToastContext";
 import { useServices } from "@/hooks/others/useServices";
@@ -19,6 +18,13 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 import { useUserOffer } from "@/context/userContext/OffersContext";
 import { publishOffer } from "@/utils/offer/publishOffer";
 import CreateMenu from "@/components/offer/userOffer/CreateMenu";
+import { CiBank } from "react-icons/ci";
+import { HiOutlineGift } from "react-icons/hi2";
+import { IoCardOutline } from "react-icons/io5";
+import { GiTwoCoins } from "react-icons/gi";
+import { TbAssemblyFilled } from "react-icons/tb";
+import { windowFormatHour } from "@/utils/windowFormatHour";
+import Stepper from "@/components/others/Steppers";
 
 const CreateOffer = () => {
   const topRef = useRef(null);
@@ -26,11 +32,6 @@ const CreateOffer = () => {
   const { toast, setToast } = useToast();
   const { select, setSelect } = useSelectElement();
   const { serviceTypes, fullData } = useServices();
-  const { rateInfo } = useExchangeRate(
-    createOffer.currency.code ? createOffer.currency.code : "USD",
-    "NGN",
-    createOffer?.margin
-  );
 
   // handling serviceType changes
   useEffect(() => {
@@ -512,83 +513,6 @@ const CreateOffer = () => {
 
   const navigateTo = useNavigate();
 
-  const proceedToSummary = () => {
-    const { termTags, instruction } = createOffer;
-
-    const showToast = (message) => {
-      setToast({
-        ...toast,
-        error: true,
-        errorMessage: message,
-      });
-    };
-
-    if (!termTags || termTags.length === 0) {
-      return showToast("Missing required field: Offer terms tag");
-    }
-
-    if (!instruction) {
-      return showToast("Missing required field: Trade instruction");
-    }
-
-    navigateTo("/offers/user/summary");
-  };
-
-  const handlepublish = async () => {
-    const { termTags, instruction } = createOffer;
-
-    const showToast = (message) => {
-      setToast({
-        ...toast,
-        error: true,
-        errorMessage: message,
-      });
-    };
-
-    if (!termTags || termTags.length === 0) {
-      return showToast("Missing required field: Terms tag");
-    }
-
-    if (!instruction) {
-      return showToast("Missing required field: instruction");
-    }
-
-    setCreateOffer((prev) => ({
-      ...prev,
-      loading: true,
-    }));
-
-    console.log("Publishing offer at summary:", createOffer);
-
-    const result = await publishOffer(createOffer);
-
-    console.log("Offer published:", result);
-
-    if (result.success) {
-      const offerId = result.offerId;
-
-      console.log("Offer ID:", offerId);
-
-      setCreateOffer((prev) => ({
-        ...prev,
-        loading: false,
-        success: true,
-        offerId: offerId,
-      }));
-    } else {
-      setCreateOffer((prev) => ({
-        ...prev,
-        loading: false,
-      }));
-
-      setToast({
-        ...toast,
-        error: true,
-        errorMessage: result.error,
-      });
-    }
-  };
-
   const scrollToTop = () => {
     topRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -597,40 +521,10 @@ const CreateOffer = () => {
     scrollToTop();
   }, []);
 
-  const handleViewOffers = () => {
-    const id = createOffer?.offerId;
-
-    if (!id) {
-      console.error("Offer ID is missing. Cannot navigate.");
-      return;
-    }
-
-    // Navigate first
-    navigateTo(`/offers/user/${id}`);
-
-    // Then reset offer details
-    setCreateOffer({
-      step: 1,
-      serviceType: "Online Wallet Transfer",
-      service: "",
-      serviceId: "",
-      currency: { code: "USD", name: " United States dollar" },
-      minimum: "",
-      maximum: "",
-      margin: 4,
-      vendorPaymentWindow: { minutes: 0, hours: 0 },
-      tradersPaymentWindow: { minutes: 0, hours: 0 },
-      termTags: [],
-      instruction: "",
-      loading: false,
-      success: false,
-      offerId: "",
-    });
-  };
-
   const close = () => {
     setCreateOffer({
       step: 1,
+      title: "Basics",
       serviceType: "Online Wallet Transfer",
       service: "",
       serviceId: "",
@@ -700,7 +594,16 @@ const CreateOffer = () => {
   };
 
   const stepThree = () => {
-    const { margin, vendorPaymentWindow, tradersPaymentWindow } = createOffer;
+    const {
+      serviceType,
+      service,
+      currency,
+      minimum,
+      maximum,
+      margin,
+      vendorPaymentWindow,
+      tradersPaymentWindow,
+    } = createOffer;
 
     const showToast = (message) => {
       setToast({
@@ -710,14 +613,35 @@ const CreateOffer = () => {
       });
     };
 
-    const isWindowValid = (window) =>
-      window && (Number(window?.hours) > 0 || Number(window?.minutes) > 0);
+    if (!serviceType) {
+      return showToast("Missing required field: Service Type");
+    }
+
+    if (!service) {
+      const label = getMissingServiceLabel(serviceType);
+      return showToast(`Missing required field: ${label}`);
+    }
+
+    if (!currency?.code && !currency?.name) {
+      return showToast("Missing required field: Select Currency");
+    }
+
+    if (!minimum) {
+      return showToast("Missing required field: Minimum trade limit");
+    }
+
+    if (!maximum) {
+      return showToast("Missing required field: Maximum trade limit");
+    }
 
     if (margin <= 3) {
       return showToast(
         "Profit margin must be greater than 3% to publish your offer."
       );
     }
+
+    const isWindowValid = (window) =>
+      window && (Number(window?.hours) > 0 || Number(window?.minutes) > 0);
 
     if (!isWindowValid(tradersPaymentWindow)) {
       return showToast("Missing required field: Transfer window.");
@@ -736,12 +660,182 @@ const CreateOffer = () => {
     scrollToTop();
   };
 
+  const preview = () => {
+    const {
+      serviceType,
+      service,
+      currency,
+      minimum,
+      maximum,
+      margin,
+      vendorPaymentWindow,
+      tradersPaymentWindow,
+      termTags,
+      instruction,
+    } = createOffer;
+
+    const showToast = (message) => {
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: message,
+      });
+    };
+
+    if (!serviceType) {
+      return showToast("Missing required field: Service Type");
+    }
+
+    if (!service) {
+      const label = getMissingServiceLabel(serviceType);
+      return showToast(`Missing required field: ${label}`);
+    }
+
+    if (!currency?.code && !currency?.name) {
+      return showToast("Missing required field: Select Currency");
+    }
+
+    if (!minimum) {
+      return showToast("Missing required field: Minimum trade limit");
+    }
+
+    if (!maximum) {
+      return showToast("Missing required field: Maximum trade limit");
+    }
+
+    if (margin <= 3) {
+      return showToast(
+        "Profit margin must be greater than 3% to publish your offer."
+      );
+    }
+
+    const isWindowValid = (window) =>
+      window && (Number(window?.hours) > 0 || Number(window?.minutes) > 0);
+
+    if (!isWindowValid(tradersPaymentWindow)) {
+      return showToast("Missing required field: Transfer window.");
+    }
+
+    if (!isWindowValid(vendorPaymentWindow)) {
+      return showToast("Missing required field: Release window.");
+    }
+
+    if (!termTags || termTags.length === 0) {
+      return showToast("Missing required field: Offer terms tag");
+    }
+
+    if (!instruction) {
+      return showToast("Missing required field: Trade instruction");
+    }
+
+    setCreateOffer((prev) => ({
+      ...prev,
+      step: 4,
+      title: "Preview",
+    }));
+
+    scrollToTop();
+  };
+
+  const assetTypeIcons = {
+    "Online Wallet Transfer": TbAssemblyFilled,
+    "Bank Transfer": CiBank,
+    "Gift Cards Exchange": HiOutlineGift,
+    "Card-Based Spending": IoCardOutline,
+    "Crypto Trading": GiTwoCoins,
+  };
+
+  // Get the icon component based on the full service type
+  const Icon = assetTypeIcons[createOffer?.serviceType];
+
+  const edit = () => {
+    setCreateOffer((prev) => ({
+      ...prev,
+      step: 1,
+      title: "Basics",
+    }));
+  };
+
+  const handlepublish = async () => {
+    setCreateOffer((prev) => ({
+      ...prev,
+      loading: true,
+    }));
+
+    console.log("Publishing offer at summary:", createOffer);
+
+    const result = await publishOffer(createOffer);
+
+    console.log("Offer published:", result);
+
+    if (result.success) {
+      const offerId = result.offerId;
+
+      navigateTo("/offers/user/create");
+
+      setCreateOffer((prev) => ({
+        ...prev,
+        step: 1,
+        loading: false,
+        success: true,
+        offerId: offerId,
+      }));
+    } else {
+      setCreateOffer((prev) => ({
+        ...prev,
+        loading: false,
+      }));
+
+      setToast({
+        ...toast,
+        error: true,
+        errorMessage: result.error,
+      });
+    }
+  };
+
+  const details = () => {
+    const id = createOffer?.offerId;
+
+    if (!id) {
+      console.error("Offer ID is missing. Cannot navigate.");
+      return;
+    }
+
+    // Navigate first
+    navigateTo(`/offers/user/${id}`);
+
+    // Then reset offer details
+    setCreateOffer({
+      step: 1,
+      serviceType: "Online Wallet Transfer",
+      service: "",
+      serviceId: "",
+      currency: { code: "USD", name: " United States dollar" },
+      minimum: "",
+      maximum: "",
+      margin: 4,
+      vendorPaymentWindow: { minutes: 0, hours: 0 },
+      tradersPaymentWindow: { minutes: 0, hours: 0 },
+      termTags: [],
+      instruction: "",
+      loading: false,
+      success: false,
+      offerId: "",
+    });
+  };
+
   return (
     <>
       <InAppNav />
       <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black">
         <div className="flex flex-1 lg:flex-row flex-col gap-[25px]">
-          <CreateMenu />
+          <CreateMenu
+            stepOne={stepOne}
+            stepTwo={stepTwo}
+            stepThree={stepThree}
+            preview={preview}
+          />
 
           <div className="flex flex-1 flex-col gap-[40px] lg:mr-[12%] p-[15px]">
             <div className="flex flex-1 flex-col gap-[20px]">
@@ -751,30 +845,12 @@ const CreateOffer = () => {
                 </p>
               </div>
 
-              <div className="flex lg:hidden items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    STEP 1
-                  </p>
-
-                  <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    STEP 2
-                  </p>
-
-                  <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    STEP 3
-                  </p>
-
-                  <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    PREVIEW
-                  </p>
-                </div>
-              </div>
+              <Stepper totalSteps={"4"} currentStep={createOffer?.step} />
 
               <div
                 className={` ${
                   createOffer?.step === 1 ? "flex" : "hidden"
-                } flex-col gap-[40px] h-full justify-between`}
+                } flex-col gap-[20px] h-full justify-between`}
               >
                 <div className="flex flex-col gap-[25px]">
                   <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
@@ -949,14 +1025,14 @@ const CreateOffer = () => {
                 </div>
 
                 <Button onClick={stepTwo} variant="secondary">
-                  Proceed
+                  PROCEED
                 </Button>
               </div>
 
               <div
                 className={` ${
                   createOffer?.step === 2 ? "flex" : "hidden"
-                } flex-col gap-[40px] h-full justify-between`}
+                } flex-col gap-[20px] h-full justify-between`}
               >
                 <div className="flex flex-col gap-[25px]">
                   <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
@@ -1172,11 +1248,11 @@ const CreateOffer = () => {
 
                 <div className="flex flex-col gap-[10px]">
                   <Button onClick={stepThree} variant="secondary">
-                    Proceed
+                    PROCEED
                   </Button>
 
                   <Button onClick={stepOne} variant="outline">
-                    Previous
+                    PREVIOUS
                   </Button>
                 </div>
               </div>
@@ -1184,7 +1260,7 @@ const CreateOffer = () => {
               <div
                 className={` ${
                   createOffer?.step === 3 ? "flex" : "hidden"
-                } flex-col gap-[40px] h-full justify-between`}
+                } flex-col gap-[20px] h-full justify-between`}
               >
                 <div className="flex flex-col gap-[25px]">
                   <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
@@ -1290,29 +1366,212 @@ const CreateOffer = () => {
                 </div>
 
                 <div className="flex flex-col gap-[10px]">
-                  <div className="lg:flex hidden">
-                    <Button
-                      onClick={handlepublish}
-                      disabled={createOffer?.loading}
-                      variant="secondary"
-                    >
-                      Go Live
-                    </Button>
-                  </div>
+                  <Button onClick={preview} variant="secondary">
+                    PREVIEW
+                  </Button>
 
-                  <div className="flex lg:hidden">
-                    <Button onClick={proceedToSummary} variant="secondary">
-                      Preview Offer
-                    </Button>
-                  </div>
+                  <Button onClick={stepTwo} variant="outline">
+                    PREVIOUS
+                  </Button>
+                </div>
+              </div>
 
-                  <div
-                    className={`${createOffer?.loading ? "hidden" : "flex"}`}
+              <div
+                className={` ${
+                  createOffer?.step === 4 ? "flex" : "hidden"
+                } flex-col gap-[20px] h-full justify-between`}
+              >
+                <div className="flex flex-col gap-[25px]">
+                  <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                    Carefully double-check all details of your offer before
+                    publishing.
+                  </p>
+                  <div className="flex flex-1 flex-col gap-[20px]">
+                    <div className="flex items-center gap-2  pb-[12px]">
+                      <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeAshLight  text-white border border-tradeAshExtraLight text-xl leading-none items-center justify-center">
+                        {Icon && <Icon className="" />}
+                      </div>
+
+                      <div className="flex flex-col gap-[5px] ">
+                        <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-normal">
+                          {createOffer?.service || "NA"}
+                        </p>
+                        <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
+                          {createOffer?.serviceType || "NA"}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-[10px]">
+                      <div className="flex flex-col justify-between flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                        <div className="flex items-center justify-between w-full mt-[1px]">
+                          <div className="flex justify-between border-b border-tradeAshLight flex-1 pb-[10px]">
+                            <p className="text-[13px] text-white font-semibold">
+                              Rate
+                            </p>
+                          </div>
+
+                          <p className="text-white text-sm font-semibold leading-none">
+                            1,250/{createOffer?.currency?.code || "N/A"}
+                          </p>
+                        </div>
+
+                        <div className="w-full flex flex-col gap-1">
+                          <div className="flex items-center justify-between">
+                            <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                              Margin
+                            </p>
+
+                            <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                              {createOffer?.margin || "N/A"}%
+                            </p>
+                          </div>
+
+                          <div className="flex items-center justify-between">
+                            <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                              Currency
+                            </p>
+                            <p className="text-[13px] text-white font-semibold">
+                              {createOffer?.currency?.name}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-1 flex-col justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                        <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                          <p className="text-[13px] text-white font-semibold">
+                            Purchase limits
+                          </p>
+                        </div>
+
+                        <div className="w-full flex flex-col gap-1">
+                          <div className="flex items-center justify-between">
+                            <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                              Minimum
+                            </p>
+
+                            <p className="text-white text-[13px]  font-semibold">
+                              {createOffer?.minimum !== "" &&
+                              createOffer?.currency?.code
+                                ? `${Number(
+                                    createOffer.minimum
+                                  ).toLocaleString()} ${
+                                    createOffer.currency.code
+                                  }`
+                                : "0.00"}
+                            </p>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                              Maximum
+                            </p>
+
+                            <p className="text-white text-[13px] font-semibold">
+                              {createOffer?.maximum !== "" &&
+                              createOffer?.currency?.code
+                                ? `${Number(
+                                    createOffer.maximum
+                                  ).toLocaleString()} ${
+                                    createOffer.currency.code
+                                  }`
+                                : "0.00"}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                        <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                          <p className="text-[13px] text-white font-semibold">
+                            Payment Window
+                          </p>
+                        </div>
+
+                        <div className="w-full flex flex-col gap-1">
+                          <div className="flex items-center justify-between">
+                            <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                              Transfer
+                            </p>
+
+                            <p className="text-white text-[13px]  font-semibold">
+                              {windowFormatHour(
+                                createOffer?.tradersPaymentWindow?.hours,
+                                createOffer?.tradersPaymentWindow?.minutes
+                              )}
+                            </p>
+                          </div>
+
+                          <div className="flex items-center justify-between">
+                            <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                              Release
+                            </p>
+
+                            <p className="text-white text-[13px] font-semibold">
+                              {windowFormatHour(
+                                createOffer?.vendorPaymentWindow?.hours,
+                                createOffer?.vendorPaymentWindow?.minutes
+                              )}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex  flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                        <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                          <p className="text-[13px] text-white font-semibold">
+                            Tags
+                          </p>
+                        </div>
+                        <div className="w-full flex gap-2 flex-grow flex-wrap">
+                          {createOffer?.termTags?.length > 0 ? (
+                            createOffer.termTags.map((term, index) => (
+                              <p
+                                key={index}
+                                className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight text-[13px] font-semibold text-white"
+                              >
+                                {term}
+                              </p>
+                            ))
+                          ) : (
+                            <p className="text-[13px] font-semibold text-white">
+                              N/A
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="flex-1 flex md:flex-row flex-col flex-wrap flex-grow gap-[10px] ">
+                        <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                          <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                            <p className="text-[13px] text-white font-semibold">
+                              Instructions
+                            </p>
+                          </div>
+
+                          <p className="text-[13px] text-white font-semibold">
+                            {createOffer?.instruction
+                              ? createOffer?.instruction
+                              : "N/A"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-[10px]">
+                  <Button
+                    onClick={handlepublish}
+                    variant="secondary"
+                    disabled={createOffer?.loading}
                   >
-                    <Button onClick={stepTwo} variant="outline">
-                      Make Changes
-                    </Button>
-                  </div>
+                    PUBLISH
+                  </Button>
+
+                  <Button onClick={edit} variant="outline">
+                    EDIT
+                  </Button>
                 </div>
               </div>
             </div>
@@ -1325,7 +1584,7 @@ const CreateOffer = () => {
           <LockByScroll />
 
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[250px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">Offer Created</p>
 
@@ -1342,19 +1601,19 @@ const CreateOffer = () => {
                     </div>
 
                     <p className="text-[13px] font-semibold text-white">
-                      Your offer is live!
+                      YOUR OFFER IS LIVE !
                     </p>
                   </div>
 
                   <div className="w-full flex flex-col gap-1 bg-tradeAshLigh rounded-[15px]">
                     <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed text-center">
-                      Manage, edit, or pause it whenever you need, giving you
+                      Manage, edit, or pause it whenever you need. Giving you
                       full control over how and when your offer is available.
                     </p>
                   </div>
                 </div>
 
-                <Button onClick={handleViewOffers} variant="outline">
+                <Button onClick={details} variant="outline">
                   View Details
                 </Button>
               </div>

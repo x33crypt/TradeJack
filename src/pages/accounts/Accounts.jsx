@@ -266,12 +266,10 @@ const Accounts = () => {
                             </p>
                           </div>
 
-                          <div className="">
-                            <p className="text-xs text-tradeFadeWhite font-medium">
-                              You don’t have any linked accounts yet. Link one
-                              now for quick, secure withdrawals.
-                            </p>
-                          </div>
+                          <p className="text-xs text-tradeFadeWhite font-medium">
+                            You don’t have any linked accounts yet. Link one now
+                            for quick, secure withdrawals.
+                          </p>
                         </div>
                       )}
                     </div>
