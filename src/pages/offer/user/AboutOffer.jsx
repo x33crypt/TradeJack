@@ -1,6 +1,6 @@
 import Footer from "@/components/others/Footer";
 import InAppNav from "@/components/others/InAppNav";
-import OfferFeedback from "@/components/offer/global/OfferFeedback";
+import OfferFeedback from "@/components/offer/Feedbacks";
 import OfferDetails from "@/components/offer/userOffer/OfferDetails";
 import OfferInstruction from "@/components/offer/userOffer/OfferInstruction";
 import LimitMargin from "@/components/offer/userOffer/OfferLimitMargin";

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Loading from "../others/Loading";
 import NetworkError from "../others/NetworkError";
 
-const Balance = ({ dashboard, loading }) => {
+const Hero = ({ dashboard, loading }) => {
   const [dateTime, setDateTime] = useState({ date: "", time: "" });
 
   useEffect(() => {
@@ -60,4 +60,4 @@ const Balance = ({ dashboard, loading }) => {
   );
 };
 
-export default Balance;
+export default Hero;

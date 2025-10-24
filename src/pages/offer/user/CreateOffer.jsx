@@ -14,17 +14,10 @@ import { useExchangeRate } from "@/hooks/others/useExchangeRate";
 import Button from "@/components/buttons/Button";
 import { useToast } from "@/context/otherContext/ToastContext";
 import { useServices } from "@/hooks/others/useServices";
-import CreateSummary from "@/components/offer/userOffer/CreateSummary";
 import LockByScroll from "@/components/others/LockByScroll";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { useUserOffer } from "@/context/userContext/OffersContext";
-import Stepper from "@/components/others/Steppers";
-import MarketDepth from "@/components/offer/global/MarketDepth";
 import { publishOffer } from "@/utils/offer/publishOffer";
-import { CiDiscount1 } from "react-icons/ci";
-import { IoDiscOutline } from "react-icons/io5";
-import { BiTargetLock } from "react-icons/bi";
-import { TbTextScan2 } from "react-icons/tb";
 import CreateMenu from "@/components/offer/userOffer/CreateMenu";
 
 const CreateOffer = () => {

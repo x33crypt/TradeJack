@@ -46,7 +46,10 @@ const Settings = () => {
             </div>
             <div className="flex flex-col gap-[20px] ">
               <div className="flex flex-col gap-[15px]">
-                <div className="flex items-center gap-2">
+                <div
+                  onClick={() => navigateTo("/account")}
+                  className="flex items-center gap-2"
+                >
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                     PROFILE
@@ -54,7 +57,7 @@ const Settings = () => {
                 </div>
 
                 <div
-                  onClick={() => navigateTo("/offers")}
+                  onClick={() => navigateTo("/settings/accounts")}
                   className="flex items-center gap-2"
                 >
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
@@ -63,66 +66,45 @@ const Settings = () => {
                   </p>
                 </div>
 
-                <div
-                  onClick={() => navigateTo("/offers")}
-                  className="flex items-center gap-2"
-                >
+                <div className="flex items-center gap-2">
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                     CHANGE PASSWORD
                   </p>
                 </div>
 
-                <div
-                  onClick={() => navigateTo("/offers")}
-                  className="flex items-center gap-2"
-                >
+                <div className="flex items-center gap-2">
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                     2FA AUTHENTICATION
                   </p>
                 </div>
-                <div
-                  onClick={() => navigateTo("/offers")}
-                  className="flex items-center gap-2"
-                >
+                <div className="flex items-center gap-2">
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                     CHANGE PIN
                   </p>
                 </div>
-                <div
-                  onClick={() => navigateTo("/offers")}
-                  className="flex items-center gap-2"
-                >
+                <div className="flex items-center gap-2">
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                     PRIVACY & PERMISSION
                   </p>
                 </div>
 
-                <div
-                  onClick={() => navigateTo("/offers")}
-                  className="flex items-center gap-2"
-                >
+                <div className="flex items-center gap-2">
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                     NOTIFICATION
                   </p>
                 </div>
-                <div
-                  onClick={() => navigateTo("/offers")}
-                  className="flex items-center gap-2"
-                >
+                <div className="flex items-center gap-2">
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                     FAQ
                   </p>
                 </div>
-                <div
-                  onClick={() => navigateTo("/offers")}
-                  className="flex items-center gap-2"
-                >
+                <div className="flex items-center gap-2">
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                     TERM OF USE

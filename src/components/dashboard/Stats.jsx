@@ -16,7 +16,7 @@ const Stats = ({ loading, dashboard }) => {
         </p>
       </div>
 
-      <div className="flex flex-col gap-[10px] flex-1">
+      <div className="flex flex-1 min-h-[120px]">
         {loading ? (
           <Loading />
         ) : (

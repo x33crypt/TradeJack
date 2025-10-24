@@ -1,30 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { CiBank } from "react-icons/ci";
 import { toDecimal } from "@/utils/toDecimal";
-import { MdGrid3X3 } from "react-icons/md";
-import { MdDateRange } from "react-icons/md";
-import { RiRadioButtonLine } from "react-icons/ri";
-import { RiBankFill } from "react-icons/ri";
-import { IoMdThumbsUp } from "react-icons/io";
-import { HiOutlineUserCircle } from "react-icons/hi2";
-import { FaStar } from "react-icons/fa6";
-import { LuUsers } from "react-icons/lu";
-import { MdOutlineDateRange } from "react-icons/md";
-import { MdAccessTime } from "react-icons/md";
-import { FaInfoCircle } from "react-icons/fa";
-import { VscVerifiedFilled } from "react-icons/vsc";
-import { FaCircle } from "react-icons/fa";
-import { HiArrowCircleUp } from "react-icons/hi";
-import { FaBusinessTime } from "react-icons/fa6";
-import { PiClockCountdownBold } from "react-icons/pi";
 import { monthDate } from "@/utils/monthDate";
-import { time } from "@/utils/time";
-import { FaHashtag } from "react-icons/fa6";
-import { SlOptions } from "react-icons/sl";
 import { IoMdTime } from "react-icons/io";
 import { windowFormatHour } from "@/utils/windowFormatHour";
 import { LuCalendarClock } from "react-icons/lu";
+import { GrStatusGoodSmall } from "react-icons/gr";
+import { capitalizeFirst } from "@/utils/capitalizeFirst";
 
 const OfferCard = ({ offer }) => {
   const navigateTo = useNavigate();
@@ -56,12 +38,9 @@ const OfferCard = ({ offer }) => {
 
             <div className="flex gap-3">
               <div className="flex items-center gap-1">
-                <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
-                  <span className="text-white">
-                    +{offer?.user?.userTransactionCount}
-                  </span>{" "}
-                  recent trades
+                  {capitalizeFirst(offer?.status)}
                 </p>
               </div>
             </div>
@@ -160,13 +139,10 @@ const OfferCard = ({ offer }) => {
             </div>
 
             <div className="flex flex-col items-end gap-1 justify-betwee w-full">
-              <div className="flex  items-center gap-1">
-                <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+              <div className="flex items-center gap-1">
+                <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
                 <p className="text-xs font-semibold text-tradeFadeWhite">
-                  <span className="text-white">
-                    +{offer?.user?.userTransactionCount}
-                  </span>{" "}
-                  recent trades
+                  {capitalizeFirst(offer?.status)}
                 </p>
               </div>
             </div>

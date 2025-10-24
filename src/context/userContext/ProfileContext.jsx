@@ -7,8 +7,9 @@ const ProfileContext = createContext();
 export const ProfileProvider = ({ children }) => {
   const [profile, setProfile] = useState({
     account: null,
-    activityStats: null,
-    profileInformation: null,
+    info: null,
+    stats: null,
+    feedbacks: null,
   });
 
   return (

@@ -4,7 +4,7 @@ import InAppNav from "@/components/others/InAppNav";
 import { useFetchDashboard } from "@/hooks/userHooks/useFetchDashboard";
 import DashboardMenu from "@/components/dashboard/DashboardMenu";
 import { useDashboard } from "@/context/userContext/DashboardContext";
-import Balance from "@/components/dashboard/Balance";
+import Balance from "@/components/dashboard/Hero";
 import Stats from "@/components/dashboard/Stats";
 import RecentTrades from "@/components/dashboard/RecentTrades";
 import TodaysGoal from "@/components/dashboard/Task";

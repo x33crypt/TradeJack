@@ -7,9 +7,9 @@ import { MdOutlineSafetyCheck } from "react-icons/md";
 import { RiDonutChartFill } from "react-icons/ri";
 import { ImBlocked } from "react-icons/im";
 import NetworkError from "../others/NetworkError";
-import { MdOutlineHealthAndSafety } from "react-icons/md"
+import { MdOutlineHealthAndSafety } from "react-icons/md";
 
-const Stats = ({ loading, activityStats }) => {
+const Stats = ({ loading, stats }) => {
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
       <div className="flex  items-center justify-between ">
@@ -23,7 +23,7 @@ const Stats = ({ loading, activityStats }) => {
           <Loading />
         ) : (
           <div className="flex flex-1">
-            {activityStats === null ? (
+            {stats === null ? (
               <NetworkError />
             ) : (
               <div className="flex-wrap flex items-center gap-[10px] overflow-x-hidden ">
@@ -37,7 +37,7 @@ const Stats = ({ loading, activityStats }) => {
                       Positive Feedbacks
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {activityStats?.positiveFeedbacks ?? "1"}
+                      {stats?.positiveFeedbacks ?? "1"}
                     </p>
                   </div>
                 </div>
@@ -51,7 +51,7 @@ const Stats = ({ loading, activityStats }) => {
                       Negative Feedbacks
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {activityStats?.negativeFeedbacks ?? "0"}
+                      {stats?.negativeFeedbacks ?? "0"}
                     </p>
                   </div>
                 </div>
@@ -65,7 +65,7 @@ const Stats = ({ loading, activityStats }) => {
                       Trust Score
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {activityStats?.trustScore ?? "0"}%
+                      {stats?.trustScore ?? "0"}%
                     </p>
                   </div>
                 </div>
@@ -79,7 +79,7 @@ const Stats = ({ loading, activityStats }) => {
                       Trade Partners
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {activityStats?.tradePartners ?? "0"}
+                      {stats?.tradePartners ?? "0"}
                     </p>
                   </div>
                 </div>
@@ -93,7 +93,7 @@ const Stats = ({ loading, activityStats }) => {
                       Total Trades
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {activityStats?.totalTrades ?? "0"}
+                      {stats?.totalTrades ?? "0"}
                     </p>
                   </div>
                 </div>
@@ -107,8 +107,8 @@ const Stats = ({ loading, activityStats }) => {
                       Trade Volume
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {activityStats?.tradeVolume?.currency ?? "USD"}{" "}
-                      {activityStats?.tradeVolume?.amount ?? "0.00"}
+                      {stats?.tradeVolume?.currency ?? "USD"}{" "}
+                      {stats?.tradeVolume?.amount ?? "0.00"}
                     </p>
                   </div>
                 </div>
@@ -122,7 +122,7 @@ const Stats = ({ loading, activityStats }) => {
                       Blocked by
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {activityStats?.blockedBy ?? "0"}
+                      {stats?.blockedBy ?? "0"}
                     </p>
                   </div>
                 </div>
@@ -136,7 +136,7 @@ const Stats = ({ loading, activityStats }) => {
                       Has Blocked
                     </p>
                     <p className="text-white text-sm font-bold leading-none">
-                      {activityStats?.hasBlocked ?? "0"}
+                      {stats?.hasBlocked ?? "0"}
                     </p>
                   </div>
                 </div>

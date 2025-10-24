@@ -10,12 +10,16 @@ import { LuCalendarClock } from "react-icons/lu";
 import { BsPatchCheckFill } from "react-icons/bs";
 import { TbCameraPlus } from "react-icons/tb";
 
-const Hero = ({ Heading, loading, profile }) => {
+const Hero = ({ loading, profile }) => {
+
+
+  console.log(profile);
+
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
       <div className="flex  items-center justify-between ">
         <p className="text-lg font-semibold text-white flex items-center gap-1">
-          {Heading ? Heading : "ABOUT"}
+          ABOUT
         </p>
       </div>
 
@@ -66,10 +70,10 @@ const Hero = ({ Heading, loading, profile }) => {
                         profile?.status === "online"
                           ? "text-tradeGreen"
                           : profile?.status === "offline"
-                          ? "text-tradeAshExtraLight"
+                          ? "text-tradeFadeWhite"
                           : profile?.status === "last seen"
-                          ? "text-tradeOrange"
-                          : "text-tradeAshExtraLight"
+                          ? "text-tradeFadeWhite"
+                          : "text-tradeFadeWhite"
                       } flex  text-[11px] leading-none`}
                     />
                     <p className="mt-0 text-white text-[13px] font-semibold">

@@ -5,7 +5,7 @@ import { useFetchAboutOffers } from "@/hooks/publicHooks/useFetchAboutOffer";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
-import OfferFeedback from "@/components/offer/global/OfferFeedback";
+import OfferFeedback from "@/components/offer/Feedbacks";
 import DetailsMenu from "@/components/offer/publicOffer/DetailsMenu";
 import InAppNav from "@/components/others/InAppNav";
 

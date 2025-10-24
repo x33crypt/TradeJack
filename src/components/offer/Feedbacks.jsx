@@ -1,11 +1,13 @@
 import React from "react";
-import FeedbackCard from "../../cards/FeedbackCard";
+import FeedbackCard from "../cards/FeedbackCard";
 import SmallButton from "@/components/buttons/SmallButton";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
 import { TbArrowsSort } from "react-icons/tb";
 
-const OfferFeedback = () => {
+const Feedbacks = ({ loading, feedbacks }) => {
+  console.log("feedbacks:", feedbacks);
+
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
       <div className="flex  items-center justify-between ">
@@ -40,15 +42,15 @@ const OfferFeedback = () => {
 
         <div className="flex flex-1 p-[15px] min-h-[120px]">
           <div className="flex flex-1">
-            {false ? (
+            {loading ? (
               <Loading />
             ) : (
               <div className="flex flex-1">
-                {true ? (
+                {feedbacks === null ? (
                   <NetworkError />
                 ) : (
                   <div className="flex flex-1">
-                    {false && false ? (
+                    {Array.isArray(feedbacks) && feedbacks?.length > 0 ? (
                       <div className="flex flex-col gap-[10px] w-full h-max">
                         {[...Array(5)].map((_, index, array) => (
                           <div key={index}>
@@ -112,4 +114,4 @@ const OfferFeedback = () => {
   );
 };
 
-export default OfferFeedback;
+export default Feedbacks;

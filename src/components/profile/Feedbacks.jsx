@@ -8,8 +8,7 @@ import { TbArrowsSort } from "react-icons/tb";
 
 const Feedbacks = ({
   loading,
-  feedback,
-  heading,
+  feedbacks,
   loadingMore,
   pagination,
   displayedCount,
@@ -24,6 +23,7 @@ const Feedbacks = ({
         section.data.length >= (section.pagination.totalItems || 0));
 
     let message = null;
+
     if (isEmpty) {
       message = "No activity yet";
     } else if (isEnd) {
@@ -37,7 +37,7 @@ const Feedbacks = ({
     };
   };
 
-  const feedbackStatus = getSectionStatus(feedback?.data);
+  const feedbackStatus = getSectionStatus(feedbacks?.data);
 
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
@@ -77,14 +77,14 @@ const Feedbacks = ({
               <Loading />
             ) : (
               <div className="flex flex-1">
-                {feedback?.data === null ? (
+                {feedbacks === null ? (
                   <NetworkError />
                 ) : (
                   <div className="flex flex-1">
-                    {Array.isArray(feedback?.data) &&
-                    feedback?.data?.length > 0 ? (
+                    {Array.isArray(feedbacks?.data) &&
+                    feedbacks?.data?.length > 0 ? (
                       <div className="flex flex-col gap-[10px] w-full h-max">
-                        {feedback?.data?.map((feed, index) => (
+                        {feedbacks?.data?.map((feed, index) => (
                           <div key={feed.id || index}>
                             <FeedbackCard offer={feed} />
                           </div>
@@ -108,7 +108,7 @@ const Feedbacks = ({
           <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
             <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
               <SmallButton variant="outline">
-                <p>{displayedCount}</p>
+                <p>{displayedCount ?? "0"}</p>
               </SmallButton>
               <SmallButton variant="outline">
                 <p>of</p>

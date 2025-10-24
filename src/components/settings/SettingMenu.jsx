@@ -29,7 +29,7 @@ const SettingMenu = () => {
         </div> */}
         <div className="flex flex-col gap-[15px]">
           <div
-            onClick={() => navigateTo("/offers")}
+            onClick={() => navigateTo("/account")}
             className="flex items-center gap-2"
           >
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
@@ -38,7 +38,7 @@ const SettingMenu = () => {
             </p>
           </div>
           <div
-            onClick={() => navigateTo("/offers")}
+            onClick={() => navigateTo("/settings/accounts")}
             className="flex items-center gap-2"
           >
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
@@ -46,10 +46,7 @@ const SettingMenu = () => {
               ACCOUNTS
             </p>
           </div>
-          <div
-            onClick={() => navigateTo("/offers")}
-            className="flex items-center gap-2"
-          >
+          <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               CHANGE PASSWORD

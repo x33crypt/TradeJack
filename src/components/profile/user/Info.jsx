@@ -5,13 +5,11 @@ import Loading from "@/components/others/Loading";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import NetworkError from "@/components/others/NetworkError";
 import { shortenEmail } from "@/utils/shortenEmail";
-import { useSensitiveNavigation } from "@/utils/navigateSensitive";
 
-const Info = ({ loading, profile }) => {
+const Info = ({ loading, info }) => {
+  console.log(info);
+
   const navigateTo = useNavigate();
-  const navigateSensitive = useSensitiveNavigation();
-
-  console.log(profile);
 
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
@@ -25,7 +23,7 @@ const Info = ({ loading, profile }) => {
           <Loading />
         ) : (
           <div className="flex flex-1">
-            {profile === null ? (
+            {info === null ? (
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col gap-[10px] md:gap-[5px] ">
@@ -34,14 +32,14 @@ const Info = ({ loading, profile }) => {
                   {/* Username */}
                   <div
                     className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-                    onClick={() => navigateSensitive("/settings/account/name")}
+                    onClick={() => navigateTo("/settings/account/name")}
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
                         Username
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {profile?.username || "-- --"}
+                        {info?.username || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -56,9 +54,9 @@ const Info = ({ loading, profile }) => {
                         Full name
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {profile?.lastName || profile?.firstName
-                          ? `${profile?.lastName || ""} ${
-                              profile?.firstName || ""
+                        {info?.lastName || info?.firstName
+                          ? `${info?.lastName || ""} ${
+                              info?.firstName || ""
                             }`.trim()
                           : "-- --"}
                       </p>
@@ -71,14 +69,14 @@ const Info = ({ loading, profile }) => {
                   {/* Email */}
                   <div
                     className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
-                    onClick={() => navigateSensitive("/settings/account/email")}
+                    onClick={() => navigateTo("/settings/account/email")}
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
                         Email Address
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {shortenEmail(profile?.email) || "-- --"}
+                        {shortenEmail(info?.email) || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -96,7 +94,7 @@ const Info = ({ loading, profile }) => {
                         Gender
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {profile?.gender || "-- --"}
+                        {info?.gender || "-- --"}
                       </p>
                     </div>
                     <div className="text-tradeAsh text-[22px] opacity-0">
@@ -111,7 +109,7 @@ const Info = ({ loading, profile }) => {
                         Date of birth
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {profile?.dateOfBirth || "-- --"}
+                        {info?.dateOfBirth || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px] opacity-0">
@@ -122,16 +120,14 @@ const Info = ({ loading, profile }) => {
                   {/* Mobile */}
                   <div
                     className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-                    onClick={() =>
-                      navigateSensitive("/settings/account/mobile")
-                    }
+                    onClick={() => navigateTo("/settings/account/mobile")}
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
                         Mobile number
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {profile?.phone || "-- --"}
+                        {info?.phone || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -166,7 +162,7 @@ const Info = ({ loading, profile }) => {
                         KYC Status
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {capitalizeFirst(profile?.kycStatus) || "-- --"}
+                        {capitalizeFirst(info?.kycStatus) || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
@@ -179,7 +175,7 @@ const Info = ({ loading, profile }) => {
                         Document Type
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {capitalizeFirst(profile?.documentType) || "-- --"}
+                        {capitalizeFirst(info?.documentType) || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px] opacity-0">
