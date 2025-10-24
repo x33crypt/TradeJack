@@ -348,9 +348,6 @@ const MyOffer = () => {
                         ) : (
                           <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
                             <p className="text-[13px] font-semibold text-white leading-none">
-                              No transaction found.
-                            </p>
-                            <p className="text-xs font-medium text-tradeFadeWhite text-center">
                               {filter?.type ||
                               filter?.status ||
                               filter?.date?.monthName ||
@@ -358,8 +355,6 @@ const MyOffer = () => {
                                 ? "NO OFFER MATCH THE GIVEN CRITERIA"
                                 : "NO OFFER FOUND"}
                             </p>
-
-                            <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
                           </div>
                         )}
                       </div>

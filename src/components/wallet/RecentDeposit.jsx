@@ -34,7 +34,7 @@ const RecentDeposit = () => {
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col gap-[10px]">
-                <div className="flex flex-1">
+                <div className="flex flex-1 min-h-[125px]">
                   {Array.isArray(recentDeposit?.data) &&
                   recentDeposit?.data.length > 0 ? (
                     <div className="flex flex-col gap-[10px] w-full">
