@@ -201,14 +201,14 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     <div className="flex flex-1 flex-col p-[15px] bg-tradeAshExtraLight gap-[15px] rounded-[15px] border border-tradeAsh">
                       <div className="flex flex-col gap-[15px]">
                         <div className="flex items-center gap-2">
-                          <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                          <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
+                          <IoMdArrowDropright className="text-lg text-white" />
+                          <p className="text-white hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
                             AMOUNT
                           </p>
                         </div>
 
                         <div className="flex gap-[10px]">
-                          <div className="flex-1 flex px-2.5 py-2 gap-2 items-center justify-between bg-tradeAsh  border border-tradeAshExtraLight rounded-[10px] ">
+                          <div className="flex-1 flex p-[12px] gap-2 items-center justify-between bg-tradeAshLight  border border-tradeAshExtraLight rounded-[10px] ">
                             <input
                               type="text"
                               placeholder="00.00"
@@ -218,8 +218,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                             />
                           </div>
 
-                          <div className="flex border border-tradeAshExtraLight px-1.5 py-1.5 gap-2 items-center justify-between bg-transparent rounded-[10px] ">
-                            <div className="text-[13px] font-semibold text-white">
+                          <div className="flex border border-tradeAshExtraLight p-[12px] gap-2 items-center justify-between bg-tradeAshLight rounded-[10px] ">
+                            <div className="text-sm font-semibold text-white">
                               <p>{offer?.preferredCurrency?.code ?? "USD"}</p>
                             </div>
                           </div>
@@ -242,14 +242,14 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     <div className="flex flex-1 flex-col p-[15px] bg-tradeAshExtraLight gap-[15px] rounded-[15px] border border-tradeAsh">
                       <div className="flex flex-col gap-[15px]">
                         <div className="flex items-center gap-2">
-                          <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                          <p className="text-tradeFadeWhite hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
+                          <IoMdArrowDropright className="text-lg text-white" />
+                          <p className="text-white hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
                             RETURN
                           </p>
                         </div>
 
                         <div className="flex justify-between items-center gap-[10px]">
-                          <div className="flex-1 flex px-2.5 py-2 gap-2 items-center justify-between bg-tradeAsh  border border-tradeAshExtraLight rounded-[10px] ">
+                          <div className="flex-1 flex p-[12px] gap-2 items-center justify-between bg-tradeAshLight  border border-tradeAshExtraLight rounded-[10px] ">
                             <input
                               type="text"
                               readOnly
@@ -259,8 +259,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                             />
                           </div>
 
-                          <div className="flex border border-tradeAshExtraLight px-1.5 py-1.5 gap-2 items-center justify-between bg-transparent rounded-[10px] ">
-                            <div className="text-[13px] font-semibold text-white">
+                          <div className="flex border border-tradeAshExtraLight p-[12px] gap-2 items-center justify-between bg-tradeAshLight rounded-[10px] ">
+                            <div className="text-sm font-semibold text-white">
                               <p>{offer?.preferredCurrency?.code ?? "NGN"}</p>
                             </div>
                           </div>
