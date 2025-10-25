@@ -66,8 +66,8 @@ const KycLevels = () => {
                   ) : (
                     <div className="flex flex-1 flex-col gap-[40px]">
                       <LevelOne />
-                      <LevelTwo />
-                      <LevelThree />
+                      {/* <LevelTwo />
+                      <LevelThree /> */}
                     </div>
                   )}
                 </div>
