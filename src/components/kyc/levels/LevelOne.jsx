@@ -6,7 +6,7 @@ import Button from "@/components/buttons/Button";
 
 const LevelOne = ({ level }) => {
   return (
-    <div className="flex flex-col gap-[20px]">
+    <div className="flex flex-col gap-[30px]">
       <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[10px] gap-[10px]">
         <div className="flex flex-col gap-[15px] border-b border-tradeAshExtraLight border-dashed pb-[10px]">
           <div className="flex items-center  gap-2">
@@ -24,7 +24,7 @@ const LevelOne = ({ level }) => {
               Daily Transaction Limit
             </p>
 
-            <p className="text-lg font-bold text-white leading-none">
+            <p className="text-lg font-bold text-tradeOrange leading-none">
               #900,000.00
             </p>
           </div>
@@ -63,7 +63,7 @@ const LevelOne = ({ level }) => {
           </div>
         </div>
 
-        <div className="flex justify-between gap-[10px] pb-[10px]">
+        <div className="flex justify-between gap-[10px] py-[5px]">
           <p className="text-xs text-tradeFadeWhite font-semibold leading-none w-max">
             KYC Details
           </p>
