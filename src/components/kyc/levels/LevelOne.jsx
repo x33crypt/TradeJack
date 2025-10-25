@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { GoDotFill } from "react-icons/go";
 import { FaArrowAltCircleDown } from "react-icons/fa";
 import { FaCheckDouble } from "react-icons/fa";
 import Button from "@/components/buttons/Button";
 
-const LevelOne = ({ level }) => {
+const LevelOne = () => {
+  const [showDetails, setShowDetails] = useState(false);
+
   return (
     <div className="flex flex-col gap-[30px]">
-      <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[10px] gap-[10px]">
-        <div className="flex flex-col gap-[15px] border-b border-tradeAshExtraLight border-dashed pb-[10px]">
+      <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[10px] gap-[15px]">
+        <div className="flex flex-col gap-[15px] border-b border-tradeAshExtraLight border-dashed pb-[15px]">
           <div className="flex items-center  gap-2">
             <p className="text-white text-base font-bold  flex items-center gap-1">
               Tier 1 - Basic KYC
@@ -30,32 +32,32 @@ const LevelOne = ({ level }) => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-[10px] border-b border-tradeAshExtraLight border-dashed pb-[10px]">
+        <div className="flex flex-col gap-[10px] border-b border-tradeAshExtraLight border-dashed pb-[15px]">
           <p className="text-xs text-tradeFadeWhite font-semibold leading-none w-max">
             Requirements
           </p>
 
           <div className="grid md:grid-cols-4 grid-cols-2 gap-[10px]">
             <div className="flex items-center gap-1">
-              <FaCheckDouble className="text-sm text-tradeFadeWhite" />
+              <FaCheckDouble className="text-xs text-tradeFadeWhite" />
               <p className="text-[13px] text-white font-semibold leading-none">
                 Full Name
               </p>
             </div>
             <div className="flex items-center gap-1">
-              <FaCheckDouble className="text-sm text-tradeFadeWhite" />
+              <FaCheckDouble className="text-xs text-tradeFadeWhite" />
               <p className="text-[13px] text-white font-semibold leading-none">
                 Date of Birth
               </p>
             </div>
             <div className="flex items-center gap-1">
-              <FaCheckDouble className="text-sm text-tradeFadeWhite" />
+              <FaCheckDouble className="text-xs text-tradeFadeWhite" />
               <p className="text-[13px] text-white font-semibold leading-none">
-                Address
+                Gender
               </p>
             </div>
             <div className="flex items-center gap-1">
-              <FaCheckDouble className="text-sm text-tradeFadeWhite" />
+              <FaCheckDouble className="text-xs text-tradeFadeWhite" />
               <p className="text-[13px] text-white font-semibold leading-none">
                 Verified Phone
               </p>
@@ -63,15 +65,41 @@ const LevelOne = ({ level }) => {
           </div>
         </div>
 
-        <div className="flex justify-between gap-[10px] py-[5px]">
-          <p className="text-xs text-tradeFadeWhite font-semibold leading-none w-max">
+        <div className="flex justify-between gap-[10px] pt-[5px]">
+          <p className="text-[13px] text-tradeFadeWhite font-semibold leading-none w-max">
             KYC Details
           </p>
 
-          <div className="flex p-1 border border-tradeAshExtraLight rounded-full  items-center gap-1">
+          <div
+            onClick={() => setShowDetails(!showDetails)}
+            className="flex p-1 border border-tradeAshExtraLight rounded-full  items-center gap-1 cursor-pointer hover:bg-tradeAshLight/30 transition-all duration-300"
+          >
             <FaArrowAltCircleDown className="text-xs text-tradeFadeWhite" />
           </div>
         </div>
+
+        {showDetails && (
+          <div className="flex flex-col gap-[10px]">
+            <div className="flex justify-between">
+              <p className="text-xs text-white font-semibold">Full Name</p>
+              <p className="text-xs text-white font-semibold">
+                LUKMAN ADEKUNLE ADELEKE
+              </p>
+            </div>
+            <div className="flex justify-between">
+              <p className="text-xs text-white font-semibold">Gender</p>
+              <p className="text-xs text-white font-semibold">Male</p>
+            </div>
+            <div className="flex justify-between">
+              <p className="text-xs text-white font-semibold">Date of Birth</p>
+              <p className="text-xs text-white font-semibold">Feb **,**</p>
+            </div>
+            <div className="flex justify-between">
+              <p className="text-xs text-white font-semibold">Phone Number</p>
+              <p className="text-xs text-white font-semibold">08039921211</p>
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col gap-1">
@@ -87,8 +115,8 @@ const LevelOne = ({ level }) => {
         </div>
       </div>
 
-      <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[10px] gap-[10px]">
-        <div className="flex flex-col gap-[15px] border-b border-tradeAshExtraLight border-dashed pb-[10px]">
+      <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[10px] gap-[15px]">
+        <div className="flex flex-col gap-[15px] border-b border-tradeAshExtraLight border-dashed pb-[15px]">
           <div className="flex items-center  gap-2">
             <p className="text-white text-base font-bold  flex items-center gap-1">
               Tier 2
@@ -110,7 +138,7 @@ const LevelOne = ({ level }) => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-[10px]  pb-[10px]">
+        <div className="flex flex-col gap-[10px] pb-[10px]">
           <p className="text-xs text-tradeFadeWhite font-semibold leading-none w-max">
             Requirements
           </p>
