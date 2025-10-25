@@ -50,7 +50,7 @@ const ProfileNav = () => {
                 >
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                    KYC LEVELS
+                    LIMITS
                   </p>
                 </div>
                 <div
@@ -98,7 +98,7 @@ const ProfileNav = () => {
               </div>
 
               <Button onClick={close} variant="outline">
-                CLOSE
+                Close
               </Button>
             </div>
           </div>

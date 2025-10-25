@@ -10,10 +10,8 @@ import { LuCalendarClock } from "react-icons/lu";
 import { BsPatchCheckFill } from "react-icons/bs";
 import { TbCameraPlus } from "react-icons/tb";
 
-const Hero = ({ loading, profile }) => {
-
-
-  console.log(profile);
+const Hero = ({ loading, account }) => {
+  console.log(account);
 
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
@@ -32,7 +30,7 @@ const Hero = ({ loading, profile }) => {
           <div className="flex flex-col md:flex-row gap-[15px] items-center justify-center">
             <div className="relative flex overflow-hidden shrink-0 justify-center items-center cursor-pointer">
               <div>
-                {profile?.userName ? (
+                {account?.profilePhotoUrl ? (
                   <div className="md:w-[140px] w-[120px] rounded-full overflow-hidden cursor-pointer">
                     <img src={image} alt="" className="" />
                   </div>
@@ -51,7 +49,7 @@ const Hero = ({ loading, profile }) => {
               <div className="flex flex-col gap-3 items-center md:items-start">
                 <p className="mt-0 text-white lg:text-[35px] md:text-[30px] text-[25px] font-[900] leading-none ">
                   {/* <span className="text-tradeFadeWhite">@</span> */}
-                  {profile?.userName ?? "username"}
+                  {account?.username ?? "username"}
                 </p>
               </div>
 
@@ -60,25 +58,25 @@ const Hero = ({ loading, profile }) => {
                   <div className="flex  gap-1 items-center ">
                     <MdOutlineShareLocation className=" flex text-tradeFadeWhite text-[16px] leading-none" />
                     <p className=" text-[13px] font-semibold text-white">
-                      {profile ? "Nigeria" : "Clouds"}
+                      {account?.country ?? "Clouds"}
                     </p>
                   </div>
 
                   <div className="flex  gap-1 items-center ">
                     <FaCircle
                       className={`${
-                        profile?.status === "online"
+                        account?.status === "online"
                           ? "text-tradeGreen"
-                          : profile?.status === "offline"
+                          : account?.status === "offline"
                           ? "text-tradeFadeWhite"
-                          : profile?.status === "last seen"
+                          : account?.status === "last seen"
                           ? "text-tradeFadeWhite"
                           : "text-tradeFadeWhite"
                       } flex  text-[11px] leading-none`}
                     />
                     <p className="mt-0 text-white text-[13px] font-semibold">
-                      {profile?.status
-                        ? capitalizeFirst(profile?.status)
+                      {account?.status
+                        ? capitalizeFirst(account?.status)
                         : "Offline"}
                     </p>
                   </div>
@@ -89,8 +87,7 @@ const Hero = ({ loading, profile }) => {
                   <p className=" text-[13px] font-medium text-tradeFadeWhite">
                     Joined{" "}
                     <span className="font-semibold text-white">
-                      {profile?.accAgeInMonths ? profile?.accAgeInMonths : "0"}{" "}
-                      month
+                      {account?.memberSinceMonths ?? "0"} month
                     </span>{" "}
                     ago
                   </p>

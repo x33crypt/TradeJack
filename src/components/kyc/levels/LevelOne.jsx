@@ -27,7 +27,7 @@ const LevelOne = () => {
             </p>
 
             <p className="text-lg font-bold text-tradeOrange leading-none">
-              #900,000.00
+              #2,000,000.00
             </p>
           </div>
         </div>
@@ -133,7 +133,7 @@ const LevelOne = () => {
             </p>
 
             <p className="text-lg font-bold text-white leading-none">
-              #2,000,000.00
+              #5,000,000.00
             </p>
           </div>
         </div>

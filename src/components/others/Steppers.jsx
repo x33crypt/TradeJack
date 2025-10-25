@@ -10,7 +10,7 @@ const Stepper = ({ totalSteps = 3, currentStep = 1 }) => {
         {steps.map((step, index) => (
           <div
             key={step}
-            className={`text-sm font-bold ${
+            className={`text-[13px] font-bold ${
               index === steps.length - 1
                 ? "text-tradeFadeWhite"
                 : "text-tradeFadeWhite"
@@ -34,10 +34,10 @@ const Stepper = ({ totalSteps = 3, currentStep = 1 }) => {
             >
               {/* Dot */}
               <div
-                className={`w-4 h-4 flex items-center justify-center rounded-full border-2 text-xs font-bold ${
+                className={`w-3 h-3 flex items-center justify-center rounded-full border-2 text-xs font-bold ${
                   isActive
-                    ? "bg-tradeOrange border-tradeOrange text-white"
-                    : "bg-tradeAshExtraLight border-tradeAshExtraLight text-white"
+                    ? "border-tradeOrange text-white"
+                    : "border-tradeAshExtraLight text-white"
                 }`}
               ></div>
 

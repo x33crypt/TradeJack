@@ -16,7 +16,7 @@ const UserProfile = () => {
   const { profile } = useProfile();
   const { account, stats, info, feedbacks } = profile;
 
-  // console.log("user profile:", profile);
+  console.log("user profile:", profile);
 
   return (
     <>

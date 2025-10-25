@@ -854,9 +854,8 @@ const CreateOffer = () => {
               >
                 <div className="flex flex-col gap-[25px]">
                   <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                    Start by setting the core details of your offer. Select the
-                    asset type you want to trade, choose the specific asset,
-                    define the currency and set your purchase limits.
+                    Set your offer details. Choose the asset type, select the
+                    asset, pick a currency, and define your limits.
                   </p>
 
                   <div className="flex flex-col gap-[10px]">
@@ -1036,10 +1035,8 @@ const CreateOffer = () => {
               >
                 <div className="flex flex-col gap-[25px]">
                   <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                    In this step, you’ll define your offer’s timing and pricing
-                    structure. Use transfer and release windows to set clear
-                    expectations for both parties, and fine-tune your margin to
-                    control profitability.
+                    Set your offer’s timing and pricing. Adjust transfer windows
+                    and margins to manage expectations and profitability.
                   </p>
                   <div className="flex flex-col gap-[10px]">
                     <div className="p-[12px] bg-tradeAsh border border-tradeAshLight rounded-[15px] flex flex-col gap-[15px]">
@@ -1383,8 +1380,8 @@ const CreateOffer = () => {
               >
                 <div className="flex flex-col gap-[25px]">
                   <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                    Carefully double-check all details of your offer before
-                    publishing.
+                    You’re almost done. Just verify that every part of your
+                    offer is accurate and complete before making it public.
                   </p>
                   <div className="flex flex-1 flex-col gap-[20px]">
                     <div className="flex items-center gap-2  pb-[12px]">

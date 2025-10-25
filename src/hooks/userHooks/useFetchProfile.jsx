@@ -17,7 +17,7 @@ export function useFetchProfile() {
         if (response?.status === 200 && response?.data?.success) {
           setProfile((prev) => ({
             ...prev,
-            account: response?.data?.data?.accountDetails || null,
+            account: response?.data?.data?.account || null,
             info: response?.data?.data?.profileInformation || null,
             stats: response?.data?.data?.activityStats || null,
             feedbacks: response?.data?.data?.feedbacks || null,

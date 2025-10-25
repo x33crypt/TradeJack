@@ -171,9 +171,34 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                 </div>
 
+                <div className="flex lg:hidden items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <GoBookmarkFill />
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        BOOKMARK
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <FaShareAlt />
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        SHARE
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    <MdReport />
+                    <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      REPORT
+                    </p>
+                  </div>
+                </div>
+
                 <div className="flex gap-[10px] flex-col">
                   <div className="flex flex-col lg:flex-row gap-[10px]">
-                    <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh">
+                    <div className="flex flex-1 flex-col p-[15px] bg-tradeAshExtraLight gap-[15px] rounded-[15px] border border-tradeAsh">
                       <div className="flex flex-col gap-[15px]">
                         <div className="flex items-center gap-2">
                           <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
@@ -194,19 +219,19 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           </div>
 
                           <div className="flex border border-tradeAshExtraLight px-1.5 py-1.5 gap-2 items-center justify-between bg-transparent rounded-[10px] ">
-                            <div className="text-[13px] font-semibold text-tradeFadeWhite">
+                            <div className="text-[13px] font-semibold text-white">
                               <p>{offer?.preferredCurrency?.code ?? "USD"}</p>
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      <div className="flex gap-[5px]">
+                      <div className="flex gap-[10px]">
                         {amountList?.map((amount, index) => (
                           <p
                             key={index}
                             onClick={() => amountClick(amount)}
-                            className="text-[13px] font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshExtraLight w-max rounded-sm transition-all duration-300 cursor-pointer"
+                            className="text-[13px] font-bold text-white hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight w-max rounded-sm transition-all duration-300 cursor-pointer"
                           >
                             + {withComma(amount)}
                           </p>
@@ -214,7 +239,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
                     </div>
 
-                    <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh">
+                    <div className="flex flex-1 flex-col p-[15px] bg-tradeAshExtraLight gap-[15px] rounded-[15px] border border-tradeAsh">
                       <div className="flex flex-col gap-[15px]">
                         <div className="flex items-center gap-2">
                           <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
@@ -235,7 +260,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           </div>
 
                           <div className="flex border border-tradeAshExtraLight px-1.5 py-1.5 gap-2 items-center justify-between bg-transparent rounded-[10px] ">
-                            <div className="text-[13px] font-semibold text-tradeFadeWhite">
+                            <div className="text-[13px] font-semibold text-white">
                               <p>{offer?.preferredCurrency?.code ?? "NGN"}</p>
                             </div>
                           </div>
@@ -254,34 +279,10 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   <Button
                     onClick={preTradeCheck}
                     disabled={calculator?.amount === ""}
+                    variant="secondary"
                   >
                     SWAP
                   </Button>
-
-                  <div className="flex lg:hidden items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        <GoBookmarkFill />
-                        <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                          BOOKMARK
-                        </p>
-                      </div>
-
-                      <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        <FaShareAlt />
-                        <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                          SHARE
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      <MdReport />
-                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        REPORT
-                      </p>
-                    </div>
-                  </div>
                 </div>
 
                 <div className="flex flex-1 flex-col min-h-[120px] gap-[10px]">
