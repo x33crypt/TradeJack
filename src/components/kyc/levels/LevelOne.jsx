@@ -6,7 +6,7 @@ import Button from "@/components/buttons/Button";
 
 const LevelOne = ({ level }) => {
   return (
-    <div className="flex flex-col gap-[40px]">
+    <div className="flex flex-col gap-[20px]">
       <div className=" flex flex-col bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[10px] gap-[10px]">
         <div className="flex flex-col gap-[15px] border-b border-tradeAshExtraLight border-dashed pb-[10px]">
           <div className="flex items-center  gap-2">
@@ -24,7 +24,7 @@ const LevelOne = ({ level }) => {
               Daily Transaction Limit
             </p>
 
-            <p className="text-lg font-bold text-tradeOrange leading-none">
+            <p className="text-lg font-bold text-white leading-none">
               #900,000.00
             </p>
           </div>
@@ -77,9 +77,7 @@ const LevelOne = ({ level }) => {
       <div className="flex flex-col gap-1">
         <div className="flex gap-3 items-center ">
           <div className=" border-t border-tradeAshLight flex-1 "></div>
-          <p className="text-tradeFadeWhite font-bold text-sm">
-            KYC LEVEL BENEFIT
-          </p>
+          <p className="text-white font-bold text-sm">KYC LEVEL BENEFIT</p>
           <div className=" border-t border-tradeAshLight flex-1"></div>
         </div>
         <div className="flex-1 flex items-center justify-center">
@@ -96,7 +94,7 @@ const LevelOne = ({ level }) => {
               Tier 2
             </p>
 
-            <div className="bg-tradeOrange text-black p-1 rounded-[5px] ">
+            <div className="bg-white text-black p-1 rounded-[5px] ">
               <p className="text-xs font-semibold">Next Level</p>
             </div>
           </div>
@@ -106,7 +104,7 @@ const LevelOne = ({ level }) => {
               Daily Transaction Limit
             </p>
 
-            <p className="text-lg font-bold text-tradeOrange leading-none">
+            <p className="text-lg font-bold text-white leading-none">
               #2,000,000.00
             </p>
           </div>
