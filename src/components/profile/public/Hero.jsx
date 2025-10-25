@@ -99,7 +99,7 @@ const Hero = ({ Heading, loading, profile }) => {
             <div className="flex items-center text-tradeGreen border border-tradeAshExtraLight text-[20px] p-1 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
               <BsPatchCheckFill />
             </div>
-            <div className="flex lg:hidden text-white border border-tradeAshExtraLight text-[20px] p-1 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            <div className="flex  text-white border border-tradeAshExtraLight text-[20px] p-1 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
               <FiMoreVertical />
             </div>
           </div>

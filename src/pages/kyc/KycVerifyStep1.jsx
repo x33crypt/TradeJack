@@ -147,6 +147,8 @@ const KycVerifyStep1 = () => {
                     <p className="text-[13px] font-medium text-tradeFadeWhite">
                       First Name
                     </p>
+
+                    
                     <input
                       className={`${
                         kycDetails.firstName

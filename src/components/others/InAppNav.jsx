@@ -179,9 +179,12 @@ const InAppNav = () => {
             </p>
             <TbArrowsSort className="text-[16px]" />
           </div>
-          <div className=" w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+          <div
+            onClick={() => navigateTo("/kyc/levels")}
+            className=" w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+          >
             <p className="text-xs text-white font-semibold">
-              <span className="text-tradeFadeWhite">LIMIT : $</span> 2,530,000
+              <span className="text-tradeFadeWhite">LIMIT : $</span> 2,000,000
             </p>
           </div>
           <div className="w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
@@ -272,10 +275,13 @@ const InAppNav = () => {
                           {balance?.currency}
                         </p>
                       </div>
-                      <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                      <div
+                        onClick={() => navigateTo("/kyc/levels")}
+                        className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                      >
                         <p className="text-xs text-white font-semibold">
                           <span className="text-tradeFadeWhite">LIMIT : $</span>{" "}
-                          2,530,000
+                          2,000,000
                         </p>
                       </div>
                     </div>

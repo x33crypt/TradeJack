@@ -271,7 +271,7 @@ const Transfer = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col  gap-[10px]">
+              <div className="flex flex-col gap-[10px]">
                 {/* Wallet Balance */}
                 <WalletBalance />
 

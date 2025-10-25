@@ -87,9 +87,9 @@ const App = () => {
 
         {/* Kyc */}
         <Route path="/kyc/levels" element={<KycLevels />} />
-        <Route path="/kyc/verify/1" element={<VerifyLevelOne />} />
-        <Route path="/kyc/verify/2" element={<VerifyLevelTwo />} />
-        <Route path="/kyc/verify/3" element={<VerifyLevelThree />} />
+        <Route path="/kyc/tier/1" element={<VerifyLevelOne />} />
+        <Route path="/kyc/tier/2" element={<VerifyLevelTwo />} />
+        <Route path="/kyc/tier/3" element={<VerifyLevelThree />} />
 
         {/* Dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />

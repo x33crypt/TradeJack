@@ -122,11 +122,13 @@ const OfferDetails = ({ loading, aboutOffer }) => {
       </div>
 
       <div className="flex flex-col min-h-[120px]">
-        {loading ? (
+        {/* loading */}
+        {false ? (
           <Loading />
         ) : (
           <div className="flex flex-1">
-            {aboutOffer?.data === null ? (
+            {/* aboutOffer?.data === null */}
+            {false ? (
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px] gap-[30px]">
@@ -198,12 +200,12 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                 <div className="flex gap-[10px] flex-col">
                   <div className="flex flex-col lg:flex-row gap-[10px]">
-                    <div className="flex flex-1 flex-col p-[15px] bg-tradeAshExtraLight gap-[15px] rounded-[15px] border border-tradeAsh">
+                    <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh">
                       <div className="flex flex-col gap-[15px]">
                         <div className="flex items-center gap-2">
                           <IoMdArrowDropright className="text-lg text-white" />
                           <p className="text-white hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
-                            AMOUNT
+                            ENTER AMOUNT
                           </p>
                         </div>
 
@@ -239,12 +241,12 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
                     </div>
 
-                    <div className="flex flex-1 flex-col p-[15px] bg-tradeAshExtraLight gap-[15px] rounded-[15px] border border-tradeAsh">
+                    <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh">
                       <div className="flex flex-col gap-[15px]">
                         <div className="flex items-center gap-2">
                           <IoMdArrowDropright className="text-lg text-white" />
                           <p className="text-white hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
-                            RETURN
+                            ESTIMATED RETURN
                           </p>
                         </div>
 
