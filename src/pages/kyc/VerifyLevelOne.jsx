@@ -4,14 +4,14 @@ import React, { useEffect } from "react";
 import Button from "@/components/buttons/Button";
 import { useKyc } from "@/context/userContext/KycContext";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
-import { useCountryCodes } from "@/hooks/others/useCountryCodes";
+import { usePhoneCodes } from "@/hooks/others/usePhoneCodes";
 import { useToast } from "@/context/otherContext/ToastContext";
 import { useNavigate } from "react-router-dom";
 
 const VerifyLevelOne = () => {
   const { tierOne, setTierOne } = useKyc();
   const { select, setSelect } = useSelectElement();
-  const { countryCodes } = useCountryCodes();
+  const { phoneCodes } = usePhoneCodes();
   const { toast, setToast } = useToast();
 
   console.log(tierOne);
@@ -65,14 +65,14 @@ const VerifyLevelOne = () => {
   useEffect(() => {
     if (
       select?.page !== "kyc tier one" ||
-      select?.element !== "code" ||
+      select?.element !== "Phone codes" ||
       !select?.pick
     )
       return;
 
     setTierOne((prev) => ({
       ...prev,
-      code: pick?.code,
+      code: select.pick?.code,
     }));
   }, [select]);
 
@@ -214,26 +214,24 @@ const VerifyLevelOne = () => {
                   </div>
 
                   <div className="flex gap-[10px]">
-                    <div className="flex gap-[10px] bg-tradeAshLight border border-tradeAshLight rounded-[10px]">
-                      <input
-                        className="flex w-[60px] bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
-                        type="text"
-                        readOnly
-                        placeholder="+234"
-                        value={tierOne?.code ? `+ ${tierOne?.code}` : ""}
-                        onClick={() =>
-                          setSelect({
-                            ...select,
-                            state: true,
-                            selectOne: false,
-                            selectTwo: true,
-                            element: "code",
-                            options: countryCodes,
-                            pick: "",
-                            page: "kyc tier one",
-                          })
-                        }
-                      />
+                    <div
+                      onClick={() =>
+                        setSelect({
+                          ...select,
+                          state: true,
+                          selectOne: false,
+                          selectTwo: true,
+                          element: "Phone codes",
+                          options: phoneCodes,
+                          pick: "",
+                          page: "kyc tier one",
+                        })
+                      }
+                      className="flex p-[12px] min-w-[50px] items-center justify-center gap-[10px] bg-tradeAshLight border border-tradeAshLight rounded-[10px]"
+                    >
+                      <p className="text-white text-sm font-medium cursor-pointer">
+                        {tierOne?.code ? tierOne.code : ""}
+                      </p>
                     </div>
                     <div className="flex-1 flex gap-[10px] bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
                       <input

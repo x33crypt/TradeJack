@@ -7,15 +7,24 @@ export function useFetchUserOffers(initialPage = 1, limit = 10) {
   const [page, setPage] = useState(initialPage);
   const [pagination, setPagination] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+
+  // separate loading states
+  const [initialLoading, setInitialLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+
   const [displayedCount, setDisplayedCount] = useState(0);
 
-  // ─────────────────────────────────────────────────────────────
-  // stable fetch helper (doesn't depend on `page`)
-  // ─────────────────────────────────────────────────────────────
+  // ─────────────────────────────────────────────
+  // Fetch Helper
+  // ─────────────────────────────────────────────
   const fetchPage = useCallback(
-    async (pageToLoad) => {
-      setLoading(true);
+    async (pageToLoad, isInitial = false) => {
+      if (isInitial) {
+        setInitialLoading(true);
+      } else {
+        setLoading(true);
+      }
+
       setError(null);
 
       const buildUrl = () => {
@@ -57,7 +66,7 @@ export function useFetchUserOffers(initialPage = 1, limit = 10) {
           } else {
             setOffers((prev) => ({
               ...res.data,
-              data: [...prev.data, ...data],
+              data: [...(prev.data || []), ...data],
             }));
             setDisplayedCount((prev) => prev + data.length);
           }
@@ -72,35 +81,44 @@ export function useFetchUserOffers(initialPage = 1, limit = 10) {
           err?.response?.data?.errorMessage || err?.message || "Unknown error"
         );
       } finally {
-        setLoading(false);
+        if (isInitial) {
+          setInitialLoading(false);
+        } else {
+          setLoading(false);
+        }
       }
     },
-    [limit, filter]
+    [limit, filter, setOffers]
   );
 
-  // first load – run once
+  // ─────────────────────────────────────────────
+  // First Load
+  // ─────────────────────────────────────────────
   useEffect(() => {
-    fetchPage(1);
+    fetchPage(1, true); // mark as initial load
   }, [filter, fetchPage]);
 
-  // 🔁 Refetch
-  const refetchMyOffers = () => {
-    fetchPage(1); // then fetch fresh with empty filter
-  };
+  // ─────────────────────────────────────────────
+  // Helpers
+  // ─────────────────────────────────────────────
+  const refetchMyOffers = () => fetchPage(1, true);
 
-  // ───────────── helper for “Next” (Prev removed) ─────────────
   const next = async () => {
     if (pagination?.hasNextPage) {
-      await fetchPage(page + 1);
+      await fetchPage(page + 1, false);
     }
   };
 
+  // ─────────────────────────────────────────────
+  // Return
+  // ─────────────────────────────────────────────
   return {
-    loading,
     error,
     pagination,
     page,
     displayedCount,
+    loading, // loading for load more
+    initialLoading, // only on mount
     next,
     refetchMyOffers,
   };

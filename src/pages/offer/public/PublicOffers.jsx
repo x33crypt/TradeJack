@@ -4,22 +4,15 @@ import Footer from "@/components/others/Footer";
 import Filter from "@/components/offer/publicOffer/Filter";
 import OfferCard from "@/components/offer/publicOffer/OfferCard";
 import LockByScroll from "@/components/others/LockByScroll";
-import { useFetchPublicOffers } from "@/hooks/publicHooks/useFetchPublicOffers";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
 import SmallButton from "@/components/buttons/SmallButton";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
+import { useFetchOffers } from "@/hooks/publicHooks/useFetchOffers";
 import { RiLoader4Fill } from "react-icons/ri";
 import { PiSlidersHorizontalBold } from "react-icons/pi";
-import { FcLineChart } from "react-icons/fc";
 import { IoClose } from "react-icons/io5";
 import withComma from "@/utils/withComma";
-import { BiStats } from "react-icons/bi";
-import { IoScanCircleSharp } from "react-icons/io5";
-import { TbBinocularsFilled } from "react-icons/tb";
-import { GiBombingRun } from "react-icons/gi";
-import { LuBinoculars } from "react-icons/lu";
-import { IoScanCircle } from "react-icons/io5";
 import { TbScan } from "react-icons/tb";
 import FloatingTradeButton from "@/components/others/FloatingTradeButton";
 import { TbArrowsSort } from "react-icons/tb";
@@ -39,7 +32,7 @@ const PublicOffers = () => {
     topPagination,
     topDisplayedCount,
     nextTop,
-  } = useFetchPublicOffers();
+  } = useFetchOffers();
   const { offers, stats, setStats, filter, setFilter } = usePublicOffers();
   const [loadingOffers, setLoadingOffers] = useState(false);
   const [backupAmount, setBackupAmount] = useState("200");

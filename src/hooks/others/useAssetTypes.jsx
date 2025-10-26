@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import api from "@/utils/http/api";
 
-export const useServices = () => {
+export const useAssetTypes = () => {
   const [fullData, setFullData] = useState([]);
-  const [serviceTypes, setServiceTypes] = useState([]);
+  const [assetTypes, setAssetTypes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -17,9 +17,9 @@ export const useServices = () => {
 
         setFullData(data);
 
-        // Only keep names in serviceTypes
+        // Only keep names in assetTypes
         const namesOnly = data.map((item) => item.name);
-        setServiceTypes(namesOnly);
+        setAssetTypes(namesOnly);
       } catch (error) {
         console.error("Error fetching services:", error);
         setError(error);
@@ -31,5 +31,5 @@ export const useServices = () => {
     fetchServiceData();
   }, []);
 
-  return { serviceTypes, fullData, loading, error };
+  return { assetTypes, fullData, loading, error };
 };

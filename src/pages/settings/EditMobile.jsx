@@ -6,7 +6,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import InAppNav from "@/components/others/InAppNav";
 import { editMobile } from "@/utils/auth/editMobile";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
-import { useCountryCodes } from "@/hooks/others/useCountryCodes";
+import { usePhoneCodes } from "@/hooks/others/usePhoneCodes";
 import Button from "@/components/buttons/Button";
 
 const EditMobile = () => {
@@ -15,7 +15,7 @@ const EditMobile = () => {
     code: null,
     number: null,
   });
-  const { countryCodes } = useCountryCodes();
+  const { phoneCodes } = usePhoneCodes();
   const [isUpdating, setIsUpdating] = useState(false);
   const { toast, setToast } = useToast();
 
@@ -131,7 +131,7 @@ const EditMobile = () => {
                         selectOne: false,
                         selectTwo: true,
                         element: "country code",
-                        options: countryCodes,
+                        options: phoneCodes,
                         pick: "",
                         page: "edit mobile number",
                       })

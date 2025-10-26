@@ -4,7 +4,7 @@ const KycContext = createContext();
 
 export const KycProvider = ({ children }) => {
   const [levels, setLevels] = useState({
-    current: 2,
+    current: 0,
     data: null,
     upgrade: {
       tier: 3,
@@ -19,7 +19,7 @@ export const KycProvider = ({ children }) => {
     fullname: "",
     dateOfBirth: { day: "", month: "", year: "" },
     gender: "",
-    code: "1",
+    code: "+1",
     phone: "",
     loading: false,
     success: false,

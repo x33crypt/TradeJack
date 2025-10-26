@@ -2,7 +2,7 @@ import MyOfferCard from "@/components/offer/userOffer/OfferCard";
 import Footer from "@/components/others/Footer";
 import InAppNav from "@/components/others/InAppNav";
 import React, { useEffect, useState, useRef } from "react";
-import { useFetchUserOffers } from "@/hooks/others/useFetchOffers";
+import { useFetchUserOffers } from "@/hooks/userHooks/useFetchOffers";
 import { useUserOffer } from "@/context/userContext/OffersContext";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { useNavigate } from "react-router-dom";
@@ -23,11 +23,11 @@ import { IoNuclearSharp } from "react-icons/io5";
 
 const MyOffer = () => {
   const {
-    loading,
-    error,
     pagination,
     page,
     displayedCount,
+    loading, // loading for load more
+    initialLoading, // only on mount
     next,
     refetchMyOffers,
   } = useFetchUserOffers();
@@ -227,9 +227,7 @@ const MyOffer = () => {
   }, []);
 
   const handleNext = async () => {
-    setLoadingNext(true);
     await next();
-    setLoadingNext(false);
   };
 
   const isEmpty = offers?.data?.length === 0 || offers === null;
@@ -328,7 +326,7 @@ const MyOffer = () => {
 
             <div className="flex flex-col flex-1 justify-between gap-[20px]">
               <div className="flex-1 flex flex-col gap-[15px]">
-                {loading ? (
+                {initialLoading ? (
                   <Loading />
                 ) : (
                   <div className="flex flex-1">
@@ -383,7 +381,7 @@ const MyOffer = () => {
                     <SmallButton variant="outline">
                       {pagination?.hasNextPage ? (
                         <div onClick={handleNext}>
-                          {loadingNext ? (
+                          {loading ? (
                             <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
                           ) : (
                             <p>Load more</p>

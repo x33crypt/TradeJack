@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const useAutoReloadOnReconnect = () => {
+const useAutoReload = () => {
   useEffect(() => {
     const handleOnline = () => {
       console.log("✅ Network reconnected. Reloading...");
@@ -15,4 +15,4 @@ const useAutoReloadOnReconnect = () => {
   }, []);
 };
 
-export default useAutoReloadOnReconnect;
+export default useAutoReload;

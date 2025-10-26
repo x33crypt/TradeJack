@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import api from "@/utils/http/api";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 
-export function useFetchPublicOffers() {
+export function useFetchOffers() {
   const { setOffers, filter } = usePublicOffers();
   const [error, setError] = useState(null);
 

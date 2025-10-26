@@ -30,13 +30,14 @@ const SelectElement = () => {
   };
 
   const filterObjectOption = (select?.options || [])
-    .filter((option) => typeof option === "object" && option !== null)
-    .filter(({ name }) =>
-      searchInput
+    .filter((option) => option && typeof option === "object")
+    .filter(({ name }) => {
+      if (!name || typeof name !== "string") return false; // avoid crash if name missing
+      return searchInput
         ? name.toLowerCase().includes(searchInput.toLowerCase())
-        : true
-    )
-    .sort((a, b) => a.name.localeCompare(b.name));
+        : true;
+    })
+    .sort((a, b) => (a.name || "").localeCompare(b.name || ""));
 
   const filterStringOption = (select?.options || [])
     .filter((option) => typeof option === "string")
@@ -100,7 +101,7 @@ const SelectElement = () => {
               <div
                 className={` ${
                   select?.selectOne ? "flex" : "hidden"
-                }  flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh`}
+                }  flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh`}
               >
                 <div className="flex items-center gap-2">
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
@@ -160,7 +161,7 @@ const SelectElement = () => {
               <div
                 className={` ${
                   select?.selectTwo ? "flex" : "hidden"
-                }  flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh`}
+                }  flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh`}
               >
                 <div className="flex items-center gap-2">
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
@@ -168,63 +169,81 @@ const SelectElement = () => {
                     {select?.element.toUpperCase()}
                   </p>
                 </div>
-                <div
-                  className={`flex flex-col gap-[15px] rounded-[15px] w-full md:max-h-[245px] max-h-[300px]`}
-                >
+                <div className="flex flex-col gap-[15px] rounded-[15px] w-full md:max-h-[245px] max-h-[300px]">
                   {Array.isArray(options) && options.length > 0 ? (
-                    <div className="overflow-y-auto custom-scrollbar  ">
+                    <div className="overflow-y-auto custom-scrollbar">
                       {searchInput ? (
-                        <div className="flex flex-col gap-[10px] p-1  ">
-                          {filterObjectOption.length ? (
-                            filterObjectOption.map(({ code, name }) => (
+                        <div className="flex flex-col gap-[10px] p-1">
+                          {filterObjectOption.length > 0 ? (
+                            filterObjectOption.map((item, index) => (
                               <div
-                                key={code}
-                                onClick={() => handleUpdate({ code, name })}
-                                className="flex flex-wrap items-center gap-[5px] w-full"
+                                key={index}
+                                onClick={() => handleUpdate(item)}
+                                className="flex flex-wrap items-center gap-[5px] w-full cursor-pointer"
                               >
-                                <SmallButton variant="fadeoutPlus">
-                                  {name}
-                                </SmallButton>
-
-                                <SmallButton variant="fadeoutPlus">
-                                  {code}
-                                </SmallButton>
+                                {Object.entries(item).map(([key, value]) => {
+                                  if (key === "index" || value == null)
+                                    return null; // skip index/nulls
+                                  return (
+                                    <SmallButton
+                                      key={key}
+                                      variant="fadeoutPlus"
+                                    >
+                                      {String(value)}
+                                    </SmallButton>
+                                  );
+                                })}
                               </div>
                             ))
                           ) : (
-                            <div className=" text-xs text-tradeFadeWhite ">
+                            <div className="text-xs text-tradeFadeWhite">
                               NO MATCHING RESULT FOUND
                             </div>
                           )}
                         </div>
                       ) : (
-                        <div className="flex flex-col gap-[10px] p-1 ">
+                        <div className="flex flex-col gap-[10px] p-1">
                           {select?.options
                             ?.filter(
                               (option) =>
-                                typeof option === "object" && option !== null
+                                option &&
+                                typeof option === "object" &&
+                                option !== null
                             )
-                            .sort((a, b) => a.name.localeCompare(b.name))
-                            .map(({ code, name }) => (
+                            .sort((a, b) =>
+                              (a.name || "").localeCompare(
+                                b.name || "",
+                                undefined,
+                                {
+                                  sensitivity: "base",
+                                }
+                              )
+                            )
+                            .map((item, index) => (
                               <div
-                                key={code}
-                                onClick={() => handleUpdate({ code, name })}
-                                className="flex flex-wrap items-center gap-[5px] w-full"
+                                key={index}
+                                onClick={() => handleUpdate(item)}
+                                className="flex flex-wrap items-center gap-[5px] w-full cursor-pointer"
                               >
-                                <SmallButton variant="fadeoutPlus">
-                                  {name}
-                                </SmallButton>
-
-                                <SmallButton variant="fadeoutPlus">
-                                  {code}
-                                </SmallButton>
+                                {Object.entries(item).map(([key, value]) => {
+                                  if (key === "index" || value == null)
+                                    return null;
+                                  return (
+                                    <SmallButton
+                                      key={key}
+                                      variant="fadeoutPlus"
+                                    >
+                                      {String(value)}
+                                    </SmallButton>
+                                  );
+                                })}
                               </div>
                             ))}
                         </div>
                       )}
                     </div>
                   ) : (
-                    <div className=" text-xs text-tradeFadeWhite">
+                    <div className="text-xs text-tradeFadeWhite">
                       OPTIONS NOT FOUND
                     </div>
                   )}
