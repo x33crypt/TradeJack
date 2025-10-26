@@ -1,49 +1,15 @@
 import React from "react";
-import FeedbackCard from "../cards/FeedbackCard";
+import SmallButton from "@/components/buttons/SmallButton";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
-import { RiLoader4Fill } from "react-icons/ri";
-import SmallButton from "../buttons/SmallButton";
 import { TbArrowsSort } from "react-icons/tb";
 
-const Feedbacks = ({
-  loading,
-  feedbacks,
-  loadingMore,
-  pagination,
-  displayedCount,
-  nextPage,
-}) => {
-  const getSectionStatus = (section) => {
-    const isEmpty = !section?.data || section.data.length === 0;
-    const isEnd =
-      !isEmpty &&
-      section?.pagination &&
-      (!section.pagination.hasNextPage ||
-        section.data.length >= (section.pagination.totalItems || 0));
-
-    let message = null;
-
-    if (isEmpty) {
-      message = "No activity yet";
-    } else if (isEnd) {
-      message = "End of list";
-    }
-
-    return {
-      isEmpty, // true if no data
-      isEnd, // true if reached end of pagination
-      message, // null if neither, avoids React "object as child" error
-    };
-  };
-
-  const feedbackStatus = getSectionStatus(feedbacks?.data);
-
+const TradeHistory = ({ loading, tradeHistory }) => {
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
       <div className="flex  items-center justify-between ">
         <p className="text-sm font-semibold text-white flex items-center gap-1">
-          FEEDBACKS
+          TRADE HISTORY
         </p>
       </div>
 
@@ -70,23 +36,22 @@ const Feedbacks = ({
               <Loading />
             ) : (
               <div className="flex flex-1">
-                {feedbacks === null ? (
+                {tradeHistory === null ? (
                   <NetworkError />
                 ) : (
                   <div className="flex flex-1">
-                    {Array.isArray(feedbacks?.data) &&
-                    feedbacks?.data?.length > 0 ? (
+                    {Array.isArray(tradeHistory) && tradeHistory?.length > 0 ? (
                       <div className="flex flex-col gap-[10px] w-full h-max">
-                        {feedbacks?.data?.map((feed, index) => (
-                          <div key={feed.id || index}>
-                            <FeedbackCard offer={feed} />
+                        {[...Array(5)].map((_, index, array) => (
+                          <div key={index}>
+                            <FeedbackCard />
                           </div>
                         ))}
                       </div>
                     ) : (
                       <div className="flex-1 min-h-[150px] flex flex-col gap-[10px] items-center justify-center">
                         <p className="text-[13px] font-semibold text-white leading-none">
-                          NO FEEDBACK FOUND
+                          NO TRADE HISTORY FOUND
                         </p>
                       </div>
                     )}
@@ -101,30 +66,28 @@ const Feedbacks = ({
           <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
             <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
               <SmallButton variant="outline">
-                <p>{displayedCount ?? "0"}</p>
+                <p>0</p>
               </SmallButton>
               <SmallButton variant="outline">
                 <p>of</p>
               </SmallButton>
               <SmallButton variant="outline">
-                <p>{pagination?.totalItems ? pagination?.totalItems : "0"}</p>
+                <p>0</p>
               </SmallButton>
             </div>
 
             <div className="flex gap-[5px] py-[1px]">
               <SmallButton variant="outline">
-                {pagination?.hasNextPage ? (
-                  <div onClick={nextPage}>
-                    {loadingMore ? (
+                {true ? (
+                  <div>
+                    {false ? (
                       <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
                     ) : (
                       <p>Load more</p>
                     )}
                   </div>
                 ) : (
-                  <div>
-                    <p>{feedbackStatus?.message}</p>
-                  </div>
+                  <div>{(isEmpty || isEnd) && <p>{message}</p>}</div>
                 )}
               </SmallButton>
               <SmallButton
@@ -141,4 +104,4 @@ const Feedbacks = ({
   );
 };
 
-export default Feedbacks;
+export default TradeHistory;

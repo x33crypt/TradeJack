@@ -9,7 +9,7 @@ const FloatingTradeButton = () => {
   const navigateTo = useNavigate();
 
   const handleClick = () => {
-    navigateTo("/offers/user/create"); // 👈 change this to your ongoing trades/messages route
+    // navigateTo("/offers/user/create"); // 👈 change this to your ongoing trades/messages route
   };
 
   return (

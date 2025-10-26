@@ -173,26 +173,27 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                 <div className="flex lg:hidden items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                       <GoBookmarkFill />
-                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                         BOOKMARK
-                      </p>
+                      </p> */}
                     </div>
-
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                       <FaShareAlt />
-                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                         SHARE
-                      </p>
+                      </p> */}
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    <MdReport />
-                    <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      REPORT
-                    </p>
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <MdReport />
+                      {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        REPORT
+                      </p> */}
+                    </div>
                   </div>
                 </div>
 
@@ -285,7 +286,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </Button>
                 </div>
 
-                <div className="flex flex-1 flex-col min-h-[120px] gap-[10px]">
+                <div className="flex flex-1 flex-col gap-[10px]">
                   <div className="flex flex-col gap-[10px] w-full ">
                     <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                       <div className="flex items-center justify-between w-full mt-[1px]">

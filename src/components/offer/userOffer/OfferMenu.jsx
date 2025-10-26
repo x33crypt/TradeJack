@@ -11,11 +11,11 @@ import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { IoNuclearSharp } from "react-icons/io5";
 
 const OfferMenu = () => {
-  const { offers, filter, setFilter } = useUserOffer();
+  const { filter, setFilter } = useUserOffer();
   const { select, setSelect } = useSelectElement();
   const [assets, setAssets] = useState(["All asset"]);
 
-  const offerStatus = ["All status", "Active", "Paused", "Suspended", "Closed"];
+  const offerStatus = ["All status", "Live", "Paused", "Suspended", "Closed"];
 
   // handling asset type change
   useEffect(() => {

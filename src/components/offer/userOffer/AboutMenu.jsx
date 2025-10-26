@@ -1,9 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDashboard } from "@/context/userContext/DashboardContext";
 import { IoMdArrowDropright } from "react-icons/io";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { IoCloseSharp } from "react-icons/io5";
+import { FaShareAlt } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
+import { FaPause } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
+import { HiSpeakerphone } from "react-icons/hi";
 
 const AboutMenu = () => {
   const navigateTo = useNavigate();
@@ -15,43 +17,35 @@ const AboutMenu = () => {
             onClick={() => navigateTo("/offers")}
             className="flex items-center gap-2"
           >
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <FaEdit className="text-xs text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               EDIT
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <FaPause className="text-xs text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               PAUSE
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <AiFillDelete className="text-sm text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               DELETE
             </p>
           </div>
+        </div>
+      </div>
+      <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
+        <div className="flex flex-col gap-[15px]">
           <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <HiSpeakerphone className="text-sm text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               MANAGE ADS
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              VIEW CHATS
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              TRADE HISTORY
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <FaShareAlt className="text-xs text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               SHARE
             </p>

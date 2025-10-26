@@ -6,20 +6,14 @@ import { useFetchUserOffers } from "@/hooks/userHooks/useFetchOffers";
 import { useUserOffer } from "@/context/userContext/OffersContext";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { useNavigate } from "react-router-dom";
-import DasHboardMenu from "@/components/dashboard/DashboardMenu";
 import Loading from "@/components/others/Loading";
 import SmallButton from "@/components/buttons/SmallButton";
-import { FaSort } from "react-icons/fa";
-import { FaMagnifyingGlass } from "react-icons/fa6";
-import { FaRegCalendarAlt } from "react-icons/fa";
 import { RiLoader4Fill } from "react-icons/ri";
 import NetworkError from "@/components/others/NetworkError";
-import { BiFileBlank } from "react-icons/bi";
-import { FaCalendarDay } from "react-icons/fa6";
 import { TbArrowsSort } from "react-icons/tb";
 import { LuCalendarClock } from "react-icons/lu";
 import OfferMenu from "@/components/offer/userOffer/OfferMenu";
-import { IoNuclearSharp } from "react-icons/io5";
+
 
 const MyOffer = () => {
   const {
@@ -33,7 +27,6 @@ const MyOffer = () => {
   } = useFetchUserOffers();
   const { offers, filter, setFilter } = useUserOffer();
   const [triggerScroll, setTriggerScroll] = useState(false);
-  const [loadingNext, setLoadingNext] = useState(false);
   const { select, setSelect } = useSelectElement();
   const [assets, setAssets] = useState(["All asset"]);
 
@@ -52,7 +45,7 @@ const MyOffer = () => {
 
   const navigateTo = useNavigate();
 
-  const offerStatus = ["All status", "Active", "Paused", "Suspended", "Closed"];
+  const offerStatus = ["All status", "Live", "Paused", "Suspended", "Closed"];
 
   // handling asset type change
   useEffect(() => {

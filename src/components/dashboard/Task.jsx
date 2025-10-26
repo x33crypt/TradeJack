@@ -1,23 +1,9 @@
 import React, { useState } from "react";
 import Loading from "../others/Loading";
 import NetworkError from "../others/NetworkError";
-import SmallButton from "../buttons/SmallButton";
-import Button from "../buttons/Button";
-import { FaUserCheck } from "react-icons/fa6";
-import { BsFillGiftFill } from "react-icons/bs";
-import { MdOutlineAccessTimeFilled } from "react-icons/md";
-import { MdTimelapse } from "react-icons/md";
-import { RiCopperCoinLine } from "react-icons/ri";
-import ProgressBar from "../others/ProgressBar";
-import { MdPending } from "react-icons/md";
-import { LuBatteryCharging } from "react-icons/lu";
-import { BiSolidBatteryCharging } from "react-icons/bi";
-import { IoFlash } from "react-icons/io5";
-import { PiCoinVerticalBold } from "react-icons/pi";
-import { IoMdFlash } from "react-icons/io";
-import { MdHourglassTop } from "react-icons/md";
 import { MdLeaderboard } from "react-icons/md";
 import { RiCopperCoinFill } from "react-icons/ri";
+import { TbArrowsSort } from "react-icons/tb";
 
 const Task = ({ loading, dashboard }) => {
   const [value, setValue] = useState(20);
@@ -40,13 +26,10 @@ const Task = ({ loading, dashboard }) => {
             ) : (
               <div className="flex-1 flex flex-col justify-between gap-[25px]">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    <TbArrowsSort />
+                    <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                       TODAY
-                    </p>
-
-                    <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      WEEK
                     </p>
                   </div>
 
