@@ -154,31 +154,18 @@ const Info = ({ loading, info }) => {
                 {/* KYC */}
                 <div className="flex flex-col bg-tradeAsh rounded-[15px] border border-tradeAshLight overflow-hidden">
                   <div
-                    className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-                    onClick={() => navigateTo("/account/kyc/status")}
+                    className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
+                    onClick={() => navigateTo("/kyc/levels")}
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
-                        KYC Status
+                        KYC Level
                       </p>
                       <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {capitalizeFirst(info?.kycStatus) || "-- --"}
+                        {info?.kycLevel || "-- --"}
                       </p>
                     </div>
                     <div className="text-white text-[22px]">
-                      <MdKeyboardArrowRight />
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300">
-                    <div className="flex-1 flex justify-between gap-[2px]">
-                      <p className="text-[13px] font-semibold text-white">
-                        Document Type
-                      </p>
-                      <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        {capitalizeFirst(info?.documentType) || "-- --"}
-                      </p>
-                    </div>
-                    <div className="text-white text-[22px] opacity-0">
                       <MdKeyboardArrowRight />
                     </div>
                   </div>

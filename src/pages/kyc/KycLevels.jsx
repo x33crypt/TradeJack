@@ -5,10 +5,10 @@ import NetworkError from "@/components/others/NetworkError";
 import Loading from "@/components/others/Loading";
 import { useFetchKycStatus } from "@/hooks/userHooks/useFetchKycStatus";
 import { useKyc } from "@/context/userContext/KycContext";
-import LevelOne from "@/components/kyc/levels/LevelOne";
-import LevelTwo from "@/components/kyc/levels/LevelTwo";
-import LevelThree from "@/components/kyc/levels/LevelThree";
-import LevelZero from "@/components/kyc/levels/LevelZero";
+import LevelOne from "@/components/kyc/LevelOne";
+import LevelTwo from "@/components/kyc/LevelTwo";
+import LevelThree from "@/components/kyc/LevelThree";
+import LevelZero from "@/components/kyc/LevelZero";
 
 const KycLevels = () => {
   const { loading } = useFetchKycStatus();

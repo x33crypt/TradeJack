@@ -125,7 +125,9 @@ const VerifyLevelOne = () => {
           <div className="flex flex-col gap-[30px]">
             <div className="flex flex-col gap-[25px]">
               <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                Please provide your accurate information
+                Provide your basic information to verify your identity and
+                activate your account. This quick Tier 1 process ensures your
+                account stays secure and ready for transactions.
               </p>
               <div className="flex flex-col gap-[10px]">
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">

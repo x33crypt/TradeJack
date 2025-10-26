@@ -122,13 +122,11 @@ const OfferDetails = ({ loading, aboutOffer }) => {
       </div>
 
       <div className="flex flex-col min-h-[120px]">
-        {/* loading */}
-        {false ? (
+        {loading ? (
           <Loading />
         ) : (
           <div className="flex flex-1">
-            {/* aboutOffer?.data === null */}
-            {false ? (
+            {aboutOffer?.data === null ? (
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px] gap-[30px]">
@@ -233,7 +231,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           <p
                             key={index}
                             onClick={() => amountClick(amount)}
-                            className="text-[13px] font-bold text-white hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight w-max rounded-sm transition-all duration-300 cursor-pointer"
+                            className="text-[13px] font-bold text-white hover:text-white border border-tradeAshExtraLight leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight w-max rounded-sm transition-all duration-300 cursor-pointer"
                           >
                             + {withComma(amount)}
                           </p>

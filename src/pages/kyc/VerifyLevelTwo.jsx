@@ -9,6 +9,7 @@ const VerifyLevelTwo = () => {
   const { tierTwo, setTierTwo } = useKyc();
 
   console.log(tierTwo);
+
   const navigateTo = useNavigate();
 
   const handleBvnChange = (e) => {
@@ -38,7 +39,9 @@ const VerifyLevelTwo = () => {
           <div className="flex flex-col gap-[30px]">
             <div className="flex flex-col gap-[25px]">
               <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                Please provide your accurate information
+                Continue your verification by providing your BVN and NIN
+                details. This quick Tier 2 step helps confirm your identity,
+                strengthen security, and unlock higher transaction limits.
               </p>
               <div className="flex flex-col gap-[10px]">
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
@@ -81,7 +84,7 @@ const VerifyLevelTwo = () => {
             </div>
             <Button
               variant="secondary"
-              onClick={() => navigateTo("/kyc/tier/1")}
+              onClick={() => navigateTo("/kyc/tier/2")}
             >
               SUBMIT
             </Button>
