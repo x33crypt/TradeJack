@@ -13,16 +13,18 @@ const VerifyLevelTwo = () => {
   const navigateTo = useNavigate();
 
   const handleBvnChange = (e) => {
+    const value = e.target.value.replace(/\D/g, ""); // remove all non-digits
     setTierTwo((prevDetails) => ({
       ...prevDetails,
-      bvn: e.target.value,
+      bvn: value,
     }));
   };
 
   const handleNinChange = (e) => {
+    const value = e.target.value.replace(/\D/g, ""); // remove all non-digits
     setTierTwo((prevDetails) => ({
       ...prevDetails,
-      nin: e.target.value,
+      nin: value,
     }));
   };
 

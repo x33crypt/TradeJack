@@ -121,7 +121,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
         </p>
       </div>
 
-      <div className="flex flex-col min-h-[120px]">
+      <div className="flex flex-col ">
         {loading ? (
           <Loading />
         ) : (

@@ -21,6 +21,7 @@ const AboutOffer = () => {
   const { id } = useParams();
   const { loading, error } = useFetchAboutOffers(id);
   const { aboutOffer } = useUserOffer();
+  const { feedback } = aboutOffer || {};
 
   const navigateTo = useNavigate();
 
@@ -49,7 +50,7 @@ const AboutOffer = () => {
               <AboutMenu />
               <div className="flex flex-1 flex-col gap-[40px] lg:mr-[12%] p-[15px]">
                 <OfferDetails aboutOffer={aboutOffer} />
-                <OfferFeedback />
+                <OfferFeedback feedback={feedback} />
               </div>
             </div>
           )}

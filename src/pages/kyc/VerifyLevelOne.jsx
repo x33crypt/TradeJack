@@ -25,9 +25,10 @@ const VerifyLevelOne = () => {
   };
 
   const handlePhoneChange = (e) => {
+    const value = e.target.value.replace(/\D/g, ""); // remove all non-digits
     setTierOne((prevDetails) => ({
       ...prevDetails,
-      phone: e.target.value,
+      phone: value,
     }));
   };
 

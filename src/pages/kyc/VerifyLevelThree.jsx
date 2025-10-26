@@ -113,9 +113,9 @@ const VerifyLevelThree = () => {
           <div className="flex flex-col gap-[30px]">
             <div className="flex flex-col gap-[25px]">
               <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                Finish your verification by taking a selfie and uploading your
-                NIN photo. This quick step confirms your identity and gives you
-                full platform access.
+                Finish your verification by uploading your selfie and NIN photo.
+                This quick step confirms your identity and gives you full
+                platform access.
               </p>
               <div className="flex flex-col gap-[10px]">
                 <div className="flex flex-col overflow-hidden h-[180px] bg-tradeAshLight hover:bg-tradeAshLight/70 border border-tradeAshLight rounded-[15px] gap-[15px] duration-300 transition-all">

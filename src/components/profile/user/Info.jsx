@@ -2,7 +2,6 @@ import React from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import Loading from "@/components/others/Loading";
-import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import NetworkError from "@/components/others/NetworkError";
 import { shortenEmail } from "@/utils/shortenEmail";
 
