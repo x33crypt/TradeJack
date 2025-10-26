@@ -2,12 +2,13 @@ import React, { useState, useEffect, useMemo } from "react";
 import Button from "@/components/buttons/Button";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
-import { currencies } from "@/hooks/others/useCurrencies";
+import { useCurrencies } from "@/hooks/others/useCurrencies";
 import withComma from "@/utils/withComma";
 import { IoMdArrowDropright } from "react-icons/io";
 
 const Filter = () => {
   const { filter, setFilter } = usePublicOffers();
+  const { currencies } = useCurrencies();
 
   const [sorts] = useState([
     "Recently active traders",
