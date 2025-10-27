@@ -20,6 +20,7 @@ import { MdReport } from "react-icons/md";
 import { GrStatusGoodSmall } from "react-icons/gr";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { FaRegStar } from "react-icons/fa";
+import { TbCubeSpark } from "react-icons/tb";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -169,14 +170,19 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           </div>
                         </div>
                       </div>
+                      <div className="flex items-center gap-2">
+                        <div>
+                          <TbCubeSpark className="text-white text-5xl" />
+                        </div>
 
-                      <div className="flex flex-col gap-[5px] ">
-                        <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-normal">
-                          {offer?.serviceName || "N/A"}
-                        </p>
-                        <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
-                          {offer?.serviceType || "N/A"}
-                        </p>
+                        <div className="flex flex-col gap-[10px] ">
+                          <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
+                            {offer?.serviceName || "N/A"}
+                          </p>
+                          <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
+                            {offer?.serviceType || "N/A"}
+                          </p>
+                        </div>
                       </div>
                     </div>
 
@@ -203,6 +209,18 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
 
                   <div className="flex flex-col gap-[10px]">
+                    <div className="flex gap-1 items-center">
+                      <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                      <p className="text-xs font-semibold text-white">
+                        Created 31 Aug, 2025
+                      </p>
+                    </div>
+                    <div className="flex gap-1 items-center">
+                      <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                      <p className="text-xs font-semibold text-white">
+                        Updated 31 Aug, 2025
+                      </p>
+                    </div>
                     <div className="flex  items-center gap-1">
                       <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                       <p className="text-xs font-semibold text-white">
@@ -219,7 +237,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                 </div>
 
-                <div className="flex gap-[10px] flex-col">
+                <div className="flex gap-[30px] flex-col">
                   <div className="flex flex-col lg:flex-row gap-[10px]">
                     <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh">
                       <div className="flex flex-col gap-[15px]">
@@ -292,8 +310,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                       <div className="flex flex-col gap-1">
                         <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Service Fee :{" "}
-                          <span className="text-white">23.00</span> USD
+                          Equalvalent to :{" "}
+                          <span className="text-white">23.00</span> NGN
                         </p>
                       </div>
                     </div>

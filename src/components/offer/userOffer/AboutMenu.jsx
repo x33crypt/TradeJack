@@ -14,7 +14,7 @@ const AboutMenu = () => {
     <div className="hidden lg:flex sticky top-[70px] h-max w-[250px] gap-[10px] flex-col lg:mb-[15px] ">
       <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
         <div className="flex flex-col gap-[15px]">
-          {/* <div
+          <div
             onClick={() => navigateTo("/offer/:id/edit")}
             className="flex items-center gap-2"
           >
@@ -22,7 +22,7 @@ const AboutMenu = () => {
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               EDIT
             </p>
-          </div> */}
+          </div>
           <div className="flex items-center gap-2">
             <FaPause className="text-xs text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">

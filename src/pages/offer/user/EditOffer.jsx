@@ -19,6 +19,10 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Button from "@/components/buttons/Button";
+import { FaRegStar } from "react-icons/fa";
+import { TbCubeSpark } from "react-icons/tb";
+import { GrStatusGoodSmall } from "react-icons/gr";
+import { GoBookmarkFill } from "react-icons/go";
 
 const EditOffer = () => {
   // const { id } = useParams();
@@ -326,16 +330,8 @@ const EditOffer = () => {
                     <div className="flex flex-1 flex-col min-h-[120px] gap-[30px]">
                       <div className="flex flex-col gap-[30px] pb-[12px]">
                         <div className="flex items-center gap-2">
-                          <div className="flex cursor-pointer">
-                            {false ? (
-                              <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
-                                <img src={image} alt="" className="" />
-                              </div>
-                            ) : (
-                              <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
-                                <img src={image} alt="" className="" />
-                              </div>
-                            )}
+                          <div>
+                            <TbCubeSpark className="text-white text-5xl" />
                           </div>
 
                           <div className="flex flex-col gap-[5px] ">
@@ -350,17 +346,42 @@ const EditOffer = () => {
 
                         <div className="flex flex-col gap-[10px]">
                           <div className="flex  items-center gap-1">
-                            <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                            <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
                             <p className="text-xs font-semibold text-white">
-                              +{editOffer?.offerDetails?.completedTrades ?? "0"}{" "}
-                              Recent Trades
+                              Active 
                             </p>
                           </div>
-
                           <div className="flex gap-1 items-center">
                             <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                             <p className="text-xs font-semibold text-white">
-                              Last Updated 31 Aug, 2025
+                              Created 31 Aug, 2025
+                            </p>
+                          </div>
+                          <div className="flex gap-1 items-center">
+                            <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                            <p className="text-xs font-semibold text-white">
+                              Updated 31 Aug, 2025
+                            </p>
+                          </div>
+                          <div className="flex gap-1 items-center">
+                            <GoBookmarkFill className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                            <p className="text-xs font-semibold text-white">
+                              123 Bookmarks
+                            </p>
+                          </div>
+
+                          <div className="flex  items-center gap-1">
+                            <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                            <p className="text-xs font-semibold text-white">
+                              {editOffer?.offerDetails?.completedTrades ?? "0"}{" "}
+                              Completed Trade(s)
+                            </p>
+                          </div>
+
+                          <div className="flex  items-center gap-1">
+                            <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                            <p className="text-xs font-semibold text-white">
+                              99% Completion Rating
                             </p>
                           </div>
                         </div>
@@ -729,6 +750,17 @@ const EditOffer = () => {
                             ></textarea>
                           </div>
                         </div>
+                      </div>
+
+                      <div className="flex flex-col gap-1">
+                        <p className="text-xs font-semibold text-white">
+                          Note:
+                        </p>
+                        <p className="text-xs font-medium text-tradeFadeWhite">
+                          Once you make changes, your offer will be paused for a
+                          quick review. Don’t worry, it’ll go live again
+                          automatically after approval.
+                        </p>
                       </div>
 
                       <div className="flex flex-col gap-[10px]">

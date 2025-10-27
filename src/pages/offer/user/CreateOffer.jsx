@@ -836,10 +836,6 @@ const CreateOffer = () => {
         <div className="flex flex-1 flex-col gap-[20px] lg:mx-[22.8%] p-[15px]">
           <div className="flex flex-1 flex-col gap-[30px]">
             <div className="flex  items-center justify-between ">
-              {/* <p className="text-lg font-semibold text-white flex items-center gap-1">
-                CREATE A NEW OFFER
-              </p> */}
-
               <p className="text-lg font-semibold text-white flex items-center gap-1">
                 {createOffer?.step <= 3
                   ? ` CREATE A NEW OFFER`
@@ -1104,9 +1100,9 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                       <p className="text-tradeFadeWhite text-xs font-medium">
-                        Rate
+                        Rate :
                       </p>
                       <p className="text-tradeOrange text-xs font-medium">
                         2,300 / {createOffer?.currency?.code}
@@ -1599,7 +1595,7 @@ const CreateOffer = () => {
               </div>
 
               <div className="flex flex-col gap-1">
-                <p className="text-white text-sm font-semibold">
+                <p className="text-xs font-semibold text-white">
                   Terms & Agreement
                 </p>
                 <p className="text-xs font-medium text-tradeFadeWhite">
