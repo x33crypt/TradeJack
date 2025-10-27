@@ -15,6 +15,7 @@ import { windowFormatHour } from "@/utils/windowFormatHour";
 import { HiSpeakerphone } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { FaRegStopCircle } from "react-icons/fa";
+import { GrStatusGoodSmall } from "react-icons/gr";
 
 const OfferDetails = ({ aboutOffer, loading }) => {
   const { offerDetails, traderInfo } = aboutOffer || {};
@@ -68,6 +69,13 @@ const OfferDetails = ({ aboutOffer, loading }) => {
 
                   <div className="flex flex-col gap-[10px]">
                     <div className="flex  items-center gap-1">
+                      <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
+                      <p className="text-xs font-semibold text-white">
+                        Active Offer
+                      </p>
+                    </div>
+
+                    <div className="flex  items-center gap-1">
                       <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                       <p className="text-xs font-semibold text-white">
                         +{offerDetails?.completedTrades ?? "0"} Recent Trades
@@ -77,7 +85,7 @@ const OfferDetails = ({ aboutOffer, loading }) => {
                     <div className="flex gap-1 items-center">
                       <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                       <p className="text-xs font-semibold text-white">
-                        Last Updated 31 Aug, 2025
+                        Created 31 Aug, 2025
                       </p>
                     </div>
                   </div>

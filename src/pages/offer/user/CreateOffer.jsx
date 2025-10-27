@@ -28,6 +28,7 @@ import Stepper from "@/components/others/Steppers";
 import { FaCircleInfo } from "react-icons/fa6";
 import { HiGlobeAlt } from "react-icons/hi";
 import { FaRegUserCircle } from "react-icons/fa";
+import image from "../../../assets/landingImg4.JPG";
 
 const CreateOffer = () => {
   const topRef = useRef(null);
@@ -855,7 +856,7 @@ const CreateOffer = () => {
                 </p>
 
                 <div className="flex flex-col gap-[10px]">
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                     <div className="flex flex-1 items-center justify-between">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Asset Type
@@ -888,7 +889,7 @@ const CreateOffer = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                     <div className="flex flex-1 items-center justify-between">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         {" "}
@@ -923,7 +924,7 @@ const CreateOffer = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                     <div className="flex flex-1 items-center justify-between">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Currency
@@ -968,7 +969,7 @@ const CreateOffer = () => {
                     /> */}
                   </div>
 
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                     <div className="flex flex-1 items-center justify-between">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Purchase Limit
@@ -1053,7 +1054,7 @@ const CreateOffer = () => {
                   and margins to manage expectations and profitability.
                 </p>
                 <div className="flex flex-col gap-[10px]">
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                     <div className="flex flex-1 items-center justify-between">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Profit Margin
@@ -1116,7 +1117,7 @@ const CreateOffer = () => {
                     /> */}
                   </div>
 
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                     <div className="flex flex-1 items-center justify-between">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Transfer Window
@@ -1191,7 +1192,7 @@ const CreateOffer = () => {
                     /> */}
                   </div>
 
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                     <div className="flex flex-1 items-center justify-between">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Release Window
@@ -1285,7 +1286,7 @@ const CreateOffer = () => {
                 </p>
 
                 <div className="flex flex-col gap-[10px]">
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                     <div className="flex flex-1 items-center justify-between">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Tags
@@ -1359,7 +1360,7 @@ const CreateOffer = () => {
                     /> */}
                   </div>
 
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                     <div className="flex flex-1 items-center justify-between">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Instructions
@@ -1409,8 +1410,16 @@ const CreateOffer = () => {
                 </p>
                 <div className="flex flex-1 flex-col gap-[20px]">
                   <div className="flex items-center gap-2  pb-[12px]">
-                    <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeAshLight  text-white border border-tradeAshExtraLight text-xl leading-none items-center justify-center">
-                      {Icon && <Icon className="" />}
+                    <div className="flex cursor-pointer">
+                      {false ? (
+                        <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                          <img src={image} alt="" className="" />
+                        </div>
+                      ) : (
+                        <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                          <img src={image} alt="" className="" />
+                        </div>
+                      )}
                     </div>
 
                     <div className="flex flex-col gap-[5px] ">
@@ -1424,7 +1433,7 @@ const CreateOffer = () => {
                   </div>
 
                   <div className="flex flex-col gap-[10px]">
-                    <div className="flex flex-col justify-between flex-1 gap-[20px] p-[12px] rounded-[15px] borde border-tradeAshLight bg-tradeAsh">
+                    <div className="flex flex-col justify-between flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                       <div className="flex items-center justify-between w-full mt-[1px]">
                         <div className="flex justify-between border-b border-tradeAshLight flex-1 pb-[10px]">
                           <p className="text-[13px] text-white font-semibold">
@@ -1459,7 +1468,7 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-1 flex-col justify-between gap-[10px] p-[12px] rounded-[15px] borde border-tradeAshLight bg-tradeAsh">
+                    <div className="flex flex-1 flex-col justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                       <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                         <p className="text-[13px] text-white font-semibold">
                           Purchase limits
@@ -1502,7 +1511,7 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] borde border-tradeAshLight bg-tradeAsh">
+                    <div className="flex flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                       <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                         <p className="text-[13px] text-white font-semibold">
                           Payment Window
@@ -1538,7 +1547,7 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    <div className="flex  flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] borde border-tradeAshLight bg-tradeAsh">
+                    <div className="flex  flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                       <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                         <p className="text-[13px] text-white font-semibold">
                           Tags

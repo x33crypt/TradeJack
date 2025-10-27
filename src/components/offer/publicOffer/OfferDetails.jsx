@@ -17,6 +17,7 @@ import { useTrade } from "@/context/publicContext/TradeContext";
 import { FaShareAlt } from "react-icons/fa";
 import { GoBookmarkFill } from "react-icons/go";
 import { MdReport } from "react-icons/md";
+import { GrStatusGoodSmall } from "react-icons/gr";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { setProfile } = useTraderProfile();
@@ -155,6 +156,13 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
 
                   <div className="flex flex-col gap-[10px]">
+                    <div className="flex  items-center gap-1">
+                      <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
+                      <p className="text-xs font-semibold text-white">
+                        Active Offer
+                      </p>
+                    </div>
+
                     <div className="flex  items-center gap-1">
                       <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                       <p className="text-xs font-semibold text-white">
