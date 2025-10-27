@@ -10,6 +10,8 @@ import { IoMdTime } from "react-icons/io";
 import { windowFormatHour } from "@/utils/windowFormatHour";
 import { BsStars } from "react-icons/bs";
 import { WiStars } from "react-icons/wi";
+import { MdThumbUp } from "react-icons/md";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 const OfferCard = ({ offer }) => {
   const { setAboutOffer } = usePublicOffers();
@@ -37,42 +39,33 @@ const OfferCard = ({ offer }) => {
               <div>
                 <HiOutlineUserCircle className="flex text-white text-base flex-shrink-0" />
               </div>
-              <div className="flex items-center gap-1">
-                <p className="text-[13px] font-semibold text-white">
-                  {offer?.Username}
-                </p>
-                <p className="text-tradeFadeWhite text-xs font-medium">
-                  <span className={seen?.className}>{seen.dot}</span>
-                  {/* Show both dot and text */}
-                </p>
-              </div>
+              <p className="text-[13px] font-semibold text-white">
+                {offer?.Username}
+              </p>
+              {true ? (
+                <div className="flex gap-1 items-center">
+                  <RiVerifiedBadgeFill className="flex text-tradeFadeWhite text-s flex-shrink-0" />
+                </div>
+              ) : (
+                ""
+              )}
             </div>
 
             <div className="flex gap-3">
-              {/* <div className="">
-                {offer?.isVerified ? (
-                  <div className="flex gap-1 items-center">
-                    <VscVerifiedFilled className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
-                    <p className="text-xs font-medium text-tradeFadeWhite">
-                      Verified offer
-                    </p>
-                  </div>
-                ) : (
-                  <div className="flex gap-1 items-center">
-                    <BsStars className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
-                    <p className="text-xs font-medium text-tradeFadeWhite">
-                      New offer
-                    </p>
-                  </div>
-                )}
-              </div> */}
-
               <div className="flex items-center gap-1">
-                <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-semibold text-tradeFadeWhite">
-                  <span className="text-white">+{offer?.completedTrades}</span>{" "}
-                  recent trades
-                </p>
+                <div className="flex  items-center gap-1">
+                  <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    <span className="text-white">{offer?.completedTrades}</span>{" "}
+                    trades
+                  </p>
+                </div>
+                <p className="text-tradeAshLight leading-none">|</p>
+
+                <div className="flex  items-center gap-1">
+                  <MdThumbUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-semibold text-white">99%</p>
+                </div>
               </div>
             </div>
           </div>
@@ -170,31 +163,31 @@ const OfferCard = ({ offer }) => {
                   <span className={seen.className}>{seen.text}</span>
                 </p> */}
               </div>
+
+              {true ? (
+                <div className="flex gap-1 items-center">
+                  <RiVerifiedBadgeFill className="flex text-tradeFadeWhite text-s flex-shrink-0" />
+                </div>
+              ) : (
+                ""
+              )}
             </div>
 
             <div className="flex flex-col items-end gap-1 justify-betwee w-full">
-              {/* {offer?.isVerified ? (
-                <div className="flex gap-1 items-center">
-                  <VscVerifiedFilled className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
-                  <p className="text-xs font-medium text-tradeFadeWhite">
-                    Verified offer
+              <div className="flex items-center gap-1">
+                <div className="flex  items-center gap-1">
+                  <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    <span className="text-white">{offer?.completedTrades}</span>{" "}
+                    trades
                   </p>
                 </div>
-              ) : (
-                <div className="flex gap-1 items-center">
-                  <BsStars className="flex text-tradeFadeWhite text-[16px] flex-shrink-0" />
-                  <p className="text-xs font-medium text-tradeFadeWhite">
-                    New offer
-                  </p>
-                </div>
-              )} */}
+                <p className="text-tradeAshLight leading-none">|</p>
 
-              <div className="flex  items-center gap-1">
-                <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                <p className="text-xs font-semibold text-tradeFadeWhite">
-                  <span className="text-white">+{offer?.completedTrades}</span>{" "}
-                  recent trades
-                </p>
+                <div className="flex  items-center gap-1">
+                  <MdThumbUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-semibold text-white">99%</p>
+                </div>
               </div>
             </div>
           </div>

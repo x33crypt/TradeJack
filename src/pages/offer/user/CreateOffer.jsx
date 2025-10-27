@@ -29,6 +29,10 @@ import { FaCircleInfo } from "react-icons/fa6";
 import { HiGlobeAlt } from "react-icons/hi";
 import { FaRegUserCircle } from "react-icons/fa";
 import image from "../../../assets/landingImg4.JPG";
+import { PiApproximateEqualsBold } from "react-icons/pi";
+import { FaRegStar } from "react-icons/fa";
+import { LuUsers } from "react-icons/lu";
+import { TbCubeSpark } from "react-icons/tb";
 
 const CreateOffer = () => {
   const topRef = useRef(null);
@@ -832,12 +836,18 @@ const CreateOffer = () => {
         <div className="flex flex-1 flex-col gap-[20px] lg:mx-[22.8%] p-[15px]">
           <div className="flex flex-1 flex-col gap-[30px]">
             <div className="flex  items-center justify-between ">
-              <p className="text-lg font-semibold text-white flex items-center gap-1">
+              {/* <p className="text-lg font-semibold text-white flex items-center gap-1">
                 CREATE A NEW OFFER
+              </p> */}
+
+              <p className="text-lg font-semibold text-white flex items-center gap-1">
+                {createOffer?.step <= 3
+                  ? ` CREATE A NEW OFFER`
+                  : "OFFER PREVIEW"}
               </p>
 
               <p className="text-lg font-semibold text-white flex items-center gap-1">
-                {createOffer?.step <= 3 ? `${createOffer?.step}/3` : "PREVIEW"}
+                {createOffer?.step <= 3 ? `${createOffer?.step}/3` : ""}
               </p>
             </div>
 
@@ -940,8 +950,8 @@ const CreateOffer = () => {
                         readOnly
                         placeholder="Choose a currency"
                         value={
-                          createOffer.currency.code && createOffer.currency.name
-                            ? ` ${createOffer.currency.name} - ${createOffer.currency.code} - ${createOffer.currency.symbol} `
+                          createOffer.currency.code
+                            ? `${createOffer.currency.code} `
                             : ""
                         }
                         onClick={() =>
@@ -1094,20 +1104,11 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-1">
-                        <HiGlobeAlt className="text-tradeFadeWhite text-base flex-shrink-0" />
-                        <p className="text-white text-xs font-medium">
-                          1 USD = 2,300
-                        </p>
-                      </div>
-
-                      <div className="flex items-center gap-1">
-                        <FaRegUserCircle className="text-tradeFadeWhite text-sm flex-shrink-0" />
-                        <p className="text-white text-xs font-medium">
-                          1 USD = 2,300
-                        </p>
-                      </div>
+                    <div className="flex items-center gap-2">
+                      <p className="text-white text-xs font-medium">Rate</p>
+                      <p className="text-tradeOrange text-xs font-medium">
+                        2,300 / {createOffer?.currency?.code}
+                      </p>
                     </div>
 
                     {/* <Info
@@ -1132,7 +1133,7 @@ const CreateOffer = () => {
                           onClick={handleMinusTraderPaymentWindowHour}
                           className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
                         >
-                          - <p>Hr</p>
+                          <FaMinus />
                         </div>
 
                         <div
@@ -1151,7 +1152,7 @@ const CreateOffer = () => {
                           onClick={handleAddTraderPaymentWindowHour}
                           className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
                         >
-                          + <p>Hr</p>
+                          <FaPlus />
                         </div>
                       </div>
                     </div>
@@ -1162,7 +1163,7 @@ const CreateOffer = () => {
                           onClick={handleMinusTraderPaymentWindowMinutes}
                           className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
                         >
-                          <p>- Min</p>
+                          <FaMinus />
                         </div>
 
                         <div
@@ -1180,7 +1181,7 @@ const CreateOffer = () => {
                           onClick={handleAddTraderPaymentWindowMinutes}
                           className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
                         >
-                          + <p>Min</p>
+                          <FaPlus />
                         </div>
                       </div>
                     </div>
@@ -1206,7 +1207,7 @@ const CreateOffer = () => {
                           onClick={handleMinusVendorPaymentWindowHour}
                           className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
                         >
-                          <p>- Hr</p>
+                          <FaMinus />
                         </div>
 
                         <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
@@ -1222,7 +1223,7 @@ const CreateOffer = () => {
                           onClick={handleAddVendorPaymentWindowHour}
                           className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
                         >
-                          <p>+ Hr</p>
+                          <FaPlus />
                         </div>
                       </div>
                     </div>
@@ -1233,7 +1234,7 @@ const CreateOffer = () => {
                           onClick={handleMinusVendorPaymentWindowMinutes}
                           className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
                         >
-                          <p>- Min</p>
+                          <FaMinus />
                         </div>
 
                         <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
@@ -1248,7 +1249,7 @@ const CreateOffer = () => {
                           onClick={handleAddVendorPaymentWindowMinutes}
                           className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
                         >
-                          <p>+ Min</p>
+                          <FaPlus />
                         </div>
                       </div>
                     </div>
@@ -1410,24 +1411,32 @@ const CreateOffer = () => {
                 </p>
                 <div className="flex flex-1 flex-col gap-[20px]">
                   <div className="flex items-center gap-2  pb-[12px]">
-                    <div className="flex cursor-pointer">
-                      {false ? (
-                        <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
-                          <img src={image} alt="" className="" />
-                        </div>
-                      ) : (
-                        <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
-                          <img src={image} alt="" className="" />
-                        </div>
-                      )}
+                    <div>
+                      <TbCubeSpark className="text-white text-5xl" />
                     </div>
 
-                    <div className="flex flex-col gap-[5px] ">
-                      <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-normal">
+                    <div className="flex flex-col gap-2 ">
+                      <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
                         {createOffer?.service || "NA"}
                       </p>
-                      <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
+                      <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
                         {createOffer?.serviceType || "NA"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-[10px]">
+                    <div className="flex  items-center gap-1">
+                      <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                      <p className="text-xs font-semibold text-white">
+                        0 Completed Trade(s)
+                      </p>
+                    </div>
+
+                    <div className="flex  items-center gap-1">
+                      <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                      <p className="text-xs font-semibold text-white">
+                        0% Completion Rating
                       </p>
                     </div>
                   </div>
@@ -1571,24 +1580,28 @@ const CreateOffer = () => {
                       </div>
                     </div>
 
-                    <div className="flex-1 flex md:flex-row flex-col flex-wrap flex-grow gap-[10px] ">
-                      <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] borde border-tradeAshLight bg-tradeAsh">
-                        <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                          <p className="text-[13px] text-white font-semibold">
-                            Instructions
-                          </p>
-                        </div>
-
+                    <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                         <p className="text-[13px] text-white font-semibold">
-                          {createOffer?.instruction
-                            ? createOffer?.instruction
-                            : "N/A"}
+                          Instructions
                         </p>
                       </div>
+
+                      <p className="text-[13px] text-white font-semibold">
+                        {createOffer?.instruction
+                          ? createOffer?.instruction
+                          : "N/A"}
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <p className="text-xs text-tradeFadeWhite font-medium">
+                By publishing this offer, you confirm that all details are
+                accurate, you’ll trade only through verified accounts, and you
+                agree to our P2P trading terms and dispute policy.
+              </p>
 
               <div className="flex flex-col gap-[10px]">
                 <Button

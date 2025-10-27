@@ -164,10 +164,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                               </p>
                               <GrStatusGoodSmall className="flex text-tradeGreen text-[10px] flex-shrink-0" />
                             </div>
-                            <p className="text-tradeFadeWhite leading-none">
-                              |
-                            </p>
-                            <RiVerifiedBadgeFill className="text-tradeFadeWhite" />
+                            <p className="text-tradeAshLight leading-none">|</p>
+                            <RiVerifiedBadgeFill className="text-tradeFadeWhite text-sm" />
                           </div>
                         </div>
                       </div>
@@ -208,7 +206,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     <div className="flex  items-center gap-1">
                       <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                       <p className="text-xs font-semibold text-white">
-                        {offer?.completedTrades ?? "0"} Trade(s)
+                        {offer?.completedTrades ?? "0"} Completed Trade(s)
                       </p>
                     </div>
 
@@ -416,12 +414,12 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
 
-                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] borde border-tradeAshLight bg-tradeAs">
-                    {/* <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
                       <p className="text-[13px] text-white font-semibold">
                         Tags
                       </p>
-                    </div> */}
+                    </div>
                     <div className="w-full flex gap-2 flex-grow flex-wrap">
                       {offer?.tags?.length > 0 ? (
                         offer?.tags?.map((term, index) => (
@@ -437,15 +435,15 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
 
-                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] borde border-tradeAshLight bg-tradeAs">
-                    {/* <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                        <p className="text-[13px] text-white font-semibold">
-                          Instructions
-                        </p>
-                      </div> */}
+                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Instructions
+                      </p>
+                    </div>
 
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Note : {offer?.instructions ? offer?.instructions : "N/A"}
+                      {offer?.instructions ? offer?.instructions : "N/A"}
                     </p>
                   </div>
                 </div>
