@@ -35,6 +35,8 @@ export const UserOfferProvider = ({ children }) => {
 
   const [aboutOffer, setAboutOffer] = useState({ id: null, data: null });
 
+  const [editOffer, setEditOffer] = useState({ id: null, data: null });
+
   const { id: urlId } = useParams();
 
   useEffect(() => {
@@ -45,21 +47,6 @@ export const UserOfferProvider = ({ children }) => {
       }));
     }
   }, [urlId, aboutOffer.id]);
-
-  const [editOffer, setEditOffer] = useState({
-    offerId: "",
-    serviceType: "Online Wallet Transfer",
-    service: "",
-    serviceId: "",
-    currency: { code: "", name: "" },
-    minimum: "",
-    maximum: "",
-    margin: 4,
-    paymentWindow: 1,
-    confirmationTime: 1,
-    termTags: [],
-    instruction: "",
-  });
 
   return (
     <userOfferContext.Provider

@@ -13,17 +13,17 @@ import { AiFillDelete } from "react-icons/ai";
 import toDecimal from "@/utils/toDecimal";
 import { windowFormatHour } from "@/utils/windowFormatHour";
 import { HiSpeakerphone } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
+import { FaRegStopCircle } from "react-icons/fa";
 
-const OfferDetails = ({ aboutOffer }) => {
+const OfferDetails = ({ aboutOffer, loading }) => {
   const { offerDetails, traderInfo } = aboutOffer || {};
 
-  const viewProfile = (username) => {
-    setProfile((prev) => ({
-      ...prev,
-      username: username,
-    }));
-    navigateTo(`/profile/${username}`);
-  };
+  const navigateTo = useNavigate();
+
+  // const handleEdit = (offerId) => {
+  //   navigateTo(`/offer/${offerId}`);
+  // };
 
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
@@ -33,9 +33,8 @@ const OfferDetails = ({ aboutOffer }) => {
         </p>
       </div>
 
-      <div className="flex flex-col ">
-        {/* loading */}
-        {false ? (
+      <div className="flex flex-col flex-1 ">
+        {loading ? (
           <Loading />
         ) : (
           <div className="flex flex-1">
@@ -45,7 +44,7 @@ const OfferDetails = ({ aboutOffer }) => {
               <div className="flex flex-1 flex-col min-h-[120px] gap-[30px]">
                 <div className="flex flex-col gap-[30px] pb-[12px]">
                   <div className="flex items-center gap-2">
-                    <div onClick={viewProfile} className="flex cursor-pointer">
+                    <div className="flex cursor-pointer">
                       {false ? (
                         <div className="flex w-[45px] h-[45px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
                           <img src={image} alt="" className="" />
@@ -87,18 +86,6 @@ const OfferDetails = ({ aboutOffer }) => {
                 <div className="flex lg:hidden items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      <FaEdit />
-                    </div>
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      <FaPause />
-                    </div>
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      <AiFillDelete />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                       <GoBookmarkFill />
                       <p className="text-xs text-white font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                         456
@@ -109,6 +96,21 @@ const OfferDetails = ({ aboutOffer }) => {
                     </div>
                     <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                       <FaShareAlt />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <div
+                      onClick={() => navigateTo("/offer/:id/edit")}
+                      className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                    >
+                      <FaEdit />
+                    </div>
+                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <FaPause />
+                    </div>
+                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <FaRegStopCircle />
                     </div>
                   </div>
                 </div>

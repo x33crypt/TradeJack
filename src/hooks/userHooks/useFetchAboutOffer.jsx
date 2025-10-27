@@ -3,7 +3,7 @@ import api from "@/utils/http/api";
 import { useUserOffer } from "@/context/userContext/OffersContext";
 
 export function useFetchAboutOffers(id) {
-  const { setAboutOffer } = useUserOffer();
+  const { setAboutOffer, setEditOffer } = useUserOffer();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const lastFetchedId = useRef(null);
@@ -17,6 +17,7 @@ export function useFetchAboutOffers(id) {
         const response = await api.get(`/service-provider/offers/${id}`);
         if (response?.status === 200 && response?.data?.success) {
           setAboutOffer(response.data.data);
+          setEditOffer(response.data.data);
           lastFetchedId.current = id;
         } else {
           setError("Unexpected response format");

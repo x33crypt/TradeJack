@@ -39,8 +39,8 @@ const AboutOffer = () => {
           <AboutMenu />
           <div className="flex flex-1 flex-col gap-[40px] lg:mr-[12%] p-[15px]">
             <OfferDetails aboutOffer={aboutOffer} loading={loading} />
-            <TradeHistory />
-            <Feedbacks feedback={feedback} />
+            <TradeHistory loading={loading} />
+            <Feedbacks loading={loading} />
           </div>
         </div>
       </div>

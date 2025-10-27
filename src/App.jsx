@@ -4,7 +4,7 @@ import Marketplace from "./pages/offer/public/PublicOffers";
 import CreateOffer from "./pages/offer/user/CreateOffer";
 import EditAddress from "./pages/settings/EditAddress";
 import MyOffer from "./pages/offer/user/UserOffers";
-import EditMyOffer from "./pages/offer/user/EditOffer";
+import EditOffer from "./pages/offer/user/EditOffer";
 import ToastSuccess from "./components/toastCards/ToastSuccess";
 import ToastError from "./components/toastCards/ToastError";
 import Wallet from "./pages/wallet/Wallet";
@@ -22,7 +22,7 @@ import SuccessDeposit from "./pages/wallet/SuccessDeposit";
 import SuccessWithdraw from "./pages/wallet/SuccessWithdraw";
 import Settings from "./pages/settings/Settings";
 import AboutPublicOffer from "./pages/offer/public/AboutOffer";
-import AboutUserOffer from "./pages/offer/user/AboutOffer";
+import AboutOffer from "./pages/offer/user/AboutOffer";
 import Logout from "./pages/auth/Logout";
 import EditMobile from "./pages/settings/EditMobile";
 import EditEmail from "./pages/settings/EditEmail";
@@ -114,8 +114,8 @@ const App = () => {
         <Route path="/offer/explore/:id" element={<AboutPublicOffer />} />
         <Route path="/offer/create" element={<CreateOffer />} />
         <Route path="/offers" element={<MyOffer />} />
-        <Route path="/offer/:id" element={<AboutUserOffer />} />
-        <Route path="/offer/:id/edit" element={<EditMyOffer />} />
+        <Route path="/offer/:id" element={<AboutOffer />} />
+        <Route path="/offer/:id/edit" element={<EditOffer />} />
       </Routes>
     </>
   );

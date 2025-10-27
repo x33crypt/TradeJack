@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import { HiSpeakerphone } from "react-icons/hi";
+import { FaRegStopCircle } from "react-icons/fa";
 
 const AboutMenu = () => {
   const navigateTo = useNavigate();
@@ -14,7 +15,7 @@ const AboutMenu = () => {
       <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
         <div className="flex flex-col gap-[15px]">
           <div
-            onClick={() => navigateTo("/offers")}
+            onClick={() => navigateTo("/offer/:id/edit")}
             className="flex items-center gap-2"
           >
             <FaEdit className="text-xs text-tradeFadeWhite" />
@@ -29,9 +30,9 @@ const AboutMenu = () => {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <AiFillDelete className="text-sm text-tradeFadeWhite" />
+            <FaRegStopCircle className="text-sm text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              DELETE
+              CLOSE
             </p>
           </div>
         </div>
