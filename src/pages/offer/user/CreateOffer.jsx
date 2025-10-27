@@ -1105,7 +1105,9 @@ const CreateOffer = () => {
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <p className="text-white text-xs font-medium">Rate</p>
+                      <p className="text-tradeFadeWhite text-xs font-medium">
+                        Rate
+                      </p>
                       <p className="text-tradeOrange text-xs font-medium">
                         2,300 / {createOffer?.currency?.code}
                       </p>
@@ -1405,9 +1407,8 @@ const CreateOffer = () => {
             >
               <div className="flex flex-col gap-[25px]">
                 <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                  You’re almost done. Just verify that every part of your offer
-                  is accurate and complete before making it public and going
-                  live.
+                  You’re almost there! Take a moment to double-check your offer
+                  details and ensure everything’s accurate before going live.
                 </p>
                 <div className="flex flex-1 flex-col gap-[20px]">
                   <div className="flex items-center gap-2  pb-[12px]">
@@ -1596,12 +1597,44 @@ const CreateOffer = () => {
                   </div>
                 </div>
               </div>
-
-              <p className="text-xs text-tradeFadeWhite font-medium">
-                By publishing this offer, you confirm that all details are
-                accurate, you’ll trade only through verified accounts, and you
-                agree to our P2P trading terms and dispute policy.
-              </p>
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-1">
+                  <p className="text-white text-sm font-semibold">
+                    P2P Trading Terms & Agreement
+                  </p>
+                  <p className="text-xs font-medium text-tradeFadeWhite">
+                    By publishing this offer, you agree to the following terms:
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1 text-xs text-tradeFadeWhite font-medium">
+                  <p>
+                    • Provide accurate offer details and respond quickly to
+                    trades.
+                  </p>
+                  <p>
+                    • Use only your verified bank or payment accounts for
+                    transactions.
+                  </p>
+                  <p>
+                    • Complete payments and releases within the agreed time
+                    frame.
+                  </p>
+                  <p>
+                    • Avoid third-party transfers or fraudulent activity of any
+                    kind.
+                  </p>
+                  <p>
+                    • Allow platform review and resolution in case of disputes.
+                  </p>
+                </div>
+                <p className="text-xs text-tradeFadeWhite mt-2">
+                  By clicking{" "}
+                  <span className="text-white font-semibold">
+                    "PUBLISH"
+                  </span>
+                  , you confirm that you’ve read and agree to these terms.
+                </p>
+              </div>
 
               <div className="flex flex-col gap-[10px]">
                 <Button
