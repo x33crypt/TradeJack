@@ -1597,42 +1597,17 @@ const CreateOffer = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col gap-3">
-                <div className="flex flex-col gap-1">
-                  <p className="text-white text-sm font-semibold">
-                    P2P Trading Terms & Agreement
-                  </p>
-                  <p className="text-xs font-medium text-tradeFadeWhite">
-                    By publishing this offer, you agree to the following terms:
-                  </p>
-                </div>
-                <div className="flex flex-col gap-1 text-xs text-tradeFadeWhite font-medium">
-                  <p>
-                    • Provide accurate offer details and respond quickly to
-                    trades.
-                  </p>
-                  <p>
-                    • Use only your verified bank or payment accounts for
-                    transactions.
-                  </p>
-                  <p>
-                    • Complete payments and releases within the agreed time
-                    frame.
-                  </p>
-                  <p>
-                    • Avoid third-party transfers or fraudulent activity of any
-                    kind.
-                  </p>
-                  <p>
-                    • Allow platform review and resolution in case of disputes.
-                  </p>
-                </div>
-                <p className="text-xs text-tradeFadeWhite mt-2">
-                  By clicking{" "}
-                  <span className="text-white font-semibold">
-                    "PUBLISH"
-                  </span>
-                  , you confirm that you’ve read and agree to these terms.
+
+              <div className="flex flex-col gap-1">
+                <p className="text-white text-sm font-semibold">
+                  Terms & Agreement
+                </p>
+                <p className="text-xs font-medium text-tradeFadeWhite">
+                  By publishing this offer, you confirm that all details are
+                  accurate, you’ll trade only through verified accounts, and
+                  that you agree to our{" "}
+                  <span className="text-tradeOrange">P2P Trading Terms</span>{" "}
+                  and <span className="text-tradeOrange">Dispute Policy</span>.
                 </p>
               </div>
 
