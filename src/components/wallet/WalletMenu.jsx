@@ -66,7 +66,7 @@ const WalletMenu = () => {
           >
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              TRANSACTION HISTORY
+              TRANSACTIONS
             </p>
           </div>
         </div>

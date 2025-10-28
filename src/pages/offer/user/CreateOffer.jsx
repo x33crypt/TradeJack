@@ -838,10 +838,6 @@ const CreateOffer = () => {
             <p className="text-lg font-semibold text-white flex items-center gap-1">
               {createOffer?.step <= 3 ? ` CREATE A NEW OFFER` : "OFFER PREVIEW"}
             </p>
-
-            <p className="text-lg font-semibold text-white flex items-center gap-1">
-              {createOffer?.step <= 3 ? `${createOffer?.step}/3` : ""}
-            </p>
           </div>
 
           <div
@@ -850,11 +846,16 @@ const CreateOffer = () => {
             } flex-col gap-[30px] h-full justify-between`}
           >
             <div className="flex flex-col gap-[25px]">
-              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                Start by laying the foundation for your offer. Choose the asset
-                you want to trade, select currency, and define your transaction
-                limits.
-              </p>
+              <div className="flex flex-col gap-[10px]">
+                <p className="text-base text-white font-semibold leading-relaxed">
+                  STEP ONE
+                </p>
+                <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                  Start by laying the foundation for your offer. Choose the
+                  asset you want to trade, select currency, and define your
+                  transaction limits.
+                </p>
+              </div>
 
               <div className="flex flex-col gap-[10px]">
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
@@ -1050,10 +1051,16 @@ const CreateOffer = () => {
             } flex-col gap-[30px] h-full justify-between`}
           >
             <div className="flex flex-col gap-[25px]">
-              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                Set your offer’s timing and pricing. Adjust transfer windows and
-                margins to manage expectations and profitability.
-              </p>
+              <div className="flex flex-col gap-[10px]">
+                <p className="text-base text-white font-semibold leading-relaxed">
+                  STEP TWO
+                </p>
+                <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                  Set your offer’s timing and pricing. Adjust transfer windows
+                  and margins to manage expectations and profitability.
+                </p>
+              </div>
+
               <div className="flex flex-col gap-[10px]">
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                   <div className="flex flex-1 items-center justify-between">
@@ -1273,11 +1280,16 @@ const CreateOffer = () => {
             } flex-col gap-[30px] h-full justify-between`}
           >
             <div className="flex flex-col gap-[25px]">
-              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                This final step shapes the trading experience. Use terms to
-                communicate any specific conditions and instructions to guide
-                traders through the process.
-              </p>
+              <div className="flex flex-col gap-[10px]">
+                <p className="text-base text-white font-semibold leading-relaxed">
+                  STEP THREE
+                </p>
+                <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                  This final step shapes the trading experience. Use terms to
+                  communicate any specific conditions and instructions to guide
+                  traders through the process.
+                </p>
+              </div>
 
               <div className="flex flex-col gap-[10px]">
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">

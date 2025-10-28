@@ -11,21 +11,6 @@ const PartnersMenu = () => {
   return (
     <div className="hidden lg:flex sticky top-[70px] h-max w-[250px] gap-[10px] flex-col lg:mb-[15px]">
       <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
-        <div className="flex px-2.5 py-1.5 gap-2 items-center bg-tradeAsh flex-1 rounded-sm ">
-          <div className="text-lg text-tradeFadeWhite">
-            <HiOutlineMagnifyingGlass />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Search"
-              className="bg-transparent w-[150px] h-full text-[13px] font-medium outline-none text-white placeholder:text-tradeFadeWhite"
-            />
-          </div>
-          <div className="text-lg text-tradeFadeWhite">
-            <IoCloseSharp />
-          </div>
-        </div>
         <div className="flex flex-col gap-[15px]">
           <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
@@ -37,6 +22,23 @@ const PartnersMenu = () => {
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               OLDER
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
+        <div className="flex flex-col gap-[15px]">
+          <div className="flex items-center gap-2">
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              GRID
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              ROW
             </p>
           </div>
         </div>

@@ -363,13 +363,6 @@ const InAppNav = () => {
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2">
-                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      CHATS
-                    </p>
-                  </div>
-
                   <div
                     onClick={() => {
                       navigateTo("/partners");
@@ -379,14 +372,14 @@ const InAppNav = () => {
                   >
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      TRADE PARTNERS
+                      PARTNERS
                     </p>
                   </div>
 
                   <div className="flex items-center gap-2">
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      TRADE HISTORY
+                      TRADES
                     </p>
                   </div>
 
@@ -399,16 +392,16 @@ const InAppNav = () => {
                   >
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      TRANSACTION HISTORY
+                      TRANSACTIONS
                     </p>
                   </div>
 
-                  {/* <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      REFERRALS
+                      REFERAL
                     </p>
-                  </div> */}
+                  </div>
                 </div>
 
                 <div className="w-full h-max flex flex-col gap-[8px]">

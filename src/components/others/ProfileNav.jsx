@@ -65,30 +65,6 @@ const ProfileNav = () => {
                     SETTINGS
                   </p>
                 </div>
-                <div
-                  // onClick={() => {
-                  //   navigateTo("/settings");
-                  //   setShow(false);
-                  // }}
-                  className="flex items-center gap-2"
-                >
-                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                  <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                    REWARDS
-                  </p>
-                </div>
-                <div
-                  // onClick={() => {
-                  //   navigateTo("/settings");
-                  //   setShow(false);
-                  // }}
-                  className="flex items-center gap-2"
-                >
-                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                  <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                    REFERALS
-                  </p>
-                </div>
                 <div onClick={handleLogout} className="flex items-center gap-2">
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-red-600 hover:text-red-600/60 text-base font-bold transition-all duration-300 cursor-pointer">

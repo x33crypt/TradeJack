@@ -22,7 +22,7 @@ const UpdatePassword = () => {
                 access secure.
               </p>
               <div className="flex flex-col gap-[10px]">
-                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
                   <div className="flex flex-1 items-center justify-between">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       Current Password
@@ -39,7 +39,7 @@ const UpdatePassword = () => {
                     />
                   </div>
                 </div>
-                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
                   <div className="flex flex-1 items-center justify-between">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       New Password
@@ -56,7 +56,7 @@ const UpdatePassword = () => {
                     />
                   </div>
                 </div>
-                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
                   <div className="flex flex-1 items-center justify-between">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       Confirm Password
@@ -76,7 +76,7 @@ const UpdatePassword = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-[10px]">
+            <div className="flex flex-col gap-[20px]">
               <Button
                 variant="secondary"
                 // onClick={handleProceed}
