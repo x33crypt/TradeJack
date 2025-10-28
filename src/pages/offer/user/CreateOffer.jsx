@@ -1406,35 +1406,37 @@ const CreateOffer = () => {
                   You’re almost there! Take a moment to double-check your offer
                   details and ensure everything’s accurate before going live.
                 </p>
-                <div className="flex flex-1 flex-col gap-[20px]">
-                  <div className="flex items-center gap-2  pb-[12px]">
-                    <div>
-                      <TbCubeSpark className="text-white text-5xl" />
+                <div className="flex flex-1 flex-col gap-[30px]">
+                  <div className="flex flex-col gap-[30px] pb-[12px]">
+                    <div className="flex items-center gap-2">
+                      <div>
+                        <TbCubeSpark className="text-white text-5xl" />
+                      </div>
+
+                      <div className="flex flex-col gap-2 ">
+                        <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
+                          {createOffer?.service || "NA"}
+                        </p>
+                        <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
+                          {createOffer?.serviceType || "NA"}
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="flex flex-col gap-2 ">
-                      <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
-                        {createOffer?.service || "NA"}
-                      </p>
-                      <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
-                        {createOffer?.serviceType || "NA"}
-                      </p>
-                    </div>
-                  </div>
+                    <div className="flex flex-col gap-[10px]">
+                      <div className="flex  items-center gap-1">
+                        <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <p className="text-xs font-semibold text-white">
+                          0 Completed Trade(s)
+                        </p>
+                      </div>
 
-                  <div className="flex flex-col gap-[10px]">
-                    <div className="flex  items-center gap-1">
-                      <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                      <p className="text-xs font-semibold text-white">
-                        0 Completed Trade(s)
-                      </p>
-                    </div>
-
-                    <div className="flex  items-center gap-1">
-                      <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                      <p className="text-xs font-semibold text-white">
-                        0% Completion Rating
-                      </p>
+                      <div className="flex  items-center gap-1">
+                        <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <p className="text-xs font-semibold text-white">
+                          0% Completion Rating
+                        </p>
+                      </div>
                     </div>
                   </div>
 

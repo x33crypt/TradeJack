@@ -334,11 +334,11 @@ const EditOffer = () => {
                             <TbCubeSpark className="text-white text-5xl" />
                           </div>
 
-                          <div className="flex flex-col gap-[5px] ">
-                            <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-normal">
+                          <div className="flex flex-col gap-[10px] ">
+                            <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
                               {editOffer?.offerDetails?.serviceName || "N/A"}
                             </p>
-                            <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
+                            <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
                               {editOffer?.offerDetails?.serviceType || "N/A"}
                             </p>
                           </div>
@@ -348,7 +348,7 @@ const EditOffer = () => {
                           <div className="flex  items-center gap-1">
                             <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
                             <p className="text-xs font-semibold text-white">
-                              Active 
+                              Active
                             </p>
                           </div>
                           <div className="flex gap-1 items-center">

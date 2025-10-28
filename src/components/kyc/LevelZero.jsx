@@ -184,7 +184,7 @@ const LevelZero = ({ upgrade }) => {
             <div className="flex items-center gap-1">
               <GoDotFill className="text-sm text-tradeFadeWhite" />
               <p className="text-[13px] text-white font-semibold leading-none">
-                Proof of Address
+                Verified NIN Photo
               </p>
             </div>
           </div>

@@ -48,6 +48,8 @@ import KycLevels from "./pages/kyc/KycLevels";
 import VerifyLevelOne from "./pages/kyc/VerifyLevelOne";
 import VerifyLevelTwo from "./pages/kyc/VerifyLevelTwo";
 import VerifyLevelThree from "./pages/kyc/VerifyLevelThree";
+import UpdatePassword from "./pages/settings/UpdatePassword";
+import TwoFactorAuth from "./pages/settings/TwoFactorAuth";
 
 const App = () => {
   return (
@@ -101,6 +103,8 @@ const App = () => {
         <Route path="/settings" element={<Settings />} />
         <Route path="/settings/accounts" element={<Accounts />} />
         <Route path="/settings/accounts/new" element={<NewAccount />} />
+        <Route path="/settings/password" element={<UpdatePassword />} />
+        <Route path="/settings/2FA" element={<TwoFactorAuth />} />
 
         {/* Wallet */}
         <Route path="/wallet" element={<Wallet />} />

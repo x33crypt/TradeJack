@@ -46,13 +46,19 @@ const SettingMenu = () => {
               ACCOUNTS
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div
+            onClick={() => navigateTo("/settings/password")}
+            className="flex items-center gap-2"
+          >
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               CHANGE PASSWORD
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div
+            onClick={() => navigateTo("/settings/2FA")}
+            className="flex items-center gap-2"
+          >
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               2FA AUTHENTICATION

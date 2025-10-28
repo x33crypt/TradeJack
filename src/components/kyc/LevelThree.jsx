@@ -81,7 +81,7 @@ const LevelThree = ({ upgrade }) => {
             <div className="flex items-center gap-1">
               <FaCheckDouble className="text-xs text-tradeFadeblack" />
               <p className="text-[13px] text-black font-semibold leading-none">
-                Proof of Address
+                Verified NIN Photo
               </p>
             </div>
           </div>

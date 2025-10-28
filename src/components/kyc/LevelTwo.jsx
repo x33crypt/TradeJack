@@ -22,7 +22,7 @@ const LevelTwo = ({ upgrade }) => {
             <div className="flex gap-2 items-center">
               <LuScanText className="text-base text-tradeOrange" />
               <p className="text-xs font-medium text-tradeOrange">
-               {upgrade?.comment}
+                {upgrade?.comment}
               </p>
             </div>
             <MdOutlineKeyboardArrowRight className="text-lg text-tradeOrange cursor-pointer" />
@@ -172,7 +172,7 @@ const LevelTwo = ({ upgrade }) => {
             <div className="flex items-center gap-1">
               <GoDotFill className="text-sm text-tradeFadeWhite" />
               <p className="text-[13px] text-white font-semibold leading-none">
-                Proof of Address
+                Verified NIN Photo
               </p>
             </div>
           </div>
