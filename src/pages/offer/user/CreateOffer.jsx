@@ -834,202 +834,197 @@ const CreateOffer = () => {
         className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black"
       >
         <div className="flex flex-1 flex-col gap-[20px] lg:mx-[22.8%] p-[15px]">
-          <div className="flex flex-1 flex-col gap-[30px]">
-            <div className="flex  items-center justify-between ">
-              <p className="text-lg font-semibold text-white flex items-center gap-1">
-                {createOffer?.step <= 3
-                  ? ` CREATE A NEW OFFER`
-                  : "OFFER PREVIEW"}
+          <div className="flex  items-center justify-between ">
+            <p className="text-lg font-semibold text-white flex items-center gap-1">
+              {createOffer?.step <= 3 ? ` CREATE A NEW OFFER` : "OFFER PREVIEW"}
+            </p>
+
+            <p className="text-lg font-semibold text-white flex items-center gap-1">
+              {createOffer?.step <= 3 ? `${createOffer?.step}/3` : ""}
+            </p>
+          </div>
+
+          <div
+            className={` ${
+              createOffer?.step === 1 ? "flex" : "hidden"
+            } flex-col gap-[30px] h-full justify-between`}
+          >
+            <div className="flex flex-col gap-[25px]">
+              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                Start by laying the foundation for your offer. Choose the asset
+                you want to trade, select currency, and define your transaction
+                limits.
               </p>
 
-              <p className="text-lg font-semibold text-white flex items-center gap-1">
-                {createOffer?.step <= 3 ? `${createOffer?.step}/3` : ""}
-              </p>
-            </div>
+              <div className="flex flex-col gap-[10px]">
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex flex-1 items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Asset Type
+                    </p>
+                  </div>
 
-            {/* <Stepper totalSteps={"4"} currentStep={createOffer?.step} /> */}
-
-            <div
-              className={` ${
-                createOffer?.step === 1 ? "flex" : "hidden"
-              } flex-col gap-[30px] h-full justify-between`}
-            >
-              <div className="flex flex-col gap-[25px]">
-                <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                  Start by laying the foundation for your offer. Choose the
-                  asset you want to trade, select currency, and define your
-                  transaction limits.
-                </p>
-
-                <div className="flex flex-col gap-[10px]">
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                    <div className="flex flex-1 items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Asset Type
-                      </p>
+                  <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
+                    <input
+                      className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
+                      type="text"
+                      readOnly
+                      placeholder="Choose type"
+                      value={createOffer?.serviceType}
+                      onClick={() =>
+                        setSelect({
+                          ...select,
+                          state: true,
+                          selectOne: true,
+                          selectTwo: false,
+                          element: "service type",
+                          options: assetTypes,
+                          pick: "",
+                          page: "create offer",
+                        })
+                      }
+                    />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                      <MdKeyboardArrowDown />
                     </div>
+                  </div>
+                </div>
 
-                    <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
-                      <input
-                        className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
-                        type="text"
-                        readOnly
-                        placeholder="Choose type"
-                        value={createOffer?.serviceType}
-                        onClick={() =>
-                          setSelect({
-                            ...select,
-                            state: true,
-                            selectOne: true,
-                            selectTwo: false,
-                            element: "service type",
-                            options: assetTypes,
-                            pick: "",
-                            page: "create offer",
-                          })
-                        }
-                      />
-                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                        <MdKeyboardArrowDown />
-                      </div>
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex flex-1 items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      {" "}
+                      {serviceInputLabels[createOffer.serviceType] ||
+                        "Select Service"}
+                    </p>
+                  </div>
+
+                  <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
+                    <input
+                      className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
+                      type="text"
+                      readOnly
+                      placeholder="Choose wallet"
+                      value={createOffer?.service}
+                      onClick={() =>
+                        setSelect({
+                          ...select,
+                          state: true,
+                          selectOne: true,
+                          selectTwo: false,
+                          element: "service",
+                          options: services,
+                          pick: "",
+                          page: "create offer",
+                        })
+                      }
+                    />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                      <MdKeyboardArrowDown />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex flex-1 items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Currency
+                    </p>
+
+                    <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
+                  </div>
+
+                  <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
+                    <input
+                      className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
+                      type="text"
+                      readOnly
+                      placeholder="Choose a currency"
+                      value={
+                        createOffer.currency.code
+                          ? `${createOffer.currency.code} `
+                          : ""
+                      }
+                      onClick={() =>
+                        setSelect({
+                          ...select,
+                          state: true,
+                          selectOne: false,
+                          selectTwo: true,
+                          element: "currency",
+                          options: currencies,
+                          pick: "",
+                          page: "create offer",
+                        })
+                      }
+                    />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                      <MdKeyboardArrowDown />
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                    <div className="flex flex-1 items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        {" "}
-                        {serviceInputLabels[createOffer.serviceType] ||
-                          "Select Service"}
-                      </p>
-                    </div>
-
-                    <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
-                      <input
-                        className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
-                        type="text"
-                        readOnly
-                        placeholder="Choose wallet"
-                        value={createOffer?.service}
-                        onClick={() =>
-                          setSelect({
-                            ...select,
-                            state: true,
-                            selectOne: true,
-                            selectTwo: false,
-                            element: "service",
-                            options: services,
-                            pick: "",
-                            page: "create offer",
-                          })
-                        }
-                      />
-                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                        <MdKeyboardArrowDown />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                    <div className="flex flex-1 items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Currency
-                      </p>
-
-                      <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
-                    </div>
-
-                    <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
-                      <input
-                        className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
-                        type="text"
-                        readOnly
-                        placeholder="Choose a currency"
-                        value={
-                          createOffer.currency.code
-                            ? `${createOffer.currency.code} `
-                            : ""
-                        }
-                        onClick={() =>
-                          setSelect({
-                            ...select,
-                            state: true,
-                            selectOne: false,
-                            selectTwo: true,
-                            element: "currency",
-                            options: currencies,
-                            pick: "",
-                            page: "create offer",
-                          })
-                        }
-                      />
-                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                        <MdKeyboardArrowDown />
-                      </div>
-                    </div>
-
-                    {/* <Info
+                  {/* <Info
                       text={
                         "Select the currency of the asset you want to trade. This defines the value of your offer and ensures accurate rate calculations for all transactions."
                       }
                     /> */}
+                </div>
+
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex flex-1 items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Purchase Limit
+                    </p>
+
+                    <div className="flex items-center gap-2">
+                      <p className="text-tradeFadeWhite text-xs font-medium">
+                        20.00 - 5,000,00.00
+                      </p>
+                      <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
+                    </div>
                   </div>
 
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                    <div className="flex flex-1 items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Purchase Limit
-                      </p>
-
-                      <div className="flex items-center gap-2">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          20.00 - 5,000,00.00
-                        </p>
-                        <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
+                  <div className="flex flex-col gap-2">
+                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
+                      <input
+                        className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                        type="text"
+                        name="firstName"
+                        placeholder="0.00"
+                        value={
+                          createOffer?.minimum
+                            ? Number(createOffer?.minimum).toLocaleString()
+                            : ""
+                        }
+                        onChange={(e) => handleMinLimitChange(e)}
+                      />
+                      <div className="w-[60px] flex justify-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh">
+                        <p>Min</p>
                       </div>
                     </div>
+                  </div>
 
-                    <div className="flex flex-col gap-2">
-                      <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
-                        <input
-                          className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                          type="text"
-                          name="firstName"
-                          placeholder="0.00"
-                          value={
-                            createOffer?.minimum
-                              ? Number(createOffer?.minimum).toLocaleString()
-                              : ""
-                          }
-                          onChange={(e) => handleMinLimitChange(e)}
-                        />
-                        <div className="w-[60px] flex justify-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh">
-                          <p>Min</p>
-                        </div>
+                  <div className="flex flex-col gap-2">
+                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
+                      <input
+                        className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                        type="text"
+                        name="firstName"
+                        placeholder="0.00"
+                        value={
+                          createOffer?.maximum
+                            ? Number(createOffer?.maximum).toLocaleString()
+                            : ""
+                        }
+                        onChange={(e) => handleMaxLimitChange(e)}
+                      />
+                      <div className="w-[60px] flex justify-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh">
+                        <p>Max</p>
                       </div>
                     </div>
+                  </div>
 
-                    <div className="flex flex-col gap-2">
-                      <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
-                        <input
-                          className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
-                          type="text"
-                          name="firstName"
-                          placeholder="0.00"
-                          value={
-                            createOffer?.maximum
-                              ? Number(createOffer?.maximum).toLocaleString()
-                              : ""
-                          }
-                          onChange={(e) => handleMaxLimitChange(e)}
-                        />
-                        <div className="w-[60px] flex justify-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh">
-                          <p>Max</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* <Info
+                  {/* <Info
                       text={`Set your minimum and maximum purchase limits. By default the minimum purchase limit is 10 ${
                         createOffer.currency.code === ""
                           ? "USD"
@@ -1040,588 +1035,583 @@ const CreateOffer = () => {
                           : createOffer.currency.code
                       }. Exceeding it will cause submission errors.`}
                     /> */}
-                  </div>
                 </div>
               </div>
-
-              <Button onClick={stepTwo} variant="secondary">
-                PROCEED
-              </Button>
             </div>
 
-            <div
-              className={` ${
-                createOffer?.step === 2 ? "flex" : "hidden"
-              } flex-col gap-[30px] h-full justify-between`}
-            >
-              <div className="flex flex-col gap-[25px]">
-                <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                  Set your offer’s timing and pricing. Adjust transfer windows
-                  and margins to manage expectations and profitability.
-                </p>
-                <div className="flex flex-col gap-[10px]">
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                    <div className="flex flex-1 items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Profit Margin
-                      </p>
+            <Button onClick={stepTwo} variant="secondary">
+              PROCEED
+            </Button>
+          </div>
 
-                      <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
-                    </div>
+          <div
+            className={` ${
+              createOffer?.step === 2 ? "flex" : "hidden"
+            } flex-col gap-[30px] h-full justify-between`}
+          >
+            <div className="flex flex-col gap-[25px]">
+              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                Set your offer’s timing and pricing. Adjust transfer windows and
+                margins to manage expectations and profitability.
+              </p>
+              <div className="flex flex-col gap-[10px]">
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex flex-1 items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Profit Margin
+                    </p>
 
-                    <div>
-                      <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
-                        <div
-                          onClick={handleMinusMargin}
-                          className="w-[60px] flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                        >
-                          <FaMinus />
-                        </div>
+                    <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
+                  </div>
 
-                        <div
-                          onClick={handleAddMargin}
-                          className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite"
-                        >
-                          <p>
-                            <span className="font-bold text-white">
-                              {createOffer.margin > 0 ? "+" : ""}
-                              {createOffer.margin}%
-                            </span>{" "}
-                            profit margin
-                          </p>
-                        </div>
+                  <div>
+                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
+                      <div
+                        onClick={handleMinusMargin}
+                        className="w-[60px] flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <FaMinus />
+                      </div>
 
-                        <div
-                          onClick={handleAddMargin}
-                          className="w-[60px] flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                        >
-                          <FaPlus />
-                        </div>
+                      <div
+                        onClick={handleAddMargin}
+                        className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite"
+                      >
+                        <p>
+                          <span className="font-bold text-white">
+                            {createOffer.margin > 0 ? "+" : ""}
+                            {createOffer.margin}%
+                          </span>{" "}
+                          profit margin
+                        </p>
+                      </div>
+
+                      <div
+                        onClick={handleAddMargin}
+                        className="w-[60px] flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <FaPlus />
                       </div>
                     </div>
+                  </div>
 
-                    <div className="flex items-center gap-1">
-                      <p className="text-tradeFadeWhite text-xs font-medium">
-                        Rate :
-                      </p>
-                      <p className="text-tradeOrange text-xs font-medium">
-                        2,300 / {createOffer?.currency?.code}
-                      </p>
-                    </div>
+                  <div className="flex items-center gap-1">
+                    <p className="text-tradeFadeWhite text-xs font-medium">
+                      Rate :
+                    </p>
+                    <p className="text-tradeOrange text-xs font-medium">
+                      2,300 / {createOffer?.currency?.code}
+                    </p>
+                  </div>
 
-                    {/* <Info
+                  {/* <Info
                       text={
                         "Set a competitive profit margin that secures your earnings. Note that a service charge typically between 0.5% to 2% applies per trade. To ensure healthy returns, consider starting your margin at 4% or higher."
                       }
                     /> */}
+                </div>
+
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex flex-1 items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Transfer Window
+                    </p>
+
+                    <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
                   </div>
 
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                    <div className="flex flex-1 items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Transfer Window
-                      </p>
+                  <div>
+                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
+                      <div
+                        onClick={handleMinusTraderPaymentWindowHour}
+                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <FaMinus />
+                      </div>
 
-                      <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
-                    </div>
+                      <div
+                        onClick={handleAddMargin}
+                        className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite"
+                      >
+                        <p>
+                          <span className="font-bold text-white">
+                            {createOffer?.tradersPaymentWindow?.hours}
+                          </span>{" "}
+                          hour&#40;s&#41;
+                        </p>
+                      </div>
 
-                    <div>
-                      <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
-                        <div
-                          onClick={handleMinusTraderPaymentWindowHour}
-                          className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                        >
-                          <FaMinus />
-                        </div>
-
-                        <div
-                          onClick={handleAddMargin}
-                          className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite"
-                        >
-                          <p>
-                            <span className="font-bold text-white">
-                              {createOffer?.tradersPaymentWindow?.hours}
-                            </span>{" "}
-                            hour&#40;s&#41;
-                          </p>
-                        </div>
-
-                        <div
-                          onClick={handleAddTraderPaymentWindowHour}
-                          className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                        >
-                          <FaPlus />
-                        </div>
+                      <div
+                        onClick={handleAddTraderPaymentWindowHour}
+                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <FaPlus />
                       </div>
                     </div>
+                  </div>
 
-                    <div>
-                      <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
-                        <div
-                          onClick={handleMinusTraderPaymentWindowMinutes}
-                          className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                        >
-                          <FaMinus />
-                        </div>
+                  <div>
+                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
+                      <div
+                        onClick={handleMinusTraderPaymentWindowMinutes}
+                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <FaMinus />
+                      </div>
 
-                        <div
-                          onClick={handleAddMargin}
-                          className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite"
-                        >
-                          <p>
-                            <span className="font-bold text-white">
-                              {createOffer?.tradersPaymentWindow?.minutes}
-                            </span>{" "}
-                            minutes
-                          </p>
-                        </div>
-                        <div
-                          onClick={handleAddTraderPaymentWindowMinutes}
-                          className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                        >
-                          <FaPlus />
-                        </div>
+                      <div
+                        onClick={handleAddMargin}
+                        className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite"
+                      >
+                        <p>
+                          <span className="font-bold text-white">
+                            {createOffer?.tradersPaymentWindow?.minutes}
+                          </span>{" "}
+                          minutes
+                        </p>
+                      </div>
+                      <div
+                        onClick={handleAddTraderPaymentWindowMinutes}
+                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <FaPlus />
                       </div>
                     </div>
+                  </div>
 
-                    {/* <Info
+                  {/* <Info
                       text={
                         "Set the time limit for traders to transfer assets after a trade begins. If they fail to do so within this window, the trade will be automatically cancelled."
                       }
                     /> */}
+                </div>
+
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex flex-1 items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Release Window
+                    </p>
+
+                    <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
+                  </div>
+                  <div>
+                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
+                      <div
+                        onClick={handleMinusVendorPaymentWindowHour}
+                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <FaMinus />
+                      </div>
+
+                      <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
+                        <p>
+                          <span className="font-bold text-white">
+                            {createOffer?.vendorPaymentWindow?.hours}
+                          </span>{" "}
+                          hour&#40;s&#41;
+                        </p>
+                      </div>
+
+                      <div
+                        onClick={handleAddVendorPaymentWindowHour}
+                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <FaPlus />
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                    <div className="flex flex-1 items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Release Window
-                      </p>
+                  <div>
+                    <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
+                      <div
+                        onClick={handleMinusVendorPaymentWindowMinutes}
+                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <FaMinus />
+                      </div>
 
-                      <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
-                    </div>
-                    <div>
-                      <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
-                        <div
-                          onClick={handleMinusVendorPaymentWindowHour}
-                          className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                        >
-                          <FaMinus />
-                        </div>
-
-                        <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
-                          <p>
-                            <span className="font-bold text-white">
-                              {createOffer?.vendorPaymentWindow?.hours}
-                            </span>{" "}
-                            hour&#40;s&#41;
-                          </p>
-                        </div>
-
-                        <div
-                          onClick={handleAddVendorPaymentWindowHour}
-                          className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                        >
-                          <FaPlus />
-                        </div>
+                      <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
+                        <p>
+                          <span className="font-bold text-white">
+                            {createOffer?.vendorPaymentWindow?.minutes}
+                          </span>{" "}
+                          minutes
+                        </p>
+                      </div>
+                      <div
+                        onClick={handleAddVendorPaymentWindowMinutes}
+                        className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
+                      >
+                        <FaPlus />
                       </div>
                     </div>
+                  </div>
 
-                    <div>
-                      <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
-                        <div
-                          onClick={handleMinusVendorPaymentWindowMinutes}
-                          className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                        >
-                          <FaMinus />
-                        </div>
-
-                        <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
-                          <p>
-                            <span className="font-bold text-white">
-                              {createOffer?.vendorPaymentWindow?.minutes}
-                            </span>{" "}
-                            minutes
-                          </p>
-                        </div>
-                        <div
-                          onClick={handleAddVendorPaymentWindowMinutes}
-                          className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                        >
-                          <FaPlus />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* <Info
+                  {/* <Info
                       text={
                         "Set how long you’ll have to confirm and release funds once asset is confirmed. If you don’t act within this window, the trade will be automatically escalated to a dispute."
                       }
                     /> */}
-                  </div>
                 </div>
-              </div>
-
-              <div className="flex flex-col gap-[10px]">
-                <Button onClick={stepThree} variant="secondary">
-                  PROCEED
-                </Button>
-
-                <Button onClick={stepOne} variant="outline">
-                  PREVIOUS
-                </Button>
               </div>
             </div>
 
-            <div
-              className={` ${
-                createOffer?.step === 3 ? "flex" : "hidden"
-              } flex-col gap-[30px] h-full justify-between`}
-            >
-              <div className="flex flex-col gap-[25px]">
-                <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                  This final step shapes the trading experience. Use terms to
-                  communicate any specific conditions and instructions to guide
-                  traders through the process.
-                </p>
+            <div className="flex flex-col gap-[10px]">
+              <Button onClick={stepThree} variant="secondary">
+                PROCEED
+              </Button>
 
-                <div className="flex flex-col gap-[10px]">
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                    <div className="flex flex-1 items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Tags
-                      </p>
+              <Button onClick={stepOne} variant="outline">
+                PREVIOUS
+              </Button>
+            </div>
+          </div>
 
-                      <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
+          <div
+            className={` ${
+              createOffer?.step === 3 ? "flex" : "hidden"
+            } flex-col gap-[30px] h-full justify-between`}
+          >
+            <div className="flex flex-col gap-[25px]">
+              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                This final step shapes the trading experience. Use terms to
+                communicate any specific conditions and instructions to guide
+                traders through the process.
+              </p>
+
+              <div className="flex flex-col gap-[10px]">
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex flex-1 items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Tags
+                    </p>
+
+                    <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
+                  </div>
+
+                  <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
+                    <input
+                      className={`bg-transparent flex-1 p-[12px] border-none outline-none placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer`}
+                      type="text"
+                      readOnly
+                      placeholder="Select tags"
+                      onClick={() =>
+                        setSelect({
+                          ...select,
+                          state: true,
+                          selectOne: true,
+                          selectTwo: false,
+                          element: "terms",
+                          pick: "",
+                          page: "create offer",
+                          options: offerTermTags,
+                        })
+                      }
+                    />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
+                      <MdKeyboardArrowDown />
                     </div>
+                  </div>
 
-                    <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
-                      <input
-                        className={`bg-transparent flex-1 p-[12px] border-none outline-none placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer`}
-                        type="text"
-                        readOnly
-                        placeholder="Select tags"
-                        onClick={() =>
-                          setSelect({
-                            ...select,
-                            state: true,
-                            selectOne: true,
-                            selectTwo: false,
-                            element: "terms",
-                            pick: "",
-                            page: "create offer",
-                            options: offerTermTags,
-                          })
-                        }
-                      />
-                      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white">
-                        <MdKeyboardArrowDown />
+                  <div className="flex  rounded-[10px] ">
+                    {createOffer?.termTags.length > 0 ? (
+                      <div className={`flex gap-[5px] flex-wrap`}>
+                        {createOffer?.termTags.map((tag, index) => (
+                          <div className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight">
+                            <p
+                              key={index}
+                              className="text-[13px] font-semibold text-tradeFadeWhite"
+                            >
+                              {tag}
+                            </p>
+                            <IoClose
+                              className="text-tradeFadeWhite hover:text-red-600 text-[16px] cursor-pointer transition-all duration-300"
+                              onClick={() => {
+                                setCreateOffer((prev) => ({
+                                  ...prev,
+                                  termTags: prev.termTags.filter(
+                                    (_, i) => i !== index
+                                  ),
+                                }));
+                              }}
+                            />
+                          </div>
+                        ))}
                       </div>
-                    </div>
+                    ) : (
+                      <div>
+                        <p className="text-tradeFadeWhite text-xs font-medium">
+                          No terms selected
+                        </p>
+                      </div>
+                    )}
+                  </div>
 
-                    <div className="flex  rounded-[10px] ">
-                      {createOffer?.termTags.length > 0 ? (
-                        <div className={`flex gap-[5px] flex-wrap`}>
-                          {createOffer?.termTags.map((tag, index) => (
-                            <div className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight">
-                              <p
-                                key={index}
-                                className="text-[13px] font-semibold text-tradeFadeWhite"
-                              >
-                                {tag}
-                              </p>
-                              <IoClose
-                                className="text-tradeFadeWhite hover:text-red-600 text-[16px] cursor-pointer transition-all duration-300"
-                                onClick={() => {
-                                  setCreateOffer((prev) => ({
-                                    ...prev,
-                                    termTags: prev.termTags.filter(
-                                      (_, i) => i !== index
-                                    ),
-                                  }));
-                                }}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <div>
-                          <p className="text-tradeFadeWhite text-xs font-medium">
-                            No terms selected
-                          </p>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* <Info
+                  {/* <Info
                       text={
                         "You can select up to 5 terms or requirements to help clearly communicate the terms of your offer to potential traders."
                       }
                     /> */}
+                </div>
+
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                  <div className="flex flex-1 items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Instructions
+                    </p>
+
+                    <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
+                  </div>
+                  <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
+                    <textarea
+                      onChange={handleInstruction}
+                      value={createOffer?.instruction}
+                      className=" min-h-[45px] w-full bg-transparent border-none p-[12px] text-white text-sm font-medium placeholder-tradeFadeWhite focus:outline-none resize-non"
+                      placeholder="Write your trade Instructions here."
+                    ></textarea>
                   </div>
 
-                  <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                    <div className="flex flex-1 items-center justify-between">
-                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                        Instructions
-                      </p>
-
-                      <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
-                    </div>
-                    <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
-                      <textarea
-                        onChange={handleInstruction}
-                        value={createOffer?.instruction}
-                        className=" min-h-[45px] w-full bg-transparent border-none p-[12px] text-white text-sm font-medium placeholder-tradeFadeWhite focus:outline-none resize-non"
-                        placeholder="Write your trade Instructions here."
-                      ></textarea>
-                    </div>
-
-                    {/* <Info
+                  {/* <Info
                       text={
                         "Use this field to share any extra instructions or context that help ensure a smooth, respectful trade. Be clear, helpful, and professional."
                       }
                     /> */}
-                  </div>
                 </div>
-              </div>
-
-              <div className="flex flex-col gap-[10px]">
-                <Button onClick={preview} variant="secondary">
-                  PREVIEW
-                </Button>
-
-                <Button onClick={stepTwo} variant="outline">
-                  PREVIOUS
-                </Button>
               </div>
             </div>
 
-            <div
-              className={` ${
-                createOffer?.step === 4 ? "flex" : "hidden"
-              } flex-col gap-[20px] h-full justify-between`}
-            >
-              <div className="flex flex-col gap-[25px]">
-                <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                  You’re almost there! Take a moment to double-check your offer
-                  details and ensure everything’s accurate before going live.
-                </p>
-                <div className="flex flex-1 flex-col gap-[30px]">
-                  <div className="flex flex-col gap-[30px] pb-[12px]">
-                    <div className="flex items-center gap-2">
-                      <div>
-                        <TbCubeSpark className="text-white text-5xl" />
-                      </div>
+            <div className="flex flex-col gap-[10px]">
+              <Button onClick={preview} variant="secondary">
+                PREVIEW
+              </Button>
 
-                      <div className="flex flex-col gap-2 ">
-                        <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
-                          {createOffer?.service || "NA"}
-                        </p>
-                        <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
-                          {createOffer?.serviceType || "NA"}
-                        </p>
-                      </div>
+              <Button onClick={stepTwo} variant="outline">
+                PREVIOUS
+              </Button>
+            </div>
+          </div>
+
+          <div
+            className={` ${
+              createOffer?.step === 4 ? "flex" : "hidden"
+            } flex-col gap-[20px] h-full justify-between`}
+          >
+            <div className="flex flex-col gap-[25px]">
+              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
+                You’re almost there! Take a moment to double-check your offer
+                details and ensure everything’s accurate before going live.
+              </p>
+              <div className="flex flex-1 flex-col gap-[30px]">
+                <div className="flex flex-col gap-[30px] pb-[12px]">
+                  <div className="flex items-center gap-2">
+                    <div>
+                      <TbCubeSpark className="text-white text-5xl" />
                     </div>
 
-                    <div className="flex flex-col gap-[10px]">
-                      <div className="flex  items-center gap-1">
-                        <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                        <p className="text-xs font-semibold text-white">
-                          0 Completed Trade(s)
-                        </p>
-                      </div>
-
-                      <div className="flex  items-center gap-1">
-                        <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                        <p className="text-xs font-semibold text-white">
-                          0% Completion Rating
-                        </p>
-                      </div>
+                    <div className="flex flex-col gap-2 ">
+                      <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
+                        {createOffer?.service || "NA"}
+                      </p>
+                      <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
+                        {createOffer?.serviceType || "NA"}
+                      </p>
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-[10px]">
-                    <div className="flex flex-col justify-between flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                      <div className="flex items-center justify-between w-full mt-[1px]">
-                        <div className="flex justify-between border-b border-tradeAshLight flex-1 pb-[10px]">
-                          <p className="text-[13px] text-white font-semibold">
-                            Rate
-                          </p>
-                        </div>
-
-                        <p className="text-white text-sm font-semibold leading-none">
-                          1,250/{createOffer?.currency?.code || "N/A"}
-                        </p>
-                      </div>
-
-                      <div className="w-full flex flex-col gap-1">
-                        <div className="flex items-center justify-between">
-                          <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                            Margin
-                          </p>
-
-                          <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                            {createOffer?.margin || "N/A"}%
-                          </p>
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                          <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                            Currency
-                          </p>
-                          <p className="text-[13px] text-white font-semibold">
-                            {createOffer?.currency?.name}
-                          </p>
-                        </div>
-                      </div>
+                    <div className="flex  items-center gap-1">
+                      <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                      <p className="text-xs font-semibold text-white">
+                        0 Completed Trade(s)
+                      </p>
                     </div>
 
-                    <div className="flex flex-1 flex-col justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                        <p className="text-[13px] text-white font-semibold">
-                          Purchase limits
-                        </p>
-                      </div>
-
-                      <div className="w-full flex flex-col gap-1">
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Minimum
-                          </p>
-
-                          <p className="text-white text-[13px]  font-semibold">
-                            {createOffer?.minimum !== "" &&
-                            createOffer?.currency?.code
-                              ? `${Number(
-                                  createOffer.minimum
-                                ).toLocaleString()} ${
-                                  createOffer.currency.code
-                                }`
-                              : "0.00"}
-                          </p>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Maximum
-                          </p>
-
-                          <p className="text-white text-[13px] font-semibold">
-                            {createOffer?.maximum !== "" &&
-                            createOffer?.currency?.code
-                              ? `${Number(
-                                  createOffer.maximum
-                                ).toLocaleString()} ${
-                                  createOffer.currency.code
-                                }`
-                              : "0.00"}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                        <p className="text-[13px] text-white font-semibold">
-                          Payment Window
-                        </p>
-                      </div>
-
-                      <div className="w-full flex flex-col gap-1">
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Transfer
-                          </p>
-
-                          <p className="text-white text-[13px]  font-semibold">
-                            {windowFormatHour(
-                              createOffer?.tradersPaymentWindow?.hours,
-                              createOffer?.tradersPaymentWindow?.minutes
-                            )}
-                          </p>
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Release
-                          </p>
-
-                          <p className="text-white text-[13px] font-semibold">
-                            {windowFormatHour(
-                              createOffer?.vendorPaymentWindow?.hours,
-                              createOffer?.vendorPaymentWindow?.minutes
-                            )}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex  flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                        <p className="text-[13px] text-white font-semibold">
-                          Tags
-                        </p>
-                      </div>
-                      <div className="w-full flex gap-2 flex-grow flex-wrap">
-                        {createOffer?.termTags?.length > 0 ? (
-                          createOffer.termTags.map((term, index) => (
-                            <p
-                              key={index}
-                              className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight text-[13px] font-semibold text-white"
-                            >
-                              {term}
-                            </p>
-                          ))
-                        ) : (
-                          <p className="text-[13px] font-semibold text-white">
-                            N/A
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                        <p className="text-[13px] text-white font-semibold">
-                          Instructions
-                        </p>
-                      </div>
-
-                      <p className="text-[13px] text-white font-semibold">
-                        {createOffer?.instruction
-                          ? createOffer?.instruction
-                          : "N/A"}
+                    <div className="flex  items-center gap-1">
+                      <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                      <p className="text-xs font-semibold text-white">
+                        0% Completion Rating
                       </p>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex flex-col gap-1">
-                <p className="text-xs font-semibold text-white">
-                  Terms & Agreement
-                </p>
-                <p className="text-xs font-medium text-tradeFadeWhite">
-                  By publishing this offer, you confirm that all details are
-                  accurate, you’ll trade only through verified accounts, and
-                  that you agree to our{" "}
-                  <span className="text-tradeOrange">P2P Trading Terms</span>{" "}
-                  and <span className="text-tradeOrange">Dispute Policy</span>.
-                </p>
-              </div>
+                <div className="flex flex-col gap-[10px]">
+                  <div className="flex flex-col justify-between flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex items-center justify-between w-full mt-[1px]">
+                      <div className="flex justify-between border-b border-tradeAshLight flex-1 pb-[10px]">
+                        <p className="text-[13px] text-white font-semibold">
+                          Rate
+                        </p>
+                      </div>
 
-              <div className="flex flex-col gap-[10px]">
-                <Button
-                  onClick={handlepublish}
-                  variant="secondary"
-                  disabled={createOffer?.loading}
-                >
-                  PUBLISH
-                </Button>
+                      <p className="text-white text-sm font-semibold leading-none">
+                        1,250/{createOffer?.currency?.code || "N/A"}
+                      </p>
+                    </div>
 
-                <Button onClick={edit} variant="outline">
-                  EDIT
-                </Button>
+                    <div className="w-full flex flex-col gap-1">
+                      <div className="flex items-center justify-between">
+                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                          Margin
+                        </p>
+
+                        <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                          {createOffer?.margin || "N/A"}%
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                          Currency
+                        </p>
+                        <p className="text-[13px] text-white font-semibold">
+                          {createOffer?.currency?.name}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-1 flex-col justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Purchase limits
+                      </p>
+                    </div>
+
+                    <div className="w-full flex flex-col gap-1">
+                      <div className="flex items-center justify-between">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Minimum
+                        </p>
+
+                        <p className="text-white text-[13px]  font-semibold">
+                          {createOffer?.minimum !== "" &&
+                          createOffer?.currency?.code
+                            ? `${Number(
+                                createOffer.minimum
+                              ).toLocaleString()} ${createOffer.currency.code}`
+                            : "0.00"}
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Maximum
+                        </p>
+
+                        <p className="text-white text-[13px] font-semibold">
+                          {createOffer?.maximum !== "" &&
+                          createOffer?.currency?.code
+                            ? `${Number(
+                                createOffer.maximum
+                              ).toLocaleString()} ${createOffer.currency.code}`
+                            : "0.00"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Payment Window
+                      </p>
+                    </div>
+
+                    <div className="w-full flex flex-col gap-1">
+                      <div className="flex items-center justify-between">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Transfer
+                        </p>
+
+                        <p className="text-white text-[13px]  font-semibold">
+                          {windowFormatHour(
+                            createOffer?.tradersPaymentWindow?.hours,
+                            createOffer?.tradersPaymentWindow?.minutes
+                          )}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Release
+                        </p>
+
+                        <p className="text-white text-[13px] font-semibold">
+                          {windowFormatHour(
+                            createOffer?.vendorPaymentWindow?.hours,
+                            createOffer?.vendorPaymentWindow?.minutes
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex  flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Tags
+                      </p>
+                    </div>
+                    <div className="w-full flex gap-2 flex-grow flex-wrap">
+                      {createOffer?.termTags?.length > 0 ? (
+                        createOffer.termTags.map((term, index) => (
+                          <p
+                            key={index}
+                            className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight text-[13px] font-semibold text-white"
+                          >
+                            {term}
+                          </p>
+                        ))
+                      ) : (
+                        <p className="text-[13px] font-semibold text-white">
+                          N/A
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Instructions
+                      </p>
+                    </div>
+
+                    <p className="text-[13px] text-white font-semibold">
+                      {createOffer?.instruction
+                        ? createOffer?.instruction
+                        : "N/A"}
+                    </p>
+                  </div>
+                </div>
               </div>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <p className="text-xs font-semibold text-white">
+                Terms & Agreement
+              </p>
+              <p className="text-xs font-medium text-tradeFadeWhite">
+                By publishing this offer, you confirm that all details are
+                accurate, you’ll trade only through verified accounts, and that
+                you agree to our{" "}
+                <span className="text-tradeOrange">P2P Trading Terms</span> and{" "}
+                <span className="text-tradeOrange">Dispute Policy</span>.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-[10px]">
+              <Button
+                onClick={handlepublish}
+                variant="secondary"
+                disabled={createOffer?.loading}
+              >
+                PUBLISH
+              </Button>
+
+              <Button onClick={edit} variant="outline">
+                EDIT
+              </Button>
             </div>
           </div>
         </div>
