@@ -238,82 +238,44 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                 </div>
 
                 <div className="flex gap-[30px] flex-col">
-                  <div className="flex flex-col lg:flex-row gap-[10px]">
-                    <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh">
-                      <div className="flex flex-col gap-[15px]">
-                        <div className="flex items-center gap-2">
-                          <IoMdArrowDropright className="text-lg text-white" />
-                          <p className="text-white hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
-                            ENTER AMOUNT
-                          </p>
-                        </div>
-
-                        <div className="flex gap-[10px]">
-                          <div className="flex-1 flex p-[12px] gap-2 items-center justify-between bg-tradeAshLight  border border-tradeAshExtraLight rounded-[10px] ">
-                            <input
-                              type="text"
-                              placeholder="00.00"
-                              value={withComma(calculator?.amount)}
-                              onChange={amountChange}
-                              className="bg-transparent w-full text-sm font-semibold outline-none text-white placeholder:text-tradeFadeWhite"
-                            />
-                          </div>
-
-                          <div className="flex border border-tradeAshExtraLight p-[12px] gap-2 items-center justify-between bg-tradeAshLight rounded-[10px] ">
-                            <div className="text-sm font-semibold text-white">
-                              <p>{offer?.preferredCurrency?.code ?? "USD"}</p>
-                            </div>
-                          </div>
-                        </div>
+                  <div className="flex flex-1 flex-col p-[15px] bg-tradeAsh gap-[15px] rounded-[15px] border border-tradeAshLight">
+                    <div className="flex gap-2 justify-between  border-b border-tradeAshLight pb-[10px]">
+                      <div className="flex items-center gap-1">
+                        <IoMdArrowDropright className="text-lg text-white" />
+                        <p className="text-white hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
+                          ENTER AMOUNT
+                        </p>
                       </div>
 
-                      <div className="flex gap-[10px]">
-                        {amountList?.map((amount, index) => (
-                          <p
-                            key={index}
-                            onClick={() => amountClick(amount)}
-                            className="text-[13px] font-bold text-white hover:text-white border border-tradeAshExtraLight leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight w-max rounded-sm transition-all duration-300 cursor-pointer"
-                          >
-                            + {withComma(amount)}
-                          </p>
-                        ))}
+                      <p className="text-tradeFadeWhite text-xs font-medium">
+                        {toDecimal(offer?.purchaseLimit?.minimum) || "-- --"} -{" "}
+                        {toDecimal(offer?.purchaseLimit?.maximum) || "-- --"}{" "}
+                        {offer?.preferredCurrency?.code || "N/A"}
+                      </p>
+                    </div>
+
+                    <div className="flex gap-[10px]">
+                      <div className="flex-1 flex p-[12px] gap-2 items-center justify-between bg-tradeAshLight  border border-tradeAshExtraLight rounded-[10px] ">
+                        <input
+                          type="text"
+                          placeholder="00.00"
+                          value={withComma(calculator?.amount)}
+                          onChange={amountChange}
+                          className="bg-transparent w-full text-sm font-semibold outline-none text-white placeholder:text-tradeFadeWhite"
+                        />
+                      </div>
+
+                      <div className="flex border border-tradeAshExtraLight p-[12px] gap-2 items-center justify-between bg-tradeAshLight rounded-[10px] ">
+                        <div className="text-sm font-semibold text-white">
+                          <p>{offer?.preferredCurrency?.code ?? "USD"}</p>
+                        </div>
                       </div>
                     </div>
 
-                    <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAsh">
-                      <div className="flex flex-col gap-[15px]">
-                        <div className="flex items-center gap-2">
-                          <IoMdArrowDropright className="text-lg text-white" />
-                          <p className="text-white hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
-                            ESTIMATED RETURN
-                          </p>
-                        </div>
-
-                        <div className="flex justify-between items-center gap-[10px]">
-                          <div className="flex-1 flex p-[12px] gap-2 items-center justify-between bg-tradeAshLight  border border-tradeAshExtraLight rounded-[10px] ">
-                            <input
-                              type="text"
-                              readOnly
-                              placeholder="00.00"
-                              value={toDecimal(calculator?.receive)}
-                              className="bg-transparent w-full text-sm font-semibold outline-none text-white placeholder:text-tradeFadeWhite cursor-auto"
-                            />
-                          </div>
-
-                          <div className="flex border border-tradeAshExtraLight p-[12px] gap-2 items-center justify-between bg-tradeAshLight rounded-[10px] ">
-                            <div className="text-sm font-semibold text-white">
-                              <p>{offer?.preferredCurrency?.code ?? "NGN"}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col gap-1">
-                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Equalvalent to :{" "}
-                          <span className="text-white">23.00</span> NGN
-                        </p>
-                      </div>
+                    <div>
+                      <p className="text-tradeFadeWhite text-xs font-medium">
+                        You will receive - -
+                      </p>
                     </div>
                   </div>
 
@@ -327,107 +289,74 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                 </div>
 
                 <div className="flex flex-1 flex-col gap-[10px]">
-                  <div className="flex flex-col gap-[10px] w-full ">
-                    <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                      <div className="flex items-center justify-between w-full mt-[1px]">
-                        <div className="flex justify-between border-b border-tradeAshLight flex-1 pb-[10px]">
-                          <p className="text-[13px] text-white font-semibold">
-                            Rate
-                          </p>
-                        </div>
-
-                        <p className="text-white text-sm font-semibold leading-none">
-                          1 {offer?.preferredCurrency?.code || "N/A"} = #
-                          {toDecimal(offer?.marginRate?.ratePrice)}
+                  <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex items-center justify-between w-full mt-[1px]">
+                      <div className="flex justify-between border-b border-tradeAshLight flex-1 pb-[10px]">
+                        <p className="text-[13px] text-white font-semibold">
+                          Rate
                         </p>
                       </div>
 
-                      <div className="w-full flex flex-col gap-1">
-                        <div className="flex items-center justify-between">
-                          <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                            Margin
-                          </p>
-
-                          <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                            {offer?.marginRate?.ratePercent || "N/A"}% MARGIN
-                          </p>
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                          <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                            Currency
-                          </p>
-                          <p className="text-[13px] text-white font-semibold">
-                            {offer?.preferredCurrency?.name}
-                          </p>
-                        </div>
-                      </div>
+                      <p className="text-white text-sm font-semibold leading-none">
+                        1 {offer?.preferredCurrency?.code || "N/A"} = #
+                        {toDecimal(offer?.marginRate?.ratePrice)}
+                      </p>
                     </div>
 
-                    <div className="flex min-w-[200px] flex-1 flex-col justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                        <p className="text-[13px] text-white font-semibold">
-                          Purchase limits
+                    <div className="w-full flex flex-col gap-1">
+                      <div className="flex items-center justify-between">
+                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                          Margin
+                        </p>
+
+                        <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                          {offer?.marginRate?.ratePercent || "N/A"}% MARGIN
                         </p>
                       </div>
 
-                      <div className="w-full flex flex-col gap-1">
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Minimum
-                          </p>
-
-                          <p className="text-white text-[13px]  font-semibold">
-                            {toDecimal(offer?.purchaseLimit?.minimum) || "N/A"}{" "}
-                            {offer?.preferredCurrency?.code || "N/A"}
-                          </p>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Maximum
-                          </p>
-
-                          <p className="text-white text-[13px] font-semibold">
-                            {toDecimal(offer?.purchaseLimit?.maximum) || "N/A"}{" "}
-                            {offer?.preferredCurrency?.code || "N/A"}
-                          </p>
-                        </div>
+                      <div className="flex items-center justify-between">
+                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                          Currency
+                        </p>
+                        <p className="text-[13px] text-white font-semibold">
+                          {offer?.preferredCurrency?.name}
+                        </p>
                       </div>
                     </div>
+                  </div>
 
-                    <div className="flex min-w-[200px] flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                      <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                        <p className="text-[13px] text-white font-semibold">
-                          Payment Window
+                  <div className="flex min-w-[200px] flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                      <p className="text-[13px] text-white font-semibold">
+                        Payment Window
+                      </p>
+                    </div>
+
+                    <div className="w-full flex flex-col gap-1">
+                      <div className="flex items-center justify-between">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Transfer
+                        </p>
+
+                        <p className="text-white text-[13px]  font-semibold">
+                          {windowFormatHour(
+                            offer?.paymentWindow?.transfer?.hours,
+                            offer?.paymentWindow?.transfer?.minutes
+                          )}
                         </p>
                       </div>
 
-                      <div className="w-full flex flex-col gap-1">
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Transfer
-                          </p>
+                      <div className="flex items-center justify-between">
+                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                          Release
+                        </p>
 
-                          <p className="text-white text-[13px]  font-semibold">
-                            {windowFormatHour(
-                              offer?.paymentWindow?.transfer?.hours,
-                              offer?.paymentWindow?.transfer?.minutes
-                            )}
-                          </p>
-                        </div>
-
-                        <div className="flex items-center justify-between">
-                          <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                            Release
-                          </p>
-
-                          <p className="text-white text-[13px] font-semibold">
-                            {windowFormatHour(
-                              offer?.paymentWindow?.release?.hours,
-                              offer?.paymentWindow?.release?.minutes
-                            )}
-                          </p>
-                        </div>
+                        <p className="text-white text-[13px] font-semibold">
+                          {windowFormatHour(
+                            offer?.paymentWindow?.release?.hours,
+                            offer?.paymentWindow?.release?.minutes
+                          )}
+                        </p>
                       </div>
                     </div>
                   </div>
