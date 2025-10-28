@@ -24,76 +24,67 @@ const TwoFactorAuth = () => {
                 two-factor authentication to verify your identity each time you
                 sign in and keep your funds safe.
               </p>
-              <div className="flex flex-col gap-[20px]">
-                {/* <div className="flex flex-col gap-[10px] bg-tradeAsh rounded-[15px] p-[12px]">
+              <div className="flex flex-col gap-[30px]">
+                <div className="flex flex-col gap-[10px] bg-tradeAsh rounded-[15px] p-[12px]">
                   <div className="flex items-center justify-between">
-                    <p className="text-white text-[13px] font-semibold">
+                    <p className="text-white text-sm font-semibold">
                       Email Address
                     </p>
 
-                    <div className="flex items-center">
-                      <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        ade***@****
-                      </p>
-                      <MdKeyboardArrowRight className="text-tradeFadeWhite text-[22px] " />
+                    <div className="flex items-center cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
+                      <p className="text-[13px] font-semibold">ade***@****</p>
+                      <MdKeyboardArrowRight className="text-[22px] " />
                     </div>
                   </div>
                   <div className="flex items-center justify-between">
-                    <p className="text-white text-[13px] font-semibold">
-                      Mobile
+                    <p className="text-white text-sm font-semibold">
+                      Mobile Number
                     </p>
 
-                    <div className="flex items-center">
-                      <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                        803****211
-                      </p>
-                      <MdKeyboardArrowRight className="text-tradeFadeWhite text-[22px] " />
+                    <div className="flex items-center cursor-pointer text-tradeFadeWhite hover:text-white transition-all duration-300">
+                      <p className=" text-[13px] font-semibold">803****211</p>
+                      <MdKeyboardArrowRight className=" text-[22px] " />
                     </div>
                   </div>
-                </div> */}
+                </div>
                 <div className="flex flex-col gap-[10px]">
-                  <div className="flex flex-col gap-[15px] bg-tradeAsh rounded-[15px] p-[12px]">
-                    <div className="flex items-center justify-between">
-                      <p className="text-white text-[13px] font-semibold">
+                  <div className="flex items-center justify-between gap-[30px] bg-tradeAsh rounded-[15px] p-[12px]">
+                    <div className="flex flex-col gap-[5px]">
+                      <p className="text-white text-sm font-semibold">
                         Text Message
                       </p>
 
-                      <div className="flex items-center  cursor-pointer ">
-                        <p className="text-tradeFadeWhite text-[13px] font-semibold">
-                          803****211
-                        </p>
-                        <MdKeyboardArrowRight className="text-tradeFadeWhite text-[22px] " />
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-[15px]">
                       <p className="text-tradeFadeWhite text-xs font-semibold">
-                        Use your mobile phone to receive a text message with an
-                        authentication code to enter when you log in
+                        Use your mobile phone and email to receive a text
+                        message with an authentication code to enter when you
+                        log in
+                      </p>
+                    </div>
+
+                    <div>
+                      <BsToggleOff className="text-tradeFadeWhite hover:text-tradeOrange text-4xl cursor-pointer transition-all duration-300 " />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-[30px] bg-tradeAsh rounded-[15px] p-[12px]">
+                    <div className="flex flex-col gap-[5px]">
+                      <p className="text-white text-sm font-semibold">
+                        Authentication App
                       </p>
 
-                      <div>
-                        <BsToggleOff className="text-tradeFadeWhite text-3xl cursor-pointer " />
-                      </div>
+                      <p className="text-tradeFadeWhite text-xs font-semibold">
+                        Use an app to get an authentication code to enter when
+                        you log in
+                      </p>
+                    </div>
+
+                    <div>
+                      <BsToggleOff className="text-tradeFadeWhite hover:text-tradeOrange text-4xl cursor-pointer transition-all duration-300" />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {/* <div className="flex flex-col gap-[10px]">
-              <Button
-                variant="secondary"
-                onClick={handleProceed}
-                disabled={transfer?.proceed}
-              >
-                UPDATE
-              </Button>
-
-              <div className="flex items-center justify-center">
-                <p className="text-[13px] text-tradeFadeWhite hover:text-white font-semibold cursor-pointer transition-all duration-300">
-                  Forgotten your password ?
-                </p>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
