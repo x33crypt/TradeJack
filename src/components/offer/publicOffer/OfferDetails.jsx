@@ -237,8 +237,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                 </div>
 
-                <div className="flex gap-[30px] flex-col">
-                  <div className="flex flex-1 flex-col p-[15px] bg-tradeAsh gap-[15px] rounded-[15px] border border-tradeAshLight">
+                <div className="flex gap-[20px] flex-col">
+                  <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAshLight">
                     <div className="flex gap-2 justify-between  border-b border-tradeAshLight pb-[10px]">
                       <div className="flex items-center gap-1">
                         <IoMdArrowDropright className="text-lg text-white" />
