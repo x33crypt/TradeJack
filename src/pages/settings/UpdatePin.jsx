@@ -3,7 +3,7 @@ import InAppNav from "@/components/others/InAppNav";
 import Footer from "@/components/others/Footer";
 import Button from "@/components/buttons/Button";
 
-const UpdatePassword = () => {
+const UpdatePin = () => {
   return (
     <>
       <InAppNav />
@@ -11,21 +11,20 @@ const UpdatePassword = () => {
         <div className="flex flex-1 flex-col gap-[20px] lg:mx-[22.8%] p-[15px]">
           <div className="flex items-center justify-between ">
             <p className="text-lg font-semibold text-white flex items-center gap-1">
-              CHANGE PASSWORD
+              CHANGE PIN
             </p>
           </div>
-
           <div className="flex flex-col gap-[30px]">
             <div className="flex flex-col gap-[25px]">
               <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                Change your password to protect your account and keep your
-                access secure.
+                Secure your transactions by updating your payment PIN for added
+                protection.
               </p>
               <div className="flex flex-col gap-[10px]">
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
                   <div className="flex flex-1 items-center justify-between">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Current Password
+                      Current Pin
                     </p>
                   </div>
 
@@ -33,7 +32,7 @@ const UpdatePassword = () => {
                     <input
                       className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                       type="text"
-                      placeholder="Enter password"
+                      placeholder="Enter your 4-digit PIN"
                       // onChange={handleUsernameChange}
                       // value={transfer?.username}
                     />
@@ -42,7 +41,7 @@ const UpdatePassword = () => {
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
                   <div className="flex flex-1 items-center justify-between">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      New Password
+                      New Pin
                     </p>
                   </div>
 
@@ -50,7 +49,7 @@ const UpdatePassword = () => {
                     <input
                       className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                       type="text"
-                      placeholder="At least 8 characters"
+                      placeholder="Enter new PIN"
                       // onChange={handleUsernameChange}
                       // value={transfer?.username}
                     />
@@ -59,7 +58,7 @@ const UpdatePassword = () => {
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
                   <div className="flex flex-1 items-center justify-between">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Confirm Password
+                      Confirm Pin
                     </p>
                   </div>
 
@@ -67,7 +66,7 @@ const UpdatePassword = () => {
                     <input
                       className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                       type="text"
-                      placeholder="At least 8 characters"
+                      placeholder="Re-enter PIN"
                       // onChange={handleUsernameChange}
                       // value={transfer?.username}
                     />
@@ -87,7 +86,7 @@ const UpdatePassword = () => {
 
               <div className="flex items-center justify-center">
                 <p className="text-[13px] text-tradeFadeWhite hover:text-white font-semibold cursor-pointer transition-all duration-300">
-                  Forgotten your password ?
+                  Forgotten your pin ?
                 </p>
               </div>
             </div>
@@ -99,4 +98,4 @@ const UpdatePassword = () => {
   );
 };
 
-export default UpdatePassword;
+export default UpdatePin;

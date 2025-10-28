@@ -51,13 +51,12 @@ const TwoFactorAuth = () => {
                   <div className="flex items-center justify-between gap-[30px] bg-tradeAsh rounded-[15px] p-[12px]">
                     <div className="flex flex-col gap-[5px]">
                       <p className="text-white text-sm font-semibold">
-                        Text Message
+                        Code via Email or SMS
                       </p>
 
                       <p className="text-tradeFadeWhite text-xs font-semibold">
-                        Use your mobile phone and email to receive a text
-                        message with an authentication code to enter when you
-                        log in
+                        Use your phone or email to receive a verification code
+                        that you'll enter each time you log in.
                       </p>
                     </div>
 
@@ -73,8 +72,8 @@ const TwoFactorAuth = () => {
                       </p>
 
                       <p className="text-tradeFadeWhite text-xs font-semibold">
-                        Use an app to get an authentication code to enter when
-                        you log in
+                        Use an authentication app to generate a login code each
+                        time you sign in.
                       </p>
                     </div>
 

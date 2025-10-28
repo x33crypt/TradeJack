@@ -36,7 +36,6 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import SignupSuccess from "./pages/auth/SignupSuccess";
 import Partners from "./pages/partners/Partners";
 import ConfirmPassword from "./pages/auth/ConfirmPassword";
-import SensitiveRoute from "./utils/sensitiveRoutes";
 import PreTradeCheck from "./pages/offer/public/PreTradeCheck";
 import PublicProfile from "./pages/profile/PublicProfile";
 import UserProfile from "./pages/profile/UserProfile";
@@ -50,6 +49,7 @@ import VerifyLevelTwo from "./pages/kyc/VerifyLevelTwo";
 import VerifyLevelThree from "./pages/kyc/VerifyLevelThree";
 import UpdatePassword from "./pages/settings/UpdatePassword";
 import TwoFactorAuth from "./pages/settings/TwoFactorAuth";
+import UpdatePin from "./pages/settings/UpdatePin";
 
 const App = () => {
   return (
@@ -97,14 +97,13 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/partners" element={<Partners />} />
 
-        {/* <Route element={<SensitiveRoute />}> </Route> */}
-
         {/* Settings */}
         <Route path="/settings" element={<Settings />} />
         <Route path="/settings/accounts" element={<Accounts />} />
         <Route path="/settings/accounts/new" element={<NewAccount />} />
         <Route path="/settings/password" element={<UpdatePassword />} />
         <Route path="/settings/2FA" element={<TwoFactorAuth />} />
+        <Route path="/settings/pin" element={<UpdatePin />} />
 
         {/* Wallet */}
         <Route path="/wallet" element={<Wallet />} />
