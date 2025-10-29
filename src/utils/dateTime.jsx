@@ -1,39 +1,22 @@
-import { BsDot } from "react-icons/bs";
-
 /**
- * Parses a date string (e.g. "Jun 25, 2025" or "Jun 25, 2025, 02:11:39 PM")
- * and returns a JSX element showing the date and optional time.
+ * Formats a date string into "YYYY-MM-DD HH:mm:ss" format.
+ * Example: "Jun 25, 2025, 02:11:39 PM" → "2025-06-25 14:11:39"
  * @param {string} dateString
- * @returns {JSX.Element | null}
+ * @returns {string | null}
  */
 export function dateTime(dateString) {
   const date = new Date(dateString);
 
   if (isNaN(date)) return null;
 
-  const day = date.getDate();
-  const month = date.toLocaleString("default", { month: "long" });
+  const pad = (num) => String(num).padStart(2, "0");
+
   const year = date.getFullYear();
-  const hasTime = dateString.includes(":");
+  const month = pad(date.getMonth() + 1);
+  const day = pad(date.getDate());
+  const hours = pad(date.getHours());
+  const minutes = pad(date.getMinutes());
+  const seconds = pad(date.getSeconds());
 
-  const time = hasTime
-    ? date.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true,
-      })
-    : null;
-
-  return (
-    <span>
-      {month} {day}, {year}
-      {hasTime && (
-        <>
-          <BsDot className="inline" />
-          {time}
-        </>
-      )}
-    </span>
-  );
+  return `${year}-${month}-${day} ${" "} ${hours}:${minutes}:${seconds}`;
 }

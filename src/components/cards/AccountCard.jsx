@@ -5,6 +5,7 @@ import { FaCheckDouble } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
 import { AiFillDelete } from "react-icons/ai";
 import { TiPinOutline } from "react-icons/ti";
+import { dateTime } from "@/utils/dateTime";
 
 const AccountCard = ({ account, index }) => {
   const { manageAccount, setManageAccount } = useLinkedAccount();
@@ -33,7 +34,7 @@ const AccountCard = ({ account, index }) => {
   return (
     <>
       <div className="flex flex-col gap-[10px]" key={index}>
-        <div className="flex flex-col gap-[15px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+        <div className="flex flex-col gap-[15px] borde rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
           <div className="flex justify-between  w-full items-center">
             <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
               <FaCheckDouble className="text-xs" />
@@ -76,35 +77,15 @@ const AccountCard = ({ account, index }) => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col gap-[10px] justify-between w-full px-1">
-          <div className="flex w-full items-center justify-between">
-            <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-              <FaLink className="xs" />
-              <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                {date(account?.createdAt)}
-              </p>
-            </div>
-
-            {state && (
-              <div
-                onClick={() =>
-                  selectDeleteAccount(
-                    account?.bankId,
-                    account?.bank_name,
-                    account?.account_number
-                  )
-                }
-                className="flex items-center gap-2 hover:bg-red-600/30 bg-red-600 p-1  text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
-              >
-                <AiFillDelete className="xs" />
-                <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                  Delete
-                </p>
-              </div>
-            )}
+        <div className="flex w-full items-center justify-between">
+          <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+            <FaLink className="xs" />
+            <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+              {dateTime(account?.createdAt)}
+            </p>
           </div>
 
-          <div className="flex flex-1">
+          <div className="flex items-center gap-2">
             {state && (
               <div>
                 {account?.isDefault === false && (
@@ -119,11 +100,28 @@ const AccountCard = ({ account, index }) => {
                     className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
                   >
                     <TiPinOutline className="xs" />
-                    <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                       Set as Default Account
-                    </p>
+                    </p> */}
                   </div>
                 )}
+              </div>
+            )}
+            {state && (
+              <div
+                onClick={() =>
+                  selectDeleteAccount(
+                    account?.bankId,
+                    account?.bank_name,
+                    account?.account_number
+                  )
+                }
+                className="flex items-center gap-2 hover:bg-red-600/30 bg-red-600 p-1  text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+              >
+                <AiFillDelete className="xs" />
+                {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                  Delete
+                </p> */}
               </div>
             )}
           </div>

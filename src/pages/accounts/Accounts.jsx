@@ -176,7 +176,18 @@ const Accounts = () => {
               <p className="text-lg font-semibold text-white flex items-center gap-1">
                 ACCOUNTS
               </p>
+
+              <div
+                onClick={() => navigateTo("/settings/accounts/new")}
+                className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
+              >
+                <RiAddCircleFill className="text-sm" />
+                <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                  ADD NEW
+                </p>
+              </div>
             </div>
+
             <div className="flex-1 flex">
               {loading ? (
                 <Loading />
@@ -188,25 +199,15 @@ const Accounts = () => {
                     <div className="flex flex-1">
                       {Array.isArray(linkedAccounts) &&
                       linkedAccounts?.length > 0 ? (
-                        <div className="h-full flex flex-col gap-[20px]">
-                          <div
-                            onClick={() => navigateTo("/settings/accounts/new")}
-                            className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
-                          >
-                            <RiAddCircleFill className="text-sm" />
-                            <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                              ADD NEW
+                        <div className="h-full flex-1 flex flex-col gap-[30px]">
+                          <div className="flex flex-col gap-[25px]">
+                            <p className="text-xs text-tradeFadeWhite font-medium">
+                              Effortlessly manage your linked accounts. Update
+                              details, connect or disconnect accounts, and
+                              withdraw funds without hassle.
                             </p>
-                          </div>
 
-                          <p className="text-xs text-tradeFadeWhite font-medium">
-                            Effortlessly manage your linked accounts. Update
-                            details, connect or disconnect accounts, and
-                            withdraw funds without hassle.
-                          </p>
-
-                          <div className="flex-1 flex flex-col gap-[20px]">
-                            <div className="flex flex-col md:flex-row md:gap-[10px] gap-[30px]">
+                            <div className="flex flex-col md:flex-row md:gap-[10px] gap-[10px]">
                               {/* Default Account */}
                               <div className="flex-1">
                                 {linkedAccounts
@@ -237,21 +238,21 @@ const Accounts = () => {
                                   ))}
                               </div>
                             </div>
+                          </div>
 
-                            <div>
-                              {manageAccount.state ? (
-                                <Button variant="outline" onClick={closeEdit}>
-                                  CANCEL
-                                </Button>
-                              ) : (
-                                <Button
-                                  variant="outline"
-                                  onClick={handleManageAccount}
-                                >
-                                  EDIT ACCOUNTS
-                                </Button>
-                              )}
-                            </div>
+                          <div>
+                            {manageAccount.state ? (
+                              <Button variant="outline" onClick={closeEdit}>
+                                CANCEL
+                              </Button>
+                            ) : (
+                              <Button
+                                variant="outline"
+                                onClick={handleManageAccount}
+                              >
+                                EDIT ACCOUNTS
+                              </Button>
+                            )}
                           </div>
                         </div>
                       ) : (
