@@ -73,19 +73,25 @@ const SettingMenu = () => {
               CHANGE PIN
             </p>
           </div>
-
-          <div className="flex items-center gap-2">
-            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              PRIVACY & PERMISSION
-            </p>
-          </div>
-          <div className="flex items-center gap-2">
+          <div
+            onClick={() => navigateTo("/settings/notification")}
+            className="flex items-center gap-2"
+          >
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               NOTIFICATION
             </p>
           </div>
+          <div
+            onClick={() => navigateTo("/settings/sessions")}
+            className="flex items-center gap-2"
+          >
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              SECURITY & ACCESS
+            </p>
+          </div>
+
           <div className="flex items-center gap-2">
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
@@ -104,6 +110,12 @@ const SettingMenu = () => {
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
               RATE US
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+            <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+              COMMUNITY
             </p>
           </div>
 

@@ -36,6 +36,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import SignupSuccess from "./pages/auth/SignupSuccess";
 import Partners from "./pages/partners/Partners";
 import ConfirmPassword from "./pages/auth/ConfirmPassword";
+import SensitiveRoute from "./utils/sensitiveRoutes";
 import PreTradeCheck from "./pages/offer/public/PreTradeCheck";
 import PublicProfile from "./pages/profile/PublicProfile";
 import UserProfile from "./pages/profile/UserProfile";
@@ -49,7 +50,10 @@ import VerifyLevelTwo from "./pages/kyc/VerifyLevelTwo";
 import VerifyLevelThree from "./pages/kyc/VerifyLevelThree";
 import UpdatePassword from "./pages/settings/UpdatePassword";
 import TwoFactorAuth from "./pages/settings/TwoFactorAuth";
+import VerifyUser from "./pages/settings/VerifyUser";
 import UpdatePin from "./pages/settings/UpdatePin";
+import Notification from "./pages/settings/Notification";
+import Sessions from "./pages/settings/Sessions";
 
 const App = () => {
   return (
@@ -80,8 +84,7 @@ const App = () => {
 
         {/* Profile */}
         <Route path="/profile" element={<UserProfile />} />
-        <Route path="/profile/:username" element={<PublicProfile />} />
-        <Route path="/profile/name" element={<EditFullname />} />
+        <Route path="/:username" element={<PublicProfile />} />
         <Route path="/profile/username" element={<EditUsername />} />
         <Route path="/profile/email" element={<EditEmail />} />
         <Route path="/profile/phone" element={<EditMobile />} />
@@ -101,9 +104,14 @@ const App = () => {
         <Route path="/settings" element={<Settings />} />
         <Route path="/settings/accounts" element={<Accounts />} />
         <Route path="/settings/accounts/new" element={<NewAccount />} />
+
+        {/* <Route element={<VerifyUser />}> </Route> */}
+
         <Route path="/settings/password" element={<UpdatePassword />} />
         <Route path="/settings/2FA" element={<TwoFactorAuth />} />
         <Route path="/settings/pin" element={<UpdatePin />} />
+        <Route path="/settings/notification" element={<Notification />} />
+        <Route path="/settings/sessions" element={<Sessions />} />
 
         {/* Wallet */}
         <Route path="/wallet" element={<Wallet />} />

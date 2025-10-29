@@ -62,7 +62,7 @@ const Settings = () => {
                 >
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                    LINKED ACCOUNTS
+                    ACCOUNTS
                   </p>
                 </div>
 
@@ -94,17 +94,22 @@ const Settings = () => {
                     CHANGE PIN
                   </p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                  <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                    PRIVACY & PERMISSION
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-2">
+                <div
+                  onClick={() => navigateTo("/settings/notification")}
+                  className="flex items-center gap-2"
+                >
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                     NOTIFICATION
+                  </p>
+                </div>
+                <div
+                  onClick={() => navigateTo("/settings/sessions")}
+                  className="flex items-center gap-2"
+                >
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                    SECURITY & ACCESS
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -123,6 +128,12 @@ const Settings = () => {
                   <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                   <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
                     RATE US
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                    COMMUNITY
                   </p>
                 </div>
                 <div className="flex lg:flex-row flex-col gap-[15px] mt-5">
