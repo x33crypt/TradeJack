@@ -207,7 +207,7 @@ const Accounts = () => {
                               withdraw funds without hassle.
                             </p>
 
-                            <div className="flex flex-col md:flex-row md:gap-[10px] gap-[10px]">
+                            <div className="flex flex-col md:flex-row md:gap-[10px] gap-[25px]">
                               {/* Default Account */}
                               <div className="flex-1">
                                 {linkedAccounts

@@ -34,6 +34,9 @@ const Sessions = () => {
                       <p className="text-sm text-white font-semibold">
                         SM-A055F
                       </p>
+                      <p className="text-xs py-[1px] px-[3px] bg-tradeOrange text-black font-semibold rounded-[5px]">
+                        Active
+                      </p>
                     </div>
                     <div className="flex flex-col gap-2">
                       <p className="text-xs text-tradeFadeWhite font-semibold leading-none">

@@ -27,7 +27,7 @@ const Task = ({ loading, dashboard }) => {
               <div className="flex-1 flex flex-col justify-between gap-[25px]">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    <TbArrowsSort />
+                    {/* <TbArrowsSort /> */}
                     <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                       TODAY
                     </p>

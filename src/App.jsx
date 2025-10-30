@@ -54,6 +54,7 @@ import VerifyUser from "./pages/settings/VerifyUser";
 import UpdatePin from "./pages/settings/UpdatePin";
 import Notification from "./pages/settings/Notification";
 import Sessions from "./pages/settings/Sessions";
+import FAQS from "./pages/settings/FAQS";
 
 const App = () => {
   return (
@@ -112,6 +113,7 @@ const App = () => {
         <Route path="/settings/pin" element={<UpdatePin />} />
         <Route path="/settings/notification" element={<Notification />} />
         <Route path="/settings/sessions" element={<Sessions />} />
+        <Route path="/settings/faq" element={<FAQS />} />
 
         {/* Wallet */}
         <Route path="/wallet" element={<Wallet />} />
