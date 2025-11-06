@@ -24,8 +24,8 @@ const PublicProfile = ({ Heading, profile, loading }) => {
                 <NetworkError />
               ) : (
                 <div className="flex flex-1 lg:flex-row flex-col gap-[25px]">
-                  <ProfileMenu />
-                  <div className="flex flex-1 flex-col gap-[40px] lg:mr-[12%] p-[15px]">
+                  {/* <ProfileMenu /> */}
+                  <div className="flex flex-1 flex-col gap-[40px] lg:mx-[22.8%] p-[15px]">
                     <Hero
                       profile={profile}
                       loading={loading}

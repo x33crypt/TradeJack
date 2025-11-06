@@ -21,34 +21,37 @@ const Hero = ({ Heading, loading, profile }) => {
 
       <div className="flex border-neutral-800">
         <div className="flex flex-1  flex-row justify-between gap-[5px">
-          <div className="md:hidden text-white text-[20px] p-1 w-max h-max bg-tradeAshLight border border-tradeAshExtraLight rounded-[10px]">
+          <div className=" text-white text-[20px] p-1 w-max h-max bg-tradeAshLight border border-tradeAshExtraLight rounded-[10px]">
             <RiShare2Fill />
           </div>
 
-          <div className="flex flex-col md:flex-row gap-[15px] items-center justify-center">
+          <div
+            className="flex flex-col
+           gap-[15px] items-center justify-center"
+          >
             <div className="relative flex overflow-hidden shrink-0 justify-center items-center cursor-pointer">
               <div>
                 {profile?.userName ? (
-                  <div className="md:w-[140px] w-[120px] rounded-full overflow-hidden cursor-pointer">
+                  <div className="w-[120px] rounded-full overflow-hidden cursor-pointer">
                     <img src={image} alt="" className="" />
                   </div>
                 ) : (
-                  <div className="md:w-[140px] w-[120px] rounded-full overflow-hidden cursor-pointer">
+                  <div className=" w-[120px] rounded-full overflow-hidden cursor-pointer">
                     <img src={image} alt="" className="" />
                   </div>
                 )}
               </div>
             </div>
 
-            <div className="flex  flex-col justify-center items-center md:items-start gap-3">
-              <div className="flex flex-col gap-3 items-center md:items-start">
+            <div className="flex  flex-col justify-center items-center  gap-3">
+              <div className="flex flex-col gap-3 items-center">
                 <p className="mt-0 text-white lg:text-[35px] md:text-[30px] text-[25px] font-[900] leading-none ">
                   {/* <span className="text-tradeFadeWhite">@</span> */}
                   {profile?.userName ?? "username"}
                 </p>
               </div>
 
-              <div className="flex gap-1 flex-col items-center lg:items-start">
+              <div className="flex gap-1 flex-col items-center ">
                 <div className="flex items-center gap-2">
                   <div className="flex  gap-1 items-center ">
                     <MdOutlineShareLocation className=" flex text-tradeFadeWhite text-[16px] leading-none" />
@@ -93,9 +96,9 @@ const Hero = ({ Heading, loading, profile }) => {
           </div>
 
           <div className="flex flex-col gap-2 md:justify-cente justify-start">
-            <div className="md:flex hidden text-white text-[20px] p-1 w-max h-max bg-tradeAshLight border border-tradeAshExtraLight rounded-[10px]">
+            {/* <div className="md:flex hidden text-white text-[20px] p-1 w-max h-max bg-tradeAshLight border border-tradeAshExtraLight rounded-[10px]">
               <RiShare2Fill />
-            </div>
+            </div> */}
             <div className="flex items-center text-tradeGreen border border-tradeAshExtraLight text-[20px] p-1 w-max h-max bg-tradeAshLight rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
               <BsPatchCheckFill />
             </div>

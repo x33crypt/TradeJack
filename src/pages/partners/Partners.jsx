@@ -35,8 +35,8 @@ const Partners = () => {
                 <NetworkError />
               ) : (
                 <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
-                  <PartnersMenu />
-                  <div className="flex flex-1 flex-col gap-[20px] lg:mr-[12%] p-[15px]">
+                  {/* <PartnersMenu /> */}
+                  <div className="flex flex-1 flex-col gap-[20px] lg:mx-[22.8%] p-[15px]">
                     <div className="flex  items-center justify-between ">
                       <p className="text-lg font-semibold text-white flex items-center gap-1">
                         TRADE PARTNERS
@@ -44,21 +44,19 @@ const Partners = () => {
                     </div>
 
                     <div className="flex-1 flex flex-col gap-[25px]">
-                      <div className="flex lg:hidden items-center justify-between">
+                      <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                           <TbArrowsSort />
                           <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                            TODAY
+                            RECENT
                           </p>
                         </div>
 
-                        <div className="flex lg:hidden items-center justify-between">
-                          <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                            <IoGrid />
-                            <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                              GRID
-                            </p>
-                          </div>
+                        <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                          <IoGrid />
+                          <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                            GRID
+                          </p>
                         </div>
                       </div>
 
@@ -66,8 +64,8 @@ const Partners = () => {
                         {parts?.map((p, index) => (
                           <div className="flex flex-1 items-center flex-col gap-2 leading-none  ">
                             <div
-                              onClick={() => navigateTo("/profile/:username")}
-                              className="md:w-[120px] w-[100px] rounded-full overflow-hidden cursor-pointer"
+                              onClick={() => navigateTo("/:username")}
+                              className=" w-[100px] rounded-full overflow-hidden cursor-pointer"
                             >
                               <img src={image} alt="" className="" />
                             </div>

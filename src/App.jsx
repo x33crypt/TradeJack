@@ -2,7 +2,6 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Marketplace from "./pages/offer/public/PublicOffers";
 import CreateOffer from "./pages/offer/user/CreateOffer";
-import EditAddress from "./pages/settings/EditAddress";
 import MyOffer from "./pages/offer/user/UserOffers";
 import EditOffer from "./pages/offer/user/EditOffer";
 import ToastSuccess from "./components/toastCards/ToastSuccess";
@@ -24,10 +23,6 @@ import Settings from "./pages/settings/Settings";
 import AboutPublicOffer from "./pages/offer/public/AboutOffer";
 import AboutOffer from "./pages/offer/user/AboutOffer";
 import Logout from "./pages/auth/Logout";
-import EditMobile from "./pages/settings/EditMobile";
-import EditEmail from "./pages/settings/EditEmail";
-import EditUsername from "./pages/settings/EditUsername";
-import EditFullname from "./pages/settings/EditFullname";
 import SigninUser from "./pages/auth/SigninUser";
 import SignupUser from "./pages/auth/SignupUser";
 import SelectElement from "./components/others/SelectElement";
@@ -56,6 +51,10 @@ import Notification from "./pages/settings/Notification";
 import Sessions from "./pages/settings/Sessions";
 import FAQS from "./pages/settings/FAQS";
 import RateUs from "./pages/settings/RateUs";
+import UpdateUsername from "./pages/settings/UpdateUsername";
+import UpdateEmail from "./pages/settings/UpdateEmail";
+import UpdatePhone from "./pages/settings/UpdatePhone";
+import UpdateAddress from "./pages/settings/UpdateAddress";
 
 const App = () => {
   return (
@@ -87,10 +86,10 @@ const App = () => {
         {/* Profile */}
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/:username" element={<PublicProfile />} />
-        <Route path="/profile/username" element={<EditUsername />} />
-        <Route path="/profile/email" element={<EditEmail />} />
-        <Route path="/profile/phone" element={<EditMobile />} />
-        <Route path="/profile/address" element={<EditAddress />} />
+        <Route path="/profile/username" element={<UpdateUsername />} />
+        <Route path="/profile/email" element={<UpdateEmail />} />
+        <Route path="/profile/phone" element={<UpdatePhone />} />
+        <Route path="/profile/address" element={<UpdateAddress />} />
 
         {/* Kyc */}
         <Route path="/kyc/levels" element={<KycLevels />} />

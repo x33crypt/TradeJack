@@ -55,16 +55,31 @@ const InAppNav = () => {
     ) {
       const selectedCurrency = select.pick; // ✅ correct scope
 
-      if (
-        typeof selectedCurrency === "object" &&
-        selectedCurrency.code &&
-        selectedCurrency.name
-      ) {
-        setBalance((prev) => ({
-          ...prev,
-          currency: selectedCurrency.code,
-        }));
+      const selectedCode =
+        typeof selectedCurrency === "object"
+          ? selectedCurrency.code ?? null
+          : typeof selectedCurrency === "string"
+          ? selectedCurrency
+          : null;
+
+      if (!selectedCode) {
+        // nothing valid to do — reset select and exit
+        setSelect({
+          state: false,
+          selectOne: false,
+          selectTwo: false,
+          page: "",
+          element: "",
+          options: null,
+          pick: "",
+        });
+        return;
       }
+
+      setBalance((prev) => ({
+        ...prev,
+        currency: selectedCode,
+      }));
     }
   }, [select]);
 
@@ -352,7 +367,7 @@ const InAppNav = () => {
                   <div className="flex items-center gap-2">
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      ADS
+                      ADVERTISEMENT
                     </p>
                   </div>
 
@@ -379,7 +394,7 @@ const InAppNav = () => {
                   <div className="flex items-center gap-2">
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      TRADES
+                      TRADE HISTORY
                     </p>
                   </div>
 

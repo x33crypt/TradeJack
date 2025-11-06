@@ -31,7 +31,7 @@ const Info = ({ loading, info }) => {
                   {/* Username */}
                   <div
                     className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-                    onClick={() => navigateTo("/settings/account/name")}
+                    onClick={() => navigateTo("/profile/username")}
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
@@ -68,7 +68,7 @@ const Info = ({ loading, info }) => {
                   {/* Email */}
                   <div
                     className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border- border-tradeAshLight cursor-pointer transition-all duration-300"
-                    onClick={() => navigateTo("/settings/account/email")}
+                    onClick={() => navigateTo("/profile/email")}
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
@@ -119,7 +119,7 @@ const Info = ({ loading, info }) => {
                   {/* Mobile */}
                   <div
                     className="flex items-center gap-[5px] py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight border-b border-tradeAshLight cursor-pointer transition-all duration-300"
-                    onClick={() => navigateTo("/settings/account/mobile")}
+                    onClick={() => navigateTo("/profile/phone")}
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
@@ -137,7 +137,7 @@ const Info = ({ loading, info }) => {
                   {/* Address */}
                   <div
                     className="flex items-center py-3 px-3 bg-tradeAsh hover:bg-tradeAshLight cursor-pointer transition-all duration-300"
-                    onClick={() => navigateTo("/account/address")}
+                    onClick={() => navigateTo("/profile/address")}
                   >
                     <div className="flex-1 flex justify-between gap-[2px]">
                       <p className="text-[13px] font-semibold text-white">
