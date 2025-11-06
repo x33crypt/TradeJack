@@ -232,15 +232,15 @@ const MyOffer = () => {
       <InAppNav />
       <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black">
         <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
-          <OfferMenu />
-          <div className="flex flex-1 flex-col gap-[20px] lg:mr-[12%] p-[15px]">
+          {/* <OfferMenu /> */}
+          <div className="flex flex-1 flex-col gap-[20px] lg:mx-[22.8%] p-[15px]">
             <div className="flex items-center justify-between ">
               <p className="text-lg font-semibold text-white flex items-center gap-1">
                 MY OFFERS
               </p>
             </div>
 
-            <div className="flex lg:hidden items-center gap-2 justify-between">
+            <div className="flex lg:hidde items-center gap-2 justify-between">
               <div className="flex items-center gap-2">
                 <div
                   onClick={() =>
@@ -329,7 +329,7 @@ const MyOffer = () => {
                       <div className="flex flex-1">
                         {Array.isArray(offers?.data) &&
                         offers?.data.length > 0 ? (
-                          <div className="flex flex-col gap-[5px] w-full h-max">
+                          <div className="flex flex-col gap-[10px] w-full h-max">
                             {offers?.data?.map((offer, index) => (
                               <div key={index}>
                                 <MyOfferCard offer={offer} />

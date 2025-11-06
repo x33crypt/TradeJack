@@ -186,7 +186,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
                     </div>
 
-                    <div className="flex flex-col lg:hidden gap-2">
+                    <div className="flex flex-col lg:hidde gap-2">
                       <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                         <GoBookmarkFill />
                         {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
@@ -209,7 +209,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
 
                   <div className="flex flex-col gap-[10px]">
-                    <div className="flex gap-1 items-center">
+                    {/* <div className="flex gap-1 items-center">
                       <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                       <p className="text-xs font-semibold text-white">
                         Created 31 Aug, 2025
@@ -220,14 +220,13 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       <p className="text-xs font-semibold text-white">
                         Updated 31 Aug, 2025
                       </p>
-                    </div>
+                    </div> */}
                     <div className="flex  items-center gap-1">
                       <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                       <p className="text-xs font-semibold text-white">
                         {offer?.completedTrades ?? "0"} Completed Trade(s)
                       </p>
                     </div>
-
                     <div className="flex  items-center gap-1">
                       <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                       <p className="text-xs font-semibold text-white">

@@ -7,6 +7,7 @@ import { windowFormatHour } from "@/utils/windowFormatHour";
 import { LuCalendarClock } from "react-icons/lu";
 import { GrStatusGoodSmall } from "react-icons/gr";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
+import { MdThumbUp } from "react-icons/md";
 
 const OfferCard = ({ offer }) => {
   const navigateTo = useNavigate();
@@ -21,7 +22,7 @@ const OfferCard = ({ offer }) => {
     <>
       <div
         onClick={() => handleOfferClick(offer?.offerId)}
-        className="hidden md:flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer "
+        className="hidden md:fle flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer "
       >
         <div className="flex flex-col gap-3">
           <div className="flex justify-between w-full items-center border-b border-dashed border-tradeAshLight pb-2">
@@ -123,7 +124,7 @@ const OfferCard = ({ offer }) => {
 
       <div
         onClick={() => handleOfferClick(offer?.offerId)}
-        className="md:hidden flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-[15px] border border-tradeAshLight transition-all duration-300 "
+        className="md:hidde flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-[15px] border border-tradeAshLight transition-all duration-300 "
       >
         <div className="flex flex-col gap-3">
           <div className="flex justify-between w-full items-center">
@@ -140,17 +141,24 @@ const OfferCard = ({ offer }) => {
 
             <div className="flex flex-col items-end gap-1 justify-betwee w-full">
               <div className="flex items-center gap-1">
-                <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
-                <p className="text-xs font-semibold text-tradeFadeWhite">
-                  {capitalizeFirst(offer?.status)}
-                </p>
+                <div className="flex items-center gap-1">
+                  <GrStatusGoodSmall className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
+                    {capitalizeFirst(offer?.status)}
+                  </p>
+                </div>
+                <p className="text-tradeAshLight leading-none">|</p>
+                <div className="flex  items-center gap-1">
+                  <MdThumbUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-semibold text-white">99%</p>
+                </div>
               </div>
             </div>
           </div>
 
           <div className="flex justify-between w-full items-start">
             <div className="flex flex-col gap-1">
-              <p className="text-sm font-semibold text-tradeOrange max-w-[150px] leading-normal">
+              <p className="text-sm font-semibold text-tradeOrange max-w-[150px] md:max-w-full leading-normal">
                 {offer?.service}
               </p>
               <p className="text-xs font-semibold text-tradeFadeWhite">
@@ -165,7 +173,7 @@ const OfferCard = ({ offer }) => {
                 </p>
 
                 <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                  {offer?.marginRate?.percent || "N/A"}% M
+                  {offer?.marginRate?.percent || "N/A"}%
                 </p>
               </div>
 
