@@ -137,73 +137,52 @@ const OfferDetails = ({ loading, aboutOffer }) => {
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px] gap-[30px]">
                 <div className="flex flex-col gap-[30px] pb-[12px]">
-                  <div className="flex justify-between">
-                    <div className="flex flex-col gap-[20px]">
-                      <div className="flex items-center gap-3">
-                        <div
-                          onClick={viewProfile}
-                          className="flex cursor-pointer"
-                        >
-                          {false ? (
-                            <div className="flex w-[30px] h-[30px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
-                              <img src={image} alt="" className="" />
-                            </div>
-                          ) : (
-                            <div className="flex w-[40px] h-[40px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
-                              <img src={image} alt="" className="" />
-                            </div>
-                          )}
-                        </div>
-                        <div className="flex gap-1 flex-col gap-">
+                  <div className="flex flex-col gap-[20px]">
+                    <div className="flex items-center gap-3">
+                      <div
+                        onClick={viewProfile}
+                        className="flex cursor-pointer relative"
+                      >
+                        {false ? (
+                          <div className="flex w-[40px] h-[40px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                            <img src={image} alt="" className="" />
+                          </div>
+                        ) : (
+                          <div className="flex w-[40px] h-[40px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                            <img src={image} alt="" className="" />
+                          </div>
+                        )}
+
+                        <GrStatusGoodSmall className="flex absolute top-7 left-[30px] text-tradeGreen text-[10px] flex-shrink-0" />
+                      </div>
+
+                      <div className="flex gap-[4px] flex-col">
+                        <div className="flex gap-1 items-center">
                           <p className="text-sm text-white font-semibold leading-none">
                             SANECORP
                           </p>
-                          <div className="flex items-center gap-1">
-                            <div className="flex gap-1 items-center">
-                              <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
-                                Online
-                              </p>
-                              <GrStatusGoodSmall className="flex text-tradeGreen text-[10px] flex-shrink-0" />
-                            </div>
-                            <p className="text-tradeAshLight leading-none">|</p>
-                            <RiVerifiedBadgeFill className="text-tradeFadeWhite text-sm" />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div>
-                          <TbCubeSpark className="text-white text-5xl" />
+                          <RiVerifiedBadgeFill className="text-tradeFadeWhite text-sm" />
                         </div>
 
-                        <div className="flex flex-col gap-[10px] ">
-                          <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
-                            {offer?.serviceName || "N/A"}
-                          </p>
+                        <div className="flex items-center gap-1">
                           <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
-                            {offer?.serviceType || "N/A"}
+                            Online
                           </p>
                         </div>
                       </div>
                     </div>
+                    <div className="flex items-center gap-2">
+                      <div>
+                        <TbCubeSpark className="text-white text-5xl" />
+                      </div>
 
-                    <div className="flex flex-col lg:hidde gap-2">
-                      <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        <GoBookmarkFill />
-                        {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        BOOKMARK
-                      </p> */}
-                      </div>
-                      <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        <FaShareAlt />
-                        {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        SHARE
-                      </p> */}
-                      </div>
-                      <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        <MdReport />
-                        {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        REPORT
-                      </p> */}
+                      <div className="flex flex-col gap-[10px] ">
+                        <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
+                          {offer?.serviceName || "N/A"}
+                        </p>
+                        <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
+                          {offer?.serviceType || "N/A"}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -233,6 +212,27 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                         99% Completion Rating
                       </p>
                     </div>
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    <GoBookmarkFill />
+                    {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        BOOKMARK
+                      </p> */}
+                  </div>
+                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    <FaShareAlt />
+                    {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        SHARE
+                      </p> */}
+                  </div>
+                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    <MdReport />
+                    {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        REPORT
+                      </p> */}
                   </div>
                 </div>
 

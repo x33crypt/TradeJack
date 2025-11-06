@@ -45,28 +45,28 @@ const OfferDetails = ({ aboutOffer, loading }) => {
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px] gap-[30px]">
-                <div className="flex justify-between">
-                  <div className="flex flex-col gap-[30px] pb-[12px]">
-                    <div className="flex items-center gap-2">
-                      <div>
-                        <TbCubeSpark className="text-white text-5xl" />
-                      </div>
-
-                      <div className="flex flex-col gap-[10px] ">
-                        <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
-                          {offerDetails?.serviceName || "N/A"}
-                        </p>
-                        <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
-                          {offerDetails?.serviceType || "N/A"}
-                        </p>
-                      </div>
+                <div className="flex flex-col gap-[30px] pb-[12px]">
+                  <div className="flex items-center gap-2">
+                    <div>
+                      <TbCubeSpark className="text-white text-5xl" />
                     </div>
 
-                    <div className="flex flex-col gap-[10px]">
+                    <div className="flex flex-col gap-[10px] ">
+                      <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
+                        {offerDetails?.serviceName || "N/A"}
+                      </p>
+                      <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
+                        {offerDetails?.serviceType || "N/A"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center flex-1 gap-[10px]">
+                    <div className="flex flex-1 flex-col gap-[10px]">
                       <div className="flex  items-center gap-1">
                         <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
-                          Active 
+                          Active
                         </p>
                       </div>
                       <div className="flex gap-1 items-center">
@@ -81,13 +81,14 @@ const OfferDetails = ({ aboutOffer, loading }) => {
                           Updated 31 Aug, 2025
                         </p>
                       </div>
+                    </div>
+                    <div className="flex flex-1 flex-col gap-[10px]">
                       <div className="flex gap-1 items-center">
                         <GoBookmarkFill className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
                           123 Bookmarks
                         </p>
                       </div>
-
                       <div className="flex  items-center gap-1">
                         <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
@@ -95,7 +96,6 @@ const OfferDetails = ({ aboutOffer, loading }) => {
                           Trade(s)
                         </p>
                       </div>
-
                       <div className="flex  items-center gap-1">
                         <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
@@ -104,8 +104,10 @@ const OfferDetails = ({ aboutOffer, loading }) => {
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  <div className="flex flex-col lg:hidden gap-2">
+                <div className="flex justify-between">
+                  <div className="flex gap-2">
                     <div
                       onClick={() => navigateTo("/offer/:id/edit")}
                       className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
@@ -118,6 +120,8 @@ const OfferDetails = ({ aboutOffer, loading }) => {
                     <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                       <FaRegStopCircle />
                     </div>
+                  </div>
+                  <div className="flex gap-2">
                     <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                       <HiSpeakerphone />
                     </div>

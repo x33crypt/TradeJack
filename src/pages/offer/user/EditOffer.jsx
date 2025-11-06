@@ -344,7 +344,52 @@ const EditOffer = () => {
                           </div>
                         </div>
 
-                        <div className="flex flex-col gap-[10px]">
+                        <div className="flex items-center flex-1 gap-[10px]">
+                          <div className="flex flex-1 flex-col gap-[10px]">
+                            <div className="flex  items-center gap-1">
+                              <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
+                              <p className="text-xs font-semibold text-white">
+                                Active
+                              </p>
+                            </div>
+                            <div className="flex gap-1 items-center">
+                              <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                              <p className="text-xs font-semibold text-white">
+                                Created 31 Aug, 2025
+                              </p>
+                            </div>
+                            <div className="flex gap-1 items-center">
+                              <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                              <p className="text-xs font-semibold text-white">
+                                Updated 31 Aug, 2025
+                              </p>
+                            </div>
+                          </div>
+                          <div className="flex flex-1 flex-col gap-[10px]">
+                            <div className="flex gap-1 items-center">
+                              <GoBookmarkFill className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                              <p className="text-xs font-semibold text-white">
+                                123 Bookmarks
+                              </p>
+                            </div>
+                            <div className="flex  items-center gap-1">
+                              <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                              <p className="text-xs font-semibold text-white">
+                                {editOffer?.offerDetails?.completedTrades ??
+                                  "0"}{" "}
+                                Completed Trade(s)
+                              </p>
+                            </div>
+                            <div className="flex  items-center gap-1">
+                              <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                              <p className="text-xs font-semibold text-white">
+                                99% Completion Rating
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* <div className="flex flex-col gap-[10px]">
                           <div className="flex  items-center gap-1">
                             <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
                             <p className="text-xs font-semibold text-white">
@@ -384,7 +429,7 @@ const EditOffer = () => {
                               99% Completion Rating
                             </p>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
 
                       <div className="flex flex-col gap-[10px]">

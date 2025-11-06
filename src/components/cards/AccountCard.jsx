@@ -34,7 +34,7 @@ const AccountCard = ({ account, index }) => {
   return (
     <>
       <div className="flex flex-col gap-[10px]" key={index}>
-        <div className="flex flex-col gap-[15px] borde rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+        <div className="flex flex-col gap-[15px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
           <div className="flex justify-between  w-full items-center">
             <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
               <FaCheckDouble className="text-xs" />
