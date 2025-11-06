@@ -143,7 +143,7 @@ const VerifyLevelOne = () => {
                       className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                       type="text"
                       name="fullname"
-                      placeholder="eg. John"
+                      placeholder="eg. John Doe"
                       value={tierOne.fullname}
                       onChange={handleFullnameChange}
                     />

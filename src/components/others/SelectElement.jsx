@@ -115,7 +115,7 @@ const SelectElement = () => {
                   {Array.isArray(options) && options.length > 0 ? (
                     <div className="overflow-y-auto custom-scrollbar w-full">
                       {searchInput ? (
-                        <div className="flex flex-wrap gap-[10px] p-1 w-full">
+                        <div className="flex flex-col gap-[10px] p-1 w-full">
                           {filterStringOption.length ? (
                             filterStringOption.map((option, index) => (
                               <SmallButton
@@ -133,7 +133,7 @@ const SelectElement = () => {
                           )}
                         </div>
                       ) : (
-                        <div className=" flex flex-wrap gap-[10px] p-1 w-full">
+                        <div className="flex flex-col gap-[10px] p-1 w-full">
                           {(select?.options || [])
                             .filter((option) => typeof option === "string")
                             // .sort((a, b) => a.localeCompare(b))
@@ -250,7 +250,7 @@ const SelectElement = () => {
                 </div>
               </div>
 
-              <Button variant="secondary" onClick={close}>
+              <Button variant="Fadeout" onClick={close}>
                 CLOSE
               </Button>
             </div>

@@ -31,7 +31,7 @@ const OfferCard = ({ offer }) => {
     <>
       <div
         onClick={() => handleOfferClick(offer?.offerId)}
-        className="hidden md:flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer "
+        className="hidden md:fle flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer "
       >
         <div className="flex flex-col gap-3">
           <div className="flex justify-between w-full items-center border-b border-dashed border-tradeAshLight pb-2">
@@ -147,7 +147,7 @@ const OfferCard = ({ offer }) => {
 
       <div
         onClick={() => handleOfferClick(offer?.offerId)}
-        className="md:hidden flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-[15px] border border-tradeAshLight transition-all duration-300 "
+        className="md:hidde flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight hover:bg-tradeAshExtraLight rounded-[15px] border border-tradeAshLight transition-all duration-300 "
       >
         <div className="flex flex-col gap-3">
           <div className="flex justify-between w-full items-center">
@@ -194,7 +194,7 @@ const OfferCard = ({ offer }) => {
 
           <div className="flex justify-between w-full items-start">
             <div className="flex flex-col gap-1">
-              <p className="text-sm font-semibold text-tradeOrange max-w-[150px] leading-normal">
+              <p className="text-sm font-semibold text-tradeOrange max-w-[150px] md:max-w-full leading-normal">
                 {offer?.service}
               </p>
               <p className="text-xs font-semibold text-tradeFadeWhite">
@@ -210,7 +210,7 @@ const OfferCard = ({ offer }) => {
                 </p>
 
                 <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                  {offer?.marginRate?.ratePercent || "N/A"}% M
+                  {offer?.marginRate?.ratePercent || "N/A"}%
                 </p>
               </div>
 

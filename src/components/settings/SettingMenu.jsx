@@ -109,10 +109,13 @@ const SettingMenu = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div
+            onClick={() => navigateTo("/settings/feedback")}
+            className="flex items-center gap-2"
+          >
             <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
             <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-              RATE US
+              FEEDBACK
             </p>
           </div>
           <div className="flex items-center gap-2">

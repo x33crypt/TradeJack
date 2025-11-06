@@ -157,7 +157,7 @@ const VerifyLevelThree = () => {
                     accept="image/*"
                   />
                 </div>
-                <div className="flex flex-col overflow-hidden h-[180px] bg-tradeAshLight hover:bg-tradeAshLight/70 border border-tradeAshLight rounded-[15px] gap-[15px] duration-300 transition-all">
+                {/* <div className="flex flex-col overflow-hidden h-[180px] bg-tradeAshLight hover:bg-tradeAshLight/70 border border-tradeAshLight rounded-[15px] gap-[15px] duration-300 transition-all">
                   {tierThree?.ninPhoto === null ? (
                     <div
                       onClick={handleNinClick}
@@ -195,7 +195,7 @@ const VerifyLevelThree = () => {
                     onChange={handleNinChange}
                     accept="image/*"
                   />
-                </div>
+                </div> */}
               </div>
             </div>
             <Button

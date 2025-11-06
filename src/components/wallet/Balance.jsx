@@ -71,8 +71,8 @@ const Balance = () => {
       </div>
 
       <div className="flex-1 flex flex-col justify-between gap-[25px] ">
-        <div className="flex flex-col gap-[15px] bg-tradeAsh p-[12px] rounded-[15px] border border-tradeAshLight">
-          <div className="flex flex-1 items-center justify-between">
+        <div className="flex flex-col justify-between h-[100px] bg-tradeAsh p-[12px] rounded-[15px] border border-tradeAshLight">
+          <div className="flex items-center justify-between ">
             <div className="flex items-center gap-1">
               <p className="text-[12px] font-semibold text-tradeFadeWhite leading-none p-1 hover:bg-tradeOrange/20 g-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
                 AVAILABLE ASSET
@@ -102,7 +102,7 @@ const Balance = () => {
             </div>
           </div>
 
-          <div className="flex gap-3 items-center justify-between w-full h-[45px]">
+          <div className="flex gap-3 items-center justify-between w-full">
             <div className="flex items-center ">
               {balance?.currency === "USD" ? (
                 <p
@@ -143,44 +143,36 @@ const Balance = () => {
           </div>
         </div>
 
-        <div className="flex lg:hidden flex-col gap-[10px] items-center borde rounded-sm border-neutral-800 p-[12px] bg-tradeAs">
-          <div className="flex flex-row flex-wrap w-full items-center justify-around gap-[10px]">
-            <div onClick={Deposit} className="flex flex-col items-center gap-2">
-              <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                <FaPlus className="text-base" />
-              </div>
-              <p className="text-white text-[13px] font-medium">Deposit</p>
+        <div className="flex w-full justify-around gap-[10px] items-center p-[12px]">
+          <div onClick={Deposit} className="flex flex-col items-center gap-2">
+            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaPlus className="text-base" />
             </div>
+            <p className="text-white text-[13px] font-medium">Deposit</p>
+          </div>
 
-            <div
-              onClick={Transfer}
-              className="flex flex-col items-center gap-2"
-            >
-              <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max  rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                <RiSendPlaneLine className="text-base" />
-              </div>
-              <p className="text-white text-[13px] font-medium">Transfer</p>
+          <div onClick={Transfer} className="flex flex-col items-center gap-2">
+            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max  rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <RiSendPlaneLine className="text-base" />
             </div>
+            <p className="text-white text-[13px] font-medium">Transfer</p>
+          </div>
 
-            <div
-              onClick={Withdraw}
-              className="flex flex-col items-center gap-2"
-            >
-              <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max  rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                <FaArrowUp className="text-base" />
-              </div>
-              <p className="text-white text-[13px] font-medium">Withdraw</p>
+          <div onClick={Withdraw} className="flex flex-col items-center gap-2">
+            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max  rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaArrowUp className="text-base" />
             </div>
+            <p className="text-white text-[13px] font-medium">Withdraw</p>
+          </div>
 
-            <div
-              onClick={() => navigateTo("/settings/accounts")}
-              className="flex flex-col items-center gap-2"
-            >
-              <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                <FaLink className="text-base" />
-              </div>
-              <p className="text-white text-[13px] font-medium">Accounts</p>
+          <div
+            onClick={() => navigateTo("/settings/accounts")}
+            className="flex flex-col items-center gap-2"
+          >
+            <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-tradeAshLight border border-tradeAshExtraLight p-[12px] h-max rounded-[12px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+              <FaLink className="text-base" />
             </div>
+            <p className="text-white text-[13px] font-medium">Accounts</p>
           </div>
         </div>
       </div>

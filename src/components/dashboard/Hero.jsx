@@ -1,49 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../others/Loading";
 import NetworkError from "../others/NetworkError";
+import { IoFileTrayStacked } from "react-icons/io5";
+import { FaUserFriends } from "react-icons/fa";
+import { RiExchange2Fill } from "react-icons/ri";
+import { IoMdBookmark } from "react-icons/io";
+import { IoMdArrowDropright } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { HiLightningBolt } from "react-icons/hi";
 
 const Hero = ({ dashboard, loading }) => {
-  const [dateTime, setDateTime] = useState({ date: "", time: "" });
-
-  useEffect(() => {
-    const updateDateTime = () => {
-      const now = new Date();
-
-      // Day with leading zero (e.g., 04)
-      const day = String(now.getDate()).padStart(2, "0");
-
-      // Month in uppercase
-      const month = now
-        .toLocaleString("en-US", { month: "long" })
-        .toUpperCase();
-
-      const formattedDate = `${day} - ${month}`;
-
-      // Time in 12-hour format (e.g., 11:45 AM)
-      const formattedTime = now.toLocaleString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-      });
-
-      setDateTime({ date: formattedDate, time: formattedTime });
-    };
-
-    updateDateTime(); // initial call
-    const interval = setInterval(updateDateTime, 60000); // update every 1 min
-
-    return () => clearInterval(interval); // cleanup on unmount
-  }, []);
-
+  const navigateTo = useNavigate();
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
       <div className="flex  items-center justify-between ">
-        <p className="text-lg font-semibold text-white flex items-center gap-1">
+        <p className="text-white text-lg font-semibold flex items-center gap-1">
           DASHBOARD
         </p>
       </div>
 
-      <div className="flex flex-1 min-h-[125px]">
+      <div className="flex flex-1 ">
         {loading ? (
           <Loading />
         ) : (
@@ -51,7 +27,56 @@ const Hero = ({ dashboard, loading }) => {
             {dashboard === null ? (
               <NetworkError />
             ) : (
-              <div className="flex flex-1 flex-col gap-[10px] bg-tradeAsh rounded-[15px] border border-tradeAshLight p-[12px]"></div>
+              <div className=" flex flex-1 flex-col gap-[25px]">
+                <div className="flex flex-1 min-h-[100px] flex-col gap-[10px] bg-tradeAsh rounded-[15px] border border-tradeAshLight p-[12px]"></div>
+                <div className="lg:flex hidden w-full  gap-[10px] items-center">
+                  <div
+                    onClick={() => navigateTo("/offers")}
+                    className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange/50 text-tradeFadeWhite hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
+                  >
+                    <p className="text-[13px] text-white font-semibold">
+                      My Offers
+                    </p>
+                    <div className="w-max flex gap-1 items-center justify-center  h-max cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                      <IoFileTrayStacked className="text-base" />
+                    </div>
+                  </div>
+
+                  <div
+                    // onClick={Deposit}
+                    className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange/50 text-tradeFadeWhite hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
+                  >
+                    <p className="text-[13px] text-white font-semibold">
+                      Bookmarks
+                    </p>
+                    <div className="w-max flex gap-1 items-center justify-center  h-max cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                      <IoMdBookmark className="text-base" />
+                    </div>
+                  </div>
+                  <div
+                    onClick={() => navigateTo("/partners")}
+                    className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange/50 text-tradeFadeWhite hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
+                  >
+                    <p className="text-[13px] text-white font-semibold">
+                      Trade Partners
+                    </p>
+                    <div className="w-max flex gap-1 items-center justify-center  h-max cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                      <FaUserFriends className="text-base" />
+                    </div>
+                  </div>
+                  <div
+                    // onClick={Deposit}
+                    className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange/50 text-tradeFadeWhite hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
+                  >
+                    <p className="text-[13px] text-white font-semibold">
+                      Advertisement
+                    </p>
+                    <div className="w-max flex gap-1 items-center justify-center  h-max cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                      <HiLightningBolt className="text-base" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         )}

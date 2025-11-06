@@ -10,6 +10,8 @@ const Filter = () => {
   const { filter, setFilter } = usePublicOffers();
   const { currencies } = useCurrencies();
 
+  console.log(currencies);
+
   const [sorts] = useState([
     "Recently active traders",
     "Verified offers",
@@ -72,7 +74,7 @@ const Filter = () => {
   const handleAssetChange = (asset) => {
     setFilter((prev) => ({
       ...prev,
-      asset: asset,
+      asset: asset === "More" ? prev.asset : asset,
     }));
   };
 
@@ -83,25 +85,47 @@ const Filter = () => {
       select?.element === "assets" &&
       select?.pick
     ) {
+      const selectedAsset = select.pick; // ✅ correct scope
+
+      // Update existing asset list
       setAssetsList((prevList) => {
-        if (prevList.includes(select.pick)) {
-          return prevList; // Already exists
-        }
+        // If it's already in the list, no change
+        if (prevList.includes(selectedAsset)) return prevList;
 
         const moreIndex = prevList.indexOf("More");
+
+        // If there's an element before "More", replace that item.
         if (moreIndex > 0) {
           const newList = [...prevList];
-          newList[moreIndex - 1] = select.pick; // Replace before "More"
+          newList[moreIndex - 1] = selectedAsset; // replace the slot before "More"
           return newList;
         }
 
-        return prevList; // If "More" not found
+        // If "More" is at index 0 (no slot before it), insert the pick at start
+        if (moreIndex === 0) {
+          return [selectedAsset, ...prevList];
+        }
+
+        // If "More" not found, append to the end
+        return [...prevList, selectedAsset];
       });
 
+      // Update the filter with the chosen asset
       setFilter((prev) => ({
         ...prev,
-        asset: select.pick,
+        asset: selectedAsset,
       }));
+
+      // reset select state (done in all cases here)
+      setSelect({
+        state: false,
+        selectOne: false,
+        selectTwo: false,
+        page: "",
+        element: "",
+        options: null,
+        pick: "",
+      });
     }
   }, [select]);
 
@@ -116,38 +140,89 @@ const Filter = () => {
   // handling currency changes if clicks more
   useEffect(() => {
     if (
-      select?.page === "offer filter" &&
-      select?.element === "currency" &&
-      select?.pick
+      select?.page !== "offer filter" ||
+      select?.element !== "currency" ||
+      !select?.pick
     ) {
-      const selectedCurrency = select.pick; // ✅ correct scope
-
-      if (
-        typeof selectedCurrency === "object" &&
-        selectedCurrency.code &&
-        selectedCurrency.name
-      ) {
-        setCurrenciesList((prevList) => {
-          if (prevList.includes(selectedCurrency.code)) {
-            return prevList; // Already exists
-          }
-
-          const moreIndex = prevList.indexOf("More");
-          if (moreIndex > 0) {
-            const newList = [...prevList];
-            newList[moreIndex - 1] = selectedCurrency.code; // Replace before "More"
-            return newList;
-          }
-
-          return prevList; // If "More" not found
-        });
-
-        setFilter((prev) => ({
-          ...prev,
-          currency: selectedCurrency.code,
-        }));
-      }
+      return;
     }
+
+    const pick = select.pick;
+
+    // If the user clicked "More", don't change the filter; optionally open a modal.
+    if (pick === "More") {
+      // openMoreCurrencyOptions?.(); // uncomment if you have a handler
+      // reset select and exit
+      setSelect({
+        state: false,
+        selectOne: false,
+        selectTwo: false,
+        page: "",
+        element: "",
+        options: null,
+        pick: "",
+      });
+      return;
+    }
+
+    // Support either an object { code, name, ... } or a plain code string
+    const selectedCode =
+      typeof pick === "object"
+        ? pick.code ?? null
+        : typeof pick === "string"
+        ? pick
+        : null;
+
+    if (!selectedCode) {
+      // nothing valid to do — reset select and exit
+      setSelect({
+        state: false,
+        selectOne: false,
+        selectTwo: false,
+        page: "",
+        element: "",
+        options: null,
+        pick: "",
+      });
+      return;
+    }
+
+    // Update currencies list (insert/replace before "More", handle "More" at index 0, append if not found)
+    setCurrenciesList((prevList) => {
+      if (prevList.includes(selectedCode)) return prevList;
+
+      const moreIndex = prevList.indexOf("More");
+
+      if (moreIndex > 0) {
+        const newList = [...prevList];
+        newList[moreIndex - 1] = selectedCode;
+        return newList;
+      }
+
+      if (moreIndex === 0) {
+        return [selectedCode, ...prevList];
+      }
+
+      return [...prevList, selectedCode];
+    });
+
+    // Apply filter — compute from prev to avoid race if you need the computed object synchronously elsewhere.
+    setFilter((prev) => ({
+      ...prev,
+      state: true,
+      currency: selectedCode,
+    }));
+
+    // reset select state
+    setSelect({
+      state: false,
+      selectOne: false,
+      selectTwo: false,
+      page: "",
+      element: "",
+      options: null,
+      pick: "",
+    });
   }, [select]);
 
   // handling amount changes if clicks visible amount
@@ -192,12 +267,23 @@ const Filter = () => {
         ...prev,
         sortBy: select?.pick,
       }));
+
+      // reset select state (done in all cases here)
+      setSelect({
+        state: false,
+        selectOne: false,
+        selectTwo: false,
+        page: "",
+        element: "",
+        options: null,
+        pick: "",
+      });
     }
   }, [select]);
 
   return (
     <>
-      <div className="flex sticky top-[70px] h-max w-[250px] gap-[10px] flex-col lg:mb-[15px]">
+      <div className="flex sticky top-[70px] h-max w-[250px] gap-[10px] flex-col">
         <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
           <div className="flex flex-col gap-[15px]">
             <div className="flex items-center gap-2">
@@ -214,7 +300,7 @@ const Filter = () => {
                   onClick={
                     asset !== "More"
                       ? () => handleAssetChange(asset)
-                      : () =>
+                      : () => {
                           setSelect({
                             state: true,
                             selectOne: true,
@@ -222,7 +308,8 @@ const Filter = () => {
                             page: "offer filter",
                             element: "assets",
                             options: assetsList,
-                          })
+                          });
+                        }
                   }
                   className={`${
                     asset === filter?.asset
@@ -314,9 +401,9 @@ const Filter = () => {
           </div>
         </div>
 
-        <div onClick={close} className="flex lg:hidden">
-          <Button variant="secondary">APPLY</Button>
-        </div>
+        <Button onClick={close} variant="Fadeout">
+          CLOSE
+        </Button>
       </div>
     </>
   );

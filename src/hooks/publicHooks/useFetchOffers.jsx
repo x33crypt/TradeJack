@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import api from "@/utils/http/api";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 
@@ -6,7 +6,7 @@ export function useFetchOffers() {
   const { setOffers, filter } = usePublicOffers();
   const [error, setError] = useState(null);
 
-  // initial loading state (only on mount/refetch all)
+  // initial loading state (on mount / when filter changes)
   const [initialLoading, setInitialLoading] = useState(true);
 
   // recent states
@@ -25,16 +25,18 @@ export function useFetchOffers() {
   const RECENT_LIMIT = 10;
   const TOP_LIMIT = 5;
 
-  // ─────────────────────────────────────────────
-  // Build URL dynamically (separate keys for top/recent)
-  // ─────────────────────────────────────────────
-  const buildUrl = (type, pageToLoad) => {
+  // keep a ref to avoid race when component unmounts
+  const mountedRef = useRef(true);
+
+  // Build URL using an explicit filter snapshot (so fetchPage is independent of closure)
+  const buildUrlFromFilter = (type, pageToLoad, filterSnapshot) => {
     const params = new URLSearchParams();
 
-    if (filter?.asset) params.append("asset", filter.asset);
-    if (filter?.currency) params.append("currency", filter.currency);
-    if (filter?.amount) params.append("amount", filter.amount);
-    if (filter?.sortBy) params.append("sort", filter.sortBy);
+    if (filterSnapshot?.asset) params.append("asset", filterSnapshot.asset);
+    if (filterSnapshot?.currency)
+      params.append("currency", filterSnapshot.currency);
+    if (filterSnapshot?.amount) params.append("amount", filterSnapshot.amount);
+    if (filterSnapshot?.sortBy) params.append("sort", filterSnapshot.sortBy);
 
     if (type === "recent") {
       params.append("recent_page", pageToLoad);
@@ -47,20 +49,16 @@ export function useFetchOffers() {
     return `/service-provider/explore-offers?${params.toString()}`;
   };
 
-  // ─────────────────────────────────────────────
-  // Fetch data helper
-  // ─────────────────────────────────────────────
+  // fetchPage now takes an explicit filter snapshot so it's deterministic
   const fetchPage = useCallback(
-    async ({ type = "recent", pageToLoad = 1 }) => {
+    async ({ type = "recent", pageToLoad = 1, filterSnapshot = {} }) => {
       setError(null);
 
       if (type === "recent") setRecentLoading(true);
       if (type === "top") setTopLoading(true);
 
       try {
-        const url = buildUrl(type, pageToLoad);
-        console.log("Fetching:", url);
-
+        const url = buildUrlFromFilter(type, pageToLoad, filterSnapshot);
         const res = await api.get(url);
 
         if (res.status === 200 && res.data?.success) {
@@ -90,7 +88,6 @@ export function useFetchOffers() {
                 : prev.top,
           }));
 
-          // update pagination + counters
           if (type === "recent") {
             setRecentPage(pageToLoad);
             setRecentPagination(recentOffers.pagination);
@@ -126,51 +123,66 @@ export function useFetchOffers() {
         if (type === "top") setTopLoading(false);
       }
     },
-    [filter, setOffers]
+    [setOffers]
   );
 
-  // ─────────────────────────────────────────────
-  // First load & when filters change
-  // ─────────────────────────────────────────────
+  // When the filter changes we always trigger initialLoading and fetch both lists.
+  // We pass an immutable snapshot of the filter into fetchPage so it uses the intended filter.
   useEffect(() => {
-    let mounted = true;
+    mountedRef.current = true;
+    const filterSnapshot = filter ? JSON.parse(JSON.stringify(filter)) : {};
+
+    let abort = false;
 
     const loadBoth = async () => {
-      // always reset to true at the start
+      // mark loading immediately when a filter is applied
       setInitialLoading(true);
-
       try {
         await Promise.all([
-          fetchPage({ type: "recent", pageToLoad: 1 }),
-          fetchPage({ type: "top", pageToLoad: 1 }),
+          fetchPage({ type: "recent", pageToLoad: 1, filterSnapshot }),
+          fetchPage({ type: "top", pageToLoad: 1, filterSnapshot }),
         ]);
       } finally {
-        if (mounted) {
-          // only reset when results are back
+        // only update state if still mounted and not aborted
+        if (!abort && mountedRef.current) {
           setInitialLoading(false);
         }
       }
     };
 
+    // always run on mount and whenever filter changes
     loadBoth();
 
     return () => {
-      mounted = false;
+      abort = true;
+      mountedRef.current = false;
     };
   }, [filter, fetchPage]);
 
-  // ─────────────────────────────────────────────
-  // Helpers for manual fetch / pagination
-  // ─────────────────────────────────────────────
-  const fetchRecent = () => fetchPage({ type: "recent", pageToLoad: 1 });
-  const fetchTop = () => fetchPage({ type: "top", pageToLoad: 1 });
+  // Helpers for manual fetch / pagination (use current filter snapshot)
+  const fetchRecent = () =>
+    fetchPage({
+      type: "recent",
+      pageToLoad: 1,
+      filterSnapshot: filter ? JSON.parse(JSON.stringify(filter)) : {},
+    });
+  const fetchTop = () =>
+    fetchPage({
+      type: "top",
+      pageToLoad: 1,
+      filterSnapshot: filter ? JSON.parse(JSON.stringify(filter)) : {},
+    });
 
   const nextRecent = async () => {
     if (
       recentPagination?.hasNextPage &&
       recentDisplayedCount < (recentPagination?.totalItems || 0)
     ) {
-      await fetchPage({ type: "recent", pageToLoad: recentPage + 1 });
+      await fetchPage({
+        type: "recent",
+        pageToLoad: recentPage + 1,
+        filterSnapshot: filter ? JSON.parse(JSON.stringify(filter)) : {},
+      });
     }
   };
 
@@ -179,7 +191,11 @@ export function useFetchOffers() {
       topPagination?.hasNextPage &&
       topDisplayedCount < (topPagination?.totalItems || 0)
     ) {
-      await fetchPage({ type: "top", pageToLoad: topPage + 1 });
+      await fetchPage({
+        type: "top",
+        pageToLoad: topPage + 1,
+        filterSnapshot: filter ? JSON.parse(JSON.stringify(filter)) : {},
+      });
     }
   };
 

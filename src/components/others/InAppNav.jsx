@@ -22,8 +22,8 @@ const InAppNav = () => {
   const [animate, setAnimate] = useState(false);
   const [animateSoon, setAnimateSoon] = useState(false);
   const [defaultCurrencies, setDefaultCurrencies] = useState([
-    { code: "NGN", name: "Nigeria naira" },
-    { code: "USD", name: "United States dollar " },
+    { code: "NGN" },
+    { code: "USD" },
   ]);
   const { select, setSelect } = useSelectElement();
   const { balance, setBalance } = useBalance();

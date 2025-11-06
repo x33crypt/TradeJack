@@ -24,8 +24,8 @@ const Wallet = () => {
           ref={topRef}
           className="flex flex-1 lg:flex-row flex-col gap-[25px] "
         >
-          <WalletMenu />
-          <div className="flex flex-1 flex-col gap-[40px] lg:mr-[12%] p-[15px]">
+          {/* <WalletMenu /> */}
+          <div className="flex flex-1 flex-col gap-[40px] lg:mx-[22.8%] p-[15px]">
             <Balance />
             <EscrowActivity />
             <RecentTransaction scrollToTop={scrollToTop} />

@@ -10,7 +10,7 @@ export function useCurrencies() {
     const fetchCurrencies = async () => {
       try {
         const response = await axios.get(
-          "https://restcountries.com/v3.1/all?fields=name,currencies"
+          "https://restcountries.com/v3.1/all?fields=currencies"
         );
 
         const data = response.data;
@@ -20,18 +20,9 @@ export function useCurrencies() {
           if (country.currencies) {
             Object.entries(country.currencies).forEach(([code, info]) => {
               if (!currencyMap.has(code)) {
-                const name =
-                  info.name
-                    ?.split(" ")
-                    .map(
-                      (w) =>
-                        w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()
-                    )
-                    .join(" ") || "Unknown";
-
-                const symbol = info.symbol || "";
-
-                currencyMap.set(code, { name, code, symbol });
+                currencyMap.set(code, {
+                  code,
+                });
               }
             });
           }

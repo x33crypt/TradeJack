@@ -17,6 +17,9 @@ import { TbScan } from "react-icons/tb";
 import FloatingTradeButton from "@/components/others/FloatingTradeButton";
 import { TbArrowsSort } from "react-icons/tb";
 import { IoNuclearSharp } from "react-icons/io5";
+import Button from "@/components/buttons/Button";
+import { IoMdArrowDropright } from "react-icons/io";
+import { TbReload } from "react-icons/tb";
 
 const PublicOffers = () => {
   const topRef = useRef(null);
@@ -36,7 +39,7 @@ const PublicOffers = () => {
   const { offers, stats, setStats, filter, setFilter } = usePublicOffers();
   const [loadingOffers, setLoadingOffers] = useState(false);
   const [backupAmount, setBackupAmount] = useState("200");
-  const adds = ["+20", "+50", "+100", "+200", "+500"];
+  const adds = ["+20", "+50", "+100", "+200", "+500", "+1000", "+2000"];
 
   // useEffect(() => {
   //   setLoadingOffers(true);
@@ -169,10 +172,10 @@ const PublicOffers = () => {
         className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black"
       >
         <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
-          <div className="lg:flex hidden">
+          {/* <div className="lg:flex hidden">
             <Filter />
-          </div>
-          <div className="flex flex-1 flex-col gap-[20px] lg:mr-[12%] p-[15px]">
+          </div> */}
+          <div className="flex flex-1 flex-col gap-[20px] lg:mx-[22.8%] p-[15px]">
             <div className="flex items-center justify-between ">
               <p className="text-lg font-semibold text-white flex items-center gap-1">
                 SECURE P2P TRADING
@@ -197,7 +200,7 @@ const PublicOffers = () => {
               <div className="flex items-center gap-2">
                 <div
                   onClick={showFilter}
-                  className="flex lg:hidden items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                  className="flex lg:hidde items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
                 >
                   <PiSlidersHorizontalBold />
                   <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
@@ -209,7 +212,7 @@ const PublicOffers = () => {
                   onClick={clearFilter}
                   className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
                 >
-                  <IoNuclearSharp />
+                  <TbReload />
                   <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                     RESET
                   </p>
@@ -334,7 +337,7 @@ const PublicOffers = () => {
                               ))}
                             </div>
                           ) : (
-                            <div className="flex-1 min-h-[150px] flex flex-col gap-[10px] items-center justify-center">
+                            <div className="flex-1  flex flex-col gap-[10px] items-center justify-center">
                               <p className="text-[13px] font-semibold text-white leading-none">
                                 NO OFFER FOUND
                               </p>
@@ -417,12 +420,12 @@ const PublicOffers = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-50">
-            <div className="flex md:w-[300px] h-max flex-col border-neutral-800 rounded-[15px] p-[15px] gap-[10px] bg-tradeAsh">
+            <div className="flex w-[250px] h-max flex-col gap-[10px] ">
               <div
-                className={`  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer`}
+                className={`  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[15px] cursor-pointer`}
               >
                 <input
-                  className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
+                  className="bg-transparent flex-1 p-[15px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
                   type="text"
                   placeholder="Enter amount"
                   value={withComma(filter?.amount) || ""}
@@ -473,28 +476,32 @@ const PublicOffers = () => {
                   }}
                 />
               </div>
-              <div className="flex gap-[10px] flex-wrap">
-                {adds.map((add) => (
-                  <SmallButton
-                    variant="fadeoutPlus"
-                    onClick={() =>
-                      handleAddAmount(parseFloat(add.replace("+", "")))
-                    }
-                    key={add}
-                  >
-                    {add}
-                  </SmallButton>
-                ))}
-              </div>
-            </div>
 
-            <div className="flex w-full justify-center">
-              <div
-                onClick={closeEnterAmount}
-                className="w-max flex text-white hover:text-tradeFadeWhite gap-1 items-center justify-center bg-tradeAshLight hover:bg-tradeAsh border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-              >
-                <IoClose className="text-[16px]" />
+              <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
+                <div className="flex items-center gap-2">
+                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                  <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+                    AMOUNT
+                  </p>
+                </div>
+                <div className="flex gap-[10px] flex-wrap">
+                  {adds.map((add) => (
+                    <SmallButton
+                      variant="fadeoutPlus"
+                      onClick={() =>
+                        handleAddAmount(parseFloat(add.replace("+", "")))
+                      }
+                      key={add}
+                    >
+                      {add}
+                    </SmallButton>
+                  ))}
+                </div>
               </div>
+
+              <Button onClick={closeEnterAmount} variant="Fadeout">
+                CLOSE
+              </Button>
             </div>
           </div>
         </div>
