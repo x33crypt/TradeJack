@@ -55,12 +55,15 @@ const PreTrade = () => {
               </p>
 
               <div className="flex items-center gap-[5px]">
-                <PiSpinnerGapBold className="text-lg animate-spin text-white" />
-                <p className="text-sm font-semibold text-white">40%</p>
+                {false ? (
+                  <PiSpinnerGapBold className="text-lg animate-spin text-white" />
+                ) : null}
+
+                <p className="text-sm font-semibold text-white">100%</p>
               </div>
             </div>
             <div>
-              <ProgressBar value={40} />
+              <ProgressBar value={100} />
             </div>
           </div>
           <div className="flex flex-col gap-[30px]">
@@ -162,7 +165,7 @@ const PreTrade = () => {
                     </p>
                   </div>
                   <div className="flex items-center gap-1 text-white borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    {false ? (
+                    {true ? (
                       <PiSpinnerGapBold className="text-sm animate-spin text-white" />
                     ) : (
                       <FaRegCircleCheck className="text-sm text-tradeGreen" />
