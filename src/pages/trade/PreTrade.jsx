@@ -4,17 +4,19 @@ import React from "react";
 import { PiSpinnerGapBold } from "react-icons/pi";
 import ProgressBar from "@/components/others/ProgressBar";
 import image from "../../assets/landingImg4.JPG";
-import { GrStatusGoodSmall } from "react-icons/gr";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { FaRegStar } from "react-icons/fa";
-import { FaCircleCheck } from "react-icons/fa6";
+
+import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaHashtag } from "react-icons/fa6";
-import { RiExchange2Fill } from "react-icons/ri";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import toDecimal from "@/utils/toDecimal";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import lastSeen from "@/utils/lastSeen";
+import { RiArrowLeftRightLine } from "react-icons/ri";
+import { FaCircleInfo } from "react-icons/fa6";
+import Button from "@/components/buttons/Button";
 
 const PreTrade = () => {
   const { offerId = "", amount = "", currency = "" } = useParams();
@@ -62,7 +64,7 @@ const PreTrade = () => {
             </div>
           </div>
           <div className="flex flex-col gap-[30px]">
-            <div className="flex flex-col gap-[25px]">
+            <div className="flex flex-col gap-[20px]">
               <div className="flex flex-col gap-[10px]">
                 {/* Offer Info */}
                 <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
@@ -84,7 +86,7 @@ const PreTrade = () => {
                           {user?.username ?? ""}
                         </p>
                         <p className="text-tradeAshLight leading-none">|</p>
-                        <RiVerifiedBadgeFill className="flex text-tradeFadeWhite text-base flex-shrink-0" />
+                        <RiVerifiedBadgeFill className="flex text-tradeGreen text-base flex-shrink-0" />
                       </div>
                     </div>
 
@@ -94,7 +96,7 @@ const PreTrade = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex gap-1 items-center">
-                      <div className="flex  items-center gap-1">
+                      <div className="flex items-center gap-1">
                         <FaHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                         <p className="text-[13px] font-semibold text-white">
                           {offerId ?? ""}
@@ -102,7 +104,7 @@ const PreTrade = () => {
                       </div>
                       <p className="text-tradeAshLight leading-none">|</p>
                       <div className="flex  items-center gap-1">
-                        <RiExchange2Fill className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                         <p className="text-[13px] font-semibold text-white">
                           {offer?.completedTrades ?? "0"}
                         </p>
@@ -129,58 +131,183 @@ const PreTrade = () => {
 
                 {/* Checks Result */}
                 <div className="flex justify-between sm:justify-normal flex-wrap gap-[10px]">
-                  <div className="flex items-center gap-1 text-tradeGreen borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeGreen/10 rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <FaCircleCheck className="text-sm" />
-                    <p className="text-[13px] font-semibold">Verified ID</p>
+                  <div className="flex items-center gap-1 borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                    {false ? (
+                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
+                    ) : (
+                      <FaRegCircleCheck className="text-sm text-tradeGreen" />
+                    )}
+                    <p className="text-[13px] font-semibold text-white">
+                      Validations
+                    </p>
                   </div>
-                  <div className="flex items-center gap-1 text-tradePurple borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradePurple/10 rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <FaCircleCheck className="text-sm" />
-                    <p className="text-[13px] font-semibold">Limit Check</p>
+                  <div className="flex items-center gap-1 text-white borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                    {false ? (
+                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
+                    ) : (
+                      <FaRegCircleCheck className="text-sm text-tradeGreen" />
+                    )}
+                    <p className="text-[13px] font-semibold text-white">
+                      Limit Check
+                    </p>
                   </div>
-                  <div className="flex items-center gap-1 text-tradeOrange borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeOrange/10 rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <FaCircleCheck className="text-sm" />
-                    <p className="text-[13px] font-semibold">Deposit Status</p>
+                  <div className="flex items-center gap-1 text-white borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                    {false ? (
+                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
+                    ) : (
+                      <FaRegCircleCheck className="text-sm text-tradeGreen" />
+                    )}
+                    <p className="text-[13px] font-semibold text-white">
+                      Deposit Status
+                    </p>
                   </div>
-                  {/* <div className="flex items-center gap-1 text-white borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAsh rounded-md  cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    <FaCircleCheck className="text-sm" />
-                    <p className="text-[13px] font-semibold">Ready to Trade</p>
-                  </div> */}
                 </div>
               </div>
               <div className="flex flex-col ">
                 {/* Validation */}
-                <div className="flex flex-col gap-[40px] ">
+                <div
+                  className={`${
+                    false ? "flex" : "hidden"
+                  }  flex-col gap-[40px] `}
+                >
+                  <div className="flex flex-col gap-[20px]">
+                    <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
+                      <p className="text-sm text-white font-semibold">Error</p>
+
+                      <div className="flex gap-2 items-center ">
+                        <div className="text-tradeOrange text-sm flex-shrink-0 h-max w-max">
+                          <FaCircleInfo />
+                        </div>
+                        <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                          Then every time setAmount(val) runs, React re-renders,
+                          and the input’s value becomes exactly what’s in state
+                          — meaning if your logic accidentally sanitizes too
+                          aggressively, you’ll lose what you just typed.
+                        </p>
+                      </div>
+                    </div>
+
+                    <Button variant="Fadeout">EXPLORE OFFERS</Button>
+                  </div>
+
                   <div className="flex flex-1 flex-col gap-[20px]">
                     <div className="flex  items-center justify-between ">
                       <p className="text-sm font-semibold text-white flex items-center gap-1">
-                        DETAILS
+                        RELATED OFFERS
                       </p>
                     </div>
                     <div className="flex flex-col gap-[10px] flex-1"></div>
                   </div>
                 </div>
                 {/* Limit Check */}
-                {/* <div className="flex flex-col gap-[40px] ">
-                  <div className="flex flex-1 flex-col gap-[20px]">
+                <div
+                  className={`${
+                    false ? "flex" : "hidden"
+                  }  flex-col gap-[40px] `}
+                >
+                  <div className="flex flex-col gap-[20px]">
+                    <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
+                      <p className="text-sm text-white font-semibold">
+                        Limit Exceeded
+                      </p>
+
+                      <div className="flex flex-col gap-[20px]">
+                        <div className="flex gap-2 items-center ">
+                          <div className="text-tradeOrange text-sm flex-shrink-0 h-max w-max">
+                            <FaCircleInfo />
+                          </div>
+                          <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                            The trade amount is outside the vendor's allowed
+                            range. Adjust the amount within the vendor's limit
+                            and try again
+                          </p>
+                        </div>
+
+                        <div className="flex gap-2 items-center ">
+                          <div className="text-tradeOrange text-sm flex-shrink-0 h-max w-max">
+                            <FaCircleInfo />
+                          </div>
+                          <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                            This validation helps prevent over-exposure and
+                            ensures the vendor can handle the trade amount
+                            responsibly. To proceed, please review the vendor's
+                            minimum and maximum trade limits, adjust your trade
+                            amount accordingly, and try again.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <Button variant="Fadeout">REVIEW DETAILS</Button>
+                  </div>
+
+                  {/* <div className="flex flex-1 flex-col gap-[20px]">
                     <div className="flex  items-center justify-between ">
                       <p className="text-sm font-semibold text-white flex items-center gap-1">
-                        DETAILS
+                        RELATED OFFERS
                       </p>
                     </div>
                     <div className="flex flex-col gap-[10px] flex-1"></div>
-                  </div>
-                </div> */}
+                  </div> */}
+                </div>
                 {/* Double Booking  */}
-                {/* <div className="flex flex-col gap-[40px] ">
-                  <div className="flex flex-1 flex-col gap-[20px]">
+                <div
+                  className={`${
+                    true ? "flex" : "hidden"
+                  }  flex-col gap-[40px] `}
+                >
+                  <div className="flex flex-col gap-[20px]">
+                    <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
+                      <p className="text-sm text-white font-semibold">
+                        Insufficient Collateral
+                      </p>
+
+                      <div className="flex flex-col gap-[20px]">
+                        <div className="flex gap-2 items-center ">
+                          <div className="text-tradeOrange text-sm flex-shrink-0 h-max w-max">
+                            <FaCircleInfo />
+                          </div>
+                          <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                            This trade cannot proceed because the vendor does
+                            not have enough collateral to secure the
+                            transaction. You can choose to cancle this trade now
+                            or allow the vendor to make a deposit to top up
+                            their collateral balance before proceeding
+                          </p>
+                        </div>
+
+                        <div className="flex gap-2 items-center ">
+                          <div className="text-tradeOrange text-sm flex-shrink-0 h-max w-max">
+                            <FaCircleInfo />
+                          </div>
+                          <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                            Collateral serves as a safety gurantee that ensures
+                            the vendor can fulfill the trade without risk of
+                            loss to the buyer. When the vendor's collateral
+                            drops below the threshold, new trades are restricted
+                            untill the balance is replenished.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col-reverse md:flex-row gap-[10px]">
+                      <Button variant="Fadeout" maxWidth="w-ma">
+                        CANCEL
+                      </Button>{" "}
+                      <Button variant="secondary">DEPOSIT</Button>
+                    </div>
+                  </div>
+
+                  {/* <div className="flex flex-1 flex-col gap-[20px]">
                     <div className="flex  items-center justify-between ">
                       <p className="text-sm font-semibold text-white flex items-center gap-1">
-                        DETAILS
+                        RELATED OFFERS
                       </p>
                     </div>
                     <div className="flex flex-col gap-[10px] flex-1"></div>
-                  </div>
-                </div> */}
+                  </div> */}
+                </div>
                 {/* Collateral*/}
                 {/* <div className="flex flex-col gap-[40px] ">
                   <div className="flex flex-1 flex-col gap-[20px]">

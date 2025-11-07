@@ -20,6 +20,7 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { FaRegStar } from "react-icons/fa";
 import { TbCubeSpark } from "react-icons/tb";
 import { useToast } from "@/context/otherContext/ToastContext";
+import { RiArrowLeftRightLine } from "react-icons/ri";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { calculator, setCalculator } = useCalculator();
@@ -167,7 +168,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                     <div className="flex flex-col gap-[10px]">
                       <div className="flex  items-center gap-1">
-                        <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
                           {offer?.completedTrades ?? "0"} Completed Trade(s)
                         </p>
