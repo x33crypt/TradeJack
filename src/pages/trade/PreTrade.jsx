@@ -74,7 +74,7 @@ const PreTrade = () => {
                             <img src={image} alt="" className="" />
                           </div>
                         ) : (
-                          <div className="flex w-[25px] h-[25px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                          <div className="flex w-[30px] h-[30px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
                             <img src={image} alt="" className="" />
                           </div>
                         )}
@@ -84,7 +84,7 @@ const PreTrade = () => {
                           {user?.username ?? ""}
                         </p>
                         <p className="text-tradeAshLight leading-none">|</p>
-                        <RiVerifiedBadgeFill className="flex text-tradeFadeWhite text-s flex-shrink-0" />
+                        <RiVerifiedBadgeFill className="flex text-tradeFadeWhite text-base flex-shrink-0" />
                       </div>
                     </div>
 
@@ -96,21 +96,23 @@ const PreTrade = () => {
                     <div className="flex gap-1 items-center">
                       <div className="flex  items-center gap-1">
                         <FaHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                        <p className="text-xs font-semibold text-white">
-                          525121
+                        <p className="text-[13px] font-semibold text-white">
+                          {offerId ?? ""}
                         </p>
                       </div>
                       <p className="text-tradeAshLight leading-none">|</p>
                       <div className="flex  items-center gap-1">
                         <RiExchange2Fill className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                        <p className="text-xs font-semibold text-white">
+                        <p className="text-[13px] font-semibold text-white">
                           {offer?.completedTrades ?? "0"}
                         </p>
                       </div>
                       <p className="text-tradeAshLight leading-none">|</p>
                       <div className="flex  items-center gap-1">
                         <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                        <p className="text-xs font-semibold text-white">99%</p>
+                        <p className="text-[13px] font-semibold text-white">
+                          99%
+                        </p>
                       </div>
                     </div>
 
@@ -126,7 +128,7 @@ const PreTrade = () => {
                 </div>
 
                 {/* Checks Result */}
-                <div className="flex flex-wrap gap-[10px]">
+                <div className="flex justify-between sm:justify-normal flex-wrap gap-[10px]">
                   <div className="flex items-center gap-1 text-tradeGreen borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeGreen/10 rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     <FaCircleCheck className="text-sm" />
                     <p className="text-[13px] font-semibold">Verified ID</p>
