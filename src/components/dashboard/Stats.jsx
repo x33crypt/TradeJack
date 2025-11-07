@@ -34,7 +34,7 @@ const Stats = ({ loading, dashboard }) => {
                     <p className="text-xs font-medium text-tradeFadeWhite">
                       Total Trades
                     </p>
-                    <p className="text-white text-sm font-bold leading-none">
+                    <p className="text-white text-[13px] font-semibold leading-none">
                       {dashboard?.tradeStats?.totalTrades ?? "0"}
                     </p>
                   </div>
@@ -50,7 +50,7 @@ const Stats = ({ loading, dashboard }) => {
                       <p className="text-xs font-medium text-tradeFadeWhite">
                         Completed
                       </p>
-                      <p className="text-white text-sm font-bold leading-none">
+                      <p className="text-white text-[13px] font-semibold leading-none">
                         {dashboard?.tradeStats?.completedTrades ?? "0"}
                       </p>
                     </div>
@@ -65,7 +65,7 @@ const Stats = ({ loading, dashboard }) => {
                       <p className="text-xs font-medium text-tradeFadeWhite">
                         Cancelled
                       </p>
-                      <p className="text-white text-sm font-bold leading-none">
+                      <p className="text-white text-[13px] font-semibold leading-none">
                         {dashboard?.tradeStats?.cancelledTrades ?? "0"}
                       </p>
                     </div>
@@ -80,7 +80,7 @@ const Stats = ({ loading, dashboard }) => {
                       <p className="text-xs font-medium text-tradeFadeWhite">
                         In Progress
                       </p>
-                      <p className="text-white text-sm font-bold leading-none">
+                      <p className="text-white text-[13px] font-semibold leading-none">
                         {dashboard?.tradeStats?.inProgressTrades ?? "0"}
                       </p>
                     </div>
@@ -95,7 +95,7 @@ const Stats = ({ loading, dashboard }) => {
                       <p className="text-xs font-medium text-tradeFadeWhite">
                         Disputed
                       </p>
-                      <p className="text-white text-sm font-bold leading-none">
+                      <p className="text-white text-[13px] font-semibold leading-none">
                         {dashboard?.tradeStats?.disputedTrades ?? "0"}
                       </p>
                     </div>

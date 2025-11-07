@@ -89,10 +89,10 @@ const UpdateUsername = () => {
                     />
                   </div>
 
-                  <p className="text-tradeFadeWhite text-xs font-medium">
+                  {/* <p className="text-tradeFadeWhite text-xs font-medium">
                     Username can only have letters, numbers, or one hyphen ( -
                     ). It cannot begin or end with a hyphen.
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>

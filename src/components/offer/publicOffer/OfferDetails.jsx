@@ -152,19 +152,18 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                             <img src={image} alt="" className="" />
                           </div>
                         )}
-
-                        <GrStatusGoodSmall className="flex absolute top-7 left-[30px] text-tradeGreen text-[10px] flex-shrink-0" />
                       </div>
 
                       <div className="flex gap-[4px] flex-col">
                         <div className="flex gap-1 items-center">
                           <p className="text-sm text-white font-semibold leading-none">
-                            SANECORP
+                            {user?.username}
                           </p>
                           <RiVerifiedBadgeFill className="text-tradeFadeWhite text-sm" />
                         </div>
 
                         <div className="flex items-center gap-1">
+                          <GrStatusGoodSmall className="flex  text-tradeGreen text-[10px] flex-shrink-0" />
                           <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
                             Online
                           </p>
@@ -187,52 +186,61 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-[10px]">
-                    {/* <div className="flex gap-1 items-center">
-                      <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                      <p className="text-xs font-semibold text-white">
-                        Created 31 Aug, 2025
-                      </p>
+                  <div className="flex items-center flex-1 gap-[10px]">
+                    <div className="flex flex-1 flex-col gap-[10px]">
+                      <div className="flex gap-1 items-center">
+                        <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                        <p className="text-xs font-semibold text-white">
+                          Created 31 Aug, 2025
+                        </p>
+                      </div>
+                      <div className="flex gap-1 items-center">
+                        <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                        <p className="text-xs font-semibold text-white">
+                          Updated 31 Aug, 2025
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex gap-1 items-center">
-                      <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                      <p className="text-xs font-semibold text-white">
-                        Updated 31 Aug, 2025
-                      </p>
-                    </div> */}
-                    <div className="flex  items-center gap-1">
-                      <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                      <p className="text-xs font-semibold text-white">
-                        {offer?.completedTrades ?? "0"} Completed Trade(s)
-                      </p>
-                    </div>
-                    <div className="flex  items-center gap-1">
-                      <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                      <p className="text-xs font-semibold text-white">
-                        99% Completion Rating
-                      </p>
+
+                    <div className="flex flex-1 flex-col gap-[10px]">
+                      <div className="flex  items-center gap-1">
+                        <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <p className="text-xs font-semibold text-white">
+                          {offer?.completedTrades ?? "0"} Completed Trade(s)
+                        </p>
+                      </div>
+                      <div className="flex  items-center gap-1">
+                        <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <p className="text-xs font-semibold text-white">
+                          99% Completion Rating
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex gap-2">
-                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    <GoBookmarkFill />
-                    {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-2">
+                    <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <GoBookmarkFill />
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                         BOOKMARK
-                      </p> */}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    <FaShareAlt />
-                    {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                  <div className="flex gap-2">
+                    <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <FaShareAlt />
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                         SHARE
-                      </p> */}
-                  </div>
-                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    <MdReport />
-                    {/* <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <MdReport />
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                         REPORT
-                      </p> */}
+                      </p>
+                    </div>
                   </div>
                 </div>
 

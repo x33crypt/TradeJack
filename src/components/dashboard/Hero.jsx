@@ -32,21 +32,19 @@ const Hero = ({ dashboard, loading }) => {
                 <div className="lg:flex hidden w-full  gap-[10px] items-center">
                   <div
                     onClick={() => navigateTo("/offers")}
-                    className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange/50 text-tradeFadeWhite hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
+                    className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange text-white hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
                   >
-                    <p className="text-[13px] text-white font-semibold">
-                      My Offers
-                    </p>
+                    <p className="text-[13px] font-semibold">My Offers</p>
                     <div className="w-max flex gap-1 items-center justify-center  h-max cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                      <IoFileTrayStacked className="text-base" />
+                      <IoFileTrayStacked className="text-base " />
                     </div>
                   </div>
 
                   <div
                     // onClick={Deposit}
-                    className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange/50 text-tradeFadeWhite hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
+                    className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange text-white hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
                   >
-                    <p className="text-[13px] text-white font-semibold">
+                    <p className="text-[13px] font-semibold">
                       Bookmarks
                     </p>
                     <div className="w-max flex gap-1 items-center justify-center  h-max cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
@@ -55,9 +53,9 @@ const Hero = ({ dashboard, loading }) => {
                   </div>
                   <div
                     onClick={() => navigateTo("/partners")}
-                    className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange/50 text-tradeFadeWhite hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
+                    className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange text-white hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
                   >
-                    <p className="text-[13px] text-white font-semibold">
+                    <p className="text-[13px] font-semibold">
                       Trade Partners
                     </p>
                     <div className="w-max flex gap-1 items-center justify-center  h-max cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
@@ -66,9 +64,9 @@ const Hero = ({ dashboard, loading }) => {
                   </div>
                   <div
                     // onClick={Deposit}
-                    className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange/50 text-tradeFadeWhite hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
+                    className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange text-white hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
                   >
-                    <p className="text-[13px] text-white font-semibold">
+                    <p className="text-[13px] font-semibold">
                       Advertisement
                     </p>
                     <div className="w-max flex gap-1 items-center justify-center  h-max cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">

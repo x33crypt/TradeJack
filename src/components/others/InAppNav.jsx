@@ -202,9 +202,9 @@ const InAppNav = () => {
               <span className="text-tradeFadeWhite">LIMIT : $</span> 2,000,000
             </p>
           </div>
-          <div className="w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+          <div className="w-max lg:flex hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
             <p className="text-xs text-white font-semibold">2,530</p>
-            <RiCopperCoinFill className="text-[16px]" />
+            <RiCopperCoinFill className="text-[16px] text-white" />
           </div>
           <div
             className={` ${

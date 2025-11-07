@@ -18,6 +18,9 @@ import { FaRegStopCircle } from "react-icons/fa";
 import { GrStatusGoodSmall } from "react-icons/gr";
 import { FaRegStar } from "react-icons/fa";
 import { TbCubeSpark } from "react-icons/tb";
+import { BsPauseFill } from "react-icons/bs";
+import { MdOutlinePause } from "react-icons/md";
+import { AiFillStop } from "react-icons/ai";
 
 const OfferDetails = ({ aboutOffer, loading }) => {
   const { offerDetails, traderInfo } = aboutOffer || {};
@@ -110,23 +113,33 @@ const OfferDetails = ({ aboutOffer, loading }) => {
                   <div className="flex gap-2">
                     <div
                       onClick={() => navigateTo("/offer/:id/edit")}
-                      className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                      className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
                     >
                       <FaEdit />
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        EDIT
+                      </p>
                     </div>
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      <FaPause />
+
+                    <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <MdOutlinePause />
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        PAUSE
+                      </p>
                     </div>
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      <FaRegStopCircle />
+                    <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                      <AiFillStop />
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        CLOSE
+                      </p>
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      <HiSpeakerphone />
-                    </div>
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
                       <FaShareAlt />
+                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                        SHARE
+                      </p>
                     </div>
                   </div>
                 </div>

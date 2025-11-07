@@ -8,6 +8,8 @@ import { LuCalendarClock } from "react-icons/lu";
 import { GrStatusGoodSmall } from "react-icons/gr";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import { MdThumbUp } from "react-icons/md";
+import { FaRegStar } from "react-icons/fa";
+
 
 const OfferCard = ({ offer }) => {
   const navigateTo = useNavigate();
@@ -149,7 +151,7 @@ const OfferCard = ({ offer }) => {
                 </div>
                 <p className="text-tradeAshLight leading-none">|</p>
                 <div className="flex  items-center gap-1">
-                  <MdThumbUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                   <p className="text-xs font-semibold text-white">99%</p>
                 </div>
               </div>

@@ -33,6 +33,8 @@ const RecentTransaction = ({ scrollToTop }) => {
         <p className="text-sm font-semibold text-white flex items-center gap-1">
           RECENT TRANSACTION
         </p>
+
+        <CgArrowLongRight className="text-tradeFadeWhite hover:text-tradeOrange text-[30px] leading-none cursor-pointer" />
       </div>
 
       <div className="flex h-full ">

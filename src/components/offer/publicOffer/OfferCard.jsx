@@ -12,6 +12,7 @@ import { BsStars } from "react-icons/bs";
 import { WiStars } from "react-icons/wi";
 import { MdThumbUp } from "react-icons/md";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { FaRegStar } from "react-icons/fa";
 
 const OfferCard = ({ offer }) => {
   const { setAboutOffer } = usePublicOffers();
@@ -185,7 +186,7 @@ const OfferCard = ({ offer }) => {
                 <p className="text-tradeAshLight leading-none">|</p>
 
                 <div className="flex  items-center gap-1">
-                  <MdThumbUp className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                   <p className="text-xs font-semibold text-white">99%</p>
                 </div>
               </div>
