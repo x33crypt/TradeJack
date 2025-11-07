@@ -24,8 +24,9 @@ const RateUs = () => {
           <div className="flex flex-col gap-[30px]">
             <div className="flex flex-col gap-[25px]">
               <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                Rate your experience and help us improve the marketplace for
-                you.
+                Rate your experience and help us improve the marketplace to
+                serve you better with smoother, more reliable, and personalized
+                interactions.
               </p>
               <div className="flex flex-col gap-[10px]">
                 <div className="flex flex-col gap-[20px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">

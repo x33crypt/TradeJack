@@ -55,6 +55,7 @@ import UpdateUsername from "./pages/settings/UpdateUsername";
 import UpdateEmail from "./pages/settings/UpdateEmail";
 import UpdatePhone from "./pages/settings/UpdatePhone";
 import UpdateAddress from "./pages/settings/UpdateAddress";
+import PreTrade from "./pages/trade/PreTrade";
 
 const App = () => {
   return (
@@ -130,6 +131,13 @@ const App = () => {
         <Route path="/offers" element={<MyOffer />} />
         <Route path="/offer/:id" element={<AboutOffer />} />
         <Route path="/offer/:id/edit" element={<EditOffer />} />
+
+        {/* Trade */}
+        <Route
+          path="/trade/pre/:offerId/:amount/:currency"
+          element={<PreTrade />}
+        />
+        <Route path="/trade/session/:tradeId" element={<CreateOffer />} />
       </Routes>
     </>
   );

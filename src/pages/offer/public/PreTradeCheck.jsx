@@ -150,8 +150,6 @@ const PreTradeCheck = () => {
               <div>
                 <ProgressBar value={40} />
               </div>
-
-              {/* <Button variant="Fadeout">Cancel</Button> */}
             </div>
           </div>
         </div>

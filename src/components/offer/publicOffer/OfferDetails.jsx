@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import image from "../../../assets/landingImg4.JPG";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
 import { useNavigate } from "react-router-dom";
-import { useTraderProfile } from "@/context/publicContext/ProfileContext";
 import toDecimal from "@/utils/toDecimal";
 import lastSeen from "@/utils/lastSeen";
 import { LuUsers } from "react-icons/lu";
@@ -13,7 +12,6 @@ import Button from "@/components/buttons/Button";
 import withComma from "@/utils/withComma";
 import { useCalculator } from "@/context/publicContext/CalculatorContext";
 import { LuCalendarClock } from "react-icons/lu";
-import { useTrade } from "@/context/publicContext/TradeContext";
 import { FaShareAlt } from "react-icons/fa";
 import { GoBookmarkFill } from "react-icons/go";
 import { MdReport } from "react-icons/md";
@@ -21,11 +19,12 @@ import { GrStatusGoodSmall } from "react-icons/gr";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { FaRegStar } from "react-icons/fa";
 import { TbCubeSpark } from "react-icons/tb";
+import { useToast } from "@/context/otherContext/ToastContext";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
-  const { setProfile } = useTraderProfile();
   const { calculator, setCalculator } = useCalculator();
-  const { setPreTradeCheck } = useTrade();
+  const { setToast } = useToast();
+  const [amount, setAmount] = useState("");
 
   console.log("offer details :", aboutOffer);
   console.log("calculator :", calculator);
@@ -38,84 +37,47 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
   console.log("last seen :", seen);
 
-  const viewProfile = (username) => {
-    setProfile((prev) => ({
-      ...prev,
-      username: username,
-    }));
-    navigateTo(`/profile/${username}`);
-  };
-
   const amountChange = (e) => {
-    const val = e.target.value.replace(/[^\d.-]/g, "");
-    setCalculator((prev) => ({
-      ...prev,
-      amount: val,
-    }));
+    const raw = e.target.value;
+
+    // Allow only numbers and one decimal point
+    const clean = raw
+      .replace(/[^\d.]/g, "") // remove everything except digits and .
+      .replace(/^(\d*\.\d*?)\..*/, "$1"); // only one dot allowed
+
+    // Only update if valid
+    setAmount(clean);
   };
 
-  const amountClick = (a) => {
-    const amount = Number(a); // convert input to number
+  console.log("Amount:", amount);
 
-    setCalculator((prev) => {
-      const prevAmount = Number(prev?.amount ?? 0); // also convert previous amount
-      return {
-        ...prev,
-        amount: prevAmount + amount, // now both are numbers
-      };
-    });
+  const swap = () => {
+    // 1️⃣ Check for amount first
+    if (!amount) {
+      setToast({
+        error: true,
+        errorMessage: "Please enter an amount before proceeding.",
+      });
+      return; // stop here
+    }
+
+    // 2️⃣ Extract required values safely
+    const offerId = offer?.id;
+    const currency = offer?.preferredCurrency?.code;
+
+    // 3️⃣ Validate required data
+    if (!offerId || !currency) {
+      setToast({
+        error: true,
+        errorMessage: "Invalid offer. Required details could not be found.",
+      });
+      return;
+    }
+
+    // 4️⃣ Navigate to next step
+    const url = `/trade/pre/${offerId}/${amount}/${currency}`;
+    navigateTo(url);
   };
-
-  const preTradeCheck = () => {
-    setCalculator((prev) => ({ ...prev, state: false }));
-    setPreTradeCheck((prev) => ({ ...prev, checking: true }));
-
-    // Simulate async check (optional delay)
-    setTimeout(() => {
-      const keys = [
-        "limitEligible",
-        "activeNow",
-        "collacteralSecured",
-        "kycCompliant",
-      ];
-
-      let result = {};
-
-      // 30% chance everything passes ✅
-      const allPass = Math.random() < 0.3;
-
-      if (allPass) {
-        keys.forEach((key) => (result[key] = true));
-      } else {
-        const failKey = keys[Math.floor(Math.random() * keys.length)];
-        result = keys.reduce((acc, key) => {
-          acc[key] = key === failKey ? false : true;
-          return acc;
-        }, {});
-      }
-
-      if (allPass) {
-        setPreTradeCheck((prev) => ({
-          ...prev,
-          time: 300,
-          isCounting: true,
-          checking: false,
-          success: true,
-          result,
-        }));
-      } else {
-        setPreTradeCheck((prev) => ({
-          ...prev,
-          checking: false,
-          failed: true,
-          details: false,
-          result,
-        }));
-      }
-    }, 1500);
-  };
-
-  const amountList = ["50", "100", "200", "500", "1000"];
 
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
@@ -136,11 +98,12 @@ const OfferDetails = ({ loading, aboutOffer }) => {
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px] gap-[30px]">
+                {/* Hero */}
                 <div className="flex flex-col gap-[30px] pb-[12px]">
                   <div className="flex flex-col gap-[20px]">
                     <div className="flex items-center gap-3">
                       <div
-                        onClick={viewProfile}
+                        onClick={() => navigateTo(`/${user?.username}`)}
                         className="flex cursor-pointer relative"
                       >
                         {false ? (
@@ -186,8 +149,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                     </div>
                   </div>
 
-                  <div className="flex items-center flex-1 gap-[10px]">
-                    <div className="flex flex-1 flex-col gap-[10px]">
+                  <div className="flex justify-between items-center flex-1 gap-[10px]">
+                    <div className="flex flex-col gap-[10px]">
                       <div className="flex gap-1 items-center">
                         <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
@@ -202,7 +165,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
                     </div>
 
-                    <div className="flex flex-1 flex-col gap-[10px]">
+                    <div className="flex flex-col gap-[10px]">
                       <div className="flex  items-center gap-1">
                         <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
@@ -219,6 +182,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                 </div>
 
+                {/* Options/Commands */}
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2">
                     <div className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeAshLight p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
@@ -244,6 +208,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
                 </div>
 
+                {/* Calculator */}
                 <div className="flex gap-[20px] flex-col">
                   <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAshLight">
                     <div className="flex gap-2 justify-between  border-b border-tradeAshLight pb-[10px]">
@@ -255,8 +220,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       </div>
 
                       <p className="text-tradeFadeWhite text-xs font-medium">
-                        {toDecimal(offer?.purchaseLimit?.minimum) || "-- --"} -{" "}
-                        {toDecimal(offer?.purchaseLimit?.maximum) || "-- --"}{" "}
+                        {toDecimal(offer?.purchaseLimit?.minimum) || "0.00"} -{" "}
+                        {toDecimal(offer?.purchaseLimit?.maximum) || "0.00"}{" "}
                         {offer?.preferredCurrency?.code || "N/A"}
                       </p>
                     </div>
@@ -265,8 +230,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                       <div className="flex-1 flex p-[12px] gap-2 items-center justify-between bg-tradeAshLight  border border-tradeAshExtraLight rounded-[10px] ">
                         <input
                           type="text"
-                          placeholder="00.00"
-                          value={withComma(calculator?.amount)}
+                          placeholder="0.00"
+                          value={withComma(amount)}
                           onChange={amountChange}
                           className="bg-transparent w-full text-sm font-semibold outline-none text-white placeholder:text-tradeFadeWhite"
                         />
@@ -274,27 +239,23 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                       <div className="flex border border-tradeAshExtraLight p-[12px] gap-2 items-center justify-between bg-tradeAshLight rounded-[10px] ">
                         <div className="text-sm font-semibold text-white">
-                          <p>{offer?.preferredCurrency?.code ?? "USD"}</p>
+                          <p>{offer?.preferredCurrency?.code ?? "N/A"}</p>
                         </div>
                       </div>
                     </div>
 
-                    <div>
-                      <p className="text-tradeFadeWhite text-xs font-medium">
-                        You will receive - -
-                      </p>
-                    </div>
+                    <p className="text-tradeFadeWhite text-xs font-medium">
+                      You will receive{" "}
+                      <span className="text-tradeOrange">0.00 N/A</span>
+                    </p>
                   </div>
 
-                  <Button
-                    onClick={preTradeCheck}
-                    disabled={calculator?.amount === ""}
-                    variant="secondary"
-                  >
+                  <Button onClick={swap} variant="secondary">
                     SWAP
                   </Button>
                 </div>
 
+                {/* Offer Details */}
                 <div className="flex flex-1 flex-col gap-[10px]">
                   <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                     <div className="flex items-center justify-between w-full mt-[1px]">

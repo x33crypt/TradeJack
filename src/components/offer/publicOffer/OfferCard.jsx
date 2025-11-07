@@ -21,10 +21,6 @@ const OfferCard = ({ offer }) => {
   const seen = lastSeen(offer?.lastSeen);
 
   const handleOfferClick = (offerId) => {
-    setAboutOffer((prev) => ({
-      ...prev,
-      id: offerId,
-    }));
     navigateTo(`/offer/explore/${offerId}`);
   };
 

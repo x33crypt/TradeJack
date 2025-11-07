@@ -9,13 +9,13 @@ export default function ProgressBar({ value = 0 }) {
         value={value}
         readOnly
         className="
-          w-full h-[6px] rounded-lg appearance-none bg-tradeAshLight pointer-events-none
+          w-full h-[6px] rounded-lg appearance-none bg-tradeAsh pointer-events-none
           [&::-webkit-slider-thumb]:appearance-none
           [&::-moz-range-thumb]:appearance-none
           [&::-ms-thumb]:appearance-none
         "
         style={{
-          background: `linear-gradient(to right, #22c55e ${value}%, #3a3f44 ${value}%)`,
+          background: `linear-gradient(to right, #ffcb4d ${value}%, #282828 ${value}%)`,
         }}
       />
 

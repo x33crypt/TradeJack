@@ -1,58 +1,109 @@
+import { GrStatusGoodSmall } from "react-icons/gr";
+
 export function lastSeen(lastSeen) {
+  // Placeholder when no data at all
   if (!lastSeen) {
-    return null; // Don't show anything
+    return (
+      <div className="flex gap-1 items-center">
+        <div className="flex items-center gap-1">
+          <GrStatusGoodSmall className="flex text-tradeAshLight text-[10px] flex-shrink-0" />
+          <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
+            Offline
+          </p>
+        </div>
+        <p className="text-tradeAshLight leading-none">|</p>
+        <p className="text-white text-[13px] font-semibold">—</p>
+      </div>
+    );
   }
 
   const lastSeenDate = new Date(lastSeen);
   if (isNaN(lastSeenDate)) {
-    return null; // Invalid date
+    return (
+      <div className="flex gap-1 items-center">
+        <GrStatusGoodSmall className="flex text-tradeAshLight text-[10px] flex-shrink-0" />
+        <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
+          Unknown
+        </p>
+      </div>
+    );
   }
 
   const now = new Date();
-  const diffMs = now - lastSeenDate;
-  const diffMinutes = Math.floor(diffMs / 60000);
+  const diffMs = Math.max(0, now - lastSeenDate);
+  const diffSeconds = Math.floor(diffMs / 1000);
+  const diffMinutes = Math.floor(diffSeconds / 60);
   const diffHours = Math.floor(diffMinutes / 60);
+  const diffDays = Math.floor(diffHours / 24);
 
-  // Dot styles
-  const dotStyles = {
-    green: "bg-tradeGreen w-2 h-2 rounded-full inline-block",
-    yellow: "bg-yellow-500 w-2 h-2 rounded-full inline-block",
-    gray: "bg-tradeFadeWhite w-2 h-2 rounded-full inline-block",
+  // Format time as 12-hour HH:MM AM/PM
+  const formatTime = (date) => {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? "PM" : "AM";
+    const formattedHours = hours % 12 || 12;
+    const formattedMinutes = minutes.toString().padStart(2, "0");
+    return `${formattedHours}:${formattedMinutes} ${ampm}`;
   };
 
-  // ✅ Online (<= 20 mins)
-  if (diffMinutes <= 20) {
-    return {
-      text: "Online",
-      className: "text-tradeGreen font-semibold",
-      dot: <span className={dotStyles.green}></span>,
-    };
-  }
-
-  // ✅ Recently Active (< 24h)
-  if (diffHours < 1) {
-    if (diffHours < 1) {
-      const unit = diffMinutes === 1 ? "min" : "mins";
-      return {
-        text: `${diffMinutes} ${unit} ago`,
-        className: "text-white",
-        dot: <span className={dotStyles.yellow}></span>,
-      };
+  // Helper to build relative string (seconds, mins, hours, days, weeks, months, years)
+  const relativeString = () => {
+    if (diffSeconds < 60) {
+      return `${diffSeconds} ${diffSeconds === 1 ? "sec" : "secs"} ago`;
     }
-    const unit = diffHours === 1 ? "hour" : "hours";
-    return {
-      text: `${diffHours} ${unit} ago`,
-      className: "text-white",
-      dot: <span className={dotStyles.yellow}></span>,
-    };
+    if (diffMinutes < 60) {
+      return `${diffMinutes} ${diffMinutes === 1 ? "min" : "mins"} ago`;
+    }
+    if (diffHours < 24) {
+      return `${diffHours} ${diffHours === 1 ? "hour" : "hours"} ago`;
+    }
+    if (diffDays < 7) {
+      return `${diffDays} ${diffDays === 1 ? "day" : "days"} ago`;
+    }
+    const weeks = Math.floor(diffDays / 7);
+    if (weeks < 5) {
+      return `${weeks} ${weeks === 1 ? "week" : "weeks"} ago`;
+    }
+    const months = Math.floor(diffDays / 30);
+    if (months < 12) {
+      return `${months} ${months === 1 ? "month" : "months"} ago`;
+    }
+    const years = Math.floor(diffDays / 365);
+    return `${years} ${years === 1 ? "year" : "years"} ago`;
+  };
+
+  // Consider user "online" if last seen within the last 20 minutes
+  const ONLINE_THRESHOLD_MINUTES = 20;
+  if (diffMinutes <= ONLINE_THRESHOLD_MINUTES) {
+    return (
+      <div className="flex gap-1 items-center">
+        <div className="flex items-center gap-1">
+          <GrStatusGoodSmall className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+          <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
+            Online
+          </p>
+        </div>
+        <p className="text-tradeAshLight leading-none">|</p>
+        <p className="text-white text-[13px] font-semibold">
+          {formatTime(lastSeenDate)}
+        </p>
+      </div>
+    );
   }
 
-  // ✅ Offline (> 24h)
-  return {
-    text: "Offline",
-    className: "text-tradeFadeWhite",
-    dot: <span className={dotStyles.gray}></span>,
-  };
+  // Not online -> show Offline and relative time
+  return (
+    <div className="flex gap-1 items-center">
+      <div className="flex items-center gap-1">
+        <GrStatusGoodSmall className="flex text-tradeFadeWhite text-[10px] flex-shrink-0" />
+        <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
+          Offline
+        </p>
+      </div>
+      <p className="text-tradeAshLight leading-none">|</p>
+      <p className="text-white text-[13px] font-semibold">{relativeString()}</p>
+    </div>
+  );
 }
 
 export default lastSeen;

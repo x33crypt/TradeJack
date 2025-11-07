@@ -6,17 +6,25 @@ import { usePublicOffers } from "@/context/publicContext/OffersContext";
 import Feedbacks from "@/components/offer/Feedbacks";
 import DetailsMenu from "@/components/offer/publicOffer/DetailsMenu";
 import InAppNav from "@/components/others/InAppNav";
+import { useParams } from "react-router-dom";
 
 const AboutOffer = () => {
-  const topRef = useRef(null);
+  const { offerId } = useParams();
   const { aboutOffer, setAboutOffer } = usePublicOffers();
   const { loading } = useFetchAboutOffers();
 
-  console.log("aboutOffer:", aboutOffer);
-
   useEffect(() => {
-    topRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+    if (offerId) {
+      console.log("Offer ID:", offerId);
+
+      setAboutOffer((prev) => ({
+        ...prev,
+        id: offerId,
+      }));
+    }
+  }, [offerId]);
+
+  console.log("aboutOffer:", aboutOffer);
 
   return (
     <>
