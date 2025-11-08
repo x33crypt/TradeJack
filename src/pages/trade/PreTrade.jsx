@@ -230,29 +230,36 @@ const PreTrade = () => {
                     <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
                       <p className="text-sm text-white font-semibold">Error</p>
 
-                      <div className="flex gap-2 items-center ">
-                        <div className="text-tradeOrange text-sm flex-shrink-0 h-max w-max">
-                          <FaCircleInfo />
+                      <div className="flex flex-col gap-[20px]">
+                        <div className="flex gap-2 items-center ">
+                          <div className="text-tradeOrange text-sm flex-shrink-0 h-max w-max">
+                            <FaCircleInfo />
+                          </div>
+                          <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                            Then every time setAmount(val) runs, React
+                            re-renders, and the input’s value becomes exactly
+                            what’s in state — meaning if your logic accidentally
+                            sanitizes too aggressively, you’ll lose what you
+                            just typed.
+                          </p>
                         </div>
+
                         <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
-                          Then every time setAmount(val) runs, React re-renders,
-                          and the input’s value becomes exactly what’s in state
-                          — meaning if your logic accidentally sanitizes too
-                          aggressively, you’ll lose what you just typed.
+                          In the event of any dispute, the{" "}
+                          <span className="text-tradeOrange font-semibold cursor-pointer">
+                            Platform Trading Rules
+                          </span>{" "}
+                          and{" "}
+                          <span className="text-tradeOrange font-semibold cursor-pointer">
+                            Data Protection Policy
+                          </span>{" "}
+                          will apply. Users who violate these rules will not be
+                          eligible for protection.
                         </p>
                       </div>
                     </div>
 
                     <Button variant="Fadeout">EXPLORE OFFERS</Button>
-                  </div>
-
-                  <div className="flex flex-1 flex-col gap-[20px]">
-                    <div className="flex  items-center justify-between ">
-                      <p className="text-sm font-semibold text-white flex items-center gap-1">
-                        RELATED OFFERS
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-[10px] flex-1"></div>
                   </div>
                 </div>
                 {/* Limit Check */}
@@ -291,20 +298,24 @@ const PreTrade = () => {
                             amount accordingly, and try again.
                           </p>
                         </div>
+
+                        <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                          In the event of any dispute, the{" "}
+                          <span className="text-tradeOrange font-semibold cursor-pointer">
+                            Platform Trading Rules
+                          </span>{" "}
+                          and{" "}
+                          <span className="text-tradeOrange font-semibold cursor-pointer">
+                            Data Protection Policy
+                          </span>{" "}
+                          will apply. Users who violate these rules will not be
+                          eligible for protection.
+                        </p>
                       </div>
                     </div>
 
                     <Button variant="Fadeout">REVIEW DETAILS</Button>
                   </div>
-
-                  {/* <div className="flex flex-1 flex-col gap-[20px]">
-                    <div className="flex  items-center justify-between ">
-                      <p className="text-sm font-semibold text-white flex items-center gap-1">
-                        RELATED OFFERS
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-[10px] flex-1"></div>
-                  </div> */}
                 </div>
                 {/* Collateral*/}
                 <div
@@ -344,20 +355,20 @@ const PreTrade = () => {
                             untill the balance is replenished.
                           </p>
                         </div>
-                      </div>
 
-                      <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
-                        In the event of any dispute, the{" "}
-                        <span className="text-tradeOrange cursor-pointer">
-                          Platform Trading Rules
-                        </span>{" "}
-                        and{" "}
-                        <span className="text-tradeOrange cursor-pointer">
-                          Data Protection Policy
-                        </span>{" "}
-                        will apply. Users who violate these rules will not be
-                        eligible for protection.
-                      </p>
+                        <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                          In the event of any dispute, the{" "}
+                          <span className="text-tradeOrange font-semibold cursor-pointer">
+                            Platform Trading Rules
+                          </span>{" "}
+                          and{" "}
+                          <span className="text-tradeOrange font-semibold cursor-pointer">
+                            Data Protection Policy
+                          </span>{" "}
+                          will apply. Users who violate these rules will not be
+                          eligible for protection.
+                        </p>
+                      </div>
                     </div>
 
                     <div className="flex flex-col-reverse md:flex-row gap-[10px]">
@@ -367,27 +378,9 @@ const PreTrade = () => {
                       </Button>
                     </div>
                   </div>
-
-                  {/* <div className="flex flex-1 flex-col gap-[20px]">
-                    <div className="flex  items-center justify-between ">
-                      <p className="text-sm font-semibold text-white flex items-center gap-1">
-                        RELATED OFFERS
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-[10px] flex-1"></div>
-                  </div> */}
                 </div>
                 {/* Double Booking  */}
-                {/* <div className="flex flex-col gap-[40px] ">
-                  <div className="flex flex-1 flex-col gap-[20px]">
-                    <div className="flex  items-center justify-between ">
-                      <p className="text-sm font-semibold text-white flex items-center gap-1">
-                        DETAILS
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-[10px] flex-1"></div>
-                  </div>
-                </div> */}
+                {/* <div></div> */}
               </div>
             </div>
 
@@ -434,6 +427,7 @@ const PreTrade = () => {
                     "20 mins",
                     "30 mins",
                     "45 mins",
+                    "60 mins",
                   ].map((t, index) => (
                     <SmallButton
                       variant="fadeoutPlus"
