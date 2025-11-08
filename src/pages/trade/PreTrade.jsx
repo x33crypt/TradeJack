@@ -168,7 +168,7 @@ const PreTrade = () => {
                 </div>
 
                 {/* Checks Result */}
-                <div className="flex justify-normal flex-wrap gap-[10px]">
+                {/* <div className="flex justify-normal flex-wrap gap-[10px]">
                   <div className="flex items-center gap-1 borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     {true ? (
                       <FaRegCircleCheck className="text-sm text-tradeGreen" />
@@ -217,7 +217,7 @@ const PreTrade = () => {
                       Set to Trade
                     </p>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="flex flex-col ">
                 {/* Validation */}
