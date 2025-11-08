@@ -325,7 +325,7 @@ const PreTrade = () => {
                 >
                   <div className="flex flex-col gap-[20px]">
                     <div className="flex flex-col gap-[10px] bg-tradeAs borde border-tradeAshLight rounded-[15px] p-[12px">
-                      <p className="text-sm text-white font-semibold">
+                      <p className="text-sm text-white font-bold">
                         Insufficient Collateral
                       </p>
 
@@ -358,12 +358,12 @@ const PreTrade = () => {
 
                         <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
                           In the event of any dispute, the{" "}
-                          <span className="text-tradeOrange font-semibold cursor-pointer">
-                            Platform Trading Rules
+                          <span className="text-tradeOrange cursor-pointer">
+                            P2P Trading Rules
                           </span>{" "}
                           and{" "}
-                          <span className="text-tradeOrange font-semibold cursor-pointer">
-                            Data Protection Policy
+                          <span className="text-tradeOrange cursor-pointer">
+                            P2P Protection Policy
                           </span>{" "}
                           will apply. Users who violate these rules will not be
                           eligible for protection.
