@@ -1,12 +1,11 @@
 import Footer from "@/components/others/Footer";
 import InAppNav from "@/components/others/InAppNav";
-import React from "react";
+import React, { useState } from "react";
 import { PiSpinnerGapBold } from "react-icons/pi";
 import ProgressBar from "@/components/others/ProgressBar";
 import image from "../../assets/landingImg4.JPG";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { FaRegStar } from "react-icons/fa";
-
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaHashtag } from "react-icons/fa6";
 import { useParams } from "react-router-dom";
@@ -17,10 +16,18 @@ import lastSeen from "@/utils/lastSeen";
 import { RiArrowLeftRightLine } from "react-icons/ri";
 import { FaCircleInfo } from "react-icons/fa6";
 import Button from "@/components/buttons/Button";
+import { IoMdArrowDropright } from "react-icons/io";
+import LockByScroll from "@/components/others/LockByScroll";
+import SmallButton from "@/components/buttons/SmallButton";
+import { IoClose } from "react-icons/io5";
 
 const PreTrade = () => {
   const { offerId = "", amount = "", currency = "" } = useParams();
   const { aboutOffer, setAboutOffer } = usePublicOffers();
+  const [waitTime, setWaitTime] = useState({
+    state: false,
+    time: null,
+  });
 
   console.log("Offer Id:", offerId);
   console.log("Amount:", amount);
@@ -42,6 +49,34 @@ const PreTrade = () => {
 
   console.log(offer);
   console.log(user);
+
+  const handleDeposit = () => {
+    setWaitTime((prev) => ({
+      ...prev,
+      state: true,
+    }));
+  };
+
+  const handleSetWaitTime = (selected) => {
+    // Extract only the number part (e.g., "15 mins" → 15)
+    const timeValue = parseInt(selected, 10);
+
+    if (!isNaN(timeValue)) {
+      setWaitTime({
+        state: false,
+        time: timeValue,
+      });
+    }
+  };
+
+  const closeWaitTime = () => {
+    setWaitTime((prev) => ({
+      ...prev,
+      state: false,
+    }));
+  };
+
+  console.log("wait time :", waitTime?.time);
 
   return (
     <>
@@ -135,20 +170,24 @@ const PreTrade = () => {
                 {/* Checks Result */}
                 <div className="flex justify-normal flex-wrap gap-[10px]">
                   <div className="flex items-center gap-1 borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    {false ? (
-                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
-                    ) : (
+                    {true ? (
                       <FaRegCircleCheck className="text-sm text-tradeGreen" />
+                    ) : false ? (
+                      <IoClose className="text-xl text-red-600" />
+                    ) : (
+                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
                     )}
                     <p className="text-[13px] font-semibold text-white">
                       Validations
                     </p>
                   </div>
                   <div className="flex items-center gap-1 text-white borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    {false ? (
-                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
-                    ) : (
+                    {true ? (
                       <FaRegCircleCheck className="text-sm text-tradeGreen" />
+                    ) : false ? (
+                      <IoClose className="text-xl text-red-600" />
+                    ) : (
+                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
                     )}
                     <p className="text-[13px] font-semibold text-white">
                       Limit Check
@@ -156,19 +195,23 @@ const PreTrade = () => {
                   </div>
                   <div className="flex items-center gap-1 text-white borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                     {false ? (
-                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
-                    ) : (
                       <FaRegCircleCheck className="text-sm text-tradeGreen" />
+                    ) : true ? (
+                      <IoClose className="text-xl text-red-600" />
+                    ) : (
+                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
                     )}
                     <p className="text-[13px] font-semibold text-white">
                       Deposit Status
                     </p>
                   </div>
                   <div className="flex items-center gap-1 text-white borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    {true ? (
-                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
-                    ) : (
+                    {false ? (
                       <FaRegCircleCheck className="text-sm text-tradeGreen" />
+                    ) : false ? (
+                      <IoClose className="text-xl text-red-600" />
+                    ) : (
+                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
                     )}
                     <p className="text-[13px] font-semibold text-white">
                       Set to Trade
@@ -263,7 +306,7 @@ const PreTrade = () => {
                     <div className="flex flex-col gap-[10px] flex-1"></div>
                   </div> */}
                 </div>
-                {/* Double Booking  */}
+                {/* Collateral*/}
                 <div
                   className={`${
                     true ? "flex" : "hidden"
@@ -277,7 +320,7 @@ const PreTrade = () => {
 
                       <div className="flex flex-col gap-[20px]">
                         <div className="flex gap-2 items-center ">
-                          <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
+                          <div className="text-tradeOrange/50 text-sm flex-shrink-0 h-max w-max">
                             <FaCircleInfo />
                           </div>
                           <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
@@ -290,7 +333,7 @@ const PreTrade = () => {
                         </div>
 
                         <div className="flex gap-2 items-center ">
-                          <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
+                          <div className="text-tradeOrange/50 text-sm flex-shrink-0 h-max w-max">
                             <FaCircleInfo />
                           </div>
                           <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
@@ -302,13 +345,26 @@ const PreTrade = () => {
                           </p>
                         </div>
                       </div>
+
+                      <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                        In the event of any dispute, the{" "}
+                        <span className="text-tradeOrange cursor-pointer">
+                          Platform Trading Rules
+                        </span>{" "}
+                        and{" "}
+                        <span className="text-tradeOrange cursor-pointer">
+                          Data Protection Policy
+                        </span>{" "}
+                        will apply. Users who violate these rules will not be
+                        eligible for protection.
+                      </p>
                     </div>
 
                     <div className="flex flex-col-reverse md:flex-row gap-[10px]">
-                      <Button variant="Fadeout" maxWidth="w-ma">
-                        CANCEL
-                      </Button>{" "}
-                      <Button variant="secondary">DEPOSIT</Button>
+                      <Button variant="Fadeout">CANCEL</Button>
+                      <Button onClick={handleDeposit} variant="secondary">
+                        DEPOSIT
+                      </Button>
                     </div>
                   </div>
 
@@ -321,7 +377,7 @@ const PreTrade = () => {
                     <div className="flex flex-col gap-[10px] flex-1"></div>
                   </div> */}
                 </div>
-                {/* Collateral*/}
+                {/* Double Booking  */}
                 {/* <div className="flex flex-col gap-[40px] ">
                   <div className="flex flex-1 flex-col gap-[20px]">
                     <div className="flex  items-center justify-between ">
@@ -348,6 +404,51 @@ const PreTrade = () => {
         </div>
       </div>
       <Footer />
+
+      {waitTime?.state && (
+        <div>
+          <LockByScroll />
+          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-50">
+            <div className="flex w-[250px] h-max flex-col gap-[10px] ">
+              <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
+                      SET WAIT TIME
+                    </p>
+                  </div>
+
+                  <div
+                    onClick={closeWaitTime}
+                    className="w-max flex text-white hover:text-tradeFadeWhite gap-1 items-center justify-center bg-transparent border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                  >
+                    <IoClose className="text-[16px]" />
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-[10px]">
+                  {[
+                    "5 mins",
+                    "10 mins",
+                    "15 mins",
+                    "20 mins",
+                    "30 mins",
+                    "45 mins",
+                  ].map((t, index) => (
+                    <SmallButton
+                      variant="fadeoutPlus"
+                      onClick={() => handleSetWaitTime(t)}
+                      key={index}
+                    >
+                      {t}
+                    </SmallButton>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

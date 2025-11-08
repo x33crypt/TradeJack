@@ -15,7 +15,7 @@ export default function ProgressBar({ value = 0 }) {
           [&::-ms-thumb]:appearance-none
         "
         style={{
-          background: `linear-gradient(to right, #ffcb4d ${value}%, #282828 ${value}%)`,
+          background: `linear-gradient(to right, #ffcb4d ${value}%, #ffcb4d ${value}%)`,
         }}
       />
 
