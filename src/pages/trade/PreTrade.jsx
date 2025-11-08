@@ -331,7 +331,7 @@ const PreTrade = () => {
 
                       <div className="flex flex-col gap-[20px]">
                         <div className="flex gap-2 items-center ">
-                          <div className="text-tradeOrange/50 text-sm flex-shrink-0 h-max w-max">
+                          <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
                             <FaCircleInfo />
                           </div>
                           <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
@@ -344,7 +344,7 @@ const PreTrade = () => {
                         </div>
 
                         <div className="flex gap-2 items-center ">
-                          <div className="text-tradeOrange/50 text-sm flex-shrink-0 h-max w-max">
+                          <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
                             <FaCircleInfo />
                           </div>
                           <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
