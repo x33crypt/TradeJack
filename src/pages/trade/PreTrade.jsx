@@ -334,12 +334,36 @@ const PreTrade = () => {
                           <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
                             <FaCircleInfo />
                           </div>
+
+                          <div className="flex flex-col gap-[5px]">
+                            <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                              This trade cannot proceed because the vendor does
+                              not have enough collateral to secure the
+                              transaction. You can choose to cancle this trade
+                              now or allow the vendor to make a deposit to top
+                              up their collateral balance before proceeding.
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex gap-2 items-center ">
+                          <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
+                            <FaCircleInfo />
+                          </div>
+
                           <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
-                            This trade cannot proceed because the vendor does
-                            not have enough collateral to secure the
-                            transaction. You can choose to cancle this trade now
-                            or allow the vendor to make a deposit to top up
-                            their collateral balance before proceeding
+                            {/* Deposits typically take only a few minutes to
+                              confirm, and the system with automatically cancel
+                              the trade if the vendor fails to deposit with the
+                              waiting period you set{" "} */}
+                            Once you allow the deposit, a{" "}
+                            <span className="text-tradeOrange cursor-pointer">
+                              5-minute waiting window
+                            </span>{" "}
+                            will begin automatically. If the vendor fails to
+                            complete the deposit within this time frame, the
+                            system will automatically cancel the trade for
+                            security and fairness.
                           </p>
                         </div>
 
@@ -403,8 +427,8 @@ const PreTrade = () => {
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-50">
             <div className="flex w-[250px] h-max flex-col gap-[10px] ">
-              <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
-                <div className="flex items-center justify-between">
+              <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh ">
+                <div className="flex items-center justify-between border-b border-tradeAshExtraLight pb-[15px]">
                   <div className="flex items-center gap-1">
                     <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
                     <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
@@ -420,15 +444,7 @@ const PreTrade = () => {
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-[10px]">
-                  {[
-                    "5 mins",
-                    "10 mins",
-                    "15 mins",
-                    "20 mins",
-                    "30 mins",
-                    "45 mins",
-                    "60 mins",
-                  ].map((t, index) => (
+                  {["5 mins", "10 mins", "15 mins"].map((t, index) => (
                     <SmallButton
                       variant="fadeoutPlus"
                       onClick={() => handleSetWaitTime(t)}
