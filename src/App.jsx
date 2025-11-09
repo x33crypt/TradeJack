@@ -133,8 +133,9 @@ const App = () => {
         <Route path="/offer/:id/edit" element={<EditOffer />} />
 
         {/* Trade */}
+        <Route path="/pre-trade/sessions" element={<PreTrade />} />
         <Route
-          path="/trade/pre/:offerId/:amount/:currency"
+          path="/pre-trade/session/:id/:amount/:currency"
           element={<PreTrade />}
         />
         <Route path="/trade/session/:tradeId" element={<CreateOffer />} />

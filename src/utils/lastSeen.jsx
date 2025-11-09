@@ -6,7 +6,9 @@ export function lastSeen(lastSeen) {
     return (
       <div className="flex gap-1 items-center">
         <div className="flex items-center gap-1">
-          <GrStatusGoodSmall className="flex text-tradeAshLight text-[10px] flex-shrink-0" />
+          <div className="p-0.5 border border-tradeAshExtraLight rounded-full">
+            <GrStatusGoodSmall className="flex text-tradeFadeWhite/50 text-[10px] flex-shrink-0" />
+          </div>
           <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
             Offline
           </p>
@@ -21,7 +23,9 @@ export function lastSeen(lastSeen) {
   if (isNaN(lastSeenDate)) {
     return (
       <div className="flex gap-1 items-center">
-        <GrStatusGoodSmall className="flex text-tradeAshLight text-[10px] flex-shrink-0" />
+        <div className="p-0.5 border border-tradeAshExtraLight rounded-full">
+          <GrStatusGoodSmall className="flex text-tradeAshLight text-[10px] flex-shrink-0" />
+        </div>
         <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
           Unknown
         </p>
@@ -78,13 +82,15 @@ export function lastSeen(lastSeen) {
     return (
       <div className="flex gap-1 items-center">
         <div className="flex items-center gap-1">
-          <GrStatusGoodSmall className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+          <div className="p-0.5 border border-tradeAshExtraLight rounded-full">
+            <GrStatusGoodSmall className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+          </div>
           <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
             Online
           </p>
         </div>
         <p className="text-tradeAshLight leading-none">|</p>
-        <p className="text-white text-[13px] font-semibold">
+        <p className="text-tradeFadeWhite text-[13px] font-semibold">
           {formatTime(lastSeenDate)}
         </p>
       </div>
@@ -95,13 +101,17 @@ export function lastSeen(lastSeen) {
   return (
     <div className="flex gap-1 items-center">
       <div className="flex items-center gap-1">
-        <GrStatusGoodSmall className="flex text-tradeFadeWhite text-[10px] flex-shrink-0" />
+        <div className="p-0.5 border border-tradeAshExtraLight rounded-full">
+          <GrStatusGoodSmall className="flex text-tradeFadeWhite/50 text-[10px] flex-shrink-0" />
+        </div>
         <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
           Offline
         </p>
       </div>
       <p className="text-tradeAshLight leading-none">|</p>
-      <p className="text-white text-[13px] font-semibold">{relativeString()}</p>
+      <p className="text-tradeFadeWhite text-[13px] font-semibold">
+        {relativeString()}
+      </p>
     </div>
   );
 }

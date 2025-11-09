@@ -9,21 +9,20 @@ import InAppNav from "@/components/others/InAppNav";
 import { useParams } from "react-router-dom";
 
 const AboutOffer = () => {
-  const { offerId } = useParams();
+  const { id = "" } = useParams();
   const { aboutOffer, setAboutOffer } = usePublicOffers();
   const { loading } = useFetchAboutOffers();
 
   useEffect(() => {
-    if (offerId) {
-      console.log("Offer ID:", offerId);
-
+    if (id) {
       setAboutOffer((prev) => ({
         ...prev,
-        id: offerId,
+        id: id,
       }));
     }
-  }, [offerId]);
+  }, [id]);
 
+  console.log("Param Offer ID:", id);
   console.log("aboutOffer:", aboutOffer);
 
   return (

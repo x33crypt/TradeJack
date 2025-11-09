@@ -13,12 +13,12 @@ import { WiStars } from "react-icons/wi";
 import { MdThumbUp } from "react-icons/md";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { FaRegStar } from "react-icons/fa";
+import { RiArrowLeftRightLine } from "react-icons/ri";
+import lastSeenDot from "@/utils/lastSeenDot";
 
 const OfferCard = ({ offer }) => {
   const { setAboutOffer } = usePublicOffers();
   const navigateTo = useNavigate();
-
-  const seen = lastSeen(offer?.lastSeen);
 
   const handleOfferClick = (offerId) => {
     navigateTo(`/offer/explore/${offerId}`);
@@ -149,31 +149,21 @@ const OfferCard = ({ offer }) => {
         <div className="flex flex-col gap-3">
           <div className="flex justify-between w-full items-center">
             <div className="flex gap-1 items-center w-full ">
-              <div>
-                <HiOutlineUserCircle className="flex text-white text-lg flex-shrink-0" />
-              </div>
-              <div>
-                <p className="text-[13px] font-semibold text-white">
-                  {offer?.Username}
-                </p>
-                {/* <p className="text-tradeFadeWhite text-xs font-medium">
-                  <span className={seen.className}>{seen.text}</span>
-                </p> */}
-              </div>
+              <div>{lastSeenDot(offer?.lastSeen)}</div>
 
-              {true ? (
-                <div className="flex gap-1 items-center">
-                  <RiVerifiedBadgeFill className="flex text-tradeFadeWhite text-s flex-shrink-0" />
-                </div>
-              ) : (
-                ""
-              )}
+              <p className="text-[13px] font-semibold text-white">
+                {offer?.Username}
+              </p>
+
+              <div className="flex gap-1 items-center">
+                <RiVerifiedBadgeFill className="flex text-tradeGreen text-sm flex-shrink-0" />
+              </div>
             </div>
 
             <div className="flex flex-col items-end gap-1 justify-betwee w-full">
               <div className="flex items-center gap-1">
                 <div className="flex  items-center gap-1">
-                  <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                   <p className="text-xs font-semibold text-tradeFadeWhite">
                     <span className="text-white">{offer?.completedTrades}</span>{" "}
                     trades

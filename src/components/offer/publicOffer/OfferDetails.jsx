@@ -5,7 +5,6 @@ import NetworkError from "@/components/others/NetworkError";
 import { useNavigate } from "react-router-dom";
 import toDecimal from "@/utils/toDecimal";
 import lastSeen from "@/utils/lastSeen";
-import { LuUsers } from "react-icons/lu";
 import { windowFormatHour } from "@/utils/windowFormatHour";
 import { IoMdArrowDropright } from "react-icons/io";
 import Button from "@/components/buttons/Button";
@@ -21,6 +20,7 @@ import { FaRegStar } from "react-icons/fa";
 import { TbCubeSpark } from "react-icons/tb";
 import { useToast } from "@/context/otherContext/ToastContext";
 import { RiArrowLeftRightLine } from "react-icons/ri";
+import { AiOutlineSafetyCertificate } from "react-icons/ai";
 
 const OfferDetails = ({ loading, aboutOffer }) => {
   const { calculator, setCalculator } = useCalculator();
@@ -34,9 +34,8 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
   const offer = aboutOffer?.data?.offerDetails;
   const user = aboutOffer?.data?.traderInfo;
-  const seen = lastSeen(user?.lastSeen);
 
-  console.log("last seen :", seen);
+  console.log(offer);
 
   const amountChange = (e) => {
     const raw = e.target.value;
@@ -76,7 +75,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
     }
 
     // 4️⃣ Navigate to next step
-    const url = `/trade/pre/${offerId}/${amount}/${currency}`;
+    const url = `/pre-trade/session/${offerId}/${amount}/${currency}`;
     navigateTo(url);
   };
 
@@ -90,12 +89,12 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
       <div className="flex flex-col ">
         {/* loading */}
-        {false ? (
+        {loading ? (
           <Loading />
         ) : (
           <div className="flex flex-1">
             {/* aboutOffer?.data === null */}
-            {false ? (
+            {aboutOffer?.data === null ? (
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px] gap-[30px]">
@@ -123,14 +122,11 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                           <p className="text-sm text-white font-semibold leading-none">
                             {user?.username}
                           </p>
-                          <RiVerifiedBadgeFill className="text-tradeFadeWhite text-sm" />
+                          <RiVerifiedBadgeFill className="text-tradeGreen text-sm" />
                         </div>
 
-                        <div className="flex items-center gap-1">
-                          <GrStatusGoodSmall className="flex  text-tradeGreen text-[10px] flex-shrink-0" />
-                          <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
-                            Online
-                          </p>
+                        <div className="flex gap-1 items-center">
+                          {lastSeen(user?.lastSeen)}
                         </div>
                       </div>
                     </div>
@@ -153,15 +149,15 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   <div className="flex justify-between items-center flex-1 gap-[10px]">
                     <div className="flex flex-col gap-[10px]">
                       <div className="flex gap-1 items-center">
-                        <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                        <GrStatusGoodSmall className="flex text-tradeGreen text-sm flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
-                          Created 31 Aug, 2025
+                          Posted 31 Aug, 2045
                         </p>
                       </div>
                       <div className="flex gap-1 items-center">
-                        <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                        <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-lg flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
-                          Updated 31 Aug, 2025
+                          Certified and Secure
                         </p>
                       </div>
                     </div>
@@ -211,7 +207,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                 {/* Calculator */}
                 <div className="flex gap-[20px] flex-col">
-                  <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAshLight">
+                  <div className="flex flex-1 flex-col p-[15px] bg-tradeAsh gap-[15px] rounded-[15px] border border-tradeAshLight">
                     <div className="flex gap-2 justify-between  border-b border-tradeAshLight pb-[10px]">
                       <div className="flex items-center gap-1">
                         <IoMdArrowDropright className="text-lg text-white" />
@@ -252,7 +248,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   </div>
 
                   <Button onClick={swap} variant="secondary">
-                    SWAP
+                    TRADE
                   </Button>
                 </div>
 
