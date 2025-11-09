@@ -6,7 +6,7 @@ export function lastSeen(lastSeen) {
     return (
       <div className="flex gap-1 items-center">
         <div className="flex items-center gap-1">
-          <div className="p-0.5 border border-tradeAshExtraLight rounded-full">
+          <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
             <GrStatusGoodSmall className="flex text-tradeFadeWhite/50 text-[10px] flex-shrink-0" />
           </div>
           <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
@@ -23,7 +23,7 @@ export function lastSeen(lastSeen) {
   if (isNaN(lastSeenDate)) {
     return (
       <div className="flex gap-1 items-center">
-        <div className="p-0.5 border border-tradeAshExtraLight rounded-full">
+        <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
           <GrStatusGoodSmall className="flex text-tradeAshLight text-[10px] flex-shrink-0" />
         </div>
         <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
@@ -82,7 +82,7 @@ export function lastSeen(lastSeen) {
     return (
       <div className="flex gap-1 items-center">
         <div className="flex items-center gap-1">
-          <div className="p-0.5 border border-tradeAshExtraLight rounded-full">
+          <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
             <GrStatusGoodSmall className="flex text-tradeGreen text-[10px] flex-shrink-0" />
           </div>
           <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
@@ -101,7 +101,7 @@ export function lastSeen(lastSeen) {
   return (
     <div className="flex gap-1 items-center">
       <div className="flex items-center gap-1">
-        <div className="p-0.5 border border-tradeAshExtraLight rounded-full">
+        <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
           <GrStatusGoodSmall className="flex text-tradeFadeWhite/50 text-[10px] flex-shrink-0" />
         </div>
         <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">

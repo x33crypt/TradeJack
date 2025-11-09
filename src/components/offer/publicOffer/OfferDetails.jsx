@@ -87,7 +87,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
         </p>
       </div>
 
-      <div className="flex flex-col ">
+      <div className="flex flex-1 flex-col ">
         {/* loading */}
         {loading ? (
           <Loading />
@@ -149,7 +149,9 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   <div className="flex justify-between items-center flex-1 gap-[10px]">
                     <div className="flex flex-col gap-[10px]">
                       <div className="flex gap-1 items-center">
-                        <GrStatusGoodSmall className="flex text-tradeGreen text-sm flex-shrink-0" />
+                        <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
+                          <GrStatusGoodSmall className="flex text-tradeGreen text-[12px] flex-shrink-0" />
+                        </div>
                         <p className="text-xs font-semibold text-white">
                           Posted 31 Aug, 2045
                         </p>
@@ -207,7 +209,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                 {/* Calculator */}
                 <div className="flex gap-[20px] flex-col">
-                  <div className="flex flex-1 flex-col p-[15px] bg-tradeAsh gap-[15px] rounded-[15px] border border-tradeAshLight">
+                  <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAshLight">
                     <div className="flex gap-2 justify-between  border-b border-tradeAshLight pb-[10px]">
                       <div className="flex items-center gap-1">
                         <IoMdArrowDropright className="text-lg text-white" />

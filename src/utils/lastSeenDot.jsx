@@ -4,7 +4,7 @@ export function lastSeenDot(lastSeen) {
   // Placeholder when no data at all
   if (!lastSeen) {
     return (
-      <div className="p-0.5 border border-tradeAshExtraLight rounded-full">
+      <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
         <GrStatusGoodSmall className="flex text-tradeFadeWhite/50 text-[10px] flex-shrink-0" />
       </div>
     );
@@ -13,7 +13,7 @@ export function lastSeenDot(lastSeen) {
   const lastSeenDate = new Date(lastSeen);
   if (isNaN(lastSeenDate)) {
     return (
-      <div className="p-0.5 border border-tradeAshExtraLight rounded-full">
+      <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
         <GrStatusGoodSmall className="flex text-tradeAshLight text-sm flex-shrink-0" />
       </div>
     );
@@ -66,7 +66,7 @@ export function lastSeenDot(lastSeen) {
   const ONLINE_THRESHOLD_MINUTES = 20;
   if (diffMinutes <= ONLINE_THRESHOLD_MINUTES) {
     return (
-      <div className="p-0.5 border border-tradeAshExtraLight rounded-full">
+      <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
         <GrStatusGoodSmall className="flex text-tradeGreen text-[10px] flex-shrink-0" />
       </div>
     );
@@ -74,7 +74,7 @@ export function lastSeenDot(lastSeen) {
 
   // Not online -> show Offline and relative time
   return (
-    <div className="p-0.5 border border-tradeAshExtraLight rounded-full">
+    <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
       <GrStatusGoodSmall className="flex text-tradeFadeWhite/50 text-[10px] flex-shrink-0" />
     </div>
   );
