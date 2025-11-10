@@ -32,8 +32,8 @@ const AboutOffer = () => {
         <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
           {/* <DetailsMenu /> */}
           <div className="flex flex-1 flex-col gap-[40px] lg:mx-[22.8%] p-[15px]">
-            <OfferDetails aboutOffer={aboutOffer} loading={loading} />
-            <Feedbacks feedbacks={aboutOffer} loading={loading} />
+            <OfferDetails aboutOffer={aboutOffer} id={id} loading={loading} />
+            <Feedbacks feedbacks={aboutOffer} id={id} loading={loading} />
           </div>
         </div>
       </div>

@@ -129,6 +129,55 @@ const PreTrade = () => {
                     {lastSeen(user?.lastSeen)}
                   </div>
                 </div>
+                {/* <div className="flex items-center justify-between">
+                  <div className="flex gap-1 items-center">
+                    <div className="flex items-center gap-1">
+                      <FaHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                      <p className="text-[13px] font-semibold text-white">
+                        {id ?? ""}
+                      </p>
+                    </div>
+                    <p className="text-tradeAshLight leading-none">|</p>
+                    <div className="flex  items-center gap-1">
+                      <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                      <p className="text-[13px] font-semibold text-white">
+                        {offer?.completedTrades ?? "0"}
+                      </p>
+                    </div>
+                    <p className="text-tradeAshLight leading-none">|</p>
+                    <div className="flex  items-center gap-1">
+                      <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                      <p className="text-[13px] font-semibold text-white">
+                        99%
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-1 items-center">
+                    <p className="text-white text-[13px] font-semibold">
+                      {toDecimal(amount) ?? "0.00"}{" "}
+                      <span className="text-tradeFadeWhite font-semibold">
+                        {currency ?? "N/A"}
+                      </span>
+                    </p>
+                  </div>
+                </div> */}
+              </div>
+
+              <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
+                <div className="flex items-center justify-between">
+                  <div className="flex gap-2 items-center">
+                    <p className="text-tradeOrange text-[13px] font-semibold">
+                      {offer?.serviceName ?? ""}
+                    </p>
+                  </div>
+
+                  <div className="flex gap-2 items-center">
+                    <p className="text-white text-[13px] font-semibold">
+                      {offer?.preferredCurrency?.name ?? ""}
+                    </p>
+                  </div>
+                </div>
                 <div className="flex items-center justify-between">
                   <div className="flex gap-1 items-center">
                     <div className="flex items-center gap-1">
@@ -274,11 +323,13 @@ const PreTrade = () => {
               </div>
               {/* Double Booking  */}
               <div
-                className={`${true ? "flex" : "hidden"}  flex-col gap-[40px] `}
+                className={`${false ? "flex" : "hidden"}  flex-col gap-[40px] `}
               >
                 <div className="flex flex-col gap-[20px]">
                   <div className="flex flex-col gap-[10px] ">
-                    <p className="text-sm text-white font-bold">Vendor Unavailable</p>
+                    <p className="text-sm text-white font-bold">
+                      Vendor Unavailable
+                    </p>
 
                     <div className="flex flex-col gap-[20px]">
                       <div className="flex gap-2 items-center ">
@@ -387,7 +438,7 @@ const PreTrade = () => {
               </div>
               {/* Collateral*/}
               <div
-                className={`${false ? "flex" : "hidden"}  flex-col gap-[40px] `}
+                className={`${true ? "flex" : "hidden"}  flex-col gap-[40px] `}
               >
                 <div className="flex flex-col gap-[20px]">
                   <div className="flex flex-col gap-[10px] ">

@@ -22,7 +22,7 @@ import { useToast } from "@/context/otherContext/ToastContext";
 import { RiArrowLeftRightLine } from "react-icons/ri";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 
-const OfferDetails = ({ loading, aboutOffer }) => {
+const OfferDetails = ({ loading, aboutOffer, id }) => {
   const { calculator, setCalculator } = useCalculator();
   const { setToast } = useToast();
   const [amount, setAmount] = useState("");
@@ -34,6 +34,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
   const offer = aboutOffer?.data?.offerDetails;
   const user = aboutOffer?.data?.traderInfo;
+  const offerId = id;
 
   console.log(offer);
 
@@ -62,7 +63,7 @@ const OfferDetails = ({ loading, aboutOffer }) => {
     }
 
     // 2️⃣ Extract required values safely
-    const offerId = offer?.id;
+    const id = offerId;
     const currency = offer?.preferredCurrency?.code;
 
     // 3️⃣ Validate required data
