@@ -12,6 +12,7 @@ import { FaRegStar } from "react-icons/fa";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import lastSeenDot from "@/utils/lastSeenDot";
 import { RiArrowLeftRightLine } from "react-icons/ri";
+import { FaUserFriends } from "react-icons/fa";
 
 const OfferCard = ({ offer }) => {
   const navigateTo = useNavigate();
@@ -19,10 +20,6 @@ const OfferCard = ({ offer }) => {
   const handleOfferClick = (offerId) => {
     navigateTo(`/offer/${offerId}`);
   };
-
-  if (!offer) return null;
-
-  console.log(offer);
 
   return (
     <>
@@ -149,7 +146,7 @@ const OfferCard = ({ offer }) => {
             <div className="flex flex-col items-end gap-1 justify-betwee w-full">
               <div className="flex items-center gap-1">
                 <div className="flex  items-center gap-1">
-                  <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <FaUserFriends className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                   <p className="text-xs font-semibold text-tradeFadeWhite">
                     <span className="text-white">
                       {offer?.offerTransactionCount}

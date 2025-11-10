@@ -102,92 +102,89 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
               <NetworkError />
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px] gap-[30px]">
-                {/* Hero */}
-                <div className="flex flex-col gap-[30px]">
-                  {/* Vendor Info */}
-                  <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
-                    <div className="flex items-center justify-between">
-                      <div className="flex gap-2 items-center">
-                        <div className="flex cursor-pointer relative">
-                          {false ? (
-                            <div className="flex w-[40px] h-[40px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
-                              <img src={image} alt="" className="" />
-                            </div>
-                          ) : (
-                            <div className="flex w-[30px] h-[30px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
-                              <img src={image} alt="" className="" />
-                            </div>
-                          )}
-                        </div>
-                        <div className="flex gap-1 items-center">
-                          <p className="text-white text-[13px] font-semibold">
-                            {user?.username ?? ""}
-                          </p>
-                          <p className="text-tradeAshLight leading-none">|</p>
-                          <RiVerifiedBadgeFill className="flex text-tradeGreen text-base flex-shrink-0" />
-                        </div>
+                {/* Vendor Info */}
+                <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
+                  <div className="flex items-center justify-between">
+                    <div className="flex gap-2 items-center">
+                      <div className="flex cursor-pointer relative">
+                        {false ? (
+                          <div className="flex w-[40px] h-[40px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                            <img src={image} alt="" className="" />
+                          </div>
+                        ) : (
+                          <div className="flex w-[30px] h-[30px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                            <img src={image} alt="" className="" />
+                          </div>
+                        )}
                       </div>
-
                       <div className="flex gap-1 items-center">
-                        {lastSeen(user?.lastSeen)}
+                        <p className="text-white text-[13px] font-semibold">
+                          {user?.username ?? ""}
+                        </p>
+                        <p className="text-tradeAshLight leading-none">|</p>
+                        <RiVerifiedBadgeFill className="flex text-tradeGreen text-base flex-shrink-0" />
+                      </div>
+                    </div>
+
+                    <div className="flex gap-1 items-center">
+                      {lastSeen(user?.lastSeen)}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Offer Info */}
+                <div className="flex items-start justify-between">
+                  <div className="flex flex-col gap-[10px] ">
+                    <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
+                      {offer?.serviceName || "N/A"}
+                    </p>
+
+                    <div className="flex gap-1 items-center">
+                      <div className="flex items-center gap-1">
+                        <HiHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <p className="text-[13px] font-semibold text-white">
+                          {id ?? ""}
+                        </p>
+                      </div>
+                      <p className="text-tradeAshLight leading-none">|</p>
+                      <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
+                        {offer?.serviceType || "N/A"}
+                      </p>
+                    </div>
+                    <div className="flex gap-1 items-center">
+                      <div className="flex gap-1 items-center">
+                        <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                        <p className="text-xs font-semibold text-white">
+                          31 Aug, 2045
+                        </p>
+                      </div>
+                      <p className="text-tradeAshLight leading-none">|</p>
+                      <div className="flex gap-1 items-center">
+                        <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                        <p className="text-xs font-semibold text-white">
+                          Verified
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex gap-1 items-center">
+                      <div className="flex gap-1 items-center">
+                        <FaUserFriends className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                        <p className="text-xs font-semibold text-white">
+                          {offer?.completedTrades ?? "0"} Trade(s)
+                        </p>
+                      </div>
+                      <p className="text-tradeAshLight leading-none">|</p>
+                      <div className="flex gap-1 items-center">
+                        <FaRegStar className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                        <p className="text-xs font-semibold text-white">
+                          99% Rating
+                        </p>
                       </div>
                     </div>
                   </div>
 
-                  {/* Offer Info */}
-                  <div className="flex items-start justify-between">
-                    <div className="flex flex-col gap-[10px] ">
-                      <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
-                        {offer?.serviceName || "N/A"}
-                      </p>
-
-                      <div className="flex gap-1 items-center">
-                        <div className="flex items-center gap-1">
-                          <HiHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                          <p className="text-[13px] font-semibold text-white">
-                            {id ?? ""}
-                          </p>
-                        </div>
-                        <p className="text-tradeAshLight leading-none">|</p>
-                        <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
-                          {offer?.serviceType || "N/A"}
-                        </p>
-                      </div>
-                      <div className="flex gap-1 items-center">
-                        <div className="flex gap-1 items-center">
-                          <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                          <p className="text-xs font-semibold text-white">
-                            31 Aug, 2045
-                          </p>
-                        </div>
-                        <p className="text-tradeAshLight leading-none">|</p>
-                        <div className="flex gap-1 items-center">
-                          <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                          <p className="text-xs font-semibold text-white">
-                            Verified
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex gap-1 items-center">
-                        <div className="flex gap-1 items-center">
-                          <FaUserFriends className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                          <p className="text-xs font-semibold text-white">
-                            {offer?.completedTrades ?? "0"} Trade(s)
-                          </p>
-                        </div>
-                        <p className="text-tradeAshLight leading-none">|</p>
-                        <div className="flex gap-1 items-center">
-                          <FaRegStar className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                          <p className="text-xs font-semibold text-white">
-                            99% Rating
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="text-white md:text-4xl text-2xl">
-                      <MdBookmarkAdd />
-                    </div>
+                  <div className="text-white hover:text-tradeFadeWhite md:text-3xl text-2xl cursor-pointer duration-300 transition-all">
+                    <MdBookmarkAdd />
                   </div>
                 </div>
 

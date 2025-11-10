@@ -15,9 +15,9 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { FaRegStar } from "react-icons/fa";
 import { RiArrowLeftRightLine } from "react-icons/ri";
 import lastSeenDot from "@/utils/lastSeenDot";
+import { FaUserFriends } from "react-icons/fa";
 
 const OfferCard = ({ offer }) => {
-  const { setAboutOffer } = usePublicOffers();
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
@@ -163,7 +163,7 @@ const OfferCard = ({ offer }) => {
             <div className="flex flex-col items-end gap-1 justify-betwee w-full">
               <div className="flex items-center gap-1">
                 <div className="flex  items-center gap-1">
-                  <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <FaUserFriends className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                   <p className="text-xs font-semibold text-tradeFadeWhite">
                     <span className="text-white">{offer?.completedTrades}</span>{" "}
                     trades

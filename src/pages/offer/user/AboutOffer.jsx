@@ -1,8 +1,8 @@
-import Footer from "@/components/others/Footer";
+import React, { useState, useEffect, useRef } from "react";
 import InAppNav from "@/components/others/InAppNav";
+import Footer from "@/components/others/Footer";
 import Feedbacks from "@/components/offer/Feedbacks";
 import OfferDetails from "@/components/offer/userOffer/OfferDetails";
-import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFetchAboutOffers } from "@/hooks/userHooks/useFetchAboutOffer";
 import { useUserOffer } from "@/context/userContext/OffersContext";
@@ -11,25 +11,22 @@ import AboutMenu from "@/components/offer/userOffer/AboutMenu";
 import TradeHistory from "@/components/offer/userOffer/TradeHistory";
 
 const AboutOffer = () => {
-  const { id } = useParams();
+  const { id = "" } = useParams();
   const { loading } = useFetchAboutOffers(id);
-  const { aboutOffer } = useUserOffer();
+  const { aboutOffer, setAboutOffer } = useUserOffer();
   const { feedback } = aboutOffer || {};
 
-  const navigateTo = useNavigate();
-
-  const handleEdit = () => {
-    const id = aboutOffer?.offerId;
-
-    if (!id) {
-      console.error("Offer ID is missing. Cannot navigate.");
-      return;
+  useEffect(() => {
+    if (id) {
+      setAboutOffer((prev) => ({
+        ...prev,
+        id: id,
+      }));
     }
+  }, [id]);
 
-    navigateTo(`/offers/myoffers/${id}/edit`);
-  };
-
-  console.log(aboutOffer);
+  console.log("Param Offer ID:", id);
+  console.log("aboutOffer:", aboutOffer);
 
   return (
     <>
@@ -38,7 +35,7 @@ const AboutOffer = () => {
         <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
           {/* <AboutMenu /> */}
           <div className="flex flex-1 flex-col gap-[40px] lg:mx-[22.8%] p-[15px]">
-            <OfferDetails aboutOffer={aboutOffer} loading={loading} />
+            <OfferDetails aboutOffer={aboutOffer} loading={loading} id={id} />
             <TradeHistory loading={loading} />
             <Feedbacks loading={loading} />
           </div>
