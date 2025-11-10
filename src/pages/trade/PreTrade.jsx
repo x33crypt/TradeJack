@@ -11,6 +11,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import toDecimal from "@/utils/toDecimal";
 import { usePublicOffers } from "@/context/publicContext/OffersContext";
+import { useFetchAboutOffers } from "@/hooks/publicHooks/useFetchAboutOffer";
 import lastSeen from "@/utils/lastSeen";
 import { RiArrowLeftRightLine } from "react-icons/ri";
 import { FaCircleInfo } from "react-icons/fa6";
@@ -20,10 +21,12 @@ import SmallButton from "@/components/buttons/SmallButton";
 import { IoClose } from "react-icons/io5";
 import { MdOutlineTimer } from "react-icons/md";
 import { MdTimer } from "react-icons/md";
+import { FaUserFriends } from "react-icons/fa";
 
 const PreTrade = () => {
   const { id = "", amount = "", currency = "" } = useParams();
   const { aboutOffer, setAboutOffer } = usePublicOffers();
+  const { loading } = useFetchAboutOffers();
   const [waitTime, setWaitTime] = useState({
     state: false,
     time: null,
@@ -101,9 +104,9 @@ const PreTrade = () => {
             </div>
           </div>
           <div className="flex flex-col gap-[30px]">
-            {/* Trade/Vendor/Offer Info */}
+            {/* Trade Info */}
             <div className="flex flex-col gap-[10px]">
-              {/* Offer Info */}
+              {/* Vendor Info */}
               <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2 items-center">
@@ -131,41 +134,9 @@ const PreTrade = () => {
                     {lastSeen(user?.lastSeen)}
                   </div>
                 </div>
-                {/* <div className="flex items-center justify-between">
-                  <div className="flex gap-1 items-center">
-                    <div className="flex items-center gap-1">
-                      <FaHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                      <p className="text-[13px] font-semibold text-white">
-                        {id ?? ""}
-                      </p>
-                    </div>
-                    <p className="text-tradeAshLight leading-none">|</p>
-                    <div className="flex  items-center gap-1">
-                      <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                      <p className="text-[13px] font-semibold text-white">
-                        {offer?.completedTrades ?? "0"}
-                      </p>
-                    </div>
-                    <p className="text-tradeAshLight leading-none">|</p>
-                    <div className="flex  items-center gap-1">
-                      <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                      <p className="text-[13px] font-semibold text-white">
-                        99%
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-1 items-center">
-                    <p className="text-white text-[13px] font-semibold">
-                      {toDecimal(amount) ?? "0.00"}{" "}
-                      <span className="text-tradeFadeWhite font-semibold">
-                        {currency ?? "N/A"}
-                      </span>
-                    </p>
-                  </div>
-                </div> */}
               </div>
 
+              {/* Trade & Offer Info */}
               <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2 items-center">
@@ -174,27 +145,21 @@ const PreTrade = () => {
                     </p>
                   </div>
 
-                  <div className="flex gap-2 items-center">
-                    <p className="text-white text-[13px] font-semibold">
-                      {offer?.preferredCurrency?.name ?? ""}
+                  <div className="flex items-center gap-1">
+                    <FaHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                    <p className="text-[13px] font-semibold text-white">
+                      {id ?? ""}
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex gap-1 items-center">
-                    <div className="flex items-center gap-1">
-                      <FaHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                      <p className="text-[13px] font-semibold text-white">
-                        {id ?? ""}
-                      </p>
-                    </div>
-                    {/* <p className="text-tradeAshLight leading-none">|</p>
                     <div className="flex  items-center gap-1">
-                      <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                      <FaUserFriends className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                       <p className="text-[13px] font-semibold text-white">
                         {offer?.completedTrades ?? "0"}
                       </p>
-                    </div> */}
+                    </div>
                     <p className="text-tradeAshLight leading-none">|</p>
                     <div className="flex  items-center gap-1">
                       <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
@@ -205,7 +170,6 @@ const PreTrade = () => {
                   </div>
 
                   <div className="flex gap-1 items-center">
-                    <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                     <p className="text-white text-[13px] font-semibold">
                       {toDecimal(amount) ?? "0.00"}{" "}
                       <span className="text-tradeFadeWhite font-semibold">
@@ -215,58 +179,6 @@ const PreTrade = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Checks Result */}
-              {/* <div className="flex justify-normal flex-wrap gap-[10px]">
-                  <div className="flex items-center gap-1 borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    {true ? (
-                      <FaRegCircleCheck className="text-sm text-tradeGreen" />
-                    ) : false ? (
-                      <IoClose className="text-xl text-red-600" />
-                    ) : (
-                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
-                    )}
-                    <p className="text-[13px] font-semibold text-white">
-                      Validations
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-1 text-white borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    {true ? (
-                      <FaRegCircleCheck className="text-sm text-tradeGreen" />
-                    ) : false ? (
-                      <IoClose className="text-xl text-red-600" />
-                    ) : (
-                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
-                    )}
-                    <p className="text-[13px] font-semibold text-white">
-                      Limit Check
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-1 text-white borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    {false ? (
-                      <FaRegCircleCheck className="text-sm text-tradeGreen" />
-                    ) : true ? (
-                      <IoClose className="text-xl text-red-600" />
-                    ) : (
-                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
-                    )}
-                    <p className="text-[13px] font-semibold text-white">
-                      Deposit Status
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-1 text-white borde border-tradeAshExtraLight  p-1 w-max h-max bg-tradeAshLight rounded-md cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                    {false ? (
-                      <FaRegCircleCheck className="text-sm text-tradeGreen" />
-                    ) : false ? (
-                      <IoClose className="text-xl text-red-600" />
-                    ) : (
-                      <PiSpinnerGapBold className="text-sm animate-spin text-white" />
-                    )}
-                    <p className="text-[13px] font-semibold text-white">
-                      Set to Trade
-                    </p>
-                  </div>
-                </div> */}
             </div>
 
             {/* Checks Result */}
@@ -538,7 +450,7 @@ const PreTrade = () => {
                         <div className="text-tradeFadeWhite/50 text-base flex-shrink-0 h-max w-max">
                           <MdTimer />
                         </div>
-                        <p className="text-2xl font-bold text-tradeFadeWhite">5:00</p>
+                        <p className="text-xl font-bold text-white">5:00</p>
                       </div>
 
                       <div className="flex gap-2 items-center ">
@@ -593,6 +505,8 @@ const PreTrade = () => {
                     </Button>
                   </div>
                 </div>
+
+                {/* <div></div> */}
               </div>
             </div>
           </div>
