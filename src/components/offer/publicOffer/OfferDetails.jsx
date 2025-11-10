@@ -247,30 +247,24 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                         Rate
                       </p>
 
-                      <p className="text-tradeGreen text-sm font-semibold leading-none">
-                        {toDecimal(offer?.marginRate?.ratePrice)}
-                      </p>
+                      <div className="flex gap-1 items-center">
+                        <p className="text-tradeGreen text-sm font-semibold leading-none">
+                          {toDecimal(offer?.marginRate?.ratePrice)}
+                        </p>
+                        <p className="text-tradeAshLight leading-none">|</p>
+                        <p className="text-white text-sm font-semibold leading-none">
+                          {offer?.marginRate?.ratePercent || "N/A"}%
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="w-full flex flex-col gap-1">
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Margin
-                        </p>
-
-                        <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                          {offer?.marginRate?.ratePercent || "N/A"}% MARGIN
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Currency
-                        </p>
-                        <p className="text-[13px] text-white font-semibold">
-                          {offer?.preferredCurrency?.name}
-                        </p>
-                      </div>
+                    <div className="flex items-center justify-between">
+                      <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                        Currency
+                      </p>
+                      <p className="text-[13px] text-white font-semibold">
+                        {offer?.preferredCurrency?.name}
+                      </p>
                     </div>
                   </div>
 
