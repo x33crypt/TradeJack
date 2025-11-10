@@ -149,15 +149,13 @@ const OfferDetails = ({ loading, aboutOffer }) => {
                   <div className="flex justify-between items-center flex-1 gap-[10px]">
                     <div className="flex flex-col gap-[10px]">
                       <div className="flex gap-1 items-center">
-                        <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
-                          <GrStatusGoodSmall className="flex text-tradeGreen text-[12px] flex-shrink-0" />
-                        </div>
+                        <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
                           Posted 31 Aug, 2045
                         </p>
                       </div>
                       <div className="flex gap-1 items-center">
-                        <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-lg flex-shrink-0" />
+                        <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
                           Certified and Secure
                         </p>
@@ -166,13 +164,13 @@ const OfferDetails = ({ loading, aboutOffer }) => {
 
                     <div className="flex flex-col gap-[10px]">
                       <div className="flex  items-center gap-1">
-                        <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
                           {offer?.completedTrades ?? "0"} Completed Trade(s)
                         </p>
                       </div>
                       <div className="flex  items-center gap-1">
-                        <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <FaRegStar className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
                           99% Completion Rating
                         </p>

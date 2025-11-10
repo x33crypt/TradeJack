@@ -150,11 +150,11 @@ const OfferCard = ({ offer }) => {
           <div className="flex justify-between w-full items-center">
             <div className="flex gap-1 items-center w-full ">
               <div>{lastSeenDot(offer?.lastSeen)}</div>
-
+              <p className="text-tradeAshLight leading-none">|</p>
               <p className="text-[13px] font-semibold text-white">
                 {offer?.Username}
               </p>
-
+              <p className="text-tradeAshLight leading-none">|</p>
               <div className="flex gap-1 items-center">
                 <RiVerifiedBadgeFill className="flex text-tradeGreen text-sm flex-shrink-0" />
               </div>

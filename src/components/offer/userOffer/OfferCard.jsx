@@ -9,7 +9,9 @@ import { GrStatusGoodSmall } from "react-icons/gr";
 import { capitalizeFirst } from "@/utils/capitalizeFirst";
 import { MdThumbUp } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
-
+import { AiOutlineSafetyCertificate } from "react-icons/ai";
+import lastSeenDot from "@/utils/lastSeenDot";
+import { RiArrowLeftRightLine } from "react-icons/ri";
 
 const OfferCard = ({ offer }) => {
   const navigateTo = useNavigate();
@@ -19,6 +21,8 @@ const OfferCard = ({ offer }) => {
   };
 
   if (!offer) return null;
+
+  console.log(offer);
 
   return (
     <>
@@ -131,22 +135,26 @@ const OfferCard = ({ offer }) => {
         <div className="flex flex-col gap-3">
           <div className="flex justify-between w-full items-center">
             <div className="flex gap-1 items-center w-full ">
-              <div>
-                <LuCalendarClock className="flex text-tradeFadeWhite text-base flex-shrink-0" />
-              </div>
-              <div>
-                <p className="text-xs font-semibold text-white">
-                  {monthDate(offer?.publishedOn)}
-                </p>
+              <div>{lastSeenDot()}</div>
+              <p className="text-tradeAshLight leading-none">|</p>
+              <p className="text-[13px] font-semibold text-white">
+                {offer?.offerId}
+              </p>
+              <p className="text-tradeAshLight leading-none">|</p>
+              <div className="flex gap-1 items-center">
+                <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
               </div>
             </div>
 
             <div className="flex flex-col items-end gap-1 justify-betwee w-full">
               <div className="flex items-center gap-1">
-                <div className="flex items-center gap-1">
-                  <GrStatusGoodSmall className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+                <div className="flex  items-center gap-1">
+                  <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                   <p className="text-xs font-semibold text-tradeFadeWhite">
-                    {capitalizeFirst(offer?.status)}
+                    <span className="text-white">
+                      {offer?.offerTransactionCount}
+                    </span>{" "}
+                    trades
                   </p>
                 </div>
                 <p className="text-tradeAshLight leading-none">|</p>

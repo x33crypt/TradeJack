@@ -21,6 +21,9 @@ import { TbCubeSpark } from "react-icons/tb";
 import { BsPauseFill } from "react-icons/bs";
 import { MdOutlinePause } from "react-icons/md";
 import { AiFillStop } from "react-icons/ai";
+import { RiArrowLeftRightLine } from "react-icons/ri";
+import { AiOutlineSafetyCertificate } from "react-icons/ai";
+import lastSeenDot from "@/utils/lastSeenDot";
 
 const OfferDetails = ({ aboutOffer, loading }) => {
   const { offerDetails, traderInfo } = aboutOffer || {};
@@ -64,28 +67,26 @@ const OfferDetails = ({ aboutOffer, loading }) => {
                     </div>
                   </div>
 
-                  <div className="flex items-center flex-1 gap-[10px]">
-                    <div className="flex flex-1 flex-col gap-[10px]">
+                  <div className="flex justify-between items-center flex-1 gap-[10px]">
+                    <div className="flex flex-col gap-[10px]">
                       <div className="flex  items-center gap-1">
-                        <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
-                        <p className="text-xs font-semibold text-white">
-                          Active
-                        </p>
+                        <div>{lastSeenDot()}</div>
+                        <p className="text-xs font-semibold text-white">Live</p>
                       </div>
                       <div className="flex gap-1 items-center">
                         <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
-                          Created 31 Aug, 2025
+                          Posted 31 Aug, 2025
                         </p>
                       </div>
                       <div className="flex gap-1 items-center">
-                        <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                        <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
-                          Updated 31 Aug, 2025
+                          Certified and Secure
                         </p>
                       </div>
                     </div>
-                    <div className="flex flex-1 flex-col gap-[10px]">
+                    <div className="flex flex-col gap-[10px]">
                       <div className="flex gap-1 items-center">
                         <GoBookmarkFill className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
@@ -93,7 +94,7 @@ const OfferDetails = ({ aboutOffer, loading }) => {
                         </p>
                       </div>
                       <div className="flex  items-center gap-1">
-                        <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                        <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
                           {offerDetails?.completedTrades ?? "0"} Completed
                           Trade(s)
