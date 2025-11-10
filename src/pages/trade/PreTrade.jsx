@@ -18,6 +18,8 @@ import Button from "@/components/buttons/Button";
 import LockByScroll from "@/components/others/LockByScroll";
 import SmallButton from "@/components/buttons/SmallButton";
 import { IoClose } from "react-icons/io5";
+import { MdOutlineTimer } from "react-icons/md";
+import { MdTimer } from "react-icons/md";
 
 const PreTrade = () => {
   const { id = "", amount = "", currency = "" } = useParams();
@@ -186,13 +188,13 @@ const PreTrade = () => {
                         {id ?? ""}
                       </p>
                     </div>
-                    <p className="text-tradeAshLight leading-none">|</p>
+                    {/* <p className="text-tradeAshLight leading-none">|</p>
                     <div className="flex  items-center gap-1">
                       <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                       <p className="text-[13px] font-semibold text-white">
                         {offer?.completedTrades ?? "0"}
                       </p>
-                    </div>
+                    </div> */}
                     <p className="text-tradeAshLight leading-none">|</p>
                     <div className="flex  items-center gap-1">
                       <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
@@ -203,6 +205,7 @@ const PreTrade = () => {
                   </div>
 
                   <div className="flex gap-1 items-center">
+                    <RiArrowLeftRightLine className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                     <p className="text-white text-[13px] font-semibold">
                       {toDecimal(amount) ?? "0.00"}{" "}
                       <span className="text-tradeFadeWhite font-semibold">
@@ -438,7 +441,7 @@ const PreTrade = () => {
               </div>
               {/* Collateral*/}
               <div
-                className={`${true ? "flex" : "hidden"}  flex-col gap-[40px] `}
+                className={`${false ? "flex" : "hidden"}  flex-col gap-[40px] `}
               >
                 <div className="flex flex-col gap-[20px]">
                   <div className="flex flex-col gap-[10px] ">
@@ -520,10 +523,78 @@ const PreTrade = () => {
                   </div>
                 </div>
               </div>
-            </div>
+              {/*Awaiting Collateral*/}
+              <div
+                className={`${true ? "flex" : "hidden"}  flex-col gap-[40px] `}
+              >
+                <div className="flex flex-col gap-[20px]">
+                  <div className="flex flex-col gap-[10px] ">
+                    <p className="text-sm text-white font-bold">
+                      Waiting for Vendor Deposit
+                    </p>
 
-            {/* Supplemetry UI's */}
-            <div className="flex flex-col"></div>
+                    <div className="flex flex-col gap-[20px]">
+                      <div className="flex gap-2 items-center ">
+                        <div className="text-tradeFadeWhite/50 text-base flex-shrink-0 h-max w-max">
+                          <MdTimer />
+                        </div>
+                        <p className="text-2xl font-bold text-tradeFadeWhite">5:00</p>
+                      </div>
+
+                      <div className="flex gap-2 items-center ">
+                        <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
+                          <FaCircleInfo />
+                        </div>
+
+                        <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                          You've given the vendor a{" "}
+                          <span className="text-tradeOrange cursor-pointer">
+                            5-minute waiting window
+                          </span>{" "}
+                          to top up the required collateral. Please be patient
+                          while they complete the deposit. If the vdendor
+                          doesn't fund their collateral within this period, you
+                          can cancel the trade and explore other available
+                          offers.
+                        </p>
+                      </div>
+
+                      <div className="flex gap-2 items-center ">
+                        <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
+                          <FaCircleInfo />
+                        </div>
+                        <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                          Collateral serves as a safety gurantee that ensures
+                          the vendor can fulfill the trade without risk of loss
+                          to the seller. When the vendor's collateral drops
+                          below the threshold, new trades are restricted untill
+                          the balance is replenished.
+                        </p>
+                      </div>
+
+                      <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                        In the event of any dispute, the{" "}
+                        <span className="text-tradeOrange cursor-pointer">
+                          P2P Trading Rules
+                        </span>{" "}
+                        and{" "}
+                        <span className="text-tradeOrange cursor-pointer">
+                          P2P Protection Policy
+                        </span>{" "}
+                        will apply. Users who violate these rules will not be
+                        eligible for protection.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col-reverse md:flex-row gap-[10px]">
+                    <Button variant="Fadeout" disabled={true}>
+                      CANCEL
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
