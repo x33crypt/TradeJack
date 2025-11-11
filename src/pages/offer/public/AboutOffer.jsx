@@ -39,39 +39,26 @@ const AboutOffer = () => {
             <Feedbacks feedbacks={aboutOffer} id={id} loading={loading} />
             <div className="flex flex-col gap-[30px] ">
               <div className="flex flex-col gap-3  ">
-                <div className="flex gap-2 items-center ">
-                  <div className="text-tradeGreen text-sm flex-shrink-0 h-max w-max">
-                    <SiAdguard />
-                  </div>
-                  <p className="text-xs text-tradeFadeWhite/50 font-medium leading-relaxed">
-                    This offer has been carefully reviewed and verified by our
-                    system to ensure it meets our standards for fairness,
-                    accuracy, and user protection. Every verified offer
-                    undergoes automated and manual checks to confirm the
-                    vendor’s authenticity, collateral compliance, and
-                    transaction reliability. You can trade with confidence
-                    knowing that this offer has passed our trust and safety
-                    screening.
-                  </p>
-                </div>
+                <p className="text-xs text-tradeFadeWhite/50 font-medium leading-relaxed">
+                  This offer has been carefully reviewed and verified by our
+                  system to ensure it meets our standards for fairness,
+                  accuracy, and user protection. Every verified offer undergoes
+                  automated and manual checks to confirm the vendor’s
+                  authenticity, collateral compliance, and transaction
+                  reliability. You can trade with confidence knowing that this
+                  offer has passed our trust and safety screening.
+                </p>
 
-                <div className="flex gap-2 items-center ">
-                  <div className="text-tradeOrange text-lg flex-shrink-0 h-max w-max">
-                    <TiWarning />
-                  </div>
-                  <p className="text-xs text-tradeFadeWhite/50 font-medium leading-relaxed">
-                    If you ever find this offer misleading, biased, or
-                    inconsistent with our marketplace standards, please let us
-                    know. Your feedback plays an important role in keeping the
-                    platform transparent, fair, and trustworthy for everyone.
-                    Use the{" "}
-                    <span className="text-tradeOrange font-semibold">
-                      Report
-                    </span>{" "}
-                    button to submit your concern — our compliance team will
-                    promptly review and take appropriate action.
-                  </p>
-                </div>
+                <p className="text-xs text-tradeFadeWhite/50 font-medium leading-relaxed">
+                  If you ever find this offer misleading, biased, or
+                  inconsistent with our marketplace standards, please let us
+                  know. Your feedback plays an important role in keeping the
+                  platform transparent, fair, and trustworthy for everyone. Use
+                  the{" "}
+                  <span className="text-tradeOrange font-semibold">Report</span>{" "}
+                  button to submit your concern — our compliance team will
+                  promptly review and take appropriate action.
+                </p>
               </div>
 
               <Button variant="danger">REPORT</Button>

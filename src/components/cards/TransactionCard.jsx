@@ -25,7 +25,7 @@ const TransactionCard = ({ transaction }) => {
       {/* Mobile Card */}
       <div
         onClick={() => viewDetails(transaction.reference)}
-        className="md:hidde flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh active:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer"
+        className="md:hidde flex flex-col justify-between p-[12px] gap-2  bg-tradeAsh hover:bg-tradeAshLight active:bg-tradeAshLight rounded-[15px] border border-tradeAshLight transition-all duration-300 cursor-pointer"
       >
         <div className="flex justify-between  ">
           <div className="flex gap-2">
@@ -49,9 +49,9 @@ const TransactionCard = ({ transaction }) => {
               )}
             </div>
             <div className="flex flex-col gap-1">
-              <p className="text-xs font-medium text-tradeFadeWhite">
+              {/* <p className="text-xs font-medium text-tradeFadeWhite">
                 {capitalizeFirst(transaction?.type)}
-              </p>
+              </p> */}
 
               <p className="text-[13px] font-semibold text-white">
                 {(() => {
@@ -84,12 +84,13 @@ const TransactionCard = ({ transaction }) => {
                   return "N/A";
                 })()}
               </p>
+
+              <p className="text-xs font-medium text-tradeFadeWhite">
+                {date(transaction?.createdAt)}
+              </p>
             </div>
           </div>
           <div className="flex flex-col gap-1 items-end">
-            <p className="text-xs font-medium text-tradeFadeWhite">
-              {date(transaction?.createdAt)}
-            </p>
             <div>
               {(() => {
                 const { senderUsername, recipientUsername, type, amount } =
@@ -125,9 +126,23 @@ const TransactionCard = ({ transaction }) => {
                 );
               })()}
             </div>
+
+            <p
+              className={`text-xs font-semibold ${
+                transaction?.status === "pending"
+                  ? "text-tradeOrange"
+                  : transaction?.status === "successful"
+                  ? "text-tradeGreen"
+                  : transaction?.status === "failed"
+                  ? "text-red-600"
+                  : "text-tradeAshDark"
+              } `}
+            >
+              {capitalizeFirst(transaction?.status) || "Unknown"}
+            </p>
           </div>
         </div>
-        <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
+        {/* <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
           <div className="flex flex-col gap-1">
             <p className="text-xs font-medium text-white">
               {shortenID(transaction?.reference)}
@@ -152,7 +167,7 @@ const TransactionCard = ({ transaction }) => {
             </p>
             <p className="text-xs font-medium text-tradeFadeWhite">Status</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
