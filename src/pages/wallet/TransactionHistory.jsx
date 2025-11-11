@@ -1,6 +1,6 @@
 import Footer from "@/components/others/Footer";
 import InAppNav from "@/components/others/InAppNav";
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 import TransactionCard from "@/components/cards/TransactionCard";
 import { useTransaction } from "@/context/userContext/TransactionContext";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
@@ -11,14 +11,14 @@ import SmallButton from "@/components/buttons/SmallButton";
 import { RiLoader4Fill } from "react-icons/ri";
 import NetworkError from "@/components/others/NetworkError";
 import { BiFileBlank } from "react-icons/bi";
-import TransactionMenu from "@/components/wallet/TransactionMenu";
-import { TbArrowsSort } from "react-icons/tb";
-import { LuCalendarClock } from "react-icons/lu";
+import { groupByDate } from "@/utils/groupByDate";
+import MiniButton from "@/components/buttons/MiniButton";
 
 const TransactionHistory = () => {
   const topRef = useRef(null);
   const {
-    loading,
+    loading, // loading for load more
+    initialLoading, // only on mount
     refetchAllTransactions,
     pagination,
     page,
@@ -27,7 +27,6 @@ const TransactionHistory = () => {
   } = useFetchAllTransactions();
   const { transactions, filter, setFilter } = useTransaction();
   const [triggerScroll, setTriggerScroll] = useState(false);
-  const [loadingNext, setLoadingNext] = useState(false);
   const { select, setSelect } = useSelectElement();
 
   console.log("Transactions", transactions);
@@ -94,7 +93,7 @@ const TransactionHistory = () => {
     }));
   };
 
-  useEffect(() => {
+  const reset = () => {
     setFilter({
       date: { monthNo: null, monthName: null, year: null },
       type: null,
@@ -102,17 +101,15 @@ const TransactionHistory = () => {
     });
 
     refetchAllTransactions();
+  };
+
+  useEffect(() => {
+    reset();
   }, []);
 
-  const transactionStatus = [
-    "All status",
-    "Pending",
-    "Failed",
-    "Successful",
-    "Processing",
-  ];
+  const transactionStatus = ["Pending", "Failed", "Successful", "Processing"];
 
-  const transactionTypes = ["All types", "Transfer", "Deposit", "Withdraw"];
+  const transactionTypes = ["Transfer", "Deposit", "Withdraw"];
 
   // handling transaction type change
   useEffect(() => {
@@ -120,27 +117,51 @@ const TransactionHistory = () => {
 
     if (select.element === "type") {
       console.log("Transaction type selected:", select.pick);
-      const selectedType = select.pick === "All types" ? null : select.pick;
+      const selectedType = select.pick;
 
       setFilter((prev) => ({
         ...prev,
         type: selectedType,
       }));
     }
+
+    setSelect({
+      ...select,
+      state: false,
+      selectOne: false,
+      selectTwo: false,
+      page: "",
+      element: "",
+      options: null,
+      pick: "",
+    });
   }, [select]);
 
   // handling transaction status change
   useEffect(() => {
     if (select?.page !== "transaction history" || !select?.pick) return;
 
-    if (select.element === " status") {
-      const selectedStatus = select.pick === "All status" ? null : select.pick;
+    if (select.element === "status") {
+      const selectedStatus = select.pick;
+
+      console.log(selectedStatus);
 
       setFilter((prev) => ({
         ...prev,
         status: selectedStatus,
       }));
     }
+
+    setSelect({
+      ...select,
+      state: false,
+      selectOne: false,
+      selectTwo: false,
+      page: "",
+      element: "",
+      options: null,
+      pick: "",
+    });
   }, [select]);
 
   // This Function handles Loading of transactions
@@ -170,6 +191,8 @@ const TransactionHistory = () => {
   const isEnd = pagination && !pagination.hasNextPage && !isEmpty;
   const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
 
+  const grouped = groupByDate(transactions?.data, "createdAt");
+
   return (
     <>
       <InAppNav />
@@ -189,27 +212,7 @@ const TransactionHistory = () => {
 
             <div className="flex items-center gap-2 justify-between">
               <div className="flex items-center gap-2">
-                <div
-                  onClick={() =>
-                    setSelect({
-                      ...select,
-                      state: true,
-                      selectOne: true,
-                      selectTwo: false,
-                      element: "type",
-                      options: transactionTypes,
-                      pick: "",
-                      page: "transaction history",
-                    })
-                  }
-                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
-                >
-                  <TbArrowsSort />
-                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    <p>{filter?.type ? filter?.type : "TYPE"}</p>
-                  </p>
-                </div>
-                <div
+                <MiniButton
                   onClick={() =>
                     setSelect({
                       ...select,
@@ -222,26 +225,42 @@ const TransactionHistory = () => {
                       page: "transaction history",
                     })
                   }
-                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                  active={filter?.status != null}
                 >
-                  <TbArrowsSort />
-                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    <p>{filter?.status ? filter?.status : " STATUS"}</p>
+                  <p>
+                    {filter?.status ? filter?.status?.toUpperCase() : " STATUS"}
                   </p>
-                </div>
+                </MiniButton>
+
+                <MiniButton
+                  onClick={() =>
+                    setSelect({
+                      ...select,
+                      state: true,
+                      selectOne: true,
+                      selectTwo: false,
+                      element: "type",
+                      options: transactionTypes,
+                      pick: "",
+                      page: "transaction history",
+                    })
+                  }
+                  active={filter?.type != null}
+                >
+                  <p>{filter?.type ? filter.type.toUpperCase() : "TYPE"}</p>
+                </MiniButton>
               </div>
 
               <div className="relative flex items-center gap-2">
-                <div
+                <MiniButton
                   onClick={handleDateClick}
-                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                  active={filter?.date?.year != null}
                 >
-                  <LuCalendarClock />
-                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    {filter.date?.monthName ? filter.date?.monthName : "MONTH"},{" "}
-                    {filter.date?.year ? filter.date?.year : "YEAR"}
-                  </p>
-                </div>
+                  {filter.date?.monthName
+                    ? filter.date?.monthName.toUpperCase()
+                    : "MONTH"}
+                  , {filter.date?.year ? filter.date?.year : "YEAR"}
+                </MiniButton>
 
                 <input
                   type="month"
@@ -252,21 +271,13 @@ const TransactionHistory = () => {
                   className="absolute opacity-0 w-0 h-0 pointer-events-none"
                 />
 
-                {/* <div
-                  onClick={handleClearFilter}
-                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
-                >
-                  <IoNuclearSharp />
-                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    RESET
-                  </p>
-                </div> */}
+                <MiniButton onClick={reset}>RESET</MiniButton>
               </div>
             </div>
 
             <div className="flex flex-col flex-1 justify-between gap-[20px]">
               <div className="flex-1 flex flex-col gap-[15px]">
-                {loading ? (
+                {initialLoading ? (
                   <Loading />
                 ) : (
                   <div className="flex flex-1">
@@ -277,9 +288,24 @@ const TransactionHistory = () => {
                         {Array.isArray(transactions?.data) &&
                         transactions?.data?.length > 0 ? (
                           <div className="flex flex-col gap-[5px] w-full h-max">
-                            {transactions?.data?.map((transaction, index) => (
-                              <div key={index}>
-                                <TransactionCard transaction={transaction} />
+                            {grouped.map((group) => (
+                              <div
+                                key={group.dateKey}
+                                className="bg-tradeDark rounded-lg pb-[10px]"
+                              >
+                                <div className="">
+                                  <p className="text-xs text-tradeFadeWhite/80 font-semibold mb-2">
+                                    {group.label}
+                                  </p>
+                                </div>
+
+                                <div className="flex flex-col gap-[10px]">
+                                  {group.items.map((transaction) => (
+                                    <TransactionCard
+                                      transaction={transaction}
+                                    />
+                                  ))}
+                                </div>
                               </div>
                             ))}
                           </div>
@@ -326,7 +352,7 @@ const TransactionHistory = () => {
                     <SmallButton variant="outline">
                       {pagination?.hasNextPage ? (
                         <div onClick={handleNext}>
-                          {loadingNext ? (
+                          {loading ? (
                             <RiLoader4Fill className="animate-spin text-[19.5px] text-tradeFadeWhite" />
                           ) : (
                             <p>Load more</p>

@@ -1,106 +1,182 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import api from "@/utils/http/api";
 import { useTransaction } from "@/context/userContext/TransactionContext";
 
+/**
+ * useFetchAllTransactions
+ * Reworked to match the structure/robustness of the user-offers hook:
+ * - separate initialLoading vs loading (load more)
+ * - request cancellation / mounted guard
+ * - buildQueryParams helper
+ * - merge & dedupe when appending pages
+ */
 export function useFetchAllTransactions(initialPage = 1, limit = 10) {
   const { setTransactions, filter } = useTransaction();
+
   const [page, setPage] = useState(initialPage);
   const [pagination, setPagination] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  // separate loading states
+  const [initialLoading, setInitialLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+
   const [displayedCount, setDisplayedCount] = useState(0);
 
-  // ─────────────────────────────────────────────────────────────
-  // stable fetch helper (doesn't depend on `page`)
-  // ─────────────────────────────────────────────────────────────
+  // mounted guard + abort controller ref
+  const mountedRef = useRef(true);
+  const abortRef = useRef(null);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+      if (abortRef.current) {
+        // cancel any in-flight request on unmount
+        try {
+          abortRef.current.abort();
+        } catch (e) {
+          // ignore
+        }
+        abortRef.current = null;
+      }
+    };
+  }, []);
+
+  // build query params object (axios-friendly)
+  const buildQueryParams = useCallback(
+    (pageToLoad) => {
+      const params = {};
+
+      if (filter?.type && filter.type !== "All types") {
+        params.type = filter.type.toLowerCase();
+      }
+
+      if (filter?.status && filter.status !== "All status") {
+        params.status = filter.status.toLowerCase();
+      }
+
+      if (filter?.date?.monthNo) params.month = filter.date.monthNo;
+      if (filter?.date?.year) params.year = filter.date.year;
+
+      // pagination
+      params.page = pageToLoad;
+      params.limit = limit;
+
+      return params;
+    },
+    [filter, limit]
+  );
+
+  // merge & dedupe helper (keeps newest first by createdAt)
+  const mergeAndDedupe = useCallback((oldList = [], newList = []) => {
+    const map = new Map();
+    // keep newest from newList when conflicts: put old first then new overrides
+    [...oldList, ...newList].forEach((t) => map.set(t.id, t));
+    return Array.from(map.values()).sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+  }, []);
+
+  // stable fetch helper
   const fetchPage = useCallback(
-    async (pageToLoad) => {
-      setLoading(true);
+    async (pageToLoad = 1, isInitial = false) => {
+      // cancel previous request if any
+      if (abortRef.current) {
+        try {
+          abortRef.current.abort();
+        } catch (e) {
+          // ignore
+        }
+      }
+
+      const controller = new AbortController();
+      abortRef.current = controller;
+      const signal = controller.signal;
+
+      if (isInitial) setInitialLoading(true);
+      else setLoading(true);
+
       setError(null);
 
-      const buildUrl = () => {
-        const params = new URLSearchParams();
-
-        if (filter?.type && filter.type !== "All types") {
-          params.append("type", filter.type.toLowerCase());
-        }
-
-        if (filter?.status && filter.status !== "All status") {
-          params.append("status", filter.status.toLowerCase());
-        }
-
-        if (filter?.date?.monthNo) {
-          params.append("month", filter.date.monthNo);
-        }
-
-        if (filter?.date?.year) {
-          params.append("year", filter.date.year);
-        }
-
-        return `/payment/wallet-history?${params.toString()}`;
-      };
-
       try {
-        const url = buildUrl();
-        console.log(url);
+        const params = buildQueryParams(pageToLoad);
 
-        const res = await api.get(url, {
-          params: { page: pageToLoad, limit },
+        const res = await api.get("/payment/wallet-history", {
+          params,
+          signal, // ensure your api wrapper forwards AbortController.signal
         });
 
+        if (!mountedRef.current) return;
+
         if (res.status === 200 && res.data?.success) {
-          const { data, pagination } = res.data;
+          const { data = [], pagination: pageInfo } = res.data;
 
           if (pageToLoad === 1) {
+            // replace full set for first page
             setTransactions(res.data);
             setDisplayedCount(data.length);
           } else {
-            setTransactions((prev) => ({
-              ...res.data,
-              data: [...prev.data, ...data],
-            }));
+            // append & dedupe
+            setTransactions((prev) => {
+              const prevData = (prev && prev.data) || [];
+              const merged = mergeAndDedupe(prevData, data);
+              return {
+                ...res.data,
+                data: merged,
+              };
+            });
             setDisplayedCount((prev) => prev + data.length);
           }
 
-          setPagination(pagination);
+          setPagination(pageInfo);
           setPage(pageToLoad);
         } else {
           throw new Error("Unexpected response format");
         }
       } catch (err) {
-        setError(
-          err?.response?.data?.errorMessage || err?.message || "Unknown error"
-        );
+        if (err?.name === "CanceledError" || err?.code === "ERR_CANCELED") {
+          // request cancelled — ignore
+          // console.log("fetchPage cancelled");
+        } else {
+          const serverMsg =
+            err?.response?.data?.errorMessage || err?.message || "Unknown error";
+          setError(serverMsg);
+        }
       } finally {
-        setLoading(false);
+        if (mountedRef.current) {
+          if (isInitial) setInitialLoading(false);
+          else setLoading(false);
+        }
+        // clear abortRef for this finished request
+        if (abortRef.current === controller) abortRef.current = null;
       }
     },
-    [limit, filter]
+    [buildQueryParams, mergeAndDedupe, setTransactions]
   );
 
-  // first load – run once
+  // first load & whenever filter changes -> initial load
   useEffect(() => {
-    fetchPage(1);
-  }, [filter, fetchPage]);
+    fetchPage(1, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]); // fetchPage depends on filter via buildQueryParams
 
-  // 🔁 Refetch
-  const refetchAllTransactions = () => {
-    fetchPage(1); // then fetch fresh with empty filter
-  };
+  // helpers
+  const refetchAllTransactions = () => fetchPage(1, true);
 
-  // ───────────── helper for “Next” (Prev removed) ─────────────
   const next = async () => {
     if (pagination?.hasNextPage) {
-      await fetchPage(page + 1);
+      await fetchPage(page + 1, false);
     }
   };
 
   return {
-    loading,
     error,
     pagination,
     page,
-    displayedCount, // how many txs are on screen
+    displayedCount,
+    loading, // load more loading
+    initialLoading, // initial load
     next,
     refetchAllTransactions,
   };

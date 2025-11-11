@@ -12,6 +12,7 @@ import { monthDate } from "@/utils/monthDate";
 import { time } from "@/utils/time";
 import { FaHashtag } from "react-icons/fa";
 // import { shortenID } from "@/utils/shortenID";
+import { dateTime } from "@/utils/dateTime";
 
 const TransactionCard = ({ transaction }) => {
   const { setDetails } = useTransaction();
@@ -86,7 +87,7 @@ const TransactionCard = ({ transaction }) => {
               </p>
 
               <p className="text-xs font-medium text-tradeFadeWhite">
-                {date(transaction?.createdAt)}
+                {time(transaction?.createdAt)}
               </p>
             </div>
           </div>

@@ -1,22 +1,36 @@
 /**
- * Formats a date string into "YYYY-MM-DD HH:mm:ss" format.
- * Example: "Jun 25, 2025, 02:11:39 PM" → "2025-06-25 14:11:39"
+ * Formats a date string into "hh:mm a - DD Mon YYYY" format.
+ * Example: "2025-11-11T11:04:00Z" → "11:04 AM - 11 Nov 2025"
  * @param {string} dateString
  * @returns {string | null}
  */
 export function dateTime(dateString) {
   const date = new Date(dateString);
-
   if (isNaN(date)) return null;
 
   const pad = (num) => String(num).padStart(2, "0");
-
-  const year = date.getFullYear();
-  const month = pad(date.getMonth() + 1);
-  const day = pad(date.getDate());
-  const hours = pad(date.getHours());
+  const hours = date.getHours();
   const minutes = pad(date.getMinutes());
-  const seconds = pad(date.getSeconds());
+  const ampm = hours >= 12 ? "PM" : "AM";
+  const formattedHours = hours % 12 || 12;
 
-  return `${year}-${month}-${day} ${" "} ${hours}:${minutes}:${seconds}`;
+  const day = pad(date.getDate());
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const month = monthNames[date.getMonth()];
+  const year = date.getFullYear();
+
+  return `${formattedHours}:${minutes} ${ampm} - ${day} ${month}`;
 }

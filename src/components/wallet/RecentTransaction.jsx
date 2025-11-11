@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 import TransactionCard from "../cards/TransactionCard";
 import { useTransaction } from "@/context/userContext/TransactionContext";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,8 @@ import NetworkError from "../others/NetworkError";
 import SmallButton from "../buttons/SmallButton";
 import { BiFileBlank } from "react-icons/bi";
 import { CgArrowLongRight } from "react-icons/cg";
+import MiniButton from "@/components/buttons/MiniButton";
+import { groupByDate } from "@/utils/groupByDate";
 
 const RecentTransaction = ({ scrollToTop }) => {
   const { loading, refetchAllTransactions } = useFetchAllTransactions();
@@ -27,6 +29,8 @@ const RecentTransaction = ({ scrollToTop }) => {
 
   console.log("recent transactions", transactions);
 
+  const grouped = groupByDate(transactions?.data, "createdAt", 5);
+
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
       <div className="flex  items-center justify-between">
@@ -34,7 +38,9 @@ const RecentTransaction = ({ scrollToTop }) => {
           RECENT TRANSACTION
         </p>
 
-        <CgArrowLongRight className="text-tradeFadeWhite hover:text-tradeOrange text-[30px] leading-none cursor-pointer" />
+        <MiniButton onClick={() => navigateTo("/wallet/transactions")}>
+          VIEW ALL
+        </MiniButton>
       </div>
 
       <div className="flex h-full ">
@@ -50,13 +56,37 @@ const RecentTransaction = ({ scrollToTop }) => {
                   {Array.isArray(transactions?.data) &&
                   transactions?.data.length > 0 ? (
                     <div className="flex flex-col gap-[10px] w-full">
-                      {transactions?.data
+                      {/* {transactions?.data
                         ?.slice(0, 5)
                         ?.map((transaction, index) => (
                           <div key={transaction.id || index}>
                             <TransactionCard transaction={transaction} />
                           </div>
-                        ))}
+                        ))} */}
+
+                      {grouped.map((group) => (
+                        <div
+                          key={group.dateKey}
+                          className="bg-tradeDark rounded-lg pb-[10px]"
+                        >
+                          {/* Date Label */}
+                          <div>
+                            <p className="text-xs text-tradeFadeWhite/80 font-semibold mb-2">
+                              {group.label}
+                            </p>
+                          </div>
+
+                          {/* Transaction List */}
+                          <div className="flex flex-col gap-[10px]">
+                            {group.items?.slice(0, 5).map((transaction) => (
+                              <TransactionCard
+                                key={transaction.id}
+                                transaction={transaction}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   ) : (
                     <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">
