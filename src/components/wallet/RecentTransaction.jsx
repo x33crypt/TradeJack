@@ -56,14 +56,6 @@ const RecentTransaction = ({ scrollToTop }) => {
                   {Array.isArray(transactions?.data) &&
                   transactions?.data.length > 0 ? (
                     <div className="flex flex-col gap-[10px] w-full">
-                      {/* {transactions?.data
-                        ?.slice(0, 5)
-                        ?.map((transaction, index) => (
-                          <div key={transaction.id || index}>
-                            <TransactionCard transaction={transaction} />
-                          </div>
-                        ))} */}
-
                       {grouped.map((group) => (
                         <div
                           key={group.dateKey}

@@ -10,7 +10,7 @@ export const UserOfferProvider = ({ children }) => {
   const [filter, setFilter] = useState({
     date: { monthNo: null, monthName: null, year: null },
     asset: null,
-    status: null,
+    status: "Live",
     search: null,
   });
 

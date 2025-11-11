@@ -10,10 +10,8 @@ import Loading from "@/components/others/Loading";
 import SmallButton from "@/components/buttons/SmallButton";
 import { RiLoader4Fill } from "react-icons/ri";
 import NetworkError from "@/components/others/NetworkError";
-import { TbArrowsSort } from "react-icons/tb";
-import { LuCalendarClock } from "react-icons/lu";
-import OfferMenu from "@/components/offer/userOffer/OfferMenu";
-
+import { groupByDate } from "@/utils/groupByDate";
+import MiniButton from "@/components/buttons/MiniButton";
 
 const MyOffer = () => {
   const {
@@ -28,7 +26,7 @@ const MyOffer = () => {
   const { offers, filter, setFilter } = useUserOffer();
   const [triggerScroll, setTriggerScroll] = useState(false);
   const { select, setSelect } = useSelectElement();
-  const [assets, setAssets] = useState(["All asset"]);
+  const [assets, setAssets] = useState([]);
 
   console.log("offers", offers);
   console.log("Filter", filter);
@@ -37,7 +35,7 @@ const MyOffer = () => {
     setFilter({
       date: { monthNo: null, monthName: null, year: null },
       asset: null,
-      status: null,
+      status: "Live",
     });
 
     refetchMyOffers();
@@ -45,14 +43,14 @@ const MyOffer = () => {
 
   const navigateTo = useNavigate();
 
-  const offerStatus = ["All status", "Live", "Paused", "Suspended", "Closed"];
+  const offerStatus = ["Live", "Paused", "Suspended", "Closed"];
 
   // handling asset type change
   useEffect(() => {
     if (select?.page !== "my offer" || !select?.pick) return;
 
     if (select.element === "asset type") {
-      const selectedStatus = select.pick === "All asset" ? null : select.pick;
+      const selectedStatus = select.pick;
 
       setFilter((prev) => ({
         ...prev,
@@ -67,13 +65,24 @@ const MyOffer = () => {
 
     if (select.element === "offer status") {
       console.log("Offer status selected:", select.pick);
-      const selectedType = select.pick === "All status" ? null : select.pick;
+      const selectedType = select.pick;
 
       setFilter((prev) => ({
         ...prev,
         status: selectedType,
       }));
     }
+
+    setSelect({
+      ...select,
+      state: false,
+      selectOne: false,
+      selectTwo: false,
+      page: "",
+      element: "",
+      options: null,
+      pick: "",
+    });
   }, [select]);
 
   const join = new Date();
@@ -132,76 +141,12 @@ const MyOffer = () => {
     }));
   };
 
-  const handleFilterOffer = async () => {
-    // 📍 Step 1: Start filtering state
-    setOfferFilter((prev) => ({
-      ...prev,
-      loading: true,
-    }));
-
-    try {
-      // ⏳ Step 2: Simulate loading delay for UX
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      let filteredOffers = myOffers;
-
-      if (offerFilter?.allOffers) {
-        setOffers(myOffers);
-        return;
-      }
-
-      if (offerFilter?.activeOffers) {
-        filteredOffers = filteredOffers.filter(
-          (offer) => offer?.status == "active"
-        );
-      }
-
-      if (offerFilter?.inactiveOffers) {
-        filteredOffers = filteredOffers.filter(
-          (offer) => offer?.status != "active"
-        );
-      }
-
-      if (offerFilter?.dateOffer?.state) {
-        const { day, months, year } = offerFilter.dateOffer;
-
-        filteredOffers = filteredOffers.filter((offer) => {
-          if (!offer?.createdAt) return false;
-
-          const date = new Date(offer.createdAt);
-
-          const offerDay = String(date.getUTCDate()).padStart(2, "0");
-          const offerMonth = String(date.getUTCMonth() + 1).padStart(2, "0");
-          const offerYear = String(date.getUTCFullYear());
-
-          // Apply filtering only on fields that are provided
-          const matchDay = day ? offerDay === day : true;
-          const matchMonth = months ? offerMonth === months : true;
-          const matchYear = year ? offerYear === year : true;
-
-          return matchDay && matchMonth && matchYear;
-        });
-      }
-
-      // ✅ Step 9: Update filtered offers
-      setOffers(filteredOffers);
-    } catch (error) {
-      console.error("Error fetching or filtering offers:", error);
-    } finally {
-      // 🛑 Step 10: End filtering state
-      setOfferFilter((prev) => ({
-        ...prev,
-        loading: false,
-      }));
-    }
-  };
-
   const handleClearFilter = () => {
     setFilter((prev) => ({
       ...prev,
       date: { monthNo: null, monthName: null, year: null },
       asset: null,
-      status: null,
+      status: "Live",
       search: null,
     }));
   };
@@ -227,42 +172,24 @@ const MyOffer = () => {
   const isEnd = pagination && !pagination.hasNextPage && !isEmpty;
   const message = isEmpty ? "No activity yet" : isEnd ? "End of list" : "";
 
+  const grouped = groupByDate(offers?.data, "publishedOn");
+
   return (
     <>
       <InAppNav />
       <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black">
         <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
           {/* <OfferMenu /> */}
-          <div className="flex flex-1 flex-col gap-[20px] lg:mx-[22.8%] p-[15px]">
+          <div className="flex flex-1 flex-col gap-[30px] lg:mx-[22.8%] p-[15px]">
             <div className="flex items-center justify-between ">
               <p className="text-lg font-semibold text-white flex items-center gap-1">
                 MY OFFERS
               </p>
             </div>
 
-            <div className="flex lg:hidde items-center gap-2 justify-between">
+            <div className="flex items-center gap-2 justify-between">
               <div className="flex items-center gap-2">
-                <div
-                  onClick={() =>
-                    setSelect({
-                      ...select,
-                      state: true,
-                      selectOne: true,
-                      selectTwo: false,
-                      element: "asset type",
-                      options: assets,
-                      pick: "",
-                      page: "my offer",
-                    })
-                  }
-                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
-                >
-                  <TbArrowsSort />
-                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    {filter?.asset ? filter?.asset : " ASSET"}
-                  </p>
-                </div>
-                <div
+                <MiniButton
                   onClick={() =>
                     setSelect({
                       ...select,
@@ -275,26 +202,44 @@ const MyOffer = () => {
                       page: "my offer",
                     })
                   }
-                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                  active={filter?.status != null}
                 >
-                  <TbArrowsSort />
-                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    {filter?.status ? filter?.status : " STATUS"}
+                  <p>
+                    {filter?.status ? filter?.status?.toUpperCase() : " STATUS"}
                   </p>
-                </div>
+                </MiniButton>
+
+                <MiniButton
+                  onClick={() =>
+                    setSelect({
+                      ...select,
+                      state: true,
+                      selectOne: true,
+                      selectTwo: false,
+                      element: "asset type",
+                      options: assets,
+                      pick: "",
+                      page: "my offer",
+                    })
+                  }
+                  active={filter?.asset != null}
+                >
+                  <p>
+                    {filter?.asset ? filter?.asset?.toUpperCase() : " ASSET"}
+                  </p>
+                </MiniButton>
               </div>
 
               <div className="relative flex items-center gap-2">
-                <div
+                <MiniButton
                   onClick={handleDateClick}
-                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
+                  active={filter?.date?.year != null}
                 >
-                  <LuCalendarClock />
-                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    {filter.date?.monthName ? filter.date?.monthName : "MONTH"},{" "}
-                    {filter.date?.year ? filter.date?.year : "YEAR"}
-                  </p>
-                </div>
+                  {filter.date?.monthName
+                    ? filter.date?.monthName.toUpperCase()
+                    : "MONTH"}
+                  , {filter.date?.year ? filter.date?.year : "YEAR"}
+                </MiniButton>
 
                 <input
                   type="month"
@@ -305,15 +250,7 @@ const MyOffer = () => {
                   className="absolute opacity-0 w-0 h-0 pointer-events-none"
                 />
 
-                {/* <div
-                  onClick={handleClearFilter}
-                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
-                >
-                  <IoNuclearSharp />
-                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    RESET
-                  </p>
-                </div> */}
+                <MiniButton onClick={handleClearFilter}>RESET</MiniButton>
               </div>
             </div>
 
@@ -329,10 +266,23 @@ const MyOffer = () => {
                       <div className="flex flex-1">
                         {Array.isArray(offers?.data) &&
                         offers?.data.length > 0 ? (
-                          <div className="flex flex-col gap-[10px] w-full h-max">
-                            {offers?.data?.map((offer, index) => (
-                              <div key={index}>
-                                <MyOfferCard offer={offer} />
+                          <div className="flex flex-col gap-[5px] w-full h-max">
+                            {grouped.map((group) => (
+                              <div
+                                key={group.dateKey}
+                                className="bg-tradeDark rounded-lg pb-[20px]"
+                              >
+                                <div className="">
+                                  <p className="text-xs text-tradeFadeWhite/80 font-semibold mb-2">
+                                    {group.label}
+                                  </p>
+                                </div>
+
+                                <div className="flex flex-col gap-[10px]">
+                                  {group.items.map((offer, index) => (
+                                    <MyOfferCard key={index} offer={offer} />
+                                  ))}
+                                </div>
                               </div>
                             ))}
                           </div>

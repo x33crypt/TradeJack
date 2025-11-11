@@ -17,13 +17,13 @@ import MiniButton from "@/components/buttons/MiniButton";
 const TransactionHistory = () => {
   const topRef = useRef(null);
   const {
-    loading, // loading for load more
-    initialLoading, // only on mount
-    refetchAllTransactions,
     pagination,
     page,
     displayedCount,
+    loading, // loading for load more
+    initialLoading, // only on mount
     next,
+    refetchAllTransactions,
   } = useFetchAllTransactions();
   const { transactions, filter, setFilter } = useTransaction();
   const [triggerScroll, setTriggerScroll] = useState(false);
@@ -107,7 +107,7 @@ const TransactionHistory = () => {
     reset();
   }, []);
 
-  const transactionStatus = ["Pending", "Failed", "Successful", "Processing"];
+  const transactionStatus = ["Pending", "Failed", "Successful"];
 
   const transactionTypes = ["Transfer", "Deposit", "Withdraw"];
 
@@ -182,9 +182,7 @@ const TransactionHistory = () => {
   }, []);
 
   const handleNext = async () => {
-    setLoadingNext(true);
     await next();
-    setLoadingNext(false);
   };
 
   const isEmpty = transactions?.data?.length === 0 || transactions === null;
@@ -291,7 +289,7 @@ const TransactionHistory = () => {
                             {grouped.map((group) => (
                               <div
                                 key={group.dateKey}
-                                className="bg-tradeDark rounded-lg pb-[10px]"
+                                className="bg-tradeDark rounded-lg pb-[20px]"
                               >
                                 <div className="">
                                   <p className="text-xs text-tradeFadeWhite/80 font-semibold mb-2">

@@ -8,6 +8,7 @@ import SmallButton from "../buttons/SmallButton";
 import { useFetchWithdrawTxt } from "@/hooks/userHooks/useFetchWithdrawTxt";
 import { useWithdrawContext } from "@/context/userContext/WithdrawContext";
 import { BiFileBlank } from "react-icons/bi";
+import { groupByDate } from "@/utils/groupByDate";
 
 const RecentWithdraw = () => {
   const { loading } = useFetchWithdrawTxt();
@@ -16,6 +17,8 @@ const RecentWithdraw = () => {
   const navigateTo = useNavigate();
 
   console.log("recent Withdraws", recentWithdraw);
+
+  const grouped = groupByDate(recentWithdraw?.data, "createdAt", 5);
 
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
@@ -38,13 +41,29 @@ const RecentWithdraw = () => {
                   {Array.isArray(recentWithdraw?.data) &&
                   recentWithdraw?.data.length > 0 ? (
                     <div className="flex flex-col gap-[10px] w-full">
-                      {recentWithdraw?.data
-                        ?.slice(0, 5)
-                        ?.map((transaction, index) => (
-                          <div key={transaction.id || index}>
-                            <TransactionCard transaction={transaction} />
+                      {grouped.map((group) => (
+                        <div
+                          key={group.dateKey}
+                          className="bg-tradeDark rounded-lg pb-[10px]"
+                        >
+                          {/* Date Label */}
+                          <div>
+                            <p className="text-xs text-tradeFadeWhite/80 font-semibold mb-2">
+                              {group.label}
+                            </p>
                           </div>
-                        ))}
+
+                          {/* Transaction List */}
+                          <div className="flex flex-col gap-[10px]">
+                            {group.items?.slice(0, 5).map((transaction) => (
+                              <TransactionCard
+                                key={transaction.id}
+                                transaction={transaction}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   ) : (
                     <div className="flex-1 flex flex-col items-center justify-center gap-[10px] bg-transparent">

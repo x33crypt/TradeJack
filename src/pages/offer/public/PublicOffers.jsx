@@ -20,6 +20,7 @@ import { IoNuclearSharp } from "react-icons/io5";
 import Button from "@/components/buttons/Button";
 import { IoMdArrowDropright } from "react-icons/io";
 import { TbReload } from "react-icons/tb";
+import MiniButton from "@/components/buttons/MiniButton";
 
 const PublicOffers = () => {
   const topRef = useRef(null);
@@ -175,7 +176,7 @@ const PublicOffers = () => {
           {/* <div className="lg:flex hidden">
             <Filter />
           </div> */}
-          <div className="flex flex-1 flex-col gap-[20px] lg:mx-[22.8%] p-[15px]">
+          <div className="flex flex-1 flex-col gap-[30px] lg:mx-[22.8%] p-[15px]">
             <div className="flex items-center justify-between ">
               <p className="text-lg font-semibold text-white flex items-center gap-1">
                 SECURE P2P TRADING
@@ -190,33 +191,18 @@ const PublicOffers = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                <TbArrowsSort />
-                <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                  RECENT
-                </p>
-              </div>
+              <MiniButton active={filter?.status != null}>
+                <p>RECENT</p>
+              </MiniButton>
 
               <div className="flex items-center gap-2">
-                <div
-                  onClick={showFilter}
-                  className="flex lg:hidde items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
-                >
-                  <PiSlidersHorizontalBold />
-                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    FILTER
-                  </p>
-                </div>
+                <MiniButton onClick={showFilter}>
+                  <p>FILTER</p>
+                </MiniButton>
 
-                <div
-                  onClick={clearFilter}
-                  className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer"
-                >
-                  <TbReload />
-                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    RESET
-                  </p>
-                </div>
+                <MiniButton onClick={clearFilter}>
+                  <p> RESET</p>
+                </MiniButton>
               </div>
             </div>
 
@@ -412,97 +398,6 @@ const PublicOffers = () => {
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-40">
             <Filter />
-          </div>
-        </div>
-      )}
-
-      {filter?.enterAmount && (
-        <div>
-          <LockByScroll />
-          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex flex-col gap-[40px] items-center justify-center z-50">
-            <div className="flex w-[250px] h-max flex-col gap-[10px] ">
-              <div
-                className={`  flex-1 bg-tradeAshLight relative border border-tradeAshLight rounded-[15px] cursor-pointer`}
-              >
-                <input
-                  className="bg-transparent flex-1 p-[15px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none cursor-pointer"
-                  type="text"
-                  placeholder="Enter amount"
-                  value={withComma(filter?.amount) || ""}
-                  onChange={(e) => {
-                    const val = e.target.value.replace(/[^\d.-]/g, "");
-                    const newAmount = val === "" ? "" : Number(val);
-
-                    setFilter((prev) => {
-                      const prevListRaw = Array.isArray(prev.amountList)
-                        ? prev.amountList
-                        : [];
-                      const prevListNums = prevListRaw.map((it) =>
-                        toNumber(it)
-                      );
-                      const moreIndex = prevListRaw.indexOf("Enter amount");
-                      let updatedList = [...prevListRaw];
-
-                      if (val === "") {
-                        // ✅ Restore original value if we have a backup
-                        if (backupAmount !== null && moreIndex > 0) {
-                          updatedList[moreIndex - 1] = backupAmount;
-                        }
-                        return {
-                          ...prev,
-                          amount: "",
-                          amountList: updatedList,
-                        };
-                      }
-
-                      const exists = prevListNums.some(
-                        (n) => Math.abs(n - newAmount) < 1e-9
-                      );
-
-                      if (!exists && moreIndex > 0) {
-                        // ✅ Save backup before replacing
-                        if (backupAmount === null) {
-                          setBackupAmount(updatedList[moreIndex - 1]);
-                        }
-                        updatedList[moreIndex - 1] = String(newAmount);
-                      }
-
-                      return {
-                        ...prev,
-                        amount: newAmount,
-                        amountList: updatedList,
-                      };
-                    });
-                  }}
-                />
-              </div>
-
-              <div className="flex flex-col p-[15px] bg-tradeAshLight gap-[20px] rounded-[15px] border border-tradeAsh">
-                <div className="flex items-center gap-2">
-                  <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                  <p className="text-tradeFadeWhite hover:text-white text-[15px] font-bold transition-all duration-300 cursor-pointer">
-                    AMOUNT
-                  </p>
-                </div>
-                <div className="flex gap-[10px] flex-wrap">
-                  {adds.map((add) => (
-                    <SmallButton
-                      variant="fadeoutPlus"
-                      onClick={() =>
-                        handleAddAmount(parseFloat(add.replace("+", "")))
-                      }
-                      key={add}
-                    >
-                      {add}
-                    </SmallButton>
-                  ))}
-                </div>
-              </div>
-
-              <Button onClick={closeEnterAmount} variant="Fadeout">
-                CLOSE
-              </Button>
-            </div>
           </div>
         </div>
       )}
