@@ -40,11 +40,10 @@ const OfferDetails = ({ aboutOffer, loading, id }) => {
 
   const offer = aboutOffer?.offerDetails;
   const user = aboutOffer?.traderInfo;
-  const offerId = id;
 
-  // const handleEdit = (offerId) => {
-  //   navigateTo(`/offer/${offerId}`);
-  // };
+  const handleEdit = (offerId) => {
+    navigateTo(`/offer/${offerId}/edit`);
+  };
 
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
@@ -64,45 +63,42 @@ const OfferDetails = ({ aboutOffer, loading, id }) => {
             ) : (
               <div className="flex flex-1 flex-col min-h-[120px] gap-[30px]">
                 {/* Vendor Info */}
-                <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
-                  <div className="flex items-center justify-between">
-                    <div className="flex gap-2 items-center">
-                      <div className="flex cursor-pointer relative">
-                        {false ? (
-                          <div className="flex w-[40px] h-[40px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
-                            <img src={image} alt="" className="" />
-                          </div>
-                        ) : (
-                          <div className="flex w-[30px] h-[30px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
-                            <img src={image} alt="" className="" />
-                          </div>
-                        )}
-                      </div>
-                      <div className="flex gap-1 items-center">
-                        <p className="text-white text-[13px] font-semibold">
-                          {user?.username ?? ""}
-                        </p>
-                        <p className="text-tradeAshLight leading-none">|</p>
-                        <RiVerifiedBadgeFill className="flex text-tradeGreen text-base flex-shrink-0" />
-                      </div>
-                    </div>
-
-                    <div className="flex gap-1 items-center">
-                      <div className="flex items-center gap-1">
-                        <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
-                          <GrStatusGoodSmall className="flex text-tradeGreen text-[10px] flex-shrink-0" />
+                <div className="flex items-center justify-between gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
+                  <div className="flex gap-2 items-center">
+                    <div className="flex cursor-pointer relative">
+                      {false ? (
+                        <div className="flex w-[40px] h-[40px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                          <img src={image} alt="" className="" />
                         </div>
-                        <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
-                          Live
-                        </p>
-                      </div>
+                      ) : (
+                        <div className="flex w-[30px] h-[30px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                          <img src={image} alt="" className="" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex gap-1 items-center">
+                      <p className="text-white text-[13px] font-semibold">
+                        {user?.username ?? ""}
+                      </p>
                       <p className="text-tradeAshLight leading-none">|</p>
-                      <div className="flex items-center gap-1">
-                        <p className="text-white text-[13px] font-semibold leading-none">
-                          1345{" "}
-                          <span className="text-tradeFadeWhite">Save(s)</span>
-                        </p>
+                      <RiVerifiedBadgeFill className="flex text-tradeGreen text-base flex-shrink-0" />
+                    </div>
+                  </div>
+
+                  <div className="flex gap-1 items-center">
+                    <div className="flex items-center gap-1">
+                      <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
+                        <GrStatusGoodSmall className="flex text-tradeGreen text-[10px] flex-shrink-0" />
                       </div>
+                      <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
+                        Live
+                      </p>
+                    </div>
+                    <p className="text-tradeAshLight leading-none">|</p>
+                    <div className="flex items-center gap-1">
+                      <p className="text-white text-[13px] font-semibold leading-none">
+                        1.3k <span className="text-tradeFadeWhite">Saved</span>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -159,7 +155,10 @@ const OfferDetails = ({ aboutOffer, loading, id }) => {
                     </div>
                   </div>
 
-                  <div className="text-white hover:text-tradeFadeWhite md:text-3xl text-2xl cursor-pointer duration-300 transition-all">
+                  <div
+                    onClick={() => handleEdit(id)}
+                    className="text-white hover:text-tradeFadeWhite active:text-tradeOrange md:text-3xl text-2xl cursor-pointer duration-300 transition-all"
+                  >
                     <RiEdit2Fill />
                   </div>
                 </div>

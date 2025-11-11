@@ -22,11 +22,13 @@ import { IoClose } from "react-icons/io5";
 import { MdOutlineTimer } from "react-icons/md";
 import { MdTimer } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
+import usePreTradeAuth from "@/hooks/publicHooks/usePreTradeAuth";
 
 const PreTrade = () => {
   const { id = "", amount = "", currency = "" } = useParams();
   const { aboutOffer, setAboutOffer } = usePublicOffers();
   const { loading } = useFetchAboutOffers();
+  const { preTradeLoading, authorizePreTrade } = usePreTradeAuth();
   const [waitTime, setWaitTime] = useState({
     state: false,
     time: null,
@@ -36,6 +38,7 @@ const PreTrade = () => {
   console.log("Amount:", amount);
   console.log("Currency:", currency);
 
+  //Handle Offer Validation
   useEffect(() => {
     if (id) {
       console.log("Offer ID:", id);
@@ -47,14 +50,27 @@ const PreTrade = () => {
     }
   }, [id]);
 
+  // Handle Pre Trade
+  useEffect(() => {
+    const initiatePreTrade = async () => {
+      if (id && amount) {
+        console.log("Offer ID:", id);
+
+        const result = await authorizePreTrade(id, amount);
+        if (result) {
+          console.log("Trade initialized:", result);
+        }
+      }
+    };
+
+    initiatePreTrade();
+  }, [id, amount, authorizePreTrade]);
+
   const offer = aboutOffer?.data?.offerDetails;
   const user = aboutOffer?.data?.traderInfo;
 
   console.log(offer);
   console.log(user);
-
-  const balance = `Shipping and handling: $${4.99 + 4.99}`;
-  console.log(balance);
 
   const handleDeposit = () => {};
 

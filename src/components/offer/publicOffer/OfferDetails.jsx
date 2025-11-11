@@ -183,7 +183,7 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                     </div>
                   </div>
 
-                  <div className="text-white hover:text-tradeFadeWhite md:text-3xl text-2xl cursor-pointer duration-300 transition-all">
+                  <div className="text-white hover:text-tradeFadeWhite active:text-tradeOrange md:text-3xl text-2xl cursor-pointer duration-300 transition-all">
                     <MdBookmarkAdd />
                   </div>
                 </div>

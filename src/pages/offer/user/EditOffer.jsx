@@ -1,6 +1,6 @@
 import InAppNav from "@/components/others/InAppNav";
 import Footer from "@/components/others/Footer";
-import React from "react";
+import React, { useEffect } from "react";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
 import image from "../../../assets/landingImg4.JPG";
@@ -23,15 +23,36 @@ import { FaRegStar } from "react-icons/fa";
 import { TbCubeSpark } from "react-icons/tb";
 import { GrStatusGoodSmall } from "react-icons/gr";
 import { GoBookmarkFill } from "react-icons/go";
+import { MdBookmarkAdd } from "react-icons/md";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { MdMoreVert } from "react-icons/md";
+import { RiEdit2Fill } from "react-icons/ri";
+import { FaUserFriends } from "react-icons/fa";
+import { HiHashtag } from "react-icons/hi";
+import { AiOutlineSafetyCertificate } from "react-icons/ai";
+import { FaSave } from "react-icons/fa";
 
 const EditOffer = () => {
-  // const { id } = useParams();
-  const { loading } = useFetchAboutOffers();
-  const { editOffer, setEditOffer } = useUserOffer();
+  const { id = "" } = useParams();
+  const { loading } = useFetchAboutOffers(id);
+  const { setAboutOffer, editOffer, setEditOffer } = useUserOffer();
 
-  console.log(editOffer);
+  useEffect(() => {
+    if (id) {
+      setAboutOffer((prev) => ({
+        ...prev,
+        id: id,
+      }));
+    }
+  }, [id]);
 
   const navigateTo = useNavigate();
+
+  const offer = editOffer?.offerDetails;
+  const user = editOffer?.traderInfo;
+
+  console.log(offer);
+  console.log(user);
 
   const handleMinLimitChange = (e) => {
     const rawValue = e.target.value.replace(/[^\d]/g, ""); // Remove all non-digit characters
@@ -310,7 +331,7 @@ const EditOffer = () => {
   return (
     <>
       <InAppNav />
-      <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black">
+      <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[10px] min-h-svh flex bg-black">
         <div className="flex flex-1 flex-col gap-[20px] lg:mx-[22.8%] p-[15px]">
           <div className="flex flex-1 flex-col gap-[20px]">
             <div className="flex  items-center justify-between ">
@@ -324,117 +345,113 @@ const EditOffer = () => {
                 <Loading />
               ) : (
                 <div className="flex flex-1">
-                  {editOffer?.offerDetails?.data === null ? (
+                  {offer?.data === null ? (
                     <NetworkError />
                   ) : (
                     <div className="flex flex-1 flex-col min-h-[120px] gap-[30px]">
-                      <div className="flex flex-col gap-[30px] pb-[12px]">
-                        <div className="flex items-center gap-2">
-                          <div>
-                            <TbCubeSpark className="text-white text-5xl" />
+                      {/* Vendor Info */}
+                      <div className="flex items-center justify-between gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
+                        <div className="flex gap-2 items-center">
+                          <div className="flex cursor-pointer relative">
+                            {false ? (
+                              <div className="flex w-[40px] h-[40px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                                <img src={image} alt="" className="" />
+                              </div>
+                            ) : (
+                              <div className="flex w-[30px] h-[30px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                                <img src={image} alt="" className="" />
+                              </div>
+                            )}
                           </div>
-
-                          <div className="flex flex-col gap-[10px] ">
-                            <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
-                              {editOffer?.offerDetails?.serviceName || "N/A"}
+                          <div className="flex gap-1 items-center">
+                            <p className="text-white text-[13px] font-semibold">
+                              {user?.username ?? ""}
                             </p>
-                            <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
-                              {editOffer?.offerDetails?.serviceType || "N/A"}
-                            </p>
+                            <p className="text-tradeAshLight leading-none">|</p>
+                            <RiVerifiedBadgeFill className="flex text-tradeGreen text-base flex-shrink-0" />
                           </div>
                         </div>
 
-                        <div className="flex items-center flex-1 gap-[10px]">
-                          <div className="flex flex-1 flex-col gap-[10px]">
-                            <div className="flex  items-center gap-1">
-                              <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
-                              <p className="text-xs font-semibold text-white">
-                                Active
-                              </p>
+                        <div className="flex gap-1 items-center">
+                          <div className="flex items-center gap-1">
+                            <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
+                              <GrStatusGoodSmall className="flex text-tradeGreen text-[10px] flex-shrink-0" />
                             </div>
-                            <div className="flex gap-1 items-center">
-                              <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                              <p className="text-xs font-semibold text-white">
-                                Created 31 Aug, 2025
-                              </p>
-                            </div>
-                            <div className="flex gap-1 items-center">
-                              <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                              <p className="text-xs font-semibold text-white">
-                                Updated 31 Aug, 2025
-                              </p>
-                            </div>
+                            <p className="text-tradeFadeWhite text-[13px] font-semibold leading-none">
+                              Live
+                            </p>
                           </div>
-                          <div className="flex flex-1 flex-col gap-[10px]">
-                            <div className="flex gap-1 items-center">
-                              <GoBookmarkFill className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                              <p className="text-xs font-semibold text-white">
-                                123 Bookmarks
-                              </p>
-                            </div>
-                            <div className="flex  items-center gap-1">
-                              <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                              <p className="text-xs font-semibold text-white">
-                                {editOffer?.offerDetails?.completedTrades ??
-                                  "0"}{" "}
-                                Completed Trade(s)
-                              </p>
-                            </div>
-                            <div className="flex  items-center gap-1">
-                              <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                              <p className="text-xs font-semibold text-white">
-                                99% Completion Rating
-                              </p>
-                            </div>
+                          <p className="text-tradeAshLight leading-none">|</p>
+                          <div className="flex items-center gap-1">
+                            <p className="text-white text-[13px] font-semibold leading-none">
+                              1.3k{" "}
+                              <span className="text-tradeFadeWhite">Saved</span>
+                            </p>
                           </div>
                         </div>
-
-                        {/* <div className="flex flex-col gap-[10px]">
-                          <div className="flex  items-center gap-1">
-                            <GrStatusGoodSmall className="flex text-tradeGreen text-xs flex-shrink-0" />
-                            <p className="text-xs font-semibold text-white">
-                              Active
-                            </p>
-                          </div>
-                          <div className="flex gap-1 items-center">
-                            <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                            <p className="text-xs font-semibold text-white">
-                              Created 31 Aug, 2025
-                            </p>
-                          </div>
-                          <div className="flex gap-1 items-center">
-                            <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                            <p className="text-xs font-semibold text-white">
-                              Updated 31 Aug, 2025
-                            </p>
-                          </div>
-                          <div className="flex gap-1 items-center">
-                            <GoBookmarkFill className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                            <p className="text-xs font-semibold text-white">
-                              123 Bookmarks
-                            </p>
-                          </div>
-
-                          <div className="flex  items-center gap-1">
-                            <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                            <p className="text-xs font-semibold text-white">
-                              {editOffer?.offerDetails?.completedTrades ?? "0"}{" "}
-                              Completed Trade(s)
-                            </p>
-                          </div>
-
-                          <div className="flex  items-center gap-1">
-                            <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                            <p className="text-xs font-semibold text-white">
-                              99% Completion Rating
-                            </p>
-                          </div>
-                        </div> */}
                       </div>
 
+                      {/* Offer Info */}
+                      <div className="flex items-start justify-between">
+                        <div className="flex flex-col gap-[10px] ">
+                          <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
+                            {offer?.serviceName || "N/A"}
+                          </p>
+
+                          <div className="flex gap-1 items-center">
+                            <div className="flex items-center gap-1">
+                              <HiHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                              <p className="text-[13px] font-semibold text-white">
+                                {id ?? ""}
+                              </p>
+                            </div>
+                            <p className="text-tradeAshLight leading-none">|</p>
+                            <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
+                              {offer?.serviceType || "N/A"}
+                            </p>
+                          </div>
+                          <div className="flex gap-1 items-center">
+                            <div className="flex gap-1 items-center">
+                              <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                              <p className="text-xs font-semibold text-white">
+                                31 Aug, 2045
+                              </p>
+                            </div>
+                            <p className="text-tradeAshLight leading-none">|</p>
+                            <div className="flex gap-1 items-center">
+                              <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                              <p className="text-xs font-semibold text-white">
+                                Verified
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex gap-1 items-center">
+                            <div className="flex gap-1 items-center">
+                              <FaUserFriends className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                              <p className="text-xs font-semibold text-white">
+                                {offer?.completedTrades ?? "0"} Trade(s)
+                              </p>
+                            </div>
+                            <p className="text-tradeAshLight leading-none">|</p>
+                            <div className="flex gap-1 items-center">
+                              <FaRegStar className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                              <p className="text-xs font-semibold text-white">
+                                99% Rating
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="text-white hover:text-tradeFadeWhite active:text-tradeOrange md:text-3xl text-2xl cursor-pointer duration-300 transition-all">
+                          <FaSave />
+                        </div>
+                      </div>
+
+                      {/* Edit Fields */}
                       <div className="flex flex-col gap-[10px]">
                         {/* Limit */}
-                        <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                        <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                           <div className="flex flex-1 items-center justify-between">
                             <p className="text-[13px] text-tradeFadeWhite font-semibold">
                               Purchase Limit
@@ -454,11 +471,9 @@ const EditOffer = () => {
                                 className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
                                 placeholder="0.00"
                                 value={
-                                  editOffer?.offerDetails?.purchaseLimit
-                                    ?.minimum
+                                  offer?.purchaseLimit?.minimum
                                     ? Number(
-                                        editOffer?.offerDetails?.purchaseLimit
-                                          ?.minimum
+                                        offer?.purchaseLimit?.minimum
                                       ).toLocaleString()
                                     : ""
                                 }
@@ -477,11 +492,9 @@ const EditOffer = () => {
                                 type="text"
                                 placeholder="0.00"
                                 value={
-                                  editOffer?.offerDetails?.purchaseLimit
-                                    ?.maximum
+                                  offer?.purchaseLimit?.maximum
                                     ? Number(
-                                        editOffer?.offerDetails?.purchaseLimit
-                                          ?.maximum
+                                        offer?.purchaseLimit?.maximum
                                       ).toLocaleString()
                                     : ""
                                 }
@@ -495,7 +508,7 @@ const EditOffer = () => {
                         </div>
 
                         {/* Profit Margin */}
-                        <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                        <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                           <div className="flex flex-1 items-center justify-between">
                             <p className="text-[13px] text-tradeFadeWhite font-semibold">
                               Profit Margin
@@ -519,15 +532,10 @@ const EditOffer = () => {
                               >
                                 <p>
                                   <span className="font-bold text-white">
-                                    {editOffer?.offerDetails?.marginRate
-                                      ?.ratePercent > 0
+                                    {offer?.marginRate?.ratePercent > 0
                                       ? "+"
                                       : ""}
-                                    {
-                                      editOffer?.offerDetails?.marginRate
-                                        ?.ratePercent
-                                    }
-                                    %
+                                    {offer?.marginRate?.ratePercent}%
                                   </span>{" "}
                                   profit margin
                                 </p>
@@ -560,7 +568,7 @@ const EditOffer = () => {
                         </div>
 
                         {/* Transfer Window */}
-                        <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                        <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                           <div className="flex flex-1 items-center justify-between">
                             <p className="text-[13px] text-tradeFadeWhite font-semibold">
                               Transfer Window
@@ -584,10 +592,7 @@ const EditOffer = () => {
                               >
                                 <p>
                                   <span className="font-bold text-white">
-                                    {
-                                      editOffer?.offerDetails?.paymentWindow
-                                        ?.transfer?.hours
-                                    }
+                                    {offer?.paymentWindow?.transfer?.hours}
                                   </span>{" "}
                                   hour&#40;s&#41;
                                 </p>
@@ -617,10 +622,7 @@ const EditOffer = () => {
                               >
                                 <p>
                                   <span className="font-bold text-white">
-                                    {
-                                      editOffer?.offerDetails?.paymentWindow
-                                        ?.transfer?.minutes
-                                    }
+                                    {offer?.paymentWindow?.transfer?.minutes}
                                   </span>{" "}
                                   minutes
                                 </p>
@@ -636,7 +638,7 @@ const EditOffer = () => {
                         </div>
 
                         {/* Release Window */}
-                        <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                        <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                           <div className="flex flex-1 items-center justify-between">
                             <p className="text-[13px] text-tradeFadeWhite font-semibold">
                               Release Window
@@ -656,10 +658,7 @@ const EditOffer = () => {
                               <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
                                 <p>
                                   <span className="font-bold text-white">
-                                    {
-                                      editOffer?.offerDetails?.paymentWindow
-                                        ?.release?.hours
-                                    }
+                                    {offer?.paymentWindow?.release?.hours}
                                   </span>{" "}
                                   hour&#40;s&#41;
                                 </p>
@@ -686,10 +685,7 @@ const EditOffer = () => {
                               <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
                                 <p>
                                   <span className="font-bold text-white">
-                                    {
-                                      editOffer?.offerDetails?.paymentWindow
-                                        ?.release?.minutes
-                                    }
+                                    {offer?.paymentWindow?.release?.minutes}
                                   </span>{" "}
                                   minutes
                                 </p>
@@ -705,7 +701,7 @@ const EditOffer = () => {
                         </div>
 
                         {/* Tags */}
-                        <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                        <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                           <div className="flex flex-1 items-center justify-between">
                             <p className="text-[13px] text-tradeFadeWhite font-semibold">
                               Tags
@@ -739,33 +735,31 @@ const EditOffer = () => {
                           </div>
 
                           <div className="flex  rounded-[10px] ">
-                            {editOffer?.offerDetails?.tags?.length > 0 ? (
+                            {offer?.tags?.length > 0 ? (
                               <div className={`flex gap-[5px] flex-wrap`}>
-                                {editOffer?.offerDetails?.tags.map(
-                                  (tag, index) => (
-                                    <div className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight">
-                                      <p
-                                        key={index}
-                                        className="text-[13px] font-semibold text-tradeFadeWhite"
-                                      >
-                                        {tag}
-                                      </p>
-                                      <IoClose
-                                        className="text-tradeFadeWhite hover:text-red-600 text-[16px] cursor-pointer transition-all duration-300"
-                                        // onClick={() => {
-                                        //   seteditOffer?.offerDetails(
-                                        //     (prev) => ({
-                                        //       ...prev,
-                                        //       termTags: prev.termTags.filter(
-                                        //         (_, i) => i !== index
-                                        //       ),
-                                        //     })
-                                        //   );
-                                        // }}
-                                      />
-                                    </div>
-                                  )
-                                )}
+                                {offer?.tags.map((tag, index) => (
+                                  <div className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight">
+                                    <p
+                                      key={index}
+                                      className="text-[13px] font-semibold text-tradeFadeWhite"
+                                    >
+                                      {tag}
+                                    </p>
+                                    <IoClose
+                                      className="text-tradeFadeWhite hover:text-red-600 text-[16px] cursor-pointer transition-all duration-300"
+                                      // onClick={() => {
+                                      //   setoffer(
+                                      //     (prev) => ({
+                                      //       ...prev,
+                                      //       termTags: prev.termTags.filter(
+                                      //         (_, i) => i !== index
+                                      //       ),
+                                      //     })
+                                      //   );
+                                      // }}
+                                    />
+                                  </div>
+                                ))}
                               </div>
                             ) : (
                               <div>
@@ -778,7 +772,7 @@ const EditOffer = () => {
                         </div>
 
                         {/* Instruction */}
-                        <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] borde border-tradeAshLight">
+                        <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                           <div className="flex flex-1 items-center justify-between">
                             <p className="text-[13px] text-tradeFadeWhite font-semibold">
                               Instructions
@@ -789,7 +783,7 @@ const EditOffer = () => {
                           <div className="flex-1 flex bg-tradeAshLight relative border border-tradeAshLight rounded-[10px] cursor-pointer">
                             <textarea
                               // onChange={handleInstruction}
-                              value={editOffer?.offerDetails?.instructions}
+                              value={offer?.instructions}
                               className=" min-h-[45px] w-full bg-transparent border-none p-[12px] text-white text-sm font-medium placeholder-tradeFadeWhite focus:outline-none resize-non"
                               placeholder="Write your trade Instructions here."
                             ></textarea>
@@ -797,20 +791,29 @@ const EditOffer = () => {
                         </div>
                       </div>
 
-                      <div className="flex flex-col gap-1">
-                        <p className="text-xs font-semibold text-white">
-                          Note:
-                        </p>
-                        <p className="text-xs font-medium text-tradeFadeWhite">
-                          Once you make changes, your offer will be paused for a
-                          quick review. Don’t worry, it’ll go live again
-                          automatically after approval.
-                        </p>
+                      {/* Info */}
+                      <div className="flex gap-2 items-center ">
+                        <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
+                          <FaCircleInfo />
+                        </div>
+
+                        <div className="flex flex-col gap-[5px]">
+                          <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                            Any changes made to your offer will temporarily
+                            pause its visibility while our system reviews the
+                            updates for accuracy and compliance. This brief
+                            review helps ensure fair trading conditions and
+                            protects both parties from potential discrepancies.
+                            Once the review is complete, your offer will be
+                            automatically reactivated and made visible to other
+                            users.
+                          </p>
+                        </div>
                       </div>
 
+                      {/* Buttons */}
                       <div className="flex flex-col gap-[10px]">
                         <Button variant="secondary">UPDATE</Button>
-                        <Button variant="outline">CANCEL</Button>
                       </div>
                     </div>
                   )}
