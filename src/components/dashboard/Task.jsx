@@ -4,6 +4,7 @@ import NetworkError from "../others/NetworkError";
 import { MdLeaderboard } from "react-icons/md";
 import { RiCopperCoinFill } from "react-icons/ri";
 import { TbArrowsSort } from "react-icons/tb";
+import MiniButton from "../buttons/MiniButton";
 
 const Task = ({ loading, dashboard }) => {
   const [value, setValue] = useState(20);
@@ -27,24 +28,11 @@ const Task = ({ loading, dashboard }) => {
               <div className="flex-1 flex flex-col justify-between gap-[25px]">
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2">
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        TODAY
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                        WEEK
-                      </p>
-                    </div>
+                    <MiniButton>TODAY</MiniButton>
+                    <MiniButton>WEEK</MiniButton>
                   </div>
 
-                  <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                      LEADERBOARD
-                    </p>
-                    <MdLeaderboard />
-                  </div>
+                  <MiniButton>LEADERBOARD</MiniButton>
                 </div>
 
                 <div className="flex flex-col gap-[10px]">

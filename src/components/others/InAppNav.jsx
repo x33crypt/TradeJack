@@ -111,9 +111,9 @@ const InAppNav = () => {
             className="flex items-center gap-[5px] cursor-pointer "
           >
             <p className=" lg:text-xl md:text-[19px] text-[18px]  font-bold text-tradeOrange">
-              GO
-              <span className="font-semibold text-tradeOrange">GET</span>
-              <span className="font-semibold text-white">SWAP</span>
+              XX
+              <span className="font-semibold text-tradeOrange">XXX</span>
+              <span className="font-semibold text-white">XXXX</span>
             </p>
           </div>
         </div>

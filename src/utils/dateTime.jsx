@@ -32,5 +32,5 @@ export function dateTime(dateString) {
   const month = monthNames[date.getMonth()];
   const year = date.getFullYear();
 
-  return `${formattedHours}:${minutes} ${ampm} - ${day} ${month}`;
+  return `${formattedHours}:${minutes} ${ampm} - ${day} ${month} ${year}`;
 }

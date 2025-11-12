@@ -8,7 +8,7 @@ import { useFetchAboutOffers } from "@/hooks/userHooks/useFetchAboutOffer";
 import { useUserOffer } from "@/context/userContext/OffersContext";
 import { useNavigate } from "react-router-dom";
 import AboutMenu from "@/components/offer/userOffer/AboutMenu";
-import TradeHistory from "@/components/offer/userOffer/TradeHistory";
+import TradeHistory from "@/components/offer/TradeHistory";
 
 const AboutOffer = () => {
   const { id = "" } = useParams();

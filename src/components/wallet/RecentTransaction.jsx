@@ -95,7 +95,7 @@ const RecentTransaction = ({ scrollToTop }) => {
                   )}
                 </div>
 
-                <div className=" w-full flex items-center pt-[10px]">
+                {/* <div className=" w-full flex items-center pt-[10px]">
                   <div className="custom-x-scrollbar flex justify-between gap-[5px] overflow-x-auto p-[2px]">
                     <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
                       <SmallButton variant="outline">
@@ -131,7 +131,7 @@ const RecentTransaction = ({ scrollToTop }) => {
                       </SmallButton>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             )}
           </div>

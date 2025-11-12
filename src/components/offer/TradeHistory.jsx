@@ -3,33 +3,31 @@ import SmallButton from "@/components/buttons/SmallButton";
 import Loading from "@/components/others/Loading";
 import NetworkError from "@/components/others/NetworkError";
 import { TbArrowsSort } from "react-icons/tb";
+import MiniButton from "../buttons/MiniButton";
 
 const TradeHistory = ({ loading, tradeHistory }) => {
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
-      <div className="flex  items-center justify-between ">
+      <div className="flex  items-center justify-between">
         <p className="text-sm font-semibold text-white flex items-center gap-1">
           TRADE HISTORY
         </p>
       </div>
 
       <div className="flex flex-col flex-1 ">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-            <TbArrowsSort />
-            <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-              RECENT
-            </p>
+        {/* top Filter */}
+        <div className="flex items-center gap-2 justify-between">
+          <div className="flex items-center gap-2">
+            <MiniButton>STATUS</MiniButton>
+            <MiniButton>ASSET</MiniButton>
           </div>
-
-          <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-            <TbArrowsSort />
-            <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-              ALL
-            </p>
+          <div className="flex items-center gap-2">
+            <MiniButton>MONTH, YEAR</MiniButton>
+            <MiniButton>RESET</MiniButton>
           </div>
         </div>
 
+        {/* History */}
         <div className="flex flex-1 p-[15px] min-h-[120px]">
           <div className="flex flex-1">
             {loading ? (
@@ -49,7 +47,7 @@ const TradeHistory = ({ loading, tradeHistory }) => {
                         ))}
                       </div>
                     ) : (
-                      <div className="flex-1 min-h-[150px] flex flex-col gap-[10px] items-center justify-center">
+                      <div className="flex-1 min-h-[120px] flex flex-col gap-[10px] items-center justify-center">
                         <p className="text-[13px] font-semibold text-white leading-none">
                           NO TRADE HISTORY FOUND
                         </p>
@@ -62,6 +60,7 @@ const TradeHistory = ({ loading, tradeHistory }) => {
           </div>
         </div>
 
+        {/* Bottom Filter */}
         <div className=" w-full flex items-center pt-[10px]">
           <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
             <div className="flex gap-[5px] transition-all duration-300 py-[1px]">

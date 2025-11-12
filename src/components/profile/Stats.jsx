@@ -29,28 +29,28 @@ const Stats = ({ loading, stats }) => {
               <div className="flex-wrap flex items-center gap-[10px] overflow-x-hidden ">
                 <div className="flex min-w-[250px] md:min-w-0 flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
                   <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                    <MdThumbUpAlt className="text-lg text-tradeGreen" />
+                    <MdThumbUpAlt className="text-lg text-tradeFadeWhite" />
                   </div>
 
                   <div className="flex flex-col gap-1 items-start">
                     <p className="text-xs font-medium text-tradeFadeWhite">
                       Positive Feedbacks
                     </p>
-                    <p className="text-white text-sm font-bold leading-none">
+                    <p className="text-white text-[13px] font-semibold leading-none">
                       {stats?.positiveFeedbacks ?? "1"}
                     </p>
                   </div>
                 </div>
                 <div className="flex min-w-[250px] md:min-w-0 flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
                   <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                    <MdThumbDownAlt className="text-lg text-red-600" />
+                    <MdThumbDownAlt className="text-lg text-tradeFadeWhite" />
                   </div>
 
                   <div className="flex flex-col gap-1 items-start">
                     <p className="text-xs font-medium text-tradeFadeWhite">
                       Negative Feedbacks
                     </p>
-                    <p className="text-white text-sm font-bold leading-none">
+                    <p className="text-white text-[13px] font-semibold leading-none">
                       {stats?.negativeFeedbacks ?? "0"}
                     </p>
                   </div>
@@ -64,7 +64,7 @@ const Stats = ({ loading, stats }) => {
                     <p className="text-xs font-medium text-tradeFadeWhite">
                       Trust Score
                     </p>
-                    <p className="text-white text-sm font-bold leading-none">
+                    <p className="text-white text-[13px] font-semibold leading-none">
                       {stats?.trustScore ?? "0"}%
                     </p>
                   </div>
@@ -78,7 +78,7 @@ const Stats = ({ loading, stats }) => {
                     <p className="text-xs font-medium text-tradeFadeWhite">
                       Trade Partners
                     </p>
-                    <p className="text-white text-sm font-bold leading-none">
+                    <p className="text-white text-[13px] font-semibold leading-none">
                       {stats?.tradePartners ?? "0"}
                     </p>
                   </div>
@@ -92,7 +92,7 @@ const Stats = ({ loading, stats }) => {
                     <p className="text-xs font-medium text-tradeFadeWhite">
                       Total Trades
                     </p>
-                    <p className="text-white text-sm font-bold leading-none">
+                    <p className="text-white text-[13px] font-semibold leading-none">
                       {stats?.totalTrades ?? "0"}
                     </p>
                   </div>
@@ -106,7 +106,7 @@ const Stats = ({ loading, stats }) => {
                     <p className="text-xs font-medium text-tradeFadeWhite">
                       Trade Volume
                     </p>
-                    <p className="text-white text-sm font-bold leading-none">
+                    <p className="text-white text-[13px] font-semibold leading-none">
                       {stats?.tradeVolume?.currency ?? "USD"}{" "}
                       {stats?.tradeVolume?.amount ?? "0.00"}
                     </p>
@@ -121,7 +121,7 @@ const Stats = ({ loading, stats }) => {
                     <p className="text-xs font-medium text-tradeFadeWhite">
                       Blocked by
                     </p>
-                    <p className="text-white text-sm font-bold leading-none">
+                    <p className="text-white text-[13px] font-semibold leading-none">
                       {stats?.blockedBy ?? "0"}
                     </p>
                   </div>
@@ -135,7 +135,7 @@ const Stats = ({ loading, stats }) => {
                     <p className="text-xs font-medium text-tradeFadeWhite">
                       Has Blocked
                     </p>
-                    <p className="text-white text-sm font-bold leading-none">
+                    <p className="text-white text-[13px] font-semibold leading-none">
                       {stats?.hasBlocked ?? "0"}
                     </p>
                   </div>

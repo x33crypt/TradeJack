@@ -44,9 +44,7 @@ const Hero = ({ dashboard, loading }) => {
                     // onClick={Deposit}
                     className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange text-white hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
                   >
-                    <p className="text-[13px] font-semibold">
-                      Bookmarks
-                    </p>
+                    <p className="text-[13px] font-semibold">Save(s)</p>
                     <div className="w-max flex gap-1 items-center justify-center  h-max cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                       <IoMdBookmark className="text-base" />
                     </div>
@@ -55,9 +53,7 @@ const Hero = ({ dashboard, loading }) => {
                     onClick={() => navigateTo("/partners")}
                     className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange text-white hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
                   >
-                    <p className="text-[13px] font-semibold">
-                      Trade Partners
-                    </p>
+                    <p className="text-[13px] font-semibold">Trade Partners</p>
                     <div className="w-max flex gap-1 items-center justify-center  h-max cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                       <FaUserFriends className="text-base" />
                     </div>
@@ -66,9 +62,7 @@ const Hero = ({ dashboard, loading }) => {
                     // onClick={Deposit}
                     className="flex flex-1 items-center justify-between bg-tradeAsh hover:bg-tradeOrange text-white hover:text-black border border-tradeAshLight p-[12px] gap-2 rounded-[12px] cursor-pointer duration-300 transition-all"
                   >
-                    <p className="text-[13px] font-semibold">
-                      Advertisement
-                    </p>
+                    <p className="text-[13px] font-semibold">Advertisement</p>
                     <div className="w-max flex gap-1 items-center justify-center  h-max cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
                       <HiLightningBolt className="text-base" />
                     </div>

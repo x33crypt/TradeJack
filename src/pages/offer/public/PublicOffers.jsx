@@ -170,7 +170,7 @@ const PublicOffers = () => {
 
       <div
         ref={topRef}
-        className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[2.5%] min-h-svh flex bg-black"
+        className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[10px] min-h-svh flex bg-black"
       >
         <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
           {/* <div className="lg:flex hidden">

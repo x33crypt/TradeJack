@@ -5,6 +5,7 @@ import NetworkError from "@/components/others/NetworkError";
 import { RiLoader4Fill } from "react-icons/ri";
 import SmallButton from "../buttons/SmallButton";
 import { TbArrowsSort } from "react-icons/tb";
+import MiniButton from "../buttons/MiniButton";
 
 const Feedbacks = ({
   loading,
@@ -48,19 +49,15 @@ const Feedbacks = ({
       </div>
 
       <div className="flex flex-col flex-1 ">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-            <TbArrowsSort />
-            <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-              RECENT
-            </p>
+        {/* top Filter */}
+        <div className="flex items-center gap-2 justify-between">
+          <div className="flex items-center gap-2">
+            <MiniButton>RECENT</MiniButton>
           </div>
-
-          <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-            <TbArrowsSort />
-            <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-              ALL
-            </p>
+          <div className="flex items-center gap-2">
+            <MiniButton>+VE</MiniButton>
+            <MiniButton>-VE</MiniButton>
+            <MiniButton>RESET</MiniButton>
           </div>
         </div>
 

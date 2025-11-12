@@ -5,17 +5,31 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import SmallButton from "../buttons/SmallButton";
 import Loading from "../others/Loading";
 import NetworkError from "../others/NetworkError";
+import MiniButton from "../buttons/MiniButton";
 
 const TradeHistory = ({ loading, profile }) => {
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
-      <div className="flex  items-center justify-between ">
+      <div className="flex  items-center justify-between">
         <p className="text-sm font-semibold text-white flex items-center gap-1">
           TRADE HISTORY
         </p>
       </div>
 
-      <div className="flex flex-col flex-1 min-h-[120px]">
+      <div className="flex flex-col flex-1 ">
+        {/* top Filter */}
+        <div className="flex items-center gap-2 justify-between">
+          <div className="flex items-center gap-2">
+            <MiniButton>STATUS</MiniButton>
+            <MiniButton>ASSET</MiniButton>
+          </div>
+          <div className="flex items-center gap-2">
+            <MiniButton>MONTH, YEAR</MiniButton>
+            <MiniButton>RESET</MiniButton>
+          </div>
+        </div>
+
+        {/* History */}
         <div className="flex flex-1 p-[15px] min-h-[120px]">
           <div className="flex flex-1">
             {loading ? (
