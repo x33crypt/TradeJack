@@ -21,6 +21,8 @@ import Button from "@/components/buttons/Button";
 import { IoMdArrowDropright } from "react-icons/io";
 import { TbReload } from "react-icons/tb";
 import MiniButton from "@/components/buttons/MiniButton";
+import { useFetchProfile } from "@/hooks/userHooks/useFetchProfile";
+import { useProfile } from "@/context/userContext/ProfileContext";
 
 const PublicOffers = () => {
   const topRef = useRef(null);
@@ -37,6 +39,9 @@ const PublicOffers = () => {
     topDisplayedCount,
     nextTop,
   } = useFetchOffers();
+  const { loading } = useFetchProfile();
+  const { profile } = useProfile();
+  const { account } = profile;
   const { offers, stats, setStats, filter, setFilter } = usePublicOffers();
   const [loadingOffers, setLoadingOffers] = useState(false);
   const [backupAmount, setBackupAmount] = useState("200");
@@ -164,6 +169,8 @@ const PublicOffers = () => {
     setStats(false);
   };
 
+  console.log("user username:", account?.username);
+
   return (
     <>
       <InAppNav />
@@ -228,7 +235,10 @@ const PublicOffers = () => {
                             <div className="flex flex-col gap-[10px] w-full h-max">
                               {offers?.top?.data?.map((offer, index) => (
                                 <div key={offer.id || index}>
-                                  <OfferCard offer={offer} />
+                                  <OfferCard
+                                    offer={offer}
+                                    vendor={account?.username}
+                                  />
                                 </div>
                               ))}
                             </div>
@@ -245,7 +255,7 @@ const PublicOffers = () => {
                   )}
                 </div>
 
-                <div className=" w-full flex items-center pt-[10px]">
+                {/* <div className=" w-full flex items-center pt-[10px]">
                   <div className="custom-x-scrollbar flex justify-between gap-[5px]  overflow-x-auto p-[2px]">
                     <div className="flex gap-[5px] transition-all duration-300 py-[1px]">
                       <SmallButton variant="outline">
@@ -294,7 +304,7 @@ const PublicOffers = () => {
                       </SmallButton>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <div className="flex flex-col flex-1 justify-between gap-[20px] ">
@@ -318,7 +328,10 @@ const PublicOffers = () => {
                             <div className="flex flex-col gap-[10px] w-full h-max">
                               {offers?.recent?.data?.map((offer, index) => (
                                 <div key={offer.id || index}>
-                                  <OfferCard offer={offer} />
+                                  <OfferCard
+                                    offer={offer}
+                                    vendor={account?.username}
+                                  />
                                 </div>
                               ))}
                             </div>

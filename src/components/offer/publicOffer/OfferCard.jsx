@@ -17,11 +17,15 @@ import { RiArrowLeftRightLine } from "react-icons/ri";
 import lastSeenDot from "@/utils/lastSeenDot";
 import { FaUserFriends } from "react-icons/fa";
 
-const OfferCard = ({ offer }) => {
+const OfferCard = ({ offer, vendor }) => {
   const navigateTo = useNavigate();
 
   const handleOfferClick = (offerId) => {
-    navigateTo(`/offer/explore/${offerId}`);
+    if (vendor === offer?.Username) {
+      navigateTo(`/offer/${offerId}`);
+    } else {
+      navigateTo(`/offer/explore/${offerId}`);
+    }
   };
 
   return (

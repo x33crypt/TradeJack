@@ -28,7 +28,8 @@ const PreTrade = () => {
   const { id = "", amount = "", currency = "" } = useParams();
   const { aboutOffer, setAboutOffer } = usePublicOffers();
   const { loading } = useFetchAboutOffers();
-  const { preTradeLoading, authorizePreTrade } = usePreTradeAuth();
+  const { preTradeLoading, preTradeData, authorizePreTrade } =
+    usePreTradeAuth();
   const [waitTime, setWaitTime] = useState({
     state: false,
     time: null,
@@ -65,6 +66,8 @@ const PreTrade = () => {
 
     initiatePreTrade();
   }, [id, amount, authorizePreTrade]);
+
+  console.log(preTradeData);
 
   const offer = aboutOffer?.data?.offerDetails;
   const user = aboutOffer?.data?.traderInfo;
