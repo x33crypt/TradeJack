@@ -13,6 +13,7 @@ import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import lastSeenDot from "@/utils/lastSeenDot";
 import { RiArrowLeftRightLine } from "react-icons/ri";
 import { FaUserFriends } from "react-icons/fa";
+import { offerStatus } from "@/utils/offerStatus";
 
 const OfferCard = ({ offer }) => {
   const navigateTo = useNavigate();
@@ -132,7 +133,7 @@ const OfferCard = ({ offer }) => {
         <div className="flex flex-col gap-3">
           <div className="flex justify-between w-full items-center">
             <div className="flex gap-1 items-center w-full ">
-              <div>{lastSeenDot()}</div>
+              <div>{offerStatus(offer?.status)}</div>
               <p className="text-tradeAshLight leading-none">|</p>
               <p className="text-[13px] font-semibold text-white">
                 {offer?.offerId}
@@ -157,7 +158,9 @@ const OfferCard = ({ offer }) => {
                 <p className="text-tradeAshLight leading-none">|</p>
                 <div className="flex  items-center gap-1">
                   <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                  <p className="text-xs font-semibold text-white">99%</p>
+                  <p className="text-xs font-semibold text-white">
+                    {offer?.user?.trustScore}%
+                  </p>
                 </div>
               </div>
             </div>

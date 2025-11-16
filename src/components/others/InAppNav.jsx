@@ -213,7 +213,10 @@ const InAppNav = () => {
           >
             <BiSupport className="text-[16px] text-black" />
           </div>
-          <div className="relative w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+          <div
+            onClick={() => navigateTo("/notification")}
+            className="relative w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+          >
             <FaRegBell className="text-[16px]" />
             <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-semibold p-1 py-[0px] rounded-full shadow-md">
               0

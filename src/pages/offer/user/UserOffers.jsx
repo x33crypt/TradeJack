@@ -259,7 +259,7 @@ const MyOffer = () => {
                 {initialLoading ? (
                   <Loading />
                 ) : (
-                  <div className="flex flex-1">
+                  <div className="flex flex-1 ">
                     {offers === null ? (
                       <NetworkError />
                     ) : (

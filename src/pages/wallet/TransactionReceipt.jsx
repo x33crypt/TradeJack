@@ -46,7 +46,7 @@ const TransactionReceipt = () => {
       <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[10px] min-h-svh flex bg-black">
         <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
           {/* <PartnersMenu /> */}
-          <div className="flex flex-1 flex-col gap-[30px] lg:mx-[22.8%] p-[15px]">
+          <div className="flex flex-1 flex-col gap-[20px] lg:mx-[22.8%] p-[15px]">
             <div className="flex  items-center justify-between ">
               <p className="text-lg font-semibold text-white flex items-center gap-1">
                 TRANSACTION RECEIPT

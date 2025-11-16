@@ -20,10 +20,10 @@ const ToastSuccess = () => {
               successMessage: "",
             }))
           }
-          className="flex items-center gap-3 bg-tradeGreen border border-tradeGreen p-[12px] rounded-[10px] shadow-md lg:max-w-[400px] md:max-w-[50%] max-w-full min-w-[300px] toast-animate-fadeInOut cursor-pointer pointer-events-auto"
+          className="flex items-center gap-3 bg-tradeAshLight border border-tradeAshExtraLight p-[12px] rounded-[10px] shadow-md lg:max-w-[400px] md:max-w-[50%] max-w-full min-w-[300px] toast-animate-fadeInOut cursor-pointer pointer-events-auto"
         >
-          <IoMdCheckmarkCircle className="text-[16px] text-black shrink-0" />
-          <p className="text-[13px] text-black font-semibold">
+          <IoMdCheckmarkCircle className="text-[16px] text-tradeGreen shrink-0" />
+          <p className="text-[13px] text-white font-semibold">
             {toast.successMessage}
           </p>
         </div>

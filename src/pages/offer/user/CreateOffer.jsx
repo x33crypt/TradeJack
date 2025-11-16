@@ -28,11 +28,21 @@ import Stepper from "@/components/others/Steppers";
 import { FaCircleInfo } from "react-icons/fa6";
 import { HiGlobeAlt } from "react-icons/hi";
 import { FaRegUserCircle } from "react-icons/fa";
-import image from "../../../assets/landingImg4.JPG";
 import { PiApproximateEqualsBold } from "react-icons/pi";
 import { FaRegStar } from "react-icons/fa";
 import { LuUsers } from "react-icons/lu";
 import { TbCubeSpark } from "react-icons/tb";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { MdMoreVert } from "react-icons/md";
+import { RiEdit2Fill } from "react-icons/ri";
+import { FaUserFriends } from "react-icons/fa";
+import { HiHashtag } from "react-icons/hi";
+import { AiOutlineSafetyCertificate } from "react-icons/ai";
+import { FaSave } from "react-icons/fa";
+import image from "../../../assets/landingImg4.JPG";
+import { offerStatus } from "@/utils/offerStatus";
+import { LuCalendarClock } from "react-icons/lu";
+import { TbSparkles } from "react-icons/tb";
 
 const CreateOffer = () => {
   const topRef = useRef(null);
@@ -524,27 +534,6 @@ const CreateOffer = () => {
     scrollToTop();
   }, []);
 
-  const close = () => {
-    setCreateOffer({
-      step: 1,
-      title: "Basics",
-      serviceType: "Online Wallet Transfer",
-      service: "",
-      serviceId: "",
-      currency: { code: "USD", name: " United States dollar" },
-      minimum: "",
-      maximum: "",
-      margin: 4,
-      vendorPaymentWindow: { minutes: 0, hours: 0 },
-      tradersPaymentWindow: { minutes: 0, hours: 0 },
-      termTags: [],
-      instruction: "",
-      loading: false,
-      success: false,
-      offerId: "",
-    });
-  };
-
   const stepOne = () => {
     setCreateOffer((prev) => ({
       ...prev,
@@ -740,17 +729,6 @@ const CreateOffer = () => {
     scrollToTop();
   };
 
-  const assetTypeIcons = {
-    "Online Wallet Transfer": TbAssemblyFilled,
-    "Bank Transfer": CiBank,
-    "Gift Cards Exchange": HiOutlineGift,
-    "Card-Based Spending": IoCardOutline,
-    "Crypto Trading": GiTwoCoins,
-  };
-
-  // Get the icon component based on the full service type
-  const Icon = assetTypeIcons[createOffer?.serviceType];
-
   const edit = () => {
     setCreateOffer((prev) => ({
       ...prev,
@@ -760,72 +738,68 @@ const CreateOffer = () => {
   };
 
   const handlepublish = async () => {
+    // Start loading
     setCreateOffer((prev) => ({
       ...prev,
       loading: true,
     }));
 
-    console.log("Publishing offer at summary:", createOffer);
-
     const result = await publishOffer(createOffer);
-
     console.log("Offer published:", result);
 
     if (result.success) {
-      const offerId = result.offerId;
-
-      navigateTo("/offers/user/create");
-
-      setCreateOffer((prev) => ({
+      // 🎉 Success Toast
+      setToast((prev) => ({
         ...prev,
+        success: true,
+        successMessage: "Your offer is live 🎉",
+        error: false,
+        errorMessage: "",
+      }));
+
+      navigateTo(`/offer`);
+
+      // Reset creator form
+      setCreateOffer({
         step: 1,
         loading: false,
-        success: true,
-        offerId: offerId,
-      }));
+        title: "Basics",
+        serviceType: "Online Wallet Transfer",
+        service: "",
+        serviceId: "",
+        currency: { code: "USD", name: "United States dollar", symbol: "$" },
+        minimum: "",
+        maximum: "",
+        margin: 4,
+        vendorPaymentWindow: { minutes: 0, hours: 0 },
+        tradersPaymentWindow: { minutes: 0, hours: 0 },
+        termTags: [],
+        instruction: "",
+      });
     } else {
+      // ❌ Error Path
       setCreateOffer((prev) => ({
         ...prev,
         loading: false,
       }));
 
-      setToast({
-        ...toast,
+      setToast((prev) => ({
+        ...prev,
         error: true,
-        errorMessage: result.error,
-      });
+        errorMessage: result.error ?? "Failed to publish offer",
+        success: false,
+        successMessage: "",
+      }));
     }
   };
 
-  const details = () => {
-    const id = createOffer?.offerId;
+  const formatTodayDate = () => {
+    const today = new Date();
+    const day = today.getDate();
+    const month = today.toLocaleString("en-US", { month: "short" });
+    const year = today.getFullYear();
 
-    if (!id) {
-      console.error("Offer ID is missing. Cannot navigate.");
-      return;
-    }
-
-    // Navigate first
-    navigateTo(`/offers/user/${id}`);
-
-    // Then reset offer details
-    setCreateOffer({
-      step: 1,
-      serviceType: "Online Wallet Transfer",
-      service: "",
-      serviceId: "",
-      currency: { code: "USD", name: " United States dollar" },
-      minimum: "",
-      maximum: "",
-      margin: 4,
-      vendorPaymentWindow: { minutes: 0, hours: 0 },
-      tradersPaymentWindow: { minutes: 0, hours: 0 },
-      termTags: [],
-      instruction: "",
-      loading: false,
-      success: false,
-      offerId: "",
-    });
+    return `${day} ${month}, ${year}`;
   };
 
   return (
@@ -1072,7 +1046,6 @@ const CreateOffer = () => {
 
                     <FaCircleInfo className="text-tradeOrange text-sm flex-shrink-0" />
                   </div>
-
                   <div>
                     <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
                       <div
@@ -1103,13 +1076,12 @@ const CreateOffer = () => {
                       </div>
                     </div>
                   </div>
-
                   <div className="flex items-center gap-1">
-                    <p className="text-tradeFadeWhite text-xs font-medium">
+                    {/* <p className="text-tradeFadeWhite text-xs font-medium">
                       Rate :
-                    </p>
+                    </p> */}
                     <p className="text-tradeOrange text-xs font-medium">
-                      2,300 / {createOffer?.currency?.code}
+                      1 {createOffer?.currency?.code} = NGN 1030.00
                     </p>
                   </div>
 
@@ -1408,272 +1380,262 @@ const CreateOffer = () => {
           <div
             className={` ${
               createOffer?.step === 4 ? "flex" : "hidden"
-            } flex-col gap-[20px] h-full justify-between`}
+            } flex-col gap-[30px] h-full justify-between`}
           >
-            <div className="flex flex-col gap-[25px]">
-              <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed">
-                You’re almost there! Take a moment to double-check your offer
-                details and ensure everything’s accurate before going live.
-              </p>
-              <div className="flex flex-1 flex-col gap-[30px]">
-                <div className="flex flex-col gap-[30px] pb-[12px]">
-                  <div className="flex items-center gap-2">
-                    <div>
-                      <TbCubeSpark className="text-white text-5xl" />
+            {/* Vendor Info */}
+            <div className="flex items-center justify-between gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
+              <div className="flex gap-2 items-center">
+                <div className="flex cursor-pointer relative">
+                  {false ? (
+                    <div className="flex w-[40px] h-[40px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                      <img src={image} alt="" className="" />
                     </div>
-
-                    <div className="flex flex-col gap-2 ">
-                      <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
-                        {createOffer?.service || "NA"}
-                      </p>
-                      <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
-                        {createOffer?.serviceType || "NA"}
-                      </p>
+                  ) : (
+                    <div className="flex w-[30px] h-[30px] rounded-full overflow-hidden cursor-pointer bg-tradeFadeWhite items-center justify-center">
+                      <img src={image} alt="" className="" />
                     </div>
-                  </div>
-
-                  <div className="flex flex-col gap-[10px]">
-                    <div className="flex  items-center gap-1">
-                      <LuUsers className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                      <p className="text-xs font-semibold text-white">
-                        0 Completed Trade(s)
-                      </p>
-                    </div>
-
-                    <div className="flex  items-center gap-1">
-                      <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
-                      <p className="text-xs font-semibold text-white">
-                        0% Completion Rating
-                      </p>
-                    </div>
-                  </div>
+                  )}
                 </div>
+                <div className="flex gap-1 items-center">
+                  <p className="text-white text-[13px] font-semibold">
+                    0xSanittyy
+                  </p>
+                  <p className="text-tradeAshLight leading-none">|</p>
+                  <RiVerifiedBadgeFill className="flex text-tradeGreen text-base flex-shrink-0" />
+                </div>
+              </div>
 
-                <div className="flex flex-col gap-[10px]">
-                  <div className="flex flex-col justify-between flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                    <div className="flex items-center justify-between w-full mt-[1px]">
-                      <div className="flex justify-between border-b border-tradeAshLight flex-1 pb-[10px]">
-                        <p className="text-[13px] text-white font-semibold">
-                          Rate
-                        </p>
-                      </div>
-
-                      <p className="text-white text-sm font-semibold leading-none">
-                        1,250/{createOffer?.currency?.code || "N/A"}
-                      </p>
-                    </div>
-
-                    <div className="w-full flex flex-col gap-1">
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Margin
-                        </p>
-
-                        <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                          {createOffer?.margin || "N/A"}%
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <p className="text-tradeFadeWhite text-[13px]  font-semibold">
-                          Currency
-                        </p>
-                        <p className="text-[13px] text-white font-semibold">
-                          {createOffer?.currency?.name}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-1 flex-col justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                      <p className="text-[13px] text-white font-semibold">
-                        Purchase limits
-                      </p>
-                    </div>
-
-                    <div className="w-full flex flex-col gap-1">
-                      <div className="flex items-center justify-between">
-                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Minimum
-                        </p>
-
-                        <p className="text-white text-[13px]  font-semibold">
-                          {createOffer?.minimum !== "" &&
-                          createOffer?.currency?.code
-                            ? `${Number(
-                                createOffer.minimum
-                              ).toLocaleString()} ${createOffer.currency.code}`
-                            : "0.00"}
-                        </p>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Maximum
-                        </p>
-
-                        <p className="text-white text-[13px] font-semibold">
-                          {createOffer?.maximum !== "" &&
-                          createOffer?.currency?.code
-                            ? `${Number(
-                                createOffer.maximum
-                              ).toLocaleString()} ${createOffer.currency.code}`
-                            : "0.00"}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                      <p className="text-[13px] text-white font-semibold">
-                        Payment Window
-                      </p>
-                    </div>
-
-                    <div className="w-full flex flex-col gap-1">
-                      <div className="flex items-center justify-between">
-                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Transfer
-                        </p>
-
-                        <p className="text-white text-[13px]  font-semibold">
-                          {windowFormatHour(
-                            createOffer?.tradersPaymentWindow?.hours,
-                            createOffer?.tradersPaymentWindow?.minutes
-                          )}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                          Release
-                        </p>
-
-                        <p className="text-white text-[13px] font-semibold">
-                          {windowFormatHour(
-                            createOffer?.vendorPaymentWindow?.hours,
-                            createOffer?.vendorPaymentWindow?.minutes
-                          )}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex  flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                      <p className="text-[13px] text-white font-semibold">
-                        Tags
-                      </p>
-                    </div>
-                    <div className="w-full flex gap-2 flex-grow flex-wrap">
-                      {createOffer?.termTags?.length > 0 ? (
-                        createOffer.termTags.map((term, index) => (
-                          <p
-                            key={index}
-                            className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight text-[13px] font-semibold text-white"
-                          >
-                            {term}
-                          </p>
-                        ))
-                      ) : (
-                        <p className="text-[13px] font-semibold text-white">
-                          N/A
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
-                    <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
-                      <p className="text-[13px] text-white font-semibold">
-                        Instructions
-                      </p>
-                    </div>
-
-                    <p className="text-[13px] text-white font-semibold">
-                      {createOffer?.instruction
-                        ? createOffer?.instruction
-                        : "N/A"}
-                    </p>
-                  </div>
+              <div className="flex gap-1 items-center">
+                <div>{offerStatus()}</div>
+                <p className="text-tradeAshLight leading-none">|</p>
+                <div className="flex items-center gap-1">
+                  <p className="text-white text-[13px] font-semibold leading-none">
+                    0.00 <span className="text-tradeFadeWhite">Saved</span>
+                  </p>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col gap-1">
-              <p className="text-xs font-semibold text-white">
-                Terms & Agreement
-              </p>
-              <p className="text-xs font-medium text-tradeFadeWhite">
+            {/* Offer Info */}
+            <div className="flex items-start justify-between">
+              <div className="flex flex-col gap-[10px] ">
+                <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
+                  {createOffer?.service || "NA"}
+                </p>
+
+                <div className="flex gap-1 items-center">
+                  <div className="flex items-center gap-1">
+                    <HiHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                    <p className="text-[13px] font-semibold text-white">
+                      000000
+                    </p>
+                  </div>
+                  <p className="text-tradeAshLight leading-none">|</p>
+                  <p className="text-tradeFadeWhite text-xs font-semibold leading-none">
+                    {createOffer?.serviceType || "NA"}
+                  </p>
+                </div>
+                <div className="flex gap-1 items-center">
+                  <div className="flex gap-1 items-center">
+                    <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                    <p className="text-xs font-semibold text-white">
+                      {formatTodayDate()}
+                    </p>
+                  </div>
+                  <p className="text-tradeAshLight leading-none">|</p>
+                  <div className="flex gap-1 items-center">
+                    <TbSparkles className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                    <p className="text-xs font-semibold text-white">New</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-1 items-center">
+                  <div className="flex gap-1 items-center">
+                    <FaUserFriends className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                    <p className="text-xs font-semibold text-white">
+                      0 Trade(s)
+                    </p>
+                  </div>
+                  <p className="text-tradeAshLight leading-none">|</p>
+                  <div className="flex gap-1 items-center">
+                    <FaRegStar className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                    <p className="text-xs font-semibold text-white">
+                      0% Rating
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                onClick={edit}
+                className="text-white hover:text-tradeFadeWhite active:text-tradeOrange md:text-3xl text-2xl cursor-pointer duration-300 transition-all"
+              >
+                <RiEdit2Fill />
+              </div>
+            </div>
+
+            {/* Offer deatils */}
+            <div className="flex flex-col gap-[10px]">
+              <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                <div className="flex items-center justify-between border-b border-tradeAshLight w-full mt-[1px] pb-[10px]">
+                  <p className="text-[13px] text-white font-semibold">Rate</p>
+
+                  <div className="flex gap-1 items-center">
+                    <p className="text-tradeGreen text-[13px] font-semibold leading-none">
+                      1 {createOffer?.currency?.code} = NGN 1,500.00
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <p className="text-tradeFadeWhite text-[13px]  font-semibold">
+                    Currency
+                  </p>
+                  <p className="text-[13px] text-white font-semibold">
+                    {createOffer?.currency?.name}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-1 flex-col justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <p className="text-[13px] text-white font-semibold">
+                    Purchase limits
+                  </p>
+                </div>
+
+                <div className="w-full flex flex-col gap-1">
+                  <div className="flex items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Minimum
+                    </p>
+
+                    <p className="text-white text-[13px]  font-semibold">
+                      {createOffer?.minimum !== "" &&
+                      createOffer?.currency?.code
+                        ? `${Number(createOffer.minimum).toLocaleString()} ${
+                            createOffer.currency.code
+                          }`
+                        : "0.00"}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Maximum
+                    </p>
+
+                    <p className="text-white text-[13px] font-semibold">
+                      {createOffer?.maximum !== "" &&
+                      createOffer?.currency?.code
+                        ? `${Number(createOffer.maximum).toLocaleString()} ${
+                            createOffer.currency.code
+                          }`
+                        : "0.00"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <p className="text-[13px] text-white font-semibold">
+                    Payment Window
+                  </p>
+                </div>
+
+                <div className="w-full flex flex-col gap-1">
+                  <div className="flex items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Transfer
+                    </p>
+
+                    <p className="text-white text-[13px]  font-semibold">
+                      {windowFormatHour(
+                        createOffer?.tradersPaymentWindow?.hours,
+                        createOffer?.tradersPaymentWindow?.minutes
+                      )}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                      Release
+                    </p>
+
+                    <p className="text-white text-[13px] font-semibold">
+                      {windowFormatHour(
+                        createOffer?.vendorPaymentWindow?.hours,
+                        createOffer?.vendorPaymentWindow?.minutes
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex  flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <p className="text-[13px] text-white font-semibold">Tags</p>
+                </div>
+                <div className="w-full flex gap-2 flex-grow flex-wrap">
+                  {createOffer?.termTags?.length > 0 ? (
+                    createOffer.termTags.map((term, index) => (
+                      <p
+                        key={index}
+                        className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight text-[13px] font-semibold text-white"
+                      >
+                        {term}
+                      </p>
+                    ))
+                  ) : (
+                    <p className="text-[13px] font-semibold text-white">N/A</p>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex min-w-[200px] flex-1 flex-col gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
+                  <p className="text-[13px] text-white font-semibold">
+                    Instructions
+                  </p>
+                </div>
+
+                <p className="text-[13px] text-white font-semibold">
+                  {createOffer?.instruction ? createOffer?.instruction : "N/A"}
+                </p>
+              </div>
+            </div>
+
+            {/* Agreement and terms */}
+            <div className="flex gap-2 items-center ">
+              <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
+                <FaCircleInfo />
+              </div>
+
+              <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
                 By publishing this offer, you confirm that all details are
                 accurate, you’ll trade only through verified accounts, and that
                 you agree to our{" "}
-                <span className="text-tradeOrange">P2P Trading Terms</span> and{" "}
-                <span className="text-tradeOrange">Dispute Policy</span>.
+                <span className="text-tradeOrange cursor-pointer">
+                  P2P Trading Terms
+                </span>{" "}
+                and{" "}
+                <span className="text-tradeOrange cursor-pointer">
+                  Dispute Policy
+                </span>
+                .
               </p>
             </div>
 
-            <div className="flex flex-col gap-[10px]">
-              <Button
-                onClick={handlepublish}
-                variant="secondary"
-                disabled={createOffer?.loading}
-              >
-                PUBLISH
-              </Button>
-
-              <Button onClick={edit} variant="outline">
-                EDIT
-              </Button>
-            </div>
+            <Button
+              onClick={handlepublish}
+              variant="secondary"
+              disabled={createOffer?.loading}
+            >
+              PUBLISH
+            </Button>
           </div>
         </div>
       </div>
-
-      {createOffer?.success && (
-        <div>
-          <LockByScroll />
-
-          <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[250px]">
-              <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
-                <p className="text-lg font-[700] text-white ">Offer Created</p>
-
-                <div onClick={close}>
-                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
-                </div>
-              </div>
-
-              <div className="flex-1 flex flex-col justify-between py-[15px] gap-[30px]">
-                <div className="flex flex-col gap-[10px]">
-                  <div className="flex flex-col items-center justify-center gap-3">
-                    <div className="p-[6px] bg-tradeAshLight text-[45px] text-tradeGreen rounded-full">
-                      <IoIosCheckmarkCircle />
-                    </div>
-
-                    <p className="text-[13px] font-semibold text-white">
-                      YOUR OFFER IS LIVE !
-                    </p>
-                  </div>
-
-                  <div className="w-full flex flex-col gap-1 bg-tradeAshLigh rounded-[15px]">
-                    <p className="text-xs font-medium text-tradeFadeWhite leading-relaxed text-center">
-                      Manage, edit, or pause it whenever you need. Giving you
-                      full control over how and when your offer is available.
-                    </p>
-                  </div>
-                </div>
-
-                <Button onClick={details} variant="outline">
-                  SEE DETAILS
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       <Footer />
     </>
   );

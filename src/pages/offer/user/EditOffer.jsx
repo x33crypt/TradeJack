@@ -550,20 +550,13 @@ const EditOffer = () => {
                             </div>
                           </div>
 
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-1">
-                              <HiGlobeAlt className="text-tradeFadeWhite text-base flex-shrink-0" />
-                              <p className="text-white text-xs font-medium">
-                                1 USD = 2,300
-                              </p>
-                            </div>
-
-                            <div className="flex items-center gap-1">
-                              <FaRegUserCircle className="text-tradeFadeWhite text-sm flex-shrink-0" />
-                              <p className="text-white text-xs font-medium">
-                                1 USD = 2,300
-                              </p>
-                            </div>
+                          <div className="flex items-center gap-1">
+                            {/* <p className="text-tradeFadeWhite text-xs font-medium">
+                              Rate :
+                            </p> */}
+                            <p className="text-tradeOrange text-xs font-medium">
+                              1 USD = NGN 1030.00
+                            </p>
                           </div>
                         </div>
 
@@ -579,11 +572,8 @@ const EditOffer = () => {
 
                           <div>
                             <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
-                              <div
-                                // onClick={handleMinusTraderPaymentWindowHour}
-                                className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                              >
-                                - <p>Hr</p>
+                              <div className="w-[60px] flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer">
+                                <FaMinus />
                               </div>
 
                               <div
@@ -598,22 +588,16 @@ const EditOffer = () => {
                                 </p>
                               </div>
 
-                              <div
-                                // onClick={handleAddTraderPaymentWindowHour}
-                                className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                              >
-                                + <p>Hr</p>
+                              <div className="w-[60px] flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer">
+                                <FaPlus />
                               </div>
                             </div>
                           </div>
 
                           <div>
                             <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
-                              <div
-                                // onClick={handleMinusTraderPaymentWindowMinutes}
-                                className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                              >
-                                <p>- Min</p>
+                              <div className="w-[60px] flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer">
+                                <FaMinus />
                               </div>
 
                               <div
@@ -627,11 +611,8 @@ const EditOffer = () => {
                                   minutes
                                 </p>
                               </div>
-                              <div
-                                // onClick={handleAddTraderPaymentWindowMinutes}
-                                className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                              >
-                                + <p>Min</p>
+                              <div className="w-[60px] flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer">
+                                <FaPlus />
                               </div>
                             </div>
                           </div>
@@ -648,11 +629,8 @@ const EditOffer = () => {
                           </div>
                           <div>
                             <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
-                              <div
-                                // onClick={handleMinusVendorPaymentWindowHour}
-                                className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                              >
-                                <p>- Hr</p>
+                              <div className="w-[60px] flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer">
+                                <FaMinus />
                               </div>
 
                               <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
@@ -664,22 +642,16 @@ const EditOffer = () => {
                                 </p>
                               </div>
 
-                              <div
-                                // onClick={handleAddVendorPaymentWindowHour}
-                                className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                              >
-                                <p>+ Hr</p>
+                              <div className="w-[60px] flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer">
+                                <FaPlus />
                               </div>
                             </div>
                           </div>
 
                           <div>
                             <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px] overflow-hidden">
-                              <div
-                                // onClick={handleMinusVendorPaymentWindowMinutes}
-                                className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                              >
-                                <p>- Min</p>
+                              <div className="w-[60px] flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-r border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer">
+                                <FaMinus />
                               </div>
 
                               <div className="flex-1 flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite">
@@ -690,11 +662,8 @@ const EditOffer = () => {
                                   minutes
                                 </p>
                               </div>
-                              <div
-                                // onClick={handleAddVendorPaymentWindowMinutes}
-                                className="w-[60px] flex gap-1 justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer"
-                              >
-                                <p>+ Min</p>
+                              <div className="w-[60px] flex justify-center items-center p-[12px] text-sm font-semibold text-tradeFadeWhite border-l border-tradeAsh hover:bg-tradeAshExtraLight transition-all duration-300 cursor-pointer">
+                                <FaPlus />
                               </div>
                             </div>
                           </div>
@@ -793,9 +762,9 @@ const EditOffer = () => {
 
                       {/* Info */}
                       <div className="flex gap-2 items-center ">
-                        <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
+                        {/* <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
                           <FaCircleInfo />
-                        </div>
+                        </div> */}
 
                         <div className="flex flex-col gap-[5px]">
                           <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">

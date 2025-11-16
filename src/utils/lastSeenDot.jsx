@@ -74,7 +74,7 @@ export function lastSeenDot(lastSeen) {
 
   // Not online -> show Offline and relative time
   return (
-    <div className="p-0.2 border border-tradeAshExtraLight rounded-full">
+    <div className="p-0.2 border border-tradeAshExtraLight rounded-full  flex items-center justify-center">
       <GrStatusGoodSmall className="flex text-tradeFadeWhite/50 text-[10px] flex-shrink-0" />
     </div>
   );

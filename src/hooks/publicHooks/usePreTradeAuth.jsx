@@ -51,30 +51,65 @@ export function usePreTradeAuth() {
 
       return { success: true, data: response.data };
     } catch (err) {
-      console.error("[usePreTradeAuth] ❌ Request failed:", err);
+      // REPLACE IT WITH THIS
+      //
+      console.error("[usePreTradeAuth] Request failed:", err);
 
-      const status = err?.response?.status ?? null;
-      const serverData = err?.response?.data ?? null;
+      const status = err?.response?.status ?? 500; // Get 400, 404, etc.
 
+      // 1. CHECK FOR YOUR BACKEND'S CUSTOM JSON ERROR
+      // If the server sent our expected structured error (like VALIDATION_CHECK_FAILED)
+      if (err.response && err.response.data && err.response.data.code) {
+        // 2. THIS IS THE CRITICAL PART
+        // Treat this "structured error" as data and show it to the user
+        console.warn(
+          "[usePreTradeAuth] Handled pre-trade check failure:",
+          err.response.data
+        );
+        setPreTradeData(err.response.data); // SET THE DATA
+        setPreTradeError(null); //  CLEAR ANY GENERIC ERROR
+        setPreTradeLoading(false);
+
+        // We return 'success: true' because the *API call* was successful
+        // in giving us a structured response, even if the *check* failed.
+        // This allows the frontend to read the data and show the UI.
+        return { success: true, data: err.response.data };
+      }
+
+      // 3. This is a REAL, unexpected error (e.g., server is down)
       const friendlyMessage =
-        serverData?.ui?.componentProps?.message ||
-        serverData?.message ||
-        serverData?.error ||
-        (typeof serverData === "string" ? serverData : null) ||
-        (status ? `Request failed with status ${status}` : null) ||
-        err?.message ||
-        "Unable to initiate transaction. Please try again later.";
-
+        err.response?.data?.message ||
+        err.message ||
+        "An unknown error occurred";
       setPreTradeError(friendlyMessage);
-      setPreTradeData(serverData ?? { message: friendlyMessage });
+      setPreTradeData(null);
       setPreTradeLoading(false);
-
-      return {
-        success: false,
-        status,
-        error: serverData ?? { message: friendlyMessage },
-      };
+      return { success: false, status, error: { message: friendlyMessage } };
     }
+
+    console.error("[usePreTradeAuth] ❌ Request failed:", err);
+
+    const status = err?.response?.status ?? null;
+    const serverData = err?.response?.data ?? null;
+
+    const friendlyMessage =
+      serverData?.ui?.componentProps?.message ||
+      serverData?.message ||
+      serverData?.error ||
+      (typeof serverData === "string" ? serverData : null) ||
+      (status ? `Request failed with status ${status}` : null) ||
+      err?.message ||
+      "Unable to initiate transaction. Please try again later.";
+
+    setPreTradeError(friendlyMessage);
+    setPreTradeData(serverData ?? { message: friendlyMessage });
+    setPreTradeLoading(false);
+
+    return {
+      success: false,
+      status,
+      error: serverData ?? { message: friendlyMessage },
+    };
   }, []);
 
   return {

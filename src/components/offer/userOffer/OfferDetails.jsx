@@ -30,6 +30,7 @@ import { MdBookmarkAdd } from "react-icons/md";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { MdMoreVert } from "react-icons/md";
 import { RiEdit2Fill } from "react-icons/ri";
+import { offerStatus } from "@/utils/offerStatus";
 
 const OfferDetails = ({ aboutOffer, loading, id }) => {
   const { offerDetails, traderInfo } = aboutOffer || {};
@@ -173,12 +174,13 @@ const OfferDetails = ({ aboutOffer, loading, id }) => {
 
                       <div className="flex gap-1 items-center">
                         <p className="text-tradeGreen text-sm font-semibold leading-none">
+                          1 {offerDetails?.preferredCurrency?.code} = NGN{" "}
                           {toDecimal(offerDetails?.marginRate?.ratePrice)}
                         </p>
-                        <p className="text-tradeAshLight leading-none">|</p>
-                        <p className="text-white text-sm font-semibold leading-none">
+                        {/* <p className="text-tradeAshLight leading-none">|</p>
+                        <p className="text-tradeGreen text-sm font-semibold leading-none">
                           {offerDetails?.marginRate?.ratePercent || "N/A"}%
-                        </p>
+                        </p> */}
                       </div>
                     </div>
 

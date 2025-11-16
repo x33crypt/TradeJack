@@ -57,6 +57,7 @@ import UpdatePhone from "./pages/settings/UpdatePhone";
 import UpdateAddress from "./pages/settings/UpdateAddress";
 import PreTrade from "./pages/trade/PreTrade";
 import TransactionReceipt from "./pages/wallet/TransactionReceipt";
+import Notifications from "./pages/Notifications";
 
 const App = () => {
   return (
@@ -102,6 +103,7 @@ const App = () => {
         {/* Dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/partners" element={<Partners />} />
+        <Route path="/notification" element={<Notifications />} />
 
         {/* Settings */}
         <Route path="/settings" element={<Settings />} />

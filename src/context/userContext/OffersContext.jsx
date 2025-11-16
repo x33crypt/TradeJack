@@ -16,6 +16,7 @@ export const UserOfferProvider = ({ children }) => {
 
   const [createOffer, setCreateOffer] = useState({
     step: 1,
+    loading: false,
     title: "Basics",
     serviceType: "Online Wallet Transfer",
     service: "",
@@ -28,9 +29,6 @@ export const UserOfferProvider = ({ children }) => {
     tradersPaymentWindow: { minutes: 0, hours: 0 },
     termTags: [],
     instruction: "",
-    loading: false,
-    success: false,
-    offerId: "",
   });
 
   const [aboutOffer, setAboutOffer] = useState({ id: null, data: null });
