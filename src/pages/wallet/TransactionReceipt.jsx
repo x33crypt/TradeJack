@@ -62,8 +62,8 @@ const TransactionReceipt = () => {
                       <NetworkError />
                     </div>
                   ) : (
-                    <div className="flex-1 flex flex-col gap-[20px]">
-                      {/* <div className="flex flex-col gap-2 items-center justify-center">
+                    <div className="flex-1 flex flex-col gap-[30px]">
+                      <div className="flex flex-col gap-2 items-center justify-center">
                         <p className="text-2xl font-semibold text-white">
                           {toDecimal(data?.amount?.ngn)} {user?.code}
                         </p>
@@ -118,10 +118,10 @@ const TransactionReceipt = () => {
                             })().toUpperCase()}
                           </p>
                         </div>
-                      </div> */}
+                      </div>
 
                       <div className="flex flex-col gap-[10px]">
-                        <div className="w-full flex flex-col gap-1 bg-transparent border border-tradeAshLight border-dashed p-[12px] rounded-[15px]">
+                        <div className="w-full flex flex-col gap-1 bg-tradeAsh border border-tradeAshLight border-dashed p-[12px] rounded-[15px]">
                           <div className="flex items-center justify-between">
                             <p className="text-[13px] text-tradeFadeWhite font-semibold">
                               Date
@@ -190,7 +190,7 @@ const TransactionReceipt = () => {
                           </div>
                         </div>
 
-                        <div className="w-full flex flex-col gap-1 bg-tradeAshLight p-[12px] rounded-[15px]">
+                        <div className="w-full flex flex-col gap-1 bg-tradeAsh p-[12px] rounded-[15px]">
                           <div className="flex items-center justify-between">
                             <p className="text-[13px] text-tradeFadeWhite font-semibold">
                               Amount
@@ -230,7 +230,7 @@ const TransactionReceipt = () => {
                           </div>
                         </div>
 
-                        <div className="w-full flex flex-col gap-1 bg-transparent border border-tradeAshLight border-dashed p-[12px] rounded-[15px]">
+                        <div className="w-full flex flex-col gap-1 bg-tradeAsh border border-tradeAshLight border-dashed p-[12px] rounded-[15px]">
                           <div className="flex items-center justify-between">
                             <p className="text-[13px] text-tradeFadeWhite font-semibold">
                               Transaction Fee
