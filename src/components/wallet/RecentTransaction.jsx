@@ -13,7 +13,7 @@ import MiniButton from "@/components/buttons/MiniButton";
 import { groupByDate } from "@/utils/groupByDate";
 
 const RecentTransaction = ({ scrollToTop }) => {
-  const { loading, refetchAllTransactions } = useFetchAllTransactions();
+  const { initialLoading, refetchAllTransactions } = useFetchAllTransactions();
   const { transactions, setFilter } = useTransaction();
   const navigateTo = useNavigate();
 
@@ -44,7 +44,7 @@ const RecentTransaction = ({ scrollToTop }) => {
       </div>
 
       <div className="flex h-full ">
-        {loading ? (
+        {initialLoading ? (
           <Loading />
         ) : (
           <div className="flex flex-1">

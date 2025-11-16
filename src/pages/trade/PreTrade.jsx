@@ -35,7 +35,6 @@ const PreTrade = () => {
     time: null,
   });
 
-  console.log("Offer Id:", id);
   console.log("Amount:", amount);
   console.log("Currency:", currency);
 
@@ -53,18 +52,13 @@ const PreTrade = () => {
 
   // Handle Pre Trade
   useEffect(() => {
-    const initiatePreTrade = async () => {
-      if (id && amount) {
-        console.log("Offer ID:", id);
+    if (!id || !amount) return;
 
-        const result = await authorizePreTrade(id, amount);
-        if (result) {
-          console.log("Trade initialized:", result);
-        }
-      }
-    };
+    const offerId = id;
+    console.log("Offer Id:", offerId);
+    console.log("Amount:", amount);
 
-    initiatePreTrade();
+    const result = authorizePreTrade(offerId, amount);
   }, [id, amount, authorizePreTrade]);
 
   console.log(preTradeData);
@@ -106,22 +100,27 @@ const PreTrade = () => {
           {/* Pre-trade Loader/Heading */}
           <div className="flex gap-2 w-full h-max flex-col">
             <div className="flex-1 flex justify-between items-center gap-[10px]">
-              <p className="text-sm font-semibold text-white">
-                PRE-TRADE CHECKS
-              </p>
-
-              <div className="flex items-center gap-[5px]">
-                {false ? (
-                  <PiSpinnerGapBold className="text-lg animate-spin text-white" />
-                ) : null}
-
-                <p className="text-sm font-semibold text-white">100%</p>
+              <div className="flex  gap-1">
+                <p className="text-sm font-semibold text-white">
+                  {offer?.serviceName ?? ""}{" "}
+                  <span className="text-tradeFadeWhite">- {id ?? ""}</span>
+                </p>
+              </div>
+              <div className="flex flex-col gap-1">
+                <p className="text-sm font-semibold text-white">
+                  {toDecimal(amount) ?? "0.00"}{" "}
+                  <span className="text-tradeFadeWhite font-semibold">
+                    {currency ?? "N/A"}
+                  </span>
+                </p>
               </div>
             </div>
+
             <div>
               <ProgressBar value={100} />
             </div>
           </div>
+
           <div className="flex flex-col gap-[30px]">
             {/* Trade Info */}
             <div className="flex flex-col gap-[10px]">
@@ -156,7 +155,7 @@ const PreTrade = () => {
               </div>
 
               {/* Trade & Offer Info */}
-              <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
+              {/* <div className="flex flex-col gap-[10px] bg-tradeAsh border border-tradeAshLight rounded-[15px] p-[12px]">
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2 items-center">
                     <p className="text-tradeOrange text-[13px] font-semibold">
@@ -197,7 +196,7 @@ const PreTrade = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Checks Result */}

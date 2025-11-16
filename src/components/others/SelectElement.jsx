@@ -169,9 +169,9 @@ const SelectElement = () => {
                     {select?.element.toUpperCase()}
                   </p>
                 </div>
-                <div className="flex flex-col gap-[15px] rounded-[15px] w-full md:max-h-[245px] max-h-[300px]">
+                <div className="flex flex-col gap-[15px] overflow-auto w-full md:max-h-[245px] max-h-[300px]">
                   {Array.isArray(options) && options.length > 0 ? (
-                    <div className="overflow-y-auto custom-scrollbar">
+                    <div className="flex overflow-auto custom-scrollbar">
                       {searchInput ? (
                         <div className="flex flex-col gap-[10px] p-1">
                           {filterObjectOption.length > 0 ? (
@@ -179,18 +179,18 @@ const SelectElement = () => {
                               <div
                                 key={index}
                                 onClick={() => handleUpdate(item)}
-                                className="flex flex-wrap items-center gap-[5px] w-full cursor-pointer"
+                                className="text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite flex p-[1px] items-center gap-[5px] w-full cursor-pointer transition-all duration-300 hover:scale-[1.03]"
                               >
                                 {Object.entries(item).map(([key, value]) => {
                                   if (key === "index" || value == null)
                                     return null; // skip index/nulls
                                   return (
-                                    <SmallButton
+                                    <button
                                       key={key}
-                                      variant="fadeoutPlus"
+                                      className=" bg-tradeAshLight border border-tradeAshExtraLight flex items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px]"
                                     >
                                       {String(value)}
-                                    </SmallButton>
+                                    </button>
                                   );
                                 })}
                               </div>
@@ -223,18 +223,18 @@ const SelectElement = () => {
                               <div
                                 key={index}
                                 onClick={() => handleUpdate(item)}
-                                className="flex flex-wrap items-center gap-[5px] w-full cursor-pointer"
+                                className="text-tradeFadeWhite hover:text-white active:text-tradeFadeWhite flex p-[1px] items-center gap-[5px] w-full cursor-pointer transition-all duration-300 hover:scale-[1.03]"
                               >
                                 {Object.entries(item).map(([key, value]) => {
                                   if (key === "index" || value == null)
                                     return null;
                                   return (
-                                    <SmallButton
+                                    <button
                                       key={key}
-                                      variant="fadeoutPlus"
+                                      className=" bg-tradeAshLight border border-tradeAshExtraLight flex items-center gap-1 w-max px-[8px] py-[4px] text-[13px] font-semibold rounded-[6.5px]"
                                     >
                                       {String(value)}
-                                    </SmallButton>
+                                    </button>
                                   );
                                 })}
                               </div>

@@ -89,7 +89,7 @@ const Accounts = () => {
     }
   };
 
-  const setDefaultAccount = async () => {
+  const setDefaultAccount = async () => {a
     try {
       setManageAccount((prev) => ({
         ...prev,

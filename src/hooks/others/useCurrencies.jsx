@@ -22,6 +22,7 @@ export function useCurrencies() {
               if (!currencyMap.has(code)) {
                 currencyMap.set(code, {
                   code,
+                  name: info?.name || "Unknown",
                 });
               }
             });

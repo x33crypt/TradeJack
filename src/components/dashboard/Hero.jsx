@@ -13,12 +13,6 @@ const Hero = ({ dashboard, loading }) => {
   const navigateTo = useNavigate();
   return (
     <div className="flex flex-1 flex-col gap-[20px]">
-      <div className="flex  items-center justify-between ">
-        <p className="text-white text-lg font-semibold flex items-center gap-1">
-          DASHBOARD
-        </p>
-      </div>
-
       <div className="flex flex-1 ">
         {loading ? (
           <Loading />

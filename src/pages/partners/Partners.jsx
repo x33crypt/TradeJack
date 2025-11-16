@@ -26,24 +26,24 @@ const Partners = () => {
   return (
     <>
       <InAppNav />
-     <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[10px] min-h-svh flex bg-black">
-        <div className="flex flex-col flex-1">
-          {false ? (
-            <Loading />
-          ) : (
+      <div className="md:pt-[70px] pt-[57px] lg:px-[2%] md:px-[10px] min-h-svh flex bg-black">
+        <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
+          {/* <PartnersMenu /> */}
+          <div className="flex flex-1 flex-col gap-[30px] lg:mx-[22.8%] p-[15px]">
+            <div className="flex  items-center justify-between ">
+              <p className="text-lg font-semibold text-white flex items-center gap-1">
+                TRADE PARTNERS
+              </p>
+            </div>
+
             <div className="flex flex-1">
               {false ? (
-                <NetworkError />
+                <Loading />
               ) : (
-                <div className="flex flex-1 lg:flex-row flex-col gap-[25px] ">
-                  {/* <PartnersMenu /> */}
-                  <div className="flex flex-1 flex-col gap-[30px] lg:mx-[22.8%] p-[15px]">
-                    <div className="flex  items-center justify-between ">
-                      <p className="text-lg font-semibold text-white flex items-center gap-1">
-                        TRADE PARTNERS
-                      </p>
-                    </div>
-
+                <div className="flex flex-1">
+                  {false ? (
+                    <NetworkError />
+                  ) : (
                     <div className="flex-1 flex flex-col gap-[25px]">
                       {/* top Filter */}
                       <div className="flex items-center gap-2 justify-between">
@@ -71,11 +71,11 @@ const Partners = () => {
                         ))}
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               )}
             </div>
-          )}
+          </div>
         </div>
       </div>
       <Footer />

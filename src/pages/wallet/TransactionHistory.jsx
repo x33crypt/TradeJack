@@ -31,6 +31,7 @@ const TransactionHistory = () => {
 
   console.log("Transactions", transactions);
   console.log("Filter", filter);
+  console.log("initialLoading", initialLoading);
 
   // This Function handles Filter changes
 
@@ -298,8 +299,9 @@ const TransactionHistory = () => {
                                 </div>
 
                                 <div className="flex flex-col gap-[10px]">
-                                  {group.items.map((transaction) => (
+                                  {group.items.map((transaction, index) => (
                                     <TransactionCard
+                                      key={index}
                                       transaction={transaction}
                                     />
                                   ))}

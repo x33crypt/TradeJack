@@ -131,6 +131,8 @@ const CreateOffer = () => {
     }
   }, [select]);
 
+  console.log(createOffer?.currency);
+
   // handling terms changes
   useEffect(() => {
     // Only run when we’re on the edit-offer page and a pick exists
@@ -943,7 +945,7 @@ const CreateOffer = () => {
                       placeholder="Choose a currency"
                       value={
                         createOffer.currency.code
-                          ? `${createOffer.currency.code} `
+                          ? `${createOffer.currency.code} - ${createOffer.currency.name}`
                           : ""
                       }
                       onClick={() =>
