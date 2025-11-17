@@ -12,8 +12,9 @@ export const TransactionProvider = ({ children }) => {
   });
 
   const [details, setDetails] = useState({
+    state: false,
     data: null,
-    user: {},
+    reference: null,
   });
 
   console.log("transactions Details :", details);

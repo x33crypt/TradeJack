@@ -12,14 +12,14 @@ const LevelZero = ({ upgrade }) => {
     <div className="flex flex-col gap-[30px]">
       <div className={`${upgrade === null ? "hidden" : "flex"}`}>
         {upgrade?.status === "processing" ? (
-          <div className="flex flex-1 p-2 rounded-[5px] items-center justify-between bg-tradeAshLight">
+          <div className="flex flex-1 p-2 rounded-[5px] items-center justify-between bg-tradeAsh">
             <div className="flex gap-2 items-center">
-              <LuScanText className="text-base text-tradeOrange" />
-              <p className="text-xs font-medium text-tradeOrange">
+              <LuScanText className="text-base text-tradeFadeWhite" />
+              <p className="text-xs font-medium text-tradeFadeWhite">
                 {upgrade?.comment}
               </p>
             </div>
-            <MdOutlineKeyboardArrowRight className="text-lg text-tradeOrange cursor-pointer" />
+            <MdOutlineKeyboardArrowRight className="text-lg text-tradeFadeWhite cursor-pointer" />
           </div>
         ) : upgrade?.status === "failed" ? (
           <div className="flex flex-1 p-2 rounded-[5px] items-center justify-between bg-red-600">

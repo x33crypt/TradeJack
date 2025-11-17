@@ -54,9 +54,8 @@ const AboutOffer = () => {
                   inconsistent with our marketplace standards, please let us
                   know. Your feedback plays an important role in keeping the
                   platform transparent, fair, and trustworthy for everyone. Use
-                  the{" "}
-                  <span className="text-tradeOrange font-semibold">Report</span>{" "}
-                  button to submit your concern — our compliance team will
+                  the <span className="font-bold">"REPORT"</span>{" "}
+                  button to submit your concern, our compliance team will
                   promptly review and take appropriate action.
                 </p>
               </div>

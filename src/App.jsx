@@ -56,7 +56,6 @@ import UpdateEmail from "./pages/settings/UpdateEmail";
 import UpdatePhone from "./pages/settings/UpdatePhone";
 import UpdateAddress from "./pages/settings/UpdateAddress";
 import PreTrade from "./pages/trade/PreTrade";
-import TransactionReceipt from "./pages/wallet/TransactionReceipt";
 import Notifications from "./pages/Notifications";
 
 const App = () => {
@@ -126,10 +125,6 @@ const App = () => {
         <Route path="/wallet/deposit" element={<Deposit />} />
         <Route path="/wallet/withdraw" element={<Withdraw />} />
         <Route path="/wallet/transactions" element={<TransactionHistory />} />
-        <Route
-          path="/wallet/transaction/:id/receipt"
-          element={<TransactionReceipt />}
-        />
 
         {/* Offers */}
         <Route path="/offers/explore" element={<Marketplace />} />

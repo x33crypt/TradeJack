@@ -13,13 +13,12 @@ import { time } from "@/utils/time";
 import { FaHashtag } from "react-icons/fa";
 // import { shortenID } from "@/utils/shortenID";
 import { dateTime } from "@/utils/dateTime";
-import { useNavigate } from "react-router-dom";
 
 const TransactionCard = ({ transaction }) => {
-  const navigateTo = useNavigate();
+  const { details, setDetails } = useTransaction();
 
   const viewDetails = (id) => {
-    navigateTo(`/wallet/transaction/${id}/receipt`);
+    setDetails((prev) => ({ ...prev, state: true, reference: id, data: {} }));
   };
 
   return (

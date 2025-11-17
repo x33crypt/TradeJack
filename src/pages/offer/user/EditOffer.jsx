@@ -762,9 +762,9 @@ const EditOffer = () => {
 
                       {/* Info */}
                       <div className="flex gap-2 items-center ">
-                        {/* <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
+                        <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
                           <FaCircleInfo />
-                        </div> */}
+                        </div>
 
                         <div className="flex flex-col gap-[5px]">
                           <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">

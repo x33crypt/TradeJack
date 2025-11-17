@@ -6,6 +6,7 @@ import { FaLockOpen } from "react-icons/fa";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { HiMiniArrowLongRight } from "react-icons/hi2";
 import { CgArrowLongRight } from "react-icons/cg";
+import MiniButton from "@/components/buttons/MiniButton";
 
 const EscrowActivity = () => {
   const excrow = [
@@ -23,7 +24,7 @@ const EscrowActivity = () => {
           ESCROW ACTIVITY
         </p>
 
-        <CgArrowLongRight className="text-tradeFadeWhite hover:text-tradeOrange text-[30px] leading-none cursor-pointer" />
+        <MiniButton>VIEW ALL</MiniButton>
       </div>
 
       <div className="flex h-full ">

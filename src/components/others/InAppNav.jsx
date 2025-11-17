@@ -41,7 +41,7 @@ const InAppNav = () => {
     const interval = setInterval(() => {
       setAnimateSoon(true);
       setTimeout(() => setAnimateSoon(false), 600);
-    }, 10000); // every 20s
+    }, 14000); // every 20s
 
     return () => clearInterval(interval);
   }, []);

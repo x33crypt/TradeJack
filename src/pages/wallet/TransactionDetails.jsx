@@ -17,11 +17,12 @@ import Button from "@/components/buttons/Button";
 import { shortenID } from "@/utils/shortenID";
 import { MdArrowRightAlt } from "react-icons/md";
 import NetworkError from "@/components/others/NetworkError";
+import { date } from "@/utils/date";
 
 const TransactionDetails = () => {
   const { loading, error } = useFetchTransactionsDetails();
   const { details, setDetails } = useTransaction();
-  const { data, user } = details;
+  const { state, data, user } = details;
   const { toast, setToast } = useToast();
 
   const handleCopy = (text) => {
@@ -40,13 +41,21 @@ const TransactionDetails = () => {
       });
   };
 
+  const close = () => {
+    setDetails({
+      state: false,
+      data: null,
+      reference: null,
+    });
+  };
+
   return (
     <div>
-      {false && (
+      {state && (
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[280px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
                   Transaction Details
@@ -57,7 +66,7 @@ const TransactionDetails = () => {
                 </div>
               </div>
 
-              <div className="flex-1 flex py-[15px] min-h-[120px]">
+              <div className="flex-1 flex py-[15px] min-h-[380px]">
                 {loading ? (
                   <Loading />
                 ) : (
@@ -98,23 +107,15 @@ const TransactionDetails = () => {
                             </div>
                             <div className="flex items-center justify-between">
                               <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                                Reference
-                              </p>
-                              <p className="text-[13px] font-semibold text-white">
-                                {data?.reference}
-                              </p>
-                            </div>
-                          </div>
-
-                          <div className="w-full flex flex-col gap-1 bg-tradeAshLight p-[12px] rounded-[15px]">
-                            <div className="flex items-center justify-between">
-                              <p className="text-[13px] text-tradeFadeWhite font-semibold">
                                 Type
                               </p>
                               <p className="text-[13px] font-semibold text-white">
                                 {capitalizeFirst(data?.type)}
                               </p>
                             </div>
+                          </div>
+
+                          <div className="w-full flex flex-col gap-1 bg-tradeAshLight p-[12px] rounded-[15px]">
                             <div className="flex items-center justify-between">
                               <p className="text-[13px] text-tradeFadeWhite font-semibold">
                                 {data?.type === "transfer"
@@ -164,27 +165,33 @@ const TransactionDetails = () => {
                               <p className="text-[13px] text-tradeFadeWhite font-semibold">
                                 Amount
                               </p>
-                              <div className="flex items-center gap-1">
-                                <p className="text-[13px] font-semibold text-white">
-                                  #{toDecimal(data?.amount?.ngn)}
-                                </p>
-                                <MdArrowRightAlt className="text-tradeFadeWhite " />
-                                <p className="text-[13px] font-semibold text-white">
-                                  ${toDecimal(data?.amount?.usd)}
-                                </p>
-                              </div>
+
+                              <p className="text-[13px] font-semibold text-white">
+                                #{toDecimal(data?.amount?.ngn)}
+                              </p>
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                                Value
+                              </p>
+
+                              <p className="text-[13px] font-semibold text-white">
+                                ${toDecimal(data?.amount?.usd)}
+                              </p>
+                            </div>
+
+                            <div className="flex items-center justify-between">
+                              <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                                Rate
+                              </p>
+                              <p className="text-white text-[13px] font-semibold">
+                                {user?.code} 1 = USD{" "}
+                                {toDecimal(data?.exchangeRate)}
+                              </p>
                             </div>
                           </div>
 
                           <div className="w-full flex flex-col gap-1 bg-transparent border border-tradeAshLight border-dashed p-[12px] rounded-[15px]">
-                            <div className="flex items-center justify-between">
-                              <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                                Exchange rate
-                              </p>
-                              <p className="text-white text-[13px] font-semibold">
-                                {user?.code} {toDecimal(data?.exchangeRate)}/USD
-                              </p>
-                            </div>
                             <div className="flex items-center justify-between">
                               <p className="text-[13px] text-tradeFadeWhite font-semibold">
                                 Fee
@@ -193,13 +200,21 @@ const TransactionDetails = () => {
                                 #0.00
                               </p>
                             </div>
+                            <div className="flex items-center justify-between">
+                              <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                                Ref.
+                              </p>
+                              <p className="text-[13px] font-semibold text-white">
+                                {data?.reference}
+                              </p>
+                            </div>
                           </div>
                         </div>
 
                         <div>
-                          <p className="text-xs text-tradeFadeWhite font-medium leading-relaxed text-center">
+                          <p className="text-xs text-tradeFadeWhite/50 font-medium leading-relaxed text-center">
                             Transaction updates in real time.{" "}
-                            <span className="text-tradeOrange">
+                            <span className="text-tradeFadeWhite font-bold">
                               Contact support
                             </span>{" "}
                             with your reference for any issues.
