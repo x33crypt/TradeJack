@@ -6,6 +6,7 @@ import { FaLink } from "react-icons/fa6";
 import { AiFillDelete } from "react-icons/ai";
 import { TiPinOutline } from "react-icons/ti";
 import { dateTime } from "@/utils/dateTime";
+import MiniButton from "../buttons/MiniButton";
 
 const AccountCard = ({ account, index }) => {
   const { manageAccount, setManageAccount } = useLinkedAccount();
@@ -34,23 +35,30 @@ const AccountCard = ({ account, index }) => {
   return (
     <>
       <div className="flex flex-col gap-[10px]" key={index}>
-        <div className="flex flex-col gap-[15px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+        <div className="flex flex-col gap-[20px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
           <div className="flex justify-between  w-full items-center">
-            <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+            {/* <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
               <FaCheckDouble className="text-xs" />
               <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                 Verified Account
               </p>
-            </div>
+            </div> */}
 
-            <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-              {/* <FaCheckDouble /> */}
+            <MiniButton>
+              <p>Verified </p>
+            </MiniButton>
+
+            <MiniButton>
+              <p> {account?.isDefault ? " Default" : "Alternative"}</p>
+            </MiniButton>
+
+            {/* <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+             
               <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
                 {account?.isDefault ? " Default" : "Alternative"}
               </p>
-            </div>
+            </div> */}
           </div>
-          {/* Bank Logo and Info */}
           <div className="flex w-full justify-between ">
             <div className="flex items-center gap-4">
               <div className="p-2.5 bg-tradeAshLight border border-tradeAshExtraLight rounded-xl">
@@ -70,7 +78,6 @@ const AccountCard = ({ account, index }) => {
               </div>
             </div>
           </div>
-
           <div className="flex flex-col gap-1">
             <p className="text-white text-xs font-semibold">
               {account?.account_holder_name}
@@ -78,12 +85,17 @@ const AccountCard = ({ account, index }) => {
           </div>
         </div>
         <div className="flex w-full items-center justify-between">
-          <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+          {/* <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
             <FaLink className="xs" />
             <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
               {dateTime(account?.createdAt)}
             </p>
-          </div>
+          </div> */}
+
+          <MiniButton>
+            <FaLink className="xs" />
+            <p>{dateTime(account?.createdAt)}</p>
+          </MiniButton>
 
           <div className="flex items-center gap-2">
             {state && (

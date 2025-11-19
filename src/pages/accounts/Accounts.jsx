@@ -14,6 +14,7 @@ import api from "@/utils/http/api";
 import AccountMenu from "@/components/settings/SettingMenu";
 import NetworkError from "@/components/others/NetworkError";
 import { RiAddCircleFill } from "react-icons/ri";
+import { FaCircleInfo } from "react-icons/fa6";
 
 const Accounts = () => {
   const { loading, refetchLinkedBanks } = useFetchLinkedBanks();
@@ -89,7 +90,7 @@ const Accounts = () => {
     }
   };
 
-  const setDefaultAccount = async () => {a
+  const setDefaultAccount = async () => {
     try {
       setManageAccount((prev) => ({
         ...prev,
@@ -155,14 +156,9 @@ const Accounts = () => {
     });
   };
 
-  // useEffect(() => {
-  //   if (success === true) return;
-  //   refetchLinkedBanks();
-  // }, [success]);
-
   const navigateTo = useNavigate();
 
-  console.log(manageAccount);
+  console.log(linkedAccounts);
 
   return (
     <>
@@ -177,15 +173,17 @@ const Accounts = () => {
                 ACCOUNTS
               </p>
 
-              <div
-                onClick={() => navigateTo("/settings/accounts/new")}
-                className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
-              >
-                <RiAddCircleFill className="text-sm" />
-                <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                  ADD NEW
-                </p>
-              </div>
+              {linkedAccounts?.length < 2 && (
+                <div
+                  onClick={() => navigateTo("/settings/accounts/new")}
+                  className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
+                >
+                  <RiAddCircleFill className="text-sm" />
+                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                    ADD NEW
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className="flex-1 flex">
@@ -201,11 +199,11 @@ const Accounts = () => {
                       linkedAccounts?.length > 0 ? (
                         <div className="h-full flex-1 flex flex-col gap-[30px]">
                           <div className="flex flex-col gap-[25px]">
-                            <p className="text-xs text-tradeFadeWhite font-medium">
-                              Effortlessly manage your linked accounts. Update
-                              details, connect or disconnect accounts, and
-                              withdraw funds without hassle.
-                            </p>
+                            {/* <p className="text-xs text-tradeFadeWhite font-medium">
+                              Manage your linked accounts. Update details,
+                              connect or disconnect accounts, and withdraw funds
+                              without hassle.
+                            </p> */}
 
                             <div className="flex flex-col md:flex-row md:gap-[10px] gap-[25px]">
                               {/* Default Account */}
@@ -239,6 +237,21 @@ const Accounts = () => {
                               </div>
                             </div>
                           </div>
+
+                          {linkedAccounts?.length == 2 && (
+                            <div className="flex gap-2 items-center ">
+                              <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
+                                <FaCircleInfo />
+                              </div>
+
+                              <div className="flex flex-col gap-[5px]">
+                                <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                                  Maximum of two accounts reached. To link a new
+                                  one, simply unlink an existing account.
+                                </p>
+                              </div>
+                            </div>
+                          )}
 
                           <div className="flex flex-col gap-[10px]">
                             {manageAccount.state ? (
@@ -287,7 +300,7 @@ const Accounts = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[250px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
                   Confirm Deletion
@@ -348,7 +361,7 @@ const Accounts = () => {
         <div>
           <LockByScroll />
           <div className="fixed top-0 left-0 right-0 bottom-0 lg:px-[15px] md:px-[2.5%] p-[35px] bg-black backdrop-blur-sm bg-opacity-80 flex items-center justify-center z-40">
-            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[300px]">
+            <div className="flex flex-col px-[15px] bg-tradeAsh borde border-tradeAshLight rounded-[15px] shadow-lg w-[250px]">
               <div className="flex items-center justify-between py-[12.3px] border-b border-tradeAshLight">
                 <p className="text-lg font-[700] text-white ">
                   Confirm Default

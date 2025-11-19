@@ -70,7 +70,7 @@ const TransactionDetails = () => {
                 </div>
               </div>
 
-              <div className="flex-1 flex py-[15px] min-h-[380px]">
+              <div className="flex-1 flex py-[15px] min-h-[360px] max-h-max">
                 {loading ? (
                   <Loading />
                 ) : (
@@ -209,7 +209,7 @@ const TransactionDetails = () => {
                                 Reference
                               </p>
                               <div className="flex items-center gap-2">
-                                <p className="text-[13px] w-[60px] truncate font-semibold text-white">
+                                <p className="text-[13px] w-[70px] truncate font-semibold text-white">
                                   {data?.reference}
                                 </p>
 
@@ -228,11 +228,10 @@ const TransactionDetails = () => {
                             Transaction updates in real time.{" "}
                           </p>
                           <p className="text-xs text-tradeFadeWhite/50 font-medium leading-relaxed text-center">
-                            Need help?{" "}
+                            Need help? Please{" "}
                             <span className="text-tradeFadeWhite hover:text-tradeOrange font-bold cursor-pointer transition-all duration-300">
-                              Contact support
+                              contact support
                             </span>
-                            .
                           </p>
                         </div>
                       </div>
