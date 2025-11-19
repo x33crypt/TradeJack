@@ -67,8 +67,6 @@ const App = () => {
       <ToastError />
       <TransactionDetails />
       <ProfileNav />
-      <ConfirmAccount />
-      <SuccessAccount />
       <ConfirmTransfer />
       <SuccessTransfer />
       <ConfirmDeposit />
