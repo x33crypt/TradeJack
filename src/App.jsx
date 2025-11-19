@@ -37,8 +37,6 @@ import PublicProfile from "./pages/profile/PublicProfile";
 import UserProfile from "./pages/profile/UserProfile";
 import Accounts from "./pages/accounts/Accounts";
 import NewAccount from "./pages/accounts/NewAccount";
-import ConfirmAccount from "./pages/accounts/ConfirmAccount";
-import SuccessAccount from "./pages/accounts/SuccessAccount";
 import KycLevels from "./pages/kyc/KycLevels";
 import VerifyLevelOne from "./pages/kyc/VerifyLevelOne";
 import VerifyLevelTwo from "./pages/kyc/VerifyLevelTwo";
