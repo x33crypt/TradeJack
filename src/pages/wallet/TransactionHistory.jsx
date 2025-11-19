@@ -314,16 +314,16 @@ const TransactionHistory = () => {
                             <p className="text-[13px] font-semibold text-white leading-none">
                               NO TRANSACTION FOUND
                             </p>
-                            <p className="text-xs font-medium text-tradeFadeWhite text-center">
+                            {/* <p className="text-xs font-medium text-tradeFadeWhite text-center">
                               {filter?.type ||
                               filter?.status ||
                               filter?.date?.monthName ||
                               (filter?.search && filter.search.trim() !== "")
                                 ? "NO TRANSACTION MATCH THE GIVEN CRITERIA"
                                 : "NO TRANSACTION FOUND"}
-                            </p>
+                            </p> */}
 
-                            <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" />
+                            {/* <BiFileBlank className="md:text-[22px] text-tradeFadeWhite" /> */}
                           </div>
                         )}
                       </div>

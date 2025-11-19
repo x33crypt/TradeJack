@@ -229,7 +229,7 @@ const TransactionDetails = () => {
                           </p>
                           <p className="text-xs text-tradeFadeWhite/50 font-medium leading-relaxed text-center">
                             Need help? Please{" "}
-                            <span className="text-tradeFadeWhite hover:text-tradeOrange font-bold cursor-pointer transition-all duration-300">
+                            <span className="text-tradeFadeWhite hover:text-tradeOrange  cursor-pointer transition-all duration-300">
                               contact support
                             </span>
                           </p>
