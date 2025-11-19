@@ -18,6 +18,7 @@ import { shortenID } from "@/utils/shortenID";
 import { MdArrowRightAlt } from "react-icons/md";
 import NetworkError from "@/components/others/NetworkError";
 import { date } from "@/utils/date";
+import MiniButton from "@/components/buttons/MiniButton";
 
 const TransactionDetails = () => {
   const { loading, error } = useFetchTransactionsDetails();
@@ -61,8 +62,11 @@ const TransactionDetails = () => {
                   Transaction Details
                 </p>
 
-                <div onClick={close}>
-                  <IoClose className="text-tradeFadeWhite hover:text-white cursor-pointer text-xl" />
+                <div
+                  className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg-transparent hover:bg-tradeAshLight border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                  onClick={close}
+                >
+                  <IoClose className="text-[16px]" />
                 </div>
               </div>
 
@@ -76,7 +80,7 @@ const TransactionDetails = () => {
                         <NetworkError />
                       </div>
                     ) : (
-                      <div className="flex-1 flex flex-col justify-between py-[px] gap-[15px]">
+                      <div className="flex-1 flex flex-col justify-betweena gap-[15px]">
                         <div className="flex flex-col gap-[10px]">
                           <div className="w-full flex flex-col gap-1 bg-transparent border border-tradeAshLight border-dashed p-[12px] rounded-[15px]">
                             <div className="flex items-center justify-between">
@@ -202,22 +206,33 @@ const TransactionDetails = () => {
                             </div>
                             <div className="flex items-center justify-between">
                               <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                                Ref.
+                                Reference
                               </p>
-                              <p className="text-[13px] font-semibold text-white">
-                                {data?.reference}
-                              </p>
+                              <div className="flex items-center gap-2">
+                                <p className="text-[13px] w-[60px] truncate font-semibold text-white">
+                                  {data?.reference}
+                                </p>
+
+                                <MiniButton
+                                  onClick={() => handleCopy(data?.reference)}
+                                >
+                                  <FaCopy className="text-[16px]" />
+                                </MiniButton>
+                              </div>
                             </div>
                           </div>
                         </div>
 
-                        <div>
+                        <div className="flex flex-col">
                           <p className="text-xs text-tradeFadeWhite/50 font-medium leading-relaxed text-center">
                             Transaction updates in real time.{" "}
-                            <span className="text-tradeFadeWhite font-bold">
+                          </p>
+                          <p className="text-xs text-tradeFadeWhite/50 font-medium leading-relaxed text-center">
+                            Need help?{" "}
+                            <span className="text-tradeFadeWhite hover:text-tradeOrange font-bold cursor-pointer transition-all duration-300">
                               Contact support
-                            </span>{" "}
-                            with your reference for any issues.
+                            </span>
+                            .
                           </p>
                         </div>
                       </div>
