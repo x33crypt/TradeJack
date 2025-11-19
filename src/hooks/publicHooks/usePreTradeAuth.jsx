@@ -44,15 +44,13 @@ export function usePreTradeAuth() {
         offerId,
         amount: numericAmount,
       });
-      console.log("[usePreTradeAuth] ✅ Response received:", response?.data);
+      console.log("[usePreTradeAuth] ✅ Response received:", response);
 
       setPreTradeData(response.data);
       setPreTradeLoading(false);
 
       return { success: true, data: response.data };
     } catch (err) {
-      // REPLACE IT WITH THIS
-      //
       console.error("[usePreTradeAuth] Request failed:", err);
 
       const status = err?.response?.status ?? 500; // Get 400, 404, etc.

@@ -31,6 +31,7 @@ import { FaUserFriends } from "react-icons/fa";
 import { HiHashtag } from "react-icons/hi";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { FaSave } from "react-icons/fa";
+import { TbSparkles } from "react-icons/tb";
 
 const EditOffer = () => {
   const { id = "" } = useParams();
@@ -418,12 +419,21 @@ const EditOffer = () => {
                               </p>
                             </div>
                             <p className="text-tradeAshLight leading-none">|</p>
-                            <div className="flex gap-1 items-center">
-                              <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                              <p className="text-xs font-semibold text-white">
-                                Verified
-                              </p>
-                            </div>
+                            {user?.isVerifiedOffer ? (
+                              <div className="flex gap-1 items-center">
+                                <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                                <p className="text-xs font-semibold text-white">
+                                  Verified
+                                </p>
+                              </div>
+                            ) : (
+                              <div className="flex gap-1 items-center">
+                                <TbSparkles className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                                <p className="text-xs font-semibold text-white">
+                                  New
+                                </p>
+                              </div>
+                            )}
                           </div>
 
                           <div className="flex gap-1 items-center">

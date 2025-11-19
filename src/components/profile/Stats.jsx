@@ -8,6 +8,7 @@ import { RiDonutChartFill } from "react-icons/ri";
 import { ImBlocked } from "react-icons/im";
 import NetworkError from "../others/NetworkError";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
+import { FaRegStar } from "react-icons/fa";
 
 const Stats = ({ loading, stats }) => {
   return (
@@ -57,7 +58,7 @@ const Stats = ({ loading, stats }) => {
                 </div>
                 <div className="flex flex-grow flex-shrink-0 gap-[10px] items-center border border-tradeAshLight bg-tradeAsh p-[12px] rounded-[15px]">
                   <div className="flex items-center gap-1 border border-tradeAshExtraLight bg-tradeAshLight rounded-[8px] p-1 w-max cursor-pointer">
-                    <MdOutlineHealthAndSafety className="text-lg text-tradeFadeWhite" />
+                    <FaRegStar className="text-lg text-tradeFadeWhite" />
                   </div>
 
                   <div className="flex flex-col gap-1 items-start">

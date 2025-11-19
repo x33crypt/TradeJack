@@ -12,46 +12,55 @@ const Notifications = () => {
           {/* <div className="lg:flex hidden">
             <Filter />
           </div> */}{" "}
-          <div className="flex flex-1 flex-col gap-[30px] lg:mx-[22.8%] p-[15px]">
+          <div className="flex flex-col gap-[30px] lg:mx-[22.8%] p-[15px] min-w-0 ">
             <div className="flex items-center justify-between ">
               <p className="text-lg font-semibold text-white flex items-center gap-1">
                 NOTIFICATION
               </p>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <MiniButton>
+            <div
+              className="flex overflow-x-auto scroll-hide w-full min-w-0"
+              style={{
+                scrollbarWidth: "none", // Firefox
+                msOverflowStyle: "none", // IE/Edge
+              }}
+            >
+              <div className="flex gap-2 whitespace-nowrap">
+                <MiniButton style={{ flexShrink: 0 }}>
                   <p>ALL</p>
+                  <small>14</small>
                 </MiniButton>
-                <MiniButton>
+                <MiniButton style={{ flexShrink: 0 }}>
                   <p>SYSTEM</p>
+                  <small>2</small>
                 </MiniButton>
-                <MiniButton>
+                <MiniButton style={{ flexShrink: 0 }}>
+                  <p>NEWS</p>
+                  <small>5</small>
+                </MiniButton>
+                <MiniButton style={{ flexShrink: 0 }}>
+                  <p>ACCOUNT</p>
+                </MiniButton>
+                <MiniButton style={{ flexShrink: 0 }}>
                   <p>TRADE</p>
+                  <small>3</small>
                 </MiniButton>
-                <MiniButton>
+                <MiniButton style={{ flexShrink: 0 }}>
                   <p>TRANSACTION</p>
+                  <small>1</small>
                 </MiniButton>
-                <MiniButton>
+                <MiniButton style={{ flexShrink: 0 }}>
                   <p>ORDER</p>
                 </MiniButton>
-                <MiniButton>
+                <MiniButton style={{ flexShrink: 0 }}>
                   <p>REWARDS</p>
+                  <small>3</small>
                 </MiniButton>
-                <MiniButton>
-                  <p>NEWS</p>
-                </MiniButton>
-                <MiniButton>
-                  <p>CLEAR</p>
-                </MiniButton>
-
-                <MiniButton>
+                <MiniButton style={{ flexShrink: 0 }}>
                   <p>SETTING</p>
                 </MiniButton>
               </div>
-
-            
             </div>
           </div>
         </div>

@@ -72,3 +72,13 @@
 .fade-pulse {
   animation: fadePulse 1.8s ease-in-out infinite;
 }
+
+/* hide scrollbar */
+.scroll-hide::-webkit-scrollbar {
+  display: none;
+}
+.scroll-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  
+}

@@ -9,7 +9,7 @@ const MiniButton = ({
   active = false,
 }) => {
   const baseStyles =
-    "flex text-xs font-bold leading-none  items-center gap-2 px-[10px] py-[5px] w-max rounded-sm transition-all duration-300 cursor-pointer";
+    "relative flex text-xs font-bold leading-none  items-center gap-2 px-[10px] py-[5px] w-max rounded-sm transition-all duration-300 cursor-pointer";
 
   const variants = {
     primary: `${

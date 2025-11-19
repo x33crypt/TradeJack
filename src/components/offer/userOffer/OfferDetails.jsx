@@ -31,6 +31,7 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { MdMoreVert } from "react-icons/md";
 import { RiEdit2Fill } from "react-icons/ri";
 import { offerStatus } from "@/utils/offerStatus";
+import { TbSparkles } from "react-icons/tb";
 
 const OfferDetails = ({ aboutOffer, loading, id }) => {
   const { offerDetails, traderInfo } = aboutOffer || {};
@@ -131,12 +132,21 @@ const OfferDetails = ({ aboutOffer, loading, id }) => {
                         </p>
                       </div>
                       <p className="text-tradeAshLight leading-none">|</p>
-                      <div className="flex gap-1 items-center">
-                        <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                        <p className="text-xs font-semibold text-white">
-                          Verified
-                        </p>
-                      </div>
+                      {user?.isVerifiedOffer ? (
+                        <div className="flex gap-1 items-center">
+                          <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                          <p className="text-xs font-semibold text-white">
+                            Verified
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="flex gap-1 items-center">
+                          <TbSparkles className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                          <p className="text-xs font-semibold text-white">
+                            New
+                          </p>
+                        </div>
+                      )}
                     </div>
 
                     <div className="flex gap-1 items-center">

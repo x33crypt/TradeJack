@@ -24,6 +24,7 @@ import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import { FaUserFriends } from "react-icons/fa";
 import { HiHashtag } from "react-icons/hi";
 import { MdBookmarkAdd } from "react-icons/md";
+import { TbSparkles } from "react-icons/tb";
 
 const OfferDetails = ({ loading, aboutOffer, id }) => {
   const { calculator, setCalculator } = useCalculator();
@@ -159,12 +160,21 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                         </p>
                       </div>
                       <p className="text-tradeAshLight leading-none">|</p>
-                      <div className="flex gap-1 items-center">
-                        <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                        <p className="text-xs font-semibold text-white">
-                          Verified
-                        </p>
-                      </div>
+                      {offer?.isVerifiedOffer ? (
+                        <div className="flex gap-1 items-center">
+                          <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                          <p className="text-xs font-semibold text-white">
+                            Verified
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="flex gap-1 items-center">
+                          <TbSparkles className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                          <p className="text-xs font-semibold text-white">
+                            New
+                          </p>
+                        </div>
+                      )}
                     </div>
                     <div className="flex gap-1 items-center">
                       <div className="flex gap-1 items-center">
@@ -244,15 +254,10 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                         Rate
                       </p>
 
-                      <div className="flex gap-1 items-center">
-                        <p className="text-tradeGreen text-sm font-semibold leading-none">
-                          {toDecimal(offer?.marginRate?.ratePrice)}
-                        </p>
-                        <p className="text-tradeAshLight leading-none">|</p>
-                        <p className="text-white text-sm font-semibold leading-none">
-                          {offer?.marginRate?.ratePercent || "N/A"}%
-                        </p>
-                      </div>
+                      <p className="text-tradeGreen text-sm font-semibold leading-none">
+                        1 {offer?.preferredCurrency?.code} = NGN{" "}
+                        {toDecimal(offer?.marginRate?.ratePrice)}
+                      </p>
                     </div>
 
                     <div className="flex items-center justify-between">
