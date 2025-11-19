@@ -220,7 +220,7 @@ const Accounts = () => {
                               </div>
                             )}
 
-                            {/* Alternative Placeholder */}
+                            {/* Placeholder */}
                             {linkedAccounts?.length < 2 && (
                               <div
                                 onClick={() =>
@@ -274,21 +274,55 @@ const Accounts = () => {
                           </div>
                         </div>
                       ) : (
-                        <div className="h-full flex flex-col gap-[20px]">
-                          <div
-                            onClick={() => navigateTo("/settings/accounts/new")}
-                            className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
-                          >
-                            <RiAddCircleFill className="text-sm" />
-                            <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                              ADD NEW
-                            </p>
+                        <div className="h-full flex-1 flex flex-col gap-[30px]">
+                          {/*  Placeholder */}
+                          <div className="flex flex-col md:flex-row md:gap-[10px] gap-[25px]">
+                            <div
+                              onClick={() =>
+                                navigateTo("/settings/accounts/new")
+                              }
+                              className="flex flex-1 flex-col gap-[10px] cursor-pointer min-h-[180px]"
+                            >
+                              <div className="flex flex-1 flex-col gap-[20px] items-center justify-center border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+                                <RiAddCircleFill className="text-5xl text-tradeOrange" />
+                              </div>
+                              <div className="flex w-full items-center justify-between opacity-">
+                                <div className="flex items-center gap-2  bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                                  <FaLink className="xs" />
+                                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                                    Add New Account
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex flex-1 flex-col gap-[10px] cursor-pointer min-h-[180px] ">
+                              <div className="flex flex-1 flex-col gap-[20px] items-center justify-center border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+                                <RiAddCircleFill className="text-5xl text-tradeOrange" />
+                              </div>
+                              <div className="flex w-full items-center justify-between opacity-">
+                                <div className="flex items-center gap-2  bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                                  <FaLink className="xs" />
+                                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                                    Add New Account
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
                           </div>
 
-                          <p className="text-xs text-tradeFadeWhite font-medium">
-                            You don’t have any linked accounts yet. Link one now
-                            for quick, secure withdrawals.
-                          </p>
+                          <div className="flex gap-2 items-center ">
+                            <div className="text-tradeFadeWhite/50 text-sm flex-shrink-0 h-max w-max">
+                              <FaCircleInfo />
+                            </div>
+
+                            <div className="flex flex-col gap-[5px]">
+                              <p className="flex-1 text-xs text-tradeFadeWhite/50 font-medium">
+                                You currently don’t have any linked accounts. To
+                                continue and access all available features,
+                                please add an account.
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
