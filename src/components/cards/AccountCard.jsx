@@ -37,13 +37,6 @@ const AccountCard = ({ account, index }) => {
       <div className="flex flex-col gap-[10px]" key={index}>
         <div className="flex flex-col gap-[20px] border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
           <div className="flex justify-between  w-full items-center">
-            {/* <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-              <FaCheckDouble className="text-xs" />
-              <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                Verified Account
-              </p>
-            </div> */}
-
             <MiniButton>
               <p>Verified </p>
             </MiniButton>
@@ -51,13 +44,6 @@ const AccountCard = ({ account, index }) => {
             <MiniButton>
               <p> {account?.isDefault ? " Default" : "Alternative"}</p>
             </MiniButton>
-
-            {/* <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
-             
-              <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                {account?.isDefault ? " Default" : "Alternative"}
-              </p>
-            </div> */}
           </div>
           <div className="flex w-full justify-between ">
             <div className="flex items-center gap-4">
@@ -85,17 +71,12 @@ const AccountCard = ({ account, index }) => {
           </div>
         </div>
         <div className="flex w-full items-center justify-between">
-          {/* <div className="flex items-center gap-2 hover:bg-tradeOrange/30 bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+          <div className="flex items-center gap-2  bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
             <FaLink className="xs" />
             <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
               {dateTime(account?.createdAt)}
             </p>
-          </div> */}
-
-          <MiniButton>
-            <FaLink className="xs" />
-            <p>{dateTime(account?.createdAt)}</p>
-          </MiniButton>
+          </div>
 
           <div className="flex items-center gap-2">
             {state && (
