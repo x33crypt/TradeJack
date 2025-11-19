@@ -15,6 +15,7 @@ import AccountMenu from "@/components/settings/SettingMenu";
 import NetworkError from "@/components/others/NetworkError";
 import { RiAddCircleFill } from "react-icons/ri";
 import { FaCircleInfo } from "react-icons/fa6";
+import { FaLink } from "react-icons/fa6";
 
 const Accounts = () => {
   const { loading, refetchLinkedBanks } = useFetchLinkedBanks();
@@ -172,18 +173,6 @@ const Accounts = () => {
               <p className="text-lg font-semibold text-white flex items-center gap-1">
                 ACCOUNTS
               </p>
-
-              {linkedAccounts?.length < 2 && (
-                <div
-                  onClick={() => navigateTo("/settings/accounts/new")}
-                  className="flex items-center gap-1 hover:bg-tradeOrange/30 bg-tradeOrange p-1 text-black w-max rounded-sm transition-all duration-300 cursor-pointer"
-                >
-                  <RiAddCircleFill className="text-sm" />
-                  <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
-                    ADD NEW
-                  </p>
-                </div>
-              )}
             </div>
 
             <div className="flex-1 flex">
@@ -198,30 +187,24 @@ const Accounts = () => {
                       {Array.isArray(linkedAccounts) &&
                       linkedAccounts?.length > 0 ? (
                         <div className="h-full flex-1 flex flex-col gap-[30px]">
-                          <div className="flex flex-col gap-[25px]">
-                            {/* <p className="text-xs text-tradeFadeWhite font-medium">
-                              Manage your linked accounts. Update details,
-                              connect or disconnect accounts, and withdraw funds
-                              without hassle.
-                            </p> */}
+                          <div className="flex flex-col md:flex-row md:gap-[10px] gap-[25px]">
+                            {/* Default Account */}
+                            <div className="flex-1">
+                              {linkedAccounts
+                                ?.filter(
+                                  (account) => account?.isDefault === true
+                                )
+                                .map((account, index) => (
+                                  <AccountCard
+                                    key={index}
+                                    account={account}
+                                    index={index}
+                                  />
+                                ))}
+                            </div>
 
-                            <div className="flex flex-col md:flex-row md:gap-[10px] gap-[25px]">
-                              {/* Default Account */}
-                              <div className="flex-1">
-                                {linkedAccounts
-                                  ?.filter(
-                                    (account) => account?.isDefault === true
-                                  )
-                                  .map((account, index) => (
-                                    <AccountCard
-                                      key={index}
-                                      account={account}
-                                      index={index}
-                                    />
-                                  ))}
-                              </div>
-
-                              {/* Aternative Account */}
+                            {/* Aternative Account */}
+                            {linkedAccounts?.length == 2 && (
                               <div className="flex-1">
                                 {linkedAccounts
                                   .filter(
@@ -235,7 +218,29 @@ const Accounts = () => {
                                     />
                                   ))}
                               </div>
-                            </div>
+                            )}
+
+                            {/* Alternative Placeholder */}
+                            {linkedAccounts?.length < 2 && (
+                              <div
+                                onClick={() =>
+                                  navigateTo("/settings/accounts/new")
+                                }
+                                className="flex flex-1 flex-col gap-[10px] cursor-pointer min-h-[180px]"
+                              >
+                                <div className="flex flex-1 flex-col gap-[20px] items-center justify-center border rounded-[15px] border-neutral-800 p-[12px] bg-tradeAsh">
+                                  <RiAddCircleFill className="text-5xl text-tradeOrange" />
+                                </div>
+                                <div className="flex w-full items-center justify-between opacity-">
+                                  <div className="flex items-center gap-2  bg-tradeAshLight/50 p-1 text-tradeFadeWhite hover:text-white w-max rounded-sm transition-all duration-300 cursor-pointer">
+                                    <FaLink className="xs" />
+                                    <p className="text-xs font-bold leading-none  w-max rounded-sm transition-all duration-300 cursor-pointer">
+                                      Add New Account
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
                           </div>
 
                           {linkedAccounts?.length == 2 && (

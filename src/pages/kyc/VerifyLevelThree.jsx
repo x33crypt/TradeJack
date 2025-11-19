@@ -121,7 +121,7 @@ const VerifyLevelThree = () => {
                 <div className="flex flex-col overflow-hidden h-[180px] bg-tradeAshLight hover:bg-tradeAshLight/70 border border-tradeAshLight rounded-[15px] gap-[15px] duration-300 transition-all">
                   {tierThree?.selfiePhoto === null ? (
                     <div
-                      onClick={handleSelfieClick}
+                      // onClick={handleSelfieClick}
                       className="flex flex-1 flex-col  gap-[10px] items-center justify-center cursor-pointer bg-transparent"
                     >
                       <MdAddCircle className="text-5xl text-tradeOrange" />
