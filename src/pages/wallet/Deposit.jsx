@@ -17,6 +17,7 @@ import { useBalance } from "@/context/userContext/BalanceContext";
 import { useFetchBalance } from "@/hooks/userHooks/useFetchBalance";
 import WalletBalance from "@/components/wallet/WalletBalance";
 import WalletMenu from "@/components/wallet/WalletMenu";
+import MiniButton from "@/components/buttons/MiniButton";
 
 const Deposit = () => {
   const { loading, error, refetch } = useFetchBalance();
@@ -252,27 +253,19 @@ const Deposit = () => {
                     </p>
 
                     <div className="flex items-center gap-2">
-                      <p
+                      <MiniButton
                         onClick={selectNGN}
-                        className={`${
-                          deposit?.currency === "NGN"
-                            ? "bg-tradeOrange text-black"
-                            : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
-                        } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
+                        active={deposit?.currency === "NGN"}
                       >
-                        NGN
-                      </p>
+                        <p>NGN</p>
+                      </MiniButton>
 
-                      <p
+                      <MiniButton
                         onClick={selectUSD}
-                        className={`${
-                          deposit?.currency === "USD"
-                            ? "bg-tradeOrange text-black"
-                            : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
-                        } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
+                        active={deposit?.currency === "USD"}
                       >
-                        USD
-                      </p>
+                        <p>USD</p>
+                      </MiniButton>
                     </div>
                   </div>
 

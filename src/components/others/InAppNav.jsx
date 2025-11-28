@@ -232,6 +232,7 @@ const InAppNav = () => {
       </div>
 
       {/* Mobile Nav */}
+
       <div>
         {isNavOption === true && (
           <div>
@@ -241,209 +242,227 @@ const InAppNav = () => {
                 isNavOption ? "flex" : "hidden"
               }  z-50 fixed right-0 left-0 top-0 bottom-0  lg:hidden flex-col `}
             >
-              <div className="flex items-center bg-transparent h-[57px] lg:px-[2%] md:px-[20px] p-[15px] ">
-                {isNavOption === true ? (
-                  <div
-                    onClick={() => setIsNavOption((prev) => !prev)}
-                    className="w-max flex  gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-                  >
-                    <IoCloseSharp className="text-white text-[16px]" />
-                  </div>
-                ) : (
-                  <div
-                    onClick={() => setIsNavOption((prev) => !prev)}
-                    className="w-max flex gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] opacity-0"
-                  >
-                    <IoCloseSharp className="text-white text-[16px]" />
-                  </div>
-                )}
-              </div>
-
-              <div className="flex-1 flex flex-col justify-between lg:px-[2%] md:px-[20px] p-[15px]  bg-black ">
-                <div className="flex flex-col p-[12px bg-tradeAshLigh gap-[20px] rounded-[15px] borde border-tradeAsh">
-                  <div className="flex items-center justify-between">
-                    <p className="text-lg font-semibold text-white flex items-center gap-1">
-                      MENU
-                    </p>
-
-                    <div className="text-tradeFadeWhite text-3xl fade-pulse cursor-pointer">
-                      <PiFlagCheckeredBold />
+              <div className=" flex flex-col ">
+                <div className="flex items-center bg-transparen h-[57px] lg:px-[2%] md:px-[20px] p-[15px] bg-black ">
+                  {/* {isNavOption === true ? (
+                    <div
+                      onClick={() => setIsNavOption((prev) => !prev)}
+                      className="w-max flex  gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                    >
+                      <IoCloseSharp className="text-white text-[16px]" />
                     </div>
-                  </div>
+                  ) : (
+                    <div
+                      onClick={() => setIsNavOption((prev) => !prev)}
+                      className="w-max flex gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] opacity-0"
+                    >
+                      <IoCloseSharp className="text-white text-[16px]" />
+                    </div>
+                  )} */}
+                </div>
 
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
+                <div className="flex ">
+                  <div className="flex-1 flex flex-col justify-between lg:px-[2%] md:px-[20px] p-[15px]  bg-black ">
+                    <div className="flex flex-col p-[12px bg-tradeAshLigh gap-[20px] rounded-[15px] borde border-tradeAsh">
+                      <div className="flex items-center justify-between">
+                        <p className="text-lg font-semibold text-white flex items-center gap-1">
+                          MENU
+                        </p>
+
+                        {/* <div
+                          onClick={() => setIsNavOption((prev) => !prev)}
+                          className="w-max flex  gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                        >
+                          <IoCloseSharp className="text-white text-[16px]" />
+                        </div> */}
+                      </div>
+
+                      <div className="flex items-center flex-wrap gap-3">
+                        <div
+                          onClick={() => {
+                            setSelect({
+                              state: true,
+                              selectOne: false,
+                              selectTwo: true,
+                              page: "InAppNav",
+                              element: "default currency",
+                              options: defaultCurrencies,
+                            });
+                            setIsNavOption(false);
+                          }}
+                          className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                        >
+                          <TbArrowsSort className="text-[16px]" />
+
+                          <p className="text-xs text-white font-semibold">
+                            {balance?.currency}
+                          </p>
+                        </div>
+                        <div
+                          onClick={() => navigateTo("/kyc/levels")}
+                          className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                        >
+                          <p className="text-xs text-white font-semibold">
+                            <span className="text-tradeFadeWhite">NGN</span>{" "}
+                            2,000,000
+                          </p>
+                        </div>
+
+                        <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                          <RiCopperCoinFill className="text-[16px]" />
+
+                          <p className="text-xs text-white font-semibold">
+                            2,530
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-[15px]">
                       <div
                         onClick={() => {
-                          setSelect({
-                            state: true,
-                            selectOne: false,
-                            selectTwo: true,
-                            page: "InAppNav",
-                            element: "default currency",
-                            options: defaultCurrencies,
-                          });
+                          navigateTo("/dashboard");
                           setIsNavOption(false);
                         }}
-                        className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                        className="flex items-center gap-2"
                       >
-                        <TbArrowsSort className="text-[16px]" />
-
-                        <p className="text-xs text-white font-semibold">
-                          {balance?.currency}
+                        <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                        <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                          DASHBOARD
                         </p>
                       </div>
+
                       <div
-                        onClick={() => navigateTo("/kyc/levels")}
-                        className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                        onClick={() => {
+                          navigateTo("/wallet");
+                          setIsNavOption(false);
+                        }}
+                        className="flex items-center gap-2"
                       >
-                        <p className="text-xs text-white font-semibold">
-                          <span className="text-tradeFadeWhite">LIMIT : #</span>{" "}
-                          2,000,000
+                        <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                        <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                          WALLET
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                        <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                          TOOLS BOX
+                        </p>
+                        <div
+                          className={` ${
+                            animateSoon ? "animate-zoomShake" : ""
+                          } flex items-center gap-1 text-white p-0.5 bg-red-600 rounded-sm`}
+                        >
+                          <p className="text-[10px] font-bold">Soon</p>
+                          <FaRegSmileWink className="text-white text-sm" />
+                        </div>
+                      </div>
+
+                      <div
+                        onClick={() => {
+                          navigateTo("/offers");
+                          setIsNavOption(false);
+                        }}
+                        className="flex items-center gap-2"
+                      >
+                        <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                        <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                          MY OFFERS
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                        <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                          ADVERTISEMENT
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                        <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                          BOOKMARKS
+                        </p>
+                      </div>
+
+                      <div
+                        onClick={() => {
+                          navigateTo("/partners");
+                          setIsNavOption(false);
+                        }}
+                        className="flex items-center gap-2"
+                      >
+                        <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                        <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                          PARTNERS
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                        <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                          TRADE HISTORY
+                        </p>
+                      </div>
+
+                      <div
+                        onClick={() => {
+                          navigateTo("/wallet/transactions");
+                          setIsNavOption(false);
+                        }}
+                        className="flex items-center gap-2"
+                      >
+                        <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                        <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                          TRANSACTIONS
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                        <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                          REFERAL
                         </p>
                       </div>
                     </div>
 
-                    <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                      <RiCopperCoinFill className="text-[16px]" />
+                    <div className="w-full h-max flex flex-col gap-[8px]">
+                      <Button
+                        variant="Fadeout"
+                        onClick={() => {
+                          navigateTo("/offers/explore");
+                          setIsNavOption(false);
+                        }}
+                      >
+                        BROWSE OFFERS
+                      </Button>
 
-                      <p className="text-xs text-white font-semibold">2,530</p>
+                      <Button
+                        variant="Fadeout"
+                        onClick={() => {
+                          navigateTo("/offer/create");
+                          setIsNavOption(false);
+                        }}
+                      >
+                        CREATE OFFER
+                      </Button>
                     </div>
                   </div>
-                </div>
-
-                <div className="flex flex-col gap-[15px]">
-                  <div
-                    onClick={() => {
-                      navigateTo("/dashboard");
-                      setIsNavOption(false);
-                    }}
-                    className="flex items-center gap-2"
-                  >
-                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      DASHBOARD
-                    </p>
-                  </div>
-
-                  <div
-                    onClick={() => {
-                      navigateTo("/wallet");
-                      setIsNavOption(false);
-                    }}
-                    className="flex items-center gap-2"
-                  >
-                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      WALLET
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      TOOLS BOX
-                    </p>
-                    <div
-                      className={` ${
-                        animateSoon ? "animate-zoomShake" : ""
-                      } flex items-center gap-1 text-white p-0.5 bg-red-600 rounded-sm`}
-                    >
-                      <p className="text-[10px] font-bold">Soon</p>
-                      <FaRegSmileWink className="text-white text-sm" />
+                  <div className="flex-1 bg-black backdrop-blur-sm bg-opacity-20 lg:px-[2%] md:px-[20px] p-[15px] ">
+                    <div className="flex justify-end">
+                      <div
+                        onClick={() => setIsNavOption((prev) => !prev)}
+                        className="w-max flex  gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                      >
+                        <IoCloseSharp className="text-white text-[16px]" />
+                      </div>
                     </div>
                   </div>
-
-                  <div
-                    onClick={() => {
-                      navigateTo("/offers");
-                      setIsNavOption(false);
-                    }}
-                    className="flex items-center gap-2"
-                  >
-                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      MY OFFERS
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      ADVERTISEMENT
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      BOOKMARKS
-                    </p>
-                  </div>
-
-                  <div
-                    onClick={() => {
-                      navigateTo("/partners");
-                      setIsNavOption(false);
-                    }}
-                    className="flex items-center gap-2"
-                  >
-                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      PARTNERS
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      TRADE HISTORY
-                    </p>
-                  </div>
-
-                  <div
-                    onClick={() => {
-                      navigateTo("/wallet/transactions");
-                      setIsNavOption(false);
-                    }}
-                    className="flex items-center gap-2"
-                  >
-                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      TRANSACTIONS
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                      REFERAL
-                    </p>
-                  </div>
-                </div>
-
-                <div className="w-full h-max flex flex-col gap-[8px]">
-                  <Button
-                    variant="Fadeout"
-                    onClick={() => {
-                      navigateTo("/offers/explore");
-                      setIsNavOption(false);
-                    }}
-                  >
-                    BROWSE OFFERS
-                  </Button>
-
-                  <Button
-                    variant="Fadeout"
-                    onClick={() => {
-                      navigateTo("/offer/create");
-                      setIsNavOption(false);
-                    }}
-                  >
-                    CREATE OFFER
-                  </Button>
                 </div>
               </div>
+              <div></div>
             </div>
           </div>
         )}
