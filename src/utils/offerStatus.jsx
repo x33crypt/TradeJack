@@ -8,22 +8,22 @@ export function offerStatus(status) {
     active: {
       icon: GrStatusGoodSmall,
       color: "text-tradeGreen",
-      border: "border-tradeGreen",
+      // border: "border-tradeGreen",
     },
     paused: {
       icon: MdPauseCircleFilled,
       color: "text-tradeOrange",
-      border: "border-tradeOrange",
+      // border: "border-tradeOrange",
     },
     suspended: {
       icon: IoWarningSharp,
       color: "text-orange-500",
-      border: "border-orange-500",
+      // border: "border-orange-500",
     },
     closed: {
       icon: IoCloseCircle,
       color: "text-red-600",
-      border: "border-red-600",
+      // border: "border-red-600",
     },
   };
 
@@ -32,7 +32,7 @@ export function offerStatus(status) {
 
   return (
     <div
-      className={`p-0.5 border ${selected.border} rounded-full flex items-center justify-center`}
+      className={`p-0.5 borde ${selected.border} rounded-full flex items-center justify-center`}
     >
       <Icon className={`text-[10px] ${selected.color} flex-shrink-0`} />
     </div>

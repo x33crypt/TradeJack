@@ -14,6 +14,12 @@ import lastSeenDot from "@/utils/lastSeenDot";
 import { RiArrowLeftRightLine } from "react-icons/ri";
 import { FaUserFriends } from "react-icons/fa";
 import { offerStatus } from "@/utils/offerStatus";
+import { date } from "@/utils/date";
+import { MdBookmarkAdded } from "react-icons/md";
+import { time } from "@/utils/time";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { TbSparkles } from "react-icons/tb";
+import { LuSparkles } from "react-icons/lu";
 
 const OfferCard = ({ offer }) => {
   const navigateTo = useNavigate();
@@ -139,9 +145,15 @@ const OfferCard = ({ offer }) => {
                 {offer?.offerId}
               </p>
               <p className="text-tradeAshLight leading-none">|</p>
-              <div className="flex gap-1 items-center">
-                <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-              </div>
+              {offer?.isVerified ? (
+                <div className="flex gap-1 items-center">
+                  <RiVerifiedBadgeFill className="flex text-tradeGreen text-sm flex-shrink-0" />
+                </div>
+              ) : (
+                <div className="flex gap-1 items-center">
+                  <LuSparkles className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col items-end gap-1 justify-betwee w-full">
@@ -152,7 +164,7 @@ const OfferCard = ({ offer }) => {
                     <span className="text-white">
                       {offer?.offerTransactionCount}
                     </span>{" "}
-                    trades
+                    {/* trades */}
                   </p>
                 </div>
                 <p className="text-tradeAshLight leading-none">|</p>
@@ -160,6 +172,13 @@ const OfferCard = ({ offer }) => {
                   <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                   <p className="text-xs font-semibold text-white">
                     {offer?.user?.trustScore}%
+                  </p>
+                </div>
+                <p className="text-tradeAshLight leading-none">|</p>
+                <div className="flex  items-center gap-1">
+                  <MdBookmarkAdded className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
+                  <p className="text-xs font-semibold text-white">
+                    {offer?.savedCounts}
                   </p>
                 </div>
               </div>
@@ -179,23 +198,24 @@ const OfferCard = ({ offer }) => {
             <div className="flex flex-col gap-1 items-end">
               <div className="flex items-center gap-1">
                 <p className="text-sm font-semibold text-white leading-normal">
-                  {toDecimal(offer?.marginRate?.fro) || "N/A"}/$
+                  {toDecimal(offer?.marginRate?.ratePrice) || "N/A"}/
+                  {offer?.preferredCurrency?.code}
                 </p>
 
-                <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                  {offer?.marginRate?.percent || "N/A"}%
-                </p>
+                {/* <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                  {offer?.marginRate?.ratePercent || "N/A"}%
+                </p> */}
               </div>
 
               <div className="flex gap-1 items-end">
                 <div className="flex gap-[5px] w-max">
-                  <p className="text-xs font-semibold text-white">
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
                     {toDecimal(offer?.marginRate?.from) || "N/A"}
                   </p>
                 </div>
                 <p className="text-xs font-semibold text-tradeFadeWhite">--</p>
                 <div className="flex gap-[5px] w-max">
-                  <p className="text-xs font-semibold text-white">
+                  <p className="text-xs font-semibold text-tradeFadeWhite">
                     {toDecimal(offer?.marginRate?.to) || "N/A"}
                   </p>
                 </div>

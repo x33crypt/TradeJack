@@ -16,6 +16,12 @@ import { FaRegStar } from "react-icons/fa";
 import { RiArrowLeftRightLine } from "react-icons/ri";
 import lastSeenDot from "@/utils/lastSeenDot";
 import { FaUserFriends } from "react-icons/fa";
+import { MdBookmarkAdded } from "react-icons/md";
+import { MdBookmarkBorder } from "react-icons/md";
+import { RiShieldUserFill } from "react-icons/ri";
+import { TiUser } from "react-icons/ti";
+import { BiSolidUserDetail } from "react-icons/bi";
+import { FaUserCheck } from "react-icons/fa";
 
 const OfferCard = ({ offer, vendor }) => {
   const navigateTo = useNavigate();
@@ -156,11 +162,11 @@ const OfferCard = ({ offer, vendor }) => {
               <div>{lastSeenDot(offer?.lastSeen)}</div>
               <p className="text-tradeAshLight leading-none">|</p>
               <p className="text-[13px] font-semibold text-white">
-                {offer?.Username}
+                {offer?.user?.Username}
               </p>
               <p className="text-tradeAshLight leading-none">|</p>
-              <div className="flex gap-1 items-center">
-                <RiVerifiedBadgeFill className="flex text-tradeGreen text-sm flex-shrink-0" />
+              <div className="flex text-[13px] font-semibold text-tradeFadeWhite">
+                <p>T{offer?.user?.kycTierLevel}</p>
               </div>
             </div>
 
@@ -170,14 +176,17 @@ const OfferCard = ({ offer, vendor }) => {
                   <FaUserFriends className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                   <p className="text-xs font-semibold text-tradeFadeWhite">
                     <span className="text-white">{offer?.completedTrades}</span>{" "}
-                    trades
+                    {/* trades */}
                   </p>
                 </div>
                 <p className="text-tradeAshLight leading-none">|</p>
-
                 <div className="flex  items-center gap-1">
                   <FaRegStar className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                   <p className="text-xs font-semibold text-white">99%</p>
+                </div>
+                <p className="text-tradeAshLight leading-none">|</p>
+                <div className="flex  items-center gap-1">
+                  <MdBookmarkBorder className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
                 </div>
               </div>
             </div>
@@ -197,12 +206,12 @@ const OfferCard = ({ offer, vendor }) => {
               <div className="flex items-center gap-1">
                 <p className="text-sm font-semibold text-white leading-normal">
                   {toDecimal(offer?.marginRate?.ratePrice) || "N/A"}/
-                  {/* {offer?.preferredCurrency?.code} */}$
+                  {offer?.preferredCurrency?.code}
                 </p>
 
-                <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+                {/* <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
                   {offer?.marginRate?.ratePercent || "N/A"}%
-                </p>
+                </p> */}
               </div>
 
               <div className="flex gap-1 items-end">

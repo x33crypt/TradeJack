@@ -123,7 +123,9 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                           {user?.username ?? ""}
                         </p>
                         <p className="text-tradeAshLight leading-none">|</p>
-                        <RiVerifiedBadgeFill className="flex text-tradeGreen text-base flex-shrink-0" />
+                        <div className="flex text-[13px] font-semibold text-tradeFadeWhite">
+                          <p>T1</p>
+                        </div>
                       </div>
                     </div>
 
