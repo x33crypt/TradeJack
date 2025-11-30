@@ -332,7 +332,7 @@ const InAppNav = () => {
                             selectTwo: true,
                             page: "InAppNav",
                             element: "default currency",
-                            options: defaultCurrencies,
+                            options: currency?.currencies || [],
                           });
                           setIsNavOption(false);
                         }}
@@ -349,8 +349,10 @@ const InAppNav = () => {
                         className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
                       >
                         <p className="text-xs text-white font-semibold">
-                          <span className="text-tradeFadeWhite">LIMIT : #</span>{" "}
-                          2,000,000
+                          <span className="text-tradeFadeWhite">
+                            {currency?.current?.code}
+                          </span>{" "}
+                          {toDecimal(currency?.current?.purchase_max)}
                         </p>
                       </div>
                     </div>
