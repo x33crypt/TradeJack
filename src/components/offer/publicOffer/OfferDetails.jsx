@@ -124,7 +124,7 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                         </p>
                         <p className="text-tradeAshLight leading-none">|</p>
                         <div className="flex text-[13px] font-semibold text-tradeFadeWhite">
-                          <p>T1</p>
+                          <p>T3</p>
                         </div>
                       </div>
                     </div>

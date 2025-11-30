@@ -183,9 +183,9 @@ const OfferDetails = ({ aboutOffer, loading, id }) => {
                       </p>
 
                       <div className="flex gap-1 items-center">
-                        <p className="text-tradeGreen text-sm font-semibold leading-none">
-                          1 {offerDetails?.preferredCurrency?.code} = NGN{" "}
-                          {toDecimal(offerDetails?.marginRate?.ratePrice)}
+                        <p className="text-white text-sm font-semibold leading-none">
+                          NGN {toDecimal(offerDetails?.marginRate?.ratePrice)}/
+                          {offerDetails?.preferredCurrency?.code}
                         </p>
                         {/* <p className="text-tradeAshLight leading-none">|</p>
                         <p className="text-tradeGreen text-sm font-semibold leading-none">

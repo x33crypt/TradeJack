@@ -15,18 +15,21 @@ import { TbArrowsSort } from "react-icons/tb";
 import { FaRegSmileWink } from "react-icons/fa";
 import { useSelectElement } from "@/context/otherContext/SelectElementContext";
 import { useBalance } from "@/context/userContext/BalanceContext";
+import { useFetchCurrency } from "@/hooks/userHooks/useFetchCurrency";
+import { useCurrency } from "@/context/userContext/CurrencyContext";
+import toDecimal from "@/utils/toDecimal";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
   const { show, setShow } = useProfileNav();
   const [animate, setAnimate] = useState(false);
   const [animateSoon, setAnimateSoon] = useState(false);
-  const [defaultCurrencies, setDefaultCurrencies] = useState([
-    { code: "NGN" },
-    { code: "USD" },
-  ]);
   const { select, setSelect } = useSelectElement();
   const { balance, setBalance } = useBalance();
+  const { loading } = useFetchCurrency();
+  const { currency, setCurrency, current, setCurrent } = useCurrency();
+
+  console.log(currency);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -82,6 +85,52 @@ const InAppNav = () => {
       }));
     }
   }, [select]);
+
+  // handling currency changes
+  useEffect(() => {
+    const balanceCode = balance?.currency;
+    if (!balanceCode) return; // nothing to do
+
+    // already the current currency — no change
+    if (current?.code === balanceCode) return;
+
+    // helper: flatten all possible currency sources into one array
+    const allCurrencies = [
+      // user_currency and default_currency may be full objects (with rate, min/max)
+      currency?.user_currency,
+      currency?.default_currency,
+      // currencies is an array of basic currency objects
+      ...(currency?.currencies ?? []),
+    ].filter(Boolean); // remove undefined/null
+
+    // try to find exact match by code
+    const found = allCurrencies.find(
+      (c) => String(c.code).toUpperCase() === String(balanceCode).toUpperCase()
+    );
+
+    if (found) {
+      // set only if different to avoid unnecessary re-renders
+      setCurrency((prev) => {
+        if (prev?.current?.code === found.code) return prev;
+        return { ...prev, current: found };
+      });
+    } else {
+      // fallback: prefer user_currency, then default_currency
+      const fallback = currency?.user_currency ?? currency?.default_currency;
+      if (fallback && fallback.code !== current?.code) {
+        setCurrency((prev) => ({ ...prev, current: fallback }));
+      }
+    }
+  }, [
+    balance?.currency,
+    current?.code,
+    currency?.user_currency,
+    currency?.default_currency,
+    currency?.currencies,
+    setCurrency,
+  ]);
+
+  console.log("Current currency in nav:", current);
 
   const navigateTo = useNavigate();
 
@@ -184,7 +233,7 @@ const InAppNav = () => {
                 selectTwo: true,
                 page: "InAppNav",
                 element: "default currency",
-                options: defaultCurrencies,
+                options: currency?.currencies || [],
               })
             }
             className="w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
@@ -199,7 +248,10 @@ const InAppNav = () => {
             className=" w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
           >
             <p className="text-xs text-white font-semibold">
-              <span className="text-tradeFadeWhite">LIMIT : #</span> 2,000,000
+              <span className="text-tradeFadeWhite">
+                {currency?.current?.code}
+              </span>{" "}
+              {toDecimal(currency?.current?.purchase_max)}
             </p>
           </div>
           <div className="w-max lg:flex hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
@@ -241,212 +293,206 @@ const InAppNav = () => {
                 isNavOption ? "flex" : "hidden"
               }  z-50 fixed right-0 left-0 top-0 bottom-0  lg:hidden flex-col `}
             >
-              <div className=" flex flex-col ">
-                <div className="flex items-center bg-transparent h-[57px] lg:px-[2%] md:px-[20px] p-[15px] ">
-                  {isNavOption === true ? (
-                    <div
-                      onClick={() => setIsNavOption((prev) => !prev)}
-                      className="w-max flex  gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-                    >
-                      <IoCloseSharp className="text-white text-[16px]" />
+              <div className="flex items-center bg-transparent h-[57px] lg:px-[2%] md:px-[20px] p-[15px] ">
+                {isNavOption === true ? (
+                  <div
+                    onClick={() => setIsNavOption((prev) => !prev)}
+                    className="w-max flex  gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                  >
+                    <IoCloseSharp className="text-white text-[16px]" />
+                  </div>
+                ) : (
+                  <div
+                    onClick={() => setIsNavOption((prev) => !prev)}
+                    className="w-max flex gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] opacity-0"
+                  >
+                    <IoCloseSharp className="text-white text-[16px]" />
+                  </div>
+                )}
+              </div>
+              <div className="flex-1 flex flex-col justify-between lg:px-[2%] md:px-[20px] p-[15px]  bg-black ">
+                <div className="flex flex-col p-[12px bg-tradeAshLigh gap-[20px] rounded-[15px] borde border-tradeAsh">
+                  <div className="flex items-center justify-between">
+                    <p className="text-lg font-semibold text-white flex items-center gap-1">
+                      MENU
+                    </p>
+
+                    <div className="text-tradeFadeWhite text-3xl fade-pulse cursor-pointer">
+                      <PiFlagCheckeredBold />
                     </div>
-                  ) : (
-                    <div
-                      onClick={() => setIsNavOption((prev) => !prev)}
-                      className="w-max flex gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03] opacity-0"
-                    >
-                      <IoCloseSharp className="text-white text-[16px]" />
-                    </div>
-                  )}
-                </div>
-                <div className="flex-1 flex flex-col justify-between lg:px-[2%] md:px-[20px] p-[15px]  bg-black ">
-                  <div className="flex flex-col p-[12px bg-tradeAshLigh gap-[20px] rounded-[15px] borde border-tradeAsh">
-                    <div className="flex items-center justify-between">
-                      <p className="text-lg font-semibold text-white flex items-center gap-1">
-                        MENU
-                      </p>
+                  </div>
 
-                      <div className="text-tradeFadeWhite text-3xl fade-pulse cursor-pointer">
-                        <PiFlagCheckeredBold />
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <div
-                          onClick={() => {
-                            setSelect({
-                              state: true,
-                              selectOne: false,
-                              selectTwo: true,
-                              page: "InAppNav",
-                              element: "default currency",
-                              options: defaultCurrencies,
-                            });
-                            setIsNavOption(false);
-                          }}
-                          className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-                        >
-                          <TbArrowsSort className="text-[16px]" />
-
-                          <p className="text-xs text-white font-semibold">
-                            {balance?.currency}
-                          </p>
-                        </div>
-                        <div
-                          onClick={() => navigateTo("/kyc/levels")}
-                          className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-                        >
-                          <p className="text-xs text-white font-semibold">
-                            <span className="text-tradeFadeWhite">
-                              LIMIT : #
-                            </span>{" "}
-                            2,000,000
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                        <RiCopperCoinFill className="text-[16px]" />
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div
+                        onClick={() => {
+                          setSelect({
+                            state: true,
+                            selectOne: false,
+                            selectTwo: true,
+                            page: "InAppNav",
+                            element: "default currency",
+                            options: defaultCurrencies,
+                          });
+                          setIsNavOption(false);
+                        }}
+                        className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                      >
+                        <TbArrowsSort className="text-[16px]" />
 
                         <p className="text-xs text-white font-semibold">
-                          2,530
+                          {balance?.currency}
+                        </p>
+                      </div>
+                      <div
+                        onClick={() => navigateTo("/kyc/levels")}
+                        className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                      >
+                        <p className="text-xs text-white font-semibold">
+                          <span className="text-tradeFadeWhite">LIMIT : #</span>{" "}
+                          2,000,000
                         </p>
                       </div>
                     </div>
+
+                    <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                      <RiCopperCoinFill className="text-[16px]" />
+
+                      <p className="text-xs text-white font-semibold">2,530</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-[15px]">
+                  <div
+                    onClick={() => {
+                      navigateTo("/dashboard");
+                      setIsNavOption(false);
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      DASHBOARD
+                    </p>
                   </div>
 
-                  <div className="flex flex-col gap-[15px]">
+                  <div
+                    onClick={() => {
+                      navigateTo("/wallet");
+                      setIsNavOption(false);
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      WALLET
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      TOOLS BOX
+                    </p>
                     <div
-                      onClick={() => {
-                        navigateTo("/dashboard");
-                        setIsNavOption(false);
-                      }}
-                      className="flex items-center gap-2"
+                      className={` ${
+                        animateSoon ? "animate-zoomShake" : ""
+                      } flex items-center gap-1 text-white p-0.5 bg-red-600 rounded-sm`}
                     >
-                      <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                      <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                        DASHBOARD
-                      </p>
-                    </div>
-
-                    <div
-                      onClick={() => {
-                        navigateTo("/wallet");
-                        setIsNavOption(false);
-                      }}
-                      className="flex items-center gap-2"
-                    >
-                      <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                      <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                        WALLET
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                      <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                        TOOLS BOX
-                      </p>
-                      <div
-                        className={` ${
-                          animateSoon ? "animate-zoomShake" : ""
-                        } flex items-center gap-1 text-white p-0.5 bg-red-600 rounded-sm`}
-                      >
-                        <p className="text-[10px] font-bold">Soon</p>
-                        <FaRegSmileWink className="text-white text-sm" />
-                      </div>
-                    </div>
-
-                    <div
-                      onClick={() => {
-                        navigateTo("/offers");
-                        setIsNavOption(false);
-                      }}
-                      className="flex items-center gap-2"
-                    >
-                      <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                      <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                        MY OFFERS
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                      <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                        ADVERTISEMENT
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                      <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                        BOOKMARKS
-                      </p>
-                    </div>
-
-                    <div
-                      onClick={() => {
-                        navigateTo("/partners");
-                        setIsNavOption(false);
-                      }}
-                      className="flex items-center gap-2"
-                    >
-                      <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                      <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                        PARTNERS
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                      <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                        TRADE HISTORY
-                      </p>
-                    </div>
-
-                    <div
-                      onClick={() => {
-                        navigateTo("/wallet/transactions");
-                        setIsNavOption(false);
-                      }}
-                      className="flex items-center gap-2"
-                    >
-                      <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                      <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                        TRANSACTIONS
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
-                      <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
-                        REFERAL
-                      </p>
+                      <p className="text-[10px] font-bold">Soon</p>
+                      <FaRegSmileWink className="text-white text-sm" />
                     </div>
                   </div>
 
-                  <div className="w-full h-max flex flex-col gap-[8px]">
-                    <Button
-                      variant="Fadeout"
-                      onClick={() => {
-                        navigateTo("/offers/explore");
-                        setIsNavOption(false);
-                      }}
-                    >
-                      BROWSE OFFERS
-                    </Button>
-
-                    <Button
-                      variant="Fadeout"
-                      onClick={() => {
-                        navigateTo("/offer/create");
-                        setIsNavOption(false);
-                      }}
-                    >
-                      CREATE OFFER
-                    </Button>
+                  <div
+                    onClick={() => {
+                      navigateTo("/offers");
+                      setIsNavOption(false);
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      MY OFFERS
+                    </p>
                   </div>
+
+                  <div className="flex items-center gap-2">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      ADVERTISEMENT
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      BOOKMARKS
+                    </p>
+                  </div>
+
+                  <div
+                    onClick={() => {
+                      navigateTo("/partners");
+                      setIsNavOption(false);
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      PARTNERS
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      TRADE HISTORY
+                    </p>
+                  </div>
+
+                  <div
+                    onClick={() => {
+                      navigateTo("/wallet/transactions");
+                      setIsNavOption(false);
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      TRANSACTIONS
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <IoMdArrowDropright className="text-lg text-tradeFadeWhite" />
+                    <p className="text-tradeFadeWhite hover:text-white text-base font-bold transition-all duration-300 cursor-pointer">
+                      REFERAL
+                    </p>
+                  </div>
+                </div>
+
+                <div className="w-full h-max flex flex-col gap-[8px]">
+                  <Button
+                    variant="Fadeout"
+                    onClick={() => {
+                      navigateTo("/offers/explore");
+                      setIsNavOption(false);
+                    }}
+                  >
+                    BROWSE OFFERS
+                  </Button>
+
+                  <Button
+                    variant="Fadeout"
+                    onClick={() => {
+                      navigateTo("/offer/create");
+                      setIsNavOption(false);
+                    }}
+                  >
+                    CREATE OFFER
+                  </Button>
                 </div>
               </div>
             </div>
