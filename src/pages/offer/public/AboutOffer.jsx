@@ -10,11 +10,13 @@ import { useParams } from "react-router-dom";
 import { SiAdguard } from "react-icons/si";
 import { TiWarning } from "react-icons/ti";
 import Button from "@/components/buttons/Button";
+import api from "@/utils/http/api";
 
 const AboutOffer = () => {
   const { id = "" } = useParams();
   const { aboutOffer, setAboutOffer } = usePublicOffers();
   const { loading } = useFetchAboutOffers();
+  const [bookmarking, setBookmarking] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -27,6 +29,26 @@ const AboutOffer = () => {
 
   console.log("Param Offer ID:", id);
   console.log("aboutOffer:", aboutOffer);
+
+  const bookmark = async () => {
+    setBookmarking(true);
+    console.log("Save clicked", offerId);
+
+    try {
+      const res = await api.get(`/service-provider/offers/${offerId}/bookmark`);
+      console.log("Bookmark response:", res);
+
+      if (res?.status === 200 && res.data?.success) {
+        console.log("Bookmarked successfully");
+      } else {
+        console.log("Failed to bookmark:", res?.data?.message);
+      }
+    } catch (err) {
+      console.log("Bookmark error:", err);
+    } finally {
+      setBookmarking(false);
+    }
+  };
 
   return (
     <>
@@ -54,9 +76,9 @@ const AboutOffer = () => {
                   inconsistent with our marketplace standards, please let us
                   know. Your feedback plays an important role in keeping the
                   platform transparent, fair, and trustworthy for everyone. Use
-                  the <span className="font-bold">"REPORT"</span>{" "}
-                  button to submit your concern, our compliance team will
-                  promptly review and take appropriate action.
+                  the <span className="font-bold">"REPORT"</span> button to
+                  submit your concern, our compliance team will promptly review
+                  and take appropriate action.
                 </p>
               </div>
 

@@ -18,6 +18,10 @@ import { useBalance } from "@/context/userContext/BalanceContext";
 import { useFetchCurrency } from "@/hooks/userHooks/useFetchCurrency";
 import { useCurrency } from "@/context/userContext/CurrencyContext";
 import toDecimal from "@/utils/toDecimal";
+import { MdWallet } from "react-icons/md";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { BsSpeedometer2 } from "react-icons/bs";
+import { FaRegGem } from "react-icons/fa6";
 
 const InAppNav = () => {
   const [isNavOption, setIsNavOption] = useState(false);
@@ -27,7 +31,7 @@ const InAppNav = () => {
   const { select, setSelect } = useSelectElement();
   const { balance, setBalance } = useBalance();
   const { loading } = useFetchCurrency();
-  const { currency, setCurrency, current, setCurrent } = useCurrency();
+  const { currency } = useCurrency();
 
   console.log(currency);
 
@@ -48,89 +52,6 @@ const InAppNav = () => {
 
     return () => clearInterval(interval);
   }, []);
-
-  // handling currency changes if clicks more
-  useEffect(() => {
-    if (
-      select?.page === "InAppNav" &&
-      select?.element === "default currency" &&
-      select?.pick
-    ) {
-      const selectedCurrency = select.pick; // ✅ correct scope
-
-      const selectedCode =
-        typeof selectedCurrency === "object"
-          ? selectedCurrency.code ?? null
-          : typeof selectedCurrency === "string"
-          ? selectedCurrency
-          : null;
-
-      if (!selectedCode) {
-        // nothing valid to do — reset select and exit
-        setSelect({
-          state: false,
-          selectOne: false,
-          selectTwo: false,
-          page: "",
-          element: "",
-          options: null,
-          pick: "",
-        });
-        return;
-      }
-
-      setBalance((prev) => ({
-        ...prev,
-        currency: selectedCode,
-      }));
-    }
-  }, [select]);
-
-  // handling currency changes
-  useEffect(() => {
-    const balanceCode = balance?.currency;
-    if (!balanceCode) return; // nothing to do
-
-    // already the current currency — no change
-    if (current?.code === balanceCode) return;
-
-    // helper: flatten all possible currency sources into one array
-    const allCurrencies = [
-      // user_currency and default_currency may be full objects (with rate, min/max)
-      currency?.user_currency,
-      currency?.default_currency,
-      // currencies is an array of basic currency objects
-      ...(currency?.currencies ?? []),
-    ].filter(Boolean); // remove undefined/null
-
-    // try to find exact match by code
-    const found = allCurrencies.find(
-      (c) => String(c.code).toUpperCase() === String(balanceCode).toUpperCase()
-    );
-
-    if (found) {
-      // set only if different to avoid unnecessary re-renders
-      setCurrency((prev) => {
-        if (prev?.current?.code === found.code) return prev;
-        return { ...prev, current: found };
-      });
-    } else {
-      // fallback: prefer user_currency, then default_currency
-      const fallback = currency?.user_currency ?? currency?.default_currency;
-      if (fallback && fallback.code !== current?.code) {
-        setCurrency((prev) => ({ ...prev, current: fallback }));
-      }
-    }
-  }, [
-    balance?.currency,
-    current?.code,
-    currency?.user_currency,
-    currency?.default_currency,
-    currency?.currencies,
-    setCurrency,
-  ]);
-
-  console.log("Current currency in nav:", current);
 
   const navigateTo = useNavigate();
 
@@ -226,37 +147,23 @@ const InAppNav = () => {
 
         <div className="flex items-center  gap-[10px]">
           <div
-            onClick={() =>
-              setSelect({
-                state: true,
-                selectOne: false,
-                selectTwo: true,
-                page: "InAppNav",
-                element: "default currency",
-                options: currency?.currencies || [],
-              })
-            }
+            onClick={() => navigateTo("/kyc/levels")}
             className="w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
           >
-            <p className="text-xs text-white font-semibold">
-              {balance?.currency}
-            </p>
-            <TbArrowsSort className="text-[16px]" />
+            <p className="text-xs text-white font-semibold">KYC • 3</p>
           </div>
-          <div
-            onClick={() => navigateTo("/kyc/levels")}
-            className=" w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-          >
+          <div className=" w-max lg:flex hidden text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+            <HiOutlineExclamationCircle className="text-[16px] text-tradeFadeWhite" />
             <p className="text-xs text-white font-semibold">
               <span className="text-tradeFadeWhite">
-                {currency?.current?.code}
+                {currency?.user_currency?.code ?? "NGN"}
               </span>{" "}
-              {toDecimal(currency?.current?.purchase_max)}
+              {toDecimal(currency?.user_currency?.purchase_max ?? "0")}
             </p>
           </div>
           <div className="w-max lg:flex hidden gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-            <p className="text-xs text-white font-semibold">2,530</p>
-            <RiCopperCoinFill className="text-[16px] text-white" />
+            <FaRegGem className="text-[16px] text-white" />{" "}
+            <p className="text-xs text-white font-semibold">• 120</p>
           </div>
           <div
             className={` ${
@@ -324,43 +231,32 @@ const InAppNav = () => {
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div
-                        onClick={() => {
-                          setSelect({
-                            state: true,
-                            selectOne: false,
-                            selectTwo: true,
-                            page: "InAppNav",
-                            element: "default currency",
-                            options: currency?.currencies || [],
-                          });
-                          setIsNavOption(false);
-                        }}
-                        className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-                      >
-                        <TbArrowsSort className="text-[16px]" />
-
-                        <p className="text-xs text-white font-semibold">
-                          {balance?.currency}
-                        </p>
-                      </div>
-                      <div
-                        onClick={() => navigateTo("/kyc/levels")}
-                        className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
-                      >
+                      <div className=" w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                        <HiOutlineExclamationCircle className="text-[16px] text-tradeFadeWhite" />
                         <p className="text-xs text-white font-semibold">
                           <span className="text-tradeFadeWhite">
-                            {currency?.current?.code}
+                            {currency?.user_currency?.code ?? "NGN"}
                           </span>{" "}
-                          {toDecimal(currency?.current?.purchase_max)}
+                          {toDecimal(
+                            currency?.user_currency?.purchase_max ?? "0"
+                          )}
+                        </p>
+                      </div>
+                      <div className="w-max flex gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
+                        <FaRegGem className="text-[16px] text-white" />{" "}
+                        <p className="text-xs text-white font-semibold">
+                          • 120
                         </p>
                       </div>
                     </div>
 
-                    <div className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]">
-                      <RiCopperCoinFill className="text-[16px]" />
-
-                      <p className="text-xs text-white font-semibold">2,530</p>
+                    <div
+                      onClick={() => navigateTo("/kyc/levels")}
+                      className="w-max flex text-tradeFadeWhite hover:text-white gap-1 items-center justify-center bg- border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                    >
+                      <p className="text-xs text-white font-semibold">
+                        KYC • 3
+                      </p>
                     </div>
                   </div>
                 </div>

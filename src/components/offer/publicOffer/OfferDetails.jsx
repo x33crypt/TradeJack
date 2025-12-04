@@ -25,11 +25,13 @@ import { FaUserFriends } from "react-icons/fa";
 import { HiHashtag } from "react-icons/hi";
 import { MdBookmarkAdd } from "react-icons/md";
 import { TbSparkles } from "react-icons/tb";
+import api from "@/utils/http/api";
 
 const OfferDetails = ({ loading, aboutOffer, id }) => {
   const { calculator, setCalculator } = useCalculator();
   const { setToast } = useToast();
   const [amount, setAmount] = useState("");
+
 
   console.log("offer details :", aboutOffer);
   console.log("calculator :", calculator);
@@ -55,6 +57,8 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
   };
 
   console.log("Amount:", amount);
+
+ 
 
   const swap = () => {
     // 1️⃣ Check for amount first

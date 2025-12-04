@@ -6,91 +6,68 @@ import toDecimal from "@/utils/toDecimal";
 import { HiRefresh } from "react-icons/hi";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { MdWallet } from "react-icons/md";
+import { CgArrowsExchangeAltV } from "react-icons/cg";
+import { useCurrency } from "@/context/userContext/CurrencyContext";
+import { useFetchCurrency } from "@/hooks/userHooks/useFetchCurrency";
 
 const WalletBalance = () => {
-  const { balance, setBalance } = useBalance();
-  const { loading, refetch } = useFetchBalance();
-  const [showBalance, setShowBalance] = useState(true);
+  const { loading, refetch } = useFetchCurrency();
+  const { currency, setCurrency } = useCurrency();
 
-  const toggleBalanceVisibility = () => {
-    setShowBalance((prev) => !prev);
-  };
+  console.log(currency);
 
-  const selectUSD = () => {
-    setBalance((prev) => ({
-      ...prev,
-      currency: "USD",
-    }));
-  };
-
-  const selectNGN = () => {
-    setBalance((prev) => ({
-      ...prev,
-      currency: "NGN",
-    }));
+  const selectCurrency = () => {
+    if (currency?.current == "user_currency") {
+      setCurrency((prev) => ({
+        ...prev,
+        current: "default_currency",
+      }));
+    } else {
+      setCurrency((prev) => ({
+        ...prev,
+        current: "user_currency",
+      }));
+    }
   };
 
   return (
-    <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-      <div className="flex flex-1 items-center justify-between">
-        <div className="flex items-center gap-1">
-          <p className="text-xs font-semibold text-tradeFadeWhite leading-none p-1 hover:bg-tradeOrange/20 g-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-            AVAILABLE ASSET
-          </p>
-          <div
-            onClick={toggleBalanceVisibility}
-            className="flex items-center bg-transparent   w-max cursor-pointer"
-          >
-            {showBalance ? (
-              <FaEye className="text-base text-tradeFadeWhite" />
-            ) : (
-              <FaEyeSlash className="text-base text-tradeFadeWhite" />
-            )}
-          </div>
-        </div>
-
-        <div
-          onClick={() => refetch()}
-          className="flex items-center bg-transparent w-max cursor-pointer"
-        >
-          <HiRefresh
-            className={`${
-              loading ? "animate-spin" : null
-            } text-lg text-tradeFadeWhite`}
-          />
-        </div>
-      </div>
-
-      <div className="flex items-center ">
-        {balance?.currency === "USD" ? (
-          <p
-            className={`text-white text-base  font-semibold transition-all duration-300 ease-in-out transform ${
-              showBalance ? "opacity-100 scale-100" : "opacity-50 scale-95"
-            }`}
-          >
-            <span className="text-tradeFadeWhite">$</span>{" "}
-            {showBalance
-              ? `${
-                  balance.available_balance.USD
-                    ? toDecimal(balance.available_balance.USD)
-                    : "0.00"
-                }`
-              : "****"}
+    <div className="flex w-full justify-between gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+      <div className="w-max flex gap-1 items-center justify-center border border-tradeAshExtraLight p-2 h-max rounded-[10px] ">
+        <MdWallet className="text-[16px] text-tradeFadeWhite" />{" "}
+        {currency?.current === "user_currency" ? (
+          <p className="text-xs text-white font-semibold">
+            <span className="text-tradeFadeWhite">
+              {currency?.user_currency?.code ?? "N/A"}
+            </span>{" "}
+            {toDecimal(currency?.user_currency?.purchase_max ?? 0)}
           </p>
         ) : (
-          <p
-            className={`text-white text-base font-semibold transition-all duration-300 ease-in-out transform ${
-              showBalance ? "opacity-100 scale-100" : "opacity-50 scale-95"
-            } `}
-          >
-            <span className="text-tradeFadeWhite">#</span>{" "}
-            {showBalance
-              ? `${
-                  balance.available_balance.NGN
-                    ? toDecimal(balance.available_balance.NGN)
-                    : "0.00"
-                }`
-              : "****"}
+          <p className="text-xs text-white font-semibold">
+            <span className="text-tradeFadeWhite">
+              {currency?.default_currency?.code ?? "N/A"}
+            </span>{" "}
+            {toDecimal(currency?.default_currency?.purchase_max ?? 0)}
+          </p>
+        )}
+      </div>
+
+      <div
+        onClick={selectCurrency}
+        className="w-max flex gap-1 items-center justify-center border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+      >
+        <CgArrowsExchangeAltV
+          className={`${
+            loading ? "animate-spin" : null
+          } text-[16px] text-tradeFadeWhite`}
+        />
+        {currency?.current === "user_currency" ? (
+          <p className="text-xs text-white font-semibold">
+            {currency?.user_currency?.code ?? "N/A"}
+          </p>
+        ) : (
+          <p className="text-xs text-white font-semibold">
+            {currency?.default_currency?.code ?? "N/A"}
           </p>
         )}
       </div>

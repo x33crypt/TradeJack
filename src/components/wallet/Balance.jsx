@@ -20,11 +20,17 @@ import { RiSafe2Fill } from "react-icons/ri";
 import { MdMoreVert } from "react-icons/md";
 import { FaLink } from "react-icons/fa6";
 import { HiRefresh } from "react-icons/hi";
+import MiniButton from "../buttons/MiniButton";
+import { CgArrowsExchangeAltV } from "react-icons/cg";
+import { useCurrency } from "@/context/userContext/CurrencyContext";
+import { useFetchCurrency } from "@/hooks/userHooks/useFetchCurrency";
 
 const Balance = () => {
   const { balance, setBalance } = useBalance();
-  const { loading, error, refetch } = useFetchBalance();
+  const { error } = useFetchBalance();
   const [showBalance, setShowBalance] = useState(true);
+  const { loading, refetch } = useFetchCurrency();
+  const { currency, setCurrency } = useCurrency();
 
   console.log("Balance:", balance);
 
@@ -50,6 +56,20 @@ const Balance = () => {
     }));
   };
 
+  const selectCurrency = () => {
+    if (currency?.current == "user_currency") {
+      setCurrency((prev) => ({
+        ...prev,
+        current: "default_currency",
+      }));
+    } else {
+      setCurrency((prev) => ({
+        ...prev,
+        current: "user_currency",
+      }));
+    }
+  };
+
   const Transfer = () => {
     navigateTo("/wallet/transfer");
   };
@@ -73,8 +93,8 @@ const Balance = () => {
       <div className="flex-1 flex flex-col justify-between gap-[25px] ">
         <div className="flex flex-col justify-between h-[100px] bg-tradeAsh p-[12px] rounded-[15px] border border-tradeAshLight">
           <div className="flex items-center justify-between ">
-            <div className="flex items-center gap-1">
-              <p className="text-[12px] font-semibold text-tradeFadeWhite leading-none p-1 hover:bg-tradeOrange/20 g-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
+            <div className="flex items-center gap-2">
+              <p className="text-[12px] font-semibold text-tradeFadeWhite leading-none w-max rounded-sm">
                 AVAILABLE ASSET
               </p>
 
@@ -90,19 +110,16 @@ const Balance = () => {
               </div>
             </div>
 
-            <div
-              onClick={refetch}
-              className="flex items-center bg-transparent w-max cursor-pointer"
-            >
-              <HiRefresh
-                className={`${
-                  loading ? "animate-spin" : null
-                } text-lg text-tradeFadeWhite`}
-              />
-            </div>
+            <MiniButton onClick={selectCurrency}>
+              {currency?.current === "user_currency" ? (
+                <p>{currency?.user_currency?.code ?? "N/A"}</p>
+              ) : (
+                <p>{currency?.default_currency?.code ?? "N/A"}</p>
+              )}
+            </MiniButton>
           </div>
 
-          <div className="flex gap-3 items-center justify-between w-full">
+          <div className="flex gap-3 items-center w-full">
             <div className="flex items-center ">
               {balance?.currency === "USD" ? (
                 <p

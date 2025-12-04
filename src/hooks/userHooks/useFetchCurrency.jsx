@@ -1,11 +1,35 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import api from "@/utils/http/api";
 import { useCurrency } from "@/context/userContext/CurrencyContext";
+
+// simple shallow compare to avoid unnecessary re-renders
+function shallowEqual(a, b) {
+  if (a === b) return true;
+  if (!a || !b) return false;
+  const aKeys = Object.keys(a);
+  const bKeys = Object.keys(b);
+  if (aKeys.length !== bKeys.length) return false;
+  for (let key of aKeys) {
+    if (a[key] !== b[key]) return false;
+  }
+  return true;
+}
 
 export function useFetchCurrency() {
   const { setCurrency } = useCurrency();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  // Track last returned currency to avoid resetting same data
+  const lastDataRef = useRef(null);
+
+  // Prevent updating state when unmounted
+  const mountedRef = useRef(true);
+  useEffect(() => {
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   const fetchCurrency = useCallback(async () => {
     setLoading(true);
@@ -13,11 +37,17 @@ export function useFetchCurrency() {
 
     try {
       const res = await api.get("/profile/currencies");
-      console.log("Currency fetch response:", res);
 
       if (res?.status === 200) {
-        console.log("Fetched currency data:", res.data.data);
-        setCurrency(res.data.data);
+        const newData = res.data?.data ?? null;
+
+        // Avoid continuous re-render if the same data arrives
+        const same = shallowEqual(lastDataRef.current, newData);
+
+        if (!same) {
+          setCurrency(newData);
+          lastDataRef.current = newData;
+        }
       } else {
         setError(res?.data?.message || "Failed to fetch profile currencies.");
       }
@@ -26,10 +56,11 @@ export function useFetchCurrency() {
         err?.response?.data?.errorMessage || err.message || "Unknown error"
       );
     } finally {
-      setLoading(false);
+      mountedRef.current && setLoading(false);
     }
-  }, [setCurrency]);
+  }, []);
 
+  // Initial fetch
   useEffect(() => {
     fetchCurrency();
   }, [fetchCurrency]);

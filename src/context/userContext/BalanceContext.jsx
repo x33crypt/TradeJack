@@ -17,6 +17,8 @@ export const BalanceProvider = ({ children }) => {
     pending_balance: null,
   });
 
+  
+
   return (
     <BalanceContext.Provider value={{ balance, setBalance }}>
       {children}

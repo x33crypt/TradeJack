@@ -273,7 +273,7 @@ const Transfer = () => {
 
               <div className="flex flex-col gap-[10px]">
                 {/* Wallet Balance */}
-                <WalletBalance />
+                {/* <WalletBalance /> */}
 
                 {/* Recipient Wallet */}
                 <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">

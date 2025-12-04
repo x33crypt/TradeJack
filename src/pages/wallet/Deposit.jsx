@@ -7,47 +7,32 @@ import { toDecimal } from "@/utils/toDecimal";
 import { useToast } from "@/context/otherContext/ToastContext";
 import { submitDeposit } from "@/utils/wallet/deposit";
 import { useDepositContext } from "@/context/userContext/DepositContext";
-import paystackLogo from "../../assets/logos-paystack.png";
 import { toUSD } from "@/utils/toUSD";
 import { toNGN } from "@/utils/toNGN";
 import { useEffect } from "react";
 import { useTransaction } from "@/context/userContext/TransactionContext";
-import DasHboardMenu from "@/components/dashboard/DashboardMenu";
 import { useBalance } from "@/context/userContext/BalanceContext";
 import { useFetchBalance } from "@/hooks/userHooks/useFetchBalance";
 import WalletBalance from "@/components/wallet/WalletBalance";
 import WalletMenu from "@/components/wallet/WalletMenu";
 import MiniButton from "@/components/buttons/MiniButton";
+import { useCurrency } from "@/context/userContext/CurrencyContext";
+import { useFetchCurrency } from "@/hooks/userHooks/useFetchCurrency";
+import { useConvert } from "@/hooks/others/useConvert";
+import Conversion from "@/components/wallet/Conversion";
 
 const Deposit = () => {
-  const { loading, error, refetch } = useFetchBalance();
+  const { refetch } = useFetchBalance();
   const { balance } = useBalance();
   const { transactions } = useTransaction();
   const { deposit, setDeposit } = useDepositContext();
   const { toast, setToast } = useToast();
   const [editingAmount, setEditingAmount] = useState(false);
+  const { currency, setCurrency } = useCurrency();
 
   useEffect(() => {
     refetch();
   }, []);
-
-  const selectUSD = () => {
-    setDeposit((prev) => ({
-      ...prev,
-      url: null,
-      currency: "USD",
-      amount: { NGN: null, USD: null },
-    }));
-  };
-
-  const selectNGN = () => {
-    setDeposit((prev) => ({
-      ...prev,
-      url: null,
-      currency: "NGN",
-      amount: { NGN: null, USD: null },
-    }));
-  };
 
   const handleUSDAmountChange = (e) => {
     let rawValue = e.target.value.replace(/[^\d.]/g, ""); // Allow only numbers & dot
@@ -94,69 +79,30 @@ const Deposit = () => {
     });
   };
 
-  // Update NGN amount if user inputs USD (convert USD → NGN)
   useEffect(() => {
-    if (
-      !deposit?.amount?.USD || // check USD input, not NGN
-      deposit?.currency !== "USD"
-    )
-      return;
+    setDeposit((prev) => ({
+      ...prev,
+      amount: {
+        USD: null,
+        NGN: null,
+      },
+    }));
+  }, [currency?.current]);
 
-    const currentUSD = deposit?.amount?.USD;
+  const amount =
+    currency?.current === "default_currency"
+      ? deposit?.amount?.USD
+      : deposit?.amount?.NGN;
 
-    const debounceTimeout = setTimeout(async () => {
-      try {
-        const { amount: ngnValue } = await toNGN(currentUSD); // convert USD to NGN
+  const from =
+    currency?.current === "default_currency"
+      ? currency?.default_currency?.code
+      : currency?.user_currency?.code;
 
-        // Only update if USD value hasn't changed during fetch
-        setDeposit((prev) => {
-          if (prev.amount.USD !== currentUSD) return prev;
-          return {
-            ...prev,
-            amount: {
-              ...prev.amount,
-              NGN: ngnValue || "",
-            },
-          };
-        });
-      } catch (error) {
-        console.error("Conversion to NGN failed:", error);
-      }
-    }, 700);
-
-    return () => clearTimeout(debounceTimeout);
-  }, [deposit.amount?.USD, deposit?.currency, editingAmount]);
-
-  // Update NGN amount if user inputs NGN (convert NGN → USD)
-  useEffect(() => {
-    if (!deposit.amount?.NGN || deposit.currency !== "NGN") return;
-
-    const currentNGN = deposit?.amount?.NGN;
-
-    const debounceTimeout = setTimeout(async () => {
-      try {
-        const { amount: usdValue } = await toUSD(currentNGN);
-
-        // Only update if NGN value hasn't changed during fetch
-        setDeposit((prev) => {
-          if (prev.amount.NGN !== currentNGN) return prev;
-          return {
-            ...prev,
-            amount: {
-              ...prev.amount,
-              USD: usdValue || "",
-            },
-          };
-        });
-      } catch (error) {
-        console.error("Conversion to USD failed:", error);
-      }
-    }, 700); // ~700ms debounce
-
-    return () => clearTimeout(debounceTimeout);
-  }, [deposit.amount?.NGN, deposit?.currency, editingAmount]);
-
-  console.log(deposit?.amount);
+  const to =
+    currency?.current === "default_currency"
+      ? currency?.user_currency?.code
+      : currency?.default_currency?.code;
 
   const proceed = async () => {
     setDeposit((prev) => ({
@@ -246,36 +192,22 @@ const Deposit = () => {
                 <WalletBalance />
 
                 {/* External Deposit */}
-                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                <div className="flex flex-col gap-[10px] py-[12px] bg-tradeAs rounded-[15px] borde border-tradeAshLight">
                   <div className="flex flex-1 items-center justify-between">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       Enter Amount
                     </p>
-
-                    <div className="flex items-center gap-2">
-                      <MiniButton
-                        onClick={selectNGN}
-                        active={deposit?.currency === "NGN"}
-                      >
-                        <p>NGN</p>
-                      </MiniButton>
-
-                      <MiniButton
-                        onClick={selectUSD}
-                        active={deposit?.currency === "USD"}
-                      >
-                        <p>USD</p>
-                      </MiniButton>
-                    </div>
                   </div>
 
                   <div>
-                    {deposit?.currency === "NGN" ? (
-                      // NGN
+                    {currency?.current === "user_currency" ? (
                       <div className="flex flex-col gap-[10px]">
-                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                        <div className="flex-1 flex items-center gap-1 bg-tradeAshLigh w-full border-b-2 border-tradeAshLight ">
+                          <p className="text-tradeFadeWhite text-xl font-medium">
+                            {currency?.user_currency?.symbol}
+                          </p>
                           <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                            className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-medium leading-none"
                             type="text"
                             placeholder={`15,000.000 - 30,000,000.00`}
                             value={
@@ -289,24 +221,21 @@ const Deposit = () => {
                           />
                         </div>
 
-                        <div>
-                          <p className="text-tradeFadeWhite text-xs font-semibold">
-                            You're about to deposit the equivalent of{" "}
-                            <span className="text-tradeOrange">
-                              USD {""}
-                              {deposit?.amount?.USD
-                                ? toDecimal(deposit?.amount?.USD)
-                                : "0.00"}
-                            </span>
-                          </p>
-                        </div>
+                        <Conversion
+                          disabled={true}
+                          amount={amount}
+                          from={from}
+                          to={to}
+                        />
                       </div>
                     ) : (
-                      // USD
                       <div className="flex flex-col gap-[10px]">
-                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                        <div className="flex-1 flex items-center gap-1 bg-tradeAshLigh w-full border-b-2 border-tradeAshLight ">
+                          <p className="text-tradeFadeWhite text-xl font-medium">
+                            {currency?.default_currency?.symbol}
+                          </p>
                           <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                            className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-medium leading-none"
                             type="text"
                             placeholder={`10.00 - 20,000.00`}
                             value={
@@ -320,24 +249,19 @@ const Deposit = () => {
                           />
                         </div>
 
-                        <div>
-                          <p className="text-tradeFadeWhite text-xs font-medium">
-                            You're about to deposit the equivalent of{" "}
-                            <span className="text-tradeOrange font-semibold">
-                              NGN {""}
-                              {deposit?.amount?.NGN
-                                ? toDecimal(deposit?.amount?.NGN)
-                                : "0.00"}
-                            </span>
-                          </p>
-                        </div>
+                        <Conversion
+                          disabled={true}
+                          amount={amount}
+                          from={from}
+                          to={to}
+                        />
                       </div>
                     )}
                   </div>
                 </div>
 
                 <Button
-                  variant="secondary"
+                  variant="Fadeout"
                   onClick={proceed}
                   disabled={deposit?.loading}
                 >
