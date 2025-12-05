@@ -197,7 +197,7 @@ const Deposit = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-[10px]">
+              <div className="flex flex-col gap-[20px]">
                 {/* Wallet Balance */}
                 <WalletBalance />
 
