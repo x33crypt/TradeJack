@@ -32,7 +32,6 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
   const { setToast } = useToast();
   const [amount, setAmount] = useState("");
 
-
   console.log("offer details :", aboutOffer);
   console.log("calculator :", calculator);
 
@@ -57,8 +56,6 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
   };
 
   console.log("Amount:", amount);
-
- 
 
   const swap = () => {
     // 1️⃣ Check for amount first
@@ -205,56 +202,50 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                 </div>
 
                 {/* Calculator */}
-                <div className="flex gap-[20px] flex-col">
-                  <div className="flex flex-1 flex-col p-[15px] bg-tradeAshLight gap-[15px] rounded-[15px] border border-tradeAshLight">
-                    <div className="flex gap-2 justify-between  border-b border-tradeAshLight pb-[10px]">
-                      <div className="flex items-center gap-1">
-                        <IoMdArrowDropright className="text-lg text-white" />
-                        <p className="text-white hover:text-white text-[13px] font-bold transition-all duration-300 cursor-pointer">
-                          ENTER AMOUNT
+                <div className="flex gap-[10px] flex-col">
+                  <div className="flex flex-col gap-[10px] py-[12px] bg-tradeAs rounded-[15px] borde border-tradeAshLight">
+                    <div className="flex flex-1 items-center justify-between">
+                      <p className="text-[13px] text-tradeFadeWhite font-semibold">
+                        Enter Amount
+                      </p>
+                    </div>
+
+                    <div className="flex flex-col gap-[10px]">
+                      <div className="flex-1 flex items-center gap-1 bg-tradeAshLigh w-full border-b-2 border-tradeAshLight ">
+                        <input
+                          type="text"
+                          placeholder={` ${
+                            toDecimal(offer?.purchaseLimit?.minimum) || "0.00"
+                          } -  ${
+                            toDecimal(offer?.purchaseLimit?.maximum) || "0.00"
+                          }`}
+                          value={withComma(amount)}
+                          onChange={amountChange}
+                          className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-semibold leading-none"
+                        />
+
+                        <p className="text-tradeFadeWhite text-xl font-semibold">
+                          {offer?.preferredCurrency?.code ?? "N/A"}
                         </p>
                       </div>
 
-                      <p className="text-tradeFadeWhite text-xs font-medium">
-                        {toDecimal(offer?.purchaseLimit?.minimum) || "0.00"} -{" "}
-                        {toDecimal(offer?.purchaseLimit?.maximum) || "0.00"}{" "}
-                      </p>
-                    </div>
-
-                    <div className="flex gap-[10px]">
-                      <div className="flex-1 flex p-[12px] gap-2 items-center justify-between bg-tradeAshLight  border border-tradeAshExtraLight rounded-[10px] ">
-                        <input
-                          type="text"
-                          placeholder="0.00"
-                          value={withComma(amount)}
-                          onChange={amountChange}
-                          className="bg-transparent w-full text-sm font-semibold outline-none text-white placeholder:text-tradeFadeWhite"
-                        />
+                      <div className="flex justify-between items-center">
+                        <p className="text-tradeFadeWhite text-xs font-medium">
+                          You will receive{" "}
+                          <span className="text-tradeOrange">0.00 N/A</span>
+                        </p>
                       </div>
-
-                      <div className="flex border border-tradeAshExtraLight p-[12px] gap-2 items-center justify-between bg-tradeAshLight rounded-[10px] ">
-                        <div className="text-sm font-semibold text-white">
-                          <p>{offer?.preferredCurrency?.code ?? "N/A"}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex justify-between items-center">
-                      <p className="text-tradeFadeWhite text-xs font-medium">
-                        You will receive{" "}
-                        <span className="text-tradeOrange">0.00 N/A</span>
-                      </p>
                     </div>
                   </div>
 
-                  <Button onClick={swap} variant="secondary">
+                  <Button onClick={swap} variant="Fadeout">
                     TRADE
                   </Button>
                 </div>
 
                 {/* Offer Details */}
                 <div className="flex flex-1 flex-col gap-[10px]">
-                  <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+                  {/* <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                     <div className="flex items-center justify-between border-b border-tradeAshLight w-full mt-[1px] pb-[10px]">
                       <p className="text-[13px] text-white font-semibold">
                         Rate
@@ -274,7 +265,7 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                         {offer?.preferredCurrency?.name}
                       </p>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="flex min-w-[200px] flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                     <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">

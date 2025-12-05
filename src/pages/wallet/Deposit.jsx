@@ -208,7 +208,7 @@ const Deposit = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col  gap-[10px]">
+              <div className="flex flex-col gap-[10px]">
                 {/* Wallet Balance */}
                 <WalletBalance />
 
@@ -227,6 +227,8 @@ const Deposit = () => {
                           <p className="text-tradeFadeWhite text-xl font-semibold">
                             {currency?.user_currency?.symbol}
                           </p>
+
+
                           <input
                             className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-semibold leading-none"
                             type="text"
