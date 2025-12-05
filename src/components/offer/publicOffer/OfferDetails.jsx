@@ -29,6 +29,8 @@ import api from "@/utils/http/api";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import { BiNotepad } from "react-icons/bi";
 import { AiOutlineFieldTime } from "react-icons/ai";
+import { RiShieldStarLine } from "react-icons/ri";
+import { GrStarHalf } from "react-icons/gr";
 
 const OfferDetails = ({ loading, aboutOffer, id }) => {
   const { calculator, setCalculator } = useCalculator();
@@ -142,10 +144,20 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                 {/* Offer Info */}
                 <div className="flex items-start justify-between">
                   <div className="flex flex-col gap-[10px] ">
-                    <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
-                      {offer?.serviceName || "N/A"}
-                    </p>
-
+                    <div className="flex gap-3 items-center">
+                      <p className="text-tradeOrange text-xl font-semibold md:w-max w-[200px leading-none">
+                        {offer?.serviceName || "N/A"}
+                      </p>
+                      {offer?.isVerifiedOffer ? (
+                        <div className="flex gap-1 items-center">
+                          <RiShieldStarLine className="flex text-tradeFadeWhite text-lg flex-shrink-0" />
+                        </div>
+                      ) : (
+                        <div className="flex gap-1 items-center">
+                          <GrStarHalf className="flex text-tradeFadeWhite text-lg flex-shrink-0" />
+                        </div>
+                      )}
+                    </div>
                     <div className="flex gap-1 items-center">
                       <div className="flex items-center gap-1">
                         <HiHashtag className="flex text-tradeFadeWhite text-[14px] flex-shrink-0" />
@@ -159,36 +171,27 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                       </p>
                     </div>
                     <div className="flex gap-1 items-center">
-                      {/* <div className="flex gap-1 items-center">
-                        <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                        <p className="text-xs font-semibold text-white">
-                          31 Aug, 2045
-                        </p>
-                      </div> */}
-                      {offer?.isVerifiedOffer ? (
-                        <div className="flex gap-1 items-center">
-                          <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                          <p className="text-xs font-semibold text-white">
-                            Verified
-                          </p>
-                        </div>
-                      ) : (
-                        <div className="flex gap-1 items-center">
-                          <TbSparkles className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
-                          <p className="text-xs font-semibold text-white">
-                            New
-                          </p>
-                        </div>
-                      )}
-                      <p className="text-tradeAshLight leading-none">|</p>
                       <div className="flex items-center gap-1">
                         <AiOutlineFieldTime className="text-[16px] text-tradeFadeWhite" />
                         <p className="text-white text-xs font-semibold">
-                          Delivers in{" "}
+                          Transfer in{" "}
                           <span className="text-white">
                             {windowFormatHour(
                               offer?.paymentWindow?.release?.hours,
                               offer?.paymentWindow?.release?.minutes
+                            )}
+                          </span>
+                        </p>
+                      </div>
+                      <p className="text-tradeAshLight leading-none">|</p>
+                      <div className="flex items-center gap-1">
+                        <AiOutlineFieldTime className="text-[16px] text-tradeFadeWhite" />
+                        <p className="text-white text-xs font-semibold">
+                          Payment in{" "}
+                          <span className="text-white">
+                            {windowFormatHour(
+                              offer?.paymentWindow?.transfer?.hours,
+                              offer?.paymentWindow?.transfer?.minutes
                             )}
                           </span>
                         </p>
@@ -227,6 +230,9 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
 
                     <div className="flex flex-col gap-[10px]">
                       <div className="flex-1 flex items-center gap-1 bg-tradeAshLigh w-full border-b-2 border-tradeAshLight ">
+                        <p className="text-tradeFadeWhite text-xl font-semibold">
+                          $
+                        </p>
                         <input
                           type="text"
                           placeholder={` ${
@@ -238,10 +244,6 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                           onChange={amountChange}
                           className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-semibold leading-none"
                         />
-
-                        <p className="text-tradeFadeWhite text-xl font-semibold">
-                          {offer?.preferredCurrency?.code ?? "N/A"}
-                        </p>
                       </div>
 
                       <div className="flex flex-col gap-1">

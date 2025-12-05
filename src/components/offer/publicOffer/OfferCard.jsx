@@ -22,6 +22,7 @@ import { RiShieldUserFill } from "react-icons/ri";
 import { TiUser } from "react-icons/ti";
 import { BiSolidUserDetail } from "react-icons/bi";
 import { FaUserCheck } from "react-icons/fa";
+import { AiOutlineFieldTime } from "react-icons/ai";
 
 const OfferCard = ({ offer, vendor }) => {
   const navigateTo = useNavigate();
@@ -208,10 +209,6 @@ const OfferCard = ({ offer, vendor }) => {
                   {toDecimal(offer?.marginRate?.ratePrice) || "N/A"}/
                   {offer?.preferredCurrency?.code}
                 </p>
-
-                {/* <p className="text-xs font-bold text-tradeFadeWhite hover:text-white leading-none p-1 hover:bg-tradeOrange/30 bg-tradeAshLight/50 w-max rounded-sm transition-all duration-300 cursor-pointer">
-                  {offer?.marginRate?.ratePercent || "N/A"}%
-                </p> */}
               </div>
 
               <div className="flex gap-1 items-end">
@@ -235,7 +232,7 @@ const OfferCard = ({ offer, vendor }) => {
         </div>
         <div className="flex justify-between border-t border-dashed border-tradeAshLight pt-2">
           <div className="flex gap-1 items-center">
-            <IoMdTime className="text-sm text-tradeFadeWhite" />
+            <AiOutlineFieldTime className="text-sm text-tradeFadeWhite" />
             <p className="text-xs font-medium text-tradeFadeWhite">Transfer:</p>
             <p className="text-xs font-semibold text-white whitespace-nowrap">
               {windowFormatHour(
@@ -245,8 +242,8 @@ const OfferCard = ({ offer, vendor }) => {
             </p>
           </div>
           <div className="flex gap-1 items-center">
-            <IoMdTime className="text-sm text-tradeFadeWhite" />
-            <p className="text-xs font-medium text-tradeFadeWhite">Release:</p>
+            <AiOutlineFieldTime className="text-sm text-tradeFadeWhite" />
+            <p className="text-xs font-medium text-tradeFadeWhite">Payment:</p>
             <p className="text-xs font-semibold text-white whitespace-nowrap">
               {windowFormatHour(
                 offer?.releaseWindow?.hours,
