@@ -25,55 +25,58 @@ import { CalculatorProvider } from "./context/publicContext/CalculatorContext";
 import { TradeProvider } from "./context/publicContext/TradeContext";
 import { UserFeedbackProvider } from "./context/userContext/FeedbackContext";
 import { CurrencyProvider } from "./context/userContext/CurrencyContext";
+import { ConvertionProvider } from "./context/otherContext/ConvertionContext";
 
 // Render MainApp into #root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <CurrencyProvider>
-        <UserFeedbackProvider>
-          <TradeProvider>
-            <CalculatorProvider>
-              <LogOutProvider>
-                <PasswordProvider>
-                  <UserOfferProvider>
-                    <TraderProfileProvider>
-                      <PublicOffersProvider>
-                        <ProfileNavProvider>
-                          <BalanceProvider>
-                            <LinkedAccountProvider>
-                              <TransactionProvider>
-                                <WithdrawProvider>
-                                  <DepositProvider>
-                                    <TransferProvider>
-                                      <ProfileProvider>
-                                        <KycProvider>
-                                          <DashboardProvider>
-                                            <ToastProvider>
-                                              <SelectElementProvider>
-                                                <App />
-                                              </SelectElementProvider>
-                                            </ToastProvider>
-                                          </DashboardProvider>
-                                        </KycProvider>
-                                      </ProfileProvider>
-                                    </TransferProvider>
-                                  </DepositProvider>
-                                </WithdrawProvider>
-                              </TransactionProvider>
-                            </LinkedAccountProvider>
-                          </BalanceProvider>
-                        </ProfileNavProvider>
-                      </PublicOffersProvider>
-                    </TraderProfileProvider>
-                  </UserOfferProvider>
-                </PasswordProvider>
-              </LogOutProvider>
-            </CalculatorProvider>
-          </TradeProvider>
-        </UserFeedbackProvider>
-      </CurrencyProvider>
+      <ConvertionProvider>
+        <CurrencyProvider>
+          <UserFeedbackProvider>
+            <TradeProvider>
+              <CalculatorProvider>
+                <LogOutProvider>
+                  <PasswordProvider>
+                    <UserOfferProvider>
+                      <TraderProfileProvider>
+                        <PublicOffersProvider>
+                          <ProfileNavProvider>
+                            <BalanceProvider>
+                              <LinkedAccountProvider>
+                                <TransactionProvider>
+                                  <WithdrawProvider>
+                                    <DepositProvider>
+                                      <TransferProvider>
+                                        <ProfileProvider>
+                                          <KycProvider>
+                                            <DashboardProvider>
+                                              <ToastProvider>
+                                                <SelectElementProvider>
+                                                  <App />
+                                                </SelectElementProvider>
+                                              </ToastProvider>
+                                            </DashboardProvider>
+                                          </KycProvider>
+                                        </ProfileProvider>
+                                      </TransferProvider>
+                                    </DepositProvider>
+                                  </WithdrawProvider>
+                                </TransactionProvider>
+                              </LinkedAccountProvider>
+                            </BalanceProvider>
+                          </ProfileNavProvider>
+                        </PublicOffersProvider>
+                      </TraderProfileProvider>
+                    </UserOfferProvider>
+                  </PasswordProvider>
+                </LogOutProvider>
+              </CalculatorProvider>
+            </TradeProvider>
+          </UserFeedbackProvider>
+        </CurrencyProvider>
+      </ConvertionProvider>
     </BrowserRouter>
   </StrictMode>
 );

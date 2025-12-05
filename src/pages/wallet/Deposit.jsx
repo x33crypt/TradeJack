@@ -20,6 +20,7 @@ import { useCurrency } from "@/context/userContext/CurrencyContext";
 import { useFetchCurrency } from "@/hooks/userHooks/useFetchCurrency";
 import { useConvert } from "@/hooks/others/useConvert";
 import Conversion from "@/components/wallet/Conversion";
+import { useConversion } from "@/context/otherContext/ConvertionContext";
 
 const Deposit = () => {
   const { refetch } = useFetchBalance();
@@ -29,6 +30,9 @@ const Deposit = () => {
   const { toast, setToast } = useToast();
   const [editingAmount, setEditingAmount] = useState(false);
   const { currency, setCurrency } = useCurrency();
+  const { data } = useConversion();
+
+  console.log("Conversion Data in Deposit:", data);
 
   useEffect(() => {
     refetch();
@@ -68,6 +72,23 @@ const Deposit = () => {
       },
     }));
   };
+
+  useEffect(() => {
+    if (!data?.conversion_result) return;
+    if (data?.base_code !== "USD") return;
+
+    if (currency?.current === "default_currency") {
+      setDeposit((prev) => ({
+        ...prev,
+        amount: {
+          ...prev.amount,
+          NGN: Number(data.conversion_result) || 0,
+        },
+      }));
+    }
+  }, [currency?.current, data?.conversion_result, data?.base_code]);
+
+  console.log("Deposit Amounts:", deposit?.amount);
 
   const formatWithCommas = (value) => {
     if (!value) return "";
@@ -203,11 +224,11 @@ const Deposit = () => {
                     {currency?.current === "user_currency" ? (
                       <div className="flex flex-col gap-[10px]">
                         <div className="flex-1 flex items-center gap-1 bg-tradeAshLigh w-full border-b-2 border-tradeAshLight ">
-                          <p className="text-tradeFadeWhite text-xl font-medium">
+                          <p className="text-tradeFadeWhite text-xl font-semibold">
                             {currency?.user_currency?.symbol}
                           </p>
                           <input
-                            className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-medium leading-none"
+                            className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-semibold leading-none"
                             type="text"
                             placeholder={`15,000.000 - 30,000,000.00`}
                             value={

@@ -13,17 +13,9 @@ const ConfirmDeposit = () => {
 
   const close = () => {
     setDeposit((prev) => ({
-      error: "",
+      ...prev,
       loading: false,
       confirm: false,
-      success: false,
-      currency: "NGN",
-      url: null,
-      amount: {
-        USD: null,
-        NGN: null,
-      },
-      referenceId: null,
     }));
   };
 

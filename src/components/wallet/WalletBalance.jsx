@@ -10,6 +10,7 @@ import { MdWallet } from "react-icons/md";
 import { CgArrowsExchangeAltV } from "react-icons/cg";
 import { useCurrency } from "@/context/userContext/CurrencyContext";
 import { useFetchCurrency } from "@/hooks/userHooks/useFetchCurrency";
+import { LuWalletCards } from "react-icons/lu";
 
 const WalletBalance = () => {
   const { loading, refetch } = useFetchCurrency();
@@ -34,7 +35,7 @@ const WalletBalance = () => {
   return (
     <div className="flex w-full justify-between gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
       <div className="w-max flex gap-1 items-center justify-center border border-tradeAshExtraLight p-2 h-max rounded-[10px] ">
-        <MdWallet className="text-[16px] text-tradeFadeWhite" />{" "}
+        <MdWallet className="text-lg text-tradeFadeWhite" />{" "}
         {currency?.current === "user_currency" ? (
           <p className="text-xs text-white font-semibold">
             <span className="text-tradeFadeWhite">

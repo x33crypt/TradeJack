@@ -32,6 +32,8 @@ const Balance = () => {
   const { loading, refetch } = useFetchCurrency();
   const { currency, setCurrency } = useCurrency();
 
+  console.log("Currency:", currency);
+
   console.log("Balance:", balance);
 
   const toggleBalanceVisibility = () => {
@@ -41,20 +43,6 @@ const Balance = () => {
   console.log(showBalance);
 
   const navigateTo = useNavigate();
-
-  const selectUSD = () => {
-    setBalance((prev) => ({
-      ...prev,
-      currency: "USD",
-    }));
-  };
-
-  const selectNGN = () => {
-    setBalance((prev) => ({
-      ...prev,
-      currency: "NGN",
-    }));
-  };
 
   const selectCurrency = () => {
     if (currency?.current == "user_currency") {
@@ -110,13 +98,20 @@ const Balance = () => {
               </div>
             </div>
 
-            <MiniButton onClick={selectCurrency}>
-              {currency?.current === "user_currency" ? (
-                <p>{currency?.user_currency?.code ?? "N/A"}</p>
-              ) : (
-                <p>{currency?.default_currency?.code ?? "N/A"}</p>
-              )}
-            </MiniButton>
+            <div className="flex items-center gap-1">
+              <CgArrowsExchangeAltV
+                className={`${
+                  loading ? "animate-spin" : null
+                } text-[16px] text-tradeFadeWhite`}
+              />
+              <MiniButton onClick={selectCurrency}>
+                {currency?.current === "user_currency" ? (
+                  <p>{currency?.user_currency?.code ?? "N/A"}</p>
+                ) : (
+                  <p>{currency?.default_currency?.code ?? "N/A"}</p>
+                )}
+              </MiniButton>
+            </div>
           </div>
 
           <div className="flex gap-3 items-center w-full">

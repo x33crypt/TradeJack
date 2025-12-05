@@ -3,21 +3,21 @@ import { useConvert } from "@/hooks/others/useConvert";
 import toDecimal from "@/utils/toDecimal";
 
 export default function Conversion({ amount, from = "USD", to = "NGN" }) {
+  // Debounced amount for typing
   const [debouncedAmount, setDebouncedAmount] = useState(amount);
 
-  // Debounce the typing to avoid spam
+  // Step 1: Update debouncedAmount on typing with 700ms delay
   useEffect(() => {
     const timeout = setTimeout(() => {
       setDebouncedAmount(amount);
     }, 700);
-
     return () => clearTimeout(timeout);
   }, [amount]);
 
-  // Coerce debouncedAmount to numeric value (allow 0)
+  // Step 2: Ensure conversion runs immediately on mount or when from/to change
   const numericAmount = (() => {
     const n = Number(debouncedAmount);
-    return Number.isFinite(n) ? n : null; // null means "no valid amount"
+    return Number.isFinite(n) ? n : 0;
   })();
 
   const { result, loading, error, refetch } = useConvert(
@@ -26,48 +26,47 @@ export default function Conversion({ amount, from = "USD", to = "NGN" }) {
     to
   );
 
-  console.log("Conversion Result:", result);
+  console.log("Conversion result:", result);
 
-  // Build display strings
+  // Step 3: Build display strings
   const convertedText = (() => {
-    if (numericAmount == null) return `${to} ${toDecimal(0)}`; // no input
+    if (numericAmount == null) return `${to} ${toDecimal(0)}`;
     if (loading) return "Converting...";
-    if (error) return "Conversion unavailable.";
+    if (error) return `${to ?? "N/A"} ${toDecimal(0)}`;
     const conv = result?.conversion_result;
     if (conv != null && Number.isFinite(Number(conv))) {
       return `${to} ${toDecimal(conv)}`;
     }
-    return "Conversion unavailable.";
+    return `${to ?? "N/A"} ${toDecimal(0)}`;
   })();
 
-  // inside component, after `result` available
-  const rawRate = result?.conversion_rate;
-  let formattedRate = null;
-
-  if (rawRate != null && Number.isFinite(Number(rawRate))) {
-    const r = Number(rawRate);
-    // choose precision: small rates get more decimals
-    const precision = Math.abs(r) < 0.01 ? 6 : 2;
-    formattedRate = `1 ${from} = ${Number(r).toFixed(precision)} ${to}`;
-  }
+  const rateText = (() => {
+    const rawRate = result?.conversion_rate;
+    if (rawRate != null && Number.isFinite(Number(rawRate))) {
+      // Show more decimals for small rates
+      const precision = Math.abs(rawRate) < 0.01 ? 6 : 2;
+      return `1 ${from} = ${Number(rawRate).toFixed(precision)} ${to}`;
+    }
+    return null;
+  })();
 
   return (
     <div className="space-y-1">
+      {/* Converted amount */}
       <p className="text-tradeOrange text-xs font-semibold">{convertedText}</p>
 
-      {formattedRate && !loading && !error && (
-        <p className="text-xs text-tradeFadeWhite">{formattedRate}</p>
+      {/* Exchange rate */}
+      {rateText && !loading && !error && (
+        <p className="text-[12px] text-tradeFadeWhite">{rateText}</p>
       )}
 
+      {/* Error fallback with retry */}
       {error && (
         <div className="flex items-center space-x-2">
-          <p className="text-red-400 text-[10px] italic">
-            Conversion unavailable.
-          </p>
-          {/* tiny retry button */}
+          <p className="text-red-400 text-[12px]">Conversion unavailable.</p>
           <button
             onClick={() => refetch({ force: true })}
-            className="text-[10px] underline text-gray-600"
+            className="text-[12px] underline text-tradeFadeWhite"
           >
             Retry
           </button>

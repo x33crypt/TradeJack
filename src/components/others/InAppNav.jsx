@@ -30,28 +30,28 @@ const InAppNav = () => {
   const [animateSoon, setAnimateSoon] = useState(false);
   const { select, setSelect } = useSelectElement();
   const { balance, setBalance } = useBalance();
-  const { loading } = useFetchCurrency();
+  // const { loading } = useFetchCurrency();
   const { currency } = useCurrency();
 
-  console.log(currency);
+  // console.log(currency);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimate(true);
-      setTimeout(() => setAnimate(false), 600);
-    }, 5000); // every 20s
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setAnimate(true);
+  //     setTimeout(() => setAnimate(false), 600);
+  //   }, 5000); // every 20s
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimateSoon(true);
-      setTimeout(() => setAnimateSoon(false), 600);
-    }, 14000); // every 20s
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setAnimateSoon(true);
+  //     setTimeout(() => setAnimateSoon(false), 600);
+  //   }, 14000); // every 20s
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   const navigateTo = useNavigate();
 

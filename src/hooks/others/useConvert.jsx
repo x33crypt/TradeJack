@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
+import { useConversion } from "@/context/otherContext/ConvertionContext";
 
 /**
  * useConvert(amountNumber, fromCode, toCode)
@@ -13,6 +14,7 @@ export function useConvert(amount, from, to) {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { setData } = useConversion();
 
   // simple in-memory cache
   const cacheRef = useRef({});
@@ -77,6 +79,11 @@ export function useConvert(amount, from, to) {
             setError(null);
             setLoading(false);
           }
+
+          if (data?.conversion_result != null) {
+            setData(data);
+          }
+
           return data;
         } else {
           const msg = res?.data?.message || "Failed to fetch conversion";
