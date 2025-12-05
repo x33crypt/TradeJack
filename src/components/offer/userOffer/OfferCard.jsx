@@ -144,7 +144,7 @@ const OfferCard = ({ offer }) => {
               <p className="text-[13px] font-semibold text-white">
                 {offer?.offerId}
               </p>
-              <p className="text-tradeAshLight leading-none">|</p>
+              {/* <p className="text-tradeAshLight leading-none">|</p>
               {offer?.isVerified ? (
                 <div className="flex gap-1 items-center">
                   <RiVerifiedBadgeFill className="flex text-tradeGreen text-sm flex-shrink-0" />
@@ -153,7 +153,7 @@ const OfferCard = ({ offer }) => {
                 <div className="flex gap-1 items-center">
                   <LuSparkles className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                 </div>
-              )}
+              )} */}
             </div>
 
             <div className="flex flex-col items-end gap-1 justify-betwee w-full">

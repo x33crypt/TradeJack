@@ -220,8 +220,8 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                 </div>
 
                 {/* Calculator */}
-                <div className="flex gap-[20px] flex-col">
-                  <div className="flex flex-col gap-[10px] pb-[12px]">
+                <div className="flex gap-[20px] flex-col ">
+                  <div className="flex flex-col gap-[10px] pb-[12px] bg-tradeAsh p-[12px] rounded-[15px] borde border-tradeAshLight">
                     <div className="flex flex-1 items-center justify-between">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Enter Amount

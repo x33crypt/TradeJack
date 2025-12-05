@@ -30,7 +30,7 @@ const InAppNav = () => {
   const [animateSoon, setAnimateSoon] = useState(false);
   const { select, setSelect } = useSelectElement();
   const { balance, setBalance } = useBalance();
-  // const { loading } = useFetchCurrency();
+  const { loading } = useFetchCurrency();
   const { currency } = useCurrency();
 
   // console.log(currency);
