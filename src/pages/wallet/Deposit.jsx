@@ -202,72 +202,61 @@ const Deposit = () => {
                 <WalletBalance />
 
                 {/* External Deposit */}
-                <div className="flex flex-col gap-[10px] py-[12px] bg-tradeAs rounded-[15px] borde border-tradeAshLight">
+                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] ">
                   <div className="flex flex-1 items-center justify-between">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       Enter Amount
                     </p>
                   </div>
 
-                  <div>
+                  <div className="flex flex-col gap-[10px] ">
                     {currency?.current === "user_currency" ? (
-                      <div className="flex flex-col gap-[10px]">
-                        <div className="flex-1 flex items-center gap-1 bg-tradeAshLigh w-full border-b-2 border-tradeAshLight ">
-                          <p className="text-tradeFadeWhite text-xl font-semibold">
-                            {currency?.user_currency?.symbol}
-                          </p>
+                      <div className="flex-1 flex items-center gap-1 bg-tradeAshLigh w-full border-b-2 border-tradeAshLight ">
+                        <p className="text-tradeFadeWhite text-xl font-semibold">
+                          {currency?.user_currency?.symbol}
+                        </p>
 
-                          <input
-                            className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-semibold leading-none"
-                            type="text"
-                            placeholder={`15,000.000 - 30,000,000.00`}
-                            value={
-                              editingAmount
-                                ? deposit?.amount?.NGN || ""
-                                : formatWithCommas(deposit?.amount?.NGN)
-                            }
-                            onChange={handleNGNAmountChange}
-                            onFocus={() => setEditingAmount(true)}
-                            onBlur={() => setEditingAmount(false)}
-                          />
-                        </div>
-
-                        <Conversion
-                          disabled={true}
-                          amount={amount}
-                          from={from}
-                          to={to}
+                        <input
+                          className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-semibold leading-none"
+                          type="text"
+                          placeholder={`15,000.000 - 30,000,000.00`}
+                          value={
+                            editingAmount
+                              ? deposit?.amount?.NGN || ""
+                              : formatWithCommas(deposit?.amount?.NGN)
+                          }
+                          onChange={handleNGNAmountChange}
+                          onFocus={() => setEditingAmount(true)}
+                          onBlur={() => setEditingAmount(false)}
                         />
                       </div>
                     ) : (
-                      <div className="flex flex-col gap-[10px]">
-                        <div className="flex-1 flex items-center gap-1 bg-tradeAshLigh w-full border-b-2 border-tradeAshLight ">
-                          <p className="text-tradeFadeWhite text-xl font-medium">
-                            {currency?.default_currency?.symbol}
-                          </p>
-                          <input
-                            className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-medium leading-none"
-                            type="text"
-                            placeholder={`10.00 - 20,000.00`}
-                            value={
-                              editingAmount
-                                ? deposit?.amount?.USD || ""
-                                : formatWithCommas(deposit?.amount?.USD)
-                            }
-                            onChange={handleUSDAmountChange}
-                            onFocus={() => setEditingAmount(true)}
-                            onBlur={() => setEditingAmount(false)}
-                          />
-                        </div>
-
-                        <Conversion
-                          disabled={true}
-                          amount={amount}
-                          from={from}
-                          to={to}
+                      <div className="flex-1 flex items-center gap-1 bg-tradeAsh w-full border-b-2 border-tradeAshLight ">
+                        <p className="text-tradeFadeWhite text-xl font-medium">
+                          {currency?.default_currency?.symbol}
+                        </p>
+                        <input
+                          className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-medium leading-none"
+                          type="text"
+                          placeholder={`10.00 - 20,000.00`}
+                          value={
+                            editingAmount
+                              ? deposit?.amount?.USD || ""
+                              : formatWithCommas(deposit?.amount?.USD)
+                          }
+                          onChange={handleUSDAmountChange}
+                          onFocus={() => setEditingAmount(true)}
+                          onBlur={() => setEditingAmount(false)}
                         />
                       </div>
                     )}
+
+                    <Conversion
+                      disabled={true}
+                      amount={amount}
+                      from={from}
+                      to={to}
+                    />
                   </div>
                 </div>
 
