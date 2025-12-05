@@ -17,8 +17,7 @@ export function useFetchCurrency() {
 
       if (res?.status === 200) {
         console.log("Fetched currency data:", res.data.data);
-        // setCurrency(res.data.data);
-        setAboutOffer((prev) => ({
+        setCurrency((prev) => ({
           ...prev,
           ...res.data.data, // merge API response
           current: "user_currency", // overwrite / set current

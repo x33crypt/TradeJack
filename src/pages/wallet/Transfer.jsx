@@ -315,7 +315,7 @@ const Transfer = () => {
                 </div>
 
                 <Button
-                  variant="secondary"
+                  variant="Fadeout"
                   onClick={proceed}
                   disabled={transfer?.proceed}
                 >

@@ -425,7 +425,7 @@ const Withdraw = () => {
                 </div>
 
                 <Button
-                  variant="secondary"
+                  variant="Fadeout"
                   onClick={proceed}
                   disabled={withdraw?.proceed}
                 >
