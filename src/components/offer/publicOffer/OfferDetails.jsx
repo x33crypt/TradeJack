@@ -26,6 +26,9 @@ import { HiHashtag } from "react-icons/hi";
 import { MdBookmarkAdd } from "react-icons/md";
 import { TbSparkles } from "react-icons/tb";
 import api from "@/utils/http/api";
+import { MdOutlineAccessTimeFilled } from "react-icons/md";
+import { BiNotepad } from "react-icons/bi";
+import { AiOutlineFieldTime } from "react-icons/ai";
 
 const OfferDetails = ({ loading, aboutOffer, id }) => {
   const { calculator, setCalculator } = useCalculator();
@@ -156,13 +159,12 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                       </p>
                     </div>
                     <div className="flex gap-1 items-center">
-                      <div className="flex gap-1 items-center">
+                      {/* <div className="flex gap-1 items-center">
                         <LuCalendarClock className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
                         <p className="text-xs font-semibold text-white">
                           31 Aug, 2045
                         </p>
-                      </div>
-                      <p className="text-tradeAshLight leading-none">|</p>
+                      </div> */}
                       {offer?.isVerifiedOffer ? (
                         <div className="flex gap-1 items-center">
                           <AiOutlineSafetyCertificate className="flex text-tradeFadeWhite text-sm flex-shrink-0" />
@@ -178,6 +180,19 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                           </p>
                         </div>
                       )}
+                      <p className="text-tradeAshLight leading-none">|</p>
+                      <div className="flex items-center gap-1">
+                        <AiOutlineFieldTime className="text-[16px] text-tradeFadeWhite" />
+                        <p className="text-white text-xs font-semibold">
+                          Delivers in{" "}
+                          <span className="text-white">
+                            {windowFormatHour(
+                              offer?.paymentWindow?.release?.hours,
+                              offer?.paymentWindow?.release?.minutes
+                            )}
+                          </span>
+                        </p>
+                      </div>
                     </div>
                     <div className="flex gap-1 items-center">
                       <div className="flex gap-1 items-center">
@@ -202,8 +217,8 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                 </div>
 
                 {/* Calculator */}
-                <div className="flex gap-[10px] flex-col">
-                  <div className="flex flex-col gap-[10px] py-[12px] bg-tradeAs rounded-[15px] borde border-tradeAshLight">
+                <div className="flex gap-[20px] flex-col">
+                  <div className="flex flex-col gap-[10px] pb-[12px]">
                     <div className="flex flex-1 items-center justify-between">
                       <p className="text-[13px] text-tradeFadeWhite font-semibold">
                         Enter Amount
@@ -238,14 +253,29 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                     </div>
                   </div>
 
+                  <div className="w-full flex gap-2 flex-grow flex-wrap">
+                    {offer?.tags?.length > 0 ? (
+                      offer?.tags?.map((term, index) => (
+                        <p className="flex w-max items-center gap-[8px] px-[8px] py-[4px] rounded-[8px] bg-tradeAshLight text-[13px] font-semibold text-white">
+                          {term}
+                        </p>
+                      ))
+                    ) : (
+                      <p className="text-[13px] font-semibold text-white">
+                        N/A
+                      </p>
+                    )}
+                  </div>
+
                   <Button onClick={swap} variant="Fadeout">
                     TRADE
                   </Button>
                 </div>
 
                 {/* Offer Details */}
-                <div className="flex flex-1 flex-col gap-[10px]">
-                  {/* <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
+
+                {/* <div className="flex flex-1 flex-col gap-[10px]">
+                  <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                     <div className="flex items-center justify-between border-b border-tradeAshLight w-full mt-[1px] pb-[10px]">
                       <p className="text-[13px] text-white font-semibold">
                         Rate
@@ -265,7 +295,7 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                         {offer?.preferredCurrency?.name}
                       </p>
                     </div>
-                  </div> */}
+                  </div>
 
                   <div className="flex min-w-[200px] flex-1 flex-col  justify-between gap-[10px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                     <div className="flex justify-between border-b border-tradeAshLight w-full pb-[10px]">
@@ -335,7 +365,7 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                       {offer?.instructions ? offer?.instructions : "N/A"}
                     </p>
                   </div>
-                </div>
+                </div> */}
               </div>
             )}
           </div>
