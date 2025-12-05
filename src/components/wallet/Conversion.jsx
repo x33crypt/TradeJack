@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useConvert } from "@/hooks/others/useConvert";
 import toDecimal from "@/utils/toDecimal";
 
-export default function Conversion({ amount, from = "USD", to = "NGN" }) {
+export default function Conversion({ amount, from = "NGN", to = "USD" }) {
   // Debounced amount for typing
   const [debouncedAmount, setDebouncedAmount] = useState(amount);
 
