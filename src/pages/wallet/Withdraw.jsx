@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import InAppNav from "@/components/others/InAppNav";
 import Footer from "@/components/others/Footer";
 import DasHboardMenu from "@/components/dashboard/DashboardMenu";
@@ -18,6 +18,10 @@ import { useFetchWithdrawTxt } from "@/hooks/userHooks/useFetchWithdrawTxt";
 import WalletBalance from "@/components/wallet/WalletBalance";
 import Info from "@/components/alerts/Info";
 import WalletMenu from "@/components/wallet/WalletMenu";
+import { useCurrency } from "@/context/userContext/CurrencyContext";
+import Conversion from "@/components/wallet/Conversion";
+import { useConversion } from "@/context/otherContext/ConvertionContext";
+import { CgArrowsExchangeAltV } from "react-icons/cg";
 
 const Withdraw = () => {
   const { refetchWithdrawTxt } = useFetchWithdrawTxt();
@@ -26,10 +30,11 @@ const Withdraw = () => {
   const { loading, error, refetchLinkedBanks } = useFetchLinkedBanks();
   const { linkedAccounts } = useLinkedAccount();
   const { setToast } = useToast();
+  const { currency, setCurrency } = useCurrency();
+  const { data } = useConversion();
+  const [editingAmount, setEditingAmount] = useState(false);
 
-  console.log("Withdraw Context:", withdraw);
-  console.log("Balance in Withdraw:", balance?.available_balance);
-  console.log("Linked Accounts:", linkedAccounts);
+  console.log("Conversion Data in Deposit:", data);
 
   useEffect(() => {
     refetchLinkedBanks();
@@ -60,23 +65,6 @@ const Withdraw = () => {
     setWithdraw((prev) => ({
       ...prev,
       account: "Alternative",
-    }));
-  };
-
-  const selectUSD = () => {
-    setWithdraw((prev) => ({
-      ...prev,
-
-      currency: "USD",
-      amount: { NGN: null, USD: null },
-    }));
-  };
-
-  const selectNGN = () => {
-    setWithdraw((prev) => ({
-      ...prev,
-      currency: "NGN",
-      amount: { NGN: null, USD: null },
     }));
   };
 
@@ -116,6 +104,23 @@ const Withdraw = () => {
     }));
   };
 
+  useEffect(() => {
+    if (!data?.conversion_result) return;
+    if (data?.base_code !== "USD") return;
+
+    if (currency?.current === "default_currency") {
+      setWithdraw((prev) => ({
+        ...prev,
+        amount: {
+          ...prev.amount,
+          NGN: Number(data.conversion_result) || 0,
+        },
+      }));
+    }
+  }, [currency?.current, data?.conversion_result, data?.base_code]);
+
+  console.log("Withdraw Amounts:", withdraw?.amount);
+
   const formatWithCommas = (value) => {
     if (!value) return "";
     const num = parseFloat(value);
@@ -126,67 +131,22 @@ const Withdraw = () => {
     });
   };
 
-  // update NGN amount if user input USD
-  useEffect(() => {
-    if (!withdraw?.amount?.USD || withdraw?.currency !== "USD") return;
+  const amount =
+    currency?.current === "default_currency"
+      ? withdraw?.amount?.USD
+      : withdraw?.amount?.NGN;
 
-    const debounceTimeout = setTimeout(async () => {
-      try {
-        const result = await toNGN(withdraw?.amount?.USD);
+  const from =
+    currency?.current === "default_currency"
+      ? currency?.default_currency?.code
+      : currency?.user_currency?.code;
 
-        if (result && result.amount) {
-          console.log("Converted NGN Value:", result.amount);
+  const to =
+    currency?.current === "default_currency"
+      ? currency?.user_currency?.code
+      : currency?.default_currency?.code;
 
-          setWithdraw((prev) => ({
-            ...prev,
-            amount: {
-              ...prev.amount,
-              NGN: result.amount,
-            },
-          }));
-        } else {
-          console.error("Conversion to NGN failed: Invalid response", result);
-        }
-      } catch (error) {
-        console.error("Conversion to NGN failed:", error);
-      }
-    }, 2000); // 2 seconds delay
-
-    return () => clearTimeout(debounceTimeout); // Clear previous timeout on new input
-  }, [withdraw?.amount?.USD, withdraw?.currency]);
-
-  // update USD amount if user input NGN
-  useEffect(() => {
-    if (!withdraw?.amount?.NGN || withdraw?.currency !== "NGN") return;
-
-    console.log("Converting NGN to USD:", withdraw?.amount?.NGN);
-
-    const debounceTimeout = setTimeout(async () => {
-      try {
-        const result = await toUSD(withdraw?.amount?.NGN);
-
-        if (result && result.amount) {
-          console.log("Converted USD Value:", result.amount);
-
-          setWithdraw((prev) => ({
-            ...prev,
-            amount: {
-              ...prev.amount,
-              USD: result.amount,
-            },
-          }));
-        } else {
-          console.error("Conversion to USD failed: Invalid response", result);
-        }
-      } catch (error) {
-        console.error("Conversion to USD failed:", error);
-      }
-    }, 2000); // 2 second delay
-
-    return () => clearTimeout(debounceTimeout); // Clear on new keystroke
-  }, [withdraw?.amount?.NGN, withdraw?.currency]);
-
-  const handleProceed = () => {
+  const proceed = () => {
     const { currency, amount, bank } = withdraw;
 
     // Validate amount in NGN
@@ -284,6 +244,20 @@ const Withdraw = () => {
     }
   }, [withdraw?.success]);
 
+  const selectAccount = () => {
+    if (linkedAccounts?.length > 1 && withdraw?.account === "Default") {
+      setWithdraw((prev) => ({
+        ...prev,
+        account: "Alternative",
+      }));
+    } else {
+      setWithdraw((prev) => ({
+        ...prev,
+        account: "Default",
+      }));
+    }
+  };
+
   return (
     <>
       <InAppNav />
@@ -303,40 +277,7 @@ const Withdraw = () => {
                 <WalletBalance />
 
                 {/* Account */}
-                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
-                  <div className="flex flex-1 items-center justify-between">
-                    <p className="text-[13px] text-tradeFadeWhite font-semibold">
-                      Select Account
-                    </p>
-
-                    <div className="flex gap-1">
-                      {linkedAccounts?.length && (
-                        <p
-                          onClick={selectDefaultAccount}
-                          className={`${
-                            withdraw?.account === "Default"
-                              ? "bg-tradeOrange text-black"
-                              : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
-                          } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
-                        >
-                          Default
-                        </p>
-                      )}
-
-                      {linkedAccounts?.length > 1 && (
-                        <p
-                          onClick={selectAlternativeAccount}
-                          className={`${
-                            withdraw?.account === "Alternative"
-                              ? "bg-tradeOrange text-black"
-                              : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
-                          } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
-                        >
-                          Alternative
-                        </p>
-                      )}
-                    </div>
-                  </div>
+                <div className="flex justify-between items-center p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
                   <div className="flex items-center gap-[10px] w-full ">
                     <div className="p-2.5 bg-tradeAshLight border border-tradeAshExtraLight rounded-xl">
                       {withdraw?.bank?.logo ? (
@@ -361,106 +302,123 @@ const Withdraw = () => {
                       </p>
                     </div>
                   </div>
+
+                  <div
+                    onClick={selectAccount}
+                    className="w-max flex gap-1 items-center justify-center border border-tradeAshExtraLight p-2 h-max rounded-[10px] cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-[1.03]"
+                  >
+                    {linkedAccounts?.length > 1 && (
+                      <CgArrowsExchangeAltV
+                        className={`${
+                          loading ? "animate-spin" : null
+                        } text-[16px] text-tradeFadeWhite`}
+                      />
+                    )}
+                    {withdraw?.account === "Default" ? (
+                      <p className="text-xs text-white font-semibold">
+                        Default
+                      </p>
+                    ) : (
+                      <p className="text-xs text-white font-semibold">
+                        Alternative
+                      </p>
+                    )}
+                  </div>
+
+                  {/* <div className="flex gap-1">
+                    {linkedAccounts?.length && (
+                      <p
+                        onClick={selectDefaultAccount}
+                        className={`${
+                          withdraw?.account === "Default"
+                            ? "bg-tradeOrange text-black"
+                            : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
+                        } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
+                      >
+                        Default
+                      </p>
+                    )}
+
+                    {linkedAccounts?.length > 1 && (
+                      <p
+                        onClick={selectAlternativeAccount}
+                        className={`${
+                          withdraw?.account === "Alternative"
+                            ? "bg-tradeOrange text-black"
+                            : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
+                        } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
+                      >
+                        Alternative
+                      </p>
+                    )}
+                  </div> */}
                 </div>
 
                 {/* Amount */}
-                <div className="flex flex-col gap-[10px] p-[12px] bg-tradeAsh rounded-[15px] border border-tradeAshLight">
+                <div className="flex flex-col gap-[10px] py-[12px] bg-tradeAs rounded-[15px] borde border-tradeAshLight">
                   <div className="flex flex-1 items-center justify-between">
                     <p className="text-[13px] text-tradeFadeWhite font-semibold">
                       Enter Amount
                     </p>
-
-                    <div className="flex items-center gap-2">
-                      <p
-                        onClick={selectNGN}
-                        className={`${
-                          withdraw?.currency === "NGN"
-                            ? "bg-tradeOrange text-black"
-                            : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
-                        } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
-                      >
-                        NGN
-                      </p>
-
-                      <p
-                        onClick={selectUSD}
-                        className={`${
-                          withdraw?.currency === "USD"
-                            ? "bg-tradeOrange text-black"
-                            : "bg-tradeAshLight/50 hover:bg-tradeOrange/30 text-tradeFadeWhite hover:text-white "
-                        } text-xs font-bold  leading-none p-1 w-max rounded-sm transition-all duration-300 cursor-pointer`}
-                      >
-                        USD
-                      </p>
-                    </div>
                   </div>
 
-                  <div className="flex flex-col w-full">
-                    {withdraw?.currency === "NGN" ? (
-                      // NGN
+                  <div>
+                    {currency?.current === "user_currency" ? (
                       <div className="flex flex-col gap-[10px]">
-                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                        <div className="flex-1 flex items-center gap-1 bg-tradeAshLigh w-full border-b-2 border-tradeAshLight ">
+                          <p className="text-tradeFadeWhite text-xl font-semibold">
+                            {currency?.user_currency?.symbol}
+                          </p>
+
                           <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                            className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-semibold leading-none"
                             type="text"
                             placeholder={`15,000.000 - 30,000,000.00`}
-                            value={formatWithCommas(withdraw?.amount?.NGN)}
+                            value={
+                              editingAmount
+                                ? withdraw?.amount?.NGN || ""
+                                : formatWithCommas(withdraw?.amount?.NGN)
+                            }
                             onChange={handleNGNAmountChange}
-                            onFocus={(e) =>
-                              (e.target.value = withdraw?.amount?.NGN || "")
-                            } // show raw when editing
-                            onBlur={(e) =>
-                              (e.target.value = formatWithCommas(
-                                withdraw?.amount?.NGN
-                              ))
-                            } // format on blur
+                            onFocus={() => setEditingAmount(true)}
+                            onBlur={() => setEditingAmount(false)}
                           />
                         </div>
 
-                        <div>
-                          <p className="text-tradeFadeWhite text-xs font-semibold">
-                            You're about to deposit the equivalent of{" "}
-                            <span className="text-tradeOrange">
-                              USD {""}
-                              {withdraw?.amount?.USD
-                                ? toDecimal(withdraw?.amount?.USD)
-                                : "0.00"}
-                            </span>
-                          </p>
-                        </div>
+                        <Conversion
+                          disabled={true}
+                          amount={amount}
+                          from={from}
+                          to={to}
+                        />
                       </div>
                     ) : (
-                      // USD
                       <div className="flex flex-col gap-[10px]">
-                        <div className="flex-1 flex bg-tradeAshLight w-full border border-tradeAshLight rounded-[10px]">
+                        <div className="flex-1 flex items-center gap-1 bg-tradeAshLigh w-full border-b-2 border-tradeAshLight ">
+                          <p className="text-tradeFadeWhite text-xl font-medium">
+                            {currency?.default_currency?.symbol}
+                          </p>
                           <input
-                            className="bg-transparent flex-1 p-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-sm font-medium leading-none"
+                            className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-medium leading-none"
                             type="text"
                             placeholder={`10.00 - 20,000.00`}
-                            value={formatWithCommas(withdraw?.amount?.USD)}
+                            value={
+                              editingAmount
+                                ? withdraw?.amount?.USD || ""
+                                : formatWithCommas(withdraw?.amount?.USD)
+                            }
                             onChange={handleUSDAmountChange}
-                            onFocus={(e) =>
-                              (e.target.value = withdraw?.amount?.USD || "")
-                            } // show raw when editing
-                            onBlur={(e) =>
-                              (e.target.value = formatWithCommas(
-                                withdraw?.amount?.USD
-                              ))
-                            } // format on blur
+                            onFocus={() => setEditingAmount(true)}
+                            onBlur={() => setEditingAmount(false)}
                           />
                         </div>
 
-                        <div>
-                          <p className="text-tradeFadeWhite text-xs font-semibold">
-                            You're about to deposit the equivalent of{" "}
-                            <span className="text-tradeOrange">
-                              NGN {""}
-                              {withdraw?.amount?.NGN
-                                ? toDecimal(withdraw?.amount?.NGN)
-                                : "0.00"}
-                            </span>
-                          </p>
-                        </div>
+                        <Conversion
+                          disabled={true}
+                          amount={amount}
+                          from={from}
+                          to={to}
+                        />
                       </div>
                     )}
                   </div>
@@ -468,7 +426,7 @@ const Withdraw = () => {
 
                 <Button
                   variant="secondary"
-                  onClick={handleProceed}
+                  onClick={proceed}
                   disabled={withdraw?.proceed}
                 >
                   Proceed

@@ -278,7 +278,6 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                 </div>
 
                 {/* Offer Details */}
-
                 {/* <div className="flex flex-1 flex-col gap-[10px]">
                   <div className="flex flex-col justify-between min-w-[200px] flex-1 gap-[20px] p-[12px] rounded-[15px] border border-tradeAshLight bg-tradeAsh">
                     <div className="flex items-center justify-between border-b border-tradeAshLight w-full mt-[1px] pb-[10px]">

@@ -11,6 +11,7 @@ import Button from "@/components/buttons/Button";
 import { useFetchLinkedBanks } from "@/hooks/userHooks/useFetchLinkedBanks";
 import LockByScroll from "@/components/others/LockByScroll";
 import { IoClose } from "react-icons/io5";
+import { linkBankAccount } from "@/utils/wallet/linkBank";
 
 const NewAccount = () => {
   const { linkAccount, setLinkAccount } = useLinkedAccount();
@@ -79,58 +80,69 @@ const NewAccount = () => {
   };
 
   const handleLinkAccount = async () => {
-    setLinkAccount((prev) => ({
-      ...prev,
-      loading: true,
-    }));
+    // prevent duplicate requests
+    if (linkAccount?.loading) return;
 
-    const { data, error } = await linkBankAccount({
-      bankAccount: linkAccount?.bankAccount,
-      bank: linkAccount?.bank,
-      holdersName: linkAccount?.holdersName,
-    });
+    // mark loading
+    setLinkAccount((prev) => ({ ...prev, loading: true }));
 
-    console.log("Link Bank result", data);
-
-    if (error) {
-      setLinkAccount((prev) => ({
-        ...prev,
-        loading: false,
-      }));
-
-      setToast({
-        ...toast,
-        error: true,
-        errorMessage: error,
-      });
-      return;
-    }
-
-    if (data) {
-      console.log("Bank holder verified:", data);
-
-      setToast({
-        ...toast,
-        success: true,
-        successMessage: "Bank account successfully linked",
+    try {
+      const { data, error } = await linkBankAccount({
+        bankAccount: linkAccount?.bankAccount,
+        bank: linkAccount?.bank,
+        holdersName: linkAccount?.holdersName,
       });
 
-      navigateTo("/settings/accounts");
+      console.log("Link Bank result", data, error);
 
-      try {
-        await refetchLinkedBanks();
-      } catch (err) {
-        console.error("Refetch failed:", err);
+      if (error) {
+        // show toast and bail
+        setToast((prev) => ({
+          ...prev,
+          error: true,
+          errorMessage: error,
+        }));
+        return;
       }
 
-      setLinkAccount({
-        loading: false,
-        details: false,
-        verified: false,
-        bank: "",
-        bankAccount: "",
-        holdersName: null,
-      });
+      if (data) {
+        // success toast
+        setToast((prev) => ({
+          ...prev,
+          success: true,
+          successMessage: "Bank account successfully linked",
+        }));
+
+        // reset form state (preserve shape by setting fields explicitly)
+        setLinkAccount({
+          loading: false,
+          details: false,
+          verified: false,
+          bank: "",
+          bankAccount: "",
+          holdersName: null,
+        });
+
+        // try to refresh linked banks; don't block navigation on failure
+        try {
+          await refetchLinkedBanks();
+        } catch (err) {
+          console.error("Refetch failed:", err);
+        }
+
+        // navigate after we updated things
+        navigateTo("/settings/accounts");
+      }
+    } catch (err) {
+      console.error("Link account request failed:", err);
+      setToast((prev) => ({
+        ...prev,
+        error: true,
+        errorMessage: err?.message || "Something went wrong",
+      }));
+    } finally {
+      // ensure loading toggled off in all cases
+      setLinkAccount((prev) => ({ ...prev, loading: false }));
     }
   };
 

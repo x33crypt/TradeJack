@@ -7,23 +7,16 @@ import { toDecimal } from "@/utils/toDecimal";
 import { useToast } from "@/context/otherContext/ToastContext";
 import { submitDeposit } from "@/utils/wallet/deposit";
 import { useDepositContext } from "@/context/userContext/DepositContext";
-import { toUSD } from "@/utils/toUSD";
-import { toNGN } from "@/utils/toNGN";
 import { useEffect } from "react";
 import { useTransaction } from "@/context/userContext/TransactionContext";
 import { useBalance } from "@/context/userContext/BalanceContext";
 import { useFetchBalance } from "@/hooks/userHooks/useFetchBalance";
 import WalletBalance from "@/components/wallet/WalletBalance";
-import WalletMenu from "@/components/wallet/WalletMenu";
-import MiniButton from "@/components/buttons/MiniButton";
 import { useCurrency } from "@/context/userContext/CurrencyContext";
-import { useFetchCurrency } from "@/hooks/userHooks/useFetchCurrency";
-import { useConvert } from "@/hooks/others/useConvert";
 import Conversion from "@/components/wallet/Conversion";
 import { useConversion } from "@/context/otherContext/ConvertionContext";
 
 const Deposit = () => {
-  const { refetch } = useFetchBalance();
   const { balance } = useBalance();
   const { transactions } = useTransaction();
   const { deposit, setDeposit } = useDepositContext();
@@ -33,10 +26,6 @@ const Deposit = () => {
   const { data } = useConversion();
 
   console.log("Conversion Data in Deposit:", data);
-
-  useEffect(() => {
-    refetch();
-  }, []);
 
   const handleUSDAmountChange = (e) => {
     let rawValue = e.target.value.replace(/[^\d.]/g, ""); // Allow only numbers & dot
@@ -227,7 +216,6 @@ const Deposit = () => {
                           <p className="text-tradeFadeWhite text-xl font-semibold">
                             {currency?.user_currency?.symbol}
                           </p>
-
 
                           <input
                             className="bg-transparent flex-1 py-[12px] border-none outline-none text-white placeholder:text-tradeFadeWhite text-xl font-semibold leading-none"
