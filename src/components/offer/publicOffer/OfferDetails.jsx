@@ -177,8 +177,8 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                           Transfer in{" "}
                           <span className="text-white">
                             {windowFormatHour(
-                              offer?.paymentWindow?.release?.hours,
-                              offer?.paymentWindow?.release?.minutes
+                              offer?.paymentWindow?.transfer?.hours,
+                              offer?.paymentWindow?.transfer?.minutes
                             )}
                           </span>
                         </p>
@@ -190,8 +190,8 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                           Payment in{" "}
                           <span className="text-white">
                             {windowFormatHour(
-                              offer?.paymentWindow?.transfer?.hours,
-                              offer?.paymentWindow?.transfer?.minutes
+                              offer?.paymentWindow?.release?.hours,
+                              offer?.paymentWindow?.release?.minutes
                             )}
                           </span>
                         </p>
