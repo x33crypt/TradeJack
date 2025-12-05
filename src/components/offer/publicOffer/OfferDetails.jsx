@@ -244,10 +244,13 @@ const OfferDetails = ({ loading, aboutOffer, id }) => {
                         </p>
                       </div>
 
-                      <div className="flex justify-between items-center">
-                        <p className="text-tradeFadeWhite text-xs font-medium">
-                          You will receive{" "}
-                          <span className="text-tradeOrange">0.00 N/A</span>
+                      <div className="flex flex-col gap-1">
+                        <p className="text-tradeOrange text-xs font-medium">
+                          NGN 0.00
+                        </p>
+                        <p className="text-tradeFadeWhite text-xs">
+                          1 {offer?.preferredCurrency?.code ?? "N/A"} = 0.000691
+                          NGN
                         </p>
                       </div>
                     </div>
